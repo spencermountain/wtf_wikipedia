@@ -1,5 +1,6 @@
+import defaults from '../../../_lib/defaults.ts'
 // import { references } from '../../_data/i18n.ts'
-import type { SectionData } from '../../../types/index.ts'
+import type { DocInfo, SectionData } from '../../../types/index.ts'
 //interpret ==heading== lines
 import parseHeading from './heading.ts'
 
@@ -7,7 +8,7 @@ import parseHeading from './heading.ts'
 const section_reg = /(?:\n|^)(={2,6}.{1,200}?={2,6})/g
 
 //split the wiki text on '=' headings, wrap each part in a Section, then drop the reference section
-const parseSections = function (pageWiki: string) {
+const parseSections = function (pageWiki: string, opts: DocInfo = defaults) {
   let sections: SectionData[] = []
   let index = 0
   let splits = pageWiki.split(section_reg)
@@ -20,7 +21,7 @@ const parseSections = function (pageWiki: string) {
     }
 
     //figure-out title and depth
-    let { block, depth } = parseHeading(heading)
+    let { block, depth } = parseHeading(heading, opts)
     let section: SectionData = {
       title: block,
       depth,

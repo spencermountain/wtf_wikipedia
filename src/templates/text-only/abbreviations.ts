@@ -1,4 +1,4 @@
-import parse from '../../parse/templates/parse/toJSON/index.ts'
+import defaultParse from '../../parse/templates/parse/toJSON/index.ts'
 
 let shorthands = [
   // {{HWV|251d}} - handel, bach
@@ -18,7 +18,7 @@ let shorthands = [
 // create a function for each one
 let fns = shorthands.reduce((h, a) => {
   let [name, out] = a
-  h[name] = (tmpl) => {
+  h[name] = (tmpl, _list, parse = defaultParse) => {
     let { first } = parse(tmpl, ['first'])
     if (first || first === 0) {
       return out + (first || '')

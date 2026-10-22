@@ -9,10 +9,7 @@ class Link {
   }
 
   text() {
-    let txt = this.#data.text || this.#data.page || ''
-    // remove bold/italics
-    txt = txt.replace(/'{2,}/g, '')
-    return txt
+    return this.#data.text
   }
 
   json() {
@@ -24,8 +21,19 @@ class Link {
     if (obj.type === 'internal') {
       obj.page = this.page()
     } else if (obj.type === 'interwiki') {
-      obj.interwiki = this.interwiki()
+      if (this.#data.lang !== undefined) {
+        obj.lang = this.#data.lang
+      }
+      if (this.#data.project !== undefined) {
+        obj.project = this.#data.project
+      }
+      if (this.#data.prefix !== undefined) {
+        obj.prefix = this.#data.prefix
+      }
       obj.page = this.page()
+      if (this.#data.inline !== undefined) {
+        obj.inline = this.#data.inline
+      }
     } else {
       obj.site = this.site()
     }
@@ -77,20 +85,19 @@ class Link {
     let url = ''
 
     if (type === 'interwiki') {
-      const destination = this.interwiki()
-      const wiki = typeof destination === 'string' ? destination : destination?.wiki
+      const wiki = this.#data.prefix || this.#data.project || this.#data.lang
       url = 'https://en.wikipedia.org/wiki/$1'
       if (Object.hasOwn(wikis, wiki)) {
         url = 'http://' + wikis[wiki]
         // Qualified language prefixes override the project's default language.
-        if (typeof destination === 'object') {
-          url = url.replace('://en.', `://${destination.lang}.`)
+        if (this.#data.project && this.#data.lang) {
+          url = url.replace('://en.', `://${this.#data.lang}.`)
         }
       }
       url = url.replace(/\$1/g, page)
     } else {
       //internal link
-      url = `./${this.page()}`
+      url = `./${page}`
     }
     //add anchor on the end
     if (this.anchor()) {

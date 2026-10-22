@@ -1,5 +1,5 @@
 //random misc for inline wikipedia templates
-import parse from '../../parse/templates/parse/toJSON/index.ts'
+import defaultParse from '../../parse/templates/parse/toJSON/index.ts'
 import { titlecase } from '../_lib.ts'
 
 //https://en.wikipedia.org/wiki/Template:Yes
@@ -71,7 +71,7 @@ let cells = [
   'optional',
 ]
 cells.forEach((str) => {
-  templates[str] = (tmpl) => {
+  templates[str] = (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['text'])
     return data.text || titlecase(data.template)
   }
@@ -99,7 +99,7 @@ let moreCells = [
   ['nocontest', ''],
 ]
 moreCells.forEach((a) => {
-  templates[a[0]] = (tmpl) => {
+  templates[a[0]] = (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['text'])
     return data.text || a[1]
   }

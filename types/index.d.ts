@@ -250,6 +250,7 @@ declare class Sentence {
 }
 
 type FetchOptions = {
+  project?: string | undefined
   path?: string | undefined
   wiki?: string | undefined
   domain?: string | undefined
@@ -274,6 +275,7 @@ type FetchResult<T> = T extends unknown[] ? Document[] : Document | null
 
 /** options for `wtf(text, options)` - metadata about the page, all optional */
 type DocumentOptions = {
+  project?: string
   title?: string
   pageID?: number
   id?: number

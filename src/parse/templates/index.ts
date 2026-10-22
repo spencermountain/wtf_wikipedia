@@ -1,11 +1,12 @@
+import defaults from '../../_lib/defaults.ts'
 import findTemplates from './find/01-nested.ts'
 import parseTemplate from './parse/index.ts'
 import classify from './classify.ts'
-import type { TemplateData } from '../../types/index.ts'
+import type { DocInfo, TemplateData } from '../../types/index.ts'
 import type { NestedNode } from './types.ts'
 
 // return a flat list of all {{templates}}
-const allTemplates = function (wiki: string) {
+const allTemplates = function (wiki: string, opts: DocInfo = defaults) {
   let final = []
   //nested data-structure of templates
   let nested: NestedNode[] = findTemplates(wiki)
@@ -17,7 +18,7 @@ const allTemplates = function (wiki: string) {
       obj.children.forEach((ch) => parseNested(ch, obj))
     }
     //parse template into json, return replacement wikitext
-    let [text, json] = parseTemplate(obj.body, obj.name)
+    let [text, json] = parseTemplate(obj.body, obj.name, opts)
     if (json) {
       let template: TemplateData = {
         template: obj.name,
@@ -51,9 +52,9 @@ const allTemplates = function (wiki: string) {
 }
 
 //find + parse all templates in the section
-const process = function (wiki: string) {
+const process = function (wiki: string, opts: DocInfo = defaults) {
   // find+parse them all
-  let { templates, remaining } = allTemplates(wiki)
+  let { templates, remaining } = allTemplates(wiki, opts)
   // split-out references and infoboxes
   const { infoboxes, references, others } = classify(templates)
   return {

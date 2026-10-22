@@ -1,5 +1,5 @@
 import strip from '../../../parse/templates/parse/toJSON/_strip.ts'
-import parse from '../../../parse/templates/parse/toJSON/index.ts'
+import defaultParse from '../../../parse/templates/parse/toJSON/index.ts'
 import { delta } from './_lib.ts'
 import { ymd, toText } from './_format.ts'
 
@@ -30,7 +30,7 @@ const getBoth = function (tmpl) {
 
 const parsers = {
   //generic {{date|year|month|date}} template
-  date: (tmpl, list) => {
+  date: (tmpl, list, parse = defaultParse) => {
     let order = ['year', 'month', 'date', 'hour', 'minute', 'second', 'timezone']
     let obj = parse(tmpl, order)
     let data = ymd([obj.year, obj.month, obj.date || obj.day])
@@ -55,7 +55,7 @@ const parsers = {
   },
 
   //support parsing of 'February 10, 1992'
-  natural_date: (tmpl, list) => {
+  natural_date: (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl, ['text'])
     let str = obj.text || ''
     // - just a year
@@ -78,7 +78,7 @@ const parsers = {
   },
 
   //just grab the first value, and assume it's a year
-  one_year: (tmpl, list) => {
+  one_year: (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl, ['year'])
     let year = Number(obj.year)
     list.push(
@@ -90,7 +90,7 @@ const parsers = {
   },
 
   //assume 'y|m|d' | 'y|m|d' // {{BirthDeathAge|B|1976|6|6|1990|8|8}}
-  two_dates: (tmpl, list) => {
+  two_dates: (tmpl, list, parse = defaultParse) => {
     let order = ['b', 'birth_year', 'birth_month', 'birth_date', 'death_year', 'death_month', 'death_date']
     let obj = parse(tmpl, order)
     //'b' means show birth-date, otherwise show death-date

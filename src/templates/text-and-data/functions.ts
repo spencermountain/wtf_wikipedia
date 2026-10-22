@@ -1,37 +1,37 @@
-import parse from '../../parse/templates/parse/toJSON/index.ts'
+import defaultParse from '../../parse/templates/parse/toJSON/index.ts'
 import { percentage } from '../_lib.ts'
 
 let templates = {
   // https://en.wikipedia.org/wiki/Template:Math
-  math: (tmpl, list) => {
+  math: (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl, ['formula'])
     list.push(obj)
     return '\n\n' + (obj.formula || '') + '\n\n'
   },
 
   //svg labels - https://en.m.wikipedia.org/wiki/Template:Legend
-  legend: (tmpl, list) => {
+  legend: (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl, ['color', 'label'])
     list.push(obj)
     // return obj.label || ' '
     return tmpl // keep the wiki?
   },
 
-  isbn: (tmpl, list) => {
+  isbn: (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl, ['id', 'id2', 'id3'])
     list.push(obj)
     return 'ISBN ' + (obj.id || '')
   },
 
   //https://en.wikipedia.org/wiki/Template:Based_on
-  'based on': (tmpl, list) => {
+  'based on': (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl, ['title', 'author'])
     list.push(obj)
     return `${obj.title} by ${obj.author || ''}`
   },
 
   //barrels of oil https://en.wikipedia.org/wiki/Template:Bbl_to_t
-  'bbl to t': (tmpl, list) => {
+  'bbl to t': (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl, ['barrels'])
     list.push(obj)
     if (obj.barrels === '0') {
@@ -41,7 +41,7 @@ let templates = {
   },
 
   //minor planet - https://en.wikipedia.org/wiki/Template:MPC
-  mpc: (tmpl, list) => {
+  mpc: (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl, ['number', 'text'])
     list.push(obj)
     return `[https://minorplanetcenter.net/db_search/show_object?object_id=P/2011+NO1 ${obj.text || obj.number}]`
@@ -62,7 +62,7 @@ let templates = {
   },
 
   // https://en.wikipedia.org/wiki/Template:Ordered_list
-  'ordered list': (tmpl, list) => {
+  'ordered list': (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl)
     list.push(obj)
     obj.list ||= []
@@ -71,8 +71,8 @@ let templates = {
   },
 
   // https://en.wikipedia.org/wiki/Template:Title_year
-  'title year': (tmpl, _list, _alias, _parse, info) => {
-    let obj = parse(tmpl, ['match', 'nomatch', 'page'])
+  'title year': (tmpl, _list, _alias = defaultParse, _parse, info) => {
+    let obj = _alias(tmpl, ['match', 'nomatch', 'page'])
     let title = obj.page || info?.title
     if (title) {
       let m = title.match(/\b[0-9]{4}\b/) //parse the year out of the title's name
@@ -84,8 +84,8 @@ let templates = {
   },
 
   // https://en.wikipedia.org/wiki/Template:Title_century
-  'title century': (tmpl, _list, _alias, _parse, info?) => {
-    let obj = parse(tmpl, ['match', 'nomatch', 'page'])
+  'title century': (tmpl, _list, _alias = defaultParse, _parse, info?) => {
+    let obj = _alias(tmpl, ['match', 'nomatch', 'page'])
     let title = obj.page || info?.title
     if (title) {
       let m = title.match(/\b([0-9]+)(st|nd|rd|th)\b/) //parse the century out of the title's name
@@ -97,8 +97,8 @@ let templates = {
   },
 
   // https://en.wikipedia.org/wiki/Template:Title_decade
-  'title decade': (tmpl, _list, _alias, _parse, info?) => {
-    let obj = parse(tmpl, ['match', 'nomatch', 'page'])
+  'title decade': (tmpl, _list, _alias = defaultParse, _parse, info?) => {
+    let obj = _alias(tmpl, ['match', 'nomatch', 'page'])
     let title = obj.page || info?.title
     if (title) {
       let m = title.match(/\b([0-9]+)s\b/) //parse the decade out of the title's name
@@ -110,7 +110,7 @@ let templates = {
   },
 
   //https://en.wikipedia.org/wiki/Template:Nihongo
-  nihongo: (tmpl, list) => {
+  nihongo: (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl, ['english', 'kanji', 'romaji', 'extra'])
     list.push(obj)
     let str = obj.english || obj.romaji || ''
@@ -127,7 +127,7 @@ let templates = {
 
   //https://en.wikipedia.org/wiki/Template:Marriage
   //this one creates a template, and an inline response
-  marriage: (tmpl, list) => {
+  marriage: (tmpl, list, parse = defaultParse) => {
     let data = parse(tmpl, ['spouse', 'from', 'to', 'end'])
     list.push(data)
     let str = data.spouse || ''
@@ -142,7 +142,7 @@ let templates = {
   },
 
   //'red' card - {{sent off|cards|min1|min2}}
-  'sent off': (tmpl, list) => {
+  'sent off': (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl, ['cards'])
     let result = {
       template: 'sent off',
@@ -154,7 +154,7 @@ let templates = {
     return 'sent off: ' + mins
   },
 
-  transl: (tmpl, list) => {
+  transl: (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl, ['lang', 'text', 'text2'])
     // support 3-param
     if (obj.text2) {
@@ -167,7 +167,7 @@ let templates = {
   },
 
   //show/hide: https://en.wikipedia.org/wiki/Template:Collapsible_list
-  'collapsible list': (tmpl, list) => {
+  'collapsible list': (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl)
     list.push(obj)
     let str = ''
@@ -189,7 +189,7 @@ let templates = {
   },
 
   //https://en.wikipedia.org/wiki/Template:Columns-list
-  'columns-list': (tmpl, list) => {
+  'columns-list': (tmpl, list, parse = defaultParse) => {
     let arr = parse(tmpl).list || []
     let str = arr[0] || ''
     let lines = str.split(/\n/).filter((f) => f)
@@ -203,7 +203,7 @@ let templates = {
   },
 
   //https://en.wikipedia.org/wiki/Template:Height - {{height|ft=6|in=1}}
-  height: (tmpl, list) => {
+  height: (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl)
     list.push(obj)
     let result = []
@@ -217,7 +217,7 @@ let templates = {
   },
 
   //https://en.wikipedia.org/wiki/Template:Sic
-  sic: (tmpl, list) => {
+  sic: (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl, ['one', 'two', 'three'])
     let word = (obj.one || '') + (obj.two || '')
     //support '[sic?]'
@@ -235,7 +235,7 @@ let templates = {
   },
 
   //
-  inrconvert: (tmpl, list) => {
+  inrconvert: (tmpl, list, parse = defaultParse) => {
     let o = parse(tmpl, ['rupee_value', 'currency_formatting'])
     list.push(o)
     const mults = {
@@ -255,7 +255,7 @@ let templates = {
   },
 
   //fraction - https://en.wikipedia.org/wiki/Template:Sfrac
-  frac: (tmpl, list) => {
+  frac: (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl, ['a', 'b', 'c'])
     let data: any = {
       template: 'sfrac',
@@ -278,7 +278,7 @@ let templates = {
     return `${data.numerator}⁄${data.denominator}`
   },
 
-  'winning percentage': (tmpl, list) => {
+  'winning percentage': (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl, ['wins', 'losses', 'ties'])
     list.push(obj)
     let wins = Number(obj.wins)
@@ -301,7 +301,7 @@ let templates = {
     return result.replace(/^0\./, '.')
   },
 
-  winlosspct: (tmpl, list) => {
+  winlosspct: (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl, ['wins', 'losses'])
     list.push(obj)
     let wins = Number(obj.wins)
@@ -319,7 +319,7 @@ let templates = {
   },
 
   //https://en.wikipedia.org/wiki/Template:Video_game_release
-  'video game release': (tmpl, list) => {
+  'video game release': (tmpl, list, parse = defaultParse) => {
     let order = ['region', 'date', 'region2', 'date2', 'region3', 'date3', 'region4', 'date4']
     let obj = parse(tmpl, order)
     let template = {
@@ -339,7 +339,7 @@ let templates = {
     return '\n' + str + '\n'
   },
   // https://en.m.wikipedia.org/wiki/Template:USS
-  uss: (tmpl, list) => {
+  uss: (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl, ['name', 'id'])
     list.push(obj)
     if (obj.id) {
@@ -348,7 +348,7 @@ let templates = {
     return `[[USS ${obj.name}|USS ''${obj.name}'']]`
   },
   // https://en.wikipedia.org/wiki/Template:Blockquote
-  blockquote: (tmpl, list) => {
+  blockquote: (tmpl, list, parse = defaultParse) => {
     let props = ['text', 'author', 'title', 'source', 'character']
     let obj = parse(tmpl, props)
     list.push(obj)
@@ -365,7 +365,7 @@ let templates = {
   },
 
   // https://de.m.wikipedia.org/wiki/Vorlage:ReptileDatabase
-  ReptileDatabase: (tmpl, list) => {
+  ReptileDatabase: (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl, ['taxon', 'genus', 'species', 'abruf', 'pure_url'])
     list.push(obj)
     let str = ''
@@ -375,12 +375,12 @@ let templates = {
     return `${str}In: [[The Reptile Database]]`
   },
   //https://en.m.wikipedia.org/wiki/Template:GEOnet3
-  GEOnet3: (tmpl, list) => {
+  GEOnet3: (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl, ['ufi', 'name'])
     list.push(obj)
     return `GEOnet3 can be found at [[GEOnet Names Server]], at [http://geonames.nga.mil/namesgaz/ this link]`
   },
-  'poem quote': (tmpl, list) => {
+  'poem quote': (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl, ['text', 'char', 'sign', 'source', 'title'])
     list.push(obj)
     let out = obj.text || ''
@@ -393,7 +393,7 @@ let templates = {
     }
     return out
   },
-  tweet: (tmpl, list) => {
+  tweet: (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl)
     list.push(obj)
     let out = obj.text || ''

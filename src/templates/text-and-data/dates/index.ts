@@ -1,5 +1,5 @@
 import parsers from './_parsers.ts'
-import parse from '../../../parse/templates/parse/toJSON/index.ts'
+import defaultParse from '../../../parse/templates/parse/toJSON/index.ts'
 import { days, timeSince } from './_lib.ts'
 import { toOrdinal } from '../../_lib.ts'
 import { ymd, toText, toTextBritish } from './_format.ts'
@@ -21,7 +21,7 @@ const months = [
 
 //date- templates we support
 export default {
-  monthname: (tmpl) => {
+  monthname: (tmpl, _list, parse = defaultParse) => {
     const obj = parse(tmpl, ['month'])
     return months[Number(obj.month) - 1] || ''
   },
@@ -56,7 +56,7 @@ export default {
     return months[d.getMonth()] + ' ' + d.getFullYear()
   },
 
-  year: (tmpl) => {
+  year: (tmpl, _list, parse = defaultParse) => {
     let date = parse(tmpl, ['date']).date
     let d = new Date(date)
     if (date && isNaN(d.getTime()) === false) {
@@ -65,32 +65,32 @@ export default {
     return ''
   },
 
-  'time ago': (tmpl) => {
+  'time ago': (tmpl, _list, parse = defaultParse) => {
     let time = parse(tmpl, ['date', 'fmt']).date
     return timeSince(time)
   },
-  'birth date': (tmpl, list) => {
+  'birth date': (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl, ['year', 'month', 'date'])
     list.push(obj)
     obj = ymd([obj.year, obj.month, obj.day])
     return toText(obj)
   },
   //https://en.wikipedia.org/wiki/Template:Birth_date_and_age
-  'birth date and age': (tmpl, list) => {
+  'birth date and age': (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl, ['year', 'month', 'day'])
     //support 'one property' version
     if (obj.year && /[a-z]/i.test(obj.year)) {
-      return parsers.natural_date(tmpl, list)
+      return parsers.natural_date(tmpl, list, parse)
     }
     list.push(obj)
     obj = ymd([obj.year, obj.month, obj.day])
     return toText(obj)
   },
-  'birth year and age': (tmpl, list) => {
+  'birth year and age': (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl, ['birth_year', 'birth_month'])
     //support 'one property' version
     if (obj.death_year && /[a-z]/i.test(obj.death_year)) {
-      return parsers.natural_date(tmpl, list)
+      return parsers.natural_date(tmpl, list, parse)
     }
     list.push(obj)
     let age = new Date().getFullYear() - parseInt(obj.birth_year, 10)
@@ -101,18 +101,18 @@ export default {
     }
     return str
   },
-  'death year and age': (tmpl, list) => {
+  'death year and age': (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl, ['death_year', 'birth_year', 'death_month'])
     //support 'one property' version
     if (obj.death_year && /[a-z]/i.test(obj.death_year)) {
-      return parsers.natural_date(tmpl, list)
+      return parsers.natural_date(tmpl, list, parse)
     }
     list.push(obj)
     obj = ymd([obj.death_year, obj.death_month])
     return toText(obj)
   },
   //https://en.wikipedia.org/wiki/Template:Birth_date_and_age2
-  'birth date and age2': (tmpl, list) => {
+  'birth date and age2': (tmpl, list, parse = defaultParse) => {
     let order = ['at_year', 'at_month', 'at_day', 'birth_year', 'birth_month', 'birth_day']
     let obj = parse(tmpl, order)
     list.push(obj)
@@ -120,7 +120,7 @@ export default {
     return toText(obj)
   },
   //https://en.wikipedia.org/wiki/Template:Birth_based_on_age_as_of_date
-  'birth based on age as of date': (tmpl, list) => {
+  'birth based on age as of date': (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl, ['age', 'year', 'month', 'day'])
     list.push(obj)
     let age = parseInt(obj.age, 10)
@@ -132,7 +132,7 @@ export default {
     return `(age ${obj.age})`
   },
   //https://en.wikipedia.org/wiki/Template:Death_date_and_given_age
-  'death date and given age': (tmpl, list) => {
+  'death date and given age': (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl, ['year', 'month', 'day', 'age'])
     list.push(obj)
     obj = ymd([obj.year, obj.month, obj.day])
@@ -143,7 +143,7 @@ export default {
     return str
   },
   //sortable dates -
-  dts: (tmpl) => {
+  dts: (tmpl, _list, parse = defaultParse) => {
     //remove formatting stuff, ewww
     tmpl = tmpl.replace(/\|format=[ymd]+/i, '')
     tmpl = tmpl.replace(/\|abbr=(on|off)/i, '')
@@ -176,7 +176,7 @@ export default {
   },
 
   // https://en.wikipedia.org/wiki/Template:MILLENNIUM
-  millennium: (tmpl) => {
+  millennium: (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl, ['year'])
     let year = parseInt(obj.year, 10)
     year = Math.floor(year / 1000) + 1
@@ -203,7 +203,7 @@ export default {
   // 'age in years, months, weeks and days': true,
   // 'age as of date': true,
   // https://en.wikipedia.org/wiki/Template:As_of
-  'as of': (tmpl) => {
+  'as of': (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl, ['year', 'month', 'day'])
     if (obj.alt) {
       return obj.alt

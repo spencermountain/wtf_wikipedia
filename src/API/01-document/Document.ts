@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+import { withDefaults } from '../../_lib/defaults.ts'
 import sectionMap from './_sectionMap.ts'
 import toJSON from './toJson.ts'
 import isDisambig from './isDisambig.ts'
@@ -14,9 +15,7 @@ class Document {
   #info: DocInfo
   constructor(data: PageData, info?: DocInfo) {
     this.#data = data
-    this.#info = info || {}
-    this.#info.lang = this.#info.lang ?? 'en' //(sorry)
-    this.#info.domain = this.#info.domain ?? 'wikipedia.org'
+    this.#info = withDefaults(info)
   }
 
   get title() {
@@ -96,7 +95,7 @@ class Document {
     return this.#data.wiki || ''
   }
   options() {
-    return this.options
+    return { ...this.#info }
   }
 
   // falls back to 'en' and 'wikipedia.org' when language or domain are missing
@@ -105,8 +104,8 @@ class Document {
     if (!title) {
       return null
     }
-    let lang = this.#info.lang || 'en' //sorry
-    let domain = this.#info.domain || 'wikipedia.org'
+    let lang = this.#info.lang
+    let domain = this.#info.domain
     //replace blank to underscore
     title = title.replace(/ /g, '_')
     title = encodeURIComponent(title)

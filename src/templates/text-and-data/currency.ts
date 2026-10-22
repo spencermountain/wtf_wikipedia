@@ -1,4 +1,4 @@
-import parse from '../../parse/templates/parse/toJSON/index.ts'
+import defaultParse from '../../parse/templates/parse/toJSON/index.ts'
 
 const codes = {
   '£': 'GB£', // https://en.wikipedia.org/wiki/Template:GBP
@@ -65,7 +65,7 @@ const codes = {
   zar: 'R', //https://en.wikipedia.org/wiki/Template:ZAR
 }
 
-const parseCurrency = (tmpl, list) => {
+const parseCurrency = (tmpl, list, parse = defaultParse) => {
   let o = parse(tmpl, ['amount', 'code'])
   list.push(o)
   let code = o.template || ''

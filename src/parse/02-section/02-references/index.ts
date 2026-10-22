@@ -1,9 +1,10 @@
+import defaults from '../../../_lib/defaults.ts'
 import extractReferences from './extract.ts'
-import type { SectionData } from '../../../types/index.ts'
+import type { DocInfo, SectionData } from '../../../types/index.ts'
 
 // Section parsing keeps its existing definition-only reference collection.
-const parseRefs = (section: SectionData) => {
-  const { wiki, citations } = extractReferences(section.remaining)
+const parseRefs = (section: SectionData, opts: DocInfo = defaults) => {
+  const { wiki, citations } = extractReferences(section.remaining, opts)
   const definitions = citations.filter((citation) => !citation.reuse)
   // Historically plain references precede attributed references.
   definitions.sort((a, b) => Number(b.plain) - Number(a.plain))

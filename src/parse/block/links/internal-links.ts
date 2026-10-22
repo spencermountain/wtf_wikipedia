@@ -1,11 +1,14 @@
+import type { DocInfo } from '../../../types/index.ts'
+import defaults from '../../../_lib/defaults.ts'
 import type { InternalLinkData } from '../../../types/index'
 import parse_interwiki from './interwiki.ts'
+import normalizePage from './normalize-page.ts'
 
 const ignore_links =
   /^(category|catégorie|kategorie|categoría|categoria|categorie|kategoria|تصنيف|image|file|fichier|datei|media):/i
 const link_reg = /\[\[((?:\[[^[\]\r\n]*\]|[^[\]\r\n]){0,1600})\]\]([a-z]+)?/gi //allow dangling suffixes - "[[flanders]]s"
 
-const internal_links = function (wiki: string) {
+const internal_links = function (wiki: string, opts: DocInfo = defaults) {
   let links: InternalLinkData[] = []
   //regular links
   wiki.replace(link_reg, function (match, s, suffix) {
@@ -35,33 +38,29 @@ const internal_links = function (wiki: string) {
     let obj: InternalLinkData = {
       type: 'internal',
       page: link,
+      text: '',
       wiki: match,
     }
     obj.page = obj.page.replace(/#(.*)/, (a, b) => {
       obj.anchor = b
       return ''
     })
+    obj.text = obj.page
     //grab any fr:Paris parts
-    obj = parse_interwiki(obj)
+    obj = parse_interwiki(obj, opts)
 
-    if (text !== null) {
+    if (text !== null && obj.inline !== false) {
       obj.text = text
     }
     //finally, support [[link]]'s apostrophe
-    if (suffix) {
-      obj.text ||= obj.page
+    if (suffix && obj.inline !== false) {
       obj.text += suffix.trim()
-    }
-    //keep the display-text, for lowercase pages
-    if (obj.page && /^[A-Z]/.test(obj.page) === false) {
-      if (!obj.text) {
-        obj.text = obj.page
-      }
     }
     // support [[:Category:Foo]] syntax
     if (obj.text && obj.text.startsWith(':')) {
       obj.text = obj.text.replace(/^:/, '')
     }
+    obj.page = normalizePage(obj, opts)
     links.push(obj)
     return s
   })

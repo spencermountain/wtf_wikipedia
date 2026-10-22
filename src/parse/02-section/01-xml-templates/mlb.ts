@@ -1,5 +1,6 @@
+import defaults from '../../../_lib/defaults.ts'
 import tableParser from '../04-tables/parse/index.ts'
-import type { SectionData } from '../../../types/index.ts'
+import type { DocInfo, SectionData } from '../../../types/index.ts'
 //https://en.wikipedia.org/wiki/Template:MLB_game_log_section
 
 //this is pretty nuts
@@ -17,7 +18,7 @@ const whichHeadings = function (tmpl) {
   return headings
 }
 
-const parseMlb = function (section: SectionData) {
+const parseMlb = function (section: SectionData, opts: DocInfo = defaults) {
   section.remaining = section.remaining.replace(/\{\{mlb game log /gi, '{{game log ')
   section.remaining = section.remaining.replace(
     /\{\{game log (section|month).+?\{\{game log (section|month) end\}\}/gis,
@@ -29,7 +30,7 @@ const parseMlb = function (section: SectionData) {
 
       let headers = '! ' + headings.join(' !! ')
       let table = '{|\n' + headers + '\n' + tmpl + '\n|}'
-      let rows = tableParser(table)
+      let rows = tableParser(table, opts)
       rows = rows.map((row) => {
         Object.keys(row).forEach((k) => {
           row[k] = row[k].text()

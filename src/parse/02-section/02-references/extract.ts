@@ -1,3 +1,5 @@
+import type { DocInfo } from '../../../types/index.ts'
+import defaults from '../../../_lib/defaults.ts'
 import parse from '../../templates/parse/toJSON/index.ts'
 import parseBlock from '../../block/index.ts'
 import getTemplates from '../../templates/find/02-flat.ts'
@@ -18,12 +20,12 @@ const hasCitation = (str) => {
   return /^ *\{\{ *(cite|citation)/i.test(str) && /\}\} *$/.test(str) && /citation needed/i.test(str) === false
 }
 
-const parseBody = (text, wiki) => {
+const parseBody = (text, wiki, opts: DocInfo = defaults) => {
   // A single ref tag may contain several structured citation templates.
   const references = getTemplates(text)
     .filter(hasCitation)
     .map((template) => {
-      const data = parse(template)
+      const data = parse(template, [], undefined, opts)
       data.type = data.template.replace(/cite /, '')
       data.template = 'citation'
       data.wiki = wiki
@@ -35,7 +37,7 @@ const parseBody = (text, wiki) => {
       template: 'citation',
       type: 'inline',
       data: {},
-      inline: parseBlock(text) || {},
+      inline: parseBlock(text, opts) || {},
       wiki,
     })
   }
@@ -43,7 +45,7 @@ const parseBody = (text, wiki) => {
 }
 
 // Shared extraction keeps reference occurrences separate from visible content.
-const extractReferences = (source) => {
+const extractReferences = (source, opts: DocInfo = defaults) => {
   const citations = []
   const named = new Map()
   const wiki = source.replace(referencePattern, (tag, plain, attributed) => {
@@ -54,7 +56,7 @@ const extractReferences = (source) => {
     const body = plain ?? attributed
     // An empty paired tag is a definition; a self-closing tag is a reuse.
     const reuse = body === undefined
-    const references = reuse ? [] : parseBody(body, tag)
+    const references = reuse ? [] : parseBody(body, tag, opts)
     if (name && !reuse) {
       named.set(key, references)
     }

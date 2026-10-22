@@ -47,7 +47,7 @@ str = `
 {{interlanguage link|English title|fr|French title}}
 {{ill|English title|fr|French title|de|German title}}
 `
-str = `[[fr:Paris]]`
+str = `[[paris]]`
 const doc = wtf(str, meta)
 // console.log(doc.text())
 console.log(doc.links().map((l) => l.json()))

@@ -1,10 +1,11 @@
+import defaults from '../../_lib/defaults.ts'
 import parseList from './01-lists/index.ts'
 import parseImage from './02-images/index.ts'
 import parseSentences from './03-sentences/index.ts'
-import type { SectionData, ParagraphData } from '../../types/index.ts'
+import type { DocInfo, SectionData, ParagraphData } from '../../types/index.ts'
 const twoNewLines = /\r?\n\r?\n/
 
-const parseParagraphs = function (section: SectionData) {
+const parseParagraphs = function (section: SectionData, opts: DocInfo = defaults) {
   let wiki = section.remaining
 
   //don't create empty paragraphs
@@ -20,11 +21,11 @@ const parseParagraphs = function (section: SectionData) {
       images: [],
     }
     //parse the lists
-    paragraph = parseList(paragraph)
+    paragraph = parseList(paragraph, opts)
     //parse images
-    paragraph = parseImage(paragraph)
+    paragraph = parseImage(paragraph, opts)
     //parse the sentences
-    paragraph = parseSentences(paragraph)
+    paragraph = parseSentences(paragraph, opts)
     return paragraph
   })
   section.remaining = wiki

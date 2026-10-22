@@ -1,3 +1,5 @@
+import type { DocInfo } from '../../../../types/index.ts'
+import defaults from '../../../../_lib/defaults.ts'
 //remove the top/bottom off the template
 import strip from './_strip.ts'
 import fmtName from './_fmtName.ts'
@@ -6,8 +8,8 @@ import pipeSplitter from './01-pipe-splitter.ts'
 import keyMaker from './02-keyMaker.ts'
 import cleanup from './03-cleanup.ts'
 
-const makeFormat = function (str, fmt) {
-  let block = parseBlock(str)
+const makeFormat = function (str, fmt, opts: DocInfo = defaults) {
+  let block = parseBlock(str, opts)
   //support various output formats
   if (fmt === 'json') {
     return block
@@ -18,7 +20,7 @@ const makeFormat = function (str, fmt) {
   return block.text
 }
 
-const parser = function (tmpl: string, order = [], fmt?: string) {
+const parser = function (tmpl: string, order = [], fmt?: string, opts: DocInfo = defaults) {
   //remove {{}}'s and split based on pipes
   tmpl = strip(tmpl || '')
   let arr = pipeSplitter(tmpl)
@@ -43,10 +45,10 @@ const parser = function (tmpl: string, order = [], fmt?: string) {
 
   Object.keys(obj).forEach((k) => {
     if (k === 'list') {
-      obj[k] = obj[k].map((v) => makeFormat(v, fmt))
+      obj[k] = obj[k].map((v) => makeFormat(v, fmt, opts))
       return
     }
-    obj[k] = makeFormat(obj[k], fmt)
+    obj[k] = makeFormat(obj[k], fmt, opts)
   })
 
   //add the template name

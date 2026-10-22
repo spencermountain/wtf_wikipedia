@@ -1,8 +1,9 @@
+import defaults from '../../../_lib/defaults.ts'
 import { images } from '../../../_data/i18n/index.ts'
 import parseTemplate from '../../templates/parse/toJSON/index.ts'
 import normalizeFile from './normalize.ts'
 import parseBlock from '../../block/index.ts'
-import type { ImageData } from '../../../types/index.ts'
+import type { DocInfo, ImageData } from '../../../types/index.ts'
 
 //regexes:
 let fileNames = `(${images.join('|')})`
@@ -31,7 +32,7 @@ const imgLayouts = {
 }
 
 //images are usually [[image:my_pic.jpg]]
-const parseImgString = function (wiki: string) {
+const parseImgString = function (wiki: string, opts: DocInfo = defaults) {
   let m = wiki.match(file_reg)
   if (m === null || !m[2]) {
     return null
@@ -55,7 +56,7 @@ const parseImgString = function (wiki: string) {
     // use the template parser to parse the image string
     //https://en.wikipedia.org/wiki/Wikipedia:Extended_image_syntax
     //- [[File:Name|Type|Border|Location|Alignment|Size|link=Link|alt=Alt|lang=Langtag|Caption]]
-    let parsed = parseTemplate(wiki, [], 'raw')
+    let parsed = parseTemplate(wiki, [], 'raw', opts)
     let arr = parsed.list || []
     //parse-out alt text, if explicitly given
     if (parsed.alt) {

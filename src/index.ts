@@ -22,7 +22,7 @@ import {
 
 //the main 'factory' exported method
 const wtf = function (wiki: string, info?: DocInfo) {
-  const data = parse(wiki)
+  const data = parse(wiki, info)
   return new Document(data, info)
 }
 

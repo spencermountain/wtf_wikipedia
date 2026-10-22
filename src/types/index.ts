@@ -2,6 +2,7 @@ export interface LinkData {
   text: string
   type: 'internal' | 'external' | 'interwiki'
   wiki: string
+  inline?: boolean
 }
 
 export interface InternalLinkData extends LinkData {
@@ -9,6 +10,7 @@ export interface InternalLinkData extends LinkData {
   anchor?: string
   lang?: string
   project?: string
+  prefix?: string
 }
 
 export interface ExternalLinkData extends LinkData {
@@ -104,6 +106,7 @@ export interface DocInfo {
   wikidata?: number
   domain?: string
   lang?: string
+  project?: string
   namespace?: string
   revisionId?: number
   version?: string

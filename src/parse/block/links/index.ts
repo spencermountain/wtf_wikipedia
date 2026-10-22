@@ -1,3 +1,5 @@
+import type { DocInfo } from '../../../types/index.ts'
+import defaults from '../../../_lib/defaults.ts'
 import parseLinks from './parse.ts'
 import type { LinkData, BlockData } from '../../../types/index'
 
@@ -8,11 +10,11 @@ const removeLinks = function (line: string) {
   return line
 }
 
-const fromBlock = function (block: BlockData) {
+const fromBlock = function (block: BlockData, opts: DocInfo = defaults) {
   let wiki = block.text
-  let links: LinkData[] = parseLinks(wiki) || []
+  let links: LinkData[] = parseLinks(wiki, opts) || []
   block.links = links.map((link) => {
-    wiki = wiki.replace(link.wiki, link.text || link.page || '')
+    wiki = wiki.replace(link.wiki, () => link.text)
     return link
   })
   wiki = removeLinks(wiki)

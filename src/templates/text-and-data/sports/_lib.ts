@@ -1,4 +1,4 @@
-import parse from '../../../parse/templates/parse/toJSON/index.ts'
+import defaultParse from '../../../parse/templates/parse/toJSON/index.ts'
 
 const zeroPad = function (num) {
   num = String(num)
@@ -26,7 +26,7 @@ const parseTeam = function (obj, round, team) {
 
 // https://en.wikipedia.org/wiki/Category:Tournament_bracket_templates
 //these are weird.
-const playoffBracket = function (tmpl) {
+const playoffBracket = function (tmpl, _list, parse = defaultParse) {
   let rounds = []
   let obj = parse(tmpl)
   //try some rounds

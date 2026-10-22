@@ -1,8 +1,8 @@
 import parseCoor from './_lib.ts'
 
 const templates = {
-  coord: (tmpl, list) => {
-    let obj = parseCoor(tmpl)
+  coord: (tmpl, list, parser) => {
+    let obj = parseCoor(tmpl, undefined, parser)
     list.push(obj)
     //display inline, by default
     if (!obj.display || obj.display.indexOf('inline') !== -1) {

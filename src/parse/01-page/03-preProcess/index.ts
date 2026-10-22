@@ -1,7 +1,9 @@
+import type { DocInfo } from '../../../types/index.ts'
+import defaults from '../../../_lib/defaults.ts'
 import kill_xml from './kill_xml.ts'
 
 // strips out formatting cruft up-front to make the later parsing easier
-function preProcess(wiki: string) {
+function preProcess(wiki: string, _opts: DocInfo = defaults) {
   //remove comments
   wiki = wiki.replace(/<!--.{0,3000}?-->/gs, '')
   wiki = wiki.replace(/__(NOTOC|NOEDITSECTION|FORCETOC|TOC)__/gi, '')

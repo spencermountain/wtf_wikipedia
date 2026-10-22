@@ -1,11 +1,12 @@
+import defaults from '../../../_lib/defaults.ts'
 import parseBlock from '../../block/index.ts'
-import type { SectionData } from '../../../types/index.ts'
+import type { DocInfo, SectionData } from '../../../types/index.ts'
 //parse out math and chem templates - e.g. xml <math>y=mx+b</math>
 //https://en.wikipedia.org/wiki/Help:Displaying_a_formula
-const parseMath = function (section: SectionData) {
+const parseMath = function (section: SectionData, opts: DocInfo = defaults) {
   section.remaining = section.remaining.replace(/<math([^>]*)>(.*?)<\/math>/gs, (_, attrs, inside) => {
     //clean it up a little?
-    let formula = parseBlock(inside).text
+    let formula = parseBlock(inside, opts).text
     section.templates.push({
       template: 'math',
       data: { formula: formula },

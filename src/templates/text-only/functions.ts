@@ -1,40 +1,40 @@
-import parse from '../../parse/templates/parse/toJSON/index.ts'
+import defaultParse from '../../parse/templates/parse/toJSON/index.ts'
 import strip from '../../parse/templates/parse/toJSON/_strip.ts'
 import roundNumber from './_lib.ts'
 import { titlecase, percentage, toOrdinal } from '../_lib.ts'
 export default {
-  transliteration: (tmpl) => {
+  transliteration: (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl, ['1', '2', '3'])
     // With a scheme in parameter 2, the text moves to parameter 3.
     return obj['3'] ?? obj['2'] ?? ''
   },
 
   //https://en.wikipedia.org/wiki/Template:Ra
-  ra: (tmpl) => {
+  ra: (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl, ['hours', 'minutes', 'seconds'])
     return [obj.hours || 0, obj.minutes || 0, obj.seconds || 0].join(':')
   },
 
   //https://en.wikipedia.org/wiki/Template:Deg2HMS
-  deg2hms: (tmpl) => {
+  deg2hms: (tmpl, _list, parse = defaultParse) => {
     //this template should do the conversion
     let obj = parse(tmpl, ['degrees'])
     return (obj.degrees || '') + '°'
   },
 
-  hms2deg: (tmpl) => {
+  hms2deg: (tmpl, _list, parse = defaultParse) => {
     //this template should do the conversion too
     let obj = parse(tmpl, ['hours', 'minutes', 'seconds'])
     return [obj.hours || 0, obj.minutes || 0, obj.seconds || 0].join(':')
   },
 
-  decdeg: (tmpl) => {
+  decdeg: (tmpl, _list, parse = defaultParse) => {
     //this template should do the conversion too
     let obj = parse(tmpl, ['deg', 'min', 'sec', 'hem', 'rnd'])
     return (obj.deg || obj.degrees) + '°'
   },
   //https://en.wikipedia.org/wiki/Template:Sortname
-  sortname: (tmpl) => {
+  sortname: (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl, ['first', 'last', 'target', 'sort'])
     let name = `${obj.first || ''} ${obj.last || ''}`
     name = name.trim()
@@ -54,7 +54,7 @@ export default {
   },
 
   // https://en.wikipedia.org/wiki/Template:First_word
-  'first word': (tmpl) => {
+  'first word': (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl, ['text'])
     let str = obj.text || ''
     if (obj.sep) {
@@ -63,31 +63,31 @@ export default {
     return str.split(' ')[0]
   },
 
-  trunc: (tmpl) => {
+  trunc: (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl, ['str', 'len'])
     return (obj.str || '').substr(0, obj.len)
   },
 
-  'str mid': (tmpl) => {
+  'str mid': (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl, ['str', 'start', 'end']) || {}
     let start = parseInt(obj.start, 10) - 1
     let end = parseInt(obj.end, 10)
     return (obj.str || '').substr(start, end)
   },
 
-  reign: (tmpl) => {
+  reign: (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl, ['start', 'end'])
     return `(r. ${obj.start} – ${obj.end})`
   },
 
   // https://en.wikipedia.org/wiki/Template:Decade_link
-  'decade link': (tmpl) => {
+  'decade link': (tmpl, _list, parse = defaultParse) => {
     let { year } = parse(tmpl, ['year'])
     return `${year}|${year}s`
   },
 
   // https://en.wikipedia.org/wiki/Template:Decade
-  decade: (tmpl) => {
+  decade: (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl, ['year'])
     let year = Number(obj.year)
     year = Math.floor(year / 10) * 10 // round to decade
@@ -95,7 +95,7 @@ export default {
   },
 
   // https://en.wikipedia.org/wiki/Template:Century
-  century: (tmpl) => {
+  century: (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl, ['year'])
     let year = parseInt(obj.year, 10)
     year = Math.floor(year / 100) + 1
@@ -103,7 +103,7 @@ export default {
   },
 
   //https://en.wikipedia.org/wiki/Template:Radic
-  radic: (tmpl) => {
+  radic: (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl, ['after', 'before'])
     return `${obj.before || ''}√${obj.after || ''}`
   },
@@ -114,13 +114,13 @@ export default {
   },
 
   //https://en.wikipedia.org/wiki/Template:OldStyleDate
-  oldstyledate: (tmpl) => {
+  oldstyledate: (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl, ['date', 'year'])
     return obj.year ? obj.date + ' ' + obj.year : obj.date
   },
 
   //formatting things - https://en.wikipedia.org/wiki/Template:Nobold
-  braces: (tmpl) => {
+  braces: (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl, ['text'])
     let attrs = ''
     if (obj.list) {
@@ -129,49 +129,49 @@ export default {
     return '{{' + (obj.text || '') + attrs + '}}'
   },
 
-  hlist: (tmpl) => {
+  hlist: (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl)
     obj.list ||= []
     return obj.list.join(' · ')
   },
 
-  pagelist: (tmpl) => {
+  pagelist: (tmpl, _list, parse = defaultParse) => {
     let arr = parse(tmpl).list || []
     return arr.join(', ')
   },
 
   // not perfect - https://en.m.wikipedia.org/wiki/Template:Interlinear
-  interlinear: (tmpl) => {
+  interlinear: (tmpl, _list, parse = defaultParse) => {
     let arr = parse(tmpl).list || []
     return arr.join('\n\n')
   },
 
   //actually rendering these links removes the text.
   //https://en.wikipedia.org/wiki/Template:Catlist
-  catlist: (tmpl) => {
+  catlist: (tmpl, _list, parse = defaultParse) => {
     let arr = parse(tmpl).list || []
     return arr.join(', ')
   },
 
   //https://en.wikipedia.org/wiki/Template:Br_separated_entries
-  'br separated entries': (tmpl) => {
+  'br separated entries': (tmpl, _list, parse = defaultParse) => {
     let arr = parse(tmpl).list || []
     return arr.join('\n\n')
   },
 
-  'comma separated entries': (tmpl) => {
+  'comma separated entries': (tmpl, _list, parse = defaultParse) => {
     let arr = parse(tmpl).list || []
     return arr.join(', ')
   },
 
   //https://en.wikipedia.org/wiki/Template:Bare_anchored_list
-  'anchored list': (tmpl) => {
+  'anchored list': (tmpl, _list, parse = defaultParse) => {
     let arr = parse(tmpl).list || []
     arr = arr.map((str, i) => `${i + 1}. ${str}`)
     return arr.join('\n\n')
   },
 
-  'bulleted list': (tmpl) => {
+  'bulleted list': (tmpl, _list, parse = defaultParse) => {
     let arr = parse(tmpl).list || []
     arr = arr.filter((f) => f)
     arr = arr.map((str) => '• ' + str)
@@ -188,17 +188,17 @@ export default {
   },
 
   //https://en.wikipedia.org/wiki/Template:Term
-  term: (tmpl) => {
+  term: (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl, ['term'])
     return `${obj.term}:`
   },
 
-  linum: (tmpl) => {
+  linum: (tmpl, _list, parse = defaultParse) => {
     let { num, text } = parse(tmpl, ['num', 'text'])
     return `${num}. ${text}`
   },
 
-  'block indent': (tmpl) => {
+  'block indent': (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl)
     if (obj['1']) {
       return '\n' + obj['1'] + '\n'
@@ -207,44 +207,44 @@ export default {
   },
 
   //https://en.wikipedia.org/wiki/Template:Lbs
-  lbs: (tmpl) => {
+  lbs: (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl, ['text'])
     return `[[${obj.text} Lifeboat Station|${obj.text}]]`
   },
 
   //Foo-class
-  lbc: (tmpl) => {
+  lbc: (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl, ['text'])
     return `[[${obj.text}-class lifeboat|${obj.text}-class]]`
   },
 
-  lbb: (tmpl) => {
+  lbb: (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl, ['text'])
     return `[[${obj.text}-class lifeboat|${obj.text}]]`
   },
 
   //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
-  '#dateformat': (tmpl) => {
+  '#dateformat': (tmpl, _list, parse = defaultParse) => {
     tmpl = tmpl.replace(/:/, '|')
     let obj = parse(tmpl, ['date', 'format'])
     return obj.date
   },
 
   //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
-  lc: (tmpl) => {
+  lc: (tmpl, _list, parse = defaultParse) => {
     tmpl = tmpl.replace(/:/, '|')
     let obj = parse(tmpl, ['text'])
     return (obj.text || '').toLowerCase()
   },
 
   //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
-  uc: (tmpl) => {
+  uc: (tmpl, _list, parse = defaultParse) => {
     tmpl = tmpl.replace(/:/, '|')
     let obj = parse(tmpl, ['text'])
     return (obj.text || '').toUpperCase()
   },
 
-  lcfirst: (tmpl) => {
+  lcfirst: (tmpl, _list, parse = defaultParse) => {
     tmpl = tmpl.replace(/:/, '|')
     let text = parse(tmpl, ['text']).text
     if (!text) {
@@ -253,7 +253,7 @@ export default {
     return text[0].toLowerCase() + text.substr(1)
   },
 
-  ucfirst: (tmpl) => {
+  ucfirst: (tmpl, _list, parse = defaultParse) => {
     tmpl = tmpl.replace(/:/, '|')
     let text = parse(tmpl, ['text']).text
     if (!text) {
@@ -262,14 +262,14 @@ export default {
     return text[0].toUpperCase() + text.substr(1)
   },
 
-  padleft: (tmpl) => {
+  padleft: (tmpl, _list, parse = defaultParse) => {
     tmpl = tmpl.replace(/:/, '|')
     let obj = parse(tmpl, ['text', 'num'])
     let text = obj.text || ''
     return text.padStart(obj.num, obj.str || '0')
   },
 
-  padright: (tmpl) => {
+  padright: (tmpl, _list, parse = defaultParse) => {
     tmpl = tmpl.replace(/:/, '|')
     let obj = parse(tmpl, ['text', 'num'])
     let text = obj.text || ''
@@ -277,7 +277,7 @@ export default {
   },
 
   //https://en.wikipedia.org/wiki/Template:Abbrlink
-  abbrlink: (tmpl) => {
+  abbrlink: (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl, ['abbr', 'page'])
     if (obj.page) {
       return `[[${obj.page}|${obj.abbr}]]`
@@ -286,7 +286,7 @@ export default {
   },
 
   // https://en.wikipedia.org/wiki/Template:Own
-  own: (tmpl) => {
+  own: (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl, ['author'])
     let str = 'Own work'
     if (obj.author) {
@@ -296,7 +296,7 @@ export default {
   },
 
   //https://www.mediawiki.org/wiki/Help:Magic_words#Formatting
-  formatnum: (tmpl) => {
+  formatnum: (tmpl, _list, parse = defaultParse) => {
     tmpl = tmpl.replace(/:/, '|')
     let obj = parse(tmpl, ['number'])
     let str = obj.number || ''
@@ -306,7 +306,7 @@ export default {
   },
 
   //https://en.wikipedia.org/wiki/Template:Frac
-  fraction: (tmpl) => {
+  fraction: (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl, ['a', 'b', 'c'])
     if (obj.c) {
       return `${obj.a} ${obj.b}/${obj.c}`
@@ -318,7 +318,7 @@ export default {
   },
 
   //https://en.wikipedia.org/wiki/Template:Convert#Ranges_of_values
-  convert: (tmpl) => {
+  convert: (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl, ['num', 'two', 'three', 'four'])
     //todo: support plural units
     if (obj.two === '-' || obj.two === 'to' || obj.two === 'and') {
@@ -331,19 +331,19 @@ export default {
   },
 
   // Large number of aliases - https://en.wikipedia.org/wiki/Template:Tl
-  tl: (tmpl) => {
+  tl: (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl, ['first', 'second'])
     return obj.second || obj.first
   },
 
   //this one's a little different
-  won: (tmpl) => {
+  won: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['text'])
     return data.place || data.text || titlecase(data.template)
   },
 
   //a convulated way to make a xml tag - https://en.wikipedia.org/wiki/Template:Tag
-  tag: (tmpl) => {
+  tag: (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl, ['tag', 'open'])
     const ignore = {
       span: true,
@@ -362,7 +362,7 @@ export default {
   },
 
   //dumb inflector - https://en.wikipedia.org/wiki/Template:Plural
-  plural: (tmpl) => {
+  plural: (tmpl, _list, parse = defaultParse) => {
     tmpl = tmpl.replace(/plural:/, 'plural|')
     let obj = parse(tmpl, ['num', 'word'])
     let num = Number(obj.num)
@@ -378,7 +378,7 @@ export default {
   },
 
   //https://en.wikipedia.org/wiki/Template:DEC
-  dec: (tmpl) => {
+  dec: (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl, ['degrees', 'minutes', 'seconds'])
     let str = (obj.degrees || 0) + '°'
     if (obj.minutes) {
@@ -391,7 +391,7 @@ export default {
   },
 
   //https://en.wikipedia.org/wiki/Template:Val
-  val: (tmpl) => {
+  val: (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl, ['number', 'uncertainty'])
     let num = obj.number
     if (num && Number(num)) {
@@ -413,7 +413,7 @@ export default {
   },
 
   //{{percentage | numerator | denominator | decimals to round to (zero or greater) }}
-  percentage: (tmpl) => {
+  percentage: (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl, ['numerator', 'denominator', 'decimals'])
     let num = Number(obj.numerator) / Number(obj.denominator)
     num *= 100
@@ -424,7 +424,7 @@ export default {
     return `${num.toFixed(dec)}%`
   },
   // this one is re-used by i18n
-  small: (tmpl) => {
+  small: (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl)
     if (obj.list && obj.list[0]) {
       return obj.list[0]
@@ -433,7 +433,7 @@ export default {
   },
 
   // {{Percent-done|done=N|total=N|digits=N}}
-  'percent-done': (tmpl) => {
+  'percent-done': (tmpl, _list, parse = defaultParse) => {
     let obj = parse(tmpl, ['done', 'total', 'digits'])
     let num = percentage({
       numerator: obj.done,
@@ -446,7 +446,7 @@ export default {
     return `${obj.done} (${num}%) done`
   },
 
-  loop: (tmpl) => {
+  loop: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['times', 'text'])
     let n = Number(data.times) || 0
     let out = ''
@@ -455,34 +455,34 @@ export default {
     }
     return out
   },
-  'str len': (tmpl) => {
+  'str len': (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['text'])
     return String((data.text || '').trim().length)
   },
-  digits: (tmpl) => {
+  digits: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['text'])
     return (data.text || '').replace(/[^0-9]/g, '')
   },
-  resize: (tmpl) => {
+  resize: (tmpl, _list, parse = defaultParse) => {
     let { n, text } = parse(tmpl, ['n', 'text'])
     if (!text) {
       return n || ''
     }
     return text || ''
   },
-  'last word': (tmpl) => {
+  'last word': (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['text'])
     let arr = (data.text || '').split(/ /g)
     return arr.at(-1) || ''
   },
-  replace: (tmpl) => {
+  replace: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['text', 'from', 'to'])
     if (!data.from || !data.to) {
       return data.text || ''
     }
     return (data.text || '').replace(data.from, data.to)
   },
-  'title case': (tmpl) => {
+  'title case': (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['text'])
     let txt = data.text || ''
     return txt
@@ -495,53 +495,53 @@ export default {
       })
       .join(' ')
   },
-  'no spam': (tmpl) => {
+  'no spam': (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['account', 'domain'])
     return `${data.account || ''}@${data.domain}`
   },
-  'baseball year': (tmpl) => {
+  'baseball year': (tmpl, _list, parse = defaultParse) => {
     let year = parse(tmpl, ['year']).year || ''
     return `[[${year} in baseball|${year}]]`
   },
-  'mlb year': (tmpl) => {
+  'mlb year': (tmpl, _list, parse = defaultParse) => {
     let year = parse(tmpl, ['year']).year || ''
     return `[[${year} Major League Baseball season|${year}]]`
   },
-  'nlds year': (tmpl) => {
+  'nlds year': (tmpl, _list, parse = defaultParse) => {
     let { year } = parse(tmpl, ['year'])
     return `[[${year || ''} National League Division Series|${year}]]`
   },
-  'alds year': (tmpl) => {
+  'alds year': (tmpl, _list, parse = defaultParse) => {
     let { year } = parse(tmpl, ['year'])
     return `[[${year || ''} American League Division Series|${year}]]`
   },
-  'nfl year': (tmpl) => {
+  'nfl year': (tmpl, _list, parse = defaultParse) => {
     let { year, other } = parse(tmpl, ['year', 'other'])
     if (other && year) {
       return `[[${year} NFL season|${year}]]–[[${other} NFL season|${other}]]`
     }
     return `[[${year || ''} NFL season|${year}]]`
   },
-  'nfl playoff year': (tmpl) => {
+  'nfl playoff year': (tmpl, _list, parse = defaultParse) => {
     let { year } = parse(tmpl, ['year'])
     year = Number(year)
     let after = year + 1
     return `[[${year}–${after} NFL playoffs|${year}]]`
   },
-  'nba year': (tmpl) => {
+  'nba year': (tmpl, _list, parse = defaultParse) => {
     let { year } = parse(tmpl, ['year'])
     year = Number(year)
     let after = year + 1
     return `[[${year}–${after} NBA season|${year}–${after}]]`
   },
-  'mhl year': (tmpl) => {
+  'mhl year': (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['year'])
     let year = Number(data.year)
     let after = year + 1
     return `[[${year}–${after} NHL season|${year}–${after}]]`
   },
   // some math
-  min: (tmpl) => {
+  min: (tmpl, _list, parse = defaultParse) => {
     let arr = parse(tmpl).list || []
     let min = Number(arr[0]) || 0
     arr.forEach((str) => {
@@ -552,7 +552,7 @@ export default {
     })
     return String(min)
   },
-  max: (tmpl) => {
+  max: (tmpl, _list, parse = defaultParse) => {
     let arr = parse(tmpl).list || []
     let max = Number(arr[0]) || 0
     arr.forEach((str) => {
@@ -564,7 +564,7 @@ export default {
     return String(max)
   },
   // US-politics
-  uspolabbr: (tmpl) => {
+  uspolabbr: (tmpl, _list, parse = defaultParse) => {
     let { party, state, house } = parse(tmpl, ['party', 'state', 'house', 'link'])
     if (!party || !state) {
       return ''
@@ -576,7 +576,7 @@ export default {
     return out
   },
   // https://en.wikipedia.org/wiki/Template:Ushr
-  ushr: (tmpl) => {
+  ushr: (tmpl, _list, parse = defaultParse) => {
     let { state, num, type } = parse(tmpl, ['state', 'num', 'type'])
     let link = ''
     if (num === 'AL') {
@@ -603,21 +603,21 @@ export default {
   },
 
   // transit station links
-  metro: (tmpl) => {
+  metro: (tmpl, _list, parse = defaultParse) => {
     let { name, dab } = parse(tmpl, ['name', 'dab'])
     if (dab) {
       return `[[${name} station (${dab})|${name}]]`
     }
     return `[[${name} station|${name}]]`
   },
-  station: (tmpl) => {
+  station: (tmpl, _list, parse = defaultParse) => {
     let { name, dab } = parse(tmpl, ['name', 'x', 'dab'])
     if (dab) {
       return `[[${name} station (${dab})|${name}]]`
     }
     return `[[${name} station|${name}]]`
   },
-  bssrws: (tmpl) => {
+  bssrws: (tmpl, _list, parse = defaultParse) => {
     let { one, two } = parse(tmpl, ['one', 'two'])
     let name = one
     if (two) {
@@ -625,7 +625,7 @@ export default {
     }
     return `[[${name} railway station|${name}]]`
   },
-  stnlnk: (tmpl) => {
+  stnlnk: (tmpl, _list, parse = defaultParse) => {
     let { name, dab } = parse(tmpl, ['name', 'dab'])
     if (dab) {
       return `[[${name} railway station (${dab})|${name}]]`
@@ -633,42 +633,42 @@ export default {
     return `[[${name} railway station|${name}]]`
   },
   // https://en.wikipedia.org/wiki/Template:Station_link
-  'station link': (tmpl) => {
+  'station link': (tmpl, _list, parse = defaultParse) => {
     let { station, system } = parse(tmpl, ['system', 'station']) //incomplete
     return station || system
   },
-  'line link': (tmpl) => {
+  'line link': (tmpl, _list, parse = defaultParse) => {
     let { station, system } = parse(tmpl, ['system', 'station']) //incomplete
     return station || system
   },
-  subway: (tmpl) => {
+  subway: (tmpl, _list, parse = defaultParse) => {
     let { name } = parse(tmpl, ['name'])
     return `[[${name} subway station|${name}]]`
   },
-  'lrt station': (tmpl) => {
+  'lrt station': (tmpl, _list, parse = defaultParse) => {
     let { name } = parse(tmpl, ['name'])
     return `[[${name} LRT station|${name}]]`
   },
-  'mrt station': (tmpl) => {
+  'mrt station': (tmpl, _list, parse = defaultParse) => {
     let { name } = parse(tmpl, ['name'])
     return `[[${name} MRT station|${name}]]`
   },
-  rht: (tmpl) => {
+  rht: (tmpl, _list, parse = defaultParse) => {
     let { name } = parse(tmpl, ['name'])
     return `[[${name} railway halt|${name}]]`
   },
-  ferry: (tmpl) => {
+  ferry: (tmpl, _list, parse = defaultParse) => {
     let { name } = parse(tmpl, ['name'])
     return `[[${name} ferry wharf|${name}]]`
   },
-  tram: (tmpl) => {
+  tram: (tmpl, _list, parse = defaultParse) => {
     let { name, dab } = parse(tmpl, ['name', 'dab'])
     if (dab) {
       return `[[${name} tram stop (${dab})|${name}]]`
     }
     return `[[${name} tram stop|${name}]]`
   },
-  tstop: (tmpl) => {
+  tstop: (tmpl, _list, parse = defaultParse) => {
     let { name, dab } = parse(tmpl, ['name', 'dab'])
     if (dab) {
       return `[[${name} ${dab} stop|${name}]]`
@@ -676,46 +676,46 @@ export default {
     return `[[${name} stop|${name}]]`
   },
   // boats
-  ship: (tmpl) => {
+  ship: (tmpl, _list, parse = defaultParse) => {
     let { prefix, name, id } = parse(tmpl, ['prefix', 'name', 'id'])
     prefix ||= ''
     return id ? `[[${prefix.toUpperCase()} ${name}]]` : `[[${prefix.toUpperCase()} ${name}]]`
   },
-  sclass: (tmpl) => {
+  sclass: (tmpl, _list, parse = defaultParse) => {
     let { cl, type } = parse(tmpl, ['cl', 'type', 'fmt'])
     return `[[${cl}-class ${type} |''${cl}''-class]] [[${type}]]`
   },
-  'center block': (tmpl) => {
+  'center block': (tmpl, _list, parse = defaultParse) => {
     let { text } = parse(tmpl, ['text'])
     return text || ''
   },
-  align: (tmpl) => {
+  align: (tmpl, _list, parse = defaultParse) => {
     let { text } = parse(tmpl, ['dir', 'text'])
     return text || ''
   },
-  font: (tmpl) => {
+  font: (tmpl, _list, parse = defaultParse) => {
     let { text } = parse(tmpl, ['text'])
     return text || ''
   },
-  float: (tmpl) => {
+  float: (tmpl, _list, parse = defaultParse) => {
     let { text, dir } = parse(tmpl, ['dir', 'text'])
     if (!text) {
       return dir || ''
     }
     return text
   },
-  lower: (tmpl) => {
+  lower: (tmpl, _list, parse = defaultParse) => {
     let { text, n } = parse(tmpl, ['n', 'text'])
     if (!text) {
       return n || ''
     }
     return text
   },
-  splitspan: (tmpl) => {
+  splitspan: (tmpl, _list, parse = defaultParse) => {
     let list = parse(tmpl).list || []
     return (list[0] || '') + '\n' + (list[1] || '')
   },
-  bracket: (tmpl) => {
+  bracket: (tmpl, _list, parse = defaultParse) => {
     let { text } = parse(tmpl, ['text'])
     if (text) {
       return `[${text}]`
@@ -724,7 +724,7 @@ export default {
   },
 
   // https://en.wikipedia.org/wiki/Template:In_title
-  'in title': (tmpl) => {
+  'in title': (tmpl, _list, parse = defaultParse) => {
     let { title, text } = parse(tmpl, ['title', 'text'])
     if (text) {
       return text
@@ -734,7 +734,7 @@ export default {
     }
     return ''
   },
-  'look from': (tmpl) => {
+  'look from': (tmpl, _list, parse = defaultParse) => {
     let { title, text } = parse(tmpl, ['title', 'text'])
     if (text) {
       return text
@@ -745,59 +745,59 @@ export default {
     return ''
   },
 
-  'literal translation': (tmpl) => {
+  'literal translation': (tmpl, _list, parse = defaultParse) => {
     let arr = parse(tmpl).list || []
     arr = arr.map((str) => `'${str}'`)
     return 'lit. ' + arr.join(' or ')
   },
-  overset: (tmpl) => {
+  overset: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['over', 'base'])
     return [data.over || '', data.base || ''].join(' ')
   },
-  underset: (tmpl) => {
+  underset: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['under', 'base'])
     return [data.base || '', data.under || ''].join(' ')
   },
-  ceil: (tmpl) => {
+  ceil: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['txt'])
     return `⌈${data.txt}⌉`
   },
-  floor: (tmpl) => {
+  floor: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['txt'])
     return `⌊${data.txt}⌋`
   },
-  'vol.': (tmpl) => {
+  'vol.': (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['n'])
     return `vol. ${data.n}`
   },
-  rp: (tmpl) => {
+  rp: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['page'])
     if (data.pages) {
       return `pp${data.pages}`
     }
     return `p. ${data.page || ''}`
   },
-  gaps: (tmpl) => {
+  gaps: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl)
     return (data.list || []).join('  ')
   },
-  bra: (tmpl) => {
+  bra: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['a'])
     return `⟨${data.a || ''}|`
   },
-  ket: (tmpl) => {
+  ket: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['a'])
     return `${data.a || ''}⟩`
   },
-  'angle bracket': (tmpl) => {
+  'angle bracket': (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['txt'])
     return `⟨${data.txt || ''}⟩`
   },
-  'bra-ket': (tmpl) => {
+  'bra-ket': (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['a', 'b'])
     return `⟨${data.a || ''}|${data.b || ''}⟩`
   },
-  braket: (tmpl) => {
+  braket: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['sym', 'a', 'b'])
     if (data.sym === 'bra') {
       return `⟨${data.a}|`
@@ -807,15 +807,15 @@ export default {
       return `⟨${data.a || ''}|${data.b || ''}⟩`
     }
   },
-  pars: (tmpl) => {
+  pars: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['text', 's'])
     return `(${data.text || ''})`
   },
-  circumfix: (tmpl) => {
+  circumfix: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['text'])
     return `⟩${data.text || ''}⟨`
   },
-  fluc: (tmpl) => {
+  fluc: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['val', 'type'])
     let n = Number(data.val)
     if (data['custom label']) {
@@ -831,7 +831,7 @@ export default {
     return data.val || ''
   },
 
-  'p.': (tmpl) => {
+  'p.': (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['a', 'b'])
     if (data.b) {
       if (parseInt(data.b, 10)) {
@@ -842,15 +842,15 @@ export default {
     }
     return `p. ${data.a || ''}`
   },
-  subsup: (tmpl) => {
+  subsup: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['symbol', 'subscript', 'superscript'])
     return `${data.symbol || ''} ${data.subscript || ''} ${data.superscript || ''}`
   },
-  su: (tmpl) => {
+  su: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['p', 'b'])
     return `${data.p || ''} ${data.b || ''}`
   },
-  precision: (tmpl) => {
+  precision: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['num'])
     let num = data.num || ''
     if (!num.includes('.') && num !== '0') {
@@ -863,7 +863,7 @@ export default {
     let dec = num.split(/\./)[1] || ''
     return dec.length
   },
-  intmath: (tmpl) => {
+  intmath: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['sign', 'subscript', 'superscript'])
     const signs = {
       int: '∫',
@@ -877,7 +877,7 @@ export default {
     }
     return `${signs[data.sign] || ''} ${data.superscript || ''} ${data.subscript || ''} `
   },
-  ldelim: (tmpl) => {
+  ldelim: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['a', 'b', 'sub', 'sup'])
     let after = `${data.sub || ''}${data.sup || ''}`
     if (data.a === 'square') {
@@ -891,34 +891,34 @@ export default {
     }
     return `${data.b || ''} ${after}`
   },
-  multiply: (tmpl) => {
+  multiply: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['a', 'b'])
     return Number(data.a) * Number(data.b)
   },
-  sum: (tmpl) => {
+  sum: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['a', 'b'])
     return Number(data.a) + Number(data.b)
   },
-  round: (tmpl) => {
+  round: (tmpl, _list, parse = defaultParse) => {
     const data = parse(tmpl, ['val', 'decimals'])
     return roundNumber(data.val, data.decimals, Math.round)
   },
-  rounddown: (tmpl) => {
+  rounddown: (tmpl, _list, parse = defaultParse) => {
     const data = parse(tmpl, ['val', 'decimals'])
     return roundNumber(data.val, data.decimals, Math.floor)
   },
-  roundup: (tmpl) => {
+  roundup: (tmpl, _list, parse = defaultParse) => {
     const data = parse(tmpl, ['val', 'decimals'])
     return roundNumber(data.val, data.decimals, Math.ceil)
   },
-  parity: (tmpl) => {
+  parity: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['val', 'even', 'odd'])
     if (Number(data.val) % 2 === 0) {
       return data.even || 'even'
     }
     return data.odd || 'odd'
   },
-  hexadecimal: (tmpl) => {
+  hexadecimal: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['val'])
     let n = Number(data.val)
     if (!n) {
@@ -926,7 +926,7 @@ export default {
     }
     return n.toString(16).toUpperCase()
   },
-  octal: (tmpl) => {
+  octal: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['val'])
     let n = Number(data.val)
     if (!n) {
@@ -934,7 +934,7 @@ export default {
     }
     return n.toString(8).toUpperCase() + '₈'
   },
-  decimal2base: (tmpl) => {
+  decimal2base: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['n', 'radix'])
     let n = Number(data.n)
     let radix = Number(data.radix)
@@ -943,32 +943,32 @@ export default {
     }
     return n.toString(radix).toUpperCase()
   },
-  hex2dec: (tmpl) => {
+  hex2dec: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['val'])
     return parseInt(data.val, 16) || data.val
   },
-  ifnotempty: (tmpl) => {
+  ifnotempty: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['cond', 'a', 'b'])
     if (data.cond) {
       return data.a
     }
     return data.b
   },
-  both: (tmpl) => {
+  both: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['a', 'b'])
     if (data.a && data.b) {
       return '1'
     }
     return ''
   },
-  ifnumber: (tmpl) => {
+  ifnumber: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['n', 'yes', 'no'])
     if (!isNaN(Number(data.n))) {
       return data.yes || '1'
     }
     return data.no || ''
   },
-  'order of magnitude': (tmpl) => {
+  'order of magnitude': (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['val'])
     const num = Math.abs(Number(data.val))
     if (!Number.isFinite(num) || num === 0) {
@@ -976,14 +976,14 @@ export default {
     }
     return String(Math.floor(Math.log10(num)))
   },
-  'percent and number': (tmpl) => {
+  'percent and number': (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['number', 'total', 'decimals'])
     let n = Number(data.number) / Number(data.total)
     n *= 100
     let dec = Number(data.decimals) || 0
     return `${n.toFixed(dec)}% (${Number(data.number).toLocaleString()})`
   },
-  music: (tmpl) => {
+  music: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['glyph'])
     // these have unicode working character subs
     let glyphs = {
@@ -1013,26 +1013,26 @@ export default {
     }
     return ''
   },
-  simplenuclide: (tmpl) => {
+  simplenuclide: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['name', 'mass'])
     return `[[${data.name}|${data.mass || ''}${data.name}]]`
   },
-  'font color': (tmpl) => {
+  'font color': (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['fg', 'bg', 'text'])
     if (data.bg && data.text) {
       return data.text
     }
     return data.bg
   },
-  'colored link': (tmpl) => {
+  'colored link': (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['color', 'title', 'text'])
     return `[[${data.title}|${data.text || data.title}]]`
   },
-  nftu: (tmpl) => {
+  nftu: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['age', 'team'])
     return `${data.team} U${data.age}`
   },
-  tls: (tmpl) => {
+  tls: (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['name', 'one', 'two'])
     let out = `subst:${data.name}`
     if (data.one) {

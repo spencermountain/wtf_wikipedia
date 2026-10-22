@@ -1,5 +1,6 @@
+import defaults from '../../../_lib/defaults.ts'
 import parseBlock from '../../block/index.ts'
-import type { ParagraphData, BlockData } from '../../../types/index.ts'
+import type { DocInfo, ParagraphData, BlockData } from '../../../types/index.ts'
 
 const list_reg = /^[#*:;|]+/
 const bullet_reg = /^\*+[^:,|]{4}/
@@ -11,7 +12,7 @@ const isList = function (line: string) {
 }
 
 //make bullets/numbers into human-readable *'s
-const cleanList = function (lines: string[]) {
+const cleanList = function (lines: string[], opts: DocInfo = defaults) {
   let number = 1
   const list: BlockData[] = []
   lines = lines.filter((l) => l)
@@ -26,12 +27,12 @@ const cleanList = function (lines: string[]) {
       number = 1
       line = line.replace(list_reg, '')
     }
-    list.push(parseBlock(line))
+    list.push(parseBlock(line, opts))
   }
   return list
 }
 
-const grabList = function (lines: string[], i: number) {
+const grabList = function (lines: string[], i: number, opts: DocInfo = defaults) {
   let subset = []
   for (let o = i; o < lines.length; o++) {
     if (isList(lines[o])) {
@@ -41,17 +42,17 @@ const grabList = function (lines: string[], i: number) {
     }
   }
   // sub = sub.filter((a) => a && has_word.test(a))
-  return cleanList(subset)
+  return cleanList(subset, opts)
 }
 
-const parseList = function (paragraph: ParagraphData) {
+const parseList = function (paragraph: ParagraphData, opts: DocInfo = defaults) {
   let wiki = paragraph.remaining
   let lines = wiki.split(/\n/g)
   let lists = []
   let theRest = []
   for (let i = 0; i < lines.length; i++) {
     if (isList(lines[i])) {
-      let sub = grabList(lines, i)
+      let sub = grabList(lines, i, opts)
       if (sub.length > 0) {
         i += sub.length - 1
         sub = sub.filter((s) => s.text !== '')

@@ -5,7 +5,7 @@ import { isArray } from '../../_lib/helpers.ts'
 const parseDoc = function (res, title) {
   const results = (res ?? []).filter((o) => o != null).map((o) => {
     // Fetch and direct input share the same plain-data parsing pipeline.
-    const data = parse(o.wiki ?? '')
+    const data = parse(o.wiki ?? '', o.meta)
     return new Document(data, o.meta)
   })
 

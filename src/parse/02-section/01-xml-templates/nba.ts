@@ -1,5 +1,6 @@
+import defaults from '../../../_lib/defaults.ts'
 import tableParser from '../04-tables/parse/index.ts'
-import type { SectionData } from '../../../types/index.ts'
+import type { DocInfo, SectionData } from '../../../types/index.ts'
 const keys = {
   coach: ['team', 'year', 'g', 'w', 'l', 'w-l%', 'finish', 'pg', 'pw', 'pl', 'pw-l%'],
   player: ['year', 'team', 'gp', 'gs', 'mpg', 'fg%', '3p%', 'ft%', 'rpg', 'apg', 'spg', 'bpg', 'ppg'],
@@ -7,7 +8,7 @@ const keys = {
 }
 
 //https://en.wikipedia.org/wiki/Template:NBA_player_statistics_start
-const parseNBA = function (section: SectionData) {
+const parseNBA = function (section: SectionData, opts: DocInfo = defaults) {
   section.remaining = section.remaining.replace(
     /\{\{nba (coach|player|roster) statistics start(.+?)\{\{s-end\}\}/gis,
     (tmpl, name) => {
@@ -17,7 +18,7 @@ const parseNBA = function (section: SectionData) {
 
       let headers = '! ' + keys[name].join(' !! ')
       let table = '{|\n' + headers + '\n' + tmpl + '\n|}'
-      let rows = tableParser(table)
+      let rows = tableParser(table, opts)
       rows = rows.map((row) => {
         Object.keys(row).forEach((k) => {
           row[k] = row[k].text()

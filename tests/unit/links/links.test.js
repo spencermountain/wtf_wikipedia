@@ -51,7 +51,7 @@ test('anchor-links', (t) => {
   str = `[[Toronto_Blue_Jays#Problems|Tranno J birds]]`
   const doc = wtf(str)
   link = doc.links()[0]
-  t.equal(link.page(), 'Toronto_Blue_Jays', 'page2')
+  t.equal(link.page(), 'Toronto Blue Jays', 'page2')
   t.equal(link.text(), 'Tranno J birds', 'text2')
   t.equal(link.anchor(), 'Problems', 'anchor2')
 
@@ -70,14 +70,14 @@ test('anchor-links', (t) => {
 })
 
 test('title-case-links', (t) => {
-  t.equal(wtf('[[john]]').links()[0].page(), 'john', 'page')
+  t.equal(wtf('[[john]]').links()[0].page(), 'John', 'page')
   t.equal(wtf('[[john]]').links()[0].text(), 'john', 'lowercase text')
 
   t.equal(wtf('[[John smith]]').links()[0].page(), 'John smith', 'already titlecased')
   // t.equal(wtf('[[John]]').links()[0].text(), undefined, 'no text stored when already titlecase')
 
   t.equal(wtf('[[john|his son]]').links()[0].text(), 'his son', 'lowercase given text')
-  t.equal(wtf('[[john|his son]]').links()[0].page(), 'john', 'titlecase given page')
+  t.equal(wtf('[[john|his son]]').links()[0].page(), 'John', 'titlecase given page')
   t.equal(wtf('[[John|his son]]').links()[0].page(), 'John', 'already titlecased given page')
   t.end()
 })

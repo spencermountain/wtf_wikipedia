@@ -1,9 +1,10 @@
+import defaults from '../../_lib/defaults.ts'
 import postprocess from '../_lib/postprocess.ts'
 import parseLinks from './links/index.ts'
 import parseFmt from './formatting.ts'
-import type { BlockData } from '../../types/index.ts'
+import type { DocInfo, BlockData } from '../../types/index.ts'
 
-function fromText(str: string): BlockData {
+function fromText(str: string, opts: DocInfo = defaults): BlockData {
   if (typeof str !== 'string') {
     console.error(str)
     throw new Error('str must be a string', str)
@@ -18,10 +19,10 @@ function fromText(str: string): BlockData {
     },
   }
   //pull-out the [[links]]
-  parseLinks(block)
+  parseLinks(block, opts)
   block.text = postprocess(block.text)
   //pull-out the bolds and ''italics''
-  block = parseFmt(block)
+  block = parseFmt(block, opts)
   //pull-out things like {{start date|...}}
   return block
 }

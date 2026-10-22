@@ -1,4 +1,4 @@
-import parse from '../../parse/templates/parse/toJSON/index.ts'
+import defaultParse from '../../parse/templates/parse/toJSON/index.ts'
 
 const codes = {
   adx: 'adx', //https://en.wikipedia.org/wiki/Template:Abu_Dhabi_Securities_Exchange
@@ -103,7 +103,7 @@ const codes = {
   zse: 'zse', //https://en.wikipedia.org/wiki/Template:Zagreb_Stock_Exchange
 }
 
-const parseStockExchange = (tmpl, list) => {
+const parseStockExchange = (tmpl, list, parse = defaultParse) => {
   let o = parse(tmpl, ['ticketnumber', 'code'])
   list.push(o)
   let code = o.template || ''

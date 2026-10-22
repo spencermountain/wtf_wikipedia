@@ -1,4 +1,4 @@
-import parse from '../../parse/templates/parse/toJSON/index.ts'
+import defaultParse from '../../parse/templates/parse/toJSON/index.ts'
 
 // dummy templates that get parsed properly already,
 // but present here for for aliases + template coverage tests
@@ -6,7 +6,7 @@ let templates = {}
 let dummies = ['citation needed']
 dummies.forEach((name) => {
   // just parse it and do nothing
-  templates[name] = (tmpl, list) => {
+  templates[name] = (tmpl, list, parse = defaultParse) => {
     list.push(parse(tmpl))
     return ''
   }

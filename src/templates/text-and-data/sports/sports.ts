@@ -1,16 +1,16 @@
-import parse from '../../../parse/templates/parse/toJSON/index.ts'
+import defaultParse from '../../../parse/templates/parse/toJSON/index.ts'
 import flags from '../../../_data/flags.ts'
 import playoffBracket from './_lib.ts'
 
 let sports = {
   //playoff brackets
-  '4teambracket': function (tmpl, list) {
-    let obj = playoffBracket(tmpl)
+  '4teambracket': function (tmpl, list, parser) {
+    let obj = playoffBracket(tmpl, undefined, parser)
     list.push(obj)
     return ''
   },
 
-  'win draw lose': function (tmpl, list) {
+  'win draw lose': function (tmpl, list, parse = defaultParse) {
     let obj = parse(tmpl)
     list.push(obj)
     let arr = obj.list || []
@@ -25,7 +25,7 @@ let sports = {
     return '\n| ' + arr.join('\n| ') + '\n| ' + winPercentage + '%'
   },
 
-  'win-loss record': function (tmpl, list) {
+  'win-loss record': function (tmpl, list, parse = defaultParse) {
     let obj = parse(tmpl, ['w', 'l', 't'])
     list.push(obj)
     let str = `${obj.w}`
@@ -36,7 +36,7 @@ let sports = {
     return str
   },
 
-  player: (tmpl, list) => {
+  player: (tmpl, list, parse = defaultParse) => {
     let res = parse(tmpl, ['number', 'country', 'name', 'dl'])
     list.push(res)
     let str = `[[${res.name}]]`
@@ -54,7 +54,7 @@ let sports = {
   },
 
   //https://en.wikipedia.org/wiki/Template:Goal
-  goal: (tmpl, list) => {
+  goal: (tmpl, list, parse = defaultParse) => {
     let res = parse(tmpl)
     let obj = {
       template: 'goal',
@@ -84,7 +84,7 @@ let sports = {
 
   //a transcluded sports module - https://en.m.wikipedia.org/w/index.php?title=Special:WhatLinksHere/Module:Sports_table
   // https://en.wikipedia.org/wiki/Template:2020–21_NHL_North_Division_standings
-  'sports table': (tmpl, list) => {
+  'sports table': (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl)
     let byTeam = {}
     let teams = Object.keys(obj)
@@ -123,7 +123,7 @@ let sports = {
     ! Hometown
     |-\n`
   },
-  'cbb roster/player': function (tmpl, list) {
+  'cbb roster/player': function (tmpl, list, parse = defaultParse) {
     let data = parse(tmpl)
     list.push(data)
     // first=|last=|dab=|num=|pos=|ft=|in=|lbs=|class=|rs=|home=

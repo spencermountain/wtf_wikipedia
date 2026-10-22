@@ -1,4 +1,4 @@
-import parse from '../../../parse/templates/parse/toJSON/index.ts'
+import defaultParse from '../../../parse/templates/parse/toJSON/index.ts'
 
 //converts DMS (decimal-minute-second) geo format to lat/lng format.
 //thanks to https://github.com/gmaclennan/parse-dms and https://github.com/WSDOT-GIS/dms-js
@@ -111,7 +111,7 @@ const parseParams = function (obj) {
   return obj
 }
 
-const parseCoor = function (tmpl) {
+const parseCoor = function (tmpl, _list, parse = defaultParse) {
   let obj = parse(tmpl)
   obj = parseParams(obj)
   let tmp = findLatLng(obj.list)

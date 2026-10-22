@@ -4,14 +4,16 @@ import getResult from './getResult.ts'
 import parseDoc from './parseDoc.ts'
 import makeHeaders from './_headers.ts'
 import { isArray } from '../../_lib/helpers.ts'
+import docDefaults from '../../_lib/defaults.ts'
+import normalizeProject from '../../_lib/project.ts'
 const isUrl = /^https?:\/\//
 
 //the mediawiki api only allows 50 titles or pageids per request
 const chunkSize = 50
 
 const defaults = {
-  lang: 'en',
-  wiki: 'wikipedia',
+  lang: docDefaults.lang,
+  wiki: docDefaults.project,
   domain: undefined,
   follow_redirects: true,
   path: 'api.php', //some 3rd party sites use a weird path
@@ -37,7 +39,8 @@ const fetchPage = function (title, options, callback) {
   if (title && typeof title.href === 'string') {
     title = title.href
   }
-  options = { ...defaults, ...options }
+  const project = normalizeProject(options?.project ?? options?.wiki ?? docDefaults.project)
+  options = { ...defaults, ...options, wiki: project, project }
   options.title = title
 
   //parse url input

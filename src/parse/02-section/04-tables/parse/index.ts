@@ -1,3 +1,5 @@
+import type { DocInfo } from '../../../../types/index.ts'
+import defaults from '../../../../_lib/defaults.ts'
 import parseBlock from '../../../block/index.ts'
 import findRows from './_findRows.ts'
 import handleSpans from './_spans.ts'
@@ -18,8 +20,8 @@ const headings = {
 }
 
 //additional table-cruft to remove before parseLine method
-const cleanText = function (str) {
-  str = parseBlock(str).text
+const cleanText = function (str, opts: DocInfo = defaults) {
+  str = parseBlock(str, opts).text
   //anything before a single-pipe is styling, so remove it
   if (str.match(/\|/)) {
     str = str.replace(/^.*?\| ?/m, '') //class="unsortable"|title
@@ -56,7 +58,7 @@ const removeMidSpans = function (rows) {
 }
 
 //'!' starts a header-row
-const findHeaders = function (rows = []) {
+const findHeaders = function (rows = [], opts: DocInfo = defaults) {
   let headers = []
 
   // is the first-row just a ton of colspan?
@@ -68,7 +70,7 @@ const findHeaders = function (rows = []) {
   if (first && first[0] && first[1] && (/^!/.test(first[0]) || /^!/.test(first[1]))) {
     headers = first.map((h) => {
       h = h.replace(/^! */, '')
-      h = cleanText(h)
+      h = cleanText(h, opts)
       return h
     })
     rows.shift()
@@ -78,7 +80,7 @@ const findHeaders = function (rows = []) {
   if (first && first[0] && first[1] && /^!/.test(first[0]) && /^!/.test(first[1])) {
     first.forEach((h, i) => {
       h = h.replace(/^! */, '')
-      h = cleanText(h)
+      h = cleanText(h, opts)
       if (Boolean(h) === true) {
         headers[i] = h
       }
@@ -89,27 +91,27 @@ const findHeaders = function (rows = []) {
 }
 
 //turn headers, array into an object
-const parseRow = function (arr, headers) {
+const parseRow = function (arr, headers, opts: DocInfo = defaults) {
   let row = {}
   arr.forEach((str, i) => {
     let h = headers[i] || 'col' + (i + 1)
-    let s = parseBlock(str)
-    s.text = cleanText(s.text)
+    let s = parseBlock(str, opts)
+    s.text = cleanText(s.text, opts)
     row[h] = s
   })
   return row
 }
 
 //should we use the first row as a the headers?
-const firstRowHeader = function (rows) {
+const firstRowHeader = function (rows, opts: DocInfo = defaults) {
   if (rows.length <= 3) {
     return []
   }
   let headers = rows[0].slice(0)
   headers = headers.map((h) => {
     h = h.replace(/^! */, '')
-    h = parseBlock(h).text
-    h = cleanText(h)
+    h = parseBlock(h, opts).text
+    h = cleanText(h, opts)
     h = h.toLowerCase()
     return h
   })
@@ -123,7 +125,7 @@ const firstRowHeader = function (rows) {
 }
 
 //turn a {|...table string into an array of arrays
-const parseTable = function (wiki) {
+const parseTable = function (wiki, opts: DocInfo = defaults) {
   let lines = wiki
     .replace(/\r/g, '')
     // Scan each whitespace run once, including runs before table markers.
@@ -144,13 +146,13 @@ const parseTable = function (wiki) {
   //support colspan, rowspan...
   rows = handleSpans(rows)
   //grab the header rows
-  let headers = findHeaders(rows)
+  let headers = findHeaders(rows, opts)
   if (!headers || headers.length <= 1) {
-    headers = firstRowHeader(rows)
+    headers = firstRowHeader(rows, opts)
     let want = rows.at(-1) || []
     //try the second row
     if (headers.length <= 1 && want.length > 2) {
-      headers = firstRowHeader(rows.slice(1))
+      headers = firstRowHeader(rows.slice(1), opts)
       if (headers.length > 0) {
         rows = rows.slice(2) //remove them
       }
@@ -158,7 +160,7 @@ const parseTable = function (wiki) {
   }
   //index each column by it's header
   let table = rows.map((arr) => {
-    return parseRow(arr, headers)
+    return parseRow(arr, headers, opts)
   })
   return table
 }

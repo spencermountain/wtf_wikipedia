@@ -1,3 +1,5 @@
+import type { DocInfo } from '../../../types/index.ts'
+import defaults from '../../../_lib/defaults.ts'
 //split text into sentences, using regex
 //@spencermountain MIT
 
@@ -69,7 +71,7 @@ const isBalanced = function (str) {
   return true
 }
 
-const sentence_parser = function (text: string) {
+const sentence_parser = function (text: string, _opts: DocInfo = defaults) {
   let sentences = []
   //first do a greedy-split..
   let chunks = []

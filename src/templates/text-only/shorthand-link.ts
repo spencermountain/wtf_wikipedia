@@ -1,4 +1,4 @@
-import parse from '../../parse/templates/parse/toJSON/index.ts'
+import defaultParse from '../../parse/templates/parse/toJSON/index.ts'
 let templates = {}
 // these templates all have a predictable pattern
 // {{HSC|Ship Name|ID}} -> [[HSC Name (id)]]
@@ -78,7 +78,7 @@ let arr = [
 ]
 
 arr.forEach((word) => {
-  templates[word] = (tmpl) => {
+  templates[word] = (tmpl, _list, parse = defaultParse) => {
     let { name, id } = parse(tmpl, ['name', 'id'])
     return id ? `[[${word.toUpperCase()} ${name} (${id})]]` : `[[${word.toUpperCase()} ${name}]]`
   }
@@ -86,7 +86,7 @@ arr.forEach((word) => {
 
 let links = ['no redirect', 'tl-r', 'template link no redirect', 'redirect?', 'subatomic particle', 'auto link', 'bl']
 links.forEach((word) => {
-  templates[word] = (tmpl) => {
+  templates[word] = (tmpl, _list, parse = defaultParse) => {
     let data = parse(tmpl, ['page', 'text'])
     if (data.text && data.text !== data.page) {
       return `[[${data.page}|${data.text}]]`
