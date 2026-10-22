@@ -23,8 +23,8 @@ test('boloZenden infobox', (t) => {
   t.equal(o.youthclubs1.text(), 'MVV', 'youth club')
   t.equal(o.nationalyears1.text(), '1997–2004', 'national years')
   t.equal(o.nationalteam1.text(), 'Netherlands', 'national team text')
-  t.equal(o.nationalteam1.link().page(), 'Netherlands national football team', 'national team target')
-  t.equal(o.nationalteam1.link().text(), 'Netherlands', 'national team label')
+  t.equal(o.nationalteam1.links()[0].page(), 'Netherlands national football team', 'national team target')
+  t.equal(o.nationalteam1.links()[0].text(), 'Netherlands', 'national team label')
   t.equal(o.nationalcaps1.text(), '54', 'national caps')
   t.equal(o.nationalgoals1.text(), '7', 'national goals')
   t.end()
@@ -41,7 +41,7 @@ test('hurricane infobox', (t) => {
   t.equal(o.name.text(), 'Tropical Storm Edouard', 'hurricane name')
   t.equal(o.dissipated.text(), 'September 6, 2002', 'dissipation date')
   t.equal(o['hurricane season'].text(), '2002 Atlantic hurricane season', 'hurricane season')
-  t.equal(o.areas.link().page(), 'Florida', 'affected area target')
+  t.equal(o.areas.links()[0].page(), 'Florida', 'affected area target')
   t.end()
 })
 
@@ -58,7 +58,7 @@ test('bluejays table', (t) => {
 | 2 || April 7 || @ [[Minnesota Twins|Twins]] || 9 - 3 || '''[[David Wells|Wells]]''' (1-0) || [[Mike Lincoln|Lincoln]] (0-1) || '''[[Roy Halladay|Halladay]]''' (1) || 9,220 || 1-1
 |}
   `
-  const arr = wtf(bluejays).table(0).data
+  const arr = wtf(bluejays).tables()[0].data
   t.equal(arr.length, 2, 'table row count')
   t.equal(arr[0]['Number'].text(), '1', 'number')
   t.equal(arr[0]['Date'].text(), 'April 6', 'date')

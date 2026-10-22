@@ -6,7 +6,15 @@ test('fetch-as-promise', async (t) => {
   t.plan(8)
   const doc = await wtf.fetch('Tony Hawk', {
     lang: 'en',
-
+    'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
+  })
+  t.ok(doc.sections().length > 0, 'promise returned document')
+  t.equal(doc.language(), 'en', 'language')
+  t.equal(doc.title(), 'Tony Hawk', 'page title')
+  t.equal(doc.pageID(), 87474, 'page ID')
+  t.equal(doc.wikidata(), 'Q295020', 'Wikidata ID')
+  t.notEqual(doc.revisionID(), null, 'revision ID')
+  t.notEqual(doc.timestamp(), null, 'timestamp')
   t.notEqual(doc.description(), null, 'description')
 })
 
@@ -58,7 +66,15 @@ test('fetch-redirect', async (t) => {
     'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
   })
   t.ok(doc.isRedirect(), 'got redirect')
+})
 
+test('ambiguous-pageids', async function (t) {
+  const doc = await wtf.fetch(1984, 'en')
+  t.equal(doc.title(), 'Arab world', 'input as pageid')
+
+  let docs = await wtf.fetch([2983, 7493], 'en')
+  t.equal(docs.length, 2, 'got two pageid results')
+  t.equal(docs[0].title(), 'Austria-Hungary', 'first pageid')
   t.equal(docs[1].title(), 'Talk:P versus NP problem/Archive 1', 'second pageid')
 
   docs = await wtf.fetch(['June', 'July'], 'en')

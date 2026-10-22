@@ -3,7 +3,7 @@ import wtf from '../../lib/index.js'
 import readFile from '../../lib/_cachedPage.js'
 
 test('bluejays table', (t) => {
-  const arr = readFile('Blue-Jays').table(0).data
+  const arr = readFile('Blue-Jays').tables()[0].data
   t.equal(arr.length, 8, 'table-length-bluejays')
   t.equal(arr[0]['Level'].text(), 'AAA', 'level-col')
   t.equal(arr[0]['Team'].text(), 'Buffalo Bisons', 'team-col')
@@ -33,7 +33,7 @@ test('rnli stations', (t) => {
   const lifeboat = doc.section(2)
   t.equal(lifeboat.indentation(), 1, 'lifeboat-depth')
   t.equal(lifeboat.template().json().list[0], 'Royal National Lifeboat Institution lifeboats', 'lifeboat-main')
-  t.equal(lifeboat.list().json().length, 3, 'lifeboat-list')
+  t.equal(lifeboat.lists()[0].json().length, 3, 'lifeboat-list')
   t.equal(lifeboat.sentences().length, 3, 'lifeboat-sentences')
   t.deepEqual(lifeboat.images().length, 0, 'lifeboat-no-images')
   t.deepEqual(lifeboat.tables().length, 0, 'lifeboat-no-tables')
@@ -44,13 +44,13 @@ test('rnli stations', (t) => {
   t.deepEqual(east.lists().length, 0, 'East-no-lists')
   t.equal(east.sentences().length, 0, 'east-sentences')
 
-  const table = east.table(0).data
+  const table = east.tables()[0].data
   t.equal(table.length, 42, 'east table-rows')
   t.equal(table[0].Location.text(), 'Hunstanton, Norfolk', 'east-table-data')
   t.equal(table[41]['Launch method'].text(), 'Carriage', 'east-table-data-end')
 
   const south = doc.section(7)
-  const sTable = south.table(0).data
+  const sTable = south.tables()[0].data
   t.equal(sTable.length, 35, 'south-table-rows')
   t.equal(sTable[0].Location.text(), 'Mudeford, Dorset', 'south-table-data')
   t.end()
@@ -73,7 +73,7 @@ test('simple table', (t) => {
 | row 2, cell 3
 |}`
   const obj = wtf(simple)
-  const table = obj.table(0).data
+  const table = obj.tables()[0].data
   t.equal(table.length, 2, '2 rows')
   t.equal(table[0]['Header 1'].text(), 'row 1, cell 1', '1,1')
   t.equal(table[0]['Header 2'].text(), 'row 1, cell 2', '1,2')
@@ -97,7 +97,7 @@ test('template list values stay in their table cell', (t) => {
 | {{ubl|{{Lbb|C1}}|{{nowrap|{{Lbc|C2|C3}}}}}}
 | {{unbulleted list|[[D1]],|[[D2]]}}
 |}`
-  const row = wtf(input).table(0).data[0]
+  const row = wtf(input).tables()[0].data[0]
   t.deepEqual(Object.keys(row), ['AAA', 'BBB', 'CCC', 'DDD'], 'template lines do not create extra columns')
   t.equal(row.AAA.text(), 'A1', 'first cell')
   t.equal(row.BBB.text().includes('B1') && row.BBB.text().includes('B2'), true, 'list stays in second cell')
@@ -131,7 +131,7 @@ test('multiplication table', (t) => {
 | 5 || 10 || 15
 |}`
   const obj = wtf(mult)
-  const table = obj.table(0).data
+  const table = obj.tables()[0].data
   t.equal(table[0]['1'].text(), '1', '1x1')
   t.equal(table[1]['1'].text(), '2', '1x2')
   t.equal(table[1]['2'].text(), '4', '2x2')
@@ -151,7 +151,7 @@ test('inline-table-test', (t) => {
 | 2,725 || ''9,200'' || 8,850 || 4,775
 |}`
   const obj = wtf(inline)
-  const table = obj.table(0).data
+  const table = obj.tables()[0].data
   t.equal(table[0].Year.text(), '2014', 'first year')
   t.equal(table[0].Africa.text(), '2,300', 'africa first-row')
   t.equal(table[0].Americas.text(), '8,950', 'america first-row')
@@ -179,7 +179,7 @@ test('floating-tables-test', (t) => {
 |}`
   const obj = wtf(floating)
   t.equal(obj.tables().length, 2, 'two tables')
-  const table = obj.table(0).data
+  const table = obj.tables()[0].data
   t.equal(table[0]['col1'].text(), 'Col 1, row 1', '1,1')
   t.end()
 })
@@ -206,7 +206,7 @@ test('wikisortable-tables-test', (t) => {
 |}`
   const obj = wtf(sortable)
   t.equal(obj.tables().length, 1, 'one table')
-  const table = obj.table(0).data
+  const table = obj.tables()[0].data
   t.equal(table[0]['Alphabetic'].text(), 'd', '1,1')
   t.equal(table[0]['Numeric'].text(), '20', '1,2')
   t.equal(table[0]['Date'].text(), '2008-11-24', '1,3')
@@ -233,7 +233,7 @@ test('messy-table-test', (t) => {
   |New York City
  |}`
   const obj = wtf(messy)
-  const table = obj.table(0).json()
+  const table = obj.tables()[0].json()
   t.equal(table[1]['col1'].text, 'Nibelungen Bridge to Worms', 'col1 text')
   //const keyVal=obj.tables(0).keyValue()
   //t.equal()
@@ -300,7 +300,7 @@ test('sortable table', (t) => {
   !Average:||1.82
   |}`
   const doc = wtf(str)
-  const row = doc.table(0).data[0]
+  const row = doc.tables()[0].data[0]
   t.equal(row.Height.text(), '1.85', 'got height')
   t.equal(row['Name and Surname'].text(), 'John Smith', 'got name')
   t.end()
@@ -329,7 +329,7 @@ test('missing-row test', (t) => {
   |-align="center" bgcolor="bbffbb"
   |}
   Actual first sentence  is here`
-  const row = wtf(str).table(0).data[0]
+  const row = wtf(str).tables()[0].data[0]
   t.equal(row.Save.text(), '', 'got empty property')
   t.equal(row.Record.text(), '2–0', 'got last property')
   t.end()
@@ -363,7 +363,7 @@ test('table rowspan', (t) => {
 | three B
 |}`
   const doc = wtf(str)
-  const table = doc.table(0).keyValue()
+  const table = doc.tables()[0].keyValue()
   t.equal(table[0].col1, 'one', 'has init')
   t.equal(table[1].col1, 'one', 'has copy')
   t.equal(table[0].col2, 'two', 'has later')
@@ -383,7 +383,7 @@ test('table colspan', (t) => {
 | three B
 |}`
   const doc = wtf(str)
-  const table = doc.table(0).keyValue()
+  const table = doc.tables()[0].keyValue()
   t.equal(table[0].col1, 'one/two', 'has init')
   t.equal(table[0].col2, '', 'has empty span')
   t.equal(table[0].col3, 'three', 'has after span')
@@ -411,7 +411,7 @@ test('first-row as header', (t) => {
 | may || sweden || caption
 |}`
   const obj = wtf(simple)
-  const table = obj.table(0).json()
+  const table = obj.tables()[0].json()
   t.equal(table.length, 4, '4 rows')
   t.equal(table[0]['name'].text, 'spencer', 'got name 1')
   t.equal(table[0]['country'].text, 'canada', 'got country 1')
@@ -437,7 +437,7 @@ test('two-rows as header', (t) => {
   |-
   | a || b || c || d || e
   |}`
-  const table = wtf(str).table(0).keyValue()
+  const table = wtf(str).tables()[0].keyValue()
   t.equal(table.length, 1, '1 row')
   t.equal(table[0].A, 'a', 'got col 1')
   t.equal(table[0].D2, 'd', 'got col d2')
@@ -461,7 +461,7 @@ test('two-header-rows-with-spans', (t) => {
   |-
   | a || b || c || d || e
   |}`
-  const table = wtf(str).table(0).keyValue()
+  const table = wtf(str).tables()[0].keyValue()
   t.equal(table.length, 1, '1 row')
   t.equal(table[0].A, 'a', 'got col 1')
   t.equal(table[0].C, 'c', 'got col c')
@@ -489,7 +489,7 @@ test('junky-table', (t) => {
 |[[Hard Rock Stadium]]
 |-
 |}`
-  const table = wtf(str).table(0).keyValue()
+  const table = wtf(str).tables()[0].keyValue()
   t.equal(table.length, 2, '2 row2')
   t.equal(table[0].A, 'East', 'got col a1')
   t.equal(table[0].C, 'Orchard Park, New York', 'got col c1')
@@ -516,7 +516,7 @@ test('table double bar', (t) => {
 || ccc
 |}`
   const doc = wtf(str)
-  const data = doc.table(0).keyValue()
+  const data = doc.tables()[0].keyValue()
   t.equal(data[0].h1, 'a', 'h1')
   t.equal(data[0].h2, 'aa', 'h2')
   t.equal(data[0].h3, 'aaa', 'h3')
@@ -547,7 +547,7 @@ b2
 | c
 |}`
   const doc = wtf(str)
-  const data = doc.table(0).keyValue()
+  const data = doc.tables()[0].keyValue()
   t.equal(data[0].h1, 'a', 'h1')
   t.equal(data[0].h2, 'b1 b2', 'h2')
   t.equal(data[0].h3, 'c', 'h3')
@@ -563,7 +563,7 @@ test('multiple pipes in a cell', (t) => {
   |-
   || content | more content
   |}`
-  const table = wtf(str).table(0).keyValue()
+  const table = wtf(str).tables()[0].keyValue()
   t.equal(table[0].col1, 'content | more content', 'col1')
   t.equal(table[1].col1, 'content | more content', 'col1 row2')
   t.end()
@@ -587,7 +587,7 @@ test('empty cells', (t) => {
   ||||| c
   |||| e
   |}`
-  const table = wtf(str).table(0).keyValue()
+  const table = wtf(str).tables()[0].keyValue()
   t.equal(table[0].A, '', 'a1')
   t.equal(table[0].B, 'b', 'b1')
   t.equal(table[0].C, '', 'c1')

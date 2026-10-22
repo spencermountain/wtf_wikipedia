@@ -22,9 +22,8 @@ test('article paragraphs and sentences retain their order', (t) => {
   t.equal(sentences.length, 35, 'sentence count')
   t.match(paragraphs[0].text(), /Statoil/, 'first paragraph text')
   t.match(sentences[0].text(), /Statoil/, 'first sentence text')
-  t.equal(doc.paragraph(1), paragraphs[1], 'indexed paragraph')
-  t.equal(doc.paragraph(), paragraphs[0], 'default paragraph')
-  t.equal(doc.paragraph('string'), null, 'unsupported paragraph selector returns no paragraph')
+  t.equal(doc.paragraphs()[1], paragraphs[1], 'indexed paragraph')
+  t.equal(doc.paragraphs()[0], paragraphs[0], 'default paragraph')
   t.ok(doc.paragraphs('string').isEmpty(), 'unsupported paragraphs selector returns an empty collection')
   t.equal(doc.sentence(1), sentences[1], 'indexed sentence')
   t.equal(doc.sentence(), sentences[0], 'default sentence')
@@ -39,8 +38,7 @@ test('article paragraphs and sentences retain their order', (t) => {
 test('article images include gallery entries', (t) => {
   const doc = wtf(readPage('Arts-Club-Of-Chicago'))
   t.equal(doc.images().length, 2, 'image count')
-  t.equal(doc.image().file(), 'File:20070701_Arts_Club_of_Chicago.JPG', 'first image filename')
-  t.equal(doc.image(1), doc.images()[1], 'indexed image')
+  t.equal(doc.images()[0].file(), 'File:20070701_Arts_Club_of_Chicago.JPG', 'first image filename')
   t.ok(doc.images('string').isEmpty(), 'unsupported images selector returns an empty collection')
   const gallery = wtf(readPage('Goryeo-Ware'))
   t.equal(gallery.images().length, 5, 'gallery image count')
@@ -67,7 +65,7 @@ test('article links retain their targets and display text', (t) => {
     ],
     'link targets'
   )
-  t.deepEqual(doc.link(1).json(), { type: 'internal', page: 'Internet Adult Film Database', text: 'IAFD' }, 'indexed link JSON')
+  t.deepEqual(doc.links()[1].json(), { type: 'internal', page: 'Internet Adult Film Database', text: 'IAFD' }, 'indexed link JSON')
   t.deepEqual(
     doc.links('Jace Rocker').map((link) => link.page()),
     ['Jace Rocker', 'Jace Rocker'],
@@ -109,7 +107,6 @@ test('interwiki - get - return all links without a selector and none for unsuppo
 test('article lists retain their lines and support indexed access', (t) => {
   const doc = wtf(readPage('Anarchism'))
   t.equal(doc.lists().length, 4, 'list count')
-  t.equal(doc.list(1), doc.lists()[1], 'indexed list')
   t.deepEqual(doc.lists('string'), doc.lists(), 'unsupported list selector')
   t.ok(
     doc.lists().every((list) => list.lines().length > 0),
@@ -117,7 +114,7 @@ test('article lists retain their lines and support indexed access', (t) => {
   )
   t.ok(
     doc
-      .list(1)
+      .lists()[1]
       .lines()
       .every((line) => line.text().trim()),
     'indexed list contains text'
@@ -128,16 +125,14 @@ test('article lists retain their lines and support indexed access', (t) => {
 test('article tables, templates and references remain queryable', (t) => {
   const doc = wtf(readPage('Arts-Club-Of-Chicago'))
   t.equal(doc.tables().length, 2, 'table count')
-  t.deepEqual(doc.table(1).keyValue(), doc.tables()[1].keyValue(), 'indexed table values')
-  t.ok(doc.table(1).keyValue().length > 0, 'second table contains rows')
+  t.ok(doc.tables()[1].keyValue().length > 0, 'second table contains rows')
   t.equal(doc.templates().length, 8, 'template count')
   t.equal(doc.template(1).json().template, 'good article', 'indexed template name')
   t.equal(doc.references().length, 34, 'reference count')
-  t.equal(doc.reference(1), doc.references()[1], 'indexed reference')
-  t.ok(doc.reference(1).title(), 'indexed reference has a title')
+  t.ok(doc.references()[1].title(), 'indexed reference has a title')
   t.ok(doc.references('string').isEmpty(), 'unsupported references selector returns an empty collection')
   t.deepEqual(doc.citations(), doc.references(), 'citation collection')
-  t.equal(doc.citation(1), doc.reference(1), 'indexed citation')
+  t.equal(doc.citations()[1], doc.references()[1], 'indexed citation')
   t.ok(doc.citations('string').isEmpty(), 'unsupported citations selector returns an empty collection')
   t.end()
 })
@@ -174,7 +169,7 @@ test('coordinates - get - if the clue is a number return the coordinates at that
     lat: 39.18861,
     lon: -120.10889,
   }
-  t.deepEqual(doc.coordinate(1), expected, 'the coordinates at index 1')
+  t.deepEqual(doc.coordinates()[1], expected, 'the coordinates at index 1')
   t.end()
 })
 

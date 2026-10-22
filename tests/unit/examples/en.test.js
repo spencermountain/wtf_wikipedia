@@ -101,7 +101,7 @@ test('Alexander-Y-Type', (t) => {
     'Alexander-Y-Type: bus chassis link'
   )
   t.equal(doc.infobox().type(), 'uk bus', 'Alexander-Y-Type: bus infobox')
-  t.match(doc.image().file(), /LeylandLeopardAlexanderYType/, 'Alexander-Y-Type: vehicle photograph')
+  t.match(doc.images()[0].file(), /LeylandLeopardAlexanderYType/, 'Alexander-Y-Type: vehicle photograph')
   t.match(doc.text(), /Walter Alexander/, 'Alexander-Y-Type: body manufacturer')
   t.ok(doc.categories().includes('Alexander Dennis buses'), 'Alexander-Y-Type: Alexander Dennis buses category')
   t.ok(
@@ -114,7 +114,7 @@ test('Alexander-Y-Type', (t) => {
 test('Allen-R-Morris', (t) => {
   const doc = wtf(readPage('Allen-R-Morris'))
   t.equal(doc.infobox().get('birth_name').text(), 'Allen Robert Morris', 'Allen-R-Morris: birth name')
-  t.match(doc.image().file(), /AllenMorrisHeadShot\.jpg$/, 'Allen-R-Morris: portrait filename')
+  t.match(doc.images()[0].file(), /AllenMorrisHeadShot\.jpg$/, 'Allen-R-Morris: portrait filename')
   t.equal(doc.infobox().type(), 'person', 'Allen-R-Morris: biography infobox')
   t.match(doc.text(), /Emmy/, 'Allen-R-Morris: television awards')
   t.ok(doc.citations().length > 0, 'Allen-R-Morris: career sources')
@@ -209,7 +209,7 @@ test('Anwar-Kamal-Khan', (t) => {
 
 test('Arts-Club-Of-Chicago', (t) => {
   const doc = wtf(readPage('Arts-Club-Of-Chicago'))
-  t.equal(doc.image().file(), 'File:20070701_Arts_Club_of_Chicago.JPG', 'Arts-Club-Of-Chicago: club image')
+  t.equal(doc.images()[0].file(), 'File:20070701_Arts_Club_of_Chicago.JPG', 'Arts-Club-Of-Chicago: club image')
   t.ok(doc.tables().length > 0, 'Arts-Club-Of-Chicago: article tables survive parsing')
   t.equal(doc.template(1).json().template, 'good article', 'Arts-Club-Of-Chicago: article quality template')
   t.ok(doc.references().length > 0, 'Arts-Club-Of-Chicago: art history sources')
@@ -376,7 +376,7 @@ test('Damphu-Drum', (t) => {
     doc.links().some((link) => link.page() === 'tambourine'),
     'Damphu-Drum: related instrument link'
   )
-  t.match(doc.image().file(), /Damfu[ _]nepal\.jpg$/, 'Damphu-Drum: performance photograph')
+  t.match(doc.images()[0].file(), /Damfu[ _]nepal\.jpg$/, 'Damphu-Drum: performance photograph')
   t.match(doc.text(), /Nepal/, 'Damphu-Drum: musical tradition')
   t.ok(doc.categories().includes('Nepalese musical instruments'), 'Damphu-Drum: Nepalese musical instruments category')
   t.ok(
@@ -411,8 +411,8 @@ test('Dollar-Point-California', (t) => {
     'Dollar Point, California',
     'Dollar-Point-California: official name'
   )
-  t.equal(doc.coordinate().lat, 39.18861, 'Dollar-Point-California: latitude')
-  t.equal(doc.coordinate().lon, -120.10889, 'Dollar-Point-California: longitude')
+  t.equal(doc.coordinates()[0].lat, 39.18861, 'Dollar-Point-California: latitude')
+  t.equal(doc.coordinates()[0].lon, -120.10889, 'Dollar-Point-California: longitude')
   t.equal(
     doc.infobox().get('settlement_type').text(),
     'census-designated place',
@@ -432,7 +432,7 @@ test('Elizabeth-Gilbert', (t) => {
   t.equal(doc.infobox().type(), 'writer', 'Elizabeth-Gilbert: writer infobox')
   t.equal(doc.infobox().get('name').text(), 'Elizabeth Gilbert', 'Elizabeth-Gilbert: writer name')
   t.match(doc.text(), /Eat, Pray, Love/, 'Elizabeth-Gilbert: best-known book')
-  t.match(doc.image().file(), /Elizabeth[ _]Gilbert[ _]at[ _]TED\.jpg$/, 'Elizabeth-Gilbert: author photograph')
+  t.match(doc.images()[0].file(), /Elizabeth[ _]Gilbert[ _]at[ _]TED\.jpg$/, 'Elizabeth-Gilbert: author photograph')
   t.ok(doc.references().length > 0, 'Elizabeth-Gilbert: biographical sources')
   t.ok(doc.section('Early life'), 'Elizabeth-Gilbert: Early life section')
   t.ok(
@@ -514,7 +514,7 @@ test('Harry-McPherson', (t) => {
   t.equal(doc.infobox().get('office').text(), 'White House Counsel', 'Harry-McPherson: office held')
   t.equal(doc.infobox().type(), 'officeholder', 'Harry-McPherson: political office infobox')
   t.match(doc.infobox().get('president').text(), /Lyndon Johnson/, 'Harry-McPherson: president served')
-  t.match(doc.image().file(), /McPherson[ _]DLA[ _]Piper\.jpg$/, 'Harry-McPherson: portrait')
+  t.match(doc.images()[0].file(), /McPherson[ _]DLA[ _]Piper\.jpg$/, 'Harry-McPherson: portrait')
   t.ok(
     doc.section('Early life, education, military service'),
     'Harry-McPherson: Early life, education, military service section'
@@ -562,7 +562,7 @@ test('Irina-Saratovtseva', (t) => {
   t.equal(doc.infobox().get('fullname').text(), 'Irina Saratovtseva', 'Irina-Saratovtseva: player name')
   t.equal(doc.infobox().type(), 'football biography', 'Irina-Saratovtseva: football biography infobox')
   t.equal(doc.infobox().get('name').text(), 'Irina Saratovtseva', 'Irina-Saratovtseva: display name')
-  t.match(doc.image().file(), /ISaratovtseva\.JPG$/, 'Irina-Saratovtseva: player photograph')
+  t.match(doc.images()[0].file(), /ISaratovtseva\.JPG$/, 'Irina-Saratovtseva: player photograph')
   t.match(doc.text(), /goalkeeper/i, 'Irina-Saratovtseva: playing position')
   t.ok(doc.categories().includes('1989 births'), 'Irina-Saratovtseva: 1989 births category')
   t.ok(
@@ -590,7 +590,7 @@ test('Jerry-Mumphrey', (t) => {
 test('Jodie-Emery', (t) => {
   const doc = wtf(readPage('Jodie-Emery'))
   t.equal(doc.infobox().get('name').text(), 'Jodie Emery', 'Jodie-Emery: person name')
-  t.match(doc.image().file(), /Marc_Emery_and_Jodie_Emery\.JPG$/, 'Jodie-Emery: portrait filename')
+  t.match(doc.images()[0].file(), /Marc_Emery_and_Jodie_Emery\.JPG$/, 'Jodie-Emery: portrait filename')
   t.equal(doc.infobox().type(), 'person', 'Jodie-Emery: person infobox')
   t.equal(doc.infobox().get('nationality').text(), 'Canadian', 'Jodie-Emery: nationality')
   t.match(doc.infobox().get('caption').text(), /Toronto Freedom Festival 2010/, 'Jodie-Emery: photo caption')
@@ -615,7 +615,7 @@ test('Julia-Kristeva', (t) => {
   t.equal(doc.infobox().get('birth_name').text(), 'Юлия Кръстева', 'Julia-Kristeva: Cyrillic birth name')
   t.equal(doc.infobox().get('name').text(), 'Julia Kristeva', 'Julia-Kristeva: display name')
   t.match(doc.text(), /psychoanalyst/i, 'Julia-Kristeva: profession')
-  t.match(doc.image().file(), /Kristeva/, 'Julia-Kristeva: portrait filename')
+  t.match(doc.images()[0].file(), /Kristeva/, 'Julia-Kristeva: portrait filename')
   t.ok(
     doc.infoboxes().some((box) => box.get('residence').text() === 'France'),
     'Julia-Kristeva: residence field'
@@ -758,9 +758,9 @@ test('Raith-Rovers', (t) => {
   t.equal(doc.infobox(0).data.clubname.text(), 'Raith Rovers', 'Raith-Rovers: clubname')
   t.equal(doc.categories().length, 10, 'Raith-Rovers: cat-length')
   t.equal(doc.images().length, 2, 'Raith-Rovers: img-length')
-  t.equal(doc.image(1).file(), "File:Stark's_Park_-_geograph.org.uk_-_204446.jpg", 'Raith-Rovers: img-file')
+  t.equal(doc.images()[1].file(), "File:Stark's_Park_-_geograph.org.uk_-_204446.jpg", 'Raith-Rovers: img-file')
   t.equal(
-    doc.image(1).url(),
+    doc.images()[1].url(),
     `https://wikipedia.org/wiki/Special:Redirect/file/Stark's_Park_-_geograph.org.uk_-_204446.jpg`,
     'Raith-Rovers: image-url'
   )
@@ -883,7 +883,7 @@ test('Royal-Cinema', (t) => {
     'Royal-Cinema: former venue names'
   )
   t.equal(doc.infobox().type(), 'venue', 'Royal-Cinema: venue infobox')
-  t.match(doc.image().file(), /Royal_Cinema\.JPG$/, 'Royal-Cinema: cinema photograph')
+  t.match(doc.images()[0].file(), /Royal_Cinema\.JPG$/, 'Royal-Cinema: cinema photograph')
   t.equal(doc.infobox().get('caption').text(), 'The Royal Cinema in 2009', 'Royal-Cinema: photo caption')
   t.equal(doc.infobox().template(), 'venue', 'Royal-Cinema: venue template')
   t.equal(doc.section().sentences().length, 10, 'Royal-Cinema: sentence-length')
@@ -1028,7 +1028,7 @@ test('The-Field-Of-Waterloo', (t) => {
 
 test('Toronto', (t) => {
   const doc = wtf(readPage('Toronto'))
-  t.deepEqual(doc.coordinate(), { template: 'infobox/lat-long', lat: 43.7, lon: -79.4 }, 'Toronto: city coordinates')
+  t.deepEqual(doc.coordinates()[0], { template: 'infobox/lat-long', lat: 43.7, lon: -79.4 }, 'Toronto: city coordinates')
   t.equal(doc.title, 'Toronto', 'Toronto: city title')
   t.ok(
     doc.links().some((link) => link.page() === 'Ontario'),
@@ -1053,7 +1053,7 @@ test('Toronto-Star', (t) => {
   t.equal(doc.infobox().type(), 'newspaper', 'Toronto-Star: newspaper infobox')
   t.equal(doc.infobox().get('publisher').text(), 'John D. Cruickshank', 'Toronto-Star: publisher in this snapshot')
   t.ok(doc.section('History'), 'Toronto-Star: newspaper history section')
-  t.match(doc.image().file(), /Toronto[ _]Star[ _]frontpage/, 'Toronto-Star: front-page image')
+  t.match(doc.images()[0].file(), /Toronto[ _]Star[ _]frontpage/, 'Toronto-Star: front-page image')
   t.ok(doc.references().length > 0, 'Toronto-Star: newspaper references')
   t.equal(doc.infobox().data.publisher.text(), 'John D. Cruickshank', 'Toronto-Star: publisher.text')
   t.equal(doc.infobox().template(), 'newspaper', 'Toronto-Star: newspaper template')
@@ -1082,7 +1082,7 @@ test('Toronto-Star-Cartoonists', (t) => {
   t.equal(section.sentences().length, 21, 'Toronto-Star: history-length')
   t.equal(doc.categories().length, 6, 'Toronto-Star: cat-length')
   section = doc.section('Notable cartoonists')
-  t.equal(section.list().json().length, 10, 'Toronto-Star: cartoonist-length')
+  t.equal(section.lists()[0].json().length, 10, 'Toronto-Star: cartoonist-length')
   t.end()
 })
 
@@ -1130,8 +1130,8 @@ test('University-Of-Nevada-Reno-Arboretum', (t) => {
     doc.links().some((link) => link.page() === 'arboretum'),
     'University-Of-Nevada-Reno-Arboretum: arboretum classification link'
   )
-  t.equal(doc.coordinate().lat, 39.54583, 'University-Of-Nevada-Reno-Arboretum: latitude')
-  t.equal(doc.coordinate().lon, -119.81667, 'University-Of-Nevada-Reno-Arboretum: longitude')
+  t.equal(doc.coordinates()[0].lat, 39.54583, 'University-Of-Nevada-Reno-Arboretum: latitude')
+  t.equal(doc.coordinates()[0].lon, -119.81667, 'University-Of-Nevada-Reno-Arboretum: longitude')
   t.ok(
     doc.categories().includes('1985 establishments in Nevada'),
     'University-Of-Nevada-Reno-Arboretum: 1985 establishments in Nevada category'

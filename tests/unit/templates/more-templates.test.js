@@ -50,7 +50,7 @@ test('redirect-list', (t) => {
 
 test('templates-in-templates', (t) => {
   const str = `{{marriage|[[Mileva Marić]]<br>|1903|1919|end=div}}<br />{{nowrap|{{marriage|[[Elsa Löwenthal]]<br>|1919|1936|end=died}}<ref>{{cite book |editor-last=Heilbron |editor-first=John L. |title=The Oxford Companion to the History of Modern Science |url=https://books.google.com/books?id=abqjP-_KfzkC&pg=PA233 |date=2003 |publisher=Oxford University Press |isbn=978-0-19-974376-6 |page=233}}</ref>{{sfnp|Pais|1982|p=301}}}}`
-  const ref = wtf(str).citation().json()
+  const ref = wtf(str).citations()[0].json()
   t.equal(ref.template, 'citation', 'cite-book')
   t.equal(ref.url, 'https://books.google.com/books?id=abqjP-_KfzkC&pg=PA233', 'url')
   t.equal(ref.isbn, '978-0-19-974376-6', 'isbn')

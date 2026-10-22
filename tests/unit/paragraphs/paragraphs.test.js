@@ -33,7 +33,7 @@ test('paragraph links', (t) => {
 
 new paragraph here  `
   const doc = wtf(str)
-  t.equal(doc.paragraph().links().length, 2, 'plaintext has one newline')
+  t.equal(doc.paragraphs()[0].links().length, 2, 'plaintext has one newline')
   t.end()
 })
 
@@ -61,8 +61,8 @@ test('newlines in templates', (t) => {
 Paragraph two!`
   const doc = wtf(str)
   t.equal(doc.paragraphs().length, 2, 'paragraphs')
-  t.equal(doc.paragraph().text(), 'hello world', 'first paragraph')
-  t.equal(doc.paragraph(1).text(), 'Paragraph two!', '2nd paragraph')
+  t.equal(doc.paragraphs()[0].text(), 'hello world', 'first paragraph')
+  t.equal(doc.paragraphs()[1].text(), 'Paragraph two!', '2nd paragraph')
   t.end()
 })
 
@@ -91,8 +91,8 @@ test('newlines in tables', (t) => {
 Second paragraph here.`
   const doc = wtf(str)
   t.equal(doc.paragraphs().length, 2, 'paragraphs')
-  t.equal(doc.paragraph().text(), 'hello world. Up here.', 'first paragraph')
-  t.equal(doc.paragraph(1).text(), 'Second paragraph here.', '2nd paragraph')
+  t.equal(doc.paragraphs()[0].text(), 'hello world. Up here.', 'first paragraph')
+  t.equal(doc.paragraphs()[1].text(), 'Second paragraph here.', '2nd paragraph')
   t.equal(doc.tables().length, 1, 'got broken table')
   t.end()
 })
@@ -112,11 +112,11 @@ test('cyrillic symbols', (t) => {
 В напряжённом`
   const doc = wtf(str)
   t.equal(doc.paragraphs().length, 6, 'paragraphs')
-  t.equal(doc.paragraph(0).text(), 'Соединённые', '1 paragraph')
-  t.equal(doc.paragraph(1).text(), 'По «окончании»', '2 paragraph')
-  t.equal(doc.paragraph(2).text(), 'После — четырёх', '3 paragraph')
-  t.equal(doc.paragraph(3).text(), 'Лишённые', '4 paragraph')
-  t.equal(doc.paragraph(4).text(), 'Спустя', '5 paragraph')
-  t.equal(doc.paragraph(5).text(), 'В напряжённом', '6 paragraph')
+  t.equal(doc.paragraphs()[0].text(), 'Соединённые', '1 paragraph')
+  t.equal(doc.paragraphs()[1].text(), 'По «окончании»', '2 paragraph')
+  t.equal(doc.paragraphs()[2].text(), 'После — четырёх', '3 paragraph')
+  t.equal(doc.paragraphs()[3].text(), 'Лишённые', '4 paragraph')
+  t.equal(doc.paragraphs()[4].text(), 'Спустя', '5 paragraph')
+  t.equal(doc.paragraphs()[5].text(), 'В напряжённом', '6 paragraph')
   t.end()
 })

@@ -116,7 +116,7 @@ test('Named-Footnote-Template', (t) => {
 test('Reference-Text-And-Wikitext', (t) => {
   const str = `<ref>{{cite web|title=The princess of pot|url=http://thewalrus.ca/the-princess-of-pot/}}</ref>`
   const doc = wtf(`the end.` + str)
-  const tmpl = doc.reference()
+  const tmpl = doc.references()[0]
   t.equal(tmpl.wikitext(), str, 'ref wikitext')
   t.equal(tmpl.text(), ``, 'ref text')
   t.end()

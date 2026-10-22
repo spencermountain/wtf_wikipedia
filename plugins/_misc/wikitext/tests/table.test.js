@@ -21,7 +21,7 @@ test('table-header', (t) => {
 | row 2, cell 3
 |}`
 
-  const have = wtf(str).table().makeWikitext()
+  const have = wtf(str).tables()[0].makeWikitext()
 
   t.equal(tidy(have), tidy(str), 'with-header')
 
@@ -40,7 +40,7 @@ test('no-header', (t) => {
 | row 2, cell 3
 |}`
 
-  const have = wtf(str).table().makeWikitext()
+  const have = wtf(str).tables()[0].makeWikitext()
 
   t.equal(tidy(have), tidy(str), 'no-header')
 

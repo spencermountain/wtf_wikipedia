@@ -8,8 +8,8 @@ test('collections: consistent link selection and output', (t) => {
   t.deepEqual(links.pages(), ['Toronto', 'Ottawa', 'Toronto'], 'preserve order and duplicates')
   t.deepEqual(doc.links('toronto').pages(), ['Toronto', 'Toronto'], 'string selection retains all matches')
   t.deepEqual(doc.links(1).pages(), ['Ottawa'], 'numeric selector addresses the whole document')
-  t.equal(doc.link(1).page(), 'Ottawa', 'singular selector is applied once')
-  t.equal(doc.link('missing'), null, 'singular miss')
+  t.equal(doc.links()[1].page(), 'Ottawa', 'singular selector is applied once')
+  t.equal(doc.links().find((link) => link.page() === 'missing'), undefined, 'missing link is undefined')
   t.deepEqual(doc.links('missing').json(), [], 'plural miss supports JSON')
   t.equal(doc.links('missing').text(), '', 'empty text')
   t.equal(doc.links('missing').wikitext(), '', 'empty wikitext')
@@ -27,11 +27,11 @@ test('collections: consistent link selection and output', (t) => {
 test('collections: tree accessors share selection behavior', (t) => {
   const doc = wtf('[[Toronto]] and [[Ottawa]].\n\n== Places ==\n[[Montreal]].\n\n=== More ===\n[[Quebec]].')
   const section = doc.section(0)
-  const paragraph = section.paragraph(0)
+  const paragraph = section.paragraphs()[0]
   const sentence = paragraph.sentence(0)
   ;[section, paragraph, sentence].forEach((model) => {
     t.deepEqual(model.links(1).pages(), ['Ottawa'], 'numeric selection at each level')
-    t.equal(model.link(1).page(), 'Ottawa', 'singular selection at each level')
+    t.equal(model.links()[1].page(), 'Ottawa', 'singular selection at each level')
     t.deepEqual(model.links('toronto').pages(), ['Toronto'], 'string selection at each level')
   })
   t.deepEqual(

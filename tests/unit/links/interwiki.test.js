@@ -14,24 +14,24 @@ test('interwiki text', (t) => {
 test('expand external interwiki link', (t) => {
   let str = `[[heroeswiki:cool]]`
   let doc = wtf(str)
-  let obj = doc.link().json()
+  let obj = doc.links()[0].json()
   t.equal(obj.type, 'interwiki', 'interwiki')
   t.equal(obj.text, 'cool', 'text')
   t.equal(obj.wiki, 'heroeswiki', 'wiki')
 
-  const href = doc.link().href()
+  const href = doc.links()[0].href()
   t.equal(href, 'http://heroeswiki.com/cool', 'expand external link')
 
   str = `[[Wiktionary:fr:bonjour]]`
   doc = wtf(str)
-  obj = doc.link().json()
+  obj = doc.links()[0].json()
   t.equal(obj.type, 'interwiki', 'interwiki')
   t.equal(obj.text, 'bonjour', 'text')
   t.deepEqual(obj.wiki, { wiki: 'wiktionary', lang: 'fr' }, 'wiki')
 
   str = `[[s:Administrative Order 9|legal text]]`
   doc = wtf(str)
-  obj = doc.link().json()
+  obj = doc.links()[0].json()
   t.equal(obj.type, 'interwiki', 'interwiki')
   t.equal(obj.text, 'legal text', 'legal text')
   t.equal(obj.page, 'Administrative Order 9', 'page')
@@ -40,17 +40,17 @@ test('expand external interwiki link', (t) => {
 
   str = `[[ThisIsNotAWiki:text]]`
   doc = wtf(str)
-  obj = doc.link().json()
+  obj = doc.links()[0].json()
   t.notEqual(obj.type, 'interwiki', 'unknown wiki prefix')
 
   str = `[[ThisIsNotAWiki:en:text]]`
   doc = wtf(str)
-  obj = doc.link().json()
+  obj = doc.links()[0].json()
   t.notEqual(obj.type, 'interwiki', 'unknown wiki with language prefix')
 
   str = `[[wikipedia:ThisIsNotALanguage:text]]`
   doc = wtf(str)
-  obj = doc.link().json()
+  obj = doc.links()[0].json()
   t.notEqual(obj.type, 'interwiki', 'unknown language prefix')
 
   t.end()
@@ -59,12 +59,12 @@ test('expand external interwiki link', (t) => {
 test('expand internal interwiki link', (t) => {
   const str = `[[fr:cool]]`
   const doc = wtf(str)
-  const obj = doc.link().json()
+  const obj = doc.links()[0].json()
   t.equal(obj.type, 'interwiki', 'interwiki')
   t.equal(obj.text, 'cool', 'text')
   t.equal(obj.wiki, 'fr', 'wiki')
 
-  const href = doc.link().href()
+  const href = doc.links()[0].href()
   t.equal(href, 'http://fr.wikipedia.org/wiki/cool', 'expand external link')
   t.end()
 })

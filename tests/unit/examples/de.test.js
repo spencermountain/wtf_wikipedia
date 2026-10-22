@@ -82,7 +82,7 @@ test('Liste-Der-Argentinischen-Botschafter-In-Chile', (t) => {
   )
   t.match(doc.text(), /Santiago/, 'Liste-Der-Argentinischen-Botschafter-In-Chile: embassy address')
   t.ok(
-    doc.table().keyValue().length > 0,
+    doc.tables()[0].keyValue().length > 0,
     'Liste-Der-Argentinischen-Botschafter-In-Chile: ambassador table contains rows'
   )
   t.match(doc.text(), /Miraflores/, 'Liste-Der-Argentinischen-Botschafter-In-Chile: embassy street')

@@ -57,11 +57,6 @@ class Infobox {
     return new Image(obj)
   }
 
-  // TODO: Preserve this legacy singular alias until its return shape is reviewed.
-  images() {
-    return this.image()
-  }
-
   // TODO: Mixed scalar/array lookup results are outside the collection API for now.
   get(want: string) {
     let allKeys = Object.keys(this.#data)

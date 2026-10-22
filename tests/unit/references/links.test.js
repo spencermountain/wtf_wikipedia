@@ -15,7 +15,7 @@ test('inline references retain external links', (t) => {
   ]
   cases.forEach(([input, url]) => {
     const links = wtf(input)
-      .reference()
+      .references()[0]
       .links()
       .map((link) => link.site())
     t.ok(links.includes(url), 'reference retains ' + url)
@@ -24,9 +24,9 @@ test('inline references retain external links', (t) => {
 })
 
 test('references without inline links return an empty array', (t) => {
-  t.deepEqual(wtf('<ref>Plain reference</ref>').reference().links().length, 0, 'plain reference returns no links')
+  t.deepEqual(wtf('<ref>Plain reference</ref>').references()[0].links().length, 0, 'plain reference returns no links')
   t.deepEqual(
-    wtf('<ref>{{cite web|title=Source|url=https://example.com}}</ref>').reference().links().length,
+    wtf('<ref>{{cite web|title=Source|url=https://example.com}}</ref>').references()[0].links().length,
     0,
     'cite web reference returns no links'
   )

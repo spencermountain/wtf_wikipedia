@@ -8,7 +8,7 @@ function escapeRegExp(str) {
 }
 
 const parseLine = function (line) {
-  const link = line.link(0)
+  const link = line.links()[0]
   if (!link || link.type() !== 'internal') {
     return null
   }
@@ -33,7 +33,7 @@ const getMain = function (s) {
   if (!/ is /.test(txt)) {
     return null
   }
-  const link = s.link(0)
+  const link = s.links()[0]
   if (!link) {
     return null
   }

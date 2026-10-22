@@ -25,7 +25,7 @@ test('Tennis-Sw', (t) => {
     'Tennis-Sw: Wimbledon tournament link'
   )
   t.match(doc.section('Uwanja wa tennis').text(), /23\.77/, 'Tennis-Sw: court length in metres')
-  t.equal(doc.section('Kanuni').list().lines().length, 5, 'Tennis-Sw: five playing rules')
+  t.equal(doc.section('Kanuni').lists()[0].lines().length, 5, 'Tennis-Sw: five playing rules')
   t.ok(
     doc.images().some((image) => image.file().endsWith(':Tennisball.jpg')),
     'Tennis-Sw: tennis ball gallery photograph'

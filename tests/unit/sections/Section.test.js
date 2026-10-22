@@ -67,8 +67,8 @@ test('section - paragraphs', (t) => {
     [2, 1],
     'two paragraphs'
   )
-  t.equal(sec.paragraph(1).text(), 'A second paragraph, with a link here.', 'paragraph by index')
-  t.equal(sec.paragraph().sentences().length, 2, 'first paragraph')
+  t.equal(sec.paragraphs()[1].text(), 'A second paragraph, with a link here.', 'paragraph by index')
+  t.equal(sec.paragraphs()[0].sentences().length, 2, 'first paragraph')
   t.end()
 })
 
@@ -79,9 +79,9 @@ test('section - links', (t) => {
     ['Rome', 'quickly', 'Fun'],
     'link targets'
   )
-  t.equal(sec.link(1).page(), 'quickly', 'link by index')
+  t.equal(sec.links()[1].page(), 'quickly', 'link by index')
   t.equal(sec.links('rome')[0].page(), 'Rome', 'link by name, case-insensitive')
-  t.equal(doc.section('Career').link(), null, 'no links is null')
+  t.equal(doc.section('Career').links()[0], undefined, 'no links is undefined')
   t.end()
 })
 
@@ -92,8 +92,8 @@ test('section - tables', (t) => {
     [[{ name: 'jane', age: '40' }]],
     'table values'
   )
-  t.deepEqual(sec.table(0).keyValue(), [{ name: 'jane', age: '40' }], 'table by index')
-  t.equal(doc.section('Career').table(), null, 'no tables is null')
+  t.deepEqual(sec.tables()[0].keyValue(), [{ name: 'jane', age: '40' }], 'table by index')
+  t.equal(doc.section('Career').tables()[0], undefined, 'no tables is undefined')
   t.end()
 })
 
@@ -123,8 +123,8 @@ test('section - infoboxes', (t) => {
 test('section - coordinates', (t) => {
   const sec = doc.section(0)
   t.deepEqual(sec.coordinates(), [{ display: 'title', template: 'coord', lat: 43.65, lon: -79.38 }], 'coordinates')
-  t.equal(sec.coordinate().lat, 43.65, 'first coordinate')
-  t.equal(doc.section('Career').coordinate(), null, 'no coordinates is null')
+  t.equal(sec.coordinates()[0].lat, 43.65, 'first coordinate')
+  t.equal(doc.section('Career').coordinates()[0], undefined, 'no coordinates is undefined')
   t.end()
 })
 
@@ -135,8 +135,8 @@ test('section - lists', (t) => {
     [['one fish', 'two fish']],
     'list lines'
   )
-  t.equal(sec.list(0).lines().length, 2, 'list by index')
-  t.equal(doc.section('Career').list(), null, 'no lists is null')
+  t.equal(sec.lists()[0].lines().length, 2, 'list by index')
+  t.equal(doc.section('Career').lists()[0], undefined, 'no lists is undefined')
   t.end()
 })
 
@@ -147,8 +147,8 @@ test('section - images', (t) => {
     [['File:Crest.jpg', 'the crest']],
     'image filenames and captions'
   )
-  t.equal(sec.image().url(), 'https://wikipedia.org/wiki/Special:Redirect/file/Crest.jpg', 'image URL')
-  t.equal(doc.section('Career').image(), null, 'no images is null')
+  t.equal(sec.images()[0].url(), 'https://wikipedia.org/wiki/Special:Redirect/file/Crest.jpg', 'image URL')
+  t.equal(doc.section('Career').images()[0], undefined, 'no images is undefined')
   t.ok(doc.section(0).images().isEmpty(), 'infobox-only section has no images')
   t.end()
 })
@@ -160,8 +160,8 @@ test('section - references', (t) => {
     ['Some Ref'],
     'reference titles'
   )
-  t.equal(sec.citation().title(), 'Some Ref', 'citation alias')
-  t.equal(doc.section('Career').reference(), null, 'no references is null')
+  t.equal(sec.citations()[0].title(), 'Some Ref', 'citation alias')
+  t.equal(doc.section('Career').references()[0], undefined, 'no references is undefined')
   t.end()
 })
 

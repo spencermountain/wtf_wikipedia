@@ -491,7 +491,7 @@ test('paragraph - get - if the clue is unset or undefined return the first parag
 })
 //
 // test('paragraph - get - unsupported selector returns null', (t) => {
-//   t.equal(page.paragraph('string'), null, 'unsupported paragraph selector')
+//   t.equal(page.paragraphs()['string'], undefined, 'unsupported paragraph selector')
 //   t.end()
 // })
 
@@ -569,8 +569,8 @@ test('images - get - finds inline, and gallery images', (t) => {
 // })
 
 test('image - get - return the first image on the page', (t) => {
-  t.equal(page.image().file(), 'File:Crest.jpg', 'first image filename')
-  t.equal(page.image().url(), 'https://wikipedia.org/wiki/Special:Redirect/file/Crest.jpg', 'first image URL')
+  t.equal(page.images()[0].file(), 'File:Crest.jpg', 'first image filename')
+  t.equal(page.images()[0].url(), 'https://wikipedia.org/wiki/Special:Redirect/file/Crest.jpg', 'first image URL')
   t.end()
 })
 
@@ -585,7 +585,7 @@ test('links - get - return all links on the page', (t) => {
 })
 
 test('links - get - if the clue is a number return the link at that index', (t) => {
-  t.equal(page.link(1).page(), 'quickly', 'indexed link target')
+  t.equal(page.links()[1].page(), 'quickly', 'indexed link target')
   t.end()
 })
 
@@ -626,7 +626,7 @@ test('lists - get - return all lists on the page', (t) => {
 test('lists - get - if the clue is a number return the list at that index', (t) => {
   t.deepEqual(
     page
-      .list(1)
+      .lists()[1]
       .lines()
       .map((s) => s.text()),
     ['Other page'],
@@ -646,7 +646,7 @@ test('tables - get - return all tables', (t) => {
 })
 
 test('tables - get - if the clue is a number return the table at that index', (t) => {
-  t.deepEqual(page.table(0).keyValue(), [{ name: 'jane', age: '40' }], 'indexed table values')
+  t.deepEqual(page.tables()[0].keyValue(), [{ name: 'jane', age: '40' }], 'indexed table values')
   t.end()
 })
 
@@ -685,7 +685,7 @@ test('references - get - return all references', (t) => {
 })
 
 test('references - get - if the clue is a number return the reference at that index', (t) => {
-  t.equal(page.reference(0).title(), 'Some Ref', 'indexed reference title')
+  t.equal(page.references()[0].title(), 'Some Ref', 'indexed reference title')
   t.end()
 })
 
@@ -695,7 +695,7 @@ test('citations - get - is an alias of references', (t) => {
     ['Some Ref'],
     'citation titles'
   )
-  t.equal(page.citation().title(), 'Some Ref', 'first citation title')
+  t.equal(page.citations()[0].title(), 'Some Ref', 'first citation title')
   t.end()
 })
 
@@ -706,7 +706,7 @@ test('coordinates - get - return all coordinates', (t) => {
 })
 
 test('coordinates - get - if the clue is a number return the coordinate at that index', (t) => {
-  t.equal(page.coordinate(0).lat, 43.65, 'indexed latitude')
+  t.equal(page.coordinates()[0].lat, 43.65, 'indexed latitude')
   t.end()
 })
 

@@ -4,8 +4,8 @@ import wtf from '../../lib/index.js'
 // Recovered from links/links.test.js; use the current API.
 test('brackets inside link labels', (t) => {
   const doc = wtf('then [[John Entwistle|John [Entwistle]]] and I')
-  t.equal(doc.link()?.page(), 'John Entwistle', 'target')
-  t.equal(doc.link()?.text(), 'John [Entwistle]', 'label retains its brackets')
+  t.equal(doc.links()[0]?.page(), 'John Entwistle', 'target')
+  t.equal(doc.links()[0]?.text(), 'John [Entwistle]', 'label retains its brackets')
   t.equal(doc.text(), 'then John [Entwistle] and I', 'surrounding text')
   t.end()
 })

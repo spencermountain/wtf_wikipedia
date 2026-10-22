@@ -43,14 +43,14 @@ after now
 
 test('anchor-links', (t) => {
   let str = `[[Doug Ford#Personal Life]]`
-  let link = wtf(str).link(0)
+  let link = wtf(str).links()[0]
   t.equal(link.page(), 'Doug Ford', 'page1')
   t.equal(link.text(), 'Doug Ford', 'text1')
   t.equal(link.anchor(), 'Personal Life', 'anchor1')
 
   str = `[[Toronto_Blue_Jays#Problems|Tranno J birds]]`
   const doc = wtf(str)
-  link = doc.link(0)
+  link = doc.links()[0]
   t.equal(link.page(), 'Toronto_Blue_Jays', 'page2')
   t.equal(link.text(), 'Tranno J birds', 'text2')
   t.equal(link.anchor(), 'Problems', 'anchor2')
@@ -70,25 +70,25 @@ test('anchor-links', (t) => {
 })
 
 test('title-case-links', (t) => {
-  t.equal(wtf('[[john]]').link(0).page(), 'john', 'page')
-  t.equal(wtf('[[john]]').link(0).text(), 'john', 'lowercase text')
+  t.equal(wtf('[[john]]').links()[0].page(), 'john', 'page')
+  t.equal(wtf('[[john]]').links()[0].text(), 'john', 'lowercase text')
 
-  t.equal(wtf('[[John smith]]').link().page(), 'John smith', 'already titlecased')
-  // t.equal(wtf('[[John]]').link().text(), undefined, 'no text stored when already titlecase')
+  t.equal(wtf('[[John smith]]').links()[0].page(), 'John smith', 'already titlecased')
+  // t.equal(wtf('[[John]]').links()[0].text(), undefined, 'no text stored when already titlecase')
 
-  t.equal(wtf('[[john|his son]]').link().text(), 'his son', 'lowercase given text')
-  t.equal(wtf('[[john|his son]]').link().page(), 'john', 'titlecase given page')
-  t.equal(wtf('[[John|his son]]').link().page(), 'John', 'already titlecased given page')
+  t.equal(wtf('[[john|his son]]').links()[0].text(), 'his son', 'lowercase given text')
+  t.equal(wtf('[[john|his son]]').links()[0].page(), 'john', 'titlecase given page')
+  t.equal(wtf('[[John|his son]]').links()[0].page(), 'John', 'already titlecased given page')
   t.end()
 })
 
 test('remove styling in link text', (t) => {
   let doc = wtf(`[[cool|fun ''times'']]`)
-  let txt = doc.link().text()
+  let txt = doc.links()[0].text()
   t.equal(txt, `fun times`, 'no-italics')
 
   doc = wtf(`[[cool stuff|fun '''times''' now]]`)
-  txt = doc.link().text()
+  txt = doc.links()[0].text()
   t.equal(txt, `fun times now`, 'no-bold')
   t.end()
 })
