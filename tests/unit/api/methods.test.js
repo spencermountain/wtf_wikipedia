@@ -191,7 +191,7 @@ const contracts = {
     template: 'string',
     keyValue: 'object',
     image: 'model|null',
-    images: 'model|null',
+    images: 'array',
     links: 'array',
     coordinates: 'item|null',
     text: 'string',

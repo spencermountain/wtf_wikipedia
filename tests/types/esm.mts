@@ -43,7 +43,7 @@ const viaNs: wtf.Document = doc // namespace-style type access
 console.log(viaNs)
 const title: string | null = doc.title
 const url: string | null = doc.url()
-const plain: string = doc.plaintext()
+const plain: string = doc.text()
 const j = doc.json('sm')
 const t: unknown = j.title // json() allows property access
 console.log(cats, secs, sec, sens, sen, imgs, infos, tmpls, coords, opts2, title, url, plain, t, bare)

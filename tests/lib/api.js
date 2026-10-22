@@ -110,7 +110,6 @@ export default {
       name: 'text',
       returns: 'String',
       description: 'plaintext, human-readable output for the page',
-      aliases: ['plaintext'],
     },
     {
       name: 'json',

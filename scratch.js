@@ -25,13 +25,39 @@ str = readPage('United-Kingdom')
 //
 // The '''City of New York''', often called '''New York City'''
 // `
+
+// str = `
+// [[Paris]]
+// [[Help:Contents]]
+// [[fr:Paris]]
+// [[:fr:Paris]]
+// [[:fr:Paris|Paris]]
+// [[wikt:word]]
+// [[wiktionary:word]]
+// [[wikt:fr:bonjour]]
+// [[commons:Category:Paris]]
+// [[w:en:Paris]]
+// [[doi:10.1000/182]]
+//
+// [[Paris#History]]
+// [[Paris#History|History of Paris]]
+// [[:fr:Paris#Histoire|History of Paris]]
+//
+// {{ill|English title|fr|French title}}
+// {{interlanguage link|English title|fr|French title}}
+// {{ill|English title|fr|French title|de|German title}}
+// `
+str = `{{Infobox person
+| name = Jane Doe
+| occupation = Writer
+}}`
 const doc = wtf(str, meta)
 // console.log(doc.text())
-// console.log(doc.links()[0])
+// console.log(doc.links().map((l) => l.json()))
 // console.log(doc.images()[0].json())
 // console.log(doc.sections()[2].title())
-const found = doc.template('main srticle')
-console.log('found', found.json())
+// const found = doc.template('main srticle')
+// console.log('found', found.json())
 // found.forEach((t) => console.log(t.json()))
 // doc.templates().forEach((t) => console.log(t.json()))
 // console.log(doc.sections()[0].json())
@@ -53,8 +79,8 @@ console.log('found', found.json())
 // console.log('references', doc.references())
 // console.log('citations', doc.citations())
 // console.log('coordinates', doc.coordinates())
-// console.log('templates', doc.templates())
-// console.log('infoboxes', doc.infobox())
+// console.log('templates', doc.templates()[0].json())
+console.log('infoboxes', doc.infobox().json())
 // console.log('debug', doc.debug())
 // console.log('infobox', doc.infobox())
 // console.log('isDisambig', doc.isDisambig())

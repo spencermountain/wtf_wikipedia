@@ -30,7 +30,7 @@ export interface TemplateData {
 
 export interface InfoboxData extends TemplateData {
   type: string
-  // data?: object[]
+  data: object[]
 }
 export interface ReferenceData extends TemplateData {}
 

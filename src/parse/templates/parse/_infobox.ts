@@ -1,4 +1,5 @@
 import infoboxList from '../../../_data/infoboxes.ts'
+import type { InfoboxData } from '../../../types/index.ts'
 import { infoboxes } from '../../../_data/i18n/index.ts'
 const i18nReg = new RegExp('^(subst.)?(' + infoboxes.join('|') + ')(?=:| |\n|$)', 'i')
 infoboxes.forEach((name) => {
@@ -39,13 +40,13 @@ const fmtInfobox = function (obj: any = {}) {
     type = type.replace(m[0], '')
   }
   type = type.trim()
-  let infobox = {
+  let infobox: InfoboxData = {
     template: 'infobox',
     type: type,
     data: obj,
   }
-  delete infobox.data.template //already have this.
-  delete infobox.data.list //just in case!
+  // delete infobox.data.template //already have this.
+  // delete infobox.data.list //just in case!
   return infobox
 }
 

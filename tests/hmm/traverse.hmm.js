@@ -1,5 +1,5 @@
 import test from 'tape'
-import readFile from '../../lib/_cachedPage.js'
+import readFile from '../lib/_cachedPage.js'
 
 test('traverse sections', (t) => {
   const doc = readFile('Toronto')

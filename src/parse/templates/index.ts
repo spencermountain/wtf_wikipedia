@@ -20,12 +20,13 @@ const allTemplates = function (wiki: string) {
     let [text, json] = parseTemplate(obj.body, obj.name)
     if (json) {
       let template: TemplateData = {
-        ...json,
         template: obj.name,
         name: obj.name,
         wiki: obj.body,
         text: text,
+        ...json,
       }
+      // console.log('template', template)
       final.push(template)
     }
     //remove the text from every parent

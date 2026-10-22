@@ -168,9 +168,9 @@ class Document {
     }
     //grab image from infobox, first
     this.infoboxes().forEach((info) => {
-      let img = info.image
+      let img = info.image()
       if (img) {
-        arr.push(img) //put it at the top
+        arr.push(new Image({ ...img.json(), domain: this.domain })) //put it at the top
       }
     })
     arr = arr.concat(sectionMap(this, 'images', null))
@@ -238,7 +238,7 @@ class Document {
     let arr = this.sections().flatMap((sec) => sec.infoboxes())
     //sort them by biggest-first
     arr = arr.sort((a, b) => {
-      if (Object.keys(a.data).length > Object.keys(b.data).length) {
+      if (Object.keys(a.json().data).length > Object.keys(b.json().data).length) {
         return -1
       }
       return 1

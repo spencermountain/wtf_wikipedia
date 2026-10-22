@@ -1,5 +1,5 @@
-import makeHeaders from './_headers.ts'
-import { normalize, defaults, toUrlParams } from './_fns.ts'
+import makeHeaders from './_headers.js'
+import { normalize, defaults, toUrlParams } from './_fns.js'
 
 const params = {
   action: 'query',

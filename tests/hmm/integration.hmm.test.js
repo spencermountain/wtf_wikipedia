@@ -1,6 +1,6 @@
-import { readPage } from '../../_examples/index.js'
+import { readPage } from '../_examples/index.js'
 import test from 'tape'
-import wtf from '../../lib/index.js'
+import wtf from '../lib/index.js'
 
 // Getter/setter contracts live in Document.test.js; these exercise full articles.
 test('article sections retain their headings and support title lookup', (t) => {

@@ -5,6 +5,11 @@
 
 #### [11.0.0 ] Oct 2026
 
+- drop old methods:
+  - **[remove]** - Section `.children()` `.nextSibling()` `.prevSibling()` navigation
+  - **[remove]** - deprecated method aliases `.plaintext()` etc
+  - **[change]** - metadata access fns now getter/setters `.wikidata(id)` -> `.wikidata = id`
+
 - target Node 18, ES2022:
   - **[breaking]** - use native fetch
   - **[fix]** - typescript declarations for all bundled plugins
@@ -17,7 +22,7 @@
 * Plugins:
   - **[change]** - classify plugin's empty result uses the same shape (root/details keys)
 
-* Misc Issues:
+* Misc Fixes:
   - **[fix]** - #358 HTML links containing parentheses and brackets now render.
   - **[fix]** - #572 Transliteration text and nihongo extra text are retained.
   - **[fix]** - #303 Image captions survive reordered size and layout options.

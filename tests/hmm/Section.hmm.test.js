@@ -1,5 +1,5 @@
 import test from 'tape'
-import wtf from '../../lib/index.js'
+import wtf from '../lib/index.js'
 
 // one small page exercises every Section accessor - real values, no cached pages
 const PAGE = `'''Testville''' is a small test page. It has two sentences.

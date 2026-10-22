@@ -63,7 +63,7 @@ test('parse_line_text', (t) => {
     ['tony hawk in [http://www.whistler.ca whistler]', 'tony hawk in whistler'],
     ['it is [[Tony Hawk|Tony]]s mother in [[Toronto]]s', 'it is Tonys mother in Torontos'],
   ].forEach((a) => {
-    const text = wtf(a[0]).plaintext()
+    const text = wtf(a[0]).text()
     const msg = "'" + a[0] + "' -> '" + text + "'"
     t.equal(text, a[1], msg)
   })
@@ -114,7 +114,7 @@ test('xml', (t) => {
     ["hello <table name=''><tr><td>hi<ref>nono!</ref></td></tr></table>world4.", 'hello world4.'],
     ["hello<ref name=''/> world5", 'hello world5'],
   ].forEach((a, i) => {
-    const s = wtf(a[0]).plaintext()
+    const s = wtf(a[0]).text()
     t.equal(s, a[1], 'xml' + i)
   })
   t.end()
@@ -132,7 +132,7 @@ test('interwiki', (t) => {
 
 test('inline-templates', (t) => {
   const str = `hello {{ill|Article title|language code}} world {{Sfn|Rolling Stone|2004}}`
-  const have = wtf(str).plaintext()
+  const have = wtf(str).text()
   t.equal('hello Article title world', have, 'harvard-references')
   t.end()
 })

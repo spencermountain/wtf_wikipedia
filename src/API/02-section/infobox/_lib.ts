@@ -1,5 +1,5 @@
 const readCoordinate = (box, prefix, directions, limit, separator) => {
-  const field = (suffix) => box.get(prefix + separator + suffix).text().trim()
+  const field = (suffix) => box.get(prefix + separator + suffix)?.text().trim() || ''
   const degrees = field('d')
   if (!degrees) {
     return null

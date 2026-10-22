@@ -78,7 +78,6 @@ declare class Document {
   pageID(id?: number): number | null
   paragraph(selector?: number): Paragraph | null
   paragraphs(selector?: number): Collection<Paragraph>
-  plaintext(options?: object): string
   redirect(): Record<string, unknown> | null
   redirects(): Record<string, unknown> | null
   redirectsTo(): Record<string, unknown> | null
@@ -157,7 +156,7 @@ declare class Infobox {
   get(keys: string[]): Sentence[]
   get(): Sentence
   image(): Image | null
-  images(): Image | null
+  images(): Image[]
   json(options?: object): Record<string, unknown>
   keyValue(): Record<string, string>
   links(selector?: string | number): LinkCollection
@@ -246,7 +245,6 @@ declare class Sentence {
   json(options?: object): Record<string, unknown>
   link(clue?: string | number): Link | null
   links(selector?: string | number): LinkCollection
-  plaintext(str?: string): string
   text(str?: string): string
   wikitext(): string
 }

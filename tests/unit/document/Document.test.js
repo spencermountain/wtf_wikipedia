@@ -749,14 +749,14 @@ test('plaintext - get - get the plaintext version of the document', (t) => {
   const doc = wtf(str)
   const expected =
     'Remote Data Services (RDS, formerly known as Advanced Data Connector or ADC) is a Microsoft technology used in conjunction with ActiveX Data Objects (ADO) that allowed the retrieval of a set of data from a database server, which the client then altered in some way and then sent back to the server for further processing. With the popular adoption of Transact-SQL, which extends SQL with such programming constructs as loops and conditional statements, this became less necessary and it was eventually deprecated in Microsoft Data Access Components version 2.7. Microsoft produced SOAP Toolkit 2.0, which allows clients to do this via an open XML-based standard.\n\n\n * MSDN Remote Data Service (RDS) description'
-  t.deepEqual(doc.plaintext(), expected, 'Text version of the document')
+  t.deepEqual(doc.text(), expected, 'Text version of the document')
   t.end()
 })
 
 test('plaintext - get - enpty string for redirects', (t) => {
   const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
   const expected = ''
-  t.deepEqual(doc.plaintext(), expected, 'empty string')
+  t.deepEqual(doc.text(), expected, 'empty string')
   t.end()
 })
 
