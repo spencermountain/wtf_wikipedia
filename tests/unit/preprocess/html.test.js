@@ -4,18 +4,18 @@ import wtf from '../../lib/index.js'
 test('support bold and italics', (t) => {
   let doc = wtf(`hi <b>world</b> there`)
   t.equal(doc.text(), 'hi world there', 'bold text')
-  let bolds1 = doc.sentence(0).json().bolds || []
+  let bolds1 = doc.sentences()[0].json().bolds || []
   t.equal(bolds1?.[0]?.text, 'world', 'got bold')
 
   doc = wtf(`hi <i>world</i> there`)
   t.equal(doc.text(), 'hi world there', 'italic text')
-  let italics1 = doc.sentence(0).json().italics || []
+  let italics1 = doc.sentences()[0].json().italics || []
   t.equal(italics1?.[0]?.text, 'world', 'got italic')
 
   // both
   doc = wtf(`hi <i><b>world</b></i> there`)
   t.equal(doc.text(), 'hi world there', 'nested bold and italic text')
-  let { bolds, italics } = doc.sentence(0).json()
+  let { bolds, italics } = doc.sentences()[0].json()
   t.equal(bolds?.[0]?.text, 'world', 'got bold')
   t.equal(italics?.[0]?.text, 'world', 'got italic')
   t.end()

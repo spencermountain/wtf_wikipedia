@@ -77,7 +77,7 @@ test('inline-test', (t) => {
   const str = `"Through Magic Doorways".<ref name="quote">[http://www.imdb.com/name/nm3225194/ Allen Morris IMDb profile]</ref> `
   const arr = wtf(str).citations()
   t.equal(arr.length, 1, 'found-inline-citations')
-  t.equal(arr[0].json().inline.text(), 'Allen Morris IMDb profile', 'inline-text')
+  t.equal(arr[0].json().inline.text, 'Allen Morris IMDb profile', 'inline-text')
   t.end()
 })
 
@@ -85,7 +85,7 @@ test('inline-test2', (t) => {
   const str = `in 1826.<ref name="brake">Brake (2009)</ref>  `
   const arr = wtf(str).citations()
   t.equal(arr.length, 1, 'found-inline-citations')
-  t.equal(arr[0].json().inline.text(), 'Brake (2009)', 'inline-text')
+  t.equal(arr[0].json().inline.text, 'Brake (2009)', 'inline-text')
   t.end()
 })
 

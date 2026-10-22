@@ -365,7 +365,7 @@ Nested text here.<ref>{{cite web|url=http://example.com|title=Some Ref}}</ref>
 |}
 
 ==Career==
-Career text goes here. See [[fr:Ville]] too.
+Career text goes here. See [[:fr:Ville|Ville]] too.
 <gallery>
 File:Second.jpg|second image
 </gallery>
@@ -610,7 +610,7 @@ test('templates - get - return all templates', (t) => {
 
 test('templates - get - if the clue is a number return the template at that index', (t) => {
   t.deepEqual(
-    page.template(0).json(),
+    page.templates()[0].json(),
     { display: 'title', template: 'coord', lat: 43.65, lon: -79.38 },
     'indexed template JSON'
   )

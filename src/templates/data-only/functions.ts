@@ -155,7 +155,7 @@ export default {
     let obj = parse(tmpl)
     let images = (obj.list || []).filter((line) => /^ *File ?:/.test(line))
     images = images.map((file) => {
-      return parseImgString(file, opts)
+      return parseImgString(`[[${file.trim()}]]`, opts)
     })
     obj = {
       template: 'gallery',

@@ -33,7 +33,7 @@ test('node.js-infobox-logo', function (t) {
     | license = [[MIT license]]<ref>{{cite web|title=node/LICENSE at master|url=https://github.com/nodejs/node/blob/master/LICENSE|website=GitHub|publisher=Node.js Foundation|accessdate = 17 September 2018|date=17 September 2018}}</ref><ref>{{cite web|title=The MIT License|url=https://opensource.org/licenses/MIT|website=Open Source Initiative|accessdate = 17 September 2018|date=17 September 2018}}</ref>
     }}
 `
-  const obj = wtf(str).infobox(0).keyValue()
+  const obj = wtf(str).infoboxes()[0].keyValue()
   t.equal(obj[`logo`], 'Node.js logo.svg', 'found logo val')
   t.end()
 })
@@ -49,7 +49,7 @@ test('french-infobox', function (t) {
   | chiffre d'affaires        = found2
  }}
 `
-  const obj = wtf(str).infobox(0).keyValue()
+  const obj = wtf(str).infoboxes()[0].keyValue()
   t.equal(obj[`secteurs d'activités`], 'found1', 'found secteurs val')
   t.equal(obj[`chiffre d'affaires`], 'found2', 'found chiffre val')
   t.equal(obj[`siège (ville)`], 'city', 'found city val')
@@ -84,7 +84,7 @@ test('ukrainian-infobox', function (t) {
   let doc = wtf(str)
   let json = { foo: {} }
   if (doc.infoboxes()[0]) {
-    json = doc.infoboxes()[0].json()
+    json = doc.infoboxes()[0].json().data
   }
   t.equal(json.foo.text, 'bar', 'ukr infobox')
 
@@ -96,7 +96,7 @@ test('ukrainian-infobox', function (t) {
   doc = wtf(str)
   json = { foo: {} }
   if (doc.infoboxes()[0]) {
-    json = doc.infoboxes()[0].json()
+    json = doc.infoboxes()[0].json().data
   }
   t.equal(json.жінка.text, 'bar', 'ukr officeholder infobox')
   t.end()
@@ -128,7 +128,7 @@ test('slash-in-infobox', function (t) {
 }}`
 
   const doc = wtf(str)
-  const json = doc.infobox().json()
+  const json = doc.infobox().json().data
   t.equal(json.term_end3.text, 'January 15, 2009', 'term_end3')
   t.equal(json['jr/sr3'].text, 'United States Senator', 'slash')
   t.end()
@@ -142,7 +142,7 @@ test('double-prop-infobox', function (t) {
     | Office              =
     }}`
   const doc = wtf(str)
-  const json = doc.infobox().json()
+  const json = doc.infobox().json().data
   t.equal(json['office'].text, 'President Bhartiya Janta Party(BJP) Indore, Madhya Pradesh', 'office')
   t.end()
 })

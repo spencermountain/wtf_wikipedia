@@ -6,16 +6,12 @@ import parseImgString from '../../03-paragraph/02-images/parse-image.ts'
 //all deities help us. truly -> https://en.wikipedia.org/wiki/Help:Gallery_tag
 //- not to be confused with https://en.wikipedia.org/wiki/Template:Gallery...
 const parseGallery = function (section: SectionData, opts: DocInfo = defaults) {
-  section.remaining = section.remaining.replace(/<gallery([^>]*)>(.+)<\/gallery>/gs, (_, _attrs, inside) => {
+  section.remaining = section.remaining.replace(/<gallery([^>]*)>(.*?)<\/gallery>/gs, (_, _attrs, inside) => {
     let lines = inside.split(/\n/g)
     lines = lines.filter((str: string) => str && str.trim() !== '')
 
     //parse the line, which has an image and sometimes a caption
-    lines = lines.map((str: string) => {
-      let arr = str.split(/\|/)
-      const file = arr[0].trim()
-      return parseImgString(file, opts)
-    })
+    lines = lines.map((str: string) => parseImgString(`[[${str.trim()}]]`, opts)).filter(Boolean)
 
     //add it to our templates list
     if (lines.length > 0) {

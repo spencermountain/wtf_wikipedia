@@ -5,7 +5,7 @@ test('bold/italics', (t) => {
   const str = `'''K. Nicole Mitchell''' is ''currently'' a [[U.S. Magistrate Judge]].
 
 	She is '''''very''''' good`
-  let sentence = wtf(str).sentence(0)
+  let sentence = wtf(str).sentences()[0]
   t.deepEqual(
     sentence.bolds().map((b) => b.text),
     ['K. Nicole Mitchell'],
@@ -18,7 +18,7 @@ test('bold/italics', (t) => {
   )
   t.equal(sentence.links().length, 1, 'one link')
 
-  sentence = wtf(str).sentence(1)
+  sentence = wtf(str).sentences()[1]
   t.deepEqual(
     sentence.bolds().map((b) => b.text),
     ['very'],

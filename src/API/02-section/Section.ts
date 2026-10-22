@@ -1,3 +1,4 @@
+import encodeObj from '../_lib/encode.ts'
 import Table from './table/Table.ts'
 import Reference from './reference/Reference.ts'
 import Infobox from './infobox/Infobox.ts'
@@ -120,7 +121,10 @@ class Section {
       .join('\n\n')
   }
 
-  json() {
+  json(options = { encode: false }) {
+    if (options.encode === true) {
+      return encodeObj(this.#data)
+    }
     return this.#data
   }
 

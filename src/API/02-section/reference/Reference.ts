@@ -1,4 +1,5 @@
 import encodeObj from '../../_lib/encode.ts'
+import Link from '../../03-paragraph/link/Link.ts'
 import type { ReferenceData } from '../../../types/index.ts'
 
 //also called 'citations'
@@ -16,8 +17,8 @@ class Reference {
   }
 
   links() {
-    const items = this.#data.inline?.links() || []
-    return items
+    const items = this.#data.inline?.links || []
+    return items.map((item) => new Link(item))
   }
 
   text() {

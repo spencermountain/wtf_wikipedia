@@ -1,7 +1,6 @@
 //dumpster-dive throws everything into mongodb  - github.com/spencermountain/dumpster-dive
 //mongo has some opinions about what characters are allowed as keys and ids.
 //https://stackoverflow.com/questions/12397118/mongodb-dot-in-key-name/30254815#30254815
-const specialChar = /[\\.$]/
 
 //encodes a string to make it mongodb-compatible
 //https://stackoverflow.com/questions/12397118/mongodb-dot-in-key-name/30254815#30254815
@@ -15,18 +14,17 @@ const encodeStr = function (str) {
   return str
 }
 
-const encodeObj = function (obj = {}) {
-  let keys = Object.keys(obj)
-  for (let i = 0; i < keys.length; i += 1) {
-    if (specialChar.test(keys[i]) === true) {
-      let str = encodeStr(keys[i])
-      if (str !== keys[i]) {
-        obj[str] = obj[keys[i]]
-        delete obj[keys[i]]
-      }
-    }
+// Return encoded copies so serialization never changes parser data.
+const encodeObj = (obj) => {
+  if (Array.isArray(obj)) {
+    return obj.map((value) => encodeObj(value))
   }
-  return obj
+  if (obj === null || typeof obj !== 'object') {
+    return obj
+  }
+  return Object.fromEntries(
+    Object.entries(obj).map(([key, value]) => [encodeStr(key), encodeObj(value)])
+  )
 }
 
-export default encodeObj 
+export default encodeObj

@@ -20,7 +20,7 @@ The paintings have the freedom and energy of  sketches, using warm and cool ligh
   `
   const doc = wtf(str)
   t.deepEqual(doc.section('paintings').templates('gallery').length, 1, 'section-has-gallery')
-  const templ = doc.template(0).json()
+  const templ = doc.templates()[0].json()
   t.deepEqual(templ.template, 'gallery', 'document-has-template')
   t.deepEqual(templ.images.length, 5, '5 images')
   t.deepEqual(templ.images[0].caption.links()[0].page(), 'Freyja', 'image has caption')
@@ -66,7 +66,7 @@ test('gallery-template', (t) => {
 test('from-infobox', (t) => {
   const doc = readFile('Jodie-Emery')
   t.equal(
-    doc.infobox(0).image(0).thumb(),
+    doc.infoboxes()[0].image(0).thumbnail(),
     'https://wikipedia.org/wiki/Special:Redirect/file/Marc_Emery_and_Jodie_Emery.JPG?width=300',
     'has correct thumbnail'
   )

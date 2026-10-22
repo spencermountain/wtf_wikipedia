@@ -34,7 +34,7 @@ hello world  {{lkjsdf|foo=28|hs.he=90}}.
   t.equal(template['hs.he'], undefined, 'template removed dot')
   t.ok(template['hs\\u002ehe'], 'has template encoding dot')
 
-  const infobox = json.sections[0].infoboxes[0]
+  const infobox = json.sections[0].infoboxes[0].data
   t.equal(infobox['birth.date'], undefined, 'infobox removed dot')
   t.ok(infobox['birth\\u002edate'], 'infobox encoding')
   t.end()

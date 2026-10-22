@@ -1,5 +1,5 @@
 import test from 'tape'
-import wtf from '../../lib/index.js'
+import wtf from '../lib/index.js'
 
 test('sentence text setter', (t) => {
   const s = wtf('Hello world.').sentences()[0]

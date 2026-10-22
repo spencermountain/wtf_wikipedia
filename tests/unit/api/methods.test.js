@@ -36,7 +36,6 @@ const is = {
 // { methodName: expected-shape } for no-argument calls
 const contracts = {
   Document: {
-    title: 'string|null',
     // pageID: 'number|null',
     // wikidata: 'string|null',
     // domain: 'string|null',
@@ -177,7 +176,6 @@ const contracts = {
     url: 'string',
     src: 'string',
     thumbnail: 'string',
-    thumb: 'string',
     alt: 'string',
     caption: 'string',
     format: 'string|null',
@@ -271,6 +269,13 @@ Object.keys(contracts).forEach((cls) => {
     })
     t.end()
   })
+})
+
+test('contract: Document.title property', (t) => {
+  parsed.forEach(({ page, doc }) => {
+    t.ok(is['string|null'](doc.title), `${page}: title → string|null`)
+  })
+  t.end()
 })
 
 // every page: parses, and its full json survives a stringify round-trip

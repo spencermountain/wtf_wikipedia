@@ -174,20 +174,16 @@ class Document {
       }
     })
     arr = arr.concat(sectionMap(this, 'images', null))
-    //look for 'gallery' templates, too
-    // this.templates().forEach((obj) => {
-    //   const data = obj.json()
-    //   if (data.template === 'gallery') {
-    //     data.images.forEach((img) => {
-    //       if (!(img instanceof Image)) {
-    //         img.language = this.language
-    //         img.domain = this.domain
-    //         img = new Image(img)
-    //       }
-    //       arr.push(img)
-    //     })
-    //   }
-    // })
+    // XML galleries store their images under data; template galleries store them directly.
+    this.templates('gallery').forEach((template) => {
+      const data = template.json()
+      const images = data.images || data.data?.images || []
+      images.forEach((image) => {
+        if (image) {
+          arr.push(new Image({ ...image, domain: this.domain }))
+        }
+      })
+    })
     return arr
   }
 
@@ -256,8 +252,8 @@ class Document {
     return arr.join('\n\n')
   }
 
-  json() {
-    return toJSON(this, {})
+  json(options = {}) {
+    return toJSON(this, options)
   }
 
   debug() {

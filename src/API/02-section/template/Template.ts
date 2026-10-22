@@ -1,3 +1,4 @@
+import encodeObj from '../../_lib/encode.ts'
 import type { TemplateData } from '../../../types/index.ts'
 
 class Template {
@@ -18,8 +19,12 @@ class Template {
     return this.#text || ''
   }
 
-  json() {
-    return this.#data || {}
+  json(options = { encode: false }) {
+    const data = this.#data || {}
+    if (options.encode === true) {
+      return encodeObj(data)
+    }
+    return data
   }
 
   wikitext() {

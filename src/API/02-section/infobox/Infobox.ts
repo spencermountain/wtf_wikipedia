@@ -1,3 +1,4 @@
+import encodeObj from '../../_lib/encode.ts'
 import Image from '../../03-paragraph/image/Image.ts'
 import Sentence from '../../03-paragraph/sentence/Sentence.ts'
 import normalizeFile from '../../../parse/03-paragraph/02-images/normalize.ts'
@@ -65,7 +66,10 @@ class Infobox {
     return ''
   }
 
-  json() {
+  json(options = { encode: false }) {
+    if (options.encode === true) {
+      return encodeObj(this.#data)
+    }
     return this.#data
   }
 

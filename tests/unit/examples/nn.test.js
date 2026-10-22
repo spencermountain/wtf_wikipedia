@@ -14,7 +14,7 @@ test('Statoil', (t) => {
   )
 
   t.equal(doc.isRedirect(), false, 'Statoil: not-redirect')
-  t.equal(doc.infobox().data.namn.text(), 'Statoil ASA', 'Statoil: name')
+  t.equal(doc.infobox().get('namn').text(), 'Statoil ASA', 'Statoil: name')
   t.equal(doc.infobox().type(), 'verksemd', 'Statoil: template')
   // (doc.text.Intro.length >= 1).should.be.true;
   t.equal(doc.categories().length, 4, 'Statoil: cat-length')
