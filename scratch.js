@@ -26,11 +26,6 @@ str = readPage('United-Kingdom')
 // The '''City of New York''', often called '''New York City'''
 // `
 
-str = `
-{{ill|English title|fr|French title}}
-{{interlanguage link|English title|fr|French title}}
-{{ill|English title|fr|French title|de|German title}}
-`
 str = `{| class="wikitable"
 ! Name !! Team !! Points
 |-
@@ -40,7 +35,9 @@ str = `{| class="wikitable"
 |}`
 const doc = wtf(str, meta)
 const table = doc.tables()[0]
-console.log(table.links()[0].json())
+// console.log(table.getRows(['Name', 'team']))
+// console.log(table.getRows('Name'))
+console.log(table.getRows())
 // console.log(table.json().rows)
 // console.log(doc.links().map((l) => l.json()))
 // console.log(doc.images()[0].json())

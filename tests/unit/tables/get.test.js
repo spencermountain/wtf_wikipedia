@@ -11,36 +11,27 @@ const TABLE = `{| class="wikitable"
 
 test('table.get - one column, case-insensitive', (t) => {
   const tb = wtf(TABLE).tables()[0]
-  t.deepEqual(tb.get('name'), ['jane', 'maya'], 'lowercase column lookup')
-  t.deepEqual(tb.get('POINTS'), ['12', '15'], 'uppercase column lookup')
+  t.deepEqual(tb.getRows('name'), [{ name: 'jane' }, { name: 'maya' }], 'lowercase column lookup')
+  t.deepEqual(tb.getRows('POINTS'), [{ points: '12' }, { points: '15' }], 'uppercase column lookup')
   t.end()
 })
 
 test('table.get - several columns give row-objects, keyed by real header', (t) => {
   const tb = wtf(TABLE).tables()[0]
-  t.deepEqual(tb.get(['name', 'points']), [
-    { Name: 'jane', Points: '12' },
-    { Name: 'maya', Points: '15' },
-  ],
-    'multiple column rows')
+  t.deepEqual(
+    tb.getRows(['name', 'points']),
+    [
+      { Name: 'jane', Points: '12' },
+      { Name: 'maya', Points: '15' },
+    ],
+    'multiple column rows'
+  )
   t.end()
 })
 
 test('table.get - a missing column is null per-row', (t) => {
   const tb = wtf(TABLE).tables()[0]
-  t.deepEqual(tb.get('nope'), [null, null], 'missing column values')
-  t.end()
-})
-
-test('table.keyValue aliases agree', (t) => {
-  const tb = wtf(TABLE).tables()[0]
-  const expected = [
-    { Name: 'jane', Team: 'us', Points: '12' },
-    { Name: 'maya', Team: 'ca', Points: '15' },
-  ]
-  t.deepEqual(tb.keyValue(), expected, 'keyValue rows')
-  t.deepEqual(tb.keyvalue(), expected, 'keyvalue alias')
-  t.deepEqual(tb.keyval(), expected, 'keyval alias')
+  t.deepEqual(tb.getRows('nope'), [{ nope: null }, { nope: null }], 'missing column values')
   t.end()
 })
 

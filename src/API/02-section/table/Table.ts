@@ -32,34 +32,48 @@ class Table {
     return links
   }
 
-  // TODO: Row/column projections remain plain arrays.
-  get(keys?) {
-    // normalize mappings
-    let have = this.#data.rows[0] || {}
-    let mapping = Object.fromEntries(Object.keys(have).map((k) => [normalize(k), k]))
-    // string gets a flat-list
-    if (typeof keys === 'string') {
-      let key = normalize(keys)
-      key = mapping[key] || key
-      return this.#data.rows.map((row) => {
-        return row[key] ? row[key].text() : null
-      })
-    }
-    // array gets obj-list
-    keys = keys.map(normalize).map((k) => mapping[k] || k)
+  cols() {
+    const row = this.#data.rows[0]
+    return Object.keys(row || {})
+  }
+  rows() {
+    // simplify data into one string per cell
     return this.#data.rows.map((row) => {
-      return Object.fromEntries(keys.map((k) => [k, row[k] || '']))
+      Object.keys(row).forEach((key) => {
+        row[key] = row[key].text || ''
+      })
+      return row
     })
   }
-
-  keyValue() {
-    let rows = this.#data.rows
-    rows.forEach((row) => {
-      Object.keys(row).forEach((k) => {
-        row[k] = row[k].text
+  // return only the requested cols
+  getRows(requested: string[] | string | object) {
+    const rows = this.rows()
+    if (!requested) {
+      return rows
+    }
+    // ['foo', 'bar']
+    if (Array.isArray(requested)) {
+      requested = requested.map((col) => normalize(col))
+      return rows.map((row) => requested.map((col) => row[col]))
+    }
+    // 'foo'
+    if (typeof requested === 'string') {
+      return rows.map((row) => row[normalize(requested)])
+    }
+    // { foo:true, bar: true}
+    if (typeof requested === 'object') {
+      return rows.map((row) => {
+        let result = {}
+        Object.entries(requested).forEach(([key, val]) => {
+          if (val) {
+            let clean = normalize(key)
+            result[clean] = row[clean]
+          }
+        })
+        return result
       })
-    })
-    return rows
+    }
+    return []
   }
 
   json() {
@@ -69,9 +83,8 @@ class Table {
   text() {
     return ''
   }
-
   wikitext() {
-    return this._wiki || ''
+    return this.#wiki || ''
   }
 }
 
