@@ -12,7 +12,7 @@ const external_links = function (wiki: string, _opts: DocInfo = defaults) {
       type: 'external',
       site: protocol + link,
       text: text.trim(),
-      wiki: match,
+      wiki: wiki,
     }
     links.push(obj)
     return text

@@ -21,7 +21,6 @@ const parse_links = function (wiki: string, opts: DocInfo = defaults) {
       link.text = postprocess(link.text).replace(/'{2,}/g, '')
     }
   }
-
   return links
 }
 export default parse_links

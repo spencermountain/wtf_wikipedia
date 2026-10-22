@@ -39,7 +39,7 @@ const internal_links = function (wiki: string, opts: DocInfo = defaults) {
       type: 'internal',
       page: link,
       text: '',
-      wiki: match,
+      wiki: wiki,
     }
     obj.page = obj.page.replace(/#(.*)/, (a, b) => {
       obj.anchor = b

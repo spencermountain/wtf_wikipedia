@@ -40,8 +40,8 @@ str = `{| class="wikitable"
 |}`
 const doc = wtf(str, meta)
 const table = doc.tables()[0]
-console.log(table.links())
-console.log(table.json().rows)
+console.log(table.links()[0].json())
+// console.log(table.json().rows)
 // console.log(doc.links().map((l) => l.json()))
 // console.log(doc.images()[0].json())
 // console.log(doc.sections()[2].title())
