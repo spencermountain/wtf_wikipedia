@@ -570,7 +570,7 @@ test('images - get - finds inline, and gallery images', (t) => {
 
 test('image - get - return the first image on the page', (t) => {
   t.equal(page.images()[0].file(), 'File:Crest.jpg', 'first image filename')
-  t.equal(page.images()[0].url(), 'https://wikipedia.org/wiki/Special:Redirect/file/Crest.jpg', 'first image URL')
+  t.equal(page.images()?.[0].url(), 'https://wikipedia.org/wiki/Special:Redirect/file/Crest.jpg', 'first image URL')
   t.end()
 })
 
@@ -616,7 +616,7 @@ test('interwiki - get - return only the interwiki links', (t) => {
 //lists
 test('lists - get - return all lists on the page', (t) => {
   t.deepEqual(
-    page.lists().map((l) => l.lines().map((s) => s.text())),
+    page.lists().map((l) => l.lines().map((s) => s.text)),
     [['one fish', 'two fish'], ['Other page']],
     'list lines'
   )
@@ -628,7 +628,7 @@ test('lists - get - if the clue is a number return the list at that index', (t) 
     page
       .lists()[1]
       .lines()
-      .map((s) => s.text()),
+      .map((s) => s.text),
     ['Other page'],
     'indexed list lines'
   )
@@ -638,7 +638,7 @@ test('lists - get - if the clue is a number return the list at that index', (t) 
 //tables
 test('tables - get - return all tables', (t) => {
   t.deepEqual(
-    page.tables().map((tb) => tb.keyValue()),
+    page.tables().map((tb) => tb.rows()),
     [[{ name: 'jane', age: '40' }]],
     'table values'
   )
@@ -646,7 +646,7 @@ test('tables - get - return all tables', (t) => {
 })
 
 test('tables - get - if the clue is a number return the table at that index', (t) => {
-  t.deepEqual(page.tables()[0].keyValue(), [{ name: 'jane', age: '40' }], 'indexed table values')
+  t.deepEqual(page.tables()[0].rows(), [{ name: 'jane', age: '40' }], 'indexed table values')
   t.end()
 })
 

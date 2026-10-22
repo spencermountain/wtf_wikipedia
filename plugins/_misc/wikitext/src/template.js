@@ -1,10 +1,11 @@
 const toWiki = function () {
-  let text = `{{${this.data.template || ''}`
-  Object.keys(this.data).forEach((k) => {
+  const data = this.json()
+  let text = `{{${this.type || ''}`
+  Object.keys(data).forEach((k) => {
     if (k === 'template') {
       return
     }
-    const val = this.data[k]
+    const val = data[k]
     if (val) {
       text += `| ${k} = ${val || ''}`
     }

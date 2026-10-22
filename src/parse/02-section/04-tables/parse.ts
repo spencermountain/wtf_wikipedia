@@ -4,8 +4,9 @@ import removeMidSpans from './02-removeMidSpans.ts'
 import handleSpans from './_spans.ts'
 import extractHeaders from './03-extractHeaders.ts'
 import parseRow from './04-parseRow.ts'
+import type { DocInfo } from '../../../types/index.ts'
 
-const parseTable = (wiki: string) => {
+const parseTable = (wiki: string, opts?: DocInfo) => {
   const lines = splitLines(wiki)
   let rows = findRows(lines).filter((row) => row)
   if (rows.length === 0) {

@@ -15,7 +15,7 @@ class List {
 
   links() {
     const out = []
-    this.lines().forEach((s) => s.links.forEach((obj) => out.push(new Link(obj))))
+    this.lines().forEach((s) => (s.links || []).forEach((obj) => out.push(new Link(obj))))
     return out
   }
 

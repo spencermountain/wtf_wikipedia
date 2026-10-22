@@ -29,7 +29,7 @@ const doSection = function (section) {
       section.templates('mlb game log section') ||
       section.templates('mlb game log month') ||
       section.templates('game log section')
-    tables = tables.map((m) => m.data) //make it look like a table
+    tables = tables.map((m) => m.json().data) //make it look like a table
   } else {
     tables = tables.map((t) => t.keyValue())
   }

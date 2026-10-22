@@ -36,14 +36,17 @@ const doc = wtf(PAGE)
 
 test('section - title / depth / indentation / index', (t) => {
   const shape = doc.sections().map((s) => [s.title(), s.depth(), s.indentation(), s.index()])
-  t.deepEqual(shape, [
-    ['', 0, 0, 0],
-    ['History', 0, 0, 1],
-    ['Early days', 1, 1, 2],
-    ['Career', 0, 0, 3],
-    ['See also', 0, 0, 4],
-  ],
-    'section heading properties')
+  t.deepEqual(
+    shape,
+    [
+      ['', 0, 0, 0],
+      ['History', 0, 0, 1],
+      ['Early days', 1, 1, 2],
+      ['Career', 0, 0, 3],
+      ['See also', 0, 0, 4],
+    ],
+    'section heading properties'
+  )
   t.end()
 })
 
@@ -88,11 +91,11 @@ test('section - links', (t) => {
 test('section - tables', (t) => {
   const sec = doc.section('Early days')
   t.deepEqual(
-    sec.tables().map((tb) => tb.keyValue()),
+    sec.tables().map((tb) => tb.rows()),
     [[{ name: 'jane', age: '40' }]],
     'table values'
   )
-  t.deepEqual(sec.tables()[0].keyValue(), [{ name: 'jane', age: '40' }], 'table by index')
+  t.deepEqual(sec.tables()[0].rows(), [{ name: 'jane', age: '40' }], 'table by index')
   t.equal(doc.section('Career').tables()[0], undefined, 'no tables is undefined')
   t.end()
 })
@@ -131,7 +134,7 @@ test('section - coordinates', (t) => {
 test('section - lists', (t) => {
   const sec = doc.section('Early days')
   t.deepEqual(
-    sec.lists().map((l) => l.lines().map((s) => s.text())),
+    sec.lists().map((l) => l.lines().map((s) => s.text)),
     [['one fish', 'two fish']],
     'list lines'
   )
@@ -219,12 +222,15 @@ test('section - text / json / wikitext', (t) => {
   const sec = doc.section('Career')
   t.equal(sec.text(), 'Career text goes here.', 'section text')
   t.equal(sec.wikitext(), '\nCareer text goes here.\n', 'section wikitext')
-  t.deepEqual(sec.json(), {
-    title: 'Career',
-    depth: 0,
-    paragraphs: [{ sentences: [{ text: 'Career text goes here.' }] }],
-  },
-    'section JSON')
+  t.deepEqual(
+    sec.json(),
+    {
+      title: 'Career',
+      depth: 0,
+      paragraphs: [{ sentences: [{ text: 'Career text goes here.' }] }],
+    },
+    'section JSON'
+  )
   t.end()
 })
 

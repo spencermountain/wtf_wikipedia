@@ -39,7 +39,7 @@ test('json-output-options', (t) => {
 
 test('section-output', (t) => {
   const doc = readFile('Royal-Cinema')
-  const data = doc.section(0).json({
+  const data = doc.paragraphs()[0].json({
     links: false,
     formatting: false,
     sentences: true,

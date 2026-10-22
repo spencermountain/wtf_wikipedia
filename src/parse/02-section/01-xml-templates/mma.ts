@@ -14,7 +14,7 @@ const parseMMA = function (section: SectionData, opts: DocInfo = defaults) {
     let rows = tableParser(table, opts)
     rows = rows.map((row) => {
       Object.keys(row).forEach((k) => {
-        row[k] = row[k].text()
+        row[k] = row[k].text
       })
       return row
     })

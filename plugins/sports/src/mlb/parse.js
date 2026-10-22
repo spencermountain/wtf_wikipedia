@@ -24,7 +24,8 @@ const parseRoster = function (doc, res) {
     return {}
   }
   let players = s.templates('mlbplayer') || []
-  players = players.map((o) => {
+  players = players.map((tmpl) => {
+    const o = { ...tmpl.json() }
     delete o.template
     return o
   })

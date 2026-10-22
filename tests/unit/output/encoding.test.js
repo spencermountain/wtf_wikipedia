@@ -26,9 +26,9 @@ hello world  {{lkjsdf|foo=28|hs.he=90}}.
     encode: true,
   })
   const table = json.sections[0].tables[0]
-  t.equal(table[0]['Foo.bar'], undefined, 'table removed dot')
-  t.ok(table[0]['Foo\\u002ebar'], 'has table encoding dot')
-  t.ok(table[1]['Foo\\u002ebar'], 'has table encoding dot #2')
+  t.equal(table.rows[0]['foo.bar'], undefined, 'table removed dot')
+  t.ok(table.rows[0]['foo\\u002ebar'], 'has table encoding dot')
+  t.ok(table.rows[1]['foo\\u002ebar'], 'has table encoding dot #2')
 
   const template = json.sections[0].templates[0]
   t.equal(template['hs.he'], undefined, 'template removed dot')

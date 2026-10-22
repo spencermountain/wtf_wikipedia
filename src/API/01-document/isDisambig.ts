@@ -24,9 +24,9 @@ const byText = function (s) {
 
 const isDisambig = function (doc) {
   // check for a {{disambig}} template
-  let templates = doc.templates().map((tmpl) => tmpl)
-  let found = templates.find((obj) => {
-    return alt_disambig.has(obj.template) || i18n_templates.has(obj.template)
+  const templates = doc.templates().map((tmpl) => tmpl.type)
+  let found = templates.find((name) => {
+    return alt_disambig.has(name) || i18n_templates.has(name)
   })
   if (found) {
     return true
@@ -37,7 +37,7 @@ const isDisambig = function (doc) {
     return true
   }
   // does it have a non-disambig template?
-  let notDisamb = templates.find((obj) => notDisambig.has(obj.template))
+  let notDisamb = templates.find((name) => notDisambig.has(name))
   if (notDisamb) {
     return false
   }

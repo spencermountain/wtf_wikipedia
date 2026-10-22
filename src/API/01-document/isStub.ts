@@ -2,10 +2,10 @@ import { stubs } from '../../_data/i18n/index.ts'
 let allStubs = new Set(stubs)
 
 const isStub = function (doc) {
-  // check for a {{disambig}} template
-  let templates = doc.templates().map((tmpl) => tmpl)
+  // Check for stub templates.
+  const templates = doc.templates()
   return templates.some((t) => {
-    let name = t.template || ''
+    let name = t.type || ''
     // try i18n templates like 'stubo'
     if (allStubs.has(name)) {
       return true

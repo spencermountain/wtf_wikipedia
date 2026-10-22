@@ -101,7 +101,7 @@ class Section {
   }
 
   interwiki() {
-    return this.paragraphs().flatMap((p) => p.interwiki())
+    return this.links().filter((l) => l.type === 'interwiki')
   }
 
   images() {

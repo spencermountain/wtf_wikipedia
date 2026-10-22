@@ -2,7 +2,7 @@ import { patterns } from '../../schema/_data-fns.js'
 import byPattern from '../_byPattern.js'
 
 const byDescription = function (doc) {
-  const tmpl = doc.template('short description')
+  const tmpl = doc.template('short description').json()
   if (tmpl && tmpl.description) {
     let desc = tmpl.description || ''
     desc = desc.toLowerCase()
