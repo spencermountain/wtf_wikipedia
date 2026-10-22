@@ -1,11 +1,18 @@
-export type LinkData = {
+export interface LinkData {
   text: string
-  type?: string
+  type: 'internal' | 'external' | 'interwiki'
+  wiki: string
+}
+
+export interface InternalLinkData extends LinkData {
   page?: string
   anchor?: string
+  lang?: string
+  project?: string
+}
+
+export interface ExternalLinkData extends LinkData {
   site?: string
-  wiki: string
-  interwiki?: string | { wiki: string; lang: string }
 }
 
 export interface BlockData {
@@ -34,19 +41,19 @@ export interface InfoboxData extends TemplateData {
 }
 export interface ReferenceData extends TemplateData {}
 
-export type ImageData = {
+export interface ImageData {
   file: string
   wiki: string
   alt?: string
   domain?: string
   caption?: BlockData
 }
-export type ListData = {
+export interface ListData {
   items: BlockData[]
   wiki: string
 }
 
-export type ParagraphData = {
+export interface ParagraphData {
   wiki: string
   remaining: string
   sentences: BlockData[]

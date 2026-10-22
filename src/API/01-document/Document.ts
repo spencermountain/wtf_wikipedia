@@ -6,6 +6,7 @@ import Section from '../02-section/Section.ts'
 import Template from '../02-section/template/Template.ts'
 import isStub from './isStub.ts'
 import Image from '../03-paragraph/image/Image.ts'
+import normalizeFile from '../../parse/03-paragraph/02-images/normalize.ts'
 import type { PageData, DocInfo, ImageData } from '../../types/index.ts'
 
 class Document {
@@ -160,7 +161,7 @@ class Document {
     // grab image from fetch/dumpster metadata
     if (this.#info.pageImage) {
       const imgdata: ImageData = {
-        file: this.#info.pageImage,
+        file: normalizeFile(this.#info.pageImage),
         wiki: '',
       }
       const img = new Image(imgdata)

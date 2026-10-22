@@ -1,5 +1,5 @@
 import parseLinks from './parse.ts'
-import type { LinkData } from '../../../types/index'
+import type { LinkData, BlockData } from '../../../types/index'
 
 //return only rendered text of wiki links
 const removeLinks = function (line: string) {
@@ -8,14 +8,14 @@ const removeLinks = function (line: string) {
   return line
 }
 
-const getLinks = function (data) {
-  let wiki = data.text
+const fromBlock = function (block: BlockData) {
+  let wiki = block.text
   let links: LinkData[] = parseLinks(wiki) || []
-  data.links = links.map((link) => {
+  block.links = links.map((link) => {
     wiki = wiki.replace(link.wiki, link.text || link.page || '')
     return link
   })
   wiki = removeLinks(wiki)
-  data.text = wiki
+  block.text = wiki
 }
-export default getLinks
+export default fromBlock
