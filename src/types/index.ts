@@ -26,9 +26,9 @@ export interface FormattingData {
 export interface BlockData {
   text: string
   wiki: string
-  links: LinkData[]
-  bolds: FormattingData[]
-  italics: FormattingData[]
+  links?: LinkData[]
+  bolds?: FormattingData[]
+  italics?: FormattingData[]
 }
 
 export interface TemplateData {
@@ -67,7 +67,10 @@ export interface ParagraphData {
   lists: ListData[]
 }
 
-export type TableData = string[][]
+export interface TableData {
+  wiki: string
+  rows: object[]
+}
 
 export interface SectionData {
   title: BlockData

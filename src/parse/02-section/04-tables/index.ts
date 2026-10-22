@@ -1,13 +1,12 @@
-import defaults from '../../../_lib/defaults.ts'
-import parseTable from './parse/index.ts'
-import type { DocInfo, SectionData } from '../../../types/index.ts'
+import parseTable from './parse.ts'
+import type { SectionData, TableData } from '../../../types/index.ts'
 
 //const table_reg = /\{\|[\s\S]+?\|\}/g; //the largest-cities table is ~70k chars.
 const openReg = /^\s*\{\|/
 const closeReg = /^\s*\|\}/
 
 //tables can be recursive, so looky-here.
-const findTables = function (section: SectionData, opts: DocInfo = defaults) {
+const findTables = function (section: SectionData) {
   let list = []
   let wiki = section.remaining
   let lines = wiki.split('\n')
@@ -31,15 +30,19 @@ const findTables = function (section: SectionData, opts: DocInfo = defaults) {
     }
   }
   //work-em together for a Table class
-  let tables = []
+  let tables: TableData[] = []
   list.forEach((str) => {
     if (str) {
       //also re-remove a newline at the end of the table (awkward)
       wiki = wiki.replace(str + '\n', '')
       wiki = wiki.replace(str, '')
-      let data = parseTable(str, opts)
+      let data = parseTable(str)
       if (data && data.length > 0) {
-        tables.push(data)
+        const table: TableData = {
+          wiki: str,
+          rows: data,
+        }
+        tables.push(table)
       }
     }
   })

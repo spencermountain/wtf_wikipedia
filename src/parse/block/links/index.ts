@@ -13,11 +13,13 @@ const removeLinks = function (line: string) {
 const fromBlock = function (block: BlockData, opts: DocInfo = defaults) {
   let wiki = block.text
   let links: LinkData[] = parseLinks(wiki, opts) || []
-  block.links = links.map((link) => {
-    wiki = wiki.replace(link.wiki, () => link.text)
-    return link
-  })
-  wiki = removeLinks(wiki)
-  block.text = wiki
+  if (links.length > 0) {
+    block.links = links.map((link) => {
+      wiki = wiki.replace(link.wiki, () => link.text)
+      return link
+    })
+    wiki = removeLinks(wiki)
+    block.text = wiki
+  }
 }
 export default fromBlock

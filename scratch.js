@@ -31,10 +31,17 @@ str = `
 {{interlanguage link|English title|fr|French title}}
 {{ill|English title|fr|French title|de|German title}}
 `
-str = `hello '''world''' there`
-str = `hello <b>world</b> there`
+str = `{| class="wikitable"
+! Name !! Team !! Points
+|-
+| [[jane]] || us || 12
+|-
+| maya || ca || 15
+|}`
 const doc = wtf(str, meta)
-console.log(doc.sentence().json())
+const table = doc.tables()[0]
+console.log(table.links())
+console.log(table.json().rows)
 // console.log(doc.links().map((l) => l.json()))
 // console.log(doc.images()[0].json())
 // console.log(doc.sections()[2].title())

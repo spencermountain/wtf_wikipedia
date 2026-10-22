@@ -20,6 +20,7 @@ const parse = (block: BlockData, pattern: RegExp, trim: number, groups: ('bolds'
     remove(block, start + match.length - trim, trim)
     remove(block, start, trim)
     groups.forEach((group) => {
+      block[group] = block[group] || []
       block[group].push({ text, start, end: start + text.length })
     })
     removed += trim * 2
@@ -30,17 +31,25 @@ const parse = (block: BlockData, pattern: RegExp, trim: number, groups: ('bolds'
 // Offsets use JavaScript string indices into the final plain text.
 const parseFormatting = (block: BlockData) => {
   block.text = block.text || ''
-  block.bolds = []
-  block.italics = []
+  // block.bolds = []
+  // block.italics = []
   parse(block, /'''''(.{0,2500}?)'''''/g, 5, ['bolds', 'italics'])
   // Four apostrophes retain a literal quote on each side.
   parse(block, /''''(.{0,2500}?)''''/g, 3, ['bolds'])
   parse(block, /'''(.{0,2500}?)'''/g, 3, ['bolds'])
   parse(block, /''(.{0,2500}?)''/g, 2, ['italics'])
 
-  block.bolds.concat(block.italics).forEach((span) => {
-    span.text = block.text.slice(span.start, span.end)
-  })
+  // update text for each span
+  if (block.bolds) {
+    block.bolds.forEach((span) => {
+      span.text = block.text.slice(span.start, span.end)
+    })
+  }
+  if (block.italics) {
+    block.italics.forEach((span) => {
+      span.text = block.text.slice(span.start, span.end)
+    })
+  }
   return block
 }
 export default parseFormatting

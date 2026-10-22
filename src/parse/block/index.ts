@@ -8,9 +8,9 @@ function fromText(str: string, opts: DocInfo = defaults): BlockData {
   let block: BlockData = {
     text: str,
     wiki: str,
-    links: [],
-    bolds: [],
-    italics: [],
+    // links: [],
+    // bolds: [],
+    // italics: [],
   }
   //pull-out the [[links]]
   parseLinks(block, opts)
