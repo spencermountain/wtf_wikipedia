@@ -1,3 +1,4 @@
+import Link from '../link/Link.ts'
 import type { ImageData } from '../../../types/index.ts'
 const server = 'wikipedia.org'
 
@@ -44,7 +45,8 @@ class Image {
   }
 
   links() {
-    return this.#data.caption?.links || []
+    const arr = this.#data.caption?.links || []
+    return arr.map((l) => new Link(l))
   }
 
   url() {

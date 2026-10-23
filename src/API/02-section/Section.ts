@@ -1,8 +1,8 @@
-import encodeObj from '../_lib/encode.ts'
 import Table from './table/Table.ts'
 import Reference from './reference/Reference.ts'
 import Infobox from './infobox/Infobox.ts'
 import Template from './template/Template.ts'
+import Link from '../03-paragraph/link/Link.ts'
 import Paragraph from '../03-paragraph/Paragraph.ts'
 import type { SectionData, BlockData } from '../../types/index.ts'
 
@@ -38,25 +38,26 @@ class Section {
 
   links() {
     let arr = []
-
+    // section headers can have links
+    if (this.#data.title?.links) {
+      this.#data.title.links.forEach((l) => {
+        arr.push(new Link(l))
+      })
+    }
     this.infoboxes().forEach((templ) => {
-      arr.push(templ.links())
+      arr.push(...templ.links())
     })
-
-    this.sentences().forEach((s) => {
-      arr.push(s.links())
+    this.references().forEach((s) => {
+      arr.push(...s.links())
     })
-
     this.tables().forEach((t) => {
-      arr.push(t.links())
+      arr.push(...t.links())
     })
-
-    this.lists().forEach((list) => {
-      arr.push(list.links())
+    this.paragraphs().forEach((s) => {
+      arr.push(...s.links())
     })
 
     arr = arr.flat().filter((val) => val !== undefined) //filter out all the undefined from the flattened empty arrays
-
     return arr
   }
 
@@ -122,9 +123,6 @@ class Section {
   }
 
   json(options = { encode: false }) {
-    if (options.encode === true) {
-      return encodeObj(this.#data)
-    }
     return this.#data
   }
 

@@ -3,7 +3,7 @@ import { readPage } from './tests/_examples/index.js'
 let str = ''
 
 const meta = {
-  pageImage: 'Grand_Bend_2.JPG',
+  // pageImage: 'Grand_Bend_2.JPG',
 }
 str = '[[Stonehenge]], in [[Wiltshire]], was erected around 2500 BC'
 str = `
@@ -20,8 +20,11 @@ str = `
 `
 // str = readPage('United-Kingdom')
 
+str = `[[File:Cool.jpg|thumb|this is [[cool]]]]
+  `
 const doc = wtf(str, meta)
-console.log(doc.lists()[1].json())
+console.log(doc.images()[0].json())
+console.log(doc.links().map((l) => l.json()))
 // const table = doc.tables()[0]
 // console.log(table.getRows(['Name', 'team']))
 // console.log(table.getRows('Name'))

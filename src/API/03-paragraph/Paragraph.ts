@@ -31,7 +31,17 @@ class Paragraph {
   }
 
   links() {
-    return this.sentences().flatMap((s) => s.links())
+    let links = []
+    this.images().forEach((i) => {
+      links.push(...i.links())
+    })
+    this.lists().forEach((list) => {
+      links.push(...list.links())
+    })
+    this.sentences().forEach((s) => {
+      links.push(...s.links())
+    })
+    return links
   }
 
   interwiki() {

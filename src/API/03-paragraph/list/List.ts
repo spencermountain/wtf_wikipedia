@@ -34,7 +34,7 @@ class List {
   }
 
   wikitext() {
-    return this.#wiki || ''
+    return this.#data.wiki || ''
   }
 }
 

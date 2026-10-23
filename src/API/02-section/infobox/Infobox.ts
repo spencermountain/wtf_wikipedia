@@ -1,4 +1,3 @@
-import encodeObj from '../../_lib/encode.ts'
 import Image from '../../03-paragraph/image/Image.ts'
 import Sentence from '../../03-paragraph/sentence/Sentence.ts'
 import normalizeFile from '../../../parse/03-paragraph/02-images/normalize.ts'
@@ -51,7 +50,9 @@ class Infobox {
 
   // TODO: Mixed scalar/array lookup results are outside the collection API for now.
   get(want: string) {
-    let allKeys = Object.keys(this.#data.data).filter((key) => typeof this.#data.data[key] === 'object' && this.#data.data[key] !== null)
+    let allKeys = Object.keys(this.#data.data).filter(
+      (key) => typeof this.#data.data[key] === 'object' && this.#data.data[key] !== null
+    )
     let key = normalize(want)
     for (let i = 0; i < allKeys.length; i += 1) {
       let tmp = normalize(allKeys[i])
@@ -67,9 +68,6 @@ class Infobox {
   }
 
   json(options = { encode: false }) {
-    if (options.encode === true) {
-      return encodeObj(this.#data)
-    }
     return this.#data
   }
 

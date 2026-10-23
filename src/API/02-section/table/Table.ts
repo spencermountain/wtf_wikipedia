@@ -1,4 +1,3 @@
-import encodeObj from '../../_lib/encode.ts'
 import type { TableData } from '../../../types/index.ts'
 import Link from '../../03-paragraph/link/Link.ts'
 
@@ -77,10 +76,7 @@ class Table {
     return []
   }
 
-  json(options = { encode: false }) {
-    if (options.encode === true) {
-      return encodeObj(this.#data)
-    }
+  json() {
     return this.#data
   }
 
