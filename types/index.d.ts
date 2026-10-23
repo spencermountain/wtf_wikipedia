@@ -111,7 +111,6 @@ declare class Template {
   static empty(): Template
   readonly kind: string | null
   readonly type: string
-  isEmpty(): boolean
   json(format?: JsonFormat): TemplateJson
   links(): LinkCollection
   text(): string
@@ -121,8 +120,9 @@ declare class Template {
 declare class Table {
   cols(): string[]
   rows(): Record<string, string>[]
-  getRows(requested?: string | string[] | Record<string, unknown>):
-    Record<string, string>[] | (string | undefined)[] | (string | undefined)[][]
+  getRows(
+    requested?: string | string[] | Record<string, unknown>
+  ): Record<string, string>[] | (string | undefined)[] | (string | undefined)[][]
   cells(): Collection<Block>
   headers(): Collection<Block>
   json(format?: JsonFormat): Record<string, unknown>
@@ -178,14 +178,12 @@ declare class Block {
   text(): string
   json(format?: JsonFormat): BlockJson
   wikitext(): string
-  isEmpty(): boolean
 }
 
 declare class Sentence {
   static empty(): Sentence
   bolds(): FormattingJson[]
   interwiki(): LinkJson[]
-  isEmpty(): boolean
   italics(): FormattingJson[]
   json(format?: JsonFormat): Record<string, unknown>
   links(): LinkCollection

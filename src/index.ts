@@ -4,6 +4,7 @@ import http from './API/_lib/fetch.ts'
 import parse from './parse/index.ts'
 import templates from './templates/index.ts'
 import infoboxes from './_data/infoboxes.ts'
+import { refreshWrappers } from './_lib/plural-wrapper.ts'
 
 import type { DocInfo } from './types/index.ts'
 import {
@@ -47,6 +48,7 @@ wtf.fetch = function (title, options, cb) {
 }
 wtf.extend = function (fn) {
   fn(models, templates, infoboxes)
+  refreshWrappers()
   return this
 }
 wtf.plugin = wtf.extend

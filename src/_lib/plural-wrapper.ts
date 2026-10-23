@@ -1,3 +1,5 @@
+const wrappers = new Map()
+
 class WrapperArray<T> extends Array<T> {
   // map(), filter(), and slice() return ordinary arrays.
   static get [Symbol.species]() {
@@ -5,7 +7,7 @@ class WrapperArray<T> extends Array<T> {
   }
 }
 
-const wrapMethods = (Collection, Item) => {
+const addMethods = (Collection, Item) => {
   for (let prototype = Item.prototype; prototype !== Object.prototype; prototype = Object.getPrototypeOf(prototype)) {
     Object.getOwnPropertyNames(prototype).forEach((name) => {
       const method = Object.getOwnPropertyDescriptor(prototype, name).value
@@ -24,4 +26,15 @@ const wrapMethods = (Collection, Item) => {
   }
 }
 
-export { wrapMethods, WrapperArray }
+const wrapMethods = (Collection, Item) => {
+  wrappers.set(Collection, Item)
+  addMethods(Collection, Item)
+}
+
+const refreshWrappers = () => {
+  wrappers.forEach((Item, Collection) => {
+    addMethods(Collection, Item)
+  })
+}
+
+export { wrapMethods, refreshWrappers, WrapperArray }

@@ -153,7 +153,7 @@ const contracts = {
     // link: 'model|null',
     // bold: 'string|null',
     // italic: 'string|null',
-    isEmpty: 'boolean',
+    // isEmpty: 'boolean',
     text: 'string',
     // plaintext: 'string',
     json: 'json',

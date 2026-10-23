@@ -24,10 +24,10 @@ test('article paragraphs and sentences retain their order', (t) => {
   t.match(sentences[0].text(), /Statoil/, 'first sentence text')
   t.equal(doc.paragraphs()[1], paragraphs[1], 'indexed paragraph')
   t.equal(doc.paragraphs()[0], paragraphs[0], 'default paragraph')
-  t.ok(doc.paragraphs('string').isEmpty(), 'unsupported paragraphs selector returns an empty collection')
+  t.ok(doc.paragraphs('string').length === 0, 'unsupported paragraphs selector returns an empty collection')
   t.equal(doc.sentence(1), sentences[1], 'indexed sentence')
   t.equal(doc.sentences()[0], sentences[0], 'default sentence')
-  t.ok(doc.sentences('string').isEmpty(), 'unsupported sentences selector returns an empty collection')
+  t.ok(doc.sentences('string').length === 0, 'unsupported sentences selector returns an empty collection')
   t.ok(
     paragraphs.every((paragraph) => paragraph.text().trim()),
     'paragraphs contain text'
@@ -39,7 +39,7 @@ test('article images include gallery entries', (t) => {
   const doc = wtf(readPage('Arts-Club-Of-Chicago'))
   t.equal(doc.images().length, 2, 'image count')
   t.equal(doc.images()[0].file(), 'File:20070701_Arts_Club_of_Chicago.JPG', 'first image filename')
-  t.ok(doc.images('string').isEmpty(), 'unsupported images selector returns an empty collection')
+  t.ok(doc.images('string').length === 0, 'unsupported images selector returns an empty collection')
   const gallery = wtf(readPage('Goryeo-Ware'))
   t.equal(gallery.images().length, 5, 'gallery image count')
   t.ok(
@@ -75,7 +75,7 @@ test('article links retain their targets and display text', (t) => {
     ['Jace Rocker', 'Jace Rocker'],
     'filtered link targets'
   )
-  t.ok(doc.links([]).isEmpty(), 'unsupported link selector returns an empty collection')
+  t.ok(doc.links([]).length === 0, 'unsupported link selector returns an empty collection')
   t.end()
 })
 
@@ -83,7 +83,7 @@ test('article links retain their targets and display text', (t) => {
 test('interwiki - get - exclude internal links', (t) => {
   let str = readPage('Britt-Morgan')
   let doc = wtf(str)
-  t.ok(doc.interwiki().isEmpty(), 'internal links are not interwiki')
+  t.ok(doc.interwiki().length === 0, 'internal links are not interwiki')
   t.end()
 })
 
@@ -100,7 +100,7 @@ test('interwiki - get - return all links without a selector and none for unsuppo
     { type: 'interwiki', wiki: 'de', page: 'Berlin' },
   ]
   t.deepEqual(doc.interwiki().json(), expected, 'returns all interwiki')
-  t.ok(doc.interwiki([]).isEmpty(), 'unsupported selector returns an empty collection')
+  t.ok(doc.interwiki([]).length === 0, 'unsupported selector returns an empty collection')
   t.end()
 })
 
@@ -130,10 +130,10 @@ test('article tables, templates and references remain queryable', (t) => {
   t.equal(doc.template(1).json().template, 'good article', 'indexed template name')
   t.equal(doc.references().length, 34, 'reference count')
   t.ok(doc.references()[1].title(), 'indexed reference has a title')
-  t.ok(doc.references('string').isEmpty(), 'unsupported references selector returns an empty collection')
+  t.ok(doc.references('string').length === 0, 'unsupported references selector returns an empty collection')
   t.deepEqual(doc.citations(), doc.references(), 'citation collection')
   t.equal(doc.citations()[1], doc.references()[1], 'indexed citation')
-  t.ok(doc.citations('string').isEmpty(), 'unsupported citations selector returns an empty collection')
+  t.ok(doc.citations('string').length === 0, 'unsupported citations selector returns an empty collection')
   t.end()
 })
 
@@ -239,6 +239,6 @@ test('multiple infoboxes retain their fields and images', (t) => {
   )
   t.equal(doc.infobox(1).get('former names').text(), 'The Pylon, The Golden Princess', 'former names field')
   t.equal(doc.infobox(1).get('caption').text(), 'The Royal Cinema in 2009', 'caption field')
-  t.ok(doc.infoboxes('string').isEmpty(), 'unmatched template name returns no infoboxes')
+  t.ok(doc.infoboxes('string').length === 0, 'unmatched template name returns no infoboxes')
   t.end()
 })

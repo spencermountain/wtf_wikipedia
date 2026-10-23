@@ -34,9 +34,6 @@ class Template {
   wikitext() {
     return this.#data.wiki
   }
-  isEmpty() {
-    return this.#data.template === ''
-  }
   static empty() {
     return new Template({ template: '', kind: null, wiki: '', text: '', data: {} })
   }

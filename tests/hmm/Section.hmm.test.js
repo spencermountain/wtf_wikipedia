@@ -109,7 +109,7 @@ test('section - templates', (t) => {
   )
   t.equal(sec.templates('coord').length, 1, 'templates by name')
   t.equal(sec.template('coord').json().lat, 43.65, 'template by name')
-  t.ok(doc.section('History').templates().isEmpty(), 'no templates')
+  t.ok(doc.section('History').templates().length === 0, 'no templates')
   t.end()
 })
 
@@ -152,7 +152,7 @@ test('section - images', (t) => {
   )
   t.equal(sec.images()[0].url(), 'https://wikipedia.org/wiki/Special:Redirect/file/Crest.jpg', 'image URL')
   t.equal(doc.section('Career').images()[0], undefined, 'no images is undefined')
-  t.ok(doc.section(0).images().isEmpty(), 'infobox-only section has no images')
+  t.ok(doc.section(0).images().length === 0, 'infobox-only section has no images')
   t.end()
 })
 
@@ -169,7 +169,7 @@ test('section - references', (t) => {
 })
 
 test('section - interwiki', (t) => {
-  t.ok(doc.section('History').interwiki().isEmpty(), 'internal links are not interwiki')
+  t.ok(doc.section('History').interwiki().length === 0, 'internal links are not interwiki')
   const d2 = wtf('==Also==\nsee [[Rome]] and [[fr:Paris]] here.')
   t.deepEqual(
     d2
@@ -203,7 +203,7 @@ test('section - children / parent', (t) => {
   )
   t.equal(doc.section('Early days').parent().title(), 'History', 'parent title')
   t.equal(hist.parent(), null, 'top-level section has no parent')
-  t.ok(doc.section('Career').children().isEmpty(), 'no children')
+  t.ok(doc.section('Career').children().length === 0, 'no children')
   t.end()
 })
 

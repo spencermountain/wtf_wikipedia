@@ -40,9 +40,6 @@ class Block {
   wikitext() {
     return this.#data.wiki || ''
   }
-  isEmpty() {
-    return this.#data.text === ''
-  }
 }
 
 export default Block
