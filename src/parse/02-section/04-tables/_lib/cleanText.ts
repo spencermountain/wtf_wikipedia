@@ -1,6 +1,8 @@
 const cleanText = function (str) {
   //anything before a single-pipe is styling, so remove it
-  if (str.match(/\|/)) {
+  const pipe = str.indexOf('|')
+  const bracket = str.indexOf('[')
+  if (pipe !== -1 && (bracket === -1 || pipe < bracket)) {
     str = str.replace(/^.*?\| ?/m, '') //class="unsortable"|title
   }
   str = str.replace(/style=['"].*?["']/, '')

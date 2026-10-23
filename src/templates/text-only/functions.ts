@@ -1,4 +1,5 @@
 import defaultParse from '../../parse/templates/parse/toJSON/text.ts'
+import parseArguments from '../../parse/templates/parse/toJSON/index.ts'
 import strip from '../../parse/templates/parse/toJSON/_strip.ts'
 import roundNumber from './_lib.ts'
 import { titlecase, percentage, toOrdinal } from '../_lib.ts'
@@ -424,10 +425,10 @@ export default {
     return { data: null, replacement: `${num.toFixed(dec)}%` }
   },
   // this one is re-used by i18n
-  small: (tmpl, parse = defaultParse) => {
-    let obj = parse(tmpl)
+  small: (tmpl, _parse = defaultParse, opts) => {
+    let obj = parseArguments(tmpl, [], opts)
     if (obj.list && obj.list[0]) {
-      return { data: null, replacement: obj.list[0] }
+      return { data: null, replacement: obj.list[0].wiki }
     }
     return { data: null, replacement: '' }
   },

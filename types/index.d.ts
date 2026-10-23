@@ -169,6 +169,7 @@ declare class Template {
   readonly type: string
   isEmpty(): boolean
   json(): TemplateJson
+  links(): Link[]
   text(): string
   wikitext(): string
 }
@@ -298,6 +299,7 @@ type DocumentOptions = {
 
 /** Template identity, recognized parser kind, and parsed payload. */
 type TemplateJson = {
+  links?: LinkJson[]
   template: string
   kind: string | null
   wiki: string

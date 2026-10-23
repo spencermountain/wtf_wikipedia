@@ -1,4 +1,5 @@
 import parseBlock from '../block/index.ts'
+import parseLinks from '../block/links/parse.ts'
 import type { DocInfo, TemplateData } from '../../types/index.ts'
 
 // Keep invocation spelling separate from the parser's normalized interpretation.
@@ -12,13 +13,24 @@ const rawName = (wiki: string) => {
 }
 
 const makeResult = (wiki: string, kind: string | null, data: object, replacement = '', opts?: DocInfo): TemplateData => {
-  return {
+  const result: TemplateData = {
     template: rawName(wiki),
     kind,
     wiki,
     text: parseBlock(String(replacement), opts).text,
     data,
   }
+  // Links retained in replacement markup will be collected by its eventual parent.
+  let remaining = wiki
+  const renderedLinks = parseLinks(String(replacement), opts) || []
+  renderedLinks.forEach((link) => {
+    remaining = remaining.replace(link.wiki, '')
+  })
+  const links = parseLinks(remaining, opts)
+  if (links?.length) {
+    result.links = links
+  }
+  return result
 }
 
 export default makeResult

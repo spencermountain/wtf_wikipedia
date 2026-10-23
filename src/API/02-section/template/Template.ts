@@ -1,4 +1,5 @@
 import type { TemplateData } from '../../../types/index.ts'
+import Link from '../../03-paragraph/link/Link.ts'
 
 class Template {
   #data: TemplateData
@@ -14,6 +15,9 @@ class Template {
   }
   text() {
     return this.#data.text
+  }
+  links() {
+    return (this.#data.links || []).map((link) => new Link(link))
   }
   json() {
     return this.#data

@@ -32,6 +32,7 @@ export interface BlockData {
 }
 
 export interface TemplateData {
+  links?: LinkData[]
   template: string
   kind: string | null
   wiki: string

@@ -3,7 +3,7 @@ import firstRowHeader from './_lib/firstRowHeader.ts'
 
 const extractHeaders = (rows, opts) => {
   let headers = findHeaders(rows, opts)
-  if (!headers || headers.length <= 1) {
+  if (!headers || headers.length === 0) {
     headers = firstRowHeader(rows, opts)
     let want = rows.at(-1) || []
     //try the second row

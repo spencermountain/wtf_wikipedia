@@ -10,7 +10,7 @@ class Table {
   }
 
   cells() {
-    let arr = this.#data.headers
+    let arr = [...this.#data.headers]
     this.#data.rows.forEach((row) => {
       Object.values(row).forEach((cell) => {
         arr.push(cell)

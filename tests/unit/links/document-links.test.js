@@ -1,5 +1,5 @@
 import test from 'tape'
-import wtf from '../../src/index.ts'
+import wtf from '../../../src/index.ts'
 
 const links = '[[Target page|Label]] and [https://example.org source]'
 const examples = [

@@ -52,6 +52,9 @@ class Section {
     this.references().forEach((s) => {
       arr.push(...s.links())
     })
+    this.templates().forEach((template) => {
+      arr.push(...template.links())
+    })
     this.tables().forEach((t) => {
       arr.push(...t.links())
     })

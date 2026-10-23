@@ -14,7 +14,7 @@ class Reference {
   }
 
   links() {
-    const items = this.#data.data.inline?.links || []
+    const items = this.#data.links || this.#data.data.inline?.links || []
     return items.map((item) => new Link(item))
   }
 

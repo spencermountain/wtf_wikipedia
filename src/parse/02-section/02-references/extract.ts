@@ -2,6 +2,7 @@ import type { DocInfo } from '../../../types/index.ts'
 import defaults from '../../../_lib/defaults.ts'
 import parseTextArguments from '../../templates/parse/toJSON/text.ts'
 import parseBlock from '../../block/index.ts'
+import parseLinks from '../../block/links/parse.ts'
 import makeResult from '../../templates/result.ts'
 import getTemplates from '../../templates/find/flat.ts'
 
@@ -22,10 +23,12 @@ const hasCitation = (str) => {
 }
 
 const parseBody = (text, wiki, opts: DocInfo = defaults) => {
+  let prose = text
   // A single ref tag may contain several structured citation templates.
   const references = getTemplates(text)
     .filter(hasCitation)
     .map((template) => {
+      prose = prose.replace(template, '')
       const { template: _template, ...data } = parseTextArguments(template, [], opts)
       const result = makeResult(template, 'citation', data, '', opts)
       result.wiki = wiki
@@ -34,6 +37,12 @@ const parseBody = (text, wiki, opts: DocInfo = defaults) => {
   if (references.length === 0) {
     // Without a citation template, retain the body as formatted inline text.
     references.push(makeResult(wiki, 'reference', { inline: parseBlock(text, opts) }, '', opts))
+  } else {
+    // Attach surrounding prose once, even when a ref contains several citations.
+    const links = parseLinks(prose, opts) || []
+    if (links.length) {
+      references[0].links = [...(references[0].links || []), ...links]
+    }
   }
   return references
 }

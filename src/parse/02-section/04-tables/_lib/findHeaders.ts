@@ -12,7 +12,7 @@ const findHeaders = function (rows = [], opts) {
   }
 
   let first = rows[0]
-  if (first && first[0] && first[1] && (/^!/.test(first[0]) || /^!/.test(first[1]))) {
+  if (first?.length && first.some((cell) => /^!/.test(cell))) {
     headers = first.map((h) => {
       h = h.replace(/^! */, '')
       h = cleanText(h)
