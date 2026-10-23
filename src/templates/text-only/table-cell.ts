@@ -1,5 +1,5 @@
 //random misc for inline wikipedia templates
-import defaultParse from '../../parse/templates/parse/toJSON/index.ts'
+import defaultParse from '../../parse/templates/parse/toJSON/text.ts'
 import { titlecase } from '../_lib.ts'
 
 //https://en.wikipedia.org/wiki/Template:Yes

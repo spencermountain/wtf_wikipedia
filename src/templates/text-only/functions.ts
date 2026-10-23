@@ -1,4 +1,4 @@
-import defaultParse from '../../parse/templates/parse/toJSON/index.ts'
+import defaultParse from '../../parse/templates/parse/toJSON/text.ts'
 import strip from '../../parse/templates/parse/toJSON/_strip.ts'
 import roundNumber from './_lib.ts'
 import { titlecase, percentage, toOrdinal } from '../_lib.ts'

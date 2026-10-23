@@ -24,7 +24,7 @@ wtf.version: string
 
 `DocumentOptions` (all optional): `title`, `pageID`, `namespace`/`ns`,
 `lang`/`language`, `domain`, `wikidata`, `description`, `timestamp`,
-`revisionID`, `pageImage`, `userAgent`, `templateFallbackFn`.
+`revisionID`, `pageImage`, `userAgent`.
 Pass `title` when parsing raw wikitext if you want `.title()` / `.url()` to work:
 
 ```js

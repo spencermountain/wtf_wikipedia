@@ -9,7 +9,7 @@ test('Groot-Brittanje', (t) => {
     'Groot-Brittanje: Afrikaans UK link'
   )
   t.match(doc.text(), /Groot-Brittanje/, 'Groot-Brittanje: Afrikaans island name')
-  t.equal(doc.infobox().get('naam').text(), 'Groot-Brittanje', 'Groot-Brittanje: Afrikaans island name field')
+  t.equal(doc.infobox().get('naam').text, 'Groot-Brittanje', 'Groot-Brittanje: Afrikaans island name field')
   t.ok(
     doc.links().some((link) => link.page() === 'Koninkryk van Groot-Brittanje'),
     'Groot-Brittanje: historical kingdom link'
@@ -22,15 +22,15 @@ test('Groot-Brittanje', (t) => {
 
 test('Mark-Behr', (t) => {
   const doc = wtf(readPage('Mark-Behr'))
-  t.equal(doc.infobox().get('naam').text(), 'Mark Behr', 'Mark-Behr: Afrikaans name field')
-  t.equal(doc.infobox().get('geboortenaam').text(), 'Mark Carl Behr', 'Mark-Behr: Afrikaans birth name field')
+  t.equal(doc.infobox().get('naam').text, 'Mark Behr', 'Mark-Behr: Afrikaans name field')
+  t.equal(doc.infobox().get('geboortenaam').text, 'Mark Carl Behr', 'Mark-Behr: Afrikaans birth name field')
   t.match(doc.text(), /Afrikaans/, 'Mark-Behr: writing language')
   t.ok(
     doc.links().some((link) => link.page() === '19 Oktober'),
     'Mark-Behr: birth date link'
   )
   t.ok(doc.references().length > 0, 'Mark-Behr: biographical references')
-  t.ok(doc.infoboxes().some((box) => box.get('beroep').text() === 'Skrywer, akademikus'), 'Mark-Behr: beroep field')
+  t.ok(doc.infoboxes().some((box) => box.get('beroep').text === 'Skrywer, akademikus'), 'Mark-Behr: beroep field')
   t.ok(doc.categories().includes('Suid-Afrikaanse skrywers'), 'Mark-Behr: Suid-Afrikaanse skrywers category')
   t.end()
 })

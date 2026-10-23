@@ -13,7 +13,7 @@ test('Radiohead-It', (t) => {
   t.ok(doc.section('Storia'), 'Radiohead-It: biography or references section')
   t.ok(doc.references().length > 0, 'Radiohead-It: sources for the band history')
   t.ok(doc.categories().includes('Vincitori di Grammy'), 'Radiohead-It: Vincitori di Grammy category')
-  t.ok(doc.links().some((link) => link.page() === 'gruppo musicale'), 'Radiohead-It: gruppo musicale link')
+  t.ok(doc.links().some((link) => link.page() === 'Gruppo musicale'), 'Radiohead-It: gruppo musicale link')
   t.end()
 })
 

@@ -1,4 +1,4 @@
-import defaultParse from '../../parse/templates/parse/toJSON/index.ts'
+import defaultParse from '../../parse/templates/parse/toJSON/text.ts'
 import { percentage } from '../_lib.ts'
 
 let templates = {

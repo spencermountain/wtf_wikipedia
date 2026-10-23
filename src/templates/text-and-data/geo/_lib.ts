@@ -1,4 +1,4 @@
-import defaultParse from '../../../parse/templates/parse/toJSON/index.ts'
+import defaultParse from '../../../parse/templates/parse/toJSON/text.ts'
 
 //converts DMS (decimal-minute-second) geo format to lat/lng format.
 //thanks to https://github.com/gmaclennan/parse-dms and https://github.com/WSDOT-GIS/dms-js

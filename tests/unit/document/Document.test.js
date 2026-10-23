@@ -669,8 +669,8 @@ test('infoboxes - get - return all infoboxes', (t) => {
 })
 
 test('infoboxes - get - field access', (t) => {
-  t.equal(page.infobox().get('name').text(), 'Jane Doe', 'infobox name')
-  t.deepEqual(page.infobox().keyValue(), { name: 'Jane Doe', age: '44' }, 'infobox values')
+  t.equal(page.infobox().get('name').text, 'Jane Doe', 'infobox name')
+  t.deepEqual(Object.fromEntries(Object.entries(page.infobox().json().data).map(([key, value]) => [key, value.text])), { name: 'Jane Doe', age: '44' }, 'infobox values')
   t.end()
 })
 

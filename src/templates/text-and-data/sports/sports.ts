@@ -1,4 +1,4 @@
-import defaultParse from '../../../parse/templates/parse/toJSON/index.ts'
+import defaultParse from '../../../parse/templates/parse/toJSON/text.ts'
 import flags from '../../../_data/flags.ts'
 import playoffBracket from './_lib.ts'
 

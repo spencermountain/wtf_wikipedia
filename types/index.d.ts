@@ -297,8 +297,6 @@ type DocumentOptions = {
   userAgent?: string
   'User-Agent'?: string
   'Api-User-Agent'?: string
-  /** called for templates wtf doesn't recognise. return replacement text, or null to leave it */
-  templateFallbackFn?: (body: string, list: object[], toJSON: Function, unused: null, doc: Document) => string | null
   [key: string]: unknown
 }
 

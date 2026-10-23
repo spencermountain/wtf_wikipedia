@@ -1,11 +1,13 @@
 import type { DocInfo } from '../../../types/index.ts'
 import defaults from '../../../_lib/defaults.ts'
+import { normalizeKey } from '../../../_lib/helpers.ts'
 import templates from '../../../templates/index.ts'
 import aliases from '../../../templates/aliases.ts'
 import ignore from './_ignore.ts'
 import { isInfobox } from './infobox.ts'
 import runParser from './run-parser.ts'
-import toJSON from './toJSON/index.ts'
+import parseArguments from './toJSON/index.ts'
+import parseTextArguments from './toJSON/text.ts'
 import fmtName from './toJSON/_fmtName.ts'
 import makeResult from '../result.ts'
 
@@ -21,16 +23,18 @@ const finish = (wiki, kind, payload, opts, replacement = '') => {
 const parseTemplate = (wiki: string, name: string, opts: DocInfo = defaults) => {
   // Specialized forms take precedence over registry entries.
   if (isInfobox(name)) {
-    return finish(wiki, 'infobox', toJSON(wiki, [], 'raw', opts), opts)
+    const payload = parseArguments(wiki, [], opts)
+    const normalized = Object.fromEntries(Object.entries(payload).map(([key, value]) => [normalizeKey(key), value]))
+    return finish(wiki, 'infobox', normalized, opts)
   }
   if (ignore.has(name)) {
     return { replacement: '', result: null }
   }
   if (/^cite [a-z]/.test(name)) {
-    return finish(wiki, 'citation', toJSON(wiki, [], undefined, opts), opts)
+    return finish(wiki, 'citation', parseTextArguments(wiki, [], opts), opts)
   }
   if (!Object.hasOwn(templates, name)) {
-    const payload = toJSON(wiki, [], undefined, opts)
+    const payload = parseTextArguments(wiki, [], opts)
     return finish(wiki, null, Object.keys(payload).length > 0 ? payload : null, opts)
   }
 

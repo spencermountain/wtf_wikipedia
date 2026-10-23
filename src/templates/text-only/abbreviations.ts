@@ -1,4 +1,4 @@
-import defaultParse from '../../parse/templates/parse/toJSON/index.ts'
+import defaultParse from '../../parse/templates/parse/toJSON/text.ts'
 
 let shorthands = [
   // {{HWV|251d}} - handel, bach

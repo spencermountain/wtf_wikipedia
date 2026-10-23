@@ -7,14 +7,32 @@ test('date template json', (t) => {
     [
       '{{birth date|1941|4|12}}',
       {
-        template: 'date',
-        data: { year: '1941', month: '4', date: '12', template: 'birth date', text: 'April 12, 1941' },
+        template: 'birth date',
+        kind: 'date',
+        wiki: '{{birth date|1941|4|12}}',
+        text: 'April 12, 1941',
+        data: { year: '1941', month: '4', date: '12', text: 'April 12, 1941' },
       },
     ],
-    ['{{birth date and age|1941|4|12}}', { year: '1941', month: '4', day: '12', template: 'birth date and age' }],
+    [
+      '{{birth date and age|1941|4|12}}',
+      {
+        template: 'birth date and age',
+        kind: 'birth date and age',
+        wiki: '{{birth date and age|1941|4|12}}',
+        text: 'April 12, 1941',
+        data: { year: '1941', month: '4', day: '12' },
+      },
+    ],
     [
       '{{death date and age|1993|2|24|1941|4|12}}',
-      { year: '1993', month: '2', day: '24', list: ['1941', '4', '12'], template: 'death date and age' },
+      {
+        template: 'death date and age',
+        kind: 'birth date and age',
+        wiki: '{{death date and age|1993|2|24|1941|4|12}}',
+        text: 'February 24, 1993',
+        data: { year: '1993', month: '2', day: '24', list: ['1941', '4', '12'] },
+      },
     ],
   ]
   arr.forEach(([tmpl, expected]) => {
@@ -25,12 +43,12 @@ test('date template json', (t) => {
 
 test('start date json keeps parsed data', (t) => {
   const json = wtf('{{start date|1976|4|1}}').templates()[0].json()
-  t.equal(json.template, 'date', 'template name')
+  t.equal(json.template, 'start date', 'template name')
+  t.equal(json.kind, 'date', 'recognized date parser')
   t.deepEqual(json.data, {
     year: '1976',
     month: '4',
     date: '1',
-    template: 'start date',
     text: 'April 1, 1976',
   },
     'parsed date fields')

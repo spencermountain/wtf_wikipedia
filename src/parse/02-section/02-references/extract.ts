@@ -1,6 +1,6 @@
 import type { DocInfo } from '../../../types/index.ts'
 import defaults from '../../../_lib/defaults.ts'
-import parse from '../../templates/parse/toJSON/index.ts'
+import parseTextArguments from '../../templates/parse/toJSON/text.ts'
 import parseBlock from '../../block/index.ts'
 import makeResult from '../../templates/result.ts'
 import getTemplates from '../../templates/find/flat.ts'
@@ -26,7 +26,7 @@ const parseBody = (text, wiki, opts: DocInfo = defaults) => {
   const references = getTemplates(text)
     .filter(hasCitation)
     .map((template) => {
-      const { template: _template, ...data } = parse(template, [], undefined, opts)
+      const { template: _template, ...data } = parseTextArguments(template, [], opts)
       const result = makeResult(template, 'citation', data, '', opts)
       result.wiki = wiki
       return result

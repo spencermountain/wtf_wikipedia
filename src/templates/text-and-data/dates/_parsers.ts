@@ -1,14 +1,11 @@
 import strip from '../../../parse/templates/parse/toJSON/_strip.ts'
-import defaultParse from '../../../parse/templates/parse/toJSON/index.ts'
+import defaultParse from '../../../parse/templates/parse/toJSON/text.ts'
 import { delta } from './_lib.ts'
 import { ymd, toText } from './_format.ts'
 
-//wrap it up as a template
-const template = function (date) {
-  return {
-    template: 'date',
-    data: date,
-  }
+// The outer parser owns the envelope; keep date fields in the payload.
+const template = (date) => {
+  return { ...date, template: 'date' }
 }
 
 const getBoth = function (tmpl) {

@@ -27,7 +27,7 @@ test('full fixture: hurricane infobox', (t) => {
   const o = wtf(hurricane).infobox().json().data
   t.equal(o.name.text, 'Tropical Storm Edouard', 'hurricane name')
   t.equal(o.dissipated.text, 'September 6, 2002', 'dissipation date')
-  t.equal(o['hurricane season'].text, '2002 Atlantic hurricane season', 'hurricane season')
+  t.equal(o.hurricane_season.text, '2002 Atlantic hurricane season', 'hurricane season')
   t.equal(o.areas.links[0].page, 'Florida', 'affected area target')
   t.end()
 })

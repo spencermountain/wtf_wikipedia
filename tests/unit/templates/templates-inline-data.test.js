@@ -41,7 +41,7 @@ test('inline-with-data', (t) => {
       'death date',
       '{{Death date | 1993 | 2 | 24 | df=yes }}',
       'February 24, 1993',
-      { data: { year: '1993', month: '2', date: '24', df: 'yes', template: 'death date', text: 'February 24, 1993' } },
+      { year: '1993', month: '2', date: '24', df: 'yes', text: 'February 24, 1993' },
     ],
     [
       'birth based on age as of date',
@@ -53,7 +53,7 @@ test('inline-with-data', (t) => {
       'birth-date and age',
       '{{Birth-date and age|December 1941}}',
       'December 1941',
-      { data: { year: 1941, month: 12, date: 1 } },
+      { year: 1941, month: 12, date: 1 },
     ],
     [
       'birth date and age2',
@@ -65,15 +65,15 @@ test('inline-with-data', (t) => {
       'start-date',
       '{{start-date|December 8, 1941 12:50PM Australia/Adelaide|tz=y}}',
       'December 8, 1941 12:50PM Australia/Adelaide',
-      { data: { year: 1941, month: 12, date: 8 } },
+      { year: 1941, month: 12, date: 8 },
     ],
     [
       'birth date',
       '{{Birth date|year=1993|month=2|day=24}}',
       'February 24, 1993',
-      { data: { year: '1993', month: '2', day: '24', template: 'birth date', text: 'February 24, 1993' } },
+      { year: '1993', month: '2', day: '24', text: 'February 24, 1993' },
     ],
-    ['birthdeathage', '{{BirthDeathAge| |1976| | |1990| |}}', '1990', { data: { year: 1990 } }],
+    ['birthdeathage', '{{BirthDeathAge| |1976| | |1990| |}}', '1990', { year: 1990 }],
     [
       'death year and age',
       '{{Death year and age|2017|1967|12}} ',
@@ -90,7 +90,7 @@ test('inline-with-data', (t) => {
       'death-date and age',
       '{{Death-date and age| 30 May 1672 | 15 May 1623 | gregorian=9 June 1672 }}',
       '30 May 1672',
-      { data: { year: 1672, month: 5, date: 30 } },
+      { year: 1672, month: 5, date: 30 },
     ],
     [
       'death date and given age',
@@ -118,7 +118,7 @@ test('inline-with-data', (t) => {
     const doc = wtf(input)
     t.equal(doc.templates().length, 1, name + ': template count')
     t.equal(doc.text(), text, name + ': text')
-    const json = doc.template().json()
+    const json = doc.template().json().data
     Object.entries(fields).forEach(([key, value]) => {
       t.deepEqual(json[key], value, name + ': ' + key)
     })

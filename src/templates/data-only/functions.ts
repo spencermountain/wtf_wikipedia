@@ -1,4 +1,4 @@
-import defaultParse from '../../parse/templates/parse/toJSON/index.ts'
+import defaultParse from '../../parse/templates/parse/toJSON/text.ts'
 import parseImgString from '../../parse/03-paragraph/02-images/parse.ts'
 
 import { getLang, sisterProjects, toNumber } from '../_lib.ts'

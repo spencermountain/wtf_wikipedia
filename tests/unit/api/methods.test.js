@@ -26,6 +26,7 @@ const is = {
   number: Number.isFinite,
   'item|null': (v) => v === null || isObject(v),
   'model|null': (v) => v === null || isModel(v),
+  'model|undefined': (v) => v === undefined || isModel(v),
   'models|null': (v) => v === null || (Array.isArray(v) && v.every(isModel)),
   json: (v) => {
     JSON.stringify(v) // must not throw (no cycles)
@@ -186,9 +187,7 @@ const contracts = {
   },
   Infobox: {
     type: 'string',
-    template: 'string',
-    keyValue: 'object',
-    image: 'model|null',
+    image: 'model|undefined',
     images: 'array',
     links: 'array',
     coordinates: 'item|null',
@@ -284,6 +283,10 @@ test('contract: every cached page', (t) => {
     const json = doc.json()
     const roundTrip = JSON.parse(JSON.stringify(json))
     t.ok(roundTrip && typeof doc.text() === 'string', page)
+    doc.infoboxes().forEach((box) => {
+      t.equal(typeof box.json().template, 'string', `${page}: infobox template`)
+      t.ok(isObject(box.json().data), `${page}: infobox fields`)
+    })
   })
   t.end()
 })

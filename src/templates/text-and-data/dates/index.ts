@@ -1,5 +1,5 @@
 import parsers from './_parsers.ts'
-import defaultParse from '../../../parse/templates/parse/toJSON/index.ts'
+import defaultParse from '../../../parse/templates/parse/toJSON/text.ts'
 import { days, timeSince } from './_lib.ts'
 import { toOrdinal } from '../../_lib.ts'
 import { ymd, toText, toTextBritish } from './_format.ts'

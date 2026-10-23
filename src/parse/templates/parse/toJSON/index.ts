@@ -8,19 +8,7 @@ import pipeSplitter from './01-pipe-splitter.ts'
 import keyMaker from './02-keyMaker.ts'
 import cleanup from './03-cleanup.ts'
 
-const makeFormat = function (str, fmt, opts: DocInfo = defaults) {
-  let block = parseBlock(str, opts)
-  //support various output formats
-  if (fmt === 'json') {
-    return block
-  } else if (fmt === 'raw') {
-    return block
-  }
-  //default to flat text
-  return block.text
-}
-
-const parser = function (tmpl: string, order = [], fmt?: string, opts: DocInfo = defaults) {
+const parseArguments = (tmpl: string, order = [], opts: DocInfo = defaults) => {
   //remove {{}}'s and split based on pipes
   tmpl = strip(tmpl || '')
   let arr = pipeSplitter(tmpl)
@@ -33,9 +21,6 @@ const parser = function (tmpl: string, order = [], fmt?: string, opts: DocInfo =
   //remove wiki-junk
   obj = cleanup(obj)
 
-  //is this a infobox/reference?
-  //let known = isKnown(obj);
-
   //using '|1=content' is an escaping-thing..
   if (obj['1'] && order[0] && Object.hasOwn(obj, order[0]) === false) {
     //move it over..
@@ -43,13 +28,19 @@ const parser = function (tmpl: string, order = [], fmt?: string, opts: DocInfo =
     delete obj['1']
   }
 
-  Object.keys(obj).forEach((k) => {
-    if (k === 'list') {
-      obj[k] = obj[k].map((v) => makeFormat(v, fmt, opts))
-      return
+  // Preserve rich values here; callers choose whether to simplify them.
+  const keys = Object.keys(obj)
+  for (let i = 0; i < keys.length; i += 1) {
+    const key = keys[i]
+    if (key === 'list') {
+      const values = obj[key]
+      for (let j = 0; j < values.length; j += 1) {
+        values[j] = parseBlock(values[j], opts)
+      }
+    } else {
+      obj[key] = parseBlock(obj[key], opts)
     }
-    obj[k] = makeFormat(obj[k], fmt, opts)
-  })
+  }
 
   //add the template name
   if (name) {
@@ -57,4 +48,4 @@ const parser = function (tmpl: string, order = [], fmt?: string, opts: DocInfo =
   }
   return obj
 }
-export default parser
+export default parseArguments

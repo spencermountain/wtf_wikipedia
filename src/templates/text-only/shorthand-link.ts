@@ -1,4 +1,4 @@
-import defaultParse from '../../parse/templates/parse/toJSON/index.ts'
+import defaultParse from '../../parse/templates/parse/toJSON/text.ts'
 let templates = {}
 // these templates all have a predictable pattern
 // {{HSC|Ship Name|ID}} -> [[HSC Name (id)]]

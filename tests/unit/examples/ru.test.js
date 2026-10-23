@@ -28,7 +28,7 @@ test('Willow-Ru', (t) => {
   t.ok(doc.images().length > 0, 'Willow-Ru: willow illustrations')
   t.ok(doc.categories().length > 0, 'Willow-Ru: botanical categories')
   t.ok(doc.categories().includes('Ива'), 'Willow-Ru: Ива category')
-  t.ok(doc.links().some((link) => link.page() === 'род (биология)'), 'Willow-Ru: род (биология) link')
+  t.ok(doc.links().some((link) => link.page() === 'Род (биология)'), 'Willow-Ru: род (биология) link')
   t.end()
 })
 

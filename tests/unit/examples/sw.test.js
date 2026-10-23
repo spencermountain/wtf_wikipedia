@@ -13,7 +13,7 @@ test('Taarab-Sw', (t) => {
   t.ok(doc.categories().includes('Muziki wa Tanzania'), 'Taarab-Sw: Tanzanian music category')
   t.ok(doc.references().length > 0, 'Taarab-Sw: music history sources')
   t.ok(doc.categories().includes('Muziki wa Kenya'), 'Taarab-Sw: Muziki wa Kenya category')
-  t.ok(doc.links().some((link) => link.page() === 'muziki'), 'Taarab-Sw: muziki link')
+  t.ok(doc.links().some((link) => link.page() === 'Muziki'), 'Taarab-Sw: muziki link')
   t.end()
 })
 
@@ -30,7 +30,7 @@ test('Tennis-Sw', (t) => {
     doc.images().some((image) => image.file().endsWith(':Tennisball.jpg')),
     'Tennis-Sw: tennis ball gallery photograph'
   )
-  t.ok(doc.links().some((link) => link.page() === 'michezo'), 'Tennis-Sw: michezo link')
+  t.ok(doc.links().some((link) => link.page() === 'Michezo'), 'Tennis-Sw: michezo link')
   t.ok(doc.section('Historia ya michezo'), 'Tennis-Sw: Historia ya michezo section')
   t.end()
 })

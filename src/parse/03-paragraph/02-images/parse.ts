@@ -1,8 +1,7 @@
 import defaults from '../../../_lib/defaults.ts'
 import { images } from '../../../_data/i18n/index.ts'
-import parseTemplate from '../../templates/parse/toJSON/index.ts'
+import parseArguments from '../../templates/parse/toJSON/index.ts'
 import normalizeFile from './normalize.ts'
-import parseBlock from '../../block/index.ts'
 import type { DocInfo, ImageData } from '../../../types/index.ts'
 
 //regexes:
@@ -56,7 +55,7 @@ const parseImgString = function (wiki: string, opts: DocInfo = defaults) {
     // use the template parser to parse the image string
     //https://en.wikipedia.org/wiki/Wikipedia:Extended_image_syntax
     //- [[File:Name|Type|Border|Location|Alignment|Size|link=Link|alt=Alt|lang=Langtag|Caption]]
-    let parsed = parseTemplate(wiki, [], 'raw', opts)
+    let parsed = parseArguments(wiki, [], opts)
     let arr = parsed.list || []
     //parse-out alt text, if explicitly given
     if (parsed.alt) {

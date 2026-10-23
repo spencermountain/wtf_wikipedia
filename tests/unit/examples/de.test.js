@@ -9,11 +9,11 @@ test('BBDO', (t) => {
     doc.links().some((link) => link.page() === 'Gesellschaft mit beschränkter Haftung (Deutschland)'),
     'BBDO: company legal-form link'
   )
-  t.equal(doc.infobox().get('Name').text(), 'BBDO Germany GmbH', 'BBDO: German company name')
-  t.equal(doc.infobox().get('ISIN').text(), 'nicht vorhanden', 'BBDO: stock identifier status')
+  t.equal(doc.infobox().get('Name').text, 'BBDO Germany GmbH', 'BBDO: German company name')
+  t.equal(doc.infobox().get('ISIN').text, 'nicht vorhanden', 'BBDO: stock identifier status')
   t.match(doc.text(), /Werbe- und Marketingagentur/, 'BBDO: German business description')
   t.ok(
-    doc.infoboxes().some((box) => box.get('Gründungsdatum').text() === '1956'),
+    doc.infoboxes().some((box) => box.get('Gründungsdatum').text === '1956'),
     'BBDO: Gründungsdatum field'
   )
   t.ok(doc.categories().includes('Werbeagentur'), 'BBDO: Werbeagentur category')
@@ -32,7 +32,7 @@ test('Bazooka', (t) => {
   t.ok(doc.references().length > 0, 'Bazooka: historical sources')
   t.ok(doc.categories().includes('Panzerabwehrrakete'), 'Bazooka: Panzerabwehrrakete category')
   t.ok(
-    doc.links().some((link) => link.page() === 'reaktive Panzerbüchse'),
+    doc.links().some((link) => link.page() === 'Reaktive Panzerbüchse'),
     'Bazooka: reaktive Panzerbüchse link'
   )
   t.end()
@@ -101,13 +101,13 @@ test('Liste-Der-Argentinischen-Botschafter-In-Chile', (t) => {
 test('Maurische-Netzwuhle', (t) => {
   const doc = wtf(readPage('Maurische-Netzwuhle'))
   t.match(doc.text(), /Blanus cinereus/, 'Maurische-Netzwuhle: scientific species name')
-  t.equal(doc.title(), 'Maurische Netzwühle', 'Maurische-Netzwuhle: German species name')
+  t.equal(doc.title, 'Maurische Netzwühle', 'Maurische-Netzwuhle: German species name')
   t.equal(
-    doc.infobox().get('Taxon_WissName').text(),
+    doc.infobox().get('Taxon_WissName').text,
     'Blanus cinereus',
     'Maurische-Netzwuhle: taxonomic scientific name field'
   )
-  t.equal(doc.infobox().get('Taxon_Rang').text(), 'Art', 'Maurische-Netzwuhle: species taxonomic rank')
+  t.equal(doc.infobox().get('Taxon_Rang').text, 'Art', 'Maurische-Netzwuhle: species taxonomic rank')
   t.ok(doc.categories().length > 0, 'Maurische-Netzwuhle: species categories')
   t.ok(doc.categories().includes('Doppelschleichen'), 'Maurische-Netzwuhle: Doppelschleichen category')
   t.ok(
@@ -137,7 +137,7 @@ test('Mozilla-Firefox', (t) => {
 
 test('Sara-C-Bisel', (t) => {
   const doc = wtf(readPage('Sara-C-Bisel'))
-  t.equal(doc.title(), 'Sara C. Bisel', 'Sara-C-Bisel: archaeologist name')
+  t.equal(doc.title, 'Sara C. Bisel', 'Sara-C-Bisel: archaeologist name')
   t.ok(
     doc.links().some((link) => link.page() === 'Archäologie'),
     'Sara-C-Bisel: German archaeology link'
@@ -155,7 +155,7 @@ test('Sara-C-Bisel', (t) => {
 
 test('Wendy-Mogel', (t) => {
   const doc = wtf(readPage('Wendy-Mogel'))
-  t.equal(doc.title(), 'Wendy Mogel', 'Wendy-Mogel: psychologist name')
+  t.equal(doc.title, 'Wendy Mogel', 'Wendy-Mogel: psychologist name')
   t.ok(
     doc.links().some((link) => link.page() === 'Klinische Psychologie'),
     'Wendy-Mogel: German clinical psychology link'

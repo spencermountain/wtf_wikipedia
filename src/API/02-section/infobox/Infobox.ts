@@ -56,7 +56,8 @@ class Infobox {
     return null
   }
   getFirst(choices: string[]) {
-    return choices.find((key) => this.get(key))
+    const key = choices.find((choice) => this.get(choice))
+    return key === undefined ? undefined : this.get(key)
   }
   getAll(choices: string[]) {
     return choices.map((key) => this.get(key))
@@ -92,8 +93,8 @@ class Infobox {
     // loop through i18n latitude and longitude properties
     for (let i = 0; i < latLngs.length; i += 1) {
       let a = latLngs[i]
-      const latText = this.get(a[0])?.text().trim()
-      const lonText = this.get(a[1])?.text().trim()
+      const latText = this.get(a[0])?.text.trim()
+      const lonText = this.get(a[1])?.text.trim()
       if (!latText || !lonText) {
         continue
       }
