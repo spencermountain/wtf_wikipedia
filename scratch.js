@@ -20,10 +20,21 @@ str = `
 `
 // str = readPage('United-Kingdom')
 
-str = `[[File:Cool.jpg|thumb|this is [[cool]]]]
+str = `{| class="wikitable"
+|-
+! AAA
+! [[BBB]]
+! CCC
+! DDD
+|-
+| {{unbulleted list|A1}}
+| {{unbulleted list|B1|B2}}
+| {{ubl|{{Lbb|C1}}|{{nowrap|{{Lbc|C2|C3}}}}}}
+| {{unbulleted list|[[D1]],|[[D2]]}}
+|}
   `
 const doc = wtf(str, meta)
-console.log(doc.images()[0].json())
+console.log(doc.tables()[0].cells())
 console.log(doc.links().map((l) => l.json()))
 // const table = doc.tables()[0]
 // console.log(table.getRows(['Name', 'team']))

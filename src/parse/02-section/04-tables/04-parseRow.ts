@@ -13,7 +13,7 @@ const normalize = function (key = '') {
 const parseRow = function (arr, headers) {
   let row = {}
   arr.forEach((str, i) => {
-    let h = headers[i] || 'col' + (i + 1)
+    let h = headers[i]?.text || 'col' + (i + 1)
     h = normalize(h)
 
     let s = parseBlock(str)

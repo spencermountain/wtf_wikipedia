@@ -17,7 +17,13 @@ class Table {
   }
 
   cells() {
-    return this.#data.rows.flatMap((row) => Object.values(row))
+    let arr = this.#data.headers
+    this.#data.rows.forEach((row) => {
+      Object.values(row).forEach((cell) => {
+        arr.push(cell)
+      })
+    })
+    return arr
   }
   links() {
     const links = []
@@ -34,6 +40,9 @@ class Table {
   cols() {
     const row = this.#data.rows[0]
     return Object.keys(row || {})
+  }
+  headers() {
+    return this.#data.headers
   }
   rows() {
     // simplify data into one string per cell

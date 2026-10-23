@@ -10,13 +10,16 @@ const parseTable = (wiki: string, opts?: DocInfo) => {
   const lines = splitLines(wiki)
   let rows = findRows(lines).filter((row) => row)
   if (rows.length === 0) {
-    return []
+    return {}
   }
 
   rows = removeMidSpans(rows)
   rows = handleSpans(rows)
   const table = extractHeaders(rows)
-  return table.rows.map((row) => parseRow(row, table.headers))
+  return {
+    headers: table.headers,
+    rows: table.rows.map((row) => parseRow(row, table.headers)),
+  }
 }
 
 export default parseTable

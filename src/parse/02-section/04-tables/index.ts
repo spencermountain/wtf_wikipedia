@@ -36,11 +36,12 @@ const findTables = function (section: SectionData, opts?: DocInfo) {
       //also re-remove a newline at the end of the table (awkward)
       wiki = wiki.replace(str + '\n', '')
       wiki = wiki.replace(str, '')
-      let data = parseTable(str, opts)
-      if (data && data.length > 0) {
+      const { headers, rows } = parseTable(str, opts)
+      if (rows && rows.length > 0) {
         const table: TableData = {
           wiki: str,
-          rows: data,
+          rows: rows,
+          headers: headers,
         }
         tables.push(table)
       }

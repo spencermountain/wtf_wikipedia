@@ -70,6 +70,7 @@ export interface ParagraphData {
 export interface TableData {
   wiki: string
   rows: object[]
+  headers: BlockData[]
 }
 
 export interface SectionData {
