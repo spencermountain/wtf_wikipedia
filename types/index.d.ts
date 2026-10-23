@@ -1,40 +1,15 @@
+import type {
+  Collection,
+  CollectionItem,
+  LinkCollection,
+  SectionCollection,
+  TemplateCollection,
+  InfoboxCollection,
+} from './plural-wrapper.js'
+
 type JsonFormat = 'sm' | 'md' | 'lg' | 'xl'
 
 type FormattingJson = { text: string; wiki?: string; start: number; end: number }
-
-type CollectionItem = {
-  json: (format?: JsonFormat) => any
-  text: (...args: any[]) => string
-  wikitext: () => string
-}
-
-interface Collection<T extends CollectionItem> extends Array<T> {
-  isEmpty(): boolean
-  select(selector?: number): this
-  filter<S extends T>(predicate: (value: T, index: number, array: T[]) => value is S, thisArg?: any): Collection<S>
-  filter(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): this
-  slice(start?: number, end?: number): this
-  json(format?: JsonFormat): ReturnType<T['json']>[]
-  text(options?: object): string
-  wikitext(): string
-}
-
-interface LinkCollection extends Collection<Link> {
-  select(selector?: string | number): this
-  pages(): string[]
-}
-
-interface SectionCollection extends Collection<Section> {
-  select(selector?: string | number): this
-}
-
-interface TemplateCollection extends Collection<Template> {
-  select(selector?: string | number): this
-}
-
-interface InfoboxCollection extends Collection<Infobox> {
-  select(selector?: string | number): this
-}
 
 declare class Image {
   alt(): string
@@ -42,10 +17,9 @@ declare class Image {
   file(): string
   format(): string | null
   json(format?: JsonFormat): ImageJson
-  links(selector?: string | number): LinkCollection
+  links(): Link[]
   src(): string
   text(): string
-  thumb(size?: number): string
   thumbnail(size?: number): string
   url(): string
   wikitext(): string
@@ -53,98 +27,67 @@ declare class Image {
 
 declare class Document {
   categories(clue?: number): string[]
-  citations(clue?: number): Collection<Reference>
-  citation(clue?: number): Reference | null
-  coordinate(clue?: number): Coordinate | null
+  citations(clue?: number): Reference[]
   coordinates(clue?: number): Coordinate[]
   debug(): Document
-  domain(str?: string): string | null
+  domain: string | null
   images(selector?: number): Collection<Image>
-  image(selector?: number): Image | null
   infoboxes(clue?: string | number): InfoboxCollection
   infobox(clue?: string | number): Infobox | null
-  interwiki(selector?: string | number): LinkCollection
+  interwiki(): Link[]
   isDisambig(): boolean
   isDisambiguation(): boolean
   isRedirect(): boolean
   isStub(): boolean
   json(format?: JsonFormat): Record<string, unknown>
-  lang(lang?: string): string | null
-  language(lang?: string): string | null
-  links(selector?: string | number): LinkCollection
-  link(clue?: string | number): Link | null
+  language: string | null
+  links(): LinkCollection
   lists(clue?: number): List[]
-  list(clue?: number): List | null
-  namespace(ns?: string | number): string | number | null
-  ns(ns?: string | number): string | number | null
+  namespace: string | number | null
   options(): DocumentOptions
-  pageID(id?: number): number | null
-  paragraph(selector?: number): Paragraph | null
-  paragraphs(selector?: number): Collection<Paragraph>
+  pageID: number | null
+  paragraphs(selector?: number): Paragraph[]
   redirect(): LinkJson | null
-  redirects(): Record<string, unknown> | null
   redirectsTo(): LinkJson | null
   redirectTo(): LinkJson | null
-  references(clue?: number): Collection<Reference>
-  reference(clue?: number): Reference | null
+  references(clue?: number): Reference[]
   section(clue?: string | number): Section
   sections(clue?: string | number): SectionCollection
   sentence(clue?: number): Sentence | null
   sentences(selector?: number): Collection<Sentence>
   tables(clue?: number): Table[]
-  table(clue?: number): Table | null
   templates(clue?: string | number): TemplateCollection
   template(clue?: string | number): Template | null
   text(options?: object): string
-  title(str?: string): null | string
+  title: string | null
   url(): string | null
-  wikidata(id?: string): string | null
+  wikidata: string | null
   wikitext(): string
-  revisionID(id?: number): number | null
-  description(desc?: string): string | null
-  timestamp(iso?: string): string | null
-  pageImage(img?: string): Image
+  revisionID: number | null
+  description: string | null
+  timestamp: string | null
+  pageImage: string | null
 }
 
 declare class Section {
   static empty(): Section
   isEmpty(): boolean
-  child(selector?: string | number): Section | null
-  children(selector?: string | number): SectionCollection
-  citations(clue?: number): Collection<Reference>
-  citation(clue?: number): Reference | null
+  citations(clue?: number): Reference[]
   coordinates(clue?: number): Coordinate[]
-  coordinate(clue?: number): Coordinate | null
   depth(): number
   images(clue?: number): Collection<Image>
-  image(clue?: number): Image | null
   indentation(): number
   index(): number | null
   infoboxes(clue?: string | number): InfoboxCollection
-  infobox(clue?: string | number): Infobox | null
-  interwiki(selector?: string | number): LinkCollection
+  interwiki(): Link[]
   json(format?: JsonFormat): Record<string, unknown>
-  last(): Section | null
-  lastSibling(): Section | null
-  links(selector?: string | number): LinkCollection
-  link(clue?: string | number): Link | null
+  links(): LinkCollection
   lists(clue?: number): List[]
-  list(clue?: number): List | null
-  next(): Section | null
-  nextSibling(): Section | null
-  paragraphs(clue?: number): Collection<Paragraph>
-  paragraph(selector?: number): Paragraph | null
-  parent(): Section | null
-  previous(): Section | null
-  previousSibling(): Section | null
-  references(clue?: number): Collection<Reference>
-  reference(clue?: number): Reference | null
-  remove(): null | Document
-  sections(selector?: string | number): SectionCollection
+  paragraphs(clue?: number): Paragraph[]
+  references(clue?: number): Reference[]
   sentences(clue?: number): Collection<Sentence>
   sentence(clue?: number): Sentence | null
   tables(clue?: number): Table[]
-  table(clue?: number): Table | null
   templates(clue?: string | number): TemplateCollection
   template(clue?: string | number): Template | null
   text(options?: object): string
@@ -180,14 +123,8 @@ declare class Template {
 declare class Table {
   cells(): BlockJson[]
   headers(): BlockJson[]
-  // a string key gets a flat column; an array of keys gets a row-list
-  get(key: string): (string | null)[]
-  get(keys: string[]): Record<string, string>[]
   json(format?: JsonFormat): Record<string, unknown>
-  keyval(options?: object): Record<string, string>[]
-  keyValue(options?: object): Record<string, string>[]
-  keyvalue(options?: object): Record<string, string>[]
-  links(selector?: string | number): LinkCollection
+  links(): Link[]
   text(): string
   wikitext(): string
 }
@@ -202,34 +139,24 @@ declare class Reference {
 }
 
 declare class Paragraph {
-  citations(clue?: number): Collection<Reference>
-  citation(clue?: number): Reference | null
   images(clue?: number): Collection<Image>
-  image(clue?: number): Image | null
   interwiki(): LinkJson[]
   json(format?: JsonFormat): Record<string, unknown>
-  links(selector?: string | number): LinkCollection
-  link(clue?: string | number): Link | null
+  links(): LinkCollection
   lists(clue?: number): List[]
-  list(clue?: number): List | null
-  references(clue?: number): Collection<Reference>
-  reference(clue?: number): Reference | null
   sentences(clue?: number): Collection<Sentence>
-  sentence(clue?: number): Sentence | null
   text(options?: object): string
   wikitext(): string
 }
 
 declare class Link {
-  text(str?: string): string
+  text(): string
   json(format?: JsonFormat): LinkJson
   wikitext(): string
-  page(str?: string): string
-  anchor(str?: string): string
+  page(): string
+  anchor(): string
   wiki(): string
-  interwiki(): string | { wiki: string; lang: string } | undefined
-  type(str?: string): string
-  site(str?: string): string
+  type(): 'internal' | 'external' | 'interwiki'
   href(): string
 }
 
@@ -237,22 +164,19 @@ declare class List {
   json(format?: JsonFormat): Record<string, unknown>
   lines(): BlockJson[]
   items(): BlockJson[]
-  links(selector?: string | number): LinkCollection
+  links(): Link[]
   text(): string
   wikitext(): string
 }
 
 declare class Sentence {
   static empty(): Sentence
-  bold(clue?: number): string | null
   bolds(clue?: number): FormattingJson[]
   interwiki(): LinkJson[]
   isEmpty(): boolean
-  italic(clue?: number): string | null
   italics(clue?: number): FormattingJson[]
   json(format?: JsonFormat): Record<string, unknown>
-  link(clue?: string | number): Link | null
-  links(selector?: string | number): LinkCollection
+  links(): Link[]
   text(str?: string): string
   wikitext(): string
 }

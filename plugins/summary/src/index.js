@@ -10,7 +10,7 @@ const defaults = {
   sentence: true,
   category: true,
   max: 80,
-  min: 3
+  min: 3,
 }
 
 const seemsGood = function (txt, options) {
@@ -56,7 +56,7 @@ const plugin = function (models) {
 
   // was event in past? is person dead?
   models.Doc.prototype.tense = function () {
-    const txt = this.sentence() ? this.sentence().text() : ''
+    const txt = this.sentences()[0]?.text() || ''
     const doc = nlp(txt)
     const copula = doc.match('#Copula+').first()
     if (copula.has('was')) {

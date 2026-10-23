@@ -1,7 +1,7 @@
 import spacetime from 'spacetime'
 
 const parseSentence = function (doc) {
-  const s = doc.sentence()
+  const s = doc.sentences()[0]
   if (!s) {
     return null
   }

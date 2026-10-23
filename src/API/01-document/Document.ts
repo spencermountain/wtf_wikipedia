@@ -1,3 +1,6 @@
+import Sentences from '../03-paragraph/sentence/Sentences.ts'
+import Lists from '../03-paragraph/list/Lists.ts'
+import Images from '../03-paragraph/image/Images.ts'
 /* eslint-disable no-console */
 import { withDefaults } from '../../_lib/defaults.ts'
 import sectionMap from './_sectionMap.ts'
@@ -149,10 +152,10 @@ class Document {
   }
 
   sentence() {
-    return this.sections()[0].sentence()
+    return this.sections()[0].sentences()[0]
   }
   sentences() {
-    return this.sections().flatMap((section) => section.sentences())
+    return Sentences.from(this.sections().flatMap((section) => section.sentences()))
   }
 
   // searches the whole page, including infobox and gallery templates, for images
@@ -183,7 +186,7 @@ class Document {
         }
       })
     })
-    return arr
+    return Images.from(arr)
   }
 
   links() {
@@ -194,9 +197,8 @@ class Document {
     return this.sections().flatMap((sec) => sec.interwiki())
   }
 
-  // TODO: List collections have nested JSON. Keep the existing array API for now.
   lists() {
-    return sectionMap(this, 'lists', null)
+    return Lists.from(sectionMap(this, 'lists', null))
   }
 
   // TODO: Table collections have nested JSON. Keep the existing array API for now.

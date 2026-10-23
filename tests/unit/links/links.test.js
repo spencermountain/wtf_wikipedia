@@ -56,12 +56,12 @@ test('anchor-links', (t) => {
   t.equal(link.anchor(), 'Problems', 'anchor2')
 
   // t.equal(
-  //   doc.sentence().html(),
+  //   doc.sentences()[0].html(),
   //   '<span class="sentence"><a class="link" href="./Toronto_Blue_Jays#Problems">Tranno J birds</a></span>',
   //   'html-anchor'
   // )
   // t.equal(
-  //   doc.sentence().markdown(),
+  //   doc.sentences()[0].markdown(),
   //   '[Tranno J birds](./Toronto_Blue_Jays#Problems)',
   //   'markdown-anchor'
   // )

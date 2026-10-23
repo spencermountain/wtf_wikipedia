@@ -164,7 +164,7 @@ test('Anarchism', (t) => {
   const doc = wtf(readPage('Anarchism'))
   t.equal(doc.title, 'Anarchism', 'Anarchism: article title')
   t.ok(doc.lists().length > 0, 'Anarchism: article includes lists')
-  t.match(doc.sentence().text(), /political philosophy/, 'Anarchism: opening definition')
+  t.match(doc.sentences()[0].text(), /political philosophy/, 'Anarchism: opening definition')
   t.ok(doc.section('History'), 'Anarchism: history section')
   t.ok(doc.references().length > 0, 'Anarchism: historical sources')
   t.ok(doc.categories().includes('Political culture'), 'Anarchism: Political culture category')
@@ -407,11 +407,7 @@ test('Direct-Representation', (t) => {
 
 test('Dollar-Point-California', (t) => {
   const doc = wtf(readPage('Dollar-Point-California'))
-  t.equal(
-    doc.infobox().get('official_name').text,
-    'Dollar Point, California',
-    'Dollar-Point-California: official name'
-  )
+  t.equal(doc.infobox().get('official_name').text, 'Dollar Point, California', 'Dollar-Point-California: official name')
   t.equal(doc.coordinates()[0].lat, 39.18861, 'Dollar-Point-California: latitude')
   t.equal(doc.coordinates()[0].lon, -120.10889, 'Dollar-Point-California: longitude')
   t.equal(
@@ -539,7 +535,7 @@ test('History-Of-Rugby-Union-Matches-Between-Scotland-And-Wales', (t) => {
   )
   t.ok(doc.tables().length > 0, 'History-Of-Rugby-Union-Matches-Between-Scotland-And-Wales: match results tables')
   t.match(
-    doc.sentence().text(),
+    doc.sentences()[0].text(),
     /1883/,
     'History-Of-Rugby-Union-Matches-Between-Scotland-And-Wales: start of the rivalry'
   )
@@ -671,7 +667,7 @@ test('Neil-McLean-Saxophonist', (t) => {
     doc.links().some((link) => link.page() === 'Ray Reach and Friends'),
     'Neil-McLean-Saxophonist: musical collaborators'
   )
-  t.match(doc.sentence().text(), /American saxophonist/, 'Neil-McLean-Saxophonist: occupation')
+  t.match(doc.sentences()[0].text(), /American saxophonist/, 'Neil-McLean-Saxophonist: occupation')
   t.match(doc.text(), /Tyler, Texas/, 'Neil-McLean-Saxophonist: residence')
   t.ok(
     doc.links().some((link) => link.type() === 'external'),
@@ -718,7 +714,7 @@ test('RNLI-Stations', (t) => {
     doc.images().some((image) => /Tenby/.test(image.file())),
     'RNLI-Stations: Tenby lifeboat station photograph'
   )
-  t.equal(doc.section('East Division').indentation(), 1, 'RNLI-Stations: regional section depth')
+  t.equal(doc.section('East Division').depth(), 1, 'RNLI-Stations: regional section depth')
   t.ok(doc.categories().includes('Ireland-related lists'), 'RNLI-Stations: Ireland-related lists category')
   t.ok(
     doc.links().some((link) => link.page() === 'Royal National Lifeboat Institution'),
@@ -878,11 +874,7 @@ test('Routing-And-Remote-Access-Service', (t) => {
 test('Royal-Cinema', (t) => {
   const doc = wtf(readPage('Royal-Cinema'))
   t.equal(doc.infobox().get('name').text, 'Royal Cinema', 'Royal-Cinema: venue name')
-  t.equal(
-    doc.infobox().get('former names').text,
-    'The Pylon, The Golden Princess',
-    'Royal-Cinema: former venue names'
-  )
+  t.equal(doc.infobox().get('former names').text, 'The Pylon, The Golden Princess', 'Royal-Cinema: former venue names')
   t.equal(doc.infobox().type(), 'venue', 'Royal-Cinema: venue infobox')
   t.match(doc.images()[0].file(), /Royal_Cinema\.JPG$/, 'Royal-Cinema: cinema photograph')
   t.equal(doc.infobox().get('caption').text, 'The Royal Cinema in 2009', 'Royal-Cinema: photo caption')
@@ -1029,7 +1021,11 @@ test('The-Field-Of-Waterloo', (t) => {
 
 test('Toronto', (t) => {
   const doc = wtf(readPage('Toronto'))
-  t.deepEqual(withoutWiki(doc.coordinates()[0]), { template: 'infobox/lat-long', lat: 43.7, lon: -79.4 }, 'Toronto: city coordinates')
+  t.deepEqual(
+    withoutWiki(doc.coordinates()[0]),
+    { template: 'infobox/lat-long', lat: 43.7, lon: -79.4 },
+    'Toronto: city coordinates'
+  )
   t.equal(doc.title, 'Toronto', 'Toronto: city title')
   t.ok(
     doc.links().some((link) => link.page() === 'Ontario'),

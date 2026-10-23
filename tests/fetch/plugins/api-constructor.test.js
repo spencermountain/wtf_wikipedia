@@ -28,6 +28,6 @@ test('wtf.fetchList', async (t) => {
   const arr = ['Marina Gilardoni', 'Jessica Kilian', 'Tanja Morel']
   const docs = await wtf.fetchList(arr, opts)
   docs.forEach((doc) => {
-    t.ok(doc.sentence().text(), `got ${doc.title()}`)
+    t.ok(doc.sentences()[0].text(), `got ${doc.title()}`)
   })
 })

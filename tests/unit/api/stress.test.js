@@ -33,7 +33,7 @@ test('cached-page-stress', (t) => {
     t.ok(doc.sections().length > 0, `${title}:section-length`)
     const intro = doc.sections()[0]
     t.ok(intro.title() === '', `${title}:intro-title-empty`)
-    t.ok(intro.indentation() === 0, `${title}:depth=0`)
+    t.ok(intro.depth() === 0, `${title}:depth=0`)
     t.ok(intro.sentences().length > 0, `${title}:sentences-length`)
     t.ok(intro.sentences()[0].text().length > 0, `${title}:intro-text`)
     t.match(intro.sentences()[0].text(), /\p{L}/u, `${title}:intro-has words`)

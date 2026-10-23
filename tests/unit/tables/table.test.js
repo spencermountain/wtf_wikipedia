@@ -22,7 +22,7 @@ test('rnli stations', (t) => {
   t.equal(intro.sentences().length > 0, true, 'intro-sentence-length')
 
   const key = doc.section(1)
-  t.equal(key.indentation(), 0, 'key-depth')
+  t.equal(key.depth(), 0, 'key-depth')
   t.equal(key.title(), 'Key', 'key-title')
   t.equal(key.sentences().length, 0, 'key-no-sentences')
   t.deepEqual(key.images().length, 0, 'key-no-images')
@@ -31,7 +31,7 @@ test('rnli stations', (t) => {
   t.deepEqual(key.tables().length, 0, 'key-no-tables')
 
   const lifeboat = doc.section(2)
-  t.equal(lifeboat.indentation(), 1, 'lifeboat-depth')
+  t.equal(lifeboat.depth(), 1, 'lifeboat-depth')
   t.equal(lifeboat.template().json().data.list[0], 'Royal National Lifeboat Institution lifeboats', 'lifeboat-main')
   t.equal(lifeboat.lists()[0].json().items.length, 3, 'lifeboat-list')
   t.equal(lifeboat.sentences().length, 3, 'lifeboat-sentences')
@@ -282,7 +282,7 @@ test('embedded-table-2', (t) => {
   Actual first sentence is here`
   const doc = wtf(str)
   t.equal(doc.tables().length, 2, 'found both tables')
-  const text = doc.sentence().text()
+  const text = doc.sentences()[0].text()
   t.equal('Actual first sentence is here', text, 'got proper first sentence')
   t.end()
 })

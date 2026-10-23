@@ -34,16 +34,16 @@ Career text goes here.
 `
 const doc = wtf(PAGE)
 
-test('section - title / depth / indentation / index', (t) => {
-  const shape = doc.sections().map((s) => [s.title(), s.depth(), s.indentation(), s.index()])
+test('section - title / depth / index', (t) => {
+  const shape = doc.sections().map((s) => [s.title(), s.depth(), s.index()])
   t.deepEqual(
     shape,
     [
-      ['', 0, 0, 0],
-      ['History', 0, 0, 1],
-      ['Early days', 1, 1, 2],
-      ['Career', 0, 0, 3],
-      ['See also', 0, 0, 4],
+      ['', 0, 0],
+      ['History', 0, 1],
+      ['Early days', 1, 2],
+      ['Career', 0, 3],
+      ['See also', 0, 4],
     ],
     'section heading properties'
   )
@@ -58,7 +58,7 @@ test('section - sentences', (t) => {
     'sentence texts'
   )
   t.equal(sec.sentence(1).text(), 'It grew quickly.', 'sentence by index')
-  t.equal(sec.sentence().text(), 'The city was founded in 1904.', 'first sentence')
+  t.equal(sec.sentences()[0].text(), 'The city was founded in 1904.', 'first sentence')
   t.equal(sec.sentence(9), null, 'missing index is null')
   t.end()
 })

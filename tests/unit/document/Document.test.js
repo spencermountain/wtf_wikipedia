@@ -200,7 +200,11 @@ test('redirectTo - get - should initially be null', (t) => {
 
 test('redirectTo - get - if the page is a redirect than return the target page', (t) => {
   const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
-  t.deepEqual(withoutWiki(doc.redirectTo()), { type: 'internal', page: 'Doelpagina', text: 'Doelpagina' }, "the redirectTo equals 'Doelpagina'")
+  t.deepEqual(
+    withoutWiki(doc.redirectTo()),
+    { type: 'internal', page: 'Doelpagina', text: 'Doelpagina' },
+    "the redirectTo equals 'Doelpagina'"
+  )
   t.end()
 })
 
@@ -213,7 +217,11 @@ test('redirectsTo - get - should initially be null', (t) => {
 
 test('redirectsTo - get - if the page is a redirect than return the target page', (t) => {
   const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
-  t.deepEqual(withoutWiki(doc.redirectsTo()), { type: 'internal', page: 'Doelpagina', text: 'Doelpagina' }, "the redirectsTo equals 'Doelpagina'")
+  t.deepEqual(
+    withoutWiki(doc.redirectsTo()),
+    { type: 'internal', page: 'Doelpagina', text: 'Doelpagina' },
+    "the redirectsTo equals 'Doelpagina'"
+  )
   t.end()
 })
 
@@ -226,7 +234,11 @@ test('redirect - get - should initially be null', (t) => {
 
 test('redirect - get - if the page is a redirect than return the target page', (t) => {
   const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
-  t.deepEqual(withoutWiki(doc.redirect()), { type: 'internal', page: 'Doelpagina', text: 'Doelpagina' }, "the redirect equals 'Doelpagina'")
+  t.deepEqual(
+    withoutWiki(doc.redirect()),
+    { type: 'internal', page: 'Doelpagina', text: 'Doelpagina' },
+    "the redirect equals 'Doelpagina'"
+  )
   t.end()
 })
 
@@ -239,7 +251,11 @@ test('redirects - get - should initially be null', (t) => {
 
 test('redirects - get - if the page is a redirect than return the target page', (t) => {
   const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
-  t.deepEqual(withoutWiki(doc.redirectsTo()), { type: 'internal', page: 'Doelpagina', text: 'Doelpagina' }, "the redirects equals 'Doelpagina'")
+  t.deepEqual(
+    withoutWiki(doc.redirectsTo()),
+    { type: 'internal', page: 'Doelpagina', text: 'Doelpagina' },
+    "the redirects equals 'Doelpagina'"
+  )
   t.end()
 })
 
@@ -310,7 +326,6 @@ test('categories - get - if the clue is a number return the category in that ind
   t.end()
 })
 
-
 //sections
 //
 
@@ -365,7 +380,7 @@ test('sections - get - if the clue is a number return the section at that index'
 })
 
 test('sections - get - if the clue is a string return the section of that title', (t) => {
-  t.equal(page.section('History').sentence().text(), 'The city was founded in 1904.', 'section lookup sentence')
+  t.equal(page.section('History').sentences()[0].text(), 'The city was founded in 1904.', 'section lookup sentence')
   t.end()
 })
 
@@ -375,7 +390,6 @@ test('sections - get - string clue is case-insensitive', (t) => {
 })
 
 //paragraphs
-
 
 test('paragraphs - get - if the clue is a undefined / unset return the list of paragraphs', (t) => {
   t.deepEqual(
@@ -436,7 +450,7 @@ test('sentences - get - if the clue is a undefined / unset return the list of se
 //
 
 test('sentence - get - should return the first sentence', (t) => {
-  t.equal(page.sentence().text(), 'Testville is a small test page.', 'first sentence text')
+  t.equal(page.sentences()[0].text(), 'Testville is a small test page.', 'first sentence text')
   t.end()
 })
 
@@ -480,13 +494,15 @@ test('links - get - if the clue is a number return the link at that index', (t) 
 
 test('links - filter by page title without case sensitivity', (t) => {
   t.deepEqual(
-    page.links().filter((l) => l.page().toLowerCase() === 'fun').map((l) => l.page()),
+    page
+      .links()
+      .filter((l) => l.page().toLowerCase() === 'fun')
+      .map((l) => l.page()),
     ['Fun'],
     'case-insensitive match'
   )
   t.end()
 })
-
 
 //interwiki
 test('interwiki - get - return only the interwiki links', (t) => {
@@ -546,11 +562,7 @@ test('templates - get - return all templates', (t) => {
 })
 
 test('templates - get - if the clue is a number return the template at that index', (t) => {
-  t.deepEqual(
-    page.templates()[0].json().data,
-    { display: 'title', lat: 43.65, lon: -79.38 },
-    'indexed template JSON'
-  )
+  t.deepEqual(page.templates()[0].json().data, { display: 'title', lat: 43.65, lon: -79.38 }, 'indexed template JSON')
   t.end()
 })
 
@@ -607,7 +619,11 @@ test('infoboxes - get - return all infoboxes', (t) => {
 
 test('infoboxes - get - field access', (t) => {
   t.equal(page.infobox().get('name').text, 'Jane Doe', 'infobox name')
-  t.deepEqual(Object.fromEntries(Object.entries(page.infobox().json().data).map(([key, value]) => [key, value.text])), { name: 'Jane Doe', age: '44' }, 'infobox values')
+  t.deepEqual(
+    Object.fromEntries(Object.entries(page.infobox().json().data).map(([key, value]) => [key, value.text])),
+    { name: 'Jane Doe', age: '44' },
+    'infobox values'
+  )
   t.end()
 })
 

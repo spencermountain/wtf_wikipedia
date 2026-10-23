@@ -1,3 +1,6 @@
+import Sentences from '../03-paragraph/sentence/Sentences.ts'
+import Lists from '../03-paragraph/list/Lists.ts'
+import Images from '../03-paragraph/image/Images.ts'
 import Links from '../03-paragraph/link/Links.ts'
 import Table from './table/Table.ts'
 import Reference from './reference/Reference.ts'
@@ -27,16 +30,17 @@ class Section {
     return this.#data.depth || 0
   }
 
-  sentence() {
-    return this.paragraphs()[0]?.sentence()
-  }
   sentences() {
-    return this.paragraphs().flatMap((p) => p.sentences())
+    return Sentences.from(this.paragraphs().flatMap((p) => p.sentences()))
   }
 
   paragraphs() {
     const arr = this.#data.paragraphs || []
     return arr.map((p) => new Paragraph(p, this.#info))
+  }
+
+  wikitext() {
+    return this.#data.wiki || ''
   }
 
   links() {
@@ -102,10 +106,9 @@ class Section {
     return list
   }
 
-  // TODO: List collections have nested JSON; keep plain arrays for now.
   lists() {
     let arr = this.paragraphs().flatMap((p) => p.lists())
-    return arr
+    return Lists.from(arr)
   }
 
   interwiki() {
@@ -113,7 +116,7 @@ class Section {
   }
 
   images() {
-    return this.paragraphs().flatMap((p) => p.images())
+    return Images.from(this.paragraphs().flatMap((p) => p.images()))
   }
 
   references() {
@@ -137,17 +140,7 @@ class Section {
     return json
   }
 
-  isEmpty() {
-    return Object.keys(this.#data).length === 0
-  }
-
   // aliases
-  wikitext() {
-    return this.#data.wiki || ''
-  }
-  indentation() {
-    return this.depth()
-  }
   citations() {
     return this.references()
   }

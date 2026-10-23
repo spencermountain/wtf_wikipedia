@@ -1,3 +1,6 @@
+import Sentences from './sentence/Sentences.ts'
+import Lists from './list/Lists.ts'
+import Images from './image/Images.ts'
 import Sentence from './sentence/Sentence.ts'
 import Image from './image/Image.ts'
 import List from './list/List.ts'
@@ -13,23 +16,19 @@ class Paragraph {
     this.#info = info
   }
 
-  sentence() {
-    return this.sentences()[0] || Sentence.empty()
-  }
   sentences() {
     const arr = this.#data.sentences || []
-    return arr.map((s) => new Sentence(s))
+    return Sentences.from(arr.map((s) => new Sentence(s)))
   }
 
-  // TODO: List collections have nested JSON; keep plain arrays for now.
   lists() {
     const arr = this.#data.lists || []
-    return arr.map((l) => new List(l))
+    return Lists.from(arr.map((l) => new List(l)))
   }
 
   images() {
     const arr = this.#data.images || []
-    return arr.map((i) => new Image(i, this.#info))
+    return Images.from(arr.map((i) => new Image(i, this.#info)))
   }
 
   links() {

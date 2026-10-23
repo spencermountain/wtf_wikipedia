@@ -60,7 +60,7 @@ const addMethod = function (models) {
     if (!this.isDisambiguation() && !hasIntroduction) {
       return null
     }
-    const intro = this.section().sentence()
+    const intro = this.section().sentences()[0]
     const main = getMain(intro)
 
     const pages = []

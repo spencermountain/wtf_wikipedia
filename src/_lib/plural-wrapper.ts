@@ -6,20 +6,22 @@ class WrapperArray<T> extends Array<T> {
 }
 
 const wrapMethods = (Collection, Item) => {
-  Object.getOwnPropertyNames(Item.prototype).forEach((name) => {
-    const method = Object.getOwnPropertyDescriptor(Item.prototype, name).value
-    // Preserve custom collection methods and native Array methods.
-    if (name in Collection.prototype || typeof method !== 'function') {
-      return
-    }
-    Object.defineProperty(Collection.prototype, name, {
-      configurable: true,
-      writable: true,
-      value(...args) {
-        return this.map((item) => item[name](...args))
-      },
+  for (let prototype = Item.prototype; prototype !== Object.prototype; prototype = Object.getPrototypeOf(prototype)) {
+    Object.getOwnPropertyNames(prototype).forEach((name) => {
+      const method = Object.getOwnPropertyDescriptor(prototype, name).value
+      // Preserve custom collection methods and native Array methods.
+      if (name in Collection.prototype || typeof method !== 'function') {
+        return
+      }
+      Object.defineProperty(Collection.prototype, name, {
+        configurable: true,
+        writable: true,
+        value(...args) {
+          return this.map((item) => item[name](...args))
+        },
+      })
     })
-  })
+  }
 }
 
 export { wrapMethods, WrapperArray }

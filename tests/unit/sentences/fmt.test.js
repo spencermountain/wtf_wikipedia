@@ -71,6 +71,6 @@ test('links-with-ticks', (t) => {
   const doc = wtf(`hello '''[[Palme d'Or]]''' world`)
   t.equal(doc.text(), `hello Palme d'Or world`, 'text')
   t.equal(doc.links()[0].page(), `Palme d'Or`, 'link')
-  t.equal(doc.sentence().bolds()[0].text, `Palme d'Or`, 'fmt-bold')
+  t.equal(doc.sentences()[0].bolds()[0].text, `Palme d'Or`, 'fmt-bold')
   t.end()
 })

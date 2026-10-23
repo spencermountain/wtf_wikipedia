@@ -1,3 +1,4 @@
+import Images from '../../03-paragraph/image/Images.ts'
 import { infoboxType } from '../../../parse/templates/parse/infobox.ts'
 import Image from '../../03-paragraph/image/Image.ts'
 import parseImage from '../../../parse/03-paragraph/02-images/parse.ts'
@@ -68,7 +69,7 @@ class Infobox {
 
   images() {
     const properties = imgProperties.filter((key) => this.get(key))
-    return properties
+    const images = properties
       .map((key) => {
         const item = this.get(key)
         const caption = this.get(key === 'image2' ? 'caption2' : 'caption')
@@ -83,6 +84,7 @@ class Infobox {
         return new Image(image)
       })
       .filter(Boolean)
+    return Images.from(images)
   }
 
   image() {

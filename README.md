@@ -341,7 +341,7 @@ let doc = await wtf.fetch('https://muppet.fandom.com/wiki/Miss_Piggy')
 
 // wikipedia français
 doc = await wtf.fetch('Tony Hawk', 'fr')
-doc.sentence().text() // 'Tony Hawk est un skateboarder professionnel et un acteur ...'
+doc.sentences()[0].text() // 'Tony Hawk est un skateboarder professionnel et un acteur ...'
 
 // accept an array of titles, or wikimedia pageIDs
 let docs = await wtf.fetch(['Whistling', 'Toronto'], { follow_redirects: false })

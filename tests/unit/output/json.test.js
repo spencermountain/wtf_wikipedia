@@ -22,7 +22,7 @@ test('section-output', (t) => {
 
 test('sentence-output', (t) => {
   const doc = readFile('Royal-Cinema')
-  const sen = doc.sentence()
+  const sen = doc.sentences()[0]
   const data = sen.json()
   t.ok(data.text, 'text')
   t.ok(data.links, 'links')

@@ -26,7 +26,7 @@ test('article paragraphs and sentences retain their order', (t) => {
   t.equal(doc.paragraphs()[0], paragraphs[0], 'default paragraph')
   t.ok(doc.paragraphs('string').isEmpty(), 'unsupported paragraphs selector returns an empty collection')
   t.equal(doc.sentence(1), sentences[1], 'indexed sentence')
-  t.equal(doc.sentence(), sentences[0], 'default sentence')
+  t.equal(doc.sentences()[0], sentences[0], 'default sentence')
   t.ok(doc.sentences('string').isEmpty(), 'unsupported sentences selector returns an empty collection')
   t.ok(
     paragraphs.every((paragraph) => paragraph.text().trim()),
@@ -65,7 +65,11 @@ test('article links retain their targets and display text', (t) => {
     ],
     'link targets'
   )
-  t.deepEqual(doc.links()[1].json(), { type: 'internal', page: 'Internet Adult Film Database', text: 'IAFD' }, 'indexed link JSON')
+  t.deepEqual(
+    doc.links()[1].json(),
+    { type: 'internal', page: 'Internet Adult Film Database', text: 'IAFD' },
+    'indexed link JSON'
+  )
   t.deepEqual(
     doc.links('Jace Rocker').map((link) => link.page()),
     ['Jace Rocker', 'Jace Rocker'],
@@ -95,11 +99,7 @@ test('interwiki - get - return all links without a selector and none for unsuppo
     { type: 'interwiki', wiki: 'fr', page: 'Paris' },
     { type: 'interwiki', wiki: 'de', page: 'Berlin' },
   ]
-  t.deepEqual(
-    doc.interwiki().json(),
-    expected,
-    'returns all interwiki'
-  )
+  t.deepEqual(doc.interwiki().json(), expected, 'returns all interwiki')
   t.ok(doc.interwiki([]).isEmpty(), 'unsupported selector returns an empty collection')
   t.end()
 })
