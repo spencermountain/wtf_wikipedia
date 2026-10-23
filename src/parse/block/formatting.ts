@@ -20,16 +20,25 @@ const remove = (block: BlockData, start: number, length: number) => {
   }
 }
 
-const parse = (block: BlockData, pattern: RegExp, trim: number, groups: ('bolds' | 'italics')[]) => {
+const parse = (block: BlockData, source, pattern: RegExp, trim: number, groups: ('bolds' | 'italics')[]) => {
   let removed = 0
+  const sources = []
+  // Mask consumed markers without shifting original source offsets.
+  source.text = source.text.replace(pattern, (match, _text, offset) => {
+    sources.push(block.wiki.slice(offset, offset + match.length))
+    return ' '.repeat(trim) + match.slice(trim, -trim) + ' '.repeat(trim)
+  })
+  let index = 0
   block.text = block.text.replace(pattern, (match, _text, offset) => {
+    const wiki = sources[index] || ''
+    index += 1
     const start = offset - removed
     const text = match.slice(trim, -trim)
     remove(block, start + match.length - trim, trim)
     remove(block, start, trim)
     groups.forEach((group) => {
       block[group] = block[group] || []
-      block[group].push({ text, start, end: start + text.length })
+      block[group].push({ text, wiki, start, end: start + text.length })
     })
     removed += trim * 2
     return text
@@ -39,13 +48,18 @@ const parse = (block: BlockData, pattern: RegExp, trim: number, groups: ('bolds'
 // Offsets use JavaScript string indices into the final plain text.
 const parseFormatting = (block: BlockData) => {
   block.text = block.text || ''
+  const source = { text: block.wiki || '' }
+  // Link labels are already flattened; their internal quotes are not formatting.
+  block.links?.forEach((link) => {
+    source.text = source.text.replace(link.wiki, ' '.repeat(link.wiki.length))
+  })
   // block.bolds = []
   // block.italics = []
-  parse(block, /'''''(.{0,2500}?)'''''/g, 5, ['bolds', 'italics'])
+  parse(block, source, /'''''(.{0,2500}?)'''''/g, 5, ['bolds', 'italics'])
   // Four apostrophes retain a literal quote on each side.
-  parse(block, /''''(.{0,2500}?)''''/g, 3, ['bolds'])
-  parse(block, /'''(.{0,2500}?)'''/g, 3, ['bolds'])
-  parse(block, /''(.{0,2500}?)''/g, 2, ['italics'])
+  parse(block, source, /''''(.{0,2500}?)''''/g, 3, ['bolds'])
+  parse(block, source, /'''(.{0,2500}?)'''/g, 3, ['bolds'])
+  parse(block, source, /''(.{0,2500}?)''/g, 2, ['italics'])
 
   // update text for each span
   if (block.bolds) {

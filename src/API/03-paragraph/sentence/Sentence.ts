@@ -1,6 +1,5 @@
 import Block from '../../Block/Block.ts'
 import type { BlockData } from '../../../types/index.ts'
-import Link from '../link/Link.ts'
 
 class Sentence extends Block {
   #data: BlockData

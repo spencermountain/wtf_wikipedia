@@ -1,3 +1,4 @@
+import withoutWiki from '../../lib/withoutWiki.js'
 import test from 'tape'
 import wtf from '../../lib/index.js'
 
@@ -5,14 +6,13 @@ test('template envelope preserves unknown names and simplifies arguments', (t) =
   const wiki = '{{FoobarContract|one=yes|caption=long text with [[link]]}}'
   const template = wtf(wiki).template()
   t.deepEqual(
-    template.json(),
+    withoutWiki(template.json()),
     {
       template: 'FoobarContract',
       kind: null,
-      wiki,
       text: '',
       data: { one: 'yes', caption: 'long text with link' },
-      links: [{ type: 'internal', page: 'Link', text: 'link', wiki: '[[link]]' }],
+      links: [{ type: 'internal', page: 'Link', text: 'link' }],
     },
     'unknown template has a predictable envelope'
   )
@@ -26,7 +26,7 @@ test('template argument names cannot overwrite envelope metadata', (t) => {
   const result = wtf(wiki).template().json()
   t.equal(result.template, 'ContractMetadata', 'template argument cannot rename the template')
   t.equal(result.kind, null, 'kind argument cannot invent a recognized parser')
-  t.equal(result.wiki, wiki, 'wiki argument cannot overwrite source')
+  t.equal(wtf(wiki).template().wikitext(), wiki, 'wiki argument cannot overwrite source')
   t.equal(result.text, '', 'text argument cannot change rendering')
   // TODO: Preserve the template argument without renaming it to _template.
   // t.deepEqual(result.data, {

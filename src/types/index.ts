@@ -18,6 +18,7 @@ export interface ExternalLinkData extends LinkData {
 }
 
 export interface FormattingData {
+  wiki: string
   text: string
   start: number
   end: number
@@ -100,8 +101,9 @@ export interface PageData {
   // parsed values
   sections: SectionData[]
   categories: string[]
+  categoryDetails?: BlockData[]
   isRedirect?: boolean
-  redirectTo?: string
+  redirectTo?: LinkData
 }
 
 // Passed information from fetch/dumpster to use in the API

@@ -55,8 +55,8 @@ class Table {
     }
     // ['foo', 'bar']
     if (Array.isArray(requested)) {
-      requested = requested.map((col) => normalizeKey(col))
-      return rows.map((row) => requested.map((col) => row[col]))
+      const columns = requested.map((col) => normalizeKey(col))
+      return rows.map((row) => columns.map((col) => row[col]))
     }
     // 'foo'
     if (typeof requested === 'string') {

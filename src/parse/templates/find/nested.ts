@@ -5,6 +5,7 @@ const hasTemplate = /\{\{/
 
 const createNode = (tmpl: string): NestedNode => {
   return {
+    wiki: tmpl,
     body: tmpl,
     parserName: getName(tmpl),
     children: [],

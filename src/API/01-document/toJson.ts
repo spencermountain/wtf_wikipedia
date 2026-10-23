@@ -1,6 +1,6 @@
 // The default document output includes metadata and parsed sections.
 const toJSON = (doc) => {
-  let data: any = {}
+  let data: any = { wiki: doc.wikitext() }
 
   data.title = doc.title
 
@@ -31,6 +31,7 @@ const toJSON = (doc) => {
 
   // page sections
   data.categories = doc.categories()
+  data.categoryDetails = doc.categoryDetails()
   data.sections = doc.sections().map((i) => i.json())
 
   return data

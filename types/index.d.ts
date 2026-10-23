@@ -1,3 +1,5 @@
+type FormattingJson = { text: string; wiki: string; start: number; end: number }
+
 type CollectionItem = {
   json: () => any
   text: (...args: any[]) => string
@@ -49,6 +51,7 @@ declare class Image {
 
 declare class Document {
   categories(clue?: number): string[]
+  categoryDetails(): BlockJson[]
   category(clue?: number): string | null
   citations(clue?: number): Collection<Reference>
   citation(clue?: number): Reference | null
@@ -78,10 +81,10 @@ declare class Document {
   pageID(id?: number): number | null
   paragraph(selector?: number): Paragraph | null
   paragraphs(selector?: number): Collection<Paragraph>
-  redirect(): Record<string, unknown> | null
+  redirect(): LinkJson | null
   redirects(): Record<string, unknown> | null
-  redirectsTo(): Record<string, unknown> | null
-  redirectTo(): Record<string, unknown> | null
+  redirectsTo(): LinkJson | null
+  redirectTo(): LinkJson | null
   references(clue?: number): Collection<Reference>
   reference(clue?: number): Reference | null
   section(clue?: string | number): Section
@@ -161,7 +164,7 @@ declare class Infobox {
   text(): string
   type(): string
   wikitext(): string
-  coordinates(): { template: string; lat: number; lon: number } | null
+  coordinates(): Coordinate | null
 }
 
 declare class Template {
@@ -175,6 +178,8 @@ declare class Template {
 }
 
 declare class Table {
+  cells(): BlockJson[]
+  headers(): BlockJson[]
   // a string key gets a flat column; an array of keys gets a row-list
   get(key: string): (string | null)[]
   get(keys: string[]): Record<string, string>[]
@@ -201,7 +206,7 @@ declare class Paragraph {
   citation(clue?: number): Reference | null
   images(clue?: number): Collection<Image>
   image(clue?: number): Image | null
-  interwiki(selector?: string | number): LinkCollection
+  interwiki(): LinkJson[]
   json(): Record<string, unknown>
   links(selector?: string | number): LinkCollection
   link(clue?: string | number): Link | null
@@ -230,7 +235,8 @@ declare class Link {
 
 declare class List {
   json(): Record<string, unknown>[]
-  lines(selector?: number): Collection<Sentence>
+  lines(): BlockJson[]
+  items(): BlockJson[]
   links(selector?: string | number): LinkCollection
   text(): string
   wikitext(): string
@@ -239,11 +245,11 @@ declare class List {
 declare class Sentence {
   static empty(): Sentence
   bold(clue?: number): string | null
-  bolds(clue?: number): { text: string; start: number; end: number }[]
-  interwiki(selector?: string | number): LinkCollection
+  bolds(clue?: number): FormattingJson[]
+  interwiki(): LinkJson[]
   isEmpty(): boolean
   italic(clue?: number): string | null
-  italics(clue?: number): { text: string; start: number; end: number }[]
+  italics(clue?: number): FormattingJson[]
   json(): Record<string, unknown>
   link(clue?: string | number): Link | null
   links(selector?: string | number): LinkCollection
@@ -311,8 +317,8 @@ type BlockJson = {
   text: string
   wiki: string
   links?: LinkJson[]
-  bolds?: Array<{ text: string; start: number; end: number }>
-  italics?: Array<{ text: string; start: number; end: number }>
+  bolds?: Array<FormattingJson>
+  italics?: Array<FormattingJson>
 }
 
 type InfoboxJson = Omit<TemplateJson, 'data'> & {
@@ -321,6 +327,7 @@ type InfoboxJson = Omit<TemplateJson, 'data'> & {
 
 /** the json() shape of a Link */
 type LinkJson = {
+  wiki: string
   text?: string
   type: 'internal' | 'interwiki' | 'external'
   page?: string
@@ -338,8 +345,8 @@ type ImageJson = {
     text: string
     wiki: string
     links?: LinkJson[]
-    bolds?: { text: string; start: number; end: number }[]
-    italics?: { text: string; start: number; end: number }[]
+    bolds?: FormattingJson[]
+    italics?: FormattingJson[]
   }
   alt?: string
   [key: string]: unknown
@@ -347,6 +354,7 @@ type ImageJson = {
 
 /** a parsed coordinate, from a coord-template or an infobox */
 type Coordinate = {
+  wiki: string
   template?: string
   lat?: number
   lon?: number
@@ -468,6 +476,7 @@ export default wtf
 // .fetch/.extend/.plugin/.version — the classes are NOT attached to it.
 // Import them as types: `import type { Document } from 'wtf_wikipedia'`.
 export type {
+  FormattingJson,
   Collection,
   LinkCollection,
   SectionCollection,

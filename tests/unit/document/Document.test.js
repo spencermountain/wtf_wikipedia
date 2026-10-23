@@ -1,3 +1,4 @@
+import withoutWiki from '../../lib/withoutWiki.js'
 import { readPage } from '../../_examples/index.js'
 import test from 'tape'
 import wtf from '../../lib/index.js'
@@ -199,7 +200,7 @@ test('redirectTo - get - should initially be null', (t) => {
 
 test('redirectTo - get - if the page is a redirect than return the target page', (t) => {
   const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
-  t.deepEqual(doc.redirectTo(), { type: 'internal', page: 'Doelpagina', text: 'Doelpagina', wiki: '[[Doelpagina]]' }, "the redirectTo equals 'Doelpagina'")
+  t.deepEqual(withoutWiki(doc.redirectTo()), { type: 'internal', page: 'Doelpagina', text: 'Doelpagina' }, "the redirectTo equals 'Doelpagina'")
   t.end()
 })
 
@@ -212,7 +213,7 @@ test('redirectsTo - get - should initially be null', (t) => {
 
 test('redirectsTo - get - if the page is a redirect than return the target page', (t) => {
   const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
-  t.deepEqual(doc.redirectsTo(), { type: 'internal', page: 'Doelpagina', text: 'Doelpagina', wiki: '[[Doelpagina]]' }, "the redirectsTo equals 'Doelpagina'")
+  t.deepEqual(withoutWiki(doc.redirectsTo()), { type: 'internal', page: 'Doelpagina', text: 'Doelpagina' }, "the redirectsTo equals 'Doelpagina'")
   t.end()
 })
 
@@ -225,7 +226,7 @@ test('redirect - get - should initially be null', (t) => {
 
 test('redirect - get - if the page is a redirect than return the target page', (t) => {
   const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
-  t.deepEqual(doc.redirect(), { type: 'internal', page: 'Doelpagina', text: 'Doelpagina', wiki: '[[Doelpagina]]' }, "the redirect equals 'Doelpagina'")
+  t.deepEqual(withoutWiki(doc.redirect()), { type: 'internal', page: 'Doelpagina', text: 'Doelpagina' }, "the redirect equals 'Doelpagina'")
   t.end()
 })
 
@@ -238,7 +239,7 @@ test('redirects - get - should initially be null', (t) => {
 
 test('redirects - get - if the page is a redirect than return the target page', (t) => {
   const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
-  t.deepEqual(doc.redirectsTo(), { type: 'internal', page: 'Doelpagina', text: 'Doelpagina', wiki: '[[Doelpagina]]' }, "the redirects equals 'Doelpagina'")
+  t.deepEqual(withoutWiki(doc.redirectsTo()), { type: 'internal', page: 'Doelpagina', text: 'Doelpagina' }, "the redirects equals 'Doelpagina'")
   t.end()
 })
 
@@ -490,8 +491,8 @@ test('links - filter by page title without case sensitivity', (t) => {
 //interwiki
 test('interwiki - get - return only the interwiki links', (t) => {
   t.deepEqual(
-    page.interwiki().map((l) => l.json()),
-    [{ type: 'interwiki', page: 'Ville', text: 'Ville', wiki: '[[:fr:Ville|Ville]]', lang: 'fr', inline: true }],
+    withoutWiki(page.interwiki().map((l) => l.json())),
+    [{ type: 'interwiki', page: 'Ville', text: 'Ville', lang: 'fr', inline: true }],
     'interwiki JSON'
   )
   t.end()
@@ -585,7 +586,7 @@ test('citations - get - is an alias of references', (t) => {
 
 //coordinates
 test('coordinates - get - return all coordinates', (t) => {
-  t.deepEqual(page.coordinates(), [{ display: 'title', lat: 43.65, lon: -79.38 }], 'coordinates')
+  t.deepEqual(withoutWiki(page.coordinates()), [{ display: 'title', lat: 43.65, lon: -79.38 }], 'coordinates')
   t.end()
 })
 

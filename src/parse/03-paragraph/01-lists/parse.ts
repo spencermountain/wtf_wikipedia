@@ -27,7 +27,9 @@ const cleanList = function (lines: string[], opts: DocInfo = defaults) {
       number = 1
       line = line.replace(list_reg, '')
     }
-    list.push(parseBlock(line, opts))
+    const item = parseBlock(line, opts)
+    item.wiki = lines[i]
+    list.push(item)
   }
   return list
 }

@@ -1,3 +1,4 @@
+import withoutWiki from '../../lib/withoutWiki.js'
 import test from 'tape'
 import wtf from '../../../src/index.ts'
 
@@ -39,8 +40,8 @@ test('interwiki syntax - normalized link output', (t) => {
     const doc = wtf(wikitext)
     const parsed = doc.links()
     const links = parsed.map((link) => link.json())
-    const results = (Array.isArray(expected) ? expected : [expected]).map((link) => ({ ...link, wiki: wikitext }))
-    t.deepEqual(links, results, wikitext)
+    const results = Array.isArray(expected) ? expected : [expected]
+    t.deepEqual(withoutWiki(links), results, wikitext)
     if (wikitext.startsWith('[[')) {
       t.deepEqual(parsed.map((link) => link.text()), results.map((link) => link.text), `${wikitext} link text`)
       t.equal(doc.text(), results.map((link) => link.text).join(''), `${wikitext} document text`)

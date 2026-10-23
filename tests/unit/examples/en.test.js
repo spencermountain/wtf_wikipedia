@@ -1,3 +1,4 @@
+import withoutWiki from '../../lib/withoutWiki.js'
 import test from 'tape'
 import wtf from '../../lib/index.js'
 import { readPage } from '../../_examples/index.js'
@@ -1028,7 +1029,7 @@ test('The-Field-Of-Waterloo', (t) => {
 
 test('Toronto', (t) => {
   const doc = wtf(readPage('Toronto'))
-  t.deepEqual(doc.coordinates()[0], { template: 'infobox/lat-long', lat: 43.7, lon: -79.4 }, 'Toronto: city coordinates')
+  t.deepEqual(withoutWiki(doc.coordinates()[0]), { template: 'infobox/lat-long', lat: 43.7, lon: -79.4 }, 'Toronto: city coordinates')
   t.equal(doc.title, 'Toronto', 'Toronto: city title')
   t.ok(
     doc.links().some((link) => link.page() === 'Ontario'),

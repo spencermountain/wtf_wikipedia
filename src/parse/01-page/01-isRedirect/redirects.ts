@@ -20,7 +20,7 @@ const parseRedirect = function (wiki: string, opts: DocInfo = defaults) {
     let links = parseLink(m[2], opts) || []
     return links[0]
   }
-  return {}
+  return null
 }
 
 export { isRedirect, parseRedirect }

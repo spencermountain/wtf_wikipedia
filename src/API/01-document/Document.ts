@@ -119,7 +119,8 @@ class Document {
     return isStub(this)
   }
   redirectTo() {
-    return this.#data.redirectTo ?? null
+    const link = this.#data.redirectTo
+    return link ?? null
   }
   isDisambiguation() {
     return isDisambig(this)
@@ -127,6 +128,10 @@ class Document {
 
   categories() {
     return this.#data.categories || []
+  }
+
+  categoryDetails() {
+    return this.#data.categoryDetails || []
   }
 
   sections() {

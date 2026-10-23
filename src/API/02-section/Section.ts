@@ -89,10 +89,9 @@ class Section {
     return arr.map((t) => new Infobox(t, this.#info))
   }
 
-  // TODO: Coordinates are plain data, not model collections.
   coordinates() {
     let arr = this.templates('coord')
-    let list = arr.map((tmpl) => tmpl.json().data)
+    let list = arr.map((tmpl) => ({ ...tmpl.json().data, wiki: tmpl.wikitext() }))
     //try to get coord from infoboxes
     let inf = this.infoboxes()[0]
     const coordinates = inf?.coordinates()

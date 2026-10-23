@@ -15,6 +15,7 @@ const parsePage = function (wiki: string, opts: DocInfo = defaults) {
     // (they can have categories)
     let res = parseCategories(wiki, opts)
     data.categories = res.categories
+    data.categoryDetails = res.categoryDetails
     data.remaining = res.wiki
     return data
   }
@@ -23,6 +24,7 @@ const parsePage = function (wiki: string, opts: DocInfo = defaults) {
   // 3. pluck categories from the bottom
   let res = parseCategories(data.remaining, opts)
   data.categories = res.categories
+  data.categoryDetails = res.categoryDetails
   data.remaining = res.wiki
   // 4. split by section
   data.sections = parseSections(data.remaining, opts)

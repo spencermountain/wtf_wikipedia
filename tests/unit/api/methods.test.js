@@ -19,7 +19,7 @@ const is = {
   string: (v) => typeof v === 'string',
   boolean: (v) => typeof v === 'boolean',
   object: isObject,
-  'list-json': (v) => isObject(v) && Array.isArray(v.items) && typeof v.wiki === 'string',
+  'list-json': (v) => isObject(v) && Array.isArray(v.items),
   'string|null': (v) => v === null || typeof v === 'string',
   'string|undefined': (v) => v === undefined || typeof v === 'string',
   'string|number|null': (v) => v === null || typeof v === 'string' || typeof v === 'number',

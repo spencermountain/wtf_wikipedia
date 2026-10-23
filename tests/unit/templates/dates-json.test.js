@@ -1,3 +1,4 @@
+import withoutWiki from '../../lib/withoutWiki.js'
 import test from 'tape'
 import wtf from '../../lib/index.js'
 
@@ -9,7 +10,6 @@ test('date template json', (t) => {
       {
         template: 'birth date',
         kind: 'date',
-        wiki: '{{birth date|1941|4|12}}',
         text: 'April 12, 1941',
         data: { year: '1941', month: '4', date: '12', text: 'April 12, 1941' },
       },
@@ -19,7 +19,6 @@ test('date template json', (t) => {
       {
         template: 'birth date and age',
         kind: 'birth date and age',
-        wiki: '{{birth date and age|1941|4|12}}',
         text: 'April 12, 1941',
         data: { year: '1941', month: '4', day: '12' },
       },
@@ -29,14 +28,13 @@ test('date template json', (t) => {
       {
         template: 'death date and age',
         kind: 'birth date and age',
-        wiki: '{{death date and age|1993|2|24|1941|4|12}}',
         text: 'February 24, 1993',
         data: { year: '1993', month: '2', day: '24', list: ['1941', '4', '12'] },
       },
     ],
   ]
   arr.forEach(([tmpl, expected]) => {
-    t.deepEqual(wtf(tmpl).templates()[0].json(), expected, tmpl)
+    t.deepEqual(withoutWiki(wtf(tmpl).templates()[0].json()), expected, tmpl)
   })
   t.end()
 })

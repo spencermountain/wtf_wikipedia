@@ -7,18 +7,21 @@ const cat_remove_reg = new RegExp('^\\[\\[:?(' + _categories.join('|') + '):', '
 
 const parse_categories = function (wiki: string, _opts: DocInfo = defaults) {
   const categories = []
+  const categoryDetails = []
   let tmp = wiki.match(cat_reg) //regular links
   if (tmp) {
     tmp.forEach(function (c) {
+      const source = c
       c = c.replace(cat_remove_reg, '')
       c = c.replace(/\|?[ *]?\]\]$/, '') //parse fancy ones..
       c = c.replace(/\|.*/, '') //everything after the '|' is metadata
       if (c && !c.match(/[[\]]/)) {
         categories.push(c.trim())
+        categoryDetails.push({ text: c.trim(), wiki: source })
       }
     })
   }
   const newWiki = wiki.replace(cat_reg, '')
-  return { categories, wiki: newWiki }
+  return { categories, categoryDetails, wiki: newWiki }
 }
 export default parse_categories

@@ -19,6 +19,7 @@ const evaluateNode = (node: NestedNode, parent: NestedNode | null, state, opts: 
 
   const { replacement, result } = parseTemplate(node.body, node.parserName, opts)
   if (result) {
+    result.wiki = node.wiki
     state.templates.push(result)
   }
 

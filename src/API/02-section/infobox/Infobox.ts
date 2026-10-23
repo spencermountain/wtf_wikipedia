@@ -101,7 +101,6 @@ class Infobox {
     return this.#data.wiki || ''
   }
 
-  // TODO: Plain coordinate data remains outside the collection API.
   coordinates() {
     // loop through i18n latitude and longitude properties
     for (let i = 0; i < latLngs.length; i += 1) {
@@ -114,10 +113,11 @@ class Infobox {
       const lat = Number(latText)
       const lon = Number(lonText)
       if (typeof lat === 'number' && typeof lon === 'number' && Number.isFinite(lat) && Number.isFinite(lon)) {
-        return { template: 'infobox/lat-long', lat, lon }
+        return { template: 'infobox/lat-long', lat, lon, wiki: this.wikitext() }
       }
     }
-    return dmsCoordinates(this)
+    const coordinates = dmsCoordinates(this)
+    return coordinates ? { ...coordinates, wiki: this.wikitext() } : null
   }
 }
 

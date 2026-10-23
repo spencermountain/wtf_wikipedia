@@ -1,3 +1,4 @@
+import withoutWiki from '../../lib/withoutWiki.js'
 import test from 'tape'
 import wtf from '../../lib/index.js'
 
@@ -161,8 +162,8 @@ test('infobox coordinates on the equator and prime meridian', (t) => {
   for (const [lat, lon] of [[0, 12], [12, 0], [0, 0], [-12, 34]]) {
     const doc = wtf(`{{infobox settlement|latitude=${lat}|longitude=${lon}}}`)
     const expected = { template: 'infobox/lat-long', lat, lon }
-    t.deepEqual(doc.infobox().coordinates(), expected, 'accepts both coordinates')
-    t.deepEqual(doc.coordinates(), [expected], 'document exposes the same coordinates')
+    t.deepEqual(withoutWiki(doc.infobox().coordinates()), expected, 'accepts both coordinates')
+    t.deepEqual(withoutWiki(doc.coordinates()), [expected], 'document exposes the same coordinates')
   }
   for (const fields of ['latitude=0', 'longitude=0', 'latitude=unknown|longitude=0']) {
     t.equal(wtf(`{{infobox settlement|${fields}}}`).infobox().coordinates(), null, 'requires two numbers')

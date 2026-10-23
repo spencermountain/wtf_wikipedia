@@ -1,11 +1,12 @@
+import withoutWiki from '../../lib/withoutWiki.js'
 import test from 'tape'
 import wtf from '../../lib/index.js'
 
 test('infobox degree/minute coordinates accept blank seconds', (t) => {
   const doc = wtf('{{Infobox settlement|latd=43|latm=42|lats=|latNS=N|longd=79|longm=24|longs=|longEW=W}}')
   const expected = { template: 'infobox/lat-long', lat: 43.7, lon: -79.4 }
-  t.deepEqual(doc.infobox().coordinates(), expected, 'blank seconds coordinates')
-  t.deepEqual(doc.coordinates(), [expected], 'document exposes infobox coordinates')
+  t.deepEqual(withoutWiki(doc.infobox().coordinates()), expected, 'blank seconds coordinates')
+  t.deepEqual(withoutWiki(doc.coordinates()), [expected], 'document exposes infobox coordinates')
   t.end()
 })
 
@@ -35,7 +36,7 @@ test('hemisphere signs are not applied twice', (t) => {
 
 test('decimal infobox coordinates take precedence', (t) => {
   const doc = wtf('{{Infobox settlement|latitude=10|longitude=20|latd=43|latm=42|longd=79|longEW=W}}')
-  t.deepEqual(doc.coordinates()[0], { template: 'infobox/lat-long', lat: 10, lon: 20 }, 'decimal coordinates')
+  t.deepEqual(withoutWiki(doc.coordinates()[0]), { template: 'infobox/lat-long', lat: 10, lon: 20 }, 'decimal coordinates')
   t.end()
 })
 

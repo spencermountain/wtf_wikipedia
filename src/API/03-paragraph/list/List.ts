@@ -3,7 +3,6 @@ import Link from '../link/Link.ts'
 
 class List {
   #data: ListData
-  #wiki: string
 
   constructor(data: ListData) {
     this.#data = data
