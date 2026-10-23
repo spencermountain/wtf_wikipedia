@@ -1,3 +1,4 @@
+import Links from '../link/Links.ts'
 import type { ListData } from '../../../types/index.ts'
 import Block from '../../Block/Block.ts'
 import Blocks from '../../Block/Blocks.ts'
@@ -17,7 +18,7 @@ class List {
   }
 
   links() {
-    return this.items().flatMap((block) => block.links())
+    return Links.from(this.items().flatMap((block) => block.links()))
   }
 
   json(format = 'lg') {

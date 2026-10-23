@@ -12,7 +12,7 @@ test('ordinary template arguments simplify rich text', (t) => {
 
 test('infobox values retain rich text and links', (t) => {
   const box = wtf("{{Infobox person|name=Example|caption=''italic'' and [[Target page|label]]}}").infobox()
-  t.equal(box.get('caption').text, 'italic and label', 'infobox values expose readable text')
+  t.equal(box.get('caption').text(), 'italic and label', 'infobox values expose readable text')
   t.deepEqual(box.links().map((link) => link.page()), ['Target page'], 'infobox values retain link destinations')
   t.equal(box.json().template, 'Infobox person', 'infobox retains source template spelling')
   t.ok(box.json().data.caption, 'rich value lives inside envelope data')

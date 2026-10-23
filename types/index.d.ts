@@ -17,7 +17,7 @@ declare class Image {
   file(): string
   format(): string | null
   json(format?: JsonFormat): ImageJson
-  links(): Link[]
+  links(): LinkCollection
   src(): string
   text(): string
   thumbnail(size?: number): string
@@ -26,14 +26,14 @@ declare class Image {
 }
 
 declare class Document {
-  categories(clue?: number): string[]
+  categories(): string[]
   citations(): Collection<Reference>
-  coordinates(clue?: number): Coordinate[]
+  coordinates(): Coordinate[]
   debug(): Document
   domain: string | null
-  images(selector?: number): Collection<Image>
+  images(): Collection<Image>
   infoboxes(): InfoboxCollection
-  infobox(clue?: string | number): Infobox | null
+  infobox(): Infobox | null
   interwiki(): Link[]
   isDisambig(): boolean
   isDisambiguation(): boolean
@@ -42,23 +42,23 @@ declare class Document {
   json(format?: JsonFormat): Record<string, unknown>
   language: string | null
   links(): LinkCollection
-  lists(clue?: number): List[]
+  lists(): Collection<List>
   namespace: string | number | null
   options(): DocumentOptions
   pageID: number | null
-  paragraphs(selector?: number): Paragraph[]
+  paragraphs(): Paragraph[]
   redirect(): LinkJson | null
   redirectsTo(): LinkJson | null
   redirectTo(): LinkJson | null
   references(): Collection<Reference>
   section(clue?: string | number): Section
-  sections(clue?: string | number): SectionCollection
-  sentence(clue?: number): Sentence | null
-  sentences(selector?: number): Collection<Sentence>
+  sections(): SectionCollection
+  sentence(): Sentence | undefined
+  sentences(): Collection<Sentence>
   tables(): Collection<Table>
   templates(clue?: string): TemplateCollection
-  template(clue?: string | number): Template | null
-  text(options?: object): string
+  template(clue?: string): Template
+  text(): string
   title: string | null
   url(): string | null
   wikidata: string | null
@@ -71,39 +71,36 @@ declare class Document {
 
 declare class Section {
   static empty(): Section
-  isEmpty(): boolean
   citations(): Collection<Reference>
-  coordinates(clue?: number): Coordinate[]
+  coordinates(): Coordinate[]
   depth(): number
-  images(clue?: number): Collection<Image>
-  indentation(): number
+  images(): Collection<Image>
   index(): number | null
   infoboxes(): InfoboxCollection
   interwiki(): Link[]
   json(format?: JsonFormat): Record<string, unknown>
   links(): LinkCollection
-  lists(clue?: number): List[]
-  paragraphs(clue?: number): Paragraph[]
+  lists(): Collection<List>
+  paragraphs(): Paragraph[]
   references(): Collection<Reference>
-  sentences(clue?: number): Collection<Sentence>
-  sentence(clue?: number): Sentence | null
+  sentences(): Collection<Sentence>
   tables(): Collection<Table>
   templates(clue?: string): TemplateCollection
-  template(clue?: string | number): Template | null
-  text(options?: object): string
+  template(clue?: string): Template
+  text(): string
   title(): string
   wikitext(): string
 }
 
 declare class Infobox {
   readonly kind: string | null
-  get(key: string): Block | Collection<Block> | undefined
-  getFirst(keys: string[]): Block | Collection<Block> | undefined
+  get(key: string): Block | undefined
+  getFirst(keys: string[]): Block | undefined
   getAll(keys: string[]): Collection<Block>
   image(): Image | undefined
-  images(): Image[]
+  images(): Collection<Image>
   json(format?: JsonFormat): InfoboxJson
-  links(): Link[]
+  links(): LinkCollection
   text(): string
   type(): string
   wikitext(): string
@@ -111,20 +108,25 @@ declare class Infobox {
 }
 
 declare class Template {
+  static empty(): Template
   readonly kind: string | null
   readonly type: string
   isEmpty(): boolean
   json(format?: JsonFormat): TemplateJson
-  links(): Link[]
+  links(): LinkCollection
   text(): string
   wikitext(): string
 }
 
 declare class Table {
+  cols(): string[]
+  rows(): Record<string, string>[]
+  getRows(requested?: string | string[] | Record<string, unknown>):
+    Record<string, string>[] | (string | undefined)[] | (string | undefined)[][]
   cells(): Collection<Block>
   headers(): Collection<Block>
   json(format?: JsonFormat): Record<string, unknown>
-  links(): Link[]
+  links(): LinkCollection
   text(): string
   wikitext(): string
 }
@@ -132,20 +134,20 @@ declare class Table {
 declare class Reference {
   readonly kind: string | null
   json(format?: JsonFormat): TemplateJson
-  links(): Link[]
+  links(): LinkCollection
   text(): string
   title(): string
   wikitext(): string
 }
 
 declare class Paragraph {
-  images(clue?: number): Collection<Image>
+  images(): Collection<Image>
   interwiki(): LinkJson[]
   json(format?: JsonFormat): Record<string, unknown>
   links(): LinkCollection
-  lists(clue?: number): List[]
-  sentences(clue?: number): Collection<Sentence>
-  text(options?: object): string
+  lists(): Collection<List>
+  sentences(): Collection<Sentence>
+  text(): string
   wikitext(): string
 }
 
@@ -164,7 +166,7 @@ declare class List {
   json(format?: JsonFormat): Record<string, unknown>
   lines(): Collection<Block>
   items(): Collection<Block>
-  links(): Link[]
+  links(): LinkCollection
   text(): string
   wikitext(): string
 }
@@ -181,13 +183,13 @@ declare class Block {
 
 declare class Sentence {
   static empty(): Sentence
-  bolds(clue?: number): FormattingJson[]
+  bolds(): FormattingJson[]
   interwiki(): LinkJson[]
   isEmpty(): boolean
-  italics(clue?: number): FormattingJson[]
+  italics(): FormattingJson[]
   json(format?: JsonFormat): Record<string, unknown>
   links(): LinkCollection
-  text(str?: string): string
+  text(): string
   wikitext(): string
 }
 

@@ -27,7 +27,7 @@ test('Toronto-Sv', (t) => {
   t.ok(doc.section('Historia'), 'Toronto-Sv: Swedish history heading')
   t.match(doc.text(), /CN Tower/, 'Toronto-Sv: city landmark')
   t.ok(doc.references().length > 0, 'Toronto-Sv: city sources')
-  t.ok(doc.infoboxes().some((box) => box.get('category').text === 'Stad'), 'Toronto-Sv: category field')
+  t.ok(doc.infoboxes().some((box) => box.get('category').text() === 'Stad'), 'Toronto-Sv: category field')
   t.ok(doc.categories().includes('Orter i Ontario'), 'Toronto-Sv: Orter i Ontario category')
   t.end()
 })

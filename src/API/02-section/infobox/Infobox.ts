@@ -1,3 +1,4 @@
+import Links from '../../03-paragraph/link/Links.ts'
 import Images from '../../03-paragraph/image/Images.ts'
 import Block from '../../Block/Block.ts'
 import Blocks from '../../Block/Blocks.ts'
@@ -41,41 +42,38 @@ class Infobox {
   }
 
   links() {
-    return this.getAll(Object.keys(this.#data.data)).flatMap((block) => block.links())
+    return Links.from(this.getAll(Object.keys(this.#data.data)).flatMap((block) => block.links()))
   }
 
   get(input: string) {
-    if (typeof input === 'string') {
-      const key = normalizeKey(input)
-      const value = this.#data.data[key]
-      if (Array.isArray(value)) {
-        return Blocks.from(value.map((item) => new Block(item)))
-      }
-      return value === undefined ? undefined : new Block(value)
-    }
-    return null
+    return this.getAll([input])[0]
   }
   getFirst(choices: string[]) {
-    const key = choices.find((choice) => this.get(choice))
-    return key === undefined ? undefined : this.get(key)
+    for (let i = 0; i < choices.length; i += 1) {
+      const block = this.get(choices[i])
+      if (block) {
+        return block
+      }
+    }
+    return undefined
   }
   getAll(choices: string[]) {
-    const blocks = choices.flatMap((key) => {
-      const value = this.get(key)
-      if (!value) {
+    const values = choices.flatMap((key) => {
+      if (typeof key !== 'string') {
         return []
       }
-      return Array.isArray(value) ? value : [value]
+      const value = this.#data.data[normalizeKey(key)]
+      return value ?? []
     })
-    return Blocks.from(blocks)
+    return Blocks.from(values.map((value) => new Block(value)))
   }
 
   images() {
     const properties = imgProperties.filter((key) => this.get(key))
     const images = properties
       .map((key) => {
-        const item = this.getAll([key])[0]
-        const caption = this.getAll([key === 'image2' ? 'caption2' : 'caption'])[0]
+        const item = this.get(key)
+        const caption = this.get(key === 'image2' ? 'caption2' : 'caption')
         const image = parseImage(item?.wikitext() || '', this.#info)
         if (!image) {
           return null
@@ -115,8 +113,8 @@ class Infobox {
     // loop through i18n latitude and longitude properties
     for (let i = 0; i < latLngs.length; i += 1) {
       let a = latLngs[i]
-      const latText = this.getAll([a[0]])[0]?.text().trim()
-      const lonText = this.getAll([a[1]])[0]?.text().trim()
+      const latText = this.get(a[0])?.text().trim()
+      const lonText = this.get(a[1])?.text().trim()
       if (!latText || !lonText) {
         continue
       }

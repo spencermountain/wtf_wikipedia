@@ -9,7 +9,7 @@ const byInfobox = function (doc, prop) {
     type = type.trim()
 
     if (Object.hasOwn(mapping, type)) {
-      const s = inf.getAll([prop])[0]
+      const s = inf.get(prop)
       if (s) {
         return s.text()
       }

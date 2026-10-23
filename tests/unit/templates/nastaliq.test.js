@@ -10,7 +10,7 @@ test('Nastaliq renders formatted content as text', (t) => {
 
 test('Nastaliq preserves text inside an infobox', (t) => {
   const doc = wtf("{{Infobox legislature|name=Senate of Pakistan<br>{{Nastaliq|'''ایوانِ بالا پاکستان'''}}}}")
-  const name = doc.infobox().get('name').text
+  const name = doc.infobox().get('name').text()
   t.match(name, /Senate of Pakistan/, 'English name remains')
   t.match(name, /ایوانِ بالا پاکستان/, 'Urdu name remains')
   t.end()

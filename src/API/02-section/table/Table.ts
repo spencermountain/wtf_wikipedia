@@ -1,3 +1,4 @@
+import Links from '../../03-paragraph/link/Links.ts'
 import type { TableData } from '../../../types/index.ts'
 import Block from '../../Block/Block.ts'
 import Blocks from '../../Block/Blocks.ts'
@@ -20,7 +21,7 @@ class Table {
     return Blocks.from(arr.map((cell) => new Block(cell)))
   }
   links() {
-    return this.cells().flatMap((block) => block.links())
+    return Links.from(this.cells().flatMap((block) => block.links()))
   }
 
   cols() {

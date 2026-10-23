@@ -1,3 +1,4 @@
+import Links from '../../03-paragraph/link/Links.ts'
 import type { TemplateData } from '../../../types/index.ts'
 import Link from '../../03-paragraph/link/Link.ts'
 
@@ -17,7 +18,7 @@ class Template {
     return this.#data.text
   }
   links() {
-    return (this.#data.links || []).map((link) => new Link(link))
+    return Links.from((this.#data.links || []).map((link) => new Link(link)))
   }
   json(format = 'lg') {
     const json = structuredClone(this.#data)

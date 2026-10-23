@@ -9,11 +9,11 @@ test('BBDO', (t) => {
     doc.links().some((link) => link.page() === 'Gesellschaft mit beschränkter Haftung (Deutschland)'),
     'BBDO: company legal-form link'
   )
-  t.equal(doc.infobox().get('Name').text, 'BBDO Germany GmbH', 'BBDO: German company name')
-  t.equal(doc.infobox().get('ISIN').text, 'nicht vorhanden', 'BBDO: stock identifier status')
+  t.equal(doc.infobox().get('Name').text(), 'BBDO Germany GmbH', 'BBDO: German company name')
+  t.equal(doc.infobox().get('ISIN').text(), 'nicht vorhanden', 'BBDO: stock identifier status')
   t.match(doc.text(), /Werbe- und Marketingagentur/, 'BBDO: German business description')
   t.ok(
-    doc.infoboxes().some((box) => box.get('Gründungsdatum').text === '1956'),
+    doc.infoboxes().some((box) => box.get('Gründungsdatum').text() === '1956'),
     'BBDO: Gründungsdatum field'
   )
   t.ok(doc.categories().includes('Werbeagentur'), 'BBDO: Werbeagentur category')
@@ -103,11 +103,11 @@ test('Maurische-Netzwuhle', (t) => {
   t.match(doc.text(), /Blanus cinereus/, 'Maurische-Netzwuhle: scientific species name')
   t.equal(doc.title, 'Maurische Netzwühle', 'Maurische-Netzwuhle: German species name')
   t.equal(
-    doc.infobox().get('Taxon_WissName').text,
+    doc.infobox().get('Taxon_WissName').text(),
     'Blanus cinereus',
     'Maurische-Netzwuhle: taxonomic scientific name field'
   )
-  t.equal(doc.infobox().get('Taxon_Rang').text, 'Art', 'Maurische-Netzwuhle: species taxonomic rank')
+  t.equal(doc.infobox().get('Taxon_Rang').text(), 'Art', 'Maurische-Netzwuhle: species taxonomic rank')
   t.ok(doc.categories().length > 0, 'Maurische-Netzwuhle: species categories')
   t.ok(doc.categories().includes('Doppelschleichen'), 'Maurische-Netzwuhle: Doppelschleichen category')
   t.ok(

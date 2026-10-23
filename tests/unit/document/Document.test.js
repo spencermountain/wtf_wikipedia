@@ -517,7 +517,7 @@ test('interwiki - get - return only the interwiki links', (t) => {
 //lists
 test('lists - get - return all lists on the page', (t) => {
   t.deepEqual(
-    page.lists().map((l) => l.lines().map((s) => s.text)),
+    page.lists().map((l) => l.lines().map((s) => s.text())),
     [['one fish', 'two fish'], ['Other page']],
     'list lines'
   )
@@ -529,7 +529,7 @@ test('lists - get - if the clue is a number return the list at that index', (t) 
     page
       .lists()[1]
       .lines()
-      .map((s) => s.text),
+      .map((s) => s.text()),
     ['Other page'],
     'indexed list lines'
   )
@@ -618,7 +618,7 @@ test('infoboxes - get - return all infoboxes', (t) => {
 })
 
 test('infoboxes - get - field access', (t) => {
-  t.equal(page.infobox().get('name').text, 'Jane Doe', 'infobox name')
+  t.equal(page.infobox().get('name').text(), 'Jane Doe', 'infobox name')
   t.deepEqual(
     Object.fromEntries(Object.entries(page.infobox().json().data).map(([key, value]) => [key, value.text])),
     { name: 'Jane Doe', age: '44' },

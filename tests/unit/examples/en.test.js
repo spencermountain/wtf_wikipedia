@@ -5,14 +5,14 @@ import { readPage } from '../../_examples/index.js'
 
 test('2008-British-Motorcycle-Grand-Prix', (t) => {
   const doc = wtf(readPage('2008-British-Motorcycle-Grand-Prix'))
-  t.equal(doc.infobox().get('Grand Prix').text, 'British', '2008-British-Motorcycle-Grand-Prix: race location')
-  t.equal(doc.infobox().get('Location').text, 'Donington Park', '2008-British-Motorcycle-Grand-Prix: race circuit')
+  t.equal(doc.infobox().get('Grand Prix').text(), 'British', '2008-British-Motorcycle-Grand-Prix: race location')
+  t.equal(doc.infobox().get('Location').text(), 'Donington Park', '2008-British-Motorcycle-Grand-Prix: race circuit')
   t.equal(
-    doc.infobox().get('Official_Name').text,
+    doc.infobox().get('Official_Name').text(),
     'bwin.com British Grand Prix',
     '2008-British-Motorcycle-Grand-Prix: official race name'
   )
-  t.equal(doc.infobox().get('flag').text, 'UK', '2008-British-Motorcycle-Grand-Prix: host country code')
+  t.equal(doc.infobox().get('flag').text(), 'UK', '2008-British-Motorcycle-Grand-Prix: host country code')
   t.ok(doc.tables().length > 0, '2008-British-Motorcycle-Grand-Prix: race standings tables')
   t.ok(
     doc.categories().includes('British motorcycle Grand Prix'),
@@ -33,12 +33,12 @@ test('AACTA-Award-For-Outstanding-Achievement-In-Short-Film-Screen-Craft', (t) =
     'AACTA-Award-For-Outstanding-Achievement-In-Short-Film-Screen-Craft: award infobox'
   )
   t.match(
-    doc.infobox().get('presenter').text,
+    doc.infobox().get('presenter').text(),
     /Australian Academy of Cinema and Television Arts/,
     'AACTA-Award-For-Outstanding-Achievement-In-Short-Film-Screen-Craft: presenting organization'
   )
   t.match(
-    doc.infobox().get('name').text,
+    doc.infobox().get('name').text(),
     /Outstanding Achievement in Short Film Screen Craft/,
     'AACTA-Award-For-Outstanding-Achievement-In-Short-Film-Screen-Craft: award name'
   )
@@ -62,7 +62,7 @@ test('Al-Haytham', (t) => {
   const doc = wtf(readPage('Al-Haytham'))
   t.equal(doc.infobox().type(), 'scientist', 'Al-Haytham: scientist infobox')
   t.match(doc.text(), /optics/i, 'Al-Haytham: scientific work appears in the article')
-  t.match(doc.infobox().get('name').text, /Hasan Ibn al-Haytham/, 'Al-Haytham: scientist name')
+  t.match(doc.infobox().get('name').text(), /Hasan Ibn al-Haytham/, 'Al-Haytham: scientist name')
   t.ok(doc.references().length > 0, 'Al-Haytham: scientific biography sources')
   t.match(doc.text(), /Book of Optics/, 'Al-Haytham: principal work')
   t.ok(doc.section('Biography'), 'Al-Haytham: Biography section')
@@ -96,7 +96,7 @@ test('Alanine-Oxo-Acid-Transaminase', (t) => {
 
 test('Alexander-Y-Type', (t) => {
   const doc = wtf(readPage('Alexander-Y-Type'))
-  t.match(doc.infobox().get('name').text, /Alexander Y Type/, 'Alexander-Y-Type: bus name')
+  t.match(doc.infobox().get('name').text(), /Alexander Y Type/, 'Alexander-Y-Type: bus name')
   t.ok(
     doc.links().some((link) => link.page() === 'Leyland Leopard'),
     'Alexander-Y-Type: bus chassis link'
@@ -114,7 +114,7 @@ test('Alexander-Y-Type', (t) => {
 
 test('Allen-R-Morris', (t) => {
   const doc = wtf(readPage('Allen-R-Morris'))
-  t.equal(doc.infobox().get('birth_name').text, 'Allen Robert Morris', 'Allen-R-Morris: birth name')
+  t.equal(doc.infobox().get('birth_name').text(), 'Allen Robert Morris', 'Allen-R-Morris: birth name')
   t.match(doc.images()[0].file(), /AllenMorrisHeadShot\.jpg$/, 'Allen-R-Morris: portrait filename')
   t.equal(doc.infobox().type(), 'person', 'Allen-R-Morris: biography infobox')
   t.match(doc.text(), /Emmy/, 'Allen-R-Morris: television awards')
@@ -130,16 +130,16 @@ test('Allen-R-Morris', (t) => {
 test('Alsea-Company', (t) => {
   const doc = wtf(readPage('Alsea-Company'))
   t.equal(doc.infobox().type(), 'company', 'Alsea-Company: company infobox')
-  t.match(doc.infobox().get('name').text, /Alsea/, 'Alsea-Company: company name')
-  t.equal(doc.infobox().get('industry').text, 'Restaurants', 'Alsea-Company: business sector')
-  t.equal(doc.infobox().get('type').text, 'Public', 'Alsea-Company: company ownership type')
+  t.match(doc.infobox().get('name').text(), /Alsea/, 'Alsea-Company: company name')
+  t.equal(doc.infobox().get('industry').text(), 'Restaurants', 'Alsea-Company: business sector')
+  t.equal(doc.infobox().get('type').text(), 'Public', 'Alsea-Company: company ownership type')
   t.ok(
     doc.links().some((link) => link.page() === 'Public Company'),
     'Alsea-Company: ownership link'
   )
   t.ok(doc.section('Brands portfolio'), 'Alsea-Company: Brands portfolio section')
   t.ok(
-    doc.infoboxes().some((box) => box.get('name').text === 'Alsea, S.A.B. de C.V.'),
+    doc.infoboxes().some((box) => box.get('name').text() === 'Alsea, S.A.B. de C.V.'),
     'Alsea-Company: name field'
   )
   t.end()
@@ -147,13 +147,13 @@ test('Alsea-Company', (t) => {
 
 test('Altimont-Butler', (t) => {
   const doc = wtf(readPage('Altimont-Butler'))
-  t.equal(doc.infobox().get('fullname').text, 'Altimont Butler', 'Altimont-Butler: full name')
-  t.equal(doc.infobox().get('name').text, 'Freddie Butler', 'Altimont-Butler: playing name')
+  t.equal(doc.infobox().get('fullname').text(), 'Altimont Butler', 'Altimont-Butler: full name')
+  t.equal(doc.infobox().get('name').text(), 'Freddie Butler', 'Altimont-Butler: playing name')
   t.equal(doc.infobox().type(), 'football biography', 'Altimont-Butler: player infobox')
   t.match(doc.text(), /Jamaica/, 'Altimont-Butler: national team')
   t.ok(doc.references().length > 0, 'Altimont-Butler: football career references')
   t.ok(
-    doc.infoboxes().some((box) => box.get('years1').text === '1984–1987'),
+    doc.infoboxes().some((box) => box.get('years1').text() === '1984–1987'),
     'Altimont-Butler: years1 field'
   )
   t.ok(doc.categories().includes('1968 births'), 'Altimont-Butler: 1968 births category')
@@ -178,8 +178,8 @@ test('Anarchism', (t) => {
 test('Antique-Band', (t) => {
   const doc = wtf(readPage('Antique-Band'))
   t.equal(doc.infobox().type(), 'musical artist', 'Antique-Band: musical artist infobox')
-  t.match(doc.infobox().get('origin').text, /Stockholm/, 'Antique-Band: band origin')
-  t.equal(doc.infobox().get('Name').text, 'Antique', 'Antique-Band: band name')
+  t.match(doc.infobox().get('origin').text(), /Stockholm/, 'Antique-Band: band origin')
+  t.equal(doc.infobox().get('Name').text(), 'Antique', 'Antique-Band: band name')
   t.match(doc.text(), /Elena Paparizou/, 'Antique-Band: band vocalist')
   t.match(doc.text(), /Eurovision/, 'Antique-Band: song contest participation')
   t.ok(
@@ -216,7 +216,7 @@ test('Arts-Club-Of-Chicago', (t) => {
   t.ok(doc.references().length > 0, 'Arts-Club-Of-Chicago: art history sources')
   t.match(doc.text(), /1916/, 'Arts-Club-Of-Chicago: founding year')
   t.ok(
-    doc.infoboxes().some((box) => box.get('name').text === 'Arts Club of Chicago'),
+    doc.infoboxes().some((box) => box.get('name').text() === 'Arts Club of Chicago'),
     'Arts-Club-Of-Chicago: name field'
   )
   t.ok(
@@ -231,7 +231,7 @@ test('Bodmin', (t) => {
   t.equal(doc.infobox().type(), 'uk place', 'Bodmin: UK place infobox')
   t.match(doc.text(), /Cornwall/, 'Bodmin: location in Cornwall')
   t.ok(doc.section('History'), 'Bodmin: town history section')
-  t.match(doc.infobox().get('static_image_name').text, /Bodmin Public Rooms/, 'Bodmin: town photograph field')
+  t.match(doc.infobox().get('static_image_name').text(), /Bodmin Public Rooms/, 'Bodmin: town photograph field')
   t.ok(
     doc.categories().some((category) => /Cornwall/.test(category)),
     'Bodmin: Cornwall category'
@@ -247,12 +247,12 @@ test('Bodmin', (t) => {
 test('Bradley-Community-Lincoln-County-Wisconsin', (t) => {
   const doc = wtf(readPage('Bradley-Community-Lincoln-County-Wisconsin'))
   t.equal(
-    doc.infobox().get('official_name').text,
+    doc.infobox().get('official_name').text(),
     'Bradley, Wisconsin',
     'Bradley-Community-Lincoln-County-Wisconsin: official place name'
   )
   t.equal(
-    doc.infobox().get('settlement_type').text,
+    doc.infobox().get('settlement_type').text(),
     'Unincorporated community',
     'Bradley-Community-Lincoln-County-Wisconsin: settlement type'
   )
@@ -264,7 +264,7 @@ test('Bradley-Community-Lincoln-County-Wisconsin', (t) => {
     'Bradley-Community-Lincoln-County-Wisconsin: Unincorporated area link'
   )
   t.ok(
-    doc.infoboxes().some((box) => box.get('utc_offset').text === '-6'),
+    doc.infoboxes().some((box) => box.get('utc_offset').text() === '-6'),
     'Bradley-Community-Lincoln-County-Wisconsin: utc_offset field'
   )
   t.end()
@@ -273,7 +273,7 @@ test('Bradley-Community-Lincoln-County-Wisconsin', (t) => {
 test('Britt-Morgan', (t) => {
   const doc = wtf(readPage('Britt-Morgan'))
   t.equal(doc.title, 'Britt Morgan', 'Britt-Morgan: article title')
-  t.equal(doc.infobox().get('birth_place').text, 'Tyler, Texas, United States', 'Britt-Morgan: birthplace')
+  t.equal(doc.infobox().get('birth_place').text(), 'Tyler, Texas, United States', 'Britt-Morgan: birthplace')
   t.ok(
     doc.links().some((link) => link.page() === 'Jace Rocker'),
     'Britt-Morgan: collaborator link'
@@ -283,7 +283,7 @@ test('Britt-Morgan', (t) => {
   t.ok(
     doc
       .infoboxes()
-      .some((box) => box.get('alias').text === 'Brittney Morgan, Brittany Morgan, Jacy Bodean, Brit Morgan'),
+      .some((box) => box.get('alias').text() === 'Brittney Morgan, Brittany Morgan, Jacy Bodean, Brit Morgan'),
     'Britt-Morgan: alias field'
   )
   t.ok(
@@ -295,13 +295,13 @@ test('Britt-Morgan', (t) => {
 
 test('Canton-Of-Etaples', (t) => {
   const doc = wtf(readPage('Canton-Of-Etaples'))
-  t.equal(doc.infobox().get('name').text, 'Canton of Étaples', 'Canton-Of-Etaples: accented canton name')
-  t.equal(doc.infobox().get('dept').text, 'Pas-de-Calais', 'Canton-Of-Etaples: department')
-  t.equal(doc.infobox().get('chief town').text, 'Étaples', 'Canton-Of-Etaples: administrative seat')
-  t.equal(doc.infobox().get('numcomm').text, '15', 'Canton-Of-Etaples: number of communes')
-  t.equal(doc.infobox().get('cancode').text, '6224', 'Canton-Of-Etaples: canton code')
+  t.equal(doc.infobox().get('name').text(), 'Canton of Étaples', 'Canton-Of-Etaples: accented canton name')
+  t.equal(doc.infobox().get('dept').text(), 'Pas-de-Calais', 'Canton-Of-Etaples: department')
+  t.equal(doc.infobox().get('chief town').text(), 'Étaples', 'Canton-Of-Etaples: administrative seat')
+  t.equal(doc.infobox().get('numcomm').text(), '15', 'Canton-Of-Etaples: number of communes')
+  t.equal(doc.infobox().get('cancode').text(), '6224', 'Canton-Of-Etaples: canton code')
   t.ok(
-    doc.infoboxes().some((box) => box.get('arr').text === 'Montreuil'),
+    doc.infoboxes().some((box) => box.get('arr').text() === 'Montreuil'),
     'Canton-Of-Etaples: arr field'
   )
   t.ok(doc.categories().includes('Cantons of Pas-de-Calais'), 'Canton-Of-Etaples: Cantons of Pas-de-Calais category')
@@ -314,7 +314,7 @@ test('Charlie-Milstead', (t) => {
   t.equal(doc.infoboxes().length, 1, 'Charlie-Milstead: infoboxes')
   t.equal(doc.categories().length, 9, 'Charlie-Milstead: categories')
   t.equal(doc.infobox().type(), 'nfl biography', 'Charlie-Milstead: infobox type')
-  t.equal(doc.infobox().get('birth_place').text, 'Tyler, Texas', 'Charlie-Milstead: birthplace')
+  t.equal(doc.infobox().get('birth_place').text(), 'Tyler, Texas', 'Charlie-Milstead: birthplace')
   t.equal(doc.templates('1960 Houston Oilers').length, 1, 'Charlie-Milstead: team roster template')
   t.ok(doc.categories().includes('1937 births'), 'Charlie-Milstead: 1937 births category')
   t.ok(
@@ -407,11 +407,11 @@ test('Direct-Representation', (t) => {
 
 test('Dollar-Point-California', (t) => {
   const doc = wtf(readPage('Dollar-Point-California'))
-  t.equal(doc.infobox().get('official_name').text, 'Dollar Point, California', 'Dollar-Point-California: official name')
+  t.equal(doc.infobox().get('official_name').text(), 'Dollar Point, California', 'Dollar-Point-California: official name')
   t.equal(doc.coordinates()[0].lat, 39.18861, 'Dollar-Point-California: latitude')
   t.equal(doc.coordinates()[0].lon, -120.10889, 'Dollar-Point-California: longitude')
   t.equal(
-    doc.infobox().get('settlement_type').text,
+    doc.infobox().get('settlement_type').text(),
     'census-designated place',
     'Dollar-Point-California: settlement classification'
   )
@@ -427,13 +427,13 @@ test('Dollar-Point-California', (t) => {
 test('Elizabeth-Gilbert', (t) => {
   const doc = wtf(readPage('Elizabeth-Gilbert'))
   t.equal(doc.infobox().type(), 'writer', 'Elizabeth-Gilbert: writer infobox')
-  t.equal(doc.infobox().get('name').text, 'Elizabeth Gilbert', 'Elizabeth-Gilbert: writer name')
+  t.equal(doc.infobox().get('name').text(), 'Elizabeth Gilbert', 'Elizabeth-Gilbert: writer name')
   t.match(doc.text(), /Eat, Pray, Love/, 'Elizabeth-Gilbert: best-known book')
   t.match(doc.images()[0].file(), /Elizabeth[ _]Gilbert[ _]at[ _]TED\.jpg$/, 'Elizabeth-Gilbert: author photograph')
   t.ok(doc.references().length > 0, 'Elizabeth-Gilbert: biographical sources')
   t.ok(doc.section('Early life'), 'Elizabeth-Gilbert: Early life section')
   t.ok(
-    doc.infoboxes().some((box) => box.get('occupation').text === 'Novelist, memoirist'),
+    doc.infoboxes().some((box) => box.get('occupation').text() === 'Novelist, memoirist'),
     'Elizabeth-Gilbert: occupation field'
   )
   t.end()
@@ -465,7 +465,7 @@ test('Ewelina-Setowska-Dryk', (t) => {
 
 test('Goryeo-Ware', (t) => {
   const doc = wtf(readPage('Goryeo-Ware'))
-  t.equal(doc.infobox().get('title').text, 'Goryeo ware', 'Goryeo-Ware: ceramics name')
+  t.equal(doc.infobox().get('title').text(), 'Goryeo ware', 'Goryeo-Ware: ceramics name')
   t.equal(doc.images().length, 5, 'Goryeo-Ware: infobox and gallery images')
   t.equal(doc.infobox().type(), 'korean name', 'Goryeo-Ware: Korean name infobox')
   t.ok(
@@ -507,17 +507,17 @@ test('Gregory-Serper', (t) => {
 
 test('Harry-McPherson', (t) => {
   const doc = wtf(readPage('Harry-McPherson'))
-  t.equal(doc.infobox().get('name').text, 'Harry McPherson', 'Harry-McPherson: official name')
-  t.equal(doc.infobox().get('office').text, 'White House Counsel', 'Harry-McPherson: office held')
+  t.equal(doc.infobox().get('name').text(), 'Harry McPherson', 'Harry-McPherson: official name')
+  t.equal(doc.infobox().get('office').text(), 'White House Counsel', 'Harry-McPherson: office held')
   t.equal(doc.infobox().type(), 'officeholder', 'Harry-McPherson: political office infobox')
-  t.match(doc.infobox().get('president').text, /Lyndon Johnson/, 'Harry-McPherson: president served')
+  t.match(doc.infobox().get('president').text(), /Lyndon Johnson/, 'Harry-McPherson: president served')
   t.match(doc.images()[0].file(), /McPherson[ _]DLA[ _]Piper\.jpg$/, 'Harry-McPherson: portrait')
   t.ok(
     doc.section('Early life, education, military service'),
     'Harry-McPherson: Early life, education, military service section'
   )
   t.ok(
-    doc.infoboxes().some((box) => box.get('term_start').text === 'February 11, 1966'),
+    doc.infoboxes().some((box) => box.get('term_start').text() === 'February 11, 1966'),
     'Harry-McPherson: term_start field'
   )
   t.end()
@@ -556,9 +556,9 @@ test('History-Of-Rugby-Union-Matches-Between-Scotland-And-Wales', (t) => {
 
 test('Irina-Saratovtseva', (t) => {
   const doc = wtf(readPage('Irina-Saratovtseva'))
-  t.equal(doc.infobox().get('fullname').text, 'Irina Saratovtseva', 'Irina-Saratovtseva: player name')
+  t.equal(doc.infobox().get('fullname').text(), 'Irina Saratovtseva', 'Irina-Saratovtseva: player name')
   t.equal(doc.infobox().type(), 'football biography', 'Irina-Saratovtseva: football biography infobox')
-  t.equal(doc.infobox().get('name').text, 'Irina Saratovtseva', 'Irina-Saratovtseva: display name')
+  t.equal(doc.infobox().get('name').text(), 'Irina Saratovtseva', 'Irina-Saratovtseva: display name')
   t.match(doc.images()[0].file(), /ISaratovtseva\.JPG$/, 'Irina-Saratovtseva: player photograph')
   t.match(doc.text(), /goalkeeper/i, 'Irina-Saratovtseva: playing position')
   t.ok(doc.categories().includes('1989 births'), 'Irina-Saratovtseva: 1989 births category')
@@ -571,10 +571,10 @@ test('Irina-Saratovtseva', (t) => {
 
 test('Jerry-Mumphrey', (t) => {
   const doc = wtf(readPage('Jerry-Mumphrey'))
-  t.equal(doc.infobox().get('position').text, 'Outfielder', 'Jerry-Mumphrey: baseball position')
-  t.equal(doc.infobox().get('bats').text, 'Switch', 'Jerry-Mumphrey: batting side')
-  t.equal(doc.infobox().get('throws').text, 'Right', 'Jerry-Mumphrey: throwing arm')
-  t.equal(doc.infobox().get('birth_place').text, 'Tyler, Texas', 'Jerry-Mumphrey: birthplace')
+  t.equal(doc.infobox().get('position').text(), 'Outfielder', 'Jerry-Mumphrey: baseball position')
+  t.equal(doc.infobox().get('bats').text(), 'Switch', 'Jerry-Mumphrey: batting side')
+  t.equal(doc.infobox().get('throws').text(), 'Right', 'Jerry-Mumphrey: throwing arm')
+  t.equal(doc.infobox().get('birth_place').text(), 'Tyler, Texas', 'Jerry-Mumphrey: birthplace')
   t.equal(doc.infobox().type(), 'baseball biography', 'Jerry-Mumphrey: baseball biography type')
   t.ok(
     doc.links().some((link) => link.page() === 'Major League Baseball'),
@@ -586,13 +586,13 @@ test('Jerry-Mumphrey', (t) => {
 
 test('Jodie-Emery', (t) => {
   const doc = wtf(readPage('Jodie-Emery'))
-  t.equal(doc.infobox().get('name').text, 'Jodie Emery', 'Jodie-Emery: person name')
+  t.equal(doc.infobox().get('name').text(), 'Jodie Emery', 'Jodie-Emery: person name')
   t.match(doc.images()[0].file(), /Marc_Emery_and_Jodie_Emery\.JPG$/, 'Jodie-Emery: portrait filename')
   t.equal(doc.infobox().type(), 'person', 'Jodie-Emery: person infobox')
-  t.equal(doc.infobox().get('nationality').text, 'Canadian', 'Jodie-Emery: nationality')
-  t.match(doc.infobox().get('caption').text, /Toronto Freedom Festival 2010/, 'Jodie-Emery: photo caption')
+  t.equal(doc.infobox().get('nationality').text(), 'Canadian', 'Jodie-Emery: nationality')
+  t.match(doc.infobox().get('caption').text(), /Toronto Freedom Festival 2010/, 'Jodie-Emery: photo caption')
   t.equal(doc.isRedirect(), false, 'Jodie-Emery: not-redirect')
-  t.equal(doc.infobox().get('nationality').text, 'Canadian', 'Jodie-Emery: nationality')
+  t.equal(doc.infobox().get('nationality').text(), 'Canadian', 'Jodie-Emery: nationality')
   t.equal(doc.infobox().json().template, 'Infobox person', 'Jodie-Emery: person template')
   t.equal(doc.section().sentences().length > 0, true, 'Jodie-Emery: intro-length')
   t.equal(doc.section(1).sentences().length > 0, true, 'Jodie-Emery: career-length')
@@ -600,7 +600,7 @@ test('Jodie-Emery', (t) => {
   t.equal(doc.images().length, 1, 'Jodie-Emery: image-length')
   t.ok(doc.section('Early life'), 'Jodie-Emery: Early life section')
   t.ok(
-    doc.infoboxes().some((box) => box.get('other_names').text === 'Princess of Pot'),
+    doc.infoboxes().some((box) => box.get('other_names').text() === 'Princess of Pot'),
     'Jodie-Emery: other_names field'
   )
   t.end()
@@ -609,12 +609,12 @@ test('Jodie-Emery', (t) => {
 test('Julia-Kristeva', (t) => {
   const doc = wtf(readPage('Julia-Kristeva'))
   t.equal(doc.infobox().type(), 'philosopher', 'Julia-Kristeva: philosopher infobox')
-  t.equal(doc.infobox().get('birth_name').text, 'Юлия Кръстева', 'Julia-Kristeva: Cyrillic birth name')
-  t.equal(doc.infobox().get('name').text, 'Julia Kristeva', 'Julia-Kristeva: display name')
+  t.equal(doc.infobox().get('birth_name').text(), 'Юлия Кръстева', 'Julia-Kristeva: Cyrillic birth name')
+  t.equal(doc.infobox().get('name').text(), 'Julia Kristeva', 'Julia-Kristeva: display name')
   t.match(doc.text(), /psychoanalyst/i, 'Julia-Kristeva: profession')
   t.match(doc.images()[0].file(), /Kristeva/, 'Julia-Kristeva: portrait filename')
   t.ok(
-    doc.infoboxes().some((box) => box.get('residence').text === 'France'),
+    doc.infoboxes().some((box) => box.get('residence').text() === 'France'),
     'Julia-Kristeva: residence field'
   )
   t.ok(doc.categories().includes('1941 births'), 'Julia-Kristeva: 1941 births category')
@@ -623,10 +623,10 @@ test('Julia-Kristeva', (t) => {
 
 test('K-Nicole-Mitchell', (t) => {
   const doc = wtf(readPage('K-Nicole-Mitchell'))
-  t.equal(doc.infobox().get('name').text, 'K. Nicole Mitchell', 'K-Nicole-Mitchell: judge name')
-  t.match(doc.infobox().get('office').text, /Eastern District of Texas/, 'K-Nicole-Mitchell: court jurisdiction')
+  t.equal(doc.infobox().get('name').text(), 'K. Nicole Mitchell', 'K-Nicole-Mitchell: judge name')
+  t.match(doc.infobox().get('office').text(), /Eastern District of Texas/, 'K-Nicole-Mitchell: court jurisdiction')
   t.equal(doc.infobox().type(), 'judge', 'K-Nicole-Mitchell: judge infobox')
-  t.match(doc.infobox().get('termstart').text, /2013/, 'K-Nicole-Mitchell: start of judicial term')
+  t.match(doc.infobox().get('termstart').text(), /2013/, 'K-Nicole-Mitchell: start of judicial term')
   t.match(doc.text(), /Magistrate Judge/i, 'K-Nicole-Mitchell: judicial role')
   t.ok(doc.categories().includes('American lawyers'), 'K-Nicole-Mitchell: American lawyers category')
   t.ok(
@@ -743,16 +743,16 @@ test('Radiohead', (t) => {
 
 test('Raith-Rovers', (t) => {
   const doc = wtf(readPage('Raith-Rovers'))
-  t.equal(doc.infobox().get('clubname').text, 'Raith Rovers', 'Raith-Rovers: club name')
+  t.equal(doc.infobox().get('clubname').text(), 'Raith Rovers', 'Raith-Rovers: club name')
   t.equal(doc.infobox().type(), 'football club', 'Raith-Rovers: football club infobox')
-  t.equal(doc.infobox().get('fullname').text, 'Raith Rovers Football Club', 'Raith-Rovers: full club name')
+  t.equal(doc.infobox().get('fullname').text(), 'Raith Rovers Football Club', 'Raith-Rovers: full club name')
   t.match(doc.text(), /Kirkcaldy/, 'Raith-Rovers: club home town')
   t.ok(
     doc.images().some((image) => /Raith/.test(image.file())),
     'Raith-Rovers: club crest'
   )
   t.equal(doc.isRedirect(), false, 'Raith-Rovers: not-redirect')
-  t.equal(doc.infoboxes()[0].get('clubname').text, 'Raith Rovers', 'Raith-Rovers: clubname')
+  t.equal(doc.infoboxes()[0].get('clubname').text(), 'Raith Rovers', 'Raith-Rovers: clubname')
   t.equal(doc.categories().length, 10, 'Raith-Rovers: cat-length')
   t.equal(doc.images().length, 2, 'Raith-Rovers: img-length')
   t.equal(doc.images()[1].file(), "File:Stark's_Park_-_geograph.org.uk_-_204446.jpg", 'Raith-Rovers: img-file')
@@ -830,7 +830,7 @@ test('Remote-Data-Services', (t) => {
   )
   t.match(doc.text(), /SOAP Toolkit 2\.0/, 'Remote-Data-Services: replacement technology')
   t.ok(
-    doc.lists().some((list) => list.lines().some((line) => /MSDN/.test(line.text))),
+    doc.lists().some((list) => list.lines().some((line) => /MSDN/.test(line.text()))),
     'Remote-Data-Services: MSDN resource list'
   )
   t.ok(
@@ -873,16 +873,16 @@ test('Routing-And-Remote-Access-Service', (t) => {
 
 test('Royal-Cinema', (t) => {
   const doc = wtf(readPage('Royal-Cinema'))
-  t.equal(doc.infobox().get('name').text, 'Royal Cinema', 'Royal-Cinema: venue name')
-  t.equal(doc.infobox().get('former names').text, 'The Pylon, The Golden Princess', 'Royal-Cinema: former venue names')
+  t.equal(doc.infobox().get('name').text(), 'Royal Cinema', 'Royal-Cinema: venue name')
+  t.equal(doc.infobox().get('former names').text(), 'The Pylon, The Golden Princess', 'Royal-Cinema: former venue names')
   t.equal(doc.infobox().type(), 'venue', 'Royal-Cinema: venue infobox')
   t.match(doc.images()[0].file(), /Royal_Cinema\.JPG$/, 'Royal-Cinema: cinema photograph')
-  t.equal(doc.infobox().get('caption').text, 'The Royal Cinema in 2009', 'Royal-Cinema: photo caption')
+  t.equal(doc.infobox().get('caption').text(), 'The Royal Cinema in 2009', 'Royal-Cinema: photo caption')
   t.equal(doc.infobox().json().template, 'Infobox venue', 'Royal-Cinema: venue template')
   t.equal(doc.section().sentences().length, 10, 'Royal-Cinema: sentence-length')
   t.equal(doc.categories().length, 4, 'Royal-Cinema: cat-length')
 
-  t.equal(doc.infobox().get('opened').text, '1939', 'Royal-Cinema: year-string')
+  t.equal(doc.infobox().get('opened').text(), '1939', 'Royal-Cinema: year-string')
   // t.equal(doc.infobox().keyValue()['opened'], 1939, 'year-number');
   t.ok(
     doc.categories().includes('National Historic Sites in Ontario'),
@@ -926,7 +926,7 @@ test('Senate-Of-Pakistan', (t) => {
   const doc = wtf(readPage('Senate-Of-Pakistan'))
   t.equal(doc.infobox().type(), 'legislature', 'Senate-Of-Pakistan: legislature infobox')
   t.equal(
-    doc.infobox().get('name').text,
+    doc.infobox().get('name').text(),
     'Senate of Pakistan ایوانِ بالا پاکستان',
     'Senate-Of-Pakistan: English and Urdu legislature name'
   )
@@ -946,14 +946,14 @@ test('Senate-Of-Pakistan', (t) => {
 
 test('Terrence-Murphy-American-Football', (t) => {
   const doc = wtf(readPage('Terrence-Murphy-American-Football'))
-  t.equal(doc.infobox().get('name').text, 'Terrence Murphy', 'Terrence-Murphy-American-Football: player name')
-  t.equal(doc.infobox().get('position').text, 'Wide receiver', 'Terrence-Murphy-American-Football: football position')
+  t.equal(doc.infobox().get('name').text(), 'Terrence Murphy', 'Terrence-Murphy-American-Football: player name')
+  t.equal(doc.infobox().get('position').text(), 'Wide receiver', 'Terrence-Murphy-American-Football: football position')
   t.equal(doc.infobox().type(), 'nfl player', 'Terrence-Murphy-American-Football: NFL player infobox')
-  t.match(doc.infobox().get('birth_place').text, /Tyler, Texas/, 'Terrence-Murphy-American-Football: birthplace')
+  t.match(doc.infobox().get('birth_place').text(), /Tyler, Texas/, 'Terrence-Murphy-American-Football: birthplace')
   t.ok(doc.references().length > 0, 'Terrence-Murphy-American-Football: career references')
   t.ok(doc.section('Playing career'), 'Terrence-Murphy-American-Football: Playing career section')
   t.ok(
-    doc.infoboxes().some((box) => box.get('number').text === '85'),
+    doc.infoboxes().some((box) => box.get('number').text() === '85'),
     'Terrence-Murphy-American-Football: number field'
   )
   t.end()
@@ -961,13 +961,13 @@ test('Terrence-Murphy-American-Football', (t) => {
 
 test('Teymanak-E-Olya', (t) => {
   const doc = wtf(readPage('Teymanak-E-Olya'))
-  t.equal(doc.infobox().get('official_name').text, 'Teymanak-e Olya', 'Teymanak-E-Olya: village name')
-  t.equal(doc.infobox().get('native_name').text, 'تيمنك عليا', 'Teymanak-E-Olya: Persian village name')
-  t.equal(doc.infobox().get('settlement_type').text, 'village', 'Teymanak-E-Olya: settlement type')
-  t.equal(doc.infobox().get('pushpin_map').text, 'Iran', 'Teymanak-E-Olya: map country')
+  t.equal(doc.infobox().get('official_name').text(), 'Teymanak-e Olya', 'Teymanak-E-Olya: village name')
+  t.equal(doc.infobox().get('native_name').text(), 'تيمنك عليا', 'Teymanak-E-Olya: Persian village name')
+  t.equal(doc.infobox().get('settlement_type').text(), 'village', 'Teymanak-E-Olya: settlement type')
+  t.equal(doc.infobox().get('pushpin_map').text(), 'Iran', 'Teymanak-E-Olya: map country')
   t.equal(doc.infobox().type(), 'settlement', 'Teymanak-E-Olya: settlement infobox')
   t.ok(
-    doc.infoboxes().some((box) => box.get('population_as_of').text === '2006'),
+    doc.infoboxes().some((box) => box.get('population_as_of').text() === '2006'),
     'Teymanak-E-Olya: population_as_of field'
   )
   t.ok(
@@ -1039,7 +1039,7 @@ test('Toronto', (t) => {
   t.ok(doc.infoboxes().length > 0, 'Toronto: municipal infobox')
   t.ok(doc.section('Before 1800'), 'Toronto: Before 1800 section')
   t.ok(
-    doc.infoboxes().some((box) => box.get('official_name').text === 'City of Toronto'),
+    doc.infoboxes().some((box) => box.get('official_name').text() === 'City of Toronto'),
     'Toronto: official_name field'
   )
   t.end()
@@ -1048,18 +1048,18 @@ test('Toronto', (t) => {
 test('Toronto-Star', (t) => {
   const doc = wtf(readPage('Toronto-Star'))
   t.equal(doc.infobox().type(), 'newspaper', 'Toronto-Star: newspaper infobox')
-  t.equal(doc.infobox().get('publisher').text, 'John D. Cruickshank', 'Toronto-Star: publisher in this snapshot')
+  t.equal(doc.infobox().get('publisher').text(), 'John D. Cruickshank', 'Toronto-Star: publisher in this snapshot')
   t.ok(doc.section('History'), 'Toronto-Star: newspaper history section')
   t.match(doc.images()[0].file(), /Toronto[ _]Star[ _]frontpage/, 'Toronto-Star: front-page image')
   t.ok(doc.references().length > 0, 'Toronto-Star: newspaper references')
-  t.equal(doc.infobox().get('publisher').text, 'John D. Cruickshank', 'Toronto-Star: publisher.text')
+  t.equal(doc.infobox().get('publisher').text(), 'John D. Cruickshank', 'Toronto-Star: publisher.text')
   t.equal(doc.infobox().json().template, 'Infobox newspaper', 'Toronto-Star: newspaper template')
   const section = doc.section('history')
   t.equal(section.sentences().length, 21, 'Toronto-Star: sentence-length')
   t.equal(doc.categories().length, 6, 'Toronto-Star: sentence-length')
   // t.equal(doc.text['Notable cartoonists'], undefined, t);
   t.ok(
-    doc.infoboxes().some((box) => box.get('managing editor').text === 'Jane Davenport'),
+    doc.infoboxes().some((box) => box.get('managing editor').text() === 'Jane Davenport'),
     'Toronto-Star: managing editor field'
   )
   t.ok(
@@ -1073,7 +1073,7 @@ test('Toronto-Star-Cartoonists', (t) => {
   const doc = wtf(readPage('Toronto-Star'))
   t.equal(doc.isRedirect(), false, 'Toronto-Star: not-redirect')
   t.equal(doc.isDisambig(), false, 'Toronto-Star: not-disambig')
-  t.equal(doc.infobox().get('publisher').text, 'John D. Cruickshank', 'Toronto-Star: publisher.text')
+  t.equal(doc.infobox().get('publisher').text(), 'John D. Cruickshank', 'Toronto-Star: publisher.text')
   t.equal(doc.infobox().json().template, 'Infobox newspaper', 'Toronto-Star: newspaper template')
   let section = doc.section('history')
   t.equal(section.sentences().length, 21, 'Toronto-Star: history-length')
@@ -1085,10 +1085,10 @@ test('Toronto-Star-Cartoonists', (t) => {
 
 test('Tour-EP-Band-Of-Horses-EP', (t) => {
   const doc = wtf(readPage('Tour-EP-Band-Of-Horses-EP'))
-  t.equal(doc.infobox().get('name').text, 'Tour EP', 'Tour-EP-Band-Of-Horses-EP: release title')
-  t.equal(doc.infobox().get('artist').text, 'Band of Horses', 'Tour-EP-Band-Of-Horses-EP: performing artist')
-  t.equal(doc.infobox().get('Type').text, 'EP', 'Tour-EP-Band-Of-Horses-EP: release format')
-  t.equal(doc.infobox().get('Released').text, '2005', 'Tour-EP-Band-Of-Horses-EP: release year')
+  t.equal(doc.infobox().get('name').text(), 'Tour EP', 'Tour-EP-Band-Of-Horses-EP: release title')
+  t.equal(doc.infobox().get('artist').text(), 'Band of Horses', 'Tour-EP-Band-Of-Horses-EP: performing artist')
+  t.equal(doc.infobox().get('Type').text(), 'EP', 'Tour-EP-Band-Of-Horses-EP: release format')
+  t.equal(doc.infobox().get('Released').text(), '2005', 'Tour-EP-Band-Of-Horses-EP: release year')
   t.equal(doc.infobox().type(), 'album', 'Tour-EP-Band-Of-Horses-EP: album infobox')
   t.ok(doc.categories().includes('Band of Horses albums'), 'Tour-EP-Band-Of-Horses-EP: Band of Horses albums category')
   t.ok(

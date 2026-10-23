@@ -8,7 +8,7 @@ test('stock exchange only', function (t) {
   }}
 `
   const obj = wtf(str).infoboxes()[0]
-  t.equal(obj.get(`traded_as`).text, 'bse', 'found bse')
+  t.equal(obj.get(`traded_as`).text(), 'bse', 'found bse')
   t.end()
 })
 
@@ -19,7 +19,7 @@ test('stock exchange with number', function (t) {
   }}
 `
   const obj = wtf(str).infoboxes()[0]
-  t.equal(obj.get(`traded_as`).text, 'bse: 500800', 'found bse with number')
+  t.equal(obj.get(`traded_as`).text(), 'bse: 500800', 'found bse with number')
   t.end()
 })
 
@@ -30,7 +30,7 @@ test('stock exchange tokyo', function (t) {
   }}
 `
   const obj = wtf(str).infoboxes()[0]
-  t.equal(obj.get(`traded_as`).text, 'tyo: 9477', 'found tokyo')
+  t.equal(obj.get(`traded_as`).text(), 'tyo: 9477', 'found tokyo')
   t.end()
 })
 
@@ -41,7 +41,7 @@ test('stock exchange nyse', function (t) {
   }}
 `
   const obj = wtf(str).infoboxes()[0]
-  t.equal(obj.get(`traded_as`).text, 'nyse: MUFG', 'found nyse')
+  t.equal(obj.get(`traded_as`).text(), 'nyse: MUFG', 'found nyse')
   t.end()
 })
 
@@ -52,7 +52,7 @@ test('stock exchange NASDAQ', function (t) {
   }}
 `
   const obj = wtf(str).infoboxes()[0]
-  t.equal(obj.get(`traded_as`).text, 'nasdaq: LYFT', 'found NASDAQ')
+  t.equal(obj.get(`traded_as`).text(), 'nasdaq: LYFT', 'found NASDAQ')
   t.end()
 })
 
@@ -63,7 +63,7 @@ test('stock exchange SSE in list', function (t) {
   }}
 `
   const obj = wtf(str).infoboxes()[0]
-  t.equal(obj.get(`traded_as`).text, 'sse: 122458 (bond)\n\nsse: 122470 (bond)', 'found stock SSE exchange in list')
+  t.equal(obj.get(`traded_as`).text(), 'sse: 122458 (bond)\n\nsse: 122470 (bond)', 'found stock SSE exchange in list')
   t.end()
 })
 
@@ -74,7 +74,7 @@ test('stock exchange EuronextParis', function (t) {
   }}
 `
   const obj = wtf(str).infoboxes()[0]
-  t.equal(obj.get(`traded_as`).text, 'euronextparis: MC FR0000121014', 'found EuronextParis')
+  t.equal(obj.get(`traded_as`).text(), 'euronextparis: MC FR0000121014', 'found EuronextParis')
   t.end()
 })
 
@@ -85,7 +85,7 @@ test('stock exchange BarbadosSE', function (t) {
   }}
 `
   const obj = wtf(str).infoboxes()[0]
-  t.equal(obj.get(`traded_as`).text, 'barbadosse: WIB', 'found BarbadosSE')
+  t.equal(obj.get(`traded_as`).text(), 'barbadosse: WIB', 'found BarbadosSE')
   t.end()
 })
 
@@ -96,7 +96,7 @@ test('stock exchange Irish Stock Exchange', function (t) {
   }}
 `
   const obj = wtf(str).infoboxes()[0]
-  t.equal(obj.get(`traded_as`).text, 'ise: TCO', 'found Irish Stock Exchange')
+  t.equal(obj.get(`traded_as`).text(), 'ise: TCO', 'found Irish Stock Exchange')
   t.end()
 })
 
@@ -107,7 +107,7 @@ test('stock exchange Market for Alternative Investment', function (t) {
 }}
 `
   const obj = wtf(str).infoboxes()[0]
-  t.equal(obj.get(`traded_as`).text, 'mai: UBIS', 'found Market for Alternative Investment')
+  t.equal(obj.get(`traded_as`).text(), 'mai: UBIS', 'found Market for Alternative Investment')
   t.end()
 })
 
@@ -118,7 +118,7 @@ test('stock exchange Market for Malta Stock Exchange', function (t) {
 }}
 `
   const obj = wtf(str).infoboxes()[0]
-  t.equal(obj.get(`traded_as`).text, 'malta stock exchange: GO', 'found Market for Malta Stock Exchange')
+  t.equal(obj.get(`traded_as`).text(), 'malta stock exchange: GO', 'found Market for Malta Stock Exchange')
   t.end()
 })
 
@@ -129,7 +129,7 @@ test('stock exchange Market for NewConnect', function (t) {
 }}
 `
   const obj = wtf(str).infoboxes()[0]
-  t.equal(obj.get(`traded_as`).text, 'newconnect: BLO', 'found Market for NewConnect')
+  t.equal(obj.get(`traded_as`).text(), 'newconnect: BLO', 'found Market for NewConnect')
   t.end()
 })
 
@@ -140,7 +140,7 @@ test('stock exchange Market for Grey Market', function (t) {
 }}
 `
   const obj = wtf(str).infoboxes()[0]
-  t.equal(obj.get(`traded_as`).text, 'otc grey: ZAAP', 'found Market for Grey Market')
+  t.equal(obj.get(`traded_as`).text(), 'otc grey: ZAAP', 'found Market for Grey Market')
   t.end()
 })
 
@@ -151,6 +151,6 @@ test('stock exchange Market for Expert Market', function (t) {
 }}
 `
   const obj = wtf(str).infoboxes()[0]
-  t.equal(obj.get(`traded_as`).text, 'otc expert: GNPR', 'found Market for Expert Market')
+  t.equal(obj.get(`traded_as`).text(), 'otc expert: GNPR', 'found Market for Expert Market')
   t.end()
 })

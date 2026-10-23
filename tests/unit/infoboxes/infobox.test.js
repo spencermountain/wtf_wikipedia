@@ -51,10 +51,10 @@ test('french-infobox', function (t) {
  }}
 `
   const obj = wtf(str).infoboxes()[0]
-  t.equal(obj.get(`secteurs d'activités`).text, 'found1', 'found secteurs val')
-  t.equal(obj.get(`chiffre d'affaires`).text, 'found2', 'found chiffre val')
-  t.equal(obj.get(`siège (ville)`).text, 'city', 'found city val')
-  t.equal(obj.get(`société sœur`).text, 'sister', 'found sister val')
+  t.equal(obj.get(`secteurs d'activités`).text(), 'found1', 'found secteurs val')
+  t.equal(obj.get(`chiffre d'affaires`).text(), 'found2', 'found chiffre val')
+  t.equal(obj.get(`siège (ville)`).text(), 'city', 'found city val')
+  t.equal(obj.get(`société sœur`).text(), 'sister', 'found sister val')
   t.end()
 })
 
@@ -71,8 +71,8 @@ test('nested-london-infobox', function (t) {
   }}
 `
   const obj = wtf(str).infobox('country')
-  t.equal(obj.get(`common_name`).text, 'United Kingdom', 'found common_name val')
-  t.equal(obj.get(`name`).text, 'hello', 'found name val')
+  t.equal(obj.get(`common_name`).text(), 'United Kingdom', 'found common_name val')
+  t.equal(obj.get(`name`).text(), 'hello', 'found name val')
   t.end()
 })
 
@@ -112,9 +112,9 @@ test('tabs-in-infobox', function (t) {
 }}
 `
   const obj = wtf(str).infobox()
-  t.equal(obj.get(`successor1`).text, 'Wistin Abela', 'found successor1 val')
-  t.equal(obj.get(`term_end2`).text, 'March 1997', 'found term_end2 val')
-  t.equal(obj.get(`alma_mater`).text, `St Peter's College, Oxford`, 'found alma_mater val')
+  t.equal(obj.get(`successor1`).text(), 'Wistin Abela', 'found successor1 val')
+  t.equal(obj.get(`term_end2`).text(), 'March 1997', 'found term_end2 val')
+  t.equal(obj.get(`alma_mater`).text(), `St Peter's College, Oxford`, 'found alma_mater val')
   t.end()
 })
 

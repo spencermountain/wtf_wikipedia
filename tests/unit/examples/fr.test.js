@@ -42,7 +42,7 @@ test('Wimbledon-Championships-Fr', (t) => {
   t.ok(doc.section('Historique'), 'Wimbledon-Championships-Fr: tournament history or programme section')
   t.ok(doc.tables().length > 0, 'Wimbledon-Championships-Fr: tournament records tables')
   t.ok(doc.references().length > 0, 'Wimbledon-Championships-Fr: tournament sources')
-  t.ok(doc.infoboxes().some((box) => box.get('directeur').text === 'Sally Bolton'), 'Wimbledon-Championships-Fr: tournament director in snapshot')
+  t.ok(doc.infoboxes().some((box) => box.get('directeur').text() === 'Sally Bolton'), 'Wimbledon-Championships-Fr: tournament director in snapshot')
   t.ok(doc.categories().includes('Tournoi de Wimbledon'), 'Wimbledon-Championships-Fr: Tournoi de Wimbledon category')
   t.end()
 })

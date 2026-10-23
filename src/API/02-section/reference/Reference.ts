@@ -1,3 +1,4 @@
+import Links from '../../03-paragraph/link/Links.ts'
 import Link from '../../03-paragraph/link/Link.ts'
 import type { ReferenceData } from '../../../types/index.ts'
 
@@ -15,7 +16,7 @@ class Reference {
 
   links() {
     const items = this.#data.links || this.#data.data.inline?.links || []
-    return items.map((item) => new Link(item))
+    return Links.from(items.map((item) => new Link(item)))
   }
 
   text() {
