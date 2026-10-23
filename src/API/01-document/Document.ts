@@ -119,7 +119,7 @@ class Document {
     return isStub(this)
   }
   redirectTo() {
-    return this.#data.redirectTo
+    return this.#data.redirectTo ?? null
   }
   isDisambiguation() {
     return isDisambig(this)
@@ -252,8 +252,8 @@ class Document {
     return arr.join('\n\n')
   }
 
-  json(options = {}) {
-    return toJSON(this, options)
+  json() {
+    return toJSON(this)
   }
 
   debug() {

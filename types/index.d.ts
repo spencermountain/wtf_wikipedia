@@ -37,7 +37,7 @@ declare class Image {
   caption(): string
   file(): string
   format(): string | null
-  json(options?: object): ImageJson
+  json(): ImageJson
   links(selector?: string | number): LinkCollection
   src(): string
   text(): string
@@ -65,7 +65,7 @@ declare class Document {
   isDisambiguation(): boolean
   isRedirect(): boolean
   isStub(): boolean
-  json(options?: object | 'sm' | 'md' | 'lg'): Record<string, unknown>
+  json(): Record<string, unknown>
   lang(lang?: string): string | null
   language(lang?: string): string | null
   links(selector?: string | number): LinkCollection
@@ -120,7 +120,7 @@ declare class Section {
   infoboxes(clue?: string | number): InfoboxCollection
   infobox(clue?: string | number): Infobox | null
   interwiki(selector?: string | number): LinkCollection
-  json(options?: object): Record<string, unknown>
+  json(): Record<string, unknown>
   last(): Section | null
   lastSibling(): Section | null
   links(selector?: string | number): LinkCollection
@@ -158,7 +158,7 @@ declare class Infobox {
   get(): Sentence
   image(): Image | null
   images(): Image[]
-  json(options?: object): TemplateJson
+  json(): TemplateJson
   keyValue(): Record<string, string>
   links(selector?: string | number): LinkCollection
   template(): string
@@ -181,7 +181,7 @@ declare class Table {
   // a string key gets a flat column; an array of keys gets a row-list
   get(key: string): (string | null)[]
   get(keys: string[]): Record<string, string>[]
-  json(options?: object): Record<string, unknown>[]
+  json(): Record<string, unknown>[]
   keyval(options?: object): Record<string, string>[]
   keyValue(options?: object): Record<string, string>[]
   keyvalue(options?: object): Record<string, string>[]
@@ -192,7 +192,7 @@ declare class Table {
 
 declare class Reference {
   readonly kind: string | null
-  json(options?: object): TemplateJson
+  json(): TemplateJson
   links(selector?: string | number): LinkCollection
   text(): string
   title(): string
@@ -205,7 +205,7 @@ declare class Paragraph {
   images(clue?: number): Collection<Image>
   image(clue?: number): Image | null
   interwiki(selector?: string | number): LinkCollection
-  json(options?: object): Record<string, unknown>
+  json(): Record<string, unknown>
   links(selector?: string | number): LinkCollection
   link(clue?: string | number): Link | null
   lists(clue?: number): List[]
@@ -232,7 +232,7 @@ declare class Link {
 }
 
 declare class List {
-  json(options?: object): Record<string, unknown>[]
+  json(): Record<string, unknown>[]
   lines(selector?: number): Collection<Sentence>
   links(selector?: string | number): LinkCollection
   text(): string
@@ -247,7 +247,7 @@ declare class Sentence {
   isEmpty(): boolean
   italic(clue?: number): string | null
   italics(clue?: number): { text: string; start: number; end: number }[]
-  json(options?: object): Record<string, unknown>
+  json(): Record<string, unknown>
   link(clue?: string | number): Link | null
   links(selector?: string | number): LinkCollection
   text(str?: string): string
@@ -322,11 +322,16 @@ type LinkJson = {
 /** the json() shape of an Image */
 type ImageJson = {
   file: string
-  thumb?: string
-  url?: string
-  caption?: string
+  wiki: string
+  domain?: string
+  caption?: {
+    text: string
+    wiki: string
+    links?: LinkJson[]
+    bolds?: { text: string; start: number; end: number }[]
+    italics?: { text: string; start: number; end: number }[]
+  }
   alt?: string
-  links?: Link[]
   [key: string]: unknown
 }
 

@@ -1,14 +1,13 @@
 import parseCoor from './_lib.ts'
 
 const templates = {
-  coord: (tmpl, list, parser) => {
-    let obj = parseCoor(tmpl, undefined, parser)
-    list.push(obj)
+  coord: (tmpl, parser) => {
+    let obj = parseCoor(tmpl, parser)
     //display inline, by default
     if (!obj.display || obj.display.indexOf('inline') !== -1) {
-      return `${obj.lat || ''}°N, ${obj.lon || ''}°W`
+      return { data: obj, replacement: `${obj.lat || ''}°N, ${obj.lon || ''}°W` }
     }
-    return ''
+    return { data: obj, replacement: '' }
   },
 }
 

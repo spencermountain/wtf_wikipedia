@@ -1,7 +1,7 @@
 import test from 'tape'
 import wtf from '../../lib/index.js'
 
-test('mongo encoding in json', (t) => {
+test('JSON preserves dotted keys', (t) => {
   const str = `
 {{Infobox person
 | name             = Jodie Emery
@@ -22,20 +22,15 @@ hello world  {{lkjsdf|foo=28|hs.he=90}}.
 |}
 `
   const doc = wtf(str)
-  const json = doc.json({
-    encode: true,
-  })
+  const json = doc.json()
   const table = json.sections[0].tables[0]
-  t.equal(table.rows[0]['foo.bar'], undefined, 'table removed dot')
-  t.ok(table.rows[0]['foo\\u002ebar'], 'has table encoding dot')
-  t.ok(table.rows[1]['foo\\u002ebar'], 'has table encoding dot #2')
+  t.ok(table.rows[0]['foo.bar'], 'table preserves dotted key')
+  t.ok(table.rows[1]['foo.bar'], 'second row preserves dotted key')
 
-  const template = json.sections[0].templates[0]
-  t.equal(template['hs.he'], undefined, 'template removed dot')
-  t.ok(template['hs\\u002ehe'], 'has template encoding dot')
+  const template = json.sections[0].templates[0].data
+  t.ok(template['hs.he'], 'template preserves dotted key')
 
   const infobox = json.sections[0].infoboxes[0].data
-  t.equal(infobox['birth.date'], undefined, 'infobox removed dot')
-  t.ok(infobox['birth\\u002edate'], 'infobox encoding')
+  t.ok(infobox['birth.date'], 'infobox preserves dotted key')
   t.end()
 })

@@ -59,7 +59,7 @@ class Paragraph {
   }
 
   json() {
-    return toJSON(this, {})
+    return toJSON(this)
   }
 
   wikitext() {

@@ -12,59 +12,20 @@ test('json-output-default', (t) => {
   t.end()
 })
 
-test('json-output-options', (t) => {
-  const options = {
-    title: false,
-    pageID: false,
-    categories: false,
-    citations: false,
-    coordinates: false,
-    infoboxes: false,
-    images: false,
-    sections: false,
-
-    plaintext: true,
-  }
-  const data = readFile('Royal-Cinema').json(options)
-  t.ok(!data.title, 'title-gone')
-  t.ok(!data.categories, 'categories-gone')
-  t.ok(!data.citations, 'citations-gone')
-  t.ok(!data.infoboxes, 'infoboxes-gone')
-  t.ok(!data.images, 'images-gone')
-  t.ok(!data.sections, 'sections-gone')
-
-  t.ok(data.plaintext, 'plaintext-exists')
-  t.end()
-})
-
 test('section-output', (t) => {
   const doc = readFile('Royal-Cinema')
-  const data = doc.paragraphs()[0].json({
-    links: false,
-    formatting: false,
-    sentences: true,
-  })
-  t.equal(data.depth, 0, 'depth')
-  t.ok(data.sentences[0].text, 'no formatting')
-  t.ok(!data.sentences[0].links, 'no formatting')
-  t.ok(!data.sentences[0].formatting, 'no links')
+  const data = doc.paragraphs()[0].json()
+  t.ok(data.sentences[0].text, 'sentence text')
+  t.ok(data.sentences[0].links, 'sentence links')
   t.end()
 })
 
 test('sentence-output', (t) => {
   const doc = readFile('Royal-Cinema')
   const sen = doc.sentence()
-  let data = sen.json()
+  const data = sen.json()
   t.ok(data.text, 'text')
   t.ok(data.links, 'links')
-  t.ok(data.formatting, 'formatting')
-
-  data = sen.json({
-    links: false,
-    formatting: false,
-  })
-  t.ok(data.text, 'text')
-  t.ok(!data.links, 'links')
-  t.ok(!data.formatting, 'formatting')
+  t.ok(data.bolds, 'bold formatting')
   t.end()
 })

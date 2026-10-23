@@ -16,7 +16,6 @@ of the library.
 | coordinates: infobox entries have `lng`         | every coordinate is `{ lat, lon }`                                      | v11         |
 | classify empty result `{ detail, type, score }` | always `{ root, type, score, details }`                                 | classify v3 |
 | runs on Node 12/14/16, uses cross-fetch         | native fetch, Node ≥ 18                                                 | v11         |
-| no `.json()` presets                            | `doc.json('sm' \| 'md' \| 'lg')`                                        | v11         |
 
 ## Methods that do not exist (commonly hallucinated)
 

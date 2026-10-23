@@ -32,8 +32,8 @@ test('rnli stations', (t) => {
 
   const lifeboat = doc.section(2)
   t.equal(lifeboat.indentation(), 1, 'lifeboat-depth')
-  t.equal(lifeboat.template().json().list[0], 'Royal National Lifeboat Institution lifeboats', 'lifeboat-main')
-  t.equal(lifeboat.lists()[0].json().length, 3, 'lifeboat-list')
+  t.equal(lifeboat.template().json().data.list[0], 'Royal National Lifeboat Institution lifeboats', 'lifeboat-main')
+  t.equal(lifeboat.lists()[0].json().items.length, 3, 'lifeboat-list')
   t.equal(lifeboat.sentences().length, 3, 'lifeboat-sentences')
   t.deepEqual(lifeboat.images().length, 0, 'lifeboat-no-images')
   t.deepEqual(lifeboat.tables().length, 0, 'lifeboat-no-tables')
@@ -47,7 +47,7 @@ test('rnli stations', (t) => {
   const table = east.tables()[0].json()
   t.equal(table.rows.length, 42, 'east table-rows')
   t.equal(table.rows[0].location.text, 'Hunstanton, Norfolk', 'east-table-data')
-  t.equal(table.rows[41]['launch method'].text, 'Carriage', 'east-table-data-end')
+  t.equal(table.rows[41]['launch_method'].text, 'Carriage', 'east-table-data-end')
 
   const south = doc.section(7)
   const sTable = south.tables()[0].json()
@@ -75,12 +75,12 @@ test('simple table', (t) => {
   const obj = wtf(simple)
   const table = obj.tables()[0].json()
   t.equal(table.rows.length, 2, '2 rows')
-  t.equal(table.rows[0]['header 1'].text, 'row 1, cell 1', '1,1')
-  t.equal(table.rows[0]['header 2'].text, 'row 1, cell 2', '1,2')
-  t.equal(table.rows[0]['header 3'].text, 'row 1, cell 3', '1,3')
-  t.equal(table.rows[1]['header 1'].text, 'row 2, cell 1', '2,1')
-  t.equal(table.rows[1]['header 2'].text, 'row 2, cell 2', '2,2')
-  t.equal(table.rows[1]['header 3'].text, 'row 2, cell 3', '2,3')
+  t.equal(table.rows[0]['header_1'].text, 'row 1, cell 1', '1,1')
+  t.equal(table.rows[0]['header_2'].text, 'row 1, cell 2', '1,2')
+  t.equal(table.rows[0]['header_3'].text, 'row 1, cell 3', '1,3')
+  t.equal(table.rows[1]['header_1'].text, 'row 2, cell 1', '2,1')
+  t.equal(table.rows[1]['header_2'].text, 'row 2, cell 2', '2,2')
+  t.equal(table.rows[1]['header_3'].text, 'row 2, cell 3', '2,3')
   t.end()
 })
 
@@ -302,7 +302,7 @@ test('sortable table', (t) => {
   const doc = wtf(str)
   const row = doc.tables()[0].json().rows[0]
   t.equal(row.height.text, '1.85', 'got height')
-  t.equal(row['name and surname'].text, 'John Smith', 'got name')
+  t.equal(row['name_and_surname'].text, 'John Smith', 'got name')
   t.end()
 })
 

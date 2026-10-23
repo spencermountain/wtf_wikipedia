@@ -4,15 +4,13 @@ import playoffBracket from './_lib.ts'
 
 let sports = {
   //playoff brackets
-  '4teambracket': function (tmpl, list, parser) {
-    let obj = playoffBracket(tmpl, undefined, parser)
-    list.push(obj)
-    return ''
+  '4teambracket': function (tmpl, parser) {
+    let obj = playoffBracket(tmpl, parser)
+    return { data: obj, replacement: '' }
   },
 
-  'win draw lose': function (tmpl, list, parse = defaultParse) {
+  'win draw lose': function (tmpl, parse = defaultParse) {
     let obj = parse(tmpl)
-    list.push(obj)
     let arr = obj.list || []
     let draw = parseInt(arr[2], 10) || 0
     let lose = parseInt(arr[3], 10) || 0
@@ -22,23 +20,21 @@ let sports = {
     if (total > 0) {
       winPercentage = ((win / total) * 100).toFixed(1)
     }
-    return '\n| ' + arr.join('\n| ') + '\n| ' + winPercentage + '%'
+    return { data: obj, replacement: '\n| ' + arr.join('\n| ') + '\n| ' + winPercentage + '%' }
   },
 
-  'win-loss record': function (tmpl, list, parse = defaultParse) {
+  'win-loss record': function (tmpl, parse = defaultParse) {
     let obj = parse(tmpl, ['w', 'l', 't'])
-    list.push(obj)
     let str = `${obj.w}`
     if (obj.t || obj.d) {
       str += `-${obj.t || obj.d}`
     }
     str += `-${obj.l}`
-    return str
+    return { data: obj, replacement: str }
   },
 
-  player: (tmpl, list, parse = defaultParse) => {
+  player: (tmpl, parse = defaultParse) => {
     let res = parse(tmpl, ['number', 'country', 'name', 'dl'])
-    list.push(res)
     let str = `[[${res.name}]]`
     if (res.country) {
       let country = (res.country || '').toLowerCase()
@@ -50,11 +46,11 @@ let sports = {
     if (res.number) {
       str = res.number + ' ' + str
     }
-    return str
+    return { data: res, replacement: str }
   },
 
   //https://en.wikipedia.org/wiki/Template:Goal
-  goal: (tmpl, list, parse = defaultParse) => {
+  goal: (tmpl, parse = defaultParse) => {
     let res = parse(tmpl)
     let obj = {
       template: 'goal',
@@ -67,7 +63,6 @@ let sports = {
         note: arr[i + 1] || '',
       })
     }
-    list.push(obj)
     //generate a little text summary
     let summary = '⚽ '
     summary += obj.data
@@ -79,12 +74,12 @@ let sports = {
         return o.min + "'" + note
       })
       .join(', ')
-    return summary
+    return { data: obj, replacement: summary }
   },
 
   //a transcluded sports module - https://en.m.wikipedia.org/w/index.php?title=Special:WhatLinksHere/Module:Sports_table
   // https://en.wikipedia.org/wiki/Template:2020–21_NHL_North_Division_standings
-  'sports table': (tmpl, list, parse = defaultParse) => {
+  'sports table': (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl)
     let byTeam = {}
     let teams = Object.keys(obj)
@@ -106,12 +101,12 @@ let sports = {
       header: obj.table_header,
       teams: byTeam,
     }
-    list.push(res)
+    return { data: res, replacement: '' }
   },
 
   // college baseketball rosters
   'cbb roster/header': function () {
-    return `{| class="wikitable"
+    return { data: null, replacement: `{| class="wikitable"
     |-
     ! POS
     ! #
@@ -121,13 +116,12 @@ let sports = {
     ! Year
     ! Previous School
     ! Hometown
-    |-\n`
+    |-\n` }
   },
-  'cbb roster/player': function (tmpl, list, parse = defaultParse) {
+  'cbb roster/player': function (tmpl, parse = defaultParse) {
     let data = parse(tmpl)
-    list.push(data)
     // first=|last=|dab=|num=|pos=|ft=|in=|lbs=|class=|rs=|home=
-    return `|-
+    return { data: data, replacement: `|-
 | ${data.pos || ''}
 | ${data.num || ''}
 | ${data.first || ''} ${data.last || ''}
@@ -136,10 +130,10 @@ let sports = {
 | ${data.class || ''}
 | ${data.high_school || ''}
 | ${data.home || ''}
-`
+` }
   },
   'cbb roster/footer': function () {
-    return `\n|}`
+    return { data: null, replacement: `\n|}` }
   },
 }
 export default sports

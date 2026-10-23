@@ -22,13 +22,11 @@ const firstRowHeader = function (rows) {
   let headers = rows[0].slice(0)
   headers = headers.map((h) => {
     h = h.replace(/^! */, '')
-    h = parseBlock(h).text
     h = cleanText(h)
-    h = h.toLowerCase()
-    return h
+    return parseBlock(h)
   })
   for (let i = 0; i < headers.length; i += 1) {
-    if (Object.hasOwn(headings, headers[i])) {
+    if (Object.hasOwn(headings, headers[i].text.toLowerCase())) {
       rows.shift()
       return headers
     }

@@ -111,7 +111,7 @@ const parseParams = function (obj) {
   return obj
 }
 
-const parseCoor = function (tmpl, _list, parse = defaultParse) {
+const parseCoor = function (tmpl, parse = defaultParse) {
   let obj = parse(tmpl)
   obj = parseParams(obj)
   let tmp = findLatLng(obj.list)

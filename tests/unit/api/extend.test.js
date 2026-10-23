@@ -26,7 +26,7 @@ test('extend templates', (t) => {
   const doc = wtf(`it is {{missing|true}}`)
   const templates = doc.templates().map((tmpl) => tmpl.json())
   t.equal(templates.length, 1, 'found template')
-  t.equal(templates[0].working, true, 'template obj')
+  t.equal(templates[0].data.working, true, 'template obj')
   t.equal(doc.text(), 'it is working', 'template text')
 
   t.end()

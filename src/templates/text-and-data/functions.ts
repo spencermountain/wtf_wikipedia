@@ -3,116 +3,108 @@ import { percentage } from '../_lib.ts'
 
 let templates = {
   // https://en.wikipedia.org/wiki/Template:Math
-  math: (tmpl, list, parse = defaultParse) => {
+  math: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['formula'])
-    list.push(obj)
-    return '\n\n' + (obj.formula || '') + '\n\n'
+    return { data: obj, replacement: '\n\n' + (obj.formula || '') + '\n\n' }
   },
 
   //svg labels - https://en.m.wikipedia.org/wiki/Template:Legend
-  legend: (tmpl, list, parse = defaultParse) => {
+  legend: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['color', 'label'])
-    list.push(obj)
     // return obj.label || ' '
-    return tmpl // keep the wiki?
+    return { data: obj, replacement: tmpl } // keep the wiki?
   },
 
-  isbn: (tmpl, list, parse = defaultParse) => {
+  isbn: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['id', 'id2', 'id3'])
-    list.push(obj)
-    return 'ISBN ' + (obj.id || '')
+    return { data: obj, replacement: 'ISBN ' + (obj.id || '') }
   },
 
   //https://en.wikipedia.org/wiki/Template:Based_on
-  'based on': (tmpl, list, parse = defaultParse) => {
+  'based on': (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['title', 'author'])
-    list.push(obj)
-    return `${obj.title} by ${obj.author || ''}`
+    return { data: obj, replacement: `${obj.title} by ${obj.author || ''}` }
   },
 
   //barrels of oil https://en.wikipedia.org/wiki/Template:Bbl_to_t
-  'bbl to t': (tmpl, list, parse = defaultParse) => {
+  'bbl to t': (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['barrels'])
-    list.push(obj)
     if (obj.barrels === '0') {
-      return obj.barrels + ' barrel'
+      return { data: obj, replacement: obj.barrels + ' barrel' }
     }
-    return obj.barrels + ' barrels'
+    return { data: obj, replacement: obj.barrels + ' barrels' }
   },
 
   //minor planet - https://en.wikipedia.org/wiki/Template:MPC
-  mpc: (tmpl, list, parse = defaultParse) => {
+  mpc: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['number', 'text'])
-    list.push(obj)
-    return `[https://minorplanetcenter.net/db_search/show_object?object_id=P/2011+NO1 ${obj.text || obj.number}]`
+    return { data: obj, replacement: `[https://minorplanetcenter.net/db_search/show_object?object_id=P/2011+NO1 ${obj.text || obj.number}]` }
   },
 
-  pengoal: (_tmpl, list) => {
-    list.push({
+  pengoal: (_tmpl) => {
+    const payload = {
       template: 'pengoal',
-    })
-    return '✅'
+    }
+    return { data: payload, replacement: '✅' }
   },
 
-  penmiss: (_tmpl, list) => {
-    list.push({
+  penmiss: (_tmpl) => {
+    const payload = {
       template: 'penmiss',
-    })
-    return '❌'
+    }
+    return { data: payload, replacement: '❌' }
   },
 
   // https://en.wikipedia.org/wiki/Template:Ordered_list
-  'ordered list': (tmpl, list, parse = defaultParse) => {
+  'ordered list': (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl)
-    list.push(obj)
     obj.list ||= []
     let lines = obj.list.map((str, i) => `${i + 1}. ${str}`)
-    return lines.join('\n\n')
+    return { data: obj, replacement: lines.join('\n\n') }
   },
 
   // https://en.wikipedia.org/wiki/Template:Title_year
-  'title year': (tmpl, _list, _alias = defaultParse, _parse, info) => {
-    let obj = _alias(tmpl, ['match', 'nomatch', 'page'])
+  'title year': (tmpl, parse = defaultParse, info) => {
+    let obj = parse(tmpl, ['match', 'nomatch', 'page'])
     let title = obj.page || info?.title
     if (title) {
       let m = title.match(/\b[0-9]{4}\b/) //parse the year out of the title's name
       if (m) {
-        return m[0]
+        return { data: null, replacement: m[0] }
       }
     }
-    return obj.nomatch || '' //use default response
+    return { data: null, replacement: obj.nomatch || '' } //use default response
   },
 
   // https://en.wikipedia.org/wiki/Template:Title_century
-  'title century': (tmpl, _list, _alias = defaultParse, _parse, info?) => {
-    let obj = _alias(tmpl, ['match', 'nomatch', 'page'])
+  'title century': (tmpl, parse = defaultParse, info?) => {
+    let obj = parse(tmpl, ['match', 'nomatch', 'page'])
     let title = obj.page || info?.title
     if (title) {
       let m = title.match(/\b([0-9]+)(st|nd|rd|th)\b/) //parse the century out of the title's name
       if (m) {
-        return m[1] || ''
+        return { data: null, replacement: m[1] || '' }
       }
     }
-    return obj.nomatch || '' //use default response
+    return { data: null, replacement: obj.nomatch || '' } //use default response
   },
 
   // https://en.wikipedia.org/wiki/Template:Title_decade
-  'title decade': (tmpl, _list, _alias = defaultParse, _parse, info?) => {
-    let obj = _alias(tmpl, ['match', 'nomatch', 'page'])
+  'title decade': (tmpl, parse = defaultParse, info?) => {
+    let obj = parse(tmpl, ['match', 'nomatch', 'page'])
     let title = obj.page || info?.title
     if (title) {
       let m = title.match(/\b([0-9]+)s\b/) //parse the decade out of the title's name
       if (m) {
-        return m[1] || ''
+        return { data: null, replacement: m[1] || '' }
       }
     }
-    return obj.nomatch || '' //use default response
+    return { data: null, replacement: obj.nomatch || '' } //use default response
   },
 
   //https://en.wikipedia.org/wiki/Template:Nihongo
-  nihongo: (tmpl, list, parse = defaultParse) => {
+  nihongo: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['english', 'kanji', 'romaji', 'extra'])
-    list.push(obj)
     let str = obj.english || obj.romaji || ''
     let details = obj.kanji || ''
     // Footnote extras should not become inline text.
@@ -122,14 +114,13 @@ let templates = {
     if (details) {
       str += ` (${details})`
     }
-    return str
+    return { data: obj, replacement: str }
   },
 
   //https://en.wikipedia.org/wiki/Template:Marriage
   //this one creates a template, and an inline response
-  marriage: (tmpl, list, parse = defaultParse) => {
+  marriage: (tmpl, parse = defaultParse) => {
     let data = parse(tmpl, ['spouse', 'from', 'to', 'end'])
-    list.push(data)
     let str = data.spouse || ''
     if (data.from) {
       if (data.to) {
@@ -138,23 +129,22 @@ let templates = {
         str += ` (m. ${data.from})`
       }
     }
-    return str
+    return { data: data, replacement: str }
   },
 
   //'red' card - {{sent off|cards|min1|min2}}
-  'sent off': (tmpl, list, parse = defaultParse) => {
+  'sent off': (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['cards'])
     let result = {
       template: 'sent off',
       cards: obj.cards,
       minutes: obj.list || [],
     }
-    list.push(result)
     let mins = result.minutes.map((m) => m + "'").join(', ')
-    return 'sent off: ' + mins
+    return { data: result, replacement: 'sent off: ' + mins }
   },
 
-  transl: (tmpl, list, parse = defaultParse) => {
+  transl: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['lang', 'text', 'text2'])
     // support 3-param
     if (obj.text2) {
@@ -162,14 +152,12 @@ let templates = {
       obj.text = obj.text2
       delete obj.text2
     }
-    list.push(obj)
-    return obj.text || ''
+    return { data: obj, replacement: obj.text || '' }
   },
 
   //show/hide: https://en.wikipedia.org/wiki/Template:Collapsible_list
-  'collapsible list': (tmpl, list, parse = defaultParse) => {
+  'collapsible list': (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl)
-    list.push(obj)
     let str = ''
     if (obj.title) {
       str += `'''${obj.title}'''` + '\n\n'
@@ -185,27 +173,26 @@ let templates = {
     }
     obj.list = obj.list.filter((s) => s)
     str += '\n' + obj.list.join('\n\n') + '\n'
-    return str
+    return { data: obj, replacement: str }
   },
 
   //https://en.wikipedia.org/wiki/Template:Columns-list
-  'columns-list': (tmpl, list, parse = defaultParse) => {
+  'columns-list': (tmpl, parse = defaultParse) => {
     let arr = parse(tmpl).list || []
     let str = arr[0] || ''
     let lines = str.split(/\n/).filter((f) => f)
     lines = lines.map((s) => s.replace(/\*/, ''))
-    list.push({
+    const payload = {
       template: 'columns-list',
       list: lines,
-    })
+    }
     lines = lines.map((s) => '• ' + s)
-    return lines.join('\n\n')
+    return { data: payload, replacement: lines.join('\n\n') }
   },
 
   //https://en.wikipedia.org/wiki/Template:Height - {{height|ft=6|in=1}}
-  height: (tmpl, list, parse = defaultParse) => {
+  height: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl)
-    list.push(obj)
     let result = []
     let units = ['m', 'cm', 'ft', 'in'] //order matters
     units.forEach((unit) => {
@@ -213,31 +200,30 @@ let templates = {
         result.push(obj[unit] + unit)
       }
     })
-    return result.join(' ')
+    return { data: obj, replacement: result.join(' ') }
   },
 
   //https://en.wikipedia.org/wiki/Template:Sic
-  sic: (tmpl, list, parse = defaultParse) => {
+  sic: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['one', 'two', 'three'])
     let word = (obj.one || '') + (obj.two || '')
     //support '[sic?]'
     if (obj.one === '?') {
       word = (obj.two || '') + (obj.three || '')
     }
-    list.push({
+    const payload = {
       template: 'sic',
       word: word,
-    })
-    if (obj.nolink === 'y') {
-      return word
     }
-    return `${word} [sic]`
+    if (obj.nolink === 'y') {
+      return { data: payload, replacement: word }
+    }
+    return { data: payload, replacement: `${word} [sic]` }
   },
 
   //
-  inrconvert: (tmpl, list, parse = defaultParse) => {
+  inrconvert: (tmpl, parse = defaultParse) => {
     let o = parse(tmpl, ['rupee_value', 'currency_formatting'])
-    list.push(o)
     const mults = {
       k: 1000,
       m: 1000000,
@@ -251,11 +237,11 @@ let templates = {
       let multiplier = mults[o.currency_formatting] || 1
       o.rupee_value = o.rupee_value * multiplier
     }
-    return `inr ${o.rupee_value || ''}`
+    return { data: o, replacement: `inr ${o.rupee_value || ''}` }
   },
 
   //fraction - https://en.wikipedia.org/wiki/Template:Sfrac
-  frac: (tmpl, list, parse = defaultParse) => {
+  frac: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['a', 'b', 'c'])
     let data: any = {
       template: 'sfrac',
@@ -271,16 +257,14 @@ let templates = {
       data.numerator = 1
       data.denominator = obj.a
     }
-    list.push(data)
     if (data.integer) {
-      return `${data.integer} ${data.numerator}⁄${data.denominator}`
+      return { data: data, replacement: `${data.integer} ${data.numerator}⁄${data.denominator}` }
     }
-    return `${data.numerator}⁄${data.denominator}`
+    return { data: data, replacement: `${data.numerator}⁄${data.denominator}` }
   },
 
-  'winning percentage': (tmpl, list, parse = defaultParse) => {
+  'winning percentage': (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['wins', 'losses', 'ties'])
-    list.push(obj)
     let wins = Number(obj.wins)
     let losses = Number(obj.losses)
     let ties = Number(obj.ties) || 0
@@ -292,18 +276,17 @@ let templates = {
       wins += ties / 2
     }
     if (!Number.isFinite(wins) || !Number.isFinite(games) || games <= 0) {
-      return ''
+      return { data: obj, replacement: '' }
     }
     const result = (wins / games).toFixed(3)
     if (obj.leading_zero === 'y') {
-      return result
+      return { data: obj, replacement: result }
     }
-    return result.replace(/^0\./, '.')
+    return { data: obj, replacement: result.replace(/^0\./, '.') }
   },
 
-  winlosspct: (tmpl, list, parse = defaultParse) => {
+  winlosspct: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['wins', 'losses'])
-    list.push(obj)
     let wins = Number(obj.wins)
     let losses = Number(obj.losses)
     let num = percentage({
@@ -312,14 +295,14 @@ let templates = {
       decimals: 1,
     })
     if (num === null) {
-      return ''
+      return { data: obj, replacement: '' }
     }
     let out = `.${num * 10}`
-    return `${wins || 0} || ${losses || 0} || ${out || '-'}`
+    return { data: obj, replacement: `${wins || 0} || ${losses || 0} || ${out || '-'}` }
   },
 
   //https://en.wikipedia.org/wiki/Template:Video_game_release
-  'video game release': (tmpl, list, parse = defaultParse) => {
+  'video game release': (tmpl, parse = defaultParse) => {
     let order = ['region', 'date', 'region2', 'date2', 'region3', 'date3', 'region4', 'date4']
     let obj = parse(tmpl, order)
     let template = {
@@ -334,24 +317,21 @@ let templates = {
         })
       }
     }
-    list.push(template)
     let str = template.releases.map((o) => `${o.region}: ${o.date || ''}`).join('\n\n')
-    return '\n' + str + '\n'
+    return { data: template, replacement: '\n' + str + '\n' }
   },
   // https://en.m.wikipedia.org/wiki/Template:USS
-  uss: (tmpl, list, parse = defaultParse) => {
+  uss: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['name', 'id'])
-    list.push(obj)
     if (obj.id) {
-      return `[[USS ${obj.name} (${obj.id})|USS ''${obj.name}'' (${obj.id})]]`
+      return { data: obj, replacement: `[[USS ${obj.name} (${obj.id})|USS ''${obj.name}'' (${obj.id})]]` }
     }
-    return `[[USS ${obj.name}|USS ''${obj.name}'']]`
+    return { data: obj, replacement: `[[USS ${obj.name}|USS ''${obj.name}'']]` }
   },
   // https://en.wikipedia.org/wiki/Template:Blockquote
-  blockquote: (tmpl, list, parse = defaultParse) => {
+  blockquote: (tmpl, parse = defaultParse) => {
     let props = ['text', 'author', 'title', 'source', 'character']
     let obj = parse(tmpl, props)
-    list.push(obj)
     let txt = obj.text
     // used first un-named param
     if (!txt) {
@@ -361,28 +341,25 @@ let templates = {
     // replace double quotes with singles and put the text inside double quotes
     let result = txt.replace(/"/g, "'")
     result = '"' + result + '"'
-    return result
+    return { data: obj, replacement: result }
   },
 
   // https://de.m.wikipedia.org/wiki/Vorlage:ReptileDatabase
-  ReptileDatabase: (tmpl, list, parse = defaultParse) => {
+  ReptileDatabase: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['taxon', 'genus', 'species', 'abruf', 'pure_url'])
-    list.push(obj)
     let str = ''
     if (obj.genus || obj.species) {
       str = `${obj.genus || ''} ${obj.species || ''} `
     }
-    return `${str}In: [[The Reptile Database]]`
+    return { data: obj, replacement: `${str}In: [[The Reptile Database]]` }
   },
   //https://en.m.wikipedia.org/wiki/Template:GEOnet3
-  GEOnet3: (tmpl, list, parse = defaultParse) => {
+  GEOnet3: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['ufi', 'name'])
-    list.push(obj)
-    return `GEOnet3 can be found at [[GEOnet Names Server]], at [http://geonames.nga.mil/namesgaz/ this link]`
+    return { data: obj, replacement: `GEOnet3 can be found at [[GEOnet Names Server]], at [http://geonames.nga.mil/namesgaz/ this link]` }
   },
-  'poem quote': (tmpl, list, parse = defaultParse) => {
+  'poem quote': (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['text', 'char', 'sign', 'source', 'title'])
-    list.push(obj)
     let out = obj.text || ''
     if (obj.char || obj.sign || obj.source || obj.title) {
       out += '\n\n —'
@@ -391,14 +368,13 @@ let templates = {
       out += obj.source ? ' ' + obj.source : ''
       out += obj.title ? ' ' + obj.title : ''
     }
-    return out
+    return { data: obj, replacement: out }
   },
-  tweet: (tmpl, list, parse = defaultParse) => {
+  tweet: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl)
-    list.push(obj)
     let out = obj.text || ''
     out += obj.date ? ' ' + obj.date : ''
-    return out
+    return { data: obj, replacement: out }
   },
 }
 export default templates

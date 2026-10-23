@@ -39,7 +39,7 @@ const parseTemplate = (wiki: string, name: string, opts: DocInfo = defaults) => 
   }
 
   const handler = templates[name]
-  const { replacement, payload } = runParser(handler, wiki, opts)
+  const { replacement, data: payload } = runParser(handler, wiki, opts)
   let kind = handler.kind || aliases[name] || name
   // Some handlers interpret the invocation as another recognized form.
   if (payload?.template && payload.template !== name) {

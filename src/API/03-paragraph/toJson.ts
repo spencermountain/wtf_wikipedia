@@ -1,15 +1,5 @@
-import setDefaults from '../_lib/setDefaults.ts'
+const toJson = (p) => ({
+  sentences: p.sentences().map((s) => s.json()),
+})
 
-const defaults = {
-  sentences: true,
-}
-
-const toJson = function (p, options) {
-  options = setDefaults(options, defaults)
-  let data: any = {}
-  if (options.sentences === true) {
-    data.sentences = p.sentences().map((s) => s.json(options))
-  }
-  return data
-}
 export default toJson

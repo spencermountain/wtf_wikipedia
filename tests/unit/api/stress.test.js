@@ -45,7 +45,7 @@ test('cached-page-stress', (t) => {
     const text = doc.text()
     t.ok(text.length > 40, `${title}:text-length`)
 
-    const json = doc.json({ encode: true })
+    const json = doc.json()
     t.ok(Object.keys(json).length >= 2, `${title}:json-keys-ok`)
   })
   t.end()

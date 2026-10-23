@@ -21,129 +21,128 @@ const months = [
 
 //date- templates we support
 export default {
-  monthname: (tmpl, _list, parse = defaultParse) => {
+  monthname: (tmpl, parse = defaultParse) => {
     const obj = parse(tmpl, ['month'])
-    return months[Number(obj.month) - 1] || ''
+    return { data: null, replacement: months[Number(obj.month) - 1] || '' }
   },
   currentday: () => {
     let d = new Date()
-    return String(d.getDate())
+    return { data: null, replacement: String(d.getDate()) }
   },
   currentdayname: () => {
     let d = new Date()
-    return days[d.getDay()]
+    return { data: null, replacement: days[d.getDay()] }
   },
   currentmonth: () => {
     let d = new Date()
-    return months[d.getMonth()]
+    return { data: null, replacement: months[d.getMonth()] }
   },
   currentyear: () => {
     let d = new Date()
-    return String(d.getFullYear())
+    return { data: null, replacement: String(d.getFullYear()) }
   },
   monthyear: () => {
     let d = new Date()
-    return months[d.getMonth()] + ' ' + d.getFullYear()
+    return { data: null, replacement: months[d.getMonth()] + ' ' + d.getFullYear() }
   },
   'monthyear-1': () => {
     let d = new Date()
     d.setMonth(d.getMonth() - 1)
-    return months[d.getMonth()] + ' ' + d.getFullYear()
+    return { data: null, replacement: months[d.getMonth()] + ' ' + d.getFullYear() }
   },
   'monthyear+1': () => {
     let d = new Date()
     d.setMonth(d.getMonth() + 1)
-    return months[d.getMonth()] + ' ' + d.getFullYear()
+    return { data: null, replacement: months[d.getMonth()] + ' ' + d.getFullYear() }
   },
 
-  year: (tmpl, _list, parse = defaultParse) => {
+  year: (tmpl, parse = defaultParse) => {
     let date = parse(tmpl, ['date']).date
     let d = new Date(date)
     if (date && isNaN(d.getTime()) === false) {
-      return String(d.getFullYear())
+      return { data: null, replacement: String(d.getFullYear()) }
     }
-    return ''
+    return { data: null, replacement: '' }
   },
 
-  'time ago': (tmpl, _list, parse = defaultParse) => {
+  'time ago': (tmpl, parse = defaultParse) => {
     let time = parse(tmpl, ['date', 'fmt']).date
-    return timeSince(time)
+    return { data: null, replacement: timeSince(time) }
   },
-  'birth date': (tmpl, list, parse = defaultParse) => {
+  'birth date': (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['year', 'month', 'date'])
-    list.push(obj)
+    const payload = obj
     obj = ymd([obj.year, obj.month, obj.day])
-    return toText(obj)
+    return { data: payload, replacement: toText(obj) }
   },
   //https://en.wikipedia.org/wiki/Template:Birth_date_and_age
-  'birth date and age': (tmpl, list, parse = defaultParse) => {
+  'birth date and age': (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['year', 'month', 'day'])
     //support 'one property' version
     if (obj.year && /[a-z]/i.test(obj.year)) {
-      return parsers.natural_date(tmpl, list, parse)
+      return parsers.natural_date(tmpl, parse)
     }
-    list.push(obj)
+    const payload = obj
     obj = ymd([obj.year, obj.month, obj.day])
-    return toText(obj)
+    return { data: payload, replacement: toText(obj) }
   },
-  'birth year and age': (tmpl, list, parse = defaultParse) => {
+  'birth year and age': (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['birth_year', 'birth_month'])
     //support 'one property' version
     if (obj.death_year && /[a-z]/i.test(obj.death_year)) {
-      return parsers.natural_date(tmpl, list, parse)
+      return parsers.natural_date(tmpl, parse)
     }
-    list.push(obj)
+    const payload = obj
     let age = new Date().getFullYear() - parseInt(obj.birth_year, 10)
     obj = ymd([obj.birth_year, obj.birth_month])
     let str = toText(obj)
     if (age) {
       str += ` (age ${age})`
     }
-    return str
+    return { data: payload, replacement: str }
   },
-  'death year and age': (tmpl, list, parse = defaultParse) => {
+  'death year and age': (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['death_year', 'birth_year', 'death_month'])
     //support 'one property' version
     if (obj.death_year && /[a-z]/i.test(obj.death_year)) {
-      return parsers.natural_date(tmpl, list, parse)
+      return parsers.natural_date(tmpl, parse)
     }
-    list.push(obj)
+    const payload = obj
     obj = ymd([obj.death_year, obj.death_month])
-    return toText(obj)
+    return { data: payload, replacement: toText(obj) }
   },
   //https://en.wikipedia.org/wiki/Template:Birth_date_and_age2
-  'birth date and age2': (tmpl, list, parse = defaultParse) => {
+  'birth date and age2': (tmpl, parse = defaultParse) => {
     let order = ['at_year', 'at_month', 'at_day', 'birth_year', 'birth_month', 'birth_day']
     let obj = parse(tmpl, order)
-    list.push(obj)
+    const payload = obj
     obj = ymd([obj.birth_year, obj.birth_month, obj.birth_day])
-    return toText(obj)
+    return { data: payload, replacement: toText(obj) }
   },
   //https://en.wikipedia.org/wiki/Template:Birth_based_on_age_as_of_date
-  'birth based on age as of date': (tmpl, list, parse = defaultParse) => {
+  'birth based on age as of date': (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['age', 'year', 'month', 'day'])
-    list.push(obj)
     let age = parseInt(obj.age, 10)
     let year = parseInt(obj.year, 10)
     let born = year - age
     if (born && age) {
-      return `${born} (age ${obj.age})`
+      return { data: obj, replacement: `${born} (age ${obj.age})` }
     }
-    return `(age ${obj.age})`
+    return { data: obj, replacement: `(age ${obj.age})` }
   },
   //https://en.wikipedia.org/wiki/Template:Death_date_and_given_age
-  'death date and given age': (tmpl, list, parse = defaultParse) => {
+  'death date and given age': (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['year', 'month', 'day', 'age'])
-    list.push(obj)
+    const payload = obj
     obj = ymd([obj.year, obj.month, obj.day])
     let str = toText(obj)
     if (obj.age) {
       str += ` (age ${obj.age})`
     }
-    return str
+    return { data: payload, replacement: str }
   },
   //sortable dates -
-  dts: (tmpl, _list, parse = defaultParse) => {
+  dts: (tmpl, parse = defaultParse) => {
     //remove formatting stuff, ewww
     tmpl = tmpl.replace(/\|format=[ymd]+/i, '')
     tmpl = tmpl.replace(/\|abbr=(on|off)/i, '')
@@ -151,20 +150,20 @@ export default {
     if (obj.date && obj.month && obj.year) {
       //render 'june 5 2018'
       if (/[a-z]/.test(obj.month) === true) {
-        return [obj.month, obj.date, obj.year].join(' ')
+        return { data: null, replacement: [obj.month, obj.date, obj.year].join(' ') }
       }
-      return [obj.year, obj.month, obj.date].join('-')
+      return { data: null, replacement: [obj.year, obj.month, obj.date].join('-') }
     }
     if (obj.month && obj.year) {
-      return [obj.year, obj.month].join('-')
+      return { data: null, replacement: [obj.year, obj.month].join('-') }
     }
     if (obj.year) {
       if (obj.year < 0) {
         obj.year = Math.abs(obj.year) + ' BC'
       }
-      return obj.year
+      return { data: null, replacement: obj.year }
     }
-    return ''
+    return { data: null, replacement: '' }
   },
 
   //we can't do timezones, so fake this one a little bit
@@ -172,21 +171,21 @@ export default {
   time: () => {
     let d = new Date()
     let obj = ymd([d.getFullYear(), d.getMonth() + 1, d.getDate()])
-    return toText(obj)
+    return { data: null, replacement: toText(obj) }
   },
 
   // https://en.wikipedia.org/wiki/Template:MILLENNIUM
-  millennium: (tmpl, _list, parse = defaultParse) => {
+  millennium: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['year'])
     let year = parseInt(obj.year, 10)
     year = Math.floor(year / 1000) + 1
     if (obj.abbr && obj.abbr === 'y') {
       if (year < 0) {
-        return `${toOrdinal(Math.abs(year))} BC`
+        return { data: null, replacement: `${toOrdinal(Math.abs(year))} BC` }
       }
-      return `${toOrdinal(year)}`
+      return { data: null, replacement: `${toOrdinal(year)}` }
     }
-    return `${toOrdinal(year)} millennium`
+    return { data: null, replacement: `${toOrdinal(year)} millennium` }
   },
   //date/age/time templates
   start: parsers.date,
@@ -203,10 +202,10 @@ export default {
   // 'age in years, months, weeks and days': true,
   // 'age as of date': true,
   // https://en.wikipedia.org/wiki/Template:As_of
-  'as of': (tmpl, _list, parse = defaultParse) => {
+  'as of': (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['year', 'month', 'day'])
     if (obj.alt) {
-      return obj.alt
+      return { data: null, replacement: obj.alt }
     }
     let out = 'As of '
     if (obj.since) {
@@ -230,6 +229,6 @@ export default {
     if (obj.post) {
       out += obj.post
     }
-    return out
+    return { data: null, replacement: out }
   },
 }

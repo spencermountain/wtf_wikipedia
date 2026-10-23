@@ -103,7 +103,7 @@ class Section {
   }
 
   interwiki() {
-    return this.links().filter((l) => l.type === 'interwiki')
+    return this.links().filter((l) => l.type() === 'interwiki')
   }
 
   images() {
@@ -122,7 +122,7 @@ class Section {
       .join('\n\n')
   }
 
-  json(options = { encode: false }) {
+  json() {
     return this.#data
   }
 

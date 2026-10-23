@@ -12,6 +12,9 @@ class List {
   lines() {
     return this.#data.items
   }
+  items() {
+    return this.#data.items
+  }
 
   links() {
     const out = []

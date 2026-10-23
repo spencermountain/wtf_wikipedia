@@ -30,10 +30,17 @@ str = readPage('United-Kingdom')
 // }}
 //   `
 // str = `{{foobar|one=yes|caption=long text with [[link]]}}`
-str = `{{foobar|caption={{isbn|123}}}}`
+str = `=== Tydskrifte en koerante ===
+* Behr, Mark “Speaking the unspeakable” “Sunday Times 9 April 2000
+* Crocker, Jennifer “Paradys found” “Sunday Times” 28 Februarie 2010
+* O’Hara, Glynis “Pressing sweetness out of anger” “The Pretoria News” 7 Julie 1995
+* Roux, J.B. “Mark Behr oor man-, soldaat- en gay-wees” “Beeld” 7 Mei 2012
+* Van Zyl, Johan “As wroeging verby is” “Beeld” 25 Oktober 2003
+* Vosloo, Johan “Spioen se ‘appels’ nou vrot” “Rapport” 14 Julie 1996
+`
 const doc = wtf(str, meta)
-console.log(doc.templates().map((t) => t.json()))
-// console.log(doc.links().map((l) => l.json()))
+// console.log(doc.templates().map((t) => t.json()))
+console.log(doc.lists().map((l) => l.json()))
 // const table = doc.tables()[0]
 // console.log(table.getRows(['Name', 'team']))
 // console.log(table.getRows('Name'))

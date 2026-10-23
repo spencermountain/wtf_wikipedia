@@ -71,9 +71,9 @@ let cells = [
   'optional',
 ]
 cells.forEach((str) => {
-  templates[str] = (tmpl, _list, parse = defaultParse) => {
+  templates[str] = (tmpl, parse = defaultParse) => {
     let data = parse(tmpl, ['text'])
-    return data.text || titlecase(data.template)
+    return { data: null, replacement: data.text || titlecase(data.template) }
   }
 })
 
@@ -99,9 +99,9 @@ let moreCells = [
   ['nocontest', ''],
 ]
 moreCells.forEach((a) => {
-  templates[a[0]] = (tmpl, _list, parse = defaultParse) => {
+  templates[a[0]] = (tmpl, parse = defaultParse) => {
     let data = parse(tmpl, ['text'])
-    return data.text || a[1]
+    return { data: null, replacement: data.text || a[1] }
   }
 })
 

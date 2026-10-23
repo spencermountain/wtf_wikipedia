@@ -65,9 +65,8 @@ const codes = {
   zar: 'R', //https://en.wikipedia.org/wiki/Template:ZAR
 }
 
-const parseCurrency = (tmpl, list, parse = defaultParse) => {
+const parseCurrency = (tmpl, parse = defaultParse) => {
   let o = parse(tmpl, ['amount', 'code'])
-  list.push(o)
   let code = o.template || ''
   if (code === 'currency') {
     code = o.code
@@ -91,7 +90,7 @@ const parseCurrency = (tmpl, list, parse = defaultParse) => {
   if (o.code && !codes[o.code.toLowerCase()]) {
     str += ' ' + o.code
   }
-  return str
+  return { data: o, replacement: str }
 }
 
 let templates = {

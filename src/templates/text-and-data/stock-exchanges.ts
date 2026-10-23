@@ -103,9 +103,8 @@ const codes = {
   zse: 'zse', //https://en.wikipedia.org/wiki/Template:Zagreb_Stock_Exchange
 }
 
-const parseStockExchange = (tmpl, list, parse = defaultParse) => {
+const parseStockExchange = (tmpl, parse = defaultParse) => {
   let o = parse(tmpl, ['ticketnumber', 'code'])
-  list.push(o)
   let code = o.template || ''
   if (code === '') {
     code = o.code
@@ -118,7 +117,7 @@ const parseStockExchange = (tmpl, list, parse = defaultParse) => {
   if (o.code && !codes[o.code.toLowerCase()]) {
     str += ' ' + o.code
   }
-  return str
+  return { data: o, replacement: str }
 }
 
 const exchanges = {}

@@ -26,7 +26,7 @@ const parseTeam = function (obj, round, team) {
 
 // https://en.wikipedia.org/wiki/Category:Tournament_bracket_templates
 //these are weird.
-const playoffBracket = function (tmpl, _list, parse = defaultParse) {
+const playoffBracket = function (tmpl, parse = defaultParse) {
   let rounds = []
   let obj = parse(tmpl)
   //try some rounds

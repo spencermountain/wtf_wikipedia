@@ -1,13 +1,8 @@
 import defaultParse from '../../parse/templates/parse/toJSON/text.ts'
 
-const generic = function (tmpl, list, _parser = defaultParse, alias) {
+const generic = function (tmpl, _parser = defaultParse) {
   let obj = _parser(tmpl)
-  if (alias) {
-    obj.name = obj.template
-    obj.template = alias
-  }
-  list.push(obj)
-  return ''
+  return { data: obj, replacement: '' }
 }
 // it may seem redundant,
 // but we need these templates for our i18n mappings

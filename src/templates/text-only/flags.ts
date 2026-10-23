@@ -4,81 +4,81 @@ const order = ['flag', 'variant']
 let templates = {
   //https://en.wikipedia.org/wiki/Template:Flag
   // {{flag|USA}} →  USA
-  flag: (tmpl, _list, parse = defaultParse) => {
+  flag: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, order)
     let name = obj.flag || ''
     obj.flag = (obj.flag || '').toLowerCase()
     let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]) || []
     let flag = found[0] || ''
-    return `${flag} [[${found[2]}|${name}]]`
+    return { data: null, replacement: `${flag} [[${found[2]}|${name}]]` }
   },
   // {{flagcountry|USA}} →  United States
-  flagcountry: (tmpl, _list, parse = defaultParse) => {
+  flagcountry: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, order)
     obj.flag = (obj.flag || '').toLowerCase()
     let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]) || []
     let flag = found[0] || ''
-    return `${flag} [[${found[2]}]]`
+    return { data: null, replacement: `${flag} [[${found[2]}]]` }
   },
   // (unlinked flag-country)
-  flagcu: (tmpl, _list, parse = defaultParse) => {
+  flagcu: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, order)
     obj.flag = (obj.flag || '').toLowerCase()
     let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]) || []
     let flag = found[0] || ''
-    return `${flag} ${found[2]}`
+    return { data: null, replacement: `${flag} ${found[2]}` }
   },
   //https://en.wikipedia.org/wiki/Template:Flagicon
   // {{flagicon|USA}} → United States
-  flagicon: (tmpl, _list, parse = defaultParse) => {
+  flagicon: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, order)
     obj.flag = (obj.flag || '').toLowerCase()
     let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2])
     if (!found) {
-      return ''
+      return { data: null, replacement: '' }
     }
-    return `[[${found[2]}|${found[0]}]]`
+    return { data: null, replacement: `[[${found[2]}|${found[0]}]]` }
   },
   //unlinked flagicon
-  flagdeco: (tmpl, _list, parse = defaultParse) => {
+  flagdeco: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, order)
     obj.flag = (obj.flag || '').toLowerCase()
     let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]) || []
-    return found[0] || ''
+    return { data: null, replacement: found[0] || '' }
   },
   //same, but a soccer team
-  fb: (tmpl, _list, parse = defaultParse) => {
+  fb: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, order)
     obj.flag = (obj.flag || '').toLowerCase()
     let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2])
     if (!found) {
-      return ''
+      return { data: null, replacement: '' }
     }
-    return `${found[0]} [[${found[2]} national football team|${found[2]}]]`
+    return { data: null, replacement: `${found[0]} [[${found[2]} national football team|${found[2]}]]` }
   },
-  fbicon: (tmpl, _list, parse = defaultParse) => {
+  fbicon: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, order)
     obj.flag = (obj.flag || '').toLowerCase()
     let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2])
     if (!found) {
-      return ''
+      return { data: null, replacement: '' }
     }
-    return ` [[${found[2]} national football team|${found[0]}]]`
+    return { data: null, replacement: ` [[${found[2]} national football team|${found[0]}]]` }
   },
-  flagathlete: (tmpl, _list, parse = defaultParse) => {
+  flagathlete: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['name', 'flag', 'variant'])
     obj.flag = (obj.flag || '').toLowerCase()
     let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2])
     if (!found) {
-      return `[[${obj.name || ''}]]`
+      return { data: null, replacement: `[[${obj.name || ''}]]` }
     }
-    return `${found[0]} [[${obj.name || ''}]] (${found[1].toUpperCase()})`
+    return { data: null, replacement: `${found[0]} [[${obj.name || ''}]] (${found[1].toUpperCase()})` }
   },
 }
 //support {{can}}
 flags.forEach((a) => {
   templates[a[1]] = () => {
-    return a[0]
+    return { data: null, replacement: a[0] }
   }
 })
 export default templates

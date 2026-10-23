@@ -18,12 +18,12 @@ let shorthands = [
 // create a function for each one
 let fns = shorthands.reduce((h, a) => {
   let [name, out] = a
-  h[name] = (tmpl, _list, parse = defaultParse) => {
+  h[name] = (tmpl, parse = defaultParse) => {
     let { first } = parse(tmpl, ['first'])
     if (first || first === 0) {
-      return out + (first || '')
+      return { data: null, replacement: out + (first || '') }
     }
-    return out
+    return { data: null, replacement: out }
   }
   return h
 }, {})

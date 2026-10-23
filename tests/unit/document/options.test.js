@@ -1,23 +1,13 @@
 import test from 'tape'
 import readFile from '../../lib/_cachedPage.js'
 
-test('royal_cinema options', (t) => {
+test('royal_cinema collections', (t) => {
   const doc = readFile('Royal-Cinema')
   t.equal(doc.images().length, 1, 'image-length')
   t.equal(doc.categories().length, 4, 'category-length')
   t.equal(doc.citations().length, 4, 'citations-length')
   t.equal(doc.infoboxes().length, 1, 'infoboxes-length')
 
-  const data = readFile('Royal-Cinema').json({
-    categories: false,
-    references: false,
-    images: false,
-    infoboxes: false,
-  })
-  t.equal(data.images, undefined, 'post-image-length')
-  t.equal(data.categories, undefined, 'post-category-length')
-  t.equal(data.references, undefined, 'post-references-length')
-  t.equal(data.infoboxes, undefined, 'post-infoboxes-length')
   t.end()
 })
 
@@ -41,20 +31,3 @@ test('other-pages', (t) => {
   t.end()
 })
 
-test('turn all options off', (t) => {
-  const options = {
-    sections: false,
-    paragraphs: false,
-    sentences: false,
-    title: false,
-    categories: false,
-    coordinates: false,
-    infoboxes: false,
-    pageID: false,
-  }
-  const doc = readFile('United-Kingdom')
-  const out = JSON.stringify(doc.json(options))
-  t.equal(out, '{}', 'json empty')
-
-  t.end()
-})

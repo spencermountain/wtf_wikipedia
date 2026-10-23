@@ -1,36 +1,34 @@
 import defaultParse from '../../parse/templates/parse/toJSON/text.ts'
+import parseArguments from '../../parse/templates/parse/toJSON/index.ts'
 import parseImgString from '../../parse/03-paragraph/02-images/parse.ts'
 
 import { getLang, sisterProjects, toNumber } from '../_lib.ts'
 
 export default {
   // just parse it and do nothing
-  'citation needed': (tmpl, list, parse = defaultParse) => {
-    list.push(parse(tmpl))
-    return ''
+  'citation needed': (tmpl, parse = defaultParse) => {
+    const payload = parse(tmpl)
+    return { data: payload, replacement: '' }
   },
   // https://en.wikipedia.org/wiki/Template:IPA
-  ipa: (tmpl, list, parse = defaultParse) => {
+  ipa: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['transcription', 'lang', 'audio'])
     obj.lang = getLang(obj.template)
     obj.template = 'ipa'
-    list.push(obj)
-    return '' //obj.transcription
+    return { data: obj, replacement: '' } //obj.transcription
   },
   //https://en.wikipedia.org/wiki/Template:IPAc-en
-  ipac: (tmpl, list, parse = defaultParse) => {
+  ipac: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl)
     obj.transcription = (obj.list || []).join(',')
     delete obj.list
     obj.lang = getLang(obj.template)
     obj.template = 'ipac'
-    list.push(obj)
-    return ''
+    return { data: obj, replacement: '' }
   },
 
-  quote: (tmpl, list, parse = defaultParse) => {
+  quote: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['text', 'author'])
-    list.push(obj)
     //create plaintext version
     if (obj.text) {
       let str = `"${obj.text}"`
@@ -38,68 +36,58 @@ export default {
         str += '\n\n'
         str += `    - ${obj.author}`
       }
-      return str + '\n'
+      return { data: obj, replacement: str + '\n' }
     }
-    return ''
+    return { data: obj, replacement: '' }
   },
 
   //this one sucks - https://en.wikipedia.org/wiki/Template:GNIS
-  'cite gnis': (tmpl, list, parse = defaultParse) => {
+  'cite gnis': (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['id', 'name', 'type'])
     obj.type = 'gnis'
     obj.template = 'citation'
-    list.push(obj)
-    return ''
+    return { data: obj, replacement: '' }
   },
 
-  'spoken wikipedia': (tmpl, list, parse = defaultParse) => {
+  'spoken wikipedia': (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['file', 'date'])
     obj.template = 'audio'
-    list.push(obj)
-    return ''
+    return { data: obj, replacement: '' }
   },
 
   //yellow card
-  yel: (tmpl, list, parse = defaultParse) => {
+  yel: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['min'])
-    list.push(obj)
     if (obj.min) {
-      return `yellow: ${obj.min || ''}'` //no yellow-card emoji
+      return { data: obj, replacement: `yellow: ${obj.min || ''}'` } //no yellow-card emoji
     }
-    return ''
+    return { data: obj, replacement: '' }
   },
 
-  subon: (tmpl, list, parse = defaultParse) => {
+  subon: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['min'])
-    list.push(obj)
     if (obj.min) {
-      return `sub on: ${obj.min || ''}'` //no yellow-card emoji
+      return { data: obj, replacement: `sub on: ${obj.min || ''}'` } //no yellow-card emoji
     }
-    return ''
+    return { data: obj, replacement: '' }
   },
 
-  suboff: (tmpl, list, parse = defaultParse) => {
+  suboff: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['min'])
-    list.push(obj)
     if (obj.min) {
-      return `sub off: ${obj.min || ''}'` //no yellow-card emoji
+      return { data: obj, replacement: `sub off: ${obj.min || ''}'` } //no yellow-card emoji
     }
-    return ''
+    return { data: obj, replacement: '' }
   },
 
   //https://en.wikipedia.org/wiki/Template:Sfn
-  sfn: (tmpl, list, parser = defaultParse, alias) => {
+  sfn: (tmpl, parser = defaultParse) => {
     let obj = parser(tmpl, ['author', 'year', 'location'])
-    if (alias) {
-      obj.name = obj.template
-      obj.teplate = alias
-    }
-    list.push(obj)
-    return ''
+    return { data: obj, replacement: '' }
   },
 
   //https://en.wikipedia.org/wiki/Template:Redirect
-  redirect: (tmpl, list, parse = defaultParse) => {
+  redirect: (tmpl, parse = defaultParse) => {
     let data = parse(tmpl, ['redirect'])
     let lines = data.list || []
     let links = []
@@ -114,12 +102,11 @@ export default {
       redirect: data.redirect,
       links: links,
     }
-    list.push(obj)
-    return ''
+    return { data: obj, replacement: '' }
   },
 
   //https://en.wikipedia.org/wiki/Template:Sister_project_links
-  'sister project links': (tmpl, list, parse = defaultParse) => {
+  'sister project links': (tmpl, parse = defaultParse) => {
     let data = parse(tmpl)
     //rename 'wd' to 'wikidata'
     let links = {}
@@ -132,12 +119,11 @@ export default {
       template: 'sister project links',
       links: links,
     }
-    list.push(obj)
-    return ''
+    return { data: obj, replacement: '' }
   },
 
   //https://en.wikipedia.org/wiki/Template:Subject_bar
-  'subject bar': (tmpl, list, parse = defaultParse) => {
+  'subject bar': (tmpl, parse = defaultParse) => {
     let data = parse(tmpl)
     Object.keys(data).forEach((k) => {
       //rename 'voy' to 'wikivoyage'
@@ -150,28 +136,28 @@ export default {
       template: 'subject bar',
       links: data,
     }
-    list.push(obj)
-    return ''
+    return { data: obj, replacement: '' }
   },
 
   //amazingly, this one does not obey any known patterns
   //https://en.wikipedia.org/wiki/Template:Gallery
-  gallery: (tmpl, list, parse = defaultParse, _alias, opts) => {
-    let obj = parse(tmpl)
-    let images = (obj.list || []).filter((line) => /^ *File ?:/.test(line))
-    images = images.map((file) => {
-      return parseImgString(`[[${file.trim()}]]`, opts)
-    })
-    obj = {
-      template: 'gallery',
-      images: images,
+  gallery: (tmpl, parse = defaultParse, opts) => {
+    const args = parseArguments(tmpl, [], opts)
+    const items = args.list || []
+    const images = []
+    for (let i = 0; i < items.length; i += 2) {
+      const file = items[i].wiki.trim()
+      const caption = items[i + 1]?.wiki || ''
+      const image = parseImgString(`[[${file}|${caption}]]`, opts)
+      if (image) {
+        images.push(image)
+      }
     }
-    list.push(obj)
-    return ''
+    return { data: { images }, replacement: '' }
   },
 
   //https://en.wikipedia.org/wiki/Template:Sky
-  sky: (tmpl, list, parse = defaultParse) => {
+  sky: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, [
       'asc_hours',
       'asc_minutes',
@@ -197,14 +183,13 @@ export default {
       },
       distance: obj.distance,
     }
-    list.push(template)
-    return ''
+    return { data: template, replacement: '' }
   },
 
   // Parse https://en.wikipedia.org/wiki/Template:Medical_cases_chart -- see
   // https://en.wikipedia.org/wiki/Module:Medical_cases_chart for the original
   // parsing code.
-  'medical cases chart': (tmpl, list, parse = defaultParse) => {
+  'medical cases chart': (tmpl, parse = defaultParse) => {
     let order = [
       'date',
       'deathsExpr',
@@ -260,11 +245,10 @@ export default {
       return rowObject
     })
     obj.data = dataArray
-    list.push(obj)
-    return ''
+    return { data: obj, replacement: '' }
   },
 
-  graph: (tmpl, list, parse = defaultParse) => {
+  graph: (tmpl, parse = defaultParse) => {
     let data = parse(tmpl)
     if (data.x) {
       data.x = data.x.split(',').map((str) => str.trim())
@@ -277,12 +261,11 @@ export default {
       data['y' + y] = data['y' + y].split(',').map((str) => str.trim())
       y += 1
     }
-    list.push(data)
-    return ''
+    return { data: data, replacement: '' }
   },
 
   //https://en.wikipedia.org/wiki/Template:Historical_populations
-  'historical populations': (tmpl, list, parse = defaultParse) => {
+  'historical populations': (tmpl, parse = defaultParse) => {
     let data = parse(tmpl)
     data.list ||= []
     let years = []
@@ -295,13 +278,12 @@ export default {
     }
     data.data = years
     delete data.list
-    list.push(data)
-    return ''
+    return { data: data, replacement: '' }
   },
 
   // this one is a handful!
   //https://en.wikipedia.org/wiki/Template:Weather_box
-  'weather box': (tmpl, list, parse = defaultParse) => {
+  'weather box': (tmpl, parse = defaultParse) => {
     const hasMonth = /^jan /i
     const isYear = /^year /i
     let obj = parse(tmpl)
@@ -332,13 +314,12 @@ export default {
       }
     })
     obj.byYear = byYear
-    list.push(obj)
-    return ''
+    return { data: obj, replacement: '' }
   },
 
   //The 36 parameters are: 12 monthly highs (C), 12 lows (total 24) plus an optional 12 monthly rain/precipitation
   //https://en.wikipedia.org/wiki/Template:Weather_box/concise_C
-  'weather box/concise c': (tmpl, list, parse = defaultParse) => {
+  'weather box/concise c': (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl)
     obj.list = (obj.list || []).map((s) => toNumber(s))
     obj.byMonth = {
@@ -348,11 +329,10 @@ export default {
     }
     delete obj.list
     obj.template = 'weather box'
-    list.push(obj)
-    return ''
+    return { data: obj, replacement: '' }
   },
 
-  'weather box/concise f': (tmpl, list, parse = defaultParse) => {
+  'weather box/concise f': (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl)
     obj.list = (obj.list || []).map((s) => toNumber(s))
     obj.byMonth = {
@@ -362,12 +342,11 @@ export default {
     }
     delete obj.list
     obj.template = 'weather box'
-    list.push(obj)
-    return ''
+    return { data: obj, replacement: '' }
   },
 
   //https://en.wikipedia.org/wiki/Template:Climate_chart
-  'climate chart': (tmpl, list, parse = defaultParse) => {
+  'climate chart': (tmpl, parse = defaultParse) => {
     let lines = parse(tmpl).list || []
     let title = lines[0]
     let source = lines[38]
@@ -396,11 +375,10 @@ export default {
         months: months,
       },
     }
-    list.push(obj)
-    return ''
+    return { data: obj, replacement: '' }
   },
   //https://en.wikipedia.org/wiki/Template:MedalCount
-  medalcount: (tmpl, list, parse = defaultParse) => {
+  medalcount: (tmpl, parse = defaultParse) => {
     let all = parse(tmpl).list || []
     let lines = []
     for (let i = 0; i < all.length; i += 4) {
@@ -415,14 +393,12 @@ export default {
       template: 'medalcount',
       list: lines,
     }
-    list.push(obj)
-    return ''
+    return { data: obj, replacement: '' }
   },
 
-  r: (tmpl, list, parse = defaultParse) => {
+  r: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['name'])
     obj.template = 'citation'
-    list.push(obj)
-    return ''
+    return { data: obj, replacement: '' }
   },
 }
