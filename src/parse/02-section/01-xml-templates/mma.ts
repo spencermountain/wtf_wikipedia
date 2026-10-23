@@ -6,6 +6,7 @@ let headings = ['res', 'record', 'opponent', 'method', 'event', 'date', 'round',
 //https://en.wikipedia.org/wiki/Template:MMA_record_start
 const parseMMA = function (section: SectionData, opts: DocInfo = defaults) {
   section.remaining = section.remaining.replace(/\{\{mma record start.+?\{\{end\}\}/gis, (tmpl) => {
+    const wiki = tmpl
     tmpl = tmpl.replace(/^\{\{.*?\}\}/, '')
     tmpl = tmpl.replace(/\{\{end\}\}/i, '')
 
@@ -21,6 +22,7 @@ const parseMMA = function (section: SectionData, opts: DocInfo = defaults) {
 
     section.templates.push({
       template: 'mma record start',
+      wiki,
       data: rows,
     })
 

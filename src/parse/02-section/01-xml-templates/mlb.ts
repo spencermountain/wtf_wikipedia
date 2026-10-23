@@ -19,10 +19,11 @@ const whichHeadings = function (tmpl) {
 }
 
 const parseMlb = function (section: SectionData, opts: DocInfo = defaults) {
-  section.remaining = section.remaining.replace(/\{\{mlb game log /gi, '{{game log ')
   section.remaining = section.remaining.replace(
-    /\{\{game log (section|month).+?\{\{game log (section|month) end\}\}/gis,
+    /\{\{(?:mlb )?game log (section|month).+?\{\{(?:mlb )?game log (section|month) end\}\}/gis,
     (tmpl) => {
+      const wiki = tmpl
+      tmpl = tmpl.replace(/\{\{mlb game log /gi, '{{game log ')
       let headings = whichHeadings(tmpl)
 
       tmpl = tmpl.replace(/^\{\{.*?\}\}/, '')
@@ -39,6 +40,7 @@ const parseMlb = function (section: SectionData, opts: DocInfo = defaults) {
       })
       section.templates.push({
         template: 'mlb game log section',
+        wiki,
         data: rows,
       })
 

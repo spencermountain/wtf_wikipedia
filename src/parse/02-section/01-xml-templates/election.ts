@@ -16,6 +16,7 @@ const parseElection = function (section: SectionData, opts: DocInfo = defaults) 
     if (candidates.length > 0 || summary) {
       section.templates.push({
         template: 'election box',
+        wiki: tmpl,
         data: {
           title: start.title,
           candidates: candidates,

@@ -20,7 +20,7 @@ class List {
   }
 
   json() {
-    return this.#data.items
+    return this.#data
   }
 
   text() {

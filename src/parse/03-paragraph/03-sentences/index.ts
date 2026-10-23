@@ -5,7 +5,7 @@ import sentenceParser from './parse.ts'
 import type { DocInfo, ParagraphData } from '../../../types/index.ts'
 
 //used for consistency with other class-definitions
-const byParagraph = function (paragraph: ParagraphData, opts: DocInfo = defaults) {
+const findSentences = function (paragraph: ParagraphData, opts: DocInfo = defaults) {
   //array of texts
   let sentences = sentenceParser(paragraph.remaining, opts)
   //sentence objects
@@ -17,4 +17,4 @@ const byParagraph = function (paragraph: ParagraphData, opts: DocInfo = defaults
   paragraph.sentences = sentences
   return paragraph
 }
-export default byParagraph
+export default findSentences

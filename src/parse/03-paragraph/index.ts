@@ -1,5 +1,5 @@
 import defaults from '../../_lib/defaults.ts'
-import parseList from './01-lists/index.ts'
+import findLists from './01-lists/index.ts'
 import parseImage from './02-images/index.ts'
 import parseSentences from './03-sentences/index.ts'
 import type { DocInfo, SectionData, ParagraphData } from '../../types/index.ts'
@@ -21,7 +21,7 @@ const parseParagraphs = function (section: SectionData, opts: DocInfo = defaults
       images: [],
     }
     //parse the lists
-    paragraph = parseList(paragraph, opts)
+    paragraph = findLists(paragraph, opts)
     //parse images
     paragraph = parseImage(paragraph, opts)
     //parse the sentences

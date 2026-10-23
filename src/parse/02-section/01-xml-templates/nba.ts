@@ -12,6 +12,7 @@ const parseNBA = function (section: SectionData, opts: DocInfo = defaults) {
   section.remaining = section.remaining.replace(
     /\{\{nba (coach|player|roster) statistics start(.+?)\{\{s-end\}\}/gis,
     (tmpl, name) => {
+      const wiki = tmpl
       tmpl = tmpl.replace(/^\{\{.*?\}\}/, '')
       tmpl = tmpl.replace(/\{\{s-end\}\}/, '')
       name = name.toLowerCase().trim()
@@ -28,6 +29,7 @@ const parseNBA = function (section: SectionData, opts: DocInfo = defaults) {
 
       section.templates.push({
         template: 'NBA ' + name + ' statistics',
+        wiki,
         data: rows,
       })
 

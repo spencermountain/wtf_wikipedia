@@ -1,12 +1,12 @@
 import defaults from '../../../_lib/defaults.ts'
 import nested_find from './nested_find.ts'
-import parseImgString from './parse-image.ts'
+import parseImgString from './parse.ts'
 import { images } from '../../../_data/i18n/index.ts'
 import type { DocInfo, ParagraphData } from '../../../types/index.ts'
 
 const isFile = new RegExp('(' + images.join('|') + '):', 'i')
 
-const parseImages = function (paragraph: ParagraphData, opts: DocInfo = defaults) {
+const findImages = function (paragraph: ParagraphData, opts: DocInfo = defaults) {
   let wiki = paragraph.remaining
   //parse+remove scary '[[ [[]] ]]' stuff
   let matches = nested_find(wiki)
@@ -24,4 +24,4 @@ const parseImages = function (paragraph: ParagraphData, opts: DocInfo = defaults
   return paragraph
 }
 
-export default parseImages
+export default findImages

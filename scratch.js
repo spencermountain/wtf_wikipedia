@@ -18,18 +18,10 @@ str = `
 * [[Park Place (Vancouver)]], a skyscraper
 * [[Park Place Mall]], Lethbridge, Alberta
 `
-str = readPage('United-Kingdom')
-// str = `hello
-// ==hello [[world]]==
-// {{Start date and age|2019|12|18}}
-//
-// The '''City of New York''', often called '''New York City'''
-// `
-str = `
-  [[Wikipedia:Bug reports and feature requests]]
-`
+// str = readPage('United-Kingdom')
+
 const doc = wtf(str, meta)
-console.log(doc.links()[0].json())
+console.log(doc.lists()[1].json())
 // const table = doc.tables()[0]
 // console.log(table.getRows(['Name', 'team']))
 // console.log(table.getRows('Name'))
