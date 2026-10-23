@@ -1,3 +1,4 @@
+import makeResult from '../../templates/result.ts'
 import defaults from '../../../_lib/defaults.ts'
 import type { DocInfo, SectionData } from '../../../types/index.ts'
 import parseImgString from '../../03-paragraph/02-images/parse.ts'
@@ -15,14 +16,7 @@ const parseGallery = function (section: SectionData, opts: DocInfo = defaults) {
 
     //add it to our templates list
     if (lines.length > 0) {
-      section.templates.push({
-        template: 'gallery',
-        wiki,
-        data: {
-          pos: section.title,
-          images: lines,
-        },
-      })
+      section.templates.push(makeResult(wiki, 'gallery', { pos: section.title, images: lines }, '', opts))
     }
 
     //return empty string to remove the template from the wiki text

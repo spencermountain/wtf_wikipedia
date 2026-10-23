@@ -2,6 +2,7 @@ import type { DocInfo } from '../../../types/index.ts'
 import defaults from '../../../_lib/defaults.ts'
 import parse from '../../templates/parse/toJSON/index.ts'
 import parseBlock from '../../block/index.ts'
+import makeResult from '../../templates/result.ts'
 import getTemplates from '../../templates/find/02-flat.ts'
 
 // Keep the existing limits for plain, self-closing, and attributed references.
@@ -25,21 +26,14 @@ const parseBody = (text, wiki, opts: DocInfo = defaults) => {
   const references = getTemplates(text)
     .filter(hasCitation)
     .map((template) => {
-      const data = parse(template, [], undefined, opts)
-      data.type = data.template.replace(/cite /, '')
-      data.template = 'citation'
-      data.wiki = wiki
-      return data
+      const { template: _template, ...data } = parse(template, [], undefined, opts)
+      const result = makeResult(template, 'citation', data, '', opts)
+      result.wiki = wiki
+      return result
     })
   if (references.length === 0) {
     // Without a citation template, retain the body as formatted inline text.
-    references.push({
-      template: 'citation',
-      type: 'inline',
-      data: {},
-      inline: parseBlock(text, opts) || {},
-      wiki,
-    })
+    references.push(makeResult(wiki, 'reference', { inline: parseBlock(text, opts) }, '', opts))
   }
   return references
 }

@@ -1,16 +1,5 @@
 const defaults = {}
 
-const doTemplate = function (obj) {
-  let data = ''
-  const name = obj.template
-  Object.keys(obj).forEach((k) => {
-    if (k !== 'template') {
-      data += ` | ${k} = ${obj[k]}`
-    }
-  })
-  return `{{${name}${data}}} `
-}
-
 const toWiki = function (options) {
   options ||= {}
   options = { ...defaults, ...options }
@@ -22,7 +11,7 @@ const toWiki = function (options) {
   // render some templates?
   if (options.templates === true) {
     this.templates().forEach((tmpl) => {
-      text += doTemplate(tmpl.json()) + '\n'
+      text += tmpl.makeWikitext() + '\n'
     })
   }
 

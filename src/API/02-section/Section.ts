@@ -73,7 +73,7 @@ class Section {
   templates(clue?: string) {
     let arr = this.#data.templates.map((t) => new Template(t))
     if (clue) {
-      return arr.filter((t) => t.type === clue)
+      return arr.filter((t) => t.type === clue || t.json().template === clue)
     }
     return arr
   }
@@ -85,8 +85,8 @@ class Section {
 
   // TODO: Coordinates are plain data, not model collections.
   coordinates() {
-    let arr = [...this.templates('coord'), ...this.templates('coor')]
-    let list = arr.map((tmpl) => tmpl.json())
+    let arr = this.templates('coord')
+    let list = arr.map((tmpl) => tmpl.json().data)
     //try to get coord from infoboxes
     let inf = this.infoboxes()[0]
     const coordinates = inf?.coordinates()

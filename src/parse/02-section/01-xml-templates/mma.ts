@@ -1,3 +1,4 @@
+import makeResult from '../../templates/result.ts'
 import defaults from '../../../_lib/defaults.ts'
 import tableParser from '../04-tables/parse.ts'
 import type { DocInfo, SectionData } from '../../../types/index.ts'
@@ -12,7 +13,7 @@ const parseMMA = function (section: SectionData, opts: DocInfo = defaults) {
 
     let headers = '! ' + headings.join(' !! ')
     let table = '{|\n' + headers + '\n' + tmpl + '\n|}'
-    let rows = tableParser(table, opts)
+    let rows = tableParser(table, opts).rows || []
     rows = rows.map((row) => {
       Object.keys(row).forEach((k) => {
         row[k] = row[k].text
@@ -20,11 +21,7 @@ const parseMMA = function (section: SectionData, opts: DocInfo = defaults) {
       return row
     })
 
-    section.templates.push({
-      template: 'mma record start',
-      wiki,
-      data: rows,
-    })
+    section.templates.push(makeResult(wiki, 'mma record start', { rows }, '', opts))
 
     //return empty string to remove the template from the wiki text
     return ''

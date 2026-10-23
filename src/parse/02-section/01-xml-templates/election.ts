@@ -1,3 +1,4 @@
+import makeResult from '../../templates/result.ts'
 import defaults from '../../../_lib/defaults.ts'
 import parseTemplates from '../../templates/index.ts'
 import type { DocInfo, SectionData } from '../../../types/index.ts'
@@ -9,20 +10,13 @@ const parseElection = function (section: SectionData, opts: DocInfo = defaults) 
     //put it through our full template parser..
     const { templates } = parseTemplates(tmpl, opts)
 
-    let start = templates.find((t) => t.template === 'election box') || {}
-    let candidates = templates.filter((t) => t.template === 'election box candidate')
-    let summary = templates.find((t) => t.template === 'election box gain' || t.template === 'election box hold') || {}
+    const start = templates.find((t) => t.kind === 'election box begin')
+    let candidates = templates.filter((t) => t.kind === 'election box candidate')
+    const summary = templates.find((t) => t.kind === 'election box gain' || t.kind === 'election box hold')
 
     if (candidates.length > 0 || summary) {
-      section.templates.push({
-        template: 'election box',
-        wiki: tmpl,
-        data: {
-          title: start.title,
-          candidates: candidates,
-          summary: summary.data,
-        },
-      })
+      const data = { title: start?.data.title, candidates, summary: summary?.data }
+      section.templates.push(makeResult(tmpl, 'election box', data, '', opts))
     }
 
     //return empty string to remove the template from the wiki text

@@ -1,3 +1,4 @@
+import makeResult from '../../templates/result.ts'
 import defaults from '../../../_lib/defaults.ts'
 import tableParser from '../04-tables/parse.ts'
 import type { DocInfo, SectionData } from '../../../types/index.ts'
@@ -31,18 +32,14 @@ const parseMlb = function (section: SectionData, opts: DocInfo = defaults) {
 
       let headers = '! ' + headings.join(' !! ')
       let table = '{|\n' + headers + '\n' + tmpl + '\n|}'
-      let rows = tableParser(table, opts)
+      let rows = tableParser(table, opts).rows || []
       rows = rows.map((row) => {
         Object.keys(row).forEach((k) => {
           row[k] = row[k].text
         })
         return row
       })
-      section.templates.push({
-        template: 'mlb game log section',
-        wiki,
-        data: rows,
-      })
+      section.templates.push(makeResult(wiki, 'mlb game log section', { rows }, '', opts))
 
       //return empty string to remove the template from the wiki text
       return ''

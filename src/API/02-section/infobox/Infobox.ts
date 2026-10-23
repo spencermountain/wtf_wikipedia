@@ -1,3 +1,4 @@
+import { infoboxType } from '../../../parse/templates/parse/infobox.ts'
 import Image from '../../03-paragraph/image/Image.ts'
 import normalizeFile from '../../../parse/03-paragraph/02-images/normalize.ts'
 import latLngs from '../../../_data/lat-lngs.ts'
@@ -28,8 +29,12 @@ class Infobox {
   }
 
   type() {
-    return this.#data.type
+    return infoboxType(this.#data.template)
   }
+  get kind() {
+    return this.#data.kind
+  }
+
   links() {
     let links = []
     Object.keys(this.#data.data).forEach((key) => {

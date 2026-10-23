@@ -1,9 +1,10 @@
 const toWiki = function () {
-  let text = `{{Infobox ${this._type || ''}\n`
-  Object.keys(this.data).forEach((k) => {
-    const val = this.data[k]
+  const { template, data } = this.json()
+  let text = `{{${template}\n`
+  Object.keys(data).forEach((k) => {
+    const val = data[k]
     if (val) {
-      text += `| ${k} = ${val.wikitext() || ''}\n`
+      text += `| ${k} = ${val.wiki || ''}\n`
     }
   })
   text += '}}\n'

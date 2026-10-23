@@ -2,7 +2,7 @@ import defaults from '../../_lib/defaults.ts'
 import findTemplates from './find/01-nested.ts'
 import parseTemplate from './parse/index.ts'
 import classify from './classify.ts'
-import type { DocInfo, TemplateData } from '../../types/index.ts'
+import type { DocInfo } from '../../types/index.ts'
 import type { NestedNode } from './types.ts'
 
 // return a flat list of all {{templates}}
@@ -18,17 +18,9 @@ const allTemplates = function (wiki: string, opts: DocInfo = defaults) {
       obj.children.forEach((ch) => parseNested(ch, obj))
     }
     //parse template into json, return replacement wikitext
-    let [text, json] = parseTemplate(obj.body, obj.name, opts)
-    if (json) {
-      let template: TemplateData = {
-        template: obj.name,
-        name: obj.name,
-        wiki: obj.body,
-        text: text,
-        ...json,
-      }
-      // console.log('template', template)
-      final.push(template)
+    const { replacement: text, result } = parseTemplate(obj.body, obj.name, opts)
+    if (result) {
+      final.push(result)
     }
     //remove the text from every parent
     const removeIt = function (node: NestedNode, body: string, out: string) {

@@ -174,10 +174,10 @@ class Document {
       }
     })
     arr = arr.concat(sectionMap(this, 'images', null))
-    // XML galleries store their images under data; template galleries store them directly.
+    // Both gallery forms share the same payload.
     this.templates('gallery').forEach((template) => {
-      const data = template.json()
-      const images = data.images || data.data?.images || []
+      const data = template.json().data
+      const images = data.images || []
       images.forEach((image) => {
         if (image) {
           arr.push(new Image({ ...image, domain: this.domain }))
@@ -211,7 +211,7 @@ class Document {
   templates(clue?: string) {
     const items = this.sections().flatMap((sec) => sec.templates())
     if (clue) {
-      return items.filter((t) => t.type === clue)
+      return items.filter((t) => t.type === clue || t.json().template === clue)
     }
     return items
   }

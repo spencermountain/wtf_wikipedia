@@ -11,8 +11,8 @@ See [gotchas.md](./gotchas.md) for what to expect.
 
 Machine-readable docs live in ./docs — interactive, non-machine-readable documentation lives on [GitHub](https://github.com/observablehq/wtf_wikipedia)
 
-
 ## Mental Model
+
 ```js
 import wtf from 'wtf_wikipedia'
 
@@ -33,6 +33,7 @@ off the levels where they occur. Every class has `.text()`, `.json()` and
 `.wikitext()`.
 
 ---
+
 ## Docs
 
 - [Gotchas & version differences](docs/gotchas.md): what LLMs most often get wrong
@@ -49,22 +50,25 @@ off the levels where they occur. Every class has `.text()`, `.json()` and
 - [types/index.d.ts](types/index.d.ts): authoritative TypeScript declarations
 
 ---
+
 ## Commands
 
-| command | what it does | needs network? |
-| --- | --- | --- |
-| `npm test` | tape suite against `src/` (~4k assertions, fast) | no |
-| `npm run testb` | same suite against the production build (build first) | no |
-| `npm run build` | rollup → `builds/` | no |
-| `npm run lint` | eslint over src, plugins, tests | no |
-| `npm run check` | loose `tsc --noEmit` over src + plugins | no |
-| `npm run test:types` | strict tsc over the type declarations (3 configs) | no |
-| `npm run test:fetch` | live-API tests (`tests/fetch/*.fetch.js`) | **yes** |
+| command              | what it does                                          | needs network? |
+| -------------------- | ----------------------------------------------------- | -------------- |
+| `npm test`           | tape suite against `src/` (~4k assertions, fast)      | no             |
+| `npm run testb`      | same suite against the production build (build first) | no             |
+| `npm run build`      | rollup → `builds/`                                    | no             |
+| `npm run lint`       | eslint over src, plugins, tests                       | no             |
+| `npm run check`      | loose `tsc --noEmit` over src + plugins               | no             |
+| `npm run test:types` | strict tsc over the type declarations (3 configs)     | no             |
+| `npm run test:fetch` | live-API tests (`tests/fetch/*.fetch.js`)             | **yes**        |
+
 ---
 
 # Development
 
 Unless given specific instruction:
+
 - Do not edit README or add documentation
 - do not install or change dependencies
 - do not change existing tests
@@ -73,10 +77,12 @@ Unless given specific instruction:
 Work on the current branch. The user may make simultaneous changes. Verify their work is not overwritten, or ask permission before destructive git changes.
 
 ### Code style
+
 - Write maintainable javascript, using esmodules
 - Write portable ES2022+ for browers or for Node>=18
 - Typescript and jsdoc are not required
 - Add terse comments for maintainability
+- Prefer pure stateless functions, avoid nested functions
 - Prefer functions assigned with const, over declarations
 - Do not use unbracketed if statements
 - Do not use complex, multi-line, or nested ternary operators
@@ -84,6 +90,7 @@ Work on the current branch. The user may make simultaneous changes. Verify their
 - File-size is always important
 
 ### Project structure
+
 - Prefer pnpm over npm
 - eslint is always configured
 - Prefer small maintainable files with one purpose

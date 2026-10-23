@@ -36,7 +36,7 @@ const doSection = function (section) {
   //try to find a game log template
   if (tables.length === 0) {
     const templates = section.templates('game log section') || section.templates('game log month')
-    return templates.flatMap((m) => m.json().data)
+    return templates.flatMap((m) => m.json().data.rows)
   } else {
     return tables.flatMap((t) => t.keyValue())
   }

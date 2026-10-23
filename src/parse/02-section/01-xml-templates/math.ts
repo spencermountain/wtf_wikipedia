@@ -1,3 +1,4 @@
+import makeResult from '../../templates/result.ts'
 import defaults from '../../../_lib/defaults.ts'
 import parseBlock from '../../block/index.ts'
 import type { DocInfo, SectionData } from '../../../types/index.ts'
@@ -7,11 +8,8 @@ const parseMath = function (section: SectionData, opts: DocInfo = defaults) {
   section.remaining = section.remaining.replace(/<math([^>]*)>(.*?)<\/math>/gs, (wiki, attrs, inside) => {
     //clean it up a little?
     let formula = parseBlock(inside, opts).text
-    section.templates.push({
-      template: 'math',
-      data: { formula: formula },
-      wiki,
-    })
+    const replacement = formula && formula.length < 12 ? formula : ''
+    section.templates.push(makeResult(wiki, 'math', { formula }, replacement, opts))
 
     //should we at least try to render it in plaintext? :/
     if (formula && formula.length < 12) {
@@ -24,11 +22,7 @@ const parseMath = function (section: SectionData, opts: DocInfo = defaults) {
 
   //try chemistry version too
   section.remaining = section.remaining.replace(/<chem([^>]*)>(.*?)<\/chem>/gs, (wiki, attrs, inside) => {
-    section.templates.push({
-      template: 'chem',
-      data: inside,
-      wiki,
-    })
+    section.templates.push(makeResult(wiki, 'chem', { formula: inside }, '', opts))
 
     //return empty string to remove the template from the wiki text
     return ''

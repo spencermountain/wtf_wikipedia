@@ -2,36 +2,30 @@ import type { TemplateData } from '../../../types/index.ts'
 
 class Template {
   #data: TemplateData
-  #text: string
-  #wiki: string
 
-  constructor(data: TemplateData, text = '', wiki = '') {
+  constructor(data: TemplateData) {
     this.#data = data
-    this.#text = text
-    this.#wiki = wiki
   }
   get type() {
-    return this.#data.template || this.#data.name
+    return this.#data.kind || this.#data.template.toLowerCase().replace(/_/g, ' ')
   }
-
+  get kind() {
+    return this.#data.kind
+  }
   text() {
-    return this.#text || ''
+    return this.#data.text
   }
-
   json() {
-    return this.#data || {}
+    return this.#data
   }
-
   wikitext() {
-    return this.#wiki || ''
+    return this.#data.wiki
   }
   isEmpty() {
-    return Object.keys(this.#data).length === 0
+    return this.#data.template === ''
   }
   static empty() {
-    return new Template({
-      template: '',
-    })
+    return new Template({ template: '', kind: null, wiki: '', text: '', data: {} })
   }
 }
 

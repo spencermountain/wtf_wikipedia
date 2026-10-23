@@ -51,6 +51,7 @@ const plugin = function (_models, templates) {
       templates[name] = function (tmpl, list, parse) {
         return templates[k](tmpl, list, parse, k)
       }
+      templates[name].kind = k
     })
   })
 }

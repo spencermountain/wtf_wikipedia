@@ -33,19 +33,15 @@ export interface BlockData {
 
 export interface TemplateData {
   template: string
-  wiki?: string // original wiki text
-  text?: string // BlockData?
-  name?: string
-  type?: string
-  data?: object
-  nested?: boolean
+  kind: string | null
+  wiki: string
+  text: string
+  data: Record<string, any>
 }
 
-export interface InfoboxData extends TemplateData {
-  type: string
-  data: object[]
-}
 export interface ReferenceData extends TemplateData {}
+
+export interface InfoboxData extends TemplateData {}
 
 export interface ImageData {
   file: string

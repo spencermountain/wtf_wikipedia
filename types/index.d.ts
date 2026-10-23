@@ -150,6 +150,7 @@ declare class Section {
 }
 
 declare class Infobox {
+  readonly kind: string | null
   /** the raw key-value data of the infobox, as Sentence objects */
   data: Record<string, Sentence>
   get(key: string): Sentence
@@ -157,7 +158,7 @@ declare class Infobox {
   get(): Sentence
   image(): Image | null
   images(): Image[]
-  json(options?: object): Record<string, unknown>
+  json(options?: object): TemplateJson
   keyValue(): Record<string, string>
   links(selector?: string | number): LinkCollection
   template(): string
@@ -168,6 +169,9 @@ declare class Infobox {
 }
 
 declare class Template {
+  readonly kind: string | null
+  readonly type: string
+  isEmpty(): boolean
   json(): TemplateJson
   text(): string
   wikitext(): string
@@ -187,7 +191,8 @@ declare class Table {
 }
 
 declare class Reference {
-  json(options?: object): Record<string, unknown>
+  readonly kind: string | null
+  json(options?: object): TemplateJson
   links(selector?: string | number): LinkCollection
   text(): string
   title(): string
@@ -297,10 +302,13 @@ type DocumentOptions = {
   [key: string]: unknown
 }
 
-/** the parsed data of a template. `template` is its lower-cased name */
+/** Template identity, recognized parser kind, and parsed payload. */
 type TemplateJson = {
-  template?: string
-  [key: string]: unknown
+  template: string
+  kind: string | null
+  wiki: string
+  text: string
+  data: Record<string, any>
 }
 
 /** the json() shape of a Link */

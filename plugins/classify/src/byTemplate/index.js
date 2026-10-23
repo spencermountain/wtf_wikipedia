@@ -5,7 +5,7 @@ const byTemplate = function (doc) {
   const templates = doc.templates().map((tmpl) => tmpl.json())
   const found = []
   for (let i = 0; i < templates.length; i++) {
-    const title = templates[i].template
+    const title = templates[i].kind || templates[i].template.toLowerCase().replace(/_/g, ' ')
     if (Object.hasOwn(mappings.templates, title)) {
       found.push({ type: mappings.templates[title], reason: title })
     } else {

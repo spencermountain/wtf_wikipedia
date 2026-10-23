@@ -9,8 +9,12 @@ class Reference {
     this.#data = data
   }
 
+  get kind() {
+    return this.#data.kind
+  }
+
   links() {
-    const items = this.#data.inline?.links || []
+    const items = this.#data.data.inline?.links || []
     return items.map((item) => new Link(item))
   }
 

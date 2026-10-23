@@ -1,5 +1,5 @@
 import infoboxList from '../../../_data/infoboxes.ts'
-import type { InfoboxData } from '../../../types/index.ts'
+import fmtName from './toJSON/_fmtName.ts'
 import { infoboxes } from '../../../_data/i18n/index.ts'
 const i18nReg = new RegExp('^(subst.)?(' + infoboxes.join('|') + ')(?=:| |\n|$)', 'i')
 infoboxes.forEach((name) => {
@@ -32,22 +32,10 @@ const isInfobox = function (name: string) {
   return false
 }
 
-//turns template data into good infobox data
-const fmtInfobox = function (obj: any = {}) {
-  let m = obj.template.match(i18nReg)
-  let type = obj.template
-  if (m && m[0]) {
-    type = type.replace(m[0], '')
-  }
-  type = type.trim()
-  let infobox: InfoboxData = {
-    template: 'infobox',
-    type: type,
-    data: obj,
-  }
-  // delete infobox.data.template //already have this.
-  // delete infobox.data.list //just in case!
-  return infobox
+// Preserve the legacy Infobox.type() accessor without adding root metadata.
+const infoboxType = (name: string) => {
+  const normalized = fmtName(name)
+  return normalized.replace(i18nReg, '').trim()
 }
 
-export { isInfobox, fmtInfobox }
+export { isInfobox, infoboxType }
