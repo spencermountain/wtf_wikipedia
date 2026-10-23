@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import { withDefaults } from '../../_lib/defaults.ts'
 import sectionMap from './_sectionMap.ts'
-import toJSON from './toJson.ts'
 import isDisambig from './isDisambig.ts'
 import Section from '../02-section/Section.ts'
 import Template from '../02-section/template/Template.ts'
@@ -255,8 +254,46 @@ class Document {
     return arr.join('\n\n')
   }
 
-  json() {
-    return toJSON(this)
+  json(format = 'lg') {
+    let data: any = { wiki: this.wikitext() }
+
+    data.title = this.title
+
+    // present only if true
+    if (this.isRedirect() === true) {
+      data.isRedirect = true
+      data.redirectTo = this.redirectTo()
+      data.sections = []
+    }
+    if (this.isStub() === true) {
+      data.isStub = true
+    }
+    if (this.isDisambiguation() === true) {
+      data.isDisambiguation = true
+    }
+
+    // metadata
+    if (this.pageID) {
+      data.pageID = this.pageID
+    }
+    if (this.wikidata) {
+      data.wikidata = this.wikidata
+    }
+    let desc = this.description
+    if (desc) {
+      data.description = desc
+    }
+
+    // page sections
+    data.categories = this.categories()
+    data.categoryDetails = this.categoryDetails()
+    data.sections = this.sections().map((i) => i.json(format))
+    const json = structuredClone(data)
+    if (format === 'xl') {
+      return json
+    }
+    delete json.wiki
+    return json
   }
 
   debug() {

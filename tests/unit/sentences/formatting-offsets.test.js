@@ -70,8 +70,8 @@ cases.forEach(({ name, wiki, text, bolds, italics }) => {
     t.equal(sentence.text(), text, 'plain text')
     t.deepEqual(withoutWiki(sentence.bolds()), bolds, 'bold spans')
     t.deepEqual(withoutWiki(sentence.italics()), italics, 'italic spans')
-    t.deepEqual(withoutWiki(sentence.json().bolds), bolds.length ? bolds : undefined, 'JSON bold spans')
-    t.deepEqual(withoutWiki(sentence.json().italics), italics.length ? italics : undefined, 'JSON italic spans')
+    t.deepEqual(sentence.json().bolds, bolds.length ? bolds : undefined, 'JSON bold spans')
+    t.deepEqual(sentence.json().italics, italics.length ? italics : undefined, 'JSON italic spans')
     sentence
       .bolds()
       .concat(sentence.italics())

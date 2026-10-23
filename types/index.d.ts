@@ -1,7 +1,9 @@
-type FormattingJson = { text: string; wiki: string; start: number; end: number }
+type JsonFormat = 'sm' | 'md' | 'lg' | 'xl'
+
+type FormattingJson = { text: string; wiki?: string; start: number; end: number }
 
 type CollectionItem = {
-  json: () => any
+  json: (format?: JsonFormat) => any
   text: (...args: any[]) => string
   wikitext: () => string
 }
@@ -12,7 +14,7 @@ interface Collection<T extends CollectionItem> extends Array<T> {
   filter<S extends T>(predicate: (value: T, index: number, array: T[]) => value is S, thisArg?: any): Collection<S>
   filter(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): this
   slice(start?: number, end?: number): this
-  json(): ReturnType<T['json']>[]
+  json(format?: JsonFormat): ReturnType<T['json']>[]
   text(options?: object): string
   wikitext(): string
 }
@@ -39,7 +41,7 @@ declare class Image {
   caption(): string
   file(): string
   format(): string | null
-  json(): ImageJson
+  json(format?: JsonFormat): ImageJson
   links(selector?: string | number): LinkCollection
   src(): string
   text(): string
@@ -68,7 +70,7 @@ declare class Document {
   isDisambiguation(): boolean
   isRedirect(): boolean
   isStub(): boolean
-  json(): Record<string, unknown>
+  json(format?: JsonFormat): Record<string, unknown>
   lang(lang?: string): string | null
   language(lang?: string): string | null
   links(selector?: string | number): LinkCollection
@@ -123,7 +125,7 @@ declare class Section {
   infoboxes(clue?: string | number): InfoboxCollection
   infobox(clue?: string | number): Infobox | null
   interwiki(selector?: string | number): LinkCollection
-  json(): Record<string, unknown>
+  json(format?: JsonFormat): Record<string, unknown>
   last(): Section | null
   lastSibling(): Section | null
   links(selector?: string | number): LinkCollection
@@ -159,7 +161,7 @@ declare class Infobox {
   getAll(keys: string[]): Array<BlockJson | BlockJson[] | undefined>
   image(): Image | undefined
   images(): Image[]
-  json(): InfoboxJson
+  json(format?: JsonFormat): InfoboxJson
   links(): Link[]
   text(): string
   type(): string
@@ -171,7 +173,7 @@ declare class Template {
   readonly kind: string | null
   readonly type: string
   isEmpty(): boolean
-  json(): TemplateJson
+  json(format?: JsonFormat): TemplateJson
   links(): Link[]
   text(): string
   wikitext(): string
@@ -183,7 +185,7 @@ declare class Table {
   // a string key gets a flat column; an array of keys gets a row-list
   get(key: string): (string | null)[]
   get(keys: string[]): Record<string, string>[]
-  json(): Record<string, unknown>[]
+  json(format?: JsonFormat): Record<string, unknown>
   keyval(options?: object): Record<string, string>[]
   keyValue(options?: object): Record<string, string>[]
   keyvalue(options?: object): Record<string, string>[]
@@ -194,7 +196,7 @@ declare class Table {
 
 declare class Reference {
   readonly kind: string | null
-  json(): TemplateJson
+  json(format?: JsonFormat): TemplateJson
   links(): Link[]
   text(): string
   title(): string
@@ -207,7 +209,7 @@ declare class Paragraph {
   images(clue?: number): Collection<Image>
   image(clue?: number): Image | null
   interwiki(): LinkJson[]
-  json(): Record<string, unknown>
+  json(format?: JsonFormat): Record<string, unknown>
   links(selector?: string | number): LinkCollection
   link(clue?: string | number): Link | null
   lists(clue?: number): List[]
@@ -222,7 +224,7 @@ declare class Paragraph {
 
 declare class Link {
   text(str?: string): string
-  json(): LinkJson
+  json(format?: JsonFormat): LinkJson
   wikitext(): string
   page(str?: string): string
   anchor(str?: string): string
@@ -234,7 +236,7 @@ declare class Link {
 }
 
 declare class List {
-  json(): Record<string, unknown>[]
+  json(format?: JsonFormat): Record<string, unknown>
   lines(): BlockJson[]
   items(): BlockJson[]
   links(selector?: string | number): LinkCollection
@@ -250,7 +252,7 @@ declare class Sentence {
   isEmpty(): boolean
   italic(clue?: number): string | null
   italics(clue?: number): FormattingJson[]
-  json(): Record<string, unknown>
+  json(format?: JsonFormat): Record<string, unknown>
   link(clue?: string | number): Link | null
   links(selector?: string | number): LinkCollection
   text(str?: string): string
@@ -308,14 +310,14 @@ type TemplateJson = {
   links?: LinkJson[]
   template: string
   kind: string | null
-  wiki: string
+  wiki?: string
   text: string
   data: Record<string, any>
 }
 
 type BlockJson = {
   text: string
-  wiki: string
+  wiki?: string
   links?: LinkJson[]
   bolds?: Array<FormattingJson>
   italics?: Array<FormattingJson>
@@ -327,11 +329,11 @@ type InfoboxJson = Omit<TemplateJson, 'data'> & {
 
 /** the json() shape of a Link */
 type LinkJson = {
-  wiki: string
+  wiki?: string
   text?: string
   type: 'internal' | 'interwiki' | 'external'
   page?: string
-  interwiki?: string | { wiki: string; lang: string }
+  interwiki?: string | { wiki?: string; lang: string }
   site?: string
   anchor?: string
 }
@@ -339,11 +341,11 @@ type LinkJson = {
 /** the json() shape of an Image */
 type ImageJson = {
   file: string
-  wiki: string
+  wiki?: string
   domain?: string
   caption?: {
     text: string
-    wiki: string
+    wiki?: string
     links?: LinkJson[]
     bolds?: FormattingJson[]
     italics?: FormattingJson[]
@@ -422,6 +424,7 @@ type Link_ = Link
 type List_ = List
 type Sentence_ = Sentence
 type DocumentOptions_ = DocumentOptions
+type JsonFormat_ = JsonFormat
 type BlockJson_ = BlockJson
 type InfoboxJson_ = InfoboxJson
 type TemplateJson_ = TemplateJson
@@ -455,6 +458,7 @@ declare namespace wtf {
   export type List = List_
   export type Sentence = Sentence_
   export type DocumentOptions = DocumentOptions_
+  export type JsonFormat = JsonFormat_
   export type BlockJson = BlockJson_
   export type InfoboxJson = InfoboxJson_
   export type TemplateJson = TemplateJson_
@@ -476,6 +480,7 @@ export default wtf
 // .fetch/.extend/.plugin/.version — the classes are NOT attached to it.
 // Import them as types: `import type { Document } from 'wtf_wikipedia'`.
 export type {
+  JsonFormat,
   FormattingJson,
   Collection,
   LinkCollection,

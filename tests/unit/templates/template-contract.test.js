@@ -1,4 +1,3 @@
-import withoutWiki from '../../lib/withoutWiki.js'
 import test from 'tape'
 import wtf from '../../lib/index.js'
 
@@ -6,7 +5,7 @@ test('template envelope preserves unknown names and simplifies arguments', (t) =
   const wiki = '{{FoobarContract|one=yes|caption=long text with [[link]]}}'
   const template = wtf(wiki).template()
   t.deepEqual(
-    withoutWiki(template.json()),
+    template.json(),
     {
       template: 'FoobarContract',
       kind: null,

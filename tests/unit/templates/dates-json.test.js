@@ -1,4 +1,3 @@
-import withoutWiki from '../../lib/withoutWiki.js'
 import test from 'tape'
 import wtf from '../../lib/index.js'
 
@@ -34,7 +33,7 @@ test('date template json', (t) => {
     ],
   ]
   arr.forEach(([tmpl, expected]) => {
-    t.deepEqual(withoutWiki(wtf(tmpl).templates()[0].json()), expected, tmpl)
+    t.deepEqual(wtf(tmpl).templates()[0].json(), expected, tmpl)
   })
   t.end()
 })

@@ -30,8 +30,13 @@ class Reference {
     return this.#data.wiki || ''
   }
 
-  json() {
-    return this.#data || {}
+  json(format = 'lg') {
+    const json = structuredClone(this.#data)
+    if (format === 'xl') {
+      return json
+    }
+    delete json.wiki
+    return json
   }
 }
 

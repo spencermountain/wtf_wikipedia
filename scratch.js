@@ -38,7 +38,7 @@ str = `
 // | legislature        =
 // }}`
 const doc = wtf(str, meta)
-console.log(doc.templates().map((t) => t.json()))
+console.log(doc.links().map((t) => t.json('xl')))
 // console.log(doc.infoboxes().map((l) => l.type()))
 // const table = doc.tables()[0]
 // console.log(table.getRows(['Name', 'team']))

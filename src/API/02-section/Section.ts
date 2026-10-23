@@ -1,3 +1,4 @@
+import Links from '../03-paragraph/link/Links.ts'
 import Table from './table/Table.ts'
 import Reference from './reference/Reference.ts'
 import Infobox from './infobox/Infobox.ts'
@@ -64,7 +65,7 @@ class Section {
     })
 
     arr = arr.flat().filter((val) => val !== undefined) //filter out all the undefined from the flattened empty arrays
-    return arr
+    return Links.from(arr)
   }
 
   // TODO: Table collections have nested JSON; keep plain arrays for now.
@@ -127,8 +128,13 @@ class Section {
       .join('\n\n')
   }
 
-  json() {
-    return this.#data
+  json(format = 'lg') {
+    const json = structuredClone(this.#data)
+    if (format === 'xl') {
+      return json
+    }
+    delete json.wiki
+    return json
   }
 
   isEmpty() {

@@ -13,8 +13,13 @@ class Link {
     return this.#data.text
   }
 
-  json() {
-    return this.#data
+  json(format = 'lg') {
+    const json = structuredClone(this.#data)
+    if (format === 'xl') {
+      return json
+    }
+    delete json.wiki
+    return json
   }
 
   wikitext() {

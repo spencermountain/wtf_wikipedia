@@ -491,7 +491,7 @@ test('links - filter by page title without case sensitivity', (t) => {
 //interwiki
 test('interwiki - get - return only the interwiki links', (t) => {
   t.deepEqual(
-    withoutWiki(page.interwiki().map((l) => l.json())),
+    page.interwiki().map((l) => l.json()),
     [{ type: 'interwiki', page: 'Ville', text: 'Ville', lang: 'fr', inline: true }],
     'interwiki JSON'
   )

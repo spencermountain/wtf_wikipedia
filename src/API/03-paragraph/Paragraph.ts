@@ -1,4 +1,3 @@
-import toJSON from './toJson.ts'
 import Sentence from './sentence/Sentence.ts'
 import Image from './image/Image.ts'
 import List from './list/List.ts'
@@ -61,8 +60,18 @@ class Paragraph {
     return str
   }
 
-  json() {
-    return toJSON(this)
+  json(format = 'lg') {
+    const json = structuredClone({
+      wiki: this.wikitext(),
+      images: this.images().map((image) => image.json(format)),
+      lists: this.lists().map((list) => list.json(format)),
+      sentences: this.sentences().map((sentence) => sentence.json(format)),
+    })
+    if (format === 'xl') {
+      return json
+    }
+    delete json.wiki
+    return json
   }
 
   wikitext() {

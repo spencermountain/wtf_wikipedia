@@ -19,8 +19,13 @@ class Template {
   links() {
     return (this.#data.links || []).map((link) => new Link(link))
   }
-  json() {
-    return this.#data
+  json(format = 'lg') {
+    const json = structuredClone(this.#data)
+    if (format === 'xl') {
+      return json
+    }
+    delete json.wiki
+    return json
   }
   wikitext() {
     return this.#data.wiki
