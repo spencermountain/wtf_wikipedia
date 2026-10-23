@@ -25,7 +25,7 @@ const doTable = function (Sentence, options) {
   const keys = Object.keys(rows[0])
   const blocks = this.headers()
   const headers = keys.map((_key, i) => {
-    return blocks[i] ? new Sentence(blocks[i]).markdown(options) : ''
+    return blocks[i] ? new Sentence(blocks[i].json('xl')).markdown(options) : ''
   })
   //draw the header (necessary!)
   md += makeRow(headers) + '\n'

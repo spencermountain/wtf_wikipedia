@@ -10,7 +10,7 @@ const toHtml = function (Sentence, options) {
   html += '  <tr>\n'
 
   this.headers().forEach((header) => {
-    html += '    <td>' + header.text + '</td>\n'
+    html += '    <td>' + header.text() + '</td>\n'
   })
   html += '  </tr>\n'
   html += '  </thead>\n'

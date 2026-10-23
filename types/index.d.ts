@@ -27,12 +27,12 @@ declare class Image {
 
 declare class Document {
   categories(clue?: number): string[]
-  citations(clue?: number): Reference[]
+  citations(): Collection<Reference>
   coordinates(clue?: number): Coordinate[]
   debug(): Document
   domain: string | null
   images(selector?: number): Collection<Image>
-  infoboxes(clue?: string | number): InfoboxCollection
+  infoboxes(): InfoboxCollection
   infobox(clue?: string | number): Infobox | null
   interwiki(): Link[]
   isDisambig(): boolean
@@ -50,13 +50,13 @@ declare class Document {
   redirect(): LinkJson | null
   redirectsTo(): LinkJson | null
   redirectTo(): LinkJson | null
-  references(clue?: number): Reference[]
+  references(): Collection<Reference>
   section(clue?: string | number): Section
   sections(clue?: string | number): SectionCollection
   sentence(clue?: number): Sentence | null
   sentences(selector?: number): Collection<Sentence>
-  tables(clue?: number): Table[]
-  templates(clue?: string | number): TemplateCollection
+  tables(): Collection<Table>
+  templates(clue?: string): TemplateCollection
   template(clue?: string | number): Template | null
   text(options?: object): string
   title: string | null
@@ -72,23 +72,23 @@ declare class Document {
 declare class Section {
   static empty(): Section
   isEmpty(): boolean
-  citations(clue?: number): Reference[]
+  citations(): Collection<Reference>
   coordinates(clue?: number): Coordinate[]
   depth(): number
   images(clue?: number): Collection<Image>
   indentation(): number
   index(): number | null
-  infoboxes(clue?: string | number): InfoboxCollection
+  infoboxes(): InfoboxCollection
   interwiki(): Link[]
   json(format?: JsonFormat): Record<string, unknown>
   links(): LinkCollection
   lists(clue?: number): List[]
   paragraphs(clue?: number): Paragraph[]
-  references(clue?: number): Reference[]
+  references(): Collection<Reference>
   sentences(clue?: number): Collection<Sentence>
   sentence(clue?: number): Sentence | null
-  tables(clue?: number): Table[]
-  templates(clue?: string | number): TemplateCollection
+  tables(): Collection<Table>
+  templates(clue?: string): TemplateCollection
   template(clue?: string | number): Template | null
   text(options?: object): string
   title(): string
@@ -97,9 +97,9 @@ declare class Section {
 
 declare class Infobox {
   readonly kind: string | null
-  get(key: string): BlockJson | BlockJson[] | undefined
-  getFirst(keys: string[]): BlockJson | BlockJson[] | undefined
-  getAll(keys: string[]): Array<BlockJson | BlockJson[] | undefined>
+  get(key: string): Block | Collection<Block> | undefined
+  getFirst(keys: string[]): Block | Collection<Block> | undefined
+  getAll(keys: string[]): Collection<Block>
   image(): Image | undefined
   images(): Image[]
   json(format?: JsonFormat): InfoboxJson
@@ -121,8 +121,8 @@ declare class Template {
 }
 
 declare class Table {
-  cells(): BlockJson[]
-  headers(): BlockJson[]
+  cells(): Collection<Block>
+  headers(): Collection<Block>
   json(format?: JsonFormat): Record<string, unknown>
   links(): Link[]
   text(): string
@@ -162,11 +162,21 @@ declare class Link {
 
 declare class List {
   json(format?: JsonFormat): Record<string, unknown>
-  lines(): BlockJson[]
-  items(): BlockJson[]
+  lines(): Collection<Block>
+  items(): Collection<Block>
   links(): Link[]
   text(): string
   wikitext(): string
+}
+
+declare class Block {
+  links(): LinkCollection
+  bolds(): FormattingJson[]
+  italics(): FormattingJson[]
+  text(): string
+  json(format?: JsonFormat): BlockJson
+  wikitext(): string
+  isEmpty(): boolean
 }
 
 declare class Sentence {
@@ -176,7 +186,7 @@ declare class Sentence {
   isEmpty(): boolean
   italics(clue?: number): FormattingJson[]
   json(format?: JsonFormat): Record<string, unknown>
-  links(): Link[]
+  links(): LinkCollection
   text(str?: string): string
   wikitext(): string
 }
@@ -347,6 +357,7 @@ type List_ = List
 type Sentence_ = Sentence
 type DocumentOptions_ = DocumentOptions
 type JsonFormat_ = JsonFormat
+type Block_ = Block
 type BlockJson_ = BlockJson
 type InfoboxJson_ = InfoboxJson
 type TemplateJson_ = TemplateJson
@@ -381,6 +392,7 @@ declare namespace wtf {
   export type Sentence = Sentence_
   export type DocumentOptions = DocumentOptions_
   export type JsonFormat = JsonFormat_
+  export type Block = Block_
   export type BlockJson = BlockJson_
   export type InfoboxJson = InfoboxJson_
   export type TemplateJson = TemplateJson_
@@ -421,6 +433,7 @@ export type {
   List,
   Sentence,
   DocumentOptions,
+  Block,
   BlockJson,
   InfoboxJson,
   TemplateJson,

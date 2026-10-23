@@ -19,7 +19,7 @@ type Collection<T extends CollectionItem> = T[] & WrappedMethods<T>
 
 type LinkCollection = Collection<Link>
 type SectionCollection = Section[]
-type TemplateCollection = Template[]
-type InfoboxCollection = Infobox[]
+type TemplateCollection = Collection<Template>
+type InfoboxCollection = Collection<Infobox>
 
 export type { Collection, CollectionItem, LinkCollection, SectionCollection, TemplateCollection, InfoboxCollection }

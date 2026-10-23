@@ -1,5 +1,6 @@
 import type { TableData } from '../../../types/index.ts'
-import Link from '../../03-paragraph/link/Link.ts'
+import Block from '../../Block/Block.ts'
+import Blocks from '../../Block/Blocks.ts'
 import { normalizeKey } from '../../../_lib/helpers.ts'
 
 class Table {
@@ -16,18 +17,10 @@ class Table {
         arr.push(cell)
       })
     })
-    return arr
+    return Blocks.from(arr.map((cell) => new Block(cell)))
   }
   links() {
-    const links = []
-    this.cells().forEach((block) => {
-      if (block.links) {
-        block.links.forEach((obj) => {
-          links.push(new Link(obj))
-        })
-      }
-    })
-    return links
+    return this.cells().flatMap((block) => block.links())
   }
 
   cols() {
@@ -35,7 +28,7 @@ class Table {
     return Object.keys(row || {})
   }
   headers() {
-    return this.#data.headers
+    return Blocks.from(this.#data.headers.map((header) => new Block(header)))
   }
   rows() {
     // simplify data into one string per cell

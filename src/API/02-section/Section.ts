@@ -1,13 +1,17 @@
-import Sentences from '../03-paragraph/sentence/Sentences.ts'
-import Lists from '../03-paragraph/list/Lists.ts'
 import Images from '../03-paragraph/image/Images.ts'
-import Links from '../03-paragraph/link/Links.ts'
-import Table from './table/Table.ts'
-import Reference from './reference/Reference.ts'
 import Infobox from './infobox/Infobox.ts'
-import Template from './template/Template.ts'
+import Infoboxes from './infobox/Infoboxes.ts'
 import Link from '../03-paragraph/link/Link.ts'
+import Links from '../03-paragraph/link/Links.ts'
+import Lists from '../03-paragraph/list/Lists.ts'
 import Paragraph from '../03-paragraph/Paragraph.ts'
+import Reference from './reference/Reference.ts'
+import References from './reference/References.ts'
+import Sentences from '../03-paragraph/sentence/Sentences.ts'
+import Table from './table/Table.ts'
+import Tables from './table/Tables.ts'
+import Template from './template/Template.ts'
+import Templates from './template/Templates.ts'
 import type { SectionData, BlockData, DocInfo } from '../../types/index.ts'
 
 //the Section class represents the == title == sections of an article
@@ -72,10 +76,9 @@ class Section {
     return Links.from(arr)
   }
 
-  // TODO: Table collections have nested JSON; keep plain arrays for now.
   tables() {
     const arr = this.#data.tables || []
-    return arr.map((t) => new Table(t))
+    return Tables.from(arr.map((t) => new Table(t)))
   }
 
   template(clue?: string) {
@@ -84,14 +87,14 @@ class Section {
   templates(clue?: string) {
     let arr = this.#data.templates.map((t) => new Template(t))
     if (clue) {
-      return arr.filter((t) => t.type === clue || t.json().template === clue)
+      return Templates.from(arr.filter((t) => t.type === clue || t.json().template === clue))
     }
-    return arr
+    return Templates.from(arr)
   }
 
   infoboxes() {
     const arr = this.#data.infoboxes || []
-    return arr.map((t) => new Infobox(t, this.#info))
+    return Infoboxes.from(arr.map((t) => new Infobox(t, this.#info)))
   }
 
   coordinates() {
@@ -121,7 +124,7 @@ class Section {
 
   references() {
     const arr = this.#data.references || []
-    return arr.map((r) => new Reference(r))
+    return References.from(arr.map((r) => new Reference(r)))
   }
 
   //outputs

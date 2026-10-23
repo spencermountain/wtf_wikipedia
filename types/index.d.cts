@@ -28,6 +28,7 @@ declare namespace wtf {
   export type List = import('./index.js', { with: { 'resolution-mode': 'import' } }).List
   export type Sentence = import('./index.js', { with: { 'resolution-mode': 'import' } }).Sentence
   export type DocumentOptions = import('./index.js', { with: { 'resolution-mode': 'import' } }).DocumentOptions
+  export type Block = import('./index.js', { with: { 'resolution-mode': 'import' } }).Block
   export type BlockJson = import('./index.js', { with: { 'resolution-mode': 'import' } }).BlockJson
   export type InfoboxJson = import('./index.js', { with: { 'resolution-mode': 'import' } }).InfoboxJson
   export type TemplateJson = import('./index.js', { with: { 'resolution-mode': 'import' } }).TemplateJson

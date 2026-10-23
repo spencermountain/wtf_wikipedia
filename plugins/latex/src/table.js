@@ -23,7 +23,7 @@ const doTable = function (Sentence, options) {
     out += '\n    ' + vSep
 
     if (headers[i]) {
-      out += '\\textbf{' + new Sentence(headers[i]).latex(options) + '}'
+      out += '\\textbf{' + new Sentence(headers[i].json('xl')).latex(options) + '}'
     } else {
       out += '  '
     }

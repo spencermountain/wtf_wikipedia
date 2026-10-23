@@ -1,15 +1,19 @@
-import Sentences from '../03-paragraph/sentence/Sentences.ts'
-import Lists from '../03-paragraph/list/Lists.ts'
-import Images from '../03-paragraph/image/Images.ts'
 /* eslint-disable no-console */
-import { withDefaults } from '../../_lib/defaults.ts'
-import sectionMap from './_sectionMap.ts'
-import isDisambig from './isDisambig.ts'
-import Section from '../02-section/Section.ts'
-import Template from '../02-section/template/Template.ts'
-import isStub from './isStub.ts'
 import Image from '../03-paragraph/image/Image.ts'
+import Images from '../03-paragraph/image/Images.ts'
+import Infoboxes from '../02-section/infobox/Infoboxes.ts'
 import Links from '../03-paragraph/link/Links.ts'
+import Lists from '../03-paragraph/list/Lists.ts'
+import References from '../02-section/reference/References.ts'
+import Section from '../02-section/Section.ts'
+import Sentences from '../03-paragraph/sentence/Sentences.ts'
+import Tables from '../02-section/table/Tables.ts'
+import Template from '../02-section/template/Template.ts'
+import Templates from '../02-section/template/Templates.ts'
+import { withDefaults } from '../../_lib/defaults.ts'
+import isDisambig from './isDisambig.ts'
+import isStub from './isStub.ts'
+import sectionMap from './_sectionMap.ts'
 import parseImage from '../../parse/03-paragraph/02-images/parse.ts'
 import type { PageData, DocInfo } from '../../types/index.ts'
 
@@ -201,9 +205,8 @@ class Document {
     return Lists.from(sectionMap(this, 'lists', null))
   }
 
-  // TODO: Table collections have nested JSON. Keep the existing array API for now.
   tables() {
-    return sectionMap(this, 'tables', null)
+    return Tables.from(sectionMap(this, 'tables', null))
   }
 
   template(clue?: string) {
@@ -212,14 +215,14 @@ class Document {
   templates(clue?: string) {
     const items = this.sections().flatMap((sec) => sec.templates())
     if (clue) {
-      return items.filter((t) => t.type === clue || t.json().template === clue)
+      return Templates.from(items.filter((t) => t.type === clue || t.json().template === clue))
     }
-    return items
+    return Templates.from(items)
   }
 
   references() {
     const items = this.sections().flatMap((sec) => sec.references())
-    return items
+    return References.from(items)
   }
 
   citations() {
@@ -241,7 +244,7 @@ class Document {
       return 1
     })
 
-    return arr
+    return Infoboxes.from(arr)
   }
 
   text() {
@@ -254,43 +257,26 @@ class Document {
   }
 
   json(format = 'lg') {
-    let data: any = { wiki: this.wikitext() }
-
+    let data: any = {}
     data.title = this.title
+    data.pageID = this.pageID
+    data.categories = this.categories()
+    data.wikidata = this.wikidata
+    data.description = this.description
+    data.isStub = this.isStub()
+    data.isDisambiguation = this.isDisambiguation()
+    data.isRedirect = this.isRedirect()
 
     // present only if true
-    if (this.isRedirect() === true) {
-      data.isRedirect = true
+    if (data.isRedirect === true) {
       data.redirectTo = this.redirectTo()
-      data.sections = []
     }
-    if (this.isStub() === true) {
-      data.isStub = true
-    }
-    if (this.isDisambiguation() === true) {
-      data.isDisambiguation = true
-    }
-
-    // metadata
-    if (this.pageID) {
-      data.pageID = this.pageID
-    }
-    if (this.wikidata) {
-      data.wikidata = this.wikidata
-    }
-    let desc = this.description
-    if (desc) {
-      data.description = desc
-    }
-
     // page sections
-    data.categories = this.categories()
     data.sections = this.sections().map((i) => i.json(format))
     const json = structuredClone(data)
     if (format === 'xl') {
-      return json
+      json.wiki = this.wikitext()
     }
-    delete json.wiki
     return json
   }
 
