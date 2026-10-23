@@ -1082,7 +1082,7 @@ test('Toronto-Star-Cartoonists', (t) => {
   t.equal(section.sentences().length, 21, 'Toronto-Star: history-length')
   t.equal(doc.categories().length, 6, 'Toronto-Star: cat-length')
   section = doc.section('Notable cartoonists')
-  t.equal(section.lists()[0].json().length, 10, 'Toronto-Star: cartoonist-length')
+  t.equal(section.lists()[0].json().items.length, 10, 'Toronto-Star: cartoonist-length')
   t.end()
 })
 

@@ -47,13 +47,8 @@ const plugin = function (models) {
 
   // should we use 'it', 'he', 'they'...
   models.Doc.prototype.article = function () {
-    let txt = ''
-    // prefer the 2nd sentence
-    if (this.sentence(1)) {
-      txt = this.sentence(1).text()
-    } else if (this.sentence(0)) {
-      txt = this.sentence(0).text()
-    }
+    const sentences = this.sentences()
+    const txt = (sentences[1] || sentences[0])?.text() || ''
     const doc = nlp(txt)
     const found = doc.match('(#Pronoun|#Article)').eq(0).text().toLowerCase()
     return found || 'it'

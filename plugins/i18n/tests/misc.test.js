@@ -33,8 +33,8 @@ test('persondata', (t) => {
   const doc = wtf(str)
   const templates = doc.templates().map((tmpl) => tmpl.json())
   t.equal(templates.length, 1, 'template')
-  t.equal(templates[0].template, 'persondata', 'maps to original template')
-  t.equal(templates[0].name, 'personendaten', 'has alias')
+  t.equal(templates[0].kind, 'persondata', 'maps to original template')
+  t.equal(templates[0].template, 'personendaten', 'has alias')
   t.end()
 })
 

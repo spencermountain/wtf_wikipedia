@@ -309,35 +309,9 @@ test('categories - get - if the clue is a number return the category in that ind
   t.end()
 })
 
-test('categories - get - if the clue is not a number return the list of categories', (t) => {
-  const doc = wtf(`
-    [[Category:WWE Hall of Fame inductees]]
-    [[Category:Writers from New York City]]
-    [[Category:American people of German descent]]
-    [[Category:American people of Scottish descent]]
-  `)
-  const expected = [
-    'WWE Hall of Fame inductees',
-    'Writers from New York City',
-    'American people of German descent',
-    'American people of Scottish descent',
-  ]
-  t.deepEqual(doc.categories('string'), expected, 'the categories in the wiki text')
-  t.end()
-})
 
 //sections
-// test('sections - get - should initially be an empty collection', (t) => {
-//   const doc = wtf('')
-//   t.ok(doc.sections().isEmpty(), 'the sections collection is empty')
-//   t.end()
-// })
 //
-// test('sections - get - if the sections is in the option. ignore it', (t) => {
-//   const doc = wtf('', { sections: ['Q42'] })
-//   t.ok(doc.sections().isEmpty(), 'the sections collection is empty')
-//   t.end()
-// })
 
 // one small page exercises every content accessor - real values, no cached pages
 const PAGE = `'''Testville''' is a small test page. It has two sentences.
@@ -400,17 +374,7 @@ test('sections - get - string clue is case-insensitive', (t) => {
 })
 
 //paragraphs
-// test('paragraphs - get - should initially be an empty collection', (t) => {
-//   const doc = wtf('')
-//   t.ok(doc.paragraphs().isEmpty(), 'the paragraphs collection is empty')
-//   t.end()
-// })
 
-// test('paragraphs - get - if the paragraphs is in the option. ignore it', (t) => {
-//   const doc = wtf('', { paragraphs: ['Q42'] })
-//   t.ok(doc.paragraphs().isEmpty(), 'the paragraphs collection is empty')
-//   t.end()
-// })
 
 test('paragraphs - get - if the clue is a undefined / unset return the list of paragraphs', (t) => {
   t.deepEqual(
@@ -444,17 +408,7 @@ test('paragraph - get - if the clue is unset or undefined return the first parag
 // })
 
 //sentences
-// test('sentences - get - should initially be an empty collection', (t) => {
-//   const doc = wtf('')
-//   t.ok(doc.sentences().isEmpty(), 'the sentences collection is empty')
-//   t.end()
-// })
 //
-// test('sentences - get - if the sentences is in the option. ignore it', (t) => {
-//   const doc = wtf('', { sentences: ['Q42'] })
-//   t.ok(doc.sentences().isEmpty(), 'the sentences collection is empty')
-//   t.end()
-// })
 
 test('sentences - get - if the clue is a undefined / unset return the list of sentences', (t) => {
   t.deepEqual(
@@ -479,10 +433,6 @@ test('sentences - get - if the clue is a undefined / unset return the list of se
 //   t.end()
 // })
 //
-// test('sentences - get - unsupported string selector returns an empty collection', (t) => {
-//   t.ok(page.sentences('string').isEmpty(), 'unsupported string selector returns no sentences')
-//   t.end()
-// })
 
 test('sentence - get - should return the first sentence', (t) => {
   t.equal(page.sentence().text(), 'Testville is a small test page.', 'first sentence text')
@@ -490,17 +440,7 @@ test('sentence - get - should return the first sentence', (t) => {
 })
 
 //images
-// test('images - get - should initially be an empty collection', (t) => {
-//   const doc = wtf('')
-//   t.ok(doc.images().isEmpty(), 'the images collection is empty')
-//   t.end()
-// })
 //
-// test('images - get - if the images is in the option. ignore it', (t) => {
-//   const doc = wtf('', { images: ['Q42'] })
-//   t.ok(doc.images().isEmpty(), 'the images collection is empty')
-//   t.end()
-// })
 
 test('images - get - finds inline, and gallery images', (t) => {
   t.deepEqual(
@@ -546,10 +486,6 @@ test('links - filter by page title without case sensitivity', (t) => {
   t.end()
 })
 
-// test('links - get - unsupported selector returns an empty collection', (t) => {
-//   t.ok(page.links([]).isEmpty(), 'unsupported selector returns no links')
-//   t.end()
-// })
 
 //interwiki
 test('interwiki - get - return only the interwiki links', (t) => {

@@ -1,6 +1,9 @@
 //create a formal LATEX table
-const doTable = function (options) {
-  const rows = this.data
+const doTable = function (Sentence, options) {
+  const rows = this.json().rows
+  if (rows.length === 0) {
+    return ''
+  }
   let out = '\n%\\vspace*{0.3cm}\n'
   out +=
     '\n% BEGIN TABLE: only left align columns in LaTeX table with horizontal line separation between columns'
@@ -15,11 +18,12 @@ const doTable = function (options) {
   //make header
   out += '\n  % BEGIN: Table Header'
   let vSep = '   '
-  Object.keys(rows[0]).forEach((k) => {
+  const headers = this.headers()
+  Object.keys(rows[0]).forEach((_key, i) => {
     out += '\n    ' + vSep
 
-    if (k.indexOf('col-') === 0) {
-      out += '\\textbf{' + k + '}'
+    if (headers[i]) {
+      out += '\\textbf{' + new Sentence(headers[i]).latex(options) + '}'
     } else {
       out += '  '
     }
@@ -34,7 +38,7 @@ const doTable = function (options) {
     vSep = ' '
     out += '\n  % ----- table row -----'
     Object.keys(o).forEach((k) => {
-      const s = o[k]
+      const s = new Sentence(o[k])
       const val = s.latex(options)
       out += '\n    ' + vSep + val + ''
       vSep = ' & '

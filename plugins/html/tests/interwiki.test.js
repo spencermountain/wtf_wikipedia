@@ -8,7 +8,7 @@ test('expand external interwiki link', (t) => {
 
   t.equal(
     html,
-    '<a class="link" href="http://heroeswiki.com/cool">cool</a>',
+    '<a class="link" href="http://heroeswiki.com/cool">heroeswiki:cool</a>',
     'expand external link'
   )
   t.end()
@@ -21,7 +21,7 @@ test('expand internal interwiki link', (t) => {
   const href = doc.links()[0].html()
   t.equal(
     href,
-    '<a class="link" href="http://fr.wikipedia.org/wiki/cool">cool</a>',
+    '<a class="link" href="http://fr.wikipedia.org/wiki/Cool">Cool</a>',
     'expand external link'
   )
   t.end()

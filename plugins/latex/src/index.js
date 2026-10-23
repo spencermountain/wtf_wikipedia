@@ -21,9 +21,13 @@ const plugin = function (models) {
   models.Infobox.prototype.latex = function (options) {
     return infobox.call(this, models.Sentence, options)
   }
-  models.List.prototype.latex = list
+  models.List.prototype.latex = function (options) {
+    return list.call(this, models.Sentence, options)
+  }
   models.Reference.prototype.latex = reference
-  models.Table.prototype.latex = table
+  models.Table.prototype.latex = function (options) {
+    return table.call(this, models.Sentence, options)
+  }
 }
 plugin.version = version
 

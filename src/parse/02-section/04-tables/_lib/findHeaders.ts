@@ -3,7 +3,7 @@ import skipSpanRow from './skipSpanRow.ts'
 import parseBlock from '../../../block/index.ts'
 
 // Consume explicit header rows, allowing a second row to override labels.
-const findHeaders = function (rows = []) {
+const findHeaders = function (rows = [], opts) {
   let headers = []
 
   // is the first-row just a ton of colspan?
@@ -16,7 +16,7 @@ const findHeaders = function (rows = []) {
     headers = first.map((h) => {
       h = h.replace(/^! */, '')
       h = cleanText(h)
-      return parseBlock(h)
+      return parseBlock(h, opts)
     })
     rows.shift()
   }
@@ -27,7 +27,7 @@ const findHeaders = function (rows = []) {
       h = h.replace(/^! */, '')
       h = cleanText(h)
       if (Boolean(h) === true) {
-        headers[i] = parseBlock(h)
+        headers[i] = parseBlock(h, opts)
       }
     })
     rows.shift()

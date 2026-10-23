@@ -15,10 +15,10 @@ const parseTable = (wiki: string, opts?: DocInfo) => {
 
   rows = removeMidSpans(rows)
   rows = handleSpans(rows)
-  const table = extractHeaders(rows)
+  const table = extractHeaders(rows, opts)
   return {
     headers: table.headers,
-    rows: table.rows.map((row) => parseRow(row, table.headers)),
+    rows: table.rows.map((row) => parseRow(row, table.headers, opts)),
   }
 }
 

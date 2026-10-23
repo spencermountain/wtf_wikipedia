@@ -15,7 +15,7 @@ const headings = {
 }
 
 // Consume the first row when it contains a familiar column heading.
-const firstRowHeader = function (rows) {
+const firstRowHeader = function (rows, opts) {
   if (rows.length <= 3) {
     return []
   }
@@ -23,7 +23,7 @@ const firstRowHeader = function (rows) {
   headers = headers.map((h) => {
     h = h.replace(/^! */, '')
     h = cleanText(h)
-    return parseBlock(h)
+    return parseBlock(h, opts)
   })
   for (let i = 0; i < headers.length; i += 1) {
     if (Object.hasOwn(headings, headers[i].text.toLowerCase())) {

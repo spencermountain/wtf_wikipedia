@@ -13,20 +13,19 @@ const makeRow = (arr) => {
 }
 
 //markdown tables are weird
-const doTable = function (options) {
+const doTable = function (Sentence, options) {
   let md = ''
   if (!this || this.length === 0) {
     return md
   }
-  const rows = this.data
+  const rows = this.json().rows
+  if (rows.length === 0) {
+    return ''
+  }
   const keys = Object.keys(rows[0])
-  //first, grab the headers
-  //remove auto-generated number keys
-  const headers = keys.map((k) => {
-    if (/^col[0-9]/.test(k) === true) {
-      return ''
-    }
-    return k
+  const blocks = this.headers()
+  const headers = keys.map((_key, i) => {
+    return blocks[i] ? new Sentence(blocks[i]).markdown(options) : ''
   })
   //draw the header (necessary!)
   md += makeRow(headers) + '\n'
@@ -39,7 +38,7 @@ const doTable = function (options) {
         if (!row[k]) {
           return ''
         }
-        return row[k].markdown(options) || ''
+        return new Sentence(row[k]).markdown(options) || ''
       })
       //make it a nice padded row
       return makeRow(arr)

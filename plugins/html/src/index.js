@@ -27,11 +27,15 @@ const plugin = function (models) {
 
   models.Link.prototype.html = link
 
-  models.List.prototype.html = list
+  models.List.prototype.html = function (options) {
+    return list.call(this, models.Sentence, options)
+  }
 
   models.Reference.prototype.html = reference
 
-  models.Table.prototype.html = table
+  models.Table.prototype.html = function (options) {
+    return table.call(this, models.Sentence, options)
+  }
 
   // models.Template.html = function(opts) {}
 }

@@ -52,7 +52,8 @@ test('expand external interwiki link', (t) => {
   str = `[[wikipedia:ThisIsNotALanguage:text]]`
   doc = wtf(str)
   obj = doc.links()[0].json()
-  t.notEqual(obj.type, 'interwiki', 'unknown language prefix')
+  t.equal(obj.type, 'interwiki', 'recognized project keeps unknown prefix in target')
+  t.equal(obj.page, 'ThisIsNotALanguage:text', 'unknown prefix remains part of page title')
 
   t.end()
 })
@@ -67,6 +68,6 @@ test('expand internal interwiki link', (t) => {
   t.equal(obj.lang, 'fr', 'language')
 
   const href = doc.links()[0].href()
-  t.equal(href, 'http://fr.wikipedia.org/wiki/cool', 'expand external link')
+  t.equal(href, 'http://fr.wikipedia.org/wiki/Cool', 'expand external link')
   t.end()
 })

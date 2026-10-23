@@ -1,8 +1,8 @@
 import version from './_version.js'
 // const birthDate = require('./birthDate')
-const shouldSkip = /see also/
+const shouldSkip = /^see also$/i
 
-function escapeRegExp(str) {
+const escapeRegExp = (str) => {
   str = str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') // $& means the whole matched string
   return new RegExp(str, 'i')
 }
@@ -47,7 +47,7 @@ const getMain = function (s) {
 }
 
 const getTitle = function (doc) {
-  let title = doc.title
+  let title = doc.title || ''
   title = title.replace(/ \(disambig|disambiguation\)$/, '')
   return title
 }
@@ -55,13 +55,10 @@ const getTitle = function (doc) {
 const addMethod = function (models) {
   // parse a disambiguation page into an array of pages
   models.Doc.prototype.disambiguation = function () {
-    if (this.isDisambiguation() !== true) {
+    const opening = this.section().sentences().slice(0, 2)
+    const hasIntroduction = opening.some((sentence) => / may (also )?refer to\b/i.test(sentence.text()))
+    if (!this.isDisambiguation() && !hasIntroduction) {
       return null
-    }
-    // remove 'see also'
-    const sec = this.section('see also')
-    if (sec !== null) {
-      sec.remove()
     }
     const intro = this.section().sentence()
     const main = getMain(intro)
@@ -74,7 +71,7 @@ const addMethod = function (models) {
       }
       s.lists().forEach((list) => {
         list.lines().forEach((line) => {
-          const found = parseLine(line)
+          const found = parseLine(new models.Sentence(line))
           if (found) {
             found.section = title
             pages.push(found)

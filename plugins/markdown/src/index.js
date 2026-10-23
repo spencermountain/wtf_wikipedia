@@ -20,8 +20,12 @@ const plugin = function (models) {
   models.Infobox.prototype.markdown = function (options) {
     return infobox.call(this, models.Sentence, options)
   }
-  models.Table.prototype.markdown = table
-  models.List.prototype.markdown = list
+  models.Table.prototype.markdown = function (options) {
+    return table.call(this, models.Sentence, options)
+  }
+  models.List.prototype.markdown = function (options) {
+    return list.call(this, models.Sentence, options)
+  }
   models.Reference.prototype.markdown = reference
 }
 plugin.version = version
