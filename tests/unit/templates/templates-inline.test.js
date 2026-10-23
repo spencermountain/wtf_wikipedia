@@ -195,7 +195,7 @@ test('tricky-based-on', (t) => {
   t.equal(doc.templates().length, 1, 'found one template')
   t.equal(doc.text(), 'Jurassic Park by Michael Crichton', 'formatted title and author')
   const data = doc.templates()[0].json().data || {}
-  t.equal(doc.template().json().kind, 'based on', 'template name')
+  t.equal(doc.templates()[0].json().kind, 'based on', 'template name')
   t.equal(data.title, 'Jurassic Park', 'title')
   t.equal(data.author, 'Michael Crichton', 'author')
   t.end()

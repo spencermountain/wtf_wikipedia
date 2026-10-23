@@ -42,6 +42,6 @@ test('div style replacement', function (t) {
   const str = `
 <div style="text-align:center;">inside div</div>
 `
-  t.equal(wtf(str).section(0).text(), 'inside div', 'support css style')
+  t.equal(wtf(str).sections()[0].text(), 'inside div', 'support css style')
   t.end()
 })

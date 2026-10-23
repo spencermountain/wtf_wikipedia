@@ -33,6 +33,7 @@ declare class Document {
   domain: string | null
   images(): Collection<Image>
   infoboxes(): InfoboxCollection
+  /** Selects the most important infobox, or null when none exist. */
   infobox(): Infobox | null
   interwiki(): Link[]
   isDisambig(): boolean
@@ -51,13 +52,12 @@ declare class Document {
   redirectsTo(): LinkJson | null
   redirectTo(): LinkJson | null
   references(): Collection<Reference>
+  /** Selects by index or trimmed, case-insensitive title; defaults to 0. Returns an empty Section if missing. */
   section(clue?: string | number): Section
   sections(): SectionCollection
-  sentence(): Sentence | undefined
   sentences(): Collection<Sentence>
   tables(): Collection<Table>
   templates(clue?: string): TemplateCollection
-  template(clue?: string): Template
   text(): string
   title: string | null
   url(): string | null
@@ -86,7 +86,6 @@ declare class Section {
   sentences(): Collection<Sentence>
   tables(): Collection<Table>
   templates(clue?: string): TemplateCollection
-  template(clue?: string): Template
   text(): string
   title(): string
   wikitext(): string
@@ -97,6 +96,7 @@ declare class Infobox {
   get(key: string): Block | undefined
   getFirst(keys: string[]): Block | undefined
   getAll(keys: string[]): Collection<Block>
+  /** Selects the preferred image, or undefined when none exist. */
   image(): Image | undefined
   images(): Collection<Image>
   json(format?: JsonFormat): InfoboxJson

@@ -26,9 +26,9 @@ test('collections: consistent link selection and output', (t) => {
 
 test('collections: tree accessors share selection behavior', (t) => {
   const doc = wtf('[[Toronto]] and [[Ottawa]].\n\n== Places ==\n[[Montreal]].\n\n=== More ===\n[[Quebec]].')
-  const section = doc.section(0)
+  const section = doc.sections()[0]
   const paragraph = section.paragraphs()[0]
-  const sentence = paragraph.sentence(0)
+  const sentence = paragraph.sentences()[0]
   ;[section, paragraph, sentence].forEach((model) => {
     t.deepEqual(model.links(1).pages(), ['Ottawa'], 'numeric selection at each level')
     t.equal(model.links()[1].page(), 'Ottawa', 'singular selection at each level')
@@ -40,14 +40,13 @@ test('collections: tree accessors share selection behavior', (t) => {
     'section title selection'
   )
   t.deepEqual(
-    doc
-      .section('Places')
+    doc.section('places')
       .children('More')
       .map((s) => s.title()),
     ['More'],
     'children use collections'
   )
-  t.deepEqual(doc.section('More').children().json(), [], 'empty child collection')
+  t.deepEqual(doc.section('more').children().json(), [], 'empty child collection')
   t.equal(doc.paragraphs(0).json().length, 1, 'paragraph output')
   t.equal(doc.sentences(0).json().length, 1, 'sentence output')
   t.deepEqual(wtf('').references().json(), [], 'empty references')

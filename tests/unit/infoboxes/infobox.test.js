@@ -150,11 +150,11 @@ test('double-prop-infobox', function (t) {
 
 test('infobox image', (t) => {
   const inf = wtf('{{Infobox building|name=Arts Club|image=Foo bar.jpg|caption=neat}}').infobox()
-  const img = inf.image()
+  const img = inf.images()[0]
   t.equal(img.file(), 'File:Foo_bar.jpg', 'image filename')
   t.equal(img.caption(), 'neat', 'image caption')
   t.equal(img.url(), 'https://wikipedia.org/wiki/Special:Redirect/file/Foo_bar.jpg', 'image URL')
-  t.equal(wtf('{{Infobox person|name=NoPic}}').infobox().image(), undefined, 'no image is undefined')
+  t.equal(wtf('{{Infobox person|name=NoPic}}').infobox().images()[0], undefined, 'no image is undefined')
   t.end()
 })
 

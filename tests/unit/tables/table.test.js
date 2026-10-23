@@ -16,12 +16,12 @@ test('rnli stations', (t) => {
   const doc = readFile('RNLI-Stations')
   t.equal(doc.categories().length, 5, 'table-cat-length')
 
-  const intro = doc.section(0)
+  const intro = doc.sections()[0]
   t.equal(intro.title(), '', 'intro-title')
   t.equal(intro.images().length > 0, true, 'intro-image-length')
   t.equal(intro.sentences().length > 0, true, 'intro-sentence-length')
 
-  const key = doc.section(1)
+  const key = doc.sections()[1]
   t.equal(key.depth(), 0, 'key-depth')
   t.equal(key.title(), 'Key', 'key-title')
   t.equal(key.sentences().length, 0, 'key-no-sentences')
@@ -30,15 +30,15 @@ test('rnli stations', (t) => {
   t.deepEqual(key.lists().length, 0, 'key-no-lists')
   t.deepEqual(key.tables().length, 0, 'key-no-tables')
 
-  const lifeboat = doc.section(2)
+  const lifeboat = doc.sections()[2]
   t.equal(lifeboat.depth(), 1, 'lifeboat-depth')
-  t.equal(lifeboat.template().json().data.list[0], 'Royal National Lifeboat Institution lifeboats', 'lifeboat-main')
+  t.equal(lifeboat.templates()[0].json().data.list[0], 'Royal National Lifeboat Institution lifeboats', 'lifeboat-main')
   t.equal(lifeboat.lists()[0].json().items.length, 3, 'lifeboat-list')
   t.equal(lifeboat.sentences().length, 3, 'lifeboat-sentences')
   t.deepEqual(lifeboat.images().length, 0, 'lifeboat-no-images')
   t.deepEqual(lifeboat.tables().length, 0, 'lifeboat-no-tables')
 
-  const east = doc.section(6)
+  const east = doc.sections()[6]
   t.equal(east.title(), 'East Division', 'East Division')
   t.deepEqual(east.images().length, 0, 'East-no-images')
   t.deepEqual(east.lists().length, 0, 'East-no-lists')
@@ -49,7 +49,7 @@ test('rnli stations', (t) => {
   t.equal(table.rows[0].location.text, 'Hunstanton, Norfolk', 'east-table-data')
   t.equal(table.rows[41]['launch_method'].text, 'Carriage', 'east-table-data-end')
 
-  const south = doc.section(7)
+  const south = doc.sections()[7]
   const sTable = south.tables()[0].json()
   t.equal(sTable.rows.length, 35, 'south-table-rows')
   t.equal(sTable.rows[0].location.text, 'Mudeford, Dorset', 'south-table-data')

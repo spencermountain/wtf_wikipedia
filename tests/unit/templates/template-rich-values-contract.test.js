@@ -2,7 +2,7 @@ import test from 'tape'
 import wtf from '../../lib/index.js'
 
 test('ordinary template arguments simplify rich text', (t) => {
-  const result = wtf("{{ContractRich|caption=''italic'' and [[Target page|label]]|url=https://example.com/?a=b|empty=}}").template().json()
+  const result = wtf("{{ContractRich|caption=''italic'' and [[Target page|label]]|url=https://example.com/?a=b|empty=}}").templates()[0].json()
   t.equal(result.data.caption, 'italic and label', 'formatting and link labels become readable text')
   t.equal(result.data.url, 'https://example.com/?a=b', 'equals signs inside values survive')
   // TODO: Preserve explicit empty arguments during cleanup.

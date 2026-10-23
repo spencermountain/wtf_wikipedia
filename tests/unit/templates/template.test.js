@@ -176,7 +176,7 @@ test('climate template', (t) => {
 | −3.1 |  2.1 | 61
 |float=right
 |source= Environment Canada }}`
-  const data = wtf(str).template().json().data
+  const data = wtf(str).templates()[0].json().data
   t.equal(data.months[0].low, -6.7, 'jan low')
   t.equal(data.months[1].precip, 55, 'feb precip')
   t.end()
@@ -189,7 +189,7 @@ test('german ones', (t) => {
 
 test('Template-Text-And-Wikitext', (t) => {
   const doc = wtf(`* {{USS|Barry}}, four US destroyers`)
-  const tmpl = doc.template()
+  const tmpl = doc.templates()[0]
   t.equal(tmpl.wikitext(), '{{USS|Barry}}', 'tmpl wikitext')
   t.equal(tmpl.text(), `USS Barry`, 'tmpl text')
   t.end()

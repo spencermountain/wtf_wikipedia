@@ -4,7 +4,7 @@ import wtf from '../../lib/index.js'
 test('unknown templates retain data without rendering text', (t) => {
   const str = `{{special123|foo}}`
   const doc = wtf(str)
-  const tmpl = doc.template().json()
+  const tmpl = doc.templates()[0].json()
   t.equal(tmpl.template, 'special123', 'template name')
   t.equal(doc.text(), '', 'output text')
   t.end()
@@ -20,7 +20,7 @@ test('registered custom template parser', (t) => {
 
   const str = `{{missing|foo}}`
   const doc = wtf(str)
-  const tmpl = doc.template().json()
+  const tmpl = doc.templates()[0].json()
   t.equal(tmpl.data.working, true, 'template data')
   t.equal(doc.text(), 'working', 'output text')
   t.end()

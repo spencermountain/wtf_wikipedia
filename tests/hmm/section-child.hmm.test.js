@@ -5,7 +5,7 @@ test('Section.child selects one child or null', (t) => {
   const doc = wtf(
     'Intro.\n\n== History ==\nHistory text.\n\n=== Early days ===\nEarly text.\n\n=== Later years ===\nLater text.'
   )
-  const history = doc.section('History')
+  const history = doc.section('history')
   t.equal(history.child().title(), 'Early days', 'defaults to first child')
   t.equal(history.child(1).title(), 'Later years', 'selects by index')
   t.equal(history.child('early days').title(), 'Early days', 'selects by title')

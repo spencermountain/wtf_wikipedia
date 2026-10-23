@@ -10,7 +10,7 @@ test('Radiohead-It', (t) => {
     doc.links().some((link) => link.page() === 'Thom Yorke'),
     'Radiohead-It: lead singer link'
   )
-  t.ok(doc.section('Storia'), 'Radiohead-It: biography or references section')
+  t.ok(doc.section('storia'), 'Radiohead-It: biography or references section')
   t.ok(doc.references().length > 0, 'Radiohead-It: sources for the band history')
   t.ok(doc.categories().includes('Vincitori di Grammy'), 'Radiohead-It: Vincitori di Grammy category')
   t.ok(doc.links().some((link) => link.page() === 'Gruppo musicale'), 'Radiohead-It: gruppo musicale link')
@@ -24,11 +24,11 @@ test('Willow-It', (t) => {
     doc.links().some((link) => link.page() === 'Salicaceae'),
     'Willow-It: botanical link'
   )
-  t.ok(doc.section('Etimologia'), 'Willow-It: botanical section')
+  t.ok(doc.section('etimologia'), 'Willow-It: botanical section')
   t.ok(doc.images().length > 0, 'Willow-It: willow illustrations')
   t.ok(doc.categories().length > 0, 'Willow-It: botanical categories')
   t.ok(doc.links().some((link) => link.page() === 'Linneo'), 'Willow-It: Linneo link')
-  t.ok(doc.section('Tassonomia'), 'Willow-It: Tassonomia section')
+  t.ok(doc.section('tassonomia'), 'Willow-It: Tassonomia section')
   t.end()
 })
 
@@ -39,10 +39,10 @@ test('Wimbledon-Championships-It', (t) => {
     doc.links().some((link) => link.page() === 'All England Lawn Tennis and Croquet Club'),
     'Wimbledon-Championships-It: tennis or venue link'
   )
-  t.ok(doc.section('Storia'), 'Wimbledon-Championships-It: tournament history or programme section')
+  t.ok(doc.section('storia'), 'Wimbledon-Championships-It: tournament history or programme section')
   t.ok(doc.tables().length > 0, 'Wimbledon-Championships-It: tournament records tables')
   t.ok(doc.references().length > 0, 'Wimbledon-Championships-It: tournament sources')
-  t.ok(doc.section('Dalle origini alla prima guerra mondiale'), 'Wimbledon-Championships-It: Dalle origini alla prima guerra mondiale section')
+  t.ok(doc.section('dalle origini alla prima guerra mondiale'), 'Wimbledon-Championships-It: Dalle origini alla prima guerra mondiale section')
   t.match(doc.text(), /Roger Federer/, 'Wimbledon-Championships-It: singles champion')
   t.end()
 })

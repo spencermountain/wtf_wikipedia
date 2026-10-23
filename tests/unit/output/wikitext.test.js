@@ -7,7 +7,7 @@ test('Original-Wikitext', (t) => {
 	She is '''''very''''' good`
   let doc = wtf(str)
   t.equal(doc.wikitext(), str, 'doc-wikitext')
-  t.equal(doc.section().wikitext(), str, 'section-wikitext')
+  t.equal(doc.sections()[0].wikitext(), str, 'section-wikitext')
   const first = `'''K. Nicole Mitchell''' is ''currently'' a [[U.S. Magistrate Judge]].`
   t.equal(doc.paragraphs()[0].wikitext(), first, 'paragraph-wikitext')
   t.equal(doc.sentences()[0].wikitext(), first, 'sentence-wikitext')

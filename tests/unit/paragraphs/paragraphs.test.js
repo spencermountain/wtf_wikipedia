@@ -15,7 +15,7 @@ Here is the third paragraph. Nobody knows if this will work.<ref>[http://commons
   t.equal(doc.sections().length, 2, 'sections')
   t.equal(doc.paragraphs().length, 3, 'paragraphs')
   t.equal(doc.references().length, 4, 'all references')
-  t.equal(doc.section().references().length, 3, 'first references')
+  t.equal(doc.sections()[0].references().length, 3, 'first references')
   t.end()
 })
 

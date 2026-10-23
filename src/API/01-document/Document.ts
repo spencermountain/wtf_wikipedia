@@ -8,7 +8,6 @@ import References from '../02-section/reference/References.ts'
 import Section from '../02-section/Section.ts'
 import Sentences from '../03-paragraph/sentence/Sentences.ts'
 import Tables from '../02-section/table/Tables.ts'
-import Template from '../02-section/template/Template.ts'
 import Templates from '../02-section/template/Templates.ts'
 import { withDefaults } from '../../_lib/defaults.ts'
 import isDisambig from './isDisambig.ts'
@@ -147,16 +146,13 @@ class Document {
     if (typeof clue === 'number') {
       return sections[clue] ?? Section.empty()
     }
-    const found = sections.find((section) => section.title().trim().toLowerCase() === clue.trim().toLowerCase())
+    const title = clue.trim().toLowerCase()
+    const found = sections.find((section) => section.title().trim().toLowerCase() === title)
     return found ?? Section.empty()
   }
 
   paragraphs() {
     return this.sections().flatMap((section) => section.paragraphs())
-  }
-
-  sentence() {
-    return this.sections()[0].sentences()[0]
   }
   sentences() {
     return Sentences.from(this.sections().flatMap((section) => section.sentences()))
@@ -207,10 +203,6 @@ class Document {
 
   tables() {
     return Tables.from(sectionMap(this, 'tables', null))
-  }
-
-  template(clue?: string) {
-    return this.templates(clue)[0] ?? Template.empty()
   }
   templates(clue?: string) {
     const items = this.sections().flatMap((sec) => sec.templates())

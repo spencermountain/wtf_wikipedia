@@ -80,10 +80,6 @@ class Section {
     const arr = this.#data.tables || []
     return Tables.from(arr.map((t) => new Table(t)))
   }
-
-  template(clue?: string) {
-    return this.templates(clue)[0] ?? Template.empty()
-  }
   templates(clue?: string) {
     let arr = this.#data.templates.map((t) => new Template(t))
     if (clue) {

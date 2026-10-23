@@ -10,10 +10,10 @@ test('Radiohead-Fr', (t) => {
     doc.links().some((link) => link.page() === 'Thom Yorke'),
     'Radiohead-Fr: lead singer link'
   )
-  t.ok(doc.section('Biographie'), 'Radiohead-Fr: biography or references section')
+  t.ok(doc.section('biographie'), 'Radiohead-Fr: biography or references section')
   t.ok(doc.references().length > 0, 'Radiohead-Fr: sources for the band history')
   t.match(doc.text(), /In Rainbows/, 'Radiohead-Fr: self-released album')
-  t.ok(doc.section('Formation et début (1986–1991)'), 'Radiohead-Fr: Formation et début (1986–1991) section')
+  t.ok(doc.section('formation et début (1986–1991)'), 'Radiohead-Fr: Formation et début (1986–1991) section')
   t.end()
 })
 
@@ -24,11 +24,11 @@ test('Willow-Fr', (t) => {
     doc.links().some((link) => link.page() === 'Salicaceae'),
     'Willow-Fr: botanical link'
   )
-  t.ok(doc.section('Étymologie'), 'Willow-Fr: botanical section')
+  t.ok(doc.section('étymologie'), 'Willow-Fr: botanical section')
   t.ok(doc.images().length > 0, 'Willow-Fr: willow illustrations')
   t.ok(doc.categories().length > 0, 'Willow-Fr: botanical categories')
-  t.ok(doc.section('Caractères généraux'), 'Willow-Fr: Caractères généraux section')
-  t.ok(doc.section('Principales espèces'), 'Willow-Fr: principal willow species section')
+  t.ok(doc.section('caractères généraux'), 'Willow-Fr: Caractères généraux section')
+  t.ok(doc.section('principales espèces'), 'Willow-Fr: principal willow species section')
   t.end()
 })
 
@@ -39,7 +39,7 @@ test('Wimbledon-Championships-Fr', (t) => {
     doc.links().some((link) => link.page() === 'All England Lawn Tennis and Croquet Club'),
     'Wimbledon-Championships-Fr: tennis or venue link'
   )
-  t.ok(doc.section('Historique'), 'Wimbledon-Championships-Fr: tournament history or programme section')
+  t.ok(doc.section('historique'), 'Wimbledon-Championships-Fr: tournament history or programme section')
   t.ok(doc.tables().length > 0, 'Wimbledon-Championships-Fr: tournament records tables')
   t.ok(doc.references().length > 0, 'Wimbledon-Championships-Fr: tournament sources')
   t.ok(doc.infoboxes().some((box) => box.get('directeur').text() === 'Sally Bolton'), 'Wimbledon-Championships-Fr: tournament director in snapshot')

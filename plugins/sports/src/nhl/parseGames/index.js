@@ -71,7 +71,10 @@ const parseGame = function (row, meta) {
 //
 const parseGames = function (doc, meta) {
   let games = []
-  let s = doc.section('schedule and results') || doc.section('schedule') || doc.section('regular season')
+  let s =
+    doc.sections().find((candidate) => candidate.title().trim().toLowerCase() === 'schedule and results') ||
+    doc.sections().find((candidate) => candidate.title().trim().toLowerCase() === 'schedule') ||
+    doc.sections().find((candidate) => candidate.title().trim().toLowerCase() === 'regular season')
   if (!s) {
     return games
   }

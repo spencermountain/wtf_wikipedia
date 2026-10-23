@@ -44,7 +44,7 @@ const byTemplate = function (doc) {
     }
   }
   // `{{WikiProject Biography|living=yes|activepol=yes}}`
-  let bio = doc.template('WikiProject Biography')
+  let bio = doc.templates('WikiProject Biography')[0]
   if (bio) {
     bio = bio.json().data
     //living blp BLP

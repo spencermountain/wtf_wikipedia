@@ -55,12 +55,12 @@ const getTitle = function (doc) {
 const addMethod = function (models) {
   // parse a disambiguation page into an array of pages
   models.Doc.prototype.disambiguation = function () {
-    const opening = this.section().sentences().slice(0, 2)
+    const opening = this.sections()[0].sentences().slice(0, 2)
     const hasIntroduction = opening.some((sentence) => / may (also )?refer to\b/i.test(sentence.text()))
     if (!this.isDisambiguation() && !hasIntroduction) {
       return null
     }
-    const intro = this.section().sentences()[0]
+    const intro = this.sections()[0].sentences()[0]
     const main = getMain(intro)
 
     const pages = []

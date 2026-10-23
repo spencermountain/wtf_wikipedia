@@ -43,7 +43,7 @@ test('gallery-tag-2', (t) => {
   </gallery>
 
   foo`)
-  const templ = doc.template().json()
+  const templ = doc.templates()[0].json()
   t.deepEqual(templ.kind, 'gallery', 'document-has-template')
   t.deepEqual(templ.data.images.length, 8, '8 images')
   t.deepEqual(templ.data.images[0].file, 'File:Culex-female.jpg', 'got filename')
@@ -57,7 +57,7 @@ test('gallery-template', (t) => {
 |File:Kurmi threshing.jpg|Another ethnographic print from 1916 showing a Kurmi family employing its beasts of burden to thresh wheat.
 |File:Kurmi winnowing.jpg|A third print from the same collection showing the Kurmi family winnowing.
 }} `
-  const templ = wtf(str).template().json()
+  const templ = wtf(str).templates()[0].json()
   t.deepEqual(templ.kind, 'gallery', 'document-has-template')
   t.deepEqual(templ.data.images.length, 4, 'has 4 images')
   t.ok(templ.data.images[0].caption.text.startsWith('The map of'), 'preserves caption text')
@@ -68,7 +68,7 @@ test('gallery-template', (t) => {
 test('from-infobox', (t) => {
   const doc = readFile('Jodie-Emery')
   t.equal(
-    doc.infoboxes()[0].image(0).thumbnail(),
+    doc.infoboxes()[0].images()[0].thumbnail(),
     'https://wikipedia.org/wiki/Special:Redirect/file/Marc_Emery_and_Jodie_Emery.JPG?width=300',
     'has correct thumbnail'
   )

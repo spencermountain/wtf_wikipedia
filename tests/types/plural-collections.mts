@@ -25,6 +25,17 @@ export const tablePages: string[] = doc.tables()[0].links().page()
 export const templatePages: string[] = doc.templates()[0].links().page()
 export const referencePages: string[] = doc.references()[0].links().page()
 export const commonjsPages: string[] = wtfCjs('[[Alice]]').links().page()
+export const preferredImage = doc.infobox()?.image()
+
+export const introText: string = doc.section().text()
+export const namedSectionText: string = doc.section('History').text()
+export const indexedSectionText: string = wtfCjs('Hello').section(0).text()
+// @ts-expect-error use sentences()[0].
+doc.sentence()
+// @ts-expect-error use templates()[0].
+doc.template()
+// @ts-expect-error use templates()[0] on sections too.
+doc.sections()[0].template()
 
 // @ts-expect-error map returns an ordinary array of strings.
 mapped.json()

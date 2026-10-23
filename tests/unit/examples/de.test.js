@@ -69,7 +69,7 @@ test('Keilwelle', (t) => {
   t.equal(doc.title, 'Keilwellen', 'Keilwelle: mechanical component name')
   t.match(doc.text(), /Welle/, 'Keilwelle: shaft description')
   t.ok(doc.categories().length > 0, 'Keilwelle: engineering categories')
-  t.ok(doc.section('Keilwellen-Verbindungen'), 'Keilwelle: Keilwellen-Verbindungen section')
+  t.ok(doc.section('keilwellen-verbindungen'), 'Keilwelle: Keilwellen-Verbindungen section')
   t.ok(doc.categories().includes('Bauform (Welle)'), 'Keilwelle: Bauform (Welle) category')
   t.end()
 })
@@ -125,13 +125,13 @@ test('Mozilla-Firefox', (t) => {
     'Mozilla-Firefox: browser logo'
   )
   t.equal(doc.infobox().type(), 'software', 'Mozilla-Firefox: software infobox')
-  t.ok(doc.section('Geschichte'), 'Mozilla-Firefox: German history section')
+  t.ok(doc.section('geschichte'), 'Mozilla-Firefox: German history section')
   t.ok(doc.references().length > 0, 'Mozilla-Firefox: software sources')
   t.ok(
     doc.links().some((link) => link.page() === 'Amerikanisches Englisch'),
     'Mozilla-Firefox: Amerikanisches Englisch link'
   )
-  t.ok(doc.section('Name'), 'Mozilla-Firefox: Name section')
+  t.ok(doc.section('name'), 'Mozilla-Firefox: Name section')
   t.end()
 })
 
@@ -148,7 +148,7 @@ test('Sara-C-Bisel', (t) => {
   )
   t.match(doc.text(), /Sara Louise Clark/, 'Sara-C-Bisel: birth name')
   t.match(doc.text(), /1932/, 'Sara-C-Bisel: birth year')
-  t.ok(doc.section('Leben'), 'Sara-C-Bisel: Leben section')
+  t.ok(doc.section('leben'), 'Sara-C-Bisel: Leben section')
   t.match(doc.text(), /Carnegie Mellon University/, 'Sara-C-Bisel: university education')
   t.end()
 })

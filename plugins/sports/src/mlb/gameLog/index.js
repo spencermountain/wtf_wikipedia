@@ -46,7 +46,10 @@ const postSeason = function (doc) {
   const series = []
   //ok, try postseason, too
   const section =
-    doc.section('postseason game log') || doc.section('postseason') || doc.section('playoffs') || doc.section('playoff')
+    doc.sections().find((candidate) => candidate.title().trim().toLowerCase() === 'postseason game log') ||
+    doc.sections().find((candidate) => candidate.title().trim().toLowerCase() === 'postseason') ||
+    doc.sections().find((candidate) => candidate.title().trim().toLowerCase() === 'playoffs') ||
+    doc.sections().find((candidate) => candidate.title().trim().toLowerCase() === 'playoff')
   if (!section) {
     return series
   }

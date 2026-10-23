@@ -56,7 +56,7 @@ test('mlb-start-end-fancy', function (t) {
   const doc = wtf(str)
   t.equal(doc.text(), 'hello world', 'text')
   t.equal(doc.templates().length, 1, 'got-template')
-  const rows = doc.template().json().data.rows
+  const rows = doc.templates()[0].json().data.rows
   t.equal(rows.length, 2, 'got-both rows')
   t.equal(rows[0].stadium, 'Fenway Park', 'got stadium')
   t.equal(rows[0].attendance, '39,059', 'got attendance')

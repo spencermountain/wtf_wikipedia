@@ -1,63 +1,98 @@
 # v11 API updates
 
-This records the collection API changes and obsolete methods removed from the
-TypeScript declarations after the API refactor. The declaration cleanup removed
-signatures for methods that were already absent from the runtime.
+This records the collection API changes, removed runtime methods, and obsolete
+TypeScript declarations cleaned up after the API refactor.
+
+## Selecting individual items
+
+Most singular collection accessors have been removed. Use plural methods followed by
+an array index, such as `doc.sentences()[0]`, or `.find()` for a named selection.
+Three singular selectors remain:
+
+| Retained method | Selection | When missing |
+| --------------- | --------- | ------------ |
+| `Document.section(titleOrIndex)` | Index or trimmed, case-insensitive title; defaults to index 0 | Empty `Section` |
+| `Document.infobox()` | Most important infobox | `null` |
+| `Infobox.image()` | Preferred infobox image | `undefined` |
+
+Their plural counterparts, `sections()`, `infoboxes()`, and `images()`, remain
+available. The TypeScript declarations retain these three selectors and remove
+the other singular accessors.
+
+```js
+doc.section('Keilwellen-Verbindungen').text()
+doc.sentences()[0]?.text()
+doc.templates('short description')[0]?.json()
+doc.infobox()?.image()?.url()
+```
 
 ## Removed methods
 
-The list includes both former overloads of `Table.get()`.
+The list includes both former overloads of `Table.get()`. Indexed access can
+return `undefined`; use optional chaining when an item may be missing. Use
+`.find()` when selecting by a predicate rather than an index. Alternatives that
+use the containing document or section cover that wider scope. Missing sections
+and templates produce `undefined` through array selection. `doc.section()` retains
+its empty `Section` fallback when the title or index is missing.
 
 ### Document
 
-- `citation()`
-- `coordinate()`
-- `image()`
-- `lang()`
-- `link()`
-- `list()`
-- `ns()`
-- `paragraph()`
-- `redirects()`
-- `reference()`
-- `table()`
+- `sentence()` — use `sentences()[0]`.
+- `template(name)` — use `templates(name)[0]`; omit the name to select the first template.
+- `citation()` — use `citations()[0]` (or another array index).
+- `coordinate()` — use `coordinates()[0]` (or another array index).
+- `image()` — use `images()[0]` (or another array index).
+- `lang()` — use the `language` property.
+- `link()` — use `links()[0]` (or another array index).
+- `list()` — use `lists()[0]` (or another array index).
+- `ns()` — use the `namespace` property.
+- `paragraph()` — use `paragraphs()[0]` (or another array index).
+- `redirects()` — use `redirectTo()` for the redirect target.
+- `reference()` — use `references()[0]` (or another array index).
+- `table()` — use `tables()[0]` (or another array index).
 
 ### Section
 
+- `template(name)` — use `templates(name)[0]`.
 - `child()`
 - `children()`
-- `citation()`
-- `coordinate()`
-- `image()`
-- `infobox()`
+- `citation()` — use `citations()[0]` (or another array index).
+- `coordinate()` — use `coordinates()[0]` (or another array index).
+- `image()` — use `images()[0]` (or another array index).
+- `infobox()` — use `infoboxes()[0]` (or another array index).
 - `indentation()` — use `depth()`.
-- `isEmpty()`
+- `isEmpty()` — use `text() === ''` when checking for no readable text.
 - `last()`
 - `lastSibling()`
-- `link()`
-- `list()`
+- `link()` — use `links()[0]` (or another array index).
+- `list()` — use `lists()[0]` (or another array index).
 - `next()`
 - `nextSibling()`
-- `paragraph()`
+- `paragraph()` — use `paragraphs()[0]` (or another array index).
 - `parent()`
 - `previous()`
 - `previousSibling()`
-- `reference()`
+- `reference()` — use `references()[0]` (or another array index).
 - `remove()`
-- `sections()`
+- `sections()` — use `doc.sections()` and `depth()` to determine hierarchy.
 - `sentence()` — use `sentences()[0]`, which can be `undefined`.
-- `table()`
+- `table()` — use `tables()[0]` (or another array index).
+
+Section navigation methods (`child()`, `children()`, `parent()`, sibling methods,
+`last()`, `next()`, and `previous()`) have no direct replacement. Use the containing
+document’s ordered `sections()` array and section `depth()` values to implement
+the traversal you need. `remove()` has no direct replacement.
 
 ### Paragraph
 
-- `citations()`
-- `citation()`
-- `image()`
-- `link()`
-- `list()`
-- `references()`
-- `reference()`
-- `sentence()`
+- `citations()` — use the containing document or section’s `citations()`.
+- `citation()` — use the containing document or section’s `citations()[0]`.
+- `image()` — use `images()[0]` (or another array index).
+- `link()` — use `links()[0]` (or another array index).
+- `list()` — use `lists()[0]` (or another array index).
+- `references()` — use the containing document or section’s `references()`.
+- `reference()` — use the containing document or section’s `references()[0]`.
+- `sentence()` — use `sentences()[0]`.
 
 ### Image
 
@@ -65,17 +100,26 @@ The list includes both former overloads of `Table.get()`.
 
 ### Table
 
-- `get(key: string)`
-- `get(keys: string[])`
-- `keyval()`
-- `keyValue()`
-- `keyvalue()`
+- `get(key: string)` — use `getRows(key)` for values from one column.
+- `get(keys: string[])` — use `getRows(keys)` for arrays of selected values, or `getRows({ name: true, year: true })` for keyed rows.
+- `keyval()` — use `rows()` and explicitly map the desired key/value columns.
+- `keyValue()` — use `rows()` and explicitly map the desired key/value columns.
+- `keyvalue()` — use `rows()` and explicitly map the desired key/value columns.
+
+### Block
+
+- `isEmpty()` — use `text() === ''` to check for empty text, or `wikitext() === ''` to check for empty source markup.
 
 ### Sentence
 
-- `bold()`
-- `italic()`
-- `link()`
+- `isEmpty()` — use `text() === ''` to check for empty text.
+- `bold()` — use `bolds()[0]?.text` for the first bold span.
+- `italic()` — use `italics()[0]?.text` for the first italic span.
+- `link()` — use `links()[0]` (or another array index).
+
+### Template
+
+- `isEmpty()` — use `json().template === ''` to recognize the empty-template placeholder; use `text() === ''` only to check rendered text.
 
 ## Document methods changed to properties
 
@@ -102,7 +146,8 @@ The removed `lang()` and `ns()` aliases are replaced by the `language` and
 
 ## Earlier Link declaration cleanup
 
-- Removed `Link.interwiki()` and `Link.site()`.
+- `Link.interwiki()` — use `type() === 'interwiki'` to identify interwiki links and `href()` for their resolved URL.
+- `Link.site()` — use `href()` for the URL, or `json().site` for the stored external-link URL.
 - Removed setter arguments from `Link.text()`, `Link.page()`, `Link.anchor()`,
   and `Link.type()`. These remain getter methods.
 - Removed the obsolete `LinkCollection.pages()` declaration; use `.page()`.
@@ -129,9 +174,8 @@ images, lists, tables, infoboxes, templates, references, sentences, and blocks.
 The collections retain indexing, iteration, `length`, and native Array methods.
 `Array.isArray(collection)` returns `true`.
 
-- Removed the obsolete generic collection `select()` and `isEmpty()` methods.
-  A wrapper can still expose an item method of the same name; for example,
-  `sentences().isEmpty()` returns one boolean per sentence.
+- `select()` — use indexing for one item, `.find()` for a matching item, or `.filter()` for multiple matches.
+- `isEmpty()` — use `collection.length === 0`; item classes no longer expose `isEmpty()` either.
 - `map()`, `filter()`, and `slice()` return ordinary arrays.
 - Sections and paragraphs still return ordinary
   arrays, without collection-level `json()`, `text()`, or `wikitext()` methods.

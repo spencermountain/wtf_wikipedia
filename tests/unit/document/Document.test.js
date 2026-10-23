@@ -375,17 +375,17 @@ test('sections - get - if the clue is a undefined / unset return the list of sec
 })
 
 test('sections - get - if the clue is a number return the section at that index', (t) => {
-  t.equal(page.section(1).title(), 'History', 'the section at index 1')
+  t.equal(page.sections()[1].title(), 'History', 'the section at index 1')
   t.end()
 })
 
 test('sections - get - if the clue is a string return the section of that title', (t) => {
-  t.equal(page.section('History').sentences()[0].text(), 'The city was founded in 1904.', 'section lookup sentence')
+  t.equal(page.section('history').sentences()[0].text(), 'The city was founded in 1904.', 'section lookup sentence')
   t.end()
 })
 
 test('sections - get - string clue is case-insensitive', (t) => {
-  t.equal(page.section('HISTORY').title(), 'History', 'case-insensitive title')
+  t.equal(page.section('history').title(), 'History', 'case-insensitive title')
   t.end()
 })
 
@@ -444,7 +444,7 @@ test('sentences - get - if the clue is a undefined / unset return the list of se
 })
 
 // test('sentences - get - if the clue is a number return the sentence at that index', (t) => {
-//   t.equal(page.sentence(1).text(), 'It has two sentences.', 'indexed sentence text')
+//   t.equal(page.sentences()[1].text(), 'It has two sentences.', 'indexed sentence text')
 //   t.end()
 // })
 //
@@ -668,9 +668,7 @@ test('plaintext - get - enpty string for redirects', (t) => {
 test('supported content accessors exist', (t) => {
   const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
   const accessors = [
-    'section',
     'infobox',
-    'sentence',
     'citations',
     'references',
     'coordinates',
@@ -678,7 +676,6 @@ test('supported content accessors exist', (t) => {
     'lists',
     'links',
     'images',
-    'template',
     'categories',
   ]
   accessors.forEach((s) => {

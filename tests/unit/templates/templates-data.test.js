@@ -28,7 +28,7 @@ test('external-links', function (t) {
   arr.forEach((a) => {
     const doc = wtf(a[1])
     t.equal(doc.templates().length, 1, a[0] + ' count')
-    const tmpl = doc.template().json() || {}
+    const tmpl = doc.templates()[0].json() || {}
     t.equal(tmpl.template, a[1].trim().slice(2).split(/[|}\n]/)[0].trim(), a[1] + ' name')
   })
   t.end()
@@ -118,7 +118,7 @@ test('wikipedia-templates', function (t) {
   arr.forEach((a) => {
     const doc = wtf(a[1])
     t.equal(doc.templates().length, 1, a[0] + ' count')
-    const tmpl = doc.template().json() || {}
+    const tmpl = doc.templates()[0].json() || {}
     t.equal(tmpl.template, a[1].trim().slice(2).split(/[|}\n]/)[0].trim(), a[0] + ' name')
   })
   t.end()
@@ -145,7 +145,7 @@ test('weather', function (t) {
   |Dec high C = -0.8
   |source 1=[[Environment Canada]]<ref name="envcan"/>
   }}`
-  let arr = wtf(str).template().json().data.byMonth['high c']
+  let arr = wtf(str).templates()[0].json().data.byMonth['high c']
   t.equal(arr.length, 12, 'got twelve months')
   t.equal(arr[1], 0.7, 'got february')
 
@@ -154,7 +154,7 @@ test('weather', function (t) {
   | 18.4|19.9|22.3|23.7|27.5|31.3|36.8|36.5|32.5|27.5|22.2|18.7<!--highs-->
   | 5.9 |7.6 |9.4 |11.0|13.8|16.3|19.9|20.1|18.2|14.7|10.4|6.5 <!--lows-->
   }}`
-  arr = wtf(str).template().json().data.byMonth['high c']
+  arr = wtf(str).templates()[0].json().data.byMonth['high c']
   t.equal(arr.length, 12, 'got twelve months concise')
   t.equal(arr[1], 19.9, 'got february')
   t.end()
@@ -229,7 +229,7 @@ test('covid-1', function (t) {
     }}
   `
   const doc = wtf(str)
-  const obj = doc.template().json()
+  const obj = doc.templates()[0].json()
   t.equal(obj.data.location, 'Savannah', 'location')
   t.equal(obj.data.data.length, 5, '5 rows')
   t.equal(obj.data.data[0].date, '2009-04-13', 'row[0]')
@@ -266,7 +266,7 @@ test('playoff-brackets', function (t) {
   | RD2-score2  = '''218/8 (48.5 overs)'''
   }}`
   const doc = wtf(str)
-  const rounds = doc.template().json().data.rounds
+  const rounds = doc.templates()[0].json().data.rounds
   t.equal(rounds.length, 2, 'two rounds')
   const final = rounds[1][0]
   t.equal(final[0].score, '217 (49.4 overs)', 'got score')

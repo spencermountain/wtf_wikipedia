@@ -54,7 +54,7 @@ test('AACTA-Award-For-Outstanding-Achievement-In-Short-Film-Screen-Craft', (t) =
     doc.links().some((link) => link.page() === 'Australian Film Institute'),
     'AACTA-Award-For-Outstanding-Achievement-In-Short-Film-Screen-Craft: Australian Film Institute link'
   )
-  t.ok(doc.section('Winners'), 'AACTA-Award-For-Outstanding-Achievement-In-Short-Film-Screen-Craft: Winners section')
+  t.ok(doc.section('winners'), 'AACTA-Award-For-Outstanding-Achievement-In-Short-Film-Screen-Craft: Winners section')
   t.end()
 })
 
@@ -65,7 +65,7 @@ test('Al-Haytham', (t) => {
   t.match(doc.infobox().get('name').text(), /Hasan Ibn al-Haytham/, 'Al-Haytham: scientist name')
   t.ok(doc.references().length > 0, 'Al-Haytham: scientific biography sources')
   t.match(doc.text(), /Book of Optics/, 'Al-Haytham: principal work')
-  t.ok(doc.section('Biography'), 'Al-Haytham: Biography section')
+  t.ok(doc.section('biography'), 'Al-Haytham: Biography section')
   t.ok(
     doc.links().some((link) => link.page() === 'Basra'),
     'Al-Haytham: birth city link'
@@ -123,7 +123,7 @@ test('Allen-R-Morris', (t) => {
     doc.links().some((link) => link.page() === 'Lufkin, Texas'),
     'Allen-R-Morris: Lufkin, Texas link'
   )
-  t.ok(doc.section('Early life'), 'Allen-R-Morris: Early life section')
+  t.ok(doc.section('early life'), 'Allen-R-Morris: Early life section')
   t.end()
 })
 
@@ -137,7 +137,7 @@ test('Alsea-Company', (t) => {
     doc.links().some((link) => link.page() === 'Public Company'),
     'Alsea-Company: ownership link'
   )
-  t.ok(doc.section('Brands portfolio'), 'Alsea-Company: Brands portfolio section')
+  t.ok(doc.section('brands portfolio'), 'Alsea-Company: Brands portfolio section')
   t.ok(
     doc.infoboxes().some((box) => box.get('name').text() === 'Alsea, S.A.B. de C.V.'),
     'Alsea-Company: name field'
@@ -165,7 +165,7 @@ test('Anarchism', (t) => {
   t.equal(doc.title, 'Anarchism', 'Anarchism: article title')
   t.ok(doc.lists().length > 0, 'Anarchism: article includes lists')
   t.match(doc.sentences()[0].text(), /political philosophy/, 'Anarchism: opening definition')
-  t.ok(doc.section('History'), 'Anarchism: history section')
+  t.ok(doc.section('history'), 'Anarchism: history section')
   t.ok(doc.references().length > 0, 'Anarchism: historical sources')
   t.ok(doc.categories().includes('Political culture'), 'Anarchism: Political culture category')
   t.ok(
@@ -186,7 +186,7 @@ test('Antique-Band', (t) => {
     doc.links().some((link) => link.page() === 'Sweden'),
     'Antique-Band: Sweden link'
   )
-  t.ok(doc.section('Career'), 'Antique-Band: Career section')
+  t.ok(doc.section('career'), 'Antique-Band: Career section')
   t.end()
 })
 
@@ -230,7 +230,7 @@ test('Bodmin', (t) => {
   const doc = wtf(readPage('Bodmin'))
   t.equal(doc.infobox().type(), 'uk place', 'Bodmin: UK place infobox')
   t.match(doc.text(), /Cornwall/, 'Bodmin: location in Cornwall')
-  t.ok(doc.section('History'), 'Bodmin: town history section')
+  t.ok(doc.section('history'), 'Bodmin: town history section')
   t.match(doc.infobox().get('static_image_name').text(), /Bodmin Public Rooms/, 'Bodmin: town photograph field')
   t.ok(
     doc.categories().some((category) => /Cornwall/.test(category)),
@@ -279,7 +279,7 @@ test('Britt-Morgan', (t) => {
     'Britt-Morgan: collaborator link'
   )
   t.equal(doc.infobox().type(), 'adult biography', 'Britt-Morgan: biography type')
-  t.ok(doc.section('Awards'), 'Britt-Morgan: awards section')
+  t.ok(doc.section('awards'), 'Britt-Morgan: awards section')
   t.ok(
     doc
       .infoboxes()
@@ -344,7 +344,7 @@ test('Chemical-Biology', (t) => {
     doc.links().some((link) => link.page() === 'Chemical synthesis'),
     'Chemical-Biology: chemical synthesis link'
   )
-  t.ok(doc.section('Introduction'), 'Chemical-Biology: Introduction section')
+  t.ok(doc.section('introduction'), 'Chemical-Biology: Introduction section')
   t.end()
 })
 
@@ -358,7 +358,7 @@ test('Clint-Murchison-Sr', (t) => {
     doc.categories().some((category) => /Texas/.test(category)),
     'Clint-Murchison-Sr: Texas connection'
   )
-  t.ok(doc.section('Personal'), 'Clint-Murchison-Sr: Personal section')
+  t.ok(doc.section('personal'), 'Clint-Murchison-Sr: Personal section')
   t.ok(
     doc.categories().includes('American businesspeople in the oil industry'),
     'Clint-Murchison-Sr: American businesspeople in the oil industry category'
@@ -415,12 +415,12 @@ test('Dollar-Point-California', (t) => {
     'census-designated place',
     'Dollar-Point-California: settlement classification'
   )
-  t.ok(doc.section('Demographics'), 'Dollar-Point-California: population section')
+  t.ok(doc.section('demographics'), 'Dollar-Point-California: population section')
   t.ok(
     doc.links().some((link) => link.page() === 'Placer County, California'),
     'Dollar-Point-California: Placer County, California link'
   )
-  t.ok(doc.section('History'), 'Dollar-Point-California: History section')
+  t.ok(doc.section('history'), 'Dollar-Point-California: History section')
   t.end()
 })
 
@@ -431,7 +431,7 @@ test('Elizabeth-Gilbert', (t) => {
   t.match(doc.text(), /Eat, Pray, Love/, 'Elizabeth-Gilbert: best-known book')
   t.match(doc.images()[0].file(), /Elizabeth[ _]Gilbert[ _]at[ _]TED\.jpg$/, 'Elizabeth-Gilbert: author photograph')
   t.ok(doc.references().length > 0, 'Elizabeth-Gilbert: biographical sources')
-  t.ok(doc.section('Early life'), 'Elizabeth-Gilbert: Early life section')
+  t.ok(doc.section('early life'), 'Elizabeth-Gilbert: Early life section')
   t.ok(
     doc.infoboxes().some((box) => box.get('occupation').text() === 'Novelist, memoirist'),
     'Elizabeth-Gilbert: occupation field'
@@ -501,7 +501,7 @@ test('Gregory-Serper', (t) => {
     doc.links().some((link) => link.page() === 'Tashkent'),
     'Gregory-Serper: Tashkent link'
   )
-  t.ok(doc.section('Notable game'), 'Gregory-Serper: Notable game section')
+  t.ok(doc.section('notable game'), 'Gregory-Serper: Notable game section')
   t.end()
 })
 
@@ -513,7 +513,7 @@ test('Harry-McPherson', (t) => {
   t.match(doc.infobox().get('president').text(), /Lyndon Johnson/, 'Harry-McPherson: president served')
   t.match(doc.images()[0].file(), /McPherson[ _]DLA[ _]Piper\.jpg$/, 'Harry-McPherson: portrait')
   t.ok(
-    doc.section('Early life, education, military service'),
+    doc.section('early life, education, military service'),
     'Harry-McPherson: Early life, education, military service section'
   )
   t.ok(
@@ -580,7 +580,7 @@ test('Jerry-Mumphrey', (t) => {
     doc.links().some((link) => link.page() === 'Major League Baseball'),
     'Jerry-Mumphrey: Major League Baseball link'
   )
-  t.ok(doc.section('Personal life'), 'Jerry-Mumphrey: Personal life section')
+  t.ok(doc.section('personal life'), 'Jerry-Mumphrey: Personal life section')
   t.end()
 })
 
@@ -594,11 +594,11 @@ test('Jodie-Emery', (t) => {
   t.equal(doc.isRedirect(), false, 'Jodie-Emery: not-redirect')
   t.equal(doc.infobox().get('nationality').text(), 'Canadian', 'Jodie-Emery: nationality')
   t.equal(doc.infobox().json().template, 'Infobox person', 'Jodie-Emery: person template')
-  t.equal(doc.section().sentences().length > 0, true, 'Jodie-Emery: intro-length')
-  t.equal(doc.section(1).sentences().length > 0, true, 'Jodie-Emery: career-length')
+  t.equal(doc.sections()[0].sentences().length > 0, true, 'Jodie-Emery: intro-length')
+  t.equal(doc.sections()[1].sentences().length > 0, true, 'Jodie-Emery: career-length')
   t.equal(doc.categories().length, 8, 'Jodie-Emery: cat-length')
   t.equal(doc.images().length, 1, 'Jodie-Emery: image-length')
-  t.ok(doc.section('Early life'), 'Jodie-Emery: Early life section')
+  t.ok(doc.section('early life'), 'Jodie-Emery: Early life section')
   t.ok(
     doc.infoboxes().some((box) => box.get('other_names').text() === 'Princess of Pot'),
     'Jodie-Emery: other_names field'
@@ -673,7 +673,7 @@ test('Neil-McLean-Saxophonist', (t) => {
     doc.links().some((link) => link.type() === 'external'),
     'Neil-McLean-Saxophonist: external jazz ensemble link'
   )
-  t.ok(doc.section('Selected discography'), 'Neil-McLean-Saxophonist: Selected discography section')
+  t.ok(doc.section('selected discography'), 'Neil-McLean-Saxophonist: Selected discography section')
   t.ok(doc.categories().includes('American saxophonists'), 'Neil-McLean-Saxophonist: American saxophonists category')
   t.end()
 })
@@ -707,14 +707,14 @@ test('RNDIS', (t) => {
 
 test('RNLI-Stations', (t) => {
   const doc = wtf(readPage('RNLI-Stations'))
-  t.equal(doc.section('Key').title(), 'Key', 'RNLI-Stations: table legend section')
-  t.ok(doc.section('East Division').tables().length > 0, 'RNLI-Stations: regional station table')
+  t.equal(doc.section('key').title(), 'Key', 'RNLI-Stations: table legend section')
+  t.ok(doc.section('east division').tables().length > 0, 'RNLI-Stations: regional station table')
   t.equal(doc.categories().length, 5, 'RNLI-Stations: station list categories')
   t.ok(
     doc.images().some((image) => /Tenby/.test(image.file())),
     'RNLI-Stations: Tenby lifeboat station photograph'
   )
-  t.equal(doc.section('East Division').depth(), 1, 'RNLI-Stations: regional section depth')
+  t.equal(doc.section('east division').depth(), 1, 'RNLI-Stations: regional section depth')
   t.ok(doc.categories().includes('Ireland-related lists'), 'RNLI-Stations: Ireland-related lists category')
   t.ok(
     doc.links().some((link) => link.page() === 'Royal National Lifeboat Institution'),
@@ -731,13 +731,13 @@ test('Radiohead', (t) => {
     doc.links().some((link) => link.page() === 'Thom Yorke'),
     'Radiohead: lead singer link'
   )
-  t.ok(doc.section('History'), 'Radiohead: biography or references section')
+  t.ok(doc.section('history'), 'Radiohead: biography or references section')
   t.ok(doc.references().length > 0, 'Radiohead: sources for the band history')
   t.ok(
     doc.links().some((link) => link.page() === 'Rock music'),
     'Radiohead: Rock music link'
   )
-  t.ok(doc.section('1985–1992: Formation and first years'), 'Radiohead: 1985–1992: Formation and first years section')
+  t.ok(doc.section('1985–1992: formation and first years'), 'Radiohead: 1985–1992: Formation and first years section')
   t.end()
 })
 
@@ -861,7 +861,7 @@ test('Routing-And-Remote-Access-Service', (t) => {
   )
   t.match(doc.text(), /Microsoft/, 'Routing-And-Remote-Access-Service: vendor')
   t.ok(
-    doc.section('Routing and Remote Access Service Management Pack'),
+    doc.section('routing and remote access service management pack'),
     'Routing-And-Remote-Access-Service: Routing and Remote Access Service Management Pack section'
   )
   t.ok(
@@ -879,7 +879,7 @@ test('Royal-Cinema', (t) => {
   t.match(doc.images()[0].file(), /Royal_Cinema\.JPG$/, 'Royal-Cinema: cinema photograph')
   t.equal(doc.infobox().get('caption').text(), 'The Royal Cinema in 2009', 'Royal-Cinema: photo caption')
   t.equal(doc.infobox().json().template, 'Infobox venue', 'Royal-Cinema: venue template')
-  t.equal(doc.section().sentences().length, 10, 'Royal-Cinema: sentence-length')
+  t.equal(doc.sections()[0].sentences().length, 10, 'Royal-Cinema: sentence-length')
   t.equal(doc.categories().length, 4, 'Royal-Cinema: cat-length')
 
   t.equal(doc.infobox().get('opened').text(), '1939', 'Royal-Cinema: year-string')
@@ -940,7 +940,7 @@ test('Senate-Of-Pakistan', (t) => {
     doc.links().some((link) => link.page() === 'Upper house'),
     'Senate-Of-Pakistan: upper house link'
   )
-  t.ok(doc.section('History'), 'Senate-Of-Pakistan: History section')
+  t.ok(doc.section('history'), 'Senate-Of-Pakistan: History section')
   t.end()
 })
 
@@ -951,7 +951,7 @@ test('Terrence-Murphy-American-Football', (t) => {
   t.equal(doc.infobox().type(), 'nfl player', 'Terrence-Murphy-American-Football: NFL player infobox')
   t.match(doc.infobox().get('birth_place').text(), /Tyler, Texas/, 'Terrence-Murphy-American-Football: birthplace')
   t.ok(doc.references().length > 0, 'Terrence-Murphy-American-Football: career references')
-  t.ok(doc.section('Playing career'), 'Terrence-Murphy-American-Football: Playing career section')
+  t.ok(doc.section('playing career'), 'Terrence-Murphy-American-Football: Playing career section')
   t.ok(
     doc.infoboxes().some((box) => box.get('number').text() === '85'),
     'Terrence-Murphy-American-Football: number field'
@@ -984,7 +984,7 @@ test('The-Atlas-Newspaper', (t) => {
     doc.links().some((link) => link.page() === 'Robert Stephen Rintoul'),
     'The-Atlas-Newspaper: founder link'
   )
-  t.ok(doc.section('History'), 'The-Atlas-Newspaper: newspaper history section')
+  t.ok(doc.section('history'), 'The-Atlas-Newspaper: newspaper history section')
   t.match(doc.text(), /1826/, 'The-Atlas-Newspaper: founding year')
   t.ok(
     doc.links().some((link) => link.page() === 'London'),
@@ -1031,13 +1031,13 @@ test('Toronto', (t) => {
     doc.links().some((link) => link.page() === 'Ontario'),
     'Toronto: province link'
   )
-  t.ok(doc.section('History'), 'Toronto: city history section')
+  t.ok(doc.section('history'), 'Toronto: city history section')
   t.ok(
     doc.links().some((link) => link.page() === 'Lake Ontario'),
     'Toronto: waterfront location'
   )
   t.ok(doc.infoboxes().length > 0, 'Toronto: municipal infobox')
-  t.ok(doc.section('Before 1800'), 'Toronto: Before 1800 section')
+  t.ok(doc.section('before 1800'), 'Toronto: Before 1800 section')
   t.ok(
     doc.infoboxes().some((box) => box.get('official_name').text() === 'City of Toronto'),
     'Toronto: official_name field'
@@ -1049,7 +1049,7 @@ test('Toronto-Star', (t) => {
   const doc = wtf(readPage('Toronto-Star'))
   t.equal(doc.infobox().type(), 'newspaper', 'Toronto-Star: newspaper infobox')
   t.equal(doc.infobox().get('publisher').text(), 'John D. Cruickshank', 'Toronto-Star: publisher in this snapshot')
-  t.ok(doc.section('History'), 'Toronto-Star: newspaper history section')
+  t.ok(doc.section('history'), 'Toronto-Star: newspaper history section')
   t.match(doc.images()[0].file(), /Toronto[ _]Star[ _]frontpage/, 'Toronto-Star: front-page image')
   t.ok(doc.references().length > 0, 'Toronto-Star: newspaper references')
   t.equal(doc.infobox().get('publisher').text(), 'John D. Cruickshank', 'Toronto-Star: publisher.text')
@@ -1078,7 +1078,7 @@ test('Toronto-Star-Cartoonists', (t) => {
   let section = doc.section('history')
   t.equal(section.sentences().length, 21, 'Toronto-Star: history-length')
   t.equal(doc.categories().length, 6, 'Toronto-Star: cat-length')
-  section = doc.section('Notable cartoonists')
+  section = doc.section('notable cartoonists')
   t.equal(section.lists()[0].json().items.length, 10, 'Toronto-Star: cartoonist-length')
   t.end()
 })
@@ -1105,7 +1105,7 @@ test('United-Kingdom', (t) => {
     doc.links().some((link) => link.page() === 'London'),
     'United-Kingdom: capital city link'
   )
-  t.ok(doc.section('History'), 'United-Kingdom: national history section')
+  t.ok(doc.section('history'), 'United-Kingdom: national history section')
   t.ok(
     doc.links().some((link) => link.page() === 'Great Britain'),
     'United-Kingdom: largest island link'
@@ -1115,7 +1115,7 @@ test('United-Kingdom', (t) => {
     doc.links().some((link) => link.page() === 'Sovereign state'),
     'United-Kingdom: sovereign state link'
   )
-  t.ok(doc.section('Etymology and terminology'), 'United-Kingdom: Etymology and terminology section')
+  t.ok(doc.section('etymology and terminology'), 'United-Kingdom: Etymology and terminology section')
   t.end()
 })
 
@@ -1147,7 +1147,7 @@ test('Willow', (t) => {
     doc.links().some((link) => link.page() === 'Salix alba'),
     'Willow: botanical link'
   )
-  t.ok(doc.section('Description'), 'Willow: botanical section')
+  t.ok(doc.section('description'), 'Willow: botanical section')
   t.ok(doc.images().length > 0, 'Willow: willow illustrations')
   t.ok(doc.categories().length > 0, 'Willow: botanical categories')
   t.match(doc.text(), /deciduous/, 'Willow: deciduous growth habit')
@@ -1162,7 +1162,7 @@ test('Wimbledon-Championships', (t) => {
     doc.links().some((link) => link.page() === 'All England Lawn Tennis and Croquet Club'),
     'Wimbledon-Championships: tennis or venue link'
   )
-  t.ok(doc.section('History'), 'Wimbledon-Championships: tournament history or programme section')
+  t.ok(doc.section('history'), 'Wimbledon-Championships: tournament history or programme section')
   t.ok(doc.tables().length > 0, 'Wimbledon-Championships: tournament records tables')
   t.ok(doc.references().length > 0, 'Wimbledon-Championships: tournament sources')
   t.ok(

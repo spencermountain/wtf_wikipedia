@@ -13,8 +13,8 @@ test('images from every source use the document domain', (t) => {
   images.forEach((image) => {
     t.ok(image.url().startsWith('https://example.org/'), image.file())
   })
-  t.ok(doc.infobox().image().url().startsWith('https://example.org/'), 'direct infobox access uses domain')
-  t.ok(doc.section().images()[0].url().startsWith('https://example.org/'), 'direct section access uses domain')
+  t.ok(doc.infobox().images()[0].url().startsWith('https://example.org/'), 'direct infobox access uses domain')
+  t.ok(doc.sections()[0].images()[0].url().startsWith('https://example.org/'), 'direct section access uses domain')
   t.equal(images[0].wikitext(), '', 'metadata has no source markup')
   doc.domain = 'updated.example.org'
   doc.images().forEach((image) => {
@@ -26,7 +26,7 @@ test('images from every source use the document domain', (t) => {
 test('infobox image markup retains alt text and caption links', (t) => {
   const wiki = '[[Datei:Company logo.png|thumb|alt=Company emblem|A [[Logo]]]]'
   const doc = wtf(`{{Infobox company|image=${wiki}}}`)
-  const image = doc.infobox().image()
+  const image = doc.infobox().images()[0]
   t.equal(image.file(), 'File:Company_logo.png', 'normalizes the filename')
   t.equal(image.alt(), 'Company emblem', 'retains explicit alt text')
   t.equal(image.caption(), 'A Logo', 'retains embedded caption')
@@ -38,7 +38,7 @@ test('infobox image markup retains alt text and caption links', (t) => {
 
 test('infobox caption overrides embedded image caption', (t) => {
   const doc = wtf('{{Infobox company|image=[[File:Logo.png|Embedded caption]]|caption=Separate [[Caption]]}}')
-  const image = doc.infobox().image()
+  const image = doc.infobox().images()[0]
   t.equal(image.caption(), 'Separate Caption', 'uses explicit infobox caption')
   t.equal(image.links()[0].page(), 'Caption', 'uses explicit caption links')
   t.end()

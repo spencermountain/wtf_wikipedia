@@ -21,7 +21,7 @@ test('Statoil', (t) => {
   t.equal(doc.images().length, 1, 'Statoil: img-length')
   t.equal(doc.images()[0].file(), 'File:Statoil-Estonia.jpg', 'Statoil: file')
   t.equal(doc.images()[0].url(), 'https://wikipedia.org/wiki/Special:Redirect/file/Statoil-Estonia.jpg', 'Statoil: image-url')
-  t.ok(doc.section('Historikk'), 'Statoil: Historikk section')
+  t.ok(doc.section('historikk'), 'Statoil: Historikk section')
   t.ok(doc.infoboxes().some((box) => box.get('produkt').text() === 'Olje, gass og raffinerte produkt'), 'Statoil: produkt field')
   t.end()
 })

@@ -3,7 +3,7 @@ import wtf from '../lib/index.js'
 
 test('named link lookup skips external links', (t) => {
   const doc = wtf('[https://example.com source] [[Target|first]] [[Target|second]]')
-  const section = doc.section()
+  const section = doc.sections()[0]
 
   t.equal(
     doc.links().some((link) => link.type() === 'external'),
@@ -30,6 +30,6 @@ test('named link lookup skips external links', (t) => {
 test('named link lookup handles sections containing only external links', (t) => {
   const doc = wtf('[https://example.com source]')
   t.ok(doc.links('Missing').length === 0, 'document lookup returns no matches')
-  t.ok(doc.section().links('Missing').length === 0, 'section lookup returns no matches')
+  t.ok(doc.sections()[0].links('Missing').length === 0, 'section lookup returns no matches')
   t.end()
 })

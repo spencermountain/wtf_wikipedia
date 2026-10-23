@@ -3,7 +3,7 @@ import wtf from '../../lib/index.js'
 
 test('template envelope preserves unknown names and simplifies arguments', (t) => {
   const wiki = '{{FoobarContract|one=yes|caption=long text with [[link]]}}'
-  const template = wtf(wiki).template()
+  const template = wtf(wiki).templates()[0]
   t.deepEqual(
     template.json(),
     {
@@ -22,10 +22,10 @@ test('template envelope preserves unknown names and simplifies arguments', (t) =
 
 test('template argument names cannot overwrite envelope metadata', (t) => {
   const wiki = '{{ContractMetadata|template=other|kind=other|wiki=other|text=other|name=other|type=other|data=other}}'
-  const result = wtf(wiki).template().json()
+  const result = wtf(wiki).templates()[0].json()
   t.equal(result.template, 'ContractMetadata', 'template argument cannot rename the template')
   t.equal(result.kind, null, 'kind argument cannot invent a recognized parser')
-  t.equal(wtf(wiki).template().wikitext(), wiki, 'wiki argument cannot overwrite source')
+  t.equal(wtf(wiki).templates()[0].wikitext(), wiki, 'wiki argument cannot overwrite source')
   t.equal(result.text, '', 'text argument cannot change rendering')
   // TODO: Preserve the template argument without renaming it to _template.
   // t.deepEqual(result.data, {
@@ -37,7 +37,7 @@ test('template argument names cannot overwrite envelope metadata', (t) => {
 
 test('recognized dates separate source name from parser kind', (t) => {
   const wiki = '{{Start date|2020|1|2}}'
-  const result = wtf(wiki).template().json()
+  const result = wtf(wiki).templates()[0].json()
   t.equal(result.template, 'Start date', 'source capitalization survives parser lookup')
   t.equal(result.kind, 'date', 'kind identifies the normalized date parser')
   t.equal(result.data.year, '2020', 'date fields live directly in data')

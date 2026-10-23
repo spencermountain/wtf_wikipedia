@@ -6,7 +6,7 @@ test('traverse sections', (t) => {
   t.equal(doc.sections().length, 35, 'init section count')
 
   //start with history
-  let sec = doc.section('History')
+  let sec = doc.section('history')
   t.equal(sec.title(), 'History', 'init history')
 
   //skip-over to 0-Geography
@@ -30,7 +30,7 @@ test('traverse sections', (t) => {
 
   sec.remove()
   t.equal(doc.sections().length, 32, 'removed self and children')
-  doc.section('See also').remove()
+  doc.section('see also').remove()
   t.equal(doc.sections().length, 31, 'removed one')
 
   t.end()

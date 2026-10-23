@@ -8,7 +8,7 @@ test('gallery alt text belongs to its numbered image', (t) => {
   t.equal(images[1].alt(), 'Second emblem', 'second alt text')
   t.equal(images[0].caption(), 'First Caption', 'caption remains separate')
   t.equal(images[0].links()[0].page(), 'Caption', 'caption link survives')
-  t.equal(doc.template().json().data.images[1].alt, 'Second emblem', 'stored in gallery data')
+  t.equal(doc.templates()[0].json().data.images[1].alt, 'Second emblem', 'stored in gallery data')
   t.end()
 })
 
@@ -28,7 +28,7 @@ test('infobox second image uses caption2', (t) => {
 })
 
 test('missing caption2 preserves the embedded second caption', (t) => {
-  const image = wtf('{{Infobox company|image2=[[File:Two.png|Embedded [[Caption]]]]|caption=First caption}}').infobox().image()
+  const image = wtf('{{Infobox company|image2=[[File:Two.png|Embedded [[Caption]]]]|caption=First caption}}').infobox().images()[0]
   t.equal(image.caption(), 'Embedded Caption', 'does not inherit the first caption')
   t.equal(image.links()[0].page(), 'Caption', 'retains embedded links')
   t.end()

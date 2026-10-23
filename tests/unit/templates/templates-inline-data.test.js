@@ -118,7 +118,7 @@ test('inline-with-data', (t) => {
     const doc = wtf(input)
     t.equal(doc.templates().length, 1, name + ': template count')
     t.equal(doc.text(), text, name + ': text')
-    const json = doc.template().json().data
+    const json = doc.templates()[0].json().data
     Object.entries(fields).forEach(([key, value]) => {
       t.deepEqual(json[key], value, name + ': ' + key)
     })

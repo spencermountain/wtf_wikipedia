@@ -7,7 +7,7 @@ const mainImage = function () {
       return img
     }
   }
-  const s = this.section()
+  const s = this.sections()[0]
   const imgs = s.images()
   if (imgs.length === 1) {
     return imgs[0]

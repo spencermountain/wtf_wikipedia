@@ -16,7 +16,10 @@ const parseTitle = function (season = '') {
 }
 
 const parseRoster = function (doc) {
-  const s = doc.section('skaters') || doc.section('roster') || doc.section('player statistics')
+  const s =
+    doc.sections().find((candidate) => candidate.title().trim().toLowerCase() === 'skaters') ||
+    doc.sections().find((candidate) => candidate.title().trim().toLowerCase() === 'roster') ||
+    doc.sections().find((candidate) => candidate.title().trim().toLowerCase() === 'player statistics')
   let players = []
   if (!s) {
     return players

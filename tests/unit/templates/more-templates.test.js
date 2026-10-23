@@ -4,14 +4,14 @@ import wtf from '../../lib/index.js'
 test('imdb', (t) => {
   let str = `{{IMDb title | 0426883 | Alpha Dog }}`
   let doc = wtf(str)
-  let obj = doc.template().json()
+  let obj = doc.templates()[0].json()
   t.equal(obj.kind, 'imdb title', 'imdb')
   t.equal(obj.data.id, '0426883', 'id1')
   t.equal(obj.data.title, 'Alpha Dog', 'title')
 
   str = `{{IMDb title | id= 0426883 | title= Alpha Dog }}`
   doc = wtf(str)
-  obj = doc.template().json()
+  obj = doc.templates()[0].json()
   t.equal(obj.data.id, '0426883', 'id1')
   t.equal(obj.data.title, 'Alpha Dog', 'title')
   t.end()
@@ -20,7 +20,7 @@ test('imdb', (t) => {
 test('taxon', (t) => {
   const str = `{{Taxon info|Felis|parent}}`
   const doc = wtf(str)
-  const obj = doc.template().json()
+  const obj = doc.templates()[0].json()
   t.equal(obj.data.taxon, 'Felis', 'taxon')
   t.end()
 })
@@ -28,7 +28,7 @@ test('taxon', (t) => {
 test('generic-list', (t) => {
   const str = `{{Portal bar|portal 1|portal 2}}`
   const doc = wtf(str)
-  const obj = doc.template().json()
+  const obj = doc.templates()[0].json()
   t.equal(obj.template, 'Portal bar', 'name')
   t.equal(obj.data.list[0], 'portal 1', 'list1')
   t.equal(obj.data.list[1], 'portal 2', 'list2')
@@ -39,7 +39,7 @@ test('generic-list', (t) => {
 test('redirect-list', (t) => {
   const str = `{{Redirect|City of Toronto|the municipal government|Municipal government of Toronto|the historical part of the city prior to the 1998 amalgamation|Old Toronto}}`
   const doc = wtf(str)
-  const obj = doc.template().json()
+  const obj = doc.templates()[0].json()
   t.equal(obj.kind, 'redirect', 'name')
   t.equal(obj.data.redirect, 'City of Toronto', 'main')
   t.equal(obj.data.links[0].page, 'Municipal government of Toronto', 'list1')
@@ -97,7 +97,7 @@ test('three-layer-templates', (t) => {
   const str = `she married {{nowrap| {{nowrap| {{marriage|Johnny-boy}} }}}}`
   const doc = wtf(str)
   t.equal(doc.text(), 'she married Johnny-boy', '3-template inline')
-  t.equal(doc.template().json().template, 'marriage', '3-template result')
+  t.equal(doc.templates()[0].json().template, 'marriage', '3-template result')
   t.end()
 })
 
@@ -109,7 +109,7 @@ test('austria-hungary', (t) => {
     'Austria-Hungary, often referred to as the Austro-Hungarian Empire or the Dual Monarchy',
     'got-plaintext'
   )
-  t.equal(doc.template('for').json().data.list[1], 'Austria–Hungary relations', 'nested emdash')
+  t.equal(doc.templates('for')[0].json().data.list[1], 'Austria–Hungary relations', 'nested emdash')
   t.equal(doc.links().find((link) => link.page() === 'Budapest')?.page(), 'Budapest', 'got Budapest link')
   t.equal(
     doc.templates('short description')[0].json().data.description,
@@ -122,7 +122,7 @@ test('austria-hungary', (t) => {
 test('collapsible list', (t) => {
   const str = `{{ubl|a|b}}`
   const doc = wtf(str)
-  const obj = doc.template().json()
+  const obj = doc.templates()[0].json()
   t.equal(obj.kind, 'collapsible list', 'name')
   t.equal(obj.data.list[0], 'a', 'list1')
   t.equal(obj.data.list[1], 'b', 'list2')

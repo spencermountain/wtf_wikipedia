@@ -43,7 +43,7 @@ test('domain - infobox', (t) => {
   let img = doc.images()[0]?.url()
   t.equal(img, 'https://cool.com/wiki/Special:Redirect/file/Cool.jpg', 'set new domain - infobox')
 
-  img = doc.infobox().image()?.url()
+  img = doc.infobox().images()[0]?.url()
   t.equal(img, 'https://cool.com/wiki/Special:Redirect/file/Cool.jpg', 'set new domain - infobox-direct')
   t.end()
 })
