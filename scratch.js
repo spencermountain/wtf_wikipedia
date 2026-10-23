@@ -6,19 +6,10 @@ const meta = {
   // pageImage: 'Grand_Bend_2.JPG',
 }
 str = '[[Stonehenge]], in [[Wiltshire]], was erected around 2500 BC'
-str = `
-'''Park Place''' may refer to:
-{{TOC right}}
-
-== Media ==
-* [[Park Place (TV series)|Park Place]], a 1981 CBS sitcom
-
-== Places ==
-* [[Park Place (Ontario)]], a park in the city of Barrie
-* [[Park Place (Vancouver)]], a skyscraper
-* [[Park Place Mall]], Lethbridge, Alberta
-`
 str = readPage('United-Kingdom')
+str = `
+  {{FoobarContract|one=yes|caption=long text with [[link]]}}
+`
 
 // str = `
 // {{Infobox settlement
@@ -39,16 +30,16 @@ str = readPage('United-Kingdom')
 // * Vosloo, Johan “Spioen se ‘appels’ nou vrot” “Rapport” 14 Julie 1996
 // `
 
-str = `{{Infobox legislature
-| name               = Senate of Pakistan<br>{{Nastaliq|'''ایوانِ بالا پاکستان'''}}
-| native_name        =
-| native_name_lang   =
-| transcription_name =
-| legislature        =
-}}`
+// str = `{{Infobox legislature
+// | name               = Senate of Pakistan<br>{{Nastaliq|'''ایوانِ بالا پاکستان'''}}
+// | native_name        =
+// | native_name_lang   =
+// | transcription_name =
+// | legislature        =
+// }}`
 const doc = wtf(str, meta)
-// console.log(doc.templates().map((t) => t.json()))
-console.log(doc.infoboxes().map((l) => l.type()))
+console.log(doc.templates().map((t) => t.json()))
+// console.log(doc.infoboxes().map((l) => l.type()))
 // const table = doc.tables()[0]
 // console.log(table.getRows(['Name', 'team']))
 // console.log(table.getRows('Name'))
