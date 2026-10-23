@@ -1,15 +1,23 @@
 import Image from '../../03-paragraph/image/Image.ts'
-import Sentence from '../../03-paragraph/sentence/Sentence.ts'
 import normalizeFile from '../../../parse/03-paragraph/02-images/normalize.ts'
 import latLngs from '../../../_data/lat-lngs.ts'
+import Link from '../../03-paragraph/link/Link.ts'
 import dmsCoordinates from './_lib.ts'
+import { normalizeKey } from '../../../_lib/helpers.ts'
 import type { InfoboxData } from '../../../types/index.ts'
 
-const normalize = (str = '') => {
-  str = str.toLowerCase()
-  str = str.replace(/[-_]/g, ' ')
-  return str.trim()
-}
+const imgProperties = [
+  'image',
+  'image2',
+  'logo',
+  'image_skyline',
+  'image_map', //not tested
+  'image_map2', //not tested
+  'image_flag',
+  'image_coat',
+  'image_file',
+  '画像',
+]
 
 //a formal key-value data table about a topic
 class Infobox {
@@ -22,65 +30,56 @@ class Infobox {
   type() {
     return this.#data.type
   }
-
-  template() {
-    return this.type()
-  }
-
   links() {
-    return [] //todo
-    // return Object.values(this.#data).flatMap((block) => block.links.map((obj) => new Link(obj)))
+    let links = []
+    Object.keys(this.#data.data).forEach((key) => {
+      const value = this.#data.data[key]
+      if (value?.links) {
+        value.links.forEach((obj) => {
+          links.push(new Link(obj))
+        })
+      }
+    })
+    return links
   }
 
-  image() {
-    const fields = ['image', 'image2', 'logo', 'image_skyline', 'image_flag', 'image_file', '画像']
-    const field = fields.map((key) => this.get(key)).find((value) => value?.text().trim() || value?.wikitext().trim())
-    if (!field) {
-      return null
+  get(input: string) {
+    if (typeof input === 'string') {
+      const key = normalizeKey(input)
+      return this.#data.data[key]
     }
-    const wiki = field.wikitext().trim()
-    const file = normalizeFile(wiki.startsWith('[[') ? wiki : field.text())
-    return new Image({ file, wiki, caption: this.get('caption')?.json() })
+    return null
+  }
+  getFirst(choices: string[]) {
+    return choices.find((key) => this.get(key))
+  }
+  getAll(choices: string[]) {
+    return choices.map((key) => this.get(key))
   }
 
   images() {
-    const image = this.image()
-    return image ? [image] : []
+    const arr = this.getAll(imgProperties).filter(Boolean)
+    return arr.map((item) => {
+      const wiki = item.wiki || ''
+      const file = normalizeFile(wiki)
+      const caption = this.get('caption')
+      return new Image({ file, wiki, caption })
+    })
   }
-
-  // TODO: Mixed scalar/array lookup results are outside the collection API for now.
-  get(want: string) {
-    let allKeys = Object.keys(this.#data.data).filter(
-      (key) => typeof this.#data.data[key] === 'object' && this.#data.data[key] !== null
-    )
-    let key = normalize(want)
-    for (let i = 0; i < allKeys.length; i += 1) {
-      let tmp = normalize(allKeys[i])
-      if (key === tmp) {
-        return new Sentence(this.#data.data[allKeys[i]])
-      }
-    }
-    return null
+  image() {
+    return this.images()[0]
   }
 
   text() {
     return ''
   }
 
-  json(options = { encode: false }) {
+  json() {
     return this.#data
   }
 
   wikitext() {
     return this.#data.wiki || ''
-  }
-
-  keyValue() {
-    return Object.fromEntries(
-      Object.entries(this.#data.data)
-        .filter(([, value]) => value !== null && typeof value === 'object' && !Array.isArray(value))
-        .map(([key, value]) => [key, value.text || ''])
-    )
   }
 
   // TODO: Plain coordinate data remains outside the collection API.

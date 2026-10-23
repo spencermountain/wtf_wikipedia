@@ -1,13 +1,6 @@
 import type { TableData } from '../../../types/index.ts'
 import Link from '../../03-paragraph/link/Link.ts'
-
-const normalize = function (key = '') {
-  key = key.toLowerCase()
-  key = key.replace(/[_-]/g, ' ')
-  key = key.replace(/(^[^(\r\n\u2028\u2029]*)\(.*?\)/m, '$1')
-  key = key.trim()
-  return key
-}
+import { normalizeKey } from '../../../_lib/helpers.ts'
 
 class Table {
   #data: TableData
@@ -62,12 +55,12 @@ class Table {
     }
     // ['foo', 'bar']
     if (Array.isArray(requested)) {
-      requested = requested.map((col) => normalize(col))
+      requested = requested.map((col) => normalizeKey(col))
       return rows.map((row) => requested.map((col) => row[col]))
     }
     // 'foo'
     if (typeof requested === 'string') {
-      return rows.map((row) => row[normalize(requested)])
+      return rows.map((row) => row[normalizeKey(requested)])
     }
     // { foo:true, bar: true}
     if (typeof requested === 'object') {
@@ -75,7 +68,7 @@ class Table {
         let result = {}
         Object.entries(requested).forEach(([key, val]) => {
           if (val) {
-            let clean = normalize(key)
+            let clean = normalizeKey(key)
             result[clean] = row[clean]
           }
         })

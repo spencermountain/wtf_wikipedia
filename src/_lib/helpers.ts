@@ -24,9 +24,13 @@ function isObject(x) {
   return x && Object.prototype.toString.call(x) === '[object Object]'
 }
 
-export {
-  capitalise,
-  trim_whitespace,
-  isArray,
-  isObject,
+// used to soften table headers and infobox keys for easier lookup
+const normalizeKey = function (key = '') {
+  key = key.toLowerCase()
+  key = key.replace(/[ -]/g, '_')
+  key = key.replace(/(^[^(\r\n\u2028\u2029]*)\(.*?\)/m, '$1')
+  key = key.trim()
+  return key
 }
+
+export { capitalise, trim_whitespace, isArray, isObject, normalizeKey }

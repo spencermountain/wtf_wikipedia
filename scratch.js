@@ -18,24 +18,21 @@ str = `
 * [[Park Place (Vancouver)]], a skyscraper
 * [[Park Place Mall]], Lethbridge, Alberta
 `
-// str = readPage('United-Kingdom')
+str = readPage('United-Kingdom')
 
-str = `{| class="wikitable"
-|-
-! AAA
-! [[BBB]]
-! CCC
-! DDD
-|-
-| {{unbulleted list|A1}}
-| {{unbulleted list|B1|B2}}
-| {{ubl|{{Lbb|C1}}|{{nowrap|{{Lbc|C2|C3}}}}}}
-| {{unbulleted list|[[D1]],|[[D2]]}}
-|}
-  `
+// str = `
+// {{Infobox settlement
+// | name = New York City
+// | official_name                   = City of New York
+// | settlement_type                 = [[City]]
+// | named_for                       = [[James II of England|James, Duke of York]]
+// | coordinates                     = {{coord|40.7127|N|74.0059|W|region:US-NY|format=dms|display=inline,title}}
+// }}
+//   `
 const doc = wtf(str, meta)
-console.log(doc.tables()[0].cells())
-console.log(doc.links().map((l) => l.json()))
+// console.log(doc.infoboxes()[0].json())
+console.log(doc.infoboxes()[0].image().json())
+// console.log(doc.links().map((l) => l.json()))
 // const table = doc.tables()[0]
 // console.log(table.getRows(['Name', 'team']))
 // console.log(table.getRows('Name'))
