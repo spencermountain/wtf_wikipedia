@@ -38,7 +38,7 @@ str = readPage('United-Kingdom')
 // | legislature        =
 // }}`
 const doc = wtf(str, meta)
-console.log(doc.links().map((t) => t.json('xl')))
+console.log(doc.links().json('xl'))
 // console.log(doc.infoboxes().map((l) => l.type()))
 // const table = doc.tables()[0]
 // console.log(table.getRows(['Name', 'team']))
@@ -80,4 +80,4 @@ console.log(doc.links().map((t) => t.json('xl')))
 // console.log('redirect', doc.redirect())
 // console.log('links', doc.links())
 // console.log('text', doc.text())
-console.log('json', doc.json())
+// console.log('json', doc.json())

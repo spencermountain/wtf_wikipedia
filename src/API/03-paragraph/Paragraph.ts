@@ -1,6 +1,7 @@
 import Sentence from './sentence/Sentence.ts'
 import Image from './image/Image.ts'
 import List from './list/List.ts'
+import Links from './link/Links.ts'
 import type { ParagraphData, DocInfo } from '../../types/index.ts'
 
 class Paragraph {
@@ -43,7 +44,7 @@ class Paragraph {
     this.sentences().forEach((s) => {
       links.push(...s.links())
     })
-    return links
+    return Links.from(links)
   }
 
   interwiki() {
