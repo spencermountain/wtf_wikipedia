@@ -6,7 +6,7 @@ const hasTemplate = /\{\{/
 const createNode = (tmpl: string): NestedNode => {
   return {
     body: tmpl,
-    name: getName(tmpl),
+    parserName: getName(tmpl),
     children: [],
   }
 }

@@ -4,20 +4,20 @@ import type { NestedNode } from '../types.ts'
 
 const replaceInAncestors = (node: NestedNode, body: string, replacement: string) => {
   if (node.parent) {
-    node.parent.body = node.parent.body.replace(body, replacement)
+    node.parent.body = node.parent.body.replace(body, () => replacement)
     replaceInAncestors(node.parent, body, replacement)
   }
 }
 
-const evaluateNode = (node: NestedNode, parent: NestedNode, state, opts: DocInfo) => {
+const evaluateNode = (node: NestedNode, parent: NestedNode | null, state, opts: DocInfo) => {
   node.parent = parent
   // Children update this node's body before its handler runs.
-  const children = node.children || []
+  const children = node.children
   for (let i = 0; i < children.length; i += 1) {
     evaluateNode(children[i], node, state, opts)
   }
 
-  const { replacement, result } = parseTemplate(node.body, node.name, opts)
+  const { replacement, result } = parseTemplate(node.body, node.parserName, opts)
   if (result) {
     state.templates.push(result)
   }
@@ -26,7 +26,9 @@ const evaluateNode = (node: NestedNode, parent: NestedNode, state, opts: DocInfo
   const argumentValue = String(replacement).replace(/=/g, '&#61;')
   // Keep every ancestor and the document synchronized using the current body.
   replaceInAncestors(node, node.body, argumentValue)
-  state.remaining = state.remaining.replace(node.body, parent ? argumentValue : replacement)
+  const output = parent ? argumentValue : replacement
+  // A callback inserts literal output, including replacement tokens such as $&.
+  state.remaining = state.remaining.replace(node.body, () => output)
 }
 
 export default evaluateNode

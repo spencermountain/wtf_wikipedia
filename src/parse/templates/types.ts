@@ -1,7 +1,6 @@
 export type NestedNode = {
-  parent?: NestedNode
-  children?: NestedNode[]
-  name?: string
-  body?: string
-  wiki?: string
+  parent?: NestedNode | null
+  children: NestedNode[]
+  parserName: string | null
+  body: string
 }

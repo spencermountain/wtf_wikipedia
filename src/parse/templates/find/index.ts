@@ -10,11 +10,6 @@ const allTemplates = (wiki: string, opts: DocInfo) => {
   for (let i = 0; i < roots.length; i += 1) {
     evaluateNode(roots[i], null, state, opts)
   }
-  // Retain the existing final root-replacement pass.
-  for (let i = 0; i < roots.length; i += 1) {
-    const node = roots[i]
-    state.remaining = state.remaining.replace(node.body, node.wiki)
-  }
   return state
 }
 
