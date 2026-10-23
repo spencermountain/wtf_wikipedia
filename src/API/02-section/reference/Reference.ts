@@ -4,7 +4,6 @@ import type { ReferenceData } from '../../../types/index.ts'
 //also called 'citations'
 class Reference {
   #data: ReferenceData
-  #wiki: string
 
   constructor(data: ReferenceData) {
     this.#data = data

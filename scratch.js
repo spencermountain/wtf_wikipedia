@@ -29,10 +29,10 @@ str = readPage('United-Kingdom')
 // | coordinates                     = {{coord|40.7127|N|74.0059|W|region:US-NY|format=dms|display=inline,title}}
 // }}
 //   `
+str = `{{foobar|one=yes|caption=long text with [[link]]}}`
 const doc = wtf(str, meta)
-// console.log(doc.infoboxes()[0].json())
-console.log(doc.infoboxes()[0].image().json())
-// console.log(doc.links().map((l) => l.json()))
+console.log(doc.templates()[0].json())
+console.log(doc.links().map((l) => l.json()))
 // const table = doc.tables()[0]
 // console.log(table.getRows(['Name', 'team']))
 // console.log(table.getRows('Name'))
