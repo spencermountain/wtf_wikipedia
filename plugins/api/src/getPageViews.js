@@ -6,7 +6,7 @@ const params = {
   prop: 'pageviews',
   format: 'json',
   origin: '*',
-  redirects: true
+  redirects: true,
 }
 
 const makeUrl = function (title, options, append) {
@@ -24,7 +24,7 @@ const makeUrl = function (title, options, append) {
 
 const getPageViews = function (doc, options, http) {
   options = { ...defaults, ...options }
-  const url = makeUrl(doc.title(), options)
+  const url = makeUrl(doc.title, options)
   const headers = makeHeaders(options)
   return http(url, headers).then((res) => {
     const pages = Object.keys(res.query.pages || {})

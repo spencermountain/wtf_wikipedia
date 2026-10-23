@@ -51,8 +51,7 @@ wtf.extend((models, templates) => {
 ```
 
 Unknown templates are kept in `.templates()` as data but render as `''` in
-`.text()`. To handle them globally, pass `templateFallbackFn` as a document
-option (see api.md).
+`.text()`.
 
 Registering infoboxes:
 

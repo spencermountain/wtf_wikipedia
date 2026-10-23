@@ -5,8 +5,8 @@ test('glossary of professional wrestling', (t) => {
   const glossary = `{{term|1=A-show}}
   {{defn|1= A wrestling event where a company's biggest draws wrestle.<ref name=torch/>}}`
   const o = wtf(glossary).sections()[0].sentences()
-  t.equal(o[0].data.text, 'A-show:', 'first glossary entry')
-  t.equal(o[1].data.text, `A wrestling event where a company's biggest draws wrestle.`, 'second glossary entry')
+  t.equal(o[0].text(), 'A-show:', 'first glossary entry')
+  t.equal(o[1].text(), `A wrestling event where a company's biggest draws wrestle.`, 'second glossary entry')
   t.end()
 })
 
@@ -16,17 +16,17 @@ test('boloZenden infobox', (t) => {
     | years1      = 1993–1998 |clubs1 = [[PSV Eindhoven|PSV]]                         |caps1 = 112 |goals1 = 32
     | nationalyears1 = 1997–2004 |nationalteam1 = [[Netherlands national football team|Netherlands]] |nationalcaps1 = 54 |nationalgoals1 = 7
   }}`
-  const o = wtf(boloZenden).infobox().data
-  t.equal(o.years1.text(), '1993–1998', 'club years')
-  t.equal(o.clubs1.text(), 'PSV', 'club name')
-  t.equal(o.youthyears1.text(), '1985–1987', 'youth years')
-  t.equal(o.youthclubs1.text(), 'MVV', 'youth club')
-  t.equal(o.nationalyears1.text(), '1997–2004', 'national years')
-  t.equal(o.nationalteam1.text(), 'Netherlands', 'national team text')
-  t.equal(o.nationalteam1.link().page(), 'Netherlands national football team', 'national team target')
-  t.equal(o.nationalteam1.link().text(), 'Netherlands', 'national team label')
-  t.equal(o.nationalcaps1.text(), '54', 'national caps')
-  t.equal(o.nationalgoals1.text(), '7', 'national goals')
+  const o = wtf(boloZenden).infoboxes()[0].json().data
+  t.equal(o.years1.text, '1993–1998', 'club years')
+  t.equal(o.clubs1.text, 'PSV', 'club name')
+  t.equal(o.youthyears1.text, '1985–1987', 'youth years')
+  t.equal(o.youthclubs1.text, 'MVV', 'youth club')
+  t.equal(o.nationalyears1.text, '1997–2004', 'national years')
+  t.equal(o.nationalteam1.text, 'Netherlands', 'national team text')
+  t.equal(o.nationalteam1.links[0].page, 'Netherlands national football team', 'national team target')
+  t.equal(o.nationalteam1.links[0].text, 'Netherlands', 'national team label')
+  t.equal(o.nationalcaps1.text, '54', 'national caps')
+  t.equal(o.nationalgoals1.text, '7', 'national goals')
   t.end()
 })
 
@@ -37,11 +37,11 @@ test('hurricane infobox', (t) => {
   | Areas=[[Florida]]
   | Hurricane season=[[2002 Atlantic hurricane season]]
 }}`
-  const o = wtf(hurricane).infobox().data
-  t.equal(o.name.text(), 'Tropical Storm Edouard', 'hurricane name')
-  t.equal(o.dissipated.text(), 'September 6, 2002', 'dissipation date')
-  t.equal(o['hurricane season'].text(), '2002 Atlantic hurricane season', 'hurricane season')
-  t.equal(o.areas.link().page(), 'Florida', 'affected area target')
+  const o = wtf(hurricane).infobox().json().data
+  t.equal(o.name.text, 'Tropical Storm Edouard', 'hurricane name')
+  t.equal(o.dissipated.text, 'September 6, 2002', 'dissipation date')
+  t.equal(o.hurricane_season.text, '2002 Atlantic hurricane season', 'hurricane season')
+  t.equal(o.areas.links[0].page, 'Florida', 'affected area target')
   t.end()
 })
 
@@ -58,14 +58,14 @@ test('bluejays table', (t) => {
 | 2 || April 7 || @ [[Minnesota Twins|Twins]] || 9 - 3 || '''[[David Wells|Wells]]''' (1-0) || [[Mike Lincoln|Lincoln]] (0-1) || '''[[Roy Halladay|Halladay]]''' (1) || 9,220 || 1-1
 |}
   `
-  const arr = wtf(bluejays).table(0).data
+  const arr = wtf(bluejays).tables()[0].rows()
   t.equal(arr.length, 2, 'table row count')
-  t.equal(arr[0]['Number'].text(), '1', 'number')
-  t.equal(arr[0]['Date'].text(), 'April 6', 'date')
-  t.equal(arr[0]['Team'].text(), '@ Twins', 'team')
-  t.equal(arr[1]['Number'].text(), '2', 'number2')
-  t.equal(arr[1]['Date'].text(), 'April 7', 'date2')
-  t.equal(arr[1]['col4'].text(), '9 - 3', 'col-3')
+  t.equal(arr[0]['number'], '1', 'number')
+  t.equal(arr[0]['date'], 'April 6', 'date')
+  t.equal(arr[0]['team'], '@ Twins', 'team')
+  t.equal(arr[1]['number'], '2', 'number2')
+  t.equal(arr[1]['date'], 'April 7', 'date2')
+  t.equal(arr[1]['col4'], '9 - 3', 'col-3')
   t.end()
 })
 
@@ -75,10 +75,10 @@ const alabama = `{{Infobox university
 | athletics = [[NCAA Division I]] – [[Southeastern Conference|SEC]]
 }}`
 test('Alabama infobox', (t) => {
-  const infobox = wtf(alabama).infobox().data
-  t.equal(infobox.athletics.text(), 'NCAA Division I – SEC', 'athletics =' + infobox.athletics.text)
-  t.equal(infobox.country.text(), 'U.S.', 'country =' + infobox.country.text)
-  t.equal(infobox.president.text(), 'Stuart R. Bell', 'president =' + infobox.president.text)
+  const infobox = wtf(alabama).infobox().json().data
+  t.equal(infobox.athletics.text, 'NCAA Division I – SEC', 'athletics =' + infobox.athletics.text)
+  t.equal(infobox.country.text, 'U.S.', 'country =' + infobox.country.text)
+  t.equal(infobox.president.text, 'Stuart R. Bell', 'president =' + infobox.president.text)
   t.end()
 })
 
@@ -101,10 +101,10 @@ test('Radiohead infobox', (t) => {
 * [[Ed O'Brien]]
 * [[Philip Selway]]
 }} `
-  const infobox = wtf(radiohead).infobox().data
-  t.equal(infobox.current_members.text().match(/Greenwood/g).length, 2, 'current members')
-  t.equal(infobox.genre.text(), 'Art rock\n\nalternative rock\n\nelectronica\n\nexperimental rock', 'genre')
-  t.equal(infobox.associated_acts.text(), 'Atoms for Peace\n\n7 Worlds Collide', 'associated-acts')
+  const infobox = wtf(radiohead).infobox().json().data
+  t.equal(infobox.current_members.text.match(/Greenwood/g).length, 2, 'current members')
+  t.equal(infobox.genre.text, 'Art rock\n\nalternative rock\n\nelectronica\n\nexperimental rock', 'genre')
+  t.equal(infobox.associated_acts.text, 'Atoms for Peace\n\n7 Worlds Collide', 'associated-acts')
   t.end()
 })
 
@@ -152,10 +152,10 @@ test('microsoft currency parsing', (t) => {
 | operating_income = {{Increase}} {{US$|22.27&nbsp;billion}}<ref name="xbrlus_1" />
 | net_income = {{Increase}} {{US$|21.20&nbsp;billion}}<ref name="xbrlus_1" />
 }}`
-  const infobox = wtf(microsoft).infobox().data
-  t.equal(infobox.revenue.text(), 'US$89.95\xa0billion', 'revenue =' + infobox.revenue.text)
-  t.equal(infobox.operating_income.text(), 'US$22.27\xa0billion', 'operating_income =' + infobox.operating_income.text)
-  t.equal(infobox.net_income.text(), 'US$21.20\xa0billion', 'net_income =' + infobox.net_income.text)
+  const infobox = wtf(microsoft).infobox().json().data
+  t.equal(infobox.revenue.text, 'US$89.95\xa0billion', 'revenue =' + infobox.revenue.text)
+  t.equal(infobox.operating_income.text, 'US$22.27\xa0billion', 'operating_income =' + infobox.operating_income.text)
+  t.equal(infobox.net_income.text, 'US$21.20\xa0billion', 'net_income =' + infobox.net_income.text)
   t.end()
 })
 

@@ -1,4 +1,4 @@
-import wtf from '../../src/index.js'
+import wtf from '../../src/API/index.js'
 import classify from './src/index.js'
 
 wtf.extend(classify)

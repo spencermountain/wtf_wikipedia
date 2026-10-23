@@ -6,23 +6,22 @@ of the library.
 
 ## Version differences (the big one)
 
-| you may have learned | current (v11) reality | changed in |
-| --- | --- | --- |
-| `doc.templates()[0].template` | templates are `Template` objects → `doc.templates()[0].json().template` | v9 |
-| `doc.links()` returns strings | returns `Link` objects → `.page()` / `.text()` / `.json()` | v9 |
-| `doc.links(3)` returns one link | plural + number returns a **one-element array** | v9 |
-| `wtf.random()`, `wtf.category()` on core | moved to `wtf-plugin-api` (`getRandomPage`, `getCategoryPages`) | v9 |
-| `doc.dates()` | removed | v9 |
-| coordinates: infobox entries have `lng` | every coordinate is `{ lat, lon }` | v11 |
-| classify empty result `{ detail, type, score }` | always `{ root, type, score, details }` | classify v3 |
-| runs on Node 12/14/16, uses cross-fetch | native fetch, Node ≥ 18 | v11 |
-| no `.json()` presets | `doc.json('sm' \| 'md' \| 'lg')` | v11 |
+| you may have learned                            | current (v11) reality                                                   | changed in  |
+| ----------------------------------------------- | ----------------------------------------------------------------------- | ----------- |
+| `doc.templates()[0].template`                   | templates are `Template` objects → `doc.templates()[0].json().template` | v9          |
+| `doc.links()` returns strings                   | returns `Link` objects → `.page()` / `.text()` / `.json()`              | v9          |
+| `doc.links(3)` returns one link                 | plural + number returns a **one-element array**                         | v9          |
+| `wtf.random()`, `wtf.category()` on core        | moved to `wtf-plugin-api` (`getRandomPage`, `getCategoryPages`)         | v9          |
+| `doc.dates()`                                   | removed                                                                 | v9          |
+| coordinates: infobox entries have `lng`         | every coordinate is `{ lat, lon }`                                      | v11         |
+| classify empty result `{ detail, type, score }` | always `{ root, type, score, details }`                                 | classify v3 |
+| runs on Node 12/14/16, uses cross-fetch         | native fetch, Node ≥ 18                                                 | v11         |
 
 ## Methods that do not exist (commonly hallucinated)
 
 - `doc.html()`, `doc.markdown()`, `doc.latex()` — **plugins**, not core
 - `doc.summary()`, `doc.classify()`, `doc.birthDate()` — plugins
-- `doc.infobox('birth_place')` — the clue selects *which infobox*, not a field.
+- `doc.infobox('birth_place')` — the clue selects _which infobox_, not a field.
   Field access is `doc.infobox().get('birth_place')`
 - `doc.category()` does not fetch a category listing — it returns this page's
   first category string. Category listings are `wtf.getCategoryPages()` (api plugin)
@@ -37,15 +36,6 @@ of the library.
 - `infobox.get('missing key')` returns an **empty Sentence**, never
   null/undefined — `.text()` on it gives `''`. Check `.text().length`.
 - `table.text()` and `reference.text()` intentionally return `''` —
-  use `.keyValue()` / `.json()` / `.title()`.
-- `image.text()` returns `''` — captions are `.caption()`.
-- Section plurals ignore a number clue (`sec.sentences(2)` returns **all**);
-  index with the singular: `sec.sentence(2)`.
-- `doc.title()` is `null` for parsed strings unless you passed
-  `{ title }` as an option or the text has a bolded first-sentence subject.
-- person plugin dates: `month` is **0-based** (January = 0).
-
-## Parsing model surprises
 
 - `.templates()` content: known **data** templates are parsed rich, unknown
   templates are kept as `{ template: '<name>' }` + raw params, but known

@@ -1,0 +1,25 @@
+const aliases = {
+  w: 'wikipedia',
+  wikt: 'wiktionary',
+  b: 'wikibooks',
+  n: 'wikinews',
+  q: 'wikiquote',
+  s: 'wikisource',
+  v: 'wikiversity',
+  voy: 'wikivoyage',
+  d: 'wikidata',
+  c: 'commons',
+  species: 'wikispecies',
+  f: 'wikifunctions',
+  mw: 'mediawiki',
+  mediawikiwiki: 'mediawiki',
+  m: 'meta',
+  metawiki: 'meta',
+  metawikimedia: 'meta',
+  metawikipedia: 'meta',
+  wmf: 'foundation',
+  wikimedia: 'foundation',
+  outreachwiki: 'outreach',
+}
+
+export default aliases

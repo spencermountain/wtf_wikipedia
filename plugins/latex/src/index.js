@@ -18,10 +18,16 @@ const plugin = function (models) {
   models.Image.prototype.latex = image
   models.Link.prototype.latex = link
   models.Image.prototype.latex = image
-  models.Infobox.prototype.latex = infobox
-  models.List.prototype.latex = list
+  models.Infobox.prototype.latex = function (options) {
+    return infobox.call(this, models.Sentence, options)
+  }
+  models.List.prototype.latex = function (options) {
+    return list.call(this, models.Sentence, options)
+  }
   models.Reference.prototype.latex = reference
-  models.Table.prototype.latex = table
+  models.Table.prototype.latex = function (options) {
+    return table.call(this, models.Sentence, options)
+  }
 }
 plugin.version = version
 

@@ -64,7 +64,7 @@
     "test:fetch": "tape --strict \"tests/fetch/**/*.test.js\" | tap-dancer",
     "test:plugins": "pnpm -r --workspace-concurrency=1 run test",
     "test:all": "pnpm run test:types && pnpm run test:fetch && pnpm run test:unit && pnpm run test:plugins && pnpm run lint",
-    "test:hmm": "tape --strict \"tests/_hmm/**/*.hmm.js\" | tap-dancer",
+    "test:hmm": "tape --strict \"tests/{_hmm/**/*.hmm.js,hmm/**/*.hmm.test.js}\" | tap-dancer",
     "testb": "TESTENV=prod pnpm run test:all"
   },
   "files": [

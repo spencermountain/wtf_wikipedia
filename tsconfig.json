@@ -1,5 +1,4 @@
 {
-  // this config is for the editor, and `npm run check` -
   // our public types are hand-written, in ./types/index.d.ts
   // typing is deliberately loose - the goal is editor help, not full coverage
   "compilerOptions": {
@@ -25,16 +24,9 @@
     "allowSyntheticDefaultImports": true,
     /* lets the plugin type-declarations resolve the main package, in `npm run check` */
     "paths": {
-      "wtf_wikipedia": ["./types/index.d.ts"]
-    }
+      "wtf_wikipedia": ["./types/index.d.ts"],
+    },
   },
-  "include": [
-    "src/**/*",
-    "plugins/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/node_modules/*",
-    "**/builds/"
-  ]
+  "include": ["src/**/*", "plugins/**/*"],
+  "exclude": ["node_modules", "**/node_modules/*", "**/builds/"],
 }

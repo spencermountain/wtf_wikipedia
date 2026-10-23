@@ -1,15 +1,16 @@
 //turn a json table into a html table
-const toHtml = function (options) {
-  const rows = this.data
+const toHtml = function (Sentence, options) {
+  const rows = this.json().rows
+  if (rows.length === 0) {
+    return ''
+  }
   let html = '<table class="table">\n'
   //make header
   html += '  <thead>\n'
   html += '  <tr>\n'
 
-  Object.keys(rows[0]).forEach((k) => {
-    if (/^col[0-9]/.test(k) !== true) {
-      html += '    <td>' + k + '</td>\n'
-    }
+  this.headers().forEach((header) => {
+    html += '    <td>' + header.text + '</td>\n'
   })
   html += '  </tr>\n'
   html += '  </thead>\n'
@@ -19,7 +20,7 @@ const toHtml = function (options) {
   rows.forEach((o) => {
     html += '  <tr>\n'
     Object.keys(o).forEach((k) => {
-      const val = o[k].html(options)
+      const val = new Sentence(o[k]).html(options)
       html += '    <td>' + val + '</td>\n'
     })
     html += '  </tr>\n'

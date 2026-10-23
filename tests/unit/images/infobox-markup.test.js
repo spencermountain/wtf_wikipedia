@@ -3,7 +3,7 @@ import wtf from '../../lib/index.js'
 
 test('infobox image markup is normalized to a filename', (t) => {
   const doc = wtf('{{Infobox Unternehmen|Logo=[[Datei:BBDO Logo.png]]}}')
-  const image = doc.image()
+  const image = doc.images()[0]
 
   t.equal(image.file(), 'File:BBDO_Logo.png', 'strips brackets and normalizes the image namespace')
   t.equal(
@@ -16,7 +16,7 @@ test('infobox image markup is normalized to a filename', (t) => {
 
 test('infobox image options do not leak into filenames', (t) => {
   const doc = wtf('{{Infobox company|image=[[File:Company logo.png|thumb|200px|A logo]]}}')
-  t.equal(doc.image().file(), 'File:Company_logo.png', 'filename excludes options')
-  t.equal(doc.image().url(), 'https://wikipedia.org/wiki/Special:Redirect/file/Company_logo.png', 'URL excludes options')
+  t.equal(doc.images()[0].file(), 'File:Company_logo.png', 'filename excludes options')
+  t.equal(doc.images()[0].url(), 'https://wikipedia.org/wiki/Special:Redirect/file/Company_logo.png', 'URL excludes options')
   t.end()
 })

@@ -1,8 +1,8 @@
 //
-const toMarkdown = function (options) {
+const toMarkdown = function (Sentence, options) {
   return this.lines()
     .map((s) => {
-      const str = s.markdown(options)
+      const str = new Sentence(s).markdown(options)
       return ' * ' + str
     })
     .join('\n')

@@ -5,11 +5,14 @@ import { season as _season, postseason } from './gameLog/index.js'
 const parseTitle = function (season = '') {
   const num = season.match(/[0-9]+/) || []
   const year = Number(num[0]) || season
-  const team = season.replace(/[0-9–]+/, '').replace(/_/g, ' ').replace(' season', '')
+  const team = season
+    .replace(/[0-9–]+/, '')
+    .replace(/_/g, ' ')
+    .replace(' season', '')
   return {
     year: year,
     season: season,
-    team: team.trim()
+    team: team.trim(),
   }
 }
 
@@ -21,8 +24,8 @@ const parseRoster = function (doc, res) {
     return {}
   }
   let players = s.templates('mlbplayer') || []
-  players = players.map(o => {
-    delete o.template
+  players = players.map((tmpl) => {
+    const o = { ...tmpl.json().data }
     return o
   })
   return players
@@ -31,7 +34,7 @@ const parseRoster = function (doc, res) {
 //this is just a table in a '2008 draft picks' section
 const draftPicks = function (doc) {
   const want = /\bdraft\b/i
-  const s = doc.sections().find(sec => want.test(sec.title()))
+  const s = doc.sections().find((sec) => want.test(sec.title()))
   if (!s) {
     return []
   }
@@ -47,7 +50,7 @@ const parsePage = function (doc) {
   if (!doc) {
     return {}
   }
-  const res = parseTitle(doc.title() || '')
+  const res = parseTitle(doc.title || '')
   res.games = _season(doc)
   res.postseason = postseason(doc)
   //grab the roster/draft data

@@ -183,8 +183,8 @@ test('flags', (t) => {
   const str = `one {{flag|USA}}, two {{flag|DEU|empire}}, three {{flag|CAN|name=Canadian}}.`
   const doc = wtf(str)
   t.equal(doc.links().length, 3, 'found 3 link')
-  t.equal(doc.link(1).text(), 'DEU', 'link text')
-  t.equal(doc.link(1).page(), 'germany', 'link page')
+  t.equal(doc.links()[1].text(), 'DEU', 'link text')
+  t.equal(doc.links()[1].page(), 'Germany', 'link page')
   t.equal(doc.text(), 'one 🇺🇸 USA, two 🇩🇪 DEU, three 🇨🇦 CAN.', 'made emoji flags')
   t.end()
 })
@@ -194,28 +194,28 @@ test('tricky-based-on', (t) => {
   const doc = wtf(str)
   t.equal(doc.templates().length, 1, 'found one template')
   t.equal(doc.text(), 'Jurassic Park by Michael Crichton', 'formatted title and author')
-  const data = doc.template().json()
-  t.equal(data.template, 'based on', 'template name')
+  const data = doc.templates()[0].json().data || {}
+  t.equal(doc.template().json().kind, 'based on', 'template name')
   t.equal(data.title, 'Jurassic Park', 'title')
   t.equal(data.author, 'Michael Crichton', 'author')
   t.end()
 })
 
 test('start-date in infobox', (t) => {
-  const str = ` 
+  const str = `
 {{Infobox officeholder
 |term_start   = {{start date|2022|May|6}}
 |term_end     = {{end date|2023|January|11}}
 }}`
   const doc = wtf(str)
-  const json = doc.infobox().json()
+  const json = doc.infobox().json().data
   t.equal(json.term_start.text, 'May 6, 2022', 'term_start')
   t.equal(json.term_end.text, 'January 11, 2023', 'term_end')
   t.end()
 })
 
 test('Template-Link-Labels', (t) => {
-  t.equal(wtf(`{{ill|Joke|fr|Blague|hu|Vicc|de|Witz}}`).plaintext(), 'Joke', 'interlanguage link label')
-  t.equal(wtf(`{{tiw|Hatnote}}`).plaintext(), 'Hatnote', 'template link label')
+  t.equal(wtf(`{{ill|Joke|fr|Blague|hu|Vicc|de|Witz}}`).text(), 'Joke', 'interlanguage link label')
+  t.equal(wtf(`{{tiw|Hatnote}}`).text(), 'Hatnote', 'template link label')
   t.end()
 })

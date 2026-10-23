@@ -1,0 +1,39 @@
+import makeResult from '../../templates/result.ts'
+import defaults from '../../../_lib/defaults.ts'
+import tableParser from '../04-tables/parse.ts'
+import type { DocInfo, SectionData } from '../../../types/index.ts'
+const keys = {
+  coach: ['team', 'year', 'g', 'w', 'l', 'w-l%', 'finish', 'pg', 'pw', 'pl', 'pw-l%'],
+  player: ['year', 'team', 'gp', 'gs', 'mpg', 'fg%', '3p%', 'ft%', 'rpg', 'apg', 'spg', 'bpg', 'ppg'],
+  roster: ['player', 'gp', 'gs', 'mpg', 'fg%', '3fg%', 'ft%', 'rpg', 'apg', 'spg', 'bpg', 'ppg'],
+}
+
+//https://en.wikipedia.org/wiki/Template:NBA_player_statistics_start
+const parseNBA = function (section: SectionData, opts: DocInfo = defaults) {
+  section.remaining = section.remaining.replace(
+    /\{\{nba (coach|player|roster) statistics start(.+?)\{\{s-end\}\}/gis,
+    (tmpl, name) => {
+      const wiki = tmpl
+      tmpl = tmpl.replace(/^\{\{.*?\}\}/, '')
+      tmpl = tmpl.replace(/\{\{s-end\}\}/, '')
+      name = name.toLowerCase().trim()
+
+      let headers = '! ' + keys[name].join(' !! ')
+      let table = '{|\n' + headers + '\n' + tmpl + '\n|}'
+      let rows = tableParser(table, opts).rows || []
+      rows = rows.map((row) => {
+        Object.keys(row).forEach((k) => {
+          row[k] = row[k].text
+        })
+        return row
+      })
+
+      section.templates.push(makeResult(wiki, 'nba ' + name + ' statistics', { rows }, '', opts))
+
+      //return empty string to remove the template from the wiki text
+      return ''
+    }
+  )
+  return section
+}
+export default parseNBA

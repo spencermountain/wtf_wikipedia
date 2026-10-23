@@ -46,7 +46,7 @@ const parseRoster = function (doc) {
 
 //
 const parse = function (doc) {
-  const meta = parseTitle(doc.title())
+  const meta = parseTitle(doc.title)
   const res = {
     team: meta.team,
     year: meta.year,

@@ -2,7 +2,7 @@
 const toLatex = function () {
   const alt = this.alt()
   let out = '\\begin{figure}'
-  out += '\n\\includegraphics[width=\\linewidth]{' + this.thumb() + '}'
+  out += '\n\\includegraphics[width=\\linewidth]{' + this.thumbnail() + '}'
   out += '\n\\caption{' + alt + '}'
   // out += '\n%\\label{fig:myimage1}';
   out += '\n\\end{figure}'

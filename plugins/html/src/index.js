@@ -21,15 +21,21 @@ const plugin = function (models) {
 
   models.Image.prototype.html = image
 
-  models.Infobox.prototype.html = infobox
+  models.Infobox.prototype.html = function (options) {
+    return infobox.call(this, models.Sentence, options)
+  }
 
   models.Link.prototype.html = link
 
-  models.List.prototype.html = list
+  models.List.prototype.html = function (options) {
+    return list.call(this, models.Sentence, options)
+  }
 
   models.Reference.prototype.html = reference
 
-  models.Table.prototype.html = table
+  models.Table.prototype.html = function (options) {
+    return table.call(this, models.Sentence, options)
+  }
 
   // models.Template.html = function(opts) {}
 }

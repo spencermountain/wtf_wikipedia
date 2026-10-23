@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import wtf from '../../../src/index.js'
+import wtf from '../../../src/API/index.js'
 import languages from '../../../src/_data/languages.js'
 const langs = Object.keys(languages)
 

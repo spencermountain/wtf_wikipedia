@@ -1,7 +1,7 @@
 const fromTemplate = function (doc) {
   const tmpl = doc.template('short description')
   if (tmpl) {
-    const json = tmpl.json() || {}
+    const json = tmpl.json().data || {}
     return json.description || ''
   }
   return null

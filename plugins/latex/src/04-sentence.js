@@ -2,7 +2,7 @@ import smartReplace from './_lib/smartReplace.js'
 
 const defaults = {
   links: true,
-  formatting: true
+  formatting: true,
 }
 // create links, bold, italic in latex
 const toLatex = function (options) {
@@ -17,19 +17,17 @@ const toLatex = function (options) {
     })
   }
   if (options.formatting === true) {
-    if (this.data.fmt) {
-      if (this.data.fmt.bold) {
-        this.data.fmt.bold.forEach((str) => {
-          const tag = '\\textbf{' + str + '}'
-          text = smartReplace(text, str, tag)
-        })
-      }
-      if (this.data.fmt.italic) {
-        this.data.fmt.italic.forEach((str) => {
-          const tag = '\\textit{' + str + '}'
-          text = smartReplace(text, str, tag)
-        })
-      }
+    if (this.bolds()) {
+      this.bolds().forEach(({ text: str }) => {
+        const tag = '\\textbf{' + str + '}'
+        text = smartReplace(text, str, tag)
+      })
+    }
+    if (this.italics()) {
+      this.italics().forEach(({ text: str }) => {
+        const tag = '\\textit{' + str + '}'
+        text = smartReplace(text, str, tag)
+      })
     }
   }
   return text

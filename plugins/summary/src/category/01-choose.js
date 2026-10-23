@@ -61,8 +61,6 @@ const fromCategory = function (doc) {
     }
     return 0
   })
-  // console.log(cats)
-
   return cats[0]
 }
 export default fromCategory

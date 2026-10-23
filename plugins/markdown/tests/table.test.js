@@ -21,7 +21,7 @@ test('table-header', (t) => {
 | row 2, cell 3
 |}`
 
-  const have = wtf(str).table().markdown()
+  const have = wtf(str).tables()[0].markdown()
   const want = `
 |    Header 1    |    Header 2    |    Header 3    |
 |       ---      |       ---      |       ---      |
@@ -44,7 +44,7 @@ test('no-header', (t) => {
 | row 2, cell 3
 |}`
 
-  const have = wtf(str).table().markdown()
+  const have = wtf(str).tables()[0].markdown()
   const want = `
 |                |                |                |
 |       ---      |       ---      |       ---      |

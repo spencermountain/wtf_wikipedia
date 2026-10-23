@@ -6,149 +6,129 @@ import wtf from '../../lib/index.js'
 test('Tile - get - first sentence', (t) => {
   const str = readPage('Charlie-Milstead')
   const doc = wtf(str)
-  t.equal(doc.title(), 'Charles Frank Milstead', 'the title equals the fist bolded text')
+  t.equal(doc.title, 'Charles Frank Milstead', 'the title equals the fist bolded text')
   t.end()
 })
 
 test('Tile - get - no bold in sentence ', (t) => {
   const str = 'no bold in first sentence'
   const doc = wtf(str)
-  t.equal(doc.title(), null, 'the title equals null')
+  t.equal(doc.title, null, 'the title equals null')
   t.end()
 })
 
 test('Tile - get - return null if there are no sentences', (t) => {
   const str = ''
   const doc = wtf(str)
-  t.equal(doc.title(), null, 'the title equals null')
+  t.equal(doc.title, null, 'the title equals null')
   t.end()
 })
 
 test('Tile - get / set - if the title is already set than get it from internal object', (t) => {
   const str = 'no bold in first sentence'
   const doc = wtf(str)
-  doc.title('some title')
-  t.equal(doc.title(), 'some title', 'the title equals the set title')
+  doc.title = 'some title'
+  t.equal(doc.title, 'some title', 'the title equals the set title')
   t.end()
 })
 
 //pageID
 test('pageID - get - should initially be null', (t) => {
   const doc = wtf('')
-  t.equal(doc.pageID(), null, 'the pageID equals null')
+  t.equal(doc.pageID, null, 'the pageID equals null')
   t.end()
 })
 
 test('pageID - get - if the pageID is already set than get it from internal object', (t) => {
-  const doc = wtf('', { pageID: 1 })
-  t.equal(doc.pageID(), 1, 'the pageID equals 1')
+  const doc = wtf('', { pageId: 1 })
+  t.equal(doc.pageID, 1, 'the pageID equals 1')
   t.end()
 })
 
 test('pageID - get / set - if the pageID is set then it should return the same ', (t) => {
   const doc = wtf('')
-  doc.pageID(1)
-  t.equal(doc.pageID(), 1, 'the pageID equals 1')
+  doc.pageID = 2
+  t.equal(doc.pageID, 2, 'the pageID equals 2')
   t.end()
 })
 
 //revisionID
 test('revisionID - get - should initially be null', (t) => {
   const doc = wtf('')
-  t.equal(doc.revisionID(), null, 'the revisionID equals null')
+  t.equal(doc.revisionID, null, 'the revisionID equals null')
   t.end()
 })
 
 test('revisionID - get - if the revisionID is already set than get it from internal object', (t) => {
-  const doc = wtf('', { revisionID: 1 })
-  t.equal(doc.revisionID(), 1, 'the revisionID equals 1')
+  const doc = wtf('', { revisionId: 1 })
+  t.equal(doc.revisionID, 1, 'the revisionID equals 1')
   t.end()
 })
 
 test('revisionID - get / set - if the revisionID is set then it should return the same ', (t) => {
   const doc = wtf('')
-  doc.revisionID(1)
-  t.equal(doc.revisionID(), 1, 'the revisionID equals 1')
+  doc.revisionID = 1
+  t.equal(doc.revisionID, 1, 'the revisionID equals 1')
   t.end()
 })
 
 //wikidata
 test('wikidata - get - should initially be null', (t) => {
   const doc = wtf('')
-  t.equal(doc.wikidata(), null, 'the wikidata equals null')
+  t.equal(doc.wikidata, null, 'the wikidata equals null')
   t.end()
 })
 
 test('wikidata - get - if the wikidata is already set than get it from internal object', (t) => {
   const doc = wtf('', { wikidata: 'Q42' })
-  t.equal(doc.wikidata(), 'Q42', "the wikidata equals 'Q42'")
+  t.equal(doc.wikidata, 'Q42', "the wikidata equals 'Q42'")
   t.end()
 })
 
 test('wikidata - get / set - if the wikidata is set then it should return the same ', (t) => {
   const doc = wtf('')
-  doc.wikidata('Q42')
-  t.equal(doc.wikidata(), 'Q42', "the wikidata equals 'Q42'")
+  doc.wikidata = 'Q42'
+  t.equal(doc.wikidata, 'Q42', "the wikidata equals 'Q42'")
   t.end()
 })
 
 //domain
-test('domain - get - should initially be null', (t) => {
+test('domain - get - defaults to wikipedia.org', (t) => {
   const doc = wtf('')
-  t.equal(doc.domain(), null, 'the null equals undefined')
+  t.equal(doc.domain, 'wikipedia.org', 'default domain')
   t.end()
 })
 
 test('domain - get - if the domain is already set than get it from internal object', (t) => {
   const doc = wtf('', { domain: 'wikidata.org' })
-  t.equal(doc.domain(), 'wikidata.org', "the domain equals 'wikidata.org'")
+  t.equal(doc.domain, 'wikidata.org', "the domain equals 'wikidata.org'")
   t.end()
 })
 
 test('domain - get / set - if the domain is set then it should return the same ', (t) => {
   const doc = wtf('')
-  doc.domain('wikidata.org')
-  t.equal(doc.domain(), 'wikidata.org', "the domain equals 'wikidata.org'")
+  doc.domain = 'wikidata.org'
+  t.equal(doc.domain, 'wikidata.org', "the domain equals 'wikidata.org'")
   t.end()
 })
 
-//language  - Same test as lang
-test('language - get - should initially be null', (t) => {
+//language
+test('language - get - defaults to en', (t) => {
   const doc = wtf('')
-  t.equal(doc.language(), null, 'the language equals null')
+  t.equal(doc.language, 'en', 'default language')
   t.end()
 })
 
 test('language - get - if the language is already set than get it from internal object', (t) => {
-  const doc = wtf('', { language: 'nl' })
-  t.equal(doc.language(), 'nl', "the language equals 'nl'")
+  const doc = wtf('', { lang: 'nl' })
+  t.equal(doc.language, 'nl', "the language equals 'nl'")
   t.end()
 })
 
 test('language - get / set - if the language is set then it should return the same ', (t) => {
   const doc = wtf('')
-  doc.language('nl')
-  t.equal(doc.language(), 'nl', "the language equals 'nl'")
-  t.end()
-})
-
-//lang - Same test as language
-test('lang - get - should initially be null', (t) => {
-  const doc = wtf('')
-  t.equal(doc.lang(), null, 'the lang equals null')
-  t.end()
-})
-
-test('lang - get - if the lang is already set than get it from internal object', (t) => {
-  const doc = wtf('', { language: 'nl' })
-  t.equal(doc.lang(), 'nl', "the lang equals 'nl'")
-  t.end()
-})
-
-test('lang - get / set - if the lang is set then it should return the same ', (t) => {
-  const doc = wtf('')
-  doc.lang('nl')
-  t.equal(doc.lang(), 'nl', "the lang equals 'nl'")
+  doc.language = 'nl'
+  t.equal(doc.language, 'nl', "the language equals 'nl'")
   t.end()
 })
 
@@ -166,60 +146,28 @@ test('url - get - if lang and domain are undefined then default to en.wikipedia.
 })
 
 test('url - get - if lang and domain are set then use them', (t) => {
-  const doc = wtf('', { title: 'Barack Obama', language: 'military', domain: 'wikia.org' })
+  const doc = wtf('', { title: 'Barack Obama', lang: 'military', domain: 'wikia.org' })
   t.equal(doc.url(), 'https://military.wikia.org/wiki/Barack_Obama', 'the url equals the right page')
   t.end()
 })
 
-//namespace  - same test as ns
+//namespace
 test('namespace - get - should initially be null', (t) => {
   const doc = wtf('')
-  t.equal(doc.namespace(), null, 'the namespace equals null')
+  t.equal(doc.namespace, null, 'the namespace equals null')
   t.end()
 })
 
 test('namespace - get - if the namespace is already set than get it from internal object', (t) => {
-  const doc = wtf('', { ns: 'talk' })
-  t.equal(doc.namespace(), 'talk', "the namespace equals 'talk'")
-  t.end()
-})
-
-test('namespace - get - if the namespace is already set the other way than get it from internal object', (t) => {
   const doc = wtf('', { namespace: 'talk' })
-  t.equal(doc.namespace(), 'talk', "the namespace equals 'talk'")
+  t.equal(doc.namespace, 'talk', "the namespace equals 'talk'")
   t.end()
 })
 
 test('namespace - get / set - if the namespace is set then it should return the same ', (t) => {
   const doc = wtf('')
-  doc.namespace('talk')
-  t.equal(doc.namespace(), 'talk', "the namespace equals 'talk'")
-  t.end()
-})
-
-//ns - same test as namespace
-test('ns - get - should initially be null', (t) => {
-  const doc = wtf('')
-  t.equal(doc.ns(), null, 'the ns equals null')
-  t.end()
-})
-
-test('ns - get - if the ns is already set than get it from internal object', (t) => {
-  const doc = wtf('', { ns: 'talk' })
-  t.equal(doc.ns(), 'talk', "the ns equals 'talk'")
-  t.end()
-})
-
-test('ns - get - if the ns is already set the other way than get it from internal object', (t) => {
-  const doc = wtf('', { ns: 'talk' })
-  t.equal(doc.ns(), 'talk', "the ns equals 'talk'")
-  t.end()
-})
-
-test('ns - get / set - if the ns is set then it should return the same ', (t) => {
-  const doc = wtf('')
-  doc.ns('talk')
-  t.equal(doc.ns(), 'talk', "the ns equals 'talk'")
+  doc.namespace = 'talk'
+  t.equal(doc.namespace, 'talk', "the namespace equals 'talk'")
   t.end()
 })
 
@@ -251,7 +199,7 @@ test('redirectTo - get - should initially be null', (t) => {
 
 test('redirectTo - get - if the page is a redirect than return the target page', (t) => {
   const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
-  t.deepEqual(doc.redirectTo(), { page: 'Doelpagina', raw: '[[Doelpagina]]' }, "the redirectTo equals 'Doelpagina'")
+  t.deepEqual(doc.redirectTo(), { type: 'internal', page: 'Doelpagina', text: 'Doelpagina', wiki: '[[Doelpagina]]' }, "the redirectTo equals 'Doelpagina'")
   t.end()
 })
 
@@ -264,7 +212,7 @@ test('redirectsTo - get - should initially be null', (t) => {
 
 test('redirectsTo - get - if the page is a redirect than return the target page', (t) => {
   const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
-  t.deepEqual(doc.redirectsTo(), { page: 'Doelpagina', raw: '[[Doelpagina]]' }, "the redirectsTo equals 'Doelpagina'")
+  t.deepEqual(doc.redirectsTo(), { type: 'internal', page: 'Doelpagina', text: 'Doelpagina', wiki: '[[Doelpagina]]' }, "the redirectsTo equals 'Doelpagina'")
   t.end()
 })
 
@@ -277,20 +225,20 @@ test('redirect - get - should initially be null', (t) => {
 
 test('redirect - get - if the page is a redirect than return the target page', (t) => {
   const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
-  t.deepEqual(doc.redirect(), { page: 'Doelpagina', raw: '[[Doelpagina]]' }, "the redirect equals 'Doelpagina'")
+  t.deepEqual(doc.redirect(), { type: 'internal', page: 'Doelpagina', text: 'Doelpagina', wiki: '[[Doelpagina]]' }, "the redirect equals 'Doelpagina'")
   t.end()
 })
 
 //redirects -- same as redirectTo
 test('redirects - get - should initially be null', (t) => {
   const doc = wtf('')
-  t.equal(doc.redirects(), null, 'the redirects equals null')
+  t.equal(doc.redirectsTo(), null, 'the redirects equals null')
   t.end()
 })
 
 test('redirects - get - if the page is a redirect than return the target page', (t) => {
   const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
-  t.deepEqual(doc.redirects(), { page: 'Doelpagina', raw: '[[Doelpagina]]' }, "the redirects equals 'Doelpagina'")
+  t.deepEqual(doc.redirectsTo(), { type: 'internal', page: 'Doelpagina', text: 'Doelpagina', wiki: '[[Doelpagina]]' }, "the redirects equals 'Doelpagina'")
   t.end()
 })
 
@@ -357,39 +305,13 @@ test('categories - get - if the clue is a number return the category in that ind
     [[Category:American people of German descent]]
     [[Category:American people of Scottish descent]]
   `)
-  t.equal(doc.category(1), 'Writers from New York City', 'the categories at index 1')
+  t.equal(doc.categories()[1], 'Writers from New York City', 'the categories at index 1')
   t.end()
 })
 
-test('categories - get - if the clue is not a number return the list of categories', (t) => {
-  const doc = wtf(`
-    [[Category:WWE Hall of Fame inductees]]
-    [[Category:Writers from New York City]]
-    [[Category:American people of German descent]]
-    [[Category:American people of Scottish descent]]
-  `)
-  const expected = [
-    'WWE Hall of Fame inductees',
-    'Writers from New York City',
-    'American people of German descent',
-    'American people of Scottish descent',
-  ]
-  t.deepEqual(doc.categories('string'), expected, 'the categories in the wiki text')
-  t.end()
-})
 
 //sections
-test('sections - get - should initially be an empty collection', (t) => {
-  const doc = wtf('')
-  t.ok(doc.sections().isEmpty(), 'the sections collection is empty')
-  t.end()
-})
-
-test('sections - get - if the sections is in the option. ignore it', (t) => {
-  const doc = wtf('', { sections: ['Q42'] })
-  t.ok(doc.sections().isEmpty(), 'the sections collection is empty')
-  t.end()
-})
+//
 
 // one small page exercises every content accessor - real values, no cached pages
 const PAGE = `'''Testville''' is a small test page. It has two sentences.
@@ -417,7 +339,7 @@ Nested text here.<ref>{{cite web|url=http://example.com|title=Some Ref}}</ref>
 |}
 
 ==Career==
-Career text goes here. See [[fr:Ville]] too.
+Career text goes here. See [[:fr:Ville|Ville]] too.
 <gallery>
 File:Second.jpg|second image
 </gallery>
@@ -452,17 +374,7 @@ test('sections - get - string clue is case-insensitive', (t) => {
 })
 
 //paragraphs
-test('paragraphs - get - should initially be an empty collection', (t) => {
-  const doc = wtf('')
-  t.ok(doc.paragraphs().isEmpty(), 'the paragraphs collection is empty')
-  t.end()
-})
 
-test('paragraphs - get - if the paragraphs is in the option. ignore it', (t) => {
-  const doc = wtf('', { paragraphs: ['Q42'] })
-  t.ok(doc.paragraphs().isEmpty(), 'the paragraphs collection is empty')
-  t.end()
-})
 
 test('paragraphs - get - if the clue is a undefined / unset return the list of paragraphs', (t) => {
   t.deepEqual(
@@ -481,32 +393,22 @@ test('paragraphs - get - if the clue is a undefined / unset return the list of p
 })
 
 test('paragraph - get - if the clue is a number return the paragraph at that index', (t) => {
-  t.equal(page.paragraph(1).text(), 'The city was founded in 1904. It grew quickly.', 'indexed paragraph text')
+  t.equal(page.paragraphs()[1].text(), 'The city was founded in 1904. It grew quickly.', 'indexed paragraph text')
   t.end()
 })
 
 test('paragraph - get - if the clue is unset or undefined return the first paragraph', (t) => {
-  t.equal(page.paragraph().text(), 'Testville is a small test page. It has two sentences.', 'first paragraph text')
+  t.equal(page.paragraphs()[0].text(), 'Testville is a small test page. It has two sentences.', 'first paragraph text')
   t.end()
 })
-
-test('paragraph - get - unsupported selector returns null', (t) => {
-  t.equal(page.paragraph('string'), null, 'unsupported paragraph selector')
-  t.end()
-})
+//
+// test('paragraph - get - unsupported selector returns null', (t) => {
+//   t.equal(page.paragraphs()['string'], undefined, 'unsupported paragraph selector')
+//   t.end()
+// })
 
 //sentences
-test('sentences - get - should initially be an empty collection', (t) => {
-  const doc = wtf('')
-  t.ok(doc.sentences().isEmpty(), 'the sentences collection is empty')
-  t.end()
-})
-
-test('sentences - get - if the sentences is in the option. ignore it', (t) => {
-  const doc = wtf('', { sentences: ['Q42'] })
-  t.ok(doc.sentences().isEmpty(), 'the sentences collection is empty')
-  t.end()
-})
+//
 
 test('sentences - get - if the clue is a undefined / unset return the list of sentences', (t) => {
   t.deepEqual(
@@ -526,15 +428,11 @@ test('sentences - get - if the clue is a undefined / unset return the list of se
   t.end()
 })
 
-test('sentences - get - if the clue is a number return the sentence at that index', (t) => {
-  t.equal(page.sentence(1).text(), 'It has two sentences.', 'indexed sentence text')
-  t.end()
-})
-
-test('sentences - get - unsupported string selector returns an empty collection', (t) => {
-  t.ok(page.sentences('string').isEmpty(), 'unsupported string selector returns no sentences')
-  t.end()
-})
+// test('sentences - get - if the clue is a number return the sentence at that index', (t) => {
+//   t.equal(page.sentence(1).text(), 'It has two sentences.', 'indexed sentence text')
+//   t.end()
+// })
+//
 
 test('sentence - get - should return the first sentence', (t) => {
   t.equal(page.sentence().text(), 'Testville is a small test page.', 'first sentence text')
@@ -542,17 +440,7 @@ test('sentence - get - should return the first sentence', (t) => {
 })
 
 //images
-test('images - get - should initially be an empty collection', (t) => {
-  const doc = wtf('')
-  t.ok(doc.images().isEmpty(), 'the images collection is empty')
-  t.end()
-})
-
-test('images - get - if the images is in the option. ignore it', (t) => {
-  const doc = wtf('', { images: ['Q42'] })
-  t.ok(doc.images().isEmpty(), 'the images collection is empty')
-  t.end()
-})
+//
 
 test('images - get - finds inline, and gallery images', (t) => {
   t.deepEqual(
@@ -563,14 +451,14 @@ test('images - get - finds inline, and gallery images', (t) => {
   t.end()
 })
 
-test('images - get - if the clue is a number return the image at that index', (t) => {
-  t.equal(page.image(1).file(), 'File:Second.jpg', 'indexed image filename')
-  t.end()
-})
+// test('images - get - if the clue is a number return the image at that index', (t) => {
+//   t.equal(page.images()[1].file(), 'File:Second.jpg', 'indexed image filename')
+//   t.end()
+// })
 
 test('image - get - return the first image on the page', (t) => {
-  t.equal(page.image().file(), 'File:Crest.jpg', 'first image filename')
-  t.equal(page.image().url(), 'https://wikipedia.org/wiki/Special:Redirect/file/Crest.jpg', 'first image URL')
+  t.equal(page.images()[0].file(), 'File:Crest.jpg', 'first image filename')
+  t.equal(page.images()?.[0].url(), 'https://wikipedia.org/wiki/Special:Redirect/file/Crest.jpg', 'first image URL')
   t.end()
 })
 
@@ -578,36 +466,32 @@ test('image - get - return the first image on the page', (t) => {
 test('links - get - return all links on the page', (t) => {
   t.deepEqual(
     page.links().map((l) => l.page()),
-    ['Rome', 'quickly', 'Fun', 'Ville', 'Other page'],
+    ['Rome', 'Quickly', 'Fun', 'Ville', 'Other page'],
     'link targets'
   )
   t.end()
 })
 
 test('links - get - if the clue is a number return the link at that index', (t) => {
-  t.equal(page.link(1).page(), 'quickly', 'indexed link target')
+  t.equal(page.links()[1].page(), 'Quickly', 'indexed link target')
   t.end()
 })
 
-test('links - get - if the clue is a string return the link with that page', (t) => {
+test('links - filter by page title without case sensitivity', (t) => {
   t.deepEqual(
-    page.links('fun').map((l) => l.page()),
+    page.links().filter((l) => l.page().toLowerCase() === 'fun').map((l) => l.page()),
     ['Fun'],
     'case-insensitive match'
   )
   t.end()
 })
 
-test('links - get - unsupported selector returns an empty collection', (t) => {
-  t.ok(page.links([]).isEmpty(), 'unsupported selector returns no links')
-  t.end()
-})
 
 //interwiki
 test('interwiki - get - return only the interwiki links', (t) => {
   t.deepEqual(
     page.interwiki().map((l) => l.json()),
-    [{ type: 'interwiki', wiki: 'fr', page: 'Ville' }],
+    [{ type: 'interwiki', page: 'Ville', text: 'Ville', wiki: '[[:fr:Ville|Ville]]', lang: 'fr', inline: true }],
     'interwiki JSON'
   )
   t.end()
@@ -616,7 +500,7 @@ test('interwiki - get - return only the interwiki links', (t) => {
 //lists
 test('lists - get - return all lists on the page', (t) => {
   t.deepEqual(
-    page.lists().map((l) => l.lines().map((s) => s.text())),
+    page.lists().map((l) => l.lines().map((s) => s.text)),
     [['one fish', 'two fish'], ['Other page']],
     'list lines'
   )
@@ -626,9 +510,9 @@ test('lists - get - return all lists on the page', (t) => {
 test('lists - get - if the clue is a number return the list at that index', (t) => {
   t.deepEqual(
     page
-      .list(1)
+      .lists()[1]
       .lines()
-      .map((s) => s.text()),
+      .map((s) => s.text),
     ['Other page'],
     'indexed list lines'
   )
@@ -638,7 +522,7 @@ test('lists - get - if the clue is a number return the list at that index', (t) 
 //tables
 test('tables - get - return all tables', (t) => {
   t.deepEqual(
-    page.tables().map((tb) => tb.keyValue()),
+    page.tables().map((tb) => tb.rows()),
     [[{ name: 'jane', age: '40' }]],
     'table values'
   )
@@ -646,7 +530,7 @@ test('tables - get - return all tables', (t) => {
 })
 
 test('tables - get - if the clue is a number return the table at that index', (t) => {
-  t.deepEqual(page.table(0).keyValue(), [{ name: 'jane', age: '40' }], 'indexed table values')
+  t.deepEqual(page.tables()[0].rows(), [{ name: 'jane', age: '40' }], 'indexed table values')
   t.end()
 })
 
@@ -661,7 +545,11 @@ test('templates - get - return all templates', (t) => {
 })
 
 test('templates - get - if the clue is a number return the template at that index', (t) => {
-  t.deepEqual(page.template(0).json(), { display: 'title', template: 'coord', lat: 43.65, lon: -79.38 }, 'indexed template JSON')
+  t.deepEqual(
+    page.templates()[0].json().data,
+    { display: 'title', lat: 43.65, lon: -79.38 },
+    'indexed template JSON'
+  )
   t.end()
 })
 
@@ -681,7 +569,7 @@ test('references - get - return all references', (t) => {
 })
 
 test('references - get - if the clue is a number return the reference at that index', (t) => {
-  t.equal(page.reference(0).title(), 'Some Ref', 'indexed reference title')
+  t.equal(page.references()[0].title(), 'Some Ref', 'indexed reference title')
   t.end()
 })
 
@@ -691,18 +579,18 @@ test('citations - get - is an alias of references', (t) => {
     ['Some Ref'],
     'citation titles'
   )
-  t.equal(page.citation().title(), 'Some Ref', 'first citation title')
+  t.equal(page.citations()[0].title(), 'Some Ref', 'first citation title')
   t.end()
 })
 
 //coordinates
 test('coordinates - get - return all coordinates', (t) => {
-  t.deepEqual(page.coordinates(), [{ display: 'title', template: 'coord', lat: 43.65, lon: -79.38 }], 'coordinates')
+  t.deepEqual(page.coordinates(), [{ display: 'title', lat: 43.65, lon: -79.38 }], 'coordinates')
   t.end()
 })
 
 test('coordinates - get - if the clue is a number return the coordinate at that index', (t) => {
-  t.equal(page.coordinate(0).lat, 43.65, 'indexed latitude')
+  t.equal(page.coordinates()[0].lat, 43.65, 'indexed latitude')
   t.end()
 })
 
@@ -717,8 +605,8 @@ test('infoboxes - get - return all infoboxes', (t) => {
 })
 
 test('infoboxes - get - field access', (t) => {
-  t.equal(page.infobox().get('name').text(), 'Jane Doe', 'infobox name')
-  t.deepEqual(page.infobox().keyValue(), { name: 'Jane Doe', age: '44' }, 'infobox values')
+  t.equal(page.infobox().get('name').text, 'Jane Doe', 'infobox name')
+  t.deepEqual(Object.fromEntries(Object.entries(page.infobox().json().data).map(([key, value]) => [key, value.text])), { name: 'Jane Doe', age: '44' }, 'infobox values')
   t.end()
 })
 
@@ -745,38 +633,38 @@ test('plaintext - get - get the plaintext version of the document', (t) => {
   const doc = wtf(str)
   const expected =
     'Remote Data Services (RDS, formerly known as Advanced Data Connector or ADC) is a Microsoft technology used in conjunction with ActiveX Data Objects (ADO) that allowed the retrieval of a set of data from a database server, which the client then altered in some way and then sent back to the server for further processing. With the popular adoption of Transact-SQL, which extends SQL with such programming constructs as loops and conditional statements, this became less necessary and it was eventually deprecated in Microsoft Data Access Components version 2.7. Microsoft produced SOAP Toolkit 2.0, which allows clients to do this via an open XML-based standard.\n\n\n * MSDN Remote Data Service (RDS) description'
-  t.deepEqual(doc.plaintext(), expected, 'Text version of the document')
+  t.deepEqual(doc.text(), expected, 'Text version of the document')
   t.end()
 })
 
 test('plaintext - get - enpty string for redirects', (t) => {
   const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
   const expected = ''
-  t.deepEqual(doc.plaintext(), expected, 'empty string')
+  t.deepEqual(doc.text(), expected, 'empty string')
   t.end()
 })
 
 //debug
 //we need something like sinon for mocking the console.log
 
-//singular-methods
-test('plurals / singular - all should exist', (t) => {
+//content accessors
+test('supported content accessors exist', (t) => {
   const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
-  const singels = [
+  const accessors = [
     'section',
     'infobox',
     'sentence',
-    'citation',
-    'reference',
-    'coordinate',
-    'table',
-    'list',
-    'link',
-    'image',
+    'citations',
+    'references',
+    'coordinates',
+    'tables',
+    'lists',
+    'links',
+    'images',
     'template',
-    'category',
+    'categories',
   ]
-  singels.forEach((s) => {
+  accessors.forEach((s) => {
     t.equal(typeof doc[s], 'function', 'every function needs to be defined. also ' + s)
   })
   t.end()

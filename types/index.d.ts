@@ -1,5 +1,5 @@
 type CollectionItem = {
-  json: (...args: any[]) => any
+  json: () => any
   text: (...args: any[]) => string
   wikitext: () => string
 }
@@ -10,7 +10,7 @@ interface Collection<T extends CollectionItem> extends Array<T> {
   filter<S extends T>(predicate: (value: T, index: number, array: T[]) => value is S, thisArg?: any): Collection<S>
   filter(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): this
   slice(start?: number, end?: number): this
-  json(...args: Parameters<T['json']>): ReturnType<T['json']>[]
+  json(): ReturnType<T['json']>[]
   text(options?: object): string
   wikitext(): string
 }
@@ -37,7 +37,7 @@ declare class Image {
   caption(): string
   file(): string
   format(): string | null
-  json(options?: object): ImageJson
+  json(): ImageJson
   links(selector?: string | number): LinkCollection
   src(): string
   text(): string
@@ -65,7 +65,7 @@ declare class Document {
   isDisambiguation(): boolean
   isRedirect(): boolean
   isStub(): boolean
-  json(options?: object | 'sm' | 'md' | 'lg'): Record<string, unknown>
+  json(): Record<string, unknown>
   lang(lang?: string): string | null
   language(lang?: string): string | null
   links(selector?: string | number): LinkCollection
@@ -78,14 +78,13 @@ declare class Document {
   pageID(id?: number): number | null
   paragraph(selector?: number): Paragraph | null
   paragraphs(selector?: number): Collection<Paragraph>
-  plaintext(options?: object): string
   redirect(): Record<string, unknown> | null
   redirects(): Record<string, unknown> | null
   redirectsTo(): Record<string, unknown> | null
   redirectTo(): Record<string, unknown> | null
   references(clue?: number): Collection<Reference>
   reference(clue?: number): Reference | null
-  section(clue?: string | number): Section | null
+  section(clue?: string | number): Section
   sections(clue?: string | number): SectionCollection
   sentence(clue?: number): Sentence | null
   sentences(selector?: number): Collection<Sentence>
@@ -105,6 +104,8 @@ declare class Document {
 }
 
 declare class Section {
+  static empty(): Section
+  isEmpty(): boolean
   child(selector?: string | number): Section | null
   children(selector?: string | number): SectionCollection
   citations(clue?: number): Collection<Reference>
@@ -119,7 +120,7 @@ declare class Section {
   infoboxes(clue?: string | number): InfoboxCollection
   infobox(clue?: string | number): Infobox | null
   interwiki(selector?: string | number): LinkCollection
-  json(options?: object): Record<string, unknown>
+  json(): Record<string, unknown>
   last(): Section | null
   lastSibling(): Section | null
   links(selector?: string | number): LinkCollection
@@ -149,17 +150,14 @@ declare class Section {
 }
 
 declare class Infobox {
-  /** the raw key-value data of the infobox, as Sentence objects */
-  data: Record<string, Sentence>
-  get(key: string): Sentence
-  get(keys: string[]): Sentence[]
-  get(): Sentence
-  image(): Image | null
-  images(): Image | null
-  json(options?: object): Record<string, unknown>
-  keyValue(): Record<string, string>
-  links(selector?: string | number): LinkCollection
-  template(): string
+  readonly kind: string | null
+  get(key: string): BlockJson | BlockJson[] | undefined
+  getFirst(keys: string[]): BlockJson | BlockJson[] | undefined
+  getAll(keys: string[]): Array<BlockJson | BlockJson[] | undefined>
+  image(): Image | undefined
+  images(): Image[]
+  json(): InfoboxJson
+  links(): Link[]
   text(): string
   type(): string
   wikitext(): string
@@ -167,6 +165,9 @@ declare class Infobox {
 }
 
 declare class Template {
+  readonly kind: string | null
+  readonly type: string
+  isEmpty(): boolean
   json(): TemplateJson
   text(): string
   wikitext(): string
@@ -176,7 +177,7 @@ declare class Table {
   // a string key gets a flat column; an array of keys gets a row-list
   get(key: string): (string | null)[]
   get(keys: string[]): Record<string, string>[]
-  json(options?: object): Record<string, unknown>[]
+  json(): Record<string, unknown>[]
   keyval(options?: object): Record<string, string>[]
   keyValue(options?: object): Record<string, string>[]
   keyvalue(options?: object): Record<string, string>[]
@@ -186,8 +187,9 @@ declare class Table {
 }
 
 declare class Reference {
-  json(options?: object): Record<string, unknown>
-  links(selector?: string | number): LinkCollection
+  readonly kind: string | null
+  json(): TemplateJson
+  links(): Link[]
   text(): string
   title(): string
   wikitext(): string
@@ -199,7 +201,7 @@ declare class Paragraph {
   images(clue?: number): Collection<Image>
   image(clue?: number): Image | null
   interwiki(selector?: string | number): LinkCollection
-  json(options?: object): Record<string, unknown>
+  json(): Record<string, unknown>
   links(selector?: string | number): LinkCollection
   link(clue?: string | number): Link | null
   lists(clue?: number): List[]
@@ -218,14 +220,15 @@ declare class Link {
   wikitext(): string
   page(str?: string): string
   anchor(str?: string): string
-  wiki(str?: string): string | undefined
+  wiki(): string
+  interwiki(): string | { wiki: string; lang: string } | undefined
   type(str?: string): string
   site(str?: string): string
   href(): string
 }
 
 declare class List {
-  json(options?: object): Record<string, unknown>[]
+  json(): Record<string, unknown>[]
   lines(selector?: number): Collection<Sentence>
   links(selector?: string | number): LinkCollection
   text(): string
@@ -233,21 +236,22 @@ declare class List {
 }
 
 declare class Sentence {
+  static empty(): Sentence
   bold(clue?: number): string | null
-  bolds(clue?: number): string[]
+  bolds(clue?: number): { text: string; start: number; end: number }[]
   interwiki(selector?: string | number): LinkCollection
   isEmpty(): boolean
   italic(clue?: number): string | null
-  italics(clue?: number): string[]
-  json(options?: object): Record<string, unknown>
+  italics(clue?: number): { text: string; start: number; end: number }[]
+  json(): Record<string, unknown>
   link(clue?: string | number): Link | null
   links(selector?: string | number): LinkCollection
-  plaintext(str?: string): string
   text(str?: string): string
   wikitext(): string
 }
 
 type FetchOptions = {
+  project?: string | undefined
   path?: string | undefined
   wiki?: string | undefined
   domain?: string | undefined
@@ -272,6 +276,7 @@ type FetchResult<T> = T extends unknown[] ? Document[] : Document | null
 
 /** options for `wtf(text, options)` - metadata about the page, all optional */
 type DocumentOptions = {
+  project?: string
   title?: string
   pageID?: number
   id?: number
@@ -288,15 +293,28 @@ type DocumentOptions = {
   userAgent?: string
   'User-Agent'?: string
   'Api-User-Agent'?: string
-  /** called for templates wtf doesn't recognise. return replacement text, or null to leave it */
-  templateFallbackFn?: (body: string, list: object[], toJSON: Function, unused: null, doc: Document) => string | null
   [key: string]: unknown
 }
 
-/** the parsed data of a template. `template` is its lower-cased name */
+/** Template identity, recognized parser kind, and parsed payload. */
 type TemplateJson = {
-  template?: string
-  [key: string]: unknown
+  template: string
+  kind: string | null
+  wiki: string
+  text: string
+  data: Record<string, any>
+}
+
+type BlockJson = {
+  text: string
+  wiki: string
+  links?: LinkJson[]
+  bolds?: Array<{ text: string; start: number; end: number }>
+  italics?: Array<{ text: string; start: number; end: number }>
+}
+
+type InfoboxJson = Omit<TemplateJson, 'data'> & {
+  data: Record<string, BlockJson | BlockJson[]>
 }
 
 /** the json() shape of a Link */
@@ -304,7 +322,7 @@ type LinkJson = {
   text?: string
   type: 'internal' | 'interwiki' | 'external'
   page?: string
-  wiki?: string
+  interwiki?: string | { wiki: string; lang: string }
   site?: string
   anchor?: string
 }
@@ -312,11 +330,16 @@ type LinkJson = {
 /** the json() shape of an Image */
 type ImageJson = {
   file: string
-  thumb?: string
-  url?: string
-  caption?: string
+  wiki: string
+  domain?: string
+  caption?: {
+    text: string
+    wiki: string
+    links?: LinkJson[]
+    bolds?: { text: string; start: number; end: number }[]
+    italics?: { text: string; start: number; end: number }[]
+  }
   alt?: string
-  links?: Link[]
   [key: string]: unknown
 }
 
@@ -389,6 +412,8 @@ type Link_ = Link
 type List_ = List
 type Sentence_ = Sentence
 type DocumentOptions_ = DocumentOptions
+type BlockJson_ = BlockJson
+type InfoboxJson_ = InfoboxJson
 type TemplateJson_ = TemplateJson
 type LinkJson_ = LinkJson
 type ImageJson_ = ImageJson
@@ -420,6 +445,8 @@ declare namespace wtf {
   export type List = List_
   export type Sentence = Sentence_
   export type DocumentOptions = DocumentOptions_
+  export type BlockJson = BlockJson_
+  export type InfoboxJson = InfoboxJson_
   export type TemplateJson = TemplateJson_
   export type LinkJson = LinkJson_
   export type ImageJson = ImageJson_
@@ -456,6 +483,8 @@ export type {
   List,
   Sentence,
   DocumentOptions,
+  BlockJson,
+  InfoboxJson,
   TemplateJson,
   LinkJson,
   ImageJson,

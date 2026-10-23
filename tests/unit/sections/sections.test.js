@@ -12,8 +12,8 @@ i believe that 5===true and y===false
     .sections()
     .map((s) => s.json())
   t.equal(sections.length, 2, 'two-sections')
-  t.equal(sections[0].title, '', 'implicit-section')
-  t.equal(sections[1].title, 'Foo Bar', 'clean-section')
+  t.equal(sections[0].title.text, '', 'implicit-section')
+  t.equal(sections[1].title.text, 'Foo Bar', 'clean-section')
   t.end()
 })
 
@@ -74,7 +74,7 @@ oh yeah
   const json = wtf(str).json()
 
   t.equal(json.sections.length, 2, 'have both sections')
-  t.equal(json.sections[1].title, '', 'empty title now')
+  t.equal(json.sections[1].title.text, '', 'empty title now')
   t.end()
 })
 

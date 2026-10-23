@@ -1,21 +1,22 @@
 //
 const toMarkdown = function () {
-  if (this.data && this.data.url && this.data.title) {
-    return `⌃ [${this.data.title}](${this.data.url})`
-  } else if (this.data.encyclopedia) {
-    return `⌃ ${this.data.encyclopedia}`
-  } else if (this.data.title) {
+  const data = this.json().data
+  if (data && data.url && data.title) {
+    return `⌃ [${data.title}](${data.url})`
+  } else if (data.encyclopedia) {
+    return `⌃ ${data.encyclopedia}`
+  } else if (data.title) {
     //cite book, etc
-    let str = this.data.title
-    if (this.data.author) {
-      str += this.data.author
+    let str = data.title
+    if (data.author) {
+      str += data.author
     }
-    if (this.data.first && this.data.last) {
-      str += this.data.first + ' ' + this.data.last
+    if (data.first && data.last) {
+      str += data.first + ' ' + data.last
     }
     return `⌃ ${str}`
-  } else if (this.inline) {
-    return `⌃ ${this.inline.markdown()}`
+  } else if (data.inline) {
+    return `⌃ ${data.inline.text}`
   }
   return ''
 }

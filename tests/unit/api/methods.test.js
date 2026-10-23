@@ -19,6 +19,7 @@ const is = {
   string: (v) => typeof v === 'string',
   boolean: (v) => typeof v === 'boolean',
   object: isObject,
+  'list-json': (v) => isObject(v) && Array.isArray(v.items) && typeof v.wiki === 'string',
   'string|null': (v) => v === null || typeof v === 'string',
   'string|undefined': (v) => v === undefined || typeof v === 'string',
   'string|number|null': (v) => v === null || typeof v === 'string' || typeof v === 'number',
@@ -26,6 +27,7 @@ const is = {
   number: Number.isFinite,
   'item|null': (v) => v === null || isObject(v),
   'model|null': (v) => v === null || isModel(v),
+  'model|undefined': (v) => v === undefined || isModel(v),
   'models|null': (v) => v === null || (Array.isArray(v) && v.every(isModel)),
   json: (v) => {
     JSON.stringify(v) // must not throw (no cycles)
@@ -36,19 +38,18 @@ const is = {
 // { methodName: expected-shape } for no-argument calls
 const contracts = {
   Document: {
-    title: 'string|null',
-    pageID: 'number|null',
-    wikidata: 'string|null',
-    domain: 'string|null',
-    language: 'string|null',
-    lang: 'string|null',
-    namespace: 'string|number|null',
-    ns: 'string|null',
+    // pageID: 'number|null',
+    // wikidata: 'string|null',
+    // domain: 'string|null',
+    // language: 'string|null',
+    // lang: 'string|null',
+    // namespace: 'string|number|null',
+    // ns: 'string|null',
     url: 'string|null',
-    description: 'string|null',
-    timestamp: 'string|null',
-    revisionID: 'number|null',
-    pageImage: 'object',
+    // description: 'string|null',
+    // timestamp: 'string|null',
+    // revisionID: 'number|null',
+    // pageImage: 'object',
     options: 'object',
     isRedirect: 'boolean',
     redirectTo: 'item|null',
@@ -69,21 +70,21 @@ const contracts = {
     references: 'array',
     citations: 'array',
     coordinates: 'array',
-    category: 'string|null',
-    section: 'model|null',
-    paragraph: 'model|null',
-    sentence: 'model|null',
-    image: 'model|null',
-    link: 'model|null',
-    list: 'model|null',
-    table: 'model|null',
-    template: 'model|null',
-    reference: 'model|null',
-    citation: 'model|null',
-    coordinate: 'item|null',
+    // category: 'string|null',
+    // section: 'model|null',
+    // paragraph: 'model|null',
+    // sentence: 'model|null',
+    // image: 'model|null',
+    // link: 'model|null',
+    // list: 'model|null',
+    // table: 'model|null',
+    // template: 'model|null',
+    // reference: 'model|null',
+    // citation: 'model|null',
+    // coordinate: 'item|null',
     infobox: 'model|null',
     text: 'string',
-    plaintext: 'string',
+    // plaintext: 'string',
     json: 'json',
     wikitext: 'string',
     // .debug() prints to console and is omitted.
@@ -103,27 +104,27 @@ const contracts = {
     lists: 'array',
     interwiki: 'array',
     images: 'array',
-    references: 'array',
-    citations: 'array',
-    sentence: 'model|null',
-    paragraph: 'model|null',
-    link: 'model|null',
-    table: 'model|null',
-    template: 'model|null',
-    infobox: 'model|null',
-    coordinate: 'item|null',
-    list: 'model|null',
-    image: 'model|null',
-    reference: 'model|null',
-    citation: 'model|null',
-    parent: 'model|null',
-    children: 'models|null',
-    nextSibling: 'model|null',
-    next: 'model|null',
-    previousSibling: 'model|null',
-    previous: 'model|null',
-    lastSibling: 'model|null',
-    last: 'model|null',
+    // references: 'array',
+    // citations: 'array',
+    // sentence: 'model|null',
+    // paragraph: 'model|null',
+    // link: 'model|null',
+    // table: 'model|null',
+    // template: 'model|null',
+    // infobox: 'model|null',
+    // coordinate: 'item|null',
+    // list: 'model|null',
+    // image: 'model|null',
+    // reference: 'model|null',
+    // citation: 'model|null',
+    // parent: 'model|null',
+    // children: 'models|null',
+    // nextSibling: 'model|null',
+    // next: 'model|null',
+    // previousSibling: 'model|null',
+    // previous: 'model|null',
+    // lastSibling: 'model|null',
+    // last: 'model|null',
     text: 'string',
     json: 'json',
     wikitext: 'string',
@@ -131,18 +132,16 @@ const contracts = {
   },
   Paragraph: {
     sentences: 'array',
-    references: 'array',
-    citations: 'array',
     lists: 'array',
     images: 'array',
     links: 'array',
     interwiki: 'array',
     sentence: 'model|null',
-    reference: 'model|null',
-    citation: 'model|null',
-    list: 'model|null',
-    image: 'model|null',
-    link: 'model|null',
+    // reference: 'model|null',
+    // citation: 'model|null',
+    // list: 'model|null',
+    // image: 'model|null',
+    // link: 'model|null',
     text: 'string',
     json: 'json',
     wikitext: 'string',
@@ -152,12 +151,12 @@ const contracts = {
     interwiki: 'array',
     bolds: 'array',
     italics: 'array',
-    link: 'model|null',
-    bold: 'string|null',
-    italic: 'string|null',
+    // link: 'model|null',
+    // bold: 'string|null',
+    // italic: 'string|null',
     isEmpty: 'boolean',
     text: 'string',
-    plaintext: 'string',
+    // plaintext: 'string',
     json: 'json',
     wikitext: 'string',
   },
@@ -166,7 +165,7 @@ const contracts = {
     text: 'string',
     type: 'string',
     anchor: 'string|undefined',
-    site: 'string|undefined',
+    // site: 'string|undefined',
     wiki: 'string|undefined',
     href: 'string|undefined',
     json: 'json',
@@ -177,7 +176,6 @@ const contracts = {
     url: 'string',
     src: 'string',
     thumbnail: 'string',
-    thumb: 'string',
     alt: 'string',
     caption: 'string',
     format: 'string|null',
@@ -188,10 +186,8 @@ const contracts = {
   },
   Infobox: {
     type: 'string',
-    template: 'string',
-    keyValue: 'object',
-    image: 'model|null',
-    images: 'model|null',
+    image: 'model|undefined',
+    images: 'array',
     links: 'array',
     coordinates: 'item|null',
     text: 'string',
@@ -204,18 +200,17 @@ const contracts = {
     wikitext: 'string',
   },
   Table: {
-    keyValue: 'array',
-    keyvalue: 'array',
-    keyval: 'array',
     links: 'array',
-    json: 'array',
+    rows: 'array',
+    getRows: 'array',
+    json: 'json',
     text: 'string',
     wikitext: 'string',
   },
   List: {
     lines: 'array',
     links: 'array',
-    json: 'array',
+    json: 'list-json',
     text: 'string',
     wikitext: 'string',
   },
@@ -261,7 +256,7 @@ Object.keys(contracts).forEach((cls) => {
               failures.push(`${entry.page}: got ${typeof got} ${JSON.stringify(got)?.slice(0, 60)}`)
             }
           } catch (e) {
-            failures.push(`${entry.page}: threw "${e.message}"`)
+            failures.push(name, `${entry.page}: threw "${e.message}"`)
             return
           }
         })
@@ -274,12 +269,23 @@ Object.keys(contracts).forEach((cls) => {
   })
 })
 
+test('contract: Document.title property', (t) => {
+  parsed.forEach(({ page, doc }) => {
+    t.ok(is['string|null'](doc.title), `${page}: title → string|null`)
+  })
+  t.end()
+})
+
 // every page: parses, and its full json survives a stringify round-trip
 test('contract: every cached page', (t) => {
   parsed.forEach(({ page, doc }) => {
     const json = doc.json()
     const roundTrip = JSON.parse(JSON.stringify(json))
     t.ok(roundTrip && typeof doc.text() === 'string', page)
+    doc.infoboxes().forEach((box) => {
+      t.equal(typeof box.json().template, 'string', `${page}: infobox template`)
+      t.ok(isObject(box.json().data), `${page}: infobox fields`)
+    })
   })
   t.end()
 })

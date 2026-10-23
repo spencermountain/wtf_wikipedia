@@ -11,7 +11,7 @@ const byInfobox = function (doc, prop) {
     if (Object.hasOwn(mapping, type)) {
       const s = inf.get(prop)
       if (s) {
-        return s.text()
+        return s.text || ''
       }
     }
   }

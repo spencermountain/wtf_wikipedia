@@ -33,8 +33,8 @@ test('node.js-infobox-logo', function (t) {
     | license = [[MIT license]]<ref>{{cite web|title=node/LICENSE at master|url=https://github.com/nodejs/node/blob/master/LICENSE|website=GitHub|publisher=Node.js Foundation|accessdate = 17 September 2018|date=17 September 2018}}</ref><ref>{{cite web|title=The MIT License|url=https://opensource.org/licenses/MIT|website=Open Source Initiative|accessdate = 17 September 2018|date=17 September 2018}}</ref>
     }}
 `
-  const obj = wtf(str).infobox(0).keyValue()
-  t.equal(obj[`logo`], 'Node.js logo.svg', 'found logo val')
+  const obj = wtf(str).infoboxes()[0]
+  t.equal(obj.images()[0].file(), 'File:Node.js_logo.svg', 'found logo filename')
   t.end()
 })
 
@@ -49,11 +49,11 @@ test('french-infobox', function (t) {
   | chiffre d'affaires        = found2
  }}
 `
-  const obj = wtf(str).infobox(0).keyValue()
-  t.equal(obj[`secteurs d'activités`], 'found1', 'found secteurs val')
-  t.equal(obj[`chiffre d'affaires`], 'found2', 'found chiffre val')
-  t.equal(obj[`siège (ville)`], 'city', 'found city val')
-  t.equal(obj[`société sœur`], 'sister', 'found sister val')
+  const obj = wtf(str).infoboxes()[0]
+  t.equal(obj.get(`secteurs d'activités`).text, 'found1', 'found secteurs val')
+  t.equal(obj.get(`chiffre d'affaires`).text, 'found2', 'found chiffre val')
+  t.equal(obj.get(`siège (ville)`).text, 'city', 'found city val')
+  t.equal(obj.get(`société sœur`).text, 'sister', 'found sister val')
   t.end()
 })
 
@@ -69,9 +69,9 @@ test('nested-london-infobox', function (t) {
    }}
   }}
 `
-  const obj = wtf(str).infobox('country').keyValue()
-  t.equal(obj[`common_name`], 'United Kingdom', 'found common_name val')
-  t.equal(obj[`name`], 'hello', 'found name val')
+  const obj = wtf(str).infobox('country')
+  t.equal(obj.get(`common_name`).text, 'United Kingdom', 'found common_name val')
+  t.equal(obj.get(`name`).text, 'hello', 'found name val')
   t.end()
 })
 
@@ -84,7 +84,7 @@ test('ukrainian-infobox', function (t) {
   let doc = wtf(str)
   let json = { foo: {} }
   if (doc.infoboxes()[0]) {
-    json = doc.infoboxes()[0].json()
+    json = doc.infoboxes()[0].json().data
   }
   t.equal(json.foo.text, 'bar', 'ukr infobox')
 
@@ -96,7 +96,7 @@ test('ukrainian-infobox', function (t) {
   doc = wtf(str)
   json = { foo: {} }
   if (doc.infoboxes()[0]) {
-    json = doc.infoboxes()[0].json()
+    json = doc.infoboxes()[0].json().data
   }
   t.equal(json.жінка.text, 'bar', 'ukr officeholder infobox')
   t.end()
@@ -110,10 +110,10 @@ test('tabs-in-infobox', function (t) {
 |alma_mater             = [[St Peter's College, Oxford]]
 }}
 `
-  const obj = wtf(str).infobox().keyValue()
-  t.equal(obj[`successor1`], 'Wistin Abela', 'found successor1 val')
-  t.equal(obj[`term_end2`], 'March 1997', 'found term_end2 val')
-  t.equal(obj[`alma_mater`], `St Peter's College, Oxford`, 'found alma_mater val')
+  const obj = wtf(str).infobox()
+  t.equal(obj.get(`successor1`).text, 'Wistin Abela', 'found successor1 val')
+  t.equal(obj.get(`term_end2`).text, 'March 1997', 'found term_end2 val')
+  t.equal(obj.get(`alma_mater`).text, `St Peter's College, Oxford`, 'found alma_mater val')
   t.end()
 })
 
@@ -128,7 +128,7 @@ test('slash-in-infobox', function (t) {
 }}`
 
   const doc = wtf(str)
-  const json = doc.infobox().json()
+  const json = doc.infobox().json().data
   t.equal(json.term_end3.text, 'January 15, 2009', 'term_end3')
   t.equal(json['jr/sr3'].text, 'United States Senator', 'slash')
   t.end()
@@ -142,7 +142,7 @@ test('double-prop-infobox', function (t) {
     | Office              =
     }}`
   const doc = wtf(str)
-  const json = doc.infobox().json()
+  const json = doc.infobox().json().data
   t.equal(json['office'].text, 'President Bhartiya Janta Party(BJP) Indore, Madhya Pradesh', 'office')
   t.end()
 })
@@ -153,7 +153,7 @@ test('infobox image', (t) => {
   t.equal(img.file(), 'File:Foo_bar.jpg', 'image filename')
   t.equal(img.caption(), 'neat', 'image caption')
   t.equal(img.url(), 'https://wikipedia.org/wiki/Special:Redirect/file/Foo_bar.jpg', 'image URL')
-  t.equal(wtf('{{Infobox person|name=NoPic}}').infobox().image(), null, 'no image is null')
+  t.equal(wtf('{{Infobox person|name=NoPic}}').infobox().image(), undefined, 'no image is undefined')
   t.end()
 })
 

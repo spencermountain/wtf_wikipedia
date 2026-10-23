@@ -9,17 +9,21 @@ test('fetch-as-promise', async (t) => {
     'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
   })
   t.ok(doc.sections().length > 0, 'promise returned document')
-  t.equal(doc.language(), 'en', 'language')
-  t.equal(doc.title(), 'Tony Hawk', 'page title')
-  t.equal(doc.pageID(), 87474, 'page ID')
-  t.equal(doc.wikidata(), 'Q295020', 'Wikidata ID')
-  t.notEqual(doc.revisionID(), null, 'revision ID')
-  t.notEqual(doc.timestamp(), null, 'timestamp')
-  t.notEqual(doc.description(), null, 'description')
+  t.equal(doc.language, 'en', 'language')
+  t.equal(doc.title, 'Tony Hawk', 'page title')
+  t.equal(doc.pageID, 87474, 'page ID')
+  t.equal(doc.wikidata, 'Q295020', 'Wikidata ID')
+  t.notEqual(doc.revisionID, null, 'revision ID')
+  t.notEqual(doc.timestamp, null, 'timestamp')
+  t.notEqual(doc.description, null, 'description')
 })
 
 test('promise rejects on error if no callback', async (t) => {
-  await assert.rejects(wtf.fetch('https://example.com', 'en'), { name: 'Error', message: /^HTTP \d+/ }, 'HTTP error rejects promise')
+  await assert.rejects(
+    wtf.fetch('https://example.com', 'en'),
+    { name: 'Error', message: /^HTTP \d+/ },
+    'HTTP error rejects promise'
+  )
   t.pass('request rejects with an HTTP error')
 
   t.end()
@@ -82,13 +86,7 @@ test('ambiguous-pageids', async function (t) {
 
 test('intensive', async (t) => {
   /* fires a bunch of requests in parallel - this should be enough to get blocked by wikipedia if the user agent is not set correctly */
-  const pages = [
-    'Mouse',
-    'Rat',
-    'Porcupine',
-    'Chipmunk',
-    'Vole',
-  ]
+  const pages = ['Mouse', 'Rat', 'Porcupine', 'Chipmunk', 'Vole']
   t.plan(pages.length)
   const promises = pages.map((page) =>
     wtf.fetch(page, {

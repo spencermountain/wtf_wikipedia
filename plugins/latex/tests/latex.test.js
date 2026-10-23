@@ -10,11 +10,11 @@ const tidy = (str) => {
 
 test('basic-latex', (t) => {
   let have = wtf('that cat is [[a]] cool dude').sentence().latex()
-  let want = 'that cat is \\href{./a}{a} cool dude'
+  let want = 'that cat is \\href{./A}{a} cool dude'
   t.equal(tidy(have), tidy(want), 'link')
 
   have = wtf('that cat is [[ab cd]] cool dude').sentence().latex()
-  want = 'that cat is \\href{./ab_cd}{ab cd} cool dude'
+  want = 'that cat is \\href{./Ab_cd}{ab cd} cool dude'
   t.equal(tidy(have), tidy(want), 'link-blank')
 
   have = wtf('that cat is [http://www.wikiversity.org ab cd] cool dude').sentence().latex()
@@ -22,7 +22,7 @@ test('basic-latex', (t) => {
   t.equal(tidy(have), tidy(want), 'link-external')
 
   //Image simple
-  have = wtf(`My image [File:my_image.png]`).image(0).latex()
+  have = wtf(`My image [[File:my_image.png]]`).images()[0].latex()
   want =
     '\\begin{figure}\n\\includegraphics[width=\\linewidth]{https://wikipedia.org/wiki/Special:Redirect/file/My_image.png?width=300}\n\\caption{my image}\n\\end{figure}'
   t.equal(tidy(have), tidy(want), 'image')

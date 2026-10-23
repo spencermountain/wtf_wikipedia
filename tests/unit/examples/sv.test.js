@@ -10,7 +10,7 @@ test('The-Starry-Night-Sv', (t) => {
     doc.links().some((link) => link.page() === 'Vincent van Gogh'),
     'The-Starry-Night-Sv: artist link'
   )
-  t.ok(doc.section('Kronologi').list(), 'The-Starry-Night-Sv: ownership chronology')
+  t.ok(doc.section('Kronologi').lists()[0], 'The-Starry-Night-Sv: ownership chronology')
   t.ok(doc.references().length > 0, 'The-Starry-Night-Sv: art history sources')
   t.ok(doc.section('Historik och tema'), 'The-Starry-Night-Sv: Historik och tema section')
   t.ok(doc.links().some((link) => link.page() === 'Museum of Modern Art'), 'The-Starry-Night-Sv: museum collection link')
@@ -27,7 +27,7 @@ test('Toronto-Sv', (t) => {
   t.ok(doc.section('Historia'), 'Toronto-Sv: Swedish history heading')
   t.match(doc.text(), /CN Tower/, 'Toronto-Sv: city landmark')
   t.ok(doc.references().length > 0, 'Toronto-Sv: city sources')
-  t.ok(doc.infoboxes().some((box) => box.get('category').text() === 'Stad'), 'Toronto-Sv: category field')
+  t.ok(doc.infoboxes().some((box) => box.get('category').text === 'Stad'), 'Toronto-Sv: category field')
   t.ok(doc.categories().includes('Orter i Ontario'), 'Toronto-Sv: Orter i Ontario category')
   t.end()
 })

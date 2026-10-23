@@ -2,7 +2,7 @@ import test from 'tape'
 import wtf from '../../../plugins/api/tests/_lib.js'
 
 const opts = {
-  'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>'
+  'Api-User-Agent': 'wtf_wikipedia test script - <spencermountain@gmail.com>',
 }
 
 test('randomCategory', async (t) => {

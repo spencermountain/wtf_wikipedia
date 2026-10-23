@@ -12,7 +12,7 @@ test('category years can occur anywhere before the category type', (t) => {
     t.notOk(matches(`1990\n${word} released`), 'year and type must share a line')
     t.notOk(matches('1'.repeat(100000)), 'long digit run without a type')
   }
-  t.deepEqual(byTitle({ title: () => 'Title (film)\ntrailer' }), [], 'a qualifier must end the title')
-  t.deepEqual(byTitle({ title: () => 'Title ' + '('.repeat(100000) }), [], 'unclosed parentheses')
+  t.deepEqual(byTitle({ title: 'Title (film)\ntrailer' }), [], 'a qualifier must end the title')
+  t.deepEqual(byTitle({ title: 'Title ' + '('.repeat(100000) }), [], 'unclosed parentheses')
   t.end()
 })

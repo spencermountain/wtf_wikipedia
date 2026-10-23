@@ -24,7 +24,7 @@ test('table-header', (t) => {
 | row 2, cell 3
 |}`
 
-  const have = wtf(str).table().html()
+  const have = wtf(str).tables()[0].html()
   const want = `
   <table class="table">
   <thead>
@@ -63,7 +63,7 @@ test('no-header', (t) => {
 | row 2, cell 2
 |}`
 
-  const have = wtf(str).table().html()
+  const have = wtf(str).tables()[0].html()
   const want = `
   <table class="table">
   <thead>

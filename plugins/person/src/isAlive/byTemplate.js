@@ -35,7 +35,7 @@ const byTemplate = function (doc) {
   const templates = doc.templates().map((tmpl) => tmpl.json())
   for (let i = 0; i < templates.length; i++) {
     let title = templates[i].template || ''
-    title = title.toLowerCase().trim()
+    title = title.toLowerCase().replace(/_/g, ' ').trim()
     if (Object.hasOwn(isAlive, title)) {
       return true
     }
@@ -46,7 +46,7 @@ const byTemplate = function (doc) {
   // `{{WikiProject Biography|living=yes|activepol=yes}}`
   let bio = doc.template('WikiProject Biography')
   if (bio) {
-    bio = bio.json()
+    bio = bio.json().data
     //living blp BLP
     if (bio.living === 'yes' || bio.blp === 'yes' || bio.activepol === 'yes' || bio.BLP === 'yes') {
       return true

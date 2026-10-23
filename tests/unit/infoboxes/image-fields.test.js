@@ -19,9 +19,9 @@ test('additional infobox image fields normalize filenames', (t) => {
   cases.forEach(([field, value]) => {
     const doc = wtf(`{{Infobox test|${field}=${value}}}`, { domain: 'example.org' })
     t.equal(doc.infobox().image().file(), 'File:Example_image.jpg', field)
-    t.equal(doc.image().url(), 'https://example.org/wiki/Special:Redirect/file/Example_image.jpg', field)
+    t.equal(doc.images()[0].url(), 'https://example.org/wiki/Special:Redirect/file/Example_image.jpg', field)
   })
   const doc = wtf('{{Infobox test|image=Primary.jpg|image_file=Secondary.jpg|画像=Third.jpg}}')
-  t.equal(doc.image().file(), 'File:Primary.jpg', 'existing image field keeps precedence')
+  t.equal(doc.images()[0].file(), 'File:Primary.jpg', 'existing image field keeps precedence')
   t.end()
 })

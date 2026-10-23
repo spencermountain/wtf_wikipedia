@@ -104,15 +104,7 @@ doc.json()
 // { categories: ['Oral communication', 'Vocal skills'], sections: [{ title: 'Techniques' }], ...}
 ```
 
-the default .json() output is _[really verbose](https://observablehq.com/@spencermountain/wtf-wikipedia-json)_ - you can grab a preset-size instead:
-
-```js
-doc.json('sm') // title, description, infoboxes, categories
-doc.json('md') // sm + images, links, templates, references, coordinates, plaintext
-doc.json('lg') // md + all section data
-```
-
-or you can cherry-pick data by poking-around like this:
+you can cherry-pick data by poking-around like this:
 
 ```js
 // get just the links:
@@ -397,7 +389,7 @@ fetches a random wikipedia article, from a given language or domain
 ```js
 wtf.extend(require('wtf-plugin-api'))
 wtf.random().then((doc) => {
-  console.log(doc.title(), doc.categories())
+  console.log(doc.title, doc.categories())
   //'Whistling'  ['Oral communication', 'Vocal skills']
 })
 ```
@@ -688,17 +680,6 @@ wtf.extend((models, templates) => {
 ```
 
 by default, if there's no parser for a template, it will be just ignored and generate an empty string.
-However, it's possible to configure a fallback parser function to handle these templates:
-
-```js
-wtf('some {{weird_template}} here', {
-  templateFallbackFn: (tmpl, list, parse) => {
-    let obj = parse(tmpl) //or do a custom regex
-    list.push(obj)
-    return '[unsupported template]' // or return null to ignore this template
-  },
-})
-```
 
 you can determine which templates are understood to be 'infoboxes' with the 3rd parameter:
 

@@ -5,14 +5,30 @@ test('bold/italics', (t) => {
   const str = `'''K. Nicole Mitchell''' is ''currently'' a [[U.S. Magistrate Judge]].
 
 	She is '''''very''''' good`
-  let sentence = wtf(str).sentence(0)
-  t.deepEqual(sentence.bolds(), ['K. Nicole Mitchell'], 'one bold')
-  t.deepEqual(sentence.italics(), ['currently'], 'one italic')
+  let sentence = wtf(str).sentences()[0]
+  t.deepEqual(
+    sentence.bolds().map((b) => b.text),
+    ['K. Nicole Mitchell'],
+    'one bold'
+  )
+  t.deepEqual(
+    sentence.italics().map((b) => b.text),
+    ['currently'],
+    'one italic'
+  )
   t.equal(sentence.links().length, 1, 'one link')
 
-  sentence = wtf(str).sentence(1)
-  t.deepEqual(sentence.bolds(), ['very'], 'two bold')
-  t.deepEqual(sentence.italics(), ['very'], 'two italic')
+  sentence = wtf(str).sentences()[1]
+  t.deepEqual(
+    sentence.bolds().map((b) => b.text),
+    ['very'],
+    'two bold'
+  )
+  t.deepEqual(
+    sentence.italics().map((b) => b.text),
+    ['very'],
+    'two italic'
+  )
   t.end()
 })
 
@@ -27,8 +43,12 @@ community that has levels`
 test('inline mixquotes test', (t) => {
   const str = `this is ''''four'''' and this is '''''five'''''`
   const sentence = wtf(str).sentences()[0]
-  // t.deepEqual(sentence.fmt.bold, ['five', '\'four\''], 'two bold');
-  t.deepEqual(sentence.italics(), ['five'], 'five is italic')
+  // t.deepEqual(sentence.bolds, ['five', '\'four\''], 'two bold');
+  t.deepEqual(
+    sentence.italics().map((b) => b.text),
+    ['five'],
+    'five is italic'
+  )
   t.end()
 })
 
@@ -50,7 +70,7 @@ test('inline mixquotes test', (t) => {
 test('links-with-ticks', (t) => {
   const doc = wtf(`hello '''[[Palme d'Or]]''' world`)
   t.equal(doc.text(), `hello Palme d'Or world`, 'text')
-  t.equal(doc.link(0).page(), `Palme d'Or`, 'link')
-  t.equal(doc.sentence(0).data.fmt.bold[0], `Palme d'Or`, 'fmt-bold')
+  t.equal(doc.links()[0].page(), `Palme d'Or`, 'link')
+  t.equal(doc.sentence().bolds()[0].text, `Palme d'Or`, 'fmt-bold')
   t.end()
 })

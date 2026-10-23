@@ -20,10 +20,10 @@ The paintings have the freedom and energy of  sketches, using warm and cool ligh
   `
   const doc = wtf(str)
   t.deepEqual(doc.section('paintings').templates('gallery').length, 1, 'section-has-gallery')
-  const templ = doc.template(0).json()
-  t.deepEqual(templ.template, 'gallery', 'document-has-template')
-  t.deepEqual(templ.images.length, 5, '5 images')
-  t.deepEqual(templ.images[0].caption.link().page(), 'Freyja', 'image has caption')
+  const templ = doc.templates()[0].json()
+  t.deepEqual(templ.kind, 'gallery', 'document-has-template')
+  t.deepEqual(templ.data.images.length, 5, '5 images')
+  t.deepEqual(templ.data.images[0].caption.links[0].page, 'Freyja', 'image has caption')
   t.deepEqual(doc.images().length, 5, 'images() finds gallery')
   t.end()
 })
@@ -44,9 +44,9 @@ test('gallery-tag-2', (t) => {
 
   foo`)
   const templ = doc.template().json()
-  t.deepEqual(templ.template, 'gallery', 'document-has-template')
-  t.deepEqual(templ.images.length, 8, '8 images')
-  t.deepEqual(templ.images[0].file, 'File:Culex-female.jpg', 'got filename')
+  t.deepEqual(templ.kind, 'gallery', 'document-has-template')
+  t.deepEqual(templ.data.images.length, 8, '8 images')
+  t.deepEqual(templ.data.images[0].file, 'File:Culex-female.jpg', 'got filename')
   t.end()
 })
 
@@ -58,15 +58,17 @@ test('gallery-template', (t) => {
 |File:Kurmi winnowing.jpg|A third print from the same collection showing the Kurmi family winnowing.
 }} `
   const templ = wtf(str).template().json()
-  t.deepEqual(templ.template, 'gallery', 'document-has-template')
-  t.deepEqual(templ.images.length, 4, 'has 4 images')
+  t.deepEqual(templ.kind, 'gallery', 'document-has-template')
+  t.deepEqual(templ.data.images.length, 4, 'has 4 images')
+  t.ok(templ.data.images[0].caption.text.startsWith('The map of'), 'preserves caption text')
+  t.equal(templ.data.images[0].caption.links[0].page, 'United Provinces of Agra and Oudh', 'preserves caption links')
   t.end()
 })
 
 test('from-infobox', (t) => {
   const doc = readFile('Jodie-Emery')
   t.equal(
-    doc.infobox(0).image(0).thumb(),
+    doc.infoboxes()[0].image(0).thumbnail(),
     'https://wikipedia.org/wiki/Special:Redirect/file/Marc_Emery_and_Jodie_Emery.JPG?width=300',
     'has correct thumbnail'
   )
@@ -75,18 +77,20 @@ test('from-infobox', (t) => {
 
 test('img-alt', (t) => {
   const str = `[[File:Wikipedesketch1.png|thumb|alt=A cartoon centipede detailed description.|The Wikipede edits ''[[Myriapoda]]''.]]`
-  const img = wtf(str).image().json()
+  const image = wtf(str).images()[0]
+  const img = image.json()
   t.equal(img.file, 'File:Wikipedesketch1.png', 'file')
-  t.equal(img.thumb, 'https://wikipedia.org/wiki/Special:Redirect/file/Wikipedesketch1.png?width=300', 'thumb')
-  t.equal(img.url, 'https://wikipedia.org/wiki/Special:Redirect/file/Wikipedesketch1.png', 'image')
-  t.equal(img.caption, 'The Wikipede edits Myriapoda.', 'caption')
+  t.equal(image.thumbnail(), 'https://wikipedia.org/wiki/Special:Redirect/file/Wikipedesketch1.png?width=300', 'thumb')
+  t.equal(image.url(), 'https://wikipedia.org/wiki/Special:Redirect/file/Wikipedesketch1.png', 'image')
+  t.equal(img.caption.text, 'The Wikipede edits Myriapoda.', 'caption')
   t.equal(img.alt, 'A cartoon centipede detailed description.', 'alt')
   t.end()
 })
 
 test('parsed-captions', (t) => {
   const str = `[[File:Volkswagen W12.jpg|thumb|upright|[[Volkswagen Group]] W12 engine from the [[Volkswagen Phaeton|Volkswagen Phaeton W12]]]]`
-  const img = wtf(str).image().json()
-  t.equal(img.caption, 'Volkswagen Group W12 engine from the Volkswagen Phaeton W12', 'caption')
+  const image = wtf(str).images()[0]
+  const img = image.json()
+  t.equal(img.caption.text, 'Volkswagen Group W12 engine from the Volkswagen Phaeton W12', 'caption')
   t.end()
 })

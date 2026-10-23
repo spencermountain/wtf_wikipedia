@@ -7,6 +7,7 @@ test('table spans retain their boundaries with prefixed attributes', (t) => {
 |-
 | prefix colspan="2" | value || next
 |}`)
-  t.deepEqual(doc.table().data.map((row) => Object.values(row).map((cell) => cell.text())), [['value', '', 'next']], 'spanned cell text')
+  const have = doc.tables()[0].rows()
+  t.deepEqual(have, [{ a: 'value', b: '', c: 'next' }], 'spanned cell text')
   t.end()
 })

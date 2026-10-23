@@ -24,7 +24,7 @@ wtf.version: string
 
 `DocumentOptions` (all optional): `title`, `pageID`, `namespace`/`ns`,
 `lang`/`language`, `domain`, `wikidata`, `description`, `timestamp`,
-`revisionID`, `pageImage`, `userAgent`, `templateFallbackFn`.
+`revisionID`, `pageImage`, `userAgent`.
 Pass `title` when parsing raw wikitext if you want `.title()` / `.url()` to work:
 
 ```js
@@ -87,10 +87,7 @@ Output:
 | method | returns | notes |
 | --- | --- | --- |
 | `.text(options?)` / `.plaintext()` | `string` | readable prose. infoboxes, templates, references are omitted |
-| `.json(options?)` | `object` | default keys: `title`, `categories`, `sections` |
-| `.json('sm')` | `object` | `title, description, infoboxes, categories` |
-| `.json('md')` | `object` | sm + `coordinates, images, links, templates, text, references` |
-| `.json('lg')` | `object` | md + full `sections` data |
+| `.json()` | `object` | default keys: `title`, `categories`, `sections` |
 | `.wikitext()` | `string` | the original markup |
 
 ## Section

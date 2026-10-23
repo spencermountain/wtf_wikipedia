@@ -17,7 +17,6 @@ test('redirect json', (t) => {
 test('is-redirect', (t) => {
   const doc = readFile('Redirect')
   t.equal(doc.isRedirect(), true, 'is-redirect')
-  // t.equal(doc.link().page, 'Toronto', 'redirect-place')
   t.equal(doc.infobox(), null, 'has-no-infobox')
   t.end()
 })
@@ -41,7 +40,7 @@ test('redirect-extra-stuff', (t) => {
 }}`)
   t.equal(doc.isRedirect(), true, 'isredirect')
   t.equal(doc.redirectsTo().page, 'Bug reports and feature requests', 'redirectsto')
-  t.equal(doc.redirectsTo().wiki, 'wikipedia', 'interwiki redirect')
+  t.equal(doc.redirectsTo().project, 'wikipedia', 'interwiki redirect')
   t.end()
 })
 

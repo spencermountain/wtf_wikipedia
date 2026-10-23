@@ -19,11 +19,11 @@ const toMarkdown = function (options) {
   }
   //turn bolds into **bold**
   if (options.formatting === true) {
-    this.bolds().forEach((b) => {
+    this.bolds().forEach(({ text: b }) => {
       md = smartReplace(md, b, '**' + b + '**')
     })
     //support *italics*
-    this.italics().forEach((i) => {
+    this.italics().forEach(({ text: i }) => {
       md = smartReplace(md, i, '*' + i + '*')
     })
   }
