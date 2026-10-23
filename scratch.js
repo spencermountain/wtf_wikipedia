@@ -6,11 +6,11 @@ const meta = {
   // pageImage: 'Grand_Bend_2.JPG',
 }
 str = '[[Stonehenge]], in [[Wiltshire]], was erected around 2500 BC'
-str = readPage('United-Kingdom')
 str = `
   {{FoobarContract|one=yes|caption=long text with [[link]]}}
 `
 
+str = readPage('United-Kingdom')
 // str = `
 // {{Infobox settlement
 // | name = New York City
@@ -80,4 +80,4 @@ console.log(doc.links().map((t) => t.json('xl')))
 // console.log('redirect', doc.redirect())
 // console.log('links', doc.links())
 // console.log('text', doc.text())
-// console.log('json', doc.json())
+console.log('json', doc.json())

@@ -53,8 +53,6 @@ declare class Image {
 
 declare class Document {
   categories(clue?: number): string[]
-  categoryDetails(): BlockJson[]
-  category(clue?: number): string | null
   citations(clue?: number): Collection<Reference>
   citation(clue?: number): Reference | null
   coordinate(clue?: number): Coordinate | null

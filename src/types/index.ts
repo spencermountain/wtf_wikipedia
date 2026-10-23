@@ -59,7 +59,7 @@ export interface ListData {
 
 export interface ParagraphData {
   wiki: string
-  remaining: string
+  remaining?: string
   sentences: BlockData[]
   images: ImageData[]
   lists: ListData[]
@@ -76,7 +76,7 @@ export interface SectionData {
   depth: number
   wiki: string
   index: number
-  remaining: string
+  remaining?: string
   templates: TemplateData[]
   infoboxes: InfoboxData[]
   references: ReferenceData[]
@@ -87,7 +87,7 @@ export interface SectionData {
 export interface PageData {
   // original text input
   wiki: string
-  remaining: string
+  remaining?: string
 
   // optional data from api/dumpster
   title?: string
@@ -101,7 +101,6 @@ export interface PageData {
   // parsed values
   sections: SectionData[]
   categories: string[]
-  categoryDetails?: BlockData[]
   isRedirect?: boolean
   redirectTo?: LinkData
 }

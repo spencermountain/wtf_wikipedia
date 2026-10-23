@@ -25,6 +25,15 @@ class Block {
       return json
     }
     delete json.wiki
+    json.links?.forEach((link) => {
+      delete link.wiki
+    })
+    json.bolds?.forEach((span) => {
+      delete span.wiki
+    })
+    json.italics?.forEach((span) => {
+      delete span.wiki
+    })
     return json
   }
   wikitext() {

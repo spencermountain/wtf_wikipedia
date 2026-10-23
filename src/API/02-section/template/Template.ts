@@ -25,6 +25,9 @@ class Template {
       return json
     }
     delete json.wiki
+    json.links?.forEach((link) => {
+      delete link.wiki
+    })
     return json
   }
   wikitext() {

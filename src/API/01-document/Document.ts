@@ -6,6 +6,7 @@ import Section from '../02-section/Section.ts'
 import Template from '../02-section/template/Template.ts'
 import isStub from './isStub.ts'
 import Image from '../03-paragraph/image/Image.ts'
+import Links from '../03-paragraph/link/Links.ts'
 import parseImage from '../../parse/03-paragraph/02-images/parse.ts'
 import type { PageData, DocInfo } from '../../types/index.ts'
 
@@ -129,10 +130,6 @@ class Document {
     return this.#data.categories || []
   }
 
-  categoryDetails() {
-    return this.#data.categoryDetails || []
-  }
-
   sections() {
     let arr = this.#data.sections || []
     return arr.map((section) => new Section(section, this.#info))
@@ -190,7 +187,7 @@ class Document {
   }
 
   links() {
-    return this.sections().flatMap((sec) => sec.links())
+    return Links.from(this.sections().flatMap((sec) => sec.links()))
   }
 
   interwiki() {
@@ -286,7 +283,6 @@ class Document {
 
     // page sections
     data.categories = this.categories()
-    data.categoryDetails = this.categoryDetails()
     data.sections = this.sections().map((i) => i.json(format))
     const json = structuredClone(data)
     if (format === 'xl') {

@@ -10,6 +10,15 @@ const parse = function (input: string, opts: DocInfo = {}) {
   let data: PageData = parsePage(input, opts)
   // interpret
   data.sections = data.sections.map((section) => parseSection(section, opts))
+
+  // Discard parser scratch text before handing data to the API.
+  delete data.remaining
+  data.sections.forEach((section) => {
+    delete section.remaining
+    section.paragraphs.forEach((paragraph) => {
+      delete paragraph.remaining
+    })
+  })
   return data
 }
 

@@ -158,7 +158,6 @@ class Section {
       depth: 0,
       wiki: '',
       index: 0,
-      remaining: '',
       templates: [],
       infoboxes: [],
       references: [],
