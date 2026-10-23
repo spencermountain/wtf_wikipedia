@@ -1,3 +1,5 @@
+import inline from './_inline.ts'
+
 //grab the first, second or third pipe..
 let templates = {
   p1: 0,
@@ -124,4 +126,13 @@ zeros.forEach((k) => {
   templates[k] = 0
 })
 
-export default templates
+// These wrappers intentionally simplify or escape their contents.
+const plain = new Set(['delink', 'nowiki', 'nowiki2', 'unstrip', 'unstripnowiki', 'plain text', 'make code', 'killmarkers'])
+const handlers = Object.fromEntries(Object.entries(templates).map(([name, position]) => {
+  if (plain.has(name)) {
+    return [name, position]
+  }
+  return [name, inline.bind(null, position)]
+}))
+
+export default handlers

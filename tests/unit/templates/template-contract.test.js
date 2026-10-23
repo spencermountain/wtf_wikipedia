@@ -2,7 +2,7 @@ import test from 'tape'
 import wtf from '../../lib/index.js'
 
 test('template envelope preserves unknown names and simplifies arguments', (t) => {
-  const wiki = '{{FoobarContract|one=yes|caption=long text without link}}'
+  const wiki = '{{FoobarContract|one=yes|caption=long text with [[link]]}}'
   const template = wtf(wiki).template()
   t.deepEqual(
     template.json(),
@@ -11,7 +11,8 @@ test('template envelope preserves unknown names and simplifies arguments', (t) =
       kind: null,
       wiki,
       text: '',
-      data: { one: 'yes', caption: 'long text without link' },
+      data: { one: 'yes', caption: 'long text with link' },
+      links: [{ type: 'internal', page: 'Link', text: 'link', wiki: '[[link]]' }],
     },
     'unknown template has a predictable envelope'
   )

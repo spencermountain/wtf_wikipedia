@@ -39,6 +39,7 @@ class Section {
   }
 
   links() {
+    // Stable group order; source-position ordering would require parser offsets.
     let arr = []
     // section headers can have links
     if (this.#data.title?.links) {

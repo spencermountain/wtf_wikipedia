@@ -464,12 +464,9 @@ export default {
     let data = parse(tmpl, ['text'])
     return { data: null, replacement: (data.text || '').replace(/[^0-9]/g, '') }
   },
-  resize: (tmpl, parse = defaultParse) => {
-    let { n, text } = parse(tmpl, ['n', 'text'])
-    if (!text) {
-      return { data: null, replacement: n || '' }
-    }
-    return { data: null, replacement: text || '' }
+  resize: (tmpl, _parse = defaultParse, opts) => {
+    const { n, text } = parseArguments(tmpl, ['n', 'text'], opts)
+    return { data: null, replacement: text?.wiki || n?.wiki || '' }
   },
   'last word': (tmpl, parse = defaultParse) => {
     let data = parse(tmpl, ['text'])
@@ -686,31 +683,25 @@ export default {
     let { cl, type } = parse(tmpl, ['cl', 'type', 'fmt'])
     return { data: null, replacement: `[[${cl}-class ${type} |''${cl}''-class]] [[${type}]]` }
   },
-  'center block': (tmpl, parse = defaultParse) => {
-    let { text } = parse(tmpl, ['text'])
-    return { data: null, replacement: text || '' }
+  'center block': (tmpl, _parse = defaultParse, opts) => {
+    const { text } = parseArguments(tmpl, ['text'], opts)
+    return { data: null, replacement: text?.wiki || '' }
   },
-  align: (tmpl, parse = defaultParse) => {
-    let { text } = parse(tmpl, ['dir', 'text'])
-    return { data: null, replacement: text || '' }
+  align: (tmpl, _parse = defaultParse, opts) => {
+    const { text } = parseArguments(tmpl, ['dir', 'text'], opts)
+    return { data: null, replacement: text?.wiki || '' }
   },
-  font: (tmpl, parse = defaultParse) => {
-    let { text } = parse(tmpl, ['text'])
-    return { data: null, replacement: text || '' }
+  font: (tmpl, _parse = defaultParse, opts) => {
+    const { text } = parseArguments(tmpl, ['text'], opts)
+    return { data: null, replacement: text?.wiki || '' }
   },
-  float: (tmpl, parse = defaultParse) => {
-    let { text, dir } = parse(tmpl, ['dir', 'text'])
-    if (!text) {
-      return { data: null, replacement: dir || '' }
-    }
-    return { data: null, replacement: text }
+  float: (tmpl, _parse = defaultParse, opts) => {
+    const { text, dir } = parseArguments(tmpl, ['dir', 'text'], opts)
+    return { data: null, replacement: text?.wiki || dir?.wiki || '' }
   },
-  lower: (tmpl, parse = defaultParse) => {
-    let { text, n } = parse(tmpl, ['n', 'text'])
-    if (!text) {
-      return { data: null, replacement: n || '' }
-    }
-    return { data: null, replacement: text }
+  lower: (tmpl, _parse = defaultParse, opts) => {
+    const { text, n } = parseArguments(tmpl, ['n', 'text'], opts)
+    return { data: null, replacement: text?.wiki || n?.wiki || '' }
   },
   splitspan: (tmpl, parse = defaultParse) => {
     let list = parse(tmpl).list || []

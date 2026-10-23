@@ -33,6 +33,7 @@ class Paragraph {
   }
 
   links() {
+    // Within a paragraph, collect images, lists, then sentences.
     let links = []
     this.images().forEach((i) => {
       links.push(...i.links())
