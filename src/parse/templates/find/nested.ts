@@ -1,10 +1,9 @@
-import findFlat from './02-flat.ts'
+import findFlat from './flat.ts'
 import getName from '../parse/toJSON/_getName.ts'
 import type { NestedNode } from '../types.ts'
 const hasTemplate = /\{\{/
 
-const parseTemplate = function (tmpl: string): NestedNode {
-  // this is some unexplained Lua thing
+const createNode = (tmpl: string): NestedNode => {
   return {
     body: tmpl,
     name: getName(tmpl),
@@ -12,34 +11,33 @@ const parseTemplate = function (tmpl: string): NestedNode {
   }
 }
 
-const doEach = function (obj: NestedNode) {
-  // peel-off top-level
+const findChildren = (obj: NestedNode) => {
+  // Search inside this invocation's outer braces.
   let wiki = obj.body.slice(2)
   wiki = wiki.replace(/\}\}$/, '')
 
   // get our child templates
   const list = findFlat(wiki)
-  obj.children = list.map(parseTemplate)
+  obj.children = list.map(createNode)
 
   if (obj.children.length === 0) {
     return obj
   }
-  // recurse through children
-  obj.children.forEach((ch) => {
-    let inside = ch.body.slice(2)
+  for (let i = 0; i < obj.children.length; i += 1) {
+    const child = obj.children[i]
+    const inside = child.body.slice(2)
     if (hasTemplate.test(inside)) {
-      return doEach(ch) //keep going
+      findChildren(child)
     }
-    return null
-  })
+  }
   return obj
 }
 
 // return a nested structure of all templates
-const findTemplates = function (wiki: string) {
+const findTemplates = (wiki: string) => {
   let list = findFlat(wiki)
-  list = list.map(parseTemplate)
-  list = list.map(doEach)
+  list = list.map(createNode)
+  list = list.map(findChildren)
   return list
 }
 

@@ -1,6 +1,5 @@
 import idName from './id-name.ts'
 import idTitle from './id-title.ts'
-import dummies from './dummy-templates.ts'
 import fns from './functions.ts'
 
 let templates = {
@@ -20,6 +19,6 @@ let templates = {
   hatnote: ['text'],
 }
 
-templates = Object.assign(templates, dummies, idName, idTitle, fns)
+templates = Object.assign(templates, idName, idTitle, fns)
 
 export default templates

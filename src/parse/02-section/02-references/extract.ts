@@ -3,7 +3,7 @@ import defaults from '../../../_lib/defaults.ts'
 import parse from '../../templates/parse/toJSON/index.ts'
 import parseBlock from '../../block/index.ts'
 import makeResult from '../../templates/result.ts'
-import getTemplates from '../../templates/find/02-flat.ts'
+import getTemplates from '../../templates/find/flat.ts'
 
 // Keep the existing limits for plain, self-closing, and attributed references.
 const referencePattern =

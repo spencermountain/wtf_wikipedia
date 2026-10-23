@@ -4,6 +4,11 @@ import parseImgString from '../../parse/03-paragraph/02-images/parse.ts'
 import { getLang, sisterProjects, toNumber } from '../_lib.ts'
 
 export default {
+  // just parse it and do nothing
+  'citation needed': (tmpl, list, parse = defaultParse) => {
+    list.push(parse(tmpl))
+    return ''
+  },
   // https://en.wikipedia.org/wiki/Template:IPA
   ipa: (tmpl, list, parse = defaultParse) => {
     let obj = parse(tmpl, ['transcription', 'lang', 'audio'])
