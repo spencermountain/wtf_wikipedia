@@ -8,9 +8,10 @@ test('basic-citation', (t) => {
     .citations()
     .map((c) => c.json())
   t.equal(arr.length, 1, 'basic- found-one-citation')
-  t.equal(arr[0].type, 'web', 'cite web')
-  t.equal(arr[0].title, 'The princess of pot', 'title')
-  t.equal(arr[0].url, 'http://thewalrus.ca/the-princess-of-pot/', 'url')
+  t.equal(arr[0].template, 'cite web', 'source template name')
+  t.equal(arr[0].kind, 'citation', 'recognized citation kind')
+  t.equal(arr[0].data.title, 'The princess of pot', 'title')
+  t.equal(arr[0].data.url, 'http://thewalrus.ca/the-princess-of-pot/', 'url')
   t.end()
 })
 
@@ -21,9 +22,10 @@ test('complex-citation', (t) => {
     .citations()
     .map((c) => c.json())
   t.equal(arr.length, 1, 'complex - found-one-citation')
-  t.equal(arr[0].type, 'web', 'cite web')
-  t.equal(arr[0].foo, 'bar', 'foo')
-  t.equal(arr[0].url, 'http://cool.com/?fun=cool/', 'url')
+  t.equal(arr[0].template, 'cite web', 'source template name')
+  t.equal(arr[0].kind, 'citation', 'recognized citation kind')
+  t.equal(arr[0].data.foo, 'bar', 'foo')
+  t.equal(arr[0].data.url, 'http://cool.com/?fun=cool/', 'url')
   t.end()
 })
 
@@ -33,8 +35,8 @@ test('multiple-citations', (t) => {
     .citations()
     .map((c) => c.json())
   t.equal(arr.length, 2, 'found-two-citations')
-  t.equal(arr[0].url, 'cool.com/?fun=yes/', 'url1')
-  t.equal(arr[1].title, 'the killer and the cartoons', 'title2')
+  t.equal(arr[0].data.url, 'cool.com/?fun=yes/', 'url1')
+  t.equal(arr[1].data.title, 'the killer and the cartoons', 'title2')
   t.end()
 })
 
@@ -44,8 +46,8 @@ test('weird-harvard-citations', (t) => {
     .citations()
     .map((c) => c.json())
   t.equal(arr.length, 2, 'found-two-citations')
-  t.equal(arr[0].author, 'Selin', 'refn author')
-  t.equal(arr[0].year, '2008', 'refn year')
+  t.equal(arr[0].data.author, 'Selin', 'refn author')
+  t.equal(arr[0].data.year, '2008', 'refn year')
   t.end()
 })
 test('crazy-long-citations', (t) => {
@@ -68,8 +70,8 @@ test('inline-test', (t) => {
     .references()
     .map((r) => r.json())
   t.equal(refs.length, 2, 'got both refs')
-  t.equal(refs[0].entrydate, 'November 28, 1980', 'got data')
-  t.equal(refs[1].date, 'August 2003', 'got data 2')
+  t.equal(refs[0].data.entrydate, 'November 28, 1980', 'got data')
+  t.equal(refs[1].data.date, 'August 2003', 'got data 2')
   t.end()
 })
 
@@ -77,7 +79,7 @@ test('inline-test', (t) => {
   const str = `"Through Magic Doorways".<ref name="quote">[http://www.imdb.com/name/nm3225194/ Allen Morris IMDb profile]</ref> `
   const arr = wtf(str).citations()
   t.equal(arr.length, 1, 'found-inline-citations')
-  t.equal(arr[0].json().inline.text, 'Allen Morris IMDb profile', 'inline-text')
+  t.equal(arr[0].json().data.inline.text, 'Allen Morris IMDb profile', 'inline-text')
   t.end()
 })
 
@@ -85,7 +87,7 @@ test('inline-test2', (t) => {
   const str = `in 1826.<ref name="brake">Brake (2009)</ref>  `
   const arr = wtf(str).citations()
   t.equal(arr.length, 1, 'found-inline-citations')
-  t.equal(arr[0].json().inline.text, 'Brake (2009)', 'inline-text')
+  t.equal(arr[0].json().data.inline.text, 'Brake (2009)', 'inline-text')
   t.end()
 })
 
@@ -102,9 +104,9 @@ test('double template', (t) => {
   const doc = wtf(str)
   const arr = doc.references().map((r) => r.json())
   t.equal(arr.length, 2, here + 'got both references')
-  t.equal(arr[0].last, 'Bushnell', here + 'parsed prop #1')
-  t.equal(arr[0].first, 'Ian', here + 'parsed prop #2')
-  t.equal((arr[1] || {}).last, 'Walker', here + 'parsed prop #2')
+  t.equal(arr[0].data.last, 'Bushnell', here + 'parsed prop #1')
+  t.equal(arr[0].data.first, 'Ian', here + 'parsed prop #2')
+  t.equal((arr[1]?.data || {}).last, 'Walker', here + 'parsed prop #2')
   t.end()
 })
 

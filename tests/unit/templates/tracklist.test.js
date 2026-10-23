@@ -35,8 +35,8 @@ test('track-listing', (t) => {
 }}`
   const doc = wtf(str)
   const track = doc.template().json()
-  t.equal(track.headline, 'Side one', 'track-headline')
-  t.equal(track.title4, 'Ob-La-Di, Ob-La-Da', 'title4')
+  t.equal(track.data.headline, 'Side one', 'track-headline')
+  t.equal(track.data.title4, 'Ob-La-Di, Ob-La-Da', 'title4')
   t.end()
 })
 
@@ -71,6 +71,6 @@ test('track-listing', (t) => {
 }}`
   const doc = wtf(str)
   const track = doc.templates('tracklist')[0].json()
-  t.equal(track.total_length, '23:14', 'track-total_length')
+  t.equal(track.data.total_length, '23:14', 'track-total_length')
   t.end()
 })

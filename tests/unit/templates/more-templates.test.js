@@ -5,15 +5,15 @@ test('imdb', (t) => {
   let str = `{{IMDb title | 0426883 | Alpha Dog }}`
   let doc = wtf(str)
   let obj = doc.template().json()
-  t.equal(obj.template, 'imdb title', 'imdb')
-  t.equal(obj.id, '0426883', 'id1')
-  t.equal(obj.title, 'Alpha Dog', 'title')
+  t.equal(obj.kind, 'imdb title', 'imdb')
+  t.equal(obj.data.id, '0426883', 'id1')
+  t.equal(obj.data.title, 'Alpha Dog', 'title')
 
   str = `{{IMDb title | id= 0426883 | title= Alpha Dog }}`
   doc = wtf(str)
   obj = doc.template().json()
-  t.equal(obj.id, '0426883', 'id1')
-  t.equal(obj.title, 'Alpha Dog', 'title')
+  t.equal(obj.data.id, '0426883', 'id1')
+  t.equal(obj.data.title, 'Alpha Dog', 'title')
   t.end()
 })
 
@@ -21,7 +21,7 @@ test('taxon', (t) => {
   const str = `{{Taxon info|Felis|parent}}`
   const doc = wtf(str)
   const obj = doc.template().json()
-  t.equal(obj.taxon, 'Felis', 'taxon')
+  t.equal(obj.data.taxon, 'Felis', 'taxon')
   t.end()
 })
 
@@ -29,10 +29,10 @@ test('generic-list', (t) => {
   const str = `{{Portal bar|portal 1|portal 2}}`
   const doc = wtf(str)
   const obj = doc.template().json()
-  t.equal(obj.template, 'portal bar', 'name')
-  t.equal(obj.list[0], 'portal 1', 'list1')
-  t.equal(obj.list[1], 'portal 2', 'list2')
-  t.equal(obj.list.length, 2, 'list-len')
+  t.equal(obj.template, 'Portal bar', 'name')
+  t.equal(obj.data.list[0], 'portal 1', 'list1')
+  t.equal(obj.data.list[1], 'portal 2', 'list2')
+  t.equal(obj.data.list.length, 2, 'list-len')
   t.end()
 })
 
@@ -40,27 +40,27 @@ test('redirect-list', (t) => {
   const str = `{{Redirect|City of Toronto|the municipal government|Municipal government of Toronto|the historical part of the city prior to the 1998 amalgamation|Old Toronto}}`
   const doc = wtf(str)
   const obj = doc.template().json()
-  t.equal(obj.template, 'redirect', 'name')
-  t.equal(obj.redirect, 'City of Toronto', 'main')
-  t.equal(obj.links[0].page, 'Municipal government of Toronto', 'list1')
-  t.equal(obj.links[0].desc, 'the municipal government', 'desc1')
-  t.equal(obj.links.length, 2, 'list-len')
+  t.equal(obj.kind, 'redirect', 'name')
+  t.equal(obj.data.redirect, 'City of Toronto', 'main')
+  t.equal(obj.data.links[0].page, 'Municipal government of Toronto', 'list1')
+  t.equal(obj.data.links[0].desc, 'the municipal government', 'desc1')
+  t.equal(obj.data.links.length, 2, 'list-len')
   t.end()
 })
 
 test('templates-in-templates', (t) => {
   const str = `{{marriage|[[Mileva Marić]]<br>|1903|1919|end=div}}<br />{{nowrap|{{marriage|[[Elsa Löwenthal]]<br>|1919|1936|end=died}}<ref>{{cite book |editor-last=Heilbron |editor-first=John L. |title=The Oxford Companion to the History of Modern Science |url=https://books.google.com/books?id=abqjP-_KfzkC&pg=PA233 |date=2003 |publisher=Oxford University Press |isbn=978-0-19-974376-6 |page=233}}</ref>{{sfnp|Pais|1982|p=301}}}}`
   const ref = wtf(str).citations()[0].json()
-  t.equal(ref.template, 'citation', 'cite-book')
-  t.equal(ref.url, 'https://books.google.com/books?id=abqjP-_KfzkC&pg=PA233', 'url')
-  t.equal(ref.isbn, '978-0-19-974376-6', 'isbn')
+  t.equal(ref.kind, 'citation', 'cite-book')
+  t.equal(ref.data.url, 'https://books.google.com/books?id=abqjP-_KfzkC&pg=PA233', 'url')
+  t.equal(ref.data.isbn, '978-0-19-974376-6', 'isbn')
   const templates = wtf(str)
     .templates()
     .map((tmpl) => tmpl.json())
   t.equal(templates[0].template, 'marriage', 'marriage1')
   t.equal(templates[1].template, 'marriage', 'marriage2')
-  t.equal(templates[1].spouse, 'Elsa Löwenthal', 'marriage-1-name')
-  t.equal(templates[0].spouse, 'Mileva Marić', 'marriage2-name')
+  t.equal(templates[1].data.spouse, 'Elsa Löwenthal', 'marriage-1-name')
+  t.equal(templates[0].data.spouse, 'Mileva Marić', 'marriage2-name')
   t.equal(templates[2].template, 'sfnp', 'sfnp')
   t.end()
 })
@@ -109,10 +109,10 @@ test('austria-hungary', (t) => {
     'Austria-Hungary, often referred to as the Austro-Hungarian Empire or the Dual Monarchy',
     'got-plaintext'
   )
-  t.equal(doc.template('for').json().list[1], 'Austria–Hungary relations', 'nested emdash')
-  t.equal(doc.links('budapest')[0]?.page, 'Budapest', 'got Budapest link')
+  t.equal(doc.template('for').json().data.list[1], 'Austria–Hungary relations', 'nested emdash')
+  t.equal(doc.links().find((link) => link.page() === 'Budapest')?.page(), 'Budapest', 'got Budapest link')
   t.equal(
-    doc.templates('short description')[0].json().description,
+    doc.templates('short description')[0].json().data.description,
     'Constitutional monarchic union from 1867 to October 1918',
     'short-description'
   )
@@ -123,10 +123,10 @@ test('collapsible list', (t) => {
   const str = `{{ubl|a|b}}`
   const doc = wtf(str)
   const obj = doc.template().json()
-  t.equal(obj.template, 'ubl', 'name')
-  t.equal(obj.list[0], 'a', 'list1')
-  t.equal(obj.list[1], 'b', 'list2')
-  t.equal(obj.list.length, 2, 'list-len')
+  t.equal(obj.kind, 'collapsible list', 'name')
+  t.equal(obj.data.list[0], 'a', 'list1')
+  t.equal(obj.data.list[1], 'b', 'list2')
+  t.equal(obj.data.list.length, 2, 'list-len')
 
   //now sanity check all aliases
   const testText = (template) => {

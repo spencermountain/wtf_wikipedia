@@ -34,7 +34,7 @@ test('node.js-infobox-logo', function (t) {
     }}
 `
   const obj = wtf(str).infoboxes()[0]
-  t.equal(obj.get(`logo`).text, 'Node.js logo.svg', 'found logo val')
+  t.equal(obj.images()[0].file(), 'File:Node.js_logo.svg', 'found logo filename')
   t.end()
 })
 

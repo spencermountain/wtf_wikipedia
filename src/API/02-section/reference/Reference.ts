@@ -22,6 +22,10 @@ class Reference {
     return '' //nah, skip these.
   }
 
+  title() {
+    return this.#data.data.title || ''
+  }
+
   wikitext() {
     return this.#data.wiki || ''
   }

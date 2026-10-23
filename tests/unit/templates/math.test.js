@@ -6,13 +6,13 @@ test('math-simple', (t) => {
   let str = `hello {{math|big=1|1 + 2 {{=}} 3}} world`
   let doc = wtf(str)
   let tmpl = doc.template().json() || {}
-  t.equal(tmpl.formula, '1 + 2 = 3', 'tmpl formula')
+  t.equal(tmpl.data.formula, '1 + 2 = 3', 'tmpl formula')
   t.equal(doc.text(), 'hello\n\n1 + 2 = 3\n\nworld', 'text output')
 
   str = `<math>y^3</math>`
   doc = wtf(str)
   tmpl = doc.template().json() || {}
-  t.equal(tmpl.formula, 'y^3', 'xml inline')
+  t.equal(tmpl.data.formula, 'y^3', 'xml inline')
   t.equal(doc.text(), 'y^3', 'xml inline output')
 
   str = `before <math>Gamma</math> between <math>Alpha</math> after`

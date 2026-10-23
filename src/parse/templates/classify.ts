@@ -1,6 +1,6 @@
 import type { TemplateData } from '../../types/index.ts'
 
-const referenceKinds = new Set(['citation', 'refn', 'harvnb', 'source'])
+const referenceKinds = new Set(['citation', 'refn', 'sfn', 'harvnb', 'source'])
 
 // Route recognized interpretations without consulting argument names.
 const sortOut = (templates: TemplateData[]) => {

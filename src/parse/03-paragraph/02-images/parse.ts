@@ -30,8 +30,17 @@ const imgLayouts = {
   super: true,
 }
 
-//images are usually [[image:my_pic.jpg]]
+// Accept image markup or a bare filename from metadata/infobox fields.
 const parseImgString = function (wiki: string, opts: DocInfo = defaults) {
+  const source = wiki
+  wiki = wiki.trim()
+  if (!wiki.startsWith('[[')) {
+    const file = normalizeFile(wiki)
+    if (!file) {
+      return null
+    }
+    wiki = `[[${file}]]`
+  }
   let m = wiki.match(file_reg)
   if (m === null || !m[2]) {
     return null
@@ -46,7 +55,8 @@ const parseImgString = function (wiki: string, opts: DocInfo = defaults) {
 
     let img: ImageData = {
       file: file,
-      wiki: wiki,
+      wiki: source,
+      domain: opts.domain || defaults.domain,
     }
     //try to grab other metadata, too
     wiki = wiki.replace(/^\[\[/, '')

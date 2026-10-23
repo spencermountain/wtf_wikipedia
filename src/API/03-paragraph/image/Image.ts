@@ -1,5 +1,5 @@
 import Link from '../link/Link.ts'
-import type { ImageData } from '../../../types/index.ts'
+import type { ImageData, DocInfo } from '../../../types/index.ts'
 const server = 'wikipedia.org'
 
 const encodeTitle = function (file: string) {
@@ -22,8 +22,11 @@ const makeSrc = function (file: string) {
 class Image {
   #data: ImageData
 
-  constructor(data: ImageData) {
+  constructor(data: ImageData, info: DocInfo = {}) {
     this.#data = data
+    if (info.domain && info.domain !== data.domain) {
+      this.#data = { ...data, domain: info.domain }
+    }
   }
 
   file() {

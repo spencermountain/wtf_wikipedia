@@ -2,13 +2,15 @@ import toJSON from './toJson.ts'
 import Sentence from './sentence/Sentence.ts'
 import Image from './image/Image.ts'
 import List from './list/List.ts'
-import type { ParagraphData } from '../../types/index.ts'
+import type { ParagraphData, DocInfo } from '../../types/index.ts'
 
 class Paragraph {
   #data: ParagraphData
+  #info: DocInfo
 
-  constructor(data: ParagraphData) {
+  constructor(data: ParagraphData, info: DocInfo = {}) {
     this.#data = data
+    this.#info = info
   }
 
   sentence() {
@@ -27,7 +29,7 @@ class Paragraph {
 
   images() {
     const arr = this.#data.images || []
-    return arr.map((i) => new Image(i))
+    return arr.map((i) => new Image(i, this.#info))
   }
 
   links() {

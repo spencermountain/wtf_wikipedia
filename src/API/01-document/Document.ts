@@ -7,8 +7,8 @@ import Section from '../02-section/Section.ts'
 import Template from '../02-section/template/Template.ts'
 import isStub from './isStub.ts'
 import Image from '../03-paragraph/image/Image.ts'
-import normalizeFile from '../../parse/03-paragraph/02-images/normalize.ts'
-import type { PageData, DocInfo, ImageData } from '../../types/index.ts'
+import parseImage from '../../parse/03-paragraph/02-images/parse.ts'
+import type { PageData, DocInfo } from '../../types/index.ts'
 
 class Document {
   #data: PageData
@@ -131,7 +131,7 @@ class Document {
 
   sections() {
     let arr = this.#data.sections || []
-    return arr.map((section) => new Section(section))
+    return arr.map((section) => new Section(section, this.#info))
   }
 
   section(clue: string | number = 0): Section {
@@ -159,18 +159,16 @@ class Document {
     let arr = []
     // grab image from fetch/dumpster metadata
     if (this.#info.pageImage) {
-      const imgdata: ImageData = {
-        file: normalizeFile(this.#info.pageImage),
-        wiki: '',
+      const data = parseImage(this.#info.pageImage, this.#info)
+      if (data) {
+        arr.push(new Image({ ...data, wiki: '' }))
       }
-      const img = new Image(imgdata)
-      arr.push(img)
     }
     //grab image from infobox, first
     this.infoboxes().forEach((info) => {
       let img = info.image()
       if (img) {
-        arr.push(new Image({ ...img.json(), domain: this.domain })) //put it at the top
+        arr.push(img)
       }
     })
     arr = arr.concat(sectionMap(this, 'images', null))
@@ -180,7 +178,7 @@ class Document {
       const images = data.images || []
       images.forEach((image) => {
         if (image) {
-          arr.push(new Image({ ...image, domain: this.domain }))
+          arr.push(new Image(image, this.#info))
         }
       })
     })

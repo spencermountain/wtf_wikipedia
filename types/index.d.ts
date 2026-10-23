@@ -1,5 +1,5 @@
 type CollectionItem = {
-  json: (...args: any[]) => any
+  json: () => any
   text: (...args: any[]) => string
   wikitext: () => string
 }
@@ -10,7 +10,7 @@ interface Collection<T extends CollectionItem> extends Array<T> {
   filter<S extends T>(predicate: (value: T, index: number, array: T[]) => value is S, thisArg?: any): Collection<S>
   filter(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): this
   slice(start?: number, end?: number): this
-  json(...args: Parameters<T['json']>): ReturnType<T['json']>[]
+  json(): ReturnType<T['json']>[]
   text(options?: object): string
   wikitext(): string
 }
@@ -151,17 +151,13 @@ declare class Section {
 
 declare class Infobox {
   readonly kind: string | null
-  /** the raw key-value data of the infobox, as Sentence objects */
-  data: Record<string, Sentence>
-  get(key: string): Sentence
-  get(keys: string[]): Sentence[]
-  get(): Sentence
-  image(): Image | null
+  get(key: string): BlockJson | BlockJson[] | undefined
+  getFirst(keys: string[]): BlockJson | BlockJson[] | undefined
+  getAll(keys: string[]): Array<BlockJson | BlockJson[] | undefined>
+  image(): Image | undefined
   images(): Image[]
-  json(): TemplateJson
-  keyValue(): Record<string, string>
-  links(selector?: string | number): LinkCollection
-  template(): string
+  json(): InfoboxJson
+  links(): Link[]
   text(): string
   type(): string
   wikitext(): string
@@ -193,7 +189,7 @@ declare class Table {
 declare class Reference {
   readonly kind: string | null
   json(): TemplateJson
-  links(selector?: string | number): LinkCollection
+  links(): Link[]
   text(): string
   title(): string
   wikitext(): string
@@ -309,6 +305,18 @@ type TemplateJson = {
   data: Record<string, any>
 }
 
+type BlockJson = {
+  text: string
+  wiki: string
+  links?: LinkJson[]
+  bolds?: Array<{ text: string; start: number; end: number }>
+  italics?: Array<{ text: string; start: number; end: number }>
+}
+
+type InfoboxJson = Omit<TemplateJson, 'data'> & {
+  data: Record<string, BlockJson | BlockJson[]>
+}
+
 /** the json() shape of a Link */
 type LinkJson = {
   text?: string
@@ -404,6 +412,8 @@ type Link_ = Link
 type List_ = List
 type Sentence_ = Sentence
 type DocumentOptions_ = DocumentOptions
+type BlockJson_ = BlockJson
+type InfoboxJson_ = InfoboxJson
 type TemplateJson_ = TemplateJson
 type LinkJson_ = LinkJson
 type ImageJson_ = ImageJson
@@ -435,6 +445,8 @@ declare namespace wtf {
   export type List = List_
   export type Sentence = Sentence_
   export type DocumentOptions = DocumentOptions_
+  export type BlockJson = BlockJson_
+  export type InfoboxJson = InfoboxJson_
   export type TemplateJson = TemplateJson_
   export type LinkJson = LinkJson_
   export type ImageJson = ImageJson_
@@ -471,6 +483,8 @@ export type {
   List,
   Sentence,
   DocumentOptions,
+  BlockJson,
+  InfoboxJson,
   TemplateJson,
   LinkJson,
   ImageJson,

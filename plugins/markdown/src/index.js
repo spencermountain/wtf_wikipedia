@@ -17,7 +17,9 @@ const plugin = function (models) {
   models.Sentence.prototype.markdown = sentence
   models.Link.prototype.markdown = link
   models.Image.prototype.markdown = image
-  models.Infobox.prototype.markdown = infobox
+  models.Infobox.prototype.markdown = function (options) {
+    return infobox.call(this, models.Sentence, options)
+  }
   models.Table.prototype.markdown = table
   models.List.prototype.markdown = list
   models.Reference.prototype.markdown = reference

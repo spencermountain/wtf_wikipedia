@@ -1,11 +1,12 @@
 import { infoboxType } from '../../../parse/templates/parse/infobox.ts'
 import Image from '../../03-paragraph/image/Image.ts'
-import normalizeFile from '../../../parse/03-paragraph/02-images/normalize.ts'
+import parseImage from '../../../parse/03-paragraph/02-images/parse.ts'
+import defaults from '../../../_lib/defaults.ts'
 import latLngs from '../../../_data/lat-lngs.ts'
 import Link from '../../03-paragraph/link/Link.ts'
 import dmsCoordinates from './_lib.ts'
 import { normalizeKey } from '../../../_lib/helpers.ts'
-import type { InfoboxData } from '../../../types/index.ts'
+import type { InfoboxData, DocInfo } from '../../../types/index.ts'
 
 const imgProperties = [
   'image',
@@ -23,9 +24,11 @@ const imgProperties = [
 //a formal key-value data table about a topic
 class Infobox {
   #data: InfoboxData
+  #info: DocInfo
 
-  constructor(data: InfoboxData) {
+  constructor(data: InfoboxData, info: DocInfo = defaults) {
     this.#data = data
+    this.#info = info
   }
 
   type() {
@@ -64,14 +67,24 @@ class Infobox {
   }
 
   images() {
-    const arr = this.getAll(imgProperties).filter(Boolean)
-    return arr.map((item) => {
-      const wiki = item.wiki || ''
-      const file = normalizeFile(wiki)
-      const caption = this.get('caption')
-      return new Image({ file, wiki, caption })
-    })
+    const properties = imgProperties.filter((key) => this.get(key))
+    return properties
+      .map((key) => {
+        const item = this.get(key)
+        const caption = this.get(key === 'image2' ? 'caption2' : 'caption')
+        const image = parseImage(item.wiki || '', this.#info)
+        if (!image) {
+          return null
+        }
+        // An explicit infobox caption takes precedence over embedded markup.
+        if (caption) {
+          image.caption = caption
+        }
+        return new Image(image)
+      })
+      .filter(Boolean)
   }
+
   image() {
     return this.images()[0]
   }

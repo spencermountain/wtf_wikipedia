@@ -29,7 +29,7 @@ test('external-links', function (t) {
     const doc = wtf(a[1])
     t.equal(doc.templates().length, 1, a[0] + ' count')
     const tmpl = doc.template().json() || {}
-    t.equal(tmpl.template, a[0], a[1] + ' name')
+    t.equal(tmpl.template, a[1].trim().slice(2).split(/[|}\n]/)[0].trim(), a[1] + ' name')
   })
   t.end()
 })
@@ -119,7 +119,7 @@ test('wikipedia-templates', function (t) {
     const doc = wtf(a[1])
     t.equal(doc.templates().length, 1, a[0] + ' count')
     const tmpl = doc.template().json() || {}
-    t.equal(tmpl.template, a[0], a[0] + ' name')
+    t.equal(tmpl.template, a[1].trim().slice(2).split(/[|}\n]/)[0].trim(), a[0] + ' name')
   })
   t.end()
 })
@@ -145,7 +145,7 @@ test('weather', function (t) {
   |Dec high C = -0.8
   |source 1=[[Environment Canada]]<ref name="envcan"/>
   }}`
-  let arr = wtf(str).template().json().byMonth['high c']
+  let arr = wtf(str).template().json().data.byMonth['high c']
   t.equal(arr.length, 12, 'got twelve months')
   t.equal(arr[1], 0.7, 'got february')
 
@@ -154,7 +154,7 @@ test('weather', function (t) {
   | 18.4|19.9|22.3|23.7|27.5|31.3|36.8|36.5|32.5|27.5|22.2|18.7<!--highs-->
   | 5.9 |7.6 |9.4 |11.0|13.8|16.3|19.9|20.1|18.2|14.7|10.4|6.5 <!--lows-->
   }}`
-  arr = wtf(str).template().json().byMonth['high c']
+  arr = wtf(str).template().json().data.byMonth['high c']
   t.equal(arr.length, 12, 'got twelve months concise')
   t.equal(arr[1], 19.9, 'got february')
   t.end()
@@ -186,7 +186,7 @@ test('election', function (t) {
   const doc = wtf(str)
   t.equal(doc.templates().length, 1, 'found one template')
   const tmpl = doc.templates()[0].json() || {}
-  t.equal(tmpl.data.template, 'election box', 'template name')
+  t.equal(tmpl.kind, 'election box', 'template name')
   t.equal(tmpl.data.candidates.length, 2, 'two candidates')
   t.end()
 })
@@ -194,16 +194,16 @@ test('election', function (t) {
 test('test-flexible-format', function (t) {
   let doc = wtf(`hello {{Hollywood Walk of Fame|Alan Alda}} world`)
   let tmpl = doc.templates()[0].json() || {}
-  t.equal(tmpl.template, 'hollywood walk of fame', 'template1')
-  t.equal(tmpl.name, 'Alan Alda', 'name1')
+  t.equal(tmpl.kind, 'hollywood walk of fame', 'template1')
+  t.equal(tmpl.data.name, 'Alan Alda', 'name1')
   t.equal(doc.text(), 'hello world', 'text1')
   t.equal(doc.templates().length, 1, 'got-template1')
 
   //other format
   doc = wtf(`hello {{Hollywood Walk of Fame|name = Alan Alda}} world`)
   tmpl = doc.templates()[0].json() || {}
-  t.equal(tmpl.template, 'hollywood walk of fame', 'template2')
-  t.equal(tmpl.name, 'Alan Alda', 'name2')
+  t.equal(tmpl.kind, 'hollywood walk of fame', 'template2')
+  t.equal(tmpl.data.name, 'Alan Alda', 'name2')
   t.equal(doc.text(), 'hello world', 'text2')
   t.equal(doc.templates().length, 1, 'got-template2')
   t.end()
@@ -230,9 +230,9 @@ test('covid-1', function (t) {
   `
   const doc = wtf(str)
   const obj = doc.template().json()
-  t.equal(obj.location, 'Savannah', 'location')
-  t.equal(obj.data.length, 5, '5 rows')
-  t.equal(obj.data[0].date, '2009-04-13', 'row[0]')
+  t.equal(obj.data.location, 'Savannah', 'location')
+  t.equal(obj.data.data.length, 5, '5 rows')
+  t.equal(obj.data.data[0].date, '2009-04-13', 'row[0]')
   t.end()
 })
 
@@ -266,7 +266,7 @@ test('playoff-brackets', function (t) {
   | RD2-score2  = '''218/8 (48.5 overs)'''
   }}`
   const doc = wtf(str)
-  const rounds = doc.template().json().rounds
+  const rounds = doc.template().json().data.rounds
   t.equal(rounds.length, 2, 'two rounds')
   const final = rounds[1][0]
   t.equal(final[0].score, '217 (49.4 overs)', 'got score')

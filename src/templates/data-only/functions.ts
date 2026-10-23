@@ -141,7 +141,7 @@ export default {
 
   //amazingly, this one does not obey any known patterns
   //https://en.wikipedia.org/wiki/Template:Gallery
-  gallery: (tmpl, parse = defaultParse, opts) => {
+  gallery: (tmpl, _parse = defaultParse, opts) => {
     const args = parseArguments(tmpl, [], opts)
     const items = args.list || []
     const images = []
@@ -150,6 +150,10 @@ export default {
       const caption = items[i + 1]?.wiki || ''
       const image = parseImgString(`[[${file}|${caption}]]`, opts)
       if (image) {
+        const alt = args[`alt${i / 2 + 1}`]
+        if (alt) {
+          image.alt = alt.text
+        }
         images.push(image)
       }
     }
@@ -369,11 +373,9 @@ export default {
     }
     let obj = {
       template: 'climate chart',
-      data: {
-        title: title,
-        source: source,
-        months: months,
-      },
+      title: title,
+      source: source,
+      months: months,
     }
     return { data: obj, replacement: '' }
   },

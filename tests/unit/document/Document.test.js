@@ -199,7 +199,7 @@ test('redirectTo - get - should initially be null', (t) => {
 
 test('redirectTo - get - if the page is a redirect than return the target page', (t) => {
   const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
-  t.deepEqual(doc.redirectTo(), { page: 'Doelpagina', raw: '[[Doelpagina]]' }, "the redirectTo equals 'Doelpagina'")
+  t.deepEqual(doc.redirectTo(), { type: 'internal', page: 'Doelpagina', text: 'Doelpagina', wiki: '[[Doelpagina]]' }, "the redirectTo equals 'Doelpagina'")
   t.end()
 })
 
@@ -212,7 +212,7 @@ test('redirectsTo - get - should initially be null', (t) => {
 
 test('redirectsTo - get - if the page is a redirect than return the target page', (t) => {
   const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
-  t.deepEqual(doc.redirectsTo(), { page: 'Doelpagina', raw: '[[Doelpagina]]' }, "the redirectsTo equals 'Doelpagina'")
+  t.deepEqual(doc.redirectsTo(), { type: 'internal', page: 'Doelpagina', text: 'Doelpagina', wiki: '[[Doelpagina]]' }, "the redirectsTo equals 'Doelpagina'")
   t.end()
 })
 
@@ -225,7 +225,7 @@ test('redirect - get - should initially be null', (t) => {
 
 test('redirect - get - if the page is a redirect than return the target page', (t) => {
   const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
-  t.deepEqual(doc.redirect(), { page: 'Doelpagina', raw: '[[Doelpagina]]' }, "the redirect equals 'Doelpagina'")
+  t.deepEqual(doc.redirect(), { type: 'internal', page: 'Doelpagina', text: 'Doelpagina', wiki: '[[Doelpagina]]' }, "the redirect equals 'Doelpagina'")
   t.end()
 })
 
@@ -238,7 +238,7 @@ test('redirects - get - should initially be null', (t) => {
 
 test('redirects - get - if the page is a redirect than return the target page', (t) => {
   const doc = wtf('#DOORVERWIJZING [[Doelpagina]]')
-  t.deepEqual(doc.redirectsTo(), { page: 'Doelpagina', raw: '[[Doelpagina]]' }, "the redirects equals 'Doelpagina'")
+  t.deepEqual(doc.redirectsTo(), { type: 'internal', page: 'Doelpagina', text: 'Doelpagina', wiki: '[[Doelpagina]]' }, "the redirects equals 'Doelpagina'")
   t.end()
 })
 
@@ -526,20 +526,20 @@ test('image - get - return the first image on the page', (t) => {
 test('links - get - return all links on the page', (t) => {
   t.deepEqual(
     page.links().map((l) => l.page()),
-    ['Rome', 'quickly', 'Fun', 'Ville', 'Other page'],
+    ['Rome', 'Quickly', 'Fun', 'Ville', 'Other page'],
     'link targets'
   )
   t.end()
 })
 
 test('links - get - if the clue is a number return the link at that index', (t) => {
-  t.equal(page.links()[1].page(), 'quickly', 'indexed link target')
+  t.equal(page.links()[1].page(), 'Quickly', 'indexed link target')
   t.end()
 })
 
-test('links - get - if the clue is a string return the link with that page', (t) => {
+test('links - filter by page title without case sensitivity', (t) => {
   t.deepEqual(
-    page.links('fun').map((l) => l.page()),
+    page.links().filter((l) => l.page().toLowerCase() === 'fun').map((l) => l.page()),
     ['Fun'],
     'case-insensitive match'
   )
@@ -555,7 +555,7 @@ test('links - get - if the clue is a string return the link with that page', (t)
 test('interwiki - get - return only the interwiki links', (t) => {
   t.deepEqual(
     page.interwiki().map((l) => l.json()),
-    [{ type: 'interwiki', wiki: 'fr', page: 'Ville' }],
+    [{ type: 'interwiki', page: 'Ville', text: 'Ville', wiki: '[[:fr:Ville|Ville]]', lang: 'fr', inline: true }],
     'interwiki JSON'
   )
   t.end()
@@ -610,8 +610,8 @@ test('templates - get - return all templates', (t) => {
 
 test('templates - get - if the clue is a number return the template at that index', (t) => {
   t.deepEqual(
-    page.templates()[0].json(),
-    { display: 'title', template: 'coord', lat: 43.65, lon: -79.38 },
+    page.templates()[0].json().data,
+    { display: 'title', lat: 43.65, lon: -79.38 },
     'indexed template JSON'
   )
   t.end()
@@ -649,7 +649,7 @@ test('citations - get - is an alias of references', (t) => {
 
 //coordinates
 test('coordinates - get - return all coordinates', (t) => {
-  t.deepEqual(page.coordinates(), [{ display: 'title', template: 'coord', lat: 43.65, lon: -79.38 }], 'coordinates')
+  t.deepEqual(page.coordinates(), [{ display: 'title', lat: 43.65, lon: -79.38 }], 'coordinates')
   t.end()
 })
 

@@ -4,14 +4,16 @@ import Infobox from './infobox/Infobox.ts'
 import Template from './template/Template.ts'
 import Link from '../03-paragraph/link/Link.ts'
 import Paragraph from '../03-paragraph/Paragraph.ts'
-import type { SectionData, BlockData } from '../../types/index.ts'
+import type { SectionData, BlockData, DocInfo } from '../../types/index.ts'
 
 //the Section class represents the == title == sections of an article
 class Section {
   #data: SectionData
+  #info: DocInfo
 
-  constructor(data: SectionData) {
+  constructor(data: SectionData, info: DocInfo = {}) {
     this.#data = data
+    this.#info = info
   }
   title() {
     return this.#data.title?.text || ''
@@ -33,7 +35,7 @@ class Section {
 
   paragraphs() {
     const arr = this.#data.paragraphs || []
-    return arr.map((p) => new Paragraph(p))
+    return arr.map((p) => new Paragraph(p, this.#info))
   }
 
   links() {
@@ -80,7 +82,7 @@ class Section {
 
   infoboxes() {
     const arr = this.#data.infoboxes || []
-    return arr.map((t) => new Infobox(t))
+    return arr.map((t) => new Infobox(t, this.#info))
   }
 
   // TODO: Coordinates are plain data, not model collections.

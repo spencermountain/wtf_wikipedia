@@ -46,12 +46,17 @@ const mapping = {
 
 const plugin = function (_models, templates) {
   Object.keys(mapping).forEach((k) => {
+    const parser = templates[k]
     mapping[k].forEach((name) => {
-      // create template parser with alias
-      templates[name] = function (tmpl, list, parse) {
-        return templates[k](tmpl, list, parse, k)
+      // Bridge the plugin callback to the built-in result contract.
+      templates[name] = function (tmpl, list, parse, _unused, opts) {
+        const { data, replacement } = parser(tmpl, parse, opts)
+        if (data) {
+          list.push(data)
+        }
+        return replacement
       }
-      templates[name].kind = k
+      templates[name].kind = /^cite /.test(k) ? 'citation' : k
     })
   })
 }

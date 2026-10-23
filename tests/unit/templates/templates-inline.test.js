@@ -184,7 +184,7 @@ test('flags', (t) => {
   const doc = wtf(str)
   t.equal(doc.links().length, 3, 'found 3 link')
   t.equal(doc.links()[1].text(), 'DEU', 'link text')
-  t.equal(doc.links()[1].page(), 'germany', 'link page')
+  t.equal(doc.links()[1].page(), 'Germany', 'link page')
   t.equal(doc.text(), 'one 🇺🇸 USA, two 🇩🇪 DEU, three 🇨🇦 CAN.', 'made emoji flags')
   t.end()
 })
@@ -195,7 +195,7 @@ test('tricky-based-on', (t) => {
   t.equal(doc.templates().length, 1, 'found one template')
   t.equal(doc.text(), 'Jurassic Park by Michael Crichton', 'formatted title and author')
   const data = doc.templates()[0].json().data || {}
-  t.equal(data.template, 'based on', 'template name')
+  t.equal(doc.template().json().kind, 'based on', 'template name')
   t.equal(data.title, 'Jurassic Park', 'title')
   t.equal(data.author, 'Michael Crichton', 'author')
   t.end()

@@ -60,6 +60,8 @@ test('gallery-template', (t) => {
   const templ = wtf(str).template().json()
   t.deepEqual(templ.kind, 'gallery', 'document-has-template')
   t.deepEqual(templ.data.images.length, 4, 'has 4 images')
+  t.ok(templ.data.images[0].caption.text.startsWith('The map of'), 'preserves caption text')
+  t.equal(templ.data.images[0].caption.links[0].page, 'United Provinces of Agra and Oudh', 'preserves caption links')
   t.end()
 })
 

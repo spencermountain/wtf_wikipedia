@@ -3,7 +3,7 @@ const dontDo = {
   caption: true,
   alt: true,
   signature: true,
-  'signature alt': true
+  signature_alt: true
 }
 
 const defaults = {
@@ -11,18 +11,19 @@ const defaults = {
 }
 
 //
-const infobox = function (options) {
+const infobox = function (Sentence, options) {
   options = { ...defaults, ...options }
+  const data = this.json().data
   let out = '\n \\vspace*{0.3cm} % Info Box\n\n'
   out += '\\begin{tabular}{|@{\\qquad}l|p{9.5cm}@{\\qquad}|} \n'
   out += '  \\hline  %horizontal line\n'
   //todo: render top image here
-  Object.keys(this.data).forEach((k) => {
+  Object.keys(data).forEach((k) => {
     if (dontDo[k] === true) {
       return
     }
-    const s = this.data[k]
-    const val = s.latex(options)
+    const blocks = [].concat(data[k])
+    const val = blocks.map((block) => new Sentence(block).latex(options)).join(' ')
     out += '  % ---------- \n'
     out += '      ' + k + ' & \n'
     out += '      ' + val + '\\\\ \n'

@@ -21,7 +21,9 @@ const plugin = function (models) {
 
   models.Image.prototype.html = image
 
-  models.Infobox.prototype.html = infobox
+  models.Infobox.prototype.html = function (options) {
+    return infobox.call(this, models.Sentence, options)
+  }
 
   models.Link.prototype.html = link
 

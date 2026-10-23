@@ -104,15 +104,7 @@ doc.json()
 // { categories: ['Oral communication', 'Vocal skills'], sections: [{ title: 'Techniques' }], ...}
 ```
 
-the default .json() output is _[really verbose](https://observablehq.com/@spencermountain/wtf-wikipedia-json)_ - you can grab a preset-size instead:
-
-```js
-doc.json('sm') // title, description, infoboxes, categories
-doc.json('md') // sm + images, links, templates, references, coordinates, plaintext
-doc.json('lg') // md + all section data
-```
-
-or you can cherry-pick data by poking-around like this:
+you can cherry-pick data by poking-around like this:
 
 ```js
 // get just the links:

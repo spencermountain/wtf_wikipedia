@@ -19,7 +19,10 @@ const parseInfobox = function (doc) {
   if (!info) {
     return {}
   }
-  const data = info.keyValue()
+  const data = {}
+  Object.entries(info.json().data).forEach(([key, block]) => {
+    data[key] = block.text || ''
+  })
   Object.keys(data).forEach((k) => {
     data[k] = toCardinal(data[k])
   })
