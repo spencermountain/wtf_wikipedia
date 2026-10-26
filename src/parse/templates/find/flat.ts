@@ -43,6 +43,7 @@ const findFlat = (wiki: string) => {
       carry.push(c)
     }
   }
+  // console.log(list)
   return list
 }
 export default findFlat

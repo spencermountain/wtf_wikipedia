@@ -14,6 +14,18 @@ const parseLiterals = (section: SectionData) => {
     return ''
   })
 
+  // markdown like horizontal lines ----
+  wiki = wiki.replaceAll('----', function (match) {
+    section.templates.push({ template: 'horizontal-rule', kind: 'literal', text: '', data: null, wiki: match })
+    return ''
+  })
+  //these templates-in-templates...
+  // wiki = wiki.replace(/\{\{\}\}/g, function (match) {
+  //   section.templates.push({ template: '}', kind: 'literal', text: ' – ', data: null, wiki: match })
+  //   return ' – '
+  // })
+  // wiki = wiki.replace(/\{\{\\\}\}/g, ' / ')
+
   section.remaining = wiki
   return section
 }

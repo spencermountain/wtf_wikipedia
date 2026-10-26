@@ -18,6 +18,8 @@ const hasWord = /\p{Letter}/iu
 // cannot reach sentence punctuation, later starts on that line cannot either.
 const splitPunctuation = function (text: string) {
   const sentence = /(\S.+?[.!?]"?)(?=\s|$)/y
+  // support japanese periods
+  text = text.replaceAll('。', '. ')
   let splits = []
   let end = 0
   for (const line of text.matchAll(/[^\r\n\u2028\u2029]+/g)) {

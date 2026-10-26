@@ -38,9 +38,9 @@ str = readPage('United-Kingdom')
 // | legislature        =
 // }}`
 
-str = `hello <!----> world`
+str = `[[Salt]]{{\\}}[[Pepper]]`
 const doc = wtf(str, meta)
-console.log(doc.comments())
+console.log(doc.templates().json())
 console.log(doc.text())
 // console.log(doc.infoboxes().map((l) => l.type()))
 // const table = doc.tables()[0]
