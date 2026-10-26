@@ -14,19 +14,19 @@ const plugin = function (models) {
   models.Doc.prototype.latex = doc
   models.Section.prototype.latex = section
   models.Paragraph.prototype.latex = paragraph
-  models.Sentence.prototype.latex = sentence
+  models.Block.prototype.latex = sentence
   models.Image.prototype.latex = image
   models.Link.prototype.latex = link
   models.Image.prototype.latex = image
   models.Infobox.prototype.latex = function (options) {
-    return infobox.call(this, models.Sentence, options)
+    return infobox.call(this, models.Block, options)
   }
   models.List.prototype.latex = function (options) {
-    return list.call(this, models.Sentence, options)
+    return list.call(this, models.Block, options)
   }
   models.Reference.prototype.latex = reference
   models.Table.prototype.latex = function (options) {
-    return table.call(this, models.Sentence, options)
+    return table.call(this, models.Block, options)
   }
 }
 plugin.version = version

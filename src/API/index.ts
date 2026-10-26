@@ -9,5 +9,6 @@ import List from './03-paragraph/list/List.ts'
 import Reference from './02-section/reference/Reference.ts'
 import Table from './02-section/table/Table.ts'
 import Template from './02-section/template/Template.ts'
+import Block from './Block/Block.ts'
 
-export { Document, Section, Paragraph, Image, Infobox, Link, List, Reference, Table, Template }
+export { Document, Section, Paragraph, Image, Infobox, Link, List, Reference, Table, Template, Block }

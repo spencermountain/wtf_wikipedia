@@ -1,5 +1,5 @@
 //turn a json table into a html table
-const toHtml = function (Sentence, options) {
+const toHtml = function (Block, options) {
   const rows = this.json().rows
   if (rows.length === 0) {
     return ''
@@ -20,7 +20,7 @@ const toHtml = function (Sentence, options) {
   rows.forEach((o) => {
     html += '  <tr>\n'
     Object.keys(o).forEach((k) => {
-      const val = new Sentence(o[k]).html(options)
+      const val = new Block(o[k]).html(options)
       html += '    <td>' + val + '</td>\n'
     })
     html += '  </tr>\n'

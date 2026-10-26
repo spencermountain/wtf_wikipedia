@@ -10,11 +10,8 @@ str = `
   {{FoobarContract|one=yes|caption=long text with [[link]]}}
 `
 
-str = readPage('United-Kingdom')
-str = readPage('Arts-Club-Of-Chicago')
-wtf.extend((models) => {
-  console.log(models.Doc.prototype.template)
-})
+// str = readPage('United-Kingdom')
+// str = readPage('Arts-Club-Of-Chicago')
 // str = `
 // {{Infobox settlement
 // | name = New York City
@@ -43,11 +40,10 @@ wtf.extend((models) => {
 // }}`
 
 // str = `hello <asd f> world </asd>`
-// const doc = wtf(str, meta)
+const doc = wtf(str, meta)
 
-let doc = wtf(`hi <sub>world</sub> there`)
-console.log(doc.text())
-console.log(doc.template().json('xl'))
+console.log(doc.templates('FoobarContract')?.json('xl'))
+// console.log(doc.template().json('xl'))
 // console.log(doc.template('good article').json('xl'))
 // console.log(doc.sentences().links().interwiki())
 // console.log(doc.text())

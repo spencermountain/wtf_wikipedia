@@ -161,7 +161,7 @@ test('weather', function (t) {
   |Dec high C = -0.8
   |source 1=[[Environment Canada]]<ref name="envcan"/>
   }}`
-  let arr = wtf(str).templates()[1].json().data?.byMonth['high c']
+  let arr = wtf(str).template('Weather box').json().data?.byMonth['high c']
   t.equal(arr.length, 12, 'got twelve months')
   t.equal(arr[1], 0.7, 'got february')
 
@@ -170,7 +170,7 @@ test('weather', function (t) {
   | 18.4|19.9|22.3|23.7|27.5|31.3|36.8|36.5|32.5|27.5|22.2|18.7<!--highs-->
   | 5.9 |7.6 |9.4 |11.0|13.8|16.3|19.9|20.1|18.2|14.7|10.4|6.5 <!--lows-->
   }}`
-  arr = wtf(str).templates()[0].json().data.byMonth['high c']
+  arr = wtf(str).templates()[0].json().data?.byMonth['high c']
   t.equal(arr.length, 12, 'got twelve months concise')
   t.equal(arr[1], 19.9, 'got february')
   t.end()

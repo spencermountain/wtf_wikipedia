@@ -1,16 +1,16 @@
 const defaults = {
-  images: true
+  images: true,
 }
 const dontDo = {
   image: true,
   caption: true,
   alt: true,
   signature: true,
-  signature_alt: true
+  signature_alt: true,
 }
 
 //
-const infobox = function (Sentence, options) {
+const infobox = function (Block, options) {
   options = { ...defaults, ...options }
   const data = this.json().data
   let html = '<table class="infobox">\n'
@@ -24,9 +24,7 @@ const infobox = function (Sentence, options) {
     html += '       ' + this.image().html() + '\n'
     html += '       </td>\n'
     if (data.caption || data.alt) {
-      const caption = data.caption
-        ? new Sentence(data.caption).html(options)
-        : new Sentence(data.alt).html(options)
+      const caption = data.caption ? new Block(data.caption).html(options) : new Block(data.alt).html(options)
       html += '       <td colspan="2" style="text-align:center">\n'
       html += '         ' + caption + '\n'
       html += '       </td>\n'
@@ -40,7 +38,7 @@ const infobox = function (Sentence, options) {
     const blocks = [].concat(data[k])
     let key = k.replace(/_/g, ' ')
     key = key.charAt(0).toUpperCase() + key.substring(1) //titlecase it
-    const val = blocks.map((block) => new Sentence(block).html(options)).join(' ')
+    const val = blocks.map((block) => new Block(block).html(options)).join(' ')
     html += '    <tr>\n'
     html += '      <td>' + key + '</td>\n'
     html += '      <td>' + val + '</td>\n'

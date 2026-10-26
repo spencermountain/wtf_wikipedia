@@ -14,17 +14,17 @@ const plugin = function (models) {
   models.Doc.prototype.markdown = doc
   models.Section.prototype.markdown = section
   models.Paragraph.prototype.markdown = paragraph
-  models.Sentence.prototype.markdown = sentence
+  models.Block.prototype.markdown = sentence
   models.Link.prototype.markdown = link
   models.Image.prototype.markdown = image
   models.Infobox.prototype.markdown = function (options) {
-    return infobox.call(this, models.Sentence, options)
+    return infobox.call(this, models.Block, options)
   }
   models.Table.prototype.markdown = function (options) {
-    return table.call(this, models.Sentence, options)
+    return table.call(this, models.Block, options)
   }
   models.List.prototype.markdown = function (options) {
-    return list.call(this, models.Sentence, options)
+    return list.call(this, models.Block, options)
   }
   models.Reference.prototype.markdown = reference
 }

@@ -5,7 +5,7 @@ const parseLiterals = (section: SectionData) => {
 
   // these dunderscore literals are just like spooky templates
   wiki = wiki.replace(/__(NOTOC|NOEDITSECTION|FORCETOC|TOC)__/gi, function (match) {
-    section.templates.push({ template: match, kind: 'literal', text: '', data: null, wiki: `__${match}__` })
+    section.templates.push({ template: match, kind: 'literal', text: '', data: null, wiki: match })
     return ''
   })
   //wiki user-signature syntax ~~~~

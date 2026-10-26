@@ -10,6 +10,9 @@ const parseRefs = (section: SectionData, opts: DocInfo = defaults) => {
   definitions.sort((a, b) => Number(b.plain) - Number(a.plain))
   section.references = definitions.flatMap((citation) => citation.references)
 
+  // Reference-list wrappers contain definitions, which have now been extracted.
+  wiki = wiki.replace(/<\/?references\b[^>]*>/gi, '')
+
   // we're done with xml now - remove remaining wrappers
   wiki = wiki.replace(/ ?<[ /]?[a-z0-9]{1,8}[a-z0-9=" ]{2,20}[ /]?> ?/g, (found: string) => {
     section.templates.push({ template: 'html', kind: 'html', text: ' ', data: null, wiki: found })

@@ -7,7 +7,19 @@ import infoboxes from './_data/infoboxes.ts'
 import { refreshWrappers } from './_lib/plural-wrapper.ts'
 
 import type { DocInfo } from './types/index.ts'
-import { Document, Section, Paragraph, Image, Infobox, Link, List, Reference, Table, Template } from './API/index.ts'
+import {
+  Document,
+  Section,
+  Paragraph,
+  Image,
+  Infobox,
+  Link,
+  List,
+  Reference,
+  Table,
+  Template,
+  Block,
+} from './API/index.ts'
 
 //the main 'factory' exported method
 const wtf = function (wiki: string, info?: DocInfo) {
@@ -26,6 +38,7 @@ const models = {
   Reference,
   Table,
   Template,
+  Block,
   http,
   wtf: wtf,
 }

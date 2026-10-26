@@ -8,7 +8,7 @@ import getTemplates from '../../templates/find/flat.ts'
 
 // Keep the existing limits for plain, self-closing, and attributed references.
 const referencePattern =
-  / ?<ref>(.{0,4000}?)<\/ref> ?| ?<ref [^>]{0,200}?\/> ?| ?<ref [^>]{0,200}>(.{0,1800}?)<\/ref> ?/gis
+  / ?<ref>(.{0,4000}?)<\/ref> ?| ?<ref\b[^>]{0,200}?\/> ?| ?<ref [^>]{0,200}>(.{0,1800}?)<\/ref> ?/gis
 const namePattern = /\bname\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s/>]+))/i
 const groupPattern = /\bgroup\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s/>]+))/i
 

@@ -193,8 +193,15 @@ class Document {
     return Images.from(arr)
   }
 
-  links() {
-    return Links.from(this.sections().flatMap((sec) => sec.links()))
+  links(clue?: string) {
+    let arr = this.sections().flatMap((sec) => sec.links())
+    if (clue) {
+      arr = arr.filter((l) => l.page() === clue)
+    }
+    return Links.from(arr)
+  }
+  link(clue?: string) {
+    return this.links(clue)[0]
   }
 
   lists() {
@@ -210,6 +217,9 @@ class Document {
       return Templates.from(items.filter((t) => t.type === clue || t.json().template === clue))
     }
     return Templates.from(items)
+  }
+  template(clue?: string) {
+    return this.templates(clue)[0]
   }
 
   references() {

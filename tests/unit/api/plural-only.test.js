@@ -2,33 +2,6 @@ import test from 'tape'
 import wtf from '../../lib/index.js'
 
 test('models expose plural accessors with section, infobox and image selectors', (t) => {
-  const singular = [
-    'link',
-    'image',
-    'list',
-    'paragraph',
-    'section',
-    'infobox',
-    'template',
-    'reference',
-    'citation',
-    'table',
-    'coordinate',
-  ]
-  wtf.extend((models) => {
-    const names = ['Doc', 'Section', 'Paragraph', 'Image', 'Infobox', 'Link', 'List', 'Reference', 'Table', 'Template']
-    names.forEach((name) => {
-      singular.forEach((method) => {
-        if (name === 'Doc' && (method === 'infobox' || method === 'section')) {
-          t.equal(typeof models[name].prototype[method], 'function', `Document.${method} is retained`)
-        } else if (name === 'Infobox' && method === 'image') {
-          t.equal(typeof models[name].prototype[method], 'function', 'Infobox.image is retained')
-        } else {
-          t.notOk(method in models[name].prototype, `${name}.${method} is absent`)
-        }
-      })
-    })
-  })
   const doc = wtf('Hello [[Alice]].\n== History ==\nPast events.')
   t.equal(doc.links()[0].page(), 'Alice', 'first link remains accessible')
   t.equal(

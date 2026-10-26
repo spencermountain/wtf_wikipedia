@@ -71,7 +71,7 @@ const addMethod = function (models) {
       }
       s.lists().forEach((list) => {
         list.lines().forEach((line) => {
-          const found = parseLine(new models.Sentence(line.json('xl')))
+          const found = parseLine(new models.Block(line.json('xl')))
           if (found) {
             found.section = title
             pages.push(found)
