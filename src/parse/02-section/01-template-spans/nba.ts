@@ -1,6 +1,6 @@
 import makeResult from '../../templates/result.ts'
 import defaults from '../../../_lib/defaults.ts'
-import tableParser from '../04-tables/parse.ts'
+import tableParser from '../05-tables/parse.ts'
 import type { DocInfo, SectionData } from '../../../types/index.ts'
 const keys = {
   coach: ['team', 'year', 'g', 'w', 'l', 'w-l%', 'finish', 'pg', 'pw', 'pl', 'pw-l%'],

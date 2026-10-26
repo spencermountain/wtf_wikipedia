@@ -29,7 +29,15 @@ test('external-links', function (t) {
     const doc = wtf(a[1])
     t.equal(doc.templates().length, 1, a[0] + ' count')
     const tmpl = doc.templates()[0].json() || {}
-    t.equal(tmpl.template, a[1].trim().slice(2).split(/[|}\n]/)[0].trim(), a[1] + ' name')
+    t.equal(
+      tmpl.template,
+      a[1]
+        .trim()
+        .slice(2)
+        .split(/[|}\n]/)[0]
+        .trim(),
+      a[1] + ' name'
+    )
   })
   t.end()
 })
@@ -119,7 +127,15 @@ test('wikipedia-templates', function (t) {
     const doc = wtf(a[1])
     t.equal(doc.templates().length, 1, a[0] + ' count')
     const tmpl = doc.templates()[0].json() || {}
-    t.equal(tmpl.template, a[1].trim().slice(2).split(/[|}\n]/)[0].trim(), a[0] + ' name')
+    t.equal(
+      tmpl.template,
+      a[1]
+        .trim()
+        .slice(2)
+        .split(/[|}\n]/)[0]
+        .trim(),
+      a[0] + ' name'
+    )
   })
   t.end()
 })
@@ -145,7 +161,7 @@ test('weather', function (t) {
   |Dec high C = -0.8
   |source 1=[[Environment Canada]]<ref name="envcan"/>
   }}`
-  let arr = wtf(str).templates()[0].json().data.byMonth['high c']
+  let arr = wtf(str).templates()[1].json().data?.byMonth['high c']
   t.equal(arr.length, 12, 'got twelve months')
   t.equal(arr[1], 0.7, 'got february')
 

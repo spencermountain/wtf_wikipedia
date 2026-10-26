@@ -1,5 +1,5 @@
 import test from 'tape'
-import wtf from '../../lib/index.js'
+import wtf from '../lib/index.js'
 
 test('JSON preserves dotted keys', (t) => {
   const str = `

@@ -27,6 +27,6 @@
       "wtf_wikipedia": ["./types/index.d.ts"],
     },
   },
-  "include": ["src/**/*", "plugins/**/*"],
+  "include": ["src/**/*", "plugins/**/*", "tests/_hmm/encoding.hmm.js"],
   "exclude": ["node_modules", "**/node_modules/*", "**/builds/"],
 }

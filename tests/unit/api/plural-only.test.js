@@ -2,9 +2,21 @@ import test from 'tape'
 import wtf from '../../lib/index.js'
 
 test('models expose plural accessors with section, infobox and image selectors', (t) => {
-  const singular = ['link', 'image', 'list', 'sentence', 'paragraph', 'section', 'infobox', 'template', 'reference', 'citation', 'table', 'coordinate']
+  const singular = [
+    'link',
+    'image',
+    'list',
+    'paragraph',
+    'section',
+    'infobox',
+    'template',
+    'reference',
+    'citation',
+    'table',
+    'coordinate',
+  ]
   wtf.extend((models) => {
-    const names = ['Doc', 'Section', 'Paragraph', 'Sentence', 'Image', 'Infobox', 'Link', 'List', 'Reference', 'Table', 'Template']
+    const names = ['Doc', 'Section', 'Paragraph', 'Image', 'Infobox', 'Link', 'List', 'Reference', 'Table', 'Template']
     names.forEach((name) => {
       singular.forEach((method) => {
         if (name === 'Doc' && (method === 'infobox' || method === 'section')) {
@@ -19,7 +31,11 @@ test('models expose plural accessors with section, infobox and image selectors',
   })
   const doc = wtf('Hello [[Alice]].\n== History ==\nPast events.')
   t.equal(doc.links()[0].page(), 'Alice', 'first link remains accessible')
-  t.equal(doc.section(' hIsToRy ').text(), 'Past events.', 'section title lookup ignores case and surrounding whitespace')
+  t.equal(
+    doc.section(' hIsToRy ').text(),
+    'Past events.',
+    'section title lookup ignores case and surrounding whitespace'
+  )
   t.equal(doc.section(1).title(), 'History', 'section selects by index')
   t.equal(doc.section().text(), 'Hello Alice.', 'section defaults to the introduction')
   t.equal(doc.section('Missing').text(), '', 'missing title returns an empty Section')

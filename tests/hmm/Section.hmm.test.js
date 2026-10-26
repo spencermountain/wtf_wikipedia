@@ -169,10 +169,12 @@ test('section - references', (t) => {
 })
 
 test('section - interwiki', (t) => {
-  t.ok(doc.section('history').interwiki().length === 0, 'internal links are not interwiki')
+  t.ok(doc.section('history').links().interwiki().length === 0, 'internal links are not interwiki')
   const d2 = wtf('==Also==\nsee [[Rome]] and [[fr:Paris]] here.')
   t.deepEqual(
-    d2.section('also')
+    d2
+      .section('also')
+      .links()
       .interwiki()
       .map((l) => l.json()),
     [{ type: 'interwiki', wiki: 'fr', page: 'Paris' }],

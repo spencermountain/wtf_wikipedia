@@ -212,7 +212,11 @@ test('Arts-Club-Of-Chicago', (t) => {
   const doc = wtf(readPage('Arts-Club-Of-Chicago'))
   t.equal(doc.images()[0].file(), 'File:20070701_Arts_Club_of_Chicago.JPG', 'Arts-Club-Of-Chicago: club image')
   t.ok(doc.tables().length > 0, 'Arts-Club-Of-Chicago: article tables survive parsing')
-  t.equal(doc.templates()[1].json().template, 'Good article', 'Arts-Club-Of-Chicago: article quality template')
+  t.equal(
+    doc.templates('good article')[0].json().template,
+    'Good article',
+    'Arts-Club-Of-Chicago: article quality template'
+  )
   t.ok(doc.references().length > 0, 'Arts-Club-Of-Chicago: art history sources')
   t.match(doc.text(), /1916/, 'Arts-Club-Of-Chicago: founding year')
   t.ok(
@@ -407,7 +411,11 @@ test('Direct-Representation', (t) => {
 
 test('Dollar-Point-California', (t) => {
   const doc = wtf(readPage('Dollar-Point-California'))
-  t.equal(doc.infobox().get('official_name').text(), 'Dollar Point, California', 'Dollar-Point-California: official name')
+  t.equal(
+    doc.infobox().get('official_name').text(),
+    'Dollar Point, California',
+    'Dollar-Point-California: official name'
+  )
   t.equal(doc.coordinates()[0].lat, 39.18861, 'Dollar-Point-California: latitude')
   t.equal(doc.coordinates()[0].lon, -120.10889, 'Dollar-Point-California: longitude')
   t.equal(
@@ -874,7 +882,11 @@ test('Routing-And-Remote-Access-Service', (t) => {
 test('Royal-Cinema', (t) => {
   const doc = wtf(readPage('Royal-Cinema'))
   t.equal(doc.infobox().get('name').text(), 'Royal Cinema', 'Royal-Cinema: venue name')
-  t.equal(doc.infobox().get('former names').text(), 'The Pylon, The Golden Princess', 'Royal-Cinema: former venue names')
+  t.equal(
+    doc.infobox().get('former names').text(),
+    'The Pylon, The Golden Princess',
+    'Royal-Cinema: former venue names'
+  )
   t.equal(doc.infobox().type(), 'venue', 'Royal-Cinema: venue infobox')
   t.match(doc.images()[0].file(), /Royal_Cinema\.JPG$/, 'Royal-Cinema: cinema photograph')
   t.equal(doc.infobox().get('caption').text(), 'The Royal Cinema in 2009', 'Royal-Cinema: photo caption')

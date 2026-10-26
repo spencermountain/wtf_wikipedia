@@ -11,6 +11,7 @@ str = `
 `
 
 str = readPage('United-Kingdom')
+str = readPage('Arts-Club-Of-Chicago')
 // str = `
 // {{Infobox settlement
 // | name = New York City
@@ -38,10 +39,15 @@ str = readPage('United-Kingdom')
 // | legislature        =
 // }}`
 
-str = `[[Salt]]{{\\}}[[Pepper]]`
-const doc = wtf(str, meta)
-console.log(doc.templates().json())
+// str = `hello <asd f> world </asd>`
+// const doc = wtf(str, meta)
+
+let doc = wtf(`hi <sub>world</sub> there`)
 console.log(doc.text())
+let tmpl = doc.templates()[0].json() || {}
+// console.log(doc.template('good article').json('xl'))
+// console.log(doc.sentences().links().interwiki())
+// console.log(doc.text())
 // console.log(doc.infoboxes().map((l) => l.type()))
 // const table = doc.tables()[0]
 // console.log(table.getRows(['Name', 'team']))

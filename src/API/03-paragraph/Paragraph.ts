@@ -1,10 +1,10 @@
-import Sentences from './sentence/Sentences.ts'
+import Blocks from '../Block/Blocks.ts'
 import Lists from './list/Lists.ts'
 import Images from './image/Images.ts'
-import Sentence from './sentence/Sentence.ts'
 import Image from './image/Image.ts'
 import List from './list/List.ts'
 import Links from './link/Links.ts'
+import Block from '../Block/Block.ts'
 import type { ParagraphData, DocInfo } from '../../types/index.ts'
 
 class Paragraph {
@@ -18,7 +18,7 @@ class Paragraph {
 
   sentences() {
     const arr = this.#data.sentences || []
-    return Sentences.from(arr.map((s) => new Sentence(s)))
+    return Blocks.from(arr.map((s) => new Block(s)))
   }
 
   lists() {
@@ -44,10 +44,6 @@ class Paragraph {
       links.push(...s.links())
     })
     return Links.from(links)
-  }
-
-  interwiki() {
-    return this.sentences().flatMap((s) => s.interwiki())
   }
 
   text() {

@@ -7,7 +7,7 @@ import Lists from '../03-paragraph/list/Lists.ts'
 import Paragraph from '../03-paragraph/Paragraph.ts'
 import Reference from './reference/Reference.ts'
 import References from './reference/References.ts'
-import Sentences from '../03-paragraph/sentence/Sentences.ts'
+import Blocks from '../Block/Blocks.ts'
 import Table from './table/Table.ts'
 import Tables from './table/Tables.ts'
 import Template from './template/Template.ts'
@@ -35,7 +35,7 @@ class Section {
   }
 
   sentences() {
-    return Sentences.from(this.paragraphs().flatMap((p) => p.sentences()))
+    return Blocks.from(this.paragraphs().flatMap((p) => p.sentences()))
   }
 
   paragraphs() {
@@ -108,10 +108,6 @@ class Section {
   lists() {
     let arr = this.paragraphs().flatMap((p) => p.lists())
     return Lists.from(arr)
-  }
-
-  interwiki() {
-    return this.links().filter((l) => l.type() === 'interwiki')
   }
 
   images() {

@@ -83,7 +83,7 @@ test('article links retain their targets and display text', (t) => {
 test('interwiki - get - exclude internal links', (t) => {
   let str = readPage('Britt-Morgan')
   let doc = wtf(str)
-  t.ok(doc.interwiki().length === 0, 'internal links are not interwiki')
+  t.ok(doc.links().interwiki().length === 0, 'internal links are not interwiki')
   t.end()
 })
 
@@ -99,7 +99,7 @@ test('interwiki - get - return all links without a selector and none for unsuppo
     { type: 'interwiki', wiki: 'fr', page: 'Paris' },
     { type: 'interwiki', wiki: 'de', page: 'Berlin' },
   ]
-  t.deepEqual(doc.interwiki().json(), expected, 'returns all interwiki')
+  t.deepEqual(doc.links().interwiki().json(), expected, 'returns all interwiki')
   t.ok(doc.interwiki([]).length === 0, 'unsupported selector returns an empty collection')
   t.end()
 })

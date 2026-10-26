@@ -1,6 +1,6 @@
 import makeResult from '../../templates/result.ts'
 import defaults from '../../../_lib/defaults.ts'
-import tableParser from '../04-tables/parse.ts'
+import tableParser from '../05-tables/parse.ts'
 import type { DocInfo, SectionData } from '../../../types/index.ts'
 let headings = ['res', 'record', 'opponent', 'method', 'event', 'date', 'round', 'time', 'location', 'notes']
 

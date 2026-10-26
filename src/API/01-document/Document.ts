@@ -6,7 +6,7 @@ import Links from '../03-paragraph/link/Links.ts'
 import Lists from '../03-paragraph/list/Lists.ts'
 import References from '../02-section/reference/References.ts'
 import Section from '../02-section/Section.ts'
-import Sentences from '../03-paragraph/sentence/Sentences.ts'
+import Blocks from '../Block/Blocks.ts'
 import Tables from '../02-section/table/Tables.ts'
 import Templates from '../02-section/template/Templates.ts'
 import { withDefaults } from '../../_lib/defaults.ts'
@@ -159,7 +159,7 @@ class Document {
     return this.sections().flatMap((section) => section.paragraphs())
   }
   sentences() {
-    return Sentences.from(this.sections().flatMap((section) => section.sentences()))
+    return Blocks.from(this.sections().flatMap((section) => section.sentences()))
   }
 
   // searches the whole page, including infobox and gallery templates, for images
@@ -197,10 +197,6 @@ class Document {
     return Links.from(this.sections().flatMap((sec) => sec.links()))
   }
 
-  interwiki() {
-    return this.sections().flatMap((sec) => sec.interwiki())
-  }
-
   lists() {
     return Lists.from(sectionMap(this, 'lists', null))
   }
@@ -214,6 +210,9 @@ class Document {
       return Templates.from(items.filter((t) => t.type === clue || t.json().template === clue))
     }
     return Templates.from(items)
+  }
+  template(clue?: string) {
+    return this.templates(clue)[0]
   }
 
   references() {

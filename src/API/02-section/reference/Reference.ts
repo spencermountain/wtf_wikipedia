@@ -39,6 +39,9 @@ class Reference {
     delete json.wiki
     return json
   }
+  static empty() {
+    return new Reference({ template: '', kind: 'reference', wiki: '', text: '', data: {} })
+  }
 }
 
 export default Reference

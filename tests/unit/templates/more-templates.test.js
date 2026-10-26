@@ -57,11 +57,11 @@ test('templates-in-templates', (t) => {
   const templates = wtf(str)
     .templates()
     .map((tmpl) => tmpl.json())
-  t.equal(templates[0].template, 'marriage', 'marriage1')
-  t.equal(templates[1].template, 'marriage', 'marriage2')
-  t.equal(templates[1].data.spouse, 'Elsa Löwenthal', 'marriage-1-name')
-  t.equal(templates[0].data.spouse, 'Mileva Marić', 'marriage2-name')
-  t.equal(templates[2].template, 'sfnp', 'sfnp')
+  t.equal(templates[3].template, 'marriage', 'marriage1')
+  t.equal(templates[4].template, 'marriage', 'marriage2')
+  t.equal(templates[4].data?.spouse, 'Elsa Löwenthal', 'marriage-1-name')
+  t.equal(templates[3].data?.spouse, 'Mileva Marić', 'marriage2-name')
+  t.equal(templates[5].template, 'sfnp', 'sfnp')
   t.end()
 })
 
@@ -110,7 +110,14 @@ test('austria-hungary', (t) => {
     'got-plaintext'
   )
   t.equal(doc.templates('for')[0].json().data.list[1], 'Austria–Hungary relations', 'nested emdash')
-  t.equal(doc.links().find((link) => link.page() === 'Budapest')?.page(), 'Budapest', 'got Budapest link')
+  t.equal(
+    doc
+      .links()
+      .find((link) => link.page() === 'Budapest')
+      ?.page(),
+    'Budapest',
+    'got Budapest link'
+  )
   t.equal(
     doc.templates('short description')[0].json().data.description,
     'Constitutional monarchic union from 1867 to October 1918',

@@ -35,7 +35,6 @@ declare class Document {
   infoboxes(): InfoboxCollection
   /** Selects the most important infobox, or null when none exist. */
   infobox(): Infobox | null
-  interwiki(): Link[]
   isDisambig(): boolean
   isDisambiguation(): boolean
   isRedirect(): boolean
@@ -77,7 +76,6 @@ declare class Section {
   images(): Collection<Image>
   index(): number | null
   infoboxes(): InfoboxCollection
-  interwiki(): Link[]
   json(format?: JsonFormat): Record<string, unknown>
   links(): LinkCollection
   lists(): Collection<List>
@@ -142,7 +140,6 @@ declare class Reference {
 
 declare class Paragraph {
   images(): Collection<Image>
-  interwiki(): LinkJson[]
   json(format?: JsonFormat): Record<string, unknown>
   links(): LinkCollection
   lists(): Collection<List>
@@ -183,7 +180,6 @@ declare class Block {
 declare class Sentence {
   static empty(): Sentence
   bolds(): FormattingJson[]
-  interwiki(): LinkJson[]
   italics(): FormattingJson[]
   json(format?: JsonFormat): Record<string, unknown>
   links(): LinkCollection

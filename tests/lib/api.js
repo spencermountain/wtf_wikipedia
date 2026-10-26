@@ -184,12 +184,12 @@ export default {
       example: '',
       description: '',
     },
-    {
-      name: 'interwiki',
-      returns: 'Array',
-      example: '',
-      description: 'any links to other language wikis',
-    },
+    // {
+    //   name: 'interwiki',
+    //   returns: 'Array',
+    //   example: '',
+    //   description: 'any links to other language wikis',
+    // },
     {
       name: 'images',
       returns: 'Array',
@@ -278,12 +278,12 @@ export default {
       example: '',
       description: '',
     },
-    {
-      name: 'interwiki',
-      returns: 'Array',
-      example: '',
-      description: '',
-    },
+    // {
+    //   name: 'interwiki',
+    //   returns: 'Array',
+    //   example: '',
+    //   description: '',
+    // },
     {
       name: 'text',
       returns: 'String',
