@@ -1,32 +1,31 @@
 import defaults from '../../_lib/defaults.ts'
 import { isRedirect, parseRedirect } from './01-isRedirect/redirects.ts'
-import preProcess from './03-preProcess/index.ts'
-import parseCategories from './02-categories/index.ts'
+import preProcess from './_preProcess/index.ts'
+import parseCategories from './03-categories/index.ts'
 import parseSections from './04-splitSections/index.ts'
+import parseComments from './02-comments/index.ts'
 import type { DocInfo, PageData } from '../../types/index.ts'
 
 const parsePage = function (wiki: string, opts: DocInfo = defaults) {
-  let data: PageData = { wiki: wiki, remaining: wiki, sections: [], categories: [] }
+  let page: PageData = { wiki: wiki, remaining: wiki, sections: [], comments: [], categories: [] }
 
   //1. detect if redirect page
   if (isRedirect(wiki)) {
-    data.isRedirect = true
-    data.redirectTo = parseRedirect(wiki, opts)
+    page.isRedirect = true
+    page.redirectTo = parseRedirect(wiki, opts)
     // (they can have categories)
-    let res = parseCategories(wiki, opts)
-    data.categories = res.categories
-    data.remaining = res.wiki
-    return data
+    page = parseCategories(page)
+    return page
   }
   //2. cleanup wiki text
-  data.remaining = preProcess(wiki, opts)
+  page.remaining = preProcess(wiki, opts)
+  // 2. remove xml comments
+  page = parseComments(page)
   // 3. pluck categories from the bottom
-  let res = parseCategories(data.remaining, opts)
-  data.categories = res.categories
-  data.remaining = res.wiki
+  page = parseCategories(page)
   // 4. split by section
-  data.sections = parseSections(data.remaining, opts)
-  return data
+  page.sections = parseSections(page.remaining, opts)
+  return page
 }
 
 export default parsePage

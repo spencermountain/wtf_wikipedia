@@ -5,10 +5,10 @@ import kill_xml from './kill_xml.ts'
 // strips out formatting cruft up-front to make the later parsing easier
 function preProcess(wiki: string, _opts: DocInfo = defaults) {
   //remove comments
-  wiki = wiki.replace(/<!--.{0,3000}?-->/gs, '')
-  wiki = wiki.replace(/__(NOTOC|NOEDITSECTION|FORCETOC|TOC)__/gi, '')
-  //signitures
-  wiki = wiki.replace(/~{2,3}/g, '')
+  // // wiki = wiki.replace(/<!--.{0,3000}?-->/gs, '')
+  // wiki = wiki.replace(/__(NOTOC|NOEDITSECTION|FORCETOC|TOC)__/gi, '')
+  // //signitures
+  // wiki = wiki.replace(/~{2,3}/g, '')
   //windows newlines
   wiki = wiki.replaceAll('\r', '')
   //japanese periods - '。'

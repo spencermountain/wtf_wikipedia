@@ -1,11 +1,11 @@
-import type { DocInfo } from '../../../types/index.ts'
-import defaults from '../../../_lib/defaults.ts'
+import type { PageData } from '../../../types/index.ts'
 import { categories as _categories } from '../../../_data/i18n/index.ts'
 
 const cat_reg = new RegExp('\\[\\[(' + _categories.join('|') + '):(.{2,178}?)]](w{0,10})', 'gi')
 const cat_remove_reg = new RegExp('^\\[\\[:?(' + _categories.join('|') + '):', 'gi')
 
-const parse_categories = function (wiki: string, _opts: DocInfo = defaults) {
+const parse_categories = function (page: PageData) {
+  let wiki = page.remaining
   const categories = []
   const categoryDetails = []
   let tmp = wiki.match(cat_reg) //regular links
@@ -21,7 +21,8 @@ const parse_categories = function (wiki: string, _opts: DocInfo = defaults) {
       }
     })
   }
-  const newWiki = wiki.replace(cat_reg, '')
-  return { categories, categoryDetails, wiki: newWiki }
+  page.remaining = wiki.replace(cat_reg, '')
+  page.categories = categories
+  return page
 }
 export default parse_categories

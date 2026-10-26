@@ -10,12 +10,10 @@ import type { DocInfo, SectionData } from '../../types/index.ts'
 const parseSection = (section: SectionData, opts: DocInfo = defaults) => {
   //parse-out <template></template>' and {{start}}...{{end}} templates
   section = xmlTemplates(section, opts)
-
   //parse-out the <ref></ref> tags
   section = parseReferences(section, opts)
   //parse-out all {{templates}}
   section = parseTemplates(section, opts)
-
   //parse the tables
   section = parseTable(section, opts)
 

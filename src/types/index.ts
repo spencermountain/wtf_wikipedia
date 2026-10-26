@@ -101,6 +101,7 @@ export interface PageData {
   // parsed values
   sections: SectionData[]
   categories: string[]
+  comments: string[]
   isRedirect?: boolean
   redirectTo?: LinkData
 }

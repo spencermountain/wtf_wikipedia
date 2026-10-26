@@ -136,6 +136,10 @@ class Document {
     return this.#data.categories || []
   }
 
+  comments() {
+    return this.#data.comments || []
+  }
+
   sections() {
     let arr = this.#data.sections || []
     return arr.map((section) => new Section(section, this.#info))
