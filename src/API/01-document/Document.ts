@@ -211,9 +211,6 @@ class Document {
     }
     return Templates.from(items)
   }
-  template(clue?: string) {
-    return this.templates(clue)[0]
-  }
 
   references() {
     const items = this.sections().flatMap((sec) => sec.references())

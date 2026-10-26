@@ -12,6 +12,9 @@ str = `
 
 str = readPage('United-Kingdom')
 str = readPage('Arts-Club-Of-Chicago')
+wtf.extend((models) => {
+  console.log(models.Doc.prototype.template)
+})
 // str = `
 // {{Infobox settlement
 // | name = New York City
@@ -44,7 +47,7 @@ str = readPage('Arts-Club-Of-Chicago')
 
 let doc = wtf(`hi <sub>world</sub> there`)
 console.log(doc.text())
-let tmpl = doc.templates()[0].json() || {}
+console.log(doc.template().json('xl'))
 // console.log(doc.template('good article').json('xl'))
 // console.log(doc.sentences().links().interwiki())
 // console.log(doc.text())

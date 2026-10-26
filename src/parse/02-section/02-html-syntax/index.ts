@@ -30,8 +30,10 @@ const noThanks = new RegExp(`${openTag}[${anyChar}]{1,40000}?${closeTag}`, 'gi')
 const parseHtml = function (section: SectionData, opts?: DocInfo) {
   let wiki = section.remaining
 
-  const toTemplate = function (match: string, replace: string, text = replace) {
-    section.templates.push({ template: 'html', kind: 'html', text: '', data: null, wiki: match })
+  const toTemplate = function (match: string, replace: string, kind: string = 'html') {
+    if (match) {
+      section.templates.push({ template: 'html', kind, text: '', data: null, wiki: match })
+    }
     return replace
   }
 
@@ -48,12 +50,9 @@ const parseHtml = function (section: SectionData, opts?: DocInfo) {
   wiki = wiki.replace(/<b>(.*?)<\/b>/g, (m, inner) => toTemplate(m, `'''${inner}'''`))
 
   // these are better-handled with templates
-  wiki = wiki.replace(/<sub>(.*?)<\/sub>/g, (m, inner) => toTemplate(m, `{{sub|${inner}}}`, inner))
-  wiki = wiki.replace(/<sup>(.*?)<\/sup>/g, (m, inner) => toTemplate(m, `{{sup|${inner}}}`, inner))
-  wiki = wiki.replace(/<blockquote>(.*?)<\/blockquote>/g, (m, inner) =>
-    toTemplate(m, `{{blockquote|text=${inner}}}`, inner)
-  )
-
+  wiki = wiki.replace(/<sub>(.*?)<\/sub>/g, `{{sub|$1}}`)
+  wiki = wiki.replace(/<sup>(.*?)<\/sup>/g, `{{sup|$1}}`)
+  wiki = wiki.replace(/<blockquote>(.*?)<\/blockquote>/g, `{{blockquote|text=$1}}`)
   // convert `nowiki` content by replacing ASCII punctuation and symbols with HTML entities
   // so they pass through without being processed as wiki syntax
   wiki = wiki.replace(/<nowiki>([\s\S]*?)<\/nowiki>/gi, (match, inner) => {
