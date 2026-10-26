@@ -1,6 +1,5 @@
 import defaults from '../../_lib/defaults.ts'
 import { isRedirect, parseRedirect } from './01-isRedirect/redirects.ts'
-import preProcess from './_preProcess/index.ts'
 import parseCategories from './03-categories/index.ts'
 import parseSections from './04-splitSections/index.ts'
 import parseComments from './02-comments/index.ts'
@@ -17,8 +16,6 @@ const parsePage = function (wiki: string, opts: DocInfo = defaults) {
     page = parseCategories(page)
     return page
   }
-  //2. cleanup wiki text
-  page.remaining = preProcess(wiki, opts)
   // 2. remove xml comments
   page = parseComments(page)
   // 3. pluck categories from the bottom
