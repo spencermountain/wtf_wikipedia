@@ -41,6 +41,12 @@ export default {
     let d = new Date()
     return { data: null, replacement: String(d.getFullYear()) }
   },
+  lastyear: () => {
+    return { data: null, replacement: String(new Date().getFullYear() - 1) }
+  },
+  nextyear: () => {
+    return { data: null, replacement: String(new Date().getFullYear() + 1) }
+  },
   monthyear: () => {
     let d = new Date()
     return { data: null, replacement: months[d.getMonth()] + ' ' + d.getFullYear() }

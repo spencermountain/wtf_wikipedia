@@ -188,3 +188,24 @@ test('symbol templates', (t) => {
   ])
   t.end()
 })
+
+test('in lang, years, buttons, boxes, category links', (t) => {
+  check(t, [
+    ['{{in lang|fr}}', '(in French)'],
+    ['{{in lang|en|el}}', '(in English and Greek)'],
+    ['{{In lang|ru|de|fr}}', '(in Russian, German and French)'],
+    ['{{in lang|zh-Hans}}', '(in Simplified Chinese)'],
+    ['{{in lang|xx}}', '(in xx)'],
+    ['{{clickable button|Jump to list}}', 'Jump to list'],
+    ['{{Clickable button 2|Jump|link=Foo}}', 'Jump'],
+    ['{{box|inline=yes|1=pattern}}', 'pattern'],
+    ['{{box|type=transparent|{{music|quarter}}}}', '♩'],
+    ['{{cl|Classical music awards}}', 'Category:Classical music awards'],
+    ['{{cl|Foo|Foos}}', 'Foos'],
+  ])
+  const year = new Date().getFullYear()
+  t.equal(wtf('{{LASTYEAR}}').text(), String(year - 1), 'lastyear')
+  t.equal(wtf('{{NEXTYEAR}}').text(), String(year + 1), 'nextyear')
+  t.equal(wtf('{{cl|Foo}}').links()[0].json().page, 'Category:Foo', 'cl links to the category')
+  t.end()
+})

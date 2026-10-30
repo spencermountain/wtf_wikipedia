@@ -1,5 +1,6 @@
 import defaultParse from '../../parse/templates/parse/toJSON/text.ts'
 import { toOrdinal } from '../_lib.ts'
+import languageNames from '../../_data/language-names.ts'
 
 // Harvard-style inline citations - unlike {{sfn}}, these are visible prose
 // https://en.wikipedia.org/wiki/Template:Harvard_citation
@@ -201,7 +202,45 @@ const tlx = (tmpl, parse = defaultParse) => {
   return { data: null, replacement: obj.name || '' }
 }
 
+// https://en.wikipedia.org/wiki/Template:In_lang - {{in lang|fr|de}} → (in French and German)
+const inLang = (tmpl, parse = defaultParse) => {
+  let obj = parse(tmpl)
+  let codes = (obj.list || []).map((s) => s.trim().toLowerCase()).filter((s) => s)
+  let names = codes.map((c) => languageNames[c] || languageNames[c.split('-')[0]] || c)
+  if (names.length === 0) {
+    return { data: null, replacement: '' }
+  }
+  let str = names.length > 1 ? names.slice(0, -1).join(', ') + ' and ' + names.at(-1) : names[0]
+  return { data: { codes }, replacement: `(in ${str})` }
+}
+
+// https://en.wikipedia.org/wiki/Template:Clickable_button - {{clickable button|Jump to list}} → Jump to list
+const clickableButton = (tmpl, parse = defaultParse) => {
+  let obj = parse(tmpl, ['text'])
+  return { data: null, replacement: obj.text || obj.label || '' }
+}
+
+// https://en.wikipedia.org/wiki/Template:Box - an inline or block box around its text
+const box = (tmpl, parse = defaultParse) => {
+  let obj = parse(tmpl, ['text'])
+  return { data: null, replacement: obj['1'] || obj.text || '' }
+}
+
+// https://en.wikipedia.org/wiki/Template:Cl - {{cl|Foo}} → Category:Foo, linked
+const categoryLink = (tmpl, parse = defaultParse) => {
+  let obj = parse(tmpl, ['category', 'text'])
+  if (!obj.category) {
+    return { data: null, replacement: '' }
+  }
+  let name = obj.category.replace(/^category:/i, '')
+  return { data: null, replacement: `[[:Category:${name}|${obj.text || 'Category:' + name}]]` }
+}
+
 export default {
+  'in lang': inLang,
+  'clickable button': clickableButton,
+  box,
+  cl: categoryLink,
   tlx,
   harv,
   harvtxt,
