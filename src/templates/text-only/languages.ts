@@ -457,6 +457,21 @@ let more = [
   'swh',
   'umb',
   'yao',
+  // ISO codes missing from _data/languages
+  'fa', // Persian
+  'sux', // Sumerian
+  'hbo', // Biblical Hebrew
+  'syc', // Classical Syriac
+  'xcl', // Classical Armenian
+  'pal', // Middle Persian
+  'peo', // Old Persian
+  'ave', // Avestan
+  'pli', // Pali
+  'wuu', // Wu Chinese
+  'pnb', // Western Punjabi
+  'hif', // Fiji Hindi
+  'mai', // Maithili
+  'sat', // Santali
 ]
 
 // more languages

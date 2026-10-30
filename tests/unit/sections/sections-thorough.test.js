@@ -124,7 +124,7 @@ See [[London]].
   t.end()
 })
 
-test('sections - known bugs', { todo: true }, (t) => {
+test('sections - fixed bugs', (t) => {
   t.equal(
     wtf('== Title<ref>x</ref> ==\ntext.').sections()[0].title(),
     'Title',

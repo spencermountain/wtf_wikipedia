@@ -15,7 +15,7 @@ test('html: sections and headings', (t) => {
   t.end()
 })
 
-test('html: section header levels match wikitext', { todo: true }, (t) => {
+test('html: section header levels match wikitext', (t) => {
   const html = wtf('intro.\n== History ==\nOld.\n=== Early ===\nOlder.').html()
   has(t, html, '<h2>History</h2>', '== heading → h2')
   has(t, html, '<h3>Early</h3>', '=== heading → h3')
@@ -65,7 +65,7 @@ test('html: links', (t) => {
   t.end()
 })
 
-test('html: link to the right occurrence', { todo: true }, (t) => {
+test('html: link to the right occurrence', (t) => {
   has(
     t,
     wtf('the cat and the [[cat]]').html(),
@@ -182,7 +182,7 @@ test('html: redirect soft landing', (t) => {
   t.end()
 })
 
-test('html: content order', { todo: true }, (t) => {
+test('html: content order', (t) => {
   const html = tidy(wtf('intro text.\n* one\n* two\n').html())
   t.ok(html.indexOf('intro text.') < html.indexOf('<ul'), 'list stays after the intro')
   t.end()

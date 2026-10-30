@@ -1,4 +1,4 @@
-import smartReplace from './_lib/smartReplace.js'
+import smartReplace, { linkOccurrence } from './_lib/smartReplace.js'
 
 const defaults = {
   links: true,
@@ -31,11 +31,13 @@ const doSentence = function (options) {
   }
   const tags = []
   if (options.links === true) {
+    const cursor = { at: 0 }
     this.links().forEach((link) => {
       const str = escape(link.text() || link.page())
+      const nth = linkOccurrence(this, link, cursor)
       const token = linkToken(tags.length)
       tags.push(link.html())
-      text = smartReplace(text, str, () => token)
+      text = smartReplace(text, str, () => token, nth)
     })
   }
   text = text

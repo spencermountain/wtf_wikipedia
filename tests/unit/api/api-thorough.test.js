@@ -111,7 +111,7 @@ test('api - isDisambiguation()', (t) => {
   t.end()
 })
 
-test('api - known bugs', { todo: true }, (t) => {
+test('api - fixed bugs', (t) => {
   // links should come back in document order
   const doc = wtf('[[Paris]] and [http://x.com X] and [[London]].')
   t.deepEqual(

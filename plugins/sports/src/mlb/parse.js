@@ -1,6 +1,7 @@
 //who knows!
 import playerStats from './playerStats.js'
 import { season as _season, postseason } from './gameLog/index.js'
+import { findSection } from '../_lib.js'
 
 const parseTitle = function (season = '') {
   const num = season.match(/[0-9]+/) || []
@@ -18,10 +19,9 @@ const parseTitle = function (season = '') {
 
 //this is just a table in a 'roster' section
 const parseRoster = function (doc, res) {
-  let s = doc.sections('roster') || doc.sections('players') || doc.sections(res.year + ' roster')
-  s = s[0]
+  const s = findSection(doc, ['roster', 'players', res.year + ' roster'])
   if (!s) {
-    return {}
+    return []
   }
   let players = s.templates('mlbplayer') || []
   players = players.map((tmpl) => {

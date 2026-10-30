@@ -4,7 +4,7 @@ import wtf from '../../lib/index.js'
 test('nihongo templates templates', (t) => {
   let str = `hello {{Nihongo|Tokyo Tower|東京タワー|Tōkyō tawā}} world`
   let doc = wtf(str)
-  t.equal(doc.text(), 'hello Tokyo Tower (東京タワー) world', 'sub english word')
+  t.equal(doc.text(), 'hello Tokyo Tower (東京タワー, Tōkyō tawā) world', 'english (kanji, romaji)')
   t.equal(doc.templates().length, 1, 'have template')
   t.equal(doc.templates()[0].json().data.romaji, 'Tōkyō tawā', 'have translation')
 
@@ -14,7 +14,7 @@ test('nihongo templates templates', (t) => {
 
   str = `{{Nihongo foot|English|Kanji|Rōmaji|extra|extra2|group=group}}`
   doc = wtf(str)
-  t.equal(doc.text(), 'English (Kanji)', 'footnote kinda')
+  t.equal(doc.text(), 'English', 'nihongo foot keeps only the english inline')
   t.end()
 })
 

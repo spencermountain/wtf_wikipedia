@@ -122,4 +122,13 @@ const toTextBritish = function (date) {
   return str
 }
 
-export { toText, toTextBritish, ymd }
+// pick day-first or month-first from a template's df=/mf= flags
+const isYes = (val) => /^(y|yes)$/i.test(String(val || '').trim())
+const fmt = function (date, obj: any = {}) {
+  if (isYes(obj.df) && !isYes(obj.mf)) {
+    return toTextBritish(date)
+  }
+  return toText(date)
+}
+
+export { toText, toTextBritish, ymd, fmt, months }

@@ -9,7 +9,11 @@ const examples = [
   ['gallery caption', '<gallery>File:Cool.jpg|[[Target]]</gallery>', ['Target']],
   ['infobox caption', '{{Infobox person|image=Cool.jpg|caption=[[Target]]}}', ['Target']],
   ['table header and cell', '{|\n! [[Target]]\n|-\n| [[Target]]\n|}', ['Target', 'Target']],
-  ['multiple citations', 'Claim.<ref>{{cite book|title=[[One]]}} {{cite book|title=[[Two]]}} See [[Three]].</ref>', ['One', 'Two', 'Three']],
+  [
+    'multiple citations',
+    'Claim.<ref>{{cite book|title=[[One]]}} {{cite book|title=[[Two]]}} See [[Three]].</ref>',
+    ['One', 'Two', 'Three'],
+  ],
 ]
 
 examples.forEach(([name, wiki, expected]) => {
@@ -17,8 +21,19 @@ examples.forEach(([name, wiki, expected]) => {
     const doc = wtf(wiki)
     const before = JSON.stringify(doc.json())
     const first = doc.links().map((link) => link.json())
-    t.deepEqual(doc.links().map((link) => link.page()).sort(), [...expected].sort(), 'returns each occurrence exactly once')
-    t.deepEqual(doc.links().map((link) => link.json()), first, 'repeated traversal preserves order and values')
+    t.deepEqual(
+      doc
+        .links()
+        .map((link) => link.page())
+        .sort(),
+      [...expected].sort(),
+      'returns each occurrence exactly once'
+    )
+    t.deepEqual(
+      doc.links().map((link) => link.json()),
+      first,
+      'repeated traversal preserves order and values'
+    )
     t.equal(JSON.stringify(doc.json()), before, 'traversal leaves document JSON unchanged')
     t.end()
   })
@@ -30,8 +45,17 @@ formatting.forEach((name) => {
     const doc = wtf(`{{${name}|[[Target|Label]] and [https://example.org source]}}`)
     const links = doc.links().map((link) => link.json())
     t.equal(doc.text(), 'Label and source', 'renders the argument as visible text')
-    t.equal(links.filter((link) => link.type === 'internal' && link.page === 'Target' && link.text === 'Label').length, 1, 'one internal link with its label')
-    t.equal(links.filter((link) => link.type === 'external' && link.site === 'https://example.org' && link.text === 'source').length, 1, 'one external link with its label')
+    t.equal(
+      links.filter((link) => link.type === 'internal' && link.page === 'Target' && link.text === 'Label').length,
+      1,
+      'one internal link with its label'
+    )
+    t.equal(
+      links.filter((link) => link.type === 'external' && link.site === 'https://example.org' && link.text === 'source')
+        .length,
+      1,
+      'one external link with its label'
+    )
     t.end()
   })
 })
@@ -53,14 +77,36 @@ Text [[Sentence]].<ref>See [[Reference]].</ref>
 |-
 | [[Cell]]
 |}`)
-  const models = [doc, ...doc.sections(), ...doc.paragraphs(), ...doc.sentences(), ...doc.lists(), ...doc.images(), ...doc.infoboxes(), ...doc.references(), ...doc.tables(), ...doc.templates()]
-  t.deepEqual(doc.links().map((link) => link.page()), ['Heading', 'Infobox', 'Reference', 'Template', 'Header', 'Cell', 'Sentence', 'List', 'Caption'], 'section groups use stable traversal order, with paragraphs in document order')
+  const models = [
+    doc,
+    ...doc.sections(),
+    ...doc.paragraphs(),
+    ...doc.sentences(),
+    ...doc.lists(),
+    ...doc.images(),
+    ...doc.infoboxes(),
+    ...doc.references(),
+    ...doc.tables(),
+    ...doc.templates(),
+  ]
+  t.deepEqual(
+    doc.links().map((link) => link.page()),
+    ['Heading', 'Infobox', 'Reference', 'Template', 'Header', 'Cell', 'Sentence', 'List', 'Caption'],
+    'section groups use stable traversal order, with paragraphs in document order'
+  )
   models.forEach((model) => {
     const name = model.constructor.name
     const before = JSON.stringify(model.json())
     const links = model.links()
-    t.ok(links.every((link) => link instanceof Link), `${name} returns Link objects`)
-    t.deepEqual(model.links().map((link) => link.json()), links.map((link) => link.json()), `${name} traversal is repeatable`)
+    t.ok(
+      links.every((link) => link instanceof Link),
+      `${name} returns Link objects`
+    )
+    t.deepEqual(
+      model.links().map((link) => link.json()),
+      links.map((link) => link.json()),
+      `${name} traversal is repeatable`
+    )
     t.equal(JSON.stringify(model.json()), before, `${name} JSON is unchanged`)
   })
   t.end()
@@ -68,8 +114,24 @@ Text [[Sentence]].<ref>See [[Reference]].</ref>
 
 test('paragraph link groups have a stable order', (t) => {
   const doc = wtf('Text [[Sentence]].\n* [[List]]\n[[File:Cool.jpg|thumb|[[Caption]]]]')
-  t.equal(doc.paragraphs().length, 1, 'fixture uses one paragraph')
-  t.deepEqual(doc.paragraphs()[0].links().map((link) => link.page()), ['Caption', 'List', 'Sentence'], 'images precede lists and sentences within a paragraph')
+  // the image line ends the list, so it starts a new paragraph
+  t.equal(doc.paragraphs().length, 2, 'a non-list line after a list starts a new paragraph')
+  t.deepEqual(
+    doc
+      .paragraphs()[0]
+      .links()
+      .map((link) => link.page()),
+    ['List', 'Sentence'],
+    'lists precede sentences within a paragraph'
+  )
+  t.deepEqual(
+    doc
+      .paragraphs()[1]
+      .links()
+      .map((link) => link.page()),
+    ['Caption'],
+    'image paragraph'
+  )
   t.end()
 })
 
@@ -89,7 +151,11 @@ positional.forEach((wiki) => {
   test(`formatting selects the correct argument: ${wiki}`, (t) => {
     const doc = wtf(wiki)
     t.equal(doc.text(), 'Label', 'only the content argument is rendered')
-    t.deepEqual(doc.links().map((link) => link.page()), ['Target'], 'one link survives the wrapper')
+    t.deepEqual(
+      doc.links().map((link) => link.page()),
+      ['Target'],
+      'one link survives the wrapper'
+    )
     t.end()
   })
 })

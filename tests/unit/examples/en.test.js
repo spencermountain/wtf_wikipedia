@@ -1444,8 +1444,8 @@ test('Gregory-Serper', (t) => {
   t.equal(doc.sections()[2].title(), 'References', 'Gregory-Serper: section [2] title')
   t.equal(
     doc.section('Notable game').sentences()[3].links()[1].page(),
-    'List of chess terms',
-    "Gregory-Serper: 'Notable game' section, 4th sentence links to 'List of chess terms'"
+    'Chess punctuation',
+    "Gregory-Serper: 'Notable game' section, 4th sentence links to 'Chess punctuation'"
   )
   t.ok(
     doc.sentences()[5].text().startsWith('In this strong tournament Serper took 3rd'),
@@ -1457,9 +1457,9 @@ test('Gregory-Serper', (t) => {
     'Gregory-Serper: list 1, item 2'
   )
   t.equal(
-    doc.sentences()[15].bolds()[0].text,
+    doc.sentences()[20].bolds()[0].text,
     'axb5 21.axb5 Qxb5',
-    "Gregory-Serper: 16th sentence bolds 'axb5 21.axb5 Qxb5'"
+    "Gregory-Serper: 21st sentence bolds 'axb5 21.axb5 Qxb5'"
   )
   t.equal(doc.categories()[4], 'American chess players', 'Gregory-Serper: 5th category')
   t.equal(doc.sections().length, 4, 'Gregory-Serper: 4 sections')
@@ -1968,7 +1968,7 @@ test('Neil-McLean-Saxophonist', (t) => {
     'Alabama Jazz Hall of Fame',
     "Neil-McLean-Saxophonist: 5th sentence links to 'Alabama Jazz Hall of Fame'"
   )
-  t.equal(doc.links()[12].page(), 'Ellis Marsalis, Jr.', "Neil-McLean-Saxophonist: link [12] is 'Ellis Marsalis, Jr.'")
+  t.equal(doc.links()[11].page(), 'Ellis Marsalis, Jr.', "Neil-McLean-Saxophonist: link [11] is 'Ellis Marsalis, Jr.'")
   t.equal(
     doc.links()[9].page(),
     'Alabama Jazz Hall of Fame',
@@ -3052,8 +3052,8 @@ test('United-Kingdom', (t) => {
     'United-Kingdom: 27th reference title'
   )
   t.ok(
-    doc.section('Climate').sentences()[2].text().startsWith('Atlantic currents, warmed by the Gulf Stream,'),
-    "United-Kingdom: 'Climate' section, 3rd sentence starts 'Atlantic currents, warmed by t…'"
+    doc.section('Climate').sentences()[3].text().startsWith('Atlantic currents, warmed by the Gulf Stream,'),
+    "United-Kingdom: 'Climate' section, 4th sentence starts 'Atlantic currents, warmed by t…'"
   )
   t.equal(doc.lists()[1].lines()[2].text(), '14||187', 'United-Kingdom: list 2, item 3')
   t.equal(

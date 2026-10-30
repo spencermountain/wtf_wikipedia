@@ -78,7 +78,7 @@ test('support-nowrap-in-infobox', (t) => {
   const infobox = wtf(str).infobox()
   const data = infobox.json().data
   t.equal(data.name.text, 'Albert Einstein', 'got infobox datad')
-  t.equal(data.spouse.text, 'Elsa Löwenthal (m. 1919-1936)', 'got tricky marriage value')
+  t.equal(data.spouse.text, 'Elsa Löwenthal (m. 1919; died 1936)', 'got tricky marriage value')
   t.equal(data.chiffre.text, '912 millions', 'got infobox nobr')
   t.end()
 })
@@ -86,7 +86,7 @@ test('support-nowrap-in-infobox', (t) => {
 test('inline-templates', (t) => {
   let str = `he married {{marriage|[[Elsa Löwenthal]]<br>|1919|1936|end=died}} in Peterburough`
   let doc = wtf(str)
-  t.equal(doc.text(), 'he married Elsa Löwenthal (m. 1919-1936) in Peterburough', 'inline marriage text')
+  t.equal(doc.text(), 'he married Elsa Löwenthal (m. 1919; died 1936) in Peterburough', 'inline marriage text')
   str = `he married {{marriage|Johnny-boy}} in Peterburough`
   doc = wtf(str)
   t.equal(doc.text(), 'he married Johnny-boy in Peterburough', 'marriage-text simple')

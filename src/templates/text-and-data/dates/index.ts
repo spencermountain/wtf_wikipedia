@@ -2,7 +2,7 @@ import parsers from './_parsers.ts'
 import defaultParse from '../../../parse/templates/parse/toJSON/text.ts'
 import { days, timeSince } from './_lib.ts'
 import { toOrdinal } from '../../_lib.ts'
-import { ymd, toText, toTextBritish } from './_format.ts'
+import { ymd, toText, toTextBritish, fmt } from './_format.ts'
 
 const months = [
   'January',
@@ -73,7 +73,7 @@ export default {
     let obj = parse(tmpl, ['year', 'month', 'date'])
     const payload = obj
     obj = ymd([obj.year, obj.month, obj.day])
-    return { data: payload, replacement: toText(obj) }
+    return { data: payload, replacement: fmt(obj, payload) }
   },
   //https://en.wikipedia.org/wiki/Template:Birth_date_and_age
   'birth date and age': (tmpl, parse = defaultParse) => {
@@ -84,7 +84,7 @@ export default {
     }
     const payload = obj
     obj = ymd([obj.year, obj.month, obj.day])
-    return { data: payload, replacement: toText(obj) }
+    return { data: payload, replacement: fmt(obj, payload) }
   },
   'birth year and age': (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['birth_year', 'birth_month'])
@@ -117,7 +117,7 @@ export default {
     let obj = parse(tmpl, order)
     const payload = obj
     obj = ymd([obj.birth_year, obj.birth_month, obj.birth_day])
-    return { data: payload, replacement: toText(obj) }
+    return { data: payload, replacement: fmt(obj, payload) }
   },
   //https://en.wikipedia.org/wiki/Template:Birth_based_on_age_as_of_date
   'birth based on age as of date': (tmpl, parse = defaultParse) => {
@@ -135,33 +135,35 @@ export default {
     let obj = parse(tmpl, ['year', 'month', 'day', 'age'])
     const payload = obj
     obj = ymd([obj.year, obj.month, obj.day])
-    let str = toText(obj)
-    if (obj.age) {
-      str += ` (age ${obj.age})`
+    let str = fmt(obj, payload)
+    if (payload.age) {
+      str += ` (aged ${payload.age})`
     }
     return { data: payload, replacement: str }
   },
-  //sortable dates -
+  //sortable dates - https://en.wikipedia.org/wiki/Template:Dts
   dts: (tmpl, parse = defaultParse) => {
     //remove formatting stuff, ewww
     tmpl = tmpl.replace(/\|format=[ymd]+/i, '')
     tmpl = tmpl.replace(/\|abbr=(on|off)/i, '')
     let obj = parse(tmpl, ['year', 'month', 'date', 'bc'])
-    if (obj.date && obj.month && obj.year) {
-      //render 'june 5 2018'
-      if (/[a-z]/.test(obj.month) === true) {
-        return { data: null, replacement: [obj.month, obj.date, obj.year].join(' ') }
+    if (obj.year && obj.month) {
+      let date = ymd([obj.year, obj.month, obj.date])
+      let str = toText(date)
+      // keep an abbreviated month-name as written, eg 'Jun 12 2024'
+      if (/^[a-z]{3}$/i.test(obj.month) && obj.date) {
+        str = [obj.month, obj.date, obj.year].join(' ')
       }
-      return { data: null, replacement: [obj.year, obj.month, obj.date].join('-') }
-    }
-    if (obj.month && obj.year) {
-      return { data: null, replacement: [obj.year, obj.month].join('-') }
+      if (str) {
+        return { data: null, replacement: str }
+      }
     }
     if (obj.year) {
-      if (obj.year < 0) {
-        obj.year = Math.abs(obj.year) + ' BC'
+      let year = String(obj.year).trim()
+      if (/^-\d+$/.test(year)) {
+        year = year.replace(/^-/, '') + ' BC'
       }
-      return { data: null, replacement: obj.year }
+      return { data: null, replacement: year }
     }
     return { data: null, replacement: '' }
   },
@@ -186,6 +188,24 @@ export default {
       return { data: null, replacement: `${ordinal}${era}` }
     }
     return { data: null, replacement: `${ordinal} millennium${era}` }
+  },
+  // https://en.wikipedia.org/wiki/Template:Date
+  date: (tmpl, parse = defaultParse) => {
+    let obj = parse(tmpl, ['date', 'format'])
+    let str = (obj.date || '').trim()
+    let format = (obj.format || 'dmy').trim().toLowerCase()
+    let m = str.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/)
+    if (!m || format === 'iso' || format === 'none') {
+      return { data: null, replacement: str }
+    }
+    let date = { year: Number(m[1]), month: Number(m[2]), date: Number(m[3]) }
+    if (format === 'y') {
+      return { data: null, replacement: String(date.year) }
+    }
+    if (format === 'mdy') {
+      return { data: null, replacement: toText(date) }
+    }
+    return { data: null, replacement: toTextBritish(date) }
   },
   //date/age/time templates
   start: parsers.date,

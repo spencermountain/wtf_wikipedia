@@ -1,16 +1,19 @@
 import defaultParse from '../../parse/templates/parse/toJSON/text.ts'
 
 const codes = {
-  '£': 'GB£', // https://en.wikipedia.org/wiki/Template:GBP
+  '£': '£', // https://en.wikipedia.org/wiki/Template:GBP
+  '€': '€', // https://en.wikipedia.org/wiki/Template:€
+  '₩': '₩', // https://en.wikipedia.org/wiki/Template:KRW
+  eur: '€', // https://en.wikipedia.org/wiki/Template:EUR
+  krw: '₩', // https://en.wikipedia.org/wiki/Template:KRW
+  'south korean won': '₩', // https://en.wikipedia.org/wiki/Template:KRW
   '¥': '¥', // https://en.wikipedia.org/wiki/Template:JPY
   '৳': '৳', // https://en.wikipedia.org/wiki/Template:BDT
-  '₩': '₩', // https://en.wikipedia.org/wiki/Template:SK_won
-  '€': '€', // https://en.wikipedia.org/wiki/Template:€
   '₱': '₱', // https://en.wikipedia.org/wiki/Template:Philippine_peso
   '₹': '₹', // https://en.wikipedia.org/wiki/Template:Indian_Rupee
   '₽': '₽', // https://en.wikipedia.org/wiki/Template:RUB
   'cn¥': 'CN¥', // https://en.wikipedia.org/wiki/Template:CNY
-  'gb£': 'GB£', // https://en.wikipedia.org/wiki/Template:GBP
+  'gb£': '£', // https://en.wikipedia.org/wiki/Template:GBP
   'india rs': '₹', // https://en.wikipedia.org/wiki/Template:Indian_Rupee
   'indian rupee symbol': '₹', // https://en.wikipedia.org/wiki/Template:Indian_Rupee
   'indian rupee': '₹', // https://en.wikipedia.org/wiki/Template:Indian_Rupee
@@ -23,16 +26,16 @@ const codes = {
   au$: 'A$', //https://en.wikipedia.org/wiki/Template:AUD
   aud: 'A$', //https://en.wikipedia.org/wiki/Template:AUD
   bdt: 'BDT', //https://en.wikipedia.org/wiki/Template:BDT
-  brl: 'BRL', //https://en.wikipedia.org/wiki/Template:BRL
-  ca$: 'CA$', // https://en.wikipedia.org/wiki/Template:CAD
-  cad: 'CA$', // https://en.wikipedia.org/wiki/Template:CAD
+  brl: 'R$', //https://en.wikipedia.org/wiki/Template:BRL
+  ca$: 'C$', // https://en.wikipedia.org/wiki/Template:CAD
+  cad: 'C$', // https://en.wikipedia.org/wiki/Template:CAD
   chf: 'CHF', // https://en.wikipedia.org/wiki/Template:CHF
   cny: 'CN¥', // https://en.wikipedia.org/wiki/Template:CNY
   czk: 'czk', // https://en.wikipedia.org/wiki/Template:CZK
   dkk: 'dkk', // https://en.wikipedia.org/wiki/Template:DKK
   dkk2: 'dkk', // https://en.wikipedia.org/wiki/Template:DKK
   euro: '€', // https://en.wikipedia.org/wiki/Template:€
-  gbp: 'GB£', // https://en.wikipedia.org/wiki/Template:GBP
+  gbp: '£', // https://en.wikipedia.org/wiki/Template:GBP
   hk$: 'HK$', // https://en.wikipedia.org/wiki/Template:HKD
   hkd: 'HK$', // https://en.wikipedia.org/wiki/Template:HKD
   ils: 'ILS', // https://en.wikipedia.org/wiki/Template:ILS
@@ -46,16 +49,16 @@ const codes = {
   nzd: 'NZ$', //https://en.wikipedia.org/wiki/Template:NZD
   peso: 'peso', //https://en.wikipedia.org/wiki/Template:Peso
   pkr: '₨', // https://en.wikipedia.org/wiki/Template:Pakistani_Rupee
-  r$: 'BRL', //https://en.wikipedia.org/wiki/Template:BRL
+  r$: 'R$', //https://en.wikipedia.org/wiki/Template:BRL
   rmb: 'CN¥', // https://en.wikipedia.org/wiki/Template:CNY
   rub: '₽', // https://en.wikipedia.org/wiki/Template:RUB
   ruble: '₽', // https://en.wikipedia.org/wiki/Template:Ruble
   rupee: '₹', // https://en.wikipedia.org/wiki/Template:Rupee
-  s$: 'sgd', // https://en.wikipedia.org/wiki/Template:SGD
+  s$: 'S$', // https://en.wikipedia.org/wiki/Template:SGD
   sek: 'SEK', // https://en.wikipedia.org/wiki/Template:SEK
   sek2: 'SEK', // https://en.wikipedia.org/wiki/Template:SEK
   sfr: 'CHF', // https://en.wikipedia.org/wiki/Template:CHF
-  sgd: 'sgd', // https://en.wikipedia.org/wiki/Template:SGD
+  sgd: 'S$', // https://en.wikipedia.org/wiki/Template:SGD
   shekel: 'ILS', // https://en.wikipedia.org/wiki/Template:ILS
   sheqel: 'ILS', // https://en.wikipedia.org/wiki/Template:ILS
   ttd: 'TTD', //https://en.wikipedia.org/wiki/Template:TTD
@@ -78,6 +81,11 @@ const parseCurrency = (tmpl, parse = defaultParse) => {
     code = o.code
   }
   code = (code || '').toLowerCase()
+  // {{USD|100|2020}} - a second argument that is a year is for inflation, not a currency
+  if (o.code && /^[0-9]{4}$/.test(o.code) && o.template !== 'currency') {
+    o.year = o.code
+    delete o.code
+  }
   if (code === 'us') {
     code = 'usd'
     o.code = code

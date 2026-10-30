@@ -1,7 +1,7 @@
 import strip from '../../../parse/templates/parse/toJSON/_strip.ts'
 import defaultParse from '../../../parse/templates/parse/toJSON/text.ts'
 import { delta } from './_lib.ts'
-import { ymd, toText } from './_format.ts'
+import { ymd, toText, fmt } from './_format.ts'
 
 // The outer parser owns the envelope; keep date fields in the payload.
 const template = (date) => {
@@ -25,6 +25,8 @@ const getBoth = function (tmpl) {
   }
 }
 
+const unit = (num, word) => (num === 1 ? `1 ${word}` : `${num} ${word}s`)
+
 const parsers = {
   //generic {{date|year|month|date}} template
   date: (tmpl, parse = defaultParse) => {
@@ -32,7 +34,7 @@ const parsers = {
     let order = ['year', 'month', 'date', 'hour', 'minute', 'second', 'timezone']
     let obj = parse(tmpl, order)
     let data = ymd([obj.year, obj.month, obj.date || obj.day])
-    obj.text = toText(data) //make the replacement string
+    obj.text = fmt(data, obj) //make the replacement string
     if (obj.timezone) {
       if (obj.timezone === 'Z') {
         obj.timezone = 'UTC'
@@ -154,17 +156,11 @@ const parsers = {
     let d = getBoth(tmpl)
     let diff = delta(d.from, d.to)
     let arr = []
-    if (diff.years === 1) {
-      arr.push(diff.years + ' year')
-    } else if (diff.years && diff.years !== 0) {
-      arr.push(diff.years + ' years')
+    if (diff.years) {
+      arr.push(unit(diff.years, 'year'))
     }
-    //ergh...
-    diff.days += (diff.months || 0) * 30
-    if (diff.days === 1) {
-      arr.push('1 day')
-    } else if (diff.days && diff.days !== 0) {
-      arr.push(diff.days + ' days')
+    if (diff.yearDays) {
+      arr.push(unit(diff.yearDays, 'day'))
     }
     return { data: null, replacement: arr.join(', ') }
   },
@@ -172,16 +168,7 @@ const parsers = {
   'diff-d': (tmpl) => {
     let d = getBoth(tmpl)
     let diff = delta(d.from, d.to)
-    let arr = []
-    //ergh...
-    diff.days += (diff.years || 0) * 365
-    diff.days += (diff.months || 0) * 30
-    if (diff.days === 1) {
-      arr.push('1 day')
-    } else if (diff.days && diff.days !== 0) {
-      arr.push(diff.days + ' days')
-    }
-    return { data: null, replacement: arr.join(', ') }
+    return { data: null, replacement: unit(diff.totalDays, 'day') }
   },
 }
 export default parsers

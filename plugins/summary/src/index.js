@@ -58,6 +58,10 @@ const plugin = function (models) {
   models.Doc.prototype.tense = function () {
     const txt = this.sentences()[0]?.text() || ''
     const doc = nlp(txt)
+    // 'will be held' - check the future forms before the past-participle
+    if (doc.has('will #Adverb? be') || doc.has('(a|an) (upcoming|planned)')) {
+      return 'Future'
+    }
     const copula = doc.match('#Copula+').first()
     if (copula.has('was')) {
       return 'Past'
@@ -65,9 +69,6 @@ const plugin = function (models) {
     const vb = doc.verbs(0)
     if (vb.has('#PastTense')) {
       return 'Past'
-    }
-    if (doc.has('will #Adverb? be') || doc.has('(a|an) (upcoming|planned)')) {
-      return 'Future'
     }
     return 'Present'
   }

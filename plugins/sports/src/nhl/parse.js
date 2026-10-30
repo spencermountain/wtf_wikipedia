@@ -1,5 +1,6 @@
 import parseGames from './parseGames/index.js'
 import parseInfobox from './infobox.js'
+import { withChildren, findSection, getCell } from '../_lib.js'
 
 const parseTitle = function (season = '') {
   const num = season.match(/[0-9]+/) || []
@@ -16,31 +17,28 @@ const parseTitle = function (season = '') {
 }
 
 const parseRoster = function (doc) {
-  const s =
-    doc.sections().find((candidate) => candidate.title().trim().toLowerCase() === 'skaters') ||
-    doc.sections().find((candidate) => candidate.title().trim().toLowerCase() === 'roster') ||
-    doc.sections().find((candidate) => candidate.title().trim().toLowerCase() === 'player statistics')
+  const s = findSection(doc, ['skaters', 'roster', 'player statistics'])
   let players = []
   if (!s) {
     return players
   }
   //do all subsections, too
-  let tables = [s, ...s.children()].flatMap((c) => c.tables())
+  const tables = withChildren(doc, s).flatMap((c) => c.tables())
   if (!tables[0]) {
     return players
   }
-  players = tables[0].keyValue().map((o) => {
-    let name = o.Player || ''
+  players = tables[0].rows().map((o) => {
+    let name = getCell(o, ['player', 'Player', 'name', 'Name'])
     name = name.replace(/(^[^(\r\n\u2028\u2029]*)\(.*?\)/m, '$1')
     name = name.replace(/[‡†]/, '')
     name = name.trim()
     return {
       name: name,
-      games: Number(o.GP || 0),
-      goals: Number(o.G || 0),
-      assists: Number(o.A || 0),
-      points: Number(o.Pts || o.PTS || o.Points) || 0,
-      plusMinus: Number(o['+/−']) || 0,
+      games: Number(getCell(o, ['gp', 'GP'])) || 0,
+      goals: Number(getCell(o, ['g', 'G'])) || 0,
+      assists: Number(getCell(o, ['a', 'A'])) || 0,
+      points: Number(getCell(o, ['pts', 'Pts', 'PTS', 'points', 'Points'])) || 0,
+      plusMinus: Number(getCell(o, ['+/−', '+/-'])) || 0,
     }
   })
   players = players.filter((o) => o && o.name && o.name !== 'Total')
@@ -49,7 +47,7 @@ const parseRoster = function (doc) {
 
 //
 const parse = function (doc) {
-  const meta = parseTitle(doc.title)
+  const meta = parseTitle(doc.title || '')
   const res = {
     team: meta.team,
     year: meta.year,

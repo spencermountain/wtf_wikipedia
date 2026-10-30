@@ -35,8 +35,10 @@ class Link {
     return this.#data.anchor || ''
   }
 
+  // which wiki, for interwiki links
   wiki() {
-    return this.#data.wiki || ''
+    const { lang, project, prefix } = this.#data
+    return project || prefix || lang || ''
   }
 
   type() {

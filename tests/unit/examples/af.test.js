@@ -109,22 +109,14 @@ test('Mark-Behr', (t) => {
     1,
     "Mark-Behr: 'Tydskrifte en koerante' is a depth-1 subsection"
   )
-  t.end()
-})
-
-/* TODO: Restore after references in section headings are handled.
-test('Mark-Behr-Structure', (t) => {
-  const doc = wtf(readPage('Mark-Behr'))
   t.equal(doc.isRedirect(), false, 'Mark-Behr: not-redirect')
   t.equal(doc.infoboxes().length, 1, 'Mark-Behr: got infobox')
   t.equal(doc.categories().length, 3, 'Mark-Behr: cat-length')
-  let s = doc.sections().find((candidate) => candidate.title().toLowerCase() === 'publikasies')
-  t.equal(s.tables().length, 1, 'Mark-Behr: got table')
+  t.equal(doc.section('publikasies').title(), 'Publikasies', 'Mark-Behr: reference stripped from heading')
+  t.equal(doc.section('publikasies').tables().length, 1, 'Mark-Behr: got table')
   t.equal(doc.tables()[0].links().length, 0, 'Mark-Behr: table has no links')
-  t.equal(s.lists().length, 0, 'Mark-Behr: no list')
-  s = doc.sections().find((candidate) => candidate.title().toLowerCase() === 'toekennings')
-  t.equal(s.lists().length, 1, 'Mark-Behr: got list')
-  t.equal(s.lists()[0].lines().length, 4, 'Mark-Behr: got 4 items in list')
+  t.equal(doc.section('publikasies').lists().length, 0, 'Mark-Behr: no list')
+  t.equal(doc.section('toekennings').lists().length, 1, 'Mark-Behr: got list')
+  t.equal(doc.section('toekennings').lists()[0].lines().length, 4, 'Mark-Behr: got 4 items in list')
   t.end()
 })
-*/

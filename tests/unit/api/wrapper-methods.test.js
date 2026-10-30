@@ -9,7 +9,7 @@ test('Links forwards link accessors', (t) => {
   t.deepEqual(links.anchor(), ['', ''], 'missing anchors')
   t.deepEqual(links.href(), ['./Toronto', './Montreal'], 'resolved URLs')
   t.deepEqual(links.wikitext(), ['[[Toronto|City]]', '[[Montreal]]'], 'source markup')
-  t.deepEqual(links.wiki(), ['[[Toronto|City]]', '[[Montreal]]'], 'wiki accessor')
+  t.deepEqual(links.wiki(), ['', ''], 'wiki accessor is empty for internal links')
   t.equal(links.json('xl')[0].wiki, '[[Toronto|City]]', 'JSON format reaches each link')
   t.notOk(Object.hasOwn(links.json()[0], 'wiki'), 'default JSON omits markup')
   t.end()

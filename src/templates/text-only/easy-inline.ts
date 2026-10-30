@@ -26,7 +26,6 @@ let zeros = [
   'noitalic',
   'nocaps',
   'vanchor', //https://en.wikipedia.org/wiki/'Visible_anchor',
-  'rnd',
   'date', //Explictly-set dates - https://en.wikipedia.org/wiki/'Date',
   'taste',
   'baseball secondary style',
@@ -61,7 +60,6 @@ let zeros = [
   '!bxt',
   'bxtn',
   'bxtd',
-  'delink', //https://en.wikipedia.org/wiki/'Delink',
   'pre',
   'var',
   'mvar',
@@ -71,7 +69,6 @@ let zeros = [
   'angle bracket',
   'symb',
   'dabsearch',
-  'key press', //needs work - https://en.m.wikipedia.org/wiki/'Key_press',
   // these should escape certain chars
   'nowiki',
   'nowiki2',
@@ -127,7 +124,7 @@ zeros.forEach((k) => {
 })
 
 // These wrappers intentionally simplify or escape their contents.
-const plain = new Set(['delink', 'nowiki', 'nowiki2', 'unstrip', 'unstripnowiki', 'plain text', 'make code', 'killmarkers'])
+const plain = new Set(['nowiki', 'nowiki2', 'unstrip', 'unstripnowiki', 'plain text', 'make code', 'killmarkers'])
 const handlers = Object.fromEntries(Object.entries(templates).map(([name, position]) => {
   if (plain.has(name)) {
     return [name, position]

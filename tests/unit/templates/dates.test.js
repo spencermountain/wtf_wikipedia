@@ -4,20 +4,20 @@ import wtf from '../../lib/index.js'
 test('structured date templates', (t) => {
   const arr = [
     ['{{Birth date|1993|2|24}}', 'February 24, 1993'],
-    ['{{Birth date|1993|2|4|df=yes}}', 'February 4, 1993'],
-    ['{{Birth date|1919|12|4|df=yes}}', 'December 4, 1919'],
+    ['{{Birth date|1993|2|4|df=yes}}', '4 February 1993'],
+    ['{{Birth date|1919|12|4|df=yes}}', '4 December 1919'],
     ['{{Death date|1993|2|4}}', 'February 4, 1993'],
-    ['{{Death date|1919|12|4|df=yes}}', 'December 4, 1919'],
+    ['{{Death date|1919|12|4|df=yes}}', '4 December 1919'],
     ['{{Death date|1642|1|30|mf=yes}}', 'January 30, 1642'],
 
-    ['{{dob|1997|3|14|df=yes}}', 'March 14, 1997'],
-    ['{{Bda|1992|3|4|df=yes}}', 'March 4, 1992'],
+    ['{{dob|1997|3|14|df=yes}}', '14 March 1997'],
+    ['{{Bda|1992|3|4|df=yes}}', '4 March 1992'],
 
-    ['{{Birth date and age|1993|2|4|df=yes}}', 'February 4, 1993'],
-    ['{{Birth date and age|1992|1|14|df=yes}}', 'January 14, 1992'],
-    ['{{Birth date and age|1993|january|14|df=yes}}', 'January 14, 1993'],
-    ['{{Birth date and age|1902|december|01|df=yes}}', 'December 1, 1902'],
-    ['{{Death date and given age|1993|2|4|df=yes}}', 'February 4, 1993'],
+    ['{{Birth date and age|1993|2|4|df=yes}}', '4 February 1993'],
+    ['{{Birth date and age|1992|1|14|df=yes}}', '14 January 1992'],
+    ['{{Birth date and age|1993|january|14|df=yes}}', '14 January 1993'],
+    ['{{Birth date and age|1902|december|01|df=yes}}', '1 December 1902'],
+    ['{{Death date and given age|1993|2|4|df=yes}}', '4 February 1993'],
     ['{{Birth date and age|1941}}', '1941'],
 
     ['{{Death year and age|2017|1967}}', '2017'],
@@ -38,9 +38,9 @@ test('structured date templates', (t) => {
     ['{{birth-date|17 December 1901}}', '17 December 1901'],
     ['{{end-date|June 18 1886}}', 'June 18 1886'],
     ['{{Start date and age|1997|03|26}}', 'March 26, 1997'],
-    ['{{Start date and age|1986|01|01|df=yes}}', 'January 1, 1986'],
+    ['{{Start date and age|1986|01|01|df=yes}}', '1 January 1986'],
     ['{{Start date and age|2019|03|08}}', 'March 8, 2019'],
-    ['{{Start date and age|2010|02|29|df=yes}}', 'February 29, 2010'],
+    ['{{Start date and age|2010|02|29|df=yes}}', '29 February 2010'],
   ]
   arr.forEach((a) => {
     const str = wtf(a[0]).text()
@@ -79,7 +79,6 @@ test('hyphenated language-date templates', (t) => {
   })
   t.end()
 })
-
 
 test('age templates', (t) => {
   const arr = [

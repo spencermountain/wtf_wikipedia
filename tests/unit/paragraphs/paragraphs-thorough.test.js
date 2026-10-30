@@ -66,7 +66,7 @@ test('paragraphs - per section', (t) => {
   t.end()
 })
 
-test('paragraphs - known bugs', { todo: true }, (t) => {
+test('paragraphs - fixed bugs', (t) => {
   // a whitespace-only line is a blank line in MediaWiki
   t.deepEqual(paras('One.\n \nTwo.'), ['One.', 'Two.'], 'whitespace-only line breaks the paragraph')
   t.end()

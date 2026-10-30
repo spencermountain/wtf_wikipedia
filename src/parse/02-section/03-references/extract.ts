@@ -1,4 +1,4 @@
-import type { DocInfo } from '../../../types/index.ts'
+import type { DocInfo, ReferenceData } from '../../../types/index.ts'
 import defaults from '../../../_lib/defaults.ts'
 import parseTextArguments from '../../templates/parse/toJSON/text.ts'
 import parseBlock from '../../block/index.ts'
@@ -68,12 +68,21 @@ const extractReferences = (source, opts: DocInfo = defaults) => {
   const wiki = source.replace(referencePattern, (tag, plain, attributed) => {
     const opening = tag.slice(0, tag.indexOf('>') + 1)
     const name = attribute(opening, namePattern)
+    const group = attribute(opening, groupPattern)
     // Reference names are scoped by group; serialize the pair without collisions.
-    const key = JSON.stringify([attribute(opening, groupPattern), name])
+    const key = JSON.stringify([group, name])
     const body = plain ?? attributed
     // An empty paired tag is a definition; a self-closing tag is a reuse.
     const reuse = body === undefined
     const references = reuse ? [] : parseBody(body, tag, opts)
+    references.forEach((ref: ReferenceData) => {
+      if (name) {
+        ref.name = name
+      }
+      if (group) {
+        ref.group = group
+      }
+    })
     if (name && !reuse) {
       named.set(key, references)
     }

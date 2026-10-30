@@ -2,7 +2,7 @@ const defaults = {
   redirects: true,
   infoboxes: true,
   templates: true,
-  sections: true
+  sections: true,
 }
 //we should try to make this look like the wikipedia does, i guess.
 const softRedirect = function (doc) {
@@ -26,9 +26,11 @@ const toMarkdown = function (options) {
   }
   //render infoboxes (up at the top)
   if (options.infoboxes === true && options.templates === true) {
-    md += this.infoboxes()
-      .map((infobox) => infobox.markdown(options))
-      .join('\n\n')
+    const boxes = this.infoboxes().map((infobox) => infobox.markdown(options))
+    if (boxes.length > 0) {
+      // a blank line, so the text after is not read as another table row
+      md += boxes.join('\n\n') + '\n'
+    }
   }
   //render each section
   if (options.sections === true || options.paragraphs === true || options.sentences === true) {
@@ -39,7 +41,7 @@ const toMarkdown = function (options) {
   }
   //default false
   if (options.references === true) {
-    md += '## References'
+    md += '\n\n## References\n'
     md += this.citations()
       .map((c) => c.markdown(options))
       .join('\n')

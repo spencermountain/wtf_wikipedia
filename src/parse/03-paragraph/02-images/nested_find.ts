@@ -4,48 +4,45 @@ const closer = ']'
 //find all the pairs of '[[...[[..]]...]]' in the text
 //used to root out recursive template calls, [[.. [[...]] ]]
 //basically just adds open tags, and subtracts closing tags
-function nested_find(text) {
-  let out = []
-  let last = []
-  const chars = text.split('')
+function nested_find(text: string) {
+  const out = []
   let open = 0
-  for (let i = 0; i < chars.length; i++) {
-    const c = text[i]
-    //increment open tag
-    if (c === opener) {
-      open += 1
+  let start = -1
+  let openCount = 0
+  let closeCount = 0
+  const len = text.length
+  for (let i = 0; i < len; i++) {
+    //If we're not inside of a pair of delimiters, skip ahead to the next opener.
+    if (start === -1) {
+      i = text.indexOf(opener, i)
+      if (i === -1) {
+        break
+      }
     }
-    //decrement close tag
-    else if (c === closer) {
+    const c = text[i]
+    if (c === opener) {
+      if (start === -1) {
+        start = i
+        openCount = 0
+        closeCount = 0
+      }
+      open += 1
+      openCount += 1
+    } else if (c === closer) {
       open -= 1
       if (open < 0) {
         open = 0
       }
-    } else if (last.length === 0) {
-      //If we're not inside of a pair of delimiters, we can discard the current letter.
-      //The return of this function is only used to extract images.
-      continue
+      closeCount += 1
     }
-
-    last.push(c)
-    if (open === 0 && last.length > 0) {
-      //first, fix botched parse
-      let open_count = 0
-      let close_count = 0
-      for (let j = 0; j < last.length; j++) {
-        if (last[j] === opener) {
-          open_count++
-        } else if (last[j] === closer) {
-          close_count++
-        }
+    if (open === 0 && start !== -1) {
+      let found = text.slice(start, i + 1)
+      //fix botched parse
+      if (openCount > closeCount) {
+        found += closer
       }
-      //is it botched?
-      if (open_count > close_count) {
-        last.push(closer)
-      }
-      //looks good, keep it
-      out.push(last.join(''))
-      last = []
+      out.push(found)
+      start = -1
     }
   }
   return out

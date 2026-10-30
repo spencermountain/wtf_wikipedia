@@ -7,12 +7,21 @@ const rawName = (wiki: string) => {
   wiki = wiki.trim()
   const tag = wiki.match(/^<([a-z]+)/i)
   if (tag) {
-    return tag[1]
+    return tag[1].toLowerCase()
   }
-  return wiki.replace(/^\{\{/, '').split(/[|}\n]/, 1)[0].trim()
+  return wiki
+    .replace(/^\{\{/, '')
+    .split(/[|}\n]/, 1)[0]
+    .trim()
 }
 
-const makeResult = (wiki: string, kind: string | null, data: object, replacement = '', opts?: DocInfo): TemplateData => {
+const makeResult = (
+  wiki: string,
+  kind: string | null,
+  data: object,
+  replacement = '',
+  opts?: DocInfo
+): TemplateData => {
   const result: TemplateData = {
     template: rawName(wiki),
     kind,

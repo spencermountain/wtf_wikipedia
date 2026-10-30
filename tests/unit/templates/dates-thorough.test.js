@@ -130,8 +130,7 @@ test('date templates - relative to today', (t) => {
   t.end()
 })
 
-// these don't match what wikipedia renders, yet
-test('date templates - known differences from wikipedia', { todo: true }, (t) => {
+test('date templates - df, age math, dts, date', (t) => {
   const arr = [
     // df=yes means day-first
     ['{{birth date|1993|2|24|df=yes}}', '24 February 1993'],
@@ -144,6 +143,12 @@ test('date templates - known differences from wikipedia', { todo: true }, (t) =>
     ['{{dts|2018|June|5}}', 'June 5, 2018'],
     ['{{dts|2018|6}}', 'June 2018'],
     ['{{date|2006-08-04}}', '4 August 2006'],
+    ['{{date|2006-08-04|mdy}}', 'August 4, 2006'],
+    ['{{date|2006-08-04|y}}', '2006'],
+    ['{{death date|1642|1|30|mf=yes}}', 'January 30, 1642'],
+    ['{{age|1990|1|1|2020|1|1}}', '30'],
+    ['{{age in days|2000|1|1|2001|1|1}}', '366 days'],
+    ['{{age in years, months and days|2000|1|15|2000|3|1}}', '1 month, 15 days'],
   ]
   arr.forEach(([str, want]) => {
     t.equal(wtf(str).text(), want, str)

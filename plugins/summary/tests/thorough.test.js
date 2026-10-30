@@ -91,8 +91,7 @@ test('article', (t) => {
   t.end()
 })
 
-test('tense: future passive', { todo: true }, (t) => {
-  // "will be held" is tagged #PastTense (held) and the past check runs before the future check
+test('tense: future passive', (t) => {
   t.equal(wtf(`The '''2032 Olympics''' will be held in Brisbane.`).tense(), 'Future', 'will be held')
   t.end()
 })

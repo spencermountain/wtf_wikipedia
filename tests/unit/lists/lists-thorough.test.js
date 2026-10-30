@@ -67,7 +67,7 @@ test('lists - text output', (t) => {
   t.end()
 })
 
-test('lists - known bugs', { todo: true }, (t) => {
+test('lists - fixed bugs', (t) => {
   // numbering should restart for a nested level, not continue counting
   t.deepEqual(
     items('# one\n# two\n## two-a\n# three'),
@@ -76,7 +76,12 @@ test('lists - known bugs', { todo: true }, (t) => {
   )
   // short ordered items (<4 chars) lose their numbering
   t.deepEqual(items('# a\n# b'), ['1) a', '2) b'], 'short ordered items are numbered')
-  // text that follows a list on the next line is moved before the list in text()
-  t.equal(wtf('* x\n* y\nAfter text.').text().trim(), '* x\n * y\nAfter text.', 'text after a list keeps its position')
+  // text that follows a list ends the list, and starts a new paragraph after it
+  t.equal(
+    wtf('* x\n* y\nAfter text.').text().trim(),
+    '* x\n * y\n\nAfter text.',
+    'text after a list keeps its position'
+  )
+  t.equal(wtf('Intro.\n* x\nAfter text.').text().trim(), 'Intro.\n * x\n\nAfter text.', 'text before and after a list')
   t.end()
 })

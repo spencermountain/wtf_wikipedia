@@ -5,10 +5,24 @@ import type { DocInfo, SectionData } from '../../../types/index.ts'
 // Section parsing keeps its existing definition-only reference collection.
 const parseRefs = (section: SectionData, opts: DocInfo = defaults) => {
   let { wiki, citations } = extractReferences(section.remaining, opts)
-  const definitions = citations.filter((citation) => !citation.reuse)
+  // a named reference defined twice is still one reference
+  const seen = new Set()
+  const definitions = citations.filter((citation) => {
+    if (citation.reuse) {
+      return false
+    }
+    if (citation.name) {
+      if (seen.has(citation.key)) {
+        return false
+      }
+      seen.add(citation.key)
+    }
+    return true
+  })
   // Historically plain references precede attributed references.
   definitions.sort((a, b) => Number(b.plain) - Number(a.plain))
-  section.references = definitions.flatMap((citation) => citation.references)
+  // references found in the heading come first
+  section.references = [...section.references, ...definitions.flatMap((citation) => citation.references)]
 
   // Reference-list wrappers contain definitions, which have now been extracted.
   wiki = wiki.replace(/<\/?references\b[^>]*>/gi, '')

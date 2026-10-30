@@ -4,7 +4,8 @@ let templates = {
   // https://en.wikipedia.org/wiki/Template:Math
   math: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['formula'])
-    return { data: obj, replacement: '\n\n' + (obj.formula || '') + '\n\n' }
+    // {{math}} is inline (it is <math> that is a block)
+    return { data: obj, replacement: obj.formula || '' }
   },
 
   //svg labels - https://en.m.wikipedia.org/wiki/Template:Legend
@@ -106,15 +107,27 @@ let templates = {
 
   //https://en.wikipedia.org/wiki/Template:Nihongo
   nihongo: (tmpl, parse = defaultParse) => {
-    let obj = parse(tmpl, ['english', 'kanji', 'romaji', 'extra'])
-    let str = obj.english || obj.romaji || ''
-    let details = obj.kanji || ''
-    // Footnote extras should not become inline text.
-    if (obj.extra && obj.template !== 'nihongo foot') {
-      details = [details, obj.extra].filter(Boolean).join('; ')
+    let obj = parse(tmpl, ['english', 'kanji', 'romaji', 'extra', 'extra2'])
+    // {{nihongo foot}} moves the kanji and romaji into a footnote
+    if (obj.template === 'nihongo foot') {
+      return { data: obj, replacement: obj.english || obj.romaji || '' }
     }
-    if (details) {
-      str += ` (${details})`
+    // {{nihongo3|english|kanji|romaji}} → romaji (kanji, english)
+    let str = obj.english || obj.romaji || ''
+    let details = [obj.kanji, obj.romaji]
+    if (obj.template === 'nihongo3') {
+      str = obj.romaji || obj.english || ''
+      details = [obj.kanji, obj.english]
+    }
+    details = details.filter((s) => s && s !== str)
+    if (obj.extra) {
+      details.push(obj.extra)
+    }
+    if (details.length > 0) {
+      str += ` (${details.join(', ')})`
+    }
+    if (obj.extra2) {
+      str += ' ' + obj.extra2
     }
     return { data: obj, replacement: str }
   },
@@ -126,7 +139,28 @@ let templates = {
     let str = data.spouse || ''
     if (data.from) {
       if (data.to) {
-        str += ` (m. ${data.from}-${data.to})`
+        // {{marriage|Jane|2001|2010|end=died}} → Jane (m. 2001; died 2010)
+        const reasons = {
+          died: 'died',
+          'd.': 'died',
+          dead: 'died',
+          widowed: 'died',
+          div: 'div.',
+          'div.': 'div.',
+          divorced: 'div.',
+          ann: 'ann.',
+          'ann.': 'ann.',
+          annulled: 'ann.',
+          sep: 'sep.',
+          'sep.': 'sep.',
+          separated: 'sep.',
+        }
+        let reason = reasons[(data.end || '').toLowerCase()]
+        if (reason) {
+          str += ` (m. ${data.from}; ${reason} ${data.to})`
+        } else {
+          str += ` (m. ${data.from}–${data.to})`
+        }
       } else {
         str += ` (m. ${data.from})`
       }
@@ -199,7 +233,7 @@ let templates = {
     let units = ['m', 'cm', 'ft', 'in'] //order matters
     units.forEach((unit) => {
       if (Object.hasOwn(obj, unit) === true) {
-        result.push(obj[unit] + unit)
+        result.push(obj[unit] + ' ' + unit)
       }
     })
     return { data: obj, replacement: result.join(' ') }
@@ -208,19 +242,19 @@ let templates = {
   //https://en.wikipedia.org/wiki/Template:Sic
   sic: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['one', 'two', 'three'])
-    let word = (obj.one || '') + (obj.two || '')
-    //support '[sic?]'
-    if (obj.one === '?') {
-      word = (obj.two || '') + (obj.three || '')
-    }
+    let parts = [obj.one, obj.two, obj.three]
+    //support '[sic?]' - the '?' may sit in any position
+    let question = parts.includes('?') || obj['?'] === 'y'
+    let word = parts.filter((s) => s && s !== '?').join('')
     const payload = {
       template: 'sic',
       word: word,
     }
-    if (obj.nolink === 'y') {
+    // hide=y suppresses the visible [sic] (nolink=y only removes the wikilink)
+    if (obj.hide === 'y' || obj.hide === 'yes') {
       return { data: payload, replacement: word }
     }
-    return { data: payload, replacement: `${word} [sic]` }
+    return { data: payload, replacement: `${word} [sic${question ? '?' : ''}]` }
   },
 
   //

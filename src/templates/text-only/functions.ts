@@ -3,6 +3,25 @@ import parseArguments from '../../parse/templates/parse/toJSON/index.ts'
 import strip from '../../parse/templates/parse/toJSON/_strip.ts'
 import roundNumber from './_lib.ts'
 import { titlecase, percentage, toOrdinal } from '../_lib.ts'
+
+// 2001, 2002 → '02'  (1999, 2000 → '2000')
+const shortYear = (year, after) => {
+  if (Math.floor(year / 100) === Math.floor(after / 100)) {
+    return String(after).slice(-2)
+  }
+  return String(after)
+}
+
+// {{val}} exponents render as superscripts
+const superscript = (str = '') => {
+  const sup = { '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴', '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹', '-': '⁻', '+': '⁺' }
+  return String(str).split('').map((c) => sup[c] || c).join('')
+}
+
+// {{convert}} unit symbols that differ from their argument spelling
+const unitSymbols = { C: '°C', F: '°F', K: 'K', 'C-change': '°C', 'F-change': '°F' }
+const unitSymbol = (unit = '') => unitSymbols[unit] || unit
+
 export default {
   transliteration: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['1', '2', '3'])
@@ -118,9 +137,55 @@ export default {
     return { data: null, replacement: (obj.str || '').substr(start, end) }
   },
 
+  // https://en.wikipedia.org/wiki/Template:Reign
+  // {{reign|1901|1910}} → r. 1901–1910
   reign: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['start', 'end'])
-    return { data: null, replacement: `(r. ${obj.start} – ${obj.end})` }
+    let start = obj.start || ''
+    let end = obj.end || ''
+    // MOS: a spaced en dash when either side has a space
+    let dash = / /.test(start) || / /.test(end) ? ' – ' : '–'
+    return { data: null, replacement: `r. ${start}${dash}${end}`.trim() }
+  },
+
+  // https://en.wikipedia.org/wiki/Template:Circa
+  // {{circa|1901}} → c. 1901, {{circa|1901|1910}} → c. 1901 – c. 1910
+  circa: (tmpl, parse = defaultParse) => {
+    let obj = parse(tmpl, ['start', 'end'])
+    if (!obj.start && obj.start !== 0) {
+      return { data: null, replacement: 'c. ' }
+    }
+    let str = `c. ${obj.start}`
+    if (obj.end) {
+      str += ` – c. ${obj.end}`
+    }
+    return { data: null, replacement: str }
+  },
+
+  // https://en.wikipedia.org/wiki/Template:Key_press
+  // {{key press|Ctrl|C}} → Ctrl+C
+  'key press': (tmpl, parse = defaultParse) => {
+    let obj = parse(tmpl)
+    let arr = (obj.list || []).filter((s) => s)
+    return { data: null, replacement: arr.join(obj.chain || '+') }
+  },
+
+  // https://en.wikipedia.org/wiki/Template:Rnd
+  // {{rnd|3.14159|2}} → 3.14
+  rnd: (tmpl, parse = defaultParse) => {
+    const data = parse(tmpl, ['val', 'decimals'])
+    if (data.decimals === undefined) {
+      return { data: null, replacement: data.val || '' }
+    }
+    return { data: null, replacement: roundNumber(data.val, data.decimals, Math.round) || data.val || '' }
+  },
+
+  // https://en.wikipedia.org/wiki/Template:Abs
+  // {{abs|x}} → |x|
+  abs: (tmpl, parse = defaultParse) => {
+    let data = parse(tmpl, ['text'])
+    // a leading '|' would read as table syntax, so use its entity
+    return { data: null, replacement: `&#124;${data.text || ''}&#124;` }
   },
 
   // https://en.wikipedia.org/wiki/Template:Decade_link
@@ -366,11 +431,15 @@ export default {
     //todo: support plural units
     if (obj.two === '-' || obj.two === 'to' || obj.two === 'and') {
       if (obj.four) {
-        return { data: null, replacement: `${obj.num} ${obj.two} ${obj.three} ${obj.four}` }
+        return { data: null, replacement: `${obj.num} ${obj.two} ${obj.three} ${unitSymbol(obj.four)}` }
       }
-      return { data: null, replacement: `${obj.num} ${obj.two} ${obj.three}` }
+      return { data: null, replacement: `${obj.num} ${obj.two} ${unitSymbol(obj.three)}` }
     }
-    return { data: null, replacement: `${obj.num} ${obj.two}` }
+    // {{convert|5|ft|11|in|m}} - a second unit pair
+    if (obj.three && /^[0-9.]+$/.test(obj.three) && obj.four && /^[a-z]+$/i.test(obj.four)) {
+      return { data: null, replacement: `${obj.num} ${unitSymbol(obj.two)} ${obj.three} ${unitSymbol(obj.four)}` }
+    }
+    return { data: null, replacement: `${obj.num} ${unitSymbol(obj.two)}` }
   },
 
   // Large number of aliases - https://en.wikipedia.org/wiki/Template:Tl
@@ -406,7 +475,16 @@ export default {
 
   //dumb inflector - https://en.wikipedia.org/wiki/Template:Plural
   plural: (tmpl, parse = defaultParse) => {
-    tmpl = tmpl.replace(/plural:/, 'plural|')
+    // {{PLURAL:n|singular|plural}} is the parser-function form
+    if (/^\{\{\s*plural\s*:/i.test(tmpl)) {
+      tmpl = tmpl.replace(/plural\s*:/i, 'plural|')
+      let obj = parse(tmpl, ['num', 'singular', 'plural'])
+      let n = Number(String(obj.num || '').replace(/,/g, ''))
+      if (Math.abs(n) === 1) {
+        return { data: null, replacement: obj.singular || '' }
+      }
+      return { data: null, replacement: obj.plural ?? obj.singular ?? '' }
+    }
     let obj = parse(tmpl, ['num', 'word'])
     let num = Number(obj.num)
     let word = obj.word
@@ -441,6 +519,14 @@ export default {
       num = Number(num).toLocaleString()
     }
     let str = num || ''
+    // {{val|1.234|0.005}} → 1.234±0.005
+    if (obj.uncertainty) {
+      str += `±${obj.uncertainty}`
+    }
+    // {{val|1.234|e=5}} → 1.234×10⁵
+    if (obj.e) {
+      str += `×10${superscript(obj.e)}`
+    }
     //prefix/suffix
     if (obj.p) {
       str = obj.p + str
@@ -515,12 +601,29 @@ export default {
     let arr = (data.text || '').split(/ /g)
     return { data: null, replacement: arr.at(-1) || '' }
   },
+  // https://en.wikipedia.org/wiki/Template:Replace - replaces every occurrence
   replace: (tmpl, parse = defaultParse) => {
     let data = parse(tmpl, ['text', 'from', 'to'])
-    if (!data.from || !data.to) {
+    if (!data.from) {
       return { data: null, replacement: data.text || '' }
     }
-    return { data: null, replacement: (data.text || '').replace(data.from, data.to) }
+    return { data: null, replacement: (data.text || '').split(data.from).join(data.to || '') }
+  },
+  // https://en.wikipedia.org/wiki/Template:Str_rep - replaces only the first occurrence
+  'str rep': (tmpl, parse = defaultParse) => {
+    let data = parse(tmpl, ['text', 'from', 'to'])
+    if (!data.from) {
+      return { data: null, replacement: data.text || '' }
+    }
+    return { data: null, replacement: (data.text || '').replace(data.from, data.to || '') }
+  },
+  // https://en.wikipedia.org/wiki/Template:Delink - [[a|b]] → b
+  delink: (tmpl, parse = defaultParse) => {
+    let data = parse(tmpl, ['text'])
+    let str = data.text || ''
+    // keep the label of a piped link, or the page name of a bare one
+    str = str.replace(/\[\[([^\][]*)\]\]/g, (_m, inner) => inner.split('|').pop())
+    return { data: null, replacement: str }
   },
   'title case': (tmpl, parse = defaultParse) => {
     let data = parse(tmpl, ['text'])
@@ -571,17 +674,18 @@ export default {
     let after = year + 1
     return { data: null, replacement: `[[${year}–${after} NFL playoffs|${year}]]` }
   },
+  // {{nba year|2001}} → 2001–02
   'nba year': (tmpl, parse = defaultParse) => {
     let { year } = parse(tmpl, ['year'])
     year = Number(year)
     let after = year + 1
-    return { data: null, replacement: `[[${year}–${after} NBA season|${year}–${after}]]` }
+    return { data: null, replacement: `[[${year}–${after} NBA season|${year}–${shortYear(year, after)}]]` }
   },
   'mhl year': (tmpl, parse = defaultParse) => {
     let data = parse(tmpl, ['year'])
     let year = Number(data.year)
     let after = year + 1
-    return { data: null, replacement: `[[${year}–${after} NHL season|${year}–${after}]]` }
+    return { data: null, replacement: `[[${year}–${after} NHL season|${year}–${shortYear(year, after)}]]` }
   },
   // some math
   min: (tmpl, parse = defaultParse) => {

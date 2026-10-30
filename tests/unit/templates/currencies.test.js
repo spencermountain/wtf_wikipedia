@@ -3,7 +3,7 @@ import wtf from '../../lib/index.js'
 
 test('currency-templates', function (t) {
   let doc = wtf('hello {{GBP|123.45}} world.')
-  t.equal(doc.text(), 'hello GB£123.45 world.', 'gbp')
+  t.equal(doc.text(), 'hello £123.45 world.', 'gbp')
 
   doc = wtf('and now {{US$|21.20&nbsp;billion}}')
   t.equal(doc.text(), 'and now US$21.20\xa0billion', 'usd')

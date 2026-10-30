@@ -100,7 +100,7 @@ test('mlb parseGame: variants', (t) => {
   t.end()
 })
 
-test('mlb parseGame: known bugs', { todo: true }, (t) => {
+test('mlb parseGame: away marker and em dash', (t) => {
   t.equal(parseGame({ Opponent: '@ Reds' }).team, 'Reds', '"@ Reds" should strip the @ marker')
   t.equal(parseGame({ Save: '—' }).pitchers.save, null, 'em dash save should mean no save')
   t.end()
@@ -157,10 +157,10 @@ test('nhl infobox', (t) => {
   t.end()
 })
 
-test('nhl season page parse', { todo: true }, (t) => {
+test('nhl season page parse', (t) => {
   const meta = { team: 'Toronto Maple Leafs', year: 2017 }
   let games = []
-  t.doesNotThrow(() => (games = parseGames(wtf(nhlPage), meta)), 'parseGames runs (Section#children is gone)')
+  t.doesNotThrow(() => (games = parseGames(wtf(nhlPage), meta)), 'parseGames runs')
   t.equal(games.length, 3, 'three games')
   t.equal(games[0]?.opponent, 'Winnipeg Jets', '@ stripped from opponent')
   t.equal(games[0]?.date, 'October 4 2017', 'fall game gets season year')
@@ -181,8 +181,8 @@ test('nhl season page parse', { todo: true }, (t) => {
   t.end()
 })
 
-test('nhl doc method', { todo: true }, (t) => {
-  t.equal(typeof wtf(nhlPage).nhlSeason, 'function', 'nhlSeason is set on Doc, not Doc.prototype')
+test('nhl doc method', (t) => {
+  t.equal(typeof wtf(nhlPage).nhlSeason, 'function', 'doc.nhlSeason exists')
   t.end()
 })
 
@@ -193,11 +193,11 @@ test('mlb doc method', (t) => {
   t.end()
 })
 
-test('mlb season page parse', { todo: true }, (t) => {
+test('mlb season page parse', (t) => {
   let res = {}
   t.doesNotThrow(
     () => (res = wtf(mlbPage, { title: '2017 Washington Nationals season' }).mlbSeason()),
-    'mlbSeason runs (gameLog references undefined `games`)'
+    'mlbSeason runs'
   )
   t.equal(res.year, 2017, 'year')
   t.equal(res.team, 'Washington Nationals', 'team')

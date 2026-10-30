@@ -41,7 +41,10 @@ export interface TemplateData {
   data: Record<string, any>
 }
 
-export interface ReferenceData extends TemplateData {}
+export interface ReferenceData extends TemplateData {
+  name?: string
+  group?: string
+}
 
 export interface InfoboxData extends TemplateData {}
 

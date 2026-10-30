@@ -120,7 +120,7 @@ test('references - location', (t) => {
   t.end()
 })
 
-test('references - known bugs', { todo: true }, (t) => {
+test('references - fixed bugs', (t) => {
   // a named ref defined twice with identical content is one reference
   t.equal(refs('A.<ref name="q">Q.</ref>B.<ref name="q">Q.</ref>').length, 1, 'duplicate named definition counted once')
   // tag name casing leaks into output

@@ -1,66 +1,59 @@
 import parseGame from './parseGame.js'
 import addWinner from './winner.js'
-
-const isArray = function (arr) {
-  return Object.prototype.toString.call(arr) === '[object Array]'
-}
+import { withChildren, findSection } from '../../_lib.js'
 
 const doTable = function (rows = []) {
-  let games = []
-  //is it a legend/junk table?
-  if ((rows[1] && rows[1].Legend) || !isArray(rows)) {
-    return games
+  if (!Array.isArray(rows)) {
+    return []
   }
-  rows.forEach((row) => {
-    games.push(parseGame(row))
-  })
+  //is it a legend/junk table?
+  if (rows[1] && (rows[1].Legend || rows[1].legend)) {
+    return []
+  }
+  let games = rows.map((row) => parseGame(row))
   //remove empty weird ones
-  games = games.filter((g) => g.team && g.date) //&& g.result.winner !== undefined
+  games = games.filter((g) => g && g.team && g.date)
   return games
 }
 
-const doSection = function (section) {
-  // Include the section's own tables and all subsections.
-  let tables = [section, ...section.children()].flatMap((s) => s.tables())
-  //try to find a game log template
-  if (tables.length === 0) {
-    tables =
-      section.templates('mlb game log section') ||
-      section.templates('mlb game log month') ||
-      section.templates('game log section')
-    tables = tables.map((m) => m.json().data.rows) //make it look like a table
-  } else {
-    tables = tables.map((t) => t.keyValue())
+// one array of rows per table, from the section and its subsections
+const doSection = function (doc, section) {
+  const sections = withChildren(doc, section)
+  let tables = sections.flatMap((s) => s.tables())
+  if (tables.length > 0) {
+    return tables.map((t) => t.rows())
   }
-  return tables
+  //try to find a game log template
+  const names = ['mlb game log section', 'mlb game log month', 'game log section']
+  const templates = sections.flatMap((s) => names.flatMap((n) => s.templates(n)))
+  return templates.map((m) => m.json().data?.rows || [])
 }
 
 //get games of regular season
-const gameLog = function (games) {
+const gameLog = function (doc) {
+  const section = findSection(doc, [
+    'game log',
+    'regular season',
+    'schedule',
+    'schedule and results',
+    'season game log',
+  ])
+  if (!section) {
+    return []
+  }
+  let games = doSection(doc, section).flatMap((rows) => doTable(rows))
   games = addWinner(games)
   return games
 }
 
 const postSeason = function (doc) {
-  const series = []
-  //ok, try postseason, too
-  const section =
-    doc.sections().find((candidate) => candidate.title().trim().toLowerCase() === 'postseason game log') ||
-    doc.sections().find((candidate) => candidate.title().trim().toLowerCase() === 'postseason') ||
-    doc.sections().find((candidate) => candidate.title().trim().toLowerCase() === 'playoffs') ||
-    doc.sections().find((candidate) => candidate.title().trim().toLowerCase() === 'playoff')
+  const section = findSection(doc, ['postseason game log', 'postseason', 'playoffs', 'playoff'])
   if (!section) {
-    return series
+    return []
   }
-  const tables = doSection(section)
-  tables.forEach((table) => {
-    const arr = doTable(table)
-    series.push(arr)
-  })
-  //tag them as postseason
-  // games.forEach((g) => g.postSeason = true)
+  const series = doSection(doc, section).map((rows) => doTable(rows))
   series.forEach((games) => addWinner(games))
-  return series
+  return series.filter((games) => games.length > 0)
 }
 export const season = gameLog
 export const postseason = postSeason

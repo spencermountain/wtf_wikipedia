@@ -1,6 +1,7 @@
 import addWinner from './win-loss.js'
 const dashSplit = /([–\-−]|&ndash;)/
 import parseRecord from './_record.js'
+import { withChildren, findSection, getCell } from '../../_lib.js'
 
 const parseScore = function (score = '') {
   const arr = score.split(dashSplit)
@@ -13,11 +14,9 @@ const parseScore = function (score = '') {
   }
 }
 
-
-
 const parseDate = function (row, title) {
   const year = title.year
-  let date = row.date || row.Date
+  let date = getCell(row, ['date', 'Date'])
   if (!date) {
     return ''
   }
@@ -30,61 +29,56 @@ const parseDate = function (row, title) {
   return date
 }
 
-const doSection = function (section) {
+const doSection = function (doc, section) {
   // Include the section's own tables and all subsections.
-  let tables = [section, ...section.children()].flatMap((s) => s.tables())
-  //try to find a game log template
-  if (tables.length === 0) {
-    const templates = section.templates('game log section') || section.templates('game log month')
-    return templates.flatMap((m) => m.json().data.rows)
-  } else {
-    return tables.flatMap((t) => t.keyValue())
+  const sections = withChildren(doc, section)
+  const tables = sections.flatMap((s) => s.tables())
+  if (tables.length > 0) {
+    return tables.flatMap((t) => t.rows())
   }
+  //try to find a game log template
+  const names = ['game log section', 'game log month']
+  const templates = sections.flatMap((s) => names.flatMap((n) => s.templates(n)))
+  return templates.flatMap((m) => m.json().data?.rows || [])
 }
 
 const parseGame = function (row, meta) {
-  let attendance = row.attendance || row.Attendance || ''
-  attendance = Number(attendance.replace(/,/, '')) || null
+  const attendance = Number(String(getCell(row, ['attendance', 'Attendance'])).replace(/,/g, '')) || null
   const res = {
-    game: Number(row['#'] || row.Game),
+    game: Number(getCell(row, ['#', 'game', 'Game'])),
     date: parseDate(row, meta),
-    opponent: row.Opponent || row.opponent,
-    result: parseScore(row.score || row.Score),
-    overtime: (row.ot || row.OT || '').toLowerCase() === 'ot',
-    // goalie: row.decision,
-    record: parseRecord(row.record || row.Record),
+    opponent: getCell(row, ['opponent', 'Opponent']),
+    result: parseScore(getCell(row, ['score', 'Score'])),
+    overtime: /^(ot|so)$/i.test(String(getCell(row, ['ot', 'OT'])).trim()),
+    record: parseRecord(getCell(row, ['record', 'Record'])),
     attendance: attendance,
-    points: Number(row.pts || row.points || row.Pts || row.Points) || 0,
+    points: Number(getCell(row, ['pts', 'Pts', 'PTS', 'points', 'Points'])) || 0,
   }
-  res.location = row.Location || row.location
-  res.home = row.home || row.Home
-  res.visitor = row.visitor || row.Visitor
-  if (!res.opponent) {
-    res.opponent = meta.team.includes(res.home) ? res.visitors : res.home
+  res.location = getCell(row, ['location', 'Location']) || undefined
+  res.home = getCell(row, ['home', 'Home']) || undefined
+  res.visitor = getCell(row, ['visitor', 'Visitor']) || undefined
+  if (!res.opponent && res.home && res.visitor) {
+    res.opponent = meta.team.includes(res.home) ? res.visitor : res.home
   }
   res.opponent ||= ''
-  res.opponent = res.opponent.replace(/@ /, '')
-  res.opponent = res.opponent.trim()
+  res.opponent = res.opponent.replace(/^ *@ */, '').trim()
   return res
 }
 
 //
 const parseGames = function (doc, meta) {
   let games = []
-  let s =
-    doc.sections().find((candidate) => candidate.title().trim().toLowerCase() === 'schedule and results') ||
-    doc.sections().find((candidate) => candidate.title().trim().toLowerCase() === 'schedule') ||
-    doc.sections().find((candidate) => candidate.title().trim().toLowerCase() === 'regular season')
+  let s = findSection(doc, ['schedule and results', 'schedule', 'regular season'])
   if (!s) {
     return games
   }
   // support nested headers
-  const nested = s.children('regular season')
+  const nested = withChildren(doc, s).find((c) => c.title().trim().toLowerCase() === 'regular season')
   if (nested) {
     s = nested
   }
   //do all subsections, too
-  const rows = doSection(s)
+  const rows = doSection(doc, s)
   rows.forEach((row) => {
     games.push(parseGame(row, meta))
   })

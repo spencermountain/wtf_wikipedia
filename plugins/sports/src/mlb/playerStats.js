@@ -1,14 +1,13 @@
+import { withChildren, findSection } from '../_lib.js'
 
 //
 const playerStats = function (doc) {
   let players = []
-  let s = doc.sections('player stats') || doc.sections('player statistics') || doc.sections('statistics')
-  s = s[0]
+  const s = findSection(doc, ['player stats', 'player statistics', 'statistics'])
   if (!s) {
     return players
   }
-
-  players = s.children().flatMap((c) => c.tables().flatMap((t) => t.keyValue()))
+  players = withChildren(doc, s).flatMap((c) => c.tables().flatMap((t) => t.rows()))
   const res = {
     batters: [],
     pitchers: [],

@@ -13,13 +13,15 @@ const makePage = function (team, year) {
 const addMethod = function (models) {
   models.wtf.nhlSeason = function (team, year) {
     //soften-up the team-input
-    team = teams.find((t) => {
-      return t === team || t.toLowerCase().includes(team.toLowerCase())
-    }) || team
+    team =
+      teams.find((t) => {
+        return t === team || t.toLowerCase().includes(team.toLowerCase())
+      }) || team
     const page = makePage(team, year)
     return models.wtf.fetch(page).catch(console.log).then(parse)
   }
-  // add it here too
-  models.Doc.nhlSeason = parse
+  models.Doc.prototype.nhlSeason = function () {
+    return parse(this)
+  }
 }
 export default addMethod

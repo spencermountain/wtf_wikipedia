@@ -5,7 +5,8 @@ import type { DocInfo, SectionData } from '../../../types/index.ts'
 import parseHeading from './heading.ts'
 
 // const isReference = new RegExp('^(' + references.join('|') + '):?', 'i')
-const section_reg = /(?:\n|^)(={2,6}.{1,200}?={2,6})/g
+// a heading runs to the end of its line, so a '=' inside it (eg. in a url) is not its end
+const section_reg = /(?:\n|^)(={1,6}.{1,200}?={1,6})[ \t]*(?=\n|$)/g
 
 //split the wiki text on '=' headings, wrap each part in a Section, then drop the reference section
 const parseSections = function (pageWiki: string, opts: DocInfo = defaults) {
@@ -21,7 +22,7 @@ const parseSections = function (pageWiki: string, opts: DocInfo = defaults) {
     }
 
     //figure-out title and depth
-    let { block, depth } = parseHeading(heading, opts)
+    let { block, depth, references } = parseHeading(heading, opts)
     let section: SectionData = {
       title: block,
       depth,
@@ -31,7 +32,7 @@ const parseSections = function (pageWiki: string, opts: DocInfo = defaults) {
       templates: [],
       tables: [],
       infoboxes: [],
-      references: [],
+      references,
       paragraphs: [],
     }
     sections.push(section)

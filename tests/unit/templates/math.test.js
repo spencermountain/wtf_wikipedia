@@ -7,7 +7,7 @@ test('math-simple', (t) => {
   let doc = wtf(str)
   let tmpl = doc.templates()[0].json() || {}
   t.equal(tmpl.data.formula, '1 + 2 = 3', 'tmpl formula')
-  t.equal(doc.text(), 'hello\n\n1 + 2 = 3\n\nworld', 'text output')
+  t.equal(doc.text(), 'hello 1 + 2 = 3 world', 'text output')
 
   str = `<math>y^3</math>`
   doc = wtf(str)

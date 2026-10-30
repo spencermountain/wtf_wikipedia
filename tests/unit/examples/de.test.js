@@ -420,7 +420,7 @@ test('Sara-C-Bisel', (t) => {
     'University of Maryland',
     "Sara-C-Bisel: 'Wissenschaftliche Laufbahn' section, 2nd sentence shows 'University of Maryland' for University of Maryland, College Park"
   )
-  t.equal(doc.sentences()[24].text(), 'Wissenschaftliche Fachartikel', 'Sara-C-Bisel: 25th sentence text')
+  t.equal(doc.sentences()[25].text(), 'Wissenschaftliche Fachartikel', 'Sara-C-Bisel: 26th sentence text')
   t.equal(doc.sections()[6].title(), 'Literatur', 'Sara-C-Bisel: section [6] title')
   t.equal(
     doc.sentences()[4].links()[0].page(),

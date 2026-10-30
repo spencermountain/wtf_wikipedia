@@ -32,7 +32,7 @@ test('markdown: links', (t) => {
   t.end()
 })
 
-test('markdown: link edge cases', { todo: true }, (t) => {
+test('markdown: link edge cases', (t) => {
   t.equal(
     wtf('see [[Mercury (planet)]] now').markdown(),
     'see [Mercury (planet)](./Mercury_(planet)) now',
@@ -50,7 +50,7 @@ test('markdown: formatting', (t) => {
   t.end()
 })
 
-test('markdown: escapes markdown characters in plain text', { todo: true }, (t) => {
+test('markdown: escapes markdown characters in plain text', (t) => {
   t.equal(wtf('the file_name_here variable').markdown(), 'the file\\_name\\_here variable', 'underscores escaped')
   t.equal(wtf('rated *five* stars').markdown(), 'rated \\*five\\* stars', 'asterisks escaped')
   t.end()
@@ -64,7 +64,7 @@ test('markdown: lists', (t) => {
   t.end()
 })
 
-test('markdown: content order', { todo: true }, (t) => {
+test('markdown: content order', (t) => {
   // lists (and tables/images) are emitted before the section's paragraphs, regardless of source order
   t.equal(wtf('intro text.\n* one\n* two\n').markdown(), 'intro text.\n * one\n * two', 'list stays after the intro')
   t.end()
@@ -107,7 +107,7 @@ test('markdown: infobox', (t) => {
   t.end()
 })
 
-test('markdown: infobox table is separated from text', { todo: true }, (t) => {
+test('markdown: infobox table is separated from text', (t) => {
   // without a blank line the following paragraph is parsed as another table row
   const md = wtf('{{Infobox person\n| name = Joe\n}} text').markdown()
   t.ok(/\|\n\ntext$/.test(md), 'blank line between infobox table and text')
@@ -125,7 +125,7 @@ test('markdown: references', (t) => {
   t.end()
 })
 
-test('markdown: reference formatting', { todo: true }, (t) => {
+test('markdown: reference formatting', (t) => {
   const md = wtf('a one.<ref>{{cite book|title=Book|author=Smith}}</ref>').markdown({ references: true })
   t.ok(md.includes('\n## References\n'), 'references header on its own line')
   t.ok(md.includes('⌃ Book Smith'), 'title and author separated')

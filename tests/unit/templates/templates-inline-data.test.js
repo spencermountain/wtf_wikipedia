@@ -6,13 +6,13 @@ test('inline-with-data', (t) => {
   mock.timers.enable({ apis: ['Date'], now: new Date('2024-07-15T12:00:00Z') })
   t.teardown(() => mock.timers.reset())
   const arr = [
-    ['cad', '{{CAD|123.45|link=yes}}', 'CA$123.45', { amount: '123.45' }],
-    ['gbp', '{{GBP|123.45}}', 'GB£123.45', { amount: '123.45' }],
+    ['cad', '{{CAD|123.45|link=yes}}', 'C$123.45', { amount: '123.45' }],
+    ['gbp', '{{GBP|123.45}}', '£123.45', { amount: '123.45' }],
     ['yel', '{{yel|67}}', "yellow: 67'", { min: '67' }],
     [
       'death date and age',
       '{{death date and age |1993|2|24 |1921|4|12 |df=yes}}',
-      'February 24, 1993',
+      '24 February 1993',
       { year: '1993', month: '2', day: '24' },
     ],
     ['sentoff', '{{sent off|cards|min1|min2}}', "sent off: min1', min2'", { cards: 'cards' }],
@@ -20,7 +20,14 @@ test('inline-with-data', (t) => {
       'goal',
       '{{goal|14||54|p|72||87}}',
       "⚽ 14', 54' (p), 72', 87'",
-      { data: [{ min: '14', note: '' }, { min: '54', note: 'p' }, { min: '72', note: '' }, { min: '87', note: '' }] },
+      {
+        data: [
+          { min: '14', note: '' },
+          { min: '54', note: 'p' },
+          { min: '72', note: '' },
+          { min: '87', note: '' },
+        ],
+      },
     ],
     ['isbn', '{{ISBN|978-1-4133-0454-1}}', 'ISBN 978-1-4133-0454-1', { id: '978-1-4133-0454-1' }],
     [
@@ -40,8 +47,8 @@ test('inline-with-data', (t) => {
     [
       'death date',
       '{{Death date | 1993 | 2 | 24 | df=yes }}',
-      'February 24, 1993',
-      { year: '1993', month: '2', date: '24', df: 'yes', text: 'February 24, 1993' },
+      '24 February 1993',
+      { year: '1993', month: '2', date: '24', df: 'yes', text: '24 February 1993' },
     ],
     [
       'birth based on age as of date',
@@ -49,16 +56,11 @@ test('inline-with-data', (t) => {
       '1967 (age 50)',
       { age: '50', year: '2017', month: '12', day: '18' },
     ],
-    [
-      'birth-date and age',
-      '{{Birth-date and age|December 1941}}',
-      'December 1941',
-      { year: 1941, month: 12, date: 1 },
-    ],
+    ['birth-date and age', '{{Birth-date and age|December 1941}}', 'December 1941', { year: 1941, month: 12, date: 1 }],
     [
       'birth date and age2',
       '{{birth date and age2 |1988|6|10 |1961|7|4 |df=y}}',
-      'July 4, 1961',
+      '4 July 1961',
       { birth_year: '1961', birth_month: '7', birth_day: '4' },
     ],
     [
@@ -95,7 +97,7 @@ test('inline-with-data', (t) => {
     [
       'death date and given age',
       '{{Death date and given age |1992|03|29 |30}}',
-      'March 29, 1992',
+      'March 29, 1992 (aged 30)',
       { year: '1992', month: '03', day: '29' },
     ],
     ['death year and age', '{{Death year and age|2017|1967}} ', '2017', { death_year: '2017', birth_year: '1967' }],
@@ -106,7 +108,7 @@ test('inline-with-data', (t) => {
       { birth_year: '1963', birth_month: '12' },
     ],
     ['mlbplayer', '{{mlbplayer|93|Spencer Kelly}}', 'Spencer Kelly', { number: '93', name: 'Spencer Kelly' }],
-    ['samp', '{{samp|1=[A]bort, [R]etry, [F]ail?}}', '[A]bort, [R]etry, [F]ail?', { '1': '[A]bort, [R]etry, [F]ail?' }],
+    ['samp', '{{samp|1=[A]bort, [R]etry, [F]ail?}}', '[A]bort, [R]etry, [F]ail?', { 1: '[A]bort, [R]etry, [F]ail?' }],
     [
       'infront 10000 écu behind',
       'infront {{Monnaie|10000|écu}} behind',

@@ -51,7 +51,7 @@
   "publishConfig": {
     "provenance": true
   },
-  "packageManager": "pnpm@12.5.1",
+  "packageManager": "pnpm@12.16.1",
   "scripts": {
     "watch": "node --watch ./scratch.js",
     "version": "node ./scripts/version.js",

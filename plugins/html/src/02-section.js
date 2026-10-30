@@ -15,7 +15,8 @@ const doSection = function (options) {
   let html = ''
   //make the header
   if (options.headers === true && this.title()) {
-    const num = 1 + this.depth()
+    // '== title ==' is an h2, like wikipedia
+    const num = 2 + this.depth()
     html += '  <h' + num + '>' + escape(this.title()) + '</h' + num + '>'
     html += '\n'
   }
@@ -32,24 +33,30 @@ const doSection = function (options) {
       .map((t) => t.html(options))
       .join('\n')
   }
-  //make a html bullet-list
-  if (options.lists === true) {
-    html += this.lists()
-      .map((list) => list.html(options))
-      .join('\n')
+  const doLists = (lists) => {
+    if (options.lists !== true) {
+      return ''
+    }
+    return lists.map((list) => list.html(options)).join('\n')
   }
 
-  //finally, write the sentence text.
+  //write the sentence text, with each paragraph's lists after its text
   if (options.paragraphs === true && this.paragraphs().length > 0) {
     html += '  <div class="text">\n'
     this.paragraphs().forEach((p) => {
-      html += '    <p class="paragraph">\n'
-      html += '      ' + joinSentences(p.sentences(), (s) => s.html(options))
-      html += '\n    </p>\n'
+      if (p.sentences().length > 0) {
+        html += '    <p class="paragraph">\n'
+        html += '      ' + joinSentences(p.sentences(), (s) => s.html(options))
+        html += '\n    </p>\n'
+      }
+      html += doLists(p.lists())
     })
     html += '  </div>\n'
-  } else if (options.sentences === true) {
-    html += '      ' + joinSentences(this.sentences(), (s) => s.html(options))
+  } else {
+    html += doLists(this.lists())
+    if (options.sentences === true) {
+      html += '      ' + joinSentences(this.sentences(), (s) => s.html(options))
+    }
   }
   return '<div class="section">\n' + html + '</div>\n'
 }

@@ -1,35 +1,39 @@
-//this is allowed to be rough
-const day = 1000 * 60 * 60 * 24
-const month = day * 30
-const year = day * 365
+const toDate = (obj) => new Date(Date.UTC(obj.year || 0, (obj.month || 1) - 1, obj.date || 1))
 
-const getEpoch = function (obj) {
-  return new Date(`${obj.year}-${obj.month || 0}-${obj.date || 1}`).getTime()
-}
-
-//very rough!
+// calendar-accurate difference between two y/m/d objects
 const delta = function (from, to) {
-  from = getEpoch(from)
-  to = getEpoch(to)
-  let diff = to - from
-  let obj: any = {}
-  //get years
-  let years = Math.floor(diff / year)
+  let a = toDate(from)
+  let b = toDate(to)
+  if (a > b) {
+    ;[a, b] = [b, a]
+  }
+  let years = b.getUTCFullYear() - a.getUTCFullYear()
+  let months = b.getUTCMonth() - a.getUTCMonth()
+  let days = b.getUTCDate() - a.getUTCDate()
+  // borrow from the previous month(s) until days is positive
+  let borrow = 0
+  while (days < 0) {
+    months -= 1
+    borrow += 1
+    days += new Date(Date.UTC(b.getUTCFullYear(), b.getUTCMonth() - borrow + 1, 0)).getUTCDate()
+  }
+  if (months < 0) {
+    years -= 1
+    months += 12
+  }
+  const totalDays = Math.round((b.getTime() - a.getTime()) / (1000 * 60 * 60 * 24))
+  // days since the last whole year
+  const anniversary = new Date(Date.UTC(a.getUTCFullYear() + years, a.getUTCMonth(), a.getUTCDate()))
+  const yearDays = Math.round((b.getTime() - anniversary.getTime()) / (1000 * 60 * 60 * 24))
+  let obj: any = { totalDays, yearDays }
   if (years > 0) {
     obj.years = years
-    diff -= obj.years * year
   }
-  //get months
-  let monthCount = Math.floor(diff / month)
-  if (monthCount > 0) {
-    obj.months = monthCount
-    diff -= obj.months * month
+  if (months > 0) {
+    obj.months = months
   }
-  //get days
-  let days = Math.floor(diff / day)
   if (days > 0) {
     obj.days = days
-    // diff -= (obj.days * day);
   }
   return obj
 }

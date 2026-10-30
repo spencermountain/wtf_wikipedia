@@ -127,12 +127,12 @@ class Section {
   }
 
   json(format = 'lg') {
-    const json = structuredClone(this.#data)
     if (format === 'xl') {
-      return json
+      return structuredClone(this.#data)
     }
-    delete json.wiki
-    return json
+    // leave the section's wikitext out of the copy, rather than cloning and then deleting it
+    const { wiki: _wiki, ...data } = this.#data
+    return structuredClone(data)
   }
 
   // aliases

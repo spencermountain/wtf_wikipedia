@@ -9,10 +9,10 @@ const toMarkdown = function () {
     //cite book, etc
     let str = data.title
     if (data.author) {
-      str += data.author
+      str += ' ' + data.author
     }
     if (data.first && data.last) {
-      str += data.first + ' ' + data.last
+      str += ' ' + data.first + ' ' + data.last
     }
     return `⌃ ${str}`
   } else if (data.inline) {

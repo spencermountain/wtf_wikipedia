@@ -10,7 +10,6 @@ let shorthands = [
   // date abbreviations
   ['cf.', 'cf. '],
   ['fl.', 'fl. '],
-  ['circa', 'c. '],
   ['born in', 'b. '],
   ['died-in', 'd. '],
   ['married-in', 'm. '],

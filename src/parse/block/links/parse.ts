@@ -15,6 +15,20 @@ const parse_links = function (wiki: string, opts: DocInfo = defaults) {
   if (links.length === 0) {
     return undefined
   }
+  // keep document order, rather than externals-first
+  let cursor = 0
+  const positions = links.map((link) => {
+    const at = wiki.indexOf(link.wiki, cursor)
+    if (at === -1) {
+      return wiki.indexOf(link.wiki)
+    }
+    cursor = at + link.wiki.length
+    return at
+  })
+  links = links
+    .map((link, i) => ({ link, at: positions[i], i }))
+    .sort((a, b) => a.at - b.at || a.i - b.i)
+    .map((o) => o.link)
 
   for (const link of links) {
     if (typeof link.text === 'string') {

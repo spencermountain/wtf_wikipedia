@@ -1,4 +1,7 @@
+import { getCell } from '../../_lib.js'
+
 const dashSplit = /(–|-|−|&ndash;)/ //eslint-disable-line
+const noSave = /^(?:[–\-−—]|&ndash;|&mdash;)$/
 
 const parseTeam = function (txt) {
   if (!txt) {
@@ -6,8 +9,8 @@ const parseTeam = function (txt) {
   }
   const away = /^ *@ */.test(txt)
   return {
-    name: txt.replace(/^ +@ +/, ''),
-    home: !away
+    name: txt.replace(/^ *@ */, '').trim(),
+    home: !away,
   }
 }
 
@@ -55,13 +58,11 @@ const parseAttendance = function (txt = '') {
 }
 
 const parsePitchers = function (row) {
-  let win = row.Win || row.win || ''
-  win = win.replace(/(^[^(\r\n\u2028\u2029]*)\(.*?\)/m, '$1').trim()
-  let loss = row.Loss || row.loss || ''
-  loss = loss.replace(/(^[^(\r\n\u2028\u2029]*)\(.*?\)/m, '$1').trim()
-  let save = row.Save || row.save || ''
-  save = save.replace(/(^[^(\r\n\u2028\u2029]*)\(.*?\)/m, '$1').trim()
-  if (dashSplit.test(save) === true) {
+  const strip = (str = '') => str.replace(/(^[^(\r\n\u2028\u2029]*)\(.*?\)/m, '$1').trim()
+  const win = strip(getCell(row, ['Win', 'win']))
+  const loss = strip(getCell(row, ['Loss', 'loss']))
+  let save = strip(getCell(row, ['Save', 'save']))
+  if (noSave.test(save) === true) {
     save = null
   }
   return {
@@ -75,16 +76,18 @@ const parseRow = function (row) {
   if (!row) {
     return null
   }
-  const team = parseTeam(row.opponent || row.Opponent)
-  const record = parseRecord(row.record || row.Record)
+  const team = parseTeam(getCell(row, ['opponent', 'Opponent']))
+  const record = parseRecord(getCell(row, ['record', 'Record']))
   const obj = {
-    date: row.date || row.Date,
-    team: team.name || team.Name,
-    home: team.home || team.Home || false,
+    date: getCell(row, ['date', 'Date']) || undefined,
+    team: team.name,
+    home: team.home || false,
     pitchers: parsePitchers(row),
-    result: parseScore(row.score || row.Score || row['box score'] || row['Box Score']),
+    result: parseScore(getCell(row, ['score', 'Score', 'box score', 'Box Score'])),
     record: record,
-    attendance: parseAttendance(row.attendance || row.Attendance || row['location (attendance)'] || row['Location (Attendance)'])
+    attendance: parseAttendance(
+      getCell(row, ['attendance', 'Attendance', 'location (attendance)', 'Location (Attendance)'])
+    ),
   }
   return obj
 }

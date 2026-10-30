@@ -4,7 +4,7 @@ import type { DocInfo, BlockData } from '../../../types/index.ts'
 
 const list_reg = /^[#*:;|]+/
 const bullet_reg = /^\*+[^:,|]{4}/
-const number_reg = /^ ?#[^:,|]{4}/
+const number_reg = /^ ?#+[^:,|#*;]/
 
 // does it start with a bullet point or something?
 const isList = function (line: string) {
@@ -13,18 +13,24 @@ const isList = function (line: string) {
 
 //make bullets/numbers into human-readable *'s
 const cleanList = function (lines: string[], opts: DocInfo = defaults) {
-  let number = 1
+  // one counter per nesting depth
+  let numbers: number[] = []
   const list: BlockData[] = []
   lines = lines.filter((l) => l)
   for (let i = 0; i < lines.length; i++) {
     let line = lines[i]
     //add # numberings formatting
     if (line.match(number_reg)) {
-      line = line.replace(/^ ?#*/, number + ') ')
+      const depth = line.match(/^ ?(#+)/)[1].length - 1
+      numbers = numbers.slice(0, depth + 1)
+      numbers[depth] = (numbers[depth] || 0) + 1
+      line = line.replace(/^ ?#+/, numbers[depth] + ') ')
       line = line + '\n'
-      number += 1
     } else if (line.match(list_reg)) {
-      number = 1
+      // a plain bullet list resets the numbering, a nested '#*' does not
+      if (!line.startsWith('#')) {
+        numbers = []
+      }
       line = line.replace(list_reg, '')
     }
     const item = parseBlock(line, opts)

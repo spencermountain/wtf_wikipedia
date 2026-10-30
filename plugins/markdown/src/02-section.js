@@ -39,22 +39,24 @@ const doSection = function (options) {
     }
   }
 
-  //make a markdown bullet-list
-  if (options.lists === true) {
-    const lists = this.lists()
-    if (lists.length > 0) {
-      md += lists.map((list) => list.markdown(options)).join('\n')
-      md += '\n'
+  const doLists = (lists) => {
+    if (options.lists !== true || lists.length === 0) {
+      return ''
     }
+    return lists.map((list) => list.markdown(options)).join('\n')
   }
 
-  //finally, write the sentence text.
+  //write the sentence text, with each paragraph's lists after its text
   if (options.paragraphs === true || options.sentences === true) {
     md += this.paragraphs()
       .map((p) => {
-        return joinSentences(p.sentences(), (s) => s.markdown(options))
+        const parts = [joinSentences(p.sentences(), (s) => s.markdown(options)), doLists(p.lists())]
+        return parts.filter((str) => str).join('\n')
       })
+      .filter((str) => str)
       .join('\n\n')
+  } else {
+    md += doLists(this.lists())
   }
 
   return md

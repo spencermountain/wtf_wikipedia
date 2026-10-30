@@ -61,7 +61,7 @@ test('handles references', (t) => {
   {{ref-list}}
   `).markdown({references: true})
   
-  t.equal(md, "== References ==## References⌃ [Fake reference title](http://example.com/fake/ref)", "supports markdown")
+  t.equal(md, "== References ==\n\n## References\n⌃ [Fake reference title](http://example.com/fake/ref)", "supports markdown")
   t.equal(md, md, "supports markdown");
 
   
