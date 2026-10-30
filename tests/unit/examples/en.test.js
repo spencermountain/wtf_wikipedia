@@ -90,9 +90,9 @@ test('AACTA-Award-For-Outstanding-Achievement-In-Short-Film-Screen-Craft', (t) =
   )
   t.ok(doc.section('winners'), 'AACTA-Award-For-Outstanding-Achievement-In-Short-Film-Screen-Craft: Winners section')
   t.equal(
-    doc.sentences()[4].text(),
-    '{{legend|#91CFF6|Winner of special award|border=1px #555 solid}}',
-    'AACTA-Award-For-Outstanding-Achievement-In-Short-Film-Screen-Craft: 5th sentence text'
+    doc.sentences()[3].text(),
+    '{{legend|#FAEB86|Winner of competitive award|border=1px #555 solid}} {{legend|#91CFF6|Winner of special award|border=1px #555 solid}}',
+    'AACTA-Award-For-Outstanding-Achievement-In-Short-Film-Screen-Craft: 4th sentence text (unparsed legend templates, joined)'
   )
   t.equal(
     doc.sections()[2].title(),
@@ -164,9 +164,9 @@ test('Al-Haytham', (t) => {
     "Al-Haytham: 'Mathematical works' section, 1st sentence shows 'mathematics' for Islamic mathematics"
   )
   t.equal(
-    doc.sentences()[19].text(),
+    doc.sentences()[18].text(),
     'Optics was translated into Latin by an unknown scholar at the end of the 12th century or the beginning of the 13th century.',
-    'Al-Haytham: 20th sentence text'
+    'Al-Haytham: 19th sentence text'
   )
   t.equal(doc.sections()[22].title(), 'Engineering', 'Al-Haytham: section [22] title')
   t.equal(doc.infobox().get('death_place').text(), 'Cairo, Egypt', 'Al-Haytham: infobox death_place')
@@ -1049,14 +1049,14 @@ test('Clint-Murchison-Sr', (t) => {
     'Clint-Murchison-Sr: American businesspeople in the oil industry category'
   )
   t.equal(
-    doc.sentences()[6].links()[2].page(),
+    doc.sentences()[7].links()[2].page(),
     'Wallis Simpson',
-    "Clint-Murchison-Sr: 7th sentence links to 'Wallis Simpson'"
+    "Clint-Murchison-Sr: 8th sentence links to 'Wallis Simpson'"
   )
   t.equal(
-    doc.sentences()[4].links()[1].text(),
+    doc.sentences()[5].links()[1].text(),
     'first lieutenant',
-    "Clint-Murchison-Sr: 5th sentence shows 'first lieutenant' for First lieutenant"
+    "Clint-Murchison-Sr: 6th sentence shows 'first lieutenant' for First lieutenant"
   )
   t.equal(
     doc.section('Personal').sentences()[1].text(),
@@ -1065,9 +1065,9 @@ test('Clint-Murchison-Sr', (t) => {
   )
   t.equal(doc.sections()[3].title(), 'Death', 'Clint-Murchison-Sr: section [3] title')
   t.equal(
-    doc.sentences()[13].links()[2].page(),
+    doc.sentences()[14].links()[2].page(),
     'Assassination of John F. Kennedy',
-    "Clint-Murchison-Sr: 14th sentence links to 'Assassination of John F. Kennedy'"
+    "Clint-Murchison-Sr: 15th sentence links to 'Assassination of John F. Kennedy'"
   )
   t.equal(
     doc.references()[3].title(),
@@ -1075,7 +1075,7 @@ test('Clint-Murchison-Sr', (t) => {
     'Clint-Murchison-Sr: 4th reference title'
   )
   t.ok(
-    doc.sentences()[7].text().startsWith('In 1920, Murchison married Anne Morris from'),
+    doc.sentences()[8].text().startsWith('In 1920, Murchison married Anne Morris from'),
     "Clint-Murchison-Sr: 8th sentence starts 'In 1920, Murchison married Ann…'"
   )
   t.equal(
@@ -1166,9 +1166,9 @@ test('Direct-Representation', (t) => {
     "Direct-Representation: 2nd sentence shows 'winner-take-all' for Plurality voting system"
   )
   t.equal(
-    doc.sentences()[7].text(),
+    doc.sentences()[6].text(),
     'Suppose there is a congressional district with 400,000 residents eligible to vote and three candidates running to represent it, A, B, and C.',
-    'Direct-Representation: 8th sentence text'
+    'Direct-Representation: 7th sentence text'
   )
   t.equal(doc.sections()[2].title(), 'Benefits', 'Direct-Representation: section [2] title')
   t.equal(
@@ -1487,21 +1487,21 @@ test('Harry-McPherson', (t) => {
     'Harry-McPherson: term_start field'
   )
   t.equal(
-    doc.section('Private law practice in Washington, D.C.').sentences()[6].links()[1].page(),
+    doc.section('Private law practice in Washington, D.C.').sentences()[7].links()[1].page(),
     'Bill Clinton',
-    "Harry-McPherson: 'Private law practice in Washington, D.C.' section, 7th sentence links to 'Bill Clinton'"
+    "Harry-McPherson: 'Private law practice in Washington, D.C.' section, 8th sentence links to 'Bill Clinton'"
   )
   t.equal(
-    doc.sentences()[36].text(),
+    doc.sentences()[37].text(),
     'Our apprehension of the danger to us in the unification of Vietnam under Hanoi’s rule was the same in 1963 as it had been in 1954.',
-    'Harry-McPherson: 37th sentence text'
+    'Harry-McPherson: 38th sentence text'
   )
   t.equal(doc.sections()[7].title(), 'External links', 'Harry-McPherson: section [7] title')
   t.equal(doc.infobox().get('birth_place').text(), 'Tyler, Texas, U.S.', 'Harry-McPherson: infobox birth_place')
   t.equal(
-    doc.section('Private law practice in Washington, D.C.').sentences()[9].links()[0].page(),
+    doc.section('Private law practice in Washington, D.C.').sentences()[10].links()[0].page(),
     'Council on Foreign Relations',
-    "Harry-McPherson: 'Private law practice in Washington, D.C.' section, 10th sentence links to 'Council on Foreign Relations'"
+    "Harry-McPherson: 'Private law practice in Washington, D.C.' section, 11th sentence links to 'Council on Foreign Relations'"
   )
   t.equal(
     doc.references()[0].title(),
@@ -1831,14 +1831,14 @@ test('K-Nicole-Mitchell', (t) => {
     'K-Nicole-Mitchell: U.S. Magistrate Judge link'
   )
   t.equal(
-    doc.sentences()[7].links()[0].page(),
+    doc.sentences()[8].links()[0].page(),
     'Houston, Texas',
-    "K-Nicole-Mitchell: 8th sentence links to 'Houston, Texas'"
+    "K-Nicole-Mitchell: 9th sentence links to 'Houston, Texas'"
   )
   t.equal(
-    doc.sentences()[8].links()[0].text(),
+    doc.sentences()[9].links()[0].text(),
     'Leonard Davis',
-    "K-Nicole-Mitchell: 9th sentence shows 'Leonard Davis' for Leonard Davis (judge)"
+    "K-Nicole-Mitchell: 10th sentence shows 'Leonard Davis' for Leonard Davis (judge)"
   )
   t.equal(
     doc.section('Career').sentences()[2].text(),
@@ -2629,9 +2629,9 @@ test('Terrence-Murphy-American-Football', (t) => {
     'Terrence-Murphy-American-Football: number field'
   )
   t.equal(
-    doc.sentences()[26].links()[0].page(),
+    doc.sentences()[27].links()[0].page(),
     'Brazos County, Texas',
-    "Terrence-Murphy-American-Football: 27th sentence links to 'Brazos County, Texas'"
+    "Terrence-Murphy-American-Football: 28th sentence links to 'Brazos County, Texas'"
   )
   t.equal(
     doc.sentences()[0].links()[2].text(),
@@ -2639,9 +2639,9 @@ test('Terrence-Murphy-American-Football', (t) => {
     "Terrence-Murphy-American-Football: 1st sentence shows 'return specialist' for Special Teams"
   )
   t.equal(
-    doc.sentences()[20].text(),
+    doc.sentences()[21].text(),
     'Tests later showed Murphy has spinal stenosis, a narrowing of the spine near the neck.',
-    'Terrence-Murphy-American-Football: 21st sentence text'
+    'Terrence-Murphy-American-Football: 22nd sentence text'
   )
   t.equal(doc.sections()[3].title(), 'College', 'Terrence-Murphy-American-Football: section [3] title')
   t.equal(doc.infobox().get('college').text(), 'Texas A&M', 'Terrence-Murphy-American-Football: infobox college')
@@ -2738,14 +2738,14 @@ test('The-Atlas-Newspaper', (t) => {
     "The-Atlas-Newspaper: 'Content' section, 2nd sentence links to 'Leigh Hunt'"
   )
   t.equal(
-    doc.sentences()[3].links()[0].text(),
+    doc.sentences()[2].links()[0].text(),
     'shilling',
-    "The-Atlas-Newspaper: 4th sentence shows 'shilling' for Shilling (British coin)"
+    "The-Atlas-Newspaper: 3rd sentence shows 'shilling' for Shilling (British coin)"
   )
   t.equal(
-    doc.sentences()[4].text(),
+    doc.sentences()[3].text(),
     'The price was gradually reduced (10 d in 1828, 8d in 1846, falling to 2d by 1858).',
-    'The-Atlas-Newspaper: 5th sentence text'
+    'The-Atlas-Newspaper: 4th sentence text'
   )
   t.equal(doc.sections()[3].title(), 'Notes', 'The-Atlas-Newspaper: section [3] title')
   t.equal(
@@ -2754,8 +2754,8 @@ test('The-Atlas-Newspaper', (t) => {
     "The-Atlas-Newspaper: 'Content' section, 1st sentence links to 'Whigs (British political party)'"
   )
   t.ok(
-    doc.section('History').sentences()[2].text().startsWith('distinguished itself from its rivals both by'),
-    "The-Atlas-Newspaper: 'History' section, 3rd sentence starts 'distinguished itself from its…'"
+    doc.section('History').sentences()[1].text().includes('the Atlas initially distinguished itself from its rivals'),
+    "The-Atlas-Newspaper: 'History' section, 2nd sentence joins across the line-break"
   )
   t.equal(
     doc.lists()[0].lines()[0].text(),
@@ -2765,14 +2765,14 @@ test('The-Atlas-Newspaper', (t) => {
   t.equal(doc.categories()[1], 'Publications established in 1826', 'The-Atlas-Newspaper: 2nd category')
   t.equal(doc.sections().length, 5, 'The-Atlas-Newspaper: 5 sections')
   t.equal(
-    doc.sentences()[3].links()[0].page(),
+    doc.sentences()[2].links()[0].page(),
     'Shilling (British coin)',
-    "The-Atlas-Newspaper: 4th sentence links to 'Shilling (British coin)'"
+    "The-Atlas-Newspaper: 3rd sentence links to 'Shilling (British coin)'"
   )
   t.equal(
-    doc.sentences()[5].links()[1].text(),
+    doc.sentences()[4].links()[1].text(),
     'pro-temperance',
-    "The-Atlas-Newspaper: 6th sentence shows 'pro-temperance' for Temperance movement"
+    "The-Atlas-Newspaper: 5th sentence shows 'pro-temperance' for Temperance movement"
   )
   t.end()
 })
@@ -2796,28 +2796,28 @@ test('The-Field-Of-Waterloo', (t) => {
   )
   t.ok(doc.categories().includes('Poetry by Walter Scott'), 'The-Field-Of-Waterloo: Poetry by Walter Scott category')
   t.equal(
-    doc.sentences()[5].links()[1].page(),
+    doc.sentences()[4].links()[1].page(),
     'Pryse Gordon',
-    "The-Field-Of-Waterloo: 6th sentence links to 'Pryse Gordon'"
+    "The-Field-Of-Waterloo: 5th sentence links to 'Pryse Gordon'"
   )
   t.equal(
-    doc.sentences()[5].links()[0].text(),
+    doc.sentences()[4].links()[0].text(),
     'general Adam',
-    "The-Field-Of-Waterloo: 6th sentence shows 'general Adam' for Frederick Adam"
+    "The-Field-Of-Waterloo: 5th sentence shows 'general Adam' for Frederick Adam"
   )
   t.equal(
-    doc.sentences()[8].text(),
+    doc.sentences()[7].text(),
     'Scott reluctantly agreed to tone the text down somewhat, but the poem was still very poorly received by critics.',
-    'The-Field-Of-Waterloo: 9th sentence text'
+    'The-Field-Of-Waterloo: 8th sentence text'
   )
   t.equal(doc.sections()[2].title(), 'External links', 'The-Field-Of-Waterloo: section [2] title')
   t.equal(
-    doc.sentences()[10].links()[0].page(),
+    doc.sentences()[9].links()[0].page(),
     'Thomas Erskine, 1st Baron Erskine',
-    "The-Field-Of-Waterloo: 11th sentence links to 'Thomas Erskine, 1st Baron Erskine'"
+    "The-Field-Of-Waterloo: 10th sentence links to 'Thomas Erskine, 1st Baron Erskine'"
   )
   t.ok(
-    doc.sentences()[3].text().startsWith('Scott was hoping to recover his expenses'),
+    doc.sentences()[2].text().startsWith('Scott was hoping to recover his expenses'),
     "The-Field-Of-Waterloo: 4th sentence starts 'Scott was hoping to recover hi…'"
   )
   t.equal(doc.lists()[2].lines()[0].text(), 'Edinburgh University Library', 'The-Field-Of-Waterloo: list 3, item 1')
@@ -2829,9 +2829,9 @@ test('The-Field-Of-Waterloo', (t) => {
     "The-Field-Of-Waterloo: 2nd sentence links to 'Battle of Waterloo'"
   )
   t.equal(
-    doc.sentences()[10].links()[0].text(),
+    doc.sentences()[9].links()[0].text(),
     'Lord Erskine',
-    "The-Field-Of-Waterloo: 11th sentence shows 'Lord Erskine' for Thomas Erskine, 1st Baron Erskine"
+    "The-Field-Of-Waterloo: 10th sentence shows 'Lord Erskine' for Thomas Erskine, 1st Baron Erskine"
   )
   t.end()
 })

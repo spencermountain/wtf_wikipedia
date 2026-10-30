@@ -13,7 +13,10 @@ test('The-Starry-Night-Sv', (t) => {
   t.ok(doc.section('kronologi').lists()[0], 'The-Starry-Night-Sv: ownership chronology')
   t.ok(doc.references().length > 0, 'The-Starry-Night-Sv: art history sources')
   t.ok(doc.section('historik och tema'), 'The-Starry-Night-Sv: Historik och tema section')
-  t.ok(doc.links().some((link) => link.page() === 'Museum of Modern Art'), 'The-Starry-Night-Sv: museum collection link')
+  t.ok(
+    doc.links().some((link) => link.page() === 'Museum of Modern Art'),
+    'The-Starry-Night-Sv: museum collection link'
+  )
   t.equal(doc.sentences()[18].links()[0].page(), 'Nedan', "The-Starry-Night-Sv: 19th sentence links to 'Nedan'")
   t.equal(
     doc.sentences()[16].links()[2].text(),
@@ -61,7 +64,10 @@ test('Toronto-Sv', (t) => {
   t.ok(doc.section('historia'), 'Toronto-Sv: Swedish history heading')
   t.match(doc.text(), /CN Tower/, 'Toronto-Sv: city landmark')
   t.ok(doc.references().length > 0, 'Toronto-Sv: city sources')
-  t.ok(doc.infoboxes().some((box) => box.get('category').text() === 'Stad'), 'Toronto-Sv: category field')
+  t.ok(
+    doc.infoboxes().some((box) => box.get('category').text() === 'Stad'),
+    'Toronto-Sv: category field'
+  )
   t.ok(doc.categories().includes('Orter i Ontario'), 'Toronto-Sv: Orter i Ontario category')
   t.equal(doc.sentences()[7].links()[0].page(), 'Europa', "Toronto-Sv: 8th sentence links to 'Europa'")
   t.equal(

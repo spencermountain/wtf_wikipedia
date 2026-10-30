@@ -13,7 +13,10 @@ test('Radiohead-Ja', (t) => {
   t.ok(doc.section('来歴'), 'Radiohead-Ja: biography or references section')
   t.ok(doc.references().length > 0, 'Radiohead-Ja: sources for the band history')
   t.match(doc.text(), /Kid A/, 'Radiohead-Ja: experimental album')
-  t.ok(doc.categories().includes('イングランドのオルタナティヴ・ロック・バンド'), 'Radiohead-Ja: イングランドのオルタナティヴ・ロック・バンド category')
+  t.ok(
+    doc.categories().includes('イングランドのオルタナティヴ・ロック・バンド'),
+    'Radiohead-Ja: イングランドのオルタナティヴ・ロック・バンド category'
+  )
   t.equal(
     doc.sentences()[8].links()[0].page(),
     'オックスフォード',
@@ -59,7 +62,10 @@ test('Willow-Ja', (t) => {
   t.match(doc.text(), /シダレヤナギ/, 'Willow-Ja: weeping willow species')
   t.ok(doc.categories().length > 0, 'Willow-Ja: botanical categories')
   t.match(doc.text(), /風見草/, 'Willow-Ja: alternative Japanese common name')
-  t.ok(doc.links().some((link) => link.page() === '北半球'), 'Willow-Ja: northern hemisphere distribution')
+  t.ok(
+    doc.links().some((link) => link.page() === '北半球'),
+    'Willow-Ja: northern hemisphere distribution'
+  )
   t.equal(
     doc.section('薬用').sentences()[9].links()[0].page(),
     'ビタミンC',
@@ -100,7 +106,10 @@ test('Wimbledon-Championships-Ja', (t) => {
   t.ok(doc.section('歴史'), 'Wimbledon-Championships-Ja: tournament history or programme section')
   t.ok(doc.tables().length > 0, 'Wimbledon-Championships-Ja: tournament records tables')
   t.ok(doc.references().length > 0, 'Wimbledon-Championships-Ja: tournament sources')
-  t.ok(doc.links().some((link) => link.page() === 'イギリス'), 'Wimbledon-Championships-Ja: イギリス link')
+  t.ok(
+    doc.links().some((link) => link.page() === 'イギリス'),
+    'Wimbledon-Championships-Ja: イギリス link'
+  )
   t.ok(doc.section('概要'), 'Wimbledon-Championships-Ja: 概要 section')
   t.equal(
     doc.section('日本人出場選手').sentences()[5].links()[0].page(),

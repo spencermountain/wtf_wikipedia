@@ -158,7 +158,15 @@ test('date templates - known differences from wikipedia', { todo: true }, (t) =>
   )
   // given age is shown
   t.match(wtf('{{death date and given age|1993|2|24|51}}').text(), /\(aged 51\)$/, 'death date and given age')
-  // whole numbers, not floats
+  t.end()
+})
+
+test('time ago - whole units', (t) => {
   t.match(wtf('{{time ago|2000-01-01}}').text(), /^\d+ years ago$/, 'time ago rounds to whole years')
+  const past = new Date()
+  past.setDate(past.getDate() - 10)
+  t.equal(wtf(`{{time ago|${past.toISOString().slice(0, 10)}}}`).text(), '1 week ago', 'weeks, singular')
+  past.setDate(past.getDate() - 60)
+  t.equal(wtf(`{{time ago|${past.toISOString().slice(0, 10)}}}`).text(), '2 months ago', 'months, plural')
   t.end()
 })

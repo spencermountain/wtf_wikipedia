@@ -98,22 +98,24 @@ test('sentence splitter - thorough', (t) => {
 })
 
 // known parser bugs
-const buggy = [
-  // a parenthesised sentence is glued to the next one
+const fixed = [
+  // a parenthesised sentence stands on its own
   [
     'The town is old. (It was founded in 1700.) It is small.',
     ['The town is old.', '(It was founded in 1700.)', 'It is small.'],
   ],
-  // 。 is rewritten to '.' in sentence text
+  // 。 is kept in sentence text
   ['東京は日本の首都です。人口が多いです。', ['東京は日本の首都です。', '人口が多いです。']],
-  // full-width ？ and ！ do not end sentences
+  // full-width ？ and ！ end sentences
   ['你好吗？我很好！', ['你好吗？', '我很好！']],
   // a single newline is not a paragraph break in wikitext
   ['First line\nsecond part of it.', ['First line second part of it.']],
+  // closing quotes and italics after the period belong to the sentence
+  ["He said ''go.'' Then he left.", ['He said go.', 'Then he left.']],
 ]
 
-test('sentence splitter - known bugs', { todo: true }, (t) => {
-  buggy.forEach(([str, want]) => {
+test('sentence splitter - fixed bugs', (t) => {
+  fixed.forEach(([str, want]) => {
     t.deepEqual(texts(str), want, JSON.stringify(str))
   })
   t.end()

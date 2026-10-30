@@ -15,8 +15,14 @@ test('Groot-Brittanje', (t) => {
     'Groot-Brittanje: historical kingdom link'
   )
   t.ok(doc.categories().length > 0, 'Groot-Brittanje: Afrikaans categories are recognized')
-  t.ok(doc.section('staatkundige gebiede geassosieer met groot-brittanje'), 'Groot-Brittanje: Staatkundige gebiede geassosieer met Groot-Brittanje section')
-  t.ok(doc.links().some((link) => link.page() === 'Europa'), 'Groot-Brittanje: European location link')
+  t.ok(
+    doc.section('staatkundige gebiede geassosieer met groot-brittanje'),
+    'Groot-Brittanje: Staatkundige gebiede geassosieer met Groot-Brittanje section'
+  )
+  t.ok(
+    doc.links().some((link) => link.page() === 'Europa'),
+    'Groot-Brittanje: European location link'
+  )
   t.equal(doc.sentences()[2].links()[2].page(), 'Wallis', "Groot-Brittanje: 3rd sentence links to 'Wallis'")
   t.equal(
     doc.sentences()[1].text(),
@@ -56,7 +62,10 @@ test('Mark-Behr', (t) => {
     'Mark-Behr: birth date link'
   )
   t.ok(doc.references().length > 0, 'Mark-Behr: biographical references')
-  t.ok(doc.infoboxes().some((box) => box.get('beroep').text() === 'Skrywer, akademikus'), 'Mark-Behr: beroep field')
+  t.ok(
+    doc.infoboxes().some((box) => box.get('beroep').text() === 'Skrywer, akademikus'),
+    'Mark-Behr: beroep field'
+  )
   t.ok(doc.categories().includes('Suid-Afrikaanse skrywers'), 'Mark-Behr: Suid-Afrikaanse skrywers category')
   t.equal(
     doc.section('Lewe en werk').sentences()[3].links()[0].page(),

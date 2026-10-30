@@ -155,8 +155,7 @@ test('data-only templates', (t) => {
   t.end()
 })
 
-// Genuine parser bugs. These describe how Wikipedia renders the template.
-test('symbol templates: known bugs', { todo: true }, (t) => {
+test('symbol templates: fixed', (t) => {
   t.equal(wtf('a{{nbsp}}b').text(), 'a b', 'nbsp becomes a space')
   t.equal(wtf('{{pipe}}').text(), '|', 'pipe')
   t.equal(wtf('{{number sign}}').text(), '#', 'number sign')
@@ -164,14 +163,14 @@ test('symbol templates: known bugs', { todo: true }, (t) => {
   t.end()
 })
 
-test('flag templates: known bugs', { todo: true }, (t) => {
+test('flag templates: fixed', (t) => {
   t.equal(wtf('{{flagcu|USA}}').text(), '🇺🇸 United States', 'flagcu country name is capitalised')
   t.equal(wtf('{{flagcountry|CAN}}').text(), '🇨🇦 Canada', 'flagcountry country name is capitalised')
   t.equal(wtf('{{fb|ENG}}').text(), '🏴󠁧󠁢󠁥󠁮󠁧󠁿 England', 'fb team name is capitalised')
   t.end()
 })
 
-test('math and text templates: known bugs', { todo: true }, (t) => {
+test('math and text templates: fixed', (t) => {
   t.equal(wtf('{{frac|4}}').text(), '1/4', 'single-argument frac is 1/x')
   t.equal(wtf('{{bra|φ}}').text(), '⟨φ|', 'bra is not the Brazil flag')
   t.equal(wtf('{{ket|ψ}}').text(), '|ψ⟩', 'ket has a leading bar')
@@ -182,11 +181,9 @@ test('math and text templates: known bugs', { todo: true }, (t) => {
   t.end()
 })
 
-test('data templates: known bugs', { todo: true }, (t) => {
-  // mixed-case keys in the template map are never matched
+test('data templates: fixed', (t) => {
   t.match(wtf('{{ReptileDatabase|genus=Naja|species=naja}}').text(), /Naja naja/, 'ReptileDatabase renders the taxon')
   t.match(wtf('{{GEOnet3|-123|Foo}}').text(), /GEOnet Names Server/, 'GEOnet3 renders a source line')
-  // the cite gnis handler is shadowed by the generic citation parser
   const ref = wtf('Foo<ref>{{cite gnis|1234|Foo Creek}}</ref>').references()[0]?.json().data || {}
   t.equal(ref.id, '1234', 'cite gnis id')
   t.equal(ref.name, 'Foo Creek', 'cite gnis name')

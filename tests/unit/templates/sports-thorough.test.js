@@ -160,8 +160,7 @@ test('sports: medal count', (t) => {
   t.end()
 })
 
-// Genuine parser bugs. These describe how Wikipedia renders the template.
-test('sports: known bugs', { todo: true }, (t) => {
+test('sports: win-loss record and winlosspct', (t) => {
   // Template:Win–loss record renders W–L–T with en dashes
   t.equal(wtf('{{win-loss record|w=10|l=5}}').text(), '10–5', 'win-loss record uses an en dash')
   t.equal(wtf('{{win-loss record|w=5|l=3|t=1}}').text(), '5–3–1', 'ties come last: W–L–T')

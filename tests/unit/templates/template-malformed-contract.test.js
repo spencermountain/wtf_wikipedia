@@ -18,11 +18,27 @@ test('malformed template delimiters preserve surrounding text', (t) => {
   t.end()
 })
 
-test('deeply nested templates resolve from inside out', (t) => {
+const nest = (depth) => {
   let wiki = 'center'
-  for (let i = 0; i < 100; i += 1) {
+  for (let i = 0; i < depth; i += 1) {
     wiki = '{{nestingprobe|' + wiki + '}}'
   }
-  t.equal(wtf(wiki).text(), 'center', 'one hundred nested replacements resolve')
+  return wiki
+}
+
+test('deeply nested templates resolve from inside out', (t) => {
+  // MediaWiki's own expansion depth limit is 40 - we match it
+  t.equal(wtf(nest(40)).text(), 'center', 'forty nested replacements resolve')
+  t.end()
+})
+
+test('nesting past the depth cap is left as text, quickly', (t) => {
+  const wiki = nest(2000)
+  const start = Date.now()
+  const text = wtf(wiki).text()
+  const ms = Date.now() - start
+  t.ok(text.includes('center'), 'inner text is kept')
+  t.ok(text.includes('{{nestingprobe'), 'templates past the cap are not expanded')
+  t.ok(ms < 2000, `pathological nesting parses in ${ms}ms`)
   t.end()
 })

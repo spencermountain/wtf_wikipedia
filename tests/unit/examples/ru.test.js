@@ -13,7 +13,10 @@ test('Radiohead-Ru', (t) => {
   t.ok(doc.section('история'), 'Radiohead-Ru: biography or references section')
   t.ok(doc.references().length > 0, 'Radiohead-Ru: sources for the band history')
   t.match(doc.text(), /Kid A/, 'Radiohead-Ru: experimental album')
-  t.ok(doc.categories().includes('Группы альтернативного рока Великобритании'), 'Radiohead-Ru: Группы альтернативного рока Великобритании category')
+  t.ok(
+    doc.categories().includes('Группы альтернативного рока Великобритании'),
+    'Radiohead-Ru: Группы альтернативного рока Великобритании category'
+  )
   t.equal(
     doc.section('Жанровая принадлежность').sentences()[6].links()[1].page(),
     'Британское вторжение',
@@ -70,7 +73,10 @@ test('Willow-Ru', (t) => {
   t.ok(doc.images().length > 0, 'Willow-Ru: willow illustrations')
   t.ok(doc.categories().length > 0, 'Willow-Ru: botanical categories')
   t.ok(doc.categories().includes('Ива'), 'Willow-Ru: Ива category')
-  t.ok(doc.links().some((link) => link.page() === 'Род (биология)'), 'Willow-Ru: род (биология) link')
+  t.ok(
+    doc.links().some((link) => link.page() === 'Род (биология)'),
+    'Willow-Ru: род (биология) link'
+  )
   t.equal(
     doc.section('Ботаническое описание').sentences()[3].links()[0].page(),
     'Черешок',
@@ -114,7 +120,10 @@ test('Wimbledon-Championships-Ru', (t) => {
   t.ok(doc.section('история'), 'Wimbledon-Championships-Ru: tournament history or programme section')
   t.ok(doc.tables().length > 0, 'Wimbledon-Championships-Ru: tournament records tables')
   t.ok(doc.references().length > 0, 'Wimbledon-Championships-Ru: tournament sources')
-  t.ok(doc.links().some((link) => link.page() === 'Турниры Большого шлема (теннис)'), 'Wimbledon-Championships-Ru: Турниры Большого шлема (теннис) link')
+  t.ok(
+    doc.links().some((link) => link.page() === 'Турниры Большого шлема (теннис)'),
+    'Wimbledon-Championships-Ru: Турниры Большого шлема (теннис) link'
+  )
   t.ok(doc.section('предшествующие события'), 'Wimbledon-Championships-Ru: Предшествующие события section')
   t.equal(
     doc.sentences()[34].links()[1].page(),

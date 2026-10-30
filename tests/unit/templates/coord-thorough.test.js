@@ -74,7 +74,7 @@ test('coord - document and section coordinates', (t) => {
 })
 
 // wikipedia shows the hemisphere letter instead of a sign, eg '33.86°S 151.21°E'
-test('coord - known differences from wikipedia', { todo: true }, (t) => {
+test('coord - hemisphere letters', (t) => {
   const arr = [
     ['{{coord|43.651|-79.383}}', /43\.651°N,? 79\.383°W/],
     ['{{coord|-33.86|151.21}}', /33\.86°S,? 151\.21°E/],
@@ -87,7 +87,7 @@ test('coord - known differences from wikipedia', { todo: true }, (t) => {
     t.match(wtf(str).text(), re, str)
   })
   t.equal(wtf('{{coord|foo|bar}}').text(), '', 'invalid coord renders nothing')
-  // the German {{Coordinate}} template (named NS/EW params) isn't wired to the coord parser
+  // the German {{Coordinate}} template uses named NS/EW params
   const obj = wtf('{{Coordinate|NS=52/31/7/N|EW=13/24/30/E}}').coordinates()[0] || {}
   t.equal(obj.lat, 52.51861, '{{Coordinate}} NS lat')
   t.equal(obj.lon, 13.40833, '{{Coordinate}} EW lon')

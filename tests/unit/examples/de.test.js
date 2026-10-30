@@ -226,8 +226,8 @@ test('Liste-Der-Argentinischen-Botschafter-In-Chile', (t) => {
   )
   t.equal(
     doc.sentences()[0].text(),
-    'Adresse: Embajada de Argentina en Chile',
-    'Liste-Der-Argentinischen-Botschafter-In-Chile: 1st sentence text'
+    'Adresse: Embajada de Argentina en Chile Calle Miraflores Nº285, Santiago, Santiago de Chile.',
+    'Liste-Der-Argentinischen-Botschafter-In-Chile: 1st sentence text (line-break joined)'
   )
   t.equal(
     doc.tables()[0].rows()[14]['bemerkungen'],
@@ -248,11 +248,7 @@ test('Liste-Der-Argentinischen-Botschafter-In-Chile', (t) => {
     'Ministre plénipotentiaire',
     "Liste-Der-Argentinischen-Botschafter-In-Chile: link [15] is 'Ministre plénipotentiaire'"
   )
-  t.equal(
-    doc.sentences()[1].text(),
-    'Calle Miraflores Nº285, Santiago, Santiago de Chile.',
-    'Liste-Der-Argentinischen-Botschafter-In-Chile: 2nd sentence text'
-  )
+  t.equal(doc.sentences().length, 1, 'Liste-Der-Argentinischen-Botschafter-In-Chile: one sentence in the intro')
   t.equal(
     doc.tables()[0].rows()[9]['bemerkungen'],
     'Ministre plénipotentiaire',
@@ -316,8 +312,13 @@ test('Maurische-Netzwuhle', (t) => {
   )
   t.equal(
     doc.lists()[1].lines()[0].text(),
-    'Fotos der Maurischen Netzwühle auf www.herp.it',
+    'Blanus cinereus In: The Reptile Database',
     'Maurische-Netzwuhle: list 2, item 1'
+  )
+  t.equal(
+    doc.lists()[1].lines()[1].text(),
+    'Fotos der Maurischen Netzwühle auf www.herp.it',
+    'Maurische-Netzwuhle: list 2, item 2'
   )
   t.equal(doc.section('Einzelnachweise').depth(), 1, "Maurische-Netzwuhle: 'Einzelnachweise' is a depth-1 subsection")
   t.equal(doc.sections().length, 9, 'Maurische-Netzwuhle: 9 sections')
@@ -419,7 +420,7 @@ test('Sara-C-Bisel', (t) => {
     'University of Maryland',
     "Sara-C-Bisel: 'Wissenschaftliche Laufbahn' section, 2nd sentence shows 'University of Maryland' for University of Maryland, College Park"
   )
-  t.equal(doc.sentences()[25].text(), 'Wissenschaftliche Fachartikel', 'Sara-C-Bisel: 26th sentence text')
+  t.equal(doc.sentences()[24].text(), 'Wissenschaftliche Fachartikel', 'Sara-C-Bisel: 25th sentence text')
   t.equal(doc.sections()[6].title(), 'Literatur', 'Sara-C-Bisel: section [6] title')
   t.equal(
     doc.sentences()[4].links()[0].page(),

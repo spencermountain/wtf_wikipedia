@@ -13,7 +13,10 @@ test('Taarab-Sw', (t) => {
   t.ok(doc.categories().includes('Muziki wa Tanzania'), 'Taarab-Sw: Tanzanian music category')
   t.ok(doc.references().length > 0, 'Taarab-Sw: music history sources')
   t.ok(doc.categories().includes('Muziki wa Kenya'), 'Taarab-Sw: Muziki wa Kenya category')
-  t.ok(doc.links().some((link) => link.page() === 'Muziki'), 'Taarab-Sw: muziki link')
+  t.ok(
+    doc.links().some((link) => link.page() === 'Muziki'),
+    'Taarab-Sw: muziki link'
+  )
   t.equal(doc.sentences()[4].links()[1].page(), 'Kinanda', "Taarab-Sw: 5th sentence links to 'Kinanda'")
   t.equal(
     doc.section('Tabia za taarab').sentences()[2].links()[1].text(),
@@ -52,7 +55,10 @@ test('Tennis-Sw', (t) => {
     doc.images().some((image) => image.file().endsWith(':Tennisball.jpg')),
     'Tennis-Sw: tennis ball gallery photograph'
   )
-  t.ok(doc.links().some((link) => link.page() === 'Michezo'), 'Tennis-Sw: michezo link')
+  t.ok(
+    doc.links().some((link) => link.page() === 'Michezo'),
+    'Tennis-Sw: michezo link'
+  )
   t.ok(doc.section('historia ya michezo'), 'Tennis-Sw: Historia ya michezo section')
   t.equal(
     doc.section('Historia ya michezo').sentences()[4].links()[1].page(),
@@ -93,7 +99,10 @@ test('Willow-Sw', (t) => {
   t.ok(doc.section('spishi'), 'Willow-Sw: botanical section')
   t.match(doc.text(), /Misafsafi/, 'Willow-Sw: Swahili common name')
   t.ok(doc.section('spishi').lists().length > 0, 'Willow-Sw: species list')
-  t.ok(doc.links().some((link) => link.page() === 'Uchina'), 'Willow-Sw: weeping willow origin in China')
+  t.ok(
+    doc.links().some((link) => link.page() === 'Uchina'),
+    'Willow-Sw: weeping willow origin in China'
+  )
   t.ok(doc.categories().includes('Mwenda-usiku na jamaa'), 'Willow-Sw: Mwenda-usiku na jamaa category')
   t.equal(doc.sentences()[0].links()[2].page(), 'Miti', "Willow-Sw: 1st sentence links to 'Miti'")
   t.equal(

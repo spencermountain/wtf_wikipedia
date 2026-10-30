@@ -12,8 +12,14 @@ test('Radiohead-Ar', (t) => {
   )
   t.ok(doc.section('مراجع'), 'Radiohead-Ar: biography or references section')
   t.ok(doc.references().length > 0, 'Radiohead-Ar: sources for the band history')
-  t.ok(doc.categories().includes('تأسيسات سنة 1985 في المملكة المتحدة'), 'Radiohead-Ar: تأسيسات سنة 1985 في المملكة المتحدة category')
-  t.ok(doc.links().some((link) => link.page() === 'موسيقى الروك'), 'Radiohead-Ar: موسيقى الروك link')
+  t.ok(
+    doc.categories().includes('تأسيسات سنة 1985 في المملكة المتحدة'),
+    'Radiohead-Ar: تأسيسات سنة 1985 في المملكة المتحدة category'
+  )
+  t.ok(
+    doc.links().some((link) => link.page() === 'موسيقى الروك'),
+    'Radiohead-Ar: موسيقى الروك link'
+  )
   t.equal(doc.sentences()[0].links()[2].page(), 'أكسفورد', "Radiohead-Ar: 1st sentence links to 'أكسفورد'")
   t.equal(doc.sentences()[12].links()[0].text(), 'إيمي', "Radiohead-Ar: 13th sentence shows 'إيمي' for إيمي (توضيح)")
   t.equal(
@@ -45,12 +51,15 @@ test('Willow-Ar', (t) => {
   t.ok(doc.section('الأوراق'), 'Willow-Ar: botanical section')
   t.ok(doc.images().length > 0, 'Willow-Ar: willow illustrations')
   t.ok(doc.categories().length > 0, 'Willow-Ar: botanical categories')
-  t.ok(doc.links().some((link) => link.page() === 'جنس (تصنيف)'), 'Willow-Ar: جنس (تصنيف) link')
+  t.ok(
+    doc.links().some((link) => link.page() === 'جنس (تصنيف)'),
+    'Willow-Ar: جنس (تصنيف) link'
+  )
   t.ok(doc.section('التفتح وتساقط الأوراق'), 'Willow-Ar: التفتح وتساقط الأوراق section')
   t.equal(
-    doc.section('التفتح وتساقط الأوراق').sentences()[5].links()[1].page(),
+    doc.section('التفتح وتساقط الأوراق').sentences()[4].links()[2].page(),
     'زهرة (نبات)',
-    "Willow-Ar: 'التفتح وتساقط الأوراق' section, 6th sentence links to 'زهرة (نبات)'"
+    "Willow-Ar: 'التفتح وتساقط الأوراق' section, 5th sentence links to 'زهرة (نبات)'"
   )
   t.equal(
     doc.sentences()[2].links()[0].text(),
@@ -69,7 +78,7 @@ test('Willow-Ar', (t) => {
     "Willow-Ar: 'أزهار الصفصاف' section, 1st sentence links to 'كأس الزهرة'"
   )
   t.ok(
-    doc.sentences()[28].text().startsWith('ويختلف توقيت ذلك باختلاف الموقع الجغرافي؛ فقد'),
+    doc.sentences()[27].text().startsWith('ويختلف توقيت ذلك باختلاف الموقع الجغرافي؛ فقد'),
     "Willow-Ar: 29th sentence starts 'ويختلف توقيت ذلك باختلاف الموق…'"
   )
   t.equal(doc.lists()[1].lines()[3].text(), 'الصفصاف الأسود', 'Willow-Ar: list 2, item 4')
@@ -90,7 +99,10 @@ test('Willow-Ar', (t) => {
 
 test('Wimbledon-Championships-Ar', (t) => {
   const doc = wtf(readPage('Wimbledon-Championships-Ar'))
-  t.ok(doc.categories().includes('أحداث رياضية دورية أسست في 1877'), 'Wimbledon-Championships-Ar: founded in 1877 category')
+  t.ok(
+    doc.categories().includes('أحداث رياضية دورية أسست في 1877'),
+    'Wimbledon-Championships-Ar: founded in 1877 category'
+  )
   t.ok(
     doc.links().some((link) => link.page() === 'كرة المضرب'),
     'Wimbledon-Championships-Ar: tennis or venue link'

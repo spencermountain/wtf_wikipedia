@@ -13,7 +13,10 @@ test('Radiohead-It', (t) => {
   t.ok(doc.section('storia'), 'Radiohead-It: biography or references section')
   t.ok(doc.references().length > 0, 'Radiohead-It: sources for the band history')
   t.ok(doc.categories().includes('Vincitori di Grammy'), 'Radiohead-It: Vincitori di Grammy category')
-  t.ok(doc.links().some((link) => link.page() === 'Gruppo musicale'), 'Radiohead-It: gruppo musicale link')
+  t.ok(
+    doc.links().some((link) => link.page() === 'Gruppo musicale'),
+    'Radiohead-It: gruppo musicale link'
+  )
   t.equal(
     doc.sentences()[17].links()[1].page(),
     'Colin Greenwood',
@@ -69,7 +72,10 @@ test('Willow-It', (t) => {
   t.ok(doc.section('etimologia'), 'Willow-It: botanical section')
   t.ok(doc.images().length > 0, 'Willow-It: willow illustrations')
   t.ok(doc.categories().length > 0, 'Willow-It: botanical categories')
-  t.ok(doc.links().some((link) => link.page() === 'Linneo'), 'Willow-It: Linneo link')
+  t.ok(
+    doc.links().some((link) => link.page() === 'Linneo'),
+    'Willow-It: Linneo link'
+  )
   t.ok(doc.section('tassonomia'), 'Willow-It: Tassonomia section')
   t.equal(doc.sentences()[1].links()[2].page(), 'Nord America', "Willow-It: 2nd sentence links to 'Nord America'")
   t.equal(
@@ -118,7 +124,10 @@ test('Wimbledon-Championships-It', (t) => {
   t.ok(doc.section('storia'), 'Wimbledon-Championships-It: tournament history or programme section')
   t.ok(doc.tables().length > 0, 'Wimbledon-Championships-It: tournament records tables')
   t.ok(doc.references().length > 0, 'Wimbledon-Championships-It: tournament sources')
-  t.ok(doc.section('dalle origini alla prima guerra mondiale'), 'Wimbledon-Championships-It: Dalle origini alla prima guerra mondiale section')
+  t.ok(
+    doc.section('dalle origini alla prima guerra mondiale'),
+    'Wimbledon-Championships-It: Dalle origini alla prima guerra mondiale section'
+  )
   t.match(doc.text(), /Roger Federer/, 'Wimbledon-Championships-It: singles champion')
   t.equal(
     doc.section('Martina Navratilova alla conquista di Wimbledon').sentences()[0].links()[1].page(),
