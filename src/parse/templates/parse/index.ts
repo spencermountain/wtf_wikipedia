@@ -1,8 +1,7 @@
 import type { DocInfo } from '../../../types/index.ts'
 import defaults from '../../../_lib/defaults.ts'
 import { normalizeKey } from '../../../_lib/helpers.ts'
-import templates from '../../../templates/index.ts'
-import aliases from '../../../templates/aliases.ts'
+import { resolve } from '../../../templates/index.ts'
 import ignore from './_ignore.ts'
 import { isInfobox } from './infobox.ts'
 import runParser from './run-parser.ts'
@@ -32,19 +31,19 @@ const parseTemplate = (wiki: string, name: string, opts: DocInfo = defaults) => 
   }
   if (/^cite [a-z]/.test(name)) {
     // a dedicated handler (eg. 'cite gnis') knows its own fields; otherwise parse generically
-    const payload = Object.hasOwn(templates, name)
-      ? runParser(templates[name], wiki, opts).data
-      : parseTextArguments(wiki, [], opts)
+    const cite = resolve(name, opts)
+    const payload = cite?.handler != null ? runParser(cite.handler, wiki, opts).data : parseTextArguments(wiki, [], opts)
     return finish(wiki, 'citation', payload, opts)
   }
-  if (!Object.hasOwn(templates, name)) {
+  const found = resolve(name, opts)
+  if (!found || found.handler === null || found.handler === undefined) {
     const payload = parseTextArguments(wiki, [], opts)
     return finish(wiki, null, Object.keys(payload).length > 0 ? payload : null, opts)
   }
 
-  const handler = templates[name]
+  const handler = found.handler
   const { replacement, data: payload } = runParser(handler, wiki, opts)
-  let kind = handler.kind || aliases[name] || name
+  let kind = handler.kind || found.name
   // Some handlers interpret the invocation as another recognized form.
   if (payload?.template && payload.template !== name) {
     kind = fmtName(payload.template)

@@ -1,3 +1,4 @@
+import fmtName from '../../parse/templates/parse/toJSON/_fmtName.ts'
 import Image from '../03-paragraph/image/Image.ts'
 import Images from '../03-paragraph/image/Images.ts'
 import Infoboxes from '../02-section/infobox/Infoboxes.ts'
@@ -213,7 +214,7 @@ class Document {
   templates(clue?: string) {
     const items = this.sections().flatMap((sec) => sec.templates())
     if (clue) {
-      return Templates.from(items.filter((t) => t.type === clue || t.json().template === clue))
+      return Templates.from(items.filter((t) => t.type === clue || fmtName(t.json().template) === fmtName(clue)))
     }
     return Templates.from(items)
   }

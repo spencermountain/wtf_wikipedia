@@ -18,6 +18,5 @@ const misc = {
   'commons cat': generic,
   'election box candidate': generic,
   'election box begin': generic,
-  main: generic,
 }
 export default misc

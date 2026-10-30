@@ -1,3 +1,4 @@
+import fmtName from '../../parse/templates/parse/toJSON/_fmtName.ts'
 import Images from '../03-paragraph/image/Images.ts'
 import Infobox from './infobox/Infobox.ts'
 import Infoboxes from './infobox/Infoboxes.ts'
@@ -83,7 +84,7 @@ class Section {
   templates(clue?: string) {
     let arr = this.#data.templates.map((t) => new Template(t))
     if (clue) {
-      return Templates.from(arr.filter((t) => t.type === clue || t.json().template === clue))
+      return Templates.from(arr.filter((t) => t.type === clue || fmtName(t.json().template) === fmtName(clue)))
     }
     return Templates.from(arr)
   }

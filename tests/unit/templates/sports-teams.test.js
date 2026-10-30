@@ -33,7 +33,6 @@ test('national team shorthands', (t) => {
     ['{{fh|NED}}', '🇳🇱 Netherlands', "Netherlands men's national field hockey team"],
     ['{{wp|HUN}}', '🇭🇺 Hungary', "Hungary men's national water polo team"],
     ['{{bs|JPN}}', '🇯🇵 Japan', 'Japan national baseball team'],
-    ['{{sb|USA}}', '🇺🇸 United States', 'United States national softball team'],
     ['{{bk|XYZ}}', 'XYZ'],
   ])
   t.end()

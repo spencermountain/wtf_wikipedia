@@ -25,31 +25,31 @@ test('currency-templates', function (t) {
   doc = wtf('hello {{ZAR}} world')
   t.equal(doc.text(), 'hello R world', 'empty currency')
 
-  doc = wtf('{{Unité|107.70|M€}}')
+  doc = wtf('{{Unité|107.70|M€}}', { lang: 'fr' })
   t.equal(doc.text(), '107.70 M€', 'french unit 2 parameters')
 
-  doc = wtf('{{Unité|107.70}}')
+  doc = wtf('{{Unité|107.70}}', { lang: 'fr' })
   t.equal(doc.text(), '107.70', 'french unit 1 parameter')
 
-  doc = wtf('{{monnaie|107.70|€}}')
+  doc = wtf('{{monnaie|107.70|€}}', { lang: 'fr' })
   t.equal(doc.text(), '€107.70', 'french monnaie 2 parameters')
 
-  doc = wtf('{{nombre|107.70 M€}}')
+  doc = wtf('{{nombre|107.70 M€}}', { lang: 'fr' })
   t.equal(doc.text(), '107.70 M€', 'french nombre 1 parameter')
 
-  doc = wtf('{{nombre|107.70|M€}}')
+  doc = wtf('{{nombre|107.70|M€}}', { lang: 'fr' })
   t.equal(doc.text(), '107.70 M€', 'french nombre 2 parameters M€')
 
-  doc = wtf('{{nombre|107.70|€}}')
+  doc = wtf('{{nombre|107.70|€}}', { lang: 'fr' })
   t.equal(doc.text(), '€107.70', 'french nombre 2 parameters €')
 
-  doc = wtf('{{nombre|107.70|euro}}')
+  doc = wtf('{{nombre|107.70|euro}}', { lang: 'fr' })
   t.equal(doc.text(), '€107.70', 'french nombre 2 parameters euro')
 
-  doc = wtf('{{nb|107.70|€}}')
+  doc = wtf('{{nb|107.70|€}}', { lang: 'fr' })
   t.equal(doc.text(), '€107.70', 'french nombre 2 parameters')
 
-  doc = wtf('{{iso4217|AUD}}')
+  doc = wtf('{{iso4217|AUD}}', { lang: 'fr' })
   t.equal(doc.text(), 'AUD', 'iso4217 AUD')
 
   doc = wtf('{{indian rupee symbol}}')

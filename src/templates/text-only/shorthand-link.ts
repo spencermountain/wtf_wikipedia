@@ -73,7 +73,6 @@ let arr = [
   'uscgc',
   'usns',
   'usrc',
-  'uss',
   'usav',
 ]
 
@@ -84,7 +83,7 @@ arr.forEach((word) => {
   }
 })
 
-let links = ['no redirect', 'tl-r', 'template link no redirect', 'redirect?', 'subatomic particle', 'auto link', 'bl']
+let links = ['no redirect', 'tl-r', 'template link no redirect', 'redirect?', 'auto link', 'bl']
 links.forEach((word) => {
   templates[word] = (tmpl, parse = defaultParse) => {
     let data = parse(tmpl, ['page', 'text'])

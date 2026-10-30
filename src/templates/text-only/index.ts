@@ -11,4 +11,18 @@ import parserFunctions from './parser-functions.ts'
 import numbers from './numbers.ts'
 import sportsTeams from './sports-teams.ts'
 
-export default { ...hardcoded, ...easyInline, ...shorthand, ...functions, ...moreLangs, ...abbreviations, ...flags, ...table, ...inline, ...parserFunctions, ...numbers, ...sportsTeams }
+// generated families (flag codes, lang-xx) go first, so any hand-written handler wins over a generated name
+export default {
+  ...flags,
+  ...moreLangs,
+  ...hardcoded,
+  ...easyInline,
+  ...shorthand,
+  ...functions,
+  ...abbreviations,
+  ...table,
+  ...inline,
+  ...parserFunctions,
+  ...numbers,
+  ...sportsTeams,
+}

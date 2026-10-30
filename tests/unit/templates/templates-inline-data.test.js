@@ -12,7 +12,7 @@ test('inline-with-data', (t) => {
     [
       'death date and age',
       '{{death date and age |1993|2|24 |1921|4|12 |df=yes}}',
-      '24 February 1993',
+      '24 February 1993 (aged 71)',
       { year: '1993', month: '2', day: '24' },
     ],
     ['sentoff', '{{sent off|cards|min1|min2}}', "sent off: min1', min2'", { cards: 'cards' }],
@@ -85,7 +85,7 @@ test('inline-with-data', (t) => {
     [
       'death date and age',
       '{{death date and age |1993|2|24 |1921|4|12 |mf=yes}}',
-      'February 24, 1993',
+      'February 24, 1993 (aged 71)',
       { year: '1993', month: '2', day: '24' },
     ],
     [
@@ -114,10 +114,11 @@ test('inline-with-data', (t) => {
       'infront {{Monnaie|10000|écu}} behind',
       'infront 10000 écu behind',
       { amount: '10000', code: 'écu' },
+      { lang: 'fr' },
     ],
   ]
-  arr.forEach(([name, input, text, fields]) => {
-    const doc = wtf(input)
+  arr.forEach(([name, input, text, fields, opts]) => {
+    const doc = wtf(input, opts)
     t.equal(doc.templates().length, 1, name + ': template count')
     t.equal(doc.text(), text, name + ': text')
     const json = doc.templates()[0].json().data

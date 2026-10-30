@@ -1,6 +1,9 @@
 import test from 'tape'
 import wtf from '../../lib/index.js'
 
+// {{birth date and age}} appends today's age, which these cases don't pin
+const noAge = (str) => str.replace(/ \(age \d+\)$/, '')
+
 const months = [
   'January',
   'February',
@@ -77,7 +80,7 @@ test('date templates - text output', (t) => {
     ['{{age in days|2000|1|1|2000|1|11}}', '10 days'],
   ]
   arr.forEach(([str, want]) => {
-    t.equal(wtf(str).text(), want, str)
+    t.equal(noAge(wtf(str).text()), want, str)
   })
   t.end()
 })
@@ -151,7 +154,7 @@ test('date templates - df, age math, dts, date', (t) => {
     ['{{age in years, months and days|2000|1|15|2000|3|1}}', '1 month, 15 days'],
   ]
   arr.forEach(([str, want]) => {
-    t.equal(wtf(str).text(), want, str)
+    t.equal(noAge(wtf(str).text()), want, str)
   })
   // calendar-accurate differences
   t.match(

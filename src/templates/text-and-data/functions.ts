@@ -277,7 +277,7 @@ let templates = {
   },
 
   //fraction - https://en.wikipedia.org/wiki/Template:Sfrac
-  frac: (tmpl, parse = defaultParse) => {
+  sfrac: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['a', 'b', 'c'])
     let data: any = {
       template: 'sfrac',

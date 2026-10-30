@@ -1,7 +1,6 @@
 import defaultParse from '../../parse/templates/parse/toJSON/text.ts'
 import flags from '../../_data/flags.ts'
 import codeAliases from '../../_data/flag-aliases.ts'
-import functions from './functions.ts'
 const order = ['flag', 'variant']
 // 'united states' → 'United States'
 const titleCase = (str = '') => str.replace(/(^|[\s\-(])(\p{L})/gu, (m, pre, ch) => pre + ch.toUpperCase())
@@ -84,10 +83,9 @@ let templates = {
     return { data: null, replacement: `${found[0]} [[${obj.name || ''}]] (${found[1].toUpperCase()})` }
   },
 }
-//support {{can}}
+//support {{can}} - these are spread first in ./index.ts, so any real template with the same name wins
 flags.forEach((a) => {
-  // don't shadow a real template with the same name (eg. {{bra}} is bra-ket notation)
-  if (Object.hasOwn(templates, a[1]) || Object.hasOwn(functions, a[1])) {
+  if (Object.hasOwn(templates, a[1])) {
     return
   }
   templates[a[1]] = () => {

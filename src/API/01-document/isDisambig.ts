@@ -36,8 +36,9 @@ const isDisambig = function (doc) {
   if (title && inTitle.test(title) === true) {
     return true
   }
-  // does it have a non-disambig template?
-  let notDisamb = templates.find((name) => notDisambig.has(name))
+  // does it have a non-disambig hatnote? these are kind 'hatnote', so go by their name
+  const names = doc.templates().map((tmpl) => (tmpl.json().template || '').toLowerCase())
+  let notDisamb = names.find((name) => notDisambig.has(name))
   if (notDisamb) {
     return false
   }

@@ -1,6 +1,9 @@
 import test from 'tape'
 import wtf from '../../lib/index.js'
 
+// {{birth date and age}} appends today's age, which these cases don't pin
+const noAge = (str) => str.replace(/ \(age \d+\)$/, '')
+
 test('structured date templates', (t) => {
   const arr = [
     ['{{Birth date|1993|2|24}}', 'February 24, 1993'],
@@ -43,7 +46,7 @@ test('structured date templates', (t) => {
     ['{{Start date and age|2010|02|29|df=yes}}', '29 February 2010'],
   ]
   arr.forEach((a) => {
-    const str = wtf(a[0]).text()
+    const str = noAge(wtf(a[0]).text())
     t.equal(str, a[1], a[0] + ' ' + str)
   })
   t.end()

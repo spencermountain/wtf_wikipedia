@@ -1,4 +1,11 @@
 export default {
+  // table-row result markers from sports game-logs - they become row-attributes, like mediawiki does
+  'game-won': 'class="game-won"',
+  'game-lost': 'class="game-lost"',
+  'game-tied': 'class="game-tied"',
+  'game-drawn': 'class="game-drawn"',
+  'game-otl': 'class="game-otl"',
+  'game-otw': 'class="game-otw"',
   '·': '·',
   dot: '·',
   middot: '·',
@@ -63,7 +70,6 @@ export default {
   plusminus: '±',
 
   // 'hbeff début': '{|-\n',
-  egiptekas: '{|-\n',
   langle: '⟨',
   rangle: '⟩',
   epsilon: 'ε',

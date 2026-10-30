@@ -11,12 +11,10 @@ let aliases = {
   'bare anchored list': 'anchored list',
   cvt: 'convert',
   cricon: 'flagicon',
-  sfrac: 'frac',
   sqrt: 'radic',
   'unreferenced section': 'unreferenced',
   redir: 'redirect',
   sisterlinks: 'sister project links',
-  'main article': 'main',
   by: 'baseball year',
   nbay: 'nba year',
   née: 'nee',
@@ -49,7 +47,6 @@ let aliases = {
   'ko-hhrm': 'korean',
   'nihongo krt': 'nihongo',
   'script/arab': 'script/arabic',
-  'rightarrow': 'rarr',
   harvp: 'harv',
   harvcol: 'harv',
   'harvard citation': 'harv',
@@ -94,7 +91,6 @@ let aliases = {
   'metacritic television': 'metacritic film',
   bbref: 'baseball-reference',
   baseballstats: 'baseball-reference',
-  brb: 'basketball-reference',
   pfr: 'pro-football-reference',
   'x (social network)': 'twitter',
   rom: 'roman',
@@ -143,20 +139,19 @@ let aliases = {
 
 //multiple aliases
 let multi = {
-  date: ['byline', 'dateline'], //wikinews
-  citation: ['cite', 'source', 'source-pr', 'source-science'],
+  citation: ['cite'],
 
   'no spam': ['email', '@', 'no spam blue'],
   'angle bracket': ['angbr', 'infix', 'angbr ipa'],
 
   'lrt station': ['lrt', 'lrts'],
-  'mrt station': ['mrt', 'mrts'],
+  'mrt station': ['mrts'],
 
   flagcountry: ['cr', 'cr-rt'],
 
   trunc: ['str left', 'str crop'],
 
-  percentage: ['pct', 'percentage'],
+  percentage: ['pct'],
 
   rnd: ['rndfrac', 'rndnear'],
 
@@ -168,7 +163,6 @@ let multi = {
 
   currentmonth: ['localmonth', 'currentmonthname', 'currentmonthabbrev'],
 
-  currency: ['monnaie', 'unité', 'nombre', 'nb', 'iso4217'],
 
   coord: ['coor', 'coor title dms', 'coor title dec', 'coor dms', 'coor dm', 'coor dec', 'coordinate'],
 
@@ -293,7 +287,6 @@ let multi = {
     'para',
     'elc',
     'xtag',
-    'mli',
     'mlix',
   ],
 
@@ -347,7 +340,6 @@ let multi = {
     'n&',
     'x mark-n',
     'xed box',
-    'cancelled',
     'deleted-image',
     'already declined',
     'opblocked',
@@ -373,7 +365,6 @@ let multi = {
     'cb',
     'ciation needed',
     'cit',
-    'cita requerida',
     'citaiton needed',
     'citation missing',
     'citation need',
@@ -383,7 +374,6 @@ let multi = {
     'citationeeded',
     'citationneeded',
     'citationrequired',
-    'citazione necessaria',
     'cite missing',
     'cite needed',
     'cite source',
@@ -432,10 +422,10 @@ let multi = {
     'unsourced-inline',
   ],
 
-  'en dash': ['ndash', 'nsndns'],
+  'en dash': ['nsndns'],
   'spaced en dash': ['spnd', 'sndash', 'spndash'],
-  'spaced en dash space': ['snds', 'spndsp', 'sndashs', 'spndashsp'],
-  'zero width joiner em dash zero width non joiner': ['nsmdns', 'nsmdashns', 'nsemdashns', 'mdashb'],
+  'spaced en dash space': ['spndsp', 'sndashs', 'spndashsp'],
+  'zero width joiner em dash zero width non joiner': ['nsmdns', 'nsmdashns', 'nsemdashns'],
   color: ['colour', 'colored text', 'fgcolor'],
 }
 

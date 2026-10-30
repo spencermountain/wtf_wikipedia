@@ -98,9 +98,9 @@ test('convert keeps both unit pairs and degree symbols', (t) => {
   check(t, [
     ['{{convert|5|ft|11|in|m|abbr=on}}', '5 ft 11 in'],
     ['{{convert|6|ft|2|in|cm}}', '6 ft 2 in'],
-    ['{{convert|10|C|F}}', '10 °C'],
-    ['{{convert|98.6|F|C}}', '98.6 °F'],
-    ['{{convert|37|ft}}', '37 ft'],
+    ['{{convert|10|C|F}}', '10 °C (50 °F)'],
+    ['{{convert|98.6|F|C}}', '98.6 °F (37.0 °C)'],
+    ['{{convert|37|ft}}', '37 ft (11 m)'],
     ['{{convert|7|and|8|km}}', '7 and 8 km'],
     ['{{convert|7|to|8|C}}', '7 to 8 °C'],
   ])
@@ -199,5 +199,24 @@ test('lang-fa is persian', (t) => {
     ['Iran ({{lang-fa|ایران}}) is a country', 'Iran (ایران) is a country'],
     ['{{lang-sux|𒆠𒂗𒄀}}', '𒆠𒂗𒄀'],
   ])
+  t.end()
+})
+
+test('birth and death dates carry an age', (t) => {
+  const now = new Date()
+  let age = now.getFullYear() - 2001
+  if (now.getMonth() + 1 < 5 || (now.getMonth() + 1 === 5 && now.getDate() < 3)) {
+    age -= 1
+  }
+  t.equal(wtf('{{birth date and age|2001|5|3}}').text(), `May 3, 2001 (age ${age})`, 'birth date and age')
+  t.equal(wtf('{{bda|2001|5|3|df=y}}').text(), `3 May 2001 (age ${age})`, 'bda, day-first')
+  t.equal(wtf('{{death date and age|2020|5|3|2001|5|3}}').text(), 'May 3, 2020 (aged 19)', 'death date and age')
+  t.equal(wtf('{{death date and age|2020|5|3|2001|6|3|df=y}}').text(), '3 May 2020 (aged 18)', 'a birthday not yet reached')
+  t.equal(wtf('{{death date and age|2020|5|3}}').text(), 'May 3, 2020', 'no birth date, no age')
+  t.end()
+})
+
+test('replace with a space', (t) => {
+  t.equal(wtf('{{replace|foo_bar|_| }}').text(), 'foo bar', 'whitespace replacement')
   t.end()
 })

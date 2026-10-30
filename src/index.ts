@@ -2,7 +2,7 @@ import fetch from './API/_fetch/index.ts'
 import version from './_version.ts'
 import http from './API/_lib/fetch.ts'
 import parse from './parse/index.ts'
-import templates from './templates/index.ts'
+import templates, { i18n } from './templates/index.ts'
 import infoboxes from './_data/infoboxes.ts'
 import { refreshWrappers } from './_lib/plural-wrapper.ts'
 
@@ -47,7 +47,7 @@ wtf.fetch = function (title, options, cb) {
   return fetch(title, options, cb)
 }
 wtf.extend = function (fn) {
-  fn(models, templates, infoboxes)
+  fn(models, templates, infoboxes, i18n)
   refreshWrappers()
   return this
 }

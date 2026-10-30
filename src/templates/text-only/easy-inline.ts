@@ -5,7 +5,6 @@ let templates = {
   p1: 0,
   p2: 1,
   p3: 2,
-  resize: 1, //https://en.wikipedia.org/wiki/'Resize',
   lang: 1,
   'rtl-lang': 1,
   'line-height': 1,
@@ -29,7 +28,6 @@ let zeros = [
   'noitalic',
   'nocaps',
   'vanchor', //https://en.wikipedia.org/wiki/'Visible_anchor',
-  'date', //Explictly-set dates - https://en.wikipedia.org/wiki/'Date',
   'taste',
   'baseball secondary style',
   'nowrap',
@@ -69,7 +67,6 @@ let zeros = [
   'pre2',
   'code',
   'char',
-  'angle bracket',
   'symb',
   'dabsearch',
   // these should escape certain chars
@@ -102,7 +99,6 @@ let zeros = [
   'bigdiv',
   'strikethroughdiv',
   'strikethrough color',
-  'pbpe', //pt
   'video game release/abbr',
   'nobel abbr',
   'gloss',

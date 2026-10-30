@@ -38,6 +38,10 @@ class Table {
       Object.keys(row).forEach((key) => {
         result[key] = row[key].text || ''
       })
+      // carry-over any row attributes, still hidden from key-iteration
+      if (row._attrs) {
+        Object.defineProperty(result, '_attrs', { value: row._attrs, enumerable: false })
+      }
       return result
     })
   }

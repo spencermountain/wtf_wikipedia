@@ -3,6 +3,7 @@ import parseArguments from '../../parse/templates/parse/toJSON/index.ts'
 import strip from '../../parse/templates/parse/toJSON/_strip.ts'
 import roundNumber from './_lib.ts'
 import { titlecase, percentage, toOrdinal } from '../_lib.ts'
+import { units, symbols as unitSymbols } from '../../_data/units.ts'
 
 // 2001, 2002 → '02'  (1999, 2000 → '2000')
 const shortYear = (year, after) => {
@@ -18,9 +19,79 @@ const superscript = (str = '') => {
   return String(str).split('').map((c) => sup[c] || c).join('')
 }
 
-// {{convert}} unit symbols that differ from their argument spelling
-const unitSymbols = { C: '°C', F: '°F', K: 'K', 'C-change': '°C', 'F-change': '°F' }
 const unitSymbol = (unit = '') => unitSymbols[unit] || unit
+
+// significant figures of '37', '1.5', '0.80' - the converted value keeps the same (at least 2)
+const sigFigs = (str = '') => {
+  let digits = str.replace(/[^0-9.]/g, '').replace(/^0+/, '')
+  // trailing zeros of a whole number are not significant: '1000' → 1 figure
+  if (!digits.includes('.')) {
+    while (digits.endsWith('0')) {
+      digits = digits.slice(0, -1)
+    }
+  }
+  return Math.max(2, digits.replace('.', '').length)
+}
+const fmtNumber = (n: number, sig: number) => {
+  if (!Number.isFinite(n)) {
+    return ''
+  }
+  let str = n.toPrecision(sig)
+  if (/e/.test(str)) {
+    return Number(str).toLocaleString('en-US')
+  }
+  // '220.' → '220', but keep '0.80'
+  return str.replace(/\.$/, '')
+}
+// {{convert|37|ft|m}} → 11 m, or null when we don't know the units
+const convertUnits = (value: string, from: string, to?: string, opts: any = {}) => {
+  let n = Number(value.replace(/,/g, ''))
+  if (!Number.isFinite(n)) {
+    return null
+  }
+  let sig = sigFigs(value)
+  // {{convert|630|km2|sqmi|0}} - decimal places, or sigfig=
+  let format = (out: number) => fmtNumber(out, Number(opts.sigfig) || sig)
+  if (opts.precision !== undefined && /^-?\d+$/.test(opts.precision)) {
+    let places = Number(opts.precision)
+    format = (out: number) => {
+      let rounded = Math.round(out / Math.pow(10, -places)) * Math.pow(10, -places)
+      return places > 0 ? rounded.toFixed(places) : rounded.toLocaleString('en-US')
+    }
+  }
+  // temperature
+  const temps = { C: ['F', (x) => (x * 9) / 5 + 32], F: ['C', (x) => ((x - 32) * 5) / 9], K: ['C', (x) => x - 273.15] }
+  if (Object.hasOwn(temps, from)) {
+    let [def, fn] = temps[from]
+    to ||= def
+    if (to === 'C' && from === 'C') {
+      return null
+    }
+    let out = fn(n)
+    if (from === 'C' && to === 'K') {
+      out = n + 273.15
+    } else if (to !== def) {
+      return null
+    }
+    return `${format(out)} ${unitSymbol(to)}`
+  }
+  let unit = units[from] || units[from.toLowerCase()]
+  if (!unit) {
+    return null
+  }
+  to ||= unit.to
+  let factor = unit.factor
+  if (to !== unit.to) {
+    // try the reverse table: m → cm via cm → in → ...? only direct pairs are supported
+    let other = units[to] || units[to.toLowerCase()]
+    if (other && other.to === from) {
+      factor = 1 / other.factor
+    } else {
+      return null
+    }
+  }
+  return `${format(n * factor)} ${unitSymbol(to)}`
+}
 
 export default {
   transliteration: (tmpl, parse = defaultParse) => {
@@ -439,7 +510,15 @@ export default {
     if (obj.three && /^[0-9.]+$/.test(obj.three) && obj.four && /^[a-z]+$/i.test(obj.four)) {
       return { data: null, replacement: `${obj.num} ${unitSymbol(obj.two)} ${obj.three} ${unitSymbol(obj.four)}` }
     }
-    return { data: null, replacement: `${obj.num} ${unitSymbol(obj.two)}` }
+    // {{convert|37|ft|m}} → 37 ft (11 m)
+    let str = `${obj.num} ${unitSymbol(obj.two)}`
+    let converted = convertUnits(obj.num || '', obj.two || '', obj.three, { precision: obj.four, sigfig: obj.sigfig })
+    if (converted && obj.disp !== 'output only' && obj.disp !== 'number') {
+      str += ` (${converted})`
+    } else if (converted && obj.disp === 'output only') {
+      str = converted
+    }
+    return { data: null, replacement: str }
   },
 
   // Large number of aliases - https://en.wikipedia.org/wiki/Template:Tl
@@ -607,7 +686,9 @@ export default {
     if (!data.from) {
       return { data: null, replacement: data.text || '' }
     }
-    return { data: null, replacement: (data.text || '').split(data.from).join(data.to || '') }
+    // {{replace|foo_bar|_| }} - a whitespace replacement is trimmed away by the argument parser
+    let to = data.to || (/\|\s+\}\}$/.test(tmpl) ? ' ' : '')
+    return { data: null, replacement: (data.text || '').split(data.from).join(to) }
   },
   // https://en.wikipedia.org/wiki/Template:Str_rep - replaces only the first occurrence
   'str rep': (tmpl, parse = defaultParse) => {
@@ -914,13 +995,6 @@ export default {
   'vol.': (tmpl, parse = defaultParse) => {
     let data = parse(tmpl, ['n'])
     return { data: null, replacement: `vol. ${data.n}` }
-  },
-  rp: (tmpl, parse = defaultParse) => {
-    let data = parse(tmpl, ['page'])
-    if (data.pages) {
-      return { data: null, replacement: `pp${data.pages}` }
-    }
-    return { data: null, replacement: `p. ${data.page || ''}` }
   },
   gaps: (tmpl, parse = defaultParse) => {
     let data = parse(tmpl)

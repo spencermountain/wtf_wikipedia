@@ -39,7 +39,6 @@ const teams: Record<string, Team> = {
   wp: { team: "men's national water polo team" },
   wpw: { team: "women's national water polo team" },
   bs: { team: 'national baseball team' },
-  sb: { team: 'national softball team' },
   bsw: { team: "women's national baseball team" },
   fs: { team: 'national futsal team' },
   bh: { team: 'national beach handball team' },

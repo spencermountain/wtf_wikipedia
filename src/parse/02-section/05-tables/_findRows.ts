@@ -10,9 +10,6 @@ const cleanup = function (lines) {
   if (/^\|\}/.test(lines.at(-1)) === true) {
     lines.pop()
   }
-  if (/^\|-/.test(lines[0]) === true) {
-    lines.shift()
-  }
   return lines
 }
 
@@ -29,6 +26,11 @@ const findRows = function (lines) {
       if (row.length > 0) {
         rows.push(row)
         row = []
+      }
+      // keep row attributes - 'style="background:#fbb;"' often marks a win/loss
+      let attrs = line.replace(/^\|-+/, '').trim()
+      if (attrs) {
+        row.attrs = attrs
       }
     } else {
       // remove leading | or ! for the ||/!! splitting

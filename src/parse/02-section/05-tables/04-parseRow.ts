@@ -13,6 +13,10 @@ const parseRow = function (arr, headers, opts) {
     s.text = cleanText(s.text)
     row[h] = s
   })
+  // row attributes from the '|-' line, hidden from json/key-iteration
+  if (arr.attrs) {
+    Object.defineProperty(row, '_attrs', { value: arr.attrs, enumerable: false })
+  }
   return row
 }
 

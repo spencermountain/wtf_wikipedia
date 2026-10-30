@@ -77,7 +77,7 @@ test('Toronto-Vi', (t) => {
   )
   t.ok(doc.section('tên gọi'), 'Toronto-Vi: Tên gọi section')
   t.equal(
-    doc.section('Địa lý').sentences()[1].links()[1].page(),
+    doc.section('Địa lý').sentences()[2].links()[1].page(),
     'Port Lands',
     "Toronto-Vi: 'Địa lý' section, 2nd sentence links to 'Port Lands'"
   )

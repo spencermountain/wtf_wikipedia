@@ -3,6 +3,7 @@ import parseArguments from '../../parse/templates/parse/toJSON/index.ts'
 import parseImgString from '../../parse/03-paragraph/02-images/parse.ts'
 
 import { getLang, sisterProjects, toNumber } from '../_lib.ts'
+import { keys as ipacKeys, labels as ipacLabels } from '../../_data/ipac-en.ts'
 
 export default {
   // just parse it and do nothing
@@ -18,11 +19,20 @@ export default {
     return { data: obj, replacement: '' } //obj.transcription
   },
   //https://en.wikipedia.org/wiki/Template:IPAc-en
+  // {{IPAc-en|ˈ|s|ʌ|m}} → /ˈsʌm/  (pronunciations are kept as data, not text)
   ipac: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl)
-    obj.transcription = (obj.list || []).join(',')
+    let lang = getLang(obj.template)
+    let arr = (obj.list || []).map((s) => s.trim())
+    if (lang === 'en') {
+      arr = arr.filter((s) => !ipacLabels.has(s.toLowerCase()))
+      let str = arr.map((s) => ipacKeys[s] ?? ipacKeys[s.toLowerCase()] ?? s).join('')
+      obj.transcription = `/${str}/`
+    } else {
+      obj.transcription = arr.join(',')
+    }
     delete obj.list
-    obj.lang = getLang(obj.template)
+    obj.lang = lang
     obj.template = 'ipac'
     return { data: obj, replacement: '' }
   },

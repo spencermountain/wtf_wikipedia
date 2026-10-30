@@ -1,6 +1,6 @@
 import parsers from './_parsers.ts'
 import defaultParse from '../../../parse/templates/parse/toJSON/text.ts'
-import { days, timeSince } from './_lib.ts'
+import { days, timeSince, delta } from './_lib.ts'
 import { toOrdinal } from '../../_lib.ts'
 import { ymd, toText, toTextBritish, fmt } from './_format.ts'
 
@@ -69,22 +69,30 @@ export default {
     let time = parse(tmpl, ['date', 'fmt']).date
     return { data: null, replacement: timeSince(time) }
   },
-  'birth date': (tmpl, parse = defaultParse) => {
-    let obj = parse(tmpl, ['year', 'month', 'date'])
-    const payload = obj
-    obj = ymd([obj.year, obj.month, obj.day])
-    return { data: payload, replacement: fmt(obj, payload) }
-  },
   //https://en.wikipedia.org/wiki/Template:Birth_date_and_age
+  // {{birth date and age|2001|5|3}} → May 3, 2001 (age 25)
+  // {{death date and age|2020|5|3|2001|5|3}} → May 3, 2020 (aged 19)
   'birth date and age': (tmpl, parse = defaultParse) => {
-    let obj = parse(tmpl, ['year', 'month', 'day'])
+    let obj = parse(tmpl, ['year', 'month', 'day', 'birth_year', 'birth_month', 'birth_day'])
     //support 'one property' version
     if (obj.year && /[a-z]/i.test(obj.year)) {
       return parsers.natural_date(tmpl, parse)
     }
     const payload = obj
-    obj = ymd([obj.year, obj.month, obj.day])
-    return { data: payload, replacement: fmt(obj, payload) }
+    let date = ymd([obj.year, obj.month, obj.day])
+    let str = fmt(date, payload)
+    const isDeath = /^death/.test(obj.template || '')
+    let from = isDeath ? ymd([obj.birth_year, obj.birth_month, obj.birth_day]) : date
+    let to = date
+    if (!isDeath) {
+      let now = new Date()
+      to = ymd([now.getFullYear(), now.getMonth() + 1, now.getDate()])
+    }
+    if (from.year && to.year && date.month) {
+      let age = delta(from, to).years || 0
+      str += isDeath ? ` (aged ${age})` : ` (age ${age})`
+    }
+    return { data: payload, replacement: str }
   },
   'birth year and age': (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['birth_year', 'birth_month'])

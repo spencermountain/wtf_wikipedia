@@ -1,6 +1,9 @@
 import test from 'tape'
 import wtf from '../../lib/index.js'
 
+// {{birth date and age}} appends today's age, which these cases don't pin
+const noAge = (str) => str.replace(/ \(aged? \d+\)$/, '')
+
 // the parsed json data of date templates (their .text() output is covered in dates.test.js)
 test('date template json', (t) => {
   const arr = [
@@ -28,12 +31,14 @@ test('date template json', (t) => {
         template: 'death date and age',
         kind: 'birth date and age',
         text: 'February 24, 1993',
-        data: { year: '1993', month: '2', day: '24', list: ['1941', '4', '12'] },
+        data: { year: '1993', month: '2', day: '24', birth_year: '1941', birth_month: '4', birth_day: '12' },
       },
     ],
   ]
   arr.forEach(([tmpl, expected]) => {
-    t.deepEqual(wtf(tmpl).templates()[0].json(), expected, tmpl)
+    const json = wtf(tmpl).templates()[0].json()
+    json.text = noAge(json.text)
+    t.deepEqual(json, expected, tmpl)
   })
   t.end()
 })

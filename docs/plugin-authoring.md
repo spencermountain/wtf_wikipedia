@@ -1,9 +1,9 @@
 # Writing a plugin
 
-A plugin is a function. `wtf.extend(fn)` calls it once with three arguments:
+A plugin is a function. `wtf.extend(fn)` calls it once with four arguments:
 
 ```js
-const myPlugin = (models, templates, infoboxes) => { ... }
+const myPlugin = (models, templates, infoboxes, i18n) => { ... }
 wtf.extend(myPlugin)
 ```
 
@@ -12,6 +12,7 @@ wtf.extend(myPlugin)
 | `models` | the classes: `{ Doc, Section, Paragraph, Sentence, Image, Infobox, Link, List, Reference, Table, Template, http, wtf }` — note the Document class is named **`Doc`** here |
 | `templates` | the template-parser registry — assign to add custom `{{...}}` parsers |
 | `infoboxes` | registry of which template names count as infoboxes |
+| `i18n` | template names for other wikis: `{ byLang: { fr: {...} }, byProject: { wikinews: {...} } }` |
 
 ## Adding methods
 
@@ -52,6 +53,35 @@ wtf.extend((models, templates) => {
 
 Unknown templates are kept in `.templates()` as data but render as `''` in
 `.text()`.
+
+### Overriding and disabling built-ins
+
+Template names are looked up lowercase, and resolved at parse time in this order:
+project overlay → language overlay → explicit handler → alias. So:
+
+```js
+wtf.extend((models, templates) => {
+  // override a built-in - every alias of it ({{x mark}}, {{not done}}...) follows
+  templates.xmark = () => '✗'
+  // disable a built-in - it becomes an unknown template (data kept, text dropped)
+  templates.convert = null
+})
+```
+
+### Other languages and projects
+
+The default registry is English Wikipedia. Names that mean something else on
+another wiki live in overlays, applied only when a document's `lang` or
+`project` matches (`wtf(text, { lang: 'fr' })`, or automatically via `wtf.fetch`):
+
+```js
+wtf.extend((models, templates, infoboxes, i18n) => {
+  i18n.byLang.de = { ...i18n.byLang.de, zitat: (tmpl, list, parse) => `"${parse(tmpl).list[0]}"` }
+  i18n.byProject.wikivoyage = { ...i18n.byProject.wikivoyage, listing: ['name', 'url'] }
+})
+```
+
+Overlay entries use the same four registration styles as `templates`.
 
 Registering infoboxes:
 
