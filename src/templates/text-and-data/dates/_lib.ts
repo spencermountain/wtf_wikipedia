@@ -1,5 +1,3 @@
-
-
 //this is allowed to be rough
 const day = 1000 * 60 * 60 * 24
 const month = day * 30
@@ -37,6 +35,8 @@ const delta = function (from, to) {
 }
 
 //not all too fancy - used in {{timesince}}
+// https://en.wikipedia.org/wiki/Template:Time_ago
+// shows the largest whole unit, like '26 years ago' or '3 months from now'
 const timeSince = function (str) {
   let d = new Date(str)
   if (isNaN(d.getTime())) {
@@ -52,11 +52,24 @@ const timeSince = function (str) {
   //figure out units
   let hours = delt / 1000 / 60 / 60
   let days = hours / 24
-  if (days < 365) {
-    return Number(days) + ' days ' + predicate
+  let num = 0
+  let unit = 'day'
+  if (days >= 365) {
+    num = Math.floor(days / 365.25)
+    unit = 'year'
+  } else if (days >= 30) {
+    num = Math.floor(days / 30.4375)
+    unit = 'month'
+  } else if (days >= 7) {
+    num = Math.floor(days / 7)
+    unit = 'week'
+  } else {
+    num = Math.floor(days)
   }
-  let years = days / 365
-  return Number(years) + ' years ' + predicate
+  if (num !== 1) {
+    unit += 's'
+  }
+  return `${num} ${unit} ${predicate}`
 }
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']

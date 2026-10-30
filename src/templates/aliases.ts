@@ -72,7 +72,7 @@ let multi = {
 
   currency: ['monnaie', 'unité', 'nombre', 'nb', 'iso4217'],
 
-  coord: ['coor', 'coor title dms', 'coor title dec', 'coor dms', 'coor dm', 'coor dec'],
+  coord: ['coor', 'coor title dms', 'coor title dec', 'coor dms', 'coor dm', 'coor dec', 'coordinate'],
 
   'columns-list': ['cmn', 'col-list', 'columnslist', 'collist'],
 
@@ -81,6 +81,7 @@ let multi = {
   plainlist: ['flatlist', 'plain list'],
 
   'winning percentage': ['winpct', 'winperc'],
+  'win-loss record': ['win–loss record', 'win loss record', 'wlr'],
 
   'collapsible list': [
     'nblist',

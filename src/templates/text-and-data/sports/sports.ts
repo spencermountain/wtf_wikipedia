@@ -23,14 +23,15 @@ let sports = {
     return { data: obj, replacement: '\n| ' + arr.join('\n| ') + '\n| ' + winPercentage + '%' }
   },
 
+  // https://en.wikipedia.org/wiki/Template:Win–loss_record
+  // {{win-loss record|w=5|l=3|t=1}} → 5–3–1
   'win-loss record': function (tmpl, parse = defaultParse) {
     let obj = parse(tmpl, ['w', 'l', 't'])
-    let str = `${obj.w}`
+    let arr = [obj.w || 0, obj.l || 0]
     if (obj.t || obj.d) {
-      str += `-${obj.t || obj.d}`
+      arr.push(obj.t || obj.d)
     }
-    str += `-${obj.l}`
-    return { data: obj, replacement: str }
+    return { data: obj, replacement: arr.join('–') }
   },
 
   player: (tmpl, parse = defaultParse) => {
@@ -106,7 +107,9 @@ let sports = {
 
   // college baseketball rosters
   'cbb roster/header': function () {
-    return { data: null, replacement: `{| class="wikitable"
+    return {
+      data: null,
+      replacement: `{| class="wikitable"
     |-
     ! POS
     ! #
@@ -116,12 +119,15 @@ let sports = {
     ! Year
     ! Previous School
     ! Hometown
-    |-\n` }
+    |-\n`,
+    }
   },
   'cbb roster/player': function (tmpl, parse = defaultParse) {
     let data = parse(tmpl)
     // first=|last=|dab=|num=|pos=|ft=|in=|lbs=|class=|rs=|home=
-    return { data: data, replacement: `|-
+    return {
+      data: data,
+      replacement: `|-
 | ${data.pos || ''}
 | ${data.num || ''}
 | ${data.first || ''} ${data.last || ''}
@@ -130,7 +136,8 @@ let sports = {
 | ${data.class || ''}
 | ${data.high_school || ''}
 | ${data.home || ''}
-` }
+`,
+    }
   },
   'cbb roster/footer': function () {
     return { data: null, replacement: `\n|}` }

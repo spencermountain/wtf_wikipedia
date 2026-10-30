@@ -1,5 +1,4 @@
 import defaultParse from '../../parse/templates/parse/toJSON/text.ts'
-import { percentage } from '../_lib.ts'
 
 let templates = {
   // https://en.wikipedia.org/wiki/Template:Math
@@ -38,7 +37,10 @@ let templates = {
   //minor planet - https://en.wikipedia.org/wiki/Template:MPC
   mpc: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['number', 'text'])
-    return { data: obj, replacement: `[https://minorplanetcenter.net/db_search/show_object?object_id=P/2011+NO1 ${obj.text || obj.number}]` }
+    return {
+      data: obj,
+      replacement: `[https://minorplanetcenter.net/db_search/show_object?object_id=P/2011+NO1 ${obj.text || obj.number}]`,
+    }
   },
 
   pengoal: (_tmpl) => {
@@ -285,20 +287,18 @@ let templates = {
     return { data: obj, replacement: result.replace(/^0\./, '.') }
   },
 
+  // https://en.wikipedia.org/wiki/Template:Winlosspct
+  // {{winlosspct|10|5}} → 10 || 5 || .667
   winlosspct: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['wins', 'losses'])
-    let wins = Number(obj.wins)
-    let losses = Number(obj.losses)
-    let num = percentage({
-      numerator: wins,
-      denominator: wins + losses,
-      decimals: 1,
-    })
-    if (num === null) {
-      return { data: obj, replacement: '' }
+    let wins = Number(obj.wins) || 0
+    let losses = Number(obj.losses) || 0
+    let games = wins + losses
+    let out = '-'
+    if (games > 0) {
+      out = (wins / games).toFixed(3).replace(/^0\./, '.')
     }
-    let out = `.${num * 10}`
-    return { data: obj, replacement: `${wins || 0} || ${losses || 0} || ${out || '-'}` }
+    return { data: obj, replacement: `${wins} || ${losses} || ${out}` }
   },
 
   //https://en.wikipedia.org/wiki/Template:Video_game_release
@@ -345,8 +345,9 @@ let templates = {
   },
 
   // https://de.m.wikipedia.org/wiki/Vorlage:ReptileDatabase
-  ReptileDatabase: (tmpl, parse = defaultParse) => {
-    let obj = parse(tmpl, ['taxon', 'genus', 'species', 'abruf', 'pure_url'])
+  // {{ReptileDatabase|Blanus|cinereus}} → Blanus cinereus In: The Reptile Database
+  reptiledatabase: (tmpl, parse = defaultParse) => {
+    let obj = parse(tmpl, ['genus', 'species', 'abruf', 'pure_url'])
     let str = ''
     if (obj.genus || obj.species) {
       str = `${obj.genus || ''} ${obj.species || ''} `
@@ -354,9 +355,12 @@ let templates = {
     return { data: obj, replacement: `${str}In: [[The Reptile Database]]` }
   },
   //https://en.m.wikipedia.org/wiki/Template:GEOnet3
-  GEOnet3: (tmpl, parse = defaultParse) => {
+  geonet3: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['ufi', 'name'])
-    return { data: obj, replacement: `GEOnet3 can be found at [[GEOnet Names Server]], at [http://geonames.nga.mil/namesgaz/ this link]` }
+    return {
+      data: obj,
+      replacement: `GEOnet3 can be found at [[GEOnet Names Server]], at [http://geonames.nga.mil/namesgaz/ this link]`,
+    }
   },
   'poem quote': (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['text', 'char', 'sign', 'source', 'title'])

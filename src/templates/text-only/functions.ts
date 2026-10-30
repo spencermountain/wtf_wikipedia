@@ -11,28 +11,70 @@ export default {
   },
 
   //https://en.wikipedia.org/wiki/Template:Ra
+  // {{RA|5|35|17.3}} → 5h 35m 17.3s
   ra: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['hours', 'minutes', 'seconds'])
-    return { data: null, replacement: [obj.hours || 0, obj.minutes || 0, obj.seconds || 0].join(':') }
+    let str = `${obj.hours || 0}h`
+    if (obj.minutes !== undefined) {
+      str += ` ${obj.minutes}m`
+    }
+    if (obj.seconds !== undefined) {
+      str += ` ${obj.seconds}s`
+    }
+    return { data: null, replacement: str }
   },
 
   //https://en.wikipedia.org/wiki/Template:Deg2HMS
+  // {{Deg2HMS|83.82}} → 05h 35m 16.8s
   deg2hms: (tmpl, parse = defaultParse) => {
-    //this template should do the conversion
-    let obj = parse(tmpl, ['degrees'])
-    return { data: null, replacement: (obj.degrees || '') + '°' }
+    let obj = parse(tmpl, ['degrees', 'sup'])
+    let deg = Number(obj.degrees)
+    if (!Number.isFinite(deg)) {
+      return { data: null, replacement: (obj.degrees || '') + '°' }
+    }
+    // 360° = 24h
+    let total = (((deg % 360) + 360) % 360) / 15
+    let h = Math.floor(total)
+    let m = Math.floor((total - h) * 60)
+    let sec = ((total - h) * 60 - m) * 60
+    let str = `${String(h).padStart(2, '0')}h ${String(m).padStart(2, '0')}m ${sec.toFixed(1).padStart(4, '0')}s`
+    return { data: null, replacement: str }
   },
 
+  //https://en.wikipedia.org/wiki/Template:HMS2deg
+  // {{HMS2deg|5|35|17.3}} → 83.822083
   hms2deg: (tmpl, parse = defaultParse) => {
-    //this template should do the conversion too
-    let obj = parse(tmpl, ['hours', 'minutes', 'seconds'])
-    return { data: null, replacement: [obj.hours || 0, obj.minutes || 0, obj.seconds || 0].join(':') }
+    let obj = parse(tmpl, ['hours', 'minutes', 'seconds', 'precision'])
+    let h = Number(obj.hours) || 0
+    let m = Number(obj.minutes) || 0
+    let sec = Number(obj.seconds) || 0
+    let deg = (h + m / 60 + sec / 3600) * 15
+    let precision = Number(obj.precision)
+    if (!Number.isFinite(precision)) {
+      precision = 6
+    }
+    return { data: null, replacement: String(Number(deg.toFixed(precision))) }
   },
 
+  //https://en.wikipedia.org/wiki/Template:Decdeg
+  // {{Decdeg|52|31|7|N}} → 52.518611
   decdeg: (tmpl, parse = defaultParse) => {
-    //this template should do the conversion too
     let obj = parse(tmpl, ['deg', 'min', 'sec', 'hem', 'rnd'])
-    return { data: null, replacement: (obj.deg || obj.degrees) + '°' }
+    let deg = Number(obj.deg ?? obj.degrees)
+    if (!Number.isFinite(deg)) {
+      return { data: null, replacement: (obj.deg || obj.degrees || '') + '°' }
+    }
+    let sign = deg < 0 ? -1 : 1
+    let num = Math.abs(deg) + (Number(obj.min) || 0) / 60 + (Number(obj.sec) || 0) / 3600
+    num *= sign
+    if (/^[sw]$/i.test(obj.hem || '')) {
+      num *= -1
+    }
+    let rnd = Number(obj.rnd)
+    if (!Number.isFinite(rnd)) {
+      rnd = 6
+    }
+    return { data: null, replacement: String(Number(num.toFixed(rnd))) }
   },
   //https://en.wikipedia.org/wiki/Template:Sortname
   sortname: (tmpl, parse = defaultParse) => {
@@ -265,16 +307,16 @@ export default {
 
   padleft: (tmpl, parse = defaultParse) => {
     tmpl = tmpl.replace(/:/, '|')
-    let obj = parse(tmpl, ['text', 'num'])
+    let obj = parse(tmpl, ['text', 'num', 'str'])
     let text = obj.text || ''
-    return { data: null, replacement: text.padStart(obj.num, obj.str || '0') }
+    return { data: null, replacement: text.padStart(Number(obj.num) || 0, obj.str || '0') }
   },
 
   padright: (tmpl, parse = defaultParse) => {
     tmpl = tmpl.replace(/:/, '|')
-    let obj = parse(tmpl, ['text', 'num'])
+    let obj = parse(tmpl, ['text', 'num', 'str'])
     let text = obj.text || ''
-    return { data: null, replacement: text.padEnd(obj.num, obj.str || '0') }
+    return { data: null, replacement: text.padEnd(Number(obj.num) || 0, obj.str || '0') }
   },
 
   //https://en.wikipedia.org/wiki/Template:Abbrlink
@@ -315,7 +357,7 @@ export default {
     if (obj.b) {
       return { data: null, replacement: `${obj.a}/${obj.b}` }
     }
-    return { data: null, replacement: `1/${obj.b}` }
+    return { data: null, replacement: `1/${obj.a}` }
   },
 
   //https://en.wikipedia.org/wiki/Template:Convert#Ranges_of_values
@@ -483,15 +525,18 @@ export default {
   'title case': (tmpl, parse = defaultParse) => {
     let data = parse(tmpl, ['text'])
     let txt = data.text || ''
-    return { data: null, replacement: txt
-      .split(/ /)
-      .map((w, i) => {
-        if ((i > 0 && w === 'the') || w === 'of') {
-          return w
-        }
-        return titlecase(w)
-      })
-      .join(' ') }
+    return {
+      data: null,
+      replacement: txt
+        .split(/ /)
+        .map((w, i) => {
+          if ((i > 0 && w === 'the') || w === 'of') {
+            return w
+          }
+          return titlecase(w)
+        })
+        .join(' '),
+    }
   },
   'no spam': (tmpl, parse = defaultParse) => {
     let data = parse(tmpl, ['account', 'domain'])
@@ -677,7 +722,10 @@ export default {
   ship: (tmpl, parse = defaultParse) => {
     let { prefix, name, id } = parse(tmpl, ['prefix', 'name', 'id'])
     prefix ||= ''
-    return { data: null, replacement: id ? `[[${prefix.toUpperCase()} ${name}]]` : `[[${prefix.toUpperCase()} ${name}]]` }
+    return {
+      data: null,
+      replacement: id ? `[[${prefix.toUpperCase()} ${name}]]` : `[[${prefix.toUpperCase()} ${name}]]`,
+    }
   },
   sclass: (tmpl, parse = defaultParse) => {
     let { cl, type } = parse(tmpl, ['cl', 'type', 'fmt'])
@@ -705,7 +753,8 @@ export default {
   },
   splitspan: (tmpl, parse = defaultParse) => {
     let list = parse(tmpl).list || []
-    return { data: null, replacement: (list[0] || '') + '\n' + (list[1] || '') }
+    // renders as two spans with a <br/>, which we collapse to a space
+    return { data: null, replacement: (list[0] || '') + ' ' + (list[1] || '') }
   },
   bracket: (tmpl, parse = defaultParse) => {
     let { text } = parse(tmpl, ['text'])
@@ -779,7 +828,8 @@ export default {
   },
   ket: (tmpl, parse = defaultParse) => {
     let data = parse(tmpl, ['a'])
-    return { data: null, replacement: `${data.a || ''}⟩` }
+    // a leading '|' would read as table syntax, so use its entity
+    return { data: null, replacement: `&#124;${data.a || ''}⟩` }
   },
   'angle bracket': (tmpl, parse = defaultParse) => {
     let data = parse(tmpl, ['txt'])
@@ -794,7 +844,7 @@ export default {
     if (data.sym === 'bra') {
       return { data: null, replacement: `⟨${data.a}|` }
     } else if (data.sym === 'ket') {
-      return { data: null, replacement: `⟨|${data.a || ''}⟩` }
+      return { data: null, replacement: `&#124;${data.a || ''}⟩` }
     } else {
       return { data: null, replacement: `⟨${data.a || ''}|${data.b || ''}⟩` }
     }

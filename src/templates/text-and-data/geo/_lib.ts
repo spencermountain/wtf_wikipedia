@@ -121,8 +121,12 @@ const parseCoor = function (tmpl, parse = defaultParse) {
       lon: parseNamedDMS(obj.ew, 'ew', 180),
     }
   }
-  obj.lat = round(tmp.lat)
-  obj.lon = round(tmp.lon)
+  if (typeof tmp.lat === 'number' && !isNaN(tmp.lat)) {
+    obj.lat = round(tmp.lat)
+  }
+  if (typeof tmp.lon === 'number' && !isNaN(tmp.lon)) {
+    obj.lon = round(tmp.lon)
+  }
   obj.template = 'coord'
   delete obj.list
   return obj
