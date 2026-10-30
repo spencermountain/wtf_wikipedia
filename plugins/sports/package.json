@@ -23,6 +23,7 @@
   "module": "./builds/wtf-plugin-sports.mjs",
   "types": "./types/index.d.cts",
   "scripts": {
+    "watch": "node --watch ./scratch.js",
     "build": "node ./scripts/version.js && rollup -c",
     "test": "tape --strict \"tests/**/*.test.js\" | tap-dancer",
     "testb": "TESTENV=prod tape --strict \"tests/**/*.test.js\" | tap-dancer",

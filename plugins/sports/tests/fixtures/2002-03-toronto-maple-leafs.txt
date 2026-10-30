@@ -1,0 +1,735 @@
+{{short description|NHL hockey team season}}
+{{Use Canadian English|date=March 2026}}
+{{Use mdy dates|date=August 2023}}
+{{Infobox ice hockey team season
+  |League=NHL
+  |Season=2002–03
+  |year=2002
+  |Team=Toronto Maple Leafs
+  |Conference=[[Eastern Conference (NHL)|Eastern]]
+  |ConferenceRank=5th
+  |Division=[[Northeast Division (NHL)|Northeast]]
+  |DivisionRank=2nd
+  |Record=44–28–7–3
+  |HomeRecord=24–13–4–0
+  |RoadRecord=20–15–3–3
+  |GoalsFor=236
+  |GoalsAgainst=208
+  |GeneralManager=[[Pat Quinn (ice hockey)|Pat Quinn]]
+  |Coach=Pat Quinn
+  |Captain=[[Mats Sundin]]
+  |AltCaptain=[[Bryan McCabe]]<br>[[Gary Roberts (ice hockey)|Gary Roberts]]
+  |Arena=[[Air Canada Centre]]
+  |Attendance=19,240
+  |MinorLeague=[[St. John's Maple Leafs]]<br>[[Greensboro Generals]]
+  |GoalsLeader=Mats Sundin (37)
+  |AssistsLeader=[[Alexander Mogilny]] (46)
+  |PointsLeader=Alexander Mogilny (79)
+  |PIMLeader=[[Wade Belak]] (196)
+  |PlusMinusLeader=[[Tomáš Kaberle]] (+20)
+  |WinsLeader=[[Ed Belfour]] (37)
+  |GAALeader=Ed Belfour (2.26)
+}}
+
+The '''[[2002–03 NHL season|2002–03]] [[Toronto Maple Leafs]] season''' was the [[List of Toronto Maple Leafs seasons|86th season]] of the franchise, and the 76th season as the Maple Leafs. The team qualified for the playoffs for the fifth year in a row, losing to the Philadelphia Flyers in the quarterfinals.
+
+==Off-season==
+Key dates prior to the start of the season:
+* The [[2002 NHL entry draft]]
+* The [[Free Agent|free agency]] period began on July 1.
+
+The Leafs signed free agent goaltender [[Ed Belfour]] to be their starting goaltender to replace the departed [[Curtis Joseph]], who signed with the [[Detroit Red Wings]] to be their starting goaltender after [[Dominik Hašek]] retired following their [[2002 Stanley Cup Finals|Stanley Cup championship]] the previous season.
+
+==Regular season==
+The Maple Leafs were the most penalized team during the regular season, being penalized 426 times.<ref>{{Cite web|url=https://www.hockey-reference.com/leagues/NHL_2003.html|title=2002-03 NHL Summary}}</ref>
+
+===Season standings===
+{{2002–03 NHL Northeast Division standings|team=TOR}}
+{{2002–03 NHL Eastern Conference standings|team=TOR}}
+
+==Playoffs==
+The Maple Leafs qualified for the [[Stanley Cup playoffs]] for the fifth consecutive year. They lost to the [[Philadelphia Flyers]] in 7 games in the first round.
+
+==Schedule and results==
+
+===Regular season===
+{{Game log start|style=background:#fff; border-top:#00205B 5px solid; border-bottom:#00205B 5px solid;|title=2002–03 regular season<ref name="Gamelog">{{cite web |title=2002-03 Toronto Maple Leafs Schedule |url=https://www.hockey-reference.com/teams/TOR/2003_games.html |website=Hockey-Reference.com |access-date=November 21, 2022}}</ref>}}
+{{Game log section start|hide=y|style=background:#fff; border-top:#00205B 2px solid; border-bottom:#00205B 2px solid;|title=October: 3–6–2–0 (home: 2–5–1–0; road: 1–1–1–0)|Game |Date |Score |Opponent |Record| Recap}}
+|- {{Game-won}}
+|1||October 10, 2002||6–0 || align="left"| @ [[Pittsburgh Penguins]] <small>([[2002–03 Pittsburgh Penguins season|2002–03]])</small> ||1–0–0–0 || {{NHL recap|2002020007|W}}
+|- {{Game-lost}}
+|2||October 12, 2002||1–2 || align="left"| [[Ottawa Senators]] <small>([[2002–03 Ottawa Senators season|2002–03]])</small> ||1–1–0–0 || {{NHL recap|2002020018|L}}
+|- {{Game-lost}}
+|3||October 14, 2002||4–5 || align="left"| [[Pittsburgh Penguins]] <small>([[2002–03 Pittsburgh Penguins season|2002–03]])</small> ||1–2–0–0 || {{NHL recap|2002020034|L}}
+|- {{Game-lost}}
+|4||October 15, 2002||4–5 || align="left"| @ [[New York Rangers]] <small>([[2002–03 New York Rangers season|2002–03]])</small> ||1–3–0–0 || {{NHL recap|2002020039|L}}
+|- {{Game-won}}
+|5||October 17, 2002||5–3 || align="left"|  [[Arizona Coyotes|Phoenix Coyotes]] <small>([[2002–03 Phoenix Coyotes season|2002–03]])</small> ||2–3–0–0 || {{NHL recap|2002020050|W}}
+|- {{Game-tied}}
+|6||October 19, 2002||2–2 OT|| align="left"| @ [[Montreal Canadiens]] <small>([[2002–03 Montreal Canadiens season|2002–03]])</small> ||2–3–1–0 || {{NHL recap|2002020063|T}}
+|- {{Game-lost}}
+|7||October 21, 2002||1–4 || align="left"|  [[Boston Bruins]] <small>([[2002–03 Boston Bruins season|2002–03]])</small> ||2–4–1–0 || {{NHL recap|2002020078|L}}
+|- {{Game-lost}}
+|8||October 23, 2002||1–4 || align="left"|  [[Florida Panthers]] <small>([[2002–03 Florida Panthers season|2002–03]])</small> ||2–5–1–0 || {{NHL recap|2002020091|L}}
+|- {{Game-lost}}
+|9||October 26, 2002||3–4 || align="left"|  [[New York Rangers]] <small>([[2002–03 New York Rangers season|2002–03]])</small> ||2–6–1–0 || {{NHL recap|2002020109|L}}
+|- {{Game-won}}
+|10||October 28, 2002||5–2 || align="left"|  [[Anaheim Ducks|Mighty Ducks of Anaheim]] <small>([[2002–03 Mighty Ducks of Anaheim season|2002–03]])</small> ||3–6–1–0 || {{NHL recap|2002020125|W}}
+|- {{Game-tied}}
+|11||October 31, 2002||3–3 OT|| align="left"|  [[Atlanta Thrashers]] <small>([[2002–03 Atlanta Thrashers season|2002–03]])</small> ||3–6–2–0 || {{NHL recap|2002020145|T}}
+|-
+{{Game log section end}}
+{{Game log section start|hide=y|style=background:#fff; border-top:#00205B 2px solid; border-bottom:#00205B 2px solid;|title=November: 8–5–0–0 (home: 6–2–0–0; road: 2–3–0–0)|Game |Date |Score |Opponent |Record| Recap}}
+|- {{Game-lost}}
+|12||November 2, 2002 †||2–5 || align="left"|  [[Montreal Canadiens]] <small>([[2002–03 Montreal Canadiens season|2002–03]])</small> ||3–7–2–0 || {{NHL recap|2002020157|L}}
+|- {{Game-won}}
+|13||November 5, 2002||4–3 || align="left"|  [[Tampa Bay Lightning]] <small>([[2002–03 Tampa Bay Lightning season|2002–03]])</small> ||4–7–2–0 || {{NHL recap|2002020178|W}}
+|- {{Game-lost}}
+|14||November 8, 2002||1–2 || align="left"| @ [[Dallas Stars]] <small>([[2002–03 Dallas Stars season|2002–03]])</small> ||4–8–2–0 || {{NHL recap|2002020200|L}}
+|- {{Game-lost}}
+|15||November 9, 2002||3–6 || align="left"| @ [[St. Louis Blues]] <small>([[2002–03 St. Louis Blues season|2002–03]])</small> ||4–9–2–0 || {{NHL recap|2002020208|L}}
+|- {{Game-won}}
+|16||November 12, 2002||4–3 OT|| align="left"|  [[Los Angeles Kings]] <small>([[2002–03 Los Angeles Kings season|2002–03]])</small> ||5–9–2–0 || {{NHL recap|2002020225|W}}
+|- {{Game-won}}
+|17||November 15, 2002||3–2 || align="left"| @ [[Buffalo Sabres]] <small>([[2002–03 Buffalo Sabres season|2002–03]])</small> ||6–9–2–0 || {{NHL recap|2002020242|W}}
+|- {{Game-lost}}
+|18||November 16, 2002||1–2 || align="left"|  [[Detroit Red Wings]] <small>([[2002–03 Detroit Red Wings season|2002–03]])</small> ||6–10–2–0 || {{NHL recap|2002020251|L}}
+|- {{Game-won}}
+|19||November 19, 2002||2–0 || align="left"|  [[Boston Bruins]] <small>([[2002–03 Boston Bruins season|2002–03]])</small> ||7–10–2–0 || {{NHL recap|2002020272|W}}
+|- {{Game-won}}
+|20||November 23, 2002||6–0 || align="left"|  [[Philadelphia Flyers]] <small>([[2002–03 Philadelphia Flyers season|2002–03]])</small> ||8–10–2–0 || {{NHL recap|2002020300|W}}
+|- {{Game-lost}}
+|21||November 25, 2002||0–2 || align="left"| @ [[Ottawa Senators]] <small>([[2002–03 Ottawa Senators season|2002–03]])</small> ||8–11–2–0 || {{NHL recap|2002020311|L}}
+|- {{Game-won}}
+|22||November 26, 2002||5–4 || align="left"|  [[Washington Capitals]] <small>([[2002–03 Washington Capitals season|2002–03]])</small> ||9–11–2–0 || {{NHL recap|2002020319|W}}
+|- {{Game-won}}
+|23||November 29, 2002||3–0 || align="left"| @ [[Philadelphia Flyers]] <small>([[2002–03 Philadelphia Flyers season|2002–03]])</small> ||10–11–2–0 || {{NHL recap|2002020336|W}}
+|- {{Game-won}}
+|24||November 30, 2002||3–1 || align="left"|  [[Buffalo Sabres]] <small>([[2002–03 Buffalo Sabres season|2002–03]])</small> ||11–11–2–0 || {{NHL recap|2002020347|W}}
+|-
+{{Game log section end}}
+{{Game log section start|hide=y|style=background:#fff; border-top:#00205B 2px solid; border-bottom:#00205B 2px solid;|title=December: 8–3–2–1 (home: 5–0–1–0; road: 3–3–1–1)|Game |Date |Score |Opponent |Record| Recap}}
+|- {{Game-won}}
+|25||December 3, 2002||4–3 OT|| align="left"|  [[Tampa Bay Lightning]] <small>([[2002–03 Tampa Bay Lightning season|2002–03]])</small> ||12–11–2–0 || {{NHL recap|2002020366|W}}
+|- {{Game-lost}}
+|26||December 6, 2002||2–4 || align="left"| @ [[New York Islanders]] <small>([[2002–03 New York Islanders season|2002–03]])</small> ||12–12–2–0 || {{NHL recap|2002020385|L}}
+|- {{Game-won}}
+|27||December 7, 2002||1–0 || align="left"|  [[New Jersey Devils]] <small>([[2002–03 New Jersey Devils season|2002–03]])</small> ||13–12–2–0 || {{NHL recap|2002020397|W}}
+|- {{Game-won}}
+|28||December 10, 2002||4–2 || align="left"|  [[Pittsburgh Penguins]] <small>([[2002–03 Pittsburgh Penguins season|2002–03]])</small> ||14–12–2–0 || {{NHL recap|2002020415|W}}
+|- {{Game-lost}}
+|29||December 12, 2002||1–2 || align="left"| @ [[Philadelphia Flyers]] <small>([[2002–03 Philadelphia Flyers season|2002–03]])</small> ||14–13–2–0 || {{NHL recap|2002020427|L}}
+|- {{Game-won}}
+|30||December 14, 2002||4–1 || align="left"|  [[New York Rangers]] <small>([[2002–03 New York Rangers season|2002–03]])</small> ||15–13–2–0 || {{NHL recap|2002020439|W}}
+|- {{Game-lost}}
+|31||December 16, 2002||0–1 || align="left"| @ [[Atlanta Thrashers]] <small>([[2002–03 Atlanta Thrashers season|2002–03]])</small> ||15–14–2–0 || {{NHL recap|2002020458|L}}
+|- {{Game-tied}}
+|32||December 18, 2002||2–2 OT|| align="left"| @ [[Florida Panthers]] <small>([[2002–03 Florida Panthers season|2002–03]])</small> ||15–14–3–0 || {{NHL recap|2002020472|T}}
+|- {{Game-won}}
+|33||December 19, 2002||2–1 || align="left"| @ [[Tampa Bay Lightning]] <small>([[2002–03 Tampa Bay Lightning season|2002–03]])</small> ||16–14–3–0 || {{NHL recap|2002020476|W}}
+|- {{Game-tied}}
+|34||December 21, 2002||3–3 OT|| align="left"|  [[San Jose Sharks]] <small>([[2002–03 San Jose Sharks season|2002–03]])</small> ||16–14–4–0 || {{NHL recap|2002020492|T}}
+|- {{Game-won}}
+|35||December 23, 2002||5–1 || align="left"|  [[Atlanta Thrashers]] <small>([[2002–03 Atlanta Thrashers season|2002–03]])</small> ||17–14–4–0 || {{NHL recap|2002020509|W}}
+|- {{Game-won}}
+|36||December 27, 2002||4–3 || align="left"| @ [[Calgary Flames]] <small>([[2002–03 Calgary Flames season|2002–03]])</small> ||18–14–4–0 || {{NHL recap|2002020530|W}}
+|- {{Game-otl}}
+|37||December 28, 2002||2–3 OT|| align="left"| @ [[Edmonton Oilers]] <small>([[2002–03 Edmonton Oilers season|2002–03]])</small> ||18–14–4–1 || {{NHL recap|2002020540|OTL}}
+|- {{Game-won}}
+|38||December 31, 2002||5–3 || align="left"| @ [[Vancouver Canucks]] <small>([[2002–03 Vancouver Canucks season|2002–03]])</small> ||19–14–4–1 || {{NHL recap|2002020564|W}}
+|-
+{{Game log section end}}
+{{Game log section start|hide=y|style=background:#fff; border-top:#00205B 2px solid; border-bottom:#00205B 2px solid;|title=January: 8–6–0–0 (home: 3–2–0–0; road: 5–4–0–0)|Game |Date |Score |Opponent |Record| Recap}}
+|- {{Game-lost}}
+|39||January 3, 2003||0–2 || align="left"| @ [[New Jersey Devils]] <small>([[2002–03 New Jersey Devils season|2002–03]])</small> ||19–15–4–1 || {{NHL recap|2002020579|L}}
+|- {{Game-won}}
+|40||January 4, 2003||2–1 || align="left"|  [[New Jersey Devils]] <small>([[2002–03 New Jersey Devils season|2002–03]])</small> ||20–15–4–1 || {{NHL recap|2002020584|W}}
+|- {{Game-won}}
+|41||January 7, 2003||5–2 || align="left"|  [[Boston Bruins]] <small>([[2002–03 Boston Bruins season|2002–03]])</small> ||21–15–4–1 || {{NHL recap|2002020606|W}}
+|- {{Game-won}}
+|42||January 9, 2003||4–2 || align="left"| @ [[Pittsburgh Penguins]] <small>([[2002–03 Pittsburgh Penguins season|2002–03]])</small> ||22–15–4–1 || {{NHL recap|2002020621|W}}
+|- {{Game-lost}}
+|43||January 11, 2003||2–6 || align="left"| @ [[Boston Bruins]] <small>([[2002–03 Boston Bruins season|2002–03]])</small> ||22–16–4–1 || {{NHL recap|2002020635|L}}
+|- {{Game-lost}}
+|44||January 13, 2003||1–5 || align="left"| @ [[New York Rangers]] <small>([[2002–03 New York Rangers season|2002–03]])</small> ||22–17–4–1 || {{NHL recap|2002020650|L}}
+|- {{Game-won}}
+|45||January 14, 2003||3–2 || align="left"|  [[Calgary Flames]] <small>([[2002–03 Calgary Flames season|2002–03]])</small> ||23–17–4–1 || {{NHL recap|2002020658|W}}
+|- {{Game-won}}
+|46||January 17, 2003||4–1 || align="left"| @ [[Washington Capitals]] <small>([[2002–03 Washington Capitals season|2002–03]])</small> ||24–17–4–1 || {{NHL recap|2002020677|W}}
+|- {{Game-won}}
+|47||January 18, 2003||3–2 OT|| align="left"| @ [[Montreal Canadiens]] <small>([[2002–03 Montreal Canadiens season|2002–03]])</small> ||25–17–4–1 || {{NHL recap|2002020684|W}}
+|- {{Game-lost}}
+|48||January 21, 2003||1–3 || align="left"|  [[Philadelphia Flyers]] <small>([[2002–03 Philadelphia Flyers season|2002–03]])</small> ||25–18–4–1 || {{NHL recap|2002020708|L}}
+|- {{Game-lost}}
+|49||January 24, 2003||0–4 || align="left"| @ [[Buffalo Sabres]] <small>([[2002–03 Buffalo Sabres season|2002–03]])</small> ||25–19–4–1 || {{NHL recap|2002020725|L}}
+|- {{Game-lost}}
+|50||January 25, 2003||0–3 || align="left"|  [[Colorado Avalanche]] <small>([[2002–03 Colorado Avalanche season|2002–03]])</small> ||25–20–4–1 || {{NHL recap|2002020736|L}}
+|- {{Game-won}}
+|51||January 29, 2003||3–2 || align="left"| @ [[Carolina Hurricanes]] <small>([[2002–03 Carolina Hurricanes season|2002–03]])</small> ||26–20–4–1 || {{NHL recap|2002020762|W}}
+|- {{Game-won}}
+|52||January 30, 2003||5–2 || align="left"| @ [[Atlanta Thrashers]] <small>([[2002–03 Atlanta Thrashers season|2002–03]])</small> ||27–20–4–1 || {{NHL recap|2002020771|W}}
+|-
+{{Game log section end}}
+{{Game log section start|hide=y|style=background:#fff; border-top:#00205B 2px solid; border-bottom:#00205B 2px solid;|title=February: 9–3–0–0 (home: 4–2–0–0; road: 5–1–0–0)|Game |Date |Score |Opponent |Record| Recap}}
+|- {{Game-won}}
+|53||February 5, 2003||6–0 || align="left"| @ [[Florida Panthers]] <small>([[2002–03 Florida Panthers season|2002–03]])</small> ||28–20–4–1 || {{NHL recap|2002020790|W}}
+|- {{Game-won}}
+|54||February 6, 2003||3–2 OT|| align="left"| @ [[Tampa Bay Lightning]] <small>([[2002–03 Tampa Bay Lightning season|2002–03]])</small> ||29–20–4–1 || {{NHL recap|2002020798|W}}
+|- {{Game-won}}
+|55||February 8, 2003||3–1 || align="left"|  [[Montreal Canadiens]] <small>([[2002–03 Montreal Canadiens season|2002–03]])</small> ||30–20–4–1 || {{NHL recap|2002020813|W}}
+|- {{Game-lost}}
+|56||February 11, 2003||4–5 || align="left"|  [[Edmonton Oilers]] <small>([[2002–03 Edmonton Oilers season|2002–03]])</small> ||30–21–4–1 || {{NHL recap|2002020831|L}}
+|- {{Game-won}}
+|57||February 12, 2003||3–1 || align="left"| @ [[Chicago Blackhawks]] <small>([[2002–03 Chicago Blackhawks season|2002–03]])</small> ||31–21–4–1 || {{NHL recap|2002020841|W}}
+|- {{Game-won}}
+|58||February 15, 2003||2–1 || align="left"|  [[Ottawa Senators]] <small>([[2002–03 Ottawa Senators season|2002–03]])</small> ||32–21–4–1 || {{NHL recap|2002020861|W}}
+|- {{Game-won}}
+|59||February 18, 2003||4–3 || align="left"|  [[Carolina Hurricanes]] <small>([[2002–03 Carolina Hurricanes season|2002–03]])</small> ||33–21–4–1 || {{NHL recap|2002020882|W}}
+|- {{Game-won}}
+|60||February 20, 2003||6–2 || align="left"| @ [[Washington Capitals]] <small>([[2002–03 Washington Capitals season|2002–03]])</small> ||34–21–4–1 || {{NHL recap|2002020896|W}}
+|- {{Game-won}}
+|61||February 22, 2003||5–3 || align="left"| @ [[Montreal Canadiens]] <small>([[2002–03 Montreal Canadiens season|2002–03]])</small> ||35–21–4–1 || {{NHL recap|2002020911|W}}
+|- {{Game-lost}}
+|62||February 23, 2003||2–5 || align="left"|  [[Nashville Predators]] <small>([[2002–03 Nashville Predators season|2002–03]])</small> ||35–22–4–1 || {{NHL recap|2002020923|L}}
+|- {{Game-won}}
+|63||February 25, 2003||5–2 || align="left"|  [[New York Islanders]] <small>([[2002–03 New York Islanders season|2002–03]])</small> ||36–22–4–1 || {{NHL recap|2002020934|W}}
+|- {{Game-lost}}
+|64||February 27, 2003||2–7 || align="left"| @ [[Detroit Red Wings]] <small>([[2002–03 Detroit Red Wings season|2002–03]])</small> ||36–23–4–1 || {{NHL recap|2002020949|L}}
+|-
+{{Game log section end}}
+{{Game log section start|hide=y|style=background:#fff; border-top:#00205B 2px solid; border-bottom:#00205B 2px solid;|title=March: 6–4–3–2 (home: 3–1–2–0; road: 3–3–1–2)|Game |Date |Score |Opponent |Record| Recap}}
+|- {{Game-won}}
+|65||March 1, 2003||4–1 || align="left"|  [[Carolina Hurricanes]] <small>([[2002–03 Carolina Hurricanes season|2002–03]])</small> ||37–23–4–1 || {{NHL recap|2002020962|W}}
+|- {{Game-lost}}
+|66||March 3, 2003||1–2 || align="left"|  [[Florida Panthers]] <small>([[2002–03 Florida Panthers season|2002–03]])</small> ||37–24–4–1 || {{NHL recap|2002020978|L}}
+|- {{Game-lost}}
+|67||March 4, 2003||1–4 || align="left"| @ [[Ottawa Senators]] <small>([[2002–03 Ottawa Senators season|2002–03]])</small> ||37–25–4–1 || {{NHL recap|2002020981|L}}
+|- {{Game-lost}}
+|68||March 6, 2003||2–4 || align="left"| @ [[Buffalo Sabres]] <small>([[2002–03 Buffalo Sabres season|2002–03]])</small> ||37–26–4–1 || {{NHL recap|2002020995|L}}
+|- {{Game-tied}}
+|69||March 8, 2003||3–3 OT|| align="left"|  [[Vancouver Canucks]] <small>([[2002–03 Vancouver Canucks season|2002–03]])</small> ||37–26–5–1 || {{NHL recap|2002021013|T}}
+|- {{Game-won}}
+|70||March 10, 2003||3–2 || align="left"| @ [[Edmonton Oilers]] <small>([[2002–03 Edmonton Oilers season|2002–03]])</small> ||38–26–5–1 || {{NHL recap|2002021032|W}}
+|- {{Game-otl}}
+|71||March 13, 2003||3–4 OT|| align="left"| @ [[Calgary Flames]] <small>([[2002–03 Calgary Flames season|2002–03]])</small> ||38–26–5–2 || {{NHL recap|2002021052|OTL}}
+|- {{Game-won}}
+|72||March 15, 2003||1–0 || align="left"| @ [[Vancouver Canucks]] <small>([[2002–03 Vancouver Canucks season|2002–03]])</small> ||39–26–5–2 || {{NHL recap|2002021068|W}}
+|- {{Game-tied}}
+|73||March 18, 2003||3–3 OT|| align="left"|  [[New York Islanders]] <small>([[2002–03 New York Islanders season|2002–03]])</small> ||39–26–6–2 || {{NHL recap|2002021086|T}}
+|- {{Game-otl}}
+|74||March 20, 2003||3–4 OT|| align="left"| @ [[Columbus Blue Jackets]] <small>([[2002–03 Columbus Blue Jackets season|2002–03]])</small> ||39–26–6–3 || {{NHL recap|2002021097|OTL}}
+|- {{Game-won}}
+|75||March 22, 2003||3–2 OT|| align="left"|  [[Buffalo Sabres]] <small>([[2002–03 Buffalo Sabres season|2002–03]])</small> ||40–26–6–3 || {{NHL recap|2002021112|W}}
+|- {{Game-lost}}
+|76||March 24, 2003||2–3 || align="left"| @ [[Boston Bruins]] <small>([[2002–03 Boston Bruins season|2002–03]])</small> ||40–27–6–3 || {{NHL recap|2002021127|L}}
+|- {{Game-tied}}
+|77||March 25, 2003||3–3 OT|| align="left"| @ [[Carolina Hurricanes]] <small>([[2002–03 Carolina Hurricanes season|2002–03]])</small> ||40–27–7–3 || {{NHL recap|2002021135|T}}
+|- {{Game-won}}
+|78||March 28, 2003||5–2 || align="left"| @ [[New York Islanders]] <small>([[2002–03 New York Islanders season|2002–03]])</small> ||41–27–7–3 || {{NHL recap|2002021158|W}}
+|- {{Game-won}}
+|79||March 29, 2003||4–3 OT|| align="left"|  [[Washington Capitals]] <small>([[2002–03 Washington Capitals season|2002–03]])</small> ||42–27–7–3 || {{NHL recap|2002021166|W}}
+|-
+{{Game log section end}}
+{{Game log section start|hide=y|style=background:#fff; border-top:#00205B 2px solid; border-bottom:#00205B 2px solid;|title=April: 2–1–0–0 (home: 1–1–0–0; road: 1–0–0–0)|Game |Date |Score |Opponent |Record| Recap}}
+|- {{Game-won}}
+|80||April 1, 2003||3–2 OT|| align="left"| @ [[New Jersey Devils]] <small>([[2002–03 New Jersey Devils season|2002–03]])</small> ||43–27–7–3 || {{NHL recap|2002021191|W}}
+|- {{Game-won}}
+|81||April 3, 2003||2–1 || align="left"|  [[Minnesota Wild]] <small>([[2002–03 Minnesota Wild season|2002–03]])</small> ||44–27–7–3 || {{NHL recap|2002021202|W}}
+|- {{Game-lost}}
+|82||April 5, 2003||1–3 || align="left"|  [[Ottawa Senators]] <small>([[2002–03 Ottawa Senators season|2002–03]])</small> ||44–28–7–3 || {{NHL recap|2002021217|L}}
+|-
+{{Game log section end}}
+|-
+|
+'''''Legend''''':
+{{legend2|#cfc|Win (2 points)|border=1px solid black|text=W}}
+{{legend2|#fcc|Loss (0 points)|border=1px solid black|text=L}}
+{{legend2|#ffc|Tie (1 point)|border=1px solid black|text=T}}
+{{legend2|#fff|Overtime loss (1 point)|border=1px solid black|text=OTL}}
+{{Game log end}}
+* † [[Hockey Hall of Fame]] Game
+
+===Playoffs===
+{{Game log start|style=background:#fff; border-top:#00205B 5px solid; border-bottom:#00205B  5px solid;|title=2003 Stanley Cup playoffs<ref name="Gamelog"/>}}
+{{Game log section start|hide=y|style=background:#fff; border-top:#00205B 2px solid; border-bottom:#00205B  2px solid;|title=Eastern Conference Quarterfinals vs. (4) Philadelphia Flyers –  Flyers win 4–3| Game| Date| Score| Opponent| Attendance| Series| Recap}}
+|- {{Game-won}}
+| 1 || April 9, 2003 || 5–3 || align="left"| @ [[Philadelphia Flyers]] || 18,937 || Maple Leafs lead 1–0 || {{NHL recap|2002030141|W}}
+|- {{Game-lost}}
+| 2 || April 11, 2003 || 1–4 || align="left"| @ Philadelphia Flyers || 19,597 || Series tied 1–1 || {{NHL recap|2002030142|L}}
+|- {{Game-won}}
+| 3 || April 14, 2003 || 4–3 2OT || align="left"| Philadelphia Flyers || 19,533 || Maple Leafs lead 2–1 || {{NHL recap|2002030143|W}}
+|- {{Game-lost}}
+| 4 || April 16, 2003 || 2–3 3OT || align="left"| Philadelphia Flyers || 19,574 || Series tied 2–2 || {{NHL recap|2002030144|L}}
+|- {{Game-lost}}
+| 5 || April 19, 2003 || 1–4 || align="left"| @ Philadelphia Flyers || 19,828 || Flyers lead 3–2 || {{NHL recap|2002030145|L}}
+|- {{Game-won}}
+| 6 || April 21, 2003 || 2–1 2OT || align="left"| Philadelphia Flyers || 19,573 || Series tied 3–3 || {{NHL recap|2002030146|W}}
+|- {{Game-lost}}
+| 7 || April 22, 2003 || 1–6 || align="left"| @ Philadelphia Flyers || 19,870 || Flyers win 4–3 || {{NHL recap|2002030147|L}}
+|-
+{{Game log section end}}
+|-
+|
+'''''Legend''''':
+{{legend2|#cfc|Win|border=1px solid black|text=W}}
+{{legend2|#fcc|Loss|border=1px solid black|text=L}}
+{{Game log end}}
+
+==Player statistics==
+
+===Scoring===
+* <small>''Position abbreviations: C = [[Centre (ice hockey)|Centre]]; D = [[Defenceman|Defence]]; G = [[Goaltender]]; LW = [[Left Wing (ice hockey)|Left wing]]; RW = [[Right Wing (ice hockey)|Right wing]]''</small>
+* <small>''{{dagger}} = Joined team via a transaction (e.g., trade, waivers, signing) during the season. Stats reflect time with the Maple Leafs only.''</small>
+* <small>''{{double-dagger}} = Left team via a transaction (e.g., trade, waivers, release) during the season. Stats reflect time with the Maple Leafs only.''</small>
+{| class="wikitable sortable plainrowheaders" style="text-align:center;"
+|-
+!scope="col" data-sort-type="number" rowspan="2"| {{abbr|No.|Jersey number}}
+!scope="col" rowspan="2"| Player
+!scope="col" rowspan="2"| {{abbr|Pos|Position}}
+!scope=colgroup colspan=6 | Regular season
+!scope=colgroup colspan=6 | Playoffs
+|-
+!scope="col" data-sort-type="number" | {{abbr|GP|Games played}}
+!scope="col" data-sort-type="number" | {{abbr|G|Goals}}
+!scope="col" data-sort-type="number" | {{abbr|A|Assists}}
+!scope="col" data-sort-type="number" | {{abbr|Pts|Points}}
+!scope="col" data-sort-type="number" | {{abbr|+/-|Plus/minus}}
+!scope="col" data-sort-type="number" | {{abbr|PIM|Penalties in minutes}}
+!scope="col" data-sort-type="number" | {{abbr|GP|Games played}}
+!scope="col" data-sort-type="number" | {{abbr|G|Goals}}
+!scope="col" data-sort-type="number" | {{abbr|A|Assists}}
+!scope="col" data-sort-type="number" | {{abbr|Pts|Points}}
+!scope="col" data-sort-type="number" | {{abbr|+/-|Plus/minus}}
+!scope="col" data-sort-type="number" | {{abbr|PIM|Penalties in minutes}}
+|-
+|scope="row"| 89 || align="left"| {{Sortname|Alexander|Mogilny}} || RW ||73 ||33 ||46 ||79 ||4 ||12 ||6 ||5 ||2 ||7 ||2 ||4
+|-
+|scope="row"| 13 || align="left"| {{Sortname|Mats|Sundin}} || C ||75 ||37 ||35 ||72 ||1 ||58 ||7 ||1 ||3 ||4 ||−1 ||6
+|-
+|scope="row"| 15 || align="left"| {{Sortname|Tomáš|Kaberle}} || D ||82 ||11 ||36 ||47 ||20 ||30 ||7 ||2 ||1 ||3 ||−6 ||0
+|-
+|scope="row"| 80{{efn|Antropov wore number 11 through March 6 and switched numbers when Nolan was acquired.}} || align="left"| {{Sortname|Nik|Antropov}} || RW ||72 ||16 ||29 ||45 ||11 ||124 ||3 ||0 ||0 ||0 ||−3 ||0
+|-
+|scope="row"| 67 || align="left"| {{Sortname|Róbert|Švehla}} || D ||82 ||7 ||38 ||45 ||13 ||46 ||7 ||0 ||3 ||3 ||−5 ||2
+|-
+|scope="row"| 21 || align="left"| {{Sortname|Robert|Reichel}} || C ||81 ||12 ||30 ||42 ||7 ||26 ||7 ||2 ||1 ||3 ||−4 ||0
+|-
+|scope="row"| 16 || align="left"| {{Sortname|Darcy|Tucker}} || LW ||77 ||10 ||26 ||36 ||−7 ||119 ||6 ||0 ||3 ||3 ||1 ||6
+|-
+|scope="row"| 19 || align="left"| {{Sortname|Mikael|Renberg}} || RW ||67 ||14 ||21 ||35 ||5 ||36 ||7 ||1 ||0 ||1 ||−4 ||8
+|-
+|scope="row"| 14 || align="left"| {{Sortname|Jonas|Höglund}} || LW ||79 ||13 ||19 ||32 ||2 ||12 ||7 ||0 ||1 ||1 ||−1 ||0
+|-
+|scope="row"| 28 || align="left"| {{Sortname|Tie|Domi}} || RW ||79 ||15 ||14 ||29 ||−1 ||171 ||7 ||1 ||0 ||1 ||0 ||13
+|-
+|scope="row"| 39 || align="left"| {{Sortname|Travis|Green}} || C ||75 ||12 ||12 ||24 ||2 ||67 ||4 ||2 ||1 ||3 ||3 ||4
+|-
+|scope="row"| 24 || align="left"| {{Sortname|Bryan|McCabe}} || D ||75 ||6 ||18 ||24 ||9 ||135 ||7 ||0 ||3 ||3 ||−3 ||10
+|-
+|scope="row"| 25 || align="left"| {{Sortname|Jyrki|Lumme}} || D ||73 ||6 ||11 ||17 ||10 ||46 ||7 ||0 ||2 ||2 ||4 ||4
+|-
+|scope="row"| 12 || align="left"| {{Sortname|Tom|Fitzgerald|dab=ice hockey}} || LW ||66 ||4 ||13 ||17 ||10 ||57 ||7 ||0 ||1 ||1 ||−2 ||4
+|-
+|scope="row"| 27 || align="left"| {{Sortname|Shayne|Corson}}{{double-dagger}} || LW ||46 ||7 ||8 ||15 ||−5 ||49 ||2 ||0 ||0 ||0 ||−2 ||2
+|-
+|scope="row"| 18 || align="left"| {{Sortname|Alyn|McCauley}}{{double-dagger}} || C ||64 ||6 ||9 ||15 ||3 ||16 || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-99|—}} || {{sort|-1|—}}
+|-
+|scope="row"| 11 || align="left"| {{Sortname|Owen|Nolan}}{{dagger}} || RW ||14 ||7 ||5 ||12 ||2 ||16 ||7 ||0 ||2 ||2 ||−4 ||2
+|-
+|scope="row"| 8 || align="left"| {{Sortname|Aki|Berg}} || D ||78 ||4 ||7 ||11 ||3 ||28 ||7 ||1 ||1 ||2 ||1 ||2
+|-
+|scope="row"| 26 || align="left"| {{Sortname|Paul|Healey}} || LW ||44 ||3 ||7 ||10 ||8 ||16 ||4 ||0 ||1 ||1 ||1 ||2
+|-
+|scope="row"| 2 || align="left"| {{Sortname|Wade|Belak}} || D ||55 ||3 ||6 ||9 ||−2 ||196 ||2 ||0 ||0 ||0 ||−2 ||4
+|-
+|scope="row"| 7 || align="left"| {{Sortname|Gary|Roberts|dab=ice hockey}} || LW ||14 ||5 ||3 ||8 ||−2 ||10 ||7 ||1 ||1 ||2 ||−4 ||8
+|-
+|scope="row"| 29 || align="left"| {{Sortname|Karel|Pilař}} || D ||17 ||3 ||4 ||7 ||−7 ||12 || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-99|—}} || {{sort|-1|—}}
+|-
+|scope="row"| 23{{efn|Ponikarovsky wore number 22 in his first seven games and switched numbers when Wesley was acquired.}} || align="left"| {{Sortname|Alexei|Ponikarovsky}} || LW ||13 ||0 ||3 ||3 ||4 ||11 || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-99|—}} || {{sort|-1|—}}
+|-
+|scope="row"| 22 || align="left"| {{Sortname|Glen|Wesley}}{{dagger}} || D ||7 ||0 ||3 ||3 ||3 ||4 ||5 ||0 ||1 ||1 ||0 ||2
+|-
+|scope="row"| 20 || align="left"| {{Sortname|Ed|Belfour}} || G ||62 ||0 ||2 ||2 || style="background:#ccc| ||24 ||7 ||0 ||0 ||0 || style="background:#ccc|{{sort|-98|}} ||4
+|-
+|scope="row"| 23 || align="left"| {{Sortname|Harold|Druken}}{{dagger}}{{double-dagger}} || C ||5 ||0 ||2 ||2 ||1 ||2 || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-99|—}} || {{sort|-1|—}}
+|-
+|scope="row"| 55 || align="left"| {{Sortname|Ric|Jackman}} || D ||42 ||0 ||2 ||2 ||−10 ||41 || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-99|—}} || {{sort|-1|—}}
+|-
+|scope="row"| 9 || align="left"| {{Sortname|Josh|Holden}} || C ||5 ||1 ||0 ||1 ||−2 ||2 || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-99|—}} || {{sort|-1|—}}
+|-
+|scope="row"| 41 || align="left"| {{Sortname|Matt|Stajan}} || C ||1 ||1 ||0 ||1 ||1 ||0 || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-99|—}} || {{sort|-1|—}}
+|-
+|scope="row"| 45 || align="left"| {{Sortname|Carlo|Colaiacovo}} || D ||2 ||0 ||1 ||1 ||0 ||0 || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-99|—}} || {{sort|-1|—}}
+|-
+|scope="row"| 10 || align="left"| {{Sortname|Aaron|Gavey}} || C ||5 ||0 ||1 ||1 ||1 ||0 || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-99|—}} || {{sort|-1|—}}
+|-
+|scope="row"| 44 || align="left"| {{Sortname|Anders|Eriksson|dab=ice hockey, born 1975}} || D ||4 ||0 ||0 ||0 ||1 ||0 || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-99|—}} || {{sort|-1|—}}
+|-
+|scope="row"| 93 || align="left"| {{Sortname|Doug|Gilmour}}{{dagger}} || C ||1 ||0 ||0 ||0 ||0 ||0 || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-99|—}} || {{sort|-1|—}}
+|-
+|scope="row"| 96 || align="left"| {{Sortname|Phil|Housley}}{{dagger}} || D ||1 ||0 ||0 ||0 ||−1 ||2 ||3 ||0 ||0 ||0 ||−3 ||0
+|-
+|scope="row"| 37 || align="left"| {{Sortname|Trevor|Kidd}} || G ||19 ||0 ||0 ||0 || style="background:#ccc| ||0 || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-99|—}} || {{sort|-1|—}}
+|-
+|scope="row"| 32 || align="left"| {{Sortname|Mikael|Tellqvist}} || G ||3 ||0 ||0 ||0 || style="background:#ccc| ||0 || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-1|—}} || {{sort|-99|—}} || {{sort|-1|—}}
+|}
+
+===Goaltending===
+{| class="wikitable plainrowheaders" style="text-align:center;"
+|-
+!scope="col" rowspan="2"| {{abbr|No.|Jersey number}}
+!scope="col" rowspan="2"| Player
+!scope=colgroup colspan=10 | Regular season
+!scope=colgroup colspan=9 | Playoffs
+|-
+!scope="col" | {{abbr|GP|Games played}}
+!scope="col" | {{abbr|W|Wins}}
+!scope="col" | {{abbr|L|Losses}}
+!scope="col" | {{abbr|T|Ties}}
+!scope="col" | {{abbr|SA|Shots against}}
+!scope="col" | {{abbr|GA|Goals against}}
+!scope="col" | {{abbr|GAA|Goals against average}}
+!scope="col" | {{abbr|SV%|Save percentage}}
+!scope="col" | {{abbr|SO|Shutouts}}
+!scope="col" | {{abbr|TOI|Time on Ice}}
+!scope="col" | {{abbr|GP|Games played}}
+!scope="col" | {{abbr|W|Wins}}
+!scope="col" | {{abbr|L|Losses}}
+!scope="col" | {{abbr|SA|Shots against}}
+!scope="col" | {{abbr|GA|Goals against}}
+!scope="col" | {{abbr|GAA|Goals against average}}
+!scope="col" | {{abbr|SV%|Save percentage}}
+!scope="col" | {{abbr|SO|Shutouts}}
+!scope="col" | {{abbr|TOI|Time on Ice}}
+|-
+|scope="row"| 20 || align="left"| [[Ed Belfour]] || 62 || 37 || 20 || 5 || 1816 || 141 || 2.26 ||.922  || 7|| 3738 || 7 || 3 || 4 || 282 || 24 || 2.71 ||.915 || 0 || 532
+|-
+|scope="row"| 37 || align="left"| [[Trevor Kidd]] || 19 || 6 || 10 || 2 || 565 || 59 || 3.10 ||.896 || 0 || 1143 || — || — || — || — || — || — || — || — || —
+|-
+|scope="row"| 32 || align="left"| [[Mikael Tellqvist]] || 3 || 1 || 1 || 0 || 38 || 4 || 2.79 ||.895 || 0 || 86 || — || — || — || — || — || — || — || — || —
+|}
+
+==Awards and records==
+
+===Awards===
+{| class="wikitable"
+|-
+! scope="col" |Type
+! scope="col" |Award/honour
+! scope="col" |Recipient
+! scope="col" |Ref
+|-
+! scope="row" | League<br/><small>(annual)</small>
+| [[Lady Byng Trophy]]
+| [[Alexander Mogilny]]
+|<ref>{{cite web |title=Lady Byng Memorial Trophy |url=https://records.nhl.com/awards/trophies/lady-byng-memorial-trophy |website=records.nhl.com |access-date=August 9, 2022}}</ref>
+|-
+! scope="row" rowspan="3"| League<br/><small>(in-season)</small>
+| rowspan="2"| [[2003 National Hockey League All-Star Game|NHL All-Star Game]] selection
+| [[Ed Belfour]]{{efn|Belfour did not play and was replaced by [[Patrick Lalime]] of the [[Ottawa Senators]].<ref>{{cite web |title=NHL - Belfour, Leetch, Koivu all pull out of All-Star Game |url=https://www.espn.com/nhl/allstar2003/news/2003/0127/1499581.html |website=ESPN.com |access-date=December 22, 2022 |date=January 27, 2003}}</ref>}}
+| rowspan="2"|<ref>{{cite web |title=NHL - Naslund headlines All-Star additions |url=https://www.espn.com/nhl/allstar2003/news/2003/0116/1494055.html |website=ESPN.com |access-date=December 22, 2022 |date=January 16, 2003}}</ref>
+|-
+| [[Mats Sundin]]{{efn|Sundin did not play and was replaced by [[Miroslav Šatan]] of the [[Buffalo Sabres]].<ref>{{cite web |title=Sabres Going to the All Star Game |url=http://www.sabres.com/news/archives02/01.28.03.html |website=Buffalo Sabres |access-date=December 22, 2022 |archive-url=https://web.archive.org/web/20031010220214/http://www.sabres.com/news/archives02/01.28.03.html |archive-date=October 10, 2003 |date=January 28, 2003}}</ref>}}
+|-
+| NHL Player of the Week
+| Ed Belfour <small>(November 25)</small>
+|<ref>{{cite web |title=Belfour named NHL Player of the Week |url=http://www.mapleleafs.com/news/newsviewer.php?ID=943 |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20030201122806/http://www.mapleleafs.com/news/newsviewer.php?ID=943 |archive-date=February 1, 2003 |date=November 25, 2002}}</ref>
+|-
+! scope="row" rowspan="5"| Team
+| [[List of Toronto Maple Leafs award winners#Molson Cup|Molson Cup]]
+| Ed Belfour
+|<ref>Toronto Maple Leafs 2015–16 Media Guide, p.373</ref>
+|}
+
+===Milestones===
+{| class="wikitable"
+|-
+! scope="col" |Milestone
+! scope="col" |Player
+! scope="col" |Date
+! scope="col" |Ref
+|-
+! 400th goal
+| [[Mats Sundin]]
+| October 14, 2002
+|<ref>{{cite web |title=Late Lemieux Goal Stops Leafs |url=http://www.mapleleafs.com/story.ml?title=news&ctype=news&n=2913&e=AdminGroup |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20040307011950/http://www.mapleleafs.com/story.ml?title=news&ctype=news&n=2913&e=AdminGroup |archive-date=March 7, 2004 |date=October 14, 2002 |quote=The Maple Leafs regained the lead when Sundin scored his 400th career goal with 10:06 remaining in the second. He became the first Swedish player to accomplish the feat and 70th player overall.}}</ref>
+|-
+! rowspan=3| First game
+| [[Carlo Colaiacovo]]
+| October 23, 2002
+| rowspan=3|<ref>{{cite web |title=2002-03 NHL Debuts |url=https://www.hockey-reference.com/leagues/NHL_2003_debut.html |website=Hockey-Reference.com |access-date=October 13, 2024}}</ref>
+|-
+| [[Mikael Tellqvist]]
+| January 18, 2003
+|-
+| [[Matt Stajan]]
+| April 5, 2003
+|-
+! 1,000th point
+| Mats Sundin
+| March 10, 2003
+|<ref>{{cite web |title=Sundin Nets Point 1000 In Leafs Win |url=http://www.mapleleafs.com/story.ml?title=news&ctype=news&n=3228&e=AdminGroup |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20040307015003/http://www.mapleleafs.com/story.ml?title=news&ctype=news&n=3228&e=AdminGroup |archive-date=March 7, 2004 |date=March 11, 2003}}</ref>
+|-
+! 1,000th game played
+| Mats Sundin
+| March 24, 2003
+|<ref>{{cite web |last1=Ball |first1=Mike |title=Sundin Honoured, Leafs Play 60-Plus Again |url=http://www.mapleleafs.com/story.ml?title=news&ctype=news&n=3313&e=AdminGroup |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20030405074903/http://www.mapleleafs.com/story.ml?title=news&ctype=news&n=3313&e=AdminGroup |archive-date=April 5, 2003 |date=March 29, 2003}}</ref>
+|-
+! 400th win
+| [[Ed Belfour]]
+| April 1, 2003
+|<ref>{{cite web |title=Kaberle Gives Belfour His 400th |url=http://www.mapleleafs.com/story.ml?title=news&ctype=news&n=3321&e=AdminGroup |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20040422144420/http://www.mapleleafs.com/story.ml?title=news&ctype=news&n=3321&e=AdminGroup |archive-date=April 22, 2004 |date=April 1, 2003}}</ref>
+|}
+
+==Transactions==
+The Maple Leafs were involved in the following transactions from June 14, 2002, the day after the deciding game of the [[2002 Stanley Cup Finals]], through June 9, 2003, the day of the deciding game of the [[2003 Stanley Cup Finals]].<ref>{{cite web |title=Hockey Transactions Search Results |url=https://www.prosportstransactions.com/hockey/Search/SearchResults.php?Player=&Team=Maple+Leafs&BeginDate=2002-06-14&EndDate=2003-06-09&PlayerMovementChkBx=yes&submit=Search&start=0 |website=www.prosportstransactions.com |access-date=November 30, 2022}}</ref>
+
+===Trades===
+{| class="wikitable plainrowheaders" style="width: 50em;"
+|-
+! scope="col"| Date
+! scope="col" colspan="2"| Details
+! scope="col"| Ref
+|-
+! scope="row" rowspan=2| {{start date|2002|06|22}}
+| valign="top"|To [[2002–03 Calgary Flames season|Calgary Flames]]<hr>{{blist |3rd-round pick in [[2002 NHL entry draft|2002]] |5th-round pick in 2002}}
+| valign="top"|To Toronto Maple Leafs<hr>{{blist |3rd-round pick in 2002}}
+|<ref name="622trades">{{cite web |title=Draft Day Transactions |url=http://tsn.ca/nhl/2002draft/draft_trades.asp |website=TSN.ca |access-date=November 28, 2022 |archive-url=https://web.archive.org/web/20020808073541/http://tsn.ca/nhl/2002draft/draft_trades.asp |archive-date=August 8, 2002}}</ref>
+|- bgcolor="#eeeeee"
+| valign="top"|To [[2002–03 Nashville Predators season|Nashville Predators]]<hr>{{blist |3rd-round pick in [[2003 NHL entry draft|2003]]}}
+| valign="top"|To Toronto Maple Leafs<hr>{{blist |3rd-round pick in 2002}}
+| <ref name="622trades"/>
+|-
+! scope="row"| {{start date|2002|06|23}}
+| valign="top"|To [[2002–03 Vancouver Canucks season|Vancouver Canucks]]<hr>{{blist |[[Jeff Farkas]]}}
+| valign="top"|To Toronto Maple Leafs<hr>{{blist |[[Josh Holden]]}}
+|<ref>{{cite web |title=Leafs acquire rights to Josh Holden |url=http://www.mapleleafs.com:80/news/newsviewer.php?ID=734 |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20030207201201/http://www.mapleleafs.com:80/news/newsviewer.php?ID=734 |archive-date=February 7, 2003 |date=June 23, 2002}}</ref>
+|- bgcolor="#eeeeee"
+! scope="row"| {{start date|2002|06|25}}
+| valign="top"|To Vancouver Canucks<hr>{{blist |Future considerations{{efn|8th-round pick in 2003}}}}
+| valign="top"|To Toronto Maple Leafs<hr>{{blist |[[Ryan Bonni]]}}
+|<ref>{{cite web |title=Maple Leafs acquire Ryan Bonni |url=http://www.mapleleafs.com/news/newsviewer.php?ID=739 |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20020805074421/http://www.mapleleafs.com/news/newsviewer.php?ID=739 |archive-date=August 5, 2002 |date=June 25, 2002}}</ref>
+|-
+! scope="row" rowspan=2| {{start date|2002|06|30}}
+| valign="top"|To Calgary Flames<hr>{{blist |Rights to [[Curtis Joseph]]}}
+| valign="top"|To Toronto Maple Leafs<hr>{{blist |Conditional 8th-round pick in 2003}}
+|<ref>{{cite web |title=Curtis Joseph traded to Flames |url=http://www.mapleleafs.com/news/newsviewer.php?ID=744 |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20020805075613/http://www.mapleleafs.com/news/newsviewer.php?ID=744 |archive-date=August 5, 2002 |date=July 1, 2002}}</ref>
+|- bgcolor="#eeeeee"
+| valign="top"|To Nashville Predators<hr>{{blist |Rights to [[Tie Domi]]}}
+| valign="top"|To Toronto Maple Leafs<hr>{{blist |8th-round pick in 2003}}
+|<ref>{{cite web |title=Domi traded to Nashville |url=http://www.mapleleafs.com/news/newsviewer.php?ID=745 |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20021015021534/http://www.mapleleafs.com/news/newsviewer.php?ID=745 |archive-date=October 15, 2002 |date=July 1, 2002}}</ref>
+|-
+! scope="row"| {{start date|2002|07|18}}
+| valign="top"|To [[2002–03 Florida Panthers season|Florida Panthers]]<hr>{{blist |Rights to [[Dmitri Yushkevich]]}}
+| valign="top"|To Toronto Maple Leafs<hr>{{blist |Rights to [[Róbert Švehla|Robert Svehla]]}}
+|<ref>{{cite web |title=Maple Leafs complete trade with Florida Panthers |url=http://www.mapleleafs.com/news/newsviewer.php?ID=768 |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20020805081049/http://www.mapleleafs.com/news/newsviewer.php?ID=768 |archive-date=August 5, 2002 |date=July 18, 2002}}</ref>
+|- bgcolor="#eeeeee"
+! scope="row"| {{start date|2002|09|04}}
+| valign="top"|To Vancouver Canucks<hr>{{blist |[[Tomáš Mojžíš|Tomas Mojzis]]}}
+| valign="top"|To Toronto Maple Leafs<hr>{{blist |[[Brad Leeb]]}}
+|<ref>{{cite web |title=Maple Leafs acquire Brad Leeb |url=http://www.mapleleafs.com/news/newsviewer.php?ID=791 |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20021216233440/http://www.mapleleafs.com/news/newsviewer.php?ID=791 |archive-date=December 16, 2002 |date=September 4, 2002}}</ref>
+|-
+! scope="row"| {{start date|2002|12|31}}
+| valign="top"|To Nashville Predators<hr>{{blist |[[Bob Wren]]}}
+| valign="top"|To Toronto Maple Leafs<hr>{{blist |[[Nathan Perrott]]}}
+|<ref>{{cite web |title=Maple Leafs Acquire Nathan Perrott |url=http://www.mapleleafs.com/story.ml?title=press_releases&ctype=press_releases&n=3047&e=AdminGroup |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20031023233028/http://www.mapleleafs.com/story.ml?title=press_releases&ctype=press_releases&n=3047&e=AdminGroup |archive-date=October 23, 2003 |date=January 2, 2003}}</ref>
+|- bgcolor="#eeeeee"
+! scope="row"| {{start date|2003|03|05}}
+| valign="top"|To [[2002–03 San Jose Sharks season|San Jose Sharks]]<hr>{{blist |[[Brad Boyes]] |[[Alyn McCauley]] |1st-round pick in 2003}}
+| valign="top"|To Toronto Maple Leafs<hr>{{blist |[[Owen Nolan]]}}
+|<ref>{{cite web |title=Maple Leafs Obtain Owen Nolan From Sharks |url=http://www.mapleleafs.com/story.ml?title=press_releases&ctype=press_releases&n=3199&e=AdminGroup |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20031026235721/http://www.mapleleafs.com/story.ml?title=press_releases&ctype=press_releases&n=3199&e=AdminGroup |archive-date=October 26, 2003 |date=March 6, 2003}}</ref>
+|-
+! scope="row"| {{start date|2003|03|09}}
+| valign="top"|To [[2002–03 Carolina Hurricanes season|Carolina Hurricanes]]<hr>{{blist |2nd-round pick in [[2004 NHL entry draft|2004]]}}
+| valign="top"|To Toronto Maple Leafs<hr>{{blist |[[Glen Wesley]]}}
+|<ref>{{cite web |title=Maple Leafs Acquire Glen Wesley |url=http://www.mapleleafs.com/story.ml?title=press_releases&ctype=press_releases&n=3216&e=AdminGroup |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20031027001523/http://www.mapleleafs.com/story.ml?title=press_releases&ctype=press_releases&n=3216&e=AdminGroup |archive-date=October 27, 2003 |date=March 9, 2003}}</ref>
+|- bgcolor="#eeeeee"
+! scope="row" rowspan=2| {{start date|2003|03|11}}
+| valign="top"|To [[2002–03 Montreal Canadiens season|Montreal Canadiens]]<hr>{{blist |6th-round pick in 2003}}
+| valign="top"|To Toronto Maple Leafs<hr>{{blist |[[Doug Gilmour]]}}
+|<ref>{{cite web |title=Maple Leafs Obtain Former Captain |url=http://www.mapleleafs.com/story.ml?title=press_releases&ctype=press_releases&n=3242&e=AdminGroup |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20031027001734/http://www.mapleleafs.com/story.ml?title=press_releases&ctype=press_releases&n=3242&e=AdminGroup |archive-date=October 27, 2003 |date=March 11, 2003}}</ref>
+|-
+| valign="top"|To [[2002–03 Chicago Blackhawks season|Chicago Blackhawks]]<hr>{{blist |Future considerations{{efn|Chicago would receive either a 4th-round pick in 2003 or a 9th-round pick in 2003 and a 4th-round pick in 2004.<ref>{{cite web |title=Housley Traded To Toronto |url=http://www.chicagoblackhawks.com/team/index.cfm?cont_id=168471&right_include=toc_press_releases.cfm&right_cont_type_id=&right_cont_id= |website=Chicago Blackhawks |access-date=December 4, 2022 |archive-url=https://web.archive.org/web/20030629042908/http://www.chicagoblackhawks.com/team/index.cfm?cont_id=168471&right_include=toc_press_releases.cfm&right_cont_type_id=&right_cont_id= |archive-date=June 29, 2003 |date=March 11, 2003}}</ref>}}}}
+| valign="top"|To Toronto Maple Leafs<hr>{{blist |[[Phil Housley]]}}
+|<ref>{{cite web |title=Maple Leafs Obtain Phil Housley |url=http://www.mapleleafs.com/story.ml?title=press_releases&ctype=press_releases&n=3241&e=AdminGroup |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20031027001505/http://www.mapleleafs.com/story.ml?title=press_releases&ctype=press_releases&n=3241&e=AdminGroup |archive-date=October 27, 2003 |date=March 11, 2003}}</ref>
+|- bgcolor="#eeeeee"
+! scope="row"| {{start date|2003|05|29}}
+| valign="top"|To Carolina Hurricanes<hr>{{blist |[[Allan Rourke]]}}
+| valign="top"|To Toronto Maple Leafs<hr>{{blist |[[Harold Druken]]}}
+|<ref>{{cite web |title=Maple Leafs Acquire Two Players |url=http://www.mapleleafs.com/story.ml?title=press_releases&ctype=press_releases&n=3484&e=AdminGroup |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20030608201606/http://www.mapleleafs.com/story.ml?title=press_releases&ctype=press_releases&n=3484&e=AdminGroup |archive-date=June 8, 2003 |date=May 29, 2003}}</ref>
+|}
+
+===Players acquired===
+{| class="wikitable plainrowheaders"
+|- style="background:#ddd; text-align:center;"
+! Date || Player || Former team || Term || Via || Ref
+|-
+! scope="row"| {{start date|2002|07|02}}
+| [[Ed Belfour]] || [[Nashville Predators]] || 2-year || Free agency||<ref>{{cite web |title=Maple Leafs sign Ed Belfour |url=http://www.mapleleafs.com/news/newsviewer.php?ID=750 |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20021015052522/http://www.mapleleafs.com/news/newsviewer.php?ID=750 |archive-date=October 15, 2002 |date=July 2, 2002}}</ref><ref name="Contractstatus">{{cite web |title=Leafs players contract status |url=http://www.mapleleafs.com:80/news/newsviewer.php?ID=689 |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20021016002635/http://www.mapleleafs.com:80/news/newsviewer.php?ID=689 |archive-date=October 16, 2002 |date=August 26, 2002}}</ref>
+|-
+! scope="row"| {{start date|2002|07|12}}
+| [[Tie Domi]] || Nashville Predators || 3-year || Free agency||<ref>{{cite web |title=Maple Leafs agree to terms with Tie Domi |url=http://www.mapleleafs.com/news/newsviewer.php?ID=762 |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20020805080142/http://www.mapleleafs.com/news/newsviewer.php?ID=762 |archive-date=August 5, 2002 |date=July 12, 2002}}</ref><ref name="712signings">{{cite web |last1=Kerr |first1=Grant |title='Tie is our guy,' Domi returns to Leafs |url=https://www.theglobeandmail.com/sports/tie-is-our-guy-domi-returns-to-leafs/article25300573/ |website=The Globe and Mail |access-date=December 1, 2022 |language=en-CA |date=July 13, 2002}}</ref>
+|-
+! scope="row"| {{start date|2002|07|17}}
+| [[Tom Fitzgerald (ice hockey)|Tom Fitzgerald]] || [[Chicago Blackhawks]] || || Free agency||<ref>{{cite web |title=Maple Leafs sign Tom Fitzgerald |url=http://www.mapleleafs.com/news/newsviewer.php?ID=767 |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20020805202008/http://www.mapleleafs.com/news/newsviewer.php?ID=767 |archive-date=August 5, 2002 |date=July 17, 2002}}</ref>
+|-
+! scope="row"| {{start date|2002|07|24}}
+| [[Aaron Gavey]] || [[Minnesota Wild]] || multi-year || Free agency||<ref name="724signings">{{cite web |title=Leafs sign Aaron Gavey and Marc Moro |url=http://www.mapleleafs.com/news/newsviewer.php?ID=773 |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20020805202023/http://www.mapleleafs.com/news/newsviewer.php?ID=773 |archive-date=August 5, 2002 |date=July 24, 2002}}</ref>
+|-
+! scope="row"| {{start date|2002|07|31}}
+| [[Nathan Barrett (ice hockey)|Nathan Barrett]] || [[Lethbridge Hurricanes]] ([[Western Hockey League|WHL]]) || multi-year || Free agency||<ref>{{cite web |title=Leafs add free agent centre Nathan Barrett |url=http://www.mapleleafs.com/news/newsviewer.php?ID=778 |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20020805204148/http://www.mapleleafs.com/news/newsviewer.php?ID=778 |archive-date=August 5, 2002 |date=July 31, 2002}}</ref>
+|-
+! scope="row"| {{start date|2002|08|26}}
+| [[Trevor Kidd]] || [[Florida Panthers]] || 2-year || Free agency||<ref>{{cite web |title=Leafs sign Trevor Kidd |url=http://www.mapleleafs.com/news/newsviewer.php?ID=787 |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20021015013558/http://www.mapleleafs.com/news/newsviewer.php?ID=787 |archive-date=October 15, 2002 |date=August 26, 2002}}</ref><ref name="Contractstatus"/>
+|-
+! scope="row"| {{start date|2002|09|18}}
+| [[Tyson Marsh]] || [[Vancouver Giants]] (WHL) || || Free agency||<ref>{{cite web |title=TYSON MARSH |url=http://www.tsn.ca/nhl/teams/players/bio/?id=3316&hubname=nhl-maple_leafs |website=TSN.ca |access-date=December 1, 2022 |archive-url=https://web.archive.org/web/20070509215138/http://www.tsn.ca/nhl/teams/players/bio/?id=3316&hubname=nhl-maple_leafs |archive-date=May 9, 2007 |quote=18-Sep-02: Signed as a free agent by the Toronto Maple Leafs.}}</ref>
+|-
+! scope="row"| {{start date|2002|12|11}}
+| [[Harold Druken]] || [[Carolina Hurricanes]] || style="background:#ccc| || Waivers ||<ref>{{cite web |title=Maple Leafs claim Harold Druken off waivers |url=http://www.mapleleafs.com/news/newsviewer.php?ID=974 |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20030207163703/http://www.mapleleafs.com/news/newsviewer.php?ID=974 |archive-date=February 7, 2003 |date=December 11, 2002}}</ref>
+|}
+
+===Players lost===
+{| class="wikitable plainrowheaders"
+|- style="background:#ddd; text-align:center;"
+! Date || Player || New team || Via{{efn|In parentheses is the player's free agency group on July 1 if applicable.<ref name="falist">{{cite web |title=NHL FREE-AGENT LIST |url=https://www.heraldextra.com/sports/2002/jul/02/nhl/ |website=Daily Herald |access-date=November 30, 2022 |date=July 2, 2002}}</ref>}} || Ref
+|-
+! scope="row"| {{start date|2002|07|08}}
+| [[Corey Schwab]] || [[New Jersey Devils]] || Free agency (III) ||<ref>{{cite web |title=Devils sign free agent Schwab |url=https://www.upi.com/Archives/2002/07/08/Devils-sign-free-agent-Schwab/4971026100800/ |website=UPI |access-date=December 1, 2022 |date=July 8, 2002}}</ref>
+|-
+! scope="row"| {{start date|2002|07|12}}
+| [[Nathan Dempsey]] || [[Chicago Blackhawks]] || Free agency (VI) || <ref name="712signings"/>
+|-
+! scope="row"| {{start date|2002|07|17}}
+| [[Donald MacLean (ice hockey)|Donald MacLean]] || [[Columbus Blue Jackets]] || Free agency (VI) ||<ref>{{cite web |title=SPORTS TRANSACTIONS FOR WEDNESDAY, JULY 17+ |url=https://www.upi.com/Archives/2002/07/17/SPORTS-TRANSACTIONS-FOR-WEDNESDAY-JULY-17/5591026878400/ |website=UPI |access-date=December 1, 2022 |date=July 17, 2002 |quote=Columbus Blue Jackets -- …signed center Don MacLean to a one-year contract.}}</ref>
+|-
+! scope="row"| {{start date|2002|10|09}}
+| [[Garry Valk]] || Chicago Blackhawks || Free agency (III) ||<ref>{{cite web |title=+SPORTS TRANSACTIONS FOR WEDNESDAY, OCTOBER 9+ |url=https://www.upi.com/Archives/2002/10/09/SPORTS-TRANSACTIONS-FOR-WEDNESDAY-OCTOBER-9/8411034136000/ |website=UPI |access-date=December 1, 2022 |date=October 9, 2002 |quote=Chicago Blackhawks - Signed free agent right wing Garry Valk, who had been with the Toronto Maple Leafs.}}</ref>
+|-
+! scope="row"| {{start date|2002|11|04}}
+| [[Tom Barrasso]] || [[St. Louis Blues]] || Free agency (III) ||<ref>{{cite web |title=Blues sign Tom Barrasso |url=https://www.upi.com/Sports_News/2002/11/04/Blues-sign-Tom-Barrasso/60011036453489/ |website=UPI |access-date=December 1, 2022 |date=November 4, 2002}}</ref>
+|-
+! scope="row"| {{start date|2002|12|17}}
+| [[Cory Cross]] || [[New York Rangers]] || Free agency (III) ||<ref>{{cite web |title=Rangers Agree to Terms with Defenseman Cory Cross |url=http://newyorkrangers.com/pressbox/pressreleases.asp?id=760 |website=New York Rangers |access-date=November 6, 2023 |archive-url=https://web.archive.org/web/20040813205103/http://newyorkrangers.com/pressbox/pressreleases.asp?id=760 |archive-date=August 13, 2004 |date=December 17, 2002}}</ref>
+|-
+! scope="row"| {{start date|2003|01|17}}
+| [[Harold Druken]] || [[Carolina Hurricanes]] || Waivers ||<ref>{{cite web |title=Druken reclaimed by Carolina |url=http://www.mapleleafs.com/news/newsviewer.php?ID=1036 |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20030207184824/http://www.mapleleafs.com/news/newsviewer.php?ID=1036 |archive-date=February 7, 2003 |date=January 17, 2003}}</ref>
+|-
+! scope="row"| {{start date|2003|04|15}}
+| [[Shayne Corson]] || style="background:#ccc| || Retirement ||<ref>{{cite web |title=Shayne Corson quits Toronto |url=https://www.upi.com/Sports_News/2003/04/16/Shayne-Corson-quits-Toronto/98411050473743/ |website=UPI |access-date=December 1, 2022 |date=April 16, 2003}}</ref><ref>{{cite web |title=Stars agree to terms with Shayne Corson |url=http://www.dallasstars.com/news/newsDetail.jsp?id=1612 |website=Dallas Stars |access-date=November 25, 2023 |archive-url=https://web.archive.org/web/20040611160636/http://www.dallasstars.com/news/newsDetail.jsp?id=1612 |archive-date=June 11, 2004 |date=February 18, 2004 |quote=Corson officially announced his retirement on April 15, 2003.}}</ref>
+|}
+
+===Signings===
+{| class="wikitable plainrowheaders"
+|- style="background:#ddd; text-align:center;"
+! Date || Player || Term || Contract type || Ref
+|-
+! scope="row"| {{start date|2002|07|14}}
+| [[Ric Jackman]] || || Re-signing ||<ref>{{cite web |title=RICHARD JACKMAN |url=http://tsn.ca/nhl/teams/player_bio.asp?player_id=1729&hubName=TOR |website=TSN.ca |access-date=December 1, 2022 |archive-url=https://web.archive.org/web/20021127030324/http://tsn.ca/nhl/teams/player_bio.asp?player_id=1729&hubName=TOR |archive-date=November 27, 2002 |quote=14-Jul-02: Re-signed by the Toronto Maple Leafs.}}</ref>
+|-
+! scope="row" rowspan=2| {{start date|2002|07|16}}
+| [[Wade Belak]] || || Re-signing ||<ref name="716signings">{{cite web |title=Maple Leafs sign McCauley and Belak |url=http://www.mapleleafs.com/news/newsviewer.php?ID=766 |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20020805201216/http://www.mapleleafs.com/news/newsviewer.php?ID=766 |archive-date=August 5, 2002 |date=July 16, 2002}}</ref>
+|-
+| [[Alyn McCauley]] || || Re-signing || <ref name="716signings"/>
+|-
+! scope="row"| {{start date|2002|07|17}}
+| [[Jonas Höglund]] || 1-year || Re-signing ||<ref>{{cite web |title=Leafs re-sign Hoglund |url=http://www.tsn.ca/nhl/teams/tor/readstory.asp?story_id=2427101 |website=TSN.ca |access-date=December 1, 2022 |archive-url=https://web.archive.org/web/20020806214033/http://www.tsn.ca/nhl/teams/tor/readstory.asp?story_id=2427101 |archive-date=August 6, 2002 |date=July 17, 2002}}</ref>
+|-
+! scope="row"| {{start date|2002|07|18}}
+| [[Róbert Švehla]] || 1-year{{efn|Svehla agreed to a series of one-year contracts.}} || Re-signing ||<ref>{{cite web |last1=McCauley |first1=John |title=Quinn Says Svehla Better Than Yushky |url=http://www.mapleleafs.com/story.ml?title=news&ctype=news&n=2813&e=AdminGroup |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20040307005040/http://www.mapleleafs.com/story.ml?title=news&ctype=news&n=2813&e=AdminGroup |archive-date=March 7, 2004 |date=July 18, 2002 |quote=(Svehla) has agreed to a series of one-year deals with Toronto}}</ref>
+|-
+! scope="row"| {{start date|2002|07|24}}
+| [[Marc Moro]] || multi-year || Re-signing || <ref name="724signings"/>
+|-
+! scope="row"| {{start date|2002|07|29}}
+| [[Aki Berg]] || multi-year || Re-signing ||<ref>{{cite web |title=Leafs re-sign Berg |url=http://www.mapleleafs.com/news/newsviewer.php?ID=776 |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20020805203018/http://www.mapleleafs.com/news/newsviewer.php?ID=776 |archive-date=August 5, 2002 |date=July 29, 2002}}</ref>
+|-
+! scope="row"| {{start date|2002|09|16}}
+| [[Dmytro Yakushyn]] || || Re-signing ||<ref>{{cite web |title=DMITRI YAKUSHIN |url=http://tsn.ca/nhl/teams/player_bio.asp?player_id=1826&hubName=TOR |website=TSN.ca |access-date=December 1, 2022 |archive-url=https://web.archive.org/web/20021126193949/http://tsn.ca/nhl/teams/player_bio.asp?player_id=1826&hubName=TOR |archive-date=November 26, 2002 |quote=16-Sep-02: Re-signed by the Toronto Maple Leafs.}}</ref>
+|-
+! scope="row" rowspan=4| {{start date|2002|09|18}}
+| [[Nik Antropov]] || || Re-signing ||<ref>{{cite web |title=NIKOLAI ANTROPOV |url=http://www.tsn.ca/nhl/teams/player_bio.asp?player_id=1012&hubName=TOR |website=TSN.ca |access-date=December 1, 2022 |archive-url=https://web.archive.org/web/20021212142732/http://www.tsn.ca/nhl/teams/player_bio.asp?player_id=1012&hubName=TOR |archive-date=December 12, 2002 |quote=18-Sep-02: Re-signed by the Toronto Maple Leafs.}}</ref>
+|-
+| [[Ryan Bonni]] || || Re-signing ||<ref>{{cite web |title=RYAN BONNI |url=http://www.tsn.ca/nhl/teams/player_bio.asp?player_id=775&hubName=TOR |website=TSN.ca |access-date=December 1, 2022 |archive-url=https://web.archive.org/web/20030626055320/http://www.tsn.ca/nhl/teams/player_bio.asp?player_id=775&hubName=TOR |archive-date=June 26, 2003 |quote=18-Sep-02: Re-signed by the Toronto Maple Leafs.}}</ref>
+|-
+| [[Josh Holden]] || || Re-signing ||<ref>{{cite web |title=JOSH HOLDEN |url=http://www.tsn.ca/nhl/teams/player_bio.asp?player_id=1724&hubName=TOR |website=TSN.ca |access-date=December 1, 2022 |archive-url=https://web.archive.org/web/20021224094941/http://www.tsn.ca/nhl/teams/player_bio.asp?player_id=1724&hubName=TOR |archive-date=December 24, 2002 |quote=18-Sep-02: Re-signed by the Toronto Maple Leafs.}}</ref>
+|-
+| [[Brad Leeb]] || || Re-signing ||<ref>{{cite web |title=BRAD LEEB |url=https://www.tsn.ca/nhl/teams/player_bio.asp?player_id=2019&hubName=TOR |website=TSN.ca |access-date=December 9, 2022 |archive-url=https://web.archive.org/web/20030105105040/https://www.tsn.ca/nhl/teams/player_bio.asp?player_id=2019&hubName=TOR |archive-date=January 5, 2003 |quote=18-Sep-02: Re-signed by the Toronto Maple Leafs.}}</ref>
+|-
+! scope="row"| {{start date|2002|10|07}}
+| [[Carlo Colaiacovo]] || multi-year || Entry-level ||<ref>{{cite web |title=Leafs sign Colaiacovo to multi-year deal |url=http://www.mapleleafs.com/news/newsviewer.php?ID=853 |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20030207234726/http://www.mapleleafs.com/news/newsviewer.php?ID=853 |archive-date=February 7, 2003 |date=October 7, 2002}}</ref>
+|-
+! scope="row"| {{start date|2003|02|18}}
+| [[Gary Roberts (ice hockey)|Gary Roberts]] || 1-year || Extension ||<ref>{{cite web |title=Maple Leafs Re-Sign Gary Roberts |url=http://www.mapleleafs.com/story.ml?title=press_releases&ctype=PRESS_RELEASES&n=3145&e=AdminGroup |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20031023225905/http://www.mapleleafs.com/story.ml?title=press_releases&ctype=PRESS_RELEASES&n=3145&e=AdminGroup |archive-date=October 23, 2003 |date=February 18, 2003}}</ref>
+|-
+! scope="row"| {{start date|2003|03|25}}
+| [[Brendan Bell (ice hockey)|Brendan Bell]] || multi-year || Entry-level ||<ref>{{cite web |title=Maple Leafs Sign Brendan Bell |url=http://www.mapleleafs.com/story.ml?title=press_releases&ctype=press_releases&n=3303&e=AdminGroup |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20031027002351/http://www.mapleleafs.com/story.ml?title=press_releases&ctype=press_releases&n=3303&e=AdminGroup |archive-date=October 27, 2003 |date=March 25, 2003}}</ref>
+|-
+! scope="row"| {{start date|2003|04|03}}
+| [[Matt Stajan]] || 3-year || Entry-level ||<ref>{{cite web |title=Maple Leafs Agree To Terms With Matt Stajan |url=http://www.mapleleafs.com/story.ml?title=press_releases&ctype=press_releases&n=3330&e=AdminGroup |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20030814183922/http://www.mapleleafs.com/story.ml?title=press_releases&ctype=press_releases&n=3330&e=AdminGroup |archive-date=August 14, 2003 |date=April 4, 2003}}</ref>
+|-
+! scope="row"| {{start date|2003|04|08}}
+| David Turoň || multi-year || Entry-level ||<ref>{{cite web |title=Maple Leafs Agree To Terms With David Turon |url=http://www.mapleleafs.com/story.ml?title=press_releases&ctype=press_releases&n=3371&e=AdminGroup |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20031027003330/http://www.mapleleafs.com/story.ml?title=press_releases&ctype=press_releases&n=3371&e=AdminGroup |archive-date=October 27, 2003 |date=April 8, 2003}}</ref>
+|-
+! scope="row"| {{start date|2003|05|07}}
+| [[Kyle Wellwood]] || || Entry-level ||<ref>{{cite web |title=Maple Leafs Agree To Terms With Kyle Wellwood |url=http://www.mapleleafs.com/story.ml?title=press_releases&ctype=press_releases&n=3439&e=AdminGroup |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20031027004834/http://www.mapleleafs.com/story.ml?title=press_releases&ctype=press_releases&n=3439&e=AdminGroup |archive-date=October 27, 2003 |date=May 7, 2003}}</ref>
+|-
+! scope="row"| {{start date|2003|05|29}}
+| [[Pierre Hedin]] || multi-year || Entry-level ||<ref>{{cite web |title=Maple Leafs Sign Pierre Hedin |url=http://www.mapleleafs.com/story.ml?title=press_releases&ctype=press_releases&n=3483&e=AdminGroup |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20031027004110/http://www.mapleleafs.com/story.ml?title=press_releases&ctype=press_releases&n=3483&e=AdminGroup |archive-date=October 27, 2003 |date=May 29, 2003}}</ref>
+|-
+! scope="row"| {{start date|2003|06|09}}
+| [[Ian White (ice hockey)|Ian White]] || || Entry-level ||<ref>{{cite web |title=Maple Leafs Agree Terms With Ian White |url=http://www.mapleleafs.com/story.ml?title=press_releases&ctype=press_releases&n=3501&e=AdminGroup |website=Toronto Maple Leafs |access-date=November 9, 2023 |archive-url=https://web.archive.org/web/20031027004341/http://www.mapleleafs.com/story.ml?title=press_releases&ctype=press_releases&n=3501&e=AdminGroup |archive-date=October 27, 2003 |date=June 9, 2003}}</ref>
+|}
+
+==Draft picks==
+Toronto's draft picks at the [[2002 NHL entry draft]] held at the [[Air Canada Centre]] in [[Toronto]], [[Ontario]].<ref>{{cite web |title=2002 NHL Entry Draft Picks at hockeydb.com |url=https://www.hockeydb.com/ihdb/draft/nhl2002e.html |website=hockeyDB.com |access-date=December 23, 2022}}</ref>
+
+{| class="wikitable"
+|- align="center"
+! bgcolor="#DDDDFF" width="4.0%" | Round
+! bgcolor="#DDDDFF" width="4.0%" | #
+! bgcolor="#DDDDFF" width="21.0%" | Player
+! bgcolor="#DDDDFF" width="14.5%" | Nationality
+! bgcolor="#DDDDFF" width="50.0%" | College/Junior/Club team (League)
+|-
+|1||24||[[Alexander Steen]]||{{SWE}}||[[Frölunda HC]] ([[Swedish Hockey League|Sweden]])
+|-
+|2||57||[[Matt Stajan]]||{{CAN}}||[[Belleville Bulls]] ([[Ontario Hockey League|OHL]])
+|-
+|3||74||[[Todd Ford]]||{{CAN}}||[[Swift Current Broncos]] ([[Western Hockey League|WHL]])
+|-
+|3||88||Dominic D'Amour||{{CAN}}||[[Gatineau Olympiques|Hull Olympiques]] ([[Quebec Major Junior Hockey League|QMJHL]])
+|-
+|4||122||David Turoň||{{CZE}}||[[AZ Havířov|Femax Havířov]] ([[1st Czech Republic Hockey League|Czech Republic]])
+|-
+|6||191||[[Ian White (ice hockey)|Ian White]]||{{CAN}}||Swift Current Broncos (WHL)
+|-
+|7||222||Scott May||{{CAN}}||[[Ohio State Buckeyes men's ice hockey|Ohio State University]] ([[Central Collegiate Hockey Association|CCHA]])
+|-
+|8||254||[[Jarkko Immonen]]||{{FIN}}||[[JYP Jyväskylä|JYP]] ([[Liiga|Finland]])
+|-
+|9||285||[[Staffan Kronwall]]||{{SWE}}||[[Huddinge IK]] (Sweden)
+|}
+
+==See also==
+* [[2002–03 NHL season]]
+
+==Notes==
+{{notelist}}
+
+==References==
+{{refbegin}}
+*{{cite web |title=Toronto Maple Leafs 2002-03 roster and scoring statistics at hockeydb.com |url=https://www.hockeydb.com/ihdb/stats/leagues/seasons/teams/0000382003.html |website=www.hockeydb.com |access-date=December 12, 2022}}
+*{{cite web |title=2002-03 Toronto Maple Leafs Roster and Statistics |url=https://www.hockey-reference.com/teams/TOR/2003.html |website=Hockey-Reference.com |access-date=December 12, 2022}}
+{{refend}}
+{{Reflist}}
+
+{{Toronto Maple Leafs}}
+{{Toronto Maple Leafs seasons}}
+{{2002–03 NHL season by team}}
+
+{{DEFAULTSORT:2002-03 Toronto Maple Leafs Season}}
+[[Category:2002–03 NHL season by team|Toronto Maple Leafs season, 2002-03]]
+[[Category:Toronto Maple Leafs seasons]]
+[[Category:2002–03 in Canadian ice hockey by team|Toronto]]

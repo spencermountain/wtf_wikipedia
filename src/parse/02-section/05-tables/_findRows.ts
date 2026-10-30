@@ -16,7 +16,7 @@ const cleanup = function (lines) {
 //turn newline seperated into '|-' seperated
 const findRows = function (lines) {
   let rows = []
-  let row = []
+  let row: string[] & { attrs?: string } = []
   lines = cleanup(lines)
   for (let i = 0; i < lines.length; i += 1) {
     let line = lines[i]

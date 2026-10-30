@@ -1,6 +1,7 @@
 import makeResult from '../../templates/result.ts'
 import defaults from '../../../_lib/defaults.ts'
 import tableParser from '../05-tables/parse.ts'
+import parseTemplates from '../../templates/index.ts'
 import type { DocInfo, SectionData } from '../../../types/index.ts'
 //sports game-logs are rows wrapped in start/end templates, not real tables:
 //  old: https://en.wikipedia.org/wiki/Template:MLB_game_log_section
@@ -67,12 +68,12 @@ const legacyHeadings = function (named) {
 
 // read named + positional params from the opening template
 const parseOpener = function (inner) {
-  const named = {}
-  const positional = []
+  const named: Record<string, string> = {}
+  const positional: string[] = []
   splitParams(inner)
     .slice(1) //drop the template name
     .forEach((p) => {
-      const m = p.match(/^ *([a-z][a-z0-9 _-]*?) *=([\s\S]*)/i)
+      const m = p.match(/^ *([a-z][\w-]*) *=([\s\S]*)/i)
       if (m) {
         named[m[1].toLowerCase()] = m[2].trim()
       } else if (p.trim()) {
@@ -85,8 +86,8 @@ const parseOpener = function (inner) {
 // keep each row flat, plus win/loss styling + link targets when present
 const simplifyRows = function (rows) {
   return rows.map((row) => {
-    const out = {}
-    let links = null
+    const out: Record<string, unknown> = {}
+    let links: Record<string, string> | null = null
     Object.keys(row).forEach((k) => {
       out[k] = row[k].text || ''
       const cellLinks = row[k].links
@@ -105,13 +106,20 @@ const simplifyRows = function (rows) {
   })
 }
 
-const parseLog = function (wiki, opts) {
+const parseLog = function (wiki, section, opts) {
   const open = wiki.match(openReg)
   const inner = wiki.slice(open.index + 2, templateEnd(wiki, open.index) - 2)
   const { named, positional } = parseOpener(inner)
   // modern templates list their column headings as positional params
   const headings = positional.length > 1 ? positional : legacyHeadings(named)
-  const rowText = wiki.slice(templateEnd(wiki, open.index)).replace(closeReg, '')
+  let rowText = wiki.slice(templateEnd(wiki, open.index)).replace(closeReg, '')
+  // html-syntax runs after this stage, so drop inline formatting tags ourselves
+  rowText = rowText.replace(/<\/?(?:span|small|big|sup|sub|center|[biu])[^>]*>/gi, '')
+  // rows still hold inline templates, which single-pipe cell parsing would garble
+  const parsed = parseTemplates(rowText, opts)
+  section.templates.push(...parsed.templates)
+  section.references.push(...parsed.references)
+  rowText = parsed.remaining
   const table = '{|\n! ' + headings.join(' !! ') + '\n' + rowText + '\n|}'
   const rows = simplifyRows(tableParser(table, opts).rows || [])
   const data: { rows: object[]; title?: string } = { rows }
@@ -132,7 +140,7 @@ const parseGameLogs = function (section: SectionData, opts: DocInfo = defaults) 
     }
     const end = close.index + close[0].length
     const wiki = text.slice(open.index, end)
-    section.templates.push(makeResult(wiki, 'game log section', parseLog(wiki, opts), '', opts))
+    section.templates.push(makeResult(wiki, 'game log section', parseLog(wiki, section, opts), '', opts))
     out += text.slice(0, open.index)
     text = text.slice(end)
     open = text.match(openReg)

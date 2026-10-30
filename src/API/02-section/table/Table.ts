@@ -39,8 +39,9 @@ class Table {
         result[key] = row[key].text || ''
       })
       // carry-over any row attributes, still hidden from key-iteration
-      if (row._attrs) {
-        Object.defineProperty(result, '_attrs', { value: row._attrs, enumerable: false })
+      const attrs = (row as { _attrs?: string })._attrs
+      if (attrs) {
+        Object.defineProperty(result, '_attrs', { value: attrs, enumerable: false })
       }
       return result
     })

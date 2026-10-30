@@ -1,17 +1,14 @@
 /* eslint-disable no-console, no-unused-vars */
-import wtf from '../../src/API/index.js'
+import wtf from '../../src/index.ts'
 import { nhl, mlb } from './src/index.js'
 wtf.extend(mlb)
 wtf.extend(nhl)
 
-wtf.nhlSeason('Washington Capitals', 2017).then((res) => {
-  console.log(res)
-})
-// let res = await wtf.mlbSeason('Washington Nationals', 2017)
+let res = await wtf.nhlSeason('Toronto Maple Leafs', 2024)
+console.log(res.standings)
+console.log(res.games.slice(0, 3))
 
-const str = `
-`
+// let res = await wtf.mlbSeason('Toronto Blue Jays', 2025)
 
-// let doc = wtf(str)
+// let doc = wtf(`...wikitext...`, { title: '2025 Toronto Blue Jays season' })
 // console.log(doc.mlbSeason())
-// console.log(doc.templates()[0].json())

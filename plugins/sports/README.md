@@ -2,7 +2,7 @@
   <div><b>wtf-plugin-sports</b></div>
   <img src="https://cloud.githubusercontent.com/assets/399657/23590290/ede73772-01aa-11e7-8915-181ef21027bc.png" />
 
-  <div>a WIP plugin for <a href="https://github.com/spencermountain/wtf_wikipedia/">wtf_wikipedia</a></div>
+  <div>a sports-season plugin for <a href="https://github.com/spencermountain/wtf_wikipedia/">wtf_wikipedia</a></div>
   
   <!-- npm version -->
   <a href="https://npmjs.org/package/wtf-plugin-sports">
@@ -19,101 +19,76 @@
   <code>npm install wtf-plugin-sports</code>
 </div>
 
-```js
-import wtf from 'wtf_wikipedia'
-import {mlb, nhl} from 'wtf-plugin-sports'
-wtf.extend(nhl)
-
-let res = await wtf.nhlSeason('Toronto Maple Leafs', 2018)
-```
-
-### MLB
-
-wtf-mlb gets structured data for mlb baseball teams, supports a bunch of different variants of mlb game log variations, and tries to cleanup some complicated parts of wikipedia sometimes in the wild.
+Wikipedia keeps surprisingly-good game-by-game data for every pro sports team,
+but it lives in hard-to-parse game-log tables and templates, whose formats have
+drifted over the years. This plugin absorbs that - row-colour win/loss markers,
+`{{Game-won}}` templates, visitor/home vs opponent columns, old and new game-log
+templates - and returns the same tidy schema for any season since the 1990s.
 
 ```js
 import wtf from 'wtf_wikipedia'
-import {mlb} from 'wtf-plugin-sports'
+import { mlb, nhl } from 'wtf-plugin-sports'
 wtf.extend(mlb)
-
-wtf.mlbSeason('Toronto Blue Jays', 2018).then((data) => {
-  console.log(data)
-  /*{
-  games: [{
-      date: 'April 1',
-      team: 'Reds',
-      home: false,
-      result: { us: 6, them: 5, win: true },
-      record: { wins: 3, losses: 0, games: 3
-    },
-    ...
-  ],
-  postseason: [...],
-  roster: [],
-  draftPicks: [],
-  playerStats: [] 
-}*/
-})
-```
-
-<div align="center">
-  <h2><a href="https://observablehq.com/@spencermountain/wikipedia-baseball-table-parser">Demo</a></h2>
-</div>
-
-### NHL
-
-wtf-nhl gets structured data for nhl hockey teams, supports a bunch of different variants of nhl game log variations, and tries to cleanup some complicated parts of wikipedia sometimes in the wild.
-
-```js
-import wtf from 'wtf_wikipedia'
-import {nhl} from 'wtf-plugin-sports'
 wtf.extend(nhl)
 
-wtf.nhlSeason('Toronto Maple Leafs', 2018).then((data) => {
-  console.log(data)
-  /*{
-  games: [
-    { 
-      game: 82,
-      date: 'April 7 2018',
-      opponent: 'Montreal Canadiens',
-      result: {
-        "us": 4,
-        "them": 2
-      },
-      overtime: false,
-      record: {
-        "wins": 49,
-        "losses": 26,
-        "ties": 7,
-        "games": 82
-      },
-      attendance: null,
-      points: 105,
-      win: true 
-    },
-    ...
-  ],
-  roster: [
-    {
-      "name": "Ron Hainsey",
-      "games": 80,
-      "goals": 4,
-      "assists": 19,
-      "points": 23,
-      "plusMinus": 12
-    },
-    ...
-  ],
-}*/
-})
+let season = await wtf.nhlSeason('Toronto Maple Leafs', 2024)
+season.standings.record
+// { wins: 52, losses: 26, otLosses: 4, games: 82, winPct: 0.634 }
+season.games[8]
+/* {
+  game: 9,
+  date: 'October 26 2024',
+  opponent: 'Boston Bruins',
+  home: false,
+  outcome: 'otl',
+  win: false,
+  result: { us: 3, them: 4 },
+  overtime: true,
+  record: { wins: 4, losses: 4, otLosses: 1, games: 9, winPct: 0.444 },
+  attendance: 17850,
+  points: 9,
+  decision: 'Stolarz'
+} */
+season.playoffs // one array of games per series
+season.skaters // [{ name, games, goals, assists, points, plusMinus }]
+season.goalies // [{ name, games, wins, losses, savePct, ... }]
 ```
 
-<div align="center">
-  <h2><a href="https://observablehq.com/@spencermountain/wtf-plugin-nhl">Demo</a></h2>
-</div>
+```js
+let season = await wtf.mlbSeason('Toronto Blue Jays', 2025)
+season.games[0]
+/* {
+  game: 1,
+  date: 'March 27 2025',
+  opponent: 'Baltimore Orioles',
+  home: true,
+  outcome: 'loss',
+  win: false,
+  result: { us: 2, them: 12 },
+  record: { wins: 0, losses: 1, games: 1, winPct: 0 },
+  attendance: 40734,
+  pitchers: { win: 'Eflin', loss: 'Berríos', save: null },
+  gamesBack: '1'
+} */
+season.postseason // one array of games per series
+season.roster // {{MLBplayer}} rows
+season.playerStats // { batters: [...], pitchers: [...] }
+```
 
+Each game's `outcome` is one of `win`, `loss`, `otl`, `tie`, `postponed`, or
+`null` - read from the row's styling when available, or inferred from the
+running record column. `win` is a convenience boolean (`null` when undecided).
 
-work-in-progress
+Team names resolve across renames and relocations - asking for the
+`('Cleveland Guardians', 2015)` season fetches the Indians page, and
+`('Arizona Coyotes', 2026)` finds the Utah Mammoth. Old names work too.
+
+Both methods also hang off any parsed document:
+
+```js
+let doc = await wtf.fetch('2002–03 Toronto Maple Leafs season')
+doc.nhlSeason().season.record
+// { wins: 44, losses: 28, ties: 7, otLosses: 3, games: 82, winPct: 0.537 }
+```
 
 MIT

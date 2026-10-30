@@ -1,0 +1,775 @@
+{{Short description|National Hockey League season}}
+{{Use Canadian English|date=March 2026}}
+{{Use mdy dates|date=July 2024}}
+{{Infobox ice hockey team season
+| Season = 2024–25
+| year = 2024
+| Team = Toronto Maple Leafs
+| League = NHL
+| Division = [[Atlantic Division (NHL)|Atlantic]]
+| DivisionRank = 1st
+| Conference = [[Eastern Conference (NHL)|Eastern]]
+| ConferenceRank = 2nd
+| Record = 52–26–4
+| HomeRecord = 27–13–1
+| RoadRecord = 25–13–3
+| GoalsFor = 268
+| GoalsAgainst = 231
+| GeneralManager = [[Brad Treliving]]
+| Coach = [[Craig Berube]]
+| Captain = [[Auston Matthews]]
+| AltCaptain = [[Mitch Marner]]<br>[[Morgan Rielly]]<br>[[John Tavares]]
+| Arena = [[Scotiabank Arena]]
+| Attendance = 18,829<ref name="202425attendance">{{cite web |title=National Hockey League 2024-25 Attendance Graph |url=https://www.hockeydb.com/nhl-attendance/att_graph_season.php?lid=NHL1927&sid=2025 |website=hockeydb.com |access-date=March 2, 2026}}</ref>
+| MinorLeague = [[Toronto Marlies]] ([[American Hockey League|AHL]])<br />[[Cincinnati Cyclones]] ([[ECHL]])
+| GoalsLeader = [[William Nylander]] (45)
+| AssistsLeader = [[Mitch Marner]] (75)
+| PointsLeader = Mitch Marner (102)
+| PlusMinusLeader = [[Christopher Tanev]] (+31)
+| PIMLeader = [[Max Domi]] (76)
+| WinsLeader = [[Joseph Woll]] (27)
+| GAALeader = [[Anthony Stolarz]] (2.14)
+| DivisionWin = yes
+| PresidentsTrophy = 
+| ConferenceWin = 
+| StanleyCup = 
+}}
+The '''2024–25 Toronto Maple Leafs season''' was the franchise's 108th season (107th season of play) in the [[National Hockey League]] (NHL).<ref>{{cite web |last1=Marion |first1=Laurie |title=2024-25 Toronto Maple Leafs Schedule; Printable, PDF Format - Sports Brackets |url=https://sportsbrackets.net/2024/08/12/2024-25-toronto-maple-leafs-lightning-schedule-printable-pdf-format/ |website=Sports Brackets |publisher=NHL |access-date=October 10, 2024 |date=August 12, 2024}}</ref>
+
+[[Craig Berube]] was hired as head coach of the [[Toronto Maple Leafs]] on May 17, 2024, replacing [[Sheldon Keefe]] after their first-round exit in the [[2024 Stanley Cup playoffs]].<ref>{{cite web |url=https://www.nhl.com/news/toronto-maple-leafs-hire-craig-berube-as-coach |title=Berube hired as Maple Leafs coach, replaces Keefe |website=NHL.com |date=May 17, 2024 |access-date=May 17, 2024}}</ref>
+
+On April 2, the [[ECHL]] announced that they had terminated the membership of Toronto's affiliate, the [[Newfoundland Growlers]]. The Growlers were experiencing financial difficulties and failure to fulfill financial obligations under ECHL rules.<ref>{{Cite web |title=ECHL's Newfoundland Growlers terminated by league |url=https://www.sportsnet.ca/nhl/echls-newfoundland-growlers-terminated-by-league/ |access-date=July 25, 2024 |website=Sportsnet.ca}}</ref> The Maple Leafs announced on July 3, that the [[Cincinnati Cyclones]] would be their new ECHL affiliate.<ref>{{Cite web |agency=The Canadian Press |date=July 3, 2024 |title=NHL's Toronto Maple Leafs affiliate with ECHL's Cincinnati Cyclones |url=https://www.tsn.ca/nhl/nhl-s-toronto-maple-leafs-affiliate-with-echl-s-cincinnati-cyclones-1.2144024 |access-date=July 25, 2024 |website=TSN}}</ref>
+
+On August 14, [[Auston Matthews]] was named the 26th captain in Maple Leafs history replacing [[John Tavares]] who held the position since the [[2019–20 Toronto Maple Leafs season|2019–20 season]].<ref>{{cite web |url=https://www.nhl.com/mapleleafs/news/maple-leafs-name-auston-matthews-26th-captain-in-franchise-history |title=Maple Leafs Name Auston Matthews 26th Captain in Franchise History |website=NHL.com |date=August 14, 2024 |access-date=August 17, 2024}}</ref>
+
+On April 2, 2025, the Maple Leafs clinched a playoff berth for the ninth consecutive season, after a win over the [[2024–25 Florida Panthers season|Florida Panthers]]. They held the longest active playoff appearance streak at the time, making the playoffs every year since [[2017 Stanley Cup playoffs|2017]] after the [[Boston Bruins]] (previously tied with them for the streak) failed to qualify for the [[2025 Stanley Cup playoffs|2025 playoffs]].<ref>{{cite web |url=https://www.nhl.com/news/florida-panthers-toronto-maple-leafs-game-recap-april-2 |title=Maple Leafs clinch berth in Stanley Cup Playoffs with win against Panthers. |website=NHL.com |access-date=April 3, 2025 |date=April 2, 2025}}</ref><ref>{{cite web |url=https://www.nhl.com/news/why-boston-bruins-are-eliminated-from-2024-2025-postseason-race |title=Bruins miss playoffs for 1st time since 2015-16 season |website=NHL.com |access-date=April 6, 2025 |date=April 6, 2025}}</ref> Later, on April 15, the Maple Leafs clinched the Atlantic Division championship with a 4–0 win over the [[2024–25 Buffalo Sabres season|Buffalo Sabres]]. This marked the first time that the team won the Atlantic Division since the league realigned prior to the [[2013–14 NHL season|2013–14 season]], their first division championship since winning the temporary [[North Division (NHL)|North Division]] during the [[COVID-19 pandemic in North America|COVID-19 pandemic]] shortened [[2020–21 Toronto Maple Leafs season|2020–21 season]], and their first standard 82-game regular season division championship since the [[1999–2000 Toronto Maple Leafs season|1999–2000 season]]. This season also saw the Leafs record only four overtime losses, which is the fewest total since [[2003–04 Toronto Maple Leafs season|2003–04]] and the lowest in the salary cap era.<ref>{{cite web |url=https://www.nhl.com/news/toronto-maple-leafs-buffalo-sabres-game-recap-april-15 |title=Maple Leafs clinch Atlantic Division with shutout win against Sabres. |website=NHL.com |access-date=April 15, 2025 |date=April 15, 2025}}</ref>
+
+In the first round of the playoffs, the Maple Leafs played the [[2024–25 Ottawa Senators season|Ottawa Senators]] for the first time since the [[2004 Stanley Cup playoffs|2004 playoffs]], reviving the fierce [[Battle of Ontario]] rivalry fought over four series in the early 2000s. Toronto won all four series; however, Ottawa won all three of its games and swept the season series against Toronto this regular season. The Maple Leafs defeated the Senators in six games, advancing to the second round where they lost to the eventual [[Stanley Cup]] champion [[2024–25 Florida Panthers season|Florida Panthers]] in seven games, marking the seventh consecutive game seven loss for the Maple Leafs. This extended the team's [[List of NHL franchise post-season droughts|record-breaking Stanley Cup drought]] to 57 seasons (58 years).
+
+In the process, the Maple Leafs lost a playoff series to an eventual Stanley Cup champion for the first time since [[2000 Stanley Cup playoffs|2000]] when they lost to the [[1999–2000 New Jersey Devils season|New Jersey Devils]]. Their streak of 23 seasons (not counting the [[2004–05 NHL lockout|2004–05 lockout]]) without losing to an eventual champion was the longest in NHL history.{{citation needed|date=May 2026}}
+
+==Standings==
+
+===Divisional standings===
+{{2024–25 NHL standings|Atlantic|showteam=TOR}}
+
+===Conference standings===
+{{2024–25 NHL standings|Eastern Conference Wild Card|showteam=TOR}}
+
+==Schedule and results==
+===Preseason===
+{| class="toccolours collapsible collapsed" style="width:90%; clear:both; margin:1.5em auto; text-align:center;"
+|-
+! colspan=11 style="background:#fff; border-top:#013E7F 5px solid; border-bottom:#013E7F 5px solid;" | 2024 preseason game log: 4–1–1 (Home: 2–0–1; Road: 2–1–0)<ref>{{cite news |date=June 24, 2024 |title=Maple Leafs Announce 2024 NHL Preseason Schedule |url=https://www.nhl.com/mapleleafs/news/maple-leafs-announce-2024-nhl-preseason-schedule |work=Toronto Maple Leafs |access-date=July 27, 2024}}</ref>
+|-  style="text-align:center; background:#ddd;"
+! # !! Date !! Visitor !! Score !! Home !! OT !! Decision !! Location !! Attendance !! Record !! Recap
+|- style="background:#ffc;"
+| 1 || September 22 || [[2024–25 Ottawa Senators season|Ottawa]] || 6–5 || Toronto || OT || [[Matt Murray (ice hockey, born 1994)|Murray]] <small>(0–0–1)</small> || [[Scotiabank Arena]] || 14,531 || 0–0–1 || <ref>{{cite web |title=Ottawa Senators – Toronto Maple Leafs – Sep 22, 2024 |url=https://www.nhl.com/gamecenter/ott-vs-tor/2024/09/22/2024010010 |website=NHL.com |access-date=September 22, 2024 |date=September 22, 2024}}</ref>
+|- style="background:#fcc;"
+| 2 || September 24 || Toronto || 1–2 || Ottawa ||  || [[Dennis Hildeby|Hildeby]] <small>(0–1–0)</small> || [[Canadian Tire Centre]] || 14,408 || 0–1–1 || <ref>{{cite web |title=Toronto Maple Leafs – Ottawa Senators – Sep 24, 2024 |url=https://www.nhl.com/gamecenter/tor-vs-ott/2024/09/24/2024010024 |website=NHL.com |access-date=September 24, 2024 |date=September 24, 2024}}</ref>
+|- style="background:#cfc;"
+| 3 || September 26 || [[2024–25 Montreal Canadiens season|Montreal]] || 1–2 || Toronto ||  || [[Anthony Stolarz|Stolarz]] <small>(1–0–0)</small> || Scotiabank Arena || 18,107 || 1–1–1 || <ref>{{cite web |title=Montréal Canadiens – Toronto Maple Leafs – Sep 26, 2024 |url=https://www.nhl.com/gamecenter/mtl-vs-tor/2024/09/26/2024010038 |website=NHL.com |access-date=September 26, 2024 |date=September 26, 2024}}</ref>
+|- style="background:#cfc;"
+| 4 || September 28 || Toronto || 2–1 || Montreal ||  || Hildeby <small>(1–1–0)</small> || [[Bell Centre]] || 21,105 || 2–1–1 || <ref>{{cite web |title=Toronto Maple Leafs – Montreal Canadiens – Sep 28, 2024 |url=https://www.nhl.com/gamecenter/tor-vs-mtl/2024/09/28/2024010055 |website=NHL.com |access-date=September 28, 2024 |date=September 28, 2024}}</ref>
+|- style="background:#cfc;"
+| 5 || October 3 || Toronto || 2–0 || [[2024–25 Detroit Red Wings season|Detroit]] ||  || Stolarz <small>(2–0–0)</small> || [[Little Caesars Arena]] || 11,349 || 3–1–1 || <ref>{{cite web |title=Toronto Maple Leafs – Detroit Red Wings – Oct 3, 2024 |url=https://www.nhl.com/gamecenter/tor-vs-det/2024/10/03/2024010086 |website=NHL.com |access-date=October 3, 2024 |date=October 3, 2024}}</ref>
+|- style="background:#cfc;"
+| 6 || October 5 || Detroit || 2–3 || Toronto ||  || [[Joseph Woll|Woll]] <small>(1–0–0)</small> || Scotiabank Arena || 18,524 || 4–1–1 || <ref>{{cite web |title=Detroit Red Wings – Toronto Maple Leafs – Oct 5, 2024 |url=https://www.nhl.com/gamecenter/det-vs-tor/2024/10/05/2024010100 |website=NHL.com |access-date=October 5, 2024 |date=October 5, 2024}}</ref>
+|}
+
+===Regular season===
+{| class="toccolours" style="width:90%; clear:both; margin:1.5em auto; text-align:center;"
+|-
+! colspan="12" style="background:#fff; border-top:#013E7F 5px solid; border-bottom:#013E7F 5px solid;"| 2024–25 Game Log: 52–26–4, 108 points (home: 27–13–1; road: 25–13–3)<ref>{{cite news |date=July 2, 2024 |title=Toronto Maple Leafs – Schedule |url=https://www.cbssports.com/nhl/teams/TOR/toronto-maple-leafs/schedule/regular/ |work=CBS Sports |access-date=July 27, 2024}}</ref>
+|-
+| colspan=12 |
+{| class="toccolours collapsible collapsed" style="width:100%;"
+|-
+! colspan="12" style="background:#fff; border-top:#013E7F 2px solid; border-bottom:#013E7F 2px solid;"| October: 6–4–1, 13 points (Home: 4–2–0; Road: 2–2–1)
+|- style="text-align:center; background:#ddd;"
+! # !! Date !! Visitor !! Score !! Home !! OT !! Decision !! Attendance !! Record !! Pts !! Recap
+|- {{Game-lost}}
+| 1 || October 9 || Toronto || 0–1 || [[2024–25 Montreal Canadiens season|Montreal]] ||  || [[Anthony Stolarz|Stolarz]] <small>(0–1–0)</small> || 21,105 || 0–1–0 || 0 || <ref>{{cite web |title=Toronto Maple Leafs – Montréal Canadiens – Oct 9, 2024 |url=https://www.nhl.com/gamecenter/tor-vs-mtl/2024/10/09/2024020006 |website=NHL.com |access-date=October 9, 2024 |date=October 9, 2024}}</ref>
+|- {{Game-won}}
+| 2 || October 10 || Toronto || 4–2 || [[2024–25 New Jersey Devils season|New Jersey]] ||  || [[Dennis Hildeby|Hildeby]] <small>(1–0–0)</small> || 16,764 || 1–1–0 || 2 || <ref>{{cite web |title=Toronto Maple Leafs – New Jersey Devils – Oct 10, 2024 |url=https://www.nhl.com/gamecenter/tor-vs-njd/2024/10/10/2024020015 |website=NHL.com |access-date=October 10, 2024 |date=October 10, 2024}}</ref>
+|- {{Game-won}}
+| 3 || October 12 || [[2024–25 Pittsburgh Penguins season|Pittsburgh]] || 2–4 || Toronto ||  || Stolarz <small>(1–1–0)</small> || 18,934 || 2–1–0 || 4 || <ref>{{cite web |title=Pittsburgh Penguins – Toronto Maple Leafs – Oct 12, 2024 |url=https://www.nhl.com/gamecenter/pit-vs-tor/2024/10/12/2024020026 |website=NHL.com |access-date=October 12, 2024 |date=October 12, 2024}}</ref>
+|- {{Game-won}}
+| 4 || October 16 || [[2024–25 Los Angeles Kings season|Los Angeles]] || 2–6 || Toronto ||  || Stolarz <small>(2–1–0)</small> || 18,852 || 3–1–0 || 6 || <ref>{{cite web |title=Los Angeles Kings – Toronto Maple Leafs – Oct 16, 2024 |url=https://www.nhl.com/gamecenter/lak-vs-tor/2024/10/16/2024020058 |website=NHL.com |access-date=October 16, 2024 |date=October 16, 2024}}</ref>
+|- {{Game-lost}}
+| 5 || October 19 || [[2024–25 New York Rangers season|NY Rangers]] || 4–1 || Toronto ||  || Stolarz <small>(2–2–0)</small> || 18,988 || 3–2–0 || 6 || <ref>{{cite web |title=New York Rangers – Toronto Maple Leafs – Oct 19, 2024 |url=https://www.nhl.com/gamecenter/nyr-vs-tor/2024/10/19/2024020079 |website=NHL.com |access-date=October 19, 2024 |date=October 19, 2024}}</ref>
+|- {{Game-won}}
+| 6 || October 21 || [[2024–25 Tampa Bay Lightning season|Tampa Bay]] || 2–5 || Toronto ||  || Stolarz <small>(3–2–0)</small> || 18,356 || 4–2–0 || 8 || <ref>{{cite web |title=Tampa Bay Lightning – Toronto Maple Leafs – Oct 21, 2024 |url=https://www.nhl.com/gamecenter/tbl-vs-tor/2024/10/21/2024020091 |website=NHL.com |access-date=October 21, 2024 |date=October 21, 2024}}</ref>
+|- {{Game-lost}}
+| 7 || October 22 || Toronto || 2–6 || [[2024–25 Columbus Blue Jackets season|Columbus]] ||  || Hildeby <small>(1–1–0)</small> || 14,852 || 4–3–0 || 8 || <ref>{{cite web |title=Toronto Maple Leafs – Columbus Blue Jackets – Oct 22, 2024 |url=https://www.nhl.com/gamecenter/tor-vs-cbj/2024/10/22/2024020097 |website=NHL.com |access-date=October 22, 2024 |date=October 22, 2024}}</ref>
+|- {{Game-lost}}
+| 8 || October 24 || [[2024–25 St. Louis Blues season|St. Louis]] || 5–1 || Toronto ||  || [[Joseph Woll|Woll]] <small>(0–1–0)</small> || 18,414 || 4–4–0 || 8 || <ref>{{cite web |title=St. Louis Blues – Toronto Maple Leafs – Oct 24, 2024 |url=https://www.nhl.com/gamecenter/stl-vs-tor/2024/10/24/2024020110 |website=NHL.com |access-date=October 24, 2024 |date=October 24, 2024}}</ref>
+|- {{Game-otl}}
+| 9 || October 26 || Toronto || 3–4 || [[2024–25 Boston Bruins season|Boston]] || OT || Stolarz <small>(3–2–1)</small> || 17,850 || 4–4–1 || 9 || <ref>{{cite web |title=Toronto Maple Leafs – Boston Bruins – Oct 26, 2024 |url=https://www.nhl.com/gamecenter/tor-vs-bos/2024/10/26/2024020125 |website=NHL.com |access-date=October 26, 2024 |date=October 26, 2024}}</ref>
+|- {{Game-won}}
+| 10 || October 28 || Toronto || 6–4 || [[2024–25 Winnipeg Jets season|Winnipeg]] ||  || Stolarz <small>(4–2–1)</small> || 15,325 || 5–4–1 || 11 || <ref>{{cite web |title=Toronto Maple Leafs – Winnipeg Jets – Oct 28, 2024 |url=https://www.nhl.com/gamecenter/tor-vs-wpg/2024/10/28/2024020143 |website=NHL.com |access-date=October 28, 2024 |date=October 28, 2024}}</ref>
+|- {{Game-won}}
+| 11 || October 31 || [[2024–25 Seattle Kraken season|Seattle]] || 1–4 || Toronto ||  || Woll <small>(1–1–0)</small> || 18,181 || 6–4–1 || 13 || <ref>{{cite web |title=Seattle Kraken – Toronto Maple Leafs – Oct 31, 2024 |url=https://www.nhl.com/gamecenter/sea-vs-tor/2024/10/31/2024020161 |website=NHL.com |access-date=October 31, 2024 |date=October 31, 2024}}</ref>
+|}
+|-
+| colspan=12 |
+{| class="toccolours collapsible collapsed" style="width:100%;"
+|-
+! colspan="12" style="background:#fff; border-top:#013E7F 2px solid; border-bottom:#013E7F 2px solid;"| November: 8–3–1, 17 points (Home: 6–1–0; Road: 2–2–1)
+|- style="text-align:center; background:#ddd;"
+! # !! Date !! Visitor !! Score !! Home !! OT !! Decision !! Attendance !! Record !! Pts !! Recap
+|- {{Game-lost}}
+| 12 || November 2 || Toronto || 2–4 || [[2024–25 St. Louis Blues season|St. Louis]] ||  || [[Joseph Woll|Woll]] <small>(1–2–0)</small> || 18,096 || 6–5–1 || 13 || <ref>{{cite web |title=Toronto Maple Leafs – St. Louis Blues – Nov 2, 2024 |url=https://www.nhl.com/gamecenter/tor-vs-stl/2024/11/02/2024020181 |website=NHL.com |access-date=November 2, 2024 |date=November 2, 2024}}</ref>
+|- {{Game-otl}}
+| 13 || November 3 || Toronto || 1–2 || [[2024–25 Minnesota Wild season|Minnesota]] || OT || [[Anthony Stolarz|Stolarz]] <small>(4–2–2)</small> || 18,096 || 6–5–2 || 14 || <ref>{{cite web|title=Toronto Maple Leafs - Minnesota Wild - Nov 3, 2024 |url=https://www.nhl.com/gamecenter/tor-vs-min/2024/11/03/2024020189 |website=NHL.com |access-date=November 3, 2024 |date=November 3, 2024}}</ref>  
+|- {{Game-won}}
+| 14 || November 5 || [[2024–25 Boston Bruins season|Boston]] || 0–4 || Toronto ||  || Stolarz <small>(5–2–2)</small> || 18,730 || 7–5–2 || 16 || <ref>{{cite web |title=Boston Bruins – Toronto Maple Leafs – Nov 5, 2024 |url=https://www.nhl.com/gamecenter/bos-vs-tor/2024/11/05/2024020195 |website=NHL.com |access-date=November 5, 2024 |date=November 5, 2024}}</ref> 
+|- {{Game-won}}
+| 15 || November 8 || [[2024–25 Detroit Red Wings season|Detroit]] || 1–3 || Toronto ||  || Stolarz <small>(6–2–2)</small> || 19,152 || 8–5–2 || 18 || <ref>{{cite web |title=Detroit Red Wings – Toronto Maple Leafs – Nov 8, 2024 |url=https://www.nhl.com/gamecenter/det-vs-tor/2024/11/08/2024020220 |website=NHL.com |access-date=November 8, 2024 |date=November 8, 2024}}</ref> 
+|- {{Game-won}}
+| 16 || November 9 || [[2024–25 Montreal Canadiens season|Montreal]] || 1–4 || Toronto ||  || Woll <small>(2–2–0)</small> || 19,277 || 9–5–2 || 20 || <ref>{{cite web |title=Montreal Canadiens – Toronto Maple Leafs – Nov 9, 2024 |url=https://www.nhl.com/gamecenter/mtl-vs-tor/2024/11/09/2024020227 |website=NHL.com |access-date=November 9, 2024 |date=November 9, 2024}}</ref> 
+|- {{Game-lost}}
+| 17 || November 12 || [[2024–25 Ottawa Senators season|Ottawa]] || 3–0 || Toronto ||  || Stolarz <small>(6–3–2)</small> || 18,648 || 9–6–2 || 20 || <ref>{{cite web |title=Ottawa Senators – Toronto Maple Leafs – Nov 12, 2024 |url=https://www.nhl.com/gamecenter/ott-vs-tor/2024/11/12/2024020245 |website=NHL.com |access-date=November 12, 2024 |date=November 12, 2024}}</ref> 
+|- {{Game-won}}
+| 18 || November 13 || Toronto || 4–3 || [[2024–25 Washington Capitals season|Washington]] || OT || Woll <small>(3–2–0)</small> || 18,573 || 10–6–2 || 22 || <ref>{{cite web |title=Toronto Maple Leafs – Washington Capitals – Nov 13, 2024 |url=https://www.nhl.com/gamecenter/tor-vs-wsh/2024/11/13/2024020253 |website=NHL.com |access-date=November 13, 2024 |date=November 13, 2024}}</ref> 
+|- {{Game-won}}
+| 19 || November 16 || [[2024–25 Edmonton Oilers season|Edmonton]] || 3–4 || Toronto || OT || Stolarz <small>(7–3–2)</small> || 19,301 || 11–6–2 || 24 || <ref>{{cite web |title=Edmonton Oilers - Toronto Maple Leafs - Nov 16, 2024 |url=https://www.nhl.com/gamecenter/edm-vs-tor/2024/11/16/2024020274 |website=NHL.com |access-date=November 16, 2024 |date=November 16, 2024}}</ref> 
+|- {{Game-won}}
+| 20 || November 20 || [[2024–25 Vegas Golden Knights season|Vegas]] || 0–3 || Toronto ||  || Woll <small>(4–2–0)</small> || 18,853 || 12–6–2 || 26 || <ref>{{cite web |title=Vegas Golden Knights - Toronto Maple Leafs - Nov 20, 2024 |url=https://www.nhl.com/gamecenter/vgk-vs-tor/2024/11/20/2024020301 |website=NHL.com |access-date=November 20, 2024 |date=November 20, 2024}}</ref> 
+|- {{Game-won}}
+| 21 || November 24 || [[2024–25 Utah Hockey Club season|Utah]] || 2–3 || Toronto ||  || Woll <small>(5–2–0)</small> || 18,641 || 13–6–2 || 28 || <ref>{{cite web |title=Utah Hockey Club - Toronto Maple Leafs - Nov 24, 2024 |url=https://www.nhl.com/gamecenter/uta-vs-tor/2024/11/24/2024020333 |website=NHL.com |access-date=November 24, 2024 |date=November 24, 2024}}</ref> 
+|- {{Game-lost}}
+| 22 || November 27 || Toronto || 1–5 || [[2024–25 Florida Panthers season|Florida]] ||  || Stolarz <small>(7–4–2)</small> || 18,563 || 13–7–2 || 28 || <ref>{{cite web|title=Toronto Maple Leafs - Florida Panthers - Nov 27, 2024 |url=https://www.nhl.com/gamecenter/tor-vs-fla/2024/11/27/2024020352 |website=NHL.com |access-date=November 27, 2024 |date=November 27, 2024}}</ref>  
+|- {{Game-won}}
+| 23 || November 30 || Toronto || 5–3 || [[2024–25 Tampa Bay Lightning season|Tampa Bay]] ||  || Woll <small>(6–2–0)</small> || 19,092 || 14–7–2 || 30 || <ref>{{cite web |title=Toronto Maple Leafs - Tampa Bay Lightning - Nov 30, 2024 |url=https://www.nhl.com/gamecenter/tor-vs-tbl/2024/11/30/2024020378 |website=NHL.com |access-date=November 30, 2024 |date=November 30, 2024}}</ref> 
+|}
+|-
+| colspan=12 |
+{| class="toccolours collapsible collapsed" style="width:100%;"
+|-
+! colspan="12" style="background:#fff; border-top:#013E7F 2px solid; border-bottom:#013E7F 2px solid;"| December: 9–6–0, 18 points (Home: 5–4–0; Road: 4–2–0)
+|- style="text-align:center; background:#ddd;"
+! # !! Date !! Visitor !! Score !! Home !! OT !! Decision !! Attendance !! Record !! Pts !! Recap
+|- {{Game-won}}
+| 24 || December 2 || [[2024–25 Chicago Blackhawks season|Chicago]] || 1–4 || Toronto ||  || [[Anthony Stolarz|Stolarz]] <small>(8–4–2)</small> || 18,557 || 15–7–2 || 32 || <ref>{{cite web |title=Chicago Blackhawks – Toronto Maple Leafs – Dec 2, 2024 |url=https://www.nhl.com/gamecenter/chi-vs-tor/2024/12/02/2024020394 |website=NHL.com |access-date=December 2, 2024 |date=December 2, 2024}}</ref>     
+|- {{Game-won}}
+| 25 || December 4 || [[2024–25 Nashville Predators season|Nashville]] || 2–3 || Toronto ||  || [[Joseph Woll|Woll]] <small>(7–2–0)</small> || 18,611 || 16–7–2 || 34 || <ref>{{cite web |title=Nashville Predators – Toronto Maple Leafs – Dec 4, 2024 |url=https://www.nhl.com/gamecenter/nsh-vs-tor/2024/12/04/2024020406 |website=NHL.com |access-date=December 4, 2024 |date=December 4, 2024}}</ref>
+|- {{Game-lost}}
+| 26 || December 6 || [[2024–25 Washington Capitals season|Washington]] || 3–1 || Toronto ||  || Stolarz <small>(8–5–2)</small> || 18,723 || 16–8–2 || 34 || <ref>{{cite web |title=Washington Capitals – Toronto Maple Leafs – Dec 6, 2024 |url=https://www.nhl.com/gamecenter/wsh-vs-tor/2024/12/06/2024020419 |website=NHL.com |access-date=December 6, 2024 |date=December 6, 2024}}</ref>
+|- {{Game-lost}}
+| 27 || December 7 || Toronto || 2–5 || [[2024–25 Pittsburgh Penguins season|Pittsburgh]] ||  || Woll <small>(7–3–0)</small> || 17,290 || 16–9–2 || 34 || <ref>{{cite web |title=Toronto Maple Leafs – Pittsburgh Penguins – Dec 7, 2024 |url=https://www.nhl.com/gamecenter/tor-vs-pit/2024/12/07/2024020433 |website=NHL.com |access-date=December 7, 2024 |date=December 7, 2024}}</ref>
+|- {{Game-won}}
+| 28 || December 10 || Toronto || 2–1 || [[2024–25 New Jersey Devils season|New Jersey]] || OT || Stolarz <small>(9–5–2)</small> || 16,091 || 17–9–2 || 36 || <ref>{{cite web |title=Toronto Maple Leafs – New Jersey Devils – Dec 10, 2024 |url=https://www.nhl.com/gamecenter/tor-vs-njd/2024/12/10/2024020446 |website=NHL.com |access-date=December 10, 2024 |date=December 10, 2024}}</ref>
+|- {{Game-won}}
+| 29 || December 12 || [[2024–25 Anaheim Ducks season|Anaheim]] || 2–3 || Toronto ||  || Woll <small>(8–3–0)</small> || 18,688 || 18–9–2 || 38 || <ref>{{cite web |title=Anaheim Ducks – Toronto Maple Leafs – Dec 12, 2024 |url=https://www.nhl.com/gamecenter/ana-vs-tor/2024/12/12/2024020459 |website=NHL.com |access-date=December 12, 2024 |date=December 12, 2024}}</ref>
+|- {{Game-lost}}
+| 30 || December 14 || Toronto || 2–4 || [[2024–25 Detroit Red Wings season|Detroit]] ||  || Woll <small>(8–4–0)</small> || 19,515 || 18–10–2 || 38 || <ref>{{cite web |title=Toronto Maple Leafs – Detroit Red Wings – Dec 14, 2024 |url=https://www.nhl.com/gamecenter/tor-vs-det/2024/12/14/2024020479 |website=NHL.com |access-date=December 14, 2024 |date=December 14, 2024}}</ref>
+|- {{Game-won}}
+| 31 || December 15 || [[2024–25 Buffalo Sabres season|Buffalo]] || 3–5 || Toronto ||  || [[Dennis Hildeby|Hildeby]] <small>(2–1–0)</small> || 18,588 || 19–10–2 || 40 || <ref>{{cite web |title=Buffalo Sabres – Toronto Maple Leafs – Dec 15, 2024 |url=https://www.nhl.com/gamecenter/buf-vs-tor/2024/12/15/2024020490 |website=NHL.com |access-date=December 15, 2024 |date=December 15, 2024}}</ref>
+|- {{Game-won}}
+| 32 || December 18 || Toronto || 5–3 || [[2024–25 Dallas Stars season|Dallas]] ||  || Woll <small>(9–4–0)</small> || 18,532 || 20–10–2 || 42 || <ref>{{cite web |title=Toronto Maple Leafs – Dallas Stars – Dec 18, 2024 |url=https://www.nhl.com/gamecenter/tor-vs-dal/2024/12/18/2024020508 |website=NHL.com |access-date=December 18, 2024 |date=December 18, 2024}}</ref>
+|- {{Game-won}}
+| 33 || December 20 || Toronto || 6–3 || Buffalo ||  || [[Matt Murray (ice hockey, born 1994)|Murray]] <small>(1–0–0)</small> || 18,267 || 21–10–2 || 44 || <ref>{{cite web |title=Toronto Maple Leafs – Buffalo Sabres – Dec 20, 2024 |url=https://www.nhl.com/gamecenter/tor-vs-buf/2024/12/20/2024020521 |website=NHL.com |access-date=December 20, 2024 |date=December 20, 2024}}</ref>
+|- {{Game-lost}}
+| 34 || December 21 || [[2024–25 New York Islanders season|NY Islanders]] || 6–3 || Toronto ||  || Woll <small>(9–5–0)</small> || 18,912 || 21–11–2 || 44 || <ref>{{cite web |title=New York Islanders – Toronto Maple Leafs – Dec 21, 2024 |url=https://www.nhl.com/gamecenter/nyi-vs-tor/2024/12/21/2024020532 |website=NHL.com |access-date=December 21, 2024 |date=December 21, 2024}}</ref>
+|- {{Game-lost}}
+| 35 || December 23 || [[2024–25 Winnipeg Jets season|Winnipeg]] || 5–2 || Toronto ||  || Woll <small>(9–6–0)</small> || 18,923 || 21–12–2 || 44 || <ref>{{cite web |title=Winnipeg Jets - Toronto Maple Leafs - Dec 23, 2024 |url=https://www.nhl.com/gamecenter/wpg-vs-tor/2024/12/23/2024020546 |website=NHL.com |access-date=December 23, 2024 |date=December 23, 2024}}</ref>
+|- {{Game-won}}
+| 36 || December 27 || Toronto || 5–2 || Detroit ||  || Woll <small>(10–6–0)</small> || 19,515 || 22–12–2 || 46 || <ref>{{cite web |title=Toronto Maple Leafs – Detroit Red Wings – Dec 27, 2024 |url=https://www.nhl.com/gamecenter/tor-vs-det/2024/12/27/2024020559 |website=NHL.com |access-date=December 27, 2024 |date=December 27, 2024}}</ref>
+|- {{Game-lost}}
+| 37 || December 28 || [[2024–25 Washington Capitals season|Washington]] || 5–2 || Toronto ||  || Murray <small>(1–1–0)</small> || 19,125 || 22–13–2 || 46 || <ref>{{cite web |title=Washington Capitals - Toronto Maple Leafs - Dec 28, 2024 |url=https://www.nhl.com/gamecenter/wsh-vs-tor/2024/12/28/2024020571 |website=NHL.com |access-date=December 28, 2024 |date=December 28, 2024}}</ref>
+|- {{Game-won}}
+| 38 || December 31 || NY Islanders || 1–3 || Toronto ||  || Woll <small>(11–6–0)</small> || 18,933 || 23–13–2 || 48 || <ref>{{cite web |title=New York Islanders - Toronto Maple Leafs - Dec 31, 2024 |url=https://www.nhl.com/gamecenter/nyi-vs-tor/2024/12/31/2024020590 |website=NHL.com |access-date=December 31, 2024 |date=December 31, 2024}}</ref>
+|}
+|-
+| colspan=12 |
+{| class="toccolours collapsible collapsed" style="width:100%;"
+|-
+! colspan="12" style="background:#fff; border-top:#013E7F 2px solid; border-bottom:#013E7F 2px solid;"| January: 7–6–0, 14 points (Home: 4–4–0; Road: 3–2–0)
+|- style="text-align:center; background:#ddd;"
+! # !! Date !! Visitor !! Score !! Home !! OT !! Decision !! Attendance !! Record !! Pts !! Recap
+|- {{Game-won}}
+| 39 || January 2 || Toronto || 2–1 || [[2024–25 New York Islanders season|NY Islanders]] ||  || [[Joseph Woll|Woll]] <small>(12–6–0)</small> || 17,255 || 24–13–2 || 50 || <ref>{{cite web |title=Toronto Maple Leafs – New York Islanders – Jan 2, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-nyi/2025/01/02/2024020607 |website=NHL.com |access-date=January 2, 2025 |date=January 2, 2025}}</ref>
+|- {{Game-won}}
+| 40 || January 4 || [[2024–25 Boston Bruins season|Boston]] || 4–6 || Toronto ||  || Woll <small>(13–6–0)</small> || 18,996 || 25–13–2 || 52 || <ref>{{cite web |title=Boston Bruins - Toronto Maple Leafs - Jan 4, 2025 |url=https://www.nhl.com/gamecenter/bos-vs-tor/2025/01/04/2024020623 |website=NHL.com |access-date=January 4, 2025 |date=January 4, 2025}}</ref>
+|- {{Game-won}}
+| 41 || January 5 || [[2024–25 Philadelphia Flyers season|Philadelphia]] || 2–3 || Toronto || OT || [[Dennis Hildeby|Hildeby]] <small>(3–1–0)</small> || 18,554 || 26–13–2 || 54 || <ref>{{cite web |title=Philadelphia Flyers – Toronto Maple Leafs – Jan 5, 2025 |url=https://www.nhl.com/gamecenter/phi-vs-tor/2025/01/05/2024020635 |website=NHL.com |access-date=January 5, 2025 |date=January 5, 2025}}</ref>
+|- {{Game-won}}
+| 42 || January 7 || Toronto || 3–2 || Philadelphia ||  || Woll <small>(14–6–0)</small> || 18,058 || 27–13–2 || 56 || <ref>{{cite web |title=Toronto Maple Leafs – Philadelphia Flyers – Jan 7, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-phi/2025/01/07/2024020644 |website=NHL.com |access-date=January 7, 2025 |date=January 7, 2025}}</ref>
+|- {{Game-lost}}
+| 43 || January 9 || Toronto || 3–6 || [[2024–25 Carolina Hurricanes season|Carolina]] ||  || Woll <small>(14–7–0)</small> || 18,750 || 27–14–2 || 56 || <ref>{{cite web |title=Toronto Maple Leafs – Carolina Hurricanes – Jan 9, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-car/2025/01/09/2024020659 |website=NHL.com |access-date=January 9, 2025 |date=January 9, 2025}}</ref>
+|- {{Game-lost}}
+| 44 || January 11 || [[2024–25 Vancouver Canucks season|Vancouver]] || 3–0 || Toronto ||  || Hildeby <small>(3–2–0)</small> || 19,104 || 27–15–2 || 56 || <ref>{{cite web |title=Vancouver Canucks – Toronto Maple Leafs – Jan 11, 2025 |url=https://www.nhl.com/gamecenter/van-vs-tor/2025/01/11/2024020672 |website=NHL.com |access-date=January 11, 2025 |date=January 11, 2025}}</ref>
+|- {{Game-lost}}
+| 45 || January 14 || [[2024–25 Dallas Stars season|Dallas]] || 4–1 || Toronto ||  || Woll <small>(14–8–0)</small> || 18,535 || 27–16–2 || 56 || <ref>{{cite web |title=Dallas Stars – Toronto Maple Leafs – Jan 14, 2025 |url=https://www.nhl.com/gamecenter/dal-vs-tor/2025/01/14/2024020693 |website=NHL.com |access-date=January 14, 2025 |date=January 14, 2025}}</ref>
+|- {{Game-won}}
+| 46 || January 16 || [[2024–25 New Jersey Devils season|New Jersey]] || 3–4 || Toronto || OT || Woll <small>(15–8–0)</small> || 18,577 || 28–16–2 || 58 || <ref>{{cite web |title=New Jersey Devils – Toronto Maple Leafs – Jan 16, 2025 |url=https://www.nhl.com/gamecenter/njd-vs-tor/2025/01/16/2024020707 |website=NHL.com |access-date=January 16, 2025 |date=January 16, 2025}}</ref>
+|- {{Game-won}}
+| 47 || January 18 || Toronto || 7–3 || [[2024–25 Montreal Canadiens season|Montreal]] ||  || Woll <small>(16–8–0)</small> || 21,105 || 29–16–2 || 60 || <ref>{{cite web |title=Toronto Maple Leafs – Montreal Canadiens – Jan 18, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-mtl/2025/01/18/2024020726 |website=NHL.com |access-date=January 18, 2025 |date=January 18, 2025}}</ref>
+|- {{Game-won}}
+| 48 || January 20 || [[2024–25 Tampa Bay Lightning season|Tampa Bay]] || 3–5 || Toronto ||  || Woll <small>(17–8–0)</small> || 19,123 || 30–16–2 || 62 || <ref>{{cite web |title=Tampa Bay Lightning – Toronto Maple Leafs – Jan 20, 2025 |url=https://www.nhl.com/gamecenter/tbl-vs-tor/2025/01/20/2024020744 |website=NHL.com |access-date=January 20, 2025 |date=January 20, 2025}}</ref>
+|- {{Game-lost}}
+| 49 || January 22 || [[2024–25 Columbus Blue Jackets season|Columbus]] || 5–1 || Toronto ||  || Hildeby <small>(3–3–0)</small> || 18,459 || 30–17–2 || 62 || <ref>{{cite web |title=Columbus Blue Jackets – Toronto Maple Leafs – Jan 22, 2025 |url=https://www.nhl.com/gamecenter/cbj-vs-tor/2025/01/22/2024020757 |website=NHL.com |access-date=January 22, 2025 |date=January 22, 2025}}</ref>
+|- {{Game-lost}}
+| 50 || January 25 || Toronto || 1–2 || [[2024–25 Ottawa Senators season|Ottawa]] ||  || Woll <small>(17–9–0)</small> || 18,818 || 30–18–2 || 62 || <ref>{{cite web |title=Toronto Maple Leafs – Ottawa Senators – Jan 25, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-ott/2025/01/25/2024020780 |website=NHL.com |access-date=January 25, 2025 |date=January 25, 2025}}</ref>
+|- {{Game-lost}}
+| 51 || January 29 || [[2024–25 Minnesota Wild season|Minnesota]] || 3–1 || Toronto ||  || Woll <small>(17–10–0)</small> || 18,544 || 30–19–2 || 62 || <ref>{{cite web |title=Minnesota Wild – Toronto Maple Leafs – Jan 29, 2025 |url=https://www.nhl.com/gamecenter/min-vs-tor/2025/01/29/2024020807 |website=NHL.com |access-date=January 29, 2025 |date=January 29, 2025}}</ref>
+|}
+|-
+| colspan=12 |
+{| class="toccolours collapsible collapsed" style="width:100%;"
+|-
+! colspan="12" style="background:#fff; border-top:#013E7F 2px solid; border-bottom:#013E7F 2px solid;"| February: 7–1–0, 14 points (Home: 1–0–0; Road: 6–1–0)
+|- style="text-align:center; background:#ddd;"
+! # !! Date !! Visitor !! Score !! Home !! OT !! Decision !! Attendance !! Record !! Pts !! Recap
+|- {{Game-won}}
+| 52 || February 1 || Toronto || 4–3 || [[2024–25 Edmonton Oilers season|Edmonton]] ||  || [[Joseph Woll|Woll]] <small>(18–10–0)</small> || 18,347 || 31–19–2 || 64 || <ref>{{cite web |title=Toronto Maple Leafs – Edmonton Oilers – Feb 1, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-edm/2025/02/01/2024020833 |website=NHL.com |access-date=February 1, 2025 |date=February 1, 2025}}</ref>
+|- {{Game-won}}
+| 53 || February 4 || Toronto || 6–3 || [[2024–25 Calgary Flames season|Calgary]] ||  || Woll <small>(19–10–0)</small> || 18,769 || 32–19–2 || 66 || <ref>{{cite web |title=Toronto Maple Leafs – Calgary Flames – Feb 4, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-cgy/2025/02/04/2024020853 |website=NHL.com |access-date=February 4, 2025 |date=February 4, 2025}}</ref>
+|- {{Game-won}}
+| 54 || February 6 || Toronto || 3–1 || [[2024–25 Seattle Kraken season|Seattle]] ||  || [[Anthony Stolarz|Stolarz]] <small>(10–5–2)</small> || 17,151 || 33–19–2 || 68 || <ref>{{cite web |title=Toronto Maple Leafs – Seattle Kraken – Feb 6, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-sea/2025/02/06/2024020869 |website=NHL.com |access-date=February 6, 2025 |date=February 6, 2025}}</ref>
+|- {{Game-lost}}
+| 55 || February 8 || Toronto || 1–2 || [[2024–25 Vancouver Canucks season|Vancouver]] ||  || Woll <small>(19–11–0)</small> || 19,022 || 33–20–2 || 68 || <ref>{{cite web |title=Toronto Maple Leafs - Vancouver Canucks - Feb 8, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-van/2025/02/08/2024020884 |website=NHL.com |access-date=February 8, 2025 |date=February 8, 2025}}</ref>
+|- {{Game-won}}
+| 56 || February 22 || [[2024–25 Carolina Hurricanes season|Carolina]] || 3–6 || Toronto ||  || Stolarz <small>(11–5–2)</small> || 18,914 || 34–20–2 || 70 || <ref>{{cite web |title=Carolina Hurricanes – Toronto Maple Leafs – Feb 22, 2025 |url=https://www.nhl.com/gamecenter/car-vs-tor/2025/02/22/2024020900 |website=NHL.com |access-date=February 22, 2025 |date=February 22, 2025}}</ref>
+|- {{Game-won}}
+| 57 || February 23 || Toronto || 5–2 || [[2024–25 Chicago Blackhawks season|Chicago]] ||  || Woll <small>(20–11–0)</small> || 19,199 || 35–20–2 || 72 || <ref>{{cite web |title=Toronto Maple Leafs - Chicago Blackhawks - Feb 23, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-chi/2025/02/23/2024020912 |website=NHL.com |access-date=February 23, 2025 |date=February 23, 2025}}</ref>
+|- {{Game-won}}
+| 58 || February 25 || Toronto || 5–4 || [[2024–25 Boston Bruins season|Boston]] || OT || Stolarz <small>(12–5–2)</small> || 17,850 || 36–20–2 || 74 || <ref>{{cite web |title=Toronto Maple Leafs - Boston Bruins - Feb 25, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-bos/2025/02/25/2024020918 |website=NHL.com |access-date=February 25, 2025 |date=February 25, 2025}}</ref>
+|- {{Game-won}}
+| 59 || February 28 || Toronto || 3–2 || [[2024–25 New York Rangers season|NY Rangers]] ||  || Stolarz <small>(13–5–2)</small> || 18,006 || 37–20–2 || 76 || <ref>{{cite web |title=Toronto Maple Leafs - New York Rangers - Feb 28, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-nyr/2025/02/28/2024020945 |website=NHL.com |access-date=February 28, 2025 |date=February 28, 2025}}</ref>
+|}
+|-
+| colspan=12 |
+{| class="toccolours collapsible collapsed" style="width:100%;"
+|-
+! colspan="12" style="background:#fff; border-top:#013E7F 2px solid; border-bottom:#013E7F 2px solid;"| March: 8–5–2, 18 points (Home: 3–2–1; Road: 5–3–1)
+|- style="text-align:center; background:#ddd;"
+! # !! Date !! Visitor !! Score !! Home !! OT !! Decision !! Attendance !! Record !! Pts !! Recap
+|- {{Game-won}}
+| 60 || March 2 || Toronto || 6–5 || [[2024–25 Pittsburgh Penguins season|Pittsburgh]] || OT || [[Joseph Woll|Woll]] <small>(21–11–0)</small> || 16,284 || 38–20–2 || 78 || <ref>{{cite web |title=Toronto Maple Leafs - Pittsburgh Penguins - Mar 2, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-pit/2025/03/02/2024020961 |website=NHL.com |access-date=March 2, 2025 |date=March 2, 2025}}</ref>
+|- {{Game-otl}}
+| 61 || March 3 || [[2024–25 San Jose Sharks season|San Jose]] || 3–2 || Toronto || SO || [[Anthony Stolarz|Stolarz]] <small>(13–5–3)</small> || 18,884 || 38–20–3 || 79 || <ref>{{cite web |title=San Jose Sharks – Toronto Maple Leafs – Mar 3, 2025 |url=https://www.nhl.com/gamecenter/sjs-vs-tor/2025/03/03/2024020971 |website=NHL.com |access-date=March 3, 2025 |date=March 3, 2025}}</ref>
+|- {{Game-lost}}
+| 62 || March 5 || Toronto || 2–5 || [[2024–25 Vegas Golden Knights season|Vegas]] ||  || Woll <small>(21–12–0)</small> || 17,769 || 38–21–3 || 79 || <ref>{{cite web |title=Toronto Maple Leafs - Vegas Golden Knights - Mar 5, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-vgk/2025/03/05/2024020985 |website=NHL.com |access-date=March 5, 2025 |date=March 5, 2025}}</ref>
+|- {{Game-lost}}
+| 63 || March 8 || Toronto || 4–7 || [[2024–25 Colorado Avalanche season|Colorado]] ||  || Stolarz <small>(13–6–3)</small> || 18,094 || 38–22–3 || 79 || <ref>{{cite web |title=Toronto Maple Leafs - Colorado Avalanche - Mar 8, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-col/2025/03/08/2024021007 |website=NHL.com |access-date=March 8, 2025 |date=March 8, 2025}}</ref>
+|- {{Game-won}}
+| 64 || March 10 || Toronto || 4–3 || [[2024–25 Utah Hockey Club season|Utah]] || SO || Woll <small>(22–12–0)</small> || 11,131 || 39–22–3 || 81 || <ref>{{cite web |title=Toronto Maple Leafs - Utah Hockey Club - Mar 11, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-uta/2025/03/10/2024021024 |website=NHL.com |access-date=March 11, 2025 |date=March 11, 2025}}</ref>
+|- {{Game-lost}}
+| 65 || March 13 || [[2024–25 Florida Panthers season|Florida]] || 3–2 || Toronto ||  || Stolarz <small>(13–7–3)</small> || 19,201 || 39–23–3 || 81 || <ref>{{cite web |title=Florida Panthers – Toronto Maple Leafs – Mar 13, 2025 |url=https://www.nhl.com/gamecenter/fla-vs-tor/2025/03/13/2024021040 |website=NHL.com |access-date=March 13, 2025 |date=March 13, 2025}}</ref>
+|- {{Game-lost}}
+| 66 || March 15 || [[2024–25 Ottawa Senators season|Ottawa]] || 4–2 || Toronto ||  || Stolarz <small>(13–8–3)</small> || 19,170 || 39–24–3 || 81 || <ref>{{cite web |title=Ottawa Senators – Toronto Maple Leafs – Mar 15, 2025 |url=https://www.nhl.com/gamecenter/ott-vs-tor/2025/03/15/2024021059 |website=NHL.com |access-date=March 15, 2025 |date=March 15, 2025}}</ref>
+|- {{Game-won}}
+| 67 || March 17 || [[2024–25 Calgary Flames season|Calgary]] || 2–6 || Toronto ||  || Woll <small>(23–12–0)</small> || 19,033 || 40–24–3 || 83 || <ref>{{cite web |title=Calgary Flames – Toronto Maple Leafs – Mar 17, 2025 |url=https://www.nhl.com/gamecenter/cgy-vs-tor/2025/03/17/2024021076 |website=NHL.com |access-date=March 17, 2025 |date=March 17, 2025}}</ref>
+|- {{Game-won}}
+| 68 || March 19 || Colorado || 1–2 || Toronto ||  || Woll <small>(24–12–0)</small> || 18,731 || 41–24–3 || 85 || <ref>{{cite web |title=Colorado Avalanche – Toronto Maple Leafs – Mar 19, 2025 |url=https://www.nhl.com/gamecenter/col-vs-tor/2025/03/19/2024021087 |website=NHL.com |access-date=March 19, 2025 |date=March 19, 2025}}</ref>
+|- {{Game-won}}
+| 69 || March 20 || Toronto || 4–3 || [[2024–25 New York Rangers season|NY Rangers]] ||  || Stolarz <small>(14–8–3)</small> || 17,235 || 42–24–3 || 87 || <ref>{{cite web |title=Toronto Maple Leafs - New York Rangers - Mar 20, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-nyr/2025/03/20/2024021091 |website=NHL.com |access-date=March 20, 2025 |date=March 20, 2025}}</ref>
+|- {{Game-lost}}
+| 70 || March 22 || Toronto || 2–5 || [[2024–25 Nashville Predators season|Nashville]] ||  || Woll <small>(24–13–0)</small> || 17,159 || 42–25–3 || 87 || <ref>{{cite web |title=Toronto Maple Leafs - Nashville Predators - Mar 22, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-nsh/2025/03/22/2024021114 |website=NHL.com |access-date=March 22, 2025 |date=March 22, 2025}}</ref>
+|- {{Game-won}}
+| 71 || March 25 || [[2024–25 Philadelphia Flyers season|Philadelphia]] || 2–7 || Toronto ||  || Stolarz <small>(15–8–3)</small> || 18,691 || 43–25–3 || 89 || <ref>{{cite web |title=Philadelphia Flyers – Toronto Maple Leafs – Mar 25, 2025 |url=https://www.nhl.com/gamecenter/phi-vs-tor/2025/03/25/2024021130 |website=NHL.com |access-date=March 25, 2025 |date=March 25, 2025}}</ref>
+|- {{Game-otl}}
+| 72 || March 27 || Toronto || 5–6 || [[2024–25 San Jose Sharks season|San Jose]] || SO || Woll <small>(24–13–1)</small> || 15,514 || 43–25–4 || 90 || <ref>{{cite web |title=Toronto Maple Leafs - San Jose Sharks - Mar 27, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-sjs/2025/03/27/2024021152 |website=NHL.com |access-date=March 27, 2025 |date=March 27, 2025}}</ref>
+|- {{Game-won}}
+| 73 || March 29 || Toronto || 3–1 || [[2024–25 Los Angeles Kings season|Los Angeles]] ||  || Stolarz <small>(16–8–3)</small> || 18,145 || 44–25–4 || 92 || <ref>{{cite web |title=Toronto Maple Leafs - Los Angeles Kings - Mar 29, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-lak/2025/03/29/2024021165 |website=NHL.com |access-date=March 29, 2025 |date=March 29, 2025}}</ref>
+|- {{Game-won}}
+| 74 || March 30 || Toronto || 3–2 || [[2024–25 Anaheim Ducks season|Anaheim]] ||  || Woll <small>(25–13–1)</small> || 17,174 || 45–25–4 || 94 || <ref>{{cite web |title=Toronto Maple Leafs - Anaheim Ducks - Mar 30, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-ana/2025/03/30/2024021176 |website=NHL.com |access-date=March 30, 2025 |date=March 30, 2025}}</ref>
+|}
+|-
+| colspan=12 |
+{| class="toccolours collapsible collapsed" style="width:100%;"
+|-
+! colspan="12" style="background:#fff; border-top:#013E7F 2px solid; border-bottom:#013E7F 2px solid;"| April: 7–1–0, 14 points (Home: 4–0–0; Road: 3–1–0)
+|- style="text-align:center; background:#ddd;"
+! # !! Date !! Visitor !! Score !! Home !! OT !! Decision !! Attendance !! Record !! Pts !! Recap
+|- {{Game-won}}
+| 75 || April 2 || [[2024–25 Florida Panthers season|Florida]] || 2–3 || Toronto ||  || [[Anthony Stolarz|Stolarz]] <small>(17–8–3)</small> || 19,066 || 46–25–4 || 96 || <ref>{{cite web |title=Florida Panthers – Toronto Maple Leafs – Apr 2, 2025 |url=https://www.nhl.com/gamecenter/fla-vs-tor/2025/04/02/2024021194 |website=NHL.com |access-date=April 2, 2025 |date=April 2, 2025}}</ref>
+|- {{Game-won}}
+| 76 || April 5 || [[2024–25 Columbus Blue Jackets season|Columbus]] || 0–5 || Toronto ||  || Stolarz <small>(18–8–3)</small> || 19,179 || 47–25–4 || 98 || <ref>{{cite web |title=Columbus Blue Jackets – Toronto Maple Leafs – Apr 5, 2025 |url=https://www.nhl.com/gamecenter/cbj-vs-tor/2025/04/05/2024021216 |website=NHL.com |access-date=April 5, 2025 |date=April 5, 2025}}</ref>
+|- {{Game-lost}}
+| 77 || April 8 || Toronto || 1–3 || Florida ||  || [[Joseph Woll|Woll]] <small>(25–14–1)</small> || 19,261 || 47–26–4 || 98 || <ref>{{cite web |title=Toronto Maple Leafs - Florida Panthers - Apr 8, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-fla/2025/04/08/2024021237 |website=NHL.com |access-date=April 8, 2025 |date=April 8, 2025}}</ref>
+|- {{Game-won}}
+| 78 || April 9 || Toronto || 4–3 || [[2024–25 Tampa Bay Lightning season|Tampa Bay]] || OT || Stolarz <small>(19–8–3)</small> || 19,092 || 48–26–4 || 100 || <ref>{{cite web |title=Toronto Maple Leafs - Tampa Bay Lightning - Apr 9, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-tbl/2025/04/09/2024021245 |website=NHL.com |access-date=April 9, 2025 |date=April 9, 2025}}</ref>
+|- {{Game-won}}
+| 79 || April 12 || [[2024–25 Montreal Canadiens season|Montreal]] || 0–1 || Toronto || OT || Stolarz <small>(20–8–3)</small> || 19,252 || 49–26–4 || 102 || <ref>{{cite web |title=Montreal Canadiens – Toronto Maple Leafs – Apr 12, 2025 |url=https://www.nhl.com/gamecenter/mtl-vs-tor/2025/04/12/2024021269 |website=NHL.com |access-date=April 12, 2025 |date=April 12, 2025}}</ref>
+|- {{Game-won}}
+| 80 || April 13 || Toronto || 4–1 || [[2024–25 Carolina Hurricanes season|Carolina]] ||  || Woll <small>(26–14–1)</small> || 18,905 || 50–26–4 || 104 || <ref>{{cite web |title=Toronto Maple Leafs - Carolina Hurricanes - Apr 13, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-car/2025/04/13/2024021279 |website=NHL.com |access-date=April 13, 2025 |date=April 13, 2025}}</ref> 
+|- {{Game-won}}
+| 81 || April 15 || Toronto || 4–0 || [[2024–25 Buffalo Sabres season|Buffalo]] ||  || Stolarz <small>(21–8–3)</small> || 17,160 || 51–26–4 || 106 || <ref>{{cite web |title=Toronto Maple Leafs - Buffalo Sabres - Apr 15, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-buf/2025/04/15/2024021292 |website=NHL.com |access-date=April 15, 2025 |date=April 15, 2025}}</ref> 
+|- {{Game-won}}
+| 82 || April 17 || [[2024–25 Detroit Red Wings season|Detroit]] || 3–4 || Toronto || OT || Woll <small>(27–14–1)</small> || 18,605 || 52–26–4 || 108 || <ref>{{cite web |title=Detroit Red Wings – Toronto Maple Leafs – Apr 17, 2025 |url=https://www.nhl.com/gamecenter/det-vs-tor/2025/04/17/2024021308 |website=NHL.com |access-date=April 17, 2025 |date=April 17, 2025}}</ref>
+|}
+|-
+| colspan="11" |
+'''''Legend''''':
+{{legend2|#cfc|Win (2 points)|border=1px solid #ccffcc}}
+{{legend2|#fcc|Loss (0 points)|border=1px solid #ffcccc}}
+{{legend2|#fff|Overtime/shootout loss (1 point)|border=1px solid #ffffcc}}
+|}
+
+===Playoffs===
+{{Main|2025 Stanley Cup playoffs}}
+{| class="toccolours" style="width:90%; clear:both; margin:1.5em auto; text-align:center;"
+|-
+! colspan="12" style="background:#fff; border-top:#013E7F 5px solid; border-bottom:#013E7F 5px solid;"| 2025 Stanley Cup Playoffs
+|-
+| colspan=12 |
+{| class="toccolours collapsible collapsed" style="width:100%;"
+|-
+! colspan="12" style="background:#fff; border-top:#013E7F 2px solid; border-bottom:#013E7F 2px solid;"| Eastern Conference First Round vs (WC1) [[2024–25 Ottawa Senators season|Ottawa Senators]]: Toronto won 4–2
+|-
+|- style="text-align:center; background:#ddd;"
+! # !! Date !! Visitor !! Score !! Home !! OT !! Decision !! Attendance !! Series !! Recap
+|- style="background:#cfc;"
+| 1 || April 20 || Ottawa || 2–6 || Toronto ||  || [[Anthony Stolarz|Stolarz]] <small>(1–0)</small> || 19,072 || 1–0 || <ref>{{cite web |title=Ottawa Senators – Toronto Maple Leafs – Apr 20, 2025 |url=https://www.nhl.com/gamecenter/ott-vs-tor/2025/04/20/2024030111 |website=NHL.com |access-date=April 20, 2025 |date=April 20, 2025}}</ref>
+|- style="background:#cfc;"
+| 2 || April 22 || Ottawa || 2–3 || Toronto || OT || Stolarz <small>(2–0)</small> || 19,333 || 2–0 || <ref>{{cite web |title=Ottawa Senators – Toronto Maple Leafs – Apr 22, 2025 |url=https://www.nhl.com/gamecenter/ott-vs-tor/2025/04/22/2024030112 |website=NHL.com |access-date=April 22, 2025 |date=April 22, 2025}}</ref>
+|- style="background:#cfc;"
+| 3 || April 24 || Toronto || 3–2 || Ottawa || OT || Stolarz <small>(3–0)</small> || 19,073 || 3–0 || <ref>{{cite web |title=Toronto Maple Leafs – Ottawa Senators – Apr 24, 2025 |url=https://www.nhl.com/gamecenter/ott–vs–tor/2025/04/24/2024030113 |archive-url=https://web.archive.org/web/20250515062723/https://www.nhl.com/errors/not-found |url-status=dead |archive-date=May 15, 2025 |website=NHL.com |access-date=April 24, 2025 |date=April 24, 2025}}</ref>
+|- style="background:#fcc;"
+| 4 || April 26 || Toronto || 3–4 || Ottawa || OT || Stolarz <small>(3–1)</small> || 19,094 || 3–1 || <ref>{{cite web |title=Toronto Maple Leafs – Ottawa Senators – Apr 26, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-ott/2025/04/26/2024030114 |website=NHL.com |access-date=April 26, 2025 |date=April 26, 2025}}</ref>
+|- style="background:#fcc;"
+| 5 || April 29 || Ottawa || 4–0 || Toronto ||  || Stolarz <small>(3–2)</small> || 19,438 || 3–2 || <ref>{{cite web |title=Ottawa Senators – Toronto Maple Leafs – Apr 29, 2025 |url=https://www.nhl.com/gamecenter/ott-vs-tor/2025/04/29/2024030115 |website=NHL.com |access-date=April 29, 2025 |date=April 29, 2025}}</ref> 
+|- style="background:#cfc;"
+| 6 || May 1 || Toronto || 4–2 || Ottawa ||  || Stolarz <small>(4–2)</small> || 19,007 || 4–2 || <ref>{{cite web |title=Ottawa Senators – Toronto Maple Leafs – May 1, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-ott/2025/05/01/2024030116 |website=NHL.com |access-date=May 1, 2025 |date=May 1, 2025}}</ref> 
+|}
+|-
+| colspan="12"|
+{| class="toccolours collapsible collapsed" style="width:100%;"
+|-
+! colspan="12" style="background:#fff; border-top:#013E7F 2px solid; border-bottom:#013E7F 2px solid;"| Eastern Conference Second Round vs (A3) [[2024–25 Florida Panthers season|Florida Panthers]]: Florida won 4–3
+|- style="text-align:center; background:#ddd;"
+! # !! Date !! Visitor !! Score !! Home !! OT !! Decision !! Attendance !! Series !! Recap
+|- style="background:#cfc;"
+| 1 || May 5 || Florida || 4–5 || Toronto ||  || [[Joseph Woll|Woll]] <small>(1–0)</small> || 19,031 || 1–0 || <ref>{{cite web |title=Florida Panthers – Toronto Maple Leafs – May 5, 2025 |url=https://www.nhl.com/gamecenter/fla-vs-tor/2025/05/05/2024030211 |website=NHL.com |access-date=May 5, 2025 |date=May 5, 2025}}</ref> 
+|- style="background:#cfc;"
+| 2 || May 7 || Florida || 3–4 || Toronto ||  || Woll <small>(2–0)</small> || 19,261 || 2–0 || <ref>{{cite web |title=Florida Panthers – Toronto Maple Leafs – May 7, 2025 |url=https://www.nhl.com/gamecenter/fla-vs-tor/2025/05/07/2024030212 |website=NHL.com |access-date=May 7, 2025 |date=May 7, 2025}}</ref> 
+|- style="background:#fcc;"
+| 3 || May 9 || Toronto || 4–5 || Florida || OT || Woll <small>(2–1)</small> || 19,842 || 2–1 || <ref>{{cite web |title=Toronto Maple Leafs – Florida Panthers – May 9, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-fla/2025/05/09/2024030213 |website=NHL.com |access-date=May 9, 2025 |date=May 9, 2025}}</ref>    
+|- style="background:#fcc;"
+| 4 || May 11 || Toronto || 0–2 || Florida ||  || Woll <small>(2–2)</small> || 19,894 || 2–2 || <ref>{{cite web |title=Toronto Maple Leafs – Florida Panthers – May 11, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-fla/2025/05/11/2024030214 |website=NHL.com |access-date=May 11, 2025 |date=May 11, 2025}}</ref>   
+|- style="background:#fcc;"
+| 5 || May 14 || Florida || 6–1 || Toronto ||  || Woll <small>(2–3)</small> || 19,319 || 2–3 || <ref>{{cite web |title=Florida Panthers – Toronto Maple Leafs – May 14, 2025 |url=https://www.nhl.com/gamecenter/fla-vs-tor/2025/05/14/2024030215 |website=NHL.com |access-date=May 14, 2025 |date=May 14, 2025}}</ref> 
+|- style="background:#cfc;"
+| 6 || May 16 || Toronto || 2–0 || Florida ||  || Woll <small>(3–3)</small> || 19,797 || 3–3 || <ref>{{cite web |title=Toronto Maple Leafs – Florida Panthers – May 16, 2025 |url=https://www.nhl.com/gamecenter/tor-vs-fla/2025/05/16/2024030216 |website=NHL.com |access-date=May 16, 2025 |date=May 16, 2025}}</ref>    
+|- style="background:#fcc;"
+| 7 || May 18 || Florida || 6–1 || Toronto ||  || Woll <small>(3–4)</small> || 19,426 || 3–4 || <ref>{{cite web |title=Florida Panthers – Toronto Maple Leafs – May 18, 2025 |url=https://www.nhl.com/gamecenter/fla-vs-tor/2025/05/18/2024030217 |website=NHL.com |access-date=May 18, 2025 |date=May 18, 2025}}</ref>
+|-
+|}
+|-
+| colspan="11" |
+'''''Legend''''':
+{{legend2|#cfc|Win|border=1px solid #ccffcc}}
+{{legend2|#fcc|Loss|border=1px solid #ffcccc}}
+|}
+
+==Player statistics==
+<!--<small>Updated to game played May 14, 2025 </small>-->
+
+===Skaters===
+{{col-begin}}
+{{col-2}}
+{| class="wikitable sortable" style="text-align:center;"
+|+ style="background:#FFFFFF; border-top:#003E7E 5px solid; border-bottom:#003E7E 5px solid;"|Regular season<ref>{{cite web |title=2024–25 Regular season – Toronto Maple Leafs Stats – Skaters |url=https://www.nhl.com/stats/skaters?reportType=season&seasonFrom=20242025&seasonTo=20242025&gameType=2&playerPlayedFor=franchise.5&filter=gamesPlayed,gte,1&sort=points,goals,assists |website=NHL.com |access-date=April 17, 2025}}</ref>
+! Player
+! {{abbr|GP|Games Played}}
+! {{abbr|G|Goals}}
+! {{abbr|A|Assists}}
+! {{abbr|Pts|Points}}  
+! data-sort-type="number"|{{abbr|+/−|Plus/M inus}}
+! {{abbr|PIM|Penalty Minutes}}
+|-
+| {{sortname|Mitch|Marner}}  ||  81  ||  27  ||  75  ||  102  ||  +18  ||  14
+|-
+| {{sortname|William|Nylander}} ||  82  ||  45  ||  39  ||  84  ||  +10  ||  26
+|-
+| {{sortname|Auston|Matthews}}  ||  67  ||  33  ||  45  ||  78  ||  +11  ||  20
+|-
+| {{sortname|John|Tavares}}  ||  75  ||  38  ||  36  ||  74  ||  +10  ||  46
+|-
+| {{sortname|Matthew|Knies}}  ||  78  ||  29  ||  29  ||  58  ||  +7  ||  43
+|-
+| {{sortname|Morgan|Rielly}} ||  82  ||  7  ||  34  ||  41  ||  −8  ||  21
+|-
+| {{sortname|Bobby|McMann}} ||  74  ||  20  ||  14  ||  34  ||  +12  || 27
+|-
+| {{sortname|Max|Domi}} ||  74  ||  8  ||  25  ||  33  ||  +5  ||  76
+|-
+| {{sortname|Oliver|Ekman-Larsson}}||  77  ||  4  ||  25  ||  29  ||  +14  ||  52
+|-
+| {{sortname|Jake|McCabe}}||  66  ||  2  ||  21  ||  23  ||  +23  ||  40
+|-
+| {{sortname|Nicholas|Robertson|dab=ice hockey}} ||  69  ||  15  ||  7  ||  22  ||  -1  ||  16
+|-
+| {{sortname|Steven|Lorentz}}  ||  80  ||  8  ||  11  ||  19  ||  +6  ||  9
+|-
+| {{sortname|Pontus|Holmberg}} ||  68  ||  7  ||  12  ||  19  ||  +4  ||  27
+|-
+| {{sortname|Christopher|Tanev}} ||  75  ||  3  ||  15  ||  18  ||  +31  ||  24
+|-
+| {{sortname|Max|Pacioretty}} 
+ ||  37  ||  5  ||  8  ||  13  ||  −2  ||  16
+|-
+| {{sortname|David|Kampf|David Kämpf}} ||  59  ||  5  ||  8  ||  13  ||  −1  ||  14
+|-
+| {{sortname|Simon|Benoit}} ||  78  ||  1  ||  9  ||  10  ||  +12  ||  59
+|-
+| {{sortname|Conor|Timmins}} <sup>(X)</sup> ||  51  ||  2  ||  6  ||  8  ||  +2  ||  24
+|-
+| {{sortname|Calle|Jarnkrok|Calle Järnkrok}}  ||  19  ||  1  ||  6  ||  7  ||  +1  ||  4
+|-
+| {{sortname|Philippe|Myers}} ||  36  ||  2  ||  3  ||  5  ||  0  ||  15
+|-
+| {{sortname|Scott|Laughton}} ||  20  ||  2  ||  2  ||  4  ||  −1  ||  11
+|-
+| {{sortname|Fraser|Minten}} <sup>(X)</sup> ||  15  ||  2  ||  2  ||  4  ||  −4  ||  0
+|-
+| {{sortname|Brandon|Carlo}} ||  20  ||  0  ||  3  ||  3  ||  +4  ||  13
+|-
+| {{sortname|Connor|Dewar}} <sup>(X)</sup> ||  31  ||  0  ||  3  ||  3  ||  −3  ||  5
+|-
+| {{sortname|Alex|Steeves}} <sup>(M)</sup> ||  7  ||  1  ||  1  ||  2  ||  +3  ||  0
+|-
+| {{sortname|Ryan|Reaves}} <sup>(M)</sup> ||  35  ||  0  ||  2  ||  2  ||  −2  ||  28
+|-
+| {{sortname|Dakota|Mermis}} ||  3  ||  0  ||  1  ||  1  ||  0  ||  0
+|-
+| {{sortname|Jani|Hakanpaa|Jani Hakanpää}} ||  2  ||  0  ||  0  ||  0  ||  −1  ||  0
+|-
+| {{sortname|Alexander|Nylander}} <sup>(M)</sup> ||  5  ||  0  ||  0  ||  0  ||  −1  ||  4
+|-
+| {{sortname|Timothy|Liljegren}} <sup>(X)</sup> ||  1  ||  0  ||  0  ||  0  ||  0  ||  2
+|-
+| {{sortname|Nikita|Grebenkin}} <sup>(X)</sup> ||  7  ||  0  ||  0  ||  0  ||  −3  ||  2
+|-
+| {{sortname|Jacob|Quillan}} <sup>(M)</sup> ||  1  ||  0  ||  0  ||  0  ||  0  ||  0
+|}
+
+{{col-2}}
+{| class="wikitable sortable" style="text-align:center;"
+|+ style="background:#FFFFFF; border-top:#003E7E 5px solid; border-bottom:#003E7E 5px solid;"|Playoffs<ref>{{cite web |title=2024–25 Playoffs – Toronto Maple Leafs Stats – Skaters |url=https://www.nhl.com/stats/skaters?reportType=season&seasonFrom=20252025&seasonTo=20252025&gameType=3&playerPlayedFor=franchise.5&filter=gamesPlayed,gte,1&sort=points,goals,assists |website=NHL.com |access-date=May 18, 2025}}</ref>
+! Player
+! {{abbr|GP|Games played}}
+! {{abbr|G|Goals}}
+! {{abbr|A|Assists}}
+! {{abbr|Pts|Points}}
+! data-sort-type="number"|{{abbr|+/−|Plus/minus}}
+! {{abbr|PIM|Penalty minutes}}
+|-
+| {{sortname|William|Nylander}} || 13 || 6 || 9 || 15 || −3 || 4
+|-
+| {{sortname|Mitch|Marner}} || 13 || 2 || 11 || 13 || −1 || 2
+|-
+| {{sortname|Auston|Matthews}} || 13 || 3 || 8 || 11 || 0 || 2
+|-
+| {{sortname|Max|Pacioretty}} || 11 || 3 || 5 || 8 || +1 || 4
+|-
+| {{sortname|John|Tavares}} || 13 || 5 || 2 || 7 || −6 || 10
+|-
+| {{sortname|Matthew|Knies}} || 13 || 5 || 2 || 7 || −4 || 6
+|-
+| {{sortname|Morgan|Rielly}} || 13 || 4 || 3 || 7 || −2 || 4
+|-
+| {{sortname|Max|Domi}} || 13 || 3 || 4 || 7 || +2 || 33
+|-
+| {{sortname|Oliver|Ekman-Larsson}} || 13 || 2 || 2 || 4 || −1 || 8
+|-
+| {{sortname|Jake|McCabe}} || 13 || 0 || 4 || 4 || −1 || 2
+|-
+| {{sortname|Christopher|Tanev}} || 13 || 1 || 2 || 3 || +2 || 2
+|-
+| {{sortname|Bobby|McMann}} || 13 || 0 || 3 || 3 || −2 || 16
+|-
+| {{sortname|Simon|Benoit}} || 13 || 1 || 1 || 2 || −3 || 10
+|-
+| {{sortname|Nicholas|Robertson|dab=ice hockey}} || 3 || 1 || 1 || 2 || +1 || 6
+|-
+| {{sortname|Scott|Laughton}} || 13 || 0 || 2 || 2 || −3 || 8
+|-
+| {{sortname|Steven|Lorentz}} || 13 || 0 || 2 || 2 || −4 || 4
+|-
+| {{sortname|Calle|Jarnkrok|Calle Järnkrok}} || 12 || 0 || 1 || 1 || −4 || 2
+|-
+| {{sortname|Pontus|Holmberg}} || 12 || 0 || 1 || 1 || −4 || 4
+|-
+| {{sortname|Brandon|Carlo}} || 13 || 0 || 0 || 0 || −4 || 8
+|-
+| {{sortname|David|Kampf|David Kämpf}} || 1 || 0 || 0 || 0 || −2 || 0
+<!--
+|-
+| {{sortname|Philippe|Myers}} || 0 || 0 || 0 || 0 || 0 || 0
+|-
+| {{sortname|Dakota|Mermis}} || 0 || 0 || 0 || 0 || 0 || 0-->
+
+|}
+
+{{col-end}}
+
+===Goaltenders===
+{| class="wikitable sortable" style="text-align:center;"
+|+ style="background:#FFFFFF; border-top:#003E7E 5px solid; border-bottom:#003E7E 5px solid;"|Regular season<ref>{{cite web |title=2024–25 Regular season – Toronto Maple Leafs Stats – Goalies |url=https://www.nhl.com/stats/goalies?reportType=season&seasonFrom=20242025&seasonTo=20242025&gameType=2&playerPlayedFor=franchise.5&filter=gamesPlayed,gte,1&sort=wins |website=NHL.com |access-date=April 17, 2025}}</ref>
+|-
+! Player
+! {{abbr|GP|Games Played}} 
+! {{abbr|GS|Games Started}} 
+! {{abbr|TOI|Time on Ice}} 
+! {{abbr|W|Win}}
+! {{abbr|L|Loss}}
+! {{abbr|OT|Overtime Loss}}
+! {{abbr|GA|Goals Against}}
+! {{abbr|GAA|Goals Against Average}}
+! {{abbr|SA|Shots Against}}
+! {{abbr|SV%|Save Percentage}}
+! {{abbr|SO|Shutouts}}
+! {{abbr|G|Goals}}
+! {{abbr|A|Assists}}
+! {{abbr|PIM|Penalty Minutes}}
+|- 
+| {{sortname|Joseph|Woll}} ||  42  ||  41  ||  2,442:20  ||  27  ||  14  ||  1  ||  111  || 2.73 ||  1,216  || .909 ||  1  ||  0  ||  0  ||  0
+|- 
+| {{sortname|Anthony|Stolarz}} ||  34  ||  33  ||  1,986:54  ||  21  ||  8  ||  3  ||  71  || 2.14 ||  955  || .926 ||  4  ||  0  ||  1  ||  0
+|- 
+| {{sortname|Dennis|Hildeby}} <sup>(M)</sup> ||  6  ||  6  ||  360:49  ||  3  ||  3  ||  0  ||  20  || 3.33 ||  156  || .878 ||  0  ||  0  ||  0  ||  0
+|- 
+| {{sortname|Matt|Murray|dab=ice hockey, born 1994}} <sup>(M)</sup> ||  2  ||  2  ||  118:39  ||  1  ||  1  ||  0  ||  7  || 3.54 ||  58  || .879 ||  0  ||  0  ||  0  ||  0
+|}
+
+{| class="wikitable sortable" style="text-align:center;"
+|+ style="background:#FFFFFF; border-top:#003E7E 5px solid; border-bottom:#003E7E 5px solid;"|Playoffs<ref>{{cite web |title=2024–25 Playoffs – Toronto Maple Leafs Stats – Goalies |url=https://www.nhl.com/stats/goalies?reportType=season&seasonFrom=20242025&seasonTo=20242025&gameType=3&playerPlayedFor=franchise.5&filter=gamesPlayed,gte,1&sort=wins |website=NHL.com |access-date=May 18, 2025}}</ref>
+|-
+! Player
+! {{abbr|GP|Games played}} 
+! {{abbr|GS|Games started}} 
+! {{abbr|TOI|Time on ice}} 
+! {{abbr|W|Win}}
+! {{abbr|L|Loss}}
+! {{abbr|GA|Goals against}}
+! {{abbr|GAA|Goals against average}}
+! {{abbr|SA|Shots against}}
+! {{abbr|SV%|Save percentage}}
+! {{abbr|SO|Shutouts}}
+! {{abbr|G|Goals}}
+! {{abbr|A|Assists}}
+! {{abbr|PIM|Penalty minutes}}
+|-
+| {{sortname|Anthony|Stolarz}} ||  7  ||  7  ||  410:18  ||  4  ||  2  ||  15  || 2.19 ||  151  ||  .901  ||  0  ||  0  ||  0  ||  2 
+|-
+| {{sortname|Joseph|Woll}} ||  7  ||  6  ||  387:26  ||  3  ||  4  ||  23  || 3.56 ||  201  ||  .886  ||  1  ||  0  ||  0  ||  0 
+|- 
+| {{sortname|Matt|Murray|dab=ice hockey, born 1994}} ||  1  ||  0  ||  13:37  ||  0  ||  0  ||  1  || 4.41 ||  7  || .857 ||  0  ||  0  ||  0  ||  0
+
+|}
+
+<sup>(M)</sup> Player was playing for the minor league affiliate [[Toronto Marlies]] of the [[American Hockey League|AHL]] at the end of the regular season<br>
+<sup>(J)</sup> Player assigned to junior club during the regular season<br>
+<sup>(X)</sup> Player is no longer with the Maple Leafs organization by the end of the regular season<br>
+<br />Bold/italics denotes franchise record.
+
+==Transactions==
+The Maple Leafs have been involved in the following [[2024–25 NHL transactions|transactions]] during the 2024–25 season.
+
+===Key===
+
+{{Color box|#f8f9fa|{{dagger}}|border=darkgray}} Contract is entry-level.<br>
+{{Color box|#f8f9fa|{{double-dagger}}|border=darkgray}} Contract initially takes effect in the 2025–26 season.
+
+===Trades===
+{| class="wikitable" 
+|-
+! style="width: 10em;"|Date !! colspan=2 |Details !! style="width: 2.5em;"|Ref
+|-
+| {{start date|2024|06|29}}
+| style="width: 25em;" valign="top"| To [[2024–25 Dallas Stars season|Dallas Stars]]<hr>[[Max Ellis (ice hockey)|Max Ellis]]<br>7th-round pick in [[2026 NHL entry draft|2026]]
+| style="width: 25em;" valign="top"| To Toronto Maple Leafs<hr>[[Christopher Tanev]]
+| <ref>{{cite web |url=https://www.espn.com/nhl/story/_/id/40460872/maple-leafs-acquire-negotiation-rights-chris-tanev |title=Maple Leafs acquire negotiation rights to Tanev |website=ESPN.com |date=June 29, 2024 |access-date=July 25, 2024}}</ref>
+|-bgcolor="eeeeee"
+| {{start date|2024|10|30}}
+| style="width: 25em;" valign="top"| To [[2024–25 San Jose Sharks season|San Jose Sharks]]<hr>[[Timothy Liljegren]]
+| style="width: 25em;" valign="top"| To Toronto Maple Leafs<hr>[[Matt Benning]]<br>conditional 3rd-round pick in [[2025 NHL entry draft|2025]]{{sup|1}}<br>6th-round pick in 2026 
+| <ref>{{cite web |url=https://www.nhl.com/sharks/news/sharks-acquire-defenseman-timothy-liljegren-from-toronto-in-exchange-for-matt-benning-and-two-draft-selections |title=Sharks acquire defenseman Timothy Liljegren from Toronto in exchange for Matt Benning and two draft selections |website=NHL.com |publisher=San Jose Sharks |date=October 30, 2024 |access-date=October 31, 2024}}</ref>
+|-
+| rowspan=4|{{start date|2025|03|07}}
+| style="width: 25em;" valign="top"| To [[2024–25 Philadelphia Flyers season|Philadelphia Flyers]]<hr>[[Nikita Grebenkin]]<br>conditional 1st-round pick in [[2027 NHL entry draft|2027]]{{sup|2}}
+| style="width: 25em;" valign="top"|To Toronto Maple Leafs<hr>[[Scott Laughton]]<br>4th-round pick in [[2025 NHL entry draft|2025]]<br>6th-round pick in [[2027 NHL entry draft|2027]]
+| <ref name=LaughtonCarlo>{{cite web|url=https://www.nhl.com/news/scott-laughton-traded-to-toronto-maple-leafs-by-philadelphia-flyers|title=Laughton traded to Maple Leafs by Flyers for prospect, 2027 1st-round pick|publisher=NHL|date=March 7, 2025|accessdate=March 9, 2025}}</ref>
+|-bgcolor="eeeeee"
+| style="width: 25em;" valign="top"| To [[2024–25 Pittsburgh Penguins season|Pittsburgh Penguins]]<hr>[[Connor Dewar]]<br>[[Conor Timmins]]
+| style="width: 25em;" valign="top"| To Toronto Maple Leafs<hr>5th-round pick in [[2025 NHL entry draft|2025]]
+| <ref>{{cite web|url=https://www.nhl.com/mapleleafs/news/maple-leafs-complete-trade-with-pittsburgh-penguins|title=Maple Leafs Complete Trade With Pittsburgh Penguins|publisher=Toronto Maple Leafs|date=March 7, 2025|accessdate=March 9, 2025}}</ref>
+|-
+| style="width: 25em;" valign="top"| To [[2024–25 Boston Bruins season|Boston Bruins]]<hr>[[Fraser Minten]]<br>[[Philadelphia Flyers|PHI]] 4th-round pick in [[2025 NHL entry draft|2025]]<br>conditional 1st-round pick in [[2026 NHL entry draft|2026]]{{sup|3}}
+| style="width: 25em;" valign="top"| To Toronto Maple Leafs<hr>[[Brandon Carlo]]
+| <ref name=LaughtonCarlo/>
+|-bgcolor="eeeeee"
+| style="width: 25em;" valign="top"| To [[2024–25 Minnesota Wild season|Minnesota Wild]]<hr>Future considerations
+| style="width: 25em;" valign="top"| To Toronto Maple Leafs<hr>[[Reese Johnson]]
+| <ref>{{cite web|url=https://www.nhl.com/mapleleafs/news/maple-leafs-complete-trade-with-minnesota-wild|title=Maple Leafs Complete Trade With Minnesota Wild|publisher=Toronto Maple Leafs|date=March 7, 2025|accessdate=March 7, 2025}}</ref>
+|}
+
+====Notes====
+*Toronto will receive the earliest of two picks that San Jose owns.
+*Philadelphia will a receive a first-round pick in 2027 if Toronto's first is outside of the top ten selections. 
+*Boston will receive a first-round pick in 2026 if Toronto's first is outside of the top five selections and is not conveyed to Chicago.
+
+===Players acquired===
+{|class="wikitable" 
+|- style="background:#ddd; text-align:center;"
+! style="width: 10em;"|Date || style="width: 14em;"|Player || style="width: 14em;"|Former team || style="width: 5em;"|Term || style="width: 10em;"|Via || style="width: 2.5em;"|Ref
+|-
+| {{start date|2024|07|01}} || [[Oliver Ekman-Larsson]] || [[Florida Panthers]] || 4-year || Free agency || <ref>{{cite web|url=https://www.nhl.com/mapleleafs/news/maple-leafs-sign-defenceman-oliver-ekman-larsson|title=Maple Leafs Sign Defenceman Oliver Ekman-Larsson|website=NHL.com|publisher=Toronto Maple Leafs|date=July 1, 2024|access-date=July 25, 2024}}</ref>
+|-
+| rowspan=4|{{start date|2024|07|02}} || [[Dakota Mermis]] || [[Minnesota Wild]] || 1-year || Free agency || <ref name="Signings">{{cite web|url=https://www.nhl.com/mapleleafs/news/maple-leafs-sign-three-players|title=Maple Leafs Sign Three Players|website=NHL.com|publisher=Toronto Maple Leafs|date=July 2, 2024|access-date=July 29, 2024}}</ref>
+|-
+| [[Philippe Myers]] || [[Tampa Bay Lightning]] || 1-year || Free agency || <ref name="Signings"/>
+|- 
+| [[Cédric Paré|Cedric Pare]] || [[Colorado Eagles]] ([[American Hockey League|AHL]]) || 1-year || Free agency || <ref name="Signings"/>
+|-
+| [[Anthony Stolarz]] || Florida Panthers || 2-year || Free agency || <ref>{{cite web|url=https://www.nhl.com/mapleleafs/news/maple-leafs-sign-goaltender-anthony-stolarz|title=Maple Leafs Sign Goaltender Anthony Stolarz|website=NHL.com|publisher=Toronto Maple Leafs|date=July 2, 2024|access-date=July 29, 2024}}</ref>
+|-
+| {{start date|2024|09|11}} || [[Jani Hakanpää|Jani Hakanpaa]] || [[Dallas Stars]] || 1-year || Free agency || <ref>{{cite web|url=https://www.nhl.com/mapleleafs/news/maple-leafs-sign-defenceman-jani-hakanpaa|title=Maple Leafs Sign Defenceman Jani Hakanpää|website=NHL.com|publisher=Toronto Maple Leafs|date=September 11, 2024|access-date=September 13, 2024}}</ref>
+|-
+| rowspan=2| {{start date|2024|10|07}} || [[Steven Lorentz]] || Florida Panthers || 1-year || Free agency || <ref name="PacioLorentz">{{cite web|url=https://www.nhl.com/mapleleafs/news/maple-leafs-sign-three-players-x1055|title=Maple Leafs Sign Three Players|website=NHL.com|publisher=Toronto Maple Leafs|date=October 7, 2024 |access-date=October 8, 2024}}</ref>
+|-
+| [[Max Pacioretty]] || [[Washington Capitals]] || 1-year || Free agency || <ref name="PacioLorentz"/>
+|-
+| {{start date|2025|03|01}} || [[Borya Valis]] || [[Prince George Cougars]] ([[Western Hockey League|WHL]]) || 3-year{{dagger}} || Free agency || <ref>{{cite web|url=https://www.nhl.com/mapleleafs/news/maple-leafs-sign-forward-borya-valis-to-three-year-entry-level-contract|title=Maple Leafs Sign Forward Borya Valis To Three-year, Entry-level Contract|publisher=Toronto Maple Leafs|date=March 1, 2025|accessdate=March 9, 2025}}</ref>
+|-
+| {{start date|2025|03|20}} || [[John Prokop]] || [[Union Garnet Chargers men's ice hockey|Union College]] ([[ECAC Hockey|ECAC]]) || 1-year{{dagger}}{{double-dagger}} || Free agency || <ref>{{cite web|url=https://www.nhl.com/mapleleafs/news/maple-leafs-sign-defenceman-john-prokop-to-a-one-year-contract|title=Maple Leafs Sign Defenceman John Prokop To A One-year Contract|publisher=Toronto Maple Leafs|date=March 20, 2025|accessdate=April 10, 2025}}</ref>
+|-
+| {{start date|2025|03|24}} || [[Luke Haymes]] || [[Dartmouth Big Green men's ice hockey|Dartmouth]] (ECAC) || 2-year{{dagger}}{{double-dagger}} || Free agency || <ref>{{cite web|url=https://www.nhl.com/mapleleafs/news/maple-leafs-sign-forward-luke-haymes-to-a-two-year-contract|title=Maple Leafs Sign Forward Luke Haymes To A Two-year Contract|publisher=Toronto Maple Leafs|date=March 24, 2025|accessdate=April 10, 2025}}</ref>
+|-
+|{{start date|2025|04|10}} || [[Blake Smith (ice hockey)|Blake Smith]] || [[Flint Firebirds]] ([[Ontario Hockey League|OHL]]) || 3-year{{dagger}}{{double-dagger}} || Free agency || <ref>{{cite web|url=https://www.tsn.ca/toronto-maple-leafs-sign-flint-firebirds-defenceman-blake-smith-to-three-year-entry-level-deal-1.2286447|title=Leafs sign defenceman Smith to three-year ELC|publisher=TSN|date=April 10, 2025|accessdate=April 10, 2025}}</ref>
+|}
+
+===Players lost===
+{|class="wikitable" 
+|- style="background:#ddd; text-align:center;"
+! style="width: 10em;"|Date || style="width: 14em;"|Player || style="width: 14em;"|New team || style="width: 5em;"|Term || style="width: 10em;"|Via || style="width: 2.5em;"|Ref
+|-
+| rowspan="7"|{{start date|2024|07|01}} || [[Tyler Bertuzzi]] || rowspan=2| [[Chicago Blackhawks]] || 4-year || Free agency || <ref>{{cite web|url=https://chicago.suntimes.com/blackhawks-signings-nhl-free-agency-signings-teuvo-teravainen-tyler-bertuzzi-broissoit-martinez|title=Teuvo Teravainen, Tyler Bertuzzi headline Blackhawks' huge wave of free-agent signings|website=Chicago.suntimes.com|publisher=Chicago Sun Times|date=July 1, 2024|access-date=July 25, 2024}}</ref>
+|-
+| [[T. J. Brodie]] || 2-year || Free agency || <ref>{{cite web|url=https://www.nhl.com/blackhawks/news/release-blackhawks-sign-t-j-brodie-to-two-year-contract|title=RELEASE: Blackhawks Sign T.J. Brodie to Two-Year Contract {{!}} Chicago Blackhawks|website=NHL.com|publisher=Chicago Blackhawks|date=July 1, 2024|access-date=July 25, 2024}}</ref>
+|-
+| [[Joel Edmundson]] || [[Los Angeles Kings]] || 4-year || Free agency || <ref>{{cite web|url=https://www.nhl.com/kings/news/kings-sign-warren-foegele-joel-edmundson-to-contracts|title=LA Kings Sign Forward Warren Foegele and Defenseman Joel Edmundson to Contracts|website=NHL.com|publisher=Los Angeles Kings|date=July 1, 2024|access-date=July 25, 2024}}</ref>
+|-
+| [[Noah Gregor]] || [[Ottawa Senators]] || 1-year || Free agency || <ref>{{cite web|url=https://www.nhl.com/senators/news/noah-gregor-signing|title=Sens get Gregor|website=NHL.com|publisher=Ottawa Senators|date=July 1, 2024|access-date=July 25, 2024}}</ref>
+|-
+| [[Maxime Lajoie]] || [[Seattle Kraken]] || 1-year || Free agency
+|<ref>{{cite web|url=https://www.sportsnet.ca/nhl/seattle-kraken-sign-maxime-lajoie-to-one-year-two-way-contract|title=Seattle Kraken sign Maxime Lajoie to one-year, two-way contract|website=Sportsnet.ca|date=July 1, 2024|access-date=July 25, 2024}}</ref>
+|-
+| [[Ilya Lyubushkin]] || [[Dallas Stars]] || 3-year || Free agency || <ref>{{cite web|url=https://www.nhl.com/stars/news/dallas-stars-sign-defenseman-ilya-lyubushkin-to-a-three-year-contract-070124|title=Stars sign Ilya Lyubushkin to a three-year contract|website=NHL.com|publisher=Dallas Stars|date=July 1, 2024|access-date=July 25, 2024}}</ref>
+|-
+| [[Ilya Samsonov]] || [[Vegas Golden Knights]] || 1-year || Free agency || <ref>{{cite web|url=https://www.nhl.com/news/ilya-samsonov-signs-1-year-contract-with-vegas-golden-knights|title=Samsonov signs 1-year, $1.8 million contract with Golden Knights|website=NHL.com|publisher=National Hockey League|date=July 2, 2024|access-date=July 25, 2024}}</ref>
+|-
+| {{start date|2024|07|02}} || [[Dylan Gambrell]] || [[Columbus Blue Jackets]] || 1-year || Free agency || <ref>{{cite web|url=https://www.nhl.com/bluejackets/news/blue-jackets-sign-center-dylan-gambrell|title=Blue Jackets sign Dylan Gambrell to two-way contract|website=NHL.com|publisher=Columbus Blue Jackets|date=July 2, 2024|access-date=July 25, 2024}}</ref>
+|}
+
+===Signings===
+{| class="wikitable"
+! style="width: 10em;"|Date !! style="width: 14em;"|Player !! style="width: 5em;"|Term !! style="width: 2.5em;"|Ref
+|-
+| rowspan=2|{{start date|2024|06|30}} || [[Max Domi]] || 4-year || <ref>{{cite web|url=https://www.nhl.com/mapleleafs/news/maple-leafs-re-sign-forward-max-domi|title=Maple Leafs Re-sign Forward Max Domi|website=NHL.com|publisher=Toronto Maple Leafs|date=June 30, 2024|access-date=July 29, 2024}}</ref>
+|-
+| [[Timothy Liljegren]] || 2-year || <ref>{{cite web|url=https://www.nhl.com/mapleleafs/news/maple-leafs-re-sign-defenceman-timothy-liljegren|title=Maple Leafs Re-Sign Defenceman Timothy Liljegren|website=NHL.com|publisher=Toronto Maple Leafs|date=June 30, 2024|access-date=July 31, 2024}}</ref>
+|-
+| {{start date|2024|07|01}} || [[Joseph Woll]] || 3-year{{double-dagger}} || <ref>{{cite web|url=https://www.nhl.com/news/joseph-woll-signs-3-year-deal-with-toronto|title=Woll signs 3-year, $10.98 million contract with Maple Leafs|website=NHL.com|publisher=National Hockey League|date=July 1, 2024|access-date=July 29, 2024}}</ref>
+|-
+| {{start date|2024|07|02}} || [[Matt Murray (ice hockey, born 1994)|Matt Murray]] || 1-year || <ref>{{cite web|url=https://www.nhl.com/mapleleafs/news/maple-leafs-re-sign-goaltender-matt-murray|title=Maple Leafs Re-sign Goaltender Matt Murray|website=NHL.com|publisher=Toronto Maple Leafs|date=July 2, 2024|access-date=July 29, 2024}}</ref>
+|-
+| {{start date|2024|07|23}} || [[Connor Dewar]] || 1-year || <ref>{{cite web|url=https://www.nhl.com/mapleleafs/news/maple-leafs-sign-forward-connor-dewar|title=Maple Leafs Sign Forward Connor Dewar|website=NHL.com|publisher=Toronto Maple Leafs|date=July 23, 2024|access-date=September 5, 2024}}</ref>
+|-
+| {{start date|2024|08|02}} || [[Ben Danford]] || 3-year{{dagger}} || <ref>{{cite web|url=https://www.nhl.com/mapleleafs/news/maple-leafs-sign-2024-first-round-pick-ben-danford-to-three-year-entry-level-contract|title=Maple Leafs Sign 2024 First-round Pick Ben Danford To Three-year, Entry-level Contract|website=NHL.com|publisher=Toronto Maple Leafs|date=August 2, 2024|access-date=August 9, 2024}}</ref>
+|-
+| {{start date|2024|08|21}} || [[Alex Steeves]] || 1-year || <ref>{{cite web|url=https://www.nhl.com/mapleleafs/news/maple-leafs-re-sign-alex-steeves-to-a-one-year-two-way-contract|title=Maple Leafs Re-sign Alex Steeves To A One-year, Two-way Contract|website=NHL.com|publisher=Toronto Maple Leafs|date=August 21, 2024|access-date=September 5, 2024}}</ref>
+|-
+| {{start date|2024|09|05}} || [[Marshall Rifai]] || 2-year{{double-dagger}} || <ref>{{cite web|url=https://www.nhl.com/mapleleafs/news/maple-leafs-extend-defenceman-marshall-rifai|title=Maple Leafs Extend Defenceman Marshall Rifai|website=NHL.com|publisher=Toronto Maple Leafs|date=September 5, 2024|access-date=September 6, 2024}}</ref>
+|-
+| {{start date|2024|10|07}} || [[Cade Webber]] || 2-year{{double-dagger}} || <ref>{{cite web|url=https://www.nhl.com/mapleleafs/news/maple-leafs-sign-three-players-x1055|title=Maple Leafs Sign Three Players|website=NHL.com|publisher=Toronto Maple Leafs|date=October 7, 2024|access-date=October 10, 2024}}</ref> 
+|-
+| {{start date|2025|01|03}} || [[Philippe Myers]] || 2-year || <ref>{{cite web|url=https://www.nhl.com/mapleleafs/news/maple-leafs-sign-defenceman-philippe-myers-to-two-year-contract-extension|title=Maple Leafs Sign Defenceman Philippe Myers To Two-year Contract Extension|website=NHL.com|publisher=Toronto Maple Leafs|date=January 3, 2025|access-date=January 4, 2025}}</ref> 
+|}
+
+==Draft picks==
+
+{{See also|List of Toronto Maple Leafs draft picks}}
+Below are the Toronto Maple Leafs' selections at the [[2024 NHL entry draft]], which was held on June 28 to 29, 2024, at [[Sphere (venue)|Sphere]] in [[Paradise, Nevada]].
+
+{| class="wikitable"
+|-
+! Round
+! #
+! Player
+! Pos.
+! Nationality
+! Team (League)
+|-
+| style="text-align:center;" |1
+| style="text-align:center;" |31
+| [[Ben Danford]]
+| D
+| {{flagu|Canada}}
+| [[Oshawa Generals]] ([[Ontario Hockey League|OHL]])
+|-
+| style="text-align:center;" |4
+| style="text-align:center;" |120
+| Victor Johansson
+| D
+| {{flagu|Sweden}}
+| [[Leksands IF]] ([[Swedish Hockey League|SHL]])
+|-
+| style="text-align:center;" rowspan="3"|5
+| style="text-align:center;" |151
+| Miroslav Holinka
+| C
+| {{flagu|Czech Republic}}
+| [[HC Oceláři Třinec]] ([[Czech Extraliga]])
+|-
+| style="text-align:center;" |152
+| Alexander Plesoviskikh
+| LW
+| {{flagu|Russia}}
+| [[Mamonty Yugry]] ([[Junior Hockey League (Russia)|MHL]])
+|-
+| style="text-align:center;" |157
+| Timofei Obvintsev
+| G
+| {{flagu|Russia}}
+| [[Krasnaya Armiya (JHL)|Krasnaya Armiya]] (MHL)
+|-
+| style="text-align:center;" rowspan="3"|7
+| style="text-align:center;" |200
+| Matt Lahey
+| D
+| {{flagu|Canada}}
+| [[Nanaimo Clippers]] ([[British Columbia Hockey League|BCHL]])
+|-
+| style="text-align:center;" |216
+| Sam McCue
+| LW
+| {{flagu|Canada}}
+| [[Owen Sound Attack]] (OHL)
+|-
+| style="text-align:center;" |225
+| Nathan Mayes
+| D
+| {{flagu|Canada}}
+| [[Spokane Chiefs]] ([[Western Hockey League|WHL]])
+|}
+
+==References==
+{{Reflist}}
+
+{{Toronto Maple Leafs}}
+{{Toronto Maple Leafs seasons}}
+{{2024–25 NHL season by team}}
+
+{{DEFAULTSORT:2024-25 Toronto Maple Leafs season}}
+[[Category:Toronto Maple Leafs seasons]]
+[[Category:2024–25 NHL season by team|Toronto Maple Leafs]]
+[[Category:2024–25 in Canadian ice hockey by team|Leafs]]
+[[Category:2024 in Toronto|Maple Leafs]]
+[[Category:2025 in Toronto|Maple Leafs]]
+[[Category:2024 in sports in Ontario|Toronto Maple Leafs]]
+[[Category:2025 in sports in Ontario|Toronto Maple Leafs]]

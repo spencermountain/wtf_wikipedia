@@ -314,11 +314,19 @@ let templates = {
     if (!Number.isFinite(wins) || !Number.isFinite(games) || games <= 0) {
       return { data: obj, replacement: '' }
     }
-    const result = (wins / games).toFixed(3)
-    if (obj.leading_zero === 'y') {
-      return { data: obj, replacement: result }
+    let result = (wins / games).toFixed(3)
+    if (obj.leading_zero !== 'y') {
+      result = result.replace(/^0\./, '.')
     }
-    return { data: obj, replacement: result.replace(/^0\./, '.') }
+    // {{winpct|94|68|record=y}} → '94–68 (.580)'
+    if (obj.record === 'y') {
+      const rec = [obj.wins, obj.losses]
+      if (obj.ties) {
+        rec.push(obj.ties)
+      }
+      return { data: obj, replacement: `${rec.join('–')} (${result})` }
+    }
+    return { data: obj, replacement: result }
   },
 
   // https://en.wikipedia.org/wiki/Template:Winlosspct

@@ -1,0 +1,133 @@
+import test from 'tape'
+import wtf from './_lib.js'
+
+// a ~2017-era nhl page: plain wikitable, opponent column, '@' away marker
+const nhlPage = `{{Infobox ice hockey team season
+| season = 2017–18
+| team = Toronto Maple Leafs
+| record = 49–26–7
+| division_place = 3rd
+| conference_place = 4th
+| goals_for = 277
+}}
+The '''2017–18 Toronto Maple Leafs season''' was the 101st season.
+
+==Schedule and results==
+===Regular season===
+{| class="wikitable"
+! # !! Date !! Opponent !! Score !! OT !! Attendance !! Record !! Pts
+|- style="background:#cfc;"
+| 1 || October 4 || @ Winnipeg Jets || 7–2 || || 15,321 || 1–0–0 || 2
+|- style="background:#cfc;"
+| 2 || October 7 || New York Rangers || 8–5 || || 19,108 || 2–0–0 || 4
+|- style="background:#ffb;"
+| 3 || January 2 || @ Boston Bruins || 3–4 || OT || 17,565 || 2–0–1 || 5
+|}
+
+==Skaters==
+{| class="wikitable"
+! Player !! GP !! G !! A !! Pts !! +/−
+|-
+| Auston Matthews || 62 || 34 || 29 || 63 || 18
+|-
+| Total || 82 || 1 || 1 || 1 || 1
+|}
+`
+
+// a ~2017-era mlb page: plain wikitable game log
+const mlbPage = `The '''2017 Washington Nationals season''' was the 13th season.
+
+==Game log==
+{| class="wikitable"
+! Date !! Opponent !! Score !! Win !! Loss !! Save !! Attendance !! Record
+|- style="background:#bfb;"
+| April 3 || Marlins || 4–2 || Strasburg (1–0) || Volquez (0–1) || Glover (1) || 42,744 || 1–0
+|- style="background:#fbb;"
+| April 5 || Marlins || 6–4 || Ureña (1–0) || Roark (0–1) || — || 22,450 || 1–1
+|}
+`
+
+test('old nhl page', (t) => {
+  const res = wtf(nhlPage, { title: '2017–18 Toronto Maple Leafs season' }).nhlSeason()
+  t.equal(res.team, 'Toronto Maple Leafs', 'team from title')
+  t.equal(res.year, 2017, 'year from title')
+  t.equal(res.games.length, 3, 'three games')
+  const g1 = res.games[0]
+  t.equal(g1.opponent, 'Winnipeg Jets', '@ stripped from opponent')
+  t.equal(g1.home, false, 'away game')
+  t.equal(g1.date, 'October 4 2017', 'fall game gets season year')
+  t.deepEqual(g1.result, { us: 7, them: 2 }, 'win score oriented')
+  t.equal(g1.outcome, 'win', 'win from row color')
+  t.equal(res.games[1].attendance, 19108, 'attendance')
+  t.equal(res.games[1].points, 4, 'cumulative points')
+  const g3 = res.games[2]
+  t.equal(g3.date, 'January 2 2018', 'winter game gets next year')
+  t.equal(g3.outcome, 'otl', 'overtime loss from yellow row')
+  t.equal(g3.overtime, true, 'OT flag')
+  t.deepEqual(g3.result, { us: 3, them: 4 }, 'otl score oriented')
+  t.equal(g3.win, false, 'otl is not a win')
+  // the infobox
+  t.deepEqual(res.season.record, { wins: 49, losses: 26, otLosses: 7, games: 82, winPct: 0.598 }, 'season record')
+  t.equal(res.standings.divisionPlace, 3, 'division place')
+  t.equal(res.standings.conferencePlace, 4, 'conference place')
+  t.equal(res.standings.goalsFor, 277, 'goals for')
+  // the roster
+  t.deepEqual(
+    res.skaters.map((p) => p.name),
+    ['Auston Matthews'],
+    'skaters exclude Total row'
+  )
+  t.equal(res.skaters[0].points, 63, 'player points')
+  t.end()
+})
+
+test('old mlb page', (t) => {
+  const res = wtf(mlbPage, { title: '2017 Washington Nationals season' }).mlbSeason()
+  t.equal(res.year, 2017, 'year')
+  t.equal(res.team, 'Washington Nationals', 'team')
+  t.equal(res.games.length, 2, 'two games')
+  const g1 = res.games[0]
+  t.equal(g1.opponent, 'Miami Marlins', 'short name resolved to full team')
+  t.equal(g1.home, true, 'home game')
+  t.equal(g1.win, true, 'first game won')
+  t.deepEqual(g1.pitchers, { win: 'Strasburg', loss: 'Volquez', save: 'Glover' }, 'pitchers stripped')
+  t.deepEqual(res.games[1].result, { us: 4, them: 6 }, 'loss score oriented')
+  t.equal(res.games[1].pitchers.loss, 'Roark', 'losing pitcher')
+  t.equal(res.games[1].pitchers.save, null, 'dash means no save')
+  t.equal(res.games[1].attendance, 22450, 'attendance')
+  t.end()
+})
+
+test('no-color rows fall back to the record column', (t) => {
+  const page = `The '''2017 Washington Nationals season''' was the 13th season.
+
+==Game log==
+{| class="wikitable"
+! Date !! Opponent !! Score !! Record
+|-
+| April 3 || Marlins || 4–2 || 1–0
+|-
+| April 5 || @ Marlins || 6–4 || 1–1
+|}
+`
+  const res = wtf(page, { title: '2017 Washington Nationals season' }).mlbSeason()
+  t.equal(res.games[0].outcome, 'win', 'wins column went up')
+  t.equal(res.games[1].outcome, 'loss', 'losses column went up')
+  t.deepEqual(res.games[1].result, { us: 4, them: 6 }, 'winner-first score flipped for a loss')
+  t.end()
+})
+
+test('plugin methods exist', (t) => {
+  t.equal(typeof wtf(nhlPage).nhlSeason, 'function', 'doc.nhlSeason')
+  t.equal(typeof wtf(mlbPage).mlbSeason, 'function', 'doc.mlbSeason')
+  t.equal(typeof wtf.mlbSeason, 'function', 'wtf.mlbSeason')
+  t.equal(typeof wtf.nhlSeason, 'function', 'wtf.nhlSeason')
+  t.end()
+})
+
+test('empty doc parses to null-ish', (t) => {
+  const res = wtf('no sports here').mlbSeason()
+  t.equal(res.games.length, 0, 'no games')
+  t.deepEqual(res.season, {}, 'no infobox')
+  t.end()
+})

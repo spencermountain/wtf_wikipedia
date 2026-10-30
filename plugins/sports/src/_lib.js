@@ -13,9 +13,17 @@ const withChildren = function (doc, section) {
   return res
 }
 
+// first title wins - 'game log' should beat an earlier 'regular season' prose section
 const findSection = function (doc, titles = []) {
-  const wanted = titles.map((t) => t.toLowerCase())
-  return doc.sections().find((s) => wanted.includes(s.title().trim().toLowerCase())) || null
+  const sections = doc.sections()
+  for (const title of titles) {
+    const want = title.toLowerCase()
+    const found = sections.find((s) => s.title().trim().toLowerCase() === want)
+    if (found) {
+      return found
+    }
+  }
+  return null
 }
 
 // table rows use normalized keys ('box_score'), but callers may pass raw ones ('Box Score')
@@ -41,4 +49,15 @@ const getCell = function (row = {}, names = []) {
   return ''
 }
 
-export { withChildren, findSection, getCell }
+// 'Stolarz (0–1–0)' → 'Stolarz',  'Smith (1)‡' → 'Smith'
+const stripNotes = function (str = '') {
+  return String(str)
+    .replace(/\(.*?\)/g, '')
+    .replace(/[‡†*]/g, '')
+    .trim()
+}
+
+// split '4–2' on any dash variant
+const dashSplit = /[–\-−—]|&[nm]dash;/
+
+export { withChildren, findSection, getCell, stripNotes, dashSplit }

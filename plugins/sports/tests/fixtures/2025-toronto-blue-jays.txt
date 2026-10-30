@@ -1,0 +1,1026 @@
+{{Short description|Major League Baseball season}}
+{{Use Canadian English|date=March 2026}}
+{{Use mdy dates|date=September 2024}}
+{{Infobox baseball team season
+| name = Toronto Blue Jays
+| season = 2025
+| misc = American League champions<br>American League East champions
+| image = Toronto Blue Jays wordmark logo wide blue-red.svg
+| image_size = 270px
+| caption = 
+| logo = 
+| league = American League
+| division = [[American League East|East]]
+| Uniform logo = 
+| ballpark = [[Rogers Centre]]
+| city = [[Toronto, Ontario]]
+| record = {{winpct|94|68|record=y}}
+| divisional_place = 1st
+| owners = [[Rogers Communications|Rogers]]
+| president = [[Mark Shapiro (sports executive)|Mark Shapiro]] (also [[Chief executive officer|CEO]])
+| general_manager = [[Ross Atkins (baseball)|Ross Atkins]]
+| manager = [[John Schneider (baseball)|John Schneider]]
+| television = [[Sportsnet]]<br>[[Sportsnet One]]
+| radio = [[Toronto Blue Jays Radio Network|Blue Jays Radio Network]]<br>[[CJCL|Sportsnet 590 the FAN]]
+}}
+The '''2025 Toronto Blue Jays season''' was the [[2025 Major League Baseball season|49th season]] of the [[Toronto Blue Jays]] franchise, and the Blue Jays' 34th full season (36th overall) at [[Rogers Centre]]. The Blue Jays dramatically improved upon their last place record, 74-88, from last season with a first-place record of 94-68. The season was the third time the Blue Jays won the [[American League pennant]], advancing to the [[2025 World Series]] against the [[2024 World Series|defending champ]] [[2025 Los Angeles Dodgers season|Los Angeles Dodgers]], their third appearance in franchise history and first since [[1993 World Series|1993]]. The season ended with their first World Series loss in franchise history, falling to the Dodgers in seven games with Game 7 going into [[extra innings]] at home.
+
+On August 22, the Blue Jays won their 75th game, guaranteeing a better total than their 74–88 record from [[2024 Toronto Blue Jays season|last year]] following a 5–2 victory over the [[2025 Miami Marlins season|Miami Marlins]].
+
+On September 21, the Blue Jays clinched a return to the [[2025 Major League Baseball postseason|postseason]] after a one-year absence with an 8–5 win over the [[2025 Kansas City Royals season|Kansas City Royals]].<ref name="Blue Jays headed back to postseason with sights set on East crown">{{cite web|url=https://www.mlb.com/news/blue-jays-clinch-postseason-berth-2025|title=Blue Jays headed back to postseason with sights set on East crown|last=Matheson|first=Keegan|work=MLB.com|date=September 21, 2025|accessdate=September 21, 2025}}</ref> On September 28, the Blue Jays won the [[American League East]] division for the first time since [[2015 Toronto Blue Jays season|2015]] by virtue of a head-to-head tiebreaker against the [[2025 New York Yankees season|New York Yankees]], 8–5, with a 13–4 victory against the [[2025 Tampa Bay Rays season|Tampa Bay Rays]] in their final regular season game, a first-round bye, and home-field advantage throughout the [[American League]] playoffs.<ref name="AL East belongs up north! Blue Jays clinch first division title since 2015">{{cite web|url=https://www.mlb.com/bluejays/news/blue-jays-win-2025-al-east-division-title|title= AL East belongs up north! Blue Jays clinch first division title since 2015|last=Matheson|first=Keegan|work=MLB.com|date=September 28, 2025|accessdate=September 29, 2025}}</ref> The team won the [[2025 American League Division Series|Division Series]] with [[home-field advantage]] against the fourth seed New York Yankees, victors of the [[2025 American League Wild Card Series|Wild Card Series]] over [[Red Sox–Yankees rivalry|archrival]] [[2025 Boston Red Sox season|Boston Red Sox]], earning the team their first [[American League Championship Series]] appearance since [[2016 Toronto Blue Jays season|2016]]. On October 20, the Blue Jays defeated the [[2025 Seattle Mariners season|Seattle Mariners]] at home in seven games in the [[2025 American League Championship Series|2025 ALCS]] to advance to the 2025 World Series. In that series, they faced the defending champion Los Angeles Dodgers, which the Blue Jays lost in seven games.
+
+After the season, [[Buck Martinez]], Blue Jays' color analyst since [[1987 Toronto Blue Jays season|1987]], announced his retirement.<ref name="star25">{{cite news |last1=Ngabo|first1=Gilbert|title=Buck Martinez returns to Blue Jays broadcasts after stepping away for cancer treatment. He thinks this team could go all the way|url=https://www.thestar.com/sports/blue-jays/buck-martinez-returns-to-blue-jays-broadcasts-after-stepping-away-for-cancer-treatment-he-thinks/article_8a72c8c6-cec1-4141-8d12-177bad8e0adf.html|work=Toronto Star|date=8 August 2025}}</ref>
+
+The Toronto Blue Jays drew an average home attendance of 35,184, the 9th-highest of all MLB teams.<ref>https://www.espn.com/mlb/attendance/_/year/2025</ref>
+
+==Offseason==
+
+The Blue Jays offseason began with [[Ryan Yarbrough]] and [[Génesis Cabrera]] electing [[Free agency (Major League Baseball)|free agency]].<ref>{{citeweb|title=Toronto Blue Jays Transactions October 2024|url=https://www.mlb.com/bluejays/roster/transactions/2024/10|website=MLB.com|access-date=2026-01-08}}</ref><ref name="NovTransactions">{{citeweb|title=Toronto Blue Jays Transactions November 2024|url=https://www.mlb.com/bluejays/roster/transactions/2024/11|website=MLB.com|access-date=2026-01-08}}</ref> [[Braydon Fisher]] was signed on a minor league deal on November 18.<ref name="NovTransactions"/> On November 22, they non-tendered former All-Star closer [[Jordan Romano]], after he posted a 6.59 ERA in 2024 while dealing with elbow issues, avoiding a projected $7.75 million salary. They also non-tendered [[Dillon Tate]].<ref>{{citeweb|title=Romano non-tendered by Toronto, becomes a free agent|url=https://www.mlb.com/news/jordan-romano-non-tendered-by-blue-jays|website=MLB.com|access-date=2026-01-08}}</ref> On December 3rd, the Blue Jays signed Michael Stefanic to a minor league contract.<ref name="DecTransactions">{{citeweb|title=Toronto Blue Jays Transactions December 2024|url=https://www.mlb.com/bluejays/roster/transactions/2024/12|website=MLB.com|access-date=2026-01-08}}</ref>
+
+The first major move of the offseason came on December 10, when the Blue Jays traded [[Spencer Horwitz]] and minor league outfielder Nick Mitchell to the [[Cleveland Guardians]] for former All-Star and 3x [[Gold Glove]] winner [[Andrés Giménez]], and reliever [[Nick Sandlin]]. The Guardians traded Gimenez after underwhelming offensive performance, and to get rid of his 7-year $106.5 million contract extension signed in 2023. Later that same day, the Guardians would go on to trade Horwitz to the [[Pittsburgh Pirates]] for [[Luis Ortiz (pitcher, born 1999)|Luis Ortiz]], [[Michael Kennedy (baseball)|Michael Kennedy]] and [[Josh Hartle]].<ref>{{citeweb|title=Guardians trade Giménez in three-team swap with Jays, Bucs|url=https://www.mlb.com/news/guardians-trade-andres-gimenez-to-blue-jays-for-spencer-horwitz|website=MLB.com|access-date=2026-01-08}}</ref>
+
+On December 11, the Blue Jays selected [[Angel Bastardo]] in the [[Rule 5 Draft]] from the [[Boston Red Sox]]. Bastardo spent the entire 2025 season on the [[injured list]] recovering from [[Tommy John surgery]].<ref>{{citeweb|title=Blue Jays select Bastardo|url=https://www.mlb.com/press-release/press-release-blue-jays-select-bastardo-in-2025-rule-5-draft|website=MLB.com|access-date=2026-01-08}}</ref> The Blue Jays signed their first major league free agent on December 13, bringing back relief pitcher [[Yimi García]] on a 2-year, $15 million contract. They had previously traded him at the 2024 trade deadline to the [[Seattle Mariners]] for [[Jonatan Clase]] and catcher Jacob Sharp. <ref>{{citeweb|title=Blue Jays bringing back Yimi García on 2-year deal|url=https://www.mlb.com/news/yimi-garcia-blue-jays-contract|website=MLB.com|access-date=2026-01-08}}</ref> On December 20, the Blue Jays signed [[Josh Walker (baseball)|Josh Walker]] to a major league deal, and signed [[Eric Lauer]] and [[Ali Sánchez]] to minor league contracts.
+
+The Blue Jays were also rumoured to be among the finalists for top free agents [[Juan Soto]] and [[Corbin Burnes]], offering around $700 million for Soto<ref>{{citeweb|title=How far Blue Jays went in pursuit of Juan Soto|url=https://www.sportsnet.ca/mlb/article/how-far-blue-jays-went-in-pursuit-of-juan-soto/|website=Sportsnet.ca|access-date=2026-01-08}}</ref> and offering more to Burnes than the [[Arizona Diamondbacks]], who ended up signing him, did.<ref>{{citeweb|title=Blue Jays running out of long-term rotation options after missing out on Burnes|url=https://www.tsn.ca/mlb/toronto-blue-jays-running-out-of-long-term-rotation-options-after-missing-out-on-corbin-burnes-1.2226302|website=TSN.ca|access-date=2026-01-08}}</ref>
+
+On January 10, the Blue Jays signed all-star closer [[Jeff Hoffman]] to a 3-year $33 million contract. There were rumours of Hoffman attempting to become a starter, however Jays GM [[Ross Atkins (baseball)|Ross Atkins]] confirmed Hoffman was signed as a reliever. This move came a day after Jordan Romano signed with the [[Philadelphia Phillies]], essentially completing a closer swap between the two teams. The Jays originally drafted Hoffman in the first round of the [[2014 Major League Baseball draft]] before trading him for [[Troy Tulowitzki]] in 2015.<ref>{{citeweb|title=Blue Jays ink RHP Hoffman to 3-year deal|url=https://www.mlb.com/news/jeff-hoffman-contract-with-blue-jays|website=MLB.com|access-date=2026-01-08}}</ref>
+
+On January 15, the Blue Jays traded Brett de Geus to the Pirates for cash considerations.<ref name="JanTransactions">{{citeweb|title=Toronto Blue Jays Transactions January 2025|url=https://www.mlb.com/bluejays/roster/transactions/2025/1|website=MLB.com|access-date=2026-01-08}}</ref> On January 17th, with the Jays looking to sign top international free agent [[Roki Sasaki]], they traded a [[player to be named later]] to the Guardians for [[Myles Straw]], international bonus pool money, and cash. Similar to Gimenez, Straw provided elite defense, but underperformed offensively and had an unsavoury contract, owed $13.8 million over the last two years of the contract.<ref>{{citeweb|title=Guardians send Straw to Blue Jays for player to be named or cash|url=https://www.mlb.com/news/myles-straw-traded-to-blue-jays-from-guardians|website=MLB.com|access-date=2026-01-08}}</ref> After missing out on Sasaki, the Jays signed 17 international free agents on January 18, most notably shortstops Christopher Polanco and Juan Sanchez.<ref>{{citeweb|title=Toronto adds star D.R. shortstop in '25 international class|url=https://www.mlb.com/news/blue-jays-2025-international-prospect-signings|website=MLB.com|access-date=2026-01-08}}</ref>
+
+On January 20, the Blue Jays signed outfielder [[Anthony Santander]] to a 5-year, $92.5 million contract. Coming off a 44-[[home run]] season with the [[Baltimore Orioles]], Santander was one of the premier free agents available, and was expected to be a weapon batting behind star first baseman [[Vladimir Guerrero Jr.]].<ref>{{citeweb|title=Santander embraces 'new brothers,' old connections in Toronto|url=https://www.mlb.com/news/anthony-santander-joins-blue-jays|website=MLB.com|access-date=2026-01-08}}</ref> On January 22, the Jays signed [[Dicky Lovelady]] to a minor league contract.<ref name="JanTransactions"/>
+
+On February 4, the Jays signed legendary pitcher [[Max Scherzer]] to a one-year, $15.5 million deal. At the time, Scherzer was an 8-time all-star, 3-time [[Cy Young]] winner, and 2-time World Series champion.<ref>{{citeweb|title=Blue Jays finalize 1-year, $15.5M deal with 3-time Cy winner Scherzer|url=https://www.mlb.com/news/max-scherzer-blue-jays-contract|website=MLB.com|access-date=2026-01-08}}</ref> Scherzer was expected to play an important role beyond the mound, including mentoring younger pitchers such as [[Trey Yesavage]]. On February 17, the Blue Jays signed [[Jacob Barnes]] to a minor league deal. On February 21, they brought Ryan Yarbrough back on a minor league deal.<ref>{{citeweb|title=Toronto Blue Jays Transactions February 2025|url=https://www.mlb.com/bluejays/roster/transactions/2025/2|website=MLB.com|access-date=2026-01-08}}</ref> They would also bring back Dillon Tate on a major league contract on March 12. <ref>{{citeweb|title=Toronto Blue Jays Transactions March 2025|url=https://www.mlb.com/bluejays/roster/transactions/2025/3|website=MLB.com|access-date=2026-01-08}}</ref>
+
+==Standings==
+===American League East===
+{{2025 AL East standings|highlight=Toronto Blue Jays}}
+
+===American League Wild Card===
+{{2025 AL Wild Card standings|highlight=Toronto Blue Jays}}
+
+==Record vs. opponents==
+{| style="width:100%;"
+|-
+|  style="width:50%; vertical-align:top;"|
+
+{| class="wikitable" style="font-size: 95%; text-align: center;"
+|-
+! style="background:#003DA5;" color:white;"|
+! colspan=3 style=background:#003DA5; color:white;" | <span style="color:white;">Record</span>
+! colspan=3 style=background:#003DA5; color:white;" | <span style="color:white;">Games Left</span>
+|-
+! ! style="background:#003DA5;" color:white;"| <span style="color:white;">Opponent</span> !! ! style="background:#003DA5;" color:white;"| <span style="color:white;">Home</span> !! ! style="background:#003DA5;" color:white;"| <span style="color:white;">Road</span> !! ! style="background:#003DA5;" color:white;"| <span style="color:white;">Total</span> !! ! style="background:#003DA5;" color:white;"| <span style="color:white;">Home</span> !! ! style="background:#003DA5;" color:white;"| <span style="color:white;">Road</span> !! ! style="background:#003DA5;" color:white;"| <span style="color:white;">Total</span>
+|-
+!width=135|
+!width=50|
+!width=50|
+!width=50|
+!width=45|
+!width=45|
+!width=45|
+|-
+| colspan="11"  style="text-align:center; background:#041E42;" color:white;| '''[[American League East|<span style="color:white;">AL East</span>]]'''
+|-
+| style="text-align:left;"| [[2025 Baltimore Orioles season|Baltimore Orioles]] || 5–2 || 2–4 || 7–6 || – || – || –
+|-
+| style="text-align:left;"| [[2025 Boston Red Sox season|Boston Red Sox]] || 3–3 || 5–2 || 8–5 || – || – || –
+|-
+| style="text-align:left;"| [[2025 New York Yankees season|New York Yankees]] || 6–1 || 2–4 || 8–5 || – || – || –
+|-
+| style="text-align:left;"| [[2025 Tampa Bay Rays season|Tampa Bay Rays]] || 4–2 || 2–5 || 6–7 || – || – || –
+|-  style="font-weight:bold; background:powderblue;"
+| style="text-align:left;"| Totals || 18–8 || 11–15 || 29–23 || – || – || –
+|-
+| colspan="11"  style="text-align:center; background:#041E42;" color:white;| '''[[American League Central|<span style="color:white;">AL Central</span>]]'''
+|-
+| style="text-align:left;"| [[2025 Chicago White Sox season|Chicago White Sox]] || 1–2 || 2–1 || 3–3 || – || – || –
+|-
+| style="text-align:left;"| [[2025 Cleveland Guardians season|Cleveland Guardians]] || 1–2 || 2–1 || 3–3 || – || – || –
+|-
+| style="text-align:left;"| [[2025 Detroit Tigers season|Detroit Tigers]]  || 1–2 || 3–1 || 4–3 || – || – || –
+|-
+| style="text-align:left;"| [[2025 Kansas City Royals season|Kansas City Royals]] || 1–2 || 1–2 || 2–4 || – || – || –
+|-
+| style="text-align:left;"| [[2025 Minnesota Twins season|Minnesota Twins]] || 2–1 || 2–1 || 4–2 || – || – || –
+|-  style="font-weight:bold; background:powderblue;"
+| style="text-align:left;"| Totals || 6–9 || 10–6 || 16–15 || – || – || –
+|-
+| colspan="11"  style="text-align:center; background:#041E42;" color:white;| '''[[American League West|<span style="color:white;">AL West</span>]]'''
+|-
+| style="text-align:left;"| [[2025 Houston Astros season|Houston Astros]] || 2–1 || 0–3 || 2–4 || – || – || –
+|-
+| style="text-align:left;"| [[2025 Los Angeles Angels season|Los Angeles Angels]] || 3–0 || 1–2 || 4–2 || – || – || –
+|-
+| style="text-align:left;"| [[2025 Athletics season|Athletics]] || 4–0 || 1–2 || 5–2 || – || – || –
+|-
+| style="text-align:left;"| [[2025 Seattle Mariners season|Seattle Mariners]] || 1–2 || 3–0 || 4–2 || – || – || –
+|-
+| style="text-align:left;"| [[2025 Texas Rangers season|Texas Rangers]] || 2–1 || 2–1 || 4–2 || – || – || –
+|-  style="font-weight:bold; background:powderblue;"
+| style="text-align:left;"| Totals || 12–4 || 7–8 || 19–12 || – || – || –
+|-
+| colspan="11"  style="text-align:center; background:#041E42;" color:white;| '''[[National League (baseball)|<span style="color:white;">National League</span>]]'''
+|-
+| style="text-align:left;"| [[2025 Arizona Diamondbacks season|Arizona Diamondbacks]] || 2–1 || – || 2–1 || – || – || –
+|-
+| style="text-align:left;"| [[2025 Atlanta Braves season|Atlanta Braves]] || 2–1 || – || 2–1 || – || – || –
+|-
+| style="text-align:left;"| [[2025 Chicago Cubs season|Chicago Cubs]] || 2–1 || – || 2–1 || – || – || –
+|-
+| style="text-align:left;"| [[2025 Cincinnati Reds season|Cincinnati Reds]] || – || 2–1 || 2–1 || – || – || –
+|-
+| style="text-align:left;"| [[2025 Colorado Rockies season|Colorado Rockies]] || – || 3–0 || 3–0 || – || – || –
+|-
+| style="text-align:left;"| [[2025 Los Angeles Dodgers season|Los Angeles Dodgers]] || – || 1–2 || 1–2 || – || – || –
+|-
+| style="text-align:left;"| [[2025 Miami Marlins season|Miami Marlins]] || – || 2–1 || 2–1 || – || – || –
+|-
+| style="text-align:left;"| [[2025 Milwaukee Brewers season|Milwaukee Brewers]] || 1–2 || – || 1–2 || – || – || –
+|-
+| style="text-align:left;"| [[2025 New York Mets season|New York Mets]] || – || 0–3 || 0–3 || – || – || –
+|-
+| style="text-align:left;"| [[2025 Philadelphia Phillies season|Philadelphia Phillies]] || 2–1 || 0–3 || 2–4 || – || – || –
+|-
+| style="text-align:left;"| [[2025 Pittsburgh Pirates season|Pittsburgh Pirates]] || – || 1–2 || 1–2 || – || – || –
+|-
+| style="text-align:left;"| [[2025 San Diego Padres season|San Diego Padres]] || 3–0 || – || 3–0 || – || – || –
+|-
+| style="text-align:left;"| [[2025 San Francisco Giants season|San Francisco Giants]] || 3–0 || – || 3–0 || – || – || –
+|-
+| style="text-align:left;"| [[2025 St. Louis Cardinals season|St. Louis Cardinals]] || – || 3–0 || 3–0 || – || – || –
+|-
+| style="text-align:left;"| [[2025 Washington Nationals season|Washington Nationals]] || 3–0 || – || 3–0 || – || – || –
+|-  style="font-weight:bold; background:powderblue;"
+| style="text-align:left;"| Totals || 18–6 || 12–12 || 30–18 || – || – || –
+|- style=background:#003DA5; color:white;"
+| style="text-align:left;"| <span style="color:white;">'''Grand Totals'''</span> || <span style="color:white;">'''54–27'''</span> || <span style="color:white;">'''40–41'''</span> || <span style="color:white;">'''94–68'''</span> || <span style="color:white;">'''–'''</span> || <span style="color:white;">'''–'''</span> || <span style="color:white;">'''–'''</span>
+|}
+|  style="width:50%; vertical-align:top;"|
+{| class="wikitable" style="font-size: 95%; text-align: center;"
+|-
+! style="background:#003DA5;" color:white;"| <span style="color:white;">Month</span>
+! style="background:#003DA5;" color:white;"| <span style="color:white;">Games</span>
+! style="background:#003DA5;" color:white;"| <span style="color:white;">Won</span>
+! style="background:#003DA5;" color:white;"| <span style="color:white;">Lost</span>
+! style="background:#003DA5;" color:white;"| <span style="color:white;">Pct.</span>
+|-
+! style="width:100px;"|
+!width="45"|
+!width="45"|
+!width="45"|
+!width="60"|
+|-
+| style="text-align:left;"| March || 5 || 3 || 2 || {{Winning percentage|3|2|}}
+|-
+| style="text-align:left;"| April || 25 || 11 || 14 || {{Winning percentage|11|14|}}
+|-
+| style="text-align:left;"| May || 28 || 16 || 12 || {{Winning percentage|16|12|}}
+|-
+| style="text-align:left;"| June || 26 || 16 || 10 || {{Winning percentage|16|10|}}
+|-
+| style="text-align:left;"| July || 26 || 18 || 8 || {{Winning percentage|18|8|}}
+|-
+| style="text-align:left;"| August || 27 || 15 || 12 || {{Winning percentage|15|12|}}
+|-
+| style="text-align:left;"| September || 25 || 15 || 10 || {{Winning percentage|15|10|}}
+
+|-  style="font-weight:bold; background:powderblue;"
+| style="text-align:left;"| Totals || 162 || 94 || 68 || {{Winning percentage|94|68|}}
+|}
+|}
+
+==Regular season==
+{{expand section|date=September 2025}}
+
+===Opening Day===
+{| class="wikitable" style="text-align:left"
+|+
+! colspan="2" |Opening Day starters
+|-
+! Position !! Name
+|-
+| Catcher || [[Alejandro Kirk]]
+|-
+| First baseman || [[Vladimir Guerrero Jr.]]
+|-
+| Second baseman || [[Andrés Giménez]]
+|-
+| Shortstop || [[Bo Bichette]]
+|-
+| Third baseman || [[Ernie Clement]]
+|-
+| Left fielder || [[Anthony Santander]]
+|-
+| Center fielder || [[George Springer]]
+|-
+| Right fielder || [[Alan Roden]]
+|-
+| Designated hitter || [[Will Wagner (baseball)|Will Wagner]]
+|-
+| Pitcher || [[José Berríos]]
+|}
+
+===March and April===
+The Blue Jays began the 2025 season at home against the [[2025 Baltimore Orioles season|Baltimore Orioles]], splitting a four-game series with one of their [[American League East|AL East]] rivals.<ref>{{cite web|url=https://www.coastreporter.net/ontario-news/springer-bassitt-help-blue-jays-split-season-opening-series-with-orioles-10450682|title=Springer, Bassitt help Blue Jays split season-opening series with Orioles|last=Wharnsby|first=Tim|work=coastreporter.net|date=March 30, 2025|accessdate=April 14, 2025}}</ref> Offseason acquisition [[Max Scherzer]] was injured in his start on March 29, and was placed on the injured list.<ref>{{cite web|url=https://www.mlb.com/news/max-scherzer-to-injured-list-with-right-thumb-inflammation|title=Scherzer heads to IL with right thumb injury|last=Matheson|first=Keegan|work=MLB.com|date=March 30, 2025|accessdate=April 14, 2025}}</ref> The [[2025 Washington Nationals season|Washington Nationals]] were [[Sweep (sports)|swept]] by the Jays in the next series, with [[Easton Lucas]] taking Scherzer's rotation spot and pitching five scoreless innings in the finale.<ref>{{cite web|url=https://www.sportsnet.ca/mlb/article/lucas-steps-into-void-to-help-blue-jays-sweep-nationals/|title=Lucas steps into void to help Blue Jays sweep Nationals|last=Davidi|first=Shi|work=[[Sportsnet]]|date=April 2, 2025|accessdate=April 14, 2025}}</ref> Traveling to Queens for their first road trip of 2025, the Blue Jays were swept by the [[2025 New York Mets season|New York Mets]] over a three-game series.<ref>{{cite web|url=https://www.sportsnet.ca/mlb/article/francis-keeps-rolling-but-blue-jays-offence-falls-short-in-mets-sweep/|title=Francis keeps rolling, but Blue Jays offence falls short in Mets sweep|last=Davidi|first=Shi|work=[[Sportsnet]]|date=April 6, 2025|accessdate=April 14, 2025}}</ref>
+
+On April 7, the Blue Jays signed Vladimir Guerrero Jr. to a 14-year, $500 million contract extension. The extension is the largest contract in franchise history, eclipsing the six-year, $150 million contract issued to [[George Springer]], and is [[List of largest sports contracts|the second-largest contract in MLB history]] in present-day value and the highest for a one-team professional athlete in any team sport.<ref>{{cite web|url=https://www.cbc.ca/sports/baseball/mlb/blue-jays-announce-contract-vladimir-guerrero-jr-1.7505996|title=Vladimir Guerrero Jr. Officially Signs Extension|work=CBC.ca|accessdate=April 13, 2025}}</ref> Heading to Boston, Toronto nearly swept the [[2025 Boston Red Sox season|Boston Red Sox]] before falling in extra innings in the final game of the series. After the game, manager [[John Schneider (baseball)|John Schneider]] criticized home plate umpire [[Manny Gonzalez (umpire)|Manny Gonzalez]], saying "It's tough to battle nine hitters and an umpire... I've got all the respect in the world for them, but it wasn't a great day for him behind the plate."<ref>{{cite web|url=https://www.tsn.ca/mlb/toronto-blue-jays-manager-john-schneider-rips-umpires-after-close-loss-to-boston-red-sox-1.2286762|title=Blue Jays manager Schneider rips umpires after close loss to Red Sox|work=TSN.ca|date=April 10, 2025|accessdate=April 14, 2025}}</ref> To close their road trip, the Blue Jays went to Baltimore. The first game of the series was rained out (and was made up as a doubleheader in late July), and the teams split the other two games of the series.<ref>{{cite web|url=https://www.mlb.com/bluejays/news/jeff-hoffman-secures-win-in-series-finale-vs-orioles|title=Hoffman lets loose after two-inning extras shutdown vs. O's: 'I love it'|last=Leckie|first=Paige|work=MLB.com|date=April 13, 2025|accessdate=April 14, 2025}}</ref>
+
+===June===
+[[File:Gimenez homers in stlouis 2025.png|thumb|[[Alejandro Kirk|Kirk]] and [[Bo Bichette|Bichette]] score on a three-run homer by [[Andrés Giménez|Giménez]] in St. Louis.]]
+The Blue Jays began June by concluding a four-game sweep of the [[2025 Athletics season|Athletics]] at home.<ref>{{cite news |last1=Zicarelli |first1=Frank |title=Addison Barger's three-run bash lifts Blue Jays to series sweep of Athletics |url=https://torontosun.com/sports/baseball/toronto-blue-jays/bargers-three-run-bash-lifts-blue-jays-to-series-sweep-of-athletics |work=Toronto Sun |date=June 1, 2025}}</ref> They followed that by winning two of three from the [[2025 Philadelphia Phillies season|Philadelphia Phillies]] at home.<ref>{{cite news |last1=Delaney |first1=Ryley |title=Blue Jays series recap: Jays best Phillies in three-game series |url=https://www.msn.com/en-ca/sports/mlb/blue-jays-series-recap-jays-best-phillies-in-three-game-series/ |work=MSN |date=June 5, 2025}}</ref> Next, they won two of three against the [[2025 Minnesota Twins season|Minnesota Twins]] at [[Target Field]].<ref>{{cite news |title=Lee and Vázquez go back to back to power Twins past Blue Jays 6-3 and avoid series sweep |url=https://www.cbssports.com/mlb/gametracker/recap/MLB_20250608_TOR@MIN/ |work=CBS Sports |agency=Associated Press |date=June 8, 2025}}</ref> The Blue Jays followed that up by sweeping the [[2025 St. Louis Cardinals season|St. Louis Cardinals]] in a three-game set on the road, resulting in their 12th win in 14 games and brought their record to 38–30.<ref>{{cite web |title=Blue Jays respond to every challenge in sweep of Cardinals |url=https://www.sportsnet.ca/mlb/article/blue-jays-responding-to-every-challenge-in-sweep-of-cardinals/ |website=sportsnet.ca |date=June 12, 2025}}</ref>
+
+===July===
+From June 30 to July 3, the Blue Jays won all four games against the [[2025 New York Yankees season|New York Yankees]] at home and by doing so, overtook them for first place in the AL East.<ref>{{cite web |last1=Matheson |first1=Keegan |title=4-game sweep of Yanks finds Blue Jays alone in 1st this late for first time since '16 |url=https://www.mlb.com/news/blue-jays-alone-in-first-place-after-4-game-sweep-of-yankees |website=mlb.com |date=July 4, 2025}}</ref> On July 21, the Blue Jays set a franchise record by winning their 11th straight game at home, beating the Yankees in the first game of another three-game set against them.<ref>{{cite web |last1=Davidi |first1=Shi |title=Blue Jays do all the little things in win over Yankees to cap record home streak |url=https://www.sportsnet.ca/mlb/article/blue-jays-do-all-the-little-things-in-win-over-yankees-to-cap-record-home-streak/ |website=sportsnet.ca |date=July 22, 2025}}</ref>
+
+The Blue Jays then traded for relief pitcher [[Seranthony Domínguez]] from the Baltimore Orioles, starting pitcher [[Shane Bieber]] from the Cleveland Guardians, and [[Louis Varland]] and [[Ty France]] from the Minnesota Twins before the trade deadline. The Blue Jays traded away [[Will Wagner (baseball)|Will Wagner]].
+
+===August===
+On August 6, the Blue Jays set another franchise record and the MLB record by recording 63 hits in a three-game series against the [[2025 Colorado Rockies season|Colorado Rockies]] in [[Coors Field]] and also established a franchise mark with 45 runs in the three-game set.<ref>{{cite news |title=Guerrero and Blue Jays rout Rockies 20-1 to cap Coors Field barrage |url=https://www.espn.com/mlb/recap/_/gameId/401696629 |agency=Associated Press |date=August 6, 2025}}</ref>
+
+===September===
+The Blue Jays clinched the postseason on September 21 after beating the [[2025 Kansas City Royals season|Kansas City Royals]] in [[Kauffman Stadium]].<ref name="Blue Jays headed back to postseason with sights set on East crown" /> The Blue Jays continued their poor run of form in late September allowing the [[2025 New York Yankees season|New York Yankees]] to tie the Blue Jays' win total, with the Blue Jays remaining the division leader due to the season series tiebreaker as the Blue Jays have a head-to-head record of 8–5 over the Yankees. Following a subsequent sweep of the [[2025 Tampa Bay Rays season|Tampa Bay Rays]], the Blue Jays clinched the Division Title in front of a home crowd on the last game of the regular season, despite having a tied overall record with the Yankees.<ref name="AL East belongs up north! Blue Jays clinch first division title since 2015" />
+
+==Game log==
+{| align="center" border="1" cellpadding="2" cellspacing="1" style="border:1px solid #aaa"
+|-
+! colspan="5" | Legend
+|-
+! style="background:#bfb;"| Blue Jays win
+! style="background:#fbb;"| Blue Jays loss
+! style="background:#bbb;"| Game postponed 
+! style="background:#039;color:white;"| Clinched playoff spot
+! style="background:#090;color:white;"| Clinched division
+|}
+<!-- Format for postponed games  | -- || March 12 || [[Milwaukee Brewers|Brewers]] ||colspan=7| PPD, RAIN; rescheduled for Mar 22  -->
+{{Game log start|style={{Baseball primary style|Toronto Blue Jays}};|title='''2025 Game Log: 94–68 (Home: 54–27; Away: 40–41)'''}}
+{{Game log section start|hide=y|style={{Baseball secondary style|Toronto Blue Jays}};|title=March: 3–2 (Home: 3–2; Away: 0–0)|#| Date| Opponent| Score| Win| Loss| Save| Attendance| Record| GB}}
+|-style="background:#fbb;" 
+| 1 || March 27 || [[2025 Baltimore Orioles season|Orioles]] || 2–12 || [[Zach Eflin|Eflin]] (1–0) || '''[[José Berríos|Berríos]]''' (0–1) || — || 40,734 || 0–1 || 1
+|-style="background:#bfb;" 
+| 2 || March 28 || Orioles || 8–2 || '''[[Kevin Gausman|Gausman]]''' (1–0) || [[Charlie Morton (pitcher)|Morton]] (0–1) || — || 26,289 || 1–1 || ½
+|-style="background:#fbb;" 
+| 3 || March 29 || Orioles || 5–9 || [[Dean Kremer|Kremer]] (1–0) || '''[[Richard Lovelady|Lovelady]]''' (0–1) || — || 27,005 || 1–2 || 1½
+|-style="background:#bfb;" 
+| 4 || March 30 || Orioles || 3–1 || '''[[Chris Bassitt|Bassitt]]''' (1–0) || [[Tomoyuki Sugano|Sugano]] (0–1) || '''[[Jeff Hoffman|Hoffman]]''' (1) || 21,069 || 2–2 || 1½
+|-style="background:#bfb;"
+| 5 || March 31 || [[2025 Washington Nationals season|Nationals]] || 5–2 || '''[[Bowden Francis|Francis]]''' (1–0) || [[Michael Soroka|Soroka]] (0–1) || '''[[Yimi García|García]]''' (1) || 20,137 || 3–2 || 1
+|-
+{{Game log section end}}
+{{Game log section start|hide=y|style={{Baseball secondary style|Toronto Blue Jays}};|title=April: 11–14 (Home: 6–4; Away: 5–10)|#| Date| Opponent| Score| Win| Loss| Save| Attendance| Record| GB}} 
+|-style="background:#bfb;"
+| 6 || April 1 || [[2025 Washington Nationals season|Nationals]] || 5–3 || '''[[Chad Green (pitcher)|Green]]''' (1–0) || [[José A. Ferrer|Ferrer]] (0–1) || '''[[Jeff Hoffman|Hoffman]]''' (2) || 21,845 || 4–2 || ½ 
+|-style="background:#bfb;"
+| 7 || April 2 || Nationals || 4–2 || '''[[Easton Lucas|Lucas]]''' (1–0) || [[MacKenzie Gore|Gore]] (0–1) || '''[[Jeff Hoffman|Hoffman]]''' (3) || 20,104 || 5–2 || +½
+|-style="background:#fbb;"
+| 8 || April 4 || @ [[2025 New York Mets season|Mets]] || 0–5 || [[Tylor Megill|Megill]] (2–0) || '''[[Kevin Gausman|Gausman]]''' (1–1) || — || 43,945 || 5–3 || ½
+|-style="background:#fbb;"
+| 9 || April 5 || @ Mets || 2–3 || [[Edwin Díaz|Díaz]] (1–0) || '''[[Nick Sandlin|Sandlin]]''' (0–1) || — || 37,694 || 5–4 || 1½
+|-style="background:#fbb;"
+| 10 || April 6 || @ Mets || 1–2 || [[Max Kranick|Kranick]] (1–0) || '''[[Bowden Francis|Francis]]''' (1–1) || [[Edwin Díaz|Díaz]] (2) || 40,132 || 5–5 || 1½
+|-style="background:#bfb;"
+| 11 || April 7 || @ [[2025 Boston Red Sox season|Red Sox]] || 6–2 || '''[[José Berríos|Berríos]]''' (1–1) || [[Richard Fitts|Fitts]] (0–2) || — || 25,788 || 6–5 || ½
+|-style="background:#bfb;"
+| 12 || April 8 || @ Red Sox || 6–1 || '''[[Easton Lucas|Lucas]]''' (2–0) || [[Garrett Crochet|Crochet]] (1–1) || — || 25,575 || 7–5 || +½
+|-style="background:#bfb;"
+| 13 || April 9 || @ Red Sox || 2–1 {{small|(11)}} || '''[[Jeff Hoffman|Hoffman]]''' (1–0) || [[Josh Winckowski|Winckowski]] (0–1) || '''[[Nick Sandlin|Sandlin]]''' (1) || 29,441 || 8–5 || +½
+|-style="background:#fbb;"
+| 14 || April 10 || @ Red Sox || 3–4 {{small|(10)}} || [[Brennan Bernardino|Bernardino]] (1–0) || '''[[Nick Sandlin|Sandlin]]''' (0–2) || — || 25,128 || 8–6 || –
+|-style="background:#bbb;"
+| – || April 11 || @ [[2025 Baltimore Orioles season|Orioles]] || colspan=7|''Postponed due to rain. Makeup date July 29.''<ref>{{cite web |url=https://www.mlb.com/news/blue-jays-orioles-april-11-2025-game-postponed |title=Blue Jays-O's opener postponed; rescheduled for July 29 |website=[[Major League Baseball]] |date=April 11, 2025 |access-date=April 11, 2025}}</ref>
+|-style="background:#fbb;"
+| 15 || April 12 || @ Orioles || 4–5 || [[Bryan Baker (baseball)|Baker]] (1–0) || '''[[Bowden Francis|Francis]]''' (1–2) || [[Félix Bautista (baseball)|Bautista]] (1) || 22,130 || 8–7 || ½
+|-style="background:#bfb;"
+| 16 || April 13 || @ Orioles || 7–6 {{small|(10)}} || '''[[Jeff Hoffman|Hoffman]]''' (2–0) || [[Matt Bowman|Bowman]] (0–1) || — || 27,193 || 9–7 || +½
+|-style="background:#fbb;"
+| 17 || April 14 || [[2025 Atlanta Braves season|Braves]] || 4–8 || [[Grant Holmes|Holmes]] (1–1) || '''[[Easton Lucas|Lucas]]''' (2–1) || — || 21,595 || 9–8 || ½
+|-style="background:#bfb;"
+| 18 || April 15 || Braves || 6–3 || '''[[Kevin Gausman|Gausman]]''' (2–1) || [[Spencer Schwellenbach|Schwellenbach]] (1–1) || — || 26,979 || 10–8 || ½
+|-style="background:#bfb;"
+| 19 || April 16 || Braves || 3–1 || '''[[Chris Bassitt|Bassitt]]''' (2–0) || [[Spencer Strider|Strider]] (0–1) || '''[[Jeff Hoffman|Hoffman]]''' (4) || 25,328 || 11–8 || ½
+|-style="background:#bfb;"
+| 20 || April 18 || [[2025 Seattle Mariners season|Mariners]] || 3–1 || '''[[Bowden Francis|Francis]]''' (2–2) || [[Bryan Woo|Woo]] (2–1) || '''[[Jeff Hoffman|Hoffman]]''' (5) || 40,263 || 12–8 || 1
+|-style="background:#fbb;"
+| 21 || April 19 || Mariners || 4–8 {{small|(12)}} || [[Andrés Muñoz|Muñoz]] (1–0) || '''[[Jacob Barnes|Barnes]]''' (0–1) || — || 36,775 || 12–9 || 1
+|-style="background:#fbb;"
+| 22 || April 20 || Mariners || 3–8 || [[Luis Castillo (pitcher, born 1992)|Castillo]] (2–2) || '''[[Easton Lucas|Lucas]]''' (2–2) || — || 25,752 || 12–10 || 2
+|-style="background:#fbb;"
+| 23 || April 21 || @ [[2025 Houston Astros season|Astros]] || 0–7 || [[Hunter Brown|Brown]] (3–1) || '''[[Kevin Gausman|Gausman]]''' (2–2) || — || 28,219 || 12–11 || 2
+|-style="background:#fbb;"
+| 24 || April 22 || @ Astros || 1–5 || [[Ronel Blanco|Blanco]] (2–2) || '''[[Chris Bassitt|Bassitt]]''' (2–1) || — || 29,825 || 12–12 || 2
+|-style="background:#fbb;"
+| 25 || April 23 || @ Astros || 1–3 || [[Ryan Gusto|Gusto]] (3–1) || '''[[Bowden Francis|Francis]]''' (2–3) || [[Josh Hader|Hader]] (7) || 25,209 || 12–13 || 3
+|-style="background:#bfb;"
+| 26 || April 25 || @ [[2025 New York Yankees season|Yankees]] || 4–2 || '''[[Mason Fluharty|Fluharty]]''' (1–0) || [[Devin Williams (baseball)|Williams]] (0–2) || '''[[Jeff Hoffman|Hoffman]]''' (6) || 46,081 || 13–13 || 2
+|-style="background:#bbb;" 
+| ― || April 26 || @ Yankees || colspan=7|''Postponed due to rain. Makeup date April 27.''
+|-style="background:#fbb;"
+| 27 || April 27 || @ Yankees || 2–11 || [[Max Fried|Fried]] (5–0) || '''[[Kevin Gausman|Gausman]]''' (2–3) || — || {{small|see 2nd game}} || 13–14 || 3
+|-style="background:#fbb;"
+| 28 || April 27 || @ Yankees || 1–5 || [[Tim Hill (baseball)|Hill]] (3–0) || '''[[Chris Bassitt|Bassitt]]''' (2–2) || — || 43,824 || 13–15 || 4
+|-style="background:#fbb;"
+| 29 || April 29 || Red Sox || 2–10 || [[Garrett Crochet|Crochet]] (3–2) || '''[[Bowden Francis|Francis]]''' (2–4) || — || 28,045 || 13–16 || 4½
+|-style="background:#bfb;"
+| 30 || April 30 || Red Sox || 7–6 {{small|(10)}} || '''[[Jeff Hoffman|Hoffman]]''' (3–0) || [[Justin Slaten|Slaten]] (0–1) || — || 26,498 || 14–16 || 3½
+|-
+{{Game log section end}}
+{{Game log section start|hide=y|style={{Baseball secondary style|Toronto Blue Jays}};|title=May: 16–12 (Home: 10–6; Road: 6–6)|#|Date|Opponent|Score|Win|Loss|Save|Attendance|Record|GB}}
+|-style="background:#bfb;"
+| 31 || May 1 || [[2025 Boston Red Sox season|Red Sox]] || 4–2 || '''[[Mason Fluharty|Fluharty]]''' (2–0) || [[Justin Slaten|Slaten]] (0–2) || '''[[Yimi García|García]]''' (2) || 24,198 || 15–16 || 3
+|-style="background:#bfb;" 
+| 32 || May 2 || [[2025 Cleveland Guardians season|Guardians]] || 5–3 || '''[[Brendon Little|Little]]''' (1–0) || [[Jakob Junis|Junis]] (0–1) || '''[[Jeff Hoffman|Hoffman]]''' (7) || 26,087 || 16–16 || 3
+|-style="background:#fbb;"
+| 33 || May 3 || Guardians || 3–5 || [[Kolby Allard|Allard]] (2–0) || '''[[Yimi García|García]]''' (0–1) || [[Emmanuel Clase|Clase]] (6) || 40,507 || 16–17 || 3
+|-style="background:#fbb;"
+| 34 || May 4 || Guardians || 4–5 || [[Tanner Bibee|Bibee]] (3–2) || '''[[Bowden Francis|Francis]]''' (2–5) || [[Emmanuel Clase|Clase]] (7) || 30,641 || 16–18 || 3
+|-style="background:#fbb;"
+| 35 || May 6 || @ [[2025 Los Angeles Angels season|Angels]] || 3–8 || [[Héctor Neris|Neris]] (1–1) || '''[[Yimi García|García]]''' (0–2) || — || 25,867 || 16–19 || 3½
+|-style="background:#fbb;"
+| 36 || May 7 || @ Angels || 4–5 || [[Brock Burke|Burke]] (3–0) || '''[[Jeff Hoffman|Hoffman]]''' (3–1) || — || 26,646 || 16–20 || 4½
+|-style="background:#bfb;"
+| 37 || May 8 || @ Angels || 8–5 || '''[[Chris Bassitt|Bassitt]]''' (3–2) || [[Ryan Johnson (baseball)|Johnson]] (1–1) || '''[[Chad Green (pitcher)|Green]]''' (1) || 26,245 || 17–20 || 4
+|-style="background:#bfb;"
+| 38 || May 9 || @ [[2025 Seattle Mariners season|Mariners]] || 6–3 || '''[[Kevin Gausman|Gausman]]''' (3–3) || [[Luis Castillo (pitcher, born 1992)|Castillo]] (3–3) || '''[[Jeff Hoffman|Hoffman]]''' (8) || 31,564 || 18–20 || 4
+|-style="background:#bfb;"
+| 39 || May 10 || @ Mariners || 6–3 || '''[[Mason Fluharty|Fluharty]]''' (3–0) || [[Carlos Vargas (baseball)|Vargas]] (1–2) || '''[[Jeff Hoffman|Hoffman]]''' (9) || 31,182 || 19–20 || 3
+|-style="background:#bfb;"
+| 40 || May 11 || @ Mariners || 9–1 || '''[[Eric Lauer|Lauer]]''' (1–0) || [[Bryce Miller (baseball)|Miller]] (2–4) || — || 36,823 || 20–20 || 3
+|-style="background:#fbb;"
+| 41 || May 13 || [[2025 Tampa Bay Rays season|Rays]] || 9–11 || [[Edwin Uceta|Uceta]] (3–1) || '''[[Jeff Hoffman|Hoffman]]''' (3–2) || [[Mason Montgomery|Montgomery]] (1) || 27,717 || 20–21 || 3½
+|-style="background:#bfb;"
+| 42 || May 14 || Rays || 3–1 || '''[[Brendon Little|Little]]''' (2–0) || [[Ryan Pepiot|Pepiot]] (2–5) || '''[[Yimi García|García]]''' (3) || 22,314 || 21–21 || 3½
+|-style="background:#fbb;"
+| 43 || May 15 || Rays || 3–8 || [[Zack Littell|Littell]] (3–5) || '''[[Kevin Gausman|Gausman]]''' (3–4) || — || 22,856 || 21–22 || 4
+|-style="background:#fbb;"
+| 44 || May 16 || [[2025 Detroit Tigers season|Tigers]] || 4–5 || [[Jack Flaherty|Flaherty]] (2–5) || '''[[Bowden Francis|Francis]]''' (2–6) || [[Beau Brieske|Brieske]] (1) || 23,146 || 21–23 || 5
+|-style="background:#bfb;"
+| 45 || May 17 || Tigers || 2–1 || '''[[Jeff Hoffman|Hoffman]]''' (4–2) || [[Brenan Hanifee|Hanifee]] (2–1) || — || 40,171 || 22–23 || 4
+|-style="background:#fbb;"
+| 46 || May 18 || Tigers || 2–3 || [[Jackson Jobe|Jobe]] (4–0) || '''[[Mason Fluharty|Fluharty]]''' (3–1) || [[Will Vest|Vest]] (5) || 36,064 || 22–24 || 5
+|-style="background:#bfb;"
+| 47 || May 20 || [[2025 San Diego Padres season|Padres]] || 3–0 || '''[[Chris Bassitt|Bassitt]]''' (4–2) || [[Dylan Cease|Cease]] (1–3) || '''[[Jeff Hoffman|Hoffman]]''' (10) || 23,597 || 23–24 || 5
+|-style="background:#bfb;"
+| 48 || May 21 || Padres || 14–0 || '''[[Kevin Gausman|Gausman]]''' (4–4) || [[Randy Vásquez (baseball)|Vásquez]] (3–4) || — || 23,266 || 24–24 || 5
+|-style="background:#bfb;"
+| 49 || May 22 || Padres || 7–6 {{small|(11)}} || '''[[Braydon Fisher|Fisher]]''' (1–0) || [[Jeremiah Estrada|Estrada]] (1–3) || — || 33,971 || 25–24 || 5
+|-style="background:#fbb;"
+| 50 || May 23 || @ Rays || 1–3 || [[Drew Rasmussen|Rasmussen]] (3–4) || '''[[Eric Lauer|Lauer]]''' (1–1) || [[Pete Fairbanks|Fairbanks]] (9) || 10,046 || 25–25 || 5
+|-style="background:#fbb;"
+| 51 || May 24 || @ Rays || 1–3 || [[Shane Baz|Baz]] (4–3) || '''[[José Berríos|Berríos]]''' (1–2) || [[Pete Fairbanks|Fairbanks]] (10) || 10,046 || 25–26 || 6
+|-style="background:#fbb;"
+| 52 || May 25 || @ Rays || 0–13 || [[Ryan Pepiot|Pepiot]] (3–5) || '''[[Chris Bassitt|Bassitt]]''' (4–3) || — || 10,046 || 25–27 || 7
+|-style="background:#bfb;"
+| 53 || May 26 || @ [[2025 Texas Rangers season|Rangers]] || 2–1 || '''[[Kevin Gausman|Gausman]]''' (5–4) || [[Jacob deGrom|deGrom]] (4–2) || '''[[Jeff Hoffman|Hoffman]]''' (11) || 33,766 || 26–27 || 7
+|-style="background:#fbb;"
+| 54 || May 27 || @ Rangers || 0–2 || [[Luke Jackson (baseball)|Jackson]] (1–4) || '''[[Chad Green (pitcher)|Green]]''' (1–1) || [[Robert Garcia (baseball)|Garcia]] (3) || 25,818 || 26–28 || 8
+|-style="background:#bfb;"
+| 55 || May 28 || @ Rangers || 2–0 || '''[[Brendon Little|Little]]''' (3–0) || [[Jacob Webb|Webb]] (2–3) || '''[[Jeff Hoffman|Hoffman]]''' (12) || 20,811 || 27–28 || 8
+|-style="background:#bfb;"
+| 56 || May 29 || [[2025 Athletics season|Athletics]] || 12–0 || '''[[José Berríos|Berríos]]''' (2–2) || [[Jacob Lopez|Lopez]] (0–3) || — || 23,853 || 28–28 || 7½
+|-style="background:#bfb;"
+| 57 || May 30 || Athletics || 11–7 || '''[[Chris Bassitt|Bassitt]]''' (5–3) || [[Jeffrey Springs|Springs]] (5–4) || — || 36,951 || 29–28 || 6½
+|-style="background:#bfb;"
+| 58 || May 31 || Athletics || 8–7 || '''[[Easton Lucas|Lucas]]''' (3–2) || [[Gunnar Hoglund|Hoglund]] (1–3) || '''[[Jeff Hoffman|Hoffman]]''' (13) || 38,017 || 30–28 || 5½ 
+|-
+{{Game log section end}} 
+{{Game log section start|hide=y|style={{Baseball secondary style|Toronto Blue Jays}};|title=June: 16–10 (Home: 7–4; Road: 9–6)|#|Date|Opponent|Score|Win|Loss|Save|Attendance|Record|GB}}
+|-style="background:#bfb;"
+| 59 || June 1 || [[2025 Athletics season|Athletics]] || 8–4 || '''[[Erik Swanson|Swanson]]''' (1–0) || [[Justin Sterner|Sterner]] (1–2) || — || 30,130 || 31–28 || 5½ 
+|-style="background:#fbb;"
+| 60 || June 3 || [[2025 Philadelphia Phillies season|Phillies]] || 3–8 || [[Cristopher Sánchez|Sánchez]] (5–1) || '''[[Bowden Francis|Francis]]''' (2–7) || — || 32,632 || 31–29 || 6½
+|-style="background:#bfb;"
+| 61 || June 4 || Phillies || 2–1 || '''[[Jeff Hoffman|Hoffman]]''' (5–2) || [[Jordan Romano|Romano]] (0–2) || — || 25,716 || 32–29 || 5½
+|-style="background:#bfb;"
+| 62 || June 5 || Phillies || 9–1 || '''[[Chris Bassitt|Bassitt]]''' (6–3) || [[Jesús Luzardo|Luzardo]] (5–2) || — || 33,728 || 33–29 || 5½ 
+|-style="background:#bfb;"
+| 63 || June 6 || @ [[2025 Minnesota Twins season|Twins]] || 6–4 || '''[[Eric Lauer|Lauer]]''' (2–1) || [[Bailey Ober|Ober]] (4–2) || '''[[Jeff Hoffman|Hoffman]]''' (14) || 26,847 || 34–29 || 5½
+|-style="background:#bfb;"
+| 64 || June 7 || @ Twins || 5–4 || '''[[Chad Green (pitcher)|Green]]''' (2–1) || [[Griffin Jax|Jax]] (1–4) || '''[[Jeff Hoffman|Hoffman]]''' (15) || 23,476 || 35–29 || 4½
+|-style="background:#fbb;"
+| 65 || June 8 || @ Twins|| 3–6 || [[Joe Ryan (baseball)|Ryan]] (7–2) || '''[[Bowden Francis|Francis]]''' (2–8) || [[Jhoan Durán|Durán]] (10) || 22,078 || 35–30 || 4½
+|-style="background:#bfb;"
+| 66 || June 9 || @ [[2025 St. Louis Cardinals season|Cardinals]] || 5–4 {{small|(10)}} || '''[[Yariel Rodríguez|Rodríguez]]''' (1–0) || [[Phil Maton|Maton]] (0–2) || '''[[Jeff Hoffman|Hoffman]]''' (16) || 30,851 || 36–30 || 4
+|-style="background:#bfb;"
+| 67 || June 10 || @ Cardinals || 10–9 || '''[[Chris Bassitt|Bassitt]]''' (7–3) || [[Miles Mikolas|Mikolas]] (4–3) || '''[[Jeff Hoffman|Hoffman]]''' (17) || 29,278 || 37–30 || 4
+|-style="background:#bfb;"
+| 68 || June 11 || @ Cardinals || 5–2 || '''[[Spencer Turnbull|Turnbull]]''' (1–0) || [[Matthew Liberatore|Liberatore]] (3–6) || '''[[Yariel Rodríguez|Rodríguez]]''' (1) || 28,530 || 38–30 || 4
+|-style="background:#fbb;"
+| 69 || June 13 || @ Phillies || 0–8 || [[Ranger Suárez|Suárez]] (5–1) || '''[[Kevin Gausman|Gausman]]''' (5–5) || — || 40,596 || 38–31 || 4½
+|-style="background:#fbb;"
+| 70 || June 14 || @ Phillies || 2–3 || [[Orion Kerkering|Kerkering]] (5–2) || '''[[Chad Green (pitcher)|Green]]''' (2–2) || [[Matt Strahm|Strahm]] (3) || 43,711 || 38–32 || 4½ 
+|-style="background:#fbb;"
+| 71 || June 15 || @ Phillies || 4–11 || [[Zack Wheeler|Wheeler]] (7–2) || '''[[José Berríos|Berríos]]''' (2–3) || — || 44,681 || 38–33 || 4½
+|-style="background:#bfb;"
+| 72 || June 17 || [[2025 Arizona Diamondbacks season|Diamondbacks]] || 5–4 || '''[[Jeff Hoffman|Hoffman]]''' (6–2) || [[Shelby Miller|Miller]] (3–2) || — || 38,537 || 39–33 || 3
+|-style="background:#bfb;"
+| 73 || June 18 || Diamondbacks || 8–1 || '''[[Eric Lauer|Lauer]]''' (3–1) || [[Eduardo Rodríguez (left-handed pitcher)|Rodríguez]] (2–4) || — || 27,635 || 40–33 || 2
+|-style="background:#fbb;"
+| 74 || June 19 || Diamondbacks || 5–9 || [[Ryne Nelson|Nelson]] (4–2) || '''[[Kevin Gausman|Gausman]]''' (5–6) || — || 33,978 || 40–34 || 3
+|-style="background:#fbb;"
+| 75 || June 20 || [[2025 Chicago White Sox season|White Sox]] || 1–7 || [[Tyler Alexander|Alexander]] (4–7) || '''[[Spencer Turnbull|Turnbull]]''' (1–1) || — || 36,121 || 40–35 || 3
+|-style="background:#bfb;"
+| 76 || June 21 || White Sox || 7–1 || '''[[José Berríos|Berríos]]''' (3–3) || [[Aaron Civale|Civale]] (1–4) || — || 41,488 || 41–35 || 3
+|-style="background:#fbb;"
+| 77 || June 22 || White Sox || 2–4 || [[Jordan Leasure|Leasure]] (2–4) || '''[[Brendon Little|Little]]''' (3–1) || [[Grant Taylor (baseball)|Taylor]] (1) || 38,893 || 41–36 || 4 
+|-style="background:#bfb;"
+| 78 || June 24 || @ [[2025 Cleveland Guardians season|Guardians]] || 10–6 || '''[[Eric Lauer|Lauer]]''' (4–1) || [[Logan Allen (baseball, born 1998)|Allen]] (5–5) || — || 22,525 || 42–36 || 2½
+|-style="background:#fbb;"
+| 79 || June 25 || @ Guardians || 4–5 {{small|(10)}} || [[Nic Enright|Enright]] (1–0) || '''[[Mason Fluharty|Fluharty]]''' (3–2) || — || 23,849 || 42–37 || 3½
+|-style="background:#bfb;"
+| 80 || June 26 || @ Guardians || 6–0 || '''[[Kevin Gausman|Gausman]]''' (6–6) || [[Tanner Bibee|Bibee]] (4–8) || — || 26,217 || 43–37 || 3
+|-style="background:#bfb;"
+| 81 || June 27 || @ [[2025 Boston Red Sox season|Red Sox]] || 9–0 || '''[[José Berríos|Berríos]]''' (4–3) || [[Brayan Bello|Bello]] (3–3) || — || 35,719 || 44–37 || 3
+|-style="background:#fbb;"
+| 82 || June 28 || @ Red Sox || 1–15 || [[Lucas Giolito|Giolito]] (4–1) || '''[[Chris Bassitt|Bassitt]]''' (7–4) || — || 34,927 || 44–38 || 3
+|-style="background:#bfb;"
+| 83 || June 29 || @ Red Sox || 5–3 || '''[[Yariel Rodríguez|Rodríguez]]''' (2–0) || [[Walker Buehler|Buehler]] (5–6) || '''[[Jeff Hoffman|Hoffman]]''' (18) || 35,214 || 45–38 || 3
+|-style="background:#bfb;"
+| 84 || June 30 || [[2025 New York Yankees season|Yankees]] || 5–4 || '''[[Brendon Little|Little]]''' (4–1) || [[Mark Leiter Jr.|Leiter Jr.]] (4–5) || '''[[Jeff Hoffman|Hoffman]]''' (19) || 40,619 || 46–38 || 2
+|-
+{{Game log section end}} 
+{{Game log section start|hide=y|style={{Baseball secondary style|Toronto Blue Jays}};|title=July: 18–8 (Home: 11–1; Road: 7–7)|#|Date|Opponent|Score|Win|Loss|Save|Attendance|Record|GB}}
+|-style="background:#bfb;"
+| 85 || July 1 || [[2025 New York Yankees season|Yankees]] || 12–5 || '''[[Braydon Fisher|Fisher]]''' (2–0) || [[Mark Leiter Jr.|Leiter Jr.]] (4–6) || — || 41,129 || 47–38 || 1
+|-style="background:#bfb;"
+| 86 || July 2 || Yankees || 11–9 || '''[[Yimi García|García]]''' (1–2) || [[Devin Williams (baseball)|Williams]] (2–3) || '''[[Jeff Hoffman|Hoffman]]''' (20) || 30,985 || 48–38 || —
+|-style="background:#bfb;"
+| 87 || July 3 || Yankees || 8–5 || '''[[Chris Bassitt|Bassitt]]''' (8–4) || [[Clayton Beeter|Beeter]] (0–1) || '''[[Jeff Hoffman|Hoffman]]''' (21) || 36,848 || 49–38 || +1 
+|-style="background:#bfb;"
+| 88 || July 4 || [[2025 Los Angeles Angels season|Angels]] || 4–3 {{small|(10)}} || '''[[Chad Green (pitcher)|Green]]''' (3–2) || [[Sam Bachman|Bachman]] (1–2) || — || 30,119 || 50–38 || +2
+|-style="background:#bfb;"
+| 89 || July 5 || Angels || 4–3 {{small|(11)}} || '''[[Braydon Fisher|Fisher]]''' (3–0) || [[Ryan Zeferjahn|Zeferjahn]] (5–3) || — || 37,269 || 51–38 || +3
+|-style="background:#bfb;"
+| 90 || July 6 || Angels || 3–2 || '''[[Ryan Burr (baseball)|Burr]]''' (1–0) || [[Tyler Anderson|Anderson]] (2–6) || '''[[Jeff Hoffman|Hoffman]]''' (22) || 40,114 || 52–38 || +3
+|-style="background:#bfb;"
+| 91 || July 7 || @ [[2025 Chicago White Sox season|White Sox]] || 8–4 || '''[[José Berríos|Berríos]]''' (5–3) || [[Sean Burke (baseball)|Burke]] (4–8) || — || 13,292 || 53–38 || +3½
+|-style="background:#bfb;"
+| 92 || July 8 || @ White Sox || 6–1 {{small|(6)}} || '''[[Chris Bassitt|Bassitt]]''' (9–4) || [[Aaron Civale|Civale]] (1–6) || — || 13,027 || 54–38 || +3½ 
+|-style="background:#fbb;"
+| 93 || July 9 || @ White Sox || 1–2 || [[Adrian Houser|Houser]] (1–0) || '''[[Eric Lauer|Lauer]]''' (4–2) || [[Jordan Leasure|Leasure]] (2) || 11,123 || 54–39 || +2½
+|-style="background:#bfb;"
+| 94 || July 11 || @ [[2025 Athletics season|Athletics]] || 7–6 || '''[[Max Scherzer|Scherzer]]''' (1–0) || [[Luis Severino|Severino]] (2–11) || ― || 7,950 || 55–39 || +2
+|-style="background:#fbb;"
+| 95 || July 12 || @ Athletics || 3–4 || [[Jacob Lopez|Lopez]] (3–5) || '''[[Kevin Gausman|Gausman]]''' (6–7) || [[Mason Miller|Miller]] (18) || 8,738 || 55–40 || +2
+|-style="background:#fbb;"
+| 96 || July 13 || @ Athletics || 3–6 || [[Jeffrey Springs|Springs]] (8–6) || '''[[José Berríos|Berríos]]''' (5–4) || [[Mason Miller|Miller]] (19) || 8,884 || 55–41 || +2 
+|-style=background:#bbbfff 
+|colspan=10|'''[[2025 Major League Baseball All-Star Game|95th All-Star Game in Cumberland, Georgia]]'''
+|-style="background:#bfb;"
+| 97 || July 18 || [[2025 San Francisco Giants season|Giants]] || 4–0 || '''[[Chris Bassitt|Bassitt]]''' (10–4) || [[Justin Verlander|Verlander]] (0–8) || — || 41,339 || 56–41 || +3
+|-style="background:#bfb;"
+| 98 || July 19 || Giants || 6–3 || '''[[Eric Lauer|Lauer]]''' (5–2) || [[Logan Webb|Webb]] (9–7) || '''[[Jeff Hoffman|Hoffman]]''' (23) || 42,015 || 57–41 || +3
+|-style="background:#bfb;"
+| 99 || July 20 || Giants || 8–6 || '''[[José Berríos|Berríos]]''' (6–4) || [[Robbie Ray|Ray]] (9–4) || '''[[Yariel Rodríguez|Rodríguez]]''' (2) || 41,693 || 58–41 || +3
+|-style="background:#bfb;"
+| 100 || July 21 || Yankees || 4–1 || '''[[Kevin Gausman|Gausman]]''' (7–7) || [[Carlos Rodón|Rodón]] (10–7) || '''[[Jeff Hoffman|Hoffman]]''' (24) || 41,788 || 59–41 || +4
+|-style="background:#fbb;"
+| 101 || July 22 || Yankees || 4–5 || [[Ian Hamilton (baseball)|Hamilton]] (2–1) || '''[[Jeff Hoffman|Hoffman]]''' (6–3) || [[Devin Williams (baseball)|Williams]] (15) || 42,326 || 59–42 || +3
+|-style="background:#bfb;"
+| 102 || July 23 || Yankees || 8–4 || '''[[Chris Bassitt|Bassitt]]''' (11–4) || [[Max Fried|Fried]] (11–4) || — || 42,143 || 60–42 || +4
+|-style="background:#bfb;"
+| 103 || July 24 || @ [[2025 Detroit Tigers season|Tigers]] || 11–4 || '''[[Eric Lauer|Lauer]]''' (6–2) || [[Reese Olson|Olson]] (4–4) || — || 30,051 || 61–42 || +4½
+|-style="background:#bfb;"
+| 104 || July 25 || @ Tigers || 6–2 || '''[[José Berríos|Berríos]]''' (7–4) || [[Keider Montero|Montero]] (4–3) || — || 37,820 || 62–42 || +5½
+|-style="background:#bfb;"
+| 105 || July 26 || @ Tigers || 6–1 || '''[[Braydon Fisher|Fisher]]''' (4–0) || [[Will Vest|Vest]] (5–2) || — || 40,528 || 63–42 || +6½
+|-style="background:#fbb;"
+| 106 || July 27 || @ Tigers || 4–10 || [[Jack Flaherty|Flaherty]] (6–10) || '''[[Max Scherzer|Scherzer]]''' (1–1) || — || 36,053 || 63–43 || +5½
+|-style="background:#fbb;"
+| 107 || July 28 || @ [[2025 Baltimore Orioles season|Orioles]] || 4–11 || [[Corbin Martin|Martin]] (1–0) || '''[[Chris Bassitt|Bassitt]]''' (11–5) || — || 20,176 || 63–44 || +5½
+|-style="background:#fbb;"
+| 108 || July 29 || @ Orioles {{small|(game 1)}} || 4–16 || [[Charlie Morton (pitcher)|Morton]] (7–8) || '''[[Easton Lucas|Lucas]]''' (3–3) || — || 16,194 || 63–45 || +5
+|-style="background:#fbb;"
+| 109 || July 29 || @ Orioles {{small|(game 2)}} || 2–3 || [[Andrew Kittredge|Kittredge]] (2–2) || '''[[Jeff Hoffman|Hoffman]]''' (6–4) || [[Corbin Martin|Martin]] (1) || 14,929 || 63–46 || +4
+|-style="background:#bfb;"
+| 110 || July 30 || @ Orioles || 9–8 || '''[[Mason Fluharty|Fluharty]]''' (4–2) || [[Yennier Canó|Canó]] (1–6) || '''[[Jeff Hoffman|Hoffman]]''' (25) || 17,049 || 64–46 || +4
+|-
+{{Game log section end}} 
+{{Game log section start|hide=y|style={{Baseball secondary style|Toronto Blue Jays}};|title=August: 15–12 (Home: 8–7; Road: 7–5)|#|Date|Opponent|Score|Win|Loss|Save|Attendance|Record|GB}}
+|-style="background:#fbb;"
+| 111 || August 1 || [[2025 Kansas City Royals season|Royals]] || 3–9 || [[Michael Wacha|Wacha]] (5–9) || '''[[Kevin Gausman|Gausman]]''' (7–8) || — || 41,492 || 64–47 || +3½
+|-style="background:#bfb;"
+| 112 || August 2 || Royals || 4–2 || '''[[Max Scherzer|Scherzer]]''' (2–1) || [[Noah Cameron|Cameron]] (5–5) || '''[[Jeff Hoffman|Hoffman]]''' (26) || 41,842 || 65–47 || +4
+|-style="background:#fbb;"
+| 113 || August 3 || Royals || 4–7 {{small|(10)}} || [[Hunter Harvey|Harvey]] (1–0) || '''[[Seranthony Domínguez|Domínguez]]''' (2–4) || — || 41,461 || 65–48 || +3
+|-style="background:#bfb;"
+| 114 || August 4 || @ [[2025 Colorado Rockies season|Rockies]] || 15–1 || '''[[Eric Lauer|Lauer]]''' (7–2) || [[Tanner Gordon|Gordon]] (2–4) || — || 22,075 || 66–48 || +3
+|-style="background:#bfb;"
+| 115 || August 5 || @ Rockies || 10–4 || '''[[José Berríos|Berríos]]''' (8–4) || [[Anthony Molina (baseball)|Molina]] (0–1) || — || 25,141 || 67–48 || +3
+|-style="background:#bfb;"
+| 116 || August 6 || @ Rockies || 20–1 || '''[[Kevin Gausman|Gausman]]''' (8–8) || [[Kyle Freeland|Freeland]] (2–12) || — || 21,749 || 68–48 || +4
+|-style="background:#fbb;"
+| 117 || August 8 || @ [[2025 Los Angeles Dodgers season|Dodgers]] || 1–5 || [[Clayton Kershaw|Kershaw]] (6–2) || '''[[Max Scherzer|Scherzer]]''' (2–2) || — || 53,825 || 68–49 || +3
+|-style="background:#fbb;"
+| 118 || August 9 || @ Dodgers || 1–9 || [[Blake Snell|Snell]] (2–1) || '''[[Chris Bassitt|Bassitt]]''' (11–6) || — || 44,727 || 68–50 || +3
+|-style="background:#bfb;"
+| 119 || August 10 || @ Dodgers || 5–4 || '''[[Jeff Hoffman|Hoffman]]''' (7–4) || [[Alex Vesia|Vesia]] (2–2) || '''[[Mason Fluharty|Fluharty]]''' (1) || 41,557 || 69–50 || +4
+|-style="background:#bfb;"
+| 120 || August 12 || [[2025 Chicago Cubs season|Cubs]] || 5–1 || '''[[José Berríos|Berríos]]''' (9–4) || [[Javier Assad|Assad]] (0–1) || — || 43,003 || 70–50 || +4½
+|-style="background:#fbb;"
+| 121 || August 13 || Cubs || 1–4 || [[Cade Horton|Horton]] (7–3) || '''[[Kevin Gausman|Gausman]]''' (8–9) || [[Daniel Palencia|Palencia]] (16) || 43,120 || 70–51 || +4½
+|-style="background:#bfb;"
+| 122 || August 14 || Cubs || 2–1 || '''[[Max Scherzer|Scherzer]]''' (3–2) || [[Matthew Boyd (baseball)|Boyd]] (11–6) || '''[[Jeff Hoffman|Hoffman]]''' (27) || 43,270 || 71–51 || +5
+|-style="background:#bfb;"
+| 123 || August 15 || [[2025 Texas Rangers season|Rangers]] || 6–5 || '''[[Jeff Hoffman|Hoffman]]''' (8–4)  || [[Phil Maton|Maton]] (2–5) || || 42,260|| 72–51 || +5 
+|-style="background:#bfb;"
+| 124 || August 16 || Rangers || 14–2 || '''[[Eric Lauer|Lauer]]''' (8–2) || [[Patrick Corbin|Corbin]] (6–9) || — || 42,686 || 73–51 || +5
+|-style="background:#fbb;"
+| 125 || August 17 || Rangers || 4–10 || [[Nathan Eovaldi|Eovaldi]] (11–3) || '''[[José Berríos|Berríos]]''' (9–5) || [[Shawn Armstrong|Armstrong]] (4) || 42,549 || 73–52 || +5 
+|-style="background:#fbb;"
+| 126 || August 18 || @ [[2025 Pittsburgh Pirates season|Pirates]] || 2–5 || [[Evan Sisk|Sisk]] (1–1) || '''[[Yariel Rodríguez|Rodríguez]]''' (2–1) || [[Dennis Santana|Santana]] (8) || 17,477 || 73–53 || +5
+|-style="background:#bfb;"
+| 127 || August 19 || @ Pirates || 7–3 || '''[[Max Scherzer|Scherzer]]''' (4–2) || [[Mitch Keller|Keller]] (5–12) || — || 14,282 || 74–53 || +5
+|-style="background:#fbb;"
+| 128 || August 20 || @ Pirates || 1–2 || [[Johan Oviedo|Oviedo]] (1–0) || '''[[Chris Bassitt|Bassitt]]''' (11–7) || [[Dennis Santana|Santana]] (9) || 14,019 || 74–54 || +4
+|-style="background:#bfb;"
+| 129 || August 22 || @ [[2025 Miami Marlins season|Marlins]] || 5–2 || '''[[Shane Bieber|Bieber]]''' (1–0) || [[Ryan Gusto|Gusto]] (7–6) || '''[[Jeff Hoffman|Hoffman]]''' (28) || 14,923 || 75–54 || +5
+|-style="background:#bfb;"
+| 130 || August 23 || @ Marlins || 7–6 {{small|(12)}} || '''[[Tommy Nance|Nance]]''' (1–0) || [[Calvin Faucher|Faucher]] (3–4) || '''[[Brendon Little|Little]]''' (1) || 24,943 || 76–54 || +5
+|-style="background:#fbb;"
+| 131 || August 24 || @ Marlins || 3–5 || [[Eury Pérez (pitcher)|Pérez]] (6–3) || '''[[Kevin Gausman|Gausman]]''' (8–10) || [[Tyler Phillips|Phillips]] (2) || 20,620 || 76–55 || +5
+|-style="background:#bfb;"
+| 132 || August 25 || [[2025 Minnesota Twins season|Twins]] || 10–4 || '''[[Max Scherzer|Scherzer]]''' (5–2) || [[Joe Ryan (baseball)|Ryan]] (12–7) || — || 41,845 || 77–55 || +5
+|-style="background:#fbb;"
+| 133 || August 26 || Twins || 5–7 || [[Michael Tonkin|Tonkin]] (2–0) || '''[[Jeff Hoffman|Hoffman]]''' (8–5) || [[Justin Topa|Topa]] (4) || 42,235 || 77–56 || +4
+|-style="background:#bfb;"
+| 134 || August 27 || Twins || 9–8 || '''[[Seranthony Domínguez|Domínguez]]''' (3–4) || [[Michael Tonkin|Tonkin]] (2–1) || '''[[Jeff Hoffman|Hoffman]]''' (29) || 42,361 || 78–56 || +4
+|-style="background:#fbb;"
+| 135 || August 29 || [[2025 Milwaukee Brewers season|Brewers]] || 2–7 || [[Freddy Peralta|Peralta]] (16–5) || '''[[Shane Bieber|Bieber]]''' (1–1) || — || 41,390 || 78–57 || +3
+|-style="background:#fbb;"
+| 136 || August 30 || Brewers || 1–4 || [[Aaron Ashby|Ashby]] (3–1) || '''[[Jeff Hoffman|Hoffman]]''' (8–6) || [[Abner Uribe|Uribe]] (4) || 41,424 || 78–58 || +2
+|-style="background:#bfb;"
+| 137 || August 31 || Brewers || 8–4 || '''[[Tommy Nance|Nance]]''' (2–0) || [[Brandon Woodruff|Woodruff]] (5–2) || — || 41,488 || 79–58 || +3
+|-
+{{Game log section end}} 
+{{Game log section start|hide=y|style={{Baseball secondary style|Toronto Blue Jays}};|title=September: 15–10 (Home: 9–3; Road: 6–7)|#|Date|Opponent|Score|Win|Loss|Save|Attendance|Record|GB}}
+|-style="background:#fbb;"
+| 138 || September 1 || @ [[2025 Cincinnati Reds season|Reds]] || 4–5 || [[Yosver Zulueta|Zulueta]] (1–0) || '''[[Brendon Little|Little]]''' (4–2) || — || 21,773 || 79–59 || +2½
+|-style="background:#bfb;"
+| 139 || September 2 || @ Reds || 12–9 || '''[[Louis Varland|Varland]]''' (4–3) || [[Scott Barlow (baseball)|Barlow]] (6–3) || '''[[Jeff Hoffman|Hoffman]]''' (30) || 20,769 || 80–59 || +2½
+|-style="background:#bfb;"
+| 140 || September 3 || @ Reds || 13–9 || '''[[Shane Bieber|Bieber]]''' (2–1) || [[Nick Martinez (baseball)|Martinez]] (10–11) || — || 17,134 || 81–59 || +3½
+|-style="background:#bfb;"
+| 141 || September 5 || @ [[2025 New York Yankees season|Yankees]] || 7–1 || '''[[Kevin Gausman|Gausman]]''' (9–10) || [[Cam Schlittler|Schlittler]] (2–3) || — || 46,055 || 82–59 || +4
+|-style="background:#fbb;"
+| 142 || September 6 || @ Yankees || 1–3 || [[Luis Gil (baseball)|Gil]] (3–1) || '''[[Chris Bassitt|Bassitt]]''' (11–8) || [[David Bednar (baseball)|Bednar]] (21) || 45,123 || 82–60 || +3
+|-style="background:#fbb;"
+| 143 || September 7 || @ Yankees || 3–4 || [[Max Fried|Fried]] (16–5) || '''[[Max Scherzer|Scherzer]]''' (5–3) || [[David Bednar (baseball)|Bednar]] (22) || 43,266 || 82–61 || +2
+|-style="background:#bfb;"
+| 144 || September 9 || [[2025 Houston Astros season|Astros]] || 4–3 {{small|(10)}} || '''[[Jeff Hoffman|Hoffman]]''' (9–6) || [[Craig Kimbrel|Kimbrel]] (0–1) || — || 40,252 || 83–61 || +3
+|-style="background:#fbb;"
+| 145 || September 10 || Astros || 2–3 || [[Enyel De Los Santos|De Los Santos]] (6–3) || '''[[Jeff Hoffman|Hoffman]]''' (9–7) || [[Bryan Abreu|Abreu]] (5) || 36,760 || 83–62 || +3
+|-style="background:#bfb;"
+| 146 || September 11 || Astros || 6–0 || '''[[Kevin Gausman|Gausman]]''' (10–10) || [[Cristian Javier|Javier]] (1–3) || — || 41,224 || 84–62 || +3
+|-style="background:#bfb;"
+| 147 || September 12 || [[2025 Baltimore Orioles season|Orioles]] || 6–1 || '''[[Braydon Fisher|Fisher]]''' (5–0) || [[Dietrich Enns|Enns]] (3–3) || — || 34,376 || 85–62 || +3
+|-style="background:#bfb;"
+| 148 || September 13 || Orioles || 5–4 || '''[[Braydon Fisher|Fisher]]''' (6–0) || [[Yennier Canó|Canó]] (3–7) || — || 42,461 || 86–62 || +3
+|-style="background:#bfb;"
+| 149 || September 14 || Orioles || 11–2 || '''[[Shane Bieber|Bieber]]''' (3–1) || [[Grant Wolfram|Wolfram]] (3–1) || — || 42,032 || 87–62 || +4
+|-style="background:#bfb;"
+| 150 || September 15 || @ [[2025 Tampa Bay Rays season|Rays]] || 2–1 {{small|(11)}} || '''[[Braydon Fisher|Fisher]]''' (7–0) || [[Kevin Kelly (pitcher, born 1997)|Kelly]] (4–2) || — || 8,972 || 88–62 || +5
+|-style="background:#bfb;"
+| 151 || September 16 || @ Rays || 6–5 || '''[[Eric Lauer|Lauer]]''' (9–2) || [[Ryan Pepiot|Pepiot]] (11–11) || '''[[Jeff Hoffman|Hoffman]]''' (31) || 8,908 || 89–62 || +5
+|-style="background:#fbb;"
+| 152 || September 17 || @ Rays || 1–2 || [[Ian Seymour|Seymour]] (4–2) || '''[[Yariel Rodríguez|Rodríguez]]''' (2–2) || [[Pete Fairbanks|Fairbanks]] (27) || 8,959 || 89–63 || +4
+|-style="background:#fbb;"
+| 153 || September 18 || @ Rays || 0–4 || [[Shane Baz|Baz]] (10–12) || '''[[Chris Bassitt|Bassitt]]''' (11–9) || — || 8,042 || 89–64 || +3
+|-style="background:#fbb;"
+| 154 || September 19 || @ [[2025 Kansas City Royals season|Royals]] || 1–20 || [[Michael Lorenzen|Lorenzen]] (6–11) || '''[[Max Scherzer|Scherzer]]''' (5–4) || — || 26,459 || 89–65 || +3
+|-style="background:#fbb;"
+| 155 || September 20 || @ Royals || 1–2 || [[Noah Cameron|Cameron]] (9–7) || '''[[Shane Bieber|Bieber]]''' (3–2) || [[Carlos Estévez (baseball)|Estévez]] (41) || 25,774 || 89–66 || +2
+|-style="background:#003399;color:white;"
+| 156 || September 21 || @ Royals || 8–5 || '''[[Seranthony Domínguez|<span style="color:#cdf;">Domínguez</span>]]''' (4–4) || [[Michael Wacha|<span style="color:#cdf;">Wacha</span>]] (9–13) || '''[[Jeff Hoffman|<span style="color:#cdf;">Hoffman</span>]]''' (32) || 32,936 || 90–66 || +2
+|-style="background:#fbb;"
+| 157 || September 23 || [[2025 Boston Red Sox season|Red Sox]] || 1–4 || [[Justin Wilson (baseball)|Wilson]] (4–1) || '''[[Kevin Gausman|Gausman]]''' (10–11) || [[Aroldis Chapman|Chapman]] (32) || 42,927 || 90–67 || +1
+|-style="background:#fbb;"
+| 158 || September 24 || Red Sox || 1–7 || [[Garrett Crochet|Crochet]] (18–5) || '''[[Max Scherzer|Scherzer]]''' (5–5) || — || 39,438 || 90–68 || —
+|-style="background:#bfb;"
+| 159 || September 25 || Red Sox || 6–1 || '''[[Yariel Rodríguez|Rodríguez]]''' (3–2) || [[Brayan Bello|Bello]] (11–9) || — || 42,129 || 91–68 || ―
+|-style="background:#bfb;"
+| 160 || September 26 || Rays || 4–2 || '''[[Shane Bieber|Bieber]]''' (4–2) || [[Adrian Houser|Houser]] (8–5) || '''[[Jeff Hoffman|Hoffman]]''' (33) || 42,184 || 92–68 || ―
+|-style="background:#bfb;"
+| 161 || September 27 || Rays || 5–1 || '''[[Trey Yesavage|Yesavage]]''' (1–0) || [[Joe Boyle (baseball)|Boyle]] (1–4) || — || 42,624 || 93–68 || ―
+|-style="background:#009900;color:white;"
+| 162 || September 28 || Rays || 13–4 || '''[[Mason Fluharty|<span style="color:#cdf;">Fluharty</span>]]''' (5–2) || [[Ian Seymour|<span style="color:#cdf;">Seymour</span>]] (4–3) || — || 42,083 || 94–68 || ―
+|-
+{{Game log section end}} 
+{{Game log end}}
+
+==Postseason==
+===Postseason game log===
+{| align="center" border="1" cellpadding="2" cellspacing="1" style="border:1px solid #aaa"
+|-
+! colspan="3" | Legend
+|-
+! style="background:#bfb;"| Blue Jays win
+! style="background:#fbb;"| Blue Jays loss
+! style="background:#bbb;"| Game postponed
+|}
+{{Game log start|style={{Baseball primary style|Toronto Blue Jays}}|title= 2025 Postseason Game Log}}
+{{Game log section start|hide=y|style={{Baseball secondary style|Toronto Blue Jays}}|title=American League Division Series (vs. New York Yankees): 3–1 | #| Date| Opponent| Score| Win| Loss| Save| Attendance| Series}}
+|- style="background:#bfb;"
+| 1 || October 4 || [[2025 New York Yankees season|Yankees]] || 10–1 || '''[[Kevin Gausman|Gausman]]''' (1–0) || [[Luis Gil (baseball)|Gil]] (0–1) || ― || 44,655 || 1–0
+|- style="background:#bfb;"
+| 2 || October 5 || [[2025 New York Yankees season|Yankees]] || 13–7 || '''[[Trey Yesavage|Yesavage]]''' (1–0) || [[Max Fried|Fried]] (0–1) || ― || 44,764  || 2–0
+|- style="background:#fbb;"
+| 3 || October 7 || @ [[2025 New York Yankees season|Yankees]] || 6–9 || [[Tim Hill (baseball)|Hill]] (1–0) || '''[[Louis Varland|Varland]]''' (0–1) || [[David Bednar (baseball)|Bednar]] (2) || 47,399 || 2–1 
+|- style="background:#bfb;"
+| 4 || October 8 || @ [[2025 New York Yankees season|Yankees]] || 5–2 || '''[[Seranthony Domínguez|Domínguez]]''' (1–0) || [[Cam Schlittler|Schlittler]] (1–1) || '''[[Jeff Hoffman|Hoffman]]''' (1) || 47,823 || 3–1
+|- 
+{{Game log section end}}
+{{Game log section start|hide=y|style={{Baseball secondary style|Toronto Blue Jays}}|title=American League Championship Series (vs. Seattle Mariners): 4–3 | #| Date| Opponent| Score| Win| Loss| Save| Attendance| Series}}
+|- style="background:#fbb;"
+| 1 || October 12 || [[2025 Seattle Mariners season|Mariners]] || 1–3 || [[Bryce Miller (baseball)|Miller]] (1–0) || '''[[Kevin Gausman|Gausman]]''' (1–1) || [[Andrés Muñoz|Muñoz]] (2) || 44,474 || 0–1 
+|- style="background:#fbb;"
+| 2 || October 13 || [[2025 Seattle Mariners season|Mariners]] || 3–10 || [[Eduard Bazardo|Bazardo]] (1–0) || '''[[Trey Yesavage|Yesavage]]''' (1–1) || ― || 44,814 || 0–2
+|- style="background:#bfb;"
+| 3 || October 15 || @ [[2025 Seattle Mariners season|Mariners]] || 13–4 || '''[[Shane Bieber|Bieber]]''' (1–0) || [[George Kirby (baseball)|Kirby]] (0–1) || ― || 46,471 || 1–2
+|- style="background:#bfb;"
+| 4 || October 16 || @ [[2025 Seattle Mariners season|Mariners]] || 8–2 || '''[[Max Scherzer|Scherzer]]''' (1–0) || [[Luis Castillo (pitcher, born 1992)|Castillo]] (1–1) || ― || 46,981 || 2–2
+|- style="background:#fbb;"
+| 5 || October 17 || @ [[2025 Seattle Mariners season|Mariners]] || 2–6 || [[Gabe Speier|Speier]] (1–1) || '''[[Brendon Little|Little]]''' (0–1) || ― || 46,758 || 2–3
+|- style="background:#bfb;"
+| 6 || October 19 || [[2025 Seattle Mariners season|Mariners]] || 6–2 || '''[[Trey Yesavage|Yesavage]]''' (2–1) || [[Logan Gilbert|Gilbert]] (1–1) || ― || 44,764 || 3–3
+|- style="background:#bfb;"
+| 7 || October 20 || [[2025 Seattle Mariners season|Mariners]] || 4–3 || '''[[Kevin Gausman|Gausman]]''' (2–1) || [[Eduard Bazardo|Bazardo]] (1–1) || '''[[Jeff Hoffman|Hoffman]]''' (2) || 44,770 || 4–3 
+|- 
+{{Game log section end}}
+{{Game log section start|hide=y|style={{Baseball secondary style|Toronto Blue Jays}}|title=World Series (vs. Los Angeles Dodgers): 3–4 | #| Date| Opponent| Score| Win| Loss| Save| Attendance| Series}}
+|- style="background:#bfb;"
+| 1 || October 24 || [[2025 Los Angeles Dodgers season|Dodgers]] || 11–4 || '''[[Seranthony Domínguez|Domínguez]]''' (2–0) || [[Blake Snell|Snell]] (3–1) || — || 44,353 || 1–0
+|- style="background:#fbb;"
+| 2 || October 25 || [[2025 Los Angeles Dodgers season|Dodgers]] || 1–5 || [[Yoshinobu Yamamoto|Yamamoto]] (3–1) || '''[[Kevin Gausman|Gausman]]''' (2–2) || — || 44,607 || 1–1
+|- style="background:#fbb;"
+| 3 || October 27 || @ [[2025 Los Angeles Dodgers season|Dodgers]] || 5–6 {{Small|(18)}} || [[Will Klein (baseball)|Klein]] (1–0) || '''[[Brendon Little|Little]]''' (0–2) || ― || 52,654 || 1–2
+|- style="background:#bfb;"
+| 4 || October 28 || @ [[2025 Los Angeles Dodgers season|Dodgers]] || 6–2 || '''[[Shane Bieber|Bieber]]''' (2–0) || [[Shohei Ohtani|Ohtani]] (2–1) || ― || 52,552 || 2–2
+|- style="background:#bfb;"
+| 5 || October 29 || @ [[2025 Los Angeles Dodgers season|Dodgers]] || 6–1 || '''[[Trey Yesavage|Yesavage]]''' (3–1) || [[Blake Snell|Snell]] (3–2) || ― || 52,175 || 3–2
+|- style="background:#fbb;"
+| 6 || October 31 || [[2025 Los Angeles Dodgers season|Dodgers]] || 1–3 || [[Yoshinobu Yamamoto|Yamamoto]] (4–1) || '''[[Kevin Gausman|Gausman]]''' (2–3) || [[Tyler Glasnow|Glasnow]] (1) || 44,710 || 3–3
+|- style="background:#fbb;"
+| 7 || [[2025 World Series Game 7|November 1]] || [[2025 Los Angeles Dodgers season|Dodgers]] || 4–5 {{small|(11)}} || [[Yoshinobu Yamamoto|Yamamoto]] (5–1) || '''[[Shane Bieber|Bieber]]''' (2–1) || — || 44,713 || 3–4
+|- 
+{{Game log section end}}
+{{Game log end}}
+
+===Postseason rosters===
+{{Game log start|style={{Baseball primary style|Toronto Blue Jays}}; | title= Playoff rosters}}
+{{Game log section start|hide=y|style={{Baseball secondary style|Toronto Blue Jays}};|title=American League Division Series }}
+| style="text-align:left" |
+*Pitchers: 23 [[Jeff Hoffman]] 29 [[Yariel Rodríguez]] 34 [[Kevin Gausman]] 39 [[Trey Yesavage]] 45 [[Tommy Nance]] 48 [[Seranthony Domínguez]] 54 [[Brendon Little]] 56 [[Eric Lauer]] 57 [[Shane Bieber]] 58 [[Justin Bruihl]] 63 [[Braydon Fisher]] 68 [[Mason Fluharty]] 77 [[Louis Varland]] 
+*Catchers: 30 [[Alejandro Kirk]] 55 [[Tyler Heineman]] 
+*Infielders: 0 [[Andrés Giménez]] 7 [[Isiah Kiner-Falefa]] 22 [[Ernie Clement]] 27 [[Vladimir Guerrero Jr.]] 47 [[Addison Barger]] 
+*Outfielders: 3 [[Myles Straw]] 4 [[George Springer]] 5 [[Daulton Varsho]] 25 [[Anthony Santander]] 36 [[Davis Schneider]] 38 [[Nathan Lukes]]  
+|- valign="top"
+{{Game log section end}}
+{{Game log section start|hide=y|style={{Baseball secondary style|Toronto Blue Jays}};|title=American League Championship Series }}
+| style="text-align:left" | 
+*Pitchers: 23 [[Jeff Hoffman]] 29 [[Yariel Rodríguez]] 31 [[Max Scherzer]] 34 [[Kevin Gausman]] 39 [[Trey Yesavage]] 40 [[Chris Bassitt]] 48 [[Seranthony Domínguez]] 54 [[Brendon Little]] 56 [[Eric Lauer]] 57 [[Shane Bieber]] 63 [[Braydon Fisher]] 68 [[Mason Fluharty]] 77 [[Louis Varland]]
+*Catchers: 30 [[Alejandro Kirk]] 55 [[Tyler Heineman]]
+*Infielders: 0 [[Andrés Giménez]] 7 [[Isiah Kiner-Falefa]] 22 [[Ernie Clement]] 27 [[Vladimir Guerrero Jr.]] 47 [[Addison Barger]]
+*Outfielders: 3 [[Myles Straw]] 4 [[George Springer]] 5 [[Daulton Varsho]] 10 [[Joey Loperfido]] {{small|(Games 4-7)}} 25 [[Anthony Santander]] {{small|(Games 1-3)}} 36 [[Davis Schneider]] 38 [[Nathan Lukes]]
+|- valign="top"
+{{Game log section end}}
+{{Game log section start|hide=y|style={{Baseball secondary style|Toronto Blue Jays}};|title=World Series }}
+| style="text-align:left" | 
+*Pitchers: 23 [[Jeff Hoffman]] 31 [[Max Scherzer]] 34 [[Kevin Gausman]] 39 [[Trey Yesavage]] 40 [[Chris Bassitt]] 48 [[Seranthony Domínguez]] 54 [[Brendon Little]] 56 [[Eric Lauer]] 57 [[Shane Bieber]] 63 [[Braydon Fisher]] 68 [[Mason Fluharty]] 77 [[Louis Varland]]
+*Catchers: 30 [[Alejandro Kirk]] 55 [[Tyler Heineman]]
+*Infielders: 0 [[Andrés Giménez]] 2 [[Ty France]] 7 [[Isiah Kiner-Falefa]] 11 [[Bo Bichette]] 22 [[Ernie Clement]] 27 [[Vladimir Guerrero Jr.]] 47 [[Addison Barger]]
+*Outfielders: 3 [[Myles Straw]] 4 [[George Springer]] 5 [[Daulton Varsho]] 36 [[Davis Schneider]] 38 [[Nathan Lukes]]
+|- valign="top"
+{{Game log section end}}
+{{Game log end}}
+
+==Roster==
+{| class="toccolours" style="font-size: 95%;"
+|- http://upload.wikimedia.org/wikipedia/en/c/c8/Button_redirect.png
+! colspan="10" style="{{Baseball primary style|Toronto Blue Jays|border=2}}; text-align: center; |2025 Toronto Blue Jays
+|-
+| colspan="10" style="{{Baseball secondary style|Toronto Blue Jays|border=2}}; text-align: center;" | '''Roster'''
+|-
+| valign="top" | '''Pitchers'''
+{{MLBplayer|67|[[Jacob Barnes]]}}
+{{MLBplayer|40|[[Chris Bassitt]]}}
+{{MLBplayer|17|[[José Berríos]]}}
+{{MLBplayer|57|[[Shane Bieber]]}}
+{{MLBplayer|35|[[Ryan Borucki]]}}
+{{MLBplayer|58|[[Justin Bruihl]]}}
+{{MLBplayer|43|[[Ryan Burr (baseball)|Ryan Burr]]}}
+{{MLBplayer|48|[[Seranthony Domínguez]]}}
+{{MLBplayer|60|[[Lázaro Estrada]]}}
+{{MLBplayer|63|[[Braydon Fisher]]}}
+{{MLBplayer|68|[[Mason Fluharty]]}}
+{{MLBplayer|44|[[Bowden Francis]]}}
+{{MLBplayer|93|[[Yimi García]]}}
+{{MLBplayer|34|[[Kevin Gausman]]}}
+{{MLBplayer|57|[[Chad Green (pitcher)|Chad Green]]}}
+{{MLBplayer|23|[[Jeff Hoffman]]}}
+{{MLBplayer|56|[[Eric Lauer]]}}
+{{MLBplayer|58|[[Casey Lawrence]]}}
+{{MLBplayer|54|[[Brendon Little]]}}
+{{MLBplayer|58|[[Richard Lovelady]]}}
+{{MLBplayer|62|[[Easton Lucas]]}}
+{{MLBplayer|45|[[Tommy Nance]]}}
+{{MLBplayer|33|[[Robinson Piña]]}}
+{{MLBplayer|29|[[Yariel Rodríguez]]}}
+{{MLBplayer|52|[[Nick Sandlin]]}}
+{{MLBplayer|31|[[Max Scherzer]]}}
+{{MLBplayer|65|[[Paxton Schultz]]}}
+{{MLBplayer|50|[[Erik Swanson]]}}
+{{MLBplayer|&nbsp;9|[[Dillon Tate]]}}
+{{MLBplayer|12|[[Spencer Turnbull]]}}
+{{MLBplayer|48|[[José Ureña]]}}
+{{MLBplayer|77|[[Louis Varland]]}}
+{{MLBplayer|21|[[Josh Walker (baseball)|Josh Walker]]}}
+{{MLBplayer|39|[[Trey Yesavage]]}}
+| style="width:25px;"|
+| valign="top" | '''Catchers'''
+{{MLBplayer|55|[[Tyler Heineman]]}}
+{{MLBplayer|30|[[Alejandro Kirk]]}}
+{{MLBplayer|20|[[Ali Sánchez]]}}
+'''Infielders'''
+{{MLBplayer|47|[[Addison Barger]]}}
+{{MLBplayer|11|[[Bo Bichette]]}}
+{{MLBplayer|22|[[Ernie Clement]]}}
+{{MLBplayer|&nbsp;2|[[Ty France]]}}
+{{MLBplayer|&nbsp;0|[[Andrés Giménez]]}}
+{{MLBplayer|27|[[Vladimir Guerrero Jr.]]}}
+{{MLBplayer|49|[[Leo Jiménez]]}}
+{{MLBplayer|&nbsp;7|[[Isiah Kiner-Falefa]]}}
+{{MLBplayer|24|[[Buddy Kennedy]]}}
+{{MLBplayer|16|[[Michael Stefanic]]}}
+{{MLBplayer|&nbsp;7|[[Will Wagner (baseball)|Will Wagner]]}}
+| style="width:25px;"|
+| valign="top" | '''Outfielders'''
+{{MLBplayer|&nbsp;8|[[Jonatan Clase]]}}
+{{MLBplayer|10|[[Joey Loperfido]]}}
+{{MLBplayer|38|[[Nathan Lukes]]}}
+{{MLBplayer|39|[[Will Robertson (baseball)|Will Robertson]]}}
+{{MLBplayer|18|[[Alan Roden]]}}
+{{MLBplayer|25|[[Anthony Santander]]}}
+{{MLBplayer|36|[[Davis Schneider]]}}
+{{MLBplayer|&nbsp;4|[[George Springer]]}}
+{{MLBplayer|&nbsp;3|[[Myles Straw]]}}
+{{MLBplayer|&nbsp;5|[[Daulton Varsho]]}}
+| style="width:25px;"|
+| valign="top" | '''Manager'''
+{{MLBplayer|14|[[John Schneider (baseball)|John Schneider]]}}
+'''Coaches'''
+{{MLBplayer|61|Alex Andreopoulos}} {{small|(bullpen catcher)}}
+{{MLBplayer|53|[[Mark Budzinski]]}} {{small|(first base/outfield)}}
+{{MLBplayer|51|[[Carlos Febles]]}} {{small|(third base/infield)}}
+{{MLBplayer|88|Sam Greene}} {{small|(assistant pitching)}}
+{{MLBplayer|15|[[DeMarlo Hale]]}} {{small|(associate manager)}}
+{{MLBplayer|78|Luis Hurtado}} {{small|(bullpen catcher)}}
+{{MLBplayer|80|Lou Iannotti}} {{small|(assistant hitting)}}
+{{MLBplayer|82|Graham Johnson}} {{small|(bullpen)}}
+{{MLBplayer|--|[[John Lannan]]}} {{small|(mental performance coach)}}
+{{MLBplayer|46|[[Don Mattingly]]}} {{small|(bench coach)}}
+{{MLBplayer|59|[[Hunter Mense]]}} {{small|(assistant hitting)}}
+{{MLBplayer|79|[[David Popkins]]}} {{small|(hitting)}}
+{{MLBplayer|41|[[Pete Walker (baseball)|Pete Walker]]}} {{small|(pitching)}}
+|}
+
+==Statistics==
+{|
+|-
+| style="background:#fc0; border:1px solid #aaa; width:2em;" |
+| = Indicates team leader
+|}
+{|
+|-
+| style="background:#DDFFDD; border:1px solid #aaa; width:2em;" |
+| = Indicates league leader
+|}
+
+===Batting===
+{{small|(updated through September 29, 2025)}}
+
+{| class="wikitable sortable"
+|-
+!  style="{{Baseball primary style|Toronto Blue Jays}};"| Player
+!  style="{{Baseball primary style|Toronto Blue Jays}}"| {{Tooltip|G|Games played}}
+!  style="{{Baseball primary style|Toronto Blue Jays}}"| {{Tooltip|AB|At bats}}
+!  style="{{Baseball primary style|Toronto Blue Jays}}"| {{Tooltip|R|Runs scored}}
+!  style="{{Baseball primary style|Toronto Blue Jays}}"| {{Tooltip|H|Hits}}
+!  style="{{Baseball primary style|Toronto Blue Jays}}"| {{Tooltip|2B|Doubles}}
+!  style="{{Baseball primary style|Toronto Blue Jays}}"| {{Tooltip|3B|Triples}}
+!  style="{{Baseball primary style|Toronto Blue Jays}}"| {{Tooltip|HR|Home runs}}
+!  style="{{Baseball primary style|Toronto Blue Jays}}"| {{Tooltip|RBI|Runs batted in}}
+!  style="{{Baseball primary style|Toronto Blue Jays}}"| {{Tooltip|SB|Stolen bases}}
+!  style="{{Baseball primary style|Toronto Blue Jays}}"| {{Tooltip|BB|Walks}}
+!  style="{{Baseball primary style|Toronto Blue Jays}}"| {{Tooltip|AVG|Batting average}}
+!  style="{{Baseball primary style|Toronto Blue Jays}}"| {{Tooltip|Ref.|Reference}}
+|- align=center
+| {{sortname|Addison|Barger}} || 135 || 460 || 61 || 112 || 32 || 1 || 21 || 74 || 4 || 36 || .243 || <ref>{{cite web|url=https://www.mlb.com/player/addison-barger-680718|title=Addison Barger Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Bo|Bichette}} || 139 || 582 || 78 || bgcolor=#ffcc00|181 || bgcolor=#ffcc00|44 || 1 || 18 || bgcolor=#ffcc00|94 || 4 || 40 || bgcolor=#ffcc00|.311 || <ref>{{cite web|url=https://www.mlb.com/player/bo-bichette-666182|title=Bo Bichette Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Jonatan|Clase}} || 34 || 100 || 10 || 21 || 3 || 0 || 2 || 9 || 3 || 10 || .210 || <ref>{{cite web|url=https://www.mlb.com/player/jonatan-clase-682729|title=Jonatan Clase Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Ernie|Clement}} || bgcolor=#ffcc00|157 || 545 || 83 || 151 || 35 || bgcolor=#ffcc00|2 || 9 || 50 || 6 || 27 || .277 || <ref>{{cite web|url=https://www.mlb.com/player/ernie-clement-676391|title=Ernie Clement Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Ty|France}} || 37 || 94 || 9 || 26 || 6 || 0 || 1 || 8 || 0 || 3 || .277 || <ref>{{cite web|url=https://www.mlb.com/player/ty-france-664034|title=Ty France Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Andrés|Giménez}} || 101 || 329 || 39 || 69 || 11 || 1 || 7 || 35 || 12 || 25 || .210 || <ref>{{cite web|url=https://www.mlb.com/player/andres-gimenez-665926|title=Andrés Giménez Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Vladimir|Guerrero Jr.}} || 156 || bgcolor=#ffcc00|589 || 96 || 172 || 34 || 0 || 23 || 84 || 6 || bgcolor=#ffcc00|81 || .292 || <ref>{{cite web|url=https://www.mlb.com/player/vladimir-guerrero-jr-665489|title=Vladimir Guerrero Jr. Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Tyler|Heineman}} || 64 || 149 || 25 || 43 || 8 || 1 || 3 || 20 || 2 || 12 || .289 || <ref name="Tyler Heineman Stats, Fantasy & News">{{cite web|url=https://www.mlb.com/player/tyler-heineman-623168|title=Tyler Heineman Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Leo|Jiménez}} || 18 || 29 || 2 || 2 || 0 || 0 || 1 || 1 || 0 || 2 || .069 || <ref>{{cite web|url=https://www.mlb.com/player/leo-jimenez-677870|title=Leo Jiménez Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Buddy|Kennedy}} || 2 || 5 || 1 || 1 || 1 || 0 || 0 || 0 || 0 || 1 || .200 || <ref>{{cite web|url=https://www.mlb.com/player/buddy-kennedy-671083|title=Buddy Kennedy Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Isiah|Kiner-Falefa}} || 19 || 30 || 5 || 7 || 1 || 0 || 1 || 5 || 0 || 0 || .233 || <ref name="MLB.com">{{cite web|url=https://www.mlb.com/player/isiah-kiner-falefa-643396|title=Isiah Kiner-Falefa Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Alejandro|Kirk}} || 130 || 451 || 45 || 127 || 18 || 0 || 15 || 76 || 1 || 48 || .282 || <ref>{{cite web|url=https://www.mlb.com/player/alejandro-kirk-672386|title=Alejandro Kirk Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Joey|Loperfido}} || 41 || 96 || 12 || 32 || 4 || 0 || 4 || 14 || 1 || 4 || .333 || <ref>{{cite web|url=https://www.mlb.com/player/joey-loperfido-694388|title=Joey Loperfido Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Nathan|Lukes}} || 135 || 388 || 55 || 99 || 19 || bgcolor=#ffcc00|2 || 12 || 65 || 2 || 38 || .255 || <ref>{{cite web|url=https://www.mlb.com/player/nathan-lukes-664770|title=Nathan Lukes Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Will|Robertson|dab=baseball}} || 3 || 10 || 0 || 1 || 0 || 0 || 0 || 1 || 0 || 1 || .100 || <ref>{{cite web|url=https://www.mlb.com/player/will-robertson-683770|title=Will Robertson Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Alan|Roden}} || 43 || 98 || 12 || 20 || 5 || 1 || 1 || 8 || 0 || 8 || .204 || <ref>{{cite web|url=https://www.mlb.com/player/alan-roden-702176|title=Alan Roden Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Ali|Sánchez}} || 8 || 21 || 2 || 5 || 2 || 0 || 0 || 0 || 0 || 0 || .238 || <ref name="Ali Sánchez Stats, Fantasy & News">{{cite web|url=https://www.mlb.com/player/ali-sanchez-645305|title=Ali Sánchez Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Anthony|Santander}} || 54 || 194 || 16 || 34 || 5 || 0 || 6 || 18 || 0 || 25 || .175 || <ref>{{cite web|url=https://www.mlb.com/player/anthony-santander-623993|title=Anthony Santander Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Davis|Schneider}} || 82 || 188 || 33 || 44 || 5 || 0 || 11 || 31 || 3 || 36 || .234 || <ref>{{cite web|url=https://www.mlb.com/player/davis-schneider-676914|title=Davis Schneider Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|George|Springer}} || 140 || 498 || bgcolor=#ffcc00|106 || 154 || 27 || 1 || bgcolor=#ffcc00|32 || 84 || bgcolor=#ffcc00|18 || 69 || .309 || <ref>{{cite web|url=https://www.mlb.com/player/george-springer-543807|title=George Springer Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Michael|Stefanic}} || 9 || 22 || 1 || 4 || 0 || 0 || 0 || 0 || 0 || 3 || .182 || <ref name="Michael Stefanic Stats, Fantasy & N">{{cite web|url=https://www.mlb.com/player/michael-stefanic-683021|title=Michael Stefanic Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Myles|Straw}} || 137 || 267 || 51 || 70 || 14 || 1 || 4 || 32 || 12 || 19 || .262 || <ref>{{cite web|url=https://www.mlb.com/player/myles-straw-664702|title=Myles Straw Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Daulton|Varsho}} || 71 || 248 || 43 || 59 || 13 || bgcolor=#ffcc00|2 || 20 || 55 || 2 || 17 || .238 || <ref>{{cite web|url=https://www.mlb.com/player/daulton-varsho-662139|title=Daulton Varsho Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Will|Wagner|dab=baseball}} || 40 || 114 || 13 || 27 || 7 || 0 || 0 || 7 || 1 || 15 || .237 || <ref>{{cite web|url=https://www.mlb.com/player/will-wagner-695238|title=Will Wagner Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+|'''Totals'''||'''162'''||'''5507'''||'''798'''||'''1461'''||'''294'''||'''13'''||'''191'''||'''771'''||'''77'''||'''520'''||'''.265'''||<ref>{{cite web|url=https://baseball-reference.com/teams/TOR/2025-batting.shtml|title=2025 Toronto Blue Jays Batting Stats at Baseball Reference|website=baseball-reference.com|accessdate=October 1, 2025}}</ref>
+|}
+
+===Pitching===
+{{small|(updated through September 29, 2025)}}
+{| class="wikitable sortable"
+|-
+! style="{{Baseball primary style|Toronto Blue Jays}}"| Player
+! style="{{Baseball primary style|Toronto Blue Jays}}"| {{Tooltip|G|Games played}}
+! style="{{Baseball primary style|Toronto Blue Jays}}"| {{Tooltip|GS|Games started}}
+! style="{{Baseball primary style|Toronto Blue Jays}}"| {{Tooltip|W|Wins}}
+! style="{{Baseball primary style|Toronto Blue Jays}}"| {{Tooltip|L|Losses}}
+! style="{{Baseball primary style|Toronto Blue Jays}}"| {{Tooltip|SV|Saves}}
+! style="{{Baseball primary style|Toronto Blue Jays}}"| {{Tooltip|ERA|Earned run average}}
+! style="{{Baseball primary style|Toronto Blue Jays}}"| {{Tooltip|WHIP|Walks plus hits per inning pitched}}
+! style="{{Baseball primary style|Toronto Blue Jays}}"| {{Tooltip|IP|Innings pitched}}
+! style="{{Baseball primary style|Toronto Blue Jays}}"| {{Tooltip|H|Hits allowed}}
+! style="{{Baseball primary style|Toronto Blue Jays}}"| {{Tooltip|R|Total runs allowed}}
+! style="{{Baseball primary style|Toronto Blue Jays}}"| {{Tooltip|ER|Earned runs allowed}}
+! style="{{Baseball primary style|Toronto Blue Jays}}"| {{Tooltip|BB|Walks}}
+! style="{{Baseball primary style|Toronto Blue Jays}}"| {{Tooltip|K|Strikeouts}}
+! style="{{Baseball primary style|Toronto Blue Jays}}"| {{Tooltip|Ref.|Reference}}
+|- align=center
+| {{sortname|Jacob|Barnes}} || 6 || 0 || 0 || 1 || 0 || 9.00 || 1.63 || 8 || 10 || 9 || 8 || 3 || 5 || <ref>{{cite web|url=https://www.mlb.com/player/jacob-barnes-606930|title=Jacob Barnes Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Chris|Bassitt}} || 32 || 31 || bgcolor=#ffcc00|11 || 9 || 0 || 3.96 || 1.33 || 170{{frac|1|3}} || bgcolor=#ffcc00|174 || 80 || 75 || 52 || 166 || <ref>{{cite web|url=https://www.mlb.com/player/chris-bassitt-605135|title=Chris Bassitt Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|José|Berríos}} || 31 || 30 || 9 || 5 || 0 || 4.17 || 1.30 || 166 || 160 || bgcolor=#ffcc00|86 || bgcolor=#ffcc00|77 || bgcolor=#ffcc00|56 || 138 || <ref>{{cite web|url=https://www.mlb.com/player/jose-berrios-621244|title=José Berríos Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Shane|Bieber}} || 7 || 7 || 4 || 2 || 0 || 3.57 || 1.02 || 40{{frac|1|3}} || 34 || 16 || 16 || 7 || 37 || <ref>{{cite web|url=https://www.mlb.com/player/shane-bieber-669456|title=Shane Bieber Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Ryan|Borucki}} || 4 || 0 || 0 || 0 || 0 || 0.00 || 1.62 || 4{{frac|1|3}} || 3 || 0 || 0 || 4 || 5 || <ref>{{cite web|url=https://www.mlb.com/player/ryan-borucki-621366|title=Ryan Borucki Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Justin|Bruihl}} || 15 || 0 || 0 || 0 || 0 || 5.27 || 1.90 || 13{{frac|2|3}} || 19 || 10 || 8 || 7 || 18 || <ref>{{cite web|url=https://www.mlb.com/player/justin-bruihl-677865|title=Justin Bruihl Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Ryan|Burr|dab=baseball}} || 2 || 0 || 1 || 0 || 0 || 0.00 || 1.00 || 2 || 1 || 0 || 0 || 1 || 3 || <ref>{{cite web|url=https://www.mlb.com/player/ryan-burr-621114|title=Ryan Burr Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Seranthony|Domínguez}} || 24 || 0 || 2 || 1 || 0 || 3.00 || 1.14 || 13{{frac|2|3}} || 21 || 12 || 11 || 12 || 25 || <ref>{{cite web|url=https://www.mlb.com/player/seranthony-dominguez-622554|title=Seranthony Domínguez Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Lázaro|Estrada}} || 2 || 0 || 0 || 0 || 0 || 8.59 || 1.50 || 7{{frac|1|3}} || 10 || 7 || 7 || 1 || 10 || <ref>{{cite web|url=https://www.mlb.com/player/lazaro-estrada-681751|title=Lazaro Estrada Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Braydon|Fisher}} || 52 || 1 || 7 || 0 || 0 || 2.70 || 1.02 || 50 || 32 || 15 || 15 || 19 || 62 || <ref>{{cite web|url=https://www.mlb.com/player/braydon-fisher-680755|title=Braydon Fisher Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Mason|Fluharty}} || 55 || 0 || 5 || 2 || 1 || 4.44 || 1.14 || 52{{frac|2|3}} || 36 || 28 || 26 || 24 || 56 || <ref>{{cite web|url=https://www.mlb.com/player/mason-fluharty-689254|title=Mason Fluharty Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Bowden|Francis}} || 14 || 14 || 2 || 8 || 0 || 6.05 || 1.53 || 64 || 71 || 46 || 43 || 27 || 54 || <ref>{{cite web|url=https://www.mlb.com/player/bowden-francis-670102|title=Bowden Francis Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Yimi|García}} || 22 || 0 || 1 || 2 || 3 || 3.86 || 1.19 || 21 || 13 || 10 || 9 || 12 || 25 || <ref>{{cite web|url=https://www.mlb.com/player/yimi-garcia-554340|title=Yimi García Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Kevin|Gausman}} || 32 || bgcolor=#ffcc00|32 || 10 || bgcolor=#ffcc00|11 || 0 || bgcolor=#ffcc00|3.59 || bgcolor=#ffcc00|1.06 ||bgcolor=#ffcc00| 193 || 155 || 79 || bgcolor=#ffcc00|77 || 50 || bgcolor=#ffcc00|189 || <ref>{{cite web|url=https://www.mlb.com/player/kevin-gausman-592332|title=Kevin Gausman Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Chad|Green|dab=pitcher}} || 45 || 0 || 3 || 2 || 1 || 5.56 || 1.47 || 43{{frac|2|3}} || 51 || 28 || 27 || 13 || 35 || <ref>{{cite web|url=https://www.mlb.com/player/chad-green-643338|title=Chad Green Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Tyler|Heineman}} || 3 || 0 || 0 || 0 || 0 || 32.40 || 4.50 || 3{{frac|1|3}} || 15 || 12 || 12 || 0 || 0 || <ref name="Tyler Heineman Stats, Fantasy & News" />
+|- align=center
+| {{sortname|Jeff|Hoffman}} || 71 || 0 || 9 || 7 || bgcolor=#ffcc00|33 || 4.37 || 1.19 || 68 || 54 || 34 || 33 || 27 || 84 || <ref>{{cite web|url=https://www.mlb.com/player/jeff-hoffman-656546|title=Jeff Hoffman Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Isiah|Kiner-Falefa}} || 1 || 0 || 0 || 0 || 0 || 0.00 || 0.00 || {{frac|2|3}} || 0 || 0 || 0 || 0 || 0 || <ref name="MLB.com"/>
+|- align=center
+| {{sortname|Eric|Lauer}} || 28 || 15 || 9 || 2 || 0 || 3.18 || 1.11 || 104{{frac|2|3}} || 90 || 39 || 37 || 26 || 102 || <ref>{{cite web|url=https://www.mlb.com/player/eric-lauer-641778|title=Eric Lauer Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Casey|Lawrence}} || 1 || 0 || 0 || 0 || 0 || 10.13 || 2.25 || 2{{frac|2|3}} || 6 || 3 || 3 || 0 || 1 || <ref>{{cite web|url=https://www.mlb.com/player/casey-lawrence-596271|title=Casey Lawrence Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Brendon|Little}} || bgcolor=#DDFFDD|79 || 0 || 4 || 2 || 1 || 3.03 || 1.36 || 68{{frac|1|3}} || 48 || 28 || 23 || 45 || 91 || <ref>{{cite web|url=https://www.mlb.com/player/brendon-little-663893|title=Brendon Little Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Richard|Lovelady}} || 2 || 0 || 0 || 1 || 0 || 21.60 || 2.40 || 1{{frac|2|3}} || 2 || 4 || 4 || 2 || 3 || <ref>{{cite web|url=https://www.mlb.com/player/richard-lovelady-663992|title=Richard Lovelady Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Easton|Lucas}} || 6 || 5 || 3 || 3 || 0 || 6.66 || 1.52 || 24{{frac|1|3}} || 25 || 18 || 18 || 12 || 23 || <ref>{{cite web|url=https://www.mlb.com/player/easton-lucas-687922|title=Easton Lucas Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Tommy|Nance}} || 30 || 0 || 2 || 0 || 0 || 1.99 || 1.01 || 31{{frac|2|3}} || 25 || 11 || 7 || 7 || 32 || <ref>{{cite web|url=https://www.mlb.com/player/tommy-nance-667297|title=Tommy Nance Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Robinson|Piña}} || 1 || 0 || 0 || 0 || 0 || 6.75 || 3.75 || 1{{frac|1|3}} || 4 || 3 || 1 || 1 || 1 || <ref>{{cite web|url=https://www.mlb.com/player/robinson-pina-673820|title=Robinson Piña Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Yariel|Rodríguez}} || 66 || 1 || 3 || 2 || 2 || 3.08 || 1.15 || 73 || 50 || 26 || 25 || 34 || 66 || <ref>{{cite web|url=https://www.mlb.com/player/yariel-rodriguez-684320|title=Yariel Rodríguez Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Ali|Sánchez}} || 1 || 0 || 0 || 0 || 0 || 18.00 || 3.00 || 1 || 3 || 2 || 2 || 0 || 1 || <ref name="Ali Sánchez Stats, Fantasy & News"/>
+|- align=center
+| {{sortname|Nick|Sandlin}} || 19 || 0 || 0 || 2 || 1 || 2.20 || 1.16 || 16{{frac|1|3}} || 11 || 7 || 4 || 8 || 16 || <ref>{{cite web|url=https://www.mlb.com/player/nick-sandlin-680704|title=Nick Sandlin Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Max|Scherzer}} || 17 || 17 || 5 || 5 || 0 || 5.19 || 1.29 || 85 || 87 || 49 || 49 || 23 || 82 || <ref>{{cite web|url=https://www.mlb.com/player/max-scherzer-453286|title=Max Scherzer Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Paxton|Schultz}} || 13 || 2 || 0 || 0 || 0 || 4.38 || 1.42 || 24{{frac|2|3}} || 27 || 16 || 12 || 8 || 28 || <ref>{{cite web|url=https://www.mlb.com/player/paxton-schultz-687606|title=Paxton Schultz Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Michael|Stefanic}} || 1 || 0 || 0 || 0 || 0 || 0.00 || 0.00 || 1 || 0 || 0 || 0 || 0 || 0 || <ref name="Michael Stefanic Stats, Fantasy & N"/>
+|- align=center
+| {{sortname|Erik|Swanson}} || 6 || 0 || 1 || 0 || 0 || 15.19 || 2.44 || 5{{frac|1|3}} || 8 || 9 || 9 || 5 || 3 || <ref>{{cite web|url=https://www.mlb.com/player/erik-swanson-657024|title=Erik Swanson Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Dillon|Tate}} || 6 || 0 || 0 || 0 || 0 || 4.26 || 2.21 || 6{{frac|1|3}} || 8 || 3 || 3 || 6 || 8 || <ref>{{cite web|url=https://www.mlb.com/player/dillon-tate-622253|title=Dilon Tate Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Spencer|Turnbull}} || 3 || 1 || 1 || 1 || 0 || 7.11 || 2.53 || 6{{frac|1|3}} || 12 || 5 || 5 || 4 || 4 || <ref>{{cite web|url=https://www.mlb.com/player/spencer-turnbull-605513|title=Spencer Turnbull Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|José|Ureña}} || 6 || 2 || 0 || 0 || 0 || 3.65 || 1.22 || 12{{frac|1|3}} || 12 || 5 || 5 || 3 || 5 || <ref>{{cite web|url=https://www.mlb.com/player/jose-urena-570632|title=José Ureña Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Louis|Varland}} || 23 || 1 || 1 || 0 || 0 || 4.94 || 1.39 || 23{{frac|2|3}} || 24 || 13 || 13 || 9 || 28 || <ref>{{cite web|url=https://www.mlb.com/player/louis-varland-686973|title=Louis Varland Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Josh|Walker|dab=baseball}} || 3 || 0 || 0 || 0 || 0 || 7.20 || 2.00 || 5 || 8 || 4 || 4 || 2 || 8 || <ref>{{cite web|url=https://www.mlb.com/player/josh-walker-677020|title=Josh Walker Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+| {{sortname|Trey|Yesavage}} || 3 || 3 || 1 || 0 || 0 || 3.21 || 1.43 || 14 || 13 || 5 || 5 || 7 || 16 || <ref>{{cite web|url=https://www.mlb.com/player/trey-yesavage-702056|title=Trey Yesavage Stats, Fantasy & News|work=MLB.com|accessdate=September 29, 2025}}</ref>
+|- align=center
+|'''Totals'''||'''162'''||'''162'''||'''94'''||'''68'''||'''42'''||'''4.19'''||'''1.27'''||'''1438.0'''||'''1313'''||'''721'''||'''669'''||'''517'''||'''1430'''||<ref>{{cite web|url=https://baseball-reference.com/teams/TOR/2025-pitching.shtml|title=2025 Toronto Blue Jays Pitching Stats at Baseball Reference|website=baseball-reference.com|accessdate=October 1, 2025}}</ref>
+|}
+
+==Transactions==
+===March===
+* On March 27, designated Tommy Nance, Zach Pop, and Nick Robertson for assignment, placed Daulton Varsho on the 10-day injured list, placed Ryan Burr and Erik Swanson on the 15-day injured list, and selected the contracts of Jacob Barnes, Alan Roden, and Myles Straw.<ref name="March Transactions">{{cite web|url=https://www.mlb.com/bluejays/roster/transactions/2025/03|title=Toronto Blue Jays Transactions in March|work=MLB.com|accessdate=April 3, 2025}}</ref>
+* On March 29, outrighted Tommy Nance to Triple-A Buffalo.<ref name="March Transactions"/>
+* On March 30, placed Max Scherzer on the 15-day injured list, designated Richard Lovelady for assignment, recalled Easton Lucas, and selected the contract of Mason Fluharty.<ref name="March Transactions"/>
+
+===April===
+* On April 1, traded Nick Robertson to the Houston Astros for Edinson Batista.<ref name="April Transactions">{{cite web|url=https://www.mlb.com/bluejays/roster/transactions/2025/04|title=Toronto Blue Jays Transactions in April|work=MLB.com|accessdate=April 3, 2025}}</ref>
+* On April 2, released Zach Pop.<ref name="April Transactions"/>
+* On April 3, outrighted Richard Lovelady to Triple-A Buffalo.<ref name="April Transactions"/>
+* On April 15, placed Nathan Lukes on the paternity list and recalled Addison Barger.<ref name="April Transactions"/>
+* On April 17, optioned Davis Schneider to the Triple-A Buffalo Bisons.<ref name="April Transactions"/>
+* On April 18, activated Nathan Lukes.<ref name="April Transactions"/>
+
+==Farm system==
+{{see also|Minor League Baseball}}
+
+{| class="wikitable" style="width:85%; text-align:center;"
+|-
+! style="width:12%;"|[[Minor League Baseball|Level]]
+! style="width:16%;"| Team
+! style="width:15%;"| League
+! style="width:14%;"| Manager
+! style="width:15%;"| Win–loss record
+! style="width:20%;"| Division
+! style="width:20%;"| Postseason
+! style="width:5%;"|{{Tooltip|Ref.|Reference}}
+|-
+| [[Triple-A (baseball)|Triple-A]] || [[Buffalo Bisons]] || [[International League]] || [[Casey Candaele]] ||  30–43<br>{{small|(first half)}}<br> 31–42<br>{{small|(second half)}}|| East Division || {{N/A|Did not qualify}} || <ref>{{cite web|url=https://www.milb.com/buffalo/standings/|title=International League Standings|work=MiLB.com|accessdate=July 3, 2025}}</ref> 
+|-
+| [[Double-A (baseball)|Double-A]] || [[New Hampshire Fisher Cats]] || [[Eastern League (1938–present)|Eastern League]] || Brent Lavallee || 29–40<br>{{small|(first half)}}<br> 27–41<br>{{small|(second half)}}|| Northeast Division || {{N/A|Did not qualify}} ||  <ref>{{cite web|url=https://www.milb.com/new-hampshire/standings/|title=Eastern League Standings|work=MiLB.com|accessdate=July 3, 2025}}</ref>
+|-
+| [[High-A]] || [[Vancouver Canadians]] || [[Northwest League]] || [[José Mayorga|Jose Mayorga]] || 37–29<br>{{small|(first half)}}<br>38–28<br>{{small|(second half)}}|| Northwest League || {{N/A|Did not qualify}}  || <ref>{{cite web|url=https://www.milb.com/vancouver/standings/|title=Northwest League Standings|work=MiLB.com|accessdate=July 3, 2025}}</ref>
+|-
+| [[Low-A]] || [[Dunedin Blue Jays]] || [[Florida State League]] || [[Gil Kim]] || 34–31<br>{{small|(first half)}}<br> 26–35 <br> {{small|(second half)}}|| West Division || {{N/A|Did not qualify}}  || <ref>{{cite web|url=https://www.milb.com/dunedin/standings/|title=Florida State League Standings|work=MiLB.com|accessdate=July 3, 2025}}</ref>   
+|-
+| [[Minor League Baseball#Rookie|Rookie]] || [[Florida Complex League Blue Jays|FCL Blue Jays]] || [[Florida Complex League]] || John Tamargo || 36–23 || North Division || {{Yes|Qualified}}<br>'''won F 2–0'''  || <ref>{{cite web |title=Florida Complex League Standings |url=https://www.milb.com/florida-complex/standings/ |website=MiLB.com |access-date=July 3, 2025}}</ref>
+|-
+| [[Minor League Baseball#Rookie|Rookie]] || [[Dominican Summer League Blue Jays|DSL Blue Jays Blue]] || [[Dominican Summer League]] ||  Danny Canellas  || 22–33  || Southwest Division || {{N/A|Did not qualify}} || rowspan="2"| <ref>{{cite web |title=Dominican Summer League Standings|url=https://www.milb.com/dominican-summer/standings/|website=MiLB.com |access-date=July 3, 2025}}</ref>
+|-
+| [[Minor League Baseball#Rookie|Rookie]] || [[Dominican Summer League Blue Jays|DSL Blue Jays Red]] || [[Dominican Summer League]] || Ashley Ponce || 30–26 || South Division || {{N/A|Did not qualify}} 
+|}
+
+==References==
+{{Reflist}}
+
+==External links==
+*[https://www.baseball-reference.com/teams/TOR/2025.shtml 2025 Toronto Blue Jays at Baseball Reference]
+
+{{American League champions}}
+{{American League East champions}}
+{{2025 MLB Playoffs navbox}}
+{{2025 MLB season by team}}
+{{Toronto Blue Jays}}
+
+[[Category:Toronto Blue Jays seasons]]
+[[Category:2025 Major League Baseball season|Toronto Blue Jays]]
+[[Category:2025 in Toronto|Toronto Blue Jays]]
+[[Category:2025 in sports in Ontario|Toronto Blue Jays season]]
+[[Category:American League East champion seasons]]
+[[Category:American League champion seasons]]
