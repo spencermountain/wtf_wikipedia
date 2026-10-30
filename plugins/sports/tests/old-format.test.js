@@ -168,6 +168,40 @@ test('1980s mlb: dow-tooltip dates', (t) => {
   t.end()
 })
 
+test('2010s mlb: multi-line section opener, no headings', (t) => {
+  // {{MLB game log section}} with newline-separated named params and default columns
+  const page = `The '''2010 Milwaukee Brewers season''' was the 41st season.
+
+==Regular season==
+===Game log===
+{{MLB game log
+ | year=2010
+ | bgcolor = #CBA140
+}}
+{{MLB game log section
+ | month = April
+ | record = 9–14
+ | hide= y
+}}
+|- align="center" bgcolor="ffbbbb"
+| 1 || April 5 || [[Colorado Rockies|Rockies]] || 5–3 || [[Ubaldo Jiménez|Jiménez]] (1–0) || '''[[Yovani Gallardo|Gallardo]]''' (0–1) || [[Franklin Morales|Morales]] (1) || 45,808 || 0–1
+|- align="center" bgcolor="bbffbb"
+| 2 || April 6 || [[Colorado Rockies|Rockies]] || 7–5 || '''[[Randy Wolf|Wolf]]''' (1–0) || [[Greg Smith (pitcher)|Smith]] (0–1) || '''[[Trevor Hoffman|Hoffman]]''' (1) || 37,344 || 1–1
+|-
+{{MLB game log section end}}
+`
+  const res = wtf(page, { title: '2010 Milwaukee Brewers season' }).mlbSeason()
+  t.equal(res.games.length, 2, 'two games')
+  const g1 = res.games[0]
+  t.equal(g1.outcome, 'loss', 'loss from unquoted bgcolor')
+  t.deepEqual(g1.result, { us: 3, them: 5 }, 'winner-first score flipped')
+  t.equal(g1.opponent, 'Colorado Rockies', 'opponent from team link')
+  t.equal(g1.pitchers.save, 'Morales', 'save credited')
+  t.equal(res.games[1].outcome, 'win', 'win')
+  t.deepEqual(res.games[1].result, { us: 7, them: 5 }, 'win score kept')
+  t.end()
+})
+
 test('plugin methods exist', (t) => {
   t.equal(typeof wtf(nhlPage).nhlSeason, 'function', 'doc.nhlSeason')
   t.equal(typeof wtf(mlbPage).mlbSeason, 'function', 'doc.mlbSeason')

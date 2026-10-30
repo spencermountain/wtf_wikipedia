@@ -5155,6 +5155,13 @@ const sigFigs = (str = "") => {
   }
   return Math.max(2, digits.replace(".", "").length);
 };
+const withCommas = (str) => {
+  let [int, dec] = str.split(".");
+  if (/^-?\d{4,}$/.test(int)) {
+    int = Number(int).toLocaleString("en-US");
+  }
+  return dec !== void 0 ? `${int}.${dec}` : int;
+};
 const fmtNumber$1 = (n, sig) => {
   if (!Number.isFinite(n)) {
     return "";
@@ -5163,7 +5170,8 @@ const fmtNumber$1 = (n, sig) => {
   if (/e/.test(str)) {
     return Number(str).toLocaleString("en-US");
   }
-  return str.replace(/\.$/, "");
+  str = str.replace(/\.$/, "");
+  return withCommas(str);
 };
 const convertUnits = (value, from, to, opts = {}) => {
   let n = Number(value.replace(/,/g, ""));
@@ -5460,8 +5468,9 @@ var functions = {
   },
   "block indent": (tmpl, parse = parseTextArguments) => {
     let obj = parse(tmpl);
-    if (obj["1"]) {
-      return { data: null, replacement: "\n" + obj["1"] + "\n" };
+    let text = obj["1"] || obj.text || (obj.list || [])[0] || "";
+    if (text) {
+      return { data: null, replacement: "\n" + text + "\n" };
     }
     return { data: null, replacement: "" };
   },
@@ -5574,7 +5583,11 @@ var functions = {
     if (obj.three && /^[0-9.]+$/.test(obj.three) && obj.four && /^[a-z]+$/i.test(obj.four)) {
       return { data: null, replacement: `${obj.num} ${unitSymbol(obj.two)} ${obj.three} ${unitSymbol(obj.four)}` };
     }
-    let str = `${obj.num} ${unitSymbol(obj.two)}`;
+    let num = obj.num || "";
+    if (/^-?\d+(\.\d+)?$/.test(num) && obj.comma !== "off") {
+      num = withCommas(num);
+    }
+    let str = `${num} ${unitSymbol(obj.two)}`;
     let converted = convertUnits(obj.num || "", obj.two || "", obj.three, { precision: obj.four, sigfig: obj.sigfig });
     if (converted && obj.disp !== "output only" && obj.disp !== "number") {
       str += ` (${converted})`;
@@ -10216,11 +10229,31 @@ const toText = function(obj) {
   let ew = obj.lon < 0 ? "W" : "E";
   return `${Math.abs(obj.lat)}\xB0${ns} ${Math.abs(obj.lon)}\xB0${ew}`;
 };
+const dmsText = function(tmpl, parser) {
+  let list = (parser(tmpl).list || []).map((s) => String(s).trim());
+  let ns = list.findIndex((s) => /^[NS]$/i.test(s));
+  let ew = list.findIndex((s, i) => i > ns && /^[EW]$/i.test(s));
+  if (ns < 2 || ew < ns + 3 || ew - ns !== ns + 1) {
+    return null;
+  }
+  const fmt = (parts, hemi) => {
+    let [d, m, sec] = parts;
+    let str = `${d}\xB0`;
+    if (m !== void 0) {
+      str += `${m}\u2032`;
+    }
+    if (sec !== void 0) {
+      str += `${sec}\u2033`;
+    }
+    return str + hemi.toUpperCase();
+  };
+  return `${fmt(list.slice(0, ns), list[ns])} ${fmt(list.slice(ns + 1, ew), list[ew])}`;
+};
 const templates$2 = {
   coord: (tmpl, parser) => {
     let obj = parseCoor(tmpl, parser);
     if (!obj.display || obj.display.indexOf("inline") !== -1) {
-      return { data: obj, replacement: toText(obj) };
+      return { data: obj, replacement: dmsText(tmpl, parser) || toText(obj) };
     }
     return { data: obj, replacement: "" };
   }
@@ -11775,8 +11808,8 @@ const parseMMA = function(section, opts = defaults$1) {
   return section;
 };
 
-const openReg$1 = /\{\{ *(?:mlb +)?game log (?:section|month)(?: start)? *[|}]/i;
-const closeReg$1 = /\{\{ *(?:mlb +)?game log (?:section|month) end *\}\}/i;
+const openReg$1 = /\{\{ *(?:mlb +)?game log (?:section|month)(?: start)?\s*[|}]/i;
+const closeReg$1 = /\{\{ *(?:mlb +)?game log (?:section|month) end\s*\}\}/i;
 const templateEnd = function(str, start) {
   let depth = 0;
   for (let i = start; i < str.length - 1; i += 1) {

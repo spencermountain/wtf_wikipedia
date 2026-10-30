@@ -21,7 +21,7 @@ wtf.extend(mlb)
 wtf.extend(nhl)
 
 const delayMs = 500
-const firstYear = 2010 //1980
+const firstYear = 2012 //1980
 const thisYear = new Date().getFullYear()
 
 const leagues = {

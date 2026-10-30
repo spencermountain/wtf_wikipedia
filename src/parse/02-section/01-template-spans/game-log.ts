@@ -7,8 +7,8 @@ import type { DocInfo, SectionData } from '../../../types/index.ts'
 //  old: https://en.wikipedia.org/wiki/Template:MLB_game_log_section
 //  new: https://en.wikipedia.org/wiki/Template:Game_log_section_start
 
-const openReg = /\{\{ *(?:mlb +)?game log (?:section|month)(?: start)? *[|}]/i
-const closeReg = /\{\{ *(?:mlb +)?game log (?:section|month) end *\}\}/i
+const openReg = /\{\{ *(?:mlb +)?game log (?:section|month)(?: start)?\s*[|}]/i
+const closeReg = /\{\{ *(?:mlb +)?game log (?:section|month) end\s*\}\}/i
 
 // index after the '}}' that closes the '{{' at `start`
 const templateEnd = function (str, start) {
