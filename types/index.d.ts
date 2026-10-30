@@ -28,6 +28,8 @@ declare class Image {
 declare class Document {
   categories(): string[]
   citations(): Collection<Reference>
+  /** HTML comments found in the wikitext, e.g. '<!-- note -->' */
+  comments(): string[]
   coordinates(): Coordinate[]
   debug(): Document
   domain: string | null
@@ -42,6 +44,8 @@ declare class Document {
   json(format?: JsonFormat): Record<string, unknown>
   language: string | null
   links(): LinkCollection
+  /** The first link, or the first link to the given page name; null when none. */
+  link(clue?: string): Link | null
   lists(): Collection<List>
   namespace: string | number | null
   options(): DocumentOptions
@@ -57,6 +61,8 @@ declare class Document {
   sentences(): Collection<Sentence>
   tables(): Collection<Table>
   templates(clue?: string): TemplateCollection
+  /** The first template, or the first with the given name; null when none. */
+  template(clue?: string): Template | null
   text(): string
   title: string | null
   url(): string | null

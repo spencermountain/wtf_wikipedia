@@ -5,6 +5,7 @@ import dates from './dates/index.ts'
 import geo from './geo/index.ts'
 import misc from './misc.ts'
 import stock from './stock-exchanges.ts'
+import languages from './languages.ts'
 import sportsLib from './sports/_lib.ts'
 import sports from './sports/sports.ts'
 
@@ -16,6 +17,7 @@ export default {
   ...geo,
   ...misc,
   ...stock,
+  ...languages,
   ...sportsLib,
   ...sports,
 }

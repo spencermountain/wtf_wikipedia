@@ -7,7 +7,23 @@ const defaults: DocInfo = Object.freeze({
   domain: 'wikipedia.org',
 })
 
-const withDefaults = (opts: DocInfo = {}): DocInfo => {
+// user-facing option names that map onto the internal DocInfo keys
+const aliases: Record<string, keyof DocInfo> = {
+  pageID: 'pageId',
+  id: 'pageId',
+  ns: 'namespace',
+  language: 'lang',
+  revisionID: 'revisionId',
+}
+
+const withDefaults = (input: DocInfo = {}): DocInfo => {
+  const opts: Record<string, any> = { ...input }
+  Object.entries(aliases).forEach(([alias, key]) => {
+    if (opts[key] === undefined && opts[alias] !== undefined) {
+      opts[key] = opts[alias]
+    }
+    delete opts[alias]
+  })
   const project = normalizeProject(opts.project ?? defaults.project)
   return {
     ...defaults,

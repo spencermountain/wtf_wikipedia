@@ -6,5 +6,6 @@ import abbreviations from './abbreviations.ts'
 import moreLangs from './languages.ts'
 import flags from './flags.ts'
 import table from './table-cell.ts'
+import inline from './inline.ts'
 
-export default { ...hardcoded, ...easyInline, ...shorthand, ...functions, ...moreLangs, ...abbreviations, ...flags, ...table }
+export default { ...hardcoded, ...easyInline, ...shorthand, ...functions, ...moreLangs, ...abbreviations, ...flags, ...table, ...inline }

@@ -8,8 +8,9 @@ const stripWiki = (str) =>
   str
     .replace(/<ref[^>]*\/>/g, '')
     .replace(/<ref[\s\S]*?<\/ref>/g, '')
-    .replace(/\{\{[\s\S]*?\}\}/g, '')
-    .replace(/\[\[(?:[^\]|]*\|)?([^\]]*)\]\]/g, '$1')
+    .replace(/\{\{[^{}]*\}\}/g, '')
+    .replace(/\{\{[^{}]*\}\}/g, '') // once more, for one level of nesting
+    .replace(/\[\[(?:[^\][|]*\|)?([^\][]*)\]\]/g, '$1')
     .replace(/\[https?:\/\/\S+ ([^\]]*)\]/g, '$1')
     .replace(/'{2,}/g, '')
 

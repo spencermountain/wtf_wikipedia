@@ -148,7 +148,7 @@ const sentence_parser = function (text: string, _opts: DocInfo = defaults) {
     sentences = [text]
   }
   // a line-break inside a sentence renders as a space
-  return sentences.map((str) => str.replace(/[^\S\n]*\n\s*/g, ' '))
+  return sentences.map((str) => str.replace(/\n\s*/g, ' ').replace(/ {2,}/g, ' '))
 }
 
 export default sentence_parser

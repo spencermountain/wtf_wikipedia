@@ -200,7 +200,7 @@ class Document {
     return Links.from(arr)
   }
   link(clue?: string) {
-    return this.links(clue)[0]
+    return this.links(clue)[0] ?? null
   }
 
   lists() {
@@ -218,7 +218,7 @@ class Document {
     return Templates.from(items)
   }
   template(clue?: string) {
-    return this.templates(clue)[0]
+    return this.templates(clue)[0] ?? null
   }
 
   references() {

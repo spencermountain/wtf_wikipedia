@@ -16,10 +16,10 @@ test('api - link() and links(clue)', (t) => {
   const doc = wtf('See [[Paris]], [[London|the big smoke]] and [[Paris]] again.')
   t.equal(doc.link().page(), 'Paris', 'link() returns the first link')
   t.equal(doc.link('London').text(), 'the big smoke', 'link(clue) matches page name')
-  t.equal(doc.link('Rome'), undefined, 'link(clue) miss is undefined')
+  t.equal(doc.link('Rome'), null, 'link(clue) miss is null')
   t.equal(doc.links('Paris').length, 2, 'links(clue) keeps duplicates')
   t.equal(doc.links('paris').length, 0, 'links(clue) is case-sensitive on the page')
-  t.equal(wtf('No links.').link(), undefined, 'link() on a page without links')
+  t.equal(wtf('No links.').link(), null, 'link() on a page without links')
   t.end()
 })
 
@@ -121,5 +121,15 @@ test('api - fixed bugs', (t) => {
   )
   // docs: .wiki() is "which wiki, for interwiki links" — it returns the link wikitext instead
   t.equal(wtf('[[fr:Paris]]').links()[0].wiki(), 'fr', 'interwiki link wiki() is the language/project')
+  t.end()
+})
+
+test('singular accessors return null on a miss', (t) => {
+  const doc = wtf('plain text')
+  t.equal(doc.link(), null, 'link()')
+  t.equal(doc.link('Nope'), null, 'link(clue)')
+  t.equal(doc.template(), null, 'template()')
+  t.equal(doc.template('nope'), null, 'template(clue)')
+  t.equal(doc.infobox(), null, 'infobox()')
   t.end()
 })

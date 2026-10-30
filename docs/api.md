@@ -1,166 +1,209 @@
 # API reference
 
 Exact signatures, matching `types/index.d.ts` (the authoritative, hand-written
-type declarations). All examples verified against the current source.
+type declarations). Every example below was run against the current source.
 
-Conventions used below:
-- `clue?: number` — index into the plural result. On **Document**, plural
-  methods with a number return a **one-element array** (`doc.links(1)` →
-  `[secondLink]`, or `[]` when out of range). They never return a bare item.
-- Singular forms (`.link()`, `.section()`, …) return the first (or clue-th)
-  item, or **`null`** when there isn't one — consistently, on every class.
-- `.json()` returns plain serializable data. `.text()` returns plaintext.
-  `.wikitext()` returns the original markup. Every class has all three.
+Conventions:
+
+- Plural accessors (`.links()`, `.sections()`, …) return a **collection**: a real
+  `Array`, so `.map`, `.filter`, `[0]` and `.length` all work, plus the item's
+  own methods mapped across it — `doc.links().page()` is
+  `doc.links().map((l) => l.page())`. `.filter()`/`.map()`/`.slice()` return a
+  plain array. `.sections()` and `.paragraphs()` are plain arrays.
+- Singular accessors exist only where a "first" is useful: `doc.section(clue)`,
+  `doc.infobox()`, `doc.link(clue?)` and `doc.template(clue?)`. For everything
+  else, index the collection: `doc.links()[2]`.
+- `.json(format?)` returns plain serializable data. The default (`'lg'`) leaves
+  out the raw wikitext; `'xl'` includes it as `wiki` keys. `.text()` returns
+  plaintext and `.wikitext()` the original markup. Every class has all three.
+- Metadata on a Document (`title`, `pageID`, …) are **properties**, not methods.
 
 ## wtf (the default export)
 
 ```ts
 wtf(wikitext: string, options?: DocumentOptions): Document
 wtf.fetch(title, options?, callback?): Promise<Document | Document[] | null>  // see fetch.md
-wtf.extend(plugin): typeof wtf   // install a plugin
+wtf.extend(plugin): typeof wtf   // install a plugin — see plugins.md
 wtf.plugin(plugin): typeof wtf   // alias of extend
 wtf.version: string
 ```
 
-`DocumentOptions` (all optional): `title`, `pageID`, `namespace`/`ns`,
-`lang`/`language`, `domain`, `wikidata`, `description`, `timestamp`,
-`revisionID`, `pageImage`, `userAgent`.
-Pass `title` when parsing raw wikitext if you want `.title()` / `.url()` to work:
+`DocumentOptions` (all optional): `title`, `pageID` (or `id`), `namespace` (or
+`ns`), `lang` (or `language`), `domain`, `project`, `wikidata`, `description`,
+`timestamp`, `revisionID`, `pageImage`, `userAgent`. Pass `title` when parsing
+raw wikitext if you want `doc.title` / `doc.url()` to work:
 
 ```js
 let doc = wtf(str, { title: 'Glastonbury', lang: 'en' })
+doc.url() // 'https://en.wikipedia.org/wiki/Glastonbury'
 ```
 
 ## Document
 
-Metadata get/setters (call with an argument to set):
+Metadata — plain get/set properties:
 
-| method | returns | notes |
-| --- | --- | --- |
-| `.title(str?)` | `string \| null` | from options, or guessed from the first bolded text |
-| `.pageID(id?)` | `number \| null` | |
-| `.wikidata(id?)` | `string \| null` | |
-| `.domain(str?)` | `string \| null` | |
-| `.language(lang?)` / `.lang()` | `string \| null` | |
-| `.namespace(ns?)` / `.ns()` | `string \| number \| null` | Preserves numeric namespace IDs, including `0`. |
-| `.url()` | `string \| null` | built from title + lang + domain |
-| `.description(str?)` | `string \| null` | the 'short description' |
-| `.timestamp(iso?)` | `string \| null` | last-edit time, when fetched |
-| `.revisionID(id?)` | `number \| null` | |
-| `.pageImage(img?)` | `Image` | |
-| `.options()` | `DocumentOptions` | the options the doc was created with |
+| property       | type                       | notes                                                 |
+| -------------- | -------------------------- | ----------------------------------------------------- |
+| `.title`       | `string \| null`           | from options, else guessed from the first bolded text |
+| `.pageID`      | `number \| null`           |                                                       |
+| `.wikidata`    | `string \| null`           |                                                       |
+| `.domain`      | `string \| null`           | default `'wikipedia.org'`                             |
+| `.language`    | `string \| null`           | default `'en'`                                        |
+| `.namespace`   | `string \| number \| null` | numeric IDs preserved, including `0`                  |
+| `.description` | `string \| null`           | the 'short description'                               |
+| `.timestamp`   | `string \| null`           | last-edit time, when fetched                          |
+| `.revisionID`  | `number \| null`           |                                                       |
+| `.pageImage`   | `string \| null`           | file name, when fetched                               |
 
-Booleans and redirects:
+```js
+doc.title = 'Glastonbury' // set
+doc.title // 'Glastonbury'
+```
 
-| method | returns |
-| --- | --- |
-| `.isRedirect()` | `boolean` |
-| `.redirectTo()` (aliases `.redirect()`, `.redirects()`, `.redirectsTo()`) | `{ page, raw, anchor? } \| null` |
-| `.isDisambiguation()` / `.isDisambig()` | `boolean` |
-| `.isStub()` | `boolean` |
+Methods:
+
+| method                                                    | returns            | notes                                     |
+| --------------------------------------------------------- | ------------------ | ----------------------------------------- |
+| `.url()`                                                  | `string \| null`   | built from title + language + domain      |
+| `.options()`                                              | `DocumentOptions`  | the options the doc was created with      |
+| `.isRedirect()`                                           | `boolean`          |                                           |
+| `.redirectTo()` (aliases `.redirect()`, `.redirectsTo()`) | `LinkJson \| null` | `{ type, page, text, wiki, anchor? }`     |
+| `.isDisambiguation()` / `.isDisambig()`                   | `boolean`          |                                           |
+| `.isStub()`                                               | `boolean`          |                                           |
+| `.debug()`                                                | `Document`         | prints the section outline to the console |
 
 ```js
 wtf('#REDIRECT [[Toronto Raptors]]').redirectTo()
-// { page: 'Toronto Raptors', raw: '[[Toronto Raptors]]' }
+// { type: 'internal', page: 'Toronto Raptors', text: 'Toronto Raptors', wiki: '[[Toronto Raptors]]' }
 ```
 
-Content accessors (plural → array, singular → item-or-null):
+Content accessors — all search the whole document:
 
-| plural | singular | item type |
-| --- | --- | --- |
-| `.categories(clue?)` | `.category(clue?)` | `string` |
-| `.sections(clue?)` | `.section(clue?)` | `Section` — clue may be a **title string** (case-insensitive) or index |
-| `.paragraphs(clue?)` | `.paragraph(clue?)` | `Paragraph` |
-| `.sentences(clue?)` | `.sentence(clue?)` | `Sentence` |
-| `.images(clue?)` | `.image(clue?)` | `Image` |
-| `.links(clue?)` | `.link(clue?)` | `Link` — string clue matches the link's page name |
-| `.lists(clue?)` | `.list(clue?)` | `List` |
-| `.tables(clue?)` | `.table(clue?)` | `Table` |
-| `.templates(clue?)` | `.template(clue?)` | `Template` — string clue matches template name |
-| `.infoboxes(clue?)` | `.infobox(clue?)` | `Infobox` — string clue matches infobox type |
-| `.references(clue?)` / `.citations()` | `.reference(clue?)` / `.citation()` | `Reference` |
-| `.coordinates(clue?)` | `.coordinate(clue?)` | `Coordinate` (plain object) |
-| `.interwiki(clue?)` | — | `Link` (links to other-language wikis) |
+| method                           | returns                 | notes                                                                                                                |
+| -------------------------------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `.categories()`                  | `string[]`              |                                                                                                                      |
+| `.comments()`                    | `string[]`              | raw `<!-- html comments -->`                                                                                         |
+| `.sections()`                    | `Section[]`             | flat list, in page order, including the lead section                                                                 |
+| `.section(clue?)`                | `Section`               | by **index** or **title** (trimmed, case-insensitive); defaults to `0`. Misses return an empty Section, never `null` |
+| `.paragraphs()`                  | `Paragraph[]`           |                                                                                                                      |
+| `.sentences()`                   | `Collection<Sentence>`  |                                                                                                                      |
+| `.images()`                      | `Collection<Image>`     | infobox and gallery images first, then inline ones                                                                   |
+| `.links()`                       | `LinkCollection`        | in document order                                                                                                    |
+| `.link(clue?)`                   | `Link \| null`          | the first link, or the first to the given page name                                                                  |
+| `.lists()`                       | `Collection<List>`      |                                                                                                                      |
+| `.tables()`                      | `Collection<Table>`     |                                                                                                                      |
+| `.templates(clue?)`              | `TemplateCollection`    | string clue filters by template name                                                                                 |
+| `.template(clue?)`               | `Template \| null`      | the first template, or the first with that name                                                                      |
+| `.infoboxes()`                   | `InfoboxCollection`     | sorted biggest-first                                                                                                 |
+| `.infobox()`                     | `Infobox \| null`       | the biggest infobox                                                                                                  |
+| `.references()` / `.citations()` | `Collection<Reference>` |                                                                                                                      |
+| `.coordinates()`                 | `Coordinate[]`          | plain objects, see below                                                                                             |
 
 Output:
 
-| method | returns | notes |
-| --- | --- | --- |
-| `.text(options?)` / `.plaintext()` | `string` | readable prose. infoboxes, templates, references are omitted |
-| `.json()` | `object` | default keys: `title`, `categories`, `sections` |
-| `.wikitext()` | `string` | the original markup |
+| method           | returns  | notes                                                                                                                                                       |
+| ---------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `.text()`        | `string` | readable prose. Infoboxes, templates, references and tables are omitted; lists are kept                                                                     |
+| `.json(format?)` | `object` | `{ title, pageID, categories, wikidata, description, isStub, isDisambiguation, isRedirect, sections }` (+ `redirectTo` when redirect, + `wiki` with `'xl'`) |
+| `.wikitext()`    | `string` | the original markup                                                                                                                                         |
 
 ## Section
 
-`doc.section('History')` or `doc.sections()[0]`.
+`doc.section('History')` or `doc.sections()[1]`.
 
-- `.title()` → `string` (empty for the lead section), `.index()` → `number | null`,
-  `.depth()` / `.indentation()` → `number` (0 = top level).
-- Same plural accessors as Document (`sentences, paragraphs, links, tables,
-  templates, infoboxes, coordinates, lists, images, references, interwiki`),
-  **but a number clue is ignored on Section plurals** — use the singular form
-  for indexing: `sec.sentence(2)`. String clues still filter
-  (`sec.templates('coord')`, `sec.infoboxes('person')`, `sec.links('Fortnight')`).
-- Singulars (`.sentence()`, `.link()`, `.template()`, …) return `null` when missing.
-- Navigation: `.parent()`, `.children(titleStr?)` (alias `.sections()`),
-  `.nextSibling()` / `.next()`, `.previousSibling()` / `.previous()`,
-  `.lastSibling()` / `.last()` — all return `Section | null`
-  (`children()` returns `Section[] | null`; with a title string, one `Section | undefined`).
-- `.remove()` → removes this section (and its children) from the document,
-  returns the `Document`.
+- `.title()` → `string` (empty for the lead section)
+- `.index()` → `number | null` — position in `doc.sections()`
+- `.depth()` → `number` — `0` for `==`, `1` for `===`, and so on
+- `.sentences()`, `.paragraphs()`, `.links()`, `.tables()`, `.templates(clue?)`,
+  `.infoboxes()`, `.coordinates()`, `.lists()`, `.images()`,
+  `.references()`/`.citations()` — same as on Document, scoped to this section
+  (not its subsections)
+- `.text()`, `.json()`, `.wikitext()`
 
 ```js
 let doc = wtf('==A==\nhi\n===B===\nyo')
-doc.section('A').children().map((s) => s.title()) // ['B']
+doc.sections().map((s) => [s.title(), s.depth()]) // [['', 0], ['A', 0], ['B', 1]]
+doc.section('b').text() // 'yo'
+doc.section('nope').sentences().length // 0
+```
+
+Sections are a flat list; walk `depth()` and `index()` to find subsections:
+
+```js
+const kids = (doc, title) => {
+  const parent = doc.section(title)
+  const out = []
+  for (const s of doc.sections().slice(parent.index() + 1)) {
+    if (s.depth() <= parent.depth()) break
+    out.push(s)
+  }
+  return out
+}
 ```
 
 ## Paragraph
 
-`.sentences()`, `.references()`/`.citations()`, `.lists()`, `.images()`,
-`.links()`, `.interwiki()`, plus singulars (`.sentence()`, `.image()`, …
-→ `null` when missing), and `.text()` / `.json()` / `.wikitext()`.
+`.sentences()`, `.lists()`, `.images()`, `.links()`, plus `.text()` / `.json()` /
+`.wikitext()`. A list ends its paragraph, so text after a list starts a new one.
+
+`.json()` → `{ sentences, lists, images }`.
 
 ## Sentence
 
-- `.text(str?)` → `string` (passing a string overwrites it)
-- `.plaintext()` alias
-- `.links(clue?)` → `Link[]`, `.link(clue?)` → `Link | null`
-- `.bolds()` → `string[]`, `.bold(n?)` → `string | null`
-- `.italics()` → `string[]`, `.italic(n?)` → `string | null`
-- `.interwiki()` → `Link[]`, `.isEmpty()` → `boolean`
-- `.json()` → `{ text, links?, formatting? }`:
+- `.text()` → `string`
+- `.links()` → `LinkCollection`
+- `.bolds()` / `.italics()` → `{ text, start, end }[]` — offsets into `.text()`
+- `.json()` → `{ text, links?, bolds?, italics? }`
 
 ```js
 wtf("Hello '''there''' [[world]].").sentences()[0].json()
 // { text: 'Hello there world.',
-//   links: [{ text: 'world', type: 'internal', page: 'world' }],
-//   formatting: { bold: ['there'] } }
+//   links: [{ type: 'internal', page: 'World', text: 'world' }],
+//   bolds: [{ text: 'there', start: 6, end: 11 }] }
 ```
+
+Table cells and list items are the same shape (`Block` in the types): `.text()`,
+`.links()`, `.bolds()`, `.italics()`, `.json()`, `.wikitext()`.
 
 ## Link
 
-- `.page(str?)` → `string` — the target page (for internal/interwiki links)
-- `.text(str?)` → `string` — display text (falls back to page name)
-- `.type()` → `'internal' | 'interwiki' | 'external'`
-- `.site()` → `string` — url, for external links
-- `.wiki()` → `string | undefined` — which wiki, for interwiki links
+- `.type()` → `'internal' | 'external' | 'interwiki'`
+- `.page()` → `string` — target page, first letter capitalised (`''` for external)
+- `.text()` → `string` — display text (falls back to the page name)
 - `.anchor()` → `string` — the `#section` part, if any
-- `.href()` → `string`
-- `.json()` → `{ text?, type, page? | site? | wiki?, anchor? }`
+- `.wiki()` → `string` — the language/project prefix of an interwiki link (`'fr'`), else `''`
+- `.href()` → `string` — a usable URL for any type
+- `.json()` → `{ type, page?, text, anchor?, site?, lang?, inline? }`
+
+Collections of links add `.internal()`, `.external()` and `.interwiki()` filters.
+
+```js
+wtf('[[Paris#Food|food]] [[:fr:Paris|Paris]] [http://x.com x]').links().json()
+// [{ type: 'internal', page: 'Paris', text: 'food', anchor: 'Food' },
+//  { type: 'interwiki', page: 'Paris', text: 'Paris', lang: 'fr', inline: true },
+//  { type: 'external', site: 'http://x.com', text: 'x' }]
+```
+
+A bare `[[fr:Paris]]` is an _interlanguage_ link: it is listed with
+`inline: false` and does not appear in `.text()`, matching how MediaWiki
+renders it. `[[:fr:Paris|Paris]]` (leading colon) is an inline link.
 
 ## Image
 
 ```js
 let img = wtf('[[File:Duveneck Whistling Boy.jpg|thumb|a caption]]').images()[0]
-img.file()      // 'File:Duveneck_Whistling_Boy.jpg'  (prefix added, spaces → underscores)
-img.url()       // 'https://wikipedia.org/wiki/Special:Redirect/file/Duveneck_Whistling_Boy.jpg'
+img.file() // 'File:Duveneck_Whistling_Boy.jpg'  (prefix added, spaces → underscores)
+img.url() // 'https://wikipedia.org/wiki/Special:Redirect/file/Duveneck_Whistling_Boy.jpg'
+img.src() // same as .url()
 img.thumbnail() // same + '?width=300'  — .thumbnail(500) to size
-img.caption()   // 'a caption'
-img.format()    // 'jpg'
+img.caption() // 'a caption'
+img.alt() // '' unless |alt= was given
+img.format() // 'jpg'
+img.links() // links inside the caption
+img.json() // { file, domain, caption?: { text, links? }, alt? }
 ```
 
-Also `.alt()`, `.links()` (links inside the caption), `.json()`
-(`{ file, thumb, url, caption?, alt?, links? }`). `.text()` returns `''`.
+`.text()` returns `''`.
 
 ## Template
 
@@ -168,58 +211,71 @@ Templates are `{{name|...}}` structures. `.json()` is the way in:
 
 ```js
 wtf('{{coord|43.6|-79.4}}').templates()[0].json()
-// { template: 'coord', lat: 43.6, lon: -79.4 }
+// { template: 'coord', kind: 'coord', text: '43.6°N 79.4°W', data: { lat: 43.6, lon: -79.4 } }
 ```
 
-- `.json()` → `{ template: string, ... }` — `template` is the lower-cased name
-- `.text()` → the text this template renders inline (usually `''`)
-- `.wikitext()` → the raw `{{...}}`
+- `.json()` → `{ template, kind, text, data }` — `template` is the lower-cased
+  name, `kind` is the parser family that handled it (`'coord'`, `'citation'`,
+  `'infobox'`, … or `null` for unknown templates), `data` the parsed params
+- `.type` → `string` — the template name (property)
+- `.kind` → `string | null` (property)
+- `.text()` → what the template renders inline (often `''`)
+- `.links()`, `.wikitext()`
 
 Which templates appear in `.templates()`:
-- **known data templates** (coord, cite, …) — parsed into rich json
-- **unknown templates** — kept, with `{ template: name }` and their params
-- **known text-only templates** (convert, nowrap, …) — consumed into `.text()`
+
+- **known data templates** (coord, convert, …) — parsed into `data`
+- **unknown templates** — kept, with `kind: null` and positional params under `data.list`
+- **known text-only templates** (nowrap, lang, …) — consumed into `.text()`
   output and **not** listed
-- **infoboxes** — not listed here; they appear in `.infoboxes()`
+- **infoboxes** — not listed here; see `.infoboxes()`
+- **citations** — not listed here; see `.references()`
 
 ## Infobox
 
 ```js
 let inf = wtf('{{Infobox person|name=Jane|birth_place=Toronto}}').infobox()
-inf.type()               // 'person'  (alias .template())
-inf.get('Birth  Place')  // a Sentence — keys are case/space/underscore-insensitive
-inf.get('nope').text()   // ''  — misses return an empty Sentence, never null
-inf.get(['name', 'birth_place'])  // Sentence[]
-inf.keyValue()           // { name: 'Jane', birth_place: 'Toronto' }  (plain strings)
-inf.image()              // Image | null   (alias .images())
-inf.coordinates()        // { template: 'infobox/lat-long', lat, lon } | null
-inf.data                 // raw { key: Sentence } map
+inf.type() // 'person'
+inf.get('Birth Place') // a Block — keys are case/space/underscore-insensitive
+inf.get('nope') // undefined
+inf.getFirst(['dob', 'birth_date']) // first key that exists, or undefined
+inf.getAll(['name', 'birth_place']).text() // ['Jane', 'Toronto']
+inf.image() // Image | undefined
+inf.images() // every image field
+inf.coordinates() // Coordinate | null
+inf.links() // links in any field
+inf.json() // { template: 'Infobox person', kind: 'infobox', text: '', data: { name: { text }, … } }
 ```
 
 ## Table
 
 ```js
 let t = wtf('{| class=wikitable\n! name !! age\n|-\n| jane || 40\n|}').tables()[0]
-t.keyValue()        // [{ name: 'jane', age: '40' }]   (aliases .keyvalue(), .keyval())
-t.get('name')       // ['jane']            — one column, by (normalized) header
-t.get(['name','age']) // [{ name: 'jane', age: '40' }]
-t.json()            // rows with { text } cell objects
-t.links()           // Link[]
+t.rows() // [{ name: 'jane', age: '40' }]  — plain strings, keyed by normalised header
+t.cols() // ['name', 'age']
+t.getRows('name') // ['jane']
+t.getRows(['name', 'age']) // [['jane', '40']]
+t.headers().text() // ['name', 'age']
+t.cells() // every cell as a Block
+t.json() // { rows: [{ name: { text }, … }], headers: [{ text }] }
+t.links()
 ```
 
-`.text()` returns `''` — use `.keyValue()` for table data.
+Tables without headers get `col1`, `col2`, … keys. `.text()` returns `''`.
 
 ## List
 
-- `.lines()` → `Sentence[]` — one per bullet
-- `.links(clue?)` → `Link[]`
-- `.json()` → array of sentence-json
-- `.text()` → plaintext with bullets
+- `.lines()` / `.items()` → `Collection<Block>` — one per bullet, nested items flattened
+- `.links()`
+- `.json()` → `{ items: [{ text, links? }] }`
+- `.text()` → one ` * item` per line
 
 ## Reference
 
 - `.title()` → `string` — best-effort human title of the citation
-- `.links()` → `Link[]`, `.json()` → citation data, `.text()` → `''`
+- `.kind` → `'citation'` for `{{cite …}}` templates, else `null`
+- `.json()` → `{ template, kind, text, data, name?, group? }`
+- `.links()`, `.wikitext()`; `.text()` returns `''`
 
 ## Coordinate (plain object, not a class)
 
@@ -227,7 +283,16 @@ From `{{coord}}` templates and infobox lat/long fields, merged into one list:
 
 ```js
 wtf('{{coord|43.6|-79.4|display=title}}').coordinates()
-// [{ template: 'coord', lat: 43.6, lon: -79.4, display: 'title' }]
+// [{ lat: 43.6, lon: -79.4, display: 'title', wiki: '{{coord|43.6|-79.4|display=title}}' }]
 ```
 
-Always `lat` / `lon` (in ≤ v10 the infobox entries used `lng` — see gotchas).
+Always `lat` / `lon`, signed decimals (in ≤ v10 the infobox entries used `lng` — see gotchas).
+
+## Removed in v11
+
+These appeared in older docs and no longer exist: Section navigation
+(`.children()`, `.parent()`, `.nextSibling()`, `.previousSibling()`,
+`.remove()`), the singular accessors other than `section`/`infobox`
+(`.sentence()`, `.paragraph()`, `.category()`, …), `.plaintext()` and `.keyValue()`
+aliases, `Link.site()` (use `.href()`), and metadata _methods_ like
+`.title()` (now the `.title` property). See `changelog.md`.

@@ -687,3 +687,15 @@ test('supported content accessors exist', (t) => {
   })
   t.end()
 })
+
+test('document option aliases', (t) => {
+  t.equal(wtf('', { pageID: 3 }).pageID, 3, 'pageID option')
+  t.equal(wtf('', { id: 4 }).pageID, 4, 'id option')
+  t.equal(wtf('', { pageId: 5, pageID: 6 }).pageID, 5, 'internal name wins')
+  t.equal(wtf('', { ns: 0 }).namespace, 0, 'ns option keeps numeric zero')
+  t.equal(wtf('', { language: 'de' }).language, 'de', 'language option')
+  t.equal(wtf('', { lang: 'fr' }).language, 'fr', 'lang option')
+  t.equal(wtf('', { revisionID: 9 }).revisionID, 9, 'revisionID option')
+  t.equal(wtf('', { revisionID: 9 }).json().pageID, null, 'json still has pageID key')
+  t.end()
+})
