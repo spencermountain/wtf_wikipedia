@@ -67,10 +67,13 @@ const buildGroup = function (rows, ctx) {
 // infer missing outcomes over a whole run of games, so records carry across tables
 const finish = (games) => orientScores(inferFromRecord(games))
 
+// subsections that live under a 'Game log' but are not regular-season games
+const notRegularSeason = /postseason|playoff|world series|championship|division series|wild card|detailed record|composite box|month.by.month/i
+
 // all games under the best matching section, in one flat list
 const findGames = function (doc, ctx, titles) {
   for (const section of findSections(doc, titles)) {
-    const games = rowGroups(doc, section).flatMap((rows) => buildGroup(rows, ctx))
+    const games = rowGroups(doc, section, notRegularSeason).flatMap((rows) => buildGroup(rows, ctx))
     if (games.length > 0) {
       return finish(games)
     }

@@ -1,9 +1,12 @@
 /* eslint-disable no-console */
 // live smoke-test: fetch every team-season page and check the game-log parses.
-// prints games + wins per season, and flags missing pages, empty logs,
-// and win-counts that disagree with the infobox record.
+// prints games + wins per season, and flags problems:
+//   NO PAGE   - the page title doesn't exist
+//   NO LOG    - the page has no game-log/schedule section (a wikipedia gap)
+//   EMPTY LOG - log markup exists but parsed to zero games (likely a parser gap)
+//   MISMATCH  - win-count from the log disagrees with the infobox record
 //
-//   node scripts/smoke-test.js                → both leagues, 1980-now
+//   node scripts/smoke-test.js                → both leagues, all years
 //   node scripts/smoke-test.js nhl            → one league
 //   node scripts/smoke-test.js mlb 1994 1998  → a year range
 //
@@ -12,17 +15,22 @@ import wtf from '../../../src/index.ts'
 import { mlb, nhl } from '../src/index.js'
 import mlbFranchises from '../src/mlb/franchises.js'
 import nhlFranchises from '../src/nhl/franchises.js'
+import { makeTitle as mlbTitle } from '../src/mlb/index.js'
+import { makeTitle as nhlTitle } from '../src/nhl/index.js'
 wtf.extend(mlb)
 wtf.extend(nhl)
 
 const delayMs = 500
-const firstYear = 1980
+const firstYear = 2010 //1980
 const thisYear = new Date().getFullYear()
 
 const leagues = {
-  mlb: { franchises: mlbFranchises, fetch: (team, year) => wtf.mlbSeason(team, year) },
-  nhl: { franchises: nhlFranchises, fetch: (team, year) => wtf.nhlSeason(team, year) },
+  mlb: { franchises: mlbFranchises, title: mlbTitle, parse: (doc) => doc.mlbSeason() },
+  nhl: { franchises: nhlFranchises, title: nhlTitle, parse: (doc) => doc.nhlSeason() },
 }
+
+// does the page even contain game-log markup?
+const hasLog = (wiki) => /\{\{ *(?:mlb )?game log|^ *=+ *(?:game log|schedule and results|schedule)/im.test(wiki)
 
 const sleep = (ms) => new Promise((res) => setTimeout(res, ms))
 
@@ -32,9 +40,11 @@ const teamsFor = function (franchises, year) {
 }
 
 const checkSeason = async function (league, team, year) {
+  let doc = null
   let res = null
   try {
-    res = await leagues[league].fetch(team, year)
+    doc = await wtf.fetch(leagues[league].title(team, year))
+    res = doc ? leagues[league].parse(doc) : null
   } catch (e) {
     return { games: 0, wins: 0, flag: 'ERROR', note: e.message }
   }
@@ -46,7 +56,13 @@ const checkSeason = async function (league, team, year) {
   const out = { games, wins, flag: '', note: '' }
   const recWins = res.season?.record?.wins
   if (games === 0) {
-    out.flag = 'NO GAMES'
+    if (hasLog(doc.wikitext())) {
+      out.flag = 'EMPTY LOG'
+      out.note = 'log markup exists but parsed to zero'
+    } else {
+      out.flag = 'NO LOG'
+      out.note = 'page has no game-log section'
+    }
   } else if (recWins !== undefined && wins !== recWins) {
     out.flag = 'MISMATCH'
     out.note = `game-log has ${wins}W, infobox says ${recWins}W`

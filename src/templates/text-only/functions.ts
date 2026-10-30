@@ -32,6 +32,14 @@ const sigFigs = (str = '') => {
   }
   return Math.max(2, digits.replace('.', '').length)
 }
+// '4049' → '4,049', keeping any decimals
+const withCommas = (str: string) => {
+  let [int, dec] = str.split('.')
+  if (/^-?\d{4,}$/.test(int)) {
+    int = Number(int).toLocaleString('en-US')
+  }
+  return dec !== undefined ? `${int}.${dec}` : int
+}
 const fmtNumber = (n: number, sig: number) => {
   if (!Number.isFinite(n)) {
     return ''
@@ -41,7 +49,8 @@ const fmtNumber = (n: number, sig: number) => {
     return Number(str).toLocaleString('en-US')
   }
   // '220.' → '220', but keep '0.80'
-  return str.replace(/\.$/, '')
+  str = str.replace(/\.$/, '')
+  return withCommas(str)
 }
 // {{convert|37|ft|m}} → 11 m, or null when we don't know the units
 const convertUnits = (value: string, from: string, to?: string, opts: any = {}) => {
@@ -379,8 +388,9 @@ export default {
 
   'block indent': (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl)
-    if (obj['1']) {
-      return { data: null, replacement: '\n' + obj['1'] + '\n' }
+    let text = obj['1'] || obj.text || (obj.list || [])[0] || ''
+    if (text) {
+      return { data: null, replacement: '\n' + text + '\n' }
     }
     return { data: null, replacement: '' }
   },
@@ -510,8 +520,12 @@ export default {
     if (obj.three && /^[0-9.]+$/.test(obj.three) && obj.four && /^[a-z]+$/i.test(obj.four)) {
       return { data: null, replacement: `${obj.num} ${unitSymbol(obj.two)} ${obj.three} ${unitSymbol(obj.four)}` }
     }
-    // {{convert|37|ft|m}} → 37 ft (11 m)
-    let str = `${obj.num} ${unitSymbol(obj.two)}`
+    // {{convert|37|ft|m}} → 37 ft (11 m), {{convert|52419|sqmi}} → 52,419 sq mi
+    let num = obj.num || ''
+    if (/^-?\d+(\.\d+)?$/.test(num) && obj.comma !== 'off') {
+      num = withCommas(num)
+    }
+    let str = `${num} ${unitSymbol(obj.two)}`
     let converted = convertUnits(obj.num || '', obj.two || '', obj.three, { precision: obj.four, sigfig: obj.sigfig })
     if (converted && obj.disp !== 'output only' && obj.disp !== 'number') {
       str += ` (${converted})`

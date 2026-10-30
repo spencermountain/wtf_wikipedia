@@ -54,12 +54,22 @@ const api = async (params) => {
   const url = API + '?' + new URLSearchParams({ format: 'json', formatversion: '2', ...params })
   const key = 'api_' + JSON.stringify(params)
   return cached(key, async () => {
-    await sleep(120)
-    const res = await fetch(url, { headers: { 'User-Agent': UA, 'Api-User-Agent': UA } })
-    if (!res.ok) {
-      throw new Error(`${res.status} ${url}`)
+    for (let attempt = 0; attempt < 6; attempt += 1) {
+      await sleep(250)
+      const res = await fetch(url, { headers: { 'User-Agent': UA, 'Api-User-Agent': UA } })
+      if (res.status === 429 || res.status >= 500) {
+        // back off: the api asks for a pause with Retry-After
+        const wait = Number(res.headers.get('retry-after')) * 1000 || 2000 * Math.pow(2, attempt)
+        console.error(`  ${res.status}, waiting ${wait / 1000}s`)
+        await sleep(wait)
+        continue
+      }
+      if (!res.ok) {
+        throw new Error(`${res.status} ${url}`)
+      }
+      return res.json()
     }
-    return res.json()
+    throw new Error(`gave up after 6 attempts: ${url}`)
   })
 }
 
@@ -115,7 +125,7 @@ const findInvocation = (wiki, name) => {
   return null
 }
 const sampleInvocations = async (name) => {
-  const json = await api({ action: 'query', list: 'embeddedin', eititle: 'Template:' + name, einamespace: '0', eilimit: '10' })
+  const json = await api({ action: 'query', list: 'embeddedin', eititle: 'Template:' + name, einamespace: '0', eilimit: '40' })
   const pages = (json.query?.embeddedin || []).map((p) => p.title)
   const out = []
   for (const title of pages) {
@@ -134,18 +144,30 @@ const sampleInvocations = async (name) => {
 }
 
 // ---------- 3. ground truth from Wikipedia ----------
-const htmlToText = (html) => {
-  return html
-    .replace(/<style[\s\S]*?<\/style>/g, '')
-    .replace(/<sup class="reference"[\s\S]*?<\/sup>/g, '')
-    .replace(/<span class="(mw-editsection|noprint|sortkey)[^"]*"[\s\S]*?<\/span>/g, '')
-    .replace(/<[^>]+>/g, '')
-    .replace(/&nbsp;|&#160;/g, ' ')
+const decode = (str) =>
+  str
+    .replace(/&#x([0-9a-f]+);/gi, (m, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#(\d+);/g, (m, n) => String.fromCodePoint(Number(n)))
+    .replace(/&nbsp;/g, ' ')
     .replace(/&amp;/g, '&')
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
     .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
+const htmlToText = (html) => {
+  return decode(
+    html
+      .replace(/<style[\s\S]*?<\/style>/g, '')
+      // reference markers, [citation needed]-style markers, edit links
+      .replace(/<sup[^>]*class="[^"]*(reference|noprint|Inline-Template)[^"]*"[\s\S]*?<\/sup>/g, '')
+      .replace(/<span class="(mw-editsection|noprint|sortkey|mw-ref|mw-reflink-text)[^"]*"[\s\S]*?<\/span>/g, '')
+      // hidden microformat data: (1809-02-12) in birth dates, the extra coordinate formats
+      .replace(/<span[^>]*style="[^"]*display:\s*none[^"]*"[\s\S]*?<\/span>/g, '')
+      .replace(/<span class="(bday|dtstart|dtend|geo-nondefault|geo-multi-punct|geo-geo-dec|geo-geo-dms)[^"]*"[\s\S]*?<\/span>/g, '')
+      .replace(/<br\s*\/?>/g, ' ')
+      .replace(/<\/(p|div|li|tr|td|th|h\d)>/g, ' ')
+      .replace(/<[^>]+>/g, '')
+  )
+    .replace(/[\u200b\ufeff\u200e\u200f]/g, '')
     .replace(/\s+/g, ' ')
     .trim()
 }
@@ -161,17 +183,33 @@ const norm = (str) =>
   str
     .replace(/[\u2018\u2019]/g, "'")
     .replace(/[\u201c\u201d]/g, '"')
-    .replace(/[\u00a0\u2009\u202f]/g, ' ')
+    .replace(/[\u00a0\u2009\u202f\u200a]/g, ' ')
+    .replace(/ ?– ?/g, '–')
+    .replace(/\s*\(\s*/g, ' (')
     .replace(/\s+/g, ' ')
     .replace(/\s*\[edit\]\s*/g, '')
     .trim()
     .toLowerCase()
 
-const classify = (wp, ours) => {
+// things we leave out of .text() on purpose
+const omitted = /^(ipa|ipac?-.*|respell|pronunciation|pron-en|efn|efn-.*|refn|sfn.*|harvnb|harvid|r|rp|citation needed|cn|fact|clarify|when|who|which|dubious|dead link|better source needed|page needed|notetag|note|ref|ref label|anchor|visible anchor|hidden begin|hidden end|-r)$/i
+const classify = (name, invocation, wp, ours) => {
   const a = norm(wp.text)
   const b = norm(ours.text)
   if (a === b) {
     return 'ok'
+  }
+  if (omitted.test(name)) {
+    return 'omitted'
+  }
+  if (/cite error/i.test(wp.text)) {
+    return 'omitted' // a lone <ref> cannot render outside a page
+  }
+  if (/^(\{\||\||!)/.test(wp.text.trim())) {
+    return 'table-syntax' // {{s-end}}, {{col-2}}: fragments of table markup
+  }
+  if (/display\s*=\s*title/i.test(invocation) && !b) {
+    return 'ok' // title-bar coordinates render nothing in the article body
   }
   if (!a) {
     return b ? 'extra-text' : 'ok' // wikipedia shows nothing; we show nothing or something
@@ -203,7 +241,7 @@ const main = async () => {
         const wp = await renderOnWikipedia(s.invocation, s.title)
         const doc = wtf(s.invocation, { title: s.title })
         const ours = { text: doc.text(), links: doc.links().filter((l) => l.json().type === 'external').map((l) => l.json().site) }
-        const status = classify(wp, ours)
+        const status = classify(tmpl.name, s.invocation, wp, ours)
         const linksLost = wp.links.filter((u) => !ours.links.includes(u)).length
         rows.push({ ...tmpl, status, linksLost, invocation: s.invocation, wikipedia: wp.text.slice(0, 120), ours: ours.text.slice(0, 120), page: s.title })
       }
@@ -218,7 +256,7 @@ const main = async () => {
     }
   }
   // rank: lost text first, weighted by transclusions
-  const severity = { 'text-lost': 3, differs: 2, partial: 1, 'block-differs': 1, 'extra-text': 1, block: 0, ok: 0, 'no-sample': 0, error: 0 }
+  const severity = { 'text-lost': 3, differs: 2, partial: 1, 'block-differs': 1, 'extra-text': 1, block: 0, ok: 0, omitted: 0, 'table-syntax': 0, 'no-sample': 0, error: 0 }
   rows.sort((a, b) => severity[b.status] * b.count - severity[a.status] * a.count)
   const cols = ['name', 'count', 'status', 'linksLost', 'page', 'invocation', 'wikipedia', 'ours']
   const tsv = [cols.join('\t'), ...rows.map((r) => cols.map((c) => String(r[c] ?? '').replace(/[\t\n]/g, ' ')).join('\t'))].join('\n')

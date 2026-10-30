@@ -10,12 +10,34 @@ const toText = function (obj) {
   return `${Math.abs(obj.lat)}°${ns} ${Math.abs(obj.lon)}°${ew}`
 }
 
+// {{coord|36|42|N|3|13|E}} is shown as written: 36°42′N 3°13′E
+const dmsText = function (tmpl, parser) {
+  let list = (parser(tmpl).list || []).map((s) => String(s).trim())
+  let ns = list.findIndex((s) => /^[NS]$/i.test(s))
+  let ew = list.findIndex((s, i) => i > ns && /^[EW]$/i.test(s))
+  if (ns < 2 || ew < ns + 3 || ew - ns !== ns + 1) {
+    return null
+  }
+  const fmt = (parts, hemi) => {
+    let [d, m, sec] = parts
+    let str = `${d}°`
+    if (m !== undefined) {
+      str += `${m}′`
+    }
+    if (sec !== undefined) {
+      str += `${sec}″`
+    }
+    return str + hemi.toUpperCase()
+  }
+  return `${fmt(list.slice(0, ns), list[ns])} ${fmt(list.slice(ns + 1, ew), list[ew])}`
+}
+
 const templates = {
   coord: (tmpl, parser) => {
     let obj = parseCoor(tmpl, parser)
     //display inline, by default
     if (!obj.display || obj.display.indexOf('inline') !== -1) {
-      return { data: obj, replacement: toText(obj) }
+      return { data: obj, replacement: dmsText(tmpl, parser) || toText(obj) }
     }
     return { data: obj, replacement: '' }
   },

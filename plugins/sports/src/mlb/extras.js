@@ -26,11 +26,27 @@ const parseDraftPicks = function (doc) {
 // batting + pitching tables, split by their columns
 const parsePlayerStats = function (doc) {
   const res = { batters: [], pitchers: [] }
-  const s = findSection(doc, ['statistics', 'player stats', 'player statistics'])
-  if (!s) {
-    return res
+  const seen = new Set()
+  const sections = []
+  const addTree = function (section) {
+    withChildren(doc, section).forEach((c) => {
+      if (seen.has(c.index()) === false) {
+        seen.add(c.index())
+        sections.push(c)
+      }
+    })
   }
-  const rows = withChildren(doc, s).flatMap((c) => c.tables().flatMap((t) => t.rows()))
+  const main = findSection(doc, ['statistics', 'player stats', 'player statistics'])
+  if (main) {
+    addTree(main)
+  }
+  // 'Batting' and 'Pitching' sometimes stand alone, outside any stats section
+  doc.sections().forEach((s) => {
+    if (/^(batting|pitching)$/i.test(s.title().trim()) && seen.has(s.index()) === false) {
+      addTree(s)
+    }
+  })
+  const rows = sections.flatMap((c) => c.tables().flatMap((t) => t.rows()))
   rows.forEach((p) => {
     if (p.rbi !== undefined || p.hr !== undefined || p.RBI !== undefined || p.HR !== undefined) {
       res.batters.push(p)

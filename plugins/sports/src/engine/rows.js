@@ -27,9 +27,21 @@ const fromTemplate = function (tmpl) {
 }
 
 // each table or game-log template in the section becomes one group of rows
-const rowGroups = function (doc, section) {
+// a `skip` regex drops matching subsections and everything nested under them
+const rowGroups = function (doc, section, skip) {
   const groups = []
-  withChildren(doc, section).forEach((s) => {
+  let skipBelow = null
+  withChildren(doc, section).forEach((s, i) => {
+    if (i > 0 && skip) {
+      if (skipBelow !== null && s.depth() > skipBelow) {
+        return
+      }
+      skipBelow = null
+      if (skip.test(s.title())) {
+        skipBelow = s.depth()
+        return
+      }
+    }
     s.tables().forEach((t) => groups.push(fromTable(t)))
     s.templates('game log section').forEach((t) => groups.push(fromTemplate(t)))
   })

@@ -92,9 +92,21 @@ const fromTemplate = function (tmpl) {
 };
 
 // each table or game-log template in the section becomes one group of rows
-const rowGroups = function (doc, section) {
+// a `skip` regex drops matching subsections and everything nested under them
+const rowGroups = function (doc, section, skip) {
   const groups = [];
-  withChildren(doc, section).forEach((s) => {
+  let skipBelow = null;
+  withChildren(doc, section).forEach((s, i) => {
+    if (i > 0 && skip) {
+      if (skipBelow !== null && s.depth() > skipBelow) {
+        return
+      }
+      skipBelow = null;
+      if (skip.test(s.title())) {
+        skipBelow = s.depth();
+        return
+      }
+    }
     s.tables().forEach((t) => groups.push(fromTable(t)));
     s.templates('game log section').forEach((t) => groups.push(fromTemplate(t)));
   });
@@ -432,10 +444,13 @@ const buildGroup = function (rows, ctx) {
 // infer missing outcomes over a whole run of games, so records carry across tables
 const finish = (games) => orientScores(inferFromRecord(games));
 
+// subsections that live under a 'Game log' but are not regular-season games
+const notRegularSeason = /postseason|playoff|world series|championship|division series|wild card|detailed record|composite box|month.by.month/i;
+
 // all games under the best matching section, in one flat list
 const findGames = function (doc, ctx, titles) {
   for (const section of findSections(doc, titles)) {
-    const games = rowGroups(doc, section).flatMap((rows) => buildGroup(rows, ctx));
+    const games = rowGroups(doc, section, notRegularSeason).flatMap((rows) => buildGroup(rows, ctx));
     if (games.length > 0) {
       return finish(games)
     }
@@ -598,11 +613,27 @@ const parseDraftPicks = function (doc) {
 // batting + pitching tables, split by their columns
 const parsePlayerStats = function (doc) {
   const res = { batters: [], pitchers: [] };
-  const s = findSection(doc, ['statistics', 'player stats', 'player statistics']);
-  if (!s) {
-    return res
+  const seen = new Set();
+  const sections = [];
+  const addTree = function (section) {
+    withChildren(doc, section).forEach((c) => {
+      if (seen.has(c.index()) === false) {
+        seen.add(c.index());
+        sections.push(c);
+      }
+    });
+  };
+  const main = findSection(doc, ['statistics', 'player stats', 'player statistics']);
+  if (main) {
+    addTree(main);
   }
-  const rows = withChildren(doc, s).flatMap((c) => c.tables().flatMap((t) => t.rows()));
+  // 'Batting' and 'Pitching' sometimes stand alone, outside any stats section
+  doc.sections().forEach((s) => {
+    if (/^(batting|pitching)$/i.test(s.title().trim()) && seen.has(s.index()) === false) {
+      addTree(s);
+    }
+  });
+  const rows = sections.flatMap((c) => c.tables().flatMap((t) => t.rows()));
   rows.forEach((p) => {
     if (p.rbi !== undefined || p.hr !== undefined || p.RBI !== undefined || p.HR !== undefined) {
       res.batters.push(p);
@@ -685,12 +716,15 @@ const parse$1 = function (doc) {
   }
 };
 
+const makeTitle$1 = function (team, year) {
+  return `${year} ${team} season`.replace(/ /g, '_')
+};
+
 const addMethod$1 = function (models) {
   models.wtf.mlbSeason = async function (team, year, options) {
     year ||= defaultYear$1();
     team = resolveTeam(franchises$1, team, year);
-    const page = `${year} ${team} season`.replace(/ /g, '_');
-    const doc = await models.wtf.fetch(page, options);
+    const doc = await models.wtf.fetch(makeTitle$1(team, year), options);
     return parse$1(doc)
   };
   models.Doc.prototype.mlbSeason = function () {

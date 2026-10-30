@@ -25,7 +25,9 @@ test('convert does the common conversions', (t) => {
     ['{{convert|37|ft|m|disp=output only}}', '11 m'],
     ['{{convert|630|km2|sqmi|0}}', '630 km² (243 sq mi)'],
     ['{{convert|630|km2|sqmi|1}}', '630 km² (243.2 sq mi)'],
-    ['{{convert|1234|m|ft|-2}}', '1234 m (4,000 ft)'],
+    ['{{convert|1234|m|ft|-2}}', '1,234 m (4,000 ft)'],
+    ['{{convert|12345|m}}', '12,345 m (40,502 ft)'],
+    ['{{convert|52419|sqmi|km2}}', '52,419 sq mi (135,760 km²)'],
     ['{{convert|630|km2|sqmi|sigfig=2}}', '630 km² (240 sq mi)'],
   ])
   t.end()

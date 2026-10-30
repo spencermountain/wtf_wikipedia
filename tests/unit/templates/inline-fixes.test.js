@@ -220,3 +220,14 @@ test('replace with a space', (t) => {
   t.equal(wtf('{{replace|foo_bar|_| }}').text(), 'foo bar', 'whitespace replacement')
   t.end()
 })
+
+test('block indent and dms coordinates', (t) => {
+  t.equal(wtf('{{block indent|The Cartesian product.}}').text(), 'The Cartesian product.', 'block indent positional')
+  t.equal(wtf('{{block indent|1=The Cartesian product.}}').text(), 'The Cartesian product.', 'block indent named')
+  t.equal(wtf('{{Coord|36|42|N|3|13|E|type:city_region:DZ}}').text(), '36°42′N 3°13′E', 'coord dm')
+  t.equal(wtf('{{coord|40|42|46|N|74|0|21|W}}').text(), '40°42′46″N 74°0′21″W', 'coord dms')
+  t.equal(wtf('{{coord|36.7|3.21}}').text(), '36.7°N 3.21°E', 'coord decimal')
+  t.equal(wtf('{{coord|40|N|74|W}}').text(), '40°N 74°W', 'coord degrees')
+  t.equal(wtf('{{Coord|33|-87|display=title}}').text(), '', 'title coords are not inline')
+  t.end()
+})

@@ -77,12 +77,15 @@ const parse = function (doc) {
   }
 }
 
+const makeTitle = function (team, year) {
+  return `${year} ${team} season`.replace(/ /g, '_')
+}
+
 const addMethod = function (models) {
   models.wtf.mlbSeason = async function (team, year, options) {
     year ||= defaultYear()
     team = resolveTeam(franchises, team, year)
-    const page = `${year} ${team} season`.replace(/ /g, '_')
-    const doc = await models.wtf.fetch(page, options)
+    const doc = await models.wtf.fetch(makeTitle(team, year), options)
     return parse(doc)
   }
   models.Doc.prototype.mlbSeason = function () {
@@ -90,3 +93,4 @@ const addMethod = function (models) {
   }
 }
 export default addMethod
+export { makeTitle }
