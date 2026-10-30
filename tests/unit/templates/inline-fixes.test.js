@@ -196,7 +196,7 @@ test('currency symbols', (t) => {
 
 test('lang-fa is persian', (t) => {
   check(t, [
-    ['Iran ({{lang-fa|ایران}}) is a country', 'Iran (ایران) is a country'],
+    ['Iran ({{lang-fa|ایران}}) is a country', 'Iran (Persian: ایران) is a country'],
     ['{{lang-sux|𒆠𒂗𒄀}}', '𒆠𒂗𒄀'],
   ])
   t.end()

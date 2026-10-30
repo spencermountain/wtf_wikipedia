@@ -1,26 +1,52 @@
 import defaultParse from '../../parse/templates/parse/toJSON/text.ts'
 
-// {{lang-xx}} renders without its 'French:' label, so these follow suit
+import languageNames from '../../_data/language-names.ts'
 
-// https://en.wikipedia.org/wiki/Template:Langx - the 2024 replacement for every {{lang-xx}}
-// {{langx|ar|العربية|al-ʿarabiyya|lit=Arabic}} → العربية, al-ʿarabiyya, lit. 'Arabic'
-const langx = (tmpl, parse = defaultParse) => {
-  let obj = parse(tmpl, ['code', 'text', 'translit', 'lit'])
+// 'French: bonjour, romanized: x, lit. 'y'' - as wikipedia renders {{langx}} and {{lang-xx}}
+const langText = (code = '', obj: any = {}) => {
+  code = code.toLowerCase()
+  let label = obj.label
+  if (label === undefined) {
+    label = languageNames[code] || languageNames[code.split('-')[0]] || ''
+  }
   let translit = obj.translit || obj.transliteration || ''
   let lit = obj.lit || obj.translation || ''
-  let parts = [obj.text || '', translit]
-  if (lit) {
-    parts.push(`lit. '${lit}'`)
+  let str = obj.text || ''
+  if (label && label !== 'none') {
+    str = `${label}: ${str}`
   }
-  parts = parts.filter((s) => s)
-  const payload: any = { template: 'langx', lang: obj.code, text: obj.text || '' }
   if (translit) {
-    payload.translit = translit
+    str += `, romanized: ${translit}`
   }
   if (lit) {
-    payload.lit = lit
+    str += `, lit. '${lit}'`
   }
-  return { data: payload, replacement: parts.join(', ') }
+  return str
+}
+
+// https://en.wikipedia.org/wiki/Template:Langx - the 2024 replacement for every {{lang-xx}}
+// {{langx|ar|العربية|al-ʿarabiyya|lit=Arabic}} → Arabic: العربية, romanized: al-ʿarabiyya, lit. 'Arabic'
+const langx = (tmpl, parse = defaultParse) => {
+  let obj = parse(tmpl, ['code', 'text', 'translit', 'lit'])
+  const payload: any = { template: 'langx', lang: obj.code, text: obj.text || '' }
+  if (obj.translit || obj.transliteration) {
+    payload.translit = obj.translit || obj.transliteration
+  }
+  if (obj.lit || obj.translation) {
+    payload.lit = obj.lit || obj.translation
+  }
+  return { data: payload, replacement: langText(obj.code, obj) }
+}
+
+// {{lang-fr|bonjour}} → French: bonjour  (the code comes from the template name)
+const langDash = (tmpl, parse = defaultParse) => {
+  let obj = parse(tmpl, ['text', 'translit', 'lit'])
+  let code = (obj.template || '').replace(/^lang-/, '')
+  // {{lang-sr-cyrl-latn|cyrillic|latin}} gives both scripts
+  if (/-(cyrl?|latn)-(cyrl|latn)$/.test(code)) {
+    code = code.replace(/-(cyrl|latn)$/, '')
+  }
+  return { data: null, replacement: langText(code, obj) }
 }
 
 // https://en.wikipedia.org/wiki/Template:Zh
@@ -115,6 +141,7 @@ const postNominals = (tmpl, parse = defaultParse) => {
   return { data: { template: 'post-nominals', list: arr, country: obj.country }, replacement: arr.join(obj.sep || ' ') }
 }
 
+export { langDash }
 export default {
   langx,
   zh,

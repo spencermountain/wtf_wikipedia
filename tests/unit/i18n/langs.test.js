@@ -680,9 +680,10 @@ test('obscure lang templates', (t) => {
     'Lang-yo',
     'Lang-zu'
   ]
-  arr.forEach(tmpl => {
+  // the text is kept, with the language as a label when we know its english name
+  arr.forEach((tmpl) => {
     const doc = wtf(`{{${tmpl}|foobar}}`)
-    t.equal(doc.text(), 'foobar', tmpl)
+    t.match(doc.text(), /^(\p{Lu}[\p{L}' -]+: )?foobar$/u, tmpl)
   })
   t.end()
 })

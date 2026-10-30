@@ -1,4 +1,5 @@
 import languages from '../../_data/languages.ts'
+import { langDash } from '../text-and-data/languages.ts'
 
 let templates = {}
 let more = [
@@ -476,11 +477,11 @@ let more = [
 
 // more languages
 more.forEach((k) => {
-  templates['lang-' + k] = 0
+  templates['lang-' + k] = langDash
 })
 
 //https://en.wikipedia.org/wiki/Category:Lang-x_templates
 Object.keys(languages).forEach((k) => {
-  templates['lang-' + k] = 0
+  templates['lang-' + k] = langDash
 })
 export default templates

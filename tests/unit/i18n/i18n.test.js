@@ -38,11 +38,11 @@ test('hindi categories', (t) => {
 test('lang template', (t) => {
   let str = `i played {{lang-de|Die Seefahrer von Catan}}`
   let doc = wtf(str)
-  t.equal(doc.text(), 'i played Die Seefahrer von Catan', 'lang-de')
+  t.equal(doc.text(), 'i played German: Die Seefahrer von Catan', 'lang-de')
 
   str = `hi there {{lang-ru|тундра|italic=unset}} hello`
   doc = wtf(str)
-  t.equal(doc.text(), 'hi there тундра hello', 'ru text')
+  t.equal(doc.text(), 'hi there Russian: тундра hello', 'ru text')
 
   str = `{{lang|fr|Je suis française.}}`
   doc = wtf(str)

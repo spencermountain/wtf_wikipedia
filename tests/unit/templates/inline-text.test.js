@@ -10,12 +10,19 @@ const check = (t, cases) => {
 
 test('langx keeps the text, transliteration and literal translation', (t) => {
   check(t, [
-    ['{{langx|fr|bonjour}}', 'bonjour'],
-    ['Paris ({{langx|fr|Paris}}) is', 'Paris (Paris) is'],
-    ['{{langx|ar|العربية|al-ʿarabiyya}}', 'العربية, al-ʿarabiyya'],
-    ['{{langx|ar|العربية|translit=al-ʿarabiyya|lit=Arabic}}', "العربية, al-ʿarabiyya, lit. 'Arabic'"],
-    ['{{langx|de|Hallo|lit=hello}}', "Hallo, lit. 'hello'"],
+    ['{{langx|fr|bonjour}}', 'French: bonjour'],
+    ['Paris ({{langx|fr|Paris}}) is', 'Paris (French: Paris) is'],
+    ['{{langx|ar|العربية|al-ʿarabiyya}}', 'Arabic: العربية, romanized: al-ʿarabiyya'],
+    ['{{langx|ar|العربية|translit=al-ʿarabiyya|lit=Arabic}}', "Arabic: العربية, romanized: al-ʿarabiyya, lit. 'Arabic'"],
+    ['{{langx|de|Hallo|lit=hello}}', "German: Hallo, lit. 'hello'"],
     ['{{langx|ja|日本|label=none}}', '日本'],
+    ['{{langx|fr|bonjour|label=Québécois}}', 'Québécois: bonjour'],
+    ['{{lang-fr|bonjour}}', 'French: bonjour'],
+    ['{{lang-sr-cyr|Гунарош}}', 'Serbian Cyrillic: Гунарош'],
+    ['{{lang-sr-cyrl-latn|Гунарош|Gunaroš}}', 'Serbian Cyrillic: Гунарош, romanized: Gunaroš'],
+    ['{{lang-grc-x-doric|x}}', 'Doric Greek: x'],
+    ['{{lang-sux|𒆠}}', '𒆠'],
+    ['{{lang|fr|bonjour}}', 'bonjour'],
   ])
   const data = wtf('{{langx|ar|العربية|al-ʿarabiyya|lit=Arabic}}').templates()[0].json().data
   t.equal(data.lang, 'ar', 'langx lang code')
