@@ -94,10 +94,38 @@ const opponentCol = function (game, row, ctx, score) {
   return true
 }
 
+const monthNames = [
+  'january',
+  'february',
+  'march',
+  'april',
+  'may',
+  'june',
+  'july',
+  'august',
+  'september',
+  'october',
+  'november',
+  'december',
+]
+
+// some 1980s logs name the date column after the month, with day-of-month cells
+const findDate = function (cells) {
+  const date = getCell(cells, ['date'])
+  if (date) {
+    return date
+  }
+  const key = Object.keys(cells).find((k) => monthNames.includes(k))
+  if (key && cells[key] && /^\d{1,2}$/.test(String(cells[key]).trim())) {
+    return `${key.charAt(0).toUpperCase()}${key.slice(1)} ${String(cells[key]).trim()}`
+  }
+  return ''
+}
+
 // one normalized row → one game, or null for legend/filler rows
 const buildGame = function (row, ctx) {
   const { cells, attrs } = row
-  const date = getCell(cells, ['date'])
+  const date = findDate(cells)
   if (!date) {
     return null
   }

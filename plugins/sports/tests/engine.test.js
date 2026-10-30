@@ -42,6 +42,13 @@ test('record parsing', (t) => {
   )
   t.deepEqual(parseRecord('10-5'), { wins: 10, losses: 5, games: 15, winPct: 0.667 }, 'hyphen, two parts')
   t.equal(parseRecord('3−1−1').games, 5, 'minus sign')
+  t.equal(parseRecord('94–68 (.580)').wins, 94, 'trailing percentage ignored')
+  t.deepEqual(
+    parseRecord('1st half: 16–42 (.276) 2nd half: 21–27 (.438) Overall: 37–69 (.349)'),
+    { wins: 37, losses: 69, games: 106, winPct: 0.349 },
+    '1981 split-season prefers the overall record'
+  )
+  t.equal(parseRecord('1st half: 16–42').wins, 16, 'ordinal prefix not read as a record')
   t.equal(parseRecord(''), null, 'empty')
   t.equal(parseRecord(), null, 'undefined')
   t.end()

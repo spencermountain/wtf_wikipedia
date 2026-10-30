@@ -11,6 +11,7 @@ let templates = {
   bgcolor: 1, // {{bgcolor|red|text}}
   script: 1, // {{script|Arab|text}}
   'hover title': 1, // {{hover title|tooltip|text}}
+  'dow tooltip': 0, // {{dow tooltip|April 9, 1981}} - a date with a day-of-week tooltip
   l: 2,
   h: 1, //https://en.wikipedia.org/wiki/'Hover_title',
   sort: 1, //https://en.wikipedia.org/wiki/'Sort',

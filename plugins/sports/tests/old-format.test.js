@@ -117,6 +117,57 @@ test('no-color rows fall back to the record column', (t) => {
   t.end()
 })
 
+test('1980s nhl: month-named date columns', (t) => {
+  // the date column is named after the month, with day-of-month cells
+  const page = `The '''1980–81 New York Rangers season''' was the 55th season.
+
+==Schedule and results==
+{{Game log start|style=background:#FFFFFF;|title=1980–81 regular season}}
+{{Game log section start|hide=y|style=background:#FFFFFF;|title=October: 3–7–1| Game| October| Opponent| Score| Record}}
+|- {{Game-lost}}
+| 1 || 9 || @ [[Boston Bruins]] || 7–2 || 0–1–0
+|- {{Game-won}}
+| 2 || 11 || @ [[Toronto Maple Leafs]] || 8–3 || 1–1–0
+|- {{Game-tied}}
+| 3 || 30 || @ [[Philadelphia Flyers]] || 3–3 || 1–1–1
+|-
+{{Game log section end}}
+{{Game log end}}
+`
+  const res = wtf(page, { title: '1980–81 New York Rangers season' }).nhlSeason()
+  t.equal(res.games.length, 3, 'three games')
+  t.equal(res.games[0].date, 'October 9 1980', 'date from month-column')
+  t.equal(res.games[0].opponent, 'Boston Bruins', 'opponent')
+  t.equal(res.games[0].outcome, 'loss', 'loss from game-lost template')
+  t.deepEqual(res.games[0].result, { us: 2, them: 7 }, 'winner-first score flipped')
+  t.equal(res.games[1].outcome, 'win', 'win')
+  t.equal(res.games[2].outcome, 'tie', 'tie')
+  t.deepEqual(res.games[2].record, { wins: 1, losses: 1, ties: 1, games: 3, winPct: 0.333 }, 'pre-2005 ties')
+  t.end()
+})
+
+test('1980s mlb: dow-tooltip dates', (t) => {
+  const page = `The '''1981 Los Angeles Dodgers season''' was the 92nd season.
+
+==Game log==
+{{Game log start|title=1981 regular season game log}}
+{{Game log section start|hide=y|title=April: 14–5|#|Date|Opponent|Score|Win|Loss|Save|Attendance|Record}}
+|- bgcolor=#bfb
+| 1 || {{dow tooltip|April 9, 1981}} || [[1981 Houston Astros season|Astros]] || '''W''' 2–0 || '''[[Fernando Valenzuela|Valenzuela]]''' (1–0) || [[Phil Niekro|Niekro]] (0–1) || — || 50,511 || 1–0
+|-
+{{Game log section end}}
+{{Game log end}}
+`
+  const res = wtf(page, { title: '1981 Los Angeles Dodgers season' }).mlbSeason()
+  t.equal(res.games.length, 1, 'one game')
+  t.equal(res.games[0].date, 'April 9, 1981', 'date through the tooltip template')
+  t.equal(res.games[0].opponent, 'Houston Astros', 'opponent')
+  t.equal(res.games[0].outcome, 'win', 'win')
+  t.equal(res.games[0].pitchers.win, 'Valenzuela', 'winning pitcher')
+  t.equal(res.games[0].attendance, 50511, 'attendance')
+  t.end()
+})
+
 test('plugin methods exist', (t) => {
   t.equal(typeof wtf(nhlPage).nhlSeason, 'function', 'doc.nhlSeason')
   t.equal(typeof wtf(mlbPage).mlbSeason, 'function', 'doc.mlbSeason')

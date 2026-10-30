@@ -172,7 +172,18 @@ const outcomeOf = function (attrs = '', scoreText = '') {
 // '49–26–7' → {wins, losses, otLosses, games}
 // a third number means overtime-losses in the modern nhl, ties before 2005
 const parseRecord = function (str = '', opts = {}) {
-  const nums = String(str)
+  str = String(str);
+  // 1981-style split seasons list several records - prefer the overall one
+  const overall = str.match(/overall:? *(.+)/i);
+  if (overall) {
+    str = overall[1];
+  }
+  // take the first record-shaped run, so '1st half: 16–42' isn't read as 1–16
+  const shaped = str.match(/\d+(?: *[–\-−] *\d+)+/);
+  if (!shaped) {
+    return null
+  }
+  const nums = shaped[0]
     .split(dashSplit)
     .map((s) => parseInt(s.trim(), 10))
     .filter((n) => isNaN(n) === false);
@@ -289,10 +300,38 @@ const opponentCol = function (game, row, ctx, score) {
   return true
 };
 
+const monthNames = [
+  'january',
+  'february',
+  'march',
+  'april',
+  'may',
+  'june',
+  'july',
+  'august',
+  'september',
+  'october',
+  'november',
+  'december',
+];
+
+// some 1980s logs name the date column after the month, with day-of-month cells
+const findDate = function (cells) {
+  const date = getCell(cells, ['date']);
+  if (date) {
+    return date
+  }
+  const key = Object.keys(cells).find((k) => monthNames.includes(k));
+  if (key && cells[key] && /^\d{1,2}$/.test(String(cells[key]).trim())) {
+    return `${key.charAt(0).toUpperCase()}${key.slice(1)} ${String(cells[key]).trim()}`
+  }
+  return ''
+};
+
 // one normalized row → one game, or null for legend/filler rows
 const buildGame = function (row, ctx) {
   const { cells, attrs } = row;
-  const date = getCell(cells, ['date']);
+  const date = findDate(cells);
   if (!date) {
     return null
   }
@@ -666,7 +705,7 @@ var franchises = [
   [{ name: 'Buffalo Sabres', from: 1970 }],
   [{ name: 'Calgary Flames', from: 1980 }],
   [{ name: 'Carolina Hurricanes', from: 1997 }, { name: 'Hartford Whalers', from: 1979 }],
-  [{ name: 'Chicago Blackhawks', from: 1926 }],
+  [{ name: 'Chicago Blackhawks', from: 1986 }, { name: 'Chicago Black Hawks', from: 1926 }],
   [{ name: 'Colorado Avalanche', from: 1995 }, { name: 'Quebec Nordiques', from: 1979 }],
   [{ name: 'Columbus Blue Jackets', from: 2000 }],
   [{ name: 'Dallas Stars', from: 1993 }, { name: 'Minnesota North Stars', from: 1967 }],
@@ -677,7 +716,7 @@ var franchises = [
   [{ name: 'Minnesota Wild', from: 2000 }],
   [{ name: 'Montreal Canadiens', from: 1917 }],
   [{ name: 'Nashville Predators', from: 1998 }],
-  [{ name: 'New Jersey Devils', from: 1982 }],
+  [{ name: 'New Jersey Devils', from: 1982 }, { name: 'Colorado Rockies', from: 1976 }],
   [{ name: 'New York Islanders', from: 1972 }],
   [{ name: 'New York Rangers', from: 1926 }],
   [{ name: 'Ottawa Senators', from: 1992 }],
