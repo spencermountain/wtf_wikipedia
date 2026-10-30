@@ -26,10 +26,10 @@ const isAlive = function (doc) {
   if (fromTemplate === true || fromTemplate === false) {
     return fromTemplate
   }
-  // were they born in 1900?
+  // were they born more than 105 years ago?
   const birth = doc.birthDate()
   if (birth && birth.year && birth.year < minYear) {
-    return true
+    return false
   }
   return null
 }

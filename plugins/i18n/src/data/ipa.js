@@ -8,7 +8,6 @@ export default [
   'ipa-text',
   'ipa1',
   'ipa2',
-  'lbf',
   'lfe',
   'prononciation api',
   'unicode',
@@ -20,5 +19,5 @@ export default [
   'بول',
   'نغا',
   'अ-ध्व-लि',
-  'আধ্বব'
+  'আধ্বব',
 ]

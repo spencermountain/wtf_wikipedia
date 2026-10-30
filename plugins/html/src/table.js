@@ -1,3 +1,6 @@
+const escape = (str) =>
+  String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+
 //turn a json table into a html table
 const toHtml = function (Block, options) {
   const rows = this.json().rows
@@ -10,7 +13,7 @@ const toHtml = function (Block, options) {
   html += '  <tr>\n'
 
   this.headers().forEach((header) => {
-    html += '    <td>' + header.text() + '</td>\n'
+    html += '    <td>' + escape(header.text()) + '</td>\n'
   })
   html += '  </tr>\n'
   html += '  </thead>\n'

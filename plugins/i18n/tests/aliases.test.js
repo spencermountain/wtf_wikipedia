@@ -93,8 +93,7 @@ test('i18n alias metadata', (t) => {
   t.end()
 })
 
-test('i18n aliases: taxobox aliases are infoboxes', { todo: true }, (t) => {
-  // only ~8 of the taxobox aliases become infoboxes; the rest are left as plain templates
+test('i18n aliases: taxobox aliases are infoboxes', (t) => {
   taxobox.forEach((alias) => {
     const doc = wtf(`{{${alias}|regnum=Animalia|name=Cat}} x`)
     t.equal(doc.infoboxes().length, 1, `{{${alias}}} → infobox`)
@@ -102,14 +101,12 @@ test('i18n aliases: taxobox aliases are infoboxes', { todo: true }, (t) => {
   t.end()
 })
 
-test('i18n aliases do not clobber core templates', { todo: true }, (t) => {
-  // 'lbf' (pound-force unit) is registered as an ipa alias, so it now renders as nothing
+test('i18n aliases do not clobber core templates', (t) => {
   t.equal(wtf('a {{lbf}} b').text(), 'a lbF b', '{{lbf}} still renders its unit')
   t.end()
 })
 
-test('i18n citation aliases inside <ref> tags', { todo: true }, (t) => {
-  // top-level aliases work, but inside <ref> the alias is left as unparsed inline text
+test('i18n citation aliases inside <ref> tags', (t) => {
   ;[...citeWeb, ...citeBook].forEach((alias) => {
     const ref = wtf(`x.<ref>{{${alias}|url=https://a.com|title=Pagina}}</ref>`).references()[0]
     t.equal(ref?.title(), 'Pagina', `<ref>{{${alias}}}</ref> keeps its title`)

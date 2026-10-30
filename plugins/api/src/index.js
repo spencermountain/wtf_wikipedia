@@ -11,10 +11,10 @@ import fetchList from './fetchList.js'
 const addMethod = function (models) {
   // doc methods
   models.Doc.prototype.getRedirects = function () {
-    return getRedirects(this.title(), this.options(), models.http)
+    return getRedirects(this.title, this.options(), models.http)
   }
   models.Doc.prototype.getIncoming = function () {
-    return getIncoming(this.title(), this.options(), models.http)
+    return getIncoming(this.title, this.options(), models.http)
   }
   models.Doc.prototype.getPageViews = function () {
     return getPageViews(this, this.options(), models.http)

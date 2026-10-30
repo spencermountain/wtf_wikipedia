@@ -81,8 +81,7 @@ test('html: formatting', (t) => {
   t.end()
 })
 
-test('html: bold link', { todo: true }, (t) => {
-  // bold is wrapped first, then the link replacement puts <b> inside the href
+test('html: bold link', (t) => {
   has(
     t,
     wtf("a '''[[Paris]]''' trip").html(),
@@ -92,7 +91,7 @@ test('html: bold link', { todo: true }, (t) => {
   t.end()
 })
 
-test('html: escapes plain text', { todo: true }, (t) => {
+test('html: escapes plain text', (t) => {
   has(t, wtf('if a < b & c > d then').html(), 'if a &lt; b &amp; c &gt; d then', 'sentence text is html-escaped')
   t.end()
 })
@@ -141,7 +140,7 @@ test('html: references', (t) => {
   t.end()
 })
 
-test('html: reference rendering bugs', { todo: true }, (t) => {
+test('html: reference rendering', (t) => {
   const doc = wtf(
     'a.<ref>{{cite web|url=https://a.com|title=A title}}</ref> b.<ref>{{cite book|title=Book|author=Smith}}</ref>'
   )
@@ -164,7 +163,7 @@ test('html: tables', (t) => {
   t.end()
 })
 
-test('html: title and redirects', { todo: true }, (t) => {
+test('html: title and redirects', (t) => {
   has(t, wtf('hello', { title: 'My Page' }).html(), '<title>My Page</title>', 'title tag from doc.title')
   has(
     t,
@@ -183,9 +182,13 @@ test('html: redirect soft landing', (t) => {
   t.end()
 })
 
-test('html: content order and parenthesized links', { todo: true }, (t) => {
+test('html: content order', { todo: true }, (t) => {
   const html = tidy(wtf('intro text.\n* one\n* two\n').html())
   t.ok(html.indexOf('intro text.') < html.indexOf('<ul'), 'list stays after the intro')
+  t.end()
+})
+
+test('html: parenthesized link', (t) => {
   has(
     t,
     wtf('see [[Mercury (planet)]] now').html(),

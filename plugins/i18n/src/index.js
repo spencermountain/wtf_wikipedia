@@ -34,17 +34,20 @@ const mapping = {
   sfn,
   small,
   persondata,
-  taxobox,
   'birth date and age': birthDateAge,
   'cite book': citeBook,
   'cite journal': citeJournal,
   'cite web': citeWeb,
   'commons cat': commonsCat,
   'start date': startDate,
-  nihongo: ['japonês', 'japonais', 'нихонго']
+  nihongo: ['japonês', 'japonais', 'нихонго'],
 }
 
-const plugin = function (_models, templates) {
+const plugin = function (_models, templates, infoboxes = {}) {
+  // taxobox aliases are infoboxes, which the core recognises by name
+  taxobox.forEach((name) => {
+    infoboxes[name] = true
+  })
   Object.keys(mapping).forEach((k) => {
     const parser = templates[k]
     mapping[k].forEach((name) => {

@@ -7,7 +7,7 @@ const params = {
   rdlimit: 500,
   format: 'json',
   origin: '*',
-  redirects: true
+  redirects: true,
 }
 
 const makeUrl = function (title, options, append) {
@@ -33,7 +33,7 @@ const getRedirects = async function (title, options, http) {
     const { pages, cursor } = await fetchOne(url, options, http, 'redirects')
     list = list.concat(pages)
     if (cursor && cursor.rdcontinue) {
-      append = '&rdcontinue=' + cursor.lhcontinue
+      append = '&rdcontinue=' + cursor.rdcontinue
     } else {
       getMore = false
     }

@@ -1,3 +1,6 @@
+const escape = (str) =>
+  String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+
 const defaults = {
   images: true,
 }
@@ -40,7 +43,7 @@ const infobox = function (Block, options) {
     key = key.charAt(0).toUpperCase() + key.substring(1) //titlecase it
     const val = blocks.map((block) => new Block(block).html(options)).join(' ')
     html += '    <tr>\n'
-    html += '      <td>' + key + '</td>\n'
+    html += '      <td>' + escape(key) + '</td>\n'
     html += '      <td>' + val + '</td>\n'
     html += '    </tr>\n'
   })

@@ -28,8 +28,8 @@ const parseDate = function (str) {
       // find the numbers
       let onlyNumbers = [...arr]
       const removeIndexes = [3, 1, 0]
-      removeIndexes.forEach(i => onlyNumbers.splice(i, 1))
-      onlyNumbers = onlyNumbers.map(i => Number(i))
+      removeIndexes.forEach((i) => onlyNumbers.splice(i, 1))
+      onlyNumbers = onlyNumbers.map((i) => Number(i))
       // if it's a range, replace with the average rounded down, otherwise with the minimum
       if (regRangeSeparator.test(arr[3])) {
         const avg = findAverage(onlyNumbers)
@@ -47,17 +47,11 @@ const parseDate = function (str) {
   }
   // just the year
   const justYear = str.match(regJustYear)
-  // parse the full date; return null if unsuccessful
-  const s = spacetime(str)
-  const res = {
-    year: s.year(),
-    month: s.month(),
-    date: s.date()
-  }
   if (justYear) {
+    const res = { year: 0, month: 0, date: 1 }
     if (inaccurateOriginal) {
-      Object.defineProperty(res, "originalDate", {
-        value: inaccurateOriginal
+      Object.defineProperty(res, 'originalDate', {
+        value: inaccurateOriginal,
       })
     }
     if (regBCE.test(str)) {
@@ -72,23 +66,31 @@ const parseDate = function (str) {
   let year
   if (UptoSecondMill) {
     // trick spacetime to get the month and day correctly by replacing the year with 1000
-    str = str.replace(UptoSecondMill[0], "1000")
+    str = str.replace(UptoSecondMill[0], '1000')
     // assign the real year
     year = regBCE.test(UptoSecondMill.input) ? -Number(UptoSecondMill[1]) : Number(UptoSecondMill[1])
   }
+  // parse the full date; return null if unsuccessful
+  const s = spacetime(str)
+  const res = {
+    year: s.year(),
+    month: s.month(),
+    date: s.date(),
+  }
 
-  const epoch = { // epoch is returned when unsuccessful 
+  const epoch = {
+    // epoch is returned when unsuccessful
     year: 1970,
     month: 0,
-    date: 1
+    date: 1,
   }
   if (JSON.stringify(res) === JSON.stringify(epoch)) {
     return null
   }
   res.year = year || s.year()
   if (inaccurateOriginal) {
-    Object.defineProperty(res, "originalDate", {
-      value: inaccurateOriginal
+    Object.defineProperty(res, 'originalDate', {
+      value: inaccurateOriginal,
     })
   }
   return res

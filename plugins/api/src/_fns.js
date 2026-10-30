@@ -1,15 +1,15 @@
 import makeHeaders from './_headers.js'
 
 export function normalize(title = '') {
-  title = title.replace(/ /g, '_')
   title = title.trim()
+  title = title.replace(/ /g, '_')
   title = encodeURIComponent(title)
   return title
 }
 
 export const defaults = {
   lang: 'en',
-  path: 'w/api.php'
+  path: 'w/api.php',
 }
 
 export function toUrlParams(obj) {
@@ -28,7 +28,7 @@ export function fetchOne(url, options, http, prop) {
     }
     return {
       pages: res.query.pages[pages[0]][prop] || [],
-      cursor: res.continue
+      cursor: res.continue,
     }
   })
 }

@@ -37,7 +37,7 @@ test('api helpers', (t) => {
   t.end()
 })
 
-test('api normalize trims before replacing spaces', { todo: true }, (t) => {
+test('api normalize trims before replacing spaces', (t) => {
   t.equal(normalize(' Toronto '), 'Toronto', 'surrounding whitespace should not become underscores')
   t.end()
 })
@@ -98,7 +98,7 @@ test('getRedirects', async (t) => {
   t.end()
 })
 
-test('getRedirects paging uses the rdcontinue cursor', { todo: true }, async (t) => {
+test('getRedirects paging uses the rdcontinue cursor', async (t) => {
   const http = mockHttp(
     pagesRes('redirects', [{ title: 'A' }], { rdcontinue: 'r1' }),
     pagesRes('redirects', [{ title: 'B' }])
@@ -225,7 +225,7 @@ test('fetchList chunks into groups of 5', async (t) => {
   t.end()
 })
 
-test('doc.getRedirects / doc.getIncoming use the title getter', { todo: true }, (t) => {
+test('doc.getRedirects / doc.getIncoming use the title getter', (t) => {
   const doc = wtf('hello', { title: 'Toronto', domain: 'example.invalid' })
   t.doesNotThrow(() => doc.getRedirects().catch(() => {}), 'doc.title is a getter, not a function')
   t.doesNotThrow(() => doc.getIncoming().catch(() => {}), 'doc.title is a getter, not a function')

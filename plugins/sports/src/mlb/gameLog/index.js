@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import parseGame from './parseGame.js'
 import addWinner from './winner.js'
 
@@ -37,7 +36,7 @@ const doSection = function (section) {
 }
 
 //get games of regular season
-const gameLog = function (doc) {
+const gameLog = function (games) {
   games = addWinner(games)
   return games
 }

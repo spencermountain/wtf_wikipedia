@@ -1,9 +1,12 @@
+const escape = (str) =>
+  String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+
 const defaults = {
   headers: true,
   images: true,
   tables: true,
   lists: true,
-  paragraphs: true
+  paragraphs: true,
 }
 
 const doSection = function (options) {
@@ -12,7 +15,7 @@ const doSection = function (options) {
   //make the header
   if (options.headers === true && this.title()) {
     const num = 1 + this.depth()
-    html += '  <h' + num + '>' + this.title() + '</h' + num + '>'
+    html += '  <h' + num + '>' + escape(this.title()) + '</h' + num + '>'
     html += '\n'
   }
   //put any images under the header

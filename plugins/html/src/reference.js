@@ -1,31 +1,33 @@
-//
-const toHtml = function (options) {
-  const data = this.json().data
+const escape = (str) =>
+  String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+
+const toHtml = function (options = {}) {
+  const data = this.json().data || {}
   if (data && data.url && data.title) {
-    let str = data.title.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
-    const url = data.url.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+    let str = escape(data.title)
+    const url = escape(data.url)
     if (options.links === true) {
       str = `<a href="${url}">${str}</a>`
     }
     return `<div class="reference">⌃ ${str} </div>`
   }
   if (data.encyclopedia) {
-    const str = data.encyclopedia.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+    const str = escape(data.encyclopedia)
     return `<div class="reference">⌃ ${str}</div>`
   }
   if (data.title) {
     //cite book, etc
-    let str = data.title.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+    let str = escape(data.title)
     if (data.author) {
-      str += data.author.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+      str += ' ' + escape(data.author)
     }
     if (data.first && data.last) {
-      str += data.first.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;') + ' ' + data.last.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+      str += ' ' + escape(data.first) + ' ' + escape(data.last)
     }
     return `<div class="reference">⌃ ${str}</div>`
   }
   if (data.inline) {
-    return `<div class="reference">⌃ ${data.inline.text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>`
+    return `<div class="reference">⌃ ${escape(data.inline.text)}</div>`
   }
   return ''
 }

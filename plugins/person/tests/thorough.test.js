@@ -80,7 +80,7 @@ test('isAlive signals', (t) => {
   t.end()
 })
 
-test('isAlive: born long ago means not alive', { todo: true }, (t) => {
+test('isAlive: born long ago means not alive', (t) => {
   // isAlive() returns true when birth.year < (now - 105); the comparison is inverted
   t.equal(wtf(`x [[Category:1850 births]]`).isAlive(), false, 'born 1850 → not alive')
   t.end()
@@ -103,7 +103,7 @@ test('parseDate', (t) => {
   t.end()
 })
 
-test('parseDate: BC dates with a month', { todo: true }, (t) => {
+test('parseDate: BC dates with a month', (t) => {
   // parseDate's own comments cite this example, but spacetime can't parse a BC month-date
   t.equal(parseDate('July 356 BC')?.year, -356, 'month + BC year')
   t.equal(parseDate('20 or 21 July 356 BC')?.year, -356, 'uncertain day, BC year')
