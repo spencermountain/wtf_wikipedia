@@ -49,7 +49,7 @@ test('The-Starry-Night-Vi', (t) => {
   )
   t.equal(
     doc.lists()[1].lines()[1].text(),
-    'smARThistory: Đêm đầy sao của van Gogh',
+    'smARThistory: Đêm đầy sao của van Gogh Archived 2007-07-09 at the Wayback Machine',
     'The-Starry-Night-Vi: list 2, item 2'
   )
   t.equal(

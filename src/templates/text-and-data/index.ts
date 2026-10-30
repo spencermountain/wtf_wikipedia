@@ -6,6 +6,7 @@ import geo from './geo/index.ts'
 import misc from './misc.ts'
 import stock from './stock-exchanges.ts'
 import languages from './languages.ts'
+import externalLinks from './external-links.ts'
 import sportsLib from './sports/_lib.ts'
 import sports from './sports/sports.ts'
 
@@ -18,6 +19,7 @@ export default {
   ...misc,
   ...stock,
   ...languages,
+  ...externalLinks,
   ...sportsLib,
   ...sports,
 }

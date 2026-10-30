@@ -498,7 +498,7 @@ test('Anarchism', (t) => {
     "Anarchism: 18th sentence starts 'But to claim that this central…'"
   )
   t.equal(
-    doc.lists()[3].lines()[4].text(),
+    doc.lists()[3].lines()[5].text(),
     "Daily Bleed's Anarchist Encyclopedia&nbsp;–700+ entries, with short biographies, links and dedicated pages",
     'Anarchism: list 4, item 5'
   )

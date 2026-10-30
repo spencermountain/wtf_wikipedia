@@ -1,11 +1,7 @@
-import idName from './id-name.ts'
-import idTitle from './id-title.ts'
 import fns from './functions.ts'
 
 let templates = {
   //https://en.wikipedia.org/wiki/Category:External_link_templates
-  'find a grave': ['id', 'name', 'work', 'last', 'first', 'date', 'accessdate'],
-  congbio: ['id', 'name', 'date'],
   'hollywood walk of fame': ['name'],
   'wide image': ['file', 'width', 'caption'],
   audio: ['file', 'text', 'type'],
@@ -19,6 +15,6 @@ let templates = {
   hatnote: ['text'],
 }
 
-templates = Object.assign(templates, idName, idTitle, fns)
+templates = Object.assign(templates, fns)
 
 export default templates
