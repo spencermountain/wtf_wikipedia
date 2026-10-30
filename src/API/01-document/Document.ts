@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import Image from '../03-paragraph/image/Image.ts'
 import Images from '../03-paragraph/image/Images.ts'
 import Infoboxes from '../02-section/infobox/Infoboxes.ts'
@@ -262,7 +261,7 @@ class Document {
     let data: any = {}
     data.title = this.title
     data.pageID = this.pageID
-    data.categories = this.categories()
+    data.categories = this.categories().slice()
     data.wikidata = this.wikidata
     data.description = this.description
     data.isStub = this.isStub()
@@ -274,8 +273,9 @@ class Document {
       data.redirectTo = this.redirectTo()
     }
     // page sections
+    // Each section.json() already returns a fresh deep copy, so no further clone is needed.
     data.sections = this.sections().map((i) => i.json(format))
-    const json = structuredClone(data)
+    const json = data
     if (format === 'xl') {
       json.wiki = this.wikitext()
     }

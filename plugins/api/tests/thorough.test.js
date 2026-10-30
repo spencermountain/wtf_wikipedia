@@ -225,9 +225,18 @@ test('fetchList chunks into groups of 5', async (t) => {
   t.end()
 })
 
-test('doc.getRedirects / doc.getIncoming use the title getter', (t) => {
-  const doc = wtf('hello', { title: 'Toronto', domain: 'example.invalid' })
-  t.doesNotThrow(() => doc.getRedirects().catch(() => {}), 'doc.title is a getter, not a function')
-  t.doesNotThrow(() => doc.getIncoming().catch(() => {}), 'doc.title is a getter, not a function')
+test('doc.getRedirects / doc.getIncoming use the title getter', async (t) => {
+  const seen = []
+  const http = (url) => {
+    seen.push(url)
+    return Promise.resolve({ query: {} })
+  }
+  wtf.extend((models) => {
+    models.http = http
+  })
+  const doc = wtf('hello', { title: 'Toronto' })
+  t.deepEqual(await doc.getRedirects(), [], 'getRedirects resolves')
+  t.deepEqual(await doc.getIncoming(), [], 'getIncoming resolves')
+  t.ok(seen.every((url) => url.includes('titles=Toronto')), 'both requests use doc.title')
   t.end()
 })
