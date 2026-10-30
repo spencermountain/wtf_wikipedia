@@ -57,6 +57,14 @@ let aliases = {
   'harvard citation text': 'harvtxt',
   'harvcolnb': 'harvard citation no brackets',
   tlp: 'tlx',
+  // sports
+  'nft-women': 'fbw',
+  'fb women': 'fbw',
+  'nfa-rt': 'nfa',
+  bkwomen: 'bkw',
+  'flagioc athlete': 'flagiocathlete',
+  'flag ioc': 'flagioc',
+  'world series year': 'wsy',
   // external-link templates
   'ietf rfc': 'rfc',
   uspatent: 'us patent',

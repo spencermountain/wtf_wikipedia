@@ -1595,18 +1595,18 @@ test('History-Of-Rugby-Union-Matches-Between-Scotland-And-Wales', (t) => {
   )
   t.equal(doc.sections().length, 6, 'History-Of-Rugby-Union-Matches-Between-Scotland-And-Wales: 6 sections')
   t.equal(
-    doc.links()[15].page(),
+    doc.links()[12].page(),
     'Cardiff',
-    "History-Of-Rugby-Union-Matches-Between-Scotland-And-Wales: link [15] is 'Cardiff'"
+    "History-Of-Rugby-Union-Matches-Between-Scotland-And-Wales: link [12] is 'Cardiff'"
   )
   t.ok(
     doc.templates('History of Tier 1 nations').length > 0,
     'History-Of-Rugby-Union-Matches-Between-Scotland-And-Wales: has a {{History of Tier 1 nations}} template'
   )
   t.equal(
-    doc.links()[14].page(),
+    doc.links()[11].page(),
     'Millennium Stadium',
-    "History-Of-Rugby-Union-Matches-Between-Scotland-And-Wales: link [14] is 'Millennium Stadium'"
+    "History-Of-Rugby-Union-Matches-Between-Scotland-And-Wales: link [11] is 'Millennium Stadium'"
   )
   t.end()
 })

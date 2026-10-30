@@ -9,5 +9,6 @@ import table from './table-cell.ts'
 import inline from './inline.ts'
 import parserFunctions from './parser-functions.ts'
 import numbers from './numbers.ts'
+import sportsTeams from './sports-teams.ts'
 
-export default { ...hardcoded, ...easyInline, ...shorthand, ...functions, ...moreLangs, ...abbreviations, ...flags, ...table, ...inline, ...parserFunctions, ...numbers }
+export default { ...hardcoded, ...easyInline, ...shorthand, ...functions, ...moreLangs, ...abbreviations, ...flags, ...table, ...inline, ...parserFunctions, ...numbers, ...sportsTeams }

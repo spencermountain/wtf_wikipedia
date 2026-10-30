@@ -1,11 +1,14 @@
 import defaultParse from '../../parse/templates/parse/toJSON/text.ts'
 import flags from '../../_data/flags.ts'
+import codeAliases from '../../_data/flag-aliases.ts'
 import functions from './functions.ts'
 const order = ['flag', 'variant']
 // 'united states' → 'United States'
 const titleCase = (str = '') => str.replace(/(^|[\s\-(])(\p{L})/gu, (m, pre, ch) => pre + ch.toUpperCase())
+// by ISO-3 code, IOC/FIFA code, or country name
 const findFlag = (code = '') => {
-  code = code.toLowerCase()
+  code = code.toLowerCase().trim()
+  code = codeAliases[code] || code
   return flags.find((a) => code === a[1] || code === a[2])
 }
 let templates = {
@@ -14,8 +17,7 @@ let templates = {
   flag: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, order)
     let name = obj.flag || ''
-    obj.flag = (obj.flag || '').toLowerCase()
-    let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]) || []
+    let found = findFlag(obj.flag) || []
     let flag = found[0] || ''
     return { data: null, replacement: `${flag} [[${found[2]}|${name}]]` }
   },
@@ -41,8 +43,7 @@ let templates = {
   // {{flagicon|USA}} → United States
   flagicon: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, order)
-    obj.flag = (obj.flag || '').toLowerCase()
-    let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2])
+    let found = findFlag(obj.flag)
     if (!found) {
       return { data: null, replacement: '' }
     }
@@ -51,15 +52,13 @@ let templates = {
   //unlinked flagicon
   flagdeco: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, order)
-    obj.flag = (obj.flag || '').toLowerCase()
-    let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2]) || []
+    let found = findFlag(obj.flag) || []
     return { data: null, replacement: found[0] || '' }
   },
   //same, but a soccer team
   fb: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, order)
-    obj.flag = (obj.flag || '').toLowerCase()
-    let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2])
+    let found = findFlag(obj.flag)
     if (!found) {
       return { data: null, replacement: '' }
     }
@@ -70,8 +69,7 @@ let templates = {
   },
   fbicon: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, order)
-    obj.flag = (obj.flag || '').toLowerCase()
-    let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2])
+    let found = findFlag(obj.flag)
     if (!found) {
       return { data: null, replacement: '' }
     }
@@ -79,8 +77,7 @@ let templates = {
   },
   flagathlete: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['name', 'flag', 'variant'])
-    obj.flag = (obj.flag || '').toLowerCase()
-    let found = flags.find((a) => obj.flag === a[1] || obj.flag === a[2])
+    let found = findFlag(obj.flag)
     if (!found) {
       return { data: null, replacement: `[[${obj.name || ''}]]` }
     }
@@ -97,4 +94,5 @@ flags.forEach((a) => {
     return { data: null, replacement: a[0] }
   }
 })
+export { findFlag, titleCase }
 export default templates
