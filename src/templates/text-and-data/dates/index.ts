@@ -178,14 +178,14 @@ export default {
   millennium: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['year'])
     let year = parseInt(obj.year, 10)
-    year = Math.floor(year / 1000) + 1
+    // 1001-2000 is the 2nd millennium; 1000-1 BC is the 1st millennium BC
+    year = year > 0 ? Math.ceil(year / 1000) : Math.floor(year / 1000)
+    const era = year < 0 ? ' BC' : ''
+    const ordinal = toOrdinal(Math.abs(year))
     if (obj.abbr && obj.abbr === 'y') {
-      if (year < 0) {
-        return { data: null, replacement: `${toOrdinal(Math.abs(year))} BC` }
-      }
-      return { data: null, replacement: `${toOrdinal(year)}` }
+      return { data: null, replacement: `${ordinal}${era}` }
     }
-    return { data: null, replacement: `${toOrdinal(year)} millennium` }
+    return { data: null, replacement: `${ordinal} millennium${era}` }
   },
   //date/age/time templates
   start: parsers.date,

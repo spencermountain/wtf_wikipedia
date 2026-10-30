@@ -5,15 +5,15 @@ test('inline text', (t) => {
   const arr = [
     {
       from: `education of <nowiki>[the]</nowiki> students`,
-      to: `education of [the] students`
+      to: `education of [the] students`,
     },
     {
       from: `education of <nowiki>{{the}}</nowiki> students`,
-      to: `education of {{the}} students`
+      to: `education of {{the}} students`,
     },
     {
       from: `in ({{Baseball year|1902}})`,
-      to: `in (1902)`
+      to: `in (1902)`,
     },
     //     {
     //       from: `650 students drawn from a
@@ -34,11 +34,11 @@ test('inline text', (t) => {
     //     },
     {
       from: `before {{nowiki | TEXT }} after`,
-      to: `before TEXT after`
+      to: `before TEXT after`,
     },
     {
       from: `before {{nowiki2 | TEXT }} after`,
-      to: `before TEXT after`
+      to: `before TEXT after`,
     },
     {
       from: `before
@@ -46,7 +46,7 @@ test('inline text', (t) => {
 |header=Round
 |label1= Ground
 }} after`,
-      to: `before after`
+      to: `before after`,
     },
     {
       from: `{{div-col}}
@@ -55,14 +55,12 @@ test('inline text', (t) => {
 {{div-col-end}}`,
       to: `
  * 2011: "Temple of Love"
- * 2012: "Kannst du mich seh'n" (Remix)`
+ * 2012: "Kannst du mich seh'n" (Remix)`,
     },
     // {
     //   from: ``,
     //   to: ``
     // },
-
-
   ]
   arr.forEach((o) => {
     const doc = wtf(o.from)
@@ -70,7 +68,6 @@ test('inline text', (t) => {
   })
   t.end()
 })
-
 
 test('lists in text output', (t) => {
   const str = `
@@ -92,5 +89,19 @@ test('inline lang templates', (t) => {
   const want = 'Gunaroš (Гунарош, Hungarian: Gunaras) is a village'
   const doc = wtf(str)
   t.equal(doc.text(), want, 'inline-lang')
+  t.end()
+})
+
+test('cjk sentences are joined without spaces', (t) => {
+  const arr = [
+    ['東京は日本の首都です。人口が多いです。', '東京は日本の首都です。人口が多いです。'],
+    ['你好吗？我很好！', '你好吗？我很好！'],
+    ['서울은 수도입니다. 인구가 많습니다.', '서울은 수도입니다. 인구가 많습니다.'],
+    ['Tokyo is big. 東京は大きい。 Yes it is.', 'Tokyo is big. 東京は大きい。 Yes it is.'],
+    ['One. Two.', 'One. Two.'],
+  ]
+  arr.forEach(([wiki, want]) => {
+    t.equal(wtf(wiki).text(), want, want)
+  })
   t.end()
 })

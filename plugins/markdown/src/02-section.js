@@ -1,9 +1,10 @@
+import joinSentences from './_lib/joinSentences.js'
 const defaults = {
   headers: true,
   images: true,
   tables: true,
   lists: true,
-  paragraphs: true
+  paragraphs: true,
 }
 
 const doSection = function (options) {
@@ -51,10 +52,7 @@ const doSection = function (options) {
   if (options.paragraphs === true || options.sentences === true) {
     md += this.paragraphs()
       .map((p) => {
-        return p
-          .sentences()
-          .map((s) => s.markdown(options))
-          .join(' ')
+        return joinSentences(p.sentences(), (s) => s.markdown(options))
       })
       .join('\n\n')
   }

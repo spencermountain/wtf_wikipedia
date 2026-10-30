@@ -5,6 +5,7 @@ import Image from './image/Image.ts'
 import List from './list/List.ts'
 import Links from './link/Links.ts'
 import Block from '../Block/Block.ts'
+import { joinSentences } from '../../_lib/helpers.ts'
 import type { ParagraphData, DocInfo } from '../../types/index.ts'
 
 class Paragraph {
@@ -47,9 +48,7 @@ class Paragraph {
   }
 
   text() {
-    let str = this.sentences()
-      .map((s) => s.text())
-      .join(' ')
+    let str = joinSentences(this.sentences().map((s) => s.text()))
     this.lists().forEach((list) => {
       str += '\n' + list.text()
     })

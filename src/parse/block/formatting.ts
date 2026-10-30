@@ -48,6 +48,9 @@ const parse = (block: BlockData, source, pattern: RegExp, trim: number, groups: 
 // Offsets use JavaScript string indices into the final plain text.
 const parseFormatting = (block: BlockData) => {
   block.text = block.text || ''
+  if (!block.text.includes("''")) {
+    return block
+  }
   const source = { text: block.wiki || '' }
   // Link labels are already flattened; their internal quotes are not formatting.
   block.links?.forEach((link) => {

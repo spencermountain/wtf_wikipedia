@@ -141,3 +141,10 @@ test('markdown: redirects', (t) => {
   t.equal(wtf('#REDIRECT [[Toronto Maple Leafs]]').markdown().startsWith('↳ ['), true, 'plain redirect')
   t.end()
 })
+
+test('cjk sentences join without spaces', (t) => {
+  const doc = wtf('東京は日本の首都です。人口が多いです。')
+  t.ok(doc.markdown().includes('東京は日本の首都です。人口が多いです。'), 'no space between cjk sentences')
+  t.ok(wtf('One. Two.').markdown().includes('One. Two.'), 'latin sentences keep a space')
+  t.end()
+})

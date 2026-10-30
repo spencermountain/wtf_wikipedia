@@ -31,7 +31,11 @@ const parseTemplate = (wiki: string, name: string, opts: DocInfo = defaults) => 
     return { replacement: '', result: null }
   }
   if (/^cite [a-z]/.test(name)) {
-    return finish(wiki, 'citation', parseTextArguments(wiki, [], opts), opts)
+    // a dedicated handler (eg. 'cite gnis') knows its own fields; otherwise parse generically
+    const payload = Object.hasOwn(templates, name)
+      ? runParser(templates[name], wiki, opts).data
+      : parseTextArguments(wiki, [], opts)
+    return finish(wiki, 'citation', payload, opts)
   }
   if (!Object.hasOwn(templates, name)) {
     const payload = parseTextArguments(wiki, [], opts)

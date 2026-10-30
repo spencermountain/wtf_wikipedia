@@ -1,3 +1,4 @@
+import joinSentences from './_lib/joinSentences.js'
 const escape = (str) =>
   String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 
@@ -43,21 +44,12 @@ const doSection = function (options) {
     html += '  <div class="text">\n'
     this.paragraphs().forEach((p) => {
       html += '    <p class="paragraph">\n'
-      html +=
-        '      ' +
-        p
-          .sentences()
-          .map((s) => s.html(options))
-          .join(' ')
+      html += '      ' + joinSentences(p.sentences(), (s) => s.html(options))
       html += '\n    </p>\n'
     })
     html += '  </div>\n'
   } else if (options.sentences === true) {
-    html +=
-      '      ' +
-      this.sentences()
-        .map((s) => s.html(options))
-        .join(' ')
+    html += '      ' + joinSentences(this.sentences(), (s) => s.html(options))
   }
   return '<div class="section">\n' + html + '</div>\n'
 }

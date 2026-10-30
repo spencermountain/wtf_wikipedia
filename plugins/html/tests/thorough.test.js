@@ -197,3 +197,13 @@ test('html: parenthesized link', (t) => {
   )
   t.end()
 })
+
+test('cjk sentences join without spaces', (t) => {
+  const strip = (html) => html.replace(/<[^>]+>/g, '')
+  t.ok(
+    strip(wtf('東京は日本の首都です。人口が多いです。').html()).includes('東京は日本の首都です。人口が多いです。'),
+    'no space between cjk sentences'
+  )
+  t.ok(strip(wtf('One. Two.').html()).includes('One. Two.'), 'latin sentences keep a space')
+  t.end()
+})

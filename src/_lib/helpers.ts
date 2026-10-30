@@ -33,4 +33,20 @@ const normalizeKey = function (key = '') {
   return key
 }
 
-export { capitalise, trim_whitespace, isArray, isObject, normalizeKey }
+// CJK scripts do not put spaces between sentences
+const cjk = '\\p{Script=Han}\\p{Script=Hiragana}\\p{Script=Katakana}\\p{Script=Bopomofo}。、，！？：；「」『』（）'
+const cjkEnd = new RegExp(`[${cjk}]$`, 'u')
+const cjkStart = new RegExp(`^[${cjk}]`, 'u')
+const joinSentences = function (arr: string[] = []) {
+  return arr.reduce((str, next, i) => {
+    if (i === 0) {
+      return next
+    }
+    if (cjkEnd.test(str) && cjkStart.test(next)) {
+      return str + next
+    }
+    return str + ' ' + next
+  }, '')
+}
+
+export { capitalise, trim_whitespace, isArray, isObject, normalizeKey, joinSentences }

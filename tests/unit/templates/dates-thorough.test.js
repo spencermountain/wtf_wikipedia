@@ -58,6 +58,11 @@ test('date templates - text output', (t) => {
     ['{{dts|-200}}', '200 BC'],
     ['{{millennium|2001}}', '3rd millennium'],
     ['{{millennium|1999|abbr=y}}', '2nd'],
+    ['{{millennium|2000}}', '2nd millennium'],
+    ['{{millennium|1000}}', '1st millennium'],
+    ['{{millennium|1001}}', '2nd millennium'],
+    ['{{millennium|-500}}', '1st millennium BC'],
+    ['{{millennium|-1001|abbr=y}}', '2nd BC'],
     // {{as of}} is dmy by default
     ['{{as of|2010|1|5}}', 'As of 5 January 2010'],
     ['{{as of|2010|1|5|df=US}}', 'As of January 5, 2010'],
@@ -134,8 +139,6 @@ test('date templates - known differences from wikipedia', { todo: true }, (t) =>
     ['{{start date|1993|2|24|df=y}}', '24 February 1993'],
     // one day short of 30 years
     ['{{age|1990|1|2|2020|1|1}}', '29'],
-    // 2000 was 2nd millennium (1001-2000)
-    ['{{millennium|2000}}', '2nd millennium'],
     // {{dts}} displays a readable date
     ['{{dts|2018|6|5}}', 'June 5, 2018'],
     ['{{dts|2018|June|5}}', 'June 5, 2018'],

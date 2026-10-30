@@ -13,13 +13,15 @@ const acronym_reg = /[ .'][A-Z].? *$/i
 const elipses_reg = /(?:^|[^.])\.{3,} +$/
 const circa_reg = / c\.\s$/
 const hasWord = /\p{Letter}/iu
+const hasEnding = /[.!?。？！]["'’)」』]*\s*$/
+// 'some text:' followed by a line-break usually introduces a list or table
+const colonEnding = /[:;][^\S\n]*\n\s*$/
 
 // Try only the first non-whitespace position in each remaining line. If it
 // cannot reach sentence punctuation, later starts on that line cannot either.
 const splitPunctuation = function (text: string) {
-  const sentence = /(\S.+?[.!?]"?)(?=\s|$)/y
-  // support japanese periods
-  text = text.replaceAll('。', '. ')
+  // latin punctuation needs trailing whitespace; cjk punctuation (。？！) does not
+  const sentence = /(\S.+?(?:[.!?]["'’)]*(?=\s|$)|[。？！]["'’)」』]*))/y
   let splits = []
   let end = 0
   for (const line of text.matchAll(/[^\r\n\u2028\u2029]+/g)) {
@@ -46,8 +48,9 @@ const splitPunctuation = function (text: string) {
 
 const naiive_split = function (text) {
   //first, split by newline
+  // keep the newlines, so a line-break can still be seen by the chunk-joiner
   let splits = text.split(/(\n+)/)
-  splits = splits.filter((s) => s.match(/\S/))
+  splits = splits.filter((s) => s)
   //split by period, question-mark, and exclamation-mark
   return splits.flatMap(splitPunctuation)
 }
@@ -118,6 +121,10 @@ const sentence_parser = function (text: string, _opts: DocInfo = defaults) {
     if (!isBalanced(hmm)) {
       return false
     }
+    // a line-break without punctuation is not a sentence boundary
+    if (hasEnding.test(hmm) === false && colonEnding.test(hmm) === false) {
+      return false
+    }
     return true
   }
   //loop through these chunks, and join the non-sentence chunks back together..
@@ -138,9 +145,10 @@ const sentence_parser = function (text: string, _opts: DocInfo = defaults) {
   }
   //if we never got a sentence, return the given text
   if (sentences.length === 0) {
-    return [text]
+    sentences = [text]
   }
-  return sentences
+  // a line-break inside a sentence renders as a space
+  return sentences.map((str) => str.replace(/[^\S\n]*\n\s*/g, ' '))
 }
 
 export default sentence_parser

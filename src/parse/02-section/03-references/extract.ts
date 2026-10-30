@@ -5,6 +5,8 @@ import parseBlock from '../../block/index.ts'
 import parseLinks from '../../block/links/parse.ts'
 import makeResult from '../../templates/result.ts'
 import getTemplates from '../../templates/find/flat.ts'
+import templates from '../../../templates/index.ts'
+import runParser from '../../templates/parse/run-parser.ts'
 
 // Keep the existing limits for plain, self-closing, and attributed references.
 const referencePattern =
@@ -18,8 +20,15 @@ const attribute = (tag, pattern) => {
   return match?.[1] ?? match?.[2] ?? match?.[3] ?? ''
 }
 
+const nameReg = /^ *\{\{ *([^|}\n]+)/
+// Plugins may register localized citation templates, which carry a 'citation' kind.
+const isCitationName = (str) => {
+  const name = str.match(nameReg)?.[1].trim().toLowerCase() || ''
+  return /^(cite|citation)/.test(name) || templates[name]?.kind === 'citation'
+}
+
 const hasCitation = (str) => {
-  return /^ *\{\{ *(cite|citation)/i.test(str) && /\}\} *$/.test(str) && /citation needed/i.test(str) === false
+  return isCitationName(str) && /\}\} *$/.test(str) && /citation needed/i.test(str) === false
 }
 
 const parseBody = (text, wiki, opts: DocInfo = defaults) => {
@@ -29,7 +38,12 @@ const parseBody = (text, wiki, opts: DocInfo = defaults) => {
     .filter(hasCitation)
     .map((template) => {
       prose = prose.replace(template, '')
-      const { template: _template, ...data } = parseTextArguments(template, [], opts)
+      const name = template.match(nameReg)?.[1].trim().toLowerCase() || ''
+      // a dedicated handler (eg. 'cite gnis') knows its own fields
+      const payload = Object.hasOwn(templates, name)
+        ? runParser(templates[name], template, opts).data
+        : parseTextArguments(template, [], opts)
+      const { template: _template, ...data } = payload || {}
       const result = makeResult(template, 'citation', data, '', opts)
       result.wiki = wiki
       return result

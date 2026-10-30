@@ -9,6 +9,10 @@ function postprocess(line) {
   line = trim_whitespace(line)
   line = line.replace(/ \.$/, '.')
 
+  // Most text has no entities at all; skip the decoding passes entirely.
+  if (!line.includes('&')) {
+    return line
+  }
   // handle HTML entities
   line = line.replace(/&nbsp;/g, '\xa0')
   line = line.replace(/&ndash;/g, '–')
