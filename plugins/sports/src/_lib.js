@@ -32,6 +32,19 @@ const soften = (k = '') =>
     .toLowerCase()
     .replace(/[^a-z0-9#+/−]/g, '')
 
+// the key a column actually landed under, allowing combined headers like 'Opponent / Time'
+const findKey = function (row = {}, names = []) {
+  const keys = Object.keys(row)
+  for (const name of names) {
+    const soft = soften(name)
+    const key = keys.find((k) => soften(k) === soft) || keys.find((k) => soften(k).startsWith(soft))
+    if (key) {
+      return key
+    }
+  }
+  return null
+}
+
 const getCell = function (row = {}, names = []) {
   for (const name of names) {
     if (row[name] !== undefined && row[name] !== '') {
@@ -60,4 +73,4 @@ const stripNotes = function (str = '') {
 // split '4–2' on any dash variant
 const dashSplit = /[–\-−—]|&[nm]dash;/
 
-export { withChildren, findSection, getCell, stripNotes, dashSplit }
+export { withChildren, findSection, getCell, findKey, stripNotes, dashSplit }

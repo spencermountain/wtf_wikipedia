@@ -29,6 +29,8 @@ const makeTitle = function (team, year) {
   return `${seasonSlug(year)} ${team} season`.replace(/ /g, '_')
 }
 
+const gameTitles = ['regular season', 'schedule and results', 'game log', 'schedule']
+
 // nhl seasons start in october - before august, "this season" began last year
 const defaultYear = function () {
   const now = new Date()
@@ -86,8 +88,8 @@ const parse = function (doc) {
     page: doc.title || '',
     season,
     standings: standings(season),
-    games: findGames(doc, ctx, ['regular season', 'schedule and results', 'game log', 'schedule']),
-    playoffs: findSeries(doc, ctx, ['playoffs', 'postseason']),
+    games: findGames(doc, ctx, gameTitles),
+    playoffs: findSeries(doc, ctx, ['playoffs', 'postseason'], gameTitles),
     skaters: parseSkaters(doc),
     goalies: parseGoalies(doc),
   }

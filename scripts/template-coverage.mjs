@@ -159,10 +159,12 @@ const htmlToText = (html) => {
       .replace(/<style[\s\S]*?<\/style>/g, '')
       // reference markers, [citation needed]-style markers, edit links
       .replace(/<sup[^>]*class="[^"]*(reference|noprint|Inline-Template)[^"]*"[\s\S]*?<\/sup>/g, '')
-      .replace(/<span class="(mw-editsection|noprint|sortkey|mw-ref|mw-reflink-text)[^"]*"[\s\S]*?<\/span>/g, '')
-      // hidden microformat data: (1809-02-12) in birth dates, the extra coordinate formats
+      .replace(/<span class="(mw-editsection|sortkey|mw-ref|mw-reflink-text)[^"]*"[\s\S]*?<\/span>/g, '')
+      // hidden microformat data: (1809-02-12) in birth dates, the extra coordinate formats.
+      // innermost spans first, since these nest: <span style="display:none">(<span class="bday">..</span>)</span>
+      .replace(/<span class="(bday|dtstart|dtend|geo-nondefault|geo-multi-punct|geo-geo-dec|geo-geo-dms)[^"]*"[^<]*<\/span>/g, '')
+      .replace(/<span[^>]*style="[^"]*display:\s*none[^"]*"[^<]*<\/span>/g, '')
       .replace(/<span[^>]*style="[^"]*display:\s*none[^"]*"[\s\S]*?<\/span>/g, '')
-      .replace(/<span class="(bday|dtstart|dtend|geo-nondefault|geo-multi-punct|geo-geo-dec|geo-geo-dms)[^"]*"[\s\S]*?<\/span>/g, '')
       .replace(/<br\s*\/?>/g, ' ')
       .replace(/<\/(p|div|li|tr|td|th|h\d)>/g, ' ')
       .replace(/<[^>]+>/g, '')
@@ -174,7 +176,7 @@ const htmlToText = (html) => {
 const renderOnWikipedia = async (invocation, title) => {
   const json = await api({ action: 'parse', text: invocation, title, contentmodel: 'wikitext', prop: 'text|externallinks', disablelimitreport: '1', wrapoutputclass: '' })
   const html = json.parse?.text || ''
-  const isBlock = /<table|class="navbox|class="hatnote|class="infobox|<ul|<ol|class="thumb|class="gallery|<div class="(quotebox|toc)/i.test(html)
+  const isBlock = /<table|<ul|<ol|class="[^"]*(navbox|hatnote|infobox|thumb|gallery|quotebox|toc|side-box|sistersitebox|dmbox|metadata|plainlist|hlist|mw-collapsible|ambox)/i.test(html)
   return { text: htmlToText(html), links: json.parse?.externallinks || [], isBlock, html }
 }
 

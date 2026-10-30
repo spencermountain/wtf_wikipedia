@@ -202,6 +202,28 @@ test('2010s mlb: multi-line section opener, no headings', (t) => {
   t.end()
 })
 
+test('2012 mlb: combined opponent/time column', (t) => {
+  const page = `The '''2012 St. Louis Cardinals season''' was the 131st season.
+
+==Scheduling and Results==
+===Game log===
+{{Game log start|style=background:#6E8B3D|title= 2012 Game Log}}
+{{Game log section start|hide=y|title=April (14–8) ({{Winning percentage|14|8}})| #| Date| Opponent / Time| Score| Win| Loss| Save| Attendance| Record}}
+|- align="center" bgcolor="bbffbb"
+| 1 || April 4 || @ [[Miami Marlins|Marlins]] 6:05pm ([[Wednesday Night Baseball|ESPN]]) || 4–1 || '''[[Kyle Lohse|Lohse]]''' (1–0) || [[Josh Johnson (pitcher)|Johnson]] (0–1) || '''[[Jason Motte|Motte]]''' (1) || 36,601 || [http://mlb.mlb.com/recap 1–0]
+|-
+{{Game log section end}}
+`
+  const res = wtf(page, { title: '2012 St. Louis Cardinals season' }).mlbSeason()
+  t.equal(res.games.length, 1, 'one game')
+  const g1 = res.games[0]
+  t.equal(g1.opponent, 'Miami Marlins', 'opponent through combined column')
+  t.equal(g1.home, false, 'away game')
+  t.equal(g1.outcome, 'win', 'win from row color')
+  t.deepEqual(g1.record, { wins: 1, losses: 0, games: 1, winPct: 1 }, 'record through external link')
+  t.end()
+})
+
 test('plugin methods exist', (t) => {
   t.equal(typeof wtf(nhlPage).nhlSeason, 'function', 'doc.nhlSeason')
   t.equal(typeof wtf(mlbPage).mlbSeason, 'function', 'doc.mlbSeason')

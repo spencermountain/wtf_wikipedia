@@ -25,8 +25,18 @@ const firstYear = 2012 //1980
 const thisYear = new Date().getFullYear()
 
 const leagues = {
-  mlb: { franchises: mlbFranchises, title: mlbTitle, parse: (doc) => doc.mlbSeason() },
-  nhl: { franchises: nhlFranchises, title: nhlTitle, parse: (doc) => doc.nhlSeason() },
+  mlb: {
+    franchises: mlbFranchises,
+    title: mlbTitle,
+    parse: (doc) => doc.mlbSeason(),
+    players: (res) => res.roster.length,
+  },
+  nhl: {
+    franchises: nhlFranchises,
+    title: nhlTitle,
+    parse: (doc) => doc.nhlSeason(),
+    players: (res) => res.skaters.length + res.goalies.length,
+  },
 }
 
 // does the page even contain game-log markup?
@@ -46,14 +56,15 @@ const checkSeason = async function (league, team, year) {
     doc = await wtf.fetch(leagues[league].title(team, year))
     res = doc ? leagues[league].parse(doc) : null
   } catch (e) {
-    return { games: 0, wins: 0, flag: 'ERROR', note: e.message }
+    return { games: 0, wins: 0, players: 0, flag: 'ERROR', note: e.message }
   }
   if (!res) {
-    return { games: 0, wins: 0, flag: 'NO PAGE', note: '' }
+    return { games: 0, wins: 0, players: 0, flag: 'NO PAGE', note: '' }
   }
   const games = res.games.length
   const wins = res.games.filter((g) => g.win === true).length
-  const out = { games, wins, flag: '', note: '' }
+  const players = leagues[league].players(res)
+  const out = { games, wins, players, flag: '', note: '' }
   const recWins = res.season?.record?.wins
   if (games === 0) {
     if (hasLog(doc.wikitext())) {
@@ -87,7 +98,7 @@ const run = async function () {
         const res = await checkSeason(league, team, year)
         count += 1
         const label = `${league} ${year}  ${team}`.padEnd(44)
-        const counts = `${String(res.games).padStart(3)} games  ${String(res.wins).padStart(3)} wins`
+        const counts = `${String(res.games).padStart(3)} games  ${String(res.wins).padStart(3)} wins  ${String(res.players).padStart(3)} players`
         if (res.flag) {
           const line = `⚠ ${label}${counts}  ${res.flag}${res.note ? ' - ' + res.note : ''}`
           flagged.push(line)

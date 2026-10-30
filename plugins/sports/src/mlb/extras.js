@@ -36,7 +36,9 @@ const parsePlayerStats = function (doc) {
       }
     })
   }
-  const main = findSection(doc, ['statistics', 'player stats', 'player statistics'])
+  let main = findSection(doc, ['statistics', 'player stats', 'player statistics'])
+  // looser fallback - 'Final Regular Season Statistics' and friends
+  main = main || doc.sections().find((s) => /\b(statistics|stats)\b/i.test(s.title())) || null
   if (main) {
     addTree(main)
   }
@@ -46,13 +48,25 @@ const parsePlayerStats = function (doc) {
       addTree(s)
     }
   })
-  const rows = sections.flatMap((c) => c.tables().flatMap((t) => t.rows()))
-  rows.forEach((p) => {
-    if (p.rbi !== undefined || p.hr !== undefined || p.RBI !== undefined || p.HR !== undefined) {
-      res.batters.push(p)
-    } else {
-      res.pitchers.push(p)
+  sections.forEach((c) => {
+    // the section title usually says which kind of table this is -
+    // pitching tables also have hr/rbi columns, so titles beat the key-check
+    let kind = null
+    if (/pitch/i.test(c.title())) {
+      kind = 'pitchers'
+    } else if (/bat|hit/i.test(c.title())) {
+      kind = 'batters'
     }
+    const rows = c.tables().flatMap((t) => t.rows())
+    rows.forEach((p) => {
+      if (kind) {
+        res[kind].push(p)
+      } else if (p.rbi !== undefined || p.hr !== undefined || p.RBI !== undefined || p.HR !== undefined) {
+        res.batters.push(p)
+      } else {
+        res.pitchers.push(p)
+      }
+    })
   })
   return res
 }

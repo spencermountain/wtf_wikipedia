@@ -26,7 +26,7 @@ const fromTemplate = function (tmpl) {
   })
 }
 
-// each table or game-log template in the section becomes one group of rows
+// each table or game-log template in the section becomes one group: {title, rows}
 // a `skip` regex drops matching subsections and everything nested under them
 const rowGroups = function (doc, section, skip) {
   const groups = []
@@ -42,9 +42,12 @@ const rowGroups = function (doc, section, skip) {
         return
       }
     }
-    s.tables().forEach((t) => groups.push(fromTable(t)))
-    s.templates('game log section').forEach((t) => groups.push(fromTemplate(t)))
+    s.tables().forEach((t) => groups.push({ title: '', rows: fromTable(t) }))
+    s.templates('game log section').forEach((t) => {
+      const data = t.json().data || {}
+      groups.push({ title: String(data.title || ''), rows: fromTemplate(t) })
+    })
   })
-  return groups.filter((rows) => rows.length > 0)
+  return groups.filter((g) => g.rows.length > 0)
 }
 export default rowGroups

@@ -111,7 +111,9 @@ const parseLog = function (wiki, section, opts) {
   const inner = wiki.slice(open.index + 2, templateEnd(wiki, open.index) - 2)
   const { named, positional } = parseOpener(inner)
   // modern templates list their column headings as positional params
-  const headings = positional.length > 1 ? positional : legacyHeadings(named)
+  let headings = positional.length > 1 ? positional : legacyHeadings(named)
+  // a '<br/>' in a heading would corrupt the column key
+  headings = headings.map((h) => h.replace(/<[^>]*>/g, ' ').trim())
   let rowText = wiki.slice(templateEnd(wiki, open.index)).replace(closeReg, '')
   // html-syntax runs after this stage, so drop inline formatting tags ourselves
   rowText = rowText.replace(/<\/?(?:span|small|big|sup|sub|center|[biu])[^>]*>/gi, '')

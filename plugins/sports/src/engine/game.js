@@ -1,4 +1,4 @@
-import { getCell, dashSplit } from '../_lib.js'
+import { getCell, findKey, dashSplit } from '../_lib.js'
 import outcomeOf from './outcome.js'
 import parseRecord from './record.js'
 
@@ -74,14 +74,17 @@ const visitorHome = function (game, row, ctx, score) {
 
 // an opponent column marks away-games with '@' or 'at'
 const opponentCol = function (game, row, ctx, score) {
-  let opp = getCell(row.cells, ['opponent', 'opp', 'team'])
+  // combined headers like 'Opponent / Time' still count as the opponent column
+  const key = findKey(row.cells, ['opponent', 'opp', 'team'])
+  let opp = key ? row.cells[key] : ''
   if (!opp) {
     return false
   }
   game.home = /^ *(@|at )/i.test(opp) === false
   opp = opp.replace(/^ *(@|at ) */i, '').trim()
   opp = opp.replace(/ *\(\d{4}[^)]*\)$/, '') //a '(2002–03)' season-link suffix
-  const oppLink = row.links.opponent || row.links.opp || row.links.team
+  opp = opp.replace(/ \d{1,2}:\d{2} ?[ap]\.?m.*$/i, '') //a '6:05pm (ESPN)' suffix
+  const oppLink = row.links[key]
   game.opponent = fromSeasonPage(oppLink) || fromTeamPage(oppLink) || ctx.fullName(opp)
   // scores here may be ours-first or winner-first - the outcome settles both
   if (score && game.outcome === 'win') {
@@ -111,13 +114,14 @@ const monthNames = [
 
 // some 1980s logs name the date column after the month, with day-of-month cells
 const findDate = function (cells) {
-  const date = getCell(cells, ['date'])
-  if (date) {
-    return date
+  // prefix-match, for combined headings like 'Date / Time (ET)'
+  const key = findKey(cells, ['date'])
+  if (key && cells[key]) {
+    return cells[key]
   }
-  const key = Object.keys(cells).find((k) => monthNames.includes(k))
-  if (key && cells[key] && /^\d{1,2}$/.test(String(cells[key]).trim())) {
-    return `${key.charAt(0).toUpperCase()}${key.slice(1)} ${String(cells[key]).trim()}`
+  const month = Object.keys(cells).find((k) => monthNames.includes(k))
+  if (month && cells[month] && /^\d{1,2}$/.test(String(cells[month]).trim())) {
+    return `${month.charAt(0).toUpperCase()}${month.slice(1)} ${String(cells[month]).trim()}`
   }
   return ''
 }
@@ -156,6 +160,10 @@ const buildGame = function (row, ctx) {
   game.attendance = parseAttendance(getCell(cells, ['attendance', 'location (attendance)']))
   if (ctx.extras) {
     ctx.extras(game, row)
+  }
+  // all-star breaks and broadcast notes have a date, but nothing else
+  if (game.game === undefined && !score && !game.record && game.outcome === null) {
+    return null
   }
   return game
 }

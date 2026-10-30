@@ -22,6 +22,7 @@ const defaultYear = function () {
 }
 
 const noSave = /^[–\-−—]*$/
+const gameTitles = ['game log', 'season game log', 'schedule and results', 'schedule', 'regular season']
 
 // per-game extras: the pitchers of record, and games-back
 const extras = function (game, row) {
@@ -69,8 +70,8 @@ const parse = function (doc) {
     page: doc.title || '',
     season,
     standings: standings(season),
-    games: findGames(doc, ctx, ['game log', 'season game log', 'schedule and results', 'schedule', 'regular season']),
-    postseason: findSeries(doc, ctx, ['postseason game log', 'postseason', 'playoffs']),
+    games: findGames(doc, ctx, gameTitles),
+    postseason: findSeries(doc, ctx, ['postseason game log', 'postseason', 'playoffs'], gameTitles),
     roster: parseRoster(doc, meta.year),
     draftPicks: parseDraftPicks(doc),
     playerStats: parsePlayerStats(doc),

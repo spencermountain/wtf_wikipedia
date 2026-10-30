@@ -35,6 +35,19 @@ const soften = (k = '') =>
     .toLowerCase()
     .replace(/[^a-z0-9#+/−]/g, '');
 
+// the key a column actually landed under, allowing combined headers like 'Opponent / Time'
+const findKey = function (row = {}, names = []) {
+  const keys = Object.keys(row);
+  for (const name of names) {
+    const soft = soften(name);
+    const key = keys.find((k) => soften(k) === soft) || keys.find((k) => soften(k).startsWith(soft));
+    if (key) {
+      return key
+    }
+  }
+  return null
+};
+
 const getCell = function (row = {}, names = []) {
   for (const name of names) {
     if (row[name] !== undefined && row[name] !== '') {
@@ -89,7 +102,7 @@ const fromTemplate = function (tmpl) {
   })
 };
 
-// each table or game-log template in the section becomes one group of rows
+// each table or game-log template in the section becomes one group: {title, rows}
 // a `skip` regex drops matching subsections and everything nested under them
 const rowGroups = function (doc, section, skip) {
   const groups = [];
@@ -105,10 +118,13 @@ const rowGroups = function (doc, section, skip) {
         return
       }
     }
-    s.tables().forEach((t) => groups.push(fromTable(t)));
-    s.templates('game log section').forEach((t) => groups.push(fromTemplate(t)));
+    s.tables().forEach((t) => groups.push({ title: '', rows: fromTable(t) }));
+    s.templates('game log section').forEach((t) => {
+      const data = t.json().data || {};
+      groups.push({ title: String(data.title || ''), rows: fromTemplate(t) });
+    });
   });
-  return groups.filter((rows) => rows.length > 0)
+  return groups.filter((g) => g.rows.length > 0)
 };
 
 // the win/loss signal lives in row markup: {{Game-won}} templates or background colors
@@ -290,14 +306,17 @@ const visitorHome = function (game, row, ctx, score) {
 
 // an opponent column marks away-games with '@' or 'at'
 const opponentCol = function (game, row, ctx, score) {
-  let opp = getCell(row.cells, ['opponent', 'opp', 'team']);
+  // combined headers like 'Opponent / Time' still count as the opponent column
+  const key = findKey(row.cells, ['opponent', 'opp', 'team']);
+  let opp = key ? row.cells[key] : '';
   if (!opp) {
     return false
   }
   game.home = /^ *(@|at )/i.test(opp) === false;
   opp = opp.replace(/^ *(@|at ) */i, '').trim();
   opp = opp.replace(/ *\(\d{4}[^)]*\)$/, ''); //a '(2002–03)' season-link suffix
-  const oppLink = row.links.opponent || row.links.opp || row.links.team;
+  opp = opp.replace(/ \d{1,2}:\d{2} ?[ap]\.?m.*$/i, ''); //a '6:05pm (ESPN)' suffix
+  const oppLink = row.links[key];
   game.opponent = fromSeasonPage(oppLink) || fromTeamPage(oppLink) || ctx.fullName(opp);
   // scores here may be ours-first or winner-first - the outcome settles both
   if (score && game.outcome === 'win') {
@@ -327,13 +346,14 @@ const monthNames = [
 
 // some 1980s logs name the date column after the month, with day-of-month cells
 const findDate = function (cells) {
-  const date = getCell(cells, ['date']);
-  if (date) {
-    return date
+  // prefix-match, for combined headings like 'Date / Time (ET)'
+  const key = findKey(cells, ['date']);
+  if (key && cells[key]) {
+    return cells[key]
   }
-  const key = Object.keys(cells).find((k) => monthNames.includes(k));
-  if (key && cells[key] && /^\d{1,2}$/.test(String(cells[key]).trim())) {
-    return `${key.charAt(0).toUpperCase()}${key.slice(1)} ${String(cells[key]).trim()}`
+  const month = Object.keys(cells).find((k) => monthNames.includes(k));
+  if (month && cells[month] && /^\d{1,2}$/.test(String(cells[month]).trim())) {
+    return `${month.charAt(0).toUpperCase()}${month.slice(1)} ${String(cells[month]).trim()}`
   }
   return ''
 };
@@ -373,22 +393,35 @@ const buildGame = function (row, ctx) {
   if (ctx.extras) {
     ctx.extras(game, row);
   }
+  // all-star breaks and broadcast notes have a date, but nothing else
+  if (game.game === undefined && !score && !game.record && game.outcome === null) {
+    return null
+  }
   return game
 };
 
 // candidate sections in title-priority order - pages can have
 // a prose 'Regular season' section besides the real schedule one
-const findSections = function (doc, titles) {
+const findSections = function (doc, titles, exclude) {
   const all = doc.sections();
   const found = [];
-  titles.forEach((title) => {
-    const want = title.toLowerCase();
+  const seen = new Set();
+  const addMatches = function (want, loose) {
     all.forEach((s) => {
-      if (s.title().trim().toLowerCase() === want) {
+      const title = s.title().trim().toLowerCase();
+      const hit = loose ? title.includes(want) : title === want;
+      if (hit && seen.has(s.index()) === false) {
+        if (exclude && exclude.test(title)) {
+          return
+        }
+        seen.add(s.index());
         found.push(s);
       }
     });
-  });
+  };
+  titles.forEach((title) => addMatches(title.toLowerCase(), false));
+  // a looser pass - 'Game log and schedule' still counts as 'game log'
+  titles.forEach((title) => addMatches(title.toLowerCase(), true));
   return found
 };
 
@@ -442,13 +475,16 @@ const buildGroup = function (rows, ctx) {
 // infer missing outcomes over a whole run of games, so records carry across tables
 const finish = (games) => orientScores(inferFromRecord(games));
 
-// subsections that live under a 'Game log' but are not regular-season games
-const notRegularSeason = /postseason|playoff|world series|championship|division series|wild card|detailed record|composite box|month.by.month/i;
+// subsections or log-titles that are not regular-season games
+const postseasonish = /postseason|playoff|world series|championship|division series|wild card/i;
+const notRegularSeason =
+  /postseason|playoff|world series|championship|division series|wild card|detailed record|composite box|month.by.month/i;
 
 // all games under the best matching section, in one flat list
 const findGames = function (doc, ctx, titles) {
-  for (const section of findSections(doc, titles)) {
-    const games = rowGroups(doc, section, notRegularSeason).flatMap((rows) => buildGroup(rows, ctx));
+  for (const section of findSections(doc, titles, notRegularSeason)) {
+    const groups = rowGroups(doc, section, notRegularSeason).filter((g) => notRegularSeason.test(g.title) === false);
+    const games = groups.flatMap((g) => buildGroup(g.rows, ctx));
     if (games.length > 0) {
       return finish(games)
     }
@@ -457,11 +493,19 @@ const findGames = function (doc, ctx, titles) {
 };
 
 // keep each table/template separate - a group per playoff series
-const findSeries = function (doc, ctx, titles) {
+const findSeries = function (doc, ctx, titles, gameTitles) {
   for (const section of findSections(doc, titles)) {
     const series = rowGroups(doc, section)
-      .map((rows) => finish(buildGroup(rows, ctx)))
+      .map((g) => finish(buildGroup(g.rows, ctx)))
       .filter((games) => games.length > 0);
+    if (series.length > 0) {
+      return series
+    }
+  }
+  // some pages keep the postseason logs inside the main game-log section
+  for (const section of findSections(doc, gameTitles || [])) {
+    const groups = rowGroups(doc, section).filter((g) => postseasonish.test(g.title));
+    const series = groups.map((g) => finish(buildGroup(g.rows, ctx))).filter((games) => games.length > 0);
     if (series.length > 0) {
       return series
     }
@@ -621,7 +665,9 @@ const parsePlayerStats = function (doc) {
       }
     });
   };
-  const main = findSection(doc, ['statistics', 'player stats', 'player statistics']);
+  let main = findSection(doc, ['statistics', 'player stats', 'player statistics']);
+  // looser fallback - 'Final Regular Season Statistics' and friends
+  main = main || doc.sections().find((s) => /\b(statistics|stats)\b/i.test(s.title())) || null;
   if (main) {
     addTree(main);
   }
@@ -631,13 +677,25 @@ const parsePlayerStats = function (doc) {
       addTree(s);
     }
   });
-  const rows = sections.flatMap((c) => c.tables().flatMap((t) => t.rows()));
-  rows.forEach((p) => {
-    if (p.rbi !== undefined || p.hr !== undefined || p.RBI !== undefined || p.HR !== undefined) {
-      res.batters.push(p);
-    } else {
-      res.pitchers.push(p);
+  sections.forEach((c) => {
+    // the section title usually says which kind of table this is -
+    // pitching tables also have hr/rbi columns, so titles beat the key-check
+    let kind = null;
+    if (/pitch/i.test(c.title())) {
+      kind = 'pitchers';
+    } else if (/bat|hit/i.test(c.title())) {
+      kind = 'batters';
     }
+    const rows = c.tables().flatMap((t) => t.rows());
+    rows.forEach((p) => {
+      if (kind) {
+        res[kind].push(p);
+      } else if (p.rbi !== undefined || p.hr !== undefined || p.RBI !== undefined || p.HR !== undefined) {
+        res.batters.push(p);
+      } else {
+        res.pitchers.push(p);
+      }
+    });
   });
   return res
 };
@@ -659,6 +717,7 @@ const defaultYear$1 = function () {
 };
 
 const noSave = /^[–\-−—]*$/;
+const gameTitles$1 = ['game log', 'season game log', 'schedule and results', 'schedule', 'regular season'];
 
 // per-game extras: the pitchers of record, and games-back
 const extras$1 = function (game, row) {
@@ -706,8 +765,8 @@ const parse$1 = function (doc) {
     page: doc.title || '',
     season,
     standings: standings$1(season),
-    games: findGames(doc, ctx, ['game log', 'season game log', 'schedule and results', 'schedule', 'regular season']),
-    postseason: findSeries(doc, ctx, ['postseason game log', 'postseason', 'playoffs']),
+    games: findGames(doc, ctx, gameTitles$1),
+    postseason: findSeries(doc, ctx, ['postseason game log', 'postseason', 'playoffs'], gameTitles$1),
     roster: parseRoster(doc, meta.year),
     draftPicks: parseDraftPicks(doc),
     playerStats: parsePlayerStats(doc),
@@ -853,6 +912,8 @@ const makeTitle = function (team, year) {
   return `${seasonSlug(year)} ${team} season`.replace(/ /g, '_')
 };
 
+const gameTitles = ['regular season', 'schedule and results', 'game log', 'schedule'];
+
 // nhl seasons start in october - before august, "this season" began last year
 const defaultYear = function () {
   const now = new Date();
@@ -910,8 +971,8 @@ const parse = function (doc) {
     page: doc.title || '',
     season,
     standings: standings(season),
-    games: findGames(doc, ctx, ['regular season', 'schedule and results', 'game log', 'schedule']),
-    playoffs: findSeries(doc, ctx, ['playoffs', 'postseason']),
+    games: findGames(doc, ctx, gameTitles),
+    playoffs: findSeries(doc, ctx, ['playoffs', 'postseason'], gameTitles),
     skaters: parseSkaters(doc),
     goalies: parseGoalies(doc),
   }
