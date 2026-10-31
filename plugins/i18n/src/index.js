@@ -39,7 +39,7 @@ const mapping = {
   'cite journal': citeJournal,
   'cite web': citeWeb,
   'commons cat': commonsCat,
-  'start date': startDate,
+  start: startDate, // 'start date' is an alias in core; 'start' is the registry key
   nihongo: ['japonês', 'japonais', 'нихонго'],
 }
 
@@ -50,6 +50,10 @@ const plugin = function (_models, templates, infoboxes = {}) {
   })
   Object.keys(mapping).forEach((k) => {
     const parser = templates[k]
+    // fail at extend-time, not parse-time, if a core registry key moves
+    if (typeof parser !== 'function') {
+      throw new Error(`wtf-plugin-i18n: '${k}' is not a core template`)
+    }
     mapping[k].forEach((name) => {
       // Bridge the plugin callback to the built-in result contract.
       templates[name] = function (tmpl, list, parse, _unused, opts) {

@@ -1,13 +1,13 @@
 export default [
   'atsauce',
   'chú thích',
-  'cit',
+  // 'cit', - core alias of 'citation needed'
   'cita testo',
   'citácia harvard',
   'citat',
   'citat3',
   // 'citation',
-  'cite',
+  // 'cite', - already a core alias
   'citim',
   'cito',
   'cytuj',

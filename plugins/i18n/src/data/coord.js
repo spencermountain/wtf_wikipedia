@@ -5,7 +5,7 @@ export default [
   // 'coor dms',
   // 'coord',
   'coordenadas',
-  'coordinate',
+  // 'coordinate', - already a core alias
   'coördinaten',
   'cord',
   'hnit',
