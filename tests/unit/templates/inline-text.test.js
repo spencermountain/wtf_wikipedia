@@ -24,6 +24,8 @@ test('langx keeps the text, transliteration and literal translation', (t) => {
     ['{{lang-sux|𒆠}}', '𒆠'],
     ['{{lang|fr|bonjour}}', 'bonjour'],
   ])
+  t.equal(wtf('{{lang-la|Salix}}', { lang: 'ru' }).text(), 'Salix', 'no english label on other wikis')
+  t.equal(wtf('{{langx|la|Salix}}', { lang: 'fr' }).text(), 'Salix', 'no english label on other wikis (langx)')
   const data = wtf('{{langx|ar|العربية|al-ʿarabiyya|lit=Arabic}}').templates()[0].json().data
   t.equal(data.lang, 'ar', 'langx lang code')
   t.equal(data.translit, 'al-ʿarabiyya', 'langx translit')

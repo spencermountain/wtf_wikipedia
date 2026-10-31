@@ -3,10 +3,11 @@ import defaultParse from '../../parse/templates/parse/toJSON/text.ts'
 import languageNames from '../../_data/language-names.ts'
 
 // 'French: bonjour, romanized: x, lit. 'y'' - as wikipedia renders {{langx}} and {{lang-xx}}
-const langText = (code = '', obj: any = {}) => {
+// (our label names are english, so other wikis get no label rather than a wrong one)
+const langText = (code = '', obj: any = {}, opts: any = {}) => {
   code = code.toLowerCase()
   let label = obj.label
-  if (label === undefined) {
+  if (label === undefined && (!opts.lang || opts.lang === 'en')) {
     label = languageNames[code] || languageNames[code.split('-')[0]] || ''
   }
   let translit = obj.translit || obj.transliteration || ''
@@ -26,7 +27,7 @@ const langText = (code = '', obj: any = {}) => {
 
 // https://en.wikipedia.org/wiki/Template:Langx - the 2024 replacement for every {{lang-xx}}
 // {{langx|ar|العربية|al-ʿarabiyya|lit=Arabic}} → Arabic: العربية, romanized: al-ʿarabiyya, lit. 'Arabic'
-const langx = (tmpl, parse = defaultParse) => {
+const langx = (tmpl, parse = defaultParse, opts = {}) => {
   let obj = parse(tmpl, ['code', 'text', 'translit', 'lit'])
   const payload: any = { template: 'langx', lang: obj.code, text: obj.text || '' }
   if (obj.translit || obj.transliteration) {
@@ -35,18 +36,18 @@ const langx = (tmpl, parse = defaultParse) => {
   if (obj.lit || obj.translation) {
     payload.lit = obj.lit || obj.translation
   }
-  return { data: payload, replacement: langText(obj.code, obj) }
+  return { data: payload, replacement: langText(obj.code, obj, opts) }
 }
 
 // {{lang-fr|bonjour}} → French: bonjour  (the code comes from the template name)
-const langDash = (tmpl, parse = defaultParse) => {
+const langDash = (tmpl, parse = defaultParse, opts = {}) => {
   let obj = parse(tmpl, ['text', 'translit', 'lit'])
   let code = (obj.template || '').replace(/^lang-/, '')
   // {{lang-sr-cyrl-latn|cyrillic|latin}} gives both scripts
   if (/-(cyrl?|latn)-(cyrl|latn)$/.test(code)) {
     code = code.replace(/-(cyrl|latn)$/, '')
   }
-  return { data: null, replacement: langText(code, obj) }
+  return { data: null, replacement: langText(code, obj, opts) }
 }
 
 // https://en.wikipedia.org/wiki/Template:Zh

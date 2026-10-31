@@ -53,11 +53,13 @@ export default {
   },
   'monthyear-1': () => {
     let d = new Date()
+    d.setDate(1) // so the 31st does not roll over into the wrong month
     d.setMonth(d.getMonth() - 1)
     return { data: null, replacement: months[d.getMonth()] + ' ' + d.getFullYear() }
   },
   'monthyear+1': () => {
     let d = new Date()
+    d.setDate(1) // so the 31st does not roll over into the wrong month
     d.setMonth(d.getMonth() + 1)
     return { data: null, replacement: months[d.getMonth()] + ' ' + d.getFullYear() }
   },

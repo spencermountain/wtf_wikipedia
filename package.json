@@ -59,6 +59,7 @@
     "build:all": "pnpm run build && pnpm -r run build",
     "lint": "eslint .",
     "test": "pnpm run test:unit",
+    "render": "node ./scripts/render/index.js",
     "test:unit": "tape --strict \"tests/unit/**/*.test.js\" | tap-dancer",
     "test:types": "tsc -p ./tests/types && tsc -p ./tests/types/node10.tsconfig.json && tsc -p ./tests/types/plugins.tsconfig.json && tsc -p ./tests/types/plugins-cjs.tsconfig.json",
     "test:fetch": "tape --strict \"tests/fetch/**/*.test.js\" | tap-dancer",
