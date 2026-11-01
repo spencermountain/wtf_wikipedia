@@ -1,0 +1,2835 @@
+{{Short description|NBA basketball team season (won championship)}}
+{{Use American English|date=August 2019}}
+{{Use mdy dates|date=August 2019}}
+{{Infobox NBA season
+| team            = Chicago Bulls
+| ChampionshipWin = yes
+| ConferenceWin   = yes
+| DivisionWin     = yes
+| end_year        = 1996
+| wins            = 72
+| losses          = 10
+| division        = Central
+| division_place  = 1
+| conf_place      = 1
+| coach           = [[Phil Jackson]]
+| arena           = [[United Center]]
+| gm              = [[Jerry Krause]]
+| owners          = [[Jerry Reinsdorf]]
+| television      = [[WGN-TV]]<br><small>([[Wayne Larrivee]], [[Johnny Kerr|Johnny "Red" Kerr]])</small><br>[[SportsChannel Chicago]]<br><small>([[Tom Dore]], [[Johnny Kerr|Johnny "Red" Kerr]])</small>
+| radio           = [[WMAQ (AM)|WMAQ]]
+| playoffs        = '''[[1996 NBA Finals|NBA champions]]'''<br /><small>(Defeated [[1995–96 Seattle SuperSonics season|SuperSonics]] 4–2)</small>
+| bbr_team        = CHI
+}}
+The '''1995–96 Chicago Bulls season''' was the 30th season for the [[Chicago Bulls]] in the [[National Basketball Association]].<ref name="franchise">{{cite web | title = Chicago Bulls | publisher = Basketball-Reference | url = https://www.basketball-reference.com/teams/CHI/ | access-date = August 6, 2026}}</ref> The Bulls became the first NBA team to ever win 70 regular season games, finishing in first place in the [[Central Division (NBA)|Central Division]] with a league-best 72–10 record, and earned the first seed in the [[Eastern Conference (NBA)|Eastern Conference]];<ref name="schedule" /> the team also posted a league-best 39–2 home record at the [[United Center]],<ref>{{cite news | last = Armour | first = Terry | title = Chicago Bulls Finish Season with All-Time Best 72-10 Record | work = Chicago Tribune | date = April 22, 1996 | url = https://www.chicagotribune.com/sports/bulls/ct-bulls-72-wins-record-1996-story.html | access-date = May 14, 2022}}</ref> and qualified for the [[NBA playoffs]] for the twelfth consecutive year.<ref name="franchise"/> They defeated the [[1995–96 Seattle SuperSonics season| Seattle SuperSonics]] in the [[1996 NBA Finals|NBA Finals]] in six games to become the NBA Champions.
+
+==Season summary==
+
+===Off-season===
+During the off-season, the Bulls acquired controversial All-Star forward and rebound specialist [[Dennis Rodman]] from the [[1994–95 San Antonio Spurs season|San Antonio Spurs]],<ref>{{cite news | last = Brown | first = Clifton | title = Pro Basketball: Unhappy Rodman Is Dealt from Spurs to the Bulls | work = The New York Times | date = October 3, 1995 | url = https://www.nytimes.com/1995/10/03/sports/pro-basketball-unhappy-rodman-is-dealt-from-spurs-to-the-bulls.html | access-date = May 14, 2022}}</ref><ref>{{cite news | agency = Staff and Wire Reports | title = Bulls Take a Chance on Rodman: Pro Basketball: Controversial Forward Is Traded from San Antonio for Will Perdue | work = Los Angeles Times | date = October 3, 1995 | url = https://www.latimes.com/archives/la-xpm-1995-10-03-sp-52721-story.html | access-date = March 1, 2017}}</ref><ref>{{cite news | last = Gano | first = Rick | title = Bulls Acquire Rodman from Spurs | newspaper = The Washington Post | date = October 3, 1995 | url = https://www.washingtonpost.com/archive/sports/1995/10/03/bulls-acquire-rodman-from-spurs/05ef2039-04da-4483-a7bd-84219c40417d/ | access-date = December 3, 2022}}</ref> and signed free agents [[Randy Brown (basketball)|Randy Brown]],<ref>{{cite news | title = Bulls Sign Randy Brown, Re-Sign Longley | publisher = United Press International | date = October 5, 1995 | url = https://www.upi.com/Archives/1995/10/05/Bulls-sign-Randy-Brown-re-sign-Longley/5265812865600/ | access-date = September 24, 2022}}</ref><ref>{{cite news | last = Armour | first = Terry | title = Joining Bulls "Almost Like a Storybook" for Former Collins Prep Brown | work = Chicago Tribune | date = October 6, 1995 | url = https://www.chicagotribune.com/news/ct-xpm-1995-10-06-9510060089-story.html | access-date = February 1, 2023}}</ref> and [[James Edwards (basketball)|James Edwards]].<ref>{{cite news | last = Armour | first = Terry | title = Bulls Sign Edwards to Bolster Monster | work = Chicago Tribune | date = October 27, 1995 | url = https://www.chicagotribune.com/news/ct-xpm-1995-10-27-9510270066-story,amp.html | access-date = October 13, 2021}}</ref> At mid-season, the team signed [[John Salley]], who was previously released by the expansion [[1995–96 Toronto Raptors season|Toronto Raptors]]; Rodman, Edwards and Salley were all teammates on the [[Detroit Pistons]] during the "Bad Boy" era, where they won two consecutive NBA championships between 1989 and 1990.<ref>{{cite news | title = Bulls Sign Salley to 10-Day Contract | publisher = United Press International | date = March 4, 1996 | url = https://www.upi.com/Archives/1996/03/04/Bulls-sign-Salley-to-10-day-contract/5406825915600/ | access-date = June 19, 2021}}</ref><ref>{{cite news | last = Armour | first = Terry | title = Bulls Add Another Ex-Piston in Salley | work = Chicago Tribune | date = March 5, 1996 | url = https://www.chicagotribune.com/news/ct-xpm-1996-03-05-9603050187-story.html | access-date = January 4, 2023}}</ref>
+
+For the season, the Bulls revealed new black alternate road uniforms, which featured red pinstripes, a red, black and white trim, and the team's primary logo on both legs of their shorts;<ref>{{cite web | title = Chicago Bulls Alternate Uniform | website = Chris Creamer's SportsLogos.net | url = https://www.sportslogos.net/logos/view/2mfvbvr35etmph7g34eveeh5o/Chicago_Bulls/1996/Alternate_Uniform | access-date = July 7, 2021}}</ref> eventually, they would remove the pinstripes from their uniforms in [[1997–98 Chicago Bulls season|1997]].<ref>{{cite web | title = Chicago Bulls Alternate Uniform | website = Chris Creamer's SportsLogos.net | url = https://www.sportslogos.net/logos/view/fxch3excetuv92c3a4w1y1rtb/Chicago_Bulls/1998/Alternate_Uniform | access-date = July 7, 2021}}</ref>
+
+===Regular season===
+With the addition of Rodman, the Bulls won their first five games of the regular season, and later on posted a 13-game winning streak between November and December, which led to a 23–2 start to the season. The Bulls posted an 18-game winning streak between January and February, which led to a 41–3 record as of February 2, 1996; the team also went undefeated by posting a 14–0 record in January,<ref>{{cite news | title = NBA Teams That Went Unbeaten for a Full Month | work = HoopsHype | date = December 3, 2021 | url = https://hoopshype.com/gallery/nba-teams-unbeaten-full-month/ | access-date = January 18, 2022}}</ref> and held a 42–5 record at the All-Star break.<ref>{{cite web | title = NBA Games Played on February 8, 1996 | publisher = Basketball-Reference | url = https://www.basketball-reference.com/boxscores/index.fcgi?month=2&day=8&year=1996 | access-date = July 18, 2022}}</ref> The Bulls became the first NBA team to ever win 70 regular season games, finishing in first place in the [[Central Division (NBA)|Central Division]] with a league-best 72–10 record, and earned the first seed in the [[Eastern Conference (NBA)|Eastern Conference]];<ref name="schedule">{{cite web | title = 1995–96 Chicago Bulls Schedule and Results | publisher = Basketball-Reference | url = https://www.basketball-reference.com/teams/CHI/1996_games.html |access-date= June 7, 2026}}</ref> the team also posted a league-best 39–2 home record at the [[United Center]],<ref>{{cite news | last = Armour | first = Terry | title = Chicago Bulls Finish Season with All-Time Best 72-10 Record | work = Chicago Tribune | date = April 22, 1996 | url = https://www.chicagotribune.com/sports/bulls/ct-bulls-72-wins-record-1996-story.html | access-date = May 14, 2022}}</ref> and qualified for the [[NBA playoffs]] for the twelfth consecutive year.<ref name="franchise"/>
+
+The 1995–96 Bulls were named one of the [[Top 10 Teams in NBA History]] during the celebration of the league's 50th anniversary in 1996.<ref>{{cite news | title = Two Bulls Teams Voted Among NBA's 10 Best of All-Time | work = Chicago Tribune | date = June 16, 2011 | url = https://www.chicagotribune.com/sports/ct-xpm-2011-06-16-chi-two-bulls-teams-ranked-among-top-10-of-all-time-20110616-story,amp.html | access-date = July 18, 2021}}</ref> The team set the [[List of NBA teams by single season win percentage|record for most wins]] in an NBA regular season. The [[2015–16 Golden State Warriors season|2015–16 Golden State Warriors]] set a new milestone by finishing with a 73–9 regular season record, but did not win the NBA championship; despite their remarkable performance, the team ultimately fell short in the [[2016 NBA Finals]].<ref>{{cite news | title = Warriors Prove Regular-Season Wins Don't Mean a Thing Without the Ring | work = Chicago Tribune | date = June 20, 2016 | url = https://www.chicagotribune.com/sports/ct-bulls-warriors-nba-titles-spt-0621-20160620-column.html%3foutputType=amp | access-date = July 18, 2021}}</ref> Notably, the Warriors' head coach, [[Steve Kerr]], had a significant link to the 1995–96 Bulls team, having previously played as a point guard for the Bulls during that time. The Bulls' started the regular season 37–0 at home, part of a then-NBA-record 44-game winning streak that included games from the 1994–95 regular season.<ref>{{cite news | last = Armour | first = Terry | title = Struggle: Bulls 100, Heat 92 | work = Chicago Tribune | date = April 5, 1996 | url = https://www.chicagotribune.com/news/ct-xpm-1996-04-05-9604050064-story,amp.html | access-date = July 29, 2021}}</ref> Their 33 road wins were the most in NBA history until the 2015–16 Warriors won 34 road games. The season was the best 3-loss start in NBA history at 41–3 (.932). They are also the only team in NBA history to win more than 70 games and an NBA title in the same season. The Bulls had the best team offensive rating and the best team defensive rating in the NBA, and are widely regarded as one of the greatest teams in NBA history.
+
+In his first full season with the Bulls since the [[1992–93 Chicago Bulls season|1992–93 season]], [[Michael Jordan]] averaged 30.4 points, 6.6 rebounds, 4.3 assists and 2.2 steals per game, contributed 111 three-point field goals, and was named the [[NBA Most Valuable Player|NBA Most Valuable Player of the Year]].<ref name="upiarchives.com">{{cite news | title = Jordan Named NBA MVP | publisher = United Press International | date = May 20, 1996 | url = https://www.upi.com/Archives/1996/05/20/Jordan-named-NBA-MVP/4893832564800/ | access-date = February 1, 2023}}</ref><ref>{{cite news | last = Araton | first = Harvey | title = Sports of the Times: The M.V.P. of Dealing Deserves It | work = The New York Times | date = May 21, 1996 | url = https://www.nytimes.com/1996/05/21/sports/sports-of-the-times-the-mvp-of-dealing-deserves-it.html | access-date = June 10, 2022}}</ref><ref>{{cite web | title = NBA MVP & ABA Most Valuable Player Award Winners | publisher = Basketball-Reference | url = https://www.basketball-reference.com/awards/mvp.html | access-date = November 29, 2022}}</ref> In addition, [[Scottie Pippen]] averaged 19.4 points, 6.4 rebounds, 5.9 assists and 1.7 steals per game, and led the Bulls with 150 three-point field goals, while Croatian small forward [[Toni Kukoč]] played a sixth man role off the bench, averaging 13.1 points, 4.0 rebounds and 3.5 assists per game, and was named the [[NBA Sixth Man of the Year]].<ref>{{cite news | title = Kukoc Named Best of the Bench | newspaper = The Washington Post | date = May 15, 1996 | url = https://www.washingtonpost.com/archive/sports/1996/05/15/kukoc-named-best-of-the-bench/ef224c62-5257-45e0-8684-4bde346b122a/ | access-date = January 30, 2023}}</ref><ref>{{cite news | last = Isaacson | first = Melissa | title = Kukoč: Sixth Man Award 2nd Best to Starting Role | work = Chicago Tribune | date = May 15, 1996 | url = https://www.chicagotribune.com/news/ct-xpm-1996-05-15-9605150312-story,amp.html | access-date = June 19, 2021}}</ref><ref>{{cite web | title = NBA & ABA Sixth Man of the Year Award Winners | publisher = Basketball-Reference | url = https://www.basketball-reference.com/awards/smoy.html | access-date = November 29, 2022}}</ref> Meanwhile, [[Luc Longley]] provided the team with 9.1 points and 5.1 rebounds per game, three-point specialist Kerr contributed 8.4 points per game and 122 three-point field goals off the bench, while shooting .515 in three-point field-goal percentage, and [[Ron Harper]] provided with 7.4 points and 1.3 steals per game. Rodman averaged 5.5 points and 14.9 rebounds per game, and [[Bill Wennington]] contributed 5.3 points and 2.5 rebounds per game.<ref name="stats">{{cite web | title = 1995–96 Chicago Bulls Roster and Stats | publisher = Basketball-Reference | url = https://www.basketball-reference.com/teams/CHI/1996.html | access-date = June 21, 2021}}</ref>
+
+During the [[NBA All-Star weekend]] at the [[Alamodome]] in [[San Antonio, Texas]], Jordan and Pippen were both selected for the [[1996 NBA All-Star Game]], as members of the Eastern Conference All-Star team, while head coach [[Phil Jackson]] was selected to coach the Eastern Conference.<ref>{{cite news | last = Bembry | first = Jerry | title = NBA Coaches Recognize Howard's Star Quality; Bullets' 2nd-Year Player Named Eastern Reserve | work = The Baltimore Sun | date = January 31, 1996 | url = https://www.baltimoresun.com/1996/01/31/nba-coaches-recognize-howards-star-quality-bullets-2nd-year-player-named-eastern-reserve/ | access-date = April 19, 2023}}</ref><ref>{{cite news | last = Heisler | first = Mark | title = NBA Has All-Stars in Its Eyes | work = Los Angeles Times | date = February 11, 1996 | url = https://www.latimes.com/archives/la-xpm-1996-02-11-sp-34849-story.html | access-date = January 2, 2023}}</ref><ref>{{cite web | title = 1996 NBA All-Star Game: East 129, West 118 | publisher = Basketball-Reference | url = https://www.basketball-reference.com/allstar/NBA_1996.html | access-date = November 27, 2021}}</ref> Jordan scored 20 points in 22 minutes, and won his second [[NBA All-Star Game Most Valuable Player]] award, as the Eastern Conference defeated the Western Conference, 129–118.<ref>{{cite news | last = Brown | first = Clifton | title = Pro Basketball: The East Revolves Around Two Stars | work = The New York Times | date = February 12, 1996 | url = https://www.nytimes.com/1996/02/12/sports/pro-basketball-the-east-revolves-around-two-stars.html | access-date = July 25, 2022}}</ref><ref>{{cite news | last = Heisler | first = Mark | title = Jordan Has Time to Spare as MVP of East's Victory | work = Los Angeles Times | date = February 12, 1996 | url = https://www.latimes.com/archives/la-xpm-1996-02-12-sp-35089-story.html | access-date = November 10, 2022}}</ref><ref>{{cite news | agency = NBA.com Staff | title = 1996 NBA All-Star Recap | work = NBA.com | date = September 13, 2021 | url = https://www.nba.com/news/history-all-star-recap-1996 | access-date = May 16, 2023}}</ref> Meanwhile, Kerr participated in the [[Three-Point Contest|NBA Three-Point Shootout]] for the third consecutive year.<ref>{{cite newspaper | title = Pro Basketball | newspaper = The Gainesville Sun | date = February 10, 1996 | page = 15 | url = https://books.google.com/books?id=n0RWAAAAIBAJ&pg=PA31&dq=1996+nba+rookie+game+stoudamire+stackhouse+wallace+henderson&article_id=3767,2375962&hl=en&sa=X&ved=2ahUKEwiSk6WGtuCPAxVxmYkEHfeFOUcQ6AF6BAgGEAM#v=onepage&q=1996%20nba%20rookie%20game%20stoudamire%20stackhouse%20wallace%20henderson&f=false | access-date = September 18, 2025}}</ref><ref>{{cite web | title = NBA & ABA All-Star Game Contest Winners | publisher = Basketball-Reference | url = https://www.basketball-reference.com/allstar/contest.html | access-date = September 18, 2025}}</ref> Jordan and Pippen were both named to the [[All-NBA Team|All-NBA First Team]], and [[NBA All-Defensive Team|NBA All-Defensive First Team]], with Rodman being selected to the latter team, and Jackson was named the [[NBA Coach of the Year]].<ref>{{cite news | title = Bulls' Jackson NBA Coach of Year | publisher = United Press International | date = May 7, 1996 | url = https://www.upi.com/Archives/1996/05/07/Bulls-Jackson-NBA-Coach-of-Year/1100831441600/ | access-date = October 7, 2022}}</ref><ref>{{cite news | last = Isaacson | first = Melissa | title = Better Late Than Never: Jackson Selected Coach of the Year | work = Chicago Tribune | date = May 8, 1996 | url = https://www.chicagotribune.com/news/ct-xpm-1996-05-08-9605080254-story.html | access-date = February 1, 2023}}</ref><ref>{{cite web | title = NBA & ABA Coach of the Year Award Winners | publisher = Basketball-Reference | url = https://www.basketball-reference.com/awards/coy.html | access-date = November 29, 2022}}</ref> Pippen finished in fifth place in [[NBA Most Valuable Player|Most Valuable Player]] voting, while Rodman finished in 15th place;<ref name="upiarchives.com"/><ref name="awards">{{cite web | title = 1995–96 NBA Awards Voting | publisher = Basketball-Reference | url = https://www.basketball-reference.com/awards/awards_1996.html | access-date = January 6, 2025}}</ref> Pippen also finished in second place in [[NBA Defensive Player of the Year|Defensive Player of the Year]] voting, behind [[Gary Payton]] of the [[1995–96 Seattle SuperSonics season|Seattle SuperSonics]], while Jordan finished in sixth place, and Rodman finished in seventh place,<ref>{{cite news | agency = Associated Press | title = N.B.A. Playoffs: Payton Honored for Defense | work = The New York Times | date = May 7, 1996 | url = https://www.nytimes.com/1996/05/07/sports/nba-playoffs-payton-honored-for-defense.html | access-date = July 25, 2022}}</ref><ref name="awards"/> and Kerr finished in ninth place in [[NBA Sixth Man of the Year|Sixth Man of the Year]] voting.<ref name="awards"/>
+
+The Bulls finished second in the NBA in home-game attendance behind the [[1995–96 Charlotte Hornets season|Charlotte Hornets]], with an attendance of 969,149 at the United Center during the regular season.<ref name="stats"/><ref>{{cite web | title = 1995–96 NBA Season Summary | publisher = Basketball-Reference | url = https://www.basketball-reference.com/leagues/NBA_1996.html | access-date = October 9, 2025}}</ref>
+
+===NBA playoffs===
+In the Eastern Conference First Round of the [[1996 NBA playoffs]], the Bulls faced off against the 8th–seeded [[1995–96 Miami Heat season|Miami Heat]], a team that featured All-Star center [[Alonzo Mourning]], All-Star guard [[Tim Hardaway]], and [[Rex Chapman]]. The Bulls won their first two home games over the Heat at the United Center, before winning Game 3 on the road, 112–91 at the [[Miami Arena]] to win the series in a three-game sweep.<ref>{{cite news | agency = Associated Press | title = NBA Playoffs: Jordan Sends Heat Home | work = The New York Times | date = May 2, 1996 | url = https://www.nytimes.com/1996/05/02/sports/nba-playoffs-jordan-sends-heat-home.html | access-date = July 3, 2021}}</ref><ref>{{cite news | last = Greenstein | first = Teddy | title = Triple Double Backs Up Pippen's Forecast | work = Chicago Tribune | date = May 2, 1996 | url = https://www.chicagotribune.com/news/ct-xpm-1996-05-02-9605020269-story.html | access-date = June 4, 2022}}</ref><ref>{{cite web | title = 1996 NBA Eastern Conference First Round: Heat vs. Bulls | publisher = Basketball-Reference | url = https://www.basketball-reference.com/playoffs/1996-nba-eastern-conference-first-round-heat-vs-bulls.html | access-date = February 5, 2023}}</ref> 
+
+In the Eastern Conference Semi-finals, the team faced off against the 5th–seeded [[1995–96 New York Knicks season|New York Knicks]], a team that featured All-Star center [[Patrick Ewing]], [[Anthony Mason (basketball)|Anthony Mason]] and [[John Starks (basketball)|John Starks]]. The Bulls won the first two games at the United Center, before losing Game 3 to the Knicks on the road in overtime, 102–99 at [[Madison Square Garden]], despite a 46-point performance from Jordan.<ref>{{cite news | last = Smith | first = Sam | title = Starks Easy to Hate, Easier Still to Identify With | work = Chicago Tribune | date = May 12, 1996 | url = https://www.chicagotribune.com/1996/05/12/starks-easy-to-hate-easier-still-to-identify-with/ | access-date = June 9, 2026}}</ref><ref>{{cite news | last = Isaacson | first = Melissa | title = Jordan Needs Pippen on Same Page | work = Chicago Tribune | date = May 12, 1996 | url = https://www.chicagotribune.com/1996/05/12/jordan-needs-pippen-on-same-page/ | access-date = June 9, 2026}}</ref><ref>{{cite web | title = 1996 NBA Eastern Conference Semifinals Game 3: Chicago Bulls at New York Knicks Box Score, May 11, 1996 | publisher = Basketball-Reference | url = https://www.basketball-reference.com/boxscores/199605110NYK.html | access-date = June 7, 2026}}</ref> The Bulls won the next two games, which included a Game 5 win over the Knicks at the United Center, 94–81 to win the series in five games.<ref>{{cite news | last = Wise | first = Mike | title = NBA Playoffs: Bulls End Another Knick Season and, This Time, an Era | work = The New York Times | date = May 15, 1996 | url = https://www.nytimes.com/1996/05/15/sports/nba-playoffs-bulls-end-another-knick-season-and-this-time-an-era.html | access-date = July 3, 2021}}</ref><ref>{{cite news | last = Heisler | first = Mark | title = Bulls Take New York, Yet Again | work = Los Angeles Times | date = May 15, 1996 | url = https://www.latimes.com/archives/la-xpm-1996-05-15-sp-4446-story.html | access-date = November 25, 2022}}</ref><ref>{{cite web | title = 1996 NBA Eastern Conference Semifinals: Knicks vs. Bulls | publisher = Basketball-Reference | url = https://www.basketball-reference.com/playoffs/1996-nba-eastern-conference-semifinals-knicks-vs-bulls.html | access-date = February 5, 2023}}</ref> 
+
+In the Eastern Conference Finals, and for the second consecutive year, the Bulls faced off against the 2nd–seeded, and [[Atlantic Division (NBA)|Atlantic Division]] champion [[1995–96 Orlando Magic season|Orlando Magic]], who were led by the trio of All-Star center [[Shaquille O'Neal]], All-Star guard [[Penny Hardaway]], and former Bulls forward [[Horace Grant]]. The Bulls won the first two games at the United Center to take a 2–0 series lead, and then won the next two games over the Magic on the road, including a Game 4 win at the [[Amway Arena|Orlando Arena]], 106–101, in which Jordan scored 45 points; the Bulls won the series over the Magic in a four-game sweep to advance to the [[NBA Finals]].<ref>{{cite news | last = Wise | first = Mike | title = N.B.A Playoffs: Jordan Wields the Broom as Bulls Sweep the Magic | work = The New York Times | date = May 28, 1996 | url = https://www.nytimes.com/1996/05/28/sports/nba-playoffs-jordon-wields-the-broom-as-bulls-sweep-the-magic.html | access-date = June 25, 2021}}</ref><ref>{{cite news | last = Heisler | first = Mark | title = Jordan Knows Tricks to Make Magic Vanish | work = Los Angeles Times | date = May 28, 1996 | url = https://www.latimes.com/archives/la-xpm-1996-05-28-sp-9203-story.html | access-date = November 18, 2022}}</ref><ref>{{cite web | title = 1996 NBA Eastern Conference Finals: Magic vs. Bulls | publisher = Basketball-Reference | url = https://www.basketball-reference.com/playoffs/1996-nba-eastern-conference-finals-magic-vs-bulls.html | access-date = February 5, 2023}}</ref> 
+
+In the [[1996 NBA Finals]], the Bulls faced off against the top–seeded [[1995–96 Seattle SuperSonics season|SuperSonics]], who were led by the All-Star trio of Payton, [[Shawn Kemp]] and [[Detlef Schrempf]]. The Bulls won their first two home games over the SuperSonics at the United Center, before winning Game 3 on the road, 108–86 at the [[Climate Pledge Arena|KeyArena at Seattle Center]] to take a 3–0 series lead.<ref>{{cite news | last = Friend | first = Tom | title = N.B.A. Finals: Sonics See Rodman, Rodman Everywhere | work = The New York Times | date = June 10, 1996 | url = https://www.nytimes.com/1996/06/10/sports/nba-finals-sonics-see-rodman-rodman-everywhere.html | access-date = June 9, 2026}}</ref><ref>{{cite news | last = Howard-Cooper | first = Scott | title = Seattle Needled, Gored as Bulls Near the Ring | work = Los Angeles Times | date = June 10, 1996 | url = https://www.latimes.com/archives/la-xpm-1996-06-10-sp-13505-story.html | access-date = June 9, 2026}}</ref><ref>{{cite web | title = 1996 NBA Finals Game 3: Chicago Bulls at Seattle SuperSonics Box Score, June 9, 1996 | publisher = Basketball-Reference | url = https://www.basketball-reference.com/boxscores/199606090SEA.html | access-date = June 7, 2026}}</ref> However, the Bulls lost the next two games to the SuperSonics on the road. With a 3–2 series lead, the Bulls won Game 6 over the SuperSonics at the United Center, 87–75, thus winning the series in six games, and also winning their fourth NBA championship in six years; Jordan was named the [[NBA Finals Most Valuable Player]] for the fourth time, after scoring 22 points in Game 6, despite struggling as he only made 5 out of 19 field-goal attempts.<ref>{{cite news | last = Brown | first = Clifton | title = N.B.A. Finals: After a Few Anxious Days, Jordan and Bulls Get Their Title | work = The New York Times | date = June 17, 1996 | url = https://www.nytimes.com/1996/06/17/sports/nba-finals-after-a-few-anxious-days-jordan-and-bulls-get-their-title.html | access-date = January 14, 2022}}</ref><ref>{{cite news | agency = Associated Press | title = Bulls Drown Out SuperSonics, 87-75 | work = Los Angeles Times | date = June 17, 1996 | url = https://www.latimes.com/archives/la-xpm-1996-06-17-sp-15938-story.html | access-date = June 28, 2022}}</ref><ref>{{cite web | title = 1996 NBA Finals: SuperSonics vs. Bulls | publisher = Basketball-Reference | url = https://www.basketball-reference.com/playoffs/1996-nba-finals-supersonics-vs-bulls.html | access-date = February 5, 2023}}</ref> The 1995–96 Bulls have the best combined regular and postseason record in NBA history at 87–13 (.870 in [[winning percentage]]).  
+
+===Notable incidents===
+One notable incident of the regular season occurred on March 16, 1996, during a road game against the [[1995–96 New Jersey Nets season|New Jersey Nets]] at the [[Meadowlands Arena|Brendan Byrne Arena]]. During the first quarter, Rodman head butted referee Ted Bernhardt, got ejected and was suspended for six games;<ref>{{cite news | agency = Associated Press | title = Pro Basketball: Rodman Uses His Head, Jordan Uses His Skills | work = The New York Times | date = March 17, 1996 | url = https://www.nytimes.com/1996/03/17/sports/pro-basketball-rodman-uses-his-head-jordan-uses-his-skills.html | access-date = October 5, 2022}}</ref><ref>{{cite news | last = Smith | first = Sam | title = Suspension Looms for Rodman | work = Chicago Tribune | date = March 18, 1996 | url = https://www.chicagotribune.com/news/ct-xpm-1996-03-18-9603180035-story.html | access-date = October 5, 2022}}</ref><ref>{{cite news | last = Brown | first = Clifton | title = Pro Basketball: Rodman's Suspension Could Cost Bulls, Too | work = The New York Times | date = March 19, 1996 | url = https://www.nytimes.com/1996/03/19/sports/pro-basketball-rodman-s-suspension-could-cost-bulls-too.html | access-date = October 5, 2022}}</ref> the Bulls defeated the Nets by a score of 97–93.<ref>{{cite web | title = Chicago Bulls at New Jersey Nets Box Score, March 16, 1996 | publisher = Basketball-Reference | url = https://www.basketball-reference.com/boxscores/199603160NJN.html | access-date = June 7, 2026}}</ref>
+
+===Aftermath===
+Following the season, Edwards retired, and Salley left to play overseas in [[Greece]].<ref>{{cite news | title = Salley Signs to Play in Greece | publisher = United Press International | date = October 6, 1996 | url = https://www.upi.com/Archives/1996/10/06/Salley-signs-to-play-in-Greece/7288844574400/ | access-date = June 19, 2021}}</ref>
+
+==Off-season==
+Before the [[1995–96 NBA season]], the Bulls acquired [[Dennis Rodman]] and [[Jack Haley (basketball)|Jack Haley]] from the [[San Antonio Spurs|Spurs]] in exchange for [[Will Perdue]] and cash considerations to fill a void at power forward left by [[Horace Grant]], who left the Bulls before the [[1994–95 NBA season]].<ref>{{cite news |url=https://www.nytimes.com/1995/10/03/sports/pro-basketball-unhappy-rodman-is-dealt-from-spurs-to-the-bulls.html |title=Unhappy Rodman Is Dealt From Spurs to the Bulls |newspaper=[[The New York Times]] |date=October 3, 1995 }}</ref>
+
+In his book ''Bad as I Wanna Be'',{{Citation needed|date=June 2011}} Rodman wrote that [[Michael Jordan]] and [[Scottie Pippen]] had to approve the trade. Rodman chose the number 91 (9+1=10 according to Rodman for why he chose that number) for his jersey since #10 was retired by the Bulls in 1995 in honor of [[Bob Love]].
+
+Haley played in one game, the final game of the regular season, and didn't participate in the playoffs. He was best known for his friendship with the enigmatic Rodman.<ref>{{cite news |first=Dan |last=Bickley |title=Haley looks to escape Rodman's shadow |newspaper=Chicago Sun-Times |date=December 26, 1996 |page=104 }}</ref>
+
+===NBA draft===
+{{main|1995 NBA draft}}
+{| class="wikitable sortable"
+! style="background:#D40026;color:#FFFFFF" width="10%"| Round
+! style="background:#D40026;color:#FFFFFF" width="10%"| Pick
+! style="background:#D40026;color:#FFFFFF" width="20%"| Player
+! style="background:#D40026;color:#FFFFFF" width="15%"| Position
+! style="background:#D40026;color:#FFFFFF" width="20%"| Nationality
+! style="background:#D40026;color:#FFFFFF" width="20%"| School/Club team
+|-
+| 1
+| 20
+| [[Jason Caffey]]
+| PF
+| {{flagu|United States}}
+| [[Alabama Crimson Tide men's basketball|Alabama]]
+|-
+| 2
+| 31
+| [[Dragan Tarlać]]
+| C
+| {{SCG}}
+| [[Olympiacos B.C.|Olympiakos]] <small>([[A1 Ethniki|Greece]])</small>
+|-
+|}
+
+==Roster==
+{{NBA roster header|team=Chicago Bulls|season=1995–96}}
+<!-- List of players -->
+{{player2 | num = 0 | first = Randy | last = Brown | dab = basketball |  pos = G | ft = 6 | in = 2 | lbs = 190 | DOB = 1968–05–22 | college = New Mexico State}}
+{{player2 | num = 30 | first = Jud | last = Buechler | pos = G | ft = 6 | in = 6 | lbs = 220 | DOB = 1968–06–19 | college = Arizona}}
+{{player2 | num = 35 | first = Jason | last = Caffey | pos = F | ft = 6 | in = 8 | lbs = 255 | DOB = 1973–06–12 | college = Alabama}}
+{{player2 | num = 53 | first = James | last = Edwards | dab = basketball | pos = C | ft = 7 | in = 0 | lbs = 225 | DOB = 1955–11–22 | college = Washington}}
+{{player2 | num = 54 | first = Jack | last = Haley | dab = basketball | pos = F | ft = 6 | in = 10 | lbs = 240 | DOB = 1964–01–27 | college = UCLA}}
+{{player2 | num = 9 | first = Ron | last = Harper | pos = G | ft = 6 | in = 6 | lbs = 185 | DOB = 1964–01–20 | college = Miami (OH)}}
+{{player2 | num = 23 | first = Michael | last = Jordan | pos = G | ft = 6 | in = 6 | lbs = 215 | DOB = 1963–02–17 | college = North Carolina }}
+{{player2 | num = 25 | first = Steve | last = Kerr | pos = G | ft = 6 | in = 3 | lbs = 180 | DOB = 1965–09–27 | college = Arizona}}
+{{player2 | num = 7 | first = Toni | last = Kukoč | pos = F | ft = 6 | in = 11 | lbs = 220 | DOB = 1968–09–18 | from = Croatia}}
+{{player2 | num = 13 | first = Luc | last = Longley | pos = C | ft = 7 | in = 2 | lbs = 265 | DOB = 1969–01–19 | college = New Mexico}}
+{{player2 | num = 33 | first = Scottie | last = Pippen | pos = F | ft = 6 | in = 7 | lbs = 228 | DOB = 1965–09–25 | college = Central Arkansas}}
+{{player2 | num = 91 | first = Dennis | last = Rodman | pos = F | ft = 6 | in = 7 | lbs = 220 | DOB = 1961–05–13 | college = Southeastern Oklahoma State}}
+{{player2 | num = 22 | first = John | last = Salley | pos = F | ft = 6 | in = 11 | lbs = 230 | DOB = 1964–05–16 | college = Georgia Tech}}
+{{player2 | num = 8 | first = Dickey | last = Simpkins | pos = F | ft = 6 | in = 9 | lbs = 248 | DOB = 1972–04–06 | college = Providence}}
+{{player2 | num = 34 | first = Bill | last = Wennington | pos = C | ft = 7 | in = 0 | lbs = 245 | DOB = 1963–04–26 | college = St. John's}}
+<!-- end player list -->
+{{NBA roster footer
+| head_coach =
+* [[Phil Jackson]]
+| asst_coach =
+* [[Jim Cleamons]]
+* [[John Paxson]]
+* [[Jimmy Rodgers (basketball)|Jimmy Rodgers]]
+* [[Tex Winter]]
+| roster_url = https://www.basketball-reference.com/teams/CHI/1996.html
+| accessdate = March 24, 1996
+}}
+
+==Standings==
+
+===Central Division===
+{{1995–96 NBA Central standings|team=CHI}}
+
+===Eastern Conference===
+{{1995–96 NBA East standings|team=CHI}}
+
+==Regular season==
+
+===November===
+[[File:Lipofsky Pippen.jpg|thumb|right|[[Scottie Pippen]] accumulated 2 [[Double (basketball)#Triple-double|triple-doubles]] and 4 [[Double (basketball)#Double-double|double-doubles]] in November 1995.]]
+The Bulls began the 1995–96 season on November 3 against the [[1995–96 Charlotte Hornets season|Charlotte Hornets]] and defeated them, 105–91, with [[Michael Jordan]] scoring 42 points.<ref name="November 3 game">{{cite web|title=Charlotte Hornets at Chicago Bulls Box Score, November 3, 1995|url=https://www.basketball-reference.com/boxscores/199511030CHI.html|access-date=August 12, 2014}}</ref> The next day, Chicago defeated the [[1995–96 Boston Celtics season|Boston Celtics]] in a 22-point blowout, 107–85, behind Scottie Pippen's 21 points, 4 rebounds and 5 assists.<ref name="November 4 game">{{cite web|title=Boston Celtics at Chicago Bulls Box Score, November 4, 1995|url=https://www.basketball-reference.com/boxscores/199511040CHI.html|access-date=August 12, 2014}}</ref> On November 7, the Bulls defeated the [[1995–96 Toronto Raptors season|Toronto Raptors]] behind Jordan's 38 points.<ref name="November 7 game">{{cite web|title=Toronto Raptors at Chicago Bulls Box Score, November 7, 1995|url=https://www.basketball-reference.com/boxscores/199511070CHI.html|access-date=August 12, 2014}}</ref> In [[Gund Arena]], Chicago defeated the [[1995–96 Cleveland Cavaliers season|Cleveland Cavaliers]] on November 9, where [[Scottie Pippen]] accumulated a [[Double (basketball)#Triple-double|triple-double]] with 18 points, 13 rebounds, and 12 assists.<ref name="November 9 game">{{cite web|title=Chicago Bulls at Cleveland Cavaliers Box Score, November 9, 1995|url=https://www.basketball-reference.com/boxscores/199511090CLE.html|access-date=August 12, 2014}}</ref> After defeating the [[1995–96 Portland Trail Blazers season|Portland Trail Blazers]] on November 11, the Bulls reached a 5–0 start for the season.<ref name="November 11 game">{{cite web|title=Portland Trail Blazers at Chicago Bulls Box Score, November 11, 1995|url=https://www.basketball-reference.com/boxscores/199511110CHI.html|access-date=August 12, 2014}}</ref> On November 14, Chicago's undefeated streak ended with a loss to the [[1995–96 Orlando Magic season|Orlando Magic]], despite a [[Double (basketball)#Double-double|double-double]] performance by Pippen who recorded 17 points and 10 rebounds. Jordan also scored 23 points and grabbed 7 rebounds for the Bulls<ref name="November 14 game">{{cite web|title=Chicago Bulls at Orlando Magic Box Score, November 14, 1995|url=https://www.basketball-reference.com/boxscores/199511140ORL.html|access-date=August 12, 2014}}</ref> Following their first loss of the season, Chicago bounced back to defeat Cleveland on November 15.<ref name="November 15 game">{{cite web|title=Cleveland Cavaliers at Chicago Bulls Box Score, November 15, 1995|url=https://www.basketball-reference.com/boxscores/199511150CHI.html|access-date=August 12, 2014}}</ref> The Bulls would continue their winning ways by defeating the [[1995–96 New Jersey Nets season|New Jersey Nets]] on November 17. Toni Kukoc recorded a game-high 19 points and 7 assists for the Bulls.<ref name="November 17 game">{{cite web|title=New Jersey Nets at Chicago Bulls Box Score, November 17, 1995|url=https://www.basketball-reference.com/boxscores/199511170CHI.html|access-date=August 12, 2014}}</ref>
+
+The Bulls went on a road trip to play against seven [[Western Conference (NBA)|Western Conference]] teams. On November 21, Chicago played in its first [[Overtime (sports)|overtime]] game of the season in a win against the [[1995–96 Dallas Mavericks season|Dallas Mavericks]], 108–102, backed by a double-double performance by Pippen who recorded 26 points, 12 rebounds and 7 assists and 36 points from Jordan.<ref name="November 21 game">{{cite web|title=Chicago Bulls at Dallas Mavericks Box Score, November 21, 1995|url=https://www.basketball-reference.com/boxscores/199511210DAL.html|access-date=August 12, 2014}}</ref> On the next day, the Bulls defeated the [[1995–96 San Antonio Spurs season|San Antonio Spurs]] behind another triple-double by Pippen who recorded 15 points, 10 rebounds and 13 assists. and Jordan's 38 points and 9 rebounds.<ref name="November 22 game">{{cite web|title=Chicago Bulls at San Antonio Spurs Box Score, November 22, 1995|url=https://www.basketball-reference.com/boxscores/199511220SAS.html|access-date=August 12, 2014}}</ref> Chicago then went to [[Delta Center]] to play against the [[1995–96 Utah Jazz season|Utah Jazz]] on November 24. In the game, the Bulls defeated the Jazz, 90–85.<ref name="November 24 game">{{cite web|title=Chicago Bulls at Utah Jazz Box Score, November 24, 1995|url=https://www.basketball-reference.com/boxscores/199511240UTA.html|access-date=August 12, 2014}}</ref> On November 26, the Bulls headed to [[1995–96 Seattle SuperSonics season|Seattle]] and led the Sonics 64–51 after the first half, but the Sonics mounted a comeback outscoring the Bulls on the next two quarters, thus handing the visiting Bulls their second loss of the season, 92–97. Jordan led the Bulls with 22 points and 5 rebounds.<ref name="November 26 game">{{cite web|title=Chicago Bulls at Seattle SuperSonics Box Score, November 26, 1995|url=https://www.basketball-reference.com/boxscores/199511260SEA.html|access-date=August 12, 2014}}</ref> The next game, the Bulls would visit the [[1995-96 Portland Trail Blazers season|Trailblazers]]. Jordan led all scorers with 33 points to go along with 8 assists, as the Bulls won, 107–104.<ref name="November 27 game">{{cite web|title=Chicago Bulls at Portland Trail Blazers Box Score, November 27, 1995|url=https://www.basketball-reference.com/boxscores/199511270POR.html|access-date=August 12, 2014}}</ref> In their last game of the month, the Bulls went to Canada to play against the [[1995–96 Vancouver Grizzlies season|Vancouver Grizzlies]] and defeated them, 94–88.<ref name="November 30 game">{{cite web|title=Chicago Bulls at Vancouver Grizzlies Box Score, November 30, 1995|url=https://www.basketball-reference.com/boxscores/199511300VAN.html|access-date=August 12, 2014}}</ref>
+
+===December===
+Chicago's road trip ended in Los Angeles on December 2 after defeating the [[1995–96 Los Angeles Clippers season|Clippers]] behind Jordan's double-double of 37 points and 11 rebounds.<ref name="December 2 game">{{cite web|title=Chicago Bulls at Los Angeles Clippers Box Score, December 2, 1995|url=https://www.basketball-reference.com/boxscores/199512020LAC.html|publisher=Basketball-Reference.com|access-date=August 12, 2014}}</ref> On December 6, the Bulls headed back to the [[United Center]] to play the [[1995–96 New York Knicks season|New York Knicks]] and had defeated them despite Jordan's struggle that night who shot just 8-for-27 from the field. In that game also, Rodman grabbed a game-high 20 rebounds.<ref name="December 6 game">{{cite web|title=New York Knicks at Chicago Bulls Box Score, December 6, 1995|url=https://www.basketball-reference.com/boxscores/199512060CHI.html|access-date=August 12, 2014}}</ref> The Bulls won their fifth straight game on December 8 against the Spurs, behind Jordan's statline of 28 points, 5 rebounds and 6 assists.<ref name="December 8 game">{{cite web|title=San Antonio Spurs at Chicago Bulls Box Score, December 8, 1995|url=https://www.basketball-reference.com/boxscores/199512080CHI.html|access-date=August 12, 2014}}</ref> On the next day, Chicago defeated the [[1995–96 Milwaukee Bucks season|Milwaukee Bucks]] behind Jordan's 45-point performance and Pippen's 28 points and 6 assists.<ref name="December 9 game">{{cite web|title=Chicago Bulls at Milwaukee Bucks Box Score, December 9, 1995|url=https://www.basketball-reference.com/boxscores/199512090MIL.html|access-date=August 12, 2014}}</ref> On December 13, the Bulls were visited by the Orlando Magic. Jordan recorded 36 points and 6 rebounds, Pippen recorded 26 points, 8 rebounds and 6 assists and Rodman recorded 8 points and 19 rebounds as they got their 17th win of the season, beating the visiting Magic, 112–103.<ref>{{cite web|url=https://www.basketball-reference.com/boxscores/199512130CHI.html|title=Orlando Magic at Chicago Bulls Box Score, December 13, 1995|publisher=Basketball-Reference.com|access-date=August 9, 2019}}</ref> The next day, the Bulls traveled to Atlanta to take on the Hawks on the road. The Bulls outscored the Hawks 65 to 55 in the first half, thus fueling them towards their 8th straight win and 18th win of the season. Pippen led the Bulls having recorded a near triple-double of 30 points, 8 rebounds and 8 assists.<ref>{{cite web|url=https://www.basketball-reference.com/boxscores/199512140ATL.html|title=Chicago Bulls at Atlanta Hawks Box Score, December 14, 1995|publisher=Basketball-Reference.com|access-date=August 10, 2019}}</ref> On December 16, Pippen recorded a double-double of 33 points and 13 rebounds as the Bulls got the win over the visiting [[1995-96 Los Angeles Lakers season|L.A. Lakers]], 108–88.<ref>{{cite web|url=https://www.basketball-reference.com/boxscores/199512160CHI.html|title=Los Angeles Lakers at Chicago Bulls Box Score, December 16, 1995|publisher=Basketball-Reference.com|access-date=August 10, 2019}}</ref> Two days after, Jordan and Pippen both scored 37 points as they fueled the Bulls towards their 20th win of the season, after beating the Celtics, 123–114.<ref>{{cite web|url=https://www.basketball-reference.com/boxscores/199512180BOS.html|title=Chicago Bulls at Boston Celtics Box Score, December 18, 1995|publisher=Basketball-Reference.com|access-date=August 10, 2019}}</ref>
+
+===January===
+The Bulls went undefeated in January.
+
+===February===
+The Bulls continued their success in February, winning 11 of 14 of the games played this month. And also, this is their first and only time they have lost back-to-back games for the whole season. On February 4, they had been defeated by the [[1995-96 Denver Nuggets season|Denver Nuggets]] despite a stellar performance by Michael Jordan who recorded 39 points and 4 assists on the road. The following game, the Bulls also lost another road game, this time to the [[1995-96 Phoenix Suns season|Phoenix Suns]]. In this game, Charles Barkley proved too much to be handle by the Bulls as he dropped a double-double of 35 points and 16 rebounds to guide his team in winning. After losing two straight road games, the Bulls followed it with 7 straight wins. In that 7-game streak, the Bulls defeated the Warriors, Bullets, Pistons (in OT), Timberwolves, Pacers, Cavaliers and Hawks. Their 7-game winning streak were stopped by the home team, the [[1995-96 Miami Heat season|Miami Heat]]. The Heat, guided by Rex Chapman who shot 9-for-10 from 3-point range, proved too much to be handled by the visiting Bulls. With this loss, the Bulls now have lost 6 games for the whole season, and all 6 of those games are on the road.<ref>{{cite web|url=https://www.basketball-reference.com/teams/CHI/1996_games.html|title=1995-96 Chicago Bulls Schedule and Results|access-date=June 12, 2019}}</ref>
+
+===March===
+
+The Bulls added 2 of their final 10 losses in March:<ref>{{cite web|url=https://www.basketball-reference.com/teams/CHI/1996_games.html|title=1995-96 Chicago Bulls Schedule and Results - Basketball-Reference.com|work=basketball-reference.com|access-date=16 January 2017}}</ref>
+
+On Sunday, March 10, they were blown out 104–72 in Madison Square Garden by Ewing's Knicks – their largest margin of defeat on the season.
+
+Two weeks later, they dropped a game at the hands of the expansion Raptors, 109–108. Damon Stoudamire posted an efficient 30-point, 11-assist effort to lead Toronto.
+
+===April===
+The Bulls lost two home games in the final month losing to the [[Charlotte Hornets]], then their final home game of the season to the [[Indiana Pacers]]. Those were their only home losses of the entire season, including the playoffs, as Chicago finished with an overall 39–2 record at the United Center.
+
+==Playoffs==
+{{Main|1996 NBA Playoffs}}
+
+===First round===
+{| class="wikitable sortable" style="text-align:center"
+! {{Abbr|Net.|Network}}
+! Game
+! Date
+! Time
+|- style="background:#cfc;"
+| [[TBS (U.S. TV channel)|TBS]]
+| Game 1
+| April 26
+| 9:30 EDT
+|- style="background:#cfc;"
+| [[NBC]]
+| Game 2
+| April 28
+| 5:30 EDT
+|- style="background:#cfc;"
+| [[TNT (U.S. TV network)|TNT]]
+| Game 3
+| May 1
+| 8:00 EDT
+
+|}
+
+The Bulls' playoff run began on April 26. Their First Round opponent was the [[1995–96 Miami Heat season|Miami Heat]], whom they defeated 3–1 in the regular season. In Game 1, the Bulls defeated Miami in a blowout victory behind Jordan's 35 points.<ref name="Game 1 vs. Miami">{{cite web|title=Miami Heat at Chicago Bulls Box Score, April 26, 1996|url=https://www.basketball-reference.com/boxscores/199604260CHI.html|access-date=August 12, 2014}}</ref> Winning in a 31-point blowout, Chicago once again defeated the Heat.<ref name="Game 2 vs. Miami">{{cite web|title=Miami Heat at Chicago Bulls Box Score, April 28, 1996|url=https://www.basketball-reference.com/boxscores/199604280CHI.html|access-date=August 12, 2014}}</ref> To reach the Conference Semifinals, the Bulls defeated the Heat in Miami in a game where Pippen accumulated a triple-double with 22 points, 18 rebounds, and 10 assists.<ref name="Game 3 vs. Miami">{{cite web|title=Chicago Bulls at Miami Heat Box Score, May 1, 1996|url=https://www.basketball-reference.com/boxscores/199605010MIA.html|access-date=August 12, 2014}}</ref>
+
+{{Clear}}
+
+===Conference semifinals===
+{{See also|Bulls–Knicks rivalry}}
+
+{| class="wikitable sortable" style="text-align:center"
+! {{Abbr|Net.|Network}}
+! Game
+! Date
+! Time
+|- style="background:#cfc;"
+| [[NBC]]
+| Game 1
+| May 5
+| 5:30 EDT
+|- style="background:#cfc;"
+| [[TNT (U.S. TV network)|TNT]]
+| Game 2
+| May 7
+| 9:30 EDT
+|- style="background:#fcc;"
+| [[NBC]]
+| Game 3
+| May 11
+| 1:00 EDT
+|- style="background:#cfc;"
+| [[NBC]]
+| Game 4
+| May 12
+| 5:30 EDT
+|- style="background:#cfc;"
+| [[TNT (U.S. TV network)|TNT]]
+| Game 5
+| May 14
+| 8:00 EDT
+|}
+
+The Bulls met rival [[1995–96 New York Knicks season|New York Knicks]] in the Conference Semifinals. In the regular season, Chicago won the season series, 4–1. In Game 1 on May 5, the Bulls defeated the Knicks behind Jordan's 44 points.<ref name="Game 1 vs. New York">{{cite web|title=New York Knicks at Chicago Bulls Box Score, May 5, 1996|url=https://www.basketball-reference.com/boxscores/199605050CHI.html|access-date=August 12, 2014}}</ref> Chicago would defeat New York again on May 7 to take a 2–0 series lead.<ref name="Game 2 vs. New York">{{cite web|title=New York Knicks at Chicago Bulls Box Score, May 7, 1996|url=https://www.basketball-reference.com/boxscores/199605070CHI.html|access-date=August 12, 2014}}</ref> Playing at [[Madison Square Garden]], the Bulls lost Game 3 in overtime, despite a 46-point offensive performance by Jordan.<ref name="Game 3 vs. New York">{{cite web|title=Chicago Bulls at New York Knicks Box Score, May 11, 1996|url=https://www.basketball-reference.com/boxscores/199605110NYK.html|access-date=August 12, 2014}}</ref> In Game 4, Chicago defeated the Knicks by three points to take a 3–1 series lead.<ref name="Game 4 vs. New York">{{cite web|title=Chicago Bulls at New York Knicks Box Score, May 12, 1996|url=https://www.basketball-reference.com/boxscores/199605120NYK.html|access-date=August 12, 2014}}</ref> To close out the series, the Bulls defeated New York at home behind double-double performances by Pippen and Rodman.<ref name="Game 5 vs. New York">{{cite web|title=New York Knicks at Chicago Bulls Box Score, May 14, 1996|url=https://www.basketball-reference.com/boxscores/199605140CHI.html|access-date=August 12, 2014}}</ref>
+
+{{Clear}}
+
+===Conference finals===
+{| class="wikitable sortable" style="text-align:center"
+! {{Abbr|Net.|Network}}
+! Game
+! Date
+! Time
+|- style="background:#cfc;"
+| [[NBC]]
+| Game 1
+| May 19
+| 3:30 EDT
+|- style="background:#cfc;"
+| [[TNT (U.S. TV network)|TNT]]
+| Game 2
+| May 21
+| 8:30 EDT
+|- style="background:#cfc;"
+| [[NBC]]
+| Game 3
+| May 25
+| 3:30 EDT
+|- style="background:#cfc;"
+| [[NBC]]
+| Game 4
+| May 27
+| 3:30 EDT
+|}
+
+In the Conference Finals, the Bulls met the Atlantic Division champions, [[1995–96 Orlando Magic season|Orlando Magic]], a team led by [[Shaquille O'Neal]] and [[Penny Hardaway]], who had reached the finals the previous year and were swept by [[Hakeem Olajuwon]] and the [[Houston Rockets]]. The Bulls won the regular-season series against the Magic, 3–1. To start the series, the Bulls took Game 1 in a 38-point blowout on May 19.<ref name="Game 1 vs. Orlando">{{cite web|title=Orlando Magic at Chicago Bulls Box Score, May 19, 1996|url=https://www.basketball-reference.com/boxscores/199605190CHI.html|access-date=August 12, 2014}}</ref> Behind Jordan's 35 points, Chicago defeated Orlando on May 21.<ref name="Game 2 vs. Orlando">{{cite web|title=Orlando Magic at Chicago Bulls Box Score, May 21, 1996|url=https://www.basketball-reference.com/boxscores/199605210CHI.html|access-date=August 12, 2014}}</ref> In Game 3, the Bulls continued their winning ways by taking a 3–0 series lead against the Magic.<ref name="Game 3 vs. Orlando">{{cite web|title=Chicago Bulls at Orlando Magic Box Score, May 25, 1996|url=https://www.basketball-reference.com/boxscores/199605250ORL.html|access-date=August 12, 2014}}</ref> Completing the series sweep, the Bulls won Game 4 by five points behind a 45-point performance by Jordan.<ref name="Game 4 vs. Orlando">{{cite web|title=Chicago Bulls at Orlando Magic Box Score, May 27, 1996|url=https://www.basketball-reference.com/boxscores/199605270ORL.html|access-date=August 12, 2014}}</ref>
+
+{{Clear}}
+
+===NBA Finals===
+{{Main|1996 NBA Finals}}
+
+{| class="wikitable sortable" style="text-align:center"
+! {{Abbr|Net.|Network}}
+! Game
+! Date
+! Time
+|- style="background:#cfc;"
+| [[NBC]]
+| Game 1
+| June 5
+| 9:00 EDT
+|- style="background:#cfc;"
+| [[NBC]]
+| Game 2
+| June 7
+| 9:00 EDT
+|- style="background:#cfc;"
+| [[NBC]]
+| Game 3
+| June 9
+| 7:30 EDT
+|- style="background:#fcc;"
+| [[NBC]]
+| Game 4
+| June 12
+| 9:00 EDT
+|- style="background:#fcc;"
+| [[NBC]]
+| Game 5
+| June 14
+| 9:00 EDT
+|- style="background:#cfc;"
+| [[NBC]]
+| Game 6
+| June 16
+| 7:30 EDT
+|}
+
+Chicago took on the [[1995–96 Seattle SuperSonics season|Seattle SuperSonics]], whose 64–18 franchise-best regular season record was overshadowed by the Bulls' 72–10 record. In the regular season, the two teams split the season series, 1–1. In Game 1 of the NBA Finals, Chicago defeated Seattle by 17 points.<ref name="Game 1 vs. Seattle">{{cite web|title=Seattle SuperSonics at Chicago Bulls Box Score, June 5, 1996|url=https://www.basketball-reference.com/boxscores/199606050CHI.html|access-date=August 12, 2014}}</ref> The Bulls took a 2–0 series lead against the Sonics in the second game where Rodman accumulated 20 rebounds.<ref name="Game 2 vs. Seattle">{{cite web|title=Seattle SuperSonics at Chicago Bulls Box Score, June 7, 1996|url=https://www.basketball-reference.com/boxscores/199606070CHI.html|access-date=August 12, 2014}}</ref> In [[KeyArena]], Chicago won Game 3 behind Jordan's 36 points.<ref name="Game 3 vs. Seattle">{{cite web|title=Chicago Bulls at Seattle SuperSonics Box Score, June 9, 1996|url=https://www.basketball-reference.com/boxscores/199606090SEA.html|access-date=August 12, 2014}}</ref> The Bulls lost Game 4 in a 21-point blowout on June 12.<ref name="Game 4 vs. Seattle">{{cite web|title=Chicago Bulls at Seattle SuperSonics Box Score, June 12, 1996|url=https://www.basketball-reference.com/boxscores/199606120SEA.html|access-date=August 12, 2014}}</ref> On June 14, the Bulls lost against Seattle in Game 5.<ref name="Game 5 vs. Seattle">{{cite web|title=Chicago Bulls at Seattle SuperSonics Box Score, June 14, 1996|url=https://www.basketball-reference.com/boxscores/199606140SEA.html|access-date=August 12, 2014}}</ref> Back in the United Center, Chicago defeated Seattle in Game 6<ref name="Game 6 vs. Seattle">{{cite web|title=Seattle SuperSonics at Chicago Bulls Box Score, June 16, 1996|url=https://www.basketball-reference.com/boxscores/199606160CHI.html|access-date=August 12, 2014}}</ref> to win the [[List of NBA champions|NBA championship]] four games to two.
+{{Clear}}
+
+==Game log==
+
+===Regular season===
+{{NBA game log start|Chicago Bulls|end_year=1996|record=Total: 72–10 (Home: 39–2; Road: 33–8)}}
+{{NBA game log section|Chicago Bulls|November|first=yes
+| home_wins   = 6
+| home_losses = 0
+| road_wins   = 6
+| road_losses = 2
+}}
+|- bgcolor="#bbffbb"
+| 1
+| November 3
+| [[1995–96 Charlotte Hornets season|Charlotte]]
+| {{NBA game br|date=19951103|home=CHI|pf=105|pa=91}}
+| [[Michael Jordan]] (42)
+| [[Dennis Rodman]] (11)
+| [[Michael Jordan]] (7)
+| [[United Center]]<br />23,862
+| 1–0
+|- bgcolor="#bbffbb"
+| 2
+| November 4
+| [[1995–96 Boston Celtics season|Boston]]
+| {{NBA game br|date=19951104|home=CHI|pf=107|pa=85}}
+| [[Scottie Pippen]] (21)
+| [[Luc Longley|Longley]] & [[Dennis Rodman|Rodman]] (8)
+| [[Toni Kukoč|Kukoč]] & [[Scottie Pippen|Pippen]] (5)
+| [[United Center]]<br />23,608
+| 2–0
+|- bgcolor="#bbffbb"
+| 3
+| November 7
+| [[1995–96 Toronto Raptors season|Toronto]]
+| {{NBA game br|date=19951107|home=CHI|pf=117|pa=108}}
+| [[Michael Jordan]] (38)
+| [[Dennis Rodman]] (13)
+| [[Scottie Pippen]] (8)
+| [[United Center]]<br />23,102
+| 3–0
+|- bgcolor="#bbffbb"
+| 4
+| November 9
+| @ [[1995–96 Cleveland Cavaliers season|Cleveland]]
+| {{NBA game br|date=19951109|home=CLE|pf=106|pa=88}}
+| [[Michael Jordan]] (29)
+| [[Scottie Pippen]] (13)
+| [[Scottie Pippen]] (12)
+| [[Gund Arena]]<br />20,562
+| 4–0
+|- bgcolor="#bbffbb"
+| 5
+| November 11
+| [[1995–96 Portland Trail Blazers season|Portland]]
+| {{NBA game br|date=19951111|home=CHI|pf=110|pa=106}}
+| [[Michael Jordan]] (36)
+| [[Scottie Pippen]] (9)
+| [[Michael Jordan]] (7)
+| [[United Center]]<br />23,384
+| 5–0
+|- bgcolor="#ffcccc"
+| 6
+| November 14
+| @ [[1995–96 Orlando Magic season|Orlando]]
+| {{NBA game br|date=19951114|home=ORL|pf=88|pa=94}}
+| [[Michael Jordan]] (23)
+| [[Scottie Pippen]] (10)
+| [[Michael Jordan|Jordan]] & [[Scottie Pippen|Pippen]] (6)
+| [[Orlando Arena]]<br />17,248
+| 5–1
+|- bgcolor="#bbffbb"
+| 7
+| November 15
+| [[1995–96 Cleveland Cavaliers season|Cleveland]]
+| {{NBA game br|date=19951115|home=CHI|pf=113|pa=94}}
+| [[Scottie Pippen]] (27)
+| [[Jason Caffey]] (8)
+| [[Scottie Pippen]] (8)
+| [[United Center]]<br />23,257
+| 6–1
+|- bgcolor="#bbffbb"
+| 8
+| November 17
+| [[1995–96 New Jersey Nets season|New Jersey]]
+| {{NBA game br|date=19951117|home=CHI|pf=109|pa=94}}
+| [[Toni Kukoč]] (19)
+| [[Luc Longley]] (8)
+| [[Toni Kukoč]] (7)
+| [[United Center]]<br />23,312
+| 7–1
+|- bgcolor="#bbffbb"
+| 9
+| November 21
+| @ [[1995–96 Dallas Mavericks season|Dallas]]
+| {{NBA game br|date=19951121|home=DAL|pf=108|pa=102|ot=1}}
+| [[Michael Jordan]] (36)
+| [[Scottie Pippen]] (12)
+| [[Scottie Pippen]] (7)
+| [[Reunion Arena]]<br />17,502
+| 8–1
+|- bgcolor="#bbffbb"
+| 10
+| November 22
+| @ [[1995–96 San Antonio Spurs season|San Antonio]]
+| {{NBA game br|date=19951122|home=SAS|pf=103|pa=94}}
+| [[Michael Jordan]] (38)
+| [[Luc Longley]] (11)
+| [[Scottie Pippen]] (13)
+| [[Alamodome]]<br />35,888
+| 9–1
+|- bgcolor="#bbffbb"
+| 11
+| November 24
+| @ [[1995–96 Utah Jazz season|Utah]]
+| {{NBA game br|date=19951124|home=UTA|pf=90|pa=85}}
+| [[Michael Jordan]] (34)
+| [[Luc Longley]] (10)
+| [[Michael Jordan]] (6)
+| [[Delta Center]]<br />19,911
+| 10–1
+|- bgcolor="#ffcccc"
+| 12
+| November 26
+| @ [[1995–96 Seattle SuperSonics season|Seattle]]
+| {{NBA game br|date=19951126|home=SEA|pf=92|pa=97}}
+| [[Michael Jordan]] (22)
+| [[Scottie Pippen]] (12)
+| [[Scottie Pippen]] (5)
+| [[KeyArena]]<br />17,072
+| 10–2
+|- bgcolor="#bbffbb"
+| 13
+| November 27
+| @ [[1995–96 Portland Trail Blazers season|Portland]]
+| {{NBA game br|date=19951127|home=POR|pf=107|pa=104}}
+| [[Michael Jordan]] (33)
+| [[Scottie Pippen|Pippen]] & [[Bill Wennington|Wennington]] (5)
+| [[Scottie Pippen]] (10)
+| [[Rose Garden Arena|Rose Garden]]<br />21,401
+| 11–2
+|- bgcolor="#bbffbb"
+| 14
+| November 30
+| @ [[1995–96 Vancouver Grizzlies season|Vancouver]]
+| {{NBA game br|date=19951130|home=VAN|pf=94|pa=88}}
+| [[Michael Jordan]] (29)
+| [[Luc Longley]] (10)
+| [[Scottie Pippen]] (8)
+| [[General Motors Place]]<br />19,193
+| 12–2
+|-
+{{NBA game log section|Chicago Bulls|December|
+| home_wins   = 9
+| home_losses = 0
+| road_wins   = 4
+| road_losses = 1
+}}
+|- bgcolor="#bbffbb"
+| 15
+| December 2
+| @ [[1995–96 Los Angeles Clippers season|L.A. Clippers]]
+| {{NBA game br|date=19951202|home=LAC|pf=104|pa=98}}
+| [[Michael Jordan]] (37)
+| [[Scottie Pippen]] (13)
+| [[Scottie Pippen]] (6)
+| [[Arrowhead Pond]]<br />18,321
+| 13–2
+|- bgcolor="#bbffbb"
+| 16
+| December 6
+| [[1995–96 New York Knicks season|New York]]
+| {{NBA game br|date=19951206|home=CHI|pf=101|pa=94}}
+| [[Michael Jordan|Jordan]] & [[Scottie Pippen|Pippen]] (22)
+| [[Dennis Rodman]] (20)
+| [[Michael Jordan|Jordan]] & [[Scottie Pippen|Pippen]] (8)
+| [[United Center]]<br />23,828
+| 14–2
+|- bgcolor="#bbffbb"
+| 17
+| December 8
+| [[1995–96 San Antonio Spurs season|San Antonio]]
+| {{NBA game br|date=19951208|home=CHI|pf=106|pa=87}}
+| [[Michael Jordan]] (28)
+| [[Dennis Rodman]] (21)
+| [[Michael Jordan]] (6)
+| [[United Center]]<br />23,802
+| 15–2
+|- bgcolor="#bbffbb"
+| 18
+| December 9
+| @ [[1995–96 Milwaukee Bucks season|Milwaukee]]
+| {{NBA game br|date=19951209|home=MIL|pf=118|pa=106}}
+| [[Michael Jordan]] (45)
+| [[Dennis Rodman]] (21)
+| [[Scottie Pippen]] (6)
+| [[Bradley Center]]<br />18,633
+| 16–2
+|- bgcolor="#bbffbb"
+| 19
+| December 13
+| [[1995–96 Orlando Magic season|Orlando]]
+| {{NBA game br|date=19951213|home=CHI|pf=112|pa=103}}
+| [[Michael Jordan]] (36)
+| [[Dennis Rodman]] (19)
+| [[Scottie Pippen]] (6)
+| [[United Center]]<br />23,895
+| 17–2
+|- bgcolor="#bbffbb"
+| 20
+| December 14
+| @ [[1995–96 Atlanta Hawks season|Atlanta]]
+| {{NBA game br|date=19951214|home=ATL|pf=127|pa=108}}
+| [[Scottie Pippen]] (30)
+| [[Dennis Rodman]] (10)
+| [[Toni Kukoč|Kukoč]] & [[Scottie Pippen|Pippen]] (8)
+| [[Omni Coliseum]]<br />16,378
+| 18–2
+|- bgcolor="#bbffbb"
+| 21
+| December 16
+| [[1995–96 Los Angeles Lakers season|L.A. Lakers]]
+| {{NBA game br|date=19951216|home=CHI|pf=108|pa=88}}
+| [[Scottie Pippen]] (33)
+| [[Dennis Rodman]] (15)
+| [[Michael Jordan|Jordan]] & [[Scottie Pippen|Pippen]] (6)
+| [[United Center]]<br />23,824
+| 19–2
+|- bgcolor="#bbffbb"
+| 22
+| December 18
+| @ [[1995–96 Boston Celtics season|Boston]]
+| {{NBA game br|date=19951218|home=BOS|pf=123|pa=114}}
+| [[Michael Jordan|Jordan]] & [[Scottie Pippen|Pippen]] (37)
+| [[Dennis Rodman]] (17)
+| [[Scottie Pippen]] (12)
+| [[FleetCenter (Boston)|FleetCenter]]<br />18,624
+| 20–2
+|- bgcolor="#bbffbb"
+| 23
+| December 19
+| [[1995–96 Dallas Mavericks season|Dallas]]
+| {{NBA game br|date=19951219|home=CHI|pf=114|pa=101}}
+| [[Michael Jordan]] (32)
+| [[Dennis Rodman]] (13)
+| [[Steve Kerr]] (6)
+| [[United Center]]<br />23,208
+| 21–2
+|- bgcolor="#bbffbb"
+| 24
+| December 22
+| [[1995–96 Toronto Raptors season|Toronto]]
+| {{NBA game br|date=19951222|home=CHI|pf=113|pa=104}}
+| [[Michael Jordan]] (27)
+| [[Michael Jordan]] (10)
+| [[Michael Jordan]] (5)
+| [[United Center]]<br />22,987
+| 22–2
+|- bgcolor="#bbffbb"
+| 25
+| December 23
+| [[1995–96 Utah Jazz season|Utah]]
+| {{NBA game br|date=19951223|home=CHI|pf=100|pa=86}}
+| [[Michael Jordan]] (30)
+| [[Dennis Rodman]] (12)
+| [[Michael Jordan]] (8)
+| [[United Center]]<br />23,906
+| 23–2
+|- bgcolor="#ffcccc"
+| 26
+| December 26
+| @ [[1995–96 Indiana Pacers season|Indiana]]
+| {{NBA game br|date=19951226|home=IND|pf=97|pa=103}}
+| [[Michael Jordan]] (30)
+| [[Dennis Rodman]] (11)
+| [[Scottie Pippen]] (6)
+| [[Market Square Arena]]<br />16,728
+| 23–3
+|- bgcolor="#bbffbb"
+| 27
+| December 29
+| [[1995–96 Indiana Pacers season|Indiana]]
+| {{NBA game br|date=19951229|home=CHI|pf=120|pa=93}}
+| [[Michael Jordan]] (29)
+| [[Dennis Rodman]] (16)
+| [[Scottie Pippen]] (8)
+| [[United Center]]<br />23,739
+| 24–3
+|- bgcolor="#bbffbb"
+| 28
+| December 30
+| [[1995–96 Atlanta Hawks season|Atlanta]]
+| {{NBA game br|date=19951230|home=CHI|pf=95|pa=93}}
+| [[Michael Jordan]] (33)
+| [[Dennis Rodman]] (21)
+| [[Michael Jordan]] (6)
+| [[United Center]]<br />23,587
+| 25–3
+|-
+{{NBA game log section|Chicago Bulls|January|
+| home_wins   = 7
+| home_losses = 0
+| road_wins   = 7
+| road_losses = 0
+}}
+|- bgcolor="#bbffbb"
+| 29
+| January 3
+| [[1995–96 Houston Rockets season|Houston]]
+| {{NBA game br|date=19960103|home=CHI|pf=100|pa=86}}
+| [[Michael Jordan]] (38)
+| [[Dennis Rodman]] (15)
+| [[Scottie Pippen]] (9)
+| [[United Center]]<br />23,854
+| 26–3
+|- bgcolor="#bbffbb"
+| 30
+| January 4
+| @ [[1995–96 Charlotte Hornets season|Charlotte]]
+| {{NBA game br|date=19960104|home=CHH|pf=117|pa=93}}
+| [[Michael Jordan]] (27)
+| [[Dennis Rodman]] (11)
+| [[Ron Harper]] (7)
+| [[Charlotte Coliseum]]<br />24,042
+| 27–3
+|- bgcolor="#bbffbb"
+| 31
+| January 6
+| [[1995–96 Milwaukee Bucks season|Milwaukee]]
+| {{NBA game br|date=19960106|home=CHI|pf=113|pa=84}}
+| [[Michael Jordan]] (32)
+| [[Dennis Rodman]] (16)
+| [[Scottie Pippen]] (6)
+| [[United Center]]<br />23,801
+| 28–3
+|- bgcolor="#bbffbb"
+| 32
+| January 10
+| [[1995–96 Seattle SuperSonics season|Seattle]]
+| {{NBA game br|date=19960110|home=CHI|pf=113|pa=87}}
+| [[Michael Jordan]] (35)
+| [[Michael Jordan]] (14)
+| 3 players tied (5)
+| [[United Center]]<br />23,877
+| 29–3
+|- bgcolor="#bbffbb"
+| 33
+| January 13
+| @ [[1995–96 Philadelphia 76ers season|Philadelphia]]
+| {{NBA game br|date=19960113|home=PHI|pf=120|pa=93}}
+| [[Michael Jordan]] (48)
+| [[Dennis Rodman]] (16)
+| [[Scottie Pippen]] (10)
+| [[Spectrum (arena)|CoreStates Spectrum]]<br />18,168
+| 30–3
+|- bgcolor="#bbffbb"
+| 34
+| January 15
+| @ [[1995–96 Washington Bullets season|Washington]]
+| {{NBA game br|date=19960115|home=WSB|pf=116|pa=109}}
+| [[Michael Jordan]] (46)
+| [[Dennis Rodman]] (15)
+| [[Scottie Pippen]] (6)
+| [[USAir Arena]]<br />18,756
+| 31–3
+|- bgcolor="#bbffbb"
+| 35
+| January 16
+| [[1995–96 Philadelphia 76ers season|Philadelphia]]
+| {{NBA game br|date=19960116|home=CHI|pf=116|pa=104}}
+| [[Michael Jordan]] (32)
+| [[Dennis Rodman]] (21)
+| [[Dennis Rodman]] (10)
+| [[United Center]]<br />23,587
+| 32–3
+|- bgcolor="#bbffbb"
+| 36
+| January 18
+| @ [[1995–96 Toronto Raptors season|Toronto]]
+| {{NBA game br|date=19960118|home=TOR|pf=92|pa=89}}
+| [[Michael Jordan]] (38)
+| [[Dennis Rodman]] (13)
+| [[Scottie Pippen|Pippen]] & [[Dennis Rodman|Rodman]] (4)
+| [[SkyDome]]<br />36,118
+| 33–3
+|- bgcolor="#bbffbb"
+| 37
+| January 21
+| @ [[1995–96 Detroit Pistons season|Detroit]]
+| {{NBA game br|date=19960121|home=DET|pf=111|pa=96}}
+| [[Michael Jordan]] (36)
+| [[Dennis Rodman]] (9)
+| [[Scottie Pippen]] (6)
+| [[The Palace of Auburn Hills]]<br />21,454
+| 34–3
+|- bgcolor="#bbffbb"
+| 38
+| January 23
+| @ [[1995–96 New York Knicks season|New York]]
+| {{NBA game br|date=19960123|home=NYK|pf=99|pa=79}}
+| [[Michael Jordan]] (33)
+| [[Dennis Rodman]] (13)
+| [[Scottie Pippen]] (6)
+| [[Madison Square Garden]]<br />19,763
+| 35–3
+|- bgcolor="#bbffbb"
+| 39
+| January 24
+| [[1995–96 Vancouver Grizzlies season|Vancouver]]
+| {{NBA game br|date=19960124|home=CHI|pf=104|pa=84}}
+| [[Scottie Pippen]] (30)
+| [[Dennis Rodman]] (16)
+| [[Ron Harper]] (7)
+| [[United Center]]<br />23,652
+| 36–3
+|- bgcolor="#bbffbb"
+| 40
+| January 26
+| [[1995–96 Miami Heat season|Miami]]
+| {{NBA game br|date=19960126|home=CHI|pf=102|pa=80}}
+| [[Michael Jordan]] (25)
+| [[Dennis Rodman]] (16)
+| [[Scottie Pippen|Pippen]] & [[Dennis Rodman|Rodman]] (5)
+| [[United Center]]<br />23,814
+| 37–3
+|- bgcolor="#bbffbb"
+| 41
+| January 28
+| [[1995–96 Phoenix Suns season|Phoenix]]
+| {{NBA game br|date=19960128|home=CHI|pf=93|pa=82}}
+| [[Michael Jordan]] (31)
+| [[Dennis Rodman]] (20)
+| [[Michael Jordan]] (6)
+| [[United Center]]<br />23,927
+| 38–3
+|- bgcolor="#bbffbb"
+| 42
+| January 30
+| @ [[1995–96 Houston Rockets season|Houston]]
+| {{NBA game br|date=19960130|home=HOU|pf=98|pa=87}}
+| [[Scottie Pippen]] (28)
+| [[Scottie Pippen]] (12)
+| [[Scottie Pippen]] (5)
+| [[The Summit (Houston)|The Summit]]<br />16,286
+| 39–3
+|-
+{{NBA game log section|Chicago Bulls|February|
+| home_wins   = 4
+| home_losses = 0
+| road_wins   = 7
+| road_losses = 3
+}}
+|- bgcolor="#bbffbb"
+| 43
+| February 1
+| @ [[1995–96 Sacramento Kings season|Sacramento]]
+| {{NBA game br|date=19960201|home=SAC|pf=105|pa=85}}
+| [[Michael Jordan]] (27)
+| [[Dennis Rodman]] (21)
+| [[Toni Kukoč]] (5)
+| [[ARCO Arena]]<br />17,317
+| 40–3
+|- bgcolor="#bbffbb"
+| 44
+| February 2
+| @ [[1995–96 Los Angeles Lakers season|L.A. Lakers]]
+| {{NBA game br|date=19960202|home=LAL|pf=99|pa=84}}
+| [[Scottie Pippen]] (30)
+| [[Dennis Rodman]] (23)
+| [[Michael Jordan]] (7)
+| [[Great Western Forum]]<br />17,505
+| 41–3
+|- bgcolor="#ffcccc"
+| 45
+| February 4
+| @ [[1995–96 Denver Nuggets season|Denver]]
+| {{NBA game br|date=19960204|home=DEN|pf=99|pa=105}}
+| [[Michael Jordan]] (39)
+| [[Dennis Rodman]] (12)
+| 3 players tied (5)
+| [[McNichols Sports Arena]]<br />17,171
+| 41–4
+|- bgcolor="#ffcccc"
+| 46
+| February 6
+| @ [[1995–96 Phoenix Suns season|Phoenix]]
+| {{NBA game br|date=19960206|home=PHO|pf=96|pa=106}}
+| [[Michael Jordan]] (28)
+| [[Dennis Rodman]] (14)
+| [[Scottie Pippen]] (8)
+| [[America West Arena]]<br />19,023
+| 41–5
+|- bgcolor="#bbffbb"
+| 47
+| February 7
+| @ [[1995–96 Golden State Warriors season|Golden State]]
+| {{NBA game br|date=19960207|home=GSW|pf=99|pa=95}}
+| [[Michael Jordan]] (40)
+| [[Dennis Rodman]] (18)
+| [[Michael Jordan]] (6)
+| [[Oakland Coliseum Arena]]<br />15,025
+| 42–5
+|- align="center"
+|colspan="9" bgcolor="#bbcaff"|'''[[1996 NBA All-Star Game|All-Star Break]]'''
+|- style="background:#cfc;"
+|- bgcolor="#bbffbb"
+| 48
+| February 13
+| [[1995–96 Washington Bullets season|Washington]]
+| {{NBA game br|date=19960213|home=CHI|pf=111|pa=98}}
+| [[Michael Jordan]] (32)
+| [[Dennis Rodman]] (16)
+| [[Scottie Pippen]] (4)
+| [[United Center]]<br />23,494
+| 43–5
+|- bgcolor="#bbffbb"
+| 49
+| February 15
+| @ [[1995–96 Detroit Pistons season|Detroit]]
+| {{NBA game br|date=19960215|home=DET|pf=112|pa=109|ot=1}}
+| [[Michael Jordan]] (32)
+| [[Dennis Rodman]] (19)
+| [[Scottie Pippen]] (6)
+| [[The Palace of Auburn Hills]]<br />21,454
+| 44–5
+|- bgcolor="#bbffbb"
+| 50
+| February 16
+| @ [[1995–96 Minnesota Timberwolves season|Minnesota]]
+| {{NBA game br|date=19960216|home=MIN|pf=103|pa=100}}
+| [[Michael Jordan]] (35)
+| [[Dennis Rodman]] (19)
+| [[Scottie Pippen]] (7)
+| [[Target Center]]<br />20,214
+| 45–5
+|- bgcolor="#bbffbb"
+| 51
+| February 18
+| @ [[1995–96 Indiana Pacers season|Indiana]]
+| {{NBA game br|date=19960218|home=IND|pf=110|pa=102}}
+| [[Michael Jordan]] (44)
+| [[Dennis Rodman]] (23)
+| [[Michael Jordan]] (7)
+| [[Market Square Arena]]<br />16,770
+| 46–5
+|- bgcolor="#bbffbb"
+| 52
+| February 20
+| [[1995–96 Cleveland Cavaliers season|Cleveland]]
+| {{NBA game br|date=19960220|home=CHI|pf=102|pa=76}}
+| [[Ron Harper]] (22)
+| [[Dennis Rodman]] (15)
+| [[Scottie Pippen]] (8)
+| [[United Center]]<br />23,604
+| 47–5
+|- bgcolor="#bbffbb"
+| 53
+| February 22
+| @ [[1995–96 Atlanta Hawks season|Atlanta]]
+| {{NBA game br|date=19960222|home=ATL|pf=96|pa=91}}
+| [[Michael Jordan]] (34)
+| [[Dennis Rodman]] (20)
+| [[Scottie Pippen]] (10)
+| [[Omni Coliseum]]<br />16,378
+| 48–5
+|- bgcolor="#ffcccc"
+| 54
+| February 23
+| @ [[1995–96 Miami Heat season|Miami]]
+| {{NBA game br|date=19960223|home=MIA|pf=104|pa=113}}
+| [[Michael Jordan]] (31)
+| [[Dennis Rodman]] (11)
+| [[Scottie Pippen]] (6)
+| [[Miami Arena]]<br />15,200
+| 48–6
+|- bgcolor="#bbffbb"
+| 55
+| February 25
+| [[1995–96 Orlando Magic season|Orlando]]
+| {{NBA game br|date=19960225|home=CHI|pf=111|pa=91}}
+| [[Toni Kukoč]] (24)
+| [[Dennis Rodman]] (17)
+| [[Michael Jordan]] (7)
+| [[United Center]]<br />24,102
+| 49–6
+|- bgcolor="#bbffbb"
+| 56
+| February 27
+| [[1995–96 Minnesota Timberwolves season|Minnesota]]
+| {{NBA game br|date=19960227|home=CHI|pf=120|pa=99}}
+| [[Michael Jordan]] (35)
+| [[Dennis Rodman]] (24)
+| [[Michael Jordan]] (7)
+| [[United Center]]<br />23,716
+| 50–6
+|-
+{{NBA game log section|Chicago Bulls|March|
+| home_wins   = 10
+| home_losses = 0
+| road_wins   = 2
+| road_losses = 2
+}}
+|- bgcolor="#bbffbb"
+| 57
+| March 1
+| [[1995–96 Golden State Warriors season|Golden State]]
+| {{NBA game br|date=19960301|home=CHI|pf=110|pa=87}}
+| [[Scottie Pippen]] (25)
+| [[Dennis Rodman]] (17)
+| [[Michael Jordan]] (6)
+| [[United Center]]<br />23,596
+| 51–6
+|- bgcolor="#bbffbb"
+| 58
+| March 2
+| [[1995–96 Boston Celtics season|Boston]]
+| {{NBA game br|date=19960302|home=CHI|pf=107|pa=75}}
+| [[Michael Jordan]] (21)
+| [[Dennis Rodman]] (15)
+| [[Michael Jordan]] (8)
+| [[United Center]]<br />23,721
+| 52–6
+|- bgcolor="#bbffbb"
+| 59
+| March 5
+| [[1995–96 Milwaukee Bucks season|Milwaukee]]
+| {{NBA game br|date=19960305|home=CHI|pf=115|pa=106}}
+| [[Michael Jordan]] (33)
+| [[Dennis Rodman]] (9)
+| [[Ron Harper|Harper]] & [[Toni Kukoč|Kukoč]] (7)
+| [[United Center]]<br />23,547
+| 53–6
+|- bgcolor="#bbffbb"
+| 60
+| March 7
+| [[1995–96 Detroit Pistons season|Detroit]]
+| {{NBA game br|date=19960307|home=CHI|pf=102|pa=81}}
+| [[Michael Jordan]] (53)
+| [[Dennis Rodman]] (13)
+| [[Scottie Pippen]] (10)
+| [[United Center]]<br />23,369
+| 54–6
+|- bgcolor="#ffcccc"
+| 61
+| March 10
+| @ [[1995–96 New York Knicks season|New York]]
+| {{NBA game br|date=19960310|home=NYK|pf=72|pa=104}}
+| [[Michael Jordan]] (32)
+| [[Dennis Rodman]] (10)
+| [[Scottie Pippen]] (5)
+| [[Madison Square Garden]]<br />19,763
+| 54–7
+|- bgcolor="#bbffbb"
+| 62
+| March 13
+| [[1995–96 Washington Bullets season|Washington]]
+| {{NBA game br|date=19960313|home=CHI|pf=103|pa=86}}
+| [[Michael Jordan]] (37)
+| [[Dennis Rodman]] (14)
+| [[Michael Jordan]] (5)
+| [[United Center]]<br />23,652
+| 55–7
+|- bgcolor="#bbffbb"
+| 63
+| March 15
+| [[1995–96 Denver Nuggets season|Denver]]
+| {{NBA game br|date=19960315|home=CHI|pf=108|pa=87}}
+| [[Michael Jordan]] (33)
+| [[Dennis Rodman]] (15)
+| [[Toni Kukoč]] (10)
+| [[United Center]]<br />23,692
+| 56–7
+|- bgcolor="#bbffbb"
+| 64
+| March 16
+| @ [[1995–96 New Jersey Nets season|New Jersey]]
+| {{NBA game br|date=19960316|home=NJN|pf=97|pa=93}}
+| [[Michael Jordan]] (37)
+| [[Michael Jordan]] (16)
+| [[Michael Jordan]] (5)
+| [[Meadowlands Arena|Continental Airlines Arena]]<br />20,049
+| 57–7
+|- bgcolor="#bbffbb"
+| 65
+| March 18
+| @ [[1995–96 Philadelphia 76ers season|Philadelphia]]
+| {{NBA game br|date=19960318|home=PHI|pf=98|pa=94}}
+| [[Michael Jordan]] (38)
+| [[Michael Jordan]] (11)
+| [[Toni Kukoč]] (11)
+| [[Spectrum (arena)|CoreStates Spectrum]]<br />18,168
+| 58–7
+|- bgcolor="#bbffbb"
+| 66
+| March 19
+| [[1995–96 Sacramento Kings season|Sacramento]]
+| {{NBA game br|date=19960319|home=CHI|pf=89|pa=67}}
+| [[Michael Jordan]] (20)
+| [[Michael Jordan]] (9)
+| [[Toni Kukoč]] (7)
+| [[United Center]]<br />23,312
+| 59–7
+|- bgcolor="#bbffbb"
+| 67
+| March 21
+| [[1995–96 New York Knicks season|New York]]
+| {{NBA game br|date=19960321|home=CHI|pf=107|pa=86}}
+| [[Michael Jordan]] (36)
+| [[Michael Jordan]] (11)
+| [[Michael Jordan|Jordan]] & [[Toni Kukoč|Kukoč]] (5)
+| [[United Center]]<br />23,802
+| 60–7
+|- bgcolor="#ffcccc"
+| 68
+| March 24
+| @ [[1995–96 Toronto Raptors season|Toronto]]
+| {{NBA game br|date=19960324|home=TOR|pf=108|pa=109}}
+| [[Michael Jordan]] (36)
+| 3 player tied (9)
+| [[Scottie Pippen]] (6)
+| [[SkyDome]]<br />36,131
+| 60–8
+|- bgcolor="#bbffbb"
+| 69
+| March 28
+| [[1995–96 Atlanta Hawks season|Atlanta]]
+| {{NBA game br|date=19960328|home=CHI|pf=111|pa=80}}
+| [[Toni Kukoč]] (24)
+| [[Scottie Pippen]] (11)
+| [[Scottie Pippen]] (8)
+| [[United Center]]<br />23,642
+| 61–8
+|- bgcolor="#bbffbb"
+| 70
+| March 30
+| [[1995–96 Los Angeles Clippers season|L.A. Clippers]]
+| {{NBA game br|date=19960330|home=CHI|pf=106|pa=85}}
+| [[Scottie Pippen]] (22)
+| [[Michael Jordan|Jordan]] & [[Toni Kukoč|Kukoč]] (9)
+| [[Michael Jordan]] (6)
+| [[United Center]]<br />23,764
+| 62–8
+|-
+{{NBA game log section|Chicago Bulls|April|
+| home_wins   = 3
+| home_losses = 2
+| road_wins   = 7
+| road_losses = 0
+}}
+|- bgcolor="#bbffbb"
+| 71
+| April 2
+| @ [[1995–96 Miami Heat season|Miami]]
+| {{NBA game br|date=19960402|home=MIA|pf=110|pa=92}}
+| [[Michael Jordan|Jordan]] & [[Scottie Pippen|Pippen]] (32)
+| [[Dennis Rodman]] (13)
+| [[Ron Harper]] (6)
+| [[Miami Arena]]<br />15,200
+| 63–8
+|- bgcolor="#bbffbb"
+| 72
+| April 4
+| [[1995–96 Miami Heat season|Miami]]
+| {{NBA game br|date=19960404|home=CHI|pf=100|pa=92}}
+| [[Michael Jordan]] (40)
+| [[Dennis Rodman]] (12)
+| [[Scottie Pippen]] (8)
+| [[United Center]]<br />23,702
+| 64–8
+|- bgcolor="#bbffbb"
+| 73
+| April 5
+| @ [[1995–96 Charlotte Hornets season|Charlotte]]
+| {{NBA game br|date=19960405|home=CHH|pf=126|pa=92}}
+| [[Scottie Pippen]] (28)
+| [[Dennis Rodman]] (17)
+| [[Scottie Pippen]] (14)
+| [[Charlotte Coliseum]]<br />24,042
+| 65–8
+|- bgcolor="#bbffbb"
+| 74
+| April 7
+| @ [[1995–96 Orlando Magic season|Orlando]]
+| {{NBA game br|date=19960407|home=ORL|pf=90|pa=86}}
+| [[Michael Jordan]] (27)
+| [[Scottie Pippen|Pippen]] & [[Dennis Rodman|Rodman]] (13)
+| [[Scottie Pippen]] (5)
+| [[Orlando Arena]]<br />17,248
+| 66–8
+|- bgcolor="#ffcccc"
+| 75
+| April 8
+| [[1995–96 Charlotte Hornets season|Charlotte]]
+| {{NBA game br|date=19960408|home=CHI|pf=97|pa=98}}
+| [[Michael Jordan]] (40)
+| [[Dennis Rodman]] (17)
+| [[Scottie Pippen]] (6)
+| [[United Center]]<br />23,590
+| 66–9
+|- bgcolor="#bbffbb"
+| 76
+| April 11
+| @ [[1995–96 New Jersey Nets season|New Jersey]]
+| {{NBA game br|date=19960411|home=NJN|pf=113|pa=100}}
+| [[Michael Jordan]] (17)
+| [[Dennis Rodman]] (12)
+| [[Toni Kukoč]] (6)
+| [[Meadowlands Arena|Continental Airlines Arena]]<br />20,049
+| 67–9
+|- bgcolor="#bbffbb"
+| 77
+| April 12
+| [[1995–96 Philadelphia 76ers season|Philadelphia]]
+| {{NBA game br|date=19960412|home=CHI|pf=112|pa=82}}
+| [[Michael Jordan]] (23)
+| [[Dennis Rodman]] (16)
+| [[Scottie Pippen]] (6)
+| [[United Center]]<br />23,633
+| 68–9
+|- bgcolor="#bbffbb"
+| 78
+| April 14
+| @ [[1995–96 Cleveland Cavaliers season|Cleveland]]
+| {{NBA game br|date=19960414|home=CLE|pf=98|pa=72}}
+| [[Michael Jordan]] (32)
+| [[Michael Jordan]] (12)
+| [[Toni Kukoč]] (5)
+| [[Gund Arena]]<br />20,562
+| 69–9
+|- bgcolor="#bbffbb"
+| 79
+| April 16
+| @ [[1995–96 Milwaukee Bucks season|Milwaukee]]
+| {{NBA game br|date=19960416|home=MIL|pf=86|pa=80}}
+| [[Michael Jordan]] (22)
+| [[Dennis Rodman]] (19)
+| 3 players tied (4)
+| [[Bradley Center]]<br />18,633
+| 70–9
+|- bgcolor="#bbffbb"
+| 80
+| April 18
+| [[1995–96 Detroit Pistons season|Detroit]]
+| {{NBA game br|date=19960418|home=CHI|pf=110|pa=79}}
+| [[Michael Jordan]] (30)
+| [[Dennis Rodman]] (18)
+| [[Scottie Pippen]] (8)
+| [[United Center]]<br />23,614
+| 71–9
+|- bgcolor="#ffcccc"
+| 81
+| April 20
+| [[1995–96 Indiana Pacers season|Indiana]]
+| {{NBA game br|date=19960420|home=CHI|pf=99|pa=100}}
+| [[Michael Jordan]] (24)
+| [[Dennis Rodman]] (15)
+| [[Randy Brown (basketball)|Brown]] & [[Michael Jordan|Jordan]] (6)
+| [[United Center]]<br />23,784
+| 71–10
+|- bgcolor="#bbffbb"
+| 82
+| April 21
+| @ [[1995–96 Washington Bullets season|Washington]]
+| {{NBA game br|date=19960421|home=WSB|pf=103|pa=93}}
+| [[Michael Jordan]] (26)
+| [[Dennis Rodman]] (11)
+| [[Scottie Pippen]] (5)
+| [[USAir Arena]]<br />18,756
+| 72–10
+{{NBA game log end|bbr_team=CHI|end_year=1996}}
+
+===Playoffs===
+{{NBA game log start|Chicago Bulls|playoffs=yes|end_year=1996|record=Total: 15–3 (Home: 10–0; Road: 5–3)}}
+{{NBA game log section|Chicago Bulls|First Round|first=yes|playoffs=yes
+| home_wins   = 2
+| home_losses = 0
+| road_wins   = 1
+| road_losses = 0
+}}
+|- align="center" bgcolor="#ccffcc"
+| 1
+| April 26
+| [[1995–96 Miami Heat season|Miami]]
+| {{NBA game br|date=19960426|home=CHI|pf=102|pa=85}}
+| [[Michael Jordan]] (35)
+| [[Dennis Rodman]] (10)
+| 3 players tied (3)
+| [[United Center]]<br />24,104
+| 1–0
+|- align="center" bgcolor="#ccffcc"
+| 2
+| April 28
+| [[1995–96 Miami Heat season|Miami]]
+| {{NBA game br|date=19960428|home=CHI|pf=106|pa=75}}
+| [[Michael Jordan]] (29)
+| [[Scottie Pippen]] (8)
+| [[Scottie Pippen]] (8)
+| [[United Center]]<br />24,202
+| 2–0
+|- align="center" bgcolor="#ccffcc"
+| 3
+| May 1
+| @ [[1995–96 Miami Heat season|Miami]]
+| {{NBA game br|date=19960501|home=MIA|pf=112|pa=91}}
+| [[Michael Jordan]] (26)
+| [[Scottie Pippen]] (18)
+| [[Scottie Pippen]] (10)
+| [[Miami Arena]]<br />15,200
+| 3–0
+{{NBA game log section|Chicago Bulls|Conference Semifinals|playoffs=yes
+| home_wins   = 3
+| home_losses = 0
+| road_wins   = 1
+| road_losses = 1
+}}
+|- align="center" bgcolor="#ccffcc"
+| 1
+| May 5
+| [[1995–96 New York Knicks season|New York]]
+| {{NBA game br|date=19960505|home=CHI|pf=91|pa=84}}
+| [[Michael Jordan]] (44)
+| [[Dennis Rodman]] (12)
+| [[Scottie Pippen]] (7)
+| [[United Center]]<br />24,394
+| 1–0
+|- align="center" bgcolor="#ccffcc"
+| 2
+| May 7
+| [[1995–96 New York Knicks season|New York]]
+| {{NBA game br|date=19960507|home=CHI|pf=91|pa=80}}
+| [[Michael Jordan]] (28)
+| [[Dennis Rodman]] (19)
+| [[Scottie Pippen]] (6)
+| [[United Center]]<br />24,328
+| 2–0
+|- align="center" bgcolor="#ffcccc"
+| 3
+| May 11
+| @ [[1995–96 New York Knicks season|New York]]
+| {{NBA game br|date=19960511|home=NYK|pf=99|pa=102|ot=1}}
+| [[Michael Jordan]] (46)
+| [[Dennis Rodman]] (16)
+| [[Scottie Pippen]] (6)
+| [[Madison Square Garden]]<br />19,763
+| 2–1
+|- align="center" bgcolor="#ccffcc"
+| 4
+| May 12
+| @ [[1995–96 New York Knicks season|New York]]
+| {{NBA game br|date=19960512|home=NYK|pf=94|pa=91}}
+| [[Michael Jordan]] (27)
+| [[Dennis Rodman]] (19)
+| [[Michael Jordan]] (8)
+| [[Madison Square Garden]]<br />19,763
+| 3–1
+|- align="center" bgcolor="#ccffcc"
+| 5
+| May 14
+| [[1995–96 New York Knicks season|New York]]
+| {{NBA game br|date=19960514|home=CHI|pf=94|pa=81}}
+| [[Michael Jordan]] (35)
+| [[Dennis Rodman]] (12)
+| [[Ron Harper|Harper]] & [[Michael Jordan|Jordan]] (5)
+| [[United Center]]<br />24,396
+| 4–1
+{{NBA game log section|Chicago Bulls|Conference Finals|playoffs=yes
+| home_wins   = 2
+| home_losses = 0
+| road_wins   = 2
+| road_losses = 0
+}}
+|- align="center" bgcolor="#ccffcc"
+| 1
+| May 19
+| [[1995–96 Orlando Magic season|Orlando]]
+| {{NBA game br|date=19960519|home=CHI|pf=121|pa=83}}
+| [[Michael Jordan]] (21)
+| [[Dennis Rodman]] (21)
+| [[Toni Kukoč]] (10)
+| [[United Center]]<br />24,411
+| 1–0
+|- align="center" bgcolor="#ccffcc"
+| 2
+| May 21
+| [[1995–96 Orlando Magic season|Orlando]]
+| {{NBA game br|date=19960521|home=CHI|pf=93|pa=88}}
+| [[Michael Jordan]] (35)
+| [[Dennis Rodman]] (12)
+| [[Scottie Pippen]] (9)
+| [[United Center]]<br />24,395
+| 2–0
+|- align="center" bgcolor="#ccffcc"
+| 3
+| May 25
+| @ [[1995–96 Orlando Magic season|Orlando]]
+| {{NBA game br|date=19960525|home=ORL|pf=86|pa=67}}
+| [[Michael Jordan]] (35)
+| [[Dennis Rodman]] (12)
+| [[Scottie Pippen]] (9)
+| [[Orlando Arena]]<br />17,248
+| 3–0
+|- align="center" bgcolor="#ccffcc"
+| 4
+| May 27
+| @ [[1995–96 Orlando Magic season|Orlando]]
+| {{NBA game br|date=19960527|home=ORL|pf=106|pa=101}}
+| [[Michael Jordan]] (45)
+| [[Dennis Rodman]] (14)
+| [[Scottie Pippen]] (8)
+| [[Orlando Arena]]<br />17,248
+| 4–0
+{{NBA game log section|Chicago Bulls|NBA Finals|playoffs=yes
+| home_wins   = 3
+| home_losses = 0
+| road_wins   = 1
+| road_losses = 2
+}}
+|- align="center" bgcolor="#ccffcc"
+| 1
+| June 5
+| [[1995–96 Seattle SuperSonics season|Seattle]]
+| {{NBA game br|date=19960605|home=CHI|pf=107|pa=90}}
+| [[Michael Jordan]] (28)
+| [[Dennis Rodman]] (13)
+| [[Ron Harper]] (7)
+| [[United Center]]<br />24,544
+| 1–0
+|- align="center" bgcolor="#ccffcc"
+| 2
+| June 7
+| [[1995–96 Seattle SuperSonics season|Seattle]]
+| {{NBA game br|date=19960607|home=CHI|pf=92|pa=88}}
+| [[Michael Jordan]] (29)
+| [[Dennis Rodman]] (20)
+| [[Michael Jordan]] (8)
+| [[United Center]]<br />24,544
+| 2–0
+|- align="center" bgcolor="#ccffcc"
+| 3
+| June 9
+| @ [[1995–96 Seattle SuperSonics season|Seattle]]
+| {{NBA game br|date=19960609|home=SEA|pf=108|pa=86}}
+| [[Michael Jordan]] (36)
+| [[Dennis Rodman]] (10)
+| [[Scottie Pippen]] (9)
+| [[KeyArena]]<br />17,072
+| 3–0
+|- align="center" bgcolor="#ffcccc"
+| 4
+| June 12
+| @ [[1995–96 Seattle SuperSonics season|Seattle]]
+| {{NBA game br|date=19960612|home=SEA|pf=86|pa=107}}
+| [[Michael Jordan]] (23)
+| [[Dennis Rodman]] (14)
+| [[Scottie Pippen]] (8)
+| [[KeyArena]]<br />17,072
+| 3–1
+|- align="center" bgcolor="#ffcccc"
+| 5
+| June 14
+| @ [[1995–96 Seattle SuperSonics season|Seattle]]
+| {{NBA game br|date=19960614|home=SEA|pf=78|pa=89}}
+| [[Michael Jordan]] (26)
+| [[Dennis Rodman]] (12)
+| [[Scottie Pippen]] (5)
+| [[KeyArena]]<br />17,072
+| 3–2
+|- align="center" bgcolor="#ccffcc"
+| 6
+| June 16
+| [[1995–96 Seattle SuperSonics season|Seattle]]
+| {{NBA game br|date=19960616|home=CHI|pf=87|pa=75}}
+| [[Michael Jordan]] (22)
+| [[Dennis Rodman]] (19)
+| [[Michael Jordan]] (7)
+| [[United Center]]<br />24,544
+| 4–2
+{{NBA game log end|bbr_team=CHI|playoffs=yes|end_year=1996}}
+
+==Player statistics==
+{{NBA roster statistics legend|collapsed=true}}
+
+===Regular season===
+{| class="wikitable sortable" style="text-align:right;"
+|-
+! style="background:#CE1141; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|Player
+! style="background:#CE1141; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|GP
+! style="background:#CE1141; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|GS
+! style="background:#CE1141; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|MPG
+! style="background:#CE1141; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|FG%
+! style="background:#CE1141; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|3P%
+! style="background:#CE1141; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|FT%
+! style="background:#CE1141; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|RPG
+! style="background:#CE1141; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|APG
+! style="background:#CE1141; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|SPG
+! style="background:#CE1141; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|BPG
+! style="background:#CE1141; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|PPG
+|-
+| {{sortname|Randy|Brown|dab=basketball}}
+| 68 || 0 || 9.9 || .406 || .091 || .609 || 1.0 || 1.1 || .84 || .18 || 2.7
+|-
+| {{sortname|Jud|Buechler}}
+| 74 || 0 || 10.0 || .463 || .444 || .636 || 1.5 || .8 || .46 || .09 || 3.8
+|-
+| {{sortname|Jason|Caffey}}
+| 57 || 0 || 9.6 || .438 || .000 || .588 || 1.9 || .4 || .21 || .12 || 3.2
+|-
+| {{sortname|James|Edwards|James Edwards (basketball)}}
+| 28 || 0 || 9.8 || .373 || .000 || .615 || 1.4 || .4 || .04 || .29 || 3.5
+|-
+| {{sortname|Jack|Haley|Jack Haley (basketball)}}
+| 1 || 0 || 7.0 || .333 || .000 || .500 || 2.0 || .0 || .00 || .00 || 5.0
+|-
+| {{sortname|Ron|Harper}}
+| 80 || 80 || 23.6 || .467 || .269 || .705 || 2.7 || 2.6 || 1.31 || .40 || 7.4
+|-
+| {{sortname|Michael|Jordan}}
+| style="background:black;color:white;" | 82 || style="background:black;color:white;" | 82 || style="background:black;color:white;" | 37.7 || .495 || .427 || .834 || 6.6 || 4.3 || style="background:black;color:white;" | 2.20 || .51 || style="background:black;color:white;" | 30.4
+|-
+| {{sortname|Steve|Kerr}}
+| style="background:black;color:white;" | 82 || 0 || 23.4 || style="background:black;color:white;" | .506 || style="background:black;color:white;" | .515 || style="background:black;color:white;" | .929 || 1.3 || 2.3 || .77 || .02 || 8.4
+|-
+| {{sortname|Toni|Kukoč||Kukoc, Toni}}
+| 81 || 20 || 26.0 || .490 || .403 || .772 || 4.0 || 3.5 || .79 || .35 || 13.1
+|-
+| {{sortname|Luc|Longley}}
+| 62 || 62 || 26.5 || .482 || .000 || .777 || 5.1 || 1.9 || .35 || style="background:black;color:white;" | 1.35 || 9.1
+|-
+| {{sortname|Scottie|Pippen}}
+| 77 || 77 || 36.7 || .463 || .374 || .679 || 6.4 || style="background:black;color:white;" | 5.9 || 1.73 || .74 || 19.4
+|-
+| {{sortname|Dennis|Rodman}}
+| 64 || 57 || 32.6 || .480 || .111 || .528 || style="background:black;color:white;" | 14.9 || 2.5 || .56 || .42 || 5.5
+|-
+| {{sortname|John|Salley}}
+| 17 || 0 || 11.2 || .343 || .000 || .600 || 2.5 || .9 || .47 || .88 || 2.1
+|-
+| {{sortname|Dickey|Simpkins}}
+| 60 || 12 || 11.4 || .481 || 1.000 || .629 || 2.6 || .6 || .15 || .13 || 3.6
+|-
+| {{sortname|Bill|Wennington}}
+| 71 || 20 || 15.0 || .493 || 1.000 || .860 || 2.5 || .6 || .30 || .23 || 5.3
+|}
+
+===Playoffs===
+{| class="wikitable sortable" style="text-align:right;"
+|-
+! style="background:#BA0C2F; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|Player
+! style="background:#BA0C2F; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|GP
+! style="background:#BA0C2F; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|GS
+! style="background:#BA0C2F; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|MPG
+! style="background:#BA0C2F; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|FG%
+! style="background:#BA0C2F; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|3P%
+! style="background:#BA0C2F; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|FT%
+! style="background:#BA0C2F; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|RPG
+! style="background:#BA0C2F; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|APG
+! style="background:#BA0C2F; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|SPG
+! style="background:#BA0C2F; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|BPG
+! style="background:#BA0C2F; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|PPG
+|-
+| {{sortname|Randy|Brown|dab=basketball}}
+| 16 || || 7.0 || style="background:black;color:white;" | .571 || style="background:black;color:white;" | .500 || .750 || .6 || .4 || .31 || .06 || 2.8
+|-
+| {{sortname|Jud|Buechler}}
+| 17 || || 7.5 || .474 || .381 || .500 || .6 || .4 || .41 || .00 || 2.7
+|-
+| {{sortname|James|Edwards|James Edwards (basketball)}}
+| 6 || || 4.7 || .444 || .000 || .750 || .7 || .0 || .00 || .00 || 1.8
+|-
+| {{sortname|Ron|Harper}}
+| style="background:black;color:white;" | 18 || || 27.4 || .425 || .319 || .690 || 3.7 || 2.5 || 1.39 || .39 || 8.8
+|-
+| {{sortname|Michael|Jordan}}
+| style="background:black;color:white;" | 18 || || 40.7 || .459 || .403 || .818 || 4.9 || 4.1 || 1.83 || .33 || style="background:black;color:white;" | 30.7
+|-
+| {{sortname|Steve|Kerr}}
+| style="background:black;color:white;" | 18 || || 19.8 || .448 || .321 || style="background:black;color:white;" | .871 || 1.0 || 1.7 || .78 || .00 || 6.8
+|-
+| {{sortname|Toni|Kukoč| |Kukoc, Toni}}
+| 15 || || 29.3 || .391 || .191 || .838 || 4.2 || 3.9 || .93 || .27 || 10.8
+|-
+| {{sortname|Luc|Longley}}
+| style="background:black;color:white;" | 18 || || 24.4 || .469 || .000 || .757 || 4.6 || 1.6 || .39 || style="background:black;color:white;" | 1.39 || 8.3
+|-
+| {{sortname|Scottie|Pippen}}
+| style="background:black;color:white;" | 18 || || style="background:black;color:white;" | 41.2 || .390 || .286 || .638 || 8.5 || style="background:black;color:white;" | 5.9 || style="background:black;color:white;" | 2.61 || .89 || 16.9
+|-
+| {{sortname|Dennis|Rodman}}
+| style="background:black;color:white;" | 18 || || 34.4 || .485 || .000 || .593 || style="background:black;color:white;" | 13.7 || 2.1 || .78 || .44 || 7.5
+|-
+| {{sortname|John|Salley}}
+| 16 || || 5.3 || .545 || .000 || .286 || .7 || .4 || .06 || .12 || .9
+|-
+| {{sortname|Bill|Wennington}}
+| style="background:black;color:white;" | 18 || || 9.4 || .520 || .000 || .500 || 1.7 || .5 || .22 || .06 || 3.0
+|}
+
+Player statistics citation:<ref name="stats"/>
+
+== Playoff leaders ==
+[https://www.basketball-reference.com/about/rate_stat_req.html Rate statistic requirements]
+
+{| class="wikitable"
+|
+{| class="wikitable"
+| colspan="3" |Minutes played
+|-
+|1
+|[https://www.basketball-reference.com/players/p/paytoga01.html Gary Payton]<small>* ▪ SEA</small>
+|911
+|-
+|2
+|[https://www.basketball-reference.com/players/s/schrede01.html Detlef Schrempf] <small>▪ SEA</small>
+|789
+|-
+|3
+|[https://www.basketball-reference.com/players/p/pippesc01.html Scottie Pippen]<small>* ▪ CHI</small>
+|742
+|-
+|4
+|[https://www.basketball-reference.com/players/j/jordami01.html Michael Jordan]<small>* ▪ CHI</small>
+|733
+|-
+|5
+|[https://www.basketball-reference.com/players/m/malonka01.html Karl Malone]<small>* ▪ UTA</small>
+|725
+|}
+|
+{| class="wikitable"
+| colspan="3" |Field goals
+|-
+|1
+|[https://www.basketball-reference.com/players/m/malonka01.html Karl Malone]<small>* ▪ UTA</small>
+|188
+|-
+|2
+|[https://www.basketball-reference.com/players/j/jordami01.html Michael Jordan]<small>* ▪ CHI</small>
+|187
+|-
+|3
+|[https://www.basketball-reference.com/players/p/paytoga01.html Gary Payton]<small>* ▪ SEA</small>
+|162
+|-
+|4
+|[https://www.basketball-reference.com/players/k/kempsh01.html Shawn Kemp] <small>▪ SEA</small>
+|147
+|-
+|5
+|[https://www.basketball-reference.com/players/o/onealsh01.html Shaquille O'Neal]<small>* ▪ ORL</small>
+|131
+|}
+|
+{| class="wikitable"
+| colspan="3" |Field goal attempts
+|-
+|1
+|[https://www.basketball-reference.com/players/j/jordami01.html Michael Jordan]<small>* ▪ CHI</small>
+|407
+|-
+|2
+|[https://www.basketball-reference.com/players/m/malonka01.html Karl Malone]<small>* ▪ UTA</small>
+|401
+|-
+|3
+|[https://www.basketball-reference.com/players/p/paytoga01.html Gary Payton]<small>* ▪ SEA</small>
+|334
+|-
+|4
+|[https://www.basketball-reference.com/players/p/pippesc01.html Scottie Pippen]<small>* ▪ CHI</small>
+|287
+|-
+|5
+|[https://www.basketball-reference.com/players/s/schrede01.html Detlef Schrempf] <small>▪ SEA</small>
+|259
+|}
+|
+{| class="wikitable"
+| colspan="3" |2-Pt field goals
+|-
+|1
+|[https://www.basketball-reference.com/players/m/malonka01.html Karl Malone]<small>* ▪ UTA</small>
+|188
+|-
+|2
+|[https://www.basketball-reference.com/players/j/jordami01.html Michael Jordan]<small>* ▪ CHI</small>
+|162
+|-
+|3
+|[https://www.basketball-reference.com/players/k/kempsh01.html Shawn Kemp] <small>▪ SEA</small>
+|147
+|-
+|4
+|[https://www.basketball-reference.com/players/o/onealsh01.html Shaquille O'Neal]<small>* ▪ ORL</small>
+|131
+|-
+|5
+|[https://www.basketball-reference.com/players/p/paytoga01.html Gary Payton]<small>* ▪ SEA</small>
+|121
+|}
+|-
+|
+{| class="wikitable"
+| colspan="3" |2-Pt field goal attempts
+|-
+|1
+|[https://www.basketball-reference.com/players/m/malonka01.html Karl Malone]<small>* ▪ UTA</small>
+|398
+|-
+|2
+|[https://www.basketball-reference.com/players/j/jordami01.html Michael Jordan]<small>* ▪ CHI</small>
+|345
+|-
+|3
+|[https://www.basketball-reference.com/players/k/kempsh01.html Shawn Kemp] <small>▪ SEA</small>
+|255
+|-
+|4
+|[https://www.basketball-reference.com/players/p/paytoga01.html Gary Payton]<small>* ▪ SEA</small>
+|234
+|-
+|5
+|[https://www.basketball-reference.com/players/o/onealsh01.html Shaquille O'Neal]<small>* ▪ ORL</small>
+|216
+|}
+|
+{| class="wikitable"
+| colspan="3" |3-Pt field goals
+|-
+|1
+|[https://www.basketball-reference.com/players/p/paytoga01.html Gary Payton]<small>* ▪ SEA</small>
+|41
+|-
+|2
+|[https://www.basketball-reference.com/players/h/hornaje01.html Jeff Hornacek] <small>▪ UTA</small>
+|34
+|-
+|3
+|[https://www.basketball-reference.com/players/b/blaylmo01.html Mookie Blaylock] <small>▪ ATL</small>
+|33
+|-
+|4
+|[https://www.basketball-reference.com/players/p/perkisa01.html Sam Perkins] <small>▪ SEA</small>
+|32
+|-
+|5
+|[https://www.basketball-reference.com/players/p/pippesc01.html Scottie Pippen]<small>* ▪ CHI</small>
+|30
+|}
+|
+{| class="wikitable"
+| colspan="3" |3-Pt field goal attempts
+|-
+|1
+|[https://www.basketball-reference.com/players/p/pippesc01.html Scottie Pippen]<small>* ▪ CHI</small>
+|105
+|-
+|2
+|[https://www.basketball-reference.com/players/p/paytoga01.html Gary Payton]<small>* ▪ SEA</small>
+|100
+|-
+|3
+|[https://www.basketball-reference.com/players/p/perkisa01.html Sam Perkins] <small>▪ SEA</small>
+|87
+|-
+|4
+|[https://www.basketball-reference.com/players/b/blaylmo01.html Mookie Blaylock] <small>▪ ATL</small>
+|84
+|-
+|5
+|[https://www.basketball-reference.com/players/s/scottde01.html Dennis Scott] <small>▪ ORL</small>
+|69
+|}
+|
+{| class="wikitable"
+| colspan="3" |Field goals missed
+|-
+|1
+|[https://www.basketball-reference.com/players/j/jordami01.html Michael Jordan]<small>* ▪ CHI</small>
+|220
+|-
+|2
+|[https://www.basketball-reference.com/players/m/malonka01.html Karl Malone]<small>* ▪ UTA</small>
+|213
+|-
+|3
+|[https://www.basketball-reference.com/players/p/pippesc01.html Scottie Pippen]<small>* ▪ CHI</small>
+|175
+|-
+|4
+|[https://www.basketball-reference.com/players/p/paytoga01.html Gary Payton]<small>* ▪ SEA</small>
+|172
+|-
+|5
+|[https://www.basketball-reference.com/players/s/schrede01.html Detlef Schrempf] <small>▪ SEA</small>
+|136
+|}
+|-
+|
+{| class="wikitable"
+| colspan="3" |Free throws
+|-
+|1
+|[https://www.basketball-reference.com/players/j/jordami01.html Michael Jordan]<small>* ▪ CHI</small>
+|153
+|-
+|2
+|[https://www.basketball-reference.com/players/k/kempsh01.html Shawn Kemp] <small>▪ SEA</small>
+|124
+|-
+|3
+|[https://www.basketball-reference.com/players/m/malonka01.html Karl Malone]<small>* ▪ UTA</small>
+|101
+|-
+|4
+|[https://www.basketball-reference.com/players/h/hawkihe01.html Hersey Hawkins] <small>▪ SEA</small>
+|85
+|-
+|5
+|[https://www.basketball-reference.com/players/h/hornaje01.html Jeff Hornacek] <small>▪ UTA</small>
+|73
+|}
+|
+{| class="wikitable"
+| colspan="3" |Free throw attempts
+|-
+|1
+|[https://www.basketball-reference.com/players/j/jordami01.html Michael Jordan]<small>* ▪ CHI</small>
+|187
+|-
+|2
+|[https://www.basketball-reference.com/players/m/malonka01.html Karl Malone]<small>* ▪ UTA</small>
+|176
+|-
+|3
+|[https://www.basketball-reference.com/players/k/kempsh01.html Shawn Kemp] <small>▪ SEA</small>
+|156
+|-
+|4
+|[https://www.basketball-reference.com/players/o/onealsh01.html Shaquille O'Neal]<small>* ▪ ORL</small>
+|122
+|-
+|5
+|[https://www.basketball-reference.com/players/p/paytoga01.html Gary Payton]<small>* ▪ SEA</small>
+|109
+|}
+|
+{| class="wikitable"
+| colspan="3" |Offensive rebounds
+|-
+|1
+|[https://www.basketball-reference.com/players/r/rodmade01.html Dennis Rodman]<small>* ▪ CHI</small>
+|98
+|-
+|2
+|[https://www.basketball-reference.com/players/k/kempsh01.html Shawn Kemp] <small>▪ SEA</small>
+|66
+|-
+|3
+|[https://www.basketball-reference.com/players/p/pippesc01.html Scottie Pippen]<small>* ▪ CHI</small>
+|62
+|-
+|4
+|[https://www.basketball-reference.com/players/o/onealsh01.html Shaquille O'Neal]<small>* ▪ ORL</small>
+|49
+|-
+|5
+|[https://www.basketball-reference.com/players/m/malonka01.html Karl Malone]<small>* ▪ UTA</small>
+|47
+|}
+|
+{| class="wikitable"
+| colspan="3" |Defensive rebounds
+|-
+|1
+|[https://www.basketball-reference.com/players/r/rodmade01.html Dennis Rodman]<small>* ▪ CHI</small>
+|149
+|-
+|2
+|[https://www.basketball-reference.com/players/k/kempsh01.html Shawn Kemp] <small>▪ SEA</small>
+|142
+|-
+|3
+|[https://www.basketball-reference.com/players/m/malonka01.html Karl Malone]<small>* ▪ UTA</small>
+|139
+|-
+|4
+|[https://www.basketball-reference.com/players/p/pippesc01.html Scottie Pippen]<small>* ▪ CHI</small>
+|91
+|-
+|5
+|[https://www.basketball-reference.com/players/p/paytoga01.html Gary Payton]<small>* ▪ SEA</small>
+|89
+|}
+|-
+|
+{| class="wikitable"
+| colspan="3" |Total rebounds
+|-
+|1
+|[https://www.basketball-reference.com/players/r/rodmade01.html Dennis Rodman]<small>* ▪ CHI</small>
+|247
+|-
+|2
+|[https://www.basketball-reference.com/players/k/kempsh01.html Shawn Kemp] <small>▪ SEA</small>
+|208
+|-
+|3
+|[https://www.basketball-reference.com/players/m/malonka01.html Karl Malone]<small>* ▪ UTA</small>
+|186
+|-
+|4
+|[https://www.basketball-reference.com/players/p/pippesc01.html Scottie Pippen]<small>* ▪ CHI</small>
+|153
+|-
+|5
+|[https://www.basketball-reference.com/players/o/onealsh01.html Shaquille O'Neal]<small>* ▪ ORL</small>
+|120
+|}
+|
+{| class="wikitable"
+| colspan="3" |Assists
+|-
+|1
+|[https://www.basketball-reference.com/players/s/stockjo01.html John Stockton]<small>* ▪ UTA</small>
+|195
+|-
+|2
+|[https://www.basketball-reference.com/players/p/paytoga01.html Gary Payton]<small>* ▪ SEA</small>
+|143
+|-
+|3
+|[https://www.basketball-reference.com/players/p/pippesc01.html Scottie Pippen]<small>* ▪ CHI</small>
+|107
+|-
+|4
+|[https://www.basketball-reference.com/players/j/johnsav01.html Avery Johnson] <small>▪ SAS</small>
+|94
+|-
+|5
+|[https://www.basketball-reference.com/players/m/malonka01.html Karl Malone]<small>* ▪ UTA</small>
+|79
+|}
+|
+{| class="wikitable"
+| colspan="3" |Steals
+|-
+|1
+|[https://www.basketball-reference.com/players/p/pippesc01.html Scottie Pippen]<small>* ▪ CHI</small>
+|47
+|-
+|2
+|[https://www.basketball-reference.com/players/p/paytoga01.html Gary Payton]<small>* ▪ SEA</small>
+|37
+|-
+|3
+|[https://www.basketball-reference.com/players/m/malonka01.html Karl Malone]<small>* ▪ UTA</small>
+|34
+|-
+|4
+|[https://www.basketball-reference.com/players/j/jordami01.html Michael Jordan]<small>* ▪ CHI</small>
+|33
+|-
+|5
+|[https://www.basketball-reference.com/players/s/stockjo01.html John Stockton]<small>* ▪ UTA</small>
+|29
+|}
+|
+{| class="wikitable"
+| colspan="3" |Blocks
+|-
+|1
+|[https://www.basketball-reference.com/players/k/kempsh01.html Shawn Kemp] <small>▪ SEA</small>
+|40
+|-
+|2
+|[https://www.basketball-reference.com/players/r/robinda01.html David Robinson]<small>* ▪ SAS</small>
+|25
+|-
+|3
+|[https://www.basketball-reference.com/players/e/ewingpa01.html Patrick Ewing]<small>* ▪ NYK</small>
+|25
+|-
+|4
+|[https://www.basketball-reference.com/players/l/longllu01.html Luc Longley] <small>▪ CHI</small>
+|25
+|-
+|5
+|[https://www.basketball-reference.com/players/s/spencfe01.html Felton Spencer] <small>▪ UTA</small>
+|22
+|}
+|-
+|
+{| class="wikitable"
+| colspan="3" |Turnovers
+|-
+|1
+|[https://www.basketball-reference.com/players/k/kempsh01.html Shawn Kemp] <small>▪ SEA</small>
+|80
+|-
+|2
+|[https://www.basketball-reference.com/players/s/schrede01.html Detlef Schrempf] <small>▪ SEA</small>
+|67
+|-
+|3
+|[https://www.basketball-reference.com/players/p/paytoga01.html Gary Payton]<small>* ▪ SEA</small>
+|62
+|-
+|4
+|[https://www.basketball-reference.com/players/s/stockjo01.html John Stockton]<small>* ▪ UTA</small>
+|58
+|-
+|5
+|[https://www.basketball-reference.com/players/m/malonka01.html Karl Malone]<small>* ▪ UTA</small>
+|45
+|}
+|
+{| class="wikitable"
+| colspan="3" |Personal fouls
+|-
+|1
+|[https://www.basketball-reference.com/players/k/kempsh01.html Shawn Kemp] <small>▪ SEA</small>
+|84
+|-
+|2
+|[https://www.basketball-reference.com/players/l/longllu01.html Luc Longley] <small>▪ CHI</small>
+|83
+|-
+|3
+|[https://www.basketball-reference.com/players/r/rodmade01.html Dennis Rodman]<small>* ▪ CHI</small>
+|76
+|-
+|4
+|[https://www.basketball-reference.com/players/p/paytoga01.html Gary Payton]<small>* ▪ SEA</small>
+|69
+|-
+|5
+|[https://www.basketball-reference.com/players/c/carran01.html Antoine Carr] <small>▪ UTA</small>
+|66
+|}
+|
+{| class="wikitable"
+| colspan="3" |Points
+|-
+|1
+|[https://www.basketball-reference.com/players/j/jordami01.html Michael Jordan]<small>* ▪ CHI</small>
+|552
+|-
+|2
+|[https://www.basketball-reference.com/players/m/malonka01.html Karl Malone]<small>* ▪ UTA</small>
+|477
+|-
+|3
+|[https://www.basketball-reference.com/players/p/paytoga01.html Gary Payton]<small>* ▪ SEA</small>
+|434
+|-
+|4
+|[https://www.basketball-reference.com/players/k/kempsh01.html Shawn Kemp] <small>▪ SEA</small>
+|418
+|-
+|5
+|[https://www.basketball-reference.com/players/s/schrede01.html Detlef Schrempf] <small>▪ SEA</small>
+|336
+|}
+|
+{| class="wikitable"
+| colspan="3" |Field goal pct
+|-
+|1
+|[https://www.basketball-reference.com/players/p/perduwi01.html Will Perdue] <small>▪ SAS</small>
+|.691
+|-
+|2
+|[https://www.basketball-reference.com/players/k/keefead01.html Adam Keefe] <small>▪ UTA</small>
+|.676
+|-
+|3
+|[https://www.basketball-reference.com/players/g/grantho01.html Horace Grant] <small>▪ ORL</small>
+|.649
+|-
+|4
+|[https://www.basketball-reference.com/players/o/onealsh01.html Shaquille O'Neal]<small>* ▪ ORL</small>
+|.607
+|-
+|5
+|[https://www.basketball-reference.com/players/b/bryanma01.html Mark Bryant] <small>▪ HOU</small>
+|.600
+|}
+|-
+|
+{| class="wikitable"
+| colspan="3" |2-pt field goal pct
+|-
+|1
+|[https://www.basketball-reference.com/players/p/perduwi01.html Will Perdue] <small>▪ SAS</small>
+|.691
+|-
+|2
+|[https://www.basketball-reference.com/players/k/keefead01.html Adam Keefe] <small>▪ UTA</small>
+|.688
+|-
+|3
+|[https://www.basketball-reference.com/players/g/grantho01.html Horace Grant] <small>▪ ORL</small>
+|.649
+|-
+|4
+|[https://www.basketball-reference.com/players/k/kerrst01.html Steve Kerr] <small>▪ CHI</small>
+|.647
+|-
+|5
+|[https://www.basketball-reference.com/players/o/onealsh01.html Shaquille O'Neal]<small>* ▪ ORL</small>
+|.607
+|}
+|
+{| class="wikitable"
+| colspan="3" |3-pt field goal pct
+|-
+|1
+|[https://www.basketball-reference.com/players/w/wingfdo01.html Dontonio Wingfield] <small>▪ POR</small>
+|.600
+|-
+|2
+|[https://www.basketball-reference.com/players/d/delnevi01.html Vinny Del Negro] <small>▪ SAS</small>
+|.593
+|-
+|3
+|[https://www.basketball-reference.com/players/h/hornaje01.html Jeff Hornacek] <small>▪ UTA</small>
+|.586
+|-
+|4
+|[https://www.basketball-reference.com/players/s/sabonar01.html Arvydas Sabonis]<small>* ▪ POR</small>
+|.556
+|-
+|5
+|[https://www.basketball-reference.com/players/p/persoch01.html Chuck Person] <small>▪ SAS</small>
+|.532
+|}
+|
+{| class="wikitable"
+| colspan="3" |Free throw pct
+|-
+|1
+|[https://www.basketball-reference.com/players/s/smithke01.html Kenny Smith] <small>▪ HOU</small>
+|1.000
+|-
+|2
+|[https://www.basketball-reference.com/players/c/cebalce01.html Cedric Ceballos] <small>▪ LAL</small>
+|.917
+|-
+|3
+|[https://www.basketball-reference.com/players/e/eliema01.html Mario Elie] <small>▪ HOU</small>
+|.917
+|-
+|4
+|[https://www.basketball-reference.com/players/h/houstal01.html Allan Houston] <small>▪ DET</small>
+|.900
+|-
+|5
+|[https://www.basketball-reference.com/players/h/hawkihe01.html Hersey Hawkins] <small>▪ SEA</small>
+|.895
+|}
+|
+{| class="wikitable"
+| colspan="3" |Minutes per game
+|-
+|1
+|[https://www.basketball-reference.com/players/p/persowe01.html Wesley Person] <small>▪ PHO</small>
+|45.8
+|-
+|2
+|[https://www.basketball-reference.com/players/m/masonan01.html Anthony Mason] <small>▪ NYK</small>
+|43.8
+|-
+|3
+|[https://www.basketball-reference.com/players/p/paytoga01.html Gary Payton]<small>* ▪ SEA</small>
+|43.4
+|-
+|4
+|[https://www.basketball-reference.com/players/b/blaylmo01.html Mookie Blaylock] <small>▪ ATL</small>
+|42.6
+|-
+|5
+|[https://www.basketball-reference.com/players/s/smithst01.html Steve Smith] <small>▪ ATL</small>
+|42.1
+|}
+|-
+|
+{| class="wikitable"
+| colspan="3" |Points per game
+|-
+|1
+|[https://www.basketball-reference.com/players/j/jordami01.html Michael Jordan]<small>* ▪ CHI</small>
+|30.7
+|-
+|2
+|[https://www.basketball-reference.com/players/m/malonka01.html Karl Malone]<small>* ▪ UTA</small>
+|26.5
+|-
+|3
+|[https://www.basketball-reference.com/players/o/onealsh01.html Shaquille O'Neal]<small>* ▪ ORL</small>
+|25.8
+|-
+|4
+|[https://www.basketball-reference.com/players/b/barklch01.html Charles Barkley]<small>* ▪ PHO</small>
+|25.5
+|-
+|rowspan=2|5
+|[https://www.basketball-reference.com/players/r/robinda01.html David Robinson]<small>* ▪ SAS</small>
+|23.6
+|-
+|[https://www.basketball-reference.com/players/s/sabonar01.html Arvydas Sabonis]<small>* ▪ POR</small>
+|23.6
+|}
+|
+{| class="wikitable"
+| colspan="3" |Rebounds per game
+|-
+|1
+|[https://www.basketball-reference.com/players/r/rodmade01.html Dennis Rodman]<small>* ▪ CHI</small>
+|13.7
+|-
+|2
+|[https://www.basketball-reference.com/players/b/barklch01.html Charles Barkley]<small>* ▪ PHO</small>
+|13.5
+|-
+|3
+|[https://www.basketball-reference.com/players/d/davisda01.html Dale Davis] <small>▪ IND</small>
+|11.2
+|-
+|4
+|[https://www.basketball-reference.com/players/e/ewingpa01.html Patrick Ewing]<small>* ▪ NYK</small>
+|10.6
+|-
+|5
+|[https://www.basketball-reference.com/players/g/grantho01.html Horace Grant] <small>▪ ORL</small>
+|10.4
+|}
+|
+{| class="wikitable"
+| colspan="3" |Assists per game
+|-
+|1
+|[https://www.basketball-reference.com/players/s/stockjo01.html John Stockton]<small>* ▪ UTA</small>
+|10.8
+|-
+|2
+|[https://www.basketball-reference.com/players/j/johnske02.html Kevin Johnson] <small>▪ PHO</small>
+|10.8
+|-
+|3
+|[https://www.basketball-reference.com/players/j/johnsav01.html Avery Johnson] <small>▪ SAS</small>
+|9.4
+|-
+|4
+|[https://www.basketball-reference.com/players/s/stricro02.html Rod Strickland] <small>▪ POR</small>
+|8.4
+|-
+|5
+|[https://www.basketball-reference.com/players/p/paytoga01.html Gary Payton]<small>* ▪ SEA</small>
+|6.8
+|}
+|
+{| class="wikitable"
+| colspan="3" |Steals per game
+|-
+|1
+|[https://www.basketball-reference.com/players/d/drexlcl01.html Clyde Drexler]<small>* ▪ HOU</small>
+|2.6
+|-
+|2
+|[https://www.basketball-reference.com/players/h/horryro01.html Robert Horry] <small>▪ HOU</small>
+|2.6
+|-
+|3
+|[https://www.basketball-reference.com/players/p/pippesc01.html Scottie Pippen]<small>* ▪ CHI</small>
+|2.6
+|-
+|4
+|[https://www.basketball-reference.com/players/m/marcisa01.html Sarunas Marciulionis]<small>* ▪ SAC</small>
+|2.5
+|-
+|5
+|[https://www.basketball-reference.com/players/b/blaylmo01.html Mookie Blaylock] <small>▪ ATL</small>
+|2.2
+|}
+|-
+|
+{| class="wikitable"
+| colspan="3" |Blocks per game
+|-
+|1
+|[https://www.basketball-reference.com/players/e/ewingpa01.html Patrick Ewing]<small>* ▪ NYK</small>
+|3.1
+|-
+|2
+|[https://www.basketball-reference.com/players/r/robinda01.html David Robinson]<small>* ▪ SAS</small>
+|2.5
+|-
+|3
+|[https://www.basketball-reference.com/players/o/olajuha01.html Hakeem Olajuwon]<small>* ▪ HOU</small>
+|2.1
+|-
+|4
+|[https://www.basketball-reference.com/players/k/kempsh01.html Shawn Kemp] <small>▪ SEA</small>
+|2.0
+|-
+|5
+|[https://www.basketball-reference.com/players/h/horryro01.html Robert Horry] <small>▪ HOU</small>
+|1.6
+|}
+|
+{| class="wikitable"
+| colspan="3" |Player efficiency rating
+|-
+|1
+|[https://www.basketball-reference.com/players/r/robinda01.html David Robinson]<small>* ▪ SAS</small>
+|29.1
+|-
+|2
+|[https://www.basketball-reference.com/players/b/barklch01.html Charles Barkley]<small>* ▪ PHO</small>
+|27.5
+|-
+|3
+|[https://www.basketball-reference.com/players/o/onealsh01.html Shaquille O'Neal]<small>* ▪ ORL</small>
+|27.4
+|-
+|4
+|[https://www.basketball-reference.com/players/j/jordami01.html Michael Jordan]<small>* ▪ CHI</small>
+|26.7
+|-
+|5
+|[https://www.basketball-reference.com/players/s/sabonar01.html Arvydas Sabonis]<small>* ▪ POR</small>
+|24.7
+|}
+|
+{| class="wikitable"
+| colspan="3" |True shooting pct
+|-
+|1
+|[https://www.basketball-reference.com/players/p/perduwi01.html Will Perdue] <small>▪ SAS</small>
+|.728
+|-
+|2
+|[https://www.basketball-reference.com/players/p/persoch01.html Chuck Person] <small>▪ SAS</small>
+|.716
+|-
+|3
+|[https://www.basketball-reference.com/players/g/grantho01.html Horace Grant] <small>▪ ORL</small>
+|.671
+|-
+|4
+|[https://www.basketball-reference.com/players/j/jonesed02.html Eddie Jones] <small>▪ LAL</small>
+|.657
+|-
+|5
+|[https://www.basketball-reference.com/players/h/hornaje01.html Jeff Hornacek] <small>▪ UTA</small>
+|.648
+|}
+|
+{| class="wikitable"
+| colspan="3" |Effective field goal pct
+|-
+|1
+|[https://www.basketball-reference.com/players/p/persoch01.html Chuck Person] <small>▪ SAS</small>
+|.695
+|-
+|2
+|[https://www.basketball-reference.com/players/k/keefead01.html Adam Keefe] <small>▪ UTA</small>
+|.691
+|-
+|3
+|[https://www.basketball-reference.com/players/p/perduwi01.html Will Perdue] <small>▪ SAS</small>
+|.690
+|-
+|4
+|[https://www.basketball-reference.com/players/j/jonesed02.html Eddie Jones] <small>▪ LAL</small>
+|.653
+|-
+|5
+|[https://www.basketball-reference.com/players/g/grantho01.html Horace Grant] <small>▪ ORL</small>
+|.649
+|}
+|-
+|
+{| class="wikitable"
+| colspan="3" |Offensive rebound pct
+|-
+|1
+|[https://www.basketball-reference.com/players/r/rodmade01.html Dennis Rodman]<small>* ▪ CHI</small>
+|18.3
+|-
+|2
+|[https://www.basketball-reference.com/players/j/johnser02.html Ervin Johnson] <small>▪ SEA</small>
+|15.2
+|-
+|3
+|[https://www.basketball-reference.com/players/d/davisda01.html Dale Davis] <small>▪ IND</small>
+|14.5
+|-
+|4
+|[https://www.basketball-reference.com/players/o/onealsh01.html Shaquille O'Neal]<small>* ▪ ORL</small>
+|13.5
+|-
+|5
+|[https://www.basketball-reference.com/players/p/perduwi01.html Will Perdue] <small>▪ SAS</small>
+|13.4
+|}
+|
+{| class="wikitable"
+| colspan="3" |Defensive rebound pct
+|-
+|1
+|[https://www.basketball-reference.com/players/r/rodmade01.html Dennis Rodman]<small>* ▪ CHI</small>
+|30.9
+|-
+|2
+|[https://www.basketball-reference.com/players/b/barklch01.html Charles Barkley]<small>* ▪ PHO</small>
+|27.5
+|-
+|3
+|[https://www.basketball-reference.com/players/s/sabonar01.html Arvydas Sabonis]<small>* ▪ POR</small>
+|27.5
+|-
+|4
+|[https://www.basketball-reference.com/players/p/perduwi01.html Will Perdue] <small>▪ SAS</small>
+|25.8
+|-
+|5
+|[https://www.basketball-reference.com/players/e/ewingpa01.html Patrick Ewing]<small>* ▪ NYK</small>
+|25.4
+|}
+|
+{| class="wikitable"
+| colspan="3" |Total rebound pct
+|-
+|1
+|[https://www.basketball-reference.com/players/r/rodmade01.html Dennis Rodman]<small>* ▪ CHI</small>
+|24.3
+|-
+|2
+|[https://www.basketball-reference.com/players/p/perduwi01.html Will Perdue] <small>▪ SAS</small>
+|19.7
+|-
+|3
+|[https://www.basketball-reference.com/players/b/barklch01.html Charles Barkley]<small>* ▪ PHO</small>
+|18.8
+|-
+|4
+|[https://www.basketball-reference.com/players/d/davisda01.html Dale Davis] <small>▪ IND</small>
+|18.7
+|-
+|5
+|[https://www.basketball-reference.com/players/k/kempsh01.html Shawn Kemp] <small>▪ SEA</small>
+|18.2
+|}
+|
+{| class="wikitable"
+| colspan="3" |Assist pct
+|-
+|1
+|[https://www.basketball-reference.com/players/s/stricro02.html Rod Strickland] <small>▪ POR</small>
+|48.0
+|-
+|2
+|[https://www.basketball-reference.com/players/j/johnske02.html Kevin Johnson] <small>▪ PHO</small>
+|47.3
+|-
+|3
+|[https://www.basketball-reference.com/players/s/stockjo01.html John Stockton]<small>* ▪ UTA</small>
+|45.9
+|-
+|4
+|[https://www.basketball-reference.com/players/j/johnsav01.html Avery Johnson] <small>▪ SAS</small>
+|38.9
+|-
+|5
+|[https://www.basketball-reference.com/players/e/eisleho01.html Howard Eisley] <small>▪ UTA</small>
+|33.5
+|}
+|-
+|
+{| class="wikitable"
+| colspan="3" |Steal pct
+|-
+|1
+|[https://www.basketball-reference.com/players/d/drexlcl01.html Clyde Drexler]<small>* ▪ HOU</small>
+|3.7
+|-
+|2
+|[https://www.basketball-reference.com/players/p/pippesc01.html Scottie Pippen]<small>* ▪ CHI</small>
+|3.5
+|-
+|3
+|[https://www.basketball-reference.com/players/h/horryro01.html Robert Horry] <small>▪ HOU</small>
+|3.5
+|-
+|4
+|[https://www.basketball-reference.com/players/m/mcmilna01.html Nate McMillan] <small>▪ SEA</small>
+|3.3
+|-
+|5
+|[https://www.basketball-reference.com/players/e/ehlocr01.html Craig Ehlo] <small>▪ ATL</small>
+|3.0
+|}
+|
+{| class="wikitable"
+| colspan="3" |Block pct
+|-
+|1
+|[https://www.basketball-reference.com/players/o/ostergr01.html Greg Ostertag] <small>▪ UTA</small>
+|9.0
+|-
+|2
+|[https://www.basketball-reference.com/players/s/spencfe01.html Felton Spencer] <small>▪ UTA</small>
+|7.2
+|-
+|3
+|[https://www.basketball-reference.com/players/e/ewingpa01.html Patrick Ewing]<small>* ▪ NYK</small>
+|6.0
+|-
+|4
+|[https://www.basketball-reference.com/players/l/longllu01.html Luc Longley] <small>▪ CHI</small>
+|5.2
+|-
+|5
+|[https://www.basketball-reference.com/players/j/johnser02.html Ervin Johnson] <small>▪ SEA</small>
+|5.0
+|}
+|
+{| class="wikitable"
+| colspan="3" |Turnover pct
+|-
+|1
+|[https://www.basketball-reference.com/players/d/delnevi01.html Vinny Del Negro] <small>▪ SAS</small>
+|4.3
+|-
+|2
+|[https://www.basketball-reference.com/players/g/grantho01.html Horace Grant] <small>▪ ORL</small>
+|5.6
+|-
+|3
+|[https://www.basketball-reference.com/players/b/barklch01.html Charles Barkley]<small>* ▪ PHO</small>
+|6.2
+|-
+|4
+|[https://www.basketball-reference.com/players/e/eliema01.html Mario Elie] <small>▪ HOU</small>
+|6.6
+|-
+|5
+|[https://www.basketball-reference.com/players/r/russebr01.html Bryon Russell] <small>▪ UTA</small>
+|6.6
+|}
+|
+{| class="wikitable"
+| colspan="3" |Usage pct
+|-
+|1
+|[https://www.basketball-reference.com/players/m/malonka01.html Karl Malone]<small>* ▪ UTA</small>
+|34.9
+|-
+|2
+|[https://www.basketball-reference.com/players/j/jordami01.html Michael Jordan]<small>* ▪ CHI</small>
+|32.9
+|-
+|3
+|[https://www.basketball-reference.com/players/o/onealsh01.html Shaquille O'Neal]<small>* ▪ ORL</small>
+|32.3
+|-
+|4
+|[https://www.basketball-reference.com/players/r/robinda01.html David Robinson]<small>* ▪ SAS</small>
+|31.6
+|-
+|5
+|[https://www.basketball-reference.com/players/s/sabonar01.html Arvydas Sabonis]<small>* ▪ POR</small>
+|30.7
+|}
+|-
+|
+{| class="wikitable"
+| colspan="3" |Offensive rating
+|-
+|1
+|[https://www.basketball-reference.com/players/g/grantho01.html Horace Grant] <small>▪ ORL</small>
+|141.8
+|-
+|2
+|[https://www.basketball-reference.com/players/p/perduwi01.html Will Perdue] <small>▪ SAS</small>
+|131.4
+|-
+|3
+|[https://www.basketball-reference.com/players/p/persoch01.html Chuck Person] <small>▪ SAS</small>
+|130.5
+|-
+|4
+|[https://www.basketball-reference.com/players/h/hornaje01.html Jeff Hornacek] <small>▪ UTA</small>
+|128.0
+|-
+|5
+|[https://www.basketball-reference.com/players/k/kerrst01.html Steve Kerr] <small>▪ CHI</small>
+|126.2
+|}
+|
+{| class="wikitable"
+| colspan="3" |Defensive rating
+|-
+|1
+|[https://www.basketball-reference.com/players/p/pippesc01.html Scottie Pippen]<small>* ▪ CHI</small>
+|96.1
+|-
+|2
+|[https://www.basketball-reference.com/players/m/malonka01.html Karl Malone]<small>* ▪ UTA</small>
+|96.6
+|-
+|3
+|[https://www.basketball-reference.com/players/r/rodmade01.html Dennis Rodman]<small>* ▪ CHI</small>
+|96.7
+|-
+|4
+|[https://www.basketball-reference.com/players/e/ewingpa01.html Patrick Ewing]<small>* ▪ NYK</small>
+|97.5
+|-
+|5
+|[https://www.basketball-reference.com/players/o/ostergr01.html Greg Ostertag] <small>▪ UTA</small>
+|97.6
+|}
+|
+{| class="wikitable"
+| colspan="3" |Offensive win shares
+|-
+|1
+|[https://www.basketball-reference.com/players/j/jordami01.html Michael Jordan]<small>* ▪ CHI</small>
+|3.4
+|-
+|2
+|[https://www.basketball-reference.com/players/h/hornaje01.html Jeff Hornacek] <small>▪ UTA</small>
+|2.3
+|-
+|3
+|[https://www.basketball-reference.com/players/p/paytoga01.html Gary Payton]<small>* ▪ SEA</small>
+|1.9
+|-
+|4
+|[https://www.basketball-reference.com/players/h/hardaan01.html Penny Hardaway] <small>▪ ORL</small>
+|1.8
+|-
+|5
+|[https://www.basketball-reference.com/players/k/kempsh01.html Shawn Kemp] <small>▪ SEA</small>
+|1.5
+|}
+|
+{| class="wikitable"
+| colspan="3" |Defensive win shares
+|-
+|1
+|[https://www.basketball-reference.com/players/p/pippesc01.html Scottie Pippen]<small>* ▪ CHI</small>
+|1.7
+|-
+|2
+|[https://www.basketball-reference.com/players/m/malonka01.html Karl Malone]<small>* ▪ UTA</small>
+|1.6
+|-
+|3
+|[https://www.basketball-reference.com/players/k/kempsh01.html Shawn Kemp] <small>▪ SEA</small>
+|1.4
+|-
+|4
+|[https://www.basketball-reference.com/players/r/rodmade01.html Dennis Rodman]<small>* ▪ CHI</small>
+|1.4
+|-
+|5
+|[https://www.basketball-reference.com/players/j/jordami01.html Michael Jordan]<small>* ▪ CHI</small>
+|1.3
+|}
+|-
+|
+{| class="wikitable"
+| colspan="3" |Win shares
+|-
+|1
+|[https://www.basketball-reference.com/players/j/jordami01.html Michael Jordan]<small>* ▪ CHI</small>
+|4.7
+|-
+|2
+|[https://www.basketball-reference.com/players/h/hornaje01.html Jeff Hornacek] <small>▪ UTA</small>
+|3.1
+|-
+|3
+|[https://www.basketball-reference.com/players/p/paytoga01.html Gary Payton]<small>* ▪ SEA</small>
+|3.1
+|-
+|4
+|[https://www.basketball-reference.com/players/p/pippesc01.html Scottie Pippen]<small>* ▪ CHI</small>
+|3.0
+|-
+|5
+|[https://www.basketball-reference.com/players/k/kempsh01.html Shawn Kemp] <small>▪ SEA</small>
+|3.0
+|}
+|
+{| class="wikitable"
+| colspan="3" |Win shares per 48 minutes
+|-
+|1
+|[https://www.basketball-reference.com/players/j/jordami01.html Michael Jordan]<small>* ▪ CHI</small>
+|.306
+|-
+|2
+|[https://www.basketball-reference.com/players/h/hornaje01.html Jeff Hornacek] <small>▪ UTA</small>
+|.233
+|-
+|3
+|[https://www.basketball-reference.com/players/g/grantho01.html Horace Grant] <small>▪ ORL</small>
+|.221
+|-
+|4
+|[https://www.basketball-reference.com/players/r/robinda01.html David Robinson]<small>* ▪ SAS</small>
+|.214
+|-
+|5
+|[https://www.basketball-reference.com/players/r/russebr01.html Bryon Russell] <small>▪ UTA</small>
+|.213
+|}
+|
+{| class="wikitable"
+| colspan="3" |Box plus/minus
+|-
+|1
+|[https://www.basketball-reference.com/players/p/pippesc01.html Scottie Pippen]<small>* ▪ CHI</small>
+|9.3
+|-
+|2
+|[https://www.basketball-reference.com/players/j/jordami01.html Michael Jordan]<small>* ▪ CHI</small>
+|8.1
+|-
+|3
+|[https://www.basketball-reference.com/players/h/hornaje01.html Jeff Hornacek] <small>▪ UTA</small>
+|7.8
+|-
+|4
+|[https://www.basketball-reference.com/players/r/russebr01.html Bryon Russell] <small>▪ UTA</small>
+|7.7
+|-
+|5
+|[https://www.basketball-reference.com/players/m/malonka01.html Karl Malone]<small>* ▪ UTA</small>
+|7.1
+|}
+|
+{| class="wikitable"
+| colspan="3" |Offensive box plus/minus
+|-
+|1
+|[https://www.basketball-reference.com/players/j/jordami01.html Michael Jordan]<small>* ▪ CHI</small>
+|8.1
+|-
+|2
+|[https://www.basketball-reference.com/players/h/hornaje01.html Jeff Hornacek] <small>▪ UTA</small>
+|7.1
+|-
+|3
+|[https://www.basketball-reference.com/players/p/pippesc01.html Scottie Pippen]<small>* ▪ CHI</small>
+|5.1
+|-
+|4
+|[https://www.basketball-reference.com/players/s/stricro02.html Rod Strickland] <small>▪ POR</small>
+|4.9
+|-
+|5
+|[https://www.basketball-reference.com/players/j/jonesed02.html Eddie Jones] <small>▪ LAL</small>
+|4.6
+|}
+|-
+|
+{| class="wikitable"
+| colspan="3" |Defensive box plus/minus
+|-
+|1
+|[https://www.basketball-reference.com/players/h/horryro01.html Robert Horry] <small>▪ HOU</small>
+|5.4
+|-
+|2
+|[https://www.basketball-reference.com/players/o/olajuha01.html Hakeem Olajuwon]<small>* ▪ HOU</small>
+|4.9
+|-
+|3
+|[https://www.basketball-reference.com/players/e/ewingpa01.html Patrick Ewing]<small>* ▪ NYK</small>
+|4.7
+|-
+|4
+|[https://www.basketball-reference.com/players/s/smithch01.html Charles Smith] <small>▪ SAS</small>
+|4.4
+|-
+|5
+|[https://www.basketball-reference.com/players/d/drexlcl01.html Clyde Drexler]<small>* ▪ HOU</small>
+|4.3
+|}
+|
+{| class="wikitable"
+| colspan="3" |Value over replacement player
+|-
+|1
+|[https://www.basketball-reference.com/players/p/pippesc01.html Scottie Pippen]<small>* ▪ CHI</small>
+|2.1
+|-
+|2
+|[https://www.basketball-reference.com/players/j/jordami01.html Michael Jordan]<small>* ▪ CHI</small>
+|1.9
+|-
+|3
+|[https://www.basketball-reference.com/players/p/paytoga01.html Gary Payton]<small>* ▪ SEA</small>
+|1.8
+|-
+|4
+|[https://www.basketball-reference.com/players/m/malonka01.html Karl Malone]<small>* ▪ UTA</small>
+|1.6
+|-
+|5
+|[https://www.basketball-reference.com/players/h/hornaje01.html Jeff Hornacek] <small>▪ UTA</small>
+|1.6
+|}
+|
+|}
+
+== Salaries ==
+{| class="wikitable"
+!Rk
+!Player
+!Salary
+|-
+|1.
+|[https://www.basketball-reference.com/players/j/jordami01.html Michael Jordan]
+|$3,850,000
+|-
+|2
+|[https://www.basketball-reference.com/players/k/kukocto01.html Toni Kukoč]
+|$3,560,000
+|-
+|3
+|[https://www.basketball-reference.com/players/h/harpero01.html Ron Harper]
+|$3,120,000
+|-
+|4
+|[https://www.basketball-reference.com/players/p/pippesc01.html Scottie Pippen]
+|$2,925,000
+|-
+|5
+|[https://www.basketball-reference.com/players/r/rodmade01.html Dennis Rodman]
+|$2,500,000
+|-
+|6
+|[https://www.basketball-reference.com/players/l/longllu01.html Luc Longley]
+|$2,300,000
+|-
+|7
+|[https://www.basketball-reference.com/players/w/wennibi01.html Bill Wennington]
+|$1,000,000
+|-
+|8
+|[https://www.basketball-reference.com/players/b/brownra02.html Randy Brown]
+|$900,000
+|-
+|9
+|[https://www.basketball-reference.com/players/s/simpkdi01.html Dickey Simpkins]
+|$845,000
+|-
+|10
+|[https://www.basketball-reference.com/players/k/kerrst01.html Steve Kerr]
+|$800,000
+|-
+|11
+|[https://www.basketball-reference.com/players/c/caffeja01.html Jason Caffey]
+|$627,000
+|-
+|12
+|[https://www.basketball-reference.com/players/b/buechju01.html Jud Buechler]
+|$300,000
+|-
+|13
+|[https://www.basketball-reference.com/players/e/edwarja01.html James Edwards]
+|$225,000
+|-
+|14
+|[https://www.basketball-reference.com/players/h/haleyja01.html Jack Haley]
+|$225,000
+|}
+
+==Award winners==
+* [[Phil Jackson]], [[NBA Coach of the Year]]
+* [[Michael Jordan]], [[All-NBA First Team]]
+* [[Michael Jordan]], [[National Basketball Association All-Star Game|All-Star Game]] MVP
+* [[Michael Jordan]], [[NBA MVP]]
+* [[Michael Jordan]], [[NBA Finals MVP]]
+* [[Michael Jordan]], [[NBA All-Defensive First Team]]
+* [[Michael Jordan]], Regular season leader, Field Goals (916)
+* [[Michael Jordan]], Regular season leader, Field Goal Attempts (1850)
+* [[Michael Jordan]], Regular season leader, Total Points (2491)
+* [[Michael Jordan]], Regular season leader, Scoring Average (30.4 points per game)
+* [[Scottie Pippen]], All-NBA First Team
+* [[Scottie Pippen]], NBA All-Defensive First Team
+* [[Dennis Rodman]], NBA All-Defensive First Team
+* [[Dennis Rodman]], Regular season leader, Rebounds Per Game (14.9)
+* [[Dennis Rodman]], Regular season leader, Offensive Rebounds (356)
+* [[Dennis Rodman]], Regular season leader, Rebound Rate (26.6)
+* [[Toni Kukoč]], [[NBA Sixth Man of the Year Award|NBA Sixth Man of the Year]]
+* [[Jerry Krause]], [[NBA Executive of the Year Award]]
+
+===NBA All-Star Game===
+* [[Michael Jordan]], Guard
+* [[Scottie Pippen]], Forward
+
+==References==
+{{reflist}}
+
+==External links==
+* {{usurped|1=[https://web.archive.org/web/20071121063525/http://www.databasebasketball.com/teams/teamyear.htm?tm=CHI&lg=N&yr=1995 Bulls on Database Basketball]}}
+* [https://www.basketball-reference.com/teams/CHI/1996.html Bulls on Basketball Reference]
+* {{cite web |title=Chicago Bulls 72–10 Mixtape from the 1995–1996 Season |work=[[NBA.com]] |date=April 10, 2016 |url=https://www.youtube.com/watch?v=WQpdz_98Blc  |archive-url=https://ghostarchive.org/varchive/youtube/20211212/WQpdz_98Blc| archive-date=2021-12-12 |url-status=live|via=[[YouTube]] }}{{cbignore}}
+
+{{Navboxes|list1=
+{{1995–96 NBA season by team}}
+{{NBA champions}}
+{{Chicago Bulls}}
+{{Chicago Bulls seasons}}
+{{NBA10T}}
+}}
+
+{{DEFAULTSORT:1995-96 Chicago Bulls Season}}
+[[Category:Chicago Bulls seasons]]
+[[Category:Eastern Conference (NBA) championship seasons]]
+[[Category:NBA championship seasons]]
+[[Category:1995–96 NBA season by team|Chic]]
+[[Category:1995 in sports in Illinois|Chicago]]
+[[Category:1996 in sports in Illinois|Chicago]]
+[[Category:1995 in Chicago]]
+[[Category:1996 in Chicago]]

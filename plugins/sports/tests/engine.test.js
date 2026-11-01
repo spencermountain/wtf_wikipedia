@@ -5,6 +5,9 @@ import resolveTeam from '../src/engine/teams.js'
 import { seasonSlug } from '../src/nhl/index.js'
 import nhlFranchises from '../src/nhl/franchises.js'
 import mlbFranchises from '../src/mlb/franchises.js'
+import nbaFranchises from '../src/nba/franchises.js'
+import nflFranchises from '../src/nfl/franchises.js'
+import mlsFranchises from '../src/mls/franchises.js'
 
 test('outcome from row attributes', (t) => {
   t.equal(outcomeOf('class="game-won"'), 'win', 'game-won template class')
@@ -66,6 +69,24 @@ test('team resolution across renames', (t) => {
   t.equal(resolveTeam(nhlFranchises, 'Seattle Kraken', 2023), 'Seattle Kraken', 'expansion team')
   t.equal(resolveTeam(nhlFranchises, 'NY Rangers', 2020), 'New York Rangers', 'ny abbreviation')
   t.equal(resolveTeam(nhlFranchises, 'Some Beer League', 2020), 'Some Beer League', 'unknown passes through')
+  // nba
+  t.equal(resolveTeam(nbaFranchises, 'Oklahoma City Thunder', 1995), 'Seattle SuperSonics', 'thunder were the sonics')
+  t.equal(resolveTeam(nbaFranchises, 'Washington Wizards', 1985), 'Washington Bullets', 'wizards were the bullets')
+  t.equal(resolveTeam(nbaFranchises, 'Charlotte Hornets', 1995), 'Charlotte Hornets', 'original hornets')
+  t.equal(resolveTeam(nbaFranchises, 'Charlotte Hornets', 2010), 'Charlotte Bobcats', 'bobcats era')
+  t.equal(resolveTeam(nbaFranchises, 'New Orleans Pelicans', 2005), 'New Orleans/Oklahoma City Hornets', 'katrina years')
+  t.equal(resolveTeam(nbaFranchises, 'Brooklyn Nets', 2000), 'New Jersey Nets', 'nets in jersey')
+  // nfl
+  t.equal(resolveTeam(nflFranchises, 'Tennessee Titans', 1985), 'Houston Oilers', 'titans were the oilers')
+  t.equal(resolveTeam(nflFranchises, 'Las Vegas Raiders', 1985), 'Los Angeles Raiders', 'raiders in la')
+  t.equal(resolveTeam(nflFranchises, 'Las Vegas Raiders', 1998), 'Oakland Raiders', 'raiders back in oakland')
+  t.equal(resolveTeam(nflFranchises, 'Washington Commanders', 2020), 'Washington Football Team', 'the interim name')
+  t.equal(resolveTeam(nflFranchises, 'Indianapolis Colts', 1980), 'Baltimore Colts', 'colts in baltimore')
+  // mls
+  t.equal(resolveTeam(mlsFranchises, 'Sporting Kansas City', 1999), 'Kansas City Wizards', 'wizards era')
+  t.equal(resolveTeam(mlsFranchises, 'San Jose Earthquakes', 1997), 'San Jose Clash', 'clash era')
+  t.equal(resolveTeam(mlsFranchises, 'LA Galaxy', 2005), 'Los Angeles Galaxy', 'full galaxy name')
+  t.equal(resolveTeam(mlsFranchises, 'CF Montréal', 2015), 'Montreal Impact', 'impact era')
   t.end()
 })
 

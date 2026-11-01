@@ -27,9 +27,12 @@ templates - and returns the same tidy schema for any season since the 1990s.
 
 ```js
 import wtf from 'wtf_wikipedia'
-import { mlb, nhl } from 'wtf-plugin-sports'
+import { mlb, nhl, nba, nfl, mls } from 'wtf-plugin-sports'
 wtf.extend(mlb)
 wtf.extend(nhl)
+wtf.extend(nba)
+wtf.extend(nfl)
+wtf.extend(mls)
 
 let season = await wtf.nhlSeason('Toronto Maple Leafs', 2024)
 season.standings.record
@@ -83,7 +86,66 @@ Team names resolve across renames and relocations - asking for the
 `('Cleveland Guardians', 2015)` season fetches the Indians page, and
 `('Arizona Coyotes', 2026)` finds the Utah Mammoth. Old names work too.
 
-Both methods also hang off any parsed document:
+```js
+let season = await wtf.nbaSeason('Chicago Bulls', 1995)
+season.standings.record // { wins: 72, losses: 10, games: 82, winPct: 0.878 }
+season.games[0]
+/* {
+  game: 1,
+  date: 'November 3 1995',
+  opponent: 'Charlotte Hornets',
+  home: true,
+  outcome: 'win',
+  win: true,
+  result: { us: 105, them: 91 },
+  record: { wins: 1, losses: 0, games: 1, winPct: 1 },
+  leaders: { points: 'Michael Jordan (42)', rebounds: 'Dennis Rodman (11)', assists: 'Michael Jordan (7)' },
+  location: 'United Center',
+  attendance: 23652
+} */
+season.playoffs // one array of games per round
+season.roster // {{player2}} rows
+season.playerStats // { season: [{ name, games, pointsPerGame, ... }], playoffs: [...] }
+```
+
+```js
+let season = await wtf.nflSeason('New England Patriots', 2007)
+season.standings.record // { wins: 16, losses: 0, games: 16, winPct: 1 }
+season.games[0]
+/* {
+  game: 1,
+  date: 'September 9 2007',
+  opponent: 'New York Jets',
+  home: false,
+  outcome: 'win',
+  win: true,
+  result: { us: 38, them: 14 },
+  record: { wins: 1, losses: 0, games: 1, winPct: 1 },
+  venue: 'Giants Stadium'
+} */
+season.playoffs // single games, kept flat
+```
+
+```js
+let season = await wtf.mlsSeason('LA Galaxy', 2024)
+season.standings.record // { wins: 19, losses: 8, ties: 7, games: 34, winPct: 0.559 }
+season.games[0]
+/* {
+  date: 'February 25 2024',
+  opponent: 'Inter Miami CF',
+  home: true,
+  outcome: 'tie',
+  win: false,
+  result: { us: 1, them: 1 },
+  round: '1',
+  stadium: 'Dignity Health Sports Park',
+  location: 'Carson, California',
+  attendance: 27642
+} */
+season.playoffs // mls cup playoff matches, flat
+```
+
+The methods also hang off any parsed document:
 
 ```js
 let doc = await wtf.fetch('2002–03 Toronto Maple Leafs season')

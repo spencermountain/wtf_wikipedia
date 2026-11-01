@@ -2,32 +2,11 @@ import { getCell, stripNotes } from '../_lib.js'
 import { findGames, findSeries } from '../engine/games.js'
 import parseInfobox from '../engine/infobox.js'
 import resolveTeam from '../engine/teams.js'
+import { seasonSlug, twoYearTitle, parseTwoYearTitle } from '../engine/slug.js'
 import franchises from './franchises.js'
 import { parseSkaters, parseGoalies } from './players.js'
 
-// '2024–25 Toronto Maple Leafs season' → {year: 2024, team: 'Toronto Maple Leafs'}
-const parseTitle = function (title = '') {
-  const m = String(title).match(/^(\d{4})(?:[–-]\d{2,4})? (.+?) season$/)
-  if (m) {
-    return { year: Number(m[1]), team: m[2] }
-  }
-  const year = String(title).match(/\d{4}/)
-  return { year: year ? Number(year[0]) : null, team: '' }
-}
-
-// nhl seasons span two years: '2024–25', with '1999–2000' at the century
-const seasonSlug = function (year) {
-  const next = year + 1
-  let suffix = String(next % 100).padStart(2, '0')
-  if (suffix === '00') {
-    suffix = String(next)
-  }
-  return `${year}–${suffix}`
-}
-
-const makeTitle = function (team, year) {
-  return `${seasonSlug(year)} ${team} season`.replace(/ /g, '_')
-}
+const makeTitle = twoYearTitle
 
 const gameTitles = ['regular season', 'schedule and results', 'game log', 'schedule']
 
@@ -66,7 +45,7 @@ const parse = function (doc) {
   if (!doc) {
     return null
   }
-  const meta = parseTitle(doc.title || '')
+  const meta = parseTwoYearTitle(doc.title || '')
   const ctx = {
     team: meta.team,
     year: meta.year,

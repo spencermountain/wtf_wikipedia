@@ -1,0 +1,1282 @@
+{{short description|NBA basketball team season (won NBA championship)}}
+{{Use American English|date=August 2019}}
+{{Use mdy dates|date=August 2019}}
+{{Infobox NBA season
+| team = Boston Celtics
+| end_year = 1986
+| DivisionWin = yes
+| ConferenceWin = yes
+| ChampionshipWin = yes
+| wins = 67
+| losses = 15
+| division = Atlantic
+| division_place = 1
+| conf_place = 1
+| coach = [[K. C. Jones]]
+| gm = [[Jan Volk]]
+| arena = [[Boston Garden]]<br />[[XL Center|Hartford Civic Center]]
+| owners = [[Don Gaston]]<br />[[Alan N. Cohen]]<br />Paul Dupee
+| television =  [[WLVI]]<br /><small>([[Gil Santos]], [[Bob Cousy]])</small><br />[[NBC Sports Boston|SportsChannel New England]]<br /><small>([[Mike Gorman]], [[Tom Heinsohn]])</small>
+| radio = [[WRKO]]<br /><small>([[Johnny Most]], [[Glenn Ordway]])</small>
+| playoffs = '''[[1986 NBA Finals|NBA champions]]'''<br /><small>(Defeated [[1985-86 Houston Rockets season|Rockets]] 4–2)</small>
+| bbr_team = BOS
+}}
+The '''1985–86 Boston Celtics season''' was the 40th season of the [[Boston Celtics]] in the [[National Basketball Association]] (NBA). They finished with the best record in the league at 67–15, including a 40–1 record at home (37–1 at the [[Boston Garden]], 3–0 at the [[Hartford Civic Center]]). Those 40 home wins set an NBA record which would only be matched by the [[2015–16 San Antonio Spurs season|San Antonio Spurs]] in 2016. Arguably considered the best Celtics team ever, and widely regarded among the greatest teams in NBA history, their 67 total wins were one win shy of tying their franchise record of 68 wins set in [[1972–73 Boston Celtics season|1973]], and [[List of NBA teams by single season win percentage|tied for fifth all-time]].
+
+[[Larry Bird]] won his third consecutive MVP award and [[Bill Walton]] won the [[Sixth Man of the Year Award]]. The team was anchored by the
+"Big Three" frontcourt of Bird, [[Kevin McHale (basketball)|Kevin McHale]] and [[Robert Parish]], which is frequently ranked among the best frontcourts in NBA history.
+
+In the playoffs, the Celtics swept the [[1985-86 Chicago Bulls season|Chicago Bulls]] in three games in the First Round, then defeated the [[1985-86 Atlanta Hawks season|Atlanta Hawks]] in five games in the Semi-finals, before sweeping the [[1985-86 Milwaukee Bucks season|Milwaukee Bucks]] in four games in the Conference Finals to reach the [[1986 NBA Finals|NBA Finals]] for a third consecutive season. In the NBA Finals, the Celtics faced off against the [[1985–86 Houston Rockets season|Houston Rockets]] in a rematch of the [[1981 NBA Finals]], which the Celtics won in six games, winning every home game in the playoffs. The Celtics would go on to win their 16th championship and the last for [[2007–08 Boston Celtics season|22 years]], defeating the [[1985–86 Houston Rockets season|Houston Rockets]] in six games in the [[1986 NBA Finals|NBA Finals]], and had won 82 combined regular season and playoff games, a record that stood until the [[1995–96 Chicago Bulls season|Chicago Bulls]] racked up 87 combined wins en route to a title in 1996 (with the Golden State Warriors later breaking that record in [[2015–16 Golden State Warriors season|2016]] with 88 combined wins, including a 73–9 regular season record, although they infamously lost in the [[2016 NBA Finals|finals]] that season after leading the series 3–1). [[HoopsHype]] later ranked this squad as the team with the 17th easiest path to the NBA Finals in 2024 due to the 30–52 record of their first round opponent, the Chicago Bulls.<ref name="z718">{{cite web | last=Urbina | first=Frank | title=Ranking the easiest paths to an NBA title ever | website=HoopsHype | date=2024-06-17 | url=https://hoopshype.com/lists/ranking-the-easiest-paths-to-an-nba-title-ever-championship/ | access-date=2025-03-19}}</ref>
+
+==NBA draft==
+The '''[[1985–86 NBA season|1985]] [[NBA draft]]''' took place on June 18, 1985. It was also the first NBA Draft of the "[[NBA draft lottery|Lottery]]" era. The lottery was put into place so teams could not intentionally lose games to receive the number one pick.
+{| class="wikitable sortable sortable"
+|-
+!  style="background:#00994d; width:10%;"| Round
+!  style="background:#00994d; width:10%;"| Pick
+!  style="background:#00994d; width:20%;"| Player
+!  style="background:#00994d; width:15%;"| Position
+!  style="background:#00994d; width:15%;"| Nationality
+!  style="background:#00994d; width:20%;"| School/Club team
+|-
+| 1
+| 20
+| [[Sam Vincent (basketball)|Sam Vincent]]
+| Guard
+| {{flagu|United States}}
+| [[Michigan State University|Michigan State]]
+|-
+| 3
+| 70
+| Andre Battle
+| Guard
+| {{flagu|United States}}
+| [[Loyola University Chicago|Loyola (IL)]]
+|-
+| 4
+| 93
+| Cliff Webber
+| Forward
+| {{flagu|United States}}
+| [[Liberty University|Liberty Baptist]]
+|-
+| 5
+| 116
+| Albert Butts
+| Forward
+| {{flagu|United States}}
+| [[La Salle University|La Salle]]
+|-
+| 6
+| 139
+| [[Ralph Lewis (basketball)|Ralph Lewis]]
+| Guard
+| {{flagu|United States}}
+| [[La Salle University|La Salle]]
+|-
+| 7
+| 162
+| Chris Remly
+|
+| {{flagu|United States}}
+| [[Rutgers University|Rutgers]]
+|}
+
+==Season Synopsis==
+The Celtics were coming from a 6-game [[1985 NBA Finals|NBA Finals series]] against their arch-rival the [[1984-85 Los Angeles Lakers season|Los Angeles Lakers]]. They ended with a record 63-19 during the regular season, a league-best record, earning home court advantage throughout the playoffs.
+
+===October/November===
+They started their 1985–86 season campaign with a 109-113 OT loss to the [[1985-86 New Jersey Nets season|New Jersey Nets]], despite a near quadruple-double performance from Larry Bird, who recorded 21 points, 12 rebounds, 10 assists and 8 steals for the Celtics.<ref>{{cite web|url=https://www.basketball-reference.com/boxscores/198510250NJN.html|title=Boston Celtics at New Jersey Nets Box Score, October 25, 1985|publisher=Basketball-Reference.com|access-date=August 5, 2019}}</ref> The next day, Kevin McHale's 26 points and 15 rebounds led the Celtics towards a 105–100 road win over the Cavaliers.<ref>{{cite web|url=https://www.basketball-reference.com/boxscores/198510260CLE.html|title=Boston Celtics at Cleveland Cavaliers Box Score, October 26, 1985|publisher=Basketball-Reference.com|access-date=August 5, 2019}}</ref> Four days later, the Celtics defeated the visiting Bucks, 117–106, with Bird, McHale, Parish and Johnson, all scoring at least 20 points.<ref>{{cite web|url=https://www.basketball-reference.com/boxscores/198510300BOS.html|title=Milwaukee Bucks at Boston Celtics Box Score, October 30, 1985|publisher=Basketball-Reference.com|access-date=August 5, 2019}}</ref> They ended the month of October with a 2–1 record, and were 15-2 at the end of November.
+
+==Regular season==
+* Under head coach [[K. C. Jones]], the 1985–86 [[Boston Celtics]] finished the regular season with a record of 67–15. This team is generally considered to be the best of [[Larry Bird]]'s career. In addition to longtime Celtics [[Kevin McHale (basketball)|Kevin McHale]] and [[Robert Parish]], the franchise was joined on the front line by former NBA MVP [[Bill Walton]]. Despite a career plagued by a series of serious injuries to his knees, ankles and feet, Walton would win the [[NBA Sixth Man of the Year Award]]. Walton had missed essentially the past two seasons and the [[Los Angeles Clippers]] put him on the trade bloc as his contract ran out.  The [[Los Angeles Lakers]] and the Celtics were both interested, but the Lakers wanted Walton to be cleared by their team doctor before making any trade.  The Celtics, on the other hand, were willing to trade former Finals MVP [[Cedric Maxwell]] for Walton-based solely on his word that he felt he was healthy enough to play.  Walton appeared in a career high 80 games.  The backcourt was led by the MVP of the [[1979 NBA Finals]], defensive stopper [[Dennis Johnson]], and former [[Toronto Blue Jays]] baseball player, shooting guard [[Danny Ainge]].  Off the bench, the Celtics featured former All-Star [[Scott Wedman]] and recent acquisition (from the [[Indiana Pacers]]) [[Jerry Sichting]].
+
+===Season standings===
+{{1985–86 NBA Atlantic standings|team=BOS}}
+
+{{1985–86 NBA East standings|team=BOS}}
+
+===Game log===
+{{NBA game log start|Boston Celtics|end_year=1986|bgcolor=#006400|color=#FFFFFF|record=Total: 67–15 (Home: 40–1; Road: 27–14)}}
+{{NBA game log section|Boston Celtics|October|first=yes|bgcolor=#FFFFFF|color=#006400
+| home_wins = 1
+| home_losses = 0
+| road_wins = 1
+| road_losses = 1
+}}
+|- align="center" bgcolor="#ffcccc"
+| 1
+| October 25, 1985
+| @ [[1985–86 New Jersey Nets season|New Jersey]]
+| [https://www.basketball-reference.com/boxscores/198510250NJN.html L 109–113 (OT)]
+| [[Larry Bird|Bird]] (21)
+| [[Larry Bird|Bird]] (12)
+| [[Larry Bird|Bird]] (10)
+| [[Brendan Byrne Arena]]<br />13,095
+| 0–1
+|- align="center" bgcolor="#ccffcc"
+| 2
+| October 26, 1985
+| @ [[1985–86 Cleveland Cavaliers season|Cleveland]]
+| [https://www.basketball-reference.com/boxscores/198510260CLE.html W 105–100]
+| [[Kevin McHale (basketball)|McHale]] (21)
+| [[Kevin McHale (basketball)|McHale]] (15)
+| [[Dennis Johnson|Johnson]] (5)
+| [[Coliseum at Richfield|Richfield Coliseum]]<br />20,900
+| 1–1
+|- align="center" bgcolor="#ccffcc"
+| 3
+| October 30, 1985<br />7:30{{nbsp}}p.m. [[Eastern Time Zone|EST]]
+| [[1985–86 Milwaukee Bucks season|Milwaukee]] 
+| [https://www.basketball-reference.com/boxscores/198510300BOS.html W 117–106]
+| [[Kevin McHale (basketball)|McHale]] (25)
+| [[Robert Parish|Parish]] (13)
+| [[Danny Ainge|Ainge]],<br />[[Larry Bird|Bird]] (5)
+| [[Boston Garden]]<br />14,890
+| 2–1
+{{NBA game log section|Boston Celtics|November|bgcolor=#FFFFFF|color=#006400
+| home_wins = 8
+| home_losses = 0
+| road_wins = 5
+| road_losses = 1
+}}
+|- align="center" bgcolor="#ccffcc"
+| 4
+| November 1, 1985
+| [[1985–86 Atlanta Hawks season|Atlanta]]
+| [https://www.basketball-reference.com/boxscores/198511010BOS.html W 109–105]
+| [[Larry Bird|Bird]] (25)
+| [[Kevin McHale (basketball)|McHale]] (10)
+| [[Dennis Johnson|Johnson]] (9)
+| [[Boston Garden]]<br />14,890
+| 3–1
+|- align="center" bgcolor="#ccffcc"
+| 5
+| November 2, 1985
+| @ [[1985–86 Washington Bullets season|Washington]]
+| [https://www.basketball-reference.com/boxscores/198511020WSB.html W 88–73]
+| [[Danny Ainge|Ainge]] (20)
+| [[Robert Parish|Parish]] (10)
+| [[Larry Bird|Bird]] (8)
+| [[Capital Centre (Landover, Maryland)|Capital Centre]]<br />17,488
+| 4–1
+|- align="center" bgcolor="#ccffcc"
+| 6
+| November 8, 1985
+| [[1985–86 Phoenix Suns season|Phoenix]]
+| [https://www.basketball-reference.com/boxscores/198511080BOS.html W 125–101]
+| [[Robert Parish|Parish]] (25)
+| [[Robert Parish|Parish]] (10)
+| [[Larry Bird|Bird]] (10)
+| [[Boston Garden]]<br />14,890
+| 5–1
+|- align="center" bgcolor="#ccffcc"
+| 7
+| November 9, 1985
+| @ [[1985–86 Detroit Pistons season|Detroit]]
+| [https://www.basketball-reference.com/boxscores/198511090DET.html W 124–105]
+| [[Larry Bird|Bird]] (29)
+| [[Kevin McHale (basketball)|McHale]] (11)
+| [[Dennis Johnson|Johnson]] (7)
+| [[Pontiac Silverdome]]<br />25,148
+| 6–1
+|- align="center" bgcolor="#ccffcc"
+| 8
+| November 13, 1985
+| [[1985–86 Indiana Pacers season|Indiana]]
+| [https://www.basketball-reference.com/boxscores/198511130BOS.html W 118–114]
+| [[Dennis Johnson|Johnson]] (30)
+| [[Larry Bird|Bird]] (15)
+| [[Larry Bird|Bird]] (7)
+| [[Boston Garden]]<br />14,890
+| 7–1
+|- align="center" bgcolor="#ccffcc"
+| 9
+| November 15, 1985
+| [[1985–86 Washington Bullets season|Washington]]
+| [https://www.basketball-reference.com/boxscores/198511150BOS.html W 118–114]
+| [[Danny Ainge|Ainge]] (24)
+| [[Larry Bird|Bird]] (11)
+| [[Danny Ainge|Ainge]] (9)
+| [[Boston Garden]]<br />14,890
+| 8–1
+|- align="center" bgcolor="#ffcccc"
+| 10
+| November 16, 1985
+| @ [[1985–86 Indiana Pacers season|Indiana]]
+| [https://www.basketball-reference.com/boxscores/198511160IND.html L 109–111]
+| [[Larry Bird|Bird]] (33)
+| [[Robert Parish|Parish]] (10)
+| [[Danny Ainge|Ainge]] (7)
+| [[Market Square Arena]]<br />16,904
+| 8–2
+|- align="center" bgcolor="#ccffcc"
+| 11
+| November 20, 1985
+| [[1985–86 Utah Jazz season|Utah]]
+| [https://www.basketball-reference.com/boxscores/198511200BOS.html W 115–106 (OT)]
+| [[Larry Bird|Bird]] (27)
+| [[Robert Parish|Parish]] (17)
+| [[Danny Ainge|Ainge]] (7)
+| [[Boston Garden]]<br />14,890
+| 9–2
+|- align="center" bgcolor="#ccffcc"
+| 12
+| November 22, 1985
+| [[1985–86 Philadelphia 76ers season|Philadelphia]]
+| [https://www.basketball-reference.com/boxscores/198511220BOS.html W 110–103]
+| [[Kevin McHale (basketball)|McHale]] (32)
+| [[Robert Parish|Parish]] (12)
+| [[Larry Bird|Bird]] (6)
+| [[Boston Garden]]<br />14,890
+| 10–2
+|- align="center" bgcolor="#ccffcc"
+| 13
+| November 23, 1985
+| @ [[1985–86 New York Knicks season|New York]]
+| [https://www.basketball-reference.com/boxscores/198511230NYK.html W 113–104]
+| [[Robert Parish|Parish]] (27)
+| [[Robert Parish|Parish]] (12)
+| [[Larry Bird|Bird]] (10)
+| [[Madison Square Garden]]<br />19,591
+| 11–2
+|- align="center" bgcolor="#ccffcc"
+| 14
+| November 26, 1985
+| @ [[1985–86 Philadelphia 76ers season|Philadelphia]]
+| [https://www.basketball-reference.com/boxscores/198511260PHI.html W 98–91]
+| [[Robert Parish|Parish]] (22)
+| [[Kevin McHale (basketball)|McHale]] (13)
+| [[Larry Bird|Bird]] (11)
+| [[Spectrum (arena)|The Spectrum]]<br />17,921
+| 12–2
+|- align="center" bgcolor="#ccffcc"
+| 15
+| November 27, 1985
+| [[1985–86 Detroit Pistons season|Detroit]]
+| [https://www.basketball-reference.com/boxscores/198511270BOS.html W 132–124]
+| [[Larry Bird|Bird]] (47)
+| [[Larry Bird|Bird]] (12)
+| [[Danny Ainge|Ainge]],<br />[[Dennis Johnson|Johnson]] (5)
+| [[Boston Garden]]<br />14,890
+| 13–2
+|- align="center" bgcolor="#ccffcc"
+| 16
+| November 29, 1985
+| [[1985–86 New York Knicks season|New York]]
+| [https://www.basketball-reference.com/boxscores/198511290BOS.html W 94–88]
+| [[Larry Bird|Bird]] (31)
+| [[Larry Bird|Bird]] (15)
+| [[Dennis Johnson|Johnson]] (7)
+| [[Boston Garden]]<br />14,890
+| 14–2
+|- align="center" bgcolor="#ccffcc"
+| 17
+| November 30, 1985
+| @ [[1985–86 Atlanta Hawks season|Atlanta]]
+| [https://www.basketball-reference.com/boxscores/198511300ATL.html W 102–97]
+| [[Larry Bird|Bird]] (28)
+| [[Kevin McHale (basketball)|McHale]] (8)
+| [[Dennis Johnson|Johnson]] (8)
+| [[Omni Coliseum|The Omni]]<br />13,101
+| 15–2
+{{NBA game log section|Boston Celtics|December|bgcolor=#FFFFFF|color=#006400
+| home_wins = 4
+| home_losses = 1
+| road_wins = 4
+| road_losses = 4
+}}
+|- align="center" bgcolor="#ccffcc"
+| 18
+| December 3, 1985<br />8:30{{nbsp}}p.m. [[Eastern Time Zone|EST]]
+| @ [[1985–86 Milwaukee Bucks season|Milwaukee]]
+| [https://www.basketball-reference.com/boxscores/198512030MIL.html W 112–109]
+| [[Kevin McHale (basketball)|McHale]] (29)
+| [[Kevin McHale (basketball)|McHale]] (10)
+| [[Danny Ainge|Ainge]] (6)
+| [[MECCA Arena]]<br />11,052
+| 16–2
+|- align="center" bgcolor="#ccffcc"
+| 19
+| December 4, 1985
+| @ [[1985–86 New Jersey Nets season|New Jersey]]
+| [https://www.basketball-reference.com/boxscores/198512040NJN.html W 130–111]
+| [[Dennis Johnson|Johnson]] (23)
+| [[Bill Walton|Walton]] (13)
+| [[Danny Ainge|Ainge]],<br />[[Larry Bird|Bird]],<br />[[Kevin McHale (basketball)|McHale]] (5)
+| [[Brendan Byrne Arena]]<br />15,169
+| 17–2
+|- align="center" bgcolor="#ffcccc"
+| 20
+| December 6, 1985
+| [[1985–86 Portland Trail Blazers season|Portland]]
+| [https://www.basketball-reference.com/boxscores/198512060BOS.html L 103–121]
+| [[Larry Bird|Bird]] (20)
+| [[Larry Bird|Bird]] (11)
+| [[Danny Ainge|Ainge]] (9)
+| [[Boston Garden]]<br />14,890
+| 17–3
+|- align="center" bgcolor="#ccffcc"
+| 21
+| December 10, 1985
+| [[1985–86 Atlanta Hawks season|Atlanta]]<br />{{small|(at [[Hartford, Connecticut]])}}
+| [https://www.basketball-reference.com/boxscores/198512100BOS.html W 114–110]
+| [[Kevin McHale (basketball)|McHale]],<br />[[Robert Parish|Parish]] (24)
+| [[Robert Parish|Parish]] (10)
+| [[Dennis Johnson|Johnson]] (9)
+| [[XL Center|Hartford Civic Center]]<br />14,493
+| 18–3
+|- align="center" bgcolor="#ccffcc"
+| 22
+| December 11, 1985
+| [[1985–86 Sacramento Kings season|Sacramento]]
+| [https://www.basketball-reference.com/boxscores/198512110BOS.html W 118–101]
+| [[Larry Bird|Bird]] (24)
+| [[Larry Bird|Bird]] (7)
+| [[Danny Ainge|Ainge]],<br />[[Larry Bird|Bird]] (5)
+| [[Boston Garden]]<br />14,890
+| 19–3
+|- align="center" bgcolor="#ffcccc"
+| 23
+| December 14, 1985
+| @ [[1985–86 Cleveland Cavaliers season|Cleveland]]
+| [https://www.basketball-reference.com/boxscores/198512140CLE.html L 99–109]
+| [[Larry Bird|Bird]] (31)
+| [[Kevin McHale (basketball)|McHale]] (12)
+| [[Danny Ainge|Ainge]] (9)
+| [[Coliseum at Richfield|Richfield Coliseum]]<br />15,349
+| 19–4
+|- align="center" bgcolor="#ccffcc"
+| 24
+| December 15, 1985
+| [[1985–86 Chicago Bulls season|Chicago]]
+| [https://www.basketball-reference.com/boxscores/198512150BOS.html W 109–104]
+| [[Larry Bird|Bird]] (34)
+| [[Robert Parish|Parish]] (15)
+| [[Danny Ainge|Ainge]] (9)
+| [[Boston Garden]]<br />14,890
+| 20–4
+|- align="center" bgcolor="#ffcccc"
+| 25
+| December 17, 1985
+| @ [[1985–86 Chicago Bulls season|Chicago]]
+| [https://www.basketball-reference.com/boxscores/198512170CHI.html L 108–116]
+| [[Dennis Johnson|Johnson]] (25)
+| [[Robert Parish|Parish]] (15)
+| [[Dennis Johnson|Johnson]] (8)
+| [[Chicago Stadium]]<br />13,786
+| 20–5
+|- align="center" bgcolor="#ccffcc"
+| 26
+| December 18, 1985
+| [[1985–86 Dallas Mavericks season|Dallas]]
+| [https://www.basketball-reference.com/boxscores/198512180BOS.html W 137–117]
+| [[Larry Bird|Bird]] (35)
+| [[Kevin McHale (basketball)|McHale]] (10)
+| [[Danny Ainge|Ainge]] (13)
+| [[Boston Garden]]<br />14,890
+| 21–5
+|- align="center" bgcolor="#ffcccc"
+| 27
+| December 21, 1985
+| @ [[1985–86 Philadelphia 76ers season|Philadelphia]]
+| [https://www.basketball-reference.com/boxscores/198512210PHI.html L 102–108]
+| [[Kevin McHale (basketball)|McHale]] (34)
+| [[Kevin McHale (basketball)|McHale]] (10)
+| [[Danny Ainge|Ainge]] (9)
+| [[Spectrum (arena)|The Spectrum]]<br />17,941
+| 21–6
+|- align="center" bgcolor="#ffcccc"
+| 28 
+| December 25, 1985
+| @ [[1985–86 New York Knicks season|New York]]
+| [https://www.basketball-reference.com/boxscores/198512250NYK.html L 104–113 (2OT)]
+| [[Kevin McHale (basketball)|McHale]] (29)
+| [[Robert Parish|Parish]] (18)
+| [[Danny Ainge|Ainge]] (8)
+| [[Madison Square Garden]]<br />17,480
+| 21–7
+|- align="center" bgcolor="#ccffcc"
+| 29
+| December 28, 1985
+| @ [[1985–86 Utah Jazz season|Utah]]
+| [https://www.basketball-reference.com/boxscores/198512280UTA.html W 110–108]
+| [[Larry Bird|Bird]],<br />[[Kevin McHale (basketball)|McHale]] (24)
+| [[Robert Parish|Parish]] (10)
+| [[Larry Bird|Bird]] (8)
+| [[Salt Palace (arena)|Salt Palace]]<br />12,702
+| 22–7
+|- align="center" bgcolor="#ccffcc"
+| 30
+| December 30, 1985
+| @ [[1985–86 Los Angeles Clippers season|L.A. Clippers]]
+| [https://www.basketball-reference.com/boxscores/198512300LAC.html W 125–103]
+| [[Kevin McHale (basketball)|McHale]] (22)
+| [[Kevin McHale (basketball)|McHale]] (18)
+| [[Larry Bird|Bird]] (8)
+| [[Los Angeles Memorial Sports Arena]]<br />14,977
+| 23–7
+{{NBA game log section|Boston Celtics|January|bgcolor=#FFFFFF|color=#006400
+| home_wins = 7
+| home_losses = 0
+| road_wins = 5
+| road_losses = 1
+}}
+|- align="center" bgcolor="#ccffcc"
+| 31
+| January 2, 1986
+| @ [[1985–86 Indiana Pacers season|Indiana]]
+| [https://www.basketball-reference.com/boxscores/198601020IND.html W 122–104]
+| [[Dennis Johnson|Johnson]] (29)
+| [[Larry Bird|Bird]] (13)
+| [[Larry Bird|Bird]] (8)
+| [[Market Square Arena]]<br />14,974
+| 24–7
+|- align="center" bgcolor="#ccffcc"
+| 32
+| January 3, 1986
+| [[1985–86 New Jersey Nets season|New Jersey]]
+| [https://www.basketball-reference.com/boxscores/198601030BOS.html W 129–117]
+| [[Larry Bird|Bird]] (29)
+| [[Larry Bird|Bird]] (10)
+| [[Dennis Johnson|Johnson]] (8)
+| [[Boston Garden]]<br />14,890
+| 25–7
+|- align="center" bgcolor="#ffcccc"
+| 33
+| January 7, 1986
+| @ [[1985–86 Detroit Pistons season|Detroit]]
+| [https://www.basketball-reference.com/boxscores/198601070DET.html L 109–113]
+| [[Kevin McHale (basketball)|McHale]] (29)
+| [[Larry Bird|Bird]] (12)
+| [[Larry Bird|Bird]] (8)
+| [[Pontiac Silverdome]]<br />17,421
+| 25–8
+|- align="center" bgcolor="#ccffcc"
+| 34
+| January 8, 1986
+| [[1985–86 Cleveland Cavaliers season|Cleveland]]
+| [https://www.basketball-reference.com/boxscores/198601080BOS.html W 126–95]
+| [[Larry Bird|Bird]] (25)
+| [[Kevin McHale (basketball)|McHale]] (13)
+| [[Larry Bird|Bird]] (7)
+| [[Boston Garden]]<br />14,890
+| 26–8
+|- align="center" bgcolor="#ccffcc"
+| 35
+| January 10, 1986
+| [[1985–86 Atlanta Hawks season|Atlanta]]
+| [https://www.basketball-reference.com/boxscores/198601100BOS.html W 115–108]
+| [[Larry Bird|Bird]] (29)
+| [[Robert Parish|Parish]] (15)
+| [[Dennis Johnson|Johnson]] (8)
+| [[Boston Garden]]<br />14,890
+| 27–8
+|- align="center" bgcolor="#ccffcc"
+| 36
+| January 15, 1986
+| [[1985–86 Denver Nuggets season|Denver]]
+| [https://www.basketball-reference.com/boxscores/198601150BOS.html W 123–100]
+| [[Kevin McHale (basketball)|McHale]] (33)
+| [[Larry Bird|Bird]] (14)
+| [[Larry Bird|Bird]] (9)
+| [[Boston Garden]]<br />14,890
+| 28–8
+|- align="center" bgcolor="#ccffcc"
+| 37
+| January 17, 1986
+| @ [[1985–86 Indiana Pacers season|Indiana]]
+| [https://www.basketball-reference.com/boxscores/198601170IND.html W 123–105]
+| [[Kevin McHale (basketball)|McHale]] (28)
+| [[Larry Bird|Bird]] (9)
+| [[Larry Bird|Bird]] (8)
+| [[Market Square Arena]]<br />16,904
+| 29–8
+|- align="center" bgcolor="#ccffcc"
+| 38
+| January 18, 1986
+| @ [[1985–86 Atlanta Hawks season|Atlanta]]
+| [https://www.basketball-reference.com/boxscores/198601180ATL.html W 125–122 (OT)]
+| [[Larry Bird|Bird]] (41)
+| [[Kevin McHale (basketball)|McHale]] (12)
+| [[Danny Ainge|Ainge]] (12)
+| [[Omni Coliseum|The Omni]]<br />16,522
+| 30–8
+|- align="center" bgcolor="#ccffcc"
+| 39
+| January 22, 1986<br />8:00{{nbsp}}p.m. [[Eastern Time Zone|EST]]
+| [[1985–86 Los Angeles Lakers season|L.A. Lakers]]
+| [https://www.basketball-reference.com/boxscores/198601220BOS.html W 110–95]
+| [[Dennis Johnson|Johnson]] (22)
+| [[Larry Bird|Bird]] (12)
+| [[Danny Ainge|Ainge]] (8)
+| [[Boston Garden]]<br />14,890
+| 31–8
+|- align="center" bgcolor="#ccffcc"
+| 40
+| January 24, 1986
+| [[1985–86 Golden State Warriors season|Golden State]]
+| [https://www.basketball-reference.com/boxscores/198601240BOS.html W 135–114]
+| [[Larry Bird|Bird]] (25)
+| [[Scott Wedman|Wedman]] (13)
+| [[Dennis Johnson|Johnson]] (7)
+| [[Boston Garden]]<br />14,890
+| 32–8
+|- align="center" bgcolor="#ccffcc"
+| 41
+| January 26, 1986
+| [[1985–86 Philadelphia 76ers season|Philadelphia]]
+| [https://www.basketball-reference.com/boxscores/198601260BOS.html W 105–103]
+| [[Larry Bird|Bird]] (28)
+| [[Larry Bird|Bird]] (14)
+| [[Larry Bird|Bird]] (6)
+| [[Boston Garden]]<br />14,890
+| 33–8
+|- align="center" bgcolor="#ccffcc"
+| 42
+| January 30, 1986
+| @ [[1985–86 Chicago Bulls season|Chicago]]
+| [https://www.basketball-reference.com/boxscores/198601300CHI.html W 101–91]
+| [[Larry Bird|Bird]] (26)
+| [[Robert Parish|Parish]] (16)
+| [[Dennis Johnson|Johnson]] (8)
+| [[Chicago Stadium]]<br />15,207
+| 34–8
+|- align="center" bgcolor="#ccffcc"
+| 43
+| January 31, 1986
+| @ [[1985–86 Washington Bullets season|Washington]]
+| [https://www.basketball-reference.com/boxscores/198601310WSB.html W 97–88]
+| [[Scott Wedman|Wedman]] (24)
+| [[Robert Parish|Parish]] (14)
+| [[Danny Ainge|Ainge]] (9)
+| [[Capital Centre (Landover, Maryland)|Capital Centre]]<br />19,123
+| 35–8
+{{NBA game log section|Boston Celtics|February|bgcolor=#FFFFFF|color=#006400
+| home_wins = 5
+| home_losses = 0
+| road_wins = 6
+| road_losses = 3
+}}
+|- align="center" bgcolor="#ccffcc"
+| 44
+| February 2, 1986
+| [[1985–86 Seattle SuperSonics season|Seattle]]
+| [https://www.basketball-reference.com/boxscores/198602020BOS.html W 114–101]
+| [[Dennis Johnson|Johnson]] (24)
+| [[Larry Bird|Bird]] (11)
+| [[Dennis Johnson|Johnson]] (7)
+| [[Boston Garden]]<br />14,890
+| 36–8
+|- align="center" bgcolor="#ccffcc"
+| 45
+| February 4, 1986<br />8:30{{nbsp}}p.m. [[Eastern Time Zone|EST]]
+| @ [[1985–86 Milwaukee Bucks season|Milwaukee]]
+| [https://www.basketball-reference.com/boxscores/198602040MIL.html W 112–93]
+| [[Larry Bird|Bird]] (24)
+| [[Larry Bird|Bird]] (9)
+| [[Dennis Johnson|Johnson]] (8)
+| [[MECCA Arena]]<br />11,052
+| 37–8
+|- align="center" bgcolor="#ccffcc"
+| 46
+| February 5, 1986
+| [[1985–86 Washington Bullets season|Washington]]
+| [https://www.basketball-reference.com/boxscores/198602050BOS.html W 103–88]
+| [[Larry Bird|Bird]] (26)
+| [[Bill Walton|Walton]] (17)
+| [[Larry Bird|Bird]],<br />[[Dennis Johnson|Johnson]] (6)
+| [[Boston Garden]]<br />14,890
+| 38–8
+|- align="center"
+|colspan="9" bgcolor="#bbcaff"|'''[[1986 NBA All-Star Game|All-Star Break]]'''
+|- style="background:#cfc;"
+|- bgcolor="#bbffbb"
+|- align="center" bgcolor="#ffcccc"
+| 47
+| February 11, 1986
+| @ [[1985–86 Sacramento Kings season|Sacramento]]
+| [https://www.basketball-reference.com/boxscores/198602110SAC.html L 100–105]
+| [[Larry Bird|Bird]] (29)
+| [[Robert Parish|Parish]] (15)
+| [[Dennis Johnson|Johnson]] (5)
+| [[ARCO Arena (1985)|ARCO Arena]]<br />10,333
+| 38–9
+|- align="center" bgcolor="#ccffcc"
+| 48
+| February 13, 1986
+| @ [[1985–86 Seattle SuperSonics season|Seattle]]
+| [https://www.basketball-reference.com/boxscores/198602130SEA.html W 107–98]
+| [[Larry Bird|Bird]] (31)
+| [[Larry Bird|Bird]] (15)
+| [[Larry Bird|Bird]] (11)
+| [[Seattle Center Coliseum]]<br />14,230
+| 39–9
+|- align="center" bgcolor="#ccffcc"
+| 49
+| February 14, 1986
+| @ [[1985–86 Portland Trail Blazers season|Portland]]
+| [https://www.basketball-reference.com/boxscores/198602140POR.html W 120–119 (OT)]
+| [[Larry Bird|Bird]] (47)
+| [[Larry Bird|Bird]] (14)
+| [[Danny Ainge|Ainge]] (12)
+| [[Memorial Coliseum (Portland, Oregon)|Memorial Coliseum]]<br />12,666
+| 40–9
+|- align="center" bgcolor="#ccffcc"
+| 50
+| February 16, 1986<br />3:30{{nbsp}}p.m. [[Eastern Time Zone|EST]]
+| @ [[1985–86 Los Angeles Lakers season|L.A. Lakers]]
+| [https://www.basketball-reference.com/boxscores/198602160LAL.html W 105–99]
+| [[Dennis Johnson|Johnson]] (23)
+| [[Larry Bird|Bird]] (18)
+| [[Larry Bird|Bird]] (7)
+| [[The Forum (Inglewood, California)|The Forum]]<br />17,505
+| 41–9
+|- align="center" bgcolor="#ffcccc"
+| 51
+| February 17, 1986
+| @ [[1985–86 Phoenix Suns season|Phoenix]]
+| [https://www.basketball-reference.com/boxscores/198602170PHO.html L 101–108]
+| [[Dennis Johnson|Johnson]] (24)
+| [[Robert Parish|Parish]] (11)
+| [[Larry Bird|Bird]],<br />[[Rick Carlisle|Carlisle]],<br />[[Dennis Johnson|Johnson]] (3)
+| [[Arizona Veterans Memorial Coliseum]]<br />14,519
+| 41–10
+|- align="center" bgcolor="#ccffcc"
+| 52
+| February 19, 1986
+| @ [[1985–86 Golden State Warriors season|Golden State]]
+| [https://www.basketball-reference.com/boxscores/198602190GSW.html W 115–100]
+| [[Larry Bird|Bird]] (36)
+| [[Robert Parish|Parish]] (13)
+| [[Larry Bird|Bird]] (11)
+| [[Oakland Arena|Oakland-Alameda County Coliseum Arena]]<br />15,011
+| 42–10
+|- align="center" bgcolor="#ffcccc"
+| 53
+| February 20, 1986
+| @ [[1985–86 Denver Nuggets season|Denver]]
+| [https://www.basketball-reference.com/boxscores/198602200DEN.html L 100–102]
+| [[Larry Bird|Bird]] (27)
+| [[Larry Bird|Bird]] (16)
+| [[Danny Ainge|Ainge]] (8)
+| [[McNichols Sports Arena]]<br />17,022
+| 42–11
+|- align="center" bgcolor="#ccffcc"
+| 54
+| February 23, 1986
+| [[1985–86 Indiana Pacers season|Indiana]]<br />{{small|(at [[Hartford, Connecticut]])}}
+| [https://www.basketball-reference.com/boxscores/198602230BOS.html W 113–98]
+| [[Larry Bird|Bird]] (30)
+| [[Robert Parish|Parish]] (15)
+| [[Larry Bird|Bird]] (12)
+| [[XL Center|Hartford Civic Center]]<br />15,124
+| 43–11
+|- align="center" bgcolor="#ccffcc"
+| 55
+| February 25, 1986
+| @ [[1985–86 New York Knicks season|New York]]
+| [https://www.basketball-reference.com/boxscores/198602250NYK.html W 91–74]
+| [[Larry Bird|Bird]] (24)
+| [[Larry Bird|Bird]] (18)
+| [[Larry Bird|Bird]] (13)
+| [[Madison Square Garden]]<br />18,329
+| 44–11
+|- align="center" bgcolor="#ccffcc"
+| 56
+| February 26, 1986
+| [[1985–86 San Antonio Spurs season|San Antonio]]
+| [https://www.basketball-reference.com/boxscores/198602260BOS.html W 120–100]
+| [[Robert Parish|Parish]] (27)
+| [[Robert Parish|Parish]] (10)
+| [[Larry Bird|Bird]] (9)
+| [[Boston Garden]]<br />14,890
+| 45–11
+|- align="center" bgcolor="#ccffcc"
+| 57
+| February 28, 1986
+| [[1985–86 Los Angeles Clippers season|L.A. Clippers]]
+| [https://www.basketball-reference.com/boxscores/198602280BOS.html W 124–108]
+| [[Robert Parish|Parish]] (26)
+| [[Larry Bird|Bird]] (13)
+| [[Larry Bird|Bird]] (12)
+| [[Boston Garden]]<br />14,890
+| 46–11
+{{NBA game log section|Boston Celtics|March|bgcolor=#FFFFFF|color=#006400
+| home_wins = 11
+| home_losses = 0
+| road_wins = 4
+| road_losses = 2
+}}
+|- align="center" bgcolor="#ccffcc"
+| 58
+| March 2, 1986
+| [[1985–86 Detroit Pistons season|Detroit]]
+| [https://www.basketball-reference.com/boxscores/198603020BOS.html W 129–109]
+| [[Larry Bird|Bird]] (35)
+| [[Larry Bird|Bird]] (9)
+| [[Dennis Johnson|Johnson]] (8)
+| [[Boston Garden]]<br />14,890
+| 47–11
+|- align="center" bgcolor="#ccffcc"
+| 59
+| March 4, 1986
+| @ [[1985–86 Chicago Bulls season|Chicago]]
+| [https://www.basketball-reference.com/boxscores/198603040CHI.html W 106–94]
+| [[Kevin McHale (basketball)|McHale]] (23)
+| [[Robert Parish|Parish]] (11)
+| [[Dennis Johnson|Johnson]] (8)
+| [[Chicago Stadium]]<br />14,172
+| 48–11
+|- align="center" bgcolor="#ccffcc"
+| 60
+| March 5, 1986
+| [[1985–86 Chicago Bulls season|Chicago]]
+| [https://www.basketball-reference.com/boxscores/198603050BOS.html W 108–97]
+| [[Larry Bird|Bird]] (26)
+| [[Robert Parish|Parish]] (15)
+| [[Danny Ainge|Ainge]] (10)
+| [[Boston Garden]]<br />14,890
+| 49–11
+|- align="center" bgcolor="#ccffcc"
+| 61
+| March 7, 1986
+| [[1985–86 New York Knicks season|New York]]
+| [https://www.basketball-reference.com/boxscores/198603070BOS.html W 115–108]
+| [[Kevin McHale (basketball)|McHale]] (20)
+| [[Bill Walton|Walton]] (12)
+| [[Danny Ainge|Ainge]],<br />[[Larry Bird|Bird]] (8)
+| [[Boston Garden]]<br />14,890
+| 50–11
+|- align="center" bgcolor="#ffcccc"
+| 62
+| March 8, 1986
+| @ [[1985–86 Washington Bullets season|Washington]]
+| [https://www.basketball-reference.com/boxscores/198603080WSB.html L 108–110 (OT)]
+| [[Larry Bird|Bird]] (24)
+| [[Robert Parish|Parish]] (25)
+| [[Larry Bird|Bird]] (8)
+| [[Capital Centre (Landover, Maryland)|Capital Centre]]<br />19,123
+| 50–12
+|- align="center" bgcolor="#ffcccc"
+| 63
+| March 10, 1986
+| @ [[1985–86 Dallas Mavericks season|Dallas]]
+| [https://www.basketball-reference.com/boxscores/198603100DAL.html L 115–116]
+| [[Larry Bird|Bird]] (50)
+| [[Robert Parish|Parish]] (16)
+| [[Dennis Johnson|Johnson]] (6)
+| [[Reunion Arena]]<br />17,007
+| 50–13
+|- align="center" bgcolor="#ccffcc"
+| 64
+| March 11, 1986<br />8:30{{nbsp}}p.m. [[Eastern Time Zone|EST]]
+| @ [[1985–86 Houston Rockets season|Houston]]
+| [https://www.basketball-reference.com/boxscores/198603110HOU.html W 116–104]
+| [[Larry Bird|Bird]] (31)
+| [[Bill Walton|Walton]] (16)
+| [[Larry Bird|Bird]] (10)
+| [[The Summit (Houston)|The Summit]]<br />16,016
+| 51–13
+|- align="center" bgcolor="#ccffcc"
+| 65
+| March 13, 1986
+| @ [[1985–86 San Antonio Spurs season|San Antonio]]
+| [https://www.basketball-reference.com/boxscores/198603130SAS.html W 135–119]
+| [[Larry Bird|Bird]] (33)
+| [[Larry Bird|Bird]] (11)
+| [[Dennis Johnson|Johnson]] (7)
+| [[HemisFair Arena]]<br />14,180
+| 52–13
+|- align="center" bgcolor="#ccffcc"
+| 66
+| March 14, 1986
+| @ [[1985–86 Atlanta Hawks season|Atlanta]]
+| [https://www.basketball-reference.com/boxscores/198603140ATL.html W 121–114]
+| [[Larry Bird|Bird]] (26)
+| [[Kevin McHale (basketball)|McHale]] (12)
+| [[Dennis Johnson|Johnson]] (9)
+| [[Omni Coliseum|The Omni]]<br />16,522
+| 53–13
+|- align="center" bgcolor="#ccffcc"
+| 67
+| March 16, 1986
+| [[1985–86 Philadelphia 76ers season|Philadelphia]]
+| [https://www.basketball-reference.com/boxscores/198603160BOS.html W 118–101]
+| [[Larry Bird|Bird]] (36)
+| [[Larry Bird|Bird]] (14)
+| [[Dennis Johnson|Johnson]] (7)
+| [[Boston Garden]]<br />14,890
+| 54–13
+|- align="center" bgcolor="#ccffcc"
+| 68
+| March 18, 1986
+| [[1985–86 Cleveland Cavaliers season|Cleveland]]<br />{{small|(at [[Hartford, Connecticut]])}}
+| [https://www.basketball-reference.com/boxscores/198603180BOS.html W 126–96]
+| [[Larry Bird|Bird]] (43)
+| [[Robert Parish|Parish]] (12)
+| [[Dennis Johnson|Johnson]] (11)
+| [[XL Center|Hartford Civic Center]]<br />15,134
+| 55–13
+|- align="center" bgcolor="#ccffcc"
+| 69
+| March 19, 1986
+| [[1985–86 Indiana Pacers season|Indiana]]
+| [https://www.basketball-reference.com/boxscores/198603190BOS.html W 127–108]
+| [[Robert Parish|Parish]] (28)
+| [[Robert Parish|Parish]] (17)
+| [[Dennis Johnson|Johnson]] (8)
+| [[Boston Garden]]<br />14,890
+| 56–13
+|- align="center" bgcolor="#ccffcc"
+| 70
+| March 21, 1986
+| [[1985–86 Chicago Bulls season|Chicago]]
+| [https://www.basketball-reference.com/boxscores/198603210BOS.html W 126–105]
+| [[Larry Bird|Bird]] (32)
+| [[Robert Parish|Parish]] (14)
+| [[Dennis Johnson|Johnson]] (9)
+| [[Boston Garden]]<br />14,890
+| 57–13
+|- align="center" bgcolor="#ccffcc"
+| 71
+| March 24, 1986<br />8:00{{nbsp}}p.m. [[Eastern Time Zone|EST]]
+| [[1985–86 Houston Rockets season|Houston]]
+| [https://www.basketball-reference.com/boxscores/198603240BOS.html W 114–107]
+| [[Larry Bird|Bird]] (36)
+| [[Dennis Johnson|Johnson]],<br />[[Kevin McHale (basketball)|McHale]],<br />[[Robert Parish|Parish]] (8)
+| [[Dennis Johnson|Johnson]] (12)
+| [[Boston Garden]]<br />14,890
+| 58–13
+|- align="center" bgcolor="#ccffcc"
+| 72
+| March 26, 1986<br />7:30{{nbsp}}p.m. [[Eastern Time Zone|EST]]
+| [[1985–86 Milwaukee Bucks season|Milwaukee]]
+| [https://www.basketball-reference.com/boxscores/198603260BOS.html W 121–115]
+| [[Larry Bird|Bird]] (35)
+| [[Larry Bird|Bird]] (12)
+| [[Larry Bird|Bird]],<br />[[Dennis Johnson|Johnson]] (6)
+| [[Boston Garden]]<br />14,890
+| 59–13
+|- align="center" bgcolor="#ccffcc"
+| 73
+| March 28, 1986
+| [[1985–86 Washington Bullets season|Washington]]
+| [https://www.basketball-reference.com/boxscores/198603280BOS.html W 116–97]
+| [[Larry Bird|Bird]] (27)
+| [[Larry Bird|Bird]],<br />[[Bill Walton|Walton]] (12)
+| [[Dennis Johnson|Johnson]] (9)
+| [[Boston Garden]]<br />14,890
+| 60–13
+|- align="center" bgcolor="#ccffcc"
+| 74
+| March 30, 1986
+| [[1985–86 New Jersey Nets season|New Jersey]]
+| [https://www.basketball-reference.com/boxscores/198603300BOS.html W 122–117]
+| [[Larry Bird|Bird]] (40)
+| [[Robert Parish|Parish]] (14)
+| [[Dennis Johnson|Johnson]] (10)
+| [[Boston Garden]]<br />14,890
+| 61–13
+{{NBA game log section|Boston Celtics|April|bgcolor=#FFFFFF|color=#006400
+| home_wins = 4
+| home_losses = 0
+| road_wins = 2
+| road_losses = 2
+}}
+|- align="center" bgcolor="#ccffcc"
+| 75
+| April 1, 1986
+| @ [[1985–86 Cleveland Cavaliers season|Cleveland]]
+| [https://www.basketball-reference.com/boxscores/198604010CLE.html W 123–105]
+| [[Dennis Johnson|Johnson]] (21)
+| [[Bill Walton|Walton]] (11)
+| [[Dennis Johnson|Johnson]] (7)
+| [[Coliseum at Richfield|Richfield Coliseum]]<br />17,495
+| 62–13
+|- align="center" bgcolor="#ccffcc"
+| 76
+| April 2, 1986
+| [[1985–86 Detroit Pistons season|Detroit]]
+| [https://www.basketball-reference.com/boxscores/198604020BOS.html W 122–106]
+| [[Robert Parish|Parish]] (30)
+| [[Robert Parish|Parish]] (18)
+| [[Larry Bird|Bird]] (13)
+| [[Boston Garden]]<br />14,890
+| 63–13
+|- align="center" bgcolor="#ccffcc"
+| 77
+| April 4, 1986
+| [[1985–86 New York Knicks season|New York]]
+| [https://www.basketball-reference.com/boxscores/198604040BOS.html W 119–98]
+| [[Kevin McHale (basketball)|McHale]] (25)
+| [[Kevin McHale (basketball)|McHale]] (11)
+| [[Larry Bird|Bird]] (8)
+| [[Boston Garden]]<br />14,890
+| 64–13
+|- align="center" bgcolor="#ffcccc"
+| 78
+| April 6, 1986
+| @ [[1985–86 Philadelphia 76ers season|Philadelphia]]
+| [https://www.basketball-reference.com/boxscores/198604060PHI.html L 94–95]
+| [[Dennis Johnson|Johnson]] (22)
+| [[Robert Parish|Parish]] (11)
+| [[Larry Bird|Bird]] (10)
+| [[Spectrum (arena)|The Spectrum]]<br />17,941
+| 64–14
+|- align="center" bgcolor="#ccffcc"
+| 79
+| April 8, 1986<br />8:30{{nbsp}}p.m. [[Eastern Time Zone|EST]]
+| @ [[1985–86 Milwaukee Bucks season|Milwaukee]]
+| [https://www.basketball-reference.com/boxscores/198604080MIL.html W 126–114]
+| [[Bill Walton|Walton]] (22)
+| [[Larry Bird|Bird]] (14)
+| [[Larry Bird|Bird]] (7)
+| [[MECCA Arena]]<br />11,052
+| 65–14
+|- align="center" bgcolor="#ffcccc"
+| 80
+| April 9, 1986
+| @ [[1985–86 New Jersey Nets season|New Jersey]]
+| [https://www.basketball-reference.com/boxscores/198604090NJN.html L 98–108]
+| [[Kevin McHale (basketball)|McHale]] (18)
+| [[Larry Bird|Bird]] (10)
+| [[Kevin McHale (basketball)|McHale]] (8)
+| [[Brendan Byrne Arena]]<br />18,092
+| 65–15
+|- align="center" bgcolor="#ccffcc"
+| 81
+| April 11, 1986
+| [[1985–86 Cleveland Cavaliers season|Cleveland]]
+| [https://www.basketball-reference.com/boxscores/198604110BOS.html W 117–104]
+| [[Kevin McHale (basketball)|McHale]] (30)
+| [[Robert Parish|Parish]] (9)
+| [[Larry Bird|Bird]] (8)
+| [[Boston Garden]] <br />14,890
+| 66–15
+|- align="center" bgcolor="#ccffcc"
+| 82
+| April 13, 1986
+| [[1985–86 New Jersey Nets season|New Jersey]]
+| [https://www.basketball-reference.com/boxscores/198604130BOS.html W 135–107]
+| [[Larry Bird|Bird]] (26)
+| [[Robert Parish|Parish]] (13)
+| [[Danny Ainge|Ainge]],<br />[[Dennis Johnson|Johnson]] (4)
+| [[Boston Garden]] <br />14,890
+| 67–15
+{{NBA game log end|bbr_team=BOS|end_year=1986}}
+
+==Player stats==
+''Note: GP= Games played; REB= Rebounds; AST= Assists; STL = Steals; BLK = Blocks; PTS = Points; AVG = Average''
+{| class="wikitable sortable"
+|-
+!  style="background:#ddf; width:16%;"| Player
+!  style="background:#ddf; width:9%;"| GP
+!  style="background:#ddf; width:9%;"| REB
+!  style="background:#ddf; width:9%;"| AST
+!  style="background:#ddf; width:9%;"| STL
+!  style="background:#ddf; width:9%;"| BLK
+!  style="background:#ddf; width:9%;"| PTS
+!  style="background:#ddf; width:9%;"| AVG
+|- style="text-align:center;"
+| [[Larry Bird]] || 82  || 805  || 557  || 166  || 51  || 2115  || 25.8
+|- style="text-align:center;"
+| [[Kevin McHale (basketball)|Kevin McHale]] || 68 || 551 || 181 || 29 || 134 || 1448 || 21.3
+|- style="text-align:center;"
+| [[Robert Parish]] || 81 || 770 || 145 || 65 || 116 || 1305 || 16.1
+|- style="text-align:center;"
+| [[Dennis Johnson]] || 78 || 268 || 456 || 110 || 35 || 1213 || 15.6
+|- style="text-align:center;"
+| [[Danny Ainge]] || 80 || 235 || 405 || 94 || 7 || 855 || 10.7
+|- style="text-align:center;"
+| [[Scott Wedman]] || 79 || 192 || 82 || 38 || 22 || 634 || 8.0
+|- style="text-align:center;"
+| [[Bill Walton]] || 80  || 544  || 165  || 38  || 106  || 606  || 7.6
+|- style="text-align:center;"
+| [[Jerry Sichting]] || 82 || 104 || 188 || 50 || 0 || 537 || 6.5
+|- style="text-align:center;"
+| [[David Thirdkill]] || 49  || 70  || 15  || 11  || 3  || 163  || 3.3
+|- style="text-align:center;"
+| [[Sam Vincent (basketball)|Sam Vincent]] || 57  || 48  || 69  || 17  || 4  || 184  || 3.2
+|- style="text-align:center;"
+| [[Sly Williams]] || 6  || 15  || 2  || 1  || 1  || 17  || 2.8
+|- style="text-align:center;"
+| [[Rick Carlisle]] || 77  || 77  || 104  || 19  || 4  || 199  || 2.6
+|- style="text-align:center;"
+| [[Greg Kite]] || 64  || 128  || 17  || 3  || 28  || 83  || 1.3
+|}
+
+==Playoffs==
+
+{{NBA game log start|Boston Celtics|end_year=1986|playoffs=yes|bgcolor=#006400|color=#FFFFFF}}
+{{NBA game log section|Boston Celtics|color=#008040|bgcolor=white|Eastern Conference First Round|playoffs=yes|first=yes|show=no
+| home_wins   = 2
+| home_losses = 0
+| road_wins   = 1
+| road_losses = 0
+}}
+|- align="center" bgcolor="#ccffcc"
+| 1
+| April 17, 1986
+| [[1985–86 Chicago Bulls season|Chicago]]
+| [https://www.basketball-reference.com/boxscores/198604170BOS.html W 123–104]
+| [[Larry Bird|Bird]] (30)
+| [[Kevin McHale (basketball)|McHale]],<br />[[Robert Parish|Parish]] (10)
+| [[Larry Bird|Bird]] (8)
+| [[Boston Garden]]<br />14,890
+| 1–0
+|- align="center" bgcolor="#ccffcc"
+| 2
+| April 20, 1986
+| [[1985–86 Chicago Bulls season|Chicago]]
+| [https://www.basketball-reference.com/boxscores/198604200BOS.html W 135–131 (2OT)]
+| [[Larry Bird|Bird]] (36)
+| [[Kevin McHale (basketball)|McHale]],<br />[[Bill Walton|Walton]] (15)
+| [[Larry Bird|Bird]],<br />[[Dennis Johnson|Johnson]] (8)
+| [[Boston Garden]]<br />14,890
+| 2–0
+|- align="center" bgcolor="#ccffcc"
+| 3
+| April 22, 1986
+| @ [[1985–86 Chicago Bulls season|Chicago]]
+| [https://www.basketball-reference.com/boxscores/198604220CHI.html W 122–104]
+| [[Kevin McHale (basketball)|McHale]] (31)
+| [[Bill Walton|Walton]] (9)
+| [[Larry Bird|Bird]] (8)
+| [[Chicago Stadium]]<br />18,968
+| 3–0
+|-
+{{NBA game log section|Boston Celtics|color=#008040|bgcolor=white|Eastern Conference Semifinals|playoffs=yes|show=no
+| home_wins   = 3
+| home_losses = 0
+| road_wins   = 1
+| road_losses = 1
+}}
+|- align="center" bgcolor="#ccffcc"
+| 1
+| April 27, 1986<br />1:00{{nbsp}}p.m. [[Eastern Time Zone|EDT]]
+| [[1985–86 Atlanta Hawks season|Atlanta]]
+| [https://www.basketball-reference.com/boxscores/198604270BOS.html W 103–91]
+| [[Kevin McHale (basketball)|McHale]] (24)
+| [[Larry Bird|Bird]] (12)
+| [[Dennis Johnson|Johnson]] (14)
+| [[Boston Garden]]<br />14,890
+| 1–0
+|- align="center" bgcolor="#ccffcc"
+| 2
+| April 29, 1986<br />8:30{{nbsp}}p.m. [[Eastern Time Zone|EDT]]
+| [[1985–86 Atlanta Hawks season|Atlanta]]
+| [https://www.basketball-reference.com/boxscores/198604290BOS.html W 119–108]
+| [[Larry Bird|Bird]] (36)
+| [[Kevin McHale (basketball)|McHale]] (9)
+| [[Dennis Johnson|Johnson]] (9)
+| [[Boston Garden]]<br />14,890
+| 2–0
+|- align="center" bgcolor="#ccffcc"
+| 3
+| May 2, 1986<br />7:30{{nbsp}}p.m. [[Eastern Time Zone|EDT]]
+| @ [[1985–86 Atlanta Hawks season|Atlanta]]
+| [https://www.basketball-reference.com/boxscores/198605020ATL.html W 111–107]
+| [[Larry Bird|Bird]] (28)
+| [[Robert Parish|Parish]] (14)
+| [[Larry Bird|Bird]] (12)
+| [[Omni Coliseum|The Omni]]<br />12,357
+| 3–0
+|- align="center" bgcolor="#ffcccc"
+| 4
+| May 4, 1986<br />1:00{{nbsp}}p.m. [[Eastern Time Zone|EDT]]
+| @ [[1985–86 Atlanta Hawks season|Atlanta]]
+| [https://www.basketball-reference.com/boxscores/198605040ATL.html L 94–106]
+| [[Kevin McHale (basketball)|McHale]] (26)
+| [[Kevin McHale (basketball)|McHale]] (12)
+| [[Larry Bird|Bird]] (5)
+| [[Omni Coliseum|The Omni]]<br />12,357
+| 3–1
+|- align="center" bgcolor="#ccffcc"
+| 5
+| May 6, 1986<br />7:30{{nbsp}}p.m. [[Eastern Time Zone|EDT]]
+| [[1985–86 Atlanta Hawks season|Atlanta]]
+| [https://www.basketball-reference.com/boxscores/198605060BOS.html W 132–99]
+| [[Larry Bird|Bird]] (36)
+| [[Robert Parish|Parish]] (13)
+| [[Dennis Johnson|Johnson]] (8)
+| [[Boston Garden]]<br />14,890
+| 4–1
+|-
+{{NBA game log section|Boston Celtics|color=#008040|bgcolor=white|Eastern Conference Finals|playoffs=yes|show=no
+| home_wins   = 2
+| home_losses = 0
+| road_wins   = 2
+| road_losses = 0
+}}
+|- align="center" bgcolor="#ccffcc"
+| 1
+| May 13, 1986<br />8:00{{nbsp}}p.m. [[Eastern Time Zone|EDT]]
+| [[1985–86 Milwaukee Bucks season|Milwaukee]]
+| [https://www.basketball-reference.com/boxscores/198605130BOS.html W 128–96]
+| [[Larry Bird|Bird]] (26)
+| [[Danny Ainge|Ainge]] (10)
+| [[Jerry Sichting|Sichting]] (8)
+| [[Boston Garden]]<br />14,890
+| 1–0
+|- align="center" bgcolor="#ccffcc"
+| 2
+| May 15, 1986<br />8:00{{nbsp}}p.m. [[Eastern Time Zone|EDT]]
+| [[1985–86 Milwaukee Bucks season|Milwaukee]]
+| [https://www.basketball-reference.com/boxscores/198605150BOS.html W 122–111]
+| [[Larry Bird|Bird]] (26)
+| [[Robert Parish|Parish]] (9)
+| [[Larry Bird|Bird]] (9)
+| [[Boston Garden]]<br />14,890
+| 2–0
+|- align="center" bgcolor="#ccffcc"
+| 3
+| May 17, 1986<br />2:00{{nbsp}}p.m. [[Eastern Time Zone|EDT]]
+| @ [[1985–86 Milwaukee Bucks season|Milwaukee]]
+| [https://www.basketball-reference.com/boxscores/198605170MIL.html W 111–107]
+| [[Kevin McHale (basketball)|McHale]] (29)
+| [[Larry Bird|Bird]] (16)
+| [[Larry Bird|Bird]] (13)
+| [[MECCA Arena]]<br />11,052
+| 3–0
+|- align="center" bgcolor="#ccffcc"
+| 4
+| May 18, 1986<br />3:30{{nbsp}}p.m. [[Eastern Time Zone|EDT]]
+| @ [[1985–86 Milwaukee Bucks season|Milwaukee]]
+| [https://www.basketball-reference.com/boxscores/198605180MIL.html W 111–98]
+| [[Larry Bird|Bird]] (30)
+| [[Kevin McHale (basketball)|McHale]] (11)
+| [[Danny Ainge|Ainge]],<br />[[Larry Bird|Bird]] (5)
+| [[MECCA Arena]]<br />11,052
+| 4–0
+|-
+{{NBA game log section|Boston Celtics|color=#008040|bgcolor=white|NBA Finals|playoffs=yes|show=no
+| home_wins   = 3
+| home_losses = 0
+| road_wins   = 1
+| road_losses = 2
+}}
+|- align="center" bgcolor="#ccffcc"
+| 1
+| May 26, 1986<br />3:00{{nbsp}}p.m. [[Eastern Time Zone|EDT]]
+| [[1985–86 Houston Rockets season|Houston]]
+| [https://www.basketball-reference.com/boxscores/198605260BOS.html W 112–100]
+| [[Robert Parish|Parish]] (23)
+| [[Dennis Johnson|Johnson]] (11)
+| [[Larry Bird|Bird]] (13)
+| [[Boston Garden]]<br />14,890
+| 1–0
+|- align="center" bgcolor="#ccffcc"
+| 2
+| May 29, 1986<br />9:00{{nbsp}}p.m. [[Eastern Time Zone|EDT]]
+| [[1985–86 Houston Rockets season|Houston]]
+| [https://www.basketball-reference.com/boxscores/198605290BOS.html W 117–95]
+| [[Larry Bird|Bird]] (31)
+| [[Larry Bird|Bird]] (8)
+| [[Larry Bird|Bird]] (7)
+| [[Boston Garden]]<br />14,890
+| 2–0
+|- align="center" bgcolor="#ffcccc"
+| 3
+| June 1, 1986<br />3:30{{nbsp}}p.m. [[Eastern Time Zone|EDT]]
+| @ [[1985–86 Houston Rockets season|Houston]]
+| [https://www.basketball-reference.com/boxscores/198606010HOU.html L 104–106]
+| [[Kevin McHale (basketball)|McHale]] (28)
+| [[Larry Bird|Bird]] (15)
+| [[Larry Bird|Bird]] (11)
+| [[The Summit (Houston)|The Summit]]<br />16,016
+| 2–1
+|- align="center" bgcolor="#ccffcc"
+| 4
+| June 3, 1986<br />9:00{{nbsp}}p.m. [[Eastern Time Zone|EDT]]
+| @ [[1985–86 Houston Rockets season|Houston]]
+| [https://www.basketball-reference.com/boxscores/198606030HOU.html W 106–103]
+| [[Robert Parish|Parish]] (22)
+| [[Robert Parish|Parish]] (15)
+| [[Larry Bird|Bird]] (10)
+| [[The Summit (Houston)|The Summit]]<br />16,016
+| 3–1
+|- align="center" bgcolor="#ffcccc"
+| 5
+| June 5, 1986<br />9:00{{nbsp}}p.m. [[Eastern Time Zone|EDT]]
+| @ [[1985–86 Houston Rockets season|Houston]]
+| [https://www.basketball-reference.com/boxscores/198606050HOU.html L 96–111]
+| [[Kevin McHale (basketball)|McHale]] (33)
+| [[Kevin McHale (basketball)|McHale]] (8)
+| [[Danny Ainge|Ainge]] (5)
+| [[The Summit (Houston)|The Summit]]<br />16,016
+| 3–2
+|- align="center" bgcolor="#ccffcc"
+| 6
+| June 8, 1986<br />1:00{{nbsp}}p.m. [[Eastern Time Zone|EDT]]
+| [[1985–86 Houston Rockets season|Houston]]
+| [https://www.basketball-reference.com/boxscores/198606080BOS.html W 114–97]
+| [[Larry Bird|Bird]] (29)
+| [[Larry Bird|Bird]] (11)
+| [[Larry Bird|Bird]] (12)
+| [[Boston Garden]]<br />14,890
+| 4–2
+|-
+{{NBA game log end|bbr_team=BOS|playoffs=yes|end_year=1986}}
+
+Following the conclusion of the 1986 NBA Finals, a video documentary of the 1986 NBA season, known as ''Sweet Sixteen'', was released.<ref>{{YouTube|dlhTJ2L4W0w|"Sweet Sixteen" documentary}}</ref> David Perry was the narrator after [[Dick Stockton]] had narrated the last three NBA season documentaries.
+
+==Roster==
+{{NBA roster header|team=Boston Celtics|season=1985–86}}
+<!-- list of players -->
+{{player2 | num = 44 | first = Danny | last = Ainge | pos = SG | ft = 6 | in = 5 | lbs = 175 | college = Brigham Young University | DOB = 1959-03-17 }}
+{{player2 | num = 33 | first = Larry | last = Bird | pos = SF | ft = 6 | in = 9 | lbs = 220 | college = Indiana State University | DOB = 1956-12-07 }}
+{{player2 | num = 34 | first = Rick | last = Carlisle | pos = SG | ft = 6 | in = 5 | lbs = 210 | college = University of Virginia | DOB = 1959-10-27 }}
+{{player2 | num = 3 | first = Dennis | last = Johnson | pos = PG | ft = 6 | in = 4 | lbs = 185 | college = Pepperdine University | DOB = 1954-09-18 }}
+{{player2 | num = 50 | first = Greg | last = Kite | pos = C | ft = 6 | in = 11 | lbs = 250 | college = Brigham Young University | DOB = 1961-08-05 }}
+{{player2 | num = 32 | first = Kevin | last = McHale | dab = basketball | pos = PF | ft = 6 | in = 10 | lbs = 210 | school = University of Minnesota | DOB = 1957-12-19 }}
+{{player2 | num = 00 | first = Robert | last = Parish | pos = C | ft = 7 | in = 1 | lbs = 230 | college = Centenary College of Louisiana | DOB = 1953-08-30 }}
+{{player2 | num = 12 | first = Jerry | last = Sichting | pos = PG | ft = 6 | in = 1 | lbs = 168 | college = Purdue University | DOB = 1956-11-29 }}
+{{player2 | num = 45 | first = David | last = Thirdkill | pos = SF | ft = 6 | in = 7 | lbs = 195 | college = Bradley University | DOB = 1960-04-12 }}
+{{player2 | num = 11 | first = Sam | last = Vincent | link = Sam_Vincent_(basketball) | pos = PG | ft = 6 | in = 2 | lbs = 185 | college = Michigan State University | DOB = 1963-05-18 }}
+{{player2 | num = 5 | first = Bill | last = Walton | pos = C | ft = 6 | in = 11 | lbs = 235 | college = University of California, Los Angeles | DOB = 1952-11-05 }}
+{{player2 | num = 8 | first = Scott | last = Wedman | pos = SF | ft = 6 | in = 7 | lbs = 215 | college = University of Colorado | DOB = 1952-07-29 }}
+{{player2 | num = 35 | first = Sly | last = Williams | pos = SG | ft = 6 | in = 7 | lbs = 210 | college = University of Rhode Island | DOB = 1958-01-26 }}
+<!-- end list of players -->
+{{NBA roster footer
+| head_coach =
+* [[K. C. Jones]]
+| asst_coach =
+*[[Ed Badger]]
+*[[Chris Ford]]
+*[[Jimmy Rodgers (basketball)|Jimmy Rodgers]]
+| roster_url = https://www.basketball-reference.com/teams/BOS/1986.html
+}}
+
+==Award winners==
+* Larry Bird, [[Associated Press Athlete of the Year]]
+* [[Larry Bird]], NBA Most Valuable Player Award
+* [[Larry Bird]], NBA Finals Most Valuable Player Award
+* Larry Bird, All-NBA First Team
+* Kevin McHale, All-NBA Defensive First Team
+* Dennis Johnson, All-NBA Defensive Second Team
+* [[Bill Walton]], NBA [[Sixth Man of the Year Award]]
+* [[Larry Bird]], [[NBA All-Star Weekend Three-Point Shootout|NBA 3-Point Shootout]] champion
+* [[Larry Bird]], [[three-point field goal]] leader
+
+==References==
+{{Reflist}}
+* {{usurped|1=[https://web.archive.org/web/20071121063508/http://www.databasebasketball.com/teams/teamyear.htm?tm=BOS&lg=N&yr=1985 Celtics on Database Basketball]}}
+* [https://www.basketball-reference.com/teams/BOS/1986.html Celtics on Basketball Reference]
+* {{YouTube|dlhTJ2L4W0w|NBA documentary about the 1985–86 Boston Celtics}}
+
+{{1985–86 NBA season by team}}
+{{NBA Champions}}
+{{Boston Celtics}}
+{{Boston Celtics seasons}}
+{{NBA10T}}
+
+{{DEFAULTSORT:1985-86 Boston Celtics Season}}
+[[Category:Boston Celtics seasons]]
+[[Category:NBA championship seasons]]
+[[Category:1985–86 NBA season by team|Boston Celtics]]
+[[Category:Eastern Conference (NBA) championship seasons]]
+[[Category:1985 in sports in Massachusetts|Boston Celtics]]
+[[Category:1986 in sports in Massachusetts|Boston Celtics]]
+[[Category:1985 in Boston|Celtics]]
+[[Category:1986 in Boston|Celtics]]

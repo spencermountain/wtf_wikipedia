@@ -12,13 +12,22 @@
 //
 // it fetches one page at a time, slowly - a full run takes about an hour
 import wtf from '../../../src/index.ts'
-import { mlb, nhl } from '../src/index.js'
+import { mlb, nhl, nba, nfl, mls } from '../src/index.js'
 import mlbFranchises from '../src/mlb/franchises.js'
 import nhlFranchises from '../src/nhl/franchises.js'
+import nbaFranchises from '../src/nba/franchises.js'
+import nflFranchises from '../src/nfl/franchises.js'
+import mlsFranchises from '../src/mls/franchises.js'
 import { makeTitle as mlbTitle } from '../src/mlb/index.js'
 import { makeTitle as nhlTitle } from '../src/nhl/index.js'
+import { makeTitle as nbaTitle } from '../src/nba/index.js'
+import { makeTitle as nflTitle } from '../src/nfl/index.js'
+import { makeTitle as mlsTitle } from '../src/mls/index.js'
 wtf.extend(mlb)
 wtf.extend(nhl)
+wtf.extend(nba)
+wtf.extend(nfl)
+wtf.extend(mls)
 
 const delayMs = 500
 const firstYear = 2012 //1980
@@ -37,10 +46,29 @@ const leagues = {
     parse: (doc) => doc.nhlSeason(),
     players: (res) => res.skaters.length + res.goalies.length,
   },
+  nba: {
+    franchises: nbaFranchises,
+    title: nbaTitle,
+    parse: (doc) => doc.nbaSeason(),
+    players: (res) => res.roster.length,
+  },
+  nfl: {
+    franchises: nflFranchises,
+    title: nflTitle,
+    parse: (doc) => doc.nflSeason(),
+    players: () => 0, //nfl rosters are transcluded from separate template pages
+  },
+  mls: {
+    franchises: mlsFranchises,
+    title: mlsTitle,
+    parse: (doc) => doc.mlsSeason(),
+    players: () => 0, //mls squads use their own template system
+  },
 }
 
-// does the page even contain game-log markup?
-const hasLog = (wiki) => /\{\{ *(?:mlb )?game log|^ *=+ *(?:game log|schedule and results|schedule)/im.test(wiki)
+// does the page even contain game-log or match markup?
+const hasLog = (wiki) =>
+  /\{\{ *(?:mlb |nba )?game log|\{\{ *football ?box|\{\{ *nfl .*schedule start|^ *=+ *(?:game log|schedule and results|schedule)/im.test(wiki)
 
 const sleep = (ms) => new Promise((res) => setTimeout(res, ms))
 

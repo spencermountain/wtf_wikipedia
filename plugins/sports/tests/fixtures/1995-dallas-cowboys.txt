@@ -1,0 +1,807 @@
+{{short description|Sports season}}
+{{Use mdy dates|date=August 2023}}
+{{Use American English|date=March 2026}}
+<!--Important Note: This page complies with [[Wikipedia:Centralized discussion/Sports results]]-->
+{{Infobox NFL team season
+| team = Dallas Cowboys
+| logo = 
+| year = 1995
+| record = 12–4
+| division_place = 1st [[National Football Conference East Division|NFC East]]
+| coach = [[Barry Switzer]]
+| off_coach       = [[Ernie Zampese]]
+| def_coach       = [[Dave Campo]]
+| general_manager = [[Jerry Jones]]
+| owner = [[Jerry Jones]]
+| stadium = [[Texas Stadium]]
+|playoffs = '''Won [[1995–96 NFL playoffs|Divisional Playoffs]]'''<br>(vs. [[1995 Philadelphia Eagles season|Eagles]]) 30–11<br>'''Won [[1995–96 NFL playoffs|NFC Championship]]'''<br>(vs. [[1995 Green Bay Packers season|Packers]]) 38–27<br>'''Won [[Super Bowl XXX]]'''<br>(vs. [[1995 Pittsburgh Steelers season|Steelers]]) 27–17
+|pro_bowlers=QB [[Troy Aikman]]<br>RB [[Emmitt Smith]]<br>WR [[Michael Irvin]]<br>OT [[Mark Tuinei]]<br>G [[Larry Allen]]<br>C [[Ray Donaldson]]<br>TE [[Jay Novacek]]<br>OG [[Nate Newton (American football)|Nate Newton]]<br>DE [[Charles Haley]]<br>S [[Darren Woodson]]
+| uniform =
+| shortnavlink = Cowboys seasons
+}}
+[[File:Aikman HOF jersey.jpg|thumb|Quarterback [[Troy Aikman]]'s jersey from the 1995 season ([[Pro Football Hall of Fame]])]]
+The '''[[1995 NFL season|1995]] [[Dallas Cowboys]] season''' was the franchise's 36th season in the [[National Football League]] (NFL) and was the second year under head coach [[Barry Switzer]] and final of the three [[Super Bowl]] titles they would win during 1992 to 1995. Dallas would be the first team to ever win three Super Bowls in a span of four seasons (would be later matched by the [[New England Patriots]] from the [[2001 New England Patriots season|2001]] to [[2004 New England Patriots season|2004 seasons]]). Switzer guided the Cowboys to a fifth Super Bowl win by defeating the [[1995 Pittsburgh Steelers season|Pittsburgh Steelers]] 27–17 in [[Super Bowl XXX]]. 
+
+As of [[2025 NFL season|2026,]] this is the most recent time the Cowboys made or won a [[Super Bowl]], and is also the most recent time the Cowboys appeared in the [[NFC Championship Game]], the longest such drought in the NFC and making them the only team that still has yet to make it in the 21st century. The last remaining active member of the 1995 Dallas Cowboys was offensive lineman [[Larry Allen]], who retired after the [[2007 NFL season|2007 season]].
+
+==Offseason==
+The [[1995 NFL draft]] was one of the worst in [[Dallas Cowboys]] history. It is infamously known as the "backup draft", because the team considered their roster so strong, they drafted players based on their contributions as backups, which limited the future potential of their selections. The team traded their first-round draft choice (28th overall) to the [[Tampa Bay Buccaneers]] (they selected [[Derrick Brooks]]), in exchange for two second-round picks. The best player drafted would end up being [[Eric Bjornson]].
+{| class="wikitable"
+|-
+!Additions || Subtractions
+|-
+|CB [[Deion Sanders]] (49ers) || QB [[Rodney Peete]] (Eagles)
+|-
+|FS [[Scott Case (American football)|Scott Case]] (Falcons) || FB [[Lincoln Coleman]] (Falcons)
+|-
+|C [[Ray Donaldson]] (Seahawks) || C [[Mark Stepnoski]] (Oilers)
+|-
+|QB [[Wade Wilson (American football)|Wade Wilson]] (Saints) || LB [[Darrick Brownlow]] (Redskins)
+|-
+| || WR [[Alvin Harper]] (Buccaneers)
+|-
+| || DE [[Jim Jeffcoat]] (Bills)
+|-
+| || TE [[Scott Galbraith]] (Redskins)
+|-
+| || S [[James Washington (safety)|James Washington]] (Redskins)
+|-
+| || S [[Kenneth Gant]] (Buccaneers)
+|-
+| || S [[Joe Fishback]] (Broncos)
+|}
+
+===1995 expansion draft===
+{{main article|1995 NFL expansion draft}}
+{| class="wikitable" style="text-align:center"
+|+ Dallas Cowboys selected during the expansion draft
+|-
+!style="{{NFLPrimaryStyle|Dallas Cowboys|border=2}}" | Round
+!style="{{NFLPrimaryStyle|Dallas Cowboys|border=2}}" | Overall
+!style="{{NFLPrimaryStyle|Dallas Cowboys|border=2}}" | Name
+!style="{{NFLPrimaryStyle|Dallas Cowboys|border=2}}" | Position
+!style="{{NFLPrimaryStyle|Dallas Cowboys|border=2}}" | Expansion team
+|-
+|11 ||21 ||Willie Jackson|| WR ||[[1995 Jacksonville Jaguars season|Jacksonville Jaguars]]
+|-
+|16 || 31 ||Dave Thomas||CB ||[[1995 Carolina Panthers season|Carolina Panthers]]
+|}
+
+===NFL draft===
+{{main|1995 NFL draft}}
+{{NFL team draft start
+ | year     = 1995
+ | teamname = Dallas Cowboys
+}}
+{{NFL team draft entry
+ | round      = 2
+ | pick       = 46
+ | player     = [[Sherman Williams (American football)|Sherman Williams]]
+ | position   = [[Running back]]
+ | college    = [[Alabama Crimson Tide football|Alabama]]
+ | notes      = 
+ | maderoster = yes
+ | probowl    =
+}}
+{{NFL team draft entry
+ | round      = 2
+ | pick       = 59
+ | player     = [[Kendell Watkins]]
+ | position   = [[Tight end]]
+ | college    = [[Mississippi State Bulldogs football|Mississippi State]]
+ | notes      = 
+ | hof        = no
+ | maderoster = yes
+}}
+{{NFL team draft entry
+ | round      = 2
+ | pick       = 63
+ | player     = [[Shane Hannah]]
+ | position   = [[Guard (gridiron football)|Guard]]
+ | college    = [[Michigan State Spartans football|Michigan State]]
+ | notes      = 
+ | maderoster = yes
+ | probowl    =
+}}
+{{NFL team draft entry
+ | round      = 3
+ | pick       = 92
+ | player     = [[Charlie Williams (American football)|Charlie Williams]]
+ | position   = [[Cornerback]]
+ | college    = [[Bowling Green Falcons football|Bowling Green]]
+ | notes      = 
+ | maderoster = yes
+ | probowl    =
+}}
+{{NFL team draft entry
+ | round      = 4
+ | pick       = 110
+ | player     = [[Eric Bjornson]]
+ | position   = [[Tight end]]
+ | college    = [[Washington Huskies football|Washington]]
+ | notes      = 
+ | maderoster = yes
+ | probowl    =
+}}
+{{NFL team draft entry
+ | round      = 4
+ | pick       = 129
+ | player     = [[Alundis Brice]]
+ | position   = [[Cornerback]]
+ | college    = [[Ole Miss Rebels football|Ole Miss]]
+ | notes      = 
+ | maderoster = yes
+ | probowl    =
+}}
+{{NFL team draft entry
+ | round      = 4
+ | pick       = 130
+ | player     = Linc Harden
+ | position   = [[Linebacker]]
+ | college    = [[Oklahoma State Cowboys football|Oklahoma State]]
+ | notes      = 
+ | maderoster = no
+ | probowl    =
+}}
+{{NFL team draft entry
+ | round      = 5
+ | pick       = 166
+ | player     = [[Ed Hervey]]
+ | position   = [[Wide receiver]]
+ | college    = [[USC Trojans football|USC]]
+ | notes      = 
+ | maderoster = yes
+ | probowl    =
+}}
+{{NFL team draft entry
+ | round      = 5
+ | pick       = 168
+ | player     = [[Dana Howard (American football)|Dana Howard]]
+ | position   = [[Linebacker]]
+ | college    = [[Illinois Fighting Illini football|Illinois]]
+ | notes      = 
+ | maderoster = no
+ | probowl    =
+}}
+{{NFL team draft entry
+ | round      = 7
+ | pick       = 236
+ | player     = [[Oscar Sturgis]]
+ | position   = [[Defensive end]]
+ | college    = [[North Carolina Tar Heels football|North Carolina]]
+ | notes      = 
+ | maderoster = yes
+ | probowl    =
+}}
+{{NFL team draft end
+ | hof = yes
+}}
+
+===Undrafted free agents===
+
+{| class="wikitable"
+|+ 1995 undrafted free agents of note
+!Player
+!Position
+!College
+|-
+|Rod Alexander
+|Wide receiver
+|[[Northern Arizona Lumberjacks football|Northern Arizona]]
+|-
+|John Anderson
+|Safety
+|[[Oklahoma Sooners football|Oklahoma]]
+|-
+|[[Jon Baker (placekicker)|Jon Baker]]
+|Kicker
+|[[Arizona State Sun Devils football|Arizona State]]
+|-
+|Freddie Coger
+|Linebacker
+|[[Georgia Tech Yellow Jackets football|Georgia Tech]]
+|-
+|[[Billy Davis (wide receiver)|Billy Davis]]
+|Wide Receiver
+|[[Pittsburgh Panthers football|Pittsburgh]]
+|-
+|Demetrius Edwards
+|Defensive tackle
+|[[Fresno State Bulldogs football|Fresno State]]
+|-
+|[[Josh Evans (defensive lineman)|Josh Evans]]
+|Defensive Tackle
+|[[UAB Blazers football|UAB]]
+|-
+|[[Oronde Gadsden]]
+|Wide receiver
+|[[Winston-Salem State Rams football|Winston-Salem State]]
+|-
+|Michael Goosby
+|Wide receiver
+|[[North Texas Mean Green football|North Texas]]
+|-
+|Roger Graham
+|Running back
+|[[New Haven Chargers football|New Haven]]
+|-
+|[[Mike Gruttadauria]]
+|Center
+|[[UCF Knights football|UCF]]
+|-
+|Rodney Harris
+|Wide receiver
+|[[Kansas Jayhawks football|Kansas]]
+|-
+|Jim Hmielewski
+|Tackle
+|[[Kansas State Wildcats football|Kansas State]]
+|-
+|Artis Houston
+|Cornerback
+|[[California Golden Bears football|California]]
+|-
+|Curtis Johnson
+|Running back
+|[[North Carolina Tar Heels football|North Carolina]]
+|-
+|John Jones
+|Guard
+|Kansas
+|-
+|Michael McClenton
+|Fullback
+|[[North Alabama Lions football|North Alabama]]
+|-
+|Paul McCord
+|Punter
+|Western Maryland
+|-
+|Ryan McGrath
+|Tight end
+|[[Southwestern Louisiana Ragin' Cajuns football|Southwestern Louisiana]]
+|-
+|[[Dominique Ross]]
+|Running back
+|[[Valdosta State Blazers football|Valdosta State]]
+|-
+|Scott Semptimphelter
+|Quarterback
+|[[Lehigh Mountain Hawks football|Lehigh]]
+|-
+|Mu Tagoai
+|Guard
+|[[Arizona Wildcats football|Arizona]]
+|-
+|Jeff Thomas
+|Wide receiver
+|[[Georgia Bulldogs football|Georgia]]
+|-
+|DeMario Vaughn
+|Tackle
+|Arizona State
+|}
+
+==Staff==
+{{NFL final staff
+|Year=1995
+|TeamName=Dallas Cowboys
+|Front Office=
+*Owner/president/general manager – [[Jerry Jones]]
+*Public relations director – Rich Dalrymple
+
+|Head Coaches=
+*Head coach – [[Barry Switzer]]
+
+|Offensive Coaches=
+*Offensive coordinator – [[Ernie Zampese]]
+*Running backs – [[Joe Brodsky]]
+*Wide receivers – [[Hubbard Alexander]]
+*Tight ends – [[Robert Ford (American football)|Robert Ford]]
+*Offensive line – [[Hudson Houck]]
+
+|Defensive Coaches=
+*Defensive coordinator – [[Dave Campo]]
+*Defensive line (Regular Season) – [[John Blake (American football)|John Blake]]
+*Linebackers – [[Jim Eddy]]
+*Defensive backs – [[Mike Zimmer]]
+
+|Special Teams Coaches=
+*Special teams – [[Joe Avezzano]]
+*Kicking/offensive and defensive quality control – [[Steve Hoffman (American football)|Steve Hoffman]]
+
+|Strength and Conditioning=
+*Strength and conditioning – [[Mike Woicik]]
+}}
+
+==Roster==
+
+{| class="toccolours" style="text-align: left;"
+|-
+! colspan="7" style="background:#c5ced6; color:black; border: 2px solid #001942; text-align: center;"|Dallas Cowboys 1995 roster
+|-
+| style="font-size: 95%;" valign="top" | '''Quarterbacks'''
+* {{player|&nbsp;8}} [[Troy Aikman]]
+* {{player|17}} [[Jason Garrett]]
+* {{player|11}} [[Wade Wilson (American football)|Wade Wilson]]
+
+'''Running backs'''
+* {{player|48}} [[Daryl Johnston]] FB
+* {{player|38}} [[David Lang (American football)|David Lang]]
+* {{player|36}} ''[[Dominique Ross]]''
+* {{player|22}} [[Emmitt Smith]]
+* {{player|20}} ''[[Sherman Williams (American football)|Sherman Williams]]''
+
+'''Wide receivers'''
+* {{player|87}} ''[[Billy Davis (wide receiver)|Billy Davis]]''
+* {{player|82}} [[Cory Fleming]]
+* {{player|81}} ''[[Edward Hervey]]''
+* {{player|88}} [[Michael Irvin]]
+* {{player|85}} [[Kevin Williams (wide receiver, born 1971)|Kevin Williams]] KR/PR
+
+'''Tight ends'''
+* {{player|86}} ''[[Eric Bjornson]]''
+* {{player|84}} [[Jay Novacek]]
+* {{player|83}} ''[[Kendell Watkins]]''
+| style="width: 25px;" | 
+| style="font-size: 95%;" valign="top" |'''Offensive linemen'''
+* {{player|73}} [[Larry Allen]] G
+* {{player|68}} [[Michael Batiste (American football)|Michael Batiste]] G
+* {{player|69}} [[George Hegamin]] T
+* {{player|60}} [[Derek Kennard]] C
+* {{player|61}} [[Nate Newton (American football)|Nate Newton]] G
+* {{player|65}} [[Ron Stone (American football)|Ron Stone]] G/T
+* {{player|71}} [[Mark Tuinei]] T
+* {{player|79}} [[Erik Williams]] T
+
+'''Defensive linemen'''
+* {{player|91}} ''[[Darren Benson]]'' DT
+* {{player|96}} [[Shante Carver]] DE
+* {{player|94}} [[Charles Haley]] DE
+* {{player|95}} [[Chad Hennings]] DT
+* {{player|78}} [[Leon Lett]] DT
+* {{player|67}} [[Russell Maryland]] DT
+* {{player|99}} [[Hurvin McCormack]] DE
+* {{player|90}} ''[[Oscar Sturgis]]'' DE
+* {{player|92}} [[Tony Tolbert]] DE
+
+| style="width: 25px;" |
+| style="font-size: 95%;" valign="top" |'''Linebackers'''
+* {{player|58}} [[Dixon Edwards]] OLB
+* {{player|54}} [[Darryl Hardy]] MLB/OLB
+* {{player|55}} [[Robert Jones (linebacker)|Robert Jones]] MLB
+* {{player|98}} [[Godfrey Myles]] OLB
+* {{player|52}} [[Jim Schwantz]] OLB
+* {{player|59}} [[Darrin Smith]] OLB
+
+'''Defensive backs'''
+* {{player|23}} [[Robert Bailey (American football)|Robert Bailey]] CB
+* {{player|40}} [[Bill Bates]] SS
+* {{player|29}} ''[[Alundis Brice]]'' CB
+* {{player|43}} [[Greg Briggs]] SS
+* {{player|24}} [[Larry Brown (cornerback)|Larry Brown]] CB
+* {{player|25}} [[Scott Case (American football)|Scott Case]] FS
+* {{player|31}} [[Brock Marion]] FS
+* {{player|21}} [[Deion Sanders]] CB
+* {{player|42}} ''[[Charlie Williams (American football)|Charlie Williams]]'' CB
+* {{player|28}} [[Darren Woodson]] SS
+
+'''Special teams'''
+* {{player|18}} [[Chris Boniol]] K
+* {{player|70}} [[Dale Hellestrae]] LS
+* {{player|19}} [[John Jett]] P
+| style="width: 25px;" |
+| style="font-size: 95%;" valign="top" |'''Reserve lists'''
+* {{player|53}} [[Ray Donaldson]] C <small>(IR)</small> [[File:Injury icon 2.svg|10px]]
+* {{player|63}} ''[[Shane Hannah]]'' G <small>(IR)</small> [[File:Injury icon 2.svg|10px]]
+* {{player|47}} [[Clayton Holmes]] CB <small>(Susp.)</small>
+* {{player|26}} [[Kevin Smith (cornerback)|Kevin Smith]] CB <small>(IR)</small> [[File:Injury icon 2.svg|10px]]
+
+'''Practice squad'''
+* {{player|&nbsp;1}} ''[[Oronde Gadsden]]'' WR
+* {{player|62}} ''[[John Jones (offensive line)|John Jones]]'' G
+* {{player|89}} [[Greg Schorp]] TE
+
+<small>''Rookies in italics''</small><br />
+<small>52 active, 4 inactive, 3 practice squad</small>
+|-
+|}
+
+==Season summary==
+The 1995 season once more saw a number of key veterans depart via free agency due to the NFL salary cap, including [[wide receiver]] [[Alvin Harper]] to the [[Tampa Bay Buccaneers]], [[Safety (American football position)|safety]] [[James Washington (safety)|James Washington]] to the [[Washington Redskins]], [[center (American football)|center]] [[Mark Stepnoski]] to the [[Houston Oilers]] and longtime [[Dallas Cowboys|Cowboys]] veteran [[defensive end]] [[Jim Jeffcoat]] to the [[Buffalo Bills]].  Starting [[cornerback]] Kevin Smith was out the remainder of the season after an injury in week one.  Perhaps the most prominent addition came on September 9, 1995, when Dallas signed All-Pro cornerback [[Deion Sanders]] away from the [[San Francisco 49ers]].  [[Running back]] [[Emmitt Smith]] earned his fourth NFL rushing title and set a then-record 25 rushing touchdowns in a season against the [[Arizona Cardinals]] to secure home field advantage throughout the playoffs.<ref>{{Cite news |last=Friend |first=Tom |date=1995-12-26 |title=FOOTBALL;Cowboys Clinch Home-Field Advantage |url=https://www.nytimes.com/1995/12/26/sports/football-cowboys-clinch-home-field-advantage.html |access-date=2025-02-14 |work=The New York Times |language=en-US |issn=0362-4331}}</ref>
+
+The season began with victories against the [[1995 New York Giants season|Giants]], [[1995 Denver Broncos season|Broncos]], Vikings in overtime, and Cardinals. In week five at the [[1995 Washington Redskins season|Redskins]], Troy Aikman was injured early and the Cowboys suffered their first loss of the season. There were unsubstantiated rumors that Aikman could have kept playing in the game but didn't want to because he didn't want to beat his old offensive coordinator [[Norv Turner]] who was Washington's head coach. Aikman returned the next week and led Dallas to wins over Green Bay, San Diego, the Falcons (marking Deion Sanders' debut game with the Cowboys), and the Eagles to move to 8–1.
+
+In week ten, the struggling [[1995 San Francisco 49ers season|49ers]] (only 5–4 and with [[Elvis Grbac]] substituting for injured [[Steve Young]]) came to Texas Stadium and shocked the Cowboys, 38–20; the game's signature play was San Francisco's second play from scrimmage, from the Niners' 19-yard line, as Grbac's pass split Dallas's safeties and [[Jerry Rice]] scored.
+
+The win started a six-game win streak for San Francisco while Dallas rebounded, beating the Raiders and [[1995 Kansas City Chiefs season|Chiefs]] to move to 10–2, but then was upset at home by the Washington Redskins (the Redskins, who finished only 6–10, swept the eventual world champions; it was the Skins' seventh win in fourteen meetings since the firing of [[Tom Landry]]).  The Cowboys lost their second game in a row in a controversial loss at Philadelphia where, with the game tied at 17 late in the fourth quarter, Coach Barry Switzer elected to "go for it" on 4th down and a foot at the Cowboys' 29-yard line. The Eagles initially stopped Dallas for no gain but the play was ruled dead because the two-minute warning was reached before Dallas snapped the ball. Switzer then elected to try again instead of punting, and this time the play was stopped for a 1-yard loss; Philly took over and soon kicked a field goal to get the win. While the Cowboys in general and Switzer in particular were excoriated by fans and the media, the team became stronger and angrier after this game ([[Deion Sanders]] publicly supported Switzer and the decision to try the 4th-down conversion) and eventually used those emotions to end the losing streak.
+
+The next week, Dallas appeared headed for a third straight defeat at home to the mediocre [[1995 New York Giants season|Giants]] (only 5–9 entering the game) but thanks to a clutch late reception by Kevin Williams and a last-second field goal by [[Chris Boniol]], the Cowboys prevailed.  Rejuvenated, the team defeated the Arizona Cardinals and (combined with a 49ers loss the day before) secured home field advantage throughout the playoffs.  The movie ''[[Jerry Maguire]]'' used footage from the Arizona matchup.
+
+The Cowboys defeated the [[Philadelphia Eagles]] in the NFC divisional playoff game followed by a memorable [[1995–96 NFL playoffs#NFC: Dallas Cowboys 38, Green Bay Packers 27|NFC championship game victory]] against the [[1995 Green Bay Packers season|Green Bay Packers]] at [[Texas Stadium]].  The team went on to face the [[1995 Pittsburgh Steelers season|Pittsburgh Steelers]] in the [[Super Bowl XXX|Super Bowl]] at [[Sun Devil Stadium]] in Arizona in an attempt to tie the record of a fifth Super Bowl title.  Dallas dominated early, but as the Steelers gained momentum and threatened an upset over the heavily favored Cowboys, starting [[cornerback]] [[Larry Brown (cornerback)|Larry Brown]], after the tragic loss of his son Kristopher during the season, made his second interception of a pass from Steelers [[quarterback]] [[Neil O'Donnell]] to seal the Cowboys' victory. Brown was named Super Bowl MVP after the game.
+
+==Preseason==
+{| class="wikitable" style="text-align:center"
+|-
+! style="{{NFLPrimaryStyle|Dallas Cowboys|year=1995|border=2}}"| Week
+! style="{{NFLPrimaryStyle|Dallas Cowboys|year=1995|border=2}}"| Date
+! style="{{NFLPrimaryStyle|Dallas Cowboys|year=1995|border=2}}"| Opponent
+! style="{{NFLPrimaryStyle|Dallas Cowboys|year=1995|border=2}}"| Result
+! style="{{NFLPrimaryStyle|Dallas Cowboys|year=1995|border=2}}"| Record
+! style="{{NFLPrimaryStyle|Dallas Cowboys|year=1995|border=2}}"| Venue
+! style="{{NFLPrimaryStyle|Dallas Cowboys|year=1995|border=2}}"| Recap
+|- style="background:#cfc"
+! 1
+| {{dow tooltip|July 29, 1995}}
+| [[1995 Buffalo Bills season|Buffalo Bills]] 
+| '''W''' 21–15
+| 1–0
+| [[Texas Stadium]]
+| [https://www.profootballarchives.com/1995nfldal.html Recap]
+|- style="background:#fcc"
+! 2
+| {{dow tooltip|August 5, 1995}}
+| [[1995 Oakland Raiders season|Oakland Raiders]]
+| '''L''' 14–27
+| 1–1
+| [[Texas Stadium]]
+| [https://www.profootballarchives.com/1995nfldal.html Recap]
+|- style="background:#fcc"
+! 3
+| {{dow tooltip|August 12, 1995}}
+| vs. [[1995 Buffalo Bills season|Buffalo Bills]]
+| '''L''' 7–9
+| 1–2
+| [[SkyDome]] {{small|([[Toronto]])}}
+| [https://www.profootballarchives.com/1995nfldal.html Recap]
+|- style="background:#fcc"
+! 4
+| {{dow tooltip|August 21, 1995}}
+| at [[1995 Denver Broncos season|Denver Broncos]]
+| '''L''' 17–20
+| 1–3
+| [[Mile High Stadium]]
+| [https://www.profootballarchives.com/1995nfldal.html Recap]
+|- style="background:#cfc"
+! 5
+| {{dow tooltip|August 26, 1995}}
+| at [[1995 Houston Oilers season|Houston Oilers]]
+| '''W''' 10–0
+| 2–3
+| [[Reliant Astrodome|Houston Astrodome]]
+| [https://www.profootballarchives.com/1995nfldal.html Recap]
+|}
+
+==Regular season==
+{| class="wikitable" style="text-align:center"
+|-
+! style="{{NFLPrimaryStyle|Dallas Cowboys|year=1995|border=2}}"| Week
+! style="{{NFLPrimaryStyle|Dallas Cowboys|year=1995|border=2}}"| Date
+! style="{{NFLPrimaryStyle|Dallas Cowboys|year=1995|border=2}}"| Opponent
+! style="{{NFLPrimaryStyle|Dallas Cowboys|year=1995|border=2}}"| Result
+! style="{{NFLPrimaryStyle|Dallas Cowboys|year=1995|border=2}}"| Record
+! style="{{NFLPrimaryStyle|Dallas Cowboys|year=1995|border=2}}"| Venue
+! style="{{NFLPrimaryStyle|Dallas Cowboys|year=1995|border=2}}"| Recap
+|-bgcolor="#cfc"
+! 1
+|September 4
+|at '''[[1995 New York Giants season|New York Giants]]'''
+|'''W''' 35–0
+|1–0
+|[[Giants Stadium]]
+|[https://www.pro-football-reference.com/boxscores/199509040nyg.htm Recap]
+|-bgcolor="#cfc"
+! 2
+|September 10
+|[[1995 Denver Broncos season|Denver Broncos]] 
+|'''W''' 31–21
+|2–0
+|[[Texas Stadium]]
+|[https://www.pro-football-reference.com/boxscores/199509100dal.htm Recap]
+|-bgcolor="#cfc"
+! 3
+|September 17
+|at [[1995 Minnesota Vikings season|Minnesota Vikings]] 
+|'''W''' 23–17 {{small|(OT)}}
+|3–0
+|[[Hubert H. Humphrey Metrodome]]
+|[https://www.pro-football-reference.com/boxscores/199509170min.htm Recap]
+|-bgcolor="#cfc"
+! 4
+|September 24
+|'''[[1995 Arizona Cardinals season|Arizona Cardinals]]'''
+|'''W''' 34–20
+|4–0
+|[[Texas Stadium]]
+|[https://www.pro-football-reference.com/boxscores/199509240dal.htm Recap]
+|-bgcolor="#fcc"
+! 5
+|October 1
+|at '''[[1995 Washington Redskins|Washington Redskins]]'''
+|'''L''' 23–27
+|4–1
+|[[Robert F. Kennedy Memorial Stadium]]
+|[https://www.pro-football-reference.com/boxscores/199510010crd.htm Recap]
+|-bgcolor="#cfc"
+! 6
+|October 8
+|[[1995 Green Bay Packers season|Green Bay Packers]]
+|'''W''' 34–24
+|5–1
+|[[Texas Stadium]]
+|[https://www.pro-football-reference.com/boxscores/199510010was.htm Recap]
+|-bgcolor="#cfc"
+! 7
+|October 15
+|at [[1995 San Diego Chargers season|San Diego Chargers]] 
+|'''W''' 23–9
+|6–1
+|[[SDCCU Stadium|Jack Murphy Stadium]]
+|[https://www.pro-football-reference.com/boxscores/199510150sdg.htm Recap]
+|-
+! 8
+|colspan="6" style="text-align:center;"| ''[[Bye (sports)|Bye]]''
+|-bgcolor="#cfc"
+! 9
+|October 29
+|at [[1995 Atlanta Falcons season|Atlanta Falcons]] 
+|'''W''' 28–13
+|7–1
+|[[Georgia Dome]]
+|[https://www.pro-football-reference.com/boxscores/199510290atl.htm Recap]
+|-bgcolor="#cfc"
+! 10
+|November 6
+|'''[[1995 Philadelphia Eagles season|Philadelphia Eagles]]'''
+|'''W''' 34–12
+|8–1
+|[[Texas Stadium]]
+|[https://www.pro-football-reference.com/boxscores/199511060dal.htm Recap]
+|-bgcolor="#fcc"
+! 11
+|November 12
+|[[1995 San Francisco 49ers season|San Francisco 49ers]]
+|'''L''' 20–38
+|8–2
+|[[Texas Stadium]]
+|[https://www.pro-football-reference.com/boxscores/199511120dal.htm Recap]
+|-bgcolor="#cfc"
+! 12
+|November 19
+|at [[1995 Oakland Raiders season|Oakland Raiders]] 
+|'''W''' 34–21
+|9–2
+|[[Oakland Coliseum|Oakland–Alameda County Coliseum]]
+|[https://www.pro-football-reference.com/boxscores/199511190rai.htm Recap]
+|-bgcolor="#cfc"
+! 13
+|[[NFL on Thanksgiving Day|November 23]]
+|[[1995 Kansas City Chiefs season|Kansas City Chiefs]] 
+|'''W''' 24–12
+|10–2
+|[[Texas Stadium]]
+|[https://www.pro-football-reference.com/boxscores/199511230dal.htm Recap]
+|-bgcolor="#fcc"
+! 14
+| December 3
+|'''[[1995 Washington Redskins season|Washington Redskins]]'''
+|'''L''' 17–24
+|10–3
+|[[Texas Stadium]]
+|[https://www.pro-football-reference.com/boxscores/199512030dal.htm Recap]
+|-bgcolor="#fcc"
+! 15
+| December 10
+|at '''[[1995 Philadelphia Eagles season|Philadelphia Eagles]]''' 
+|'''L''' 17–20
+|10–4
+|[[Veterans Stadium]]
+|[https://www.pro-football-reference.com/boxscores/199512100phi.htm Recap]
+|-bgcolor="#cfc"
+! 16
+| December 17
+|'''[[1995 New York Giants season|New York Giants]]'''
+|'''W''' 21–20
+|11–4
+|[[Texas Stadium]]
+|[https://www.pro-football-reference.com/boxscores/199512170dal.htm Recap]
+|-bgcolor="#cfc"
+! 17
+|[[NFL on Christmas Day|December 25]]
+|at '''[[1995 Arizona Cardinals season|Arizona Cardinals]]'''
+|'''W''' 37–13
+| 12–4
+|[[Sun Devil Stadium]]
+|[https://www.pro-football-reference.com/boxscores/199512250crd.htm Recap]
+|-style="{{NFLPrimaryStyle|Dallas Cowboys|year=1995|border=2}}"
+|colspan="8"| '''Note:''' Intra-division opponents are in '''bold''' text.
+|}
+
+===Game summaries===
+====Week 1:at New York Giants====
+{{Americanfootballbox
+|titlestyle={{NFLPrimaryStyle|Dallas Cowboys|year=1995|border=2}};text-align:center;
+|state=autocollapse
+|title=Week 1: Dallas Cowboys at New York Giants&nbsp;– Game summary
+|date=September 4
+|time=9:00&nbsp;p.m. EDT
+|road='''Cowboys'''
+|R1=7|R2=14|R3=7|R4=7
+|home=Giants
+|H1=0|H2=0|H3=0|H4=0
+|stadium=[[Giants Stadium]], [[East Rutherford, New Jersey]]
+|attendance=77,454
+|weather=Scattered clouds, {{convert|75|F|C}}
+|referee=[[Bob McElwee]]
+|TV=[[NFL on ABC|ABC]]
+|TVAnnouncers=[[Al Michaels]], [[Frank Gifford]], [[Dan Dierdorf]] and [[Lynn Swann]]
+|scoring=
+'''First quarter'''
+*DAL – [[Emmitt Smith]] 60-yard run ([[Chris Boniol]] kick), 11:56. ''Cowboys 7–0''.
+'''Second quarter'''
+*DAL – [[Michael Irvin]] 7-yard pass from [[Troy Aikman]] (Chris Boniol kick), 11:58. ''Cowboys 14–0''.
+*DAL – Emmitt Smith 1-yard run (Chris Boniol kick), 6:52. ''Cowboys 21–0''.
+'''Third quarter'''
+*DAL – Emmitt Smith 1-yard run (Chris Boniol kick), 11:03. ''Cowboys 28–0''.
+'''Fourth quarter'''
+*DAL – Emmitt Smith 1-yard run (Chris Boniol kick), 12:33. ''Cowboys 35–0''.
+|stats=
+'''Top passers'''
+* DAL – Troy Aikman – 15/20, 228 yards, TD
+* NYG – [[Dave Brown (quarterback)|Dave Brown]] – 20/34, 155 yards, INT
+'''Top rushers'''
+* DAL – Emmitt Smith – 21 rushes, 163 yards, 4 TD
+* NYG – [[Rodney Hampton]] – 14 rushes, 48 yards
+'''Top receivers'''
+* DAL – Michael Irvin – 7 receptions, 109 yards, TD
+* NYG – [[Chris Calloway]] – 3 receptions, 35 yards
+}}
+
+===Standings===
+{{1995 NFC East standings}}
+
+==Playoffs==
+
+===Postseason schedule===
+{| class="wikitable" style="text-align:center"
+|-
+!style="{{NFLPrimaryStyle|Dallas Cowboys|year=1995|border=2}}"| Round
+!style="{{NFLPrimaryStyle|Dallas Cowboys|year=1995|border=2}}"| Date
+!style="{{NFLPrimaryStyle|Dallas Cowboys|year=1995|border=2}}"| Opponent (seed)
+!style="{{NFLPrimaryStyle|Dallas Cowboys|year=1995|border=2}}"| Result
+!style="{{NFLPrimaryStyle|Dallas Cowboys|year=1995|border=2}}"| Record
+!style="{{NFLPrimaryStyle|Dallas Cowboys|year=1995|border=2}}"| Venue
+!style="{{NFLPrimaryStyle|Dallas Cowboys|year=1995|border=2}}"| Game Recap
+|-
+! Wild Card
+| colspan=6| ''[[Bye (sports)|First-round bye]]''
+|-style="background:#cfc"
+! [[1995–96 NFL playoffs#NFC: Dallas Cowboys 30, Philadelphia Eagles 11|Divisional]]
+| January 7, 1996
+| [[1995 Philadelphia Eagles season|Philadelphia Eagles]] (4)
+| '''W''' 30–11
+| 1–0
+| [[Texas Stadium]]
+| [https://www.pro-football-reference.com/boxscores/199601070dal.htm Recap]
+|-style="background:#cfc"
+! [[1995–96 NFL playoffs#NFC: Dallas Cowboys 38, Green Bay Packers 27|NFC Championship]]
+| January 14, 1996
+| [[1995 Green Bay Packers season|Green Bay Packers]] (3)
+| '''W''' 38–27
+| 2–0
+| [[Texas Stadium]]
+| [https://www.pro-football-reference.com/boxscores/199601140dal.htm Recap]
+|-style="background:#cfc"
+! [[Super Bowl XXX]]
+| January 28, 1996
+| [[1995 Pittsburgh Steelers season|Pittsburgh Steelers]] (A2)
+| '''W''' 27–17
+| 3–0
+| [[Sun Devil Stadium]]
+| [https://www.pro-football-reference.com/boxscores/199601280dal.htm Recap]
+|}
+
+===Divisional Playoffs vs Philadelphia Eagles===
+{{Americanfootballbox
+|titlestyle=text-align:center; {{NFLPrimaryStyle|NFC}}
+|title=Philadelphia Eagles vs. Dallas Cowboys – Game summary
+|Road=Eagles
+|R1=0
+|R2=3
+|R3=0
+|R4=8
+|Home='''Cowboys'''
+|H1=3
+|H2=14
+|H3=6
+|H4=7
+|stadium= [[Texas Stadium]], [[Irving, Texas]]
+|time= 12:30 p.m. [[Eastern Time Zone|EST]]/11:30 a.m. [[Central Time Zone|CST]]
+|weather= {{convert|32|°F|°C}}, clear
+|TV=[[NFL on Fox|Fox]]
+|TVAnnouncers= [[Pat Summerall]] and [[John Madden]]
+|referee= [[Gerald Austin]]
+|attendance= 64,371
+|scoring=
+*'''Scoring'''
+**DAL – field goal Boniol 24 '''DAL 3–0'''
+**PHI – field goal Anderson 26 '''Tie 3–3'''
+**DAL – Sanders 21 run (Boniol kick) '''DAL 10–3'''
+**DAL – Smith 1 run (Boniol kick) '''DAL 17–3'''
+**DAL – field goal Boniol 18 '''DAL 20–3'''
+**DAL – field goal Boniol 51 '''DAL 23–3'''
+**DAL – Irvin 9 pass from Aikman (Boniol kick) '''DAL 30–3'''
+**PHI – Cunningham 4 run (R. Johnson pass from Cunningham) '''DAL 30–11'''
+}}
+
+===NFC Championship Game===
+{{Americanfootballbox | title=Dallas Cowboys 38, Green Bay Packers 27
+|titlestyle=text-align:center; {{NFLPrimaryStyle|Dallas Cowboys}}
+|Road=Packers
+|R1=10
+|R2=7
+|R3=10
+|R4=0
+|Home='''Cowboys'''
+|H1=14
+|H2=10
+|H3=0
+|H4=14
+|stadium= [[Texas Stadium]], [[Irving, Texas]]
+|time= 4:00 p.m. [[Eastern Time Zone|EST]]/3:00 p.m. [[Central Time Zone|CST]]
+|weather= {{convert|78|°F|°C}}, clear
+|TV=[[NFL on Fox|Fox]]
+|TVAnnouncers= [[Pat Summerall]] and [[John Madden]]
+|referee= [[Ed Hochuli]]
+|attendance= 65,135
+}}
+
+===Super Bowl XXX===
+{{main|Super Bowl XXX}}
+
+====Scoring summary====
+*DAL – FG: Chris Boniol 42 yards '''3–0 DAL'''
+*DAL – TD: Jay Novacek 3 yard pass from Troy Aikman (Chris Boniol kick) '''10–0 DAL'''
+*DAL – FG: Chris Boniol 35 yards '''13–0 DAL'''
+*PIT – TD: Yancey Thigpen 6 yard pass from Neil O'Donnell (Norm Johnson kick) '''13–7 DAL'''
+*DAL – TD: Emmitt Smith 1 yard run (Chris Boniol kick) '''20–7 DAL'''
+*PIT – FG: Norm Johnson 46 yards '''20–10 DAL'''
+*PIT – TD: Byron "Bam" Morris 1 yard run (Norm Johnson kick) '''20–17 DAL'''
+*DAL – TD: Emmitt Smith 4 yard run (Chris Boniol kick) '''27–17 DAL'''
+
+==Awards and records==
+* Emmitt Smith, NFL rushing leader<ref>{{Cite web |title=1995 NFL Rushing |url=https://www.pro-football-reference.com/years/1995/rushing.htm |access-date=2025-03-08 |website=Pro-Football-Reference.com |language=en}}</ref>
+* Emmitt Smith, NFL record for rushing touchdowns in a season (25, since broken)
+* Emmitt Smith, NFL record for total touchdowns in a season (25, since broken)
+* Larry Brown, Super Bowl Most Valuable Player
+
+===Milestones===
+* Michael Irvin, 100 Reception Season (Irvin finished the season with 111 receptions)<ref>''NFL 2001 Record and Fact Book'', Workman Publishing Co, New York, {{ISBN|0-7611-2480-2}}, p. 440</ref>
+* In 1995, Emmitt Smith won his fourth rushing title. He rushed for a career-high 1,773 yards.<ref>{{cite book | title=Numbelievable! | page=159 | first1=Michael X. | last1=Ferraro | first2=John | last2=Veneziano | publisher=Triumph Books | location=Chicago | year=2007 | isbn=978-1-57243-990-0}}</ref>
+
+==Publications==
+* ''The Football Encyclopedia'' {{ISBN|0-312-11435-4}}
+* ''Total Football'' {{ISBN|0-06-270170-3}}
+* ''Cowboys Have Always Been My Heroes'' {{ISBN|0-446-51950-2}}
+
+==References==
+{{Reflist}}
+
+==External links==
+* {{cite web | url=https://www.pro-football-reference.com/teams/dal/1995.htm | title=1995 Dallas Cowboys Statistics & Players | website=Pro-Football-Reference.com}}
+* [http://www.profootballhof.com/ Pro Football Hall of Fame]
+* [http://www.dallascowboys.com Dallas Cowboys Official Site]
+
+{{Super Bowl champions}}
+{{Dallas Cowboys seasons}}
+{{Super Bowl XXX}}
+{{Dallas Cowboys}}
+{{1995 NFL season by team}}
+
+{{DEFAULTSORT:1995 Dallas Cowboys Season}}
+[[Category:NFC East championship seasons]]
+[[Category:National Football Conference championship seasons]]
+[[Category:Super Bowl champion seasons]]
+[[Category:Dallas Cowboys seasons]]
+[[Category:1995 NFL season by team|Dallas]]
+[[Category:1995 in sports in Texas|Dallas]]

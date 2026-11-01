@@ -1,0 +1,178 @@
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+import register from '../../register.js'
+import version from '../../_version.js'
+import { translate } from '../_lib.js'
+
+// chinese template names → the core template they resolve to
+const aliases = {
+  'ap': 'main',
+  'birthdate and age': 'birth date and age',
+  'birthdateandage': 'birth date and age',
+  'cc': 'commons cat',
+  'ccat': 'commons cat',
+  'cite study': 'citation',
+  'commons category': 'commons cat',
+  'commonscat': 'commons cat',
+  'commonscategory': 'commons cat',
+  'coord title dms': 'coord',
+  'coordinates': 'coord',
+  'coordonnées': 'coord',
+  'coords': 'coord',
+  'coorheader': 'coord',
+  'cytuj': 'citation',
+  'date start': 'start',
+  'flag icon': 'flagicon',
+  'footnotessmall': 'reflist',
+  'foundation date': 'start',
+  'hurricane main': 'main',
+  'launch date': 'start',
+  'main articles': 'main',
+  'portal box': 'portal',
+  'portalbox': 'portal',
+  'portalpar': 'portal',
+  'references': 'reflist',
+  'refs': 'reflist',
+  'release date': 'start',
+  'releasedate': 'start',
+  'shortened footnote template': 'sfn',
+  'startdate': 'start',
+  'starting date': 'start',
+  '主': 'main',
+  '主条目': 'main',
+  '主條目': 'main',
+  '主頁': 'main',
+  '主頁面': 'main',
+  '主題': 'portal',
+  '主題目': 'main',
+  '主題首頁': 'portal',
+  '入口': 'portal',
+  '共享資源分類': 'commons cat',
+  '共享资源分类': 'commons cat',
+  '参考列表': 'reflist',
+  '参考文献': 'reflist',
+  '參考資料': 'reflist',
+  '国际音标': 'ipa',
+  '圖書': 'isbn',
+  '地理座標': 'coord',
+  '坐標': 'coord',
+  '小': 'small',
+  '座標': 'coord',
+  '引证': 'citation',
+  '指南': 'portal',
+  '旗幟': 'flag',
+  '旗幟圖示': 'flagicon',
+  '旗幟標誌': 'flagicon',
+  '条目': 'main',
+  '注脚': 'reflist',
+  '生年月日と年齢': 'birth date and age',
+  '生日和年齡': 'birth date and age',
+  '經緯': 'coord',
+  '经纬': 'coord',
+  '经纬度': 'coord',
+  '脚注': 'reflist',
+  '註腳': 'reflist',
+  '門戶': 'portal',
+  '頁面': 'main',
+}
+
+// names recognised as infoboxes
+const infoboxes = [
+  '分类框',
+]
+
+// templates whose parameter names differ — renamed, then parsed by the core template
+const citeBook = translate('cite book', {
+  'surname': 'last',
+  'surname1': 'last',
+  'author-last': 'last',
+  'author-last1': 'last',
+  'author1-last': 'last',
+  'subject': 'last',
+  'subject1': 'last',
+  'given': 'first',
+  'given1': 'first',
+  'author-first': 'first',
+  'author-first1': 'first',
+  'author1-first': 'first',
+  'editor1': 'editor',
+  'place': 'location',
+  'publication-place': 'location',
+  'in': 'language',
+  'contribution': 'chapter',
+  'accessdate': 'access-date',
+  'archivedate': 'archive-date',
+  'archiveurl': 'archive-url',
+})
+const citeJournal = translate('cite journal', {
+  'accessdate': 'access-date',
+  'archiveurl': 'archive-url',
+  'archivedate': 'archive-date',
+})
+const citeWeb = translate('cite web', {
+  'accessdate': 'access-date',
+  'archiveurl': 'archive-url',
+  'archivedate': 'archive-date',
+})
+const internetquelle = translate('cite web', {
+  'titel': 'title',
+  'autor': 'author',
+  'werk': 'work',
+  'hrsg': 'publisher',
+  'datum': 'date',
+  'seiten': 'pages',
+  'sprache': 'language',
+  'abruf': 'access-date',
+  'zugriff': 'access-date',
+  'archiv-url': 'archive-url',
+  'archiv-datum': 'archive-date',
+  'accessdate': 'access-date',
+  'archiveurl': 'archive-url',
+  'archivedate': 'archive-date',
+})
+
+const parsers = {
+  'book reference': citeBook,
+  'book reference 3': citeBook,
+  'c-j': citeJournal,
+  'cita web': citeWeb,
+  'cite blog': citeWeb,
+  'cite book en': citeBook,
+  'cite book zh': citeBook,
+  'cite book/en': citeBook,
+  'cite chapter': citeBook,
+  'cite journal en': citeJournal,
+  'cite journal zh': citeJournal,
+  'cite manual': citeBook,
+  'cite paper': citeJournal,
+  'cite url': citeWeb,
+  'cite web 2': citeWeb,
+  'cite web en': citeWeb,
+  'cite web ja': citeWeb,
+  'cite web site': citeWeb,
+  'cite web url': citeWeb,
+  'cite web/en': citeWeb,
+  'cite web2': citeWeb,
+  'cite website': citeWeb,
+  'cite work': citeBook,
+  'cite-web': citeWeb,
+  'citebook': citeBook,
+  'citejournal': citeJournal,
+  'citeweb': citeWeb,
+  'cytuj książkę': citeBook,
+  'internetquelle': internetquelle,
+  'journal reference': citeJournal,
+  'web cite': citeWeb,
+  'web reference': citeWeb,
+  '引用书籍': citeBook,
+  '引用网页': citeWeb,
+  '引網': citeWeb,
+}
+
+const data = { aliases, infoboxes, parsers }
+
+const plugin = (_models, templates, boxes) => register(data, templates, boxes)
+plugin.lang = 'zh'
+plugin.version = version
+
+export { data }
+export default plugin

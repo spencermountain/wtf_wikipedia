@@ -79,7 +79,7 @@ const finish = (games) => orientScores(inferFromRecord(games))
 // subsections or log-titles that are not regular-season games
 const postseasonish = /postseason|playoff|world series|championship|division series|wild card/i
 const notRegularSeason =
-  /postseason|playoff|world series|championship|division series|wild card|detailed record|composite box|month.by.month/i
+  /postseason|playoff|world series|championship|division series|wild card|preseason|pre-season|exhibition|detailed record|composite box|month.by.month/i
 
 // all games under the best matching section, in one flat list
 const findGames = function (doc, ctx, titles) {

@@ -1,6 +1,6 @@
 {
   "name": "wtf-plugin-i18n",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "i18n plugin for wtf_wikipedia",
   "license": "MIT",
   "repository": "github:spencermountain/wtf_wikipedia",
@@ -17,6 +17,11 @@
         "types": "./types/index.d.cts",
         "default": "./builds/wtf-plugin-i18n.cjs"
       }
+    },
+    "./package.json": "./package.json",
+    "./*": {
+      "types": "./types/lang.d.ts",
+      "default": "./src/langs/*/index.js"
     }
   },
   "main": "./builds/wtf-plugin-i18n.cjs",
@@ -25,8 +30,8 @@
   "sideEffects": false,
   "scripts": {
     "build": "node ./scripts/version.js && rollup -c",
-    "data": "node ./scripts/01-fetch-sitelinks.js && node ./scripts/02-fetch-redirects.js && node ./scripts/03-fetch-templatedata.js && node ./scripts/04-build.js",
-    "data:build": "node ./scripts/04-build.js",
+    "data": "node ./scripts/01-fetch-sitelinks.js && node ./scripts/02-fetch-redirects.js && node ./scripts/03-fetch-templatedata.js && node ./scripts/04-diff.js",
+    "data:diff": "node ./scripts/04-diff.js",
     "test": "tape --strict \"tests/**/*.test.js\" | tap-dancer",
     "testb": "TESTENV=prod tape --strict \"tests/**/*.test.js\" | tap-dancer",
     "version": "node ./scripts/version.js"

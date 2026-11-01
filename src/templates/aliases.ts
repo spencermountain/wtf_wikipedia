@@ -179,6 +179,7 @@ let multi = {
   plainlist: ['flatlist', 'plain list'],
 
   'winning percentage': ['winpct', 'winperc'],
+  'nba game': ['nba game br'],
   'win-loss record': ['win–loss record', 'win loss record', 'wlr'],
 
   'collapsible list': [

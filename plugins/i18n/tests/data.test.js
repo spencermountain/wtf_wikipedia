@@ -1,95 +1,48 @@
+import { readdirSync } from 'node:fs'
 import test from 'tape'
-import birthDateAge from '../src/data/birth_date_and_age.js'
-import citation from '../src/data/citation.js'
-import citeBook from '../src/data/cite_book.js'
-import citeJournal from '../src/data/cite_journal.js'
-import citeWeb from '../src/data/cite_web.js'
-import commonsCat from '../src/data/commons_cat.js'
-import coord from '../src/data/coord.js'
-import flag from '../src/data/flag.js'
-import flagicon from '../src/data/flagicon.js'
-import formatnum from '../src/data/formatnum.js'
-import ipa from '../src/data/ipa.js'
-import isbn from '../src/data/isbn.js'
-import main from '../src/data/main.js'
-import nihongo from '../src/data/nihongo.js'
-import portal from '../src/data/portal.js'
-import reflist from '../src/data/reflist.js'
-import sfn from '../src/data/sfn.js'
-import small from '../src/data/small.js'
-import persondata from '../src/data/persondata.js'
-import taxobox from '../src/data/taxobox.js'
-import startDate from '../src/data/start_date.js'
-import params from '../src/data/params.js'
 
-const families = {
-  'birth date and age': birthDateAge,
-  citation,
-  'cite book': citeBook,
-  'cite journal': citeJournal,
-  'cite web': citeWeb,
-  'commons cat': commonsCat,
-  coord,
-  flag,
-  flagicon,
-  formatnum,
-  ipa,
-  isbn,
-  main,
-  nihongo,
-  portal,
-  reflist,
-  sfn,
-  small,
-  persondata,
-  taxobox,
-  start: startDate,
-}
+const dir = new URL('../src/langs/', import.meta.url)
+const langs = readdirSync(dir).filter((f) => f !== '_lib.js' && f !== 'all' && f.startsWith('.') === false)
 
-test('i18n data files are well-formed', (t) => {
-  Object.keys(families).forEach((fam) => {
-    const list = families[fam]
-    t.ok(Array.isArray(list) && list.length > 0, `${fam}: non-empty array`)
-    const bad = list.filter(
-      (name) =>
-        typeof name !== 'string' ||
-        name !== name.toLowerCase().trim() ||
-        name.length === 0 ||
-        (name.length === 1 && /[a-z0-9]/.test(name))
-    )
-    t.deepEqual(bad, [], `${fam}: entries are trimmed lowercase strings`)
-    const dupes = list.filter((name, i) => list.indexOf(name) !== i)
-    t.deepEqual(dupes, [], `${fam}: no duplicate entries`)
-  })
-  t.end()
-})
-
-test('i18n no alias is claimed by two families', (t) => {
+test('i18n language packs are well-formed', async (t) => {
+  t.ok(langs.length > 55, `${langs.length} language packs exist`)
   const owner = {}
   const conflicts = []
-  Object.keys(families).forEach((fam) => {
-    families[fam].forEach((name) => {
-      if (owner[name]) {
-        conflicts.push(`'${name}' (${owner[name]} + ${fam})`)
+  for (const lang of langs) {
+    const mod = await import(new URL(`${lang}/index.js`, dir))
+    const { aliases, infoboxes, parsers } = mod.data
+    const names = [...Object.keys(aliases), ...Object.keys(parsers), ...infoboxes]
+    t.ok(names.length > 0, `${lang}: has names`)
+    const bad = names.filter(
+      (name) => typeof name !== 'string' || name !== name.toLowerCase().trim() || name.length === 0 || /[|{}=[\]<>#:]/.test(name)
+    )
+    t.deepEqual(bad, [], `${lang}: names are trimmed lowercase`)
+    const dupes = names.filter((name, i) => names.indexOf(name) !== i)
+    t.deepEqual(dupes, [], `${lang}: no name is listed twice`)
+    const badTargets = Object.keys(aliases).filter((name) => typeof aliases[name] !== 'string' || aliases[name] !== aliases[name].toLowerCase())
+    t.deepEqual(badTargets, [], `${lang}: alias targets are lowercase core keys`)
+    const badParsers = Object.keys(parsers).filter((name) => typeof parsers[name] !== 'function')
+    t.deepEqual(badParsers, [], `${lang}: parsers are functions`)
+    const badMapTargets = Object.keys(parsers)
+      .filter((name) => parsers[name].map)
+      .flatMap((name) => Object.values(parsers[name].map))
+      .filter((target) => typeof target !== 'string' || target !== target.toLowerCase())
+    t.deepEqual(badMapTargets, [], `${lang}: param targets are lowercase english names`)
+    // wikis share names — one name must resolve to the same template everywhere
+    names.forEach((name) => {
+      let fam = aliases[name]
+      if (fam === undefined && parsers[name]) {
+        fam = parsers[name].template || 'custom'
+      }
+      if (fam === undefined) {
+        fam = 'taxobox'
+      }
+      if (owner[name] && owner[name] !== fam && fam !== 'custom' && owner[name] !== 'custom') {
+        conflicts.push(`'${name}' (${owner[name]} in one pack, ${fam} in ${lang})`)
       }
       owner[name] = fam
     })
-  })
-  t.deepEqual(conflicts, [], 'no cross-family duplicates')
-  t.end()
-})
-
-test('i18n param maps belong to registered aliases', (t) => {
-  const names = new Set(Object.values(families).flat())
-  const orphans = Object.keys(params.aliases).filter((name) => names.has(name) === false)
-  t.deepEqual(orphans, [], 'every param entry is keyed by a known alias')
-  const missing = Object.values(params.aliases)
-    .flat()
-    .filter((id) => params.maps[id] === undefined)
-  t.deepEqual(missing, [], 'every referenced map id exists')
-  const badTargets = Object.values(params.maps)
-    .flatMap((map) => Object.values(map))
-    .filter((target) => typeof target !== 'string' || target !== target.toLowerCase())
-  t.deepEqual(badTargets, [], 'param targets are lowercase english names')
+  }
+  t.deepEqual(conflicts, [], 'no name maps to two different templates across packs')
   t.end()
 })

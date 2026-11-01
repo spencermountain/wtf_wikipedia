@@ -1,0 +1,1561 @@
+{{Short description|American soccer club season}}
+{{Use American English|date=March 2026}}
+{{Use mdy dates|date=February 2024}}
+{{Infobox soccer club season
+| image = Los Angeles Galaxy logo.svg
+| image_size = 120
+| caption = 
+| club = [[LA Galaxy]]
+| season = [[2024 in American soccer|2024]]
+| league = [[2024 Major League Soccer season|MLS]]
+| chrtitle = General Manager
+| chairman = Will Kuntz
+| mgrtitle = Head coach
+| manager = [[Greg Vanney]]
+| stadium = [[Dignity Health Sports Park]]
+| league result = [[Western Conference (MLS)|Conference]]: 2nd<br />[[Supporters' Shield|Overall]]: 4th
+| cup1 = [[2024 MLS Cup Playoffs|MLS Cup Playoffs]]
+| cup1 result = '''Champions'''
+| cup2 = [[2024 Leagues Cup|Leagues Cup]]
+| cup2 result = Round of 32
+| highest attendance = [[El Trafico|70,076]]
+| lowest attendance = [[California Clasico|12,554]]
+| average attendance = 26,135<ref>[https://www.worldfootball.net/competition/co73/se61631/attendance/ worldfootball.net]</ref>
+| league topscorer = [[Dejan Joveljić]] (19)
+| season topscorer = [[Gabriel Pec]] (21)
+| largest win = LA 5–0 [[Colorado Rapids|Colorado]] ([[2024 MLS Cup playoffs#Round one|Round 1]])
+| largest loss = LA 1–3 [[Seattle Sounders FC|Seattle]] ([[2024 Leagues Cup knockout stage|League Cup KO Stage]])
+| pattern_la1 = _lagalaxy24h
+| pattern_b1 = _lagalaxy24h
+| pattern_ra1 = _lagalaxy24h
+| pattern_sh1 = _lagalaxy24h
+| pattern_so1 = _lagalaxy22h
+| leftarm1 = FFFFFF
+| body1 = FFFFFF
+| rightarm1 = FFFFFF
+| shorts1 = FFFFFF
+| socks1 = FFFFFF
+| pattern_la2 = _lagalaxy23a
+| pattern_b2 = _lagalaxy23a
+| pattern_ra2 = _lagalaxy23a
+| pattern_sh2 = _lagalaxy23a
+| pattern_so2 = _lagalaxy23al
+| leftarm2 = 007576
+| body2 = 007576
+| rightarm2 = 007576
+| shorts2 = 007576
+| socks2 = 007576
+| American = true
+| prevseason = [[2023 LA Galaxy season|2023]]
+| nextseason = [[2025 LA Galaxy season|2025]]
+}}
+
+The '''2024 LA Galaxy season''' was the club's [[List of LA Galaxy seasons|29th season]] in [[Major League Soccer]], the top tier of the [[American soccer pyramid]]. [[LA Galaxy]] play their home matches at [[Dignity Health Sports Park]] in the Los Angeles suburb of [[Carson, California|Carson]], [[California]]. The Galaxy opened the season on February 25, 2024, hosting [[Inter Miami CF]].<ref>{{cite news |last1=Baxter |first1=Kevin |title=Galaxy to kick off 2024 season at home against Lionel Messi and Inter Miami |url=https://www.latimes.com/sports/soccer/galaxy/story/2023-12-20/galaxy-2024-schedule-lionel-messi-inter-miami |work=[[Los Angeles Times]] |date=December 20, 2023 |archive-url=https://web.archive.org/web/20231225190718/https://www.latimes.com/sports/soccer/galaxy/story/2023-12-20/galaxy-2024-schedule-lionel-messi-inter-miami |archive-date=December 25, 2023 |url-status=live}}</ref>
+
+The Galaxy qualified for the playoffs for the first time since [[2022 LA Galaxy season|2022]] on September 14, and made their first MLS Cup appearance since [[MLS Cup 2014|2014]], winning a record-extending [[MLS Cup 2024|sixth MLS Cup]].
+
+== Squad information ==
+{{updated|August 16, 2024|<ref>{{cite web|url=https://www.lagalaxy.com/players|title=Players|publisher=LA Galaxy|access-date=August 6, 2021}}</ref>}}
+<!-- --------------------------------------------------------------------------------------------
+  -- Do NOT add new players before their signing is officially announced by the club
+  -- and do NOT assign unreferenced squad numbers as well.
+  -- Do NOT create articles for new draft picks until they make either their MLS or US Open Cup debut, and do not add red wikilinks to these players as it prevents the creation of articles by people who don't understand the WP:FOOTY notability guidelines
+  – Players with international caps should NOT be bolded – as per Wikipedia:WikiProject_Football/Clubs
+  – This is Wikipedia, not a football gazette.
+  – Any unconfirmed and unsourced signing/transfer will be reverted.
+  – Thanks in advance.
+  --------------------------------------------------------------------------------------------- -->
+{{fs start|nonumber=|bg=FFFFFF|color=13284B|border=FFCE02}}
+{{football squad player|no=2|nat=JPN|pos=DF|name={{sortname|Miki|Yamane}}}}
+{{football squad player|no=3|nat=ARG|pos=DF|name={{sortname|Julián|Aude}}}}
+{{football squad player|no=4|nat=JPN|pos=DF|name={{sortname|Maya|Yoshida}}|other=[[Captain (association football)|captain]]}}
+{{football squad player|no=5|nat=URU|pos=MF|name={{sortname|Gastón|Brugman}}}}
+{{football squad player|no=7|nat=URU|pos=FW|name={{sortname|Diego|Fagúndez}}}}
+{{football squad player|no=8|nat=USA|pos=MF|name={{sortname|Mark|Delgado|Mark Delgado}}}}
+{{football squad player|no=9|nat=SRB|pos=FW|name={{sortname|Dejan|Joveljić}}}}
+{{football squad player|no=10|nat=ESP|pos=MF|name={{sortname|Riqui|Puig}}}}
+{{football squad player|no=11|nat=BRA|pos=FW|name={{sortname|Gabriel|Pec}}}}
+{{football squad player|no=14|nat=USA|pos=DF|name={{sortname|John|Nelson|John Nelson (soccer, born 1998)}}}}
+{{football squad player|no=15|nat=SLV|pos=DF|name={{sortname|Eriq|Zavaleta}}}}
+{{football squad player|no=18|nat=GER|pos=MF|name={{sortname|Marco|Reus}}}}
+{{football squad player|no=19|nat=USA|pos=DF|name={{sortname|Mauricio|Cuevas}}}}
+{{fs mid|nonumber=|bg=FFFFFF|color=13284B|border=FFCE02}}
+{{football squad player|no=20|nat=USA|pos=MF|name={{sortname|Edwin|Cerrillo}}}}
+{{football squad player|no=21|nat=USA|pos=MF|name={{sortname|Tucker|Lepley}}}}
+{{football squad player|no=22|nat=URU|pos=DF|name={{sortname|Martín|Cáceres}}}}
+{{football squad player|no=24|nat=USA|pos=DF|name={{sortname|Jalen|Neal}}}}
+{{football squad player|no=25|nat=COL|pos=DF|name=[[Carlos Emiro Garcés]]}}
+{{football squad player|no=27|nat=ESP|pos=FW|name={{sortname|Miguel|Berry}}}}
+{{football squad player|no=28|nat=GHA|pos=FW|name={{sortname|Joseph|Paintsil}}}}
+{{football squad player|no=30|nat=CRC|pos=MF|name={{sortname|Gino|Vivi}}}}
+{{football squad player|no=31|nat=USA|pos=GK|name={{sortname|Brady|Scott}}}}
+{{football squad player|no=35|nat=SRB|pos=GK|name={{sortname|Novak|Mićović }}|other=on loan from [[FK Čukarički|Čukarički]]}}
+{{football squad player|no=52|nat=USA|pos=MF|name={{sortname|Isaiah|Parente}}}}
+{{football squad player|no=77|nat=USA|pos=GK|name={{sortname|John|McCarthy|John McCarthy (soccer)}}}}
+{{football squad player|no=84|nat=USA|pos=GK|name={{sortname|Ruben|Ramos Jr|Ruben Ramos Jr}}}}
+{{fs end|nonumber=|bg=FFFFFF|color=13284B|border=FFCE02}}
+
+=== Transfers ===
+
+==== Transfers In ====
+{| class="wikitable sortable" style="width:95%; text-align:center; font-size:95%; text-align:left;"
+|-
+!'''Pos.'''
+!'''Player'''
+!'''Transferred from'''
+!'''Fee/notes'''
+!'''Date'''
+!'''Source'''
+|-
+| FW
+| {{Flagicon|ESP}} [[Miguel Berry]]
+| {{flagicon|USA}} [[Atlanta United FC]]
+| Trade
+| December 19, 2023
+|align=center|<ref>{{cite web|url=https://www.mlssoccer.com/news/la-galaxy-acquire-forward-miguel-berry|title=LA Galaxy acquire forward Miguel Berry|publisher=Major League Socce|date=December 19, 2023|accessdate=December 19, 2023}}</ref>
+|-
+| DF
+| {{Flagicon|USA}} [[John Nelson (soccer, born 1998)|John Nelson]]
+| {{flagicon|USA}} [[St. Louis City SC]]
+| Free
+| December 21, 2023
+|align=center|<ref>{{cite web|url=https://www.mlssoccer.com/news/la-galaxy-sign-defender-john-nelson|title=LA Galaxy sign defender John Nelson|publisher=Major League Soccer|date=December 21, 2023|accessdate=December 21, 2023}}</ref>
+|-
+| GK
+| {{Flagicon|USA}} [[John McCarthy (soccer)|John McCarthy]]
+| {{flagicon|USA}} [[Los Angeles FC]]
+| Free
+| January 5, 2024
+|align=center|<ref>{{cite web|url=https://www.mlssoccer.com/news/la-galaxy-sign-goalkeeper-john-mccarthy|title=LA Galaxy sign goalkeeper John McCarthy|publisher=Major League Soccer|date=January 5, 2024|accessdate=January 5, 2024}}</ref>
+|-
+| DF
+| {{Flagicon|JPN}} [[Miki Yamane]]
+| {{flagicon|JPN}} [[Kawasaki Frontale]]
+| Free
+| January 6, 2024
+|align=center|<ref>{{cite web|url=https://www.mlssoccer.com/news/la-galaxy-sign-japanese-defender-miki-yamane|title=LA Galaxy sign Japanese defender Miki Yamane|publisher=Major League Soccer|date=January 6, 2024|accessdate=January 6, 2024}}</ref>
+|-
+| FW
+| {{Flagicon|BRA}} [[Gabriel Pec]]
+| {{flagicon|BRA}} [[CR Vasco da Gama|Vasco da Gama]]
+| Transfer
+| January 30, 2024
+|align=center|<ref>{{cite web|url=https://www.mlssoccer.com/news/la-galaxy-sign-gabriel-pec-from-vasco-da-gama|title=LA Galaxy sign Gabriel Pec from Vasco da Gama|publisher=Major League Soccer|date=January 30, 2024|accessdate=January 30, 2024}}</ref>
+|-
+| MF
+| {{Flagicon|GHA}} [[Joseph Paintsil]]
+| {{flagicon|BEL}} [[K.R.C. Genk|Genk]]
+| Transfer
+| February 21, 2024
+|align=center|<ref>{{cite web|url=https://www.mlssoccer.com/news/la-galaxy-sign-winger-joseph-paintsil-from-genk|title=LA Galaxy sign winger Joseph Paintsil from Genk|publisher=Major League Soccer|date=February 21, 2024|accessdate=February 21, 2024}}</ref>
+|-
+| FW
+| {{flagicon|CMR}} [[Aaron Bibout]]
+| {{flagicon|USA}} [[LA Galaxy II]]
+| Free
+| February 23, 2024
+|align=center|<ref>{{cite web|url=https://www.mlssoccer.com/news/la-galaxy-sign-forward-aaron-bibout-from-mls-next-pro|title=LA Galaxy sign forward Aaron Bibout from MLS NEXT Pro|publisher=Major League Soccer|date=February 23, 2024|accessdate=February 23, 2024}}</ref>
+|-
+| MF
+| {{flagicon|USA}} [[Tucker Lepley]]
+| {{flagicon|USA}} [[UCLA Bruins men's soccer|UCLA Bruins]]
+| SuperDraft
+| February 23, 2024
+|align=center|<ref>{{cite web|url=https://www.mlssoccer.com/news/la-galaxy-sign-superdraft-pick-tucker-lepley|title=LA Galaxy sign SuperDraft pick Tucker Lepley|publisher=Major League Soccer|date=February 23, 2024|accessdate=February 23, 2024}}</ref>
+|-
+| GK
+| {{flagicon|USA}} [[Brady Scott]]
+| {{flagicon|USA}} [[Columbus Crew]]
+| Free
+| March 8, 2024
+|align=center|<ref>{{cite web|url=https://www.mlssoccer.com/news/la-galaxy-sign-goalkeeper-brady-scott|title=LA Galaxy sign goalkeeper Brady Scott|publisher=Major League Soccer|date=March 8, 2024|accessdate=March 10, 2024}}</ref>
+|-
+| DF
+| {{flagicon|COL}} [[Emiro Garcés]] 
+| {{fbaicon|COL}} [[Deportivo Pereira]] 
+| Loan
+| April 2, 2024
+|align=center|<ref>{{cite web|url=https://www.mlssoccer.com/news/la-galaxy-acquire-colombian-defender-emiro-garces|title=LA Galaxy acquire Colombian defender Emiro Garcés|publisher=Major League Soccer|date=April 2, 2024|accessdate=April 3, 2024}}</ref>
+|-
+| MF
+| {{flagicon|USA}} [[Isaiah Parente]] 
+| {{fbaicon|USA}} [[Ventura County FC]] 
+| Free
+| July 12, 2024
+|align=center|<ref>{{cite web|url=https://www.mlssoccer.com/news/la-galaxy-sign-midfielder-isaiah-parente|title=LA Galaxy sign midfielder Isaiah Parente |publisher=Major League Soccer|date=July 12, 2024|accessdate=July 15, 2024}}</ref>
+|-
+| MF
+| {{flagicon|GER}} [[Marco Reus]] 
+| {{fbaicon|GER}} [[Borussia Dortmund]] 
+| Free
+| August 15, 2024
+|align=center|<ref>{{cite web|url=https://www.mlssoccer.com/news/la-galaxy-sign-german-star-marco-reus|title=LA Galaxy sign German star Marco Reus|publisher=Major League Soccer|date=August 15, 2024|accessdate=August 15, 2024}}</ref>
+|}
+
+==== Transfers Out ====
+{| class="wikitable sortable" style="width:95%; text-align:center; font-size:95%; text-align:left;"
+|-
+!'''Pos.'''
+!'''Player'''
+!'''Transferred to'''
+!'''Fee/notes'''
+!'''Date'''
+!'''Source'''
+|-
+| MF
+| {{Flagicon|CAN}} [[Raheem Edwards (Canadian soccer)|Raheem Edwards]]
+| {{flagicon|CAN}} [[CF Montréal]]
+| Trade
+| December 11, 2023
+|align=center|<ref>{{cite web|url=https://www.mlssoccer.com/news/cf-montreal-acquire-raheem-edwards-from-la-galaxy|title=CF Montréal acquire Raheem Edwards from LA Galaxy|publisher=Major League Soccer|date=December 11, 2023|accessdate=December 11, 2023}}</ref> 
+|-
+| FW
+| {{Flagicon|USA}} [[Preston Judd]]
+| {{flagicon|USA}} [[San Jose Earthquakes]]
+| Trade
+| December 14, 2023
+|align=center|<ref>{{cite web|url=https://www.mlssoccer.com/news/san-jose-earthquakes-acquire-preston-judd-from-la-galaxy|title=San Jose Earthquakes acquire Preston Judd from LA Galaxy|publisher=Major League Soccer|date=December 14, 2023|accessdate=December 14, 2023}}</ref>
+|-
+| DF
+| {{Flagicon|MEX}} [[Tony Alfaro]]
+| {{flagicon|USA}} [[El Paso Locomotive FC]]
+| Free
+| December 18, 2023
+|align=center|<ref>{{cite web|url=https://www.uslchampionship.com/news_article/show/1294671|title=Locomotive FC brings aboard veteran defender Tony Alfaro|publisher=USL Championship|date=December 18, 2023|accessdate=December 18, 2023}}</ref>
+|-
+| MF
+| {{Flagicon|USA}} [[Tyler Boyd (soccer)|Tyler Boyd]]
+| {{flagicon|USA}} [[Nashville SC]]
+| Trade
+| December 30, 2023
+|align=center|<ref>{{cite web|url= https://www.mlssoccer.com/news/nashville-sc-acquire-tyler-boyd-from-la-galaxy|title= Nashville SC acquire Tyler Boyd from LA Galaxy|publisher=Major League Soccer|date=December 30, 2023|accessdate=December 30, 2023}}</ref>
+|-
+| FW
+| {{Flagicon|ENG}} [[Billy Sharp]]
+| {{flagicon|ENG}} [[Hull City A.F.C.|Hull City]]
+| Free
+| January 1, 2024
+|align=center|<ref>{{cite web|url=https://www.bbc.com/sport/football/67779715|title=Billy Sharp: Hull City confirm signing of former Premier League striker|publisher=BBC Sport|date=December 20, 2023|accessdate=January 19, 2024}}</ref>
+|-
+| FW
+| {{Flagicon|COL}} [[Michael Barrios]]
+| {{flagicon|COL}} [[América de Cali]]
+| Free
+| January 4, 2024
+|align=center|<ref>{{cite web|url=https://www.futbolred.com/futbol-colombiano/liga-betplay/america-de-cali-hizo-oficial-la-contratacion-de-michael-barrios-para-este-2024-197569|title=América hizo oficial un refuerzo de lujo: llega desde la MLS|publisher=FutbolRed|date=January 4, 2024|accessdate=January 19, 2024}}</ref>
+|-
+| FW
+| {{Flagicon|MEX}} [[Javier Hernández]]
+| {{flagicon|MEX}} [[C.D. Guadalajara|Guadalajara]]
+| Free
+| January 24, 2024
+|align=center|<ref>{{cite web|url=https://www.espn.com/soccer/story/_/id/39272056/chicharito-rejoins-boyhood-club-chivas-leaving-mls|title=Chicharito rejoins boyhood club Chivas after leaving MLS|publisher=ESPN|date=January 24, 2024|accessdate=January 24, 2024}}</ref>
+|-
+| MF
+| {{Flagicon|BRA}} [[Douglas Costa]]
+| {{flagicon|BRA}} [[Fluminense FC|Fluminense]]
+| Free
+| January 28, 2024
+|align=center|<ref>{{cite web|url=https://azscore.com/news/football/256610-douglas-costa-signs-with-fluminense-until-june-2025-perfect-combination-diario-do-grande-abc|title=Douglas Costa signs with Fluminense until June 2025: 'Perfect combination' – Diário do Grande ABC|publisher=AZScore|date=January 28, 2024|accessdate=February 2, 2024}}</ref>
+|-
+| DF
+| {{Flagicon|SUR}} [[Kelvin Leerdam]]
+| {{flagicon|NED}} [[Heracles Almelo]]
+| Free
+| February 8, 2024
+|align=center|<ref>{{cite web|url=https://www.heracles.nl/2024/02/08/heracles-almelo-contracteert-transfervrije-kelvin-leerdam/|title=HERACLES ALMELO CONTRACTEERT TRANSFERVRIJE KELVIN LEERDAM|publisher=Heracles Almelo|date=February 8, 2024|accessdate=February 13, 2024}}</ref>
+|-
+| DF
+| {{Flagicon|COD}} [[Chris Mavinga]]
+| 
+| Waivers
+| February 21, 2024
+|align=center|<ref>{{cite web|url=https://www.mlssoccer.com/news/la-galaxy-waive-defender-chris-mavinga|title=LA Galaxy waive defender Chris Mavinga
+|publisher=MLS.com|date=February 22, 2024|accessdate=February 22, 2024}}</ref>
+|-
+| GK
+| {{Flagicon|ENG}} [[Jonathan Bond]]
+| {{flagicon|ENG}} [[Watford F.C.|Watford]]
+| Free
+| February 22, 2024
+|align=center|<ref>{{cite web|url=https://www.lagalaxy.com/news/la-galaxy-mutually-agree-to-part-ways-with-goalkeeper-jonathan-bond|title=LA Galaxy Mutually Agree to Part Ways with Goalkeeper Jonathan Bond|publisher=LA Galaxy|date=February 22, 2024|accessdate=February 22, 2024}}</ref>
+|-
+| MF
+| {{Flagicon|USA}} [[Adam Saldana]]
+| {{flagicon|NOR}} [[KFUM Oslo]]
+| Free
+| March 27, 2024
+|align=center|<ref>{{cite web|url=https://www.eurosport.no/fotball/eliteserien/2024/hentet-spiller-fra-mls-umulig-a-kjope-gode-nok-spillere-pa-det-norske-markedet_sto20001564/story.shtml|title=HENTET SPILLER FRA MLS: – UMULIG Å KJØPE GODE NOK SPILLERE PÅ DET NORSKE MARKEDET|publisher=eurosport|date=March 27, 2024|accessdate=April 2, 2024}}</ref>
+|-
+| DF
+| {{Flagicon|USA}} [[Marcus Ferkranus]]
+| {{flagicon|AUS}} [[Brisbane Roar FC]]
+| Transfer
+| June 6, 2024
+|align=center|<ref>{{cite web|url=https://www.lagalaxy.com/news/la-galaxy-transfer-defender-marcus-ferkranus-to-a-league-men-side-brisbane-roar-fc|title=LA Galaxy Transfer Defender Marcus Ferkranus to A-League Men Side Brisbane Roar FC|publisher=LA Galaxy|date=June 6, 2024|accessdate=June 6, 2024}}</ref>
+|-
+| MF
+| {{Flagicon|USA}} [[Daniel Aguirre]]
+| {{flagicon|MEX}} [[C.D. Guadalajara|Guadalajara]]
+| Transfer
+| June 10, 2024
+|align=center|<ref>{{cite web|url=https://www.lagalaxy.com/news/la-galaxy-transfer-midfielder-daniel-aguirre-to-liga-mx-side-club-deportivo-guadalajara|title=LA Galaxy Transfer Midfielder Daniel Aguirre to Liga MX Side Club Deportivo Guadalajara|publisher=LA Galaxy|date=June 10, 2024|accessdate=June 10, 2024}}</ref>
+|-
+| MF
+| {{flagicon|MEX}} [[Jonathan Pérez (footballer, born 2003)|Jonny Pérez]] 
+| {{flagicon|USA}} [[Nashville SC]] 
+| Loan
+| July 30, 2024
+|align=center|<ref>{{cite web|url=https://www.mlssoccer.com/news/la-galaxy-loan-jonny-perez-to-nashville-sc|title=LA Galaxy loan Jonny Pérez to Nashville SC|publisher=Major League Soccer|date=July 30, 2024|accessdate=July 30, 2024}}</ref>
+|}
+
+==== Draft picks ====
+{{main|2024 MLS SuperDraft}}
+Draft picks are not automatically signed to the team roster. Only those who are signed to a contract will be listed as transfers in.
+
+{| class="wikitable" style="text-align:left; font-size:95%;"
+|-
+!'''Round'''
+!'''Pick'''
+!'''Player'''
+!'''Position'''
+!'''College<br>Conference'''
+|-
+| 2
+| 46
+| {{flagicon|USA}} [[Ethan Brandt]] 
+| [[Goalkeeper (association football)|GK]]
+| [[Western Michigan Broncos men's soccer|Western Michigan]]<br>([[Missouri Valley Conference|MVC]])
+|-
+| 3
+| 62
+| {{flagicon|USA}} [[Tucker Lepley]] 
+| [[Midfielder|MF]]
+| [[UCLA Bruins men's soccer|UCLA]]<br>([[Pac-12 Conference|Pac-12]])
+|}
+
+== Competitions ==
+
+=== Preseason ===
+The preseason schedule was announced on December 19, 2023.
+{{football box collapsible
+|date = {{Start date|2024|2|3}}
+|time = 1:00&nbsp;p.m. [[Pacific Time Zone|PST]]
+|team1 = [[LA Galaxy]]
+|score = 1–2
+|report = 
+|team2 = [[St. Louis City SC]]
+|goals1 =
+|goals2 = 
+|stadium = [[Dignity Health Sports Park]]
+|location = [[Carson, California]]
+|attendance = 
+|referee = 
+|result = L
+}}
+{{football box collapsible
+|round = [[Coachella Valley Invitational]]
+|date = {{Start date|2024|2|7}}
+|time = 11:00&nbsp;a.m. [[Pacific Time Zone|PST]]
+|team1 = [[LA Galaxy]]
+|score = 0–3
+|report = 
+|team2 = [[Charlotte FC]]
+|goals1 =
+|goals2 = 
+|stadium = [[Empire Polo Club]]
+|location = [[Indio, California]]
+|attendance = 
+|referee = 
+|result = L
+}}
+{{football box collapsible
+|round = [[Coachella Valley Invitational]]
+|date = {{Start date|2024|2|11}}
+|time = 10:00&nbsp;a.m. [[Pacific Time Zone|PST]]
+|team1 = [[LA Galaxy]]
+|score = 1–3
+|report = 
+|team2 = [[Austin FC]]
+|goals1 =
+|goals2 = 
+|stadium = [[Empire Polo Club]]
+|location = [[Indio, California]]
+|attendance = 
+|referee = 
+|result = L
+}}
+{{football box collapsible
+|round = [[Coachella Valley Invitational]]
+|date = {{Start date|2024|2|14}}
+|time = 12:00&nbsp;p.m. [[Pacific Time Zone|PST]]
+|team1 = [[LA Galaxy]]
+|score = 2–2
+|report = 
+|team2 = [[New York City FC]]
+|goals1 =
+|goals2 = 
+|stadium = [[Empire Polo Club]]
+|location = [[Indio, California]]
+|attendance = 
+|referee = 
+|result = D
+}}
+{{football box collapsible
+|round = [[Coachella Valley Invitational]]
+|date = {{Start date|2024|2|17}}
+|time = 10:00&nbsp;a.m. [[Pacific Time Zone|PST]]
+|team1 = [[LA Galaxy]]
+|score = 2–0
+|report = 
+|team2 = [[New York Red Bulls]]
+|goals1 =
+|goals2 = 
+|stadium = [[Empire Polo Club]]
+|location = [[Indio, California]]
+|attendance = 
+|referee = 
+|result = W
+}}
+
+=== Major League Soccer ===
+{{main|2024 Major League Soccer season}}
+
+====Standings====
+{{2024 Major League Soccer Western Conference table|showteam=LAX|show_limit=5}}
+
+{{2024 Major League Soccer season table|showteam=LAX|show_limit=5}}
+
+== Overview ==
+{{Fb overview2
+|c=3
+|c1=[[2024 Major League Soccer season|Major League Soccer]] |fm1=February 25, 2024 |lm1=October 19, 2024 |sr1=Matchday 1 |fp1={{won|place=2nd}} |w1=19 |d1=7 |l1=8 |f1=69 |a1=50
+
+|c3=[[2024 MLS Cup Playoffs|MLS Cup Playoffs]] |fm3=October 26, 2024 |lm3=December 7, 2024|sr3=[[2024 MLS Cup Playoffs#Western_Conference_2|Round One]] |fp3={{won|place='''[[MLS Cup 2024|Champions]]'''}}|w3=5 |d3=0 |l3=0 |f3=18 |a3=4
+
+|c4=[[2024 Leagues Cup|Leagues Cup]] |fm4=[[California Clasico|July 31, 2024]] |lm4=August 8, 2024 |sr4=[[2024 Leagues Cup group stage#West 2|Group Stage]] |fp4=[[2024_Leagues_Cup_knockout_stage#Matches|Round of 32]] |w4=2 |d4=0 |l4=1 |f4=5 |a4=6
+|u=November 30th, 2024
+}}
+
+=== Results summary ===
+<!--
+Each time you update these stats the date needs to be changed to match
+-->
+{{Fb rs mls |hw=13 |hl=1 |ht=3 |hgf=43|hga=25 |aw=6 |al=7 |at=4 |agf=26 |aga=25 }}
+{{Fb rs mls footer | u=December 9th, 2024 |s=[[#MLS regular season|MLS Results]]|date=January 2024}}
+
+==== Results by round ====
+{{#invoke:sports rbr table|table|legendpos=b|header=Round
+
+|label1= Stadium
+| res1=[[Dignity Health Sports Park|H]]/[[PayPal Park|A]]/[[Geodis Park|A]]/[[Dignity Health Sports Park|H]]/[[Children's Mercy Park|A]]/[[Dignity Health Sports Park|H]]/[[BMO Stadium|A]]/[[BC Place|A]]/[[Dignity Health Sports Park|H]]/[[Q2 Stadium|A]]/[[Lumen Field|A]]/[[Dignity Health Sports Park|H]]/[[Allianz Field|A]]/[[Bank of America Stadium|A]]/[[Dignity Health Sports Park|H]]/[[Dignity Health Sports Park|H]]/[[Soldier Field|A]]/[[Dignity Health Sports Park|H]]/[[Dignity Health Sports Park|H]]/[[America First Field|A]]/[[Stanford Stadium|A]]/[[Rose Bowl (stadium)|N]]/[[Dignity Health Sports Park|H]]/[[Toyota Stadium (Texas)|A]]/[[Dignity Health Sports Park|H]]/[[Dignity Health Sports Park|H]]/[[Dignity Health Sports Park|H]]/[[CityPark|A]]/[[Dignity Health Sports Park|H]]/[[Providence Park|A]]/[[Dignity Health Sports Park|H]]/[[Dick's Sporting Goods Park|A]]/[[Dignity Health Sports Park|H]]/[[Shell Energy Stadium|A]]
+|label2= Result
+| res2=D/W/D/D/W/W/L/W/W/L/D/D/D/D/W/W/L/W/W/W/W/L/W/L/W/W/W/L/W/L/W/W/W/L
+|label3= Points
+| res3=1/4/5/6/9/12/12/15/18/18/19/20/21/22/25/28/28/31/34/37/40/40/43/43/46/49/52/52/55/55/58/61/64/64
+|label4= Position<br>([[Western Conference (MLS)|West]])
+| res4=8/2/3/4/2/1/2/1/1/4/3/3/5/4/3/2/4/3/3/3/2/3/3/3/1/1/1/1/1/1/1/1/1/2
+<!-- -->
+|text_H=Home|text_A=Away|text_P=Postponed
+|color_W=green2|text_W=Win
+|color_D=yellow2|text_D=Draw
+|color_L=red2|text_L=Loss
+|color_1=gold
+|color_2–4=green1
+|color_5–6=blue1
+|color_7-12=white1
+|updated=December 9th, 2024
+|source=[[#Regular season|Match reports]]
+}}
+
+=== Match results ===
+
+{{legend2|#BBF3BB|Win|border=1px solid #AAAAAA}}
+{{legend2|#FFFFBB|Draw|border=1px solid #AAAAAA}}
+{{legend2|#FFBBBB|Loss|border=1px solid #AAAAAA}}
+{{legend2|#BBBBBB|Void|border=1px solid #AAAAAA}} <!-- optional -->
+{{legend2|#BBBBBB|Postponed|border=1px solid #AAAAAA}} <!-- optional -->
+
+===February===
+{{Football box collapsible
+|round = 1
+|date = February 25
+|time = 6:00 p.m. PST
+|team1 = LA Galaxy
+|score = 1–1
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/lavsmia-02-25-2024/
+|team2 = [[Inter Miami CF]]
+|goals1 = 
+*[[Mark Delgado|Delgado]] {{sent off|2|46|88}}
+*[[Dejan Joveljić|Joveljić]] {{goal|75}}
+|goals2 =
+*[[Julian Gressel|Gressel]] {{yel|11}}
+*[[Sergio Busquets|Busquets]] {{yel|21}}
+*[[Jordi Alba|Alba]] {{yel|51}} 
+*[[Lionel Messi|Messi]] {{goal|90+2}}
+|stadium = [[Dignity Health Sports Park]]
+|location = [[Carson, California]]
+|attendance = 27,642
+|referee = Gabriele Ciampi
+|result= D
+}}
+
+===March===
+{{Football box collapsible
+|round = [[California Clásico|2]]
+|date = March 2
+|time = 7:30 p.m. PST
+|team1 = [[San Jose Earthquakes]]
+|score = 1–3
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/sjvsla-03-02-2024/
+|team2 = LA Galaxy
+|goals1 = 
+*[[Carlos Akapo|Akapo]] {{yel|35}}
+*[[Preston Judd|Judd]] {{goal|70}}, {{yel|74}}
+*[[Vítor Costa (footballer)|Vítor Costa]] {{yel|90+3}}
+|goals2 = 
+*[[Joseph Paintsil|Paintsil]] {{goal|18}}
+*[[Mark Delgado|Delgado]] {{yel|29}}
+*[[Dejan Joveljić|Joveljić]] {{goal|43}}
+*[[Riqui Puig|Puig]] {{goal|48}}
+|stadium = [[PayPal Park]]
+|location = [[San Jose, California]]
+|attendance = 18,000
+|referee = Cristian Campo Hernandez
+|result= W
+}}
+{{Football box collapsible
+|round = 3
+|date = March 10
+|time = 12:00 p.m. PDT
+|team1 = [[Nashville SC]]
+|score = 2–2
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/nshvsla-03-10-2024/
+|team2 = LA Galaxy
+|goals1 = 
+*[[Dru Yearwood|Yearwood]] {{yel|39}}, {{goal|58}}
+*[[Teal Bunbury|Bunbury]] {{goal|54|pen.}}
+*[[Jacob Shaffelburg|Shaffelburg]] {{yel|90+6}}
+|goals2 = 
+*[[Martín Cáceres|Cáceres]] {{yel|42}}
+*[[Riqui Puig|Puig]] {{goal|67}}, {{yel|89}}
+*[[Dejan Joveljić|Joveljić]] {{goal|82}}
+|stadium = [[Geodis Park]]
+|location = [[Nashville, Tennessee]]
+|attendance = 28,316
+|referee = Wesley Costa
+|result= D
+}}
+{{Football box collapsible
+|round = 4
+|date = March 16
+|time = 7:30 p.m. PDT
+|team1 = LA Galaxy
+|score = 3–3
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/lavsstl-03-16-2024/
+|team2 = [[St. Louis City SC]]
+|goals1 = 
+* [[Dejan Joveljić|Joveljić]] {{goal|3}}
+* [[Martin Cáceres|Cáceres]] {{yel|35}}, {{sentoff|0|90+9}}
+* [[Joseph Paintsil|Paintsil]] {{yel|45+1}}, {{goal|51}}
+* [[Riqui Puig|Puig]] {{yel|65}}
+* [[Maya Yoshida|Yoshida]] {{goal|90+5}}
+|goals2 = 
+* [[Tomáš Ostrák|Ostrák]] {{goal|27}}
+* [[Aziel Jackson|Jackson]] {{yel|51}}
+* [[Joakim Nilsson (footballer, born 1994)|Nilsson]] {{goal|61}}, {{yel|70}}
+* [[Samuel Adeniran|Adeniran]] {{yel|83}}
+* [[John McCarthy (soccer)|McCarthy]] {{goal|89|o.g.}}
+|stadium = [[Dignity Health Sports Park]]
+|location = [[Carson, California]]
+|attendance = 25,174
+|referee = Atahan Yaya
+|result= D
+}}
+{{Football box collapsible
+|round = 5
+|date = March 23
+|time = 5:30 p.m. PDT
+|team1 = [[Sporting Kansas City]]
+|score = 2–3
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/skcvsla-03-23-2024/
+|team2 = LA Galaxy
+|goals1 = 
+*[[Nemanja Radoja|Radoja]] {{goal|34}}
+*[[William Agada|Agada]] {{goal|45+3}}
+*[[Erik Thommy|Thommy]] {{yel|53}}
+*[[Tim Leibold|Leibold]] {{yel|69}}
+|goals2 = 
+*[[Eriq Zavaleta|Zavaleta]] {{goal|72}}
+*[[Dejan Joveljić|Joveljić]] {{goal|75}}
+*[[Mark Delgado|Delgado]] {{goal|80}}
+*[[Gastón Brugman|Brugman]] {{yel|88}}
+|stadium = [[Children's Mercy Park]]
+|location = [[Kansas City, Kansas]]
+|attendance = 18,102
+|referee = Aleksandar Zhelyazkov
+|result= W
+}}
+{{Football box collapsible
+|round = 6
+|date = March 30
+|time = 7:30 p.m. PDT
+|team1 = LA Galaxy
+|score = 1–0
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/lavssea-03-30-2024/
+|team2 = [[Seattle Sounders FC]]
+|goals1 = 
+*[[Gabriel Pec|Pec]] {{goal|4}}
+|goals2 = 
+*[[Alex Roldán|Roldán]] {{yel|60}}
+*[[Raúl Ruidíaz|Ruidíaz]] {{yel|68}}
+*[[Nouhou Tolo|Nouhou]] {{yel|90+3}}
+|stadium = [[Dignity Health Sports Park]]
+|location = [[Carson, California]]
+|attendance = 22,736
+|referee = [[Ismail Elfath]]
+|result= W
+}}
+
+===April===
+{{Football box collapsible
+|round = [[El Tráfico|7]]
+|date = April 6
+|time = 4:30 p.m. PDT
+|team1 = [[Los Angeles FC]]
+|score = 2–1
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/lafcvsla-04-06-2024/
+|team2 = LA Galaxy
+|goals1 = 
+*[[Timothy Tillman|Tillman]] {{goal|4}}, {{yel|21}}
+*[[Denis Bouanga|Bouanga]] {{goal|35|pen.}}
+*[[Jesús David Murillo|Murillo]] {{yel|44}}
+*[[Ryan Hollingshead|Hollingshead]] {{yel|61}}
+*[[Sergi Palencia|Palencia]] {{yel|75}}
+|goals2 = 
+*[[Julián Aude|Aude]] {{goal|29}}
+|stadium = [[BMO Stadium]]
+|location = [[Los Angeles|Los Angeles, California]]
+|attendance = 22,321
+|referee = Jon Freemon
+|result= L
+}}
+{{Football box collapsible
+|round = 8
+|date = April 13
+|time = 7:30 p.m. PDT
+|team1 = [[Vancouver Whitecaps FC]]
+|score = 1–3
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/vanvsla-04-13-2024/
+|team2 = LA Galaxy
+|goals1 = 
+*[[Andrés Cubas|Cubas]] {{yel|20}}
+*[[Ranko Veselinović|Veselinović]] {{yel|45+2}}
+*[[Ali Ahmed (soccer)|Ahmed]] {{yel|54}}
+*[[Brian White (soccer)|White]] {{goal|77}}, {{yel|85}}
+|goals2 = 
+*[[Miki Yamane|Yamane]] {{yel|25}}
+*[[Dejan Joveljić|Joveljić]] {{goal|56}}
+*[[Joseph Paintsil|Paintsil]] {{goal|80}}
+*[[Diego Fagúndez|Fagúndez]] {{goal|82}}
+|stadium = [[BC Place]]
+|location = [[Vancouver|Vancouver, British Columbia]]
+|attendance = 25,026
+|referee = Ismir Pekmic
+|result= W
+}}
+{{Football box collapsible
+|round = [[California Clásico|9]]
+|date = April 21
+|time = 5:15 p.m. PDT
+|team1 = LA Galaxy
+|score = 4–3
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/lavssj-04-21-2024/
+|team2 = [[San Jose Earthquakes]]
+|goals1 = 
+*[[Joseph Paintsil|Paintsil]] {{yel|7}}, {{goal|24|pen.}}
+*[[Gabriel Pec|Pec]] {{goal|14}}
+*[[Maya Yoshida|Yoshida]] {{goal|30}}
+*[[Riqui Puig|Puig]] {{goal|56}}, {{yel|70}}
+*[[Eriq Zavaleta|Zavaleta]] {{sentoff|0|70}}
+|goals2 = 
+*[[Rodrigues (footballer, born 1997)|Rodrigues]] {{goal|32}}
+*[[Cristian Espinoza|Espinoza]] {{yel|45}}
+*[[Carlos Gruezo (footballer, born 1995)|Gruezo]] {{yel|54}}
+*[[Benjamin Kikanović|Kikanović]] {{goal|58}}
+*[[Vítor Costa (footballer)|Vítor Costa]] {{yel|65}}
+*[[Jeremy Ebobisse|Ebobisse]] {{goal|72|pen.}}
+*[[Jack Skahan|Skahan]] {{yel|76}}
+|stadium = [[Dignity Health Sports Park]]
+|location = [[Carson, California]]
+|attendance = 25,335
+|referee = Rosendo Mendoza
+|result= W
+|note= [[Greg Vanney]] got a yellow card at {{yel|90+1}}
+}}
+{{Football box collapsible
+|round = 10
+|date = April 27
+|time = 10:30 a.m. PDT
+|team1 = [[Austin FC]]
+|score = 2–0
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/atxvsla-04-27-2024/
+|team2 = LA Galaxy
+|goals1 = 
+*[[Diego Rubio (footballer)|Rubio]] {{goal|7}}
+*[[Jáder Obrian|Obrian]] {{goal|19}}, {{yel|27}}
+*[[Daniel Pereira (footballer, born 2000)|Pereira]] {{yel|44}}
+*[[Jhojan Valencia|Valencia]] {{yel|89}}
+|goals2 = 
+*[[Martín Cáceres|Cáceres]] {{yel|9}}
+*[[Riqui Puig|Puig]] {{yel|22}}
+|stadium = [[Q2 Stadium]]
+|location = [[Austin, Texas]]
+|attendance = 20,738
+|referee = Victor Rivas
+|result= L
+}}
+
+===May===
+{{Football box collapsible
+|round = 11
+|date = May 5
+|time = 3:45 p.m. PDT
+|team1 = [[Seattle Sounders FC]]
+|score = 0–0
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/seavsla-05-05-2024/
+|team2 = LA Galaxy
+|goals1 = 
+*[[Jordan Morris|Morris]] {{yel|75}}
+|goals2 = 
+*[[Joseph Paintsil|Paintsil]] {{yel|81}}
+*[[Edwin Cerrillo|Cerrillo]] {{yel|83}}
+|stadium = [[Lumen Field]]
+|location = [[Seattle|Seattle, Washington]]
+|attendance = 31,102
+|referee = [[Drew Fischer]]
+|result= D
+}}
+{{Football box collapsible
+|round = 12
+|date = May 11
+|time = 7:30 p.m. PDT
+|team1 = LA Galaxy
+|score = 2–2
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/lavsrsl-05-11-2024/
+|team2 = [[Real Salt Lake]]
+|goals1 = 
+*[[Julián Aude|Aude]] {{yel|18}}
+*[[Gabriel Pec|Pec]] {{goal|54}}
+*[[Miguel Berry|Berry]] {{goal|90+4}}
+|goals2 = 
+*[[Cristian Arango|Arango]] {{goal|20||40}}
+*[[Matt Crooks|Crooks]] {{yel|23}}
+|stadium = [[Dignity Health Sports Park]]
+|location = [[Carson, California]]
+|attendance = 25,220
+|referee = Rubiel Vazquez
+|result= D
+}}
+{{Football box collapsible
+|round = 13
+|date = May 15
+|time = 5:30 p.m. PDT
+|team1 = [[Minnesota United FC]]
+|score = 2–2
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/minvsla-05-15-2024
+|team2 = LA Galaxy
+|goals1 = 
+*[[Bongokuhle Hlongwane|Hlongwane]] {{goal|30}}
+*[[Tani Oluwaseyi|Oluwaseyi]] {{yel|45}}
+*[[Joseph Rosales|Rosales]] {{yel|58}}
+*[[Kervin Arriaga|Arriaga]] {{goal|80}}
+|goals2 = 
+*[[Dejan Joveljić|Joveljić]] {{goal|61}}
+*[[Diego Fagúndez|Fagúndez]] {{goal|68}}, {{yel|90+6}}
+|stadium = [[Allianz Field]]
+|location = [[Saint Paul, Minnesota]]
+|attendance = 18,722
+|referee = Lukasz Szpala
+|result= D
+}}
+{{Football box collapsible
+|round = 14
+|date = May 18
+|time = 4:30 p.m. PDT
+|team1 = [[Charlotte FC]]
+|score = 0–0
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/cltvsla-05-18-2024/
+|team2 = LA Galaxy
+|goals1 = 
+*[[Brecht Dejaegere|Dejaegere]] {{yel|31}}
+*[[Brandt Bronico|Bronico]] {{yel|82}}
+|goals2 = 
+*[[Julián Aude|Aude]] {{yel|29}}
+|stadium = [[Bank of America Stadium]]
+|location = [[Charlotte, North Carolina]]
+|attendance = 29,099
+|referee = Joe Dickerson
+|result= D
+}}
+{{Football box collapsible
+|round = 15
+|date = May 25
+|time = 7:30 p.m. PDT
+|team1 = LA Galaxy
+|score = 2–1
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/lavshou-05-25-2024/
+|team2 = [[Houston Dynamo FC]]
+|goals1 = 
+*[[Gabriel Pec|Pec]] {{goal|44}}
+*[[Riqui Puig|Puig]] {{goal|59}}
+*[[Gastón Brugman|Brugman]] {{yel|90+4}}
+|goals2 = 
+*[[Latif Blessing|Blessing]] {{goal|18}}
+|stadium = [[Dignity Health Sports Park]]
+|location = [[Carson, California]]
+|attendance = 21,707
+|referee = [[Allen Chapman]]
+|result= W
+}}
+{{Football box collapsible
+|round = 16
+|date = May 29
+|time = 7:30 p.m. PDT
+|team1 = LA Galaxy
+|score = 3–1
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/lavsdal-05-29-2024/
+|team2 = [[FC Dallas]]
+|goals1 = 
+*[[Dejan Joveljić|Joveljić]] {{goal|4||66|pen.}}
+*[[Maya Yoshida|Yoshida]] {{yel|89}}
+*[[Riqui Puig|Puig]] {{goal|90+4}}
+|goals2 = 
+*[[Patrickson Delgado|Delgado]] {{yel|19}}, {{goal|22}}
+*[[Nkosi Tafari|Tafari]] {{sent off|2|34|82}}
+*[[Paul Arriola|Arriola]] {{yel|35}}
+*[[Marco Farfan|Farfan]] {{yel|45+4}}
+|stadium = [[Dignity Health Sports Park]]
+|location = [[Carson, California]]
+|attendance = 19,505
+|referee = [[Filip Dujic]]
+|result= W
+}}
+
+===June===
+{{Football box collapsible
+|round = 17
+|date = June 1
+|time = 5:30 p.m. PDT
+|team1 = [[Chicago Fire FC]]
+|score = 2–1	
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/chivsla-06-01-2024/
+|team2 = LA Galaxy
+|goals1 = 
+*[[Mauricio Pineda (soccer, born 1997)|Pineda]] {{yel|29}} 
+*[[Hugo Cuypers|Cuypers]] {{goal|32}} 
+*[[Brian Gutiérrez|Gutiérrez]] {{goal|61}} 
+*[[Fabian Herbers|Hebers]] {{yel|75}} 
+*[[Allan Arigoni|Arigoni]] {{yel|90+5}} 
+|goals2 = 
+*[[Riqui Puig|Puig]] {{goal|7}} 
+*[[Edwin Cerrillo|Cerrillo]] {{yel|45+4}} 
+*[[Mauricio Cuevas|Cuevas]] {{yel|77}} 
+|stadium = [[Soldier Field]]
+|location = [[Chicago|Chicago, Illinois]]
+|attendance = 25,237
+|referee = Marcos DeOliveira II
+|result= L
+}}
+{{Football box collapsible
+|round = 18
+|date = June 15
+|time = 7:30 p.m. PDT
+|team1 = LA Galaxy
+|score = 4–2
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/lavsskc-06-15-2024
+|team2 = [[Sporting Kansas City]]
+|goals1 = 
+*[[Dejan Joveljić|Joveljić]] {{goal|40}}, {{yel|44}}
+*[[Jalen Neal|Neal]] {{yel|49}}
+*[[Gabriel Pec|Pec]] {{goal|54}}
+*[[Joseph Paintsil|Paintsil]] {{yel|68}}, {{goal|75}}
+*[[Miguel Berry|Berry]] {{goal|90+2}}
+|goals2 = 
+*[[Stephen Afrifa|Afrifa]] {{goal|66}}
+*[[Robert Castellanos|Castellanos]] {{goal|82}}
+*[[Jake Davis (soccer)|Davis]] {{yel|90+3}}
+|stadium = [[Dignity Health Sports Park]]
+|location = [[Carson, California]]
+|attendance = 22,198
+|referee = Chris Penso
+|result= W
+}}
+{{Football box collapsible
+|round = 19
+|date = June 19
+|time = 7:30 p.m. PDT
+|team1 = LA Galaxy
+|score = 2–0
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/lavsnyc-06-19-2024
+|team2 = [[New York City FC]]
+|goals1 = 
+*[[Jalen Neal|Neal]] {{yel|19}}
+*[[Julián Aude|Aude]] {{yel|29}}
+*[[Dejan Joveljić|Joveljić]] {{goal|41}}
+*[[Diego Fagúndez|Fagúndez]] {{goal|49}}
+*[[Mark Delgado|Delgado]] {{yel|62}}
+|goals2 = 
+*[[Santiago Rodríguez (footballer, born 2000)|Rodríguez]] {{yel|31}}
+*[[Hannes Wolf (footballer)|Wolf]] {{yel|45+1}}
+|stadium = [[Dignity Health Sports Park]]
+|location = [[Carson, California]]
+|attendance = 20,043
+|referee = Rubiel Vazquez
+|result= W
+}}
+{{Football box collapsible
+|round = 20
+|date = June 22
+|time = 7:30 p.m. PDT
+|team1 = [[Real Salt Lake]]
+|score = 0–1
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/rslvsla-06-22-2024
+|team2 = LA Galaxy
+|goals1 =
+*[[Bryan Oviedo|Oviedo]] {{yel|55}}
+*[[Andrés Gómez (footballer)|Gómez]] {{yel|78}}
+|goals2 = 
+*[[Miki Yamane|Yamane]] {{yel|59}}
+*[[Gabriel Pec|Pec]] {{goal|74}}
+|stadium = [[America First Field]]
+|location = [[Sandy, Utah]]
+|attendance = 21,570
+|referee = Jair Marrufo
+|result= W
+}}
+{{Football box collapsible
+|round = [[California Clásico|21]]
+|date = June 29
+|time = 7:30 p.m. PDT
+|team1 = [[San Jose Earthquakes]]
+|score = 0–3
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/sjvsla-06-29-2024
+|team2 = LA Galaxy
+|goals1 = 
+*[[Rodrigues (footballer, born 1997)|Rodrigues]] {{yel|45+3}}
+|goals2 =
+*[[Mark Delgado|Delgado]] {{yel|22}}
+*[[Edwin Cerrillo|Cerrillo]] {{yel|29}}
+*[[Joseph Paintsil|Paintsil]] {{goal|37}}
+*[[Jalen Neal|Neal]] {{yel|39}}
+*[[Dejan Joveljić|Joveljić]] {{goal|72}}
+*[[John McCarthy (soccer)|McCarthy]] {{yel|75}}
+*[[Mauricio Cuevas|Cuevas]] {{goal|90+1}}
+|stadium = [[Stanford Stadium]]
+|location = [[Stanford, California]]
+|attendance = 40,844
+|referee = Guido Gonzales Jr.
+|result= W
+}}
+
+===July===
+{{Football box collapsible
+|round = [[El Tráfico|22]]
+|date = July 4
+|time = 7:30 p.m. PDT
+|team1 = LA Galaxy
+|score = 1–2
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/lavslafc-07-04-2024/
+|team2 = [[Los Angeles FC]]
+|goals1 = 
+*[[Edwin Cerrillo|Cerrillo]] {{yel|22}}
+*[[Gabriel Pec|Pec]] {{goal|56}}
+*[[Riqui Puig|Puig]] {{yel|90+1}}
+|goals2 = 
+*[[Kei Kamara|Kamara]] {{goal|39}}
+*[[Denis Bouanga|Bouanga]] {{goal|44|pen.}}
+*[[Timothy Tillman|Tillman]] {{yel|63}}
+|stadium = [[Rose Bowl (stadium)|Rose Bowl]]
+|location = [[Pasadena, California]]
+|attendance = 70,076
+|referee = [[Drew Fischer]]
+|result= L
+}}
+{{Football box collapsible
+|round = 23
+|date = July 7
+|time = 7:30 p.m. PDT
+|team1 = LA Galaxy
+|score = 2–1
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/lavsmin-07-07-2024/
+|team2 = [[Minnesota United FC]]
+|goals1 = 
+*[[John Nelson (soccer, born 1998)|Nelson]] {{yel|20}}
+*[[Riqui Puig|Piug]] {{yel|22}}
+*[[Gabriel Pec|Pec]] {{goal|25||90}}
+|goals2 = 
+*[[Teemu Pukki|Pukki]] {{goal|73}}
+*[[Jeong Sang-bin|Bin Jeong]] {{yel|89}}
+|stadium = [[Dignity Health Sports Park]]
+|location = [[Carson, California]]
+|attendance = 19,302
+|referee = Pierre-Luc Lauziere
+|result= W
+}}
+{{Football box collapsible
+|round = 24
+|date = July 13
+|time = 5:30 p.m. PDT
+|team1 = [[FC Dallas]]
+|score = 2–0
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/dalvsla-07-13-2024/
+|team2 = LA Galaxy
+|goals1 = [[Petar Musa|Musa]] {{goal|28}} <br> [[Logan Farrington|Farrington]] {{goal|55}} 
+|goals2 = 
+|stadium = [[Toyota Stadium (Texas)|Toyota Stadium]]
+|location = [[Frisco, Texas]]
+|attendance = 19,096
+|referee = Ramy Touchan
+|result= L
+}}
+{{Football box collapsible
+|round = 25
+|date = July 17
+|time = 7:30 p.m. PDT
+|team1 = LA Galaxy
+|score = 3–2
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/lavscol-07-17-2024/
+|team2 = [[Colorado Rapids]]
+|goals1 = 
+*[[Diego Fagúndez|Fagúndez]] {{goal|12}}
+*[[Joseph Paintsil|Paintsil]] {{goal|38}}
+*[[Riqui Puig|Puig]] {{goal|43}}
+*[[Edwin Cerrillo|Cerrillo]] {{yel|67}}
+|goals2 = 
+*[[Andreas Maxsø|Maxsø]] {{yel|8}}
+*[[Kévin Cabral|Cabral]] {{goal|32}}
+*[[Cole Bassett|Bassett]] {{goal|45+10}}
+*[[Jasper Löffelsend|Löffelsend]] {{yel|46}}
+*[[Moïse Bombito|Bombito]] {{yel|71}}
+|stadium = [[Dignity Health Sports Park]]
+|location = [[Carson, California]]
+|attendance = 19,488
+|referee = Ismir Pekmic
+|result= W
+}}
+{{Football box collapsible
+|round = 26
+|date = July 20
+|time = 7:45 p.m. PDT
+|team1 = LA Galaxy
+|score = 3–2
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/lavspor-07-20-2024/
+|team2 = [[Portland Timbers]]
+|goals1 = 
+*[[Gabriel Pec|Pec]] {{goal|38}}
+*[[Riqui Puig|Puig]] {{goal|48}}
+*[[Joseph Paintsil|Paintsil]] {{goal|58}}
+*[[John Nelson (soccer, born 1998)|Nelson]] {{yel|90}}
+*[[Miguel Berry|Berry]] {{yel|90+6}}
+|goals2 = 
+*[[Evander (footballer)|Evander]] {{yel|14}}
+*[[Diego Chará|Chará]] {{yel|42}}
+*[[Jonathan Rodríguez (footballer, born 1993)|Rodríguez]] {{goal|52}}, {{yel|90+9}}
+*[[Dario Župarić|Župarić]] {{yel|62}}
+*[[Santiago Moreno (footballer)|Moreno]] {{goal|73}}
+*[[Kamal Miller|Miller]] {{yel|90+5}}
+|stadium = [[Dignity Health Sports Park]]
+|location = [[Carson, California]]
+|attendance = 23,586
+|referee = Sergii Boiko
+|result= W
+}}
+
+===August===
+{{Football box collapsible
+|round = 27
+|date = August 24
+|time = 7:30 p.m. PDT
+|team1 = LA Galaxy
+|score = 2–0
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/lavsatl-08-24-2024/
+|team2 = [[Atlanta United FC]]
+|goals1 = 
+*[[Joseph Paintsil|Paintsil]] {{yel|46}}
+*[[Riqui Puig|Puig]] {{yel|71}}, {{goal|76}}
+*[[Marco Reus|Reus]] {{goal|84}}
+|goals2 = 
+*[[Ajani Fortune|Fortune]] {{yel|65}}
+|stadium = [[Dignity Health Sports Park]]
+|location = [[Carson, California]]
+|attendance = 25,174
+|referee = Rubiel Vazquez
+|result= W
+}}
+
+===September===
+{{Football box collapsible
+|round = 28
+|date = September 1
+|time = 11:30 a.m. PDT
+|team1 = [[St. Louis City SC]]
+|score = 2–1
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/stlvsla-09-01-2024/
+|team2 = LA Galaxy
+|goals1 = 
+*[[Cedric Teuchert|Teuchert]] {{goal|9}}, {{yel|38}}
+*[[Jannes Horn|Horn]] {{yel|53}}
+*[[Marcel Hartel|Hartel]] {{goal|68}}
+*[[Chris Durkin|Durkin]] {{yel|74}}
+*[[João Klauss|Klauss]] {{yel|81}}
+|goals2 = 
+*[[Gabriel Pec|Pec]] {{goal|46}}
+*[[Joseph Paintsil|Paintsil]] {{yel|90+3}}
+|stadium = [[CityPark]]
+|location = [[St. Louis|St. Louis, Missouri]]
+|attendance = 22,423
+|referee = Joe Dickerson
+|result= L
+}}
+{{Football box collapsible
+|round = [[El Tráfico|29]]
+|date = September 14
+|time = 7:30 p.m. PDT
+|team1 = LA Galaxy
+|score =4–2 
+|report =https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/lavslafc-09-14-2024/ 
+|team2 = [[Los Angeles FC]]
+|goals1 =*[[Diego Fagúndez|Fagúndez]] {{yel|34}}
+*[[Jalen Neal|Neal]] {{yel|37}}
+*[[Gabriel Pec|Pec]] {{yel|49}}
+*[[Dejan Joveljić|Joveljić]] {{goal|53||67}}
+*[[Edwin Cerrillo|Cerrillo]] {{goal|55}}, {{yel|89}}
+*[[Riqui Puig|Puig]] {{goal|86}}, {{yel|86}} 
+|goals2 =*[[Mateusz Bogusz|Bogusz]] {{goal|4}}
+*[[Denis Bouanga|Bouanga]] {{goal|15}}
+*[[Ilie Sánchez|Sánchez]] {{yel|45+3}}
+*[[Aaron Long (soccer)|Long]] {{yel|71}}
+*[[Lewis O'Brien (footballer)|O'Brien]] {{sent off|0|79}} 
+|stadium = [[Dignity Health Sports Park]]
+|location = [[Carson, California]]
+|attendance =25,174
+|referee =Ted Unkel 
+|result=W 
+}}
+{{Football box collapsible
+|round = 30
+|date = September 18
+|time = 7:30 p.m. PDT
+|team1 = [[Portland Timbers]]
+|score = 4–2
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/porvsla-09-18-2024/
+|team2 = LA Galaxy
+|goals1 = 
+*[[Dario Župarić|Župarić]] {{yel|13}}
+*[[Jonathan Rodríguez (footballer, born 1993)|Rodríguez]] {{goal|18}}
+*[[Evander (footballer)|Evander]] {{goal|39}}, {{goal|51}}
+*[[Maxime Crépeau|Crépeau]] {{yel|45}}
+*[[David Ayala (footballer, born 2002)|Ayala]] {{yel|52}}
+*[[Felipe Mora|Mora]] {{goal|80}}
+|goals2 = 
+*[[Gastón Brugman|Brugman]] {{yel|45+2}}
+*[[Gabriel Pec|Pec]] {{goal|45+3}}
+*[[Joseph Paintsil|Paintsil]] {{goal|59}}
+*[[Maya Yoshida|Yoshida]] {{yel|82}}
+|stadium = [[Providence Park]]
+|location = [[Portland, Oregon]]
+|attendance =
+|referee = Timothy Ford
+|result= L
+}}
+{{Football box collapsible
+|round = 31
+|date = September 21
+|time = 7:30 p.m. PDT
+|team1 = LA Galaxy
+|score = 4–2
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/lavsvan-09-21-2024/
+|team2 = [[Vancouver Whitecaps FC]]
+|goals1 = 
+*[[Gabriel Pec|Pec]] {{goal|32}}
+*[[Sebastian Berhalter|Berhalter]] {{goal|50|o.g.}}
+*[[Joseph Paintsil|Paintsil]] {{goal|69}}
+*[[Riqui Puig|Piug]] {{goal|90+3}}
+|goals2 = 
+*[[Sebastian Berhalter|Berhalter]] {{yel|8}}
+*[[Brian White (soccer)|White]] {{goal|63}}
+*[[Stuart Armstrong|Armstrong]] {{yel|86}}
+*[[Pedro Vite|Vite]] {{yel|88}}
+*[[Sam Adekugbe|Adekugbe]] {{goal|90+7}}
+|stadium = [[Dignity Health Sports Park]]
+|location = [[Carson, California]]
+|attendance = 25,387
+|referee = [[Jair Marrufo]]
+|result= W
+}}
+
+===October===
+{{Football box collapsible
+|round = 32
+|date = October 2
+|time = 6:30 p.m. PDT
+|team1 = [[Colorado Rapids]]
+|score = 1–3
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/colvsla-10-02-2024/
+|team2 = LA Galaxy
+|goals1 = 
+*[[Connor Ronan|Ronan]] {{goal|45}}
+*[[Djordje Mihailovic|Mihailovic]] {{yel|61}}
+|goals2 = 
+*[[Gabriel Pec|Pec]] {{goal|50}}
+*[[Riqui Puig|Puig]] {{goal|58||90+1}}
+*[[Mark Delgado|Delgado]] {{yel|73}}
+|stadium = [[Dick's Sporting Goods Park]]
+|location = [[Commerce City, Colorado]]
+|attendance = 15,196
+|referee = Pierre-Luc Lauziere
+|result= W
+}}
+{{Football box collapsible
+|round = 33
+|date = October 5
+|time = 7:30 p.m. PDT
+|team1 = LA Galaxy
+|score = 2–1
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/lavsatx-10-05-2024/
+|team2 = [[Austin FC]]
+|goals1 =
+*[[Gaston Brugman|Brugman]] {{yel|8}}
+*[[Riqui Puig|Puig]] {{yel|14}}
+*[[Gabriel Pec|Pec]] {{goal|31}}
+*[[Mark Delgado|Delgado]] {{yel|60}}
+*[[Novak Mićović|Mićović]] {{yel|62}}
+*[[Dejan Joveljić|Joveljić]] {{goal|76}}, {{yel|90+5}}
+*[[Edwin Cerrillo|Cerrillo]] {{yel|90+11}}
+|goals2 = 
+*[[Brendan Hines-Ike|Hines-Ike]] {{yel|26}}
+*[[Daniel Pereira (footballer, born 2000)|Pereira]] {{yel|31}}
+*[[Julio Cascante|Cascante]] {{yel|50}}
+*[[Sebastián Driussi|Driussi]] {{goal|55}}
+*[[Owen Wolff|Wolff]] {{yel|87}}
+*[[Guilherme Biro (footballer, born 2000)|Biro]] {{sentoff|0|90+13}}
+|stadium = [[Dignity Health Sports Park]]
+|location = [[Carson, California]]
+|attendance = 26,574
+|referee = Ted Unkel
+|result= W
+}}
+{{Football box collapsible
+|round = 34
+|date = October 19
+|time = 6:00 p.m. PDT
+|team1 = [[Houston Dynamo FC]]
+|score = 2–1
+|report = https://www.mlssoccer.com/competitions/mls-regular-season/2024/matches/houvsla-10-19-2024/
+|team2 = LA Galaxy
+|goals1 = 
+*[[Amine Bassi|Bassi]] {{yel|10}}
+*[[Ezequiel Ponce|Ponce]] {{goal|44}}
+*[[Brooklyn Raines|Raines]] {{yel|90+6}}
+*[[Daniel Steres|Steres]] {{goal|90+11}}
+|goals2 = 
+*[[Joseph Paintsil|Paintsil]] {{yel|55}}
+*[[Gabriel Pec|Pec]] {{goal|90+6|pen.}}
+|stadium = [[Shell Energy Stadium]]
+|location = [[Houston|Houston, Texas]]
+|attendance = 20,800
+|referee = Rosendo Mendoza
+|result= L
+}}
+
+===MLS Cup playoffs===
+{{Main|2024 MLS Cup playoffs}}
+
+====Round One====
+{{football box collapsible
+|date = October 25
+|round = [[2024 MLS Cup playoffs#Round One|Game 1]]
+|time = 8:00 p.m. PDT	
+|team1 = LA Galaxy
+|score = 5–0
+|report = https://www.mlssoccer.com/competitions/mls-cup-playoffs-cup-short/2024/matches/lavscol-10-26-2024/
+|team2 = [[Colorado Rapids]]
+|goals1 =
+*[[Dejan Joveljić|Joveljić]] {{goal|32}}, {{goal|75}}
+*[[John Nelson (soccer, born 1998)|Nelson]] {{goal|52}}
+*[[Riqui Puig|Puig]] {{goal|54}}, {{goal|87}}
+|goals2 =
+*[[Rafael Navarro (footballer)|Navarro]] {{yel|37}}
+*[[Reggie Cannon|Cannon]] {{yel|40}}
+*[[Lalas Abubakar|Abubaker]] {{yel|49}}
+|stadium = [[Dignity Health Sports Park]]
+|location = [[Carson, California]]
+|attendance = 24,537
+|referee = Lukasz Szpala
+|result = W
+}}
+{{football box collapsible
+|date = November 1
+|round = [[2024 MLS Cup playoffs#Round One|Game 2]]
+|time = 6:30 p.m. PDT	
+|team1 = [[Colorado Rapids]]
+|score = 1–4	
+|report = https://www.mlssoccer.com/competitions/mls-cup-playoffs-cup-short/2024/matches/colvsla-11-01-2024/
+|team2 = LA Galaxy
+|goals1 =
+*[[Lalas Abubakar|Abubaker]] {{yel|3}}
+*[[Oliver Larraz|Larraz]] {{goal|19}}
+*[[Reggie Cannon|Cannon]] {{yel|85}}
+|goals2 =
+*[[Gabriel Pec|Pec]] {{goal|8}}
+*[[Joseph Paintsil|Paintsil]] {{goal|45+3}}
+*[[Edwin Cerrillo|Cerrillo]] {{yel|72}}
+*[[John Nelson (soccer, born 1998)|Nelson]] {{yel|90}}
+*[[Riqui Puig|Puig]] {{goal|90+1||90+4}}
+|stadium = [[Dick's Sporting Goods Park]]
+|location = [[Commerce City, Colorado]]
+|attendance = 16,010
+|referee = Victor Rivas
+|result = W
+|note = LA Galaxy won the series 2–0.
+}}
+
+''LA Galaxy advances with a 2–0 record.''
+
+====Conference semifinals====
+{{football box collapsible
+|date = November 24
+|round = [[2024 MLS Cup playoffs#Conference semifinals|Conference Semifinals]]
+|time = 3:15 p.m. PST	
+|team1 = LA Galaxy
+|score = 6–2
+|report = https://www.mlssoccer.com/competitions/mls-cup-playoffs-cup-short/2024/matches/lavsmin-11-24-2024/
+|team2 = [[Minnesota United FC]]
+|goals1 =
+*[[Gabriel Pec|Pec]] {{goal|1}}, {{goal|50}}
+*[[Dejan Joveljic|Joveljic]] {{goal|18}}, {{goal|89}}
+*[[Joseph Paintsil|Paintsil]] {{goal|37}}, {{yel|45}}, {{goal|86}} 
+*[[Riqui Puig|Puig]] {{yel|58}}
+*[[Mark Delgado|Delgado]] {{yel|90+4}}
+|goals2 =
+*[[Kelvin Yeboah|Yeboah]] {{goal|6}}, {{goal|45+4|pen.}}
+*[[Bongokuhle Hlongwane|Hlongwane]] {{yel|53}}
+*[[Hassani Dotson|Dotson]] {{yel|62}}
+*[[Jefferson Díaz|Díaz]] {{sentoff|2|68|82}}
+|stadium = [[Dignity Health Sports Park]]
+|location = [[Carson, California]]
+|attendance = 26,192
+|referee = Rosendo Mendoza
+|result = W
+}}
+
+====Conference Finals====
+{{football box collapsible
+|date = November 30
+|round = [[2024 MLS Cup playoffs#Conference finals|Conference Finals]]
+|time = 7:00 p.m. PST	
+|team1 = LA Galaxy
+|score = 1–0
+|aet   = 
+|report = https://www.mlssoccer.com/competitions/mls-cup-playoffs-cup-short/2024/matches/lavssea-11-30-2024/
+|team2 = [[Seattle Sounders FC]]
+|goals1 =
+*[[Dejan Joveljic|Joveljic]] {{goal|85}}
+|goals2 =
+*[[Pedro de la Vega|de la Vega]] {{yel|55}}
+*[[Cristian Roldan|C. Roldan]] {{yel|61}}
+*[[Nouhou Tolo|Nouhou]] {{yel|74}}
+*[[Jackson Ragen|Ragen]] {{yel|90+6}}
+|stadium = [[Dignity Health Sports Park]]
+|location = [[Carson, California]]
+|attendance = 26,327
+|referee = [[Drew Fischer]]
+|result = W
+}}
+
+==== MLS Cup 2024 ====
+{{main|MLS Cup 2024}}
+
+{{football box collapsible
+|date = {{Start date|2024|12|07}}
+|round = [[MLS Cup 2024|Final]]
+|time = 1:00 p.m. PST	
+|team1 = LA Galaxy
+|score = 2–1
+|aet = 
+|report = https://www.mlssoccer.com/competitions/mls-cup-playoffs-cup-short/2024/matches/lavsrbny-12-07-2024/
+|team2 = [[New York Red Bulls]]
+|goals1 =
+*[[Joseph Paintsil|Paintsil]] {{goal|9}}
+*[[Dejan Joveljić|Joveljić]] {{goal|13}}
+*[[Mark Delgado|Delgado]] {{yel|38}}
+|goals2 =
+*[[Sean Nealis|S. Nealis]] {{goal|28}}
+*[[Noah Eile|Eile]] {{yel|35}}
+*[[Cameron Harper (soccer)|Harper]] {{yel|71}}
+|stadium = [[Dignity Health Sports Park]]
+|location = [[Carson, California]]
+|attendance = 26,812
+|referee = Guido Gonzales Jr.
+|result = W
+}}
+
+=== U.S. Open Cup ===
+{{main|2024 U.S. Open Cup}}
+LA Galaxy was not sent to the tournament, but their MLS Next Pro team [[LA Galaxy II]] was sent instead following the deal reached on March 1, 2024.<ref>{{cite news |last1=Carisle |first1=Jeff |title=U.S. Open Cup revamp: Only 8 MLS first teams |url=https://www.espn.com/soccer/story/_/id/39631836/us-open-cup-revamp-feature-just-8-mls-first-teams |access-date=March 1, 2024 |work=[[ESPN|ESPN.com]] |date=March 1, 2024 |language=en}}</ref>
+
+=== Leagues Cup ===
+{{main|2024 Leagues Cup}}
+
+====Group Stage (West 2)====
+{{:2024 Leagues Cup group stage|transcludesection=West 2|showteam=LAX|show_matches=y}}
+{{football box collapsible
+|round      = Group stage
+|date       = [[California Clásico|July 31]]
+|time       = 7:30 p.m. PDT
+|team1      = [[San Jose Earthquakes]] {{fbaicon|USA}}
+|score      = 1–2
+|report     = https://www.leaguescup.com/competitions/leagues-cup/2024/matches/sjvsla-07-31-2024/
+|team2      = {{fbaicon|USA}} LA Galaxy
+|goals1     = 
+*[[Cristian Espinoza|Espinoza]] {{yel|56}}
+*[[Jeremy Ebobisse|Ebobisse]] {{goal|75}}
+|goals2     = 
+*[[Diego Fagúndez|Fagúndez]] {{goal|41}}
+*[[John Nelson (soccer, born 1998)|Nelson]] {{yel|60}}
+*[[Maya Yoshida|Yoshida]] {{yel|82}}
+*[[Miguel Berry|Berry]] {{goal|89}}
+*[[Miki Yamane|Yamane]] {{yel|90+6}}
+|stadium    = [[PayPal Park]]
+|location   = [[San Jose, California]]
+|attendance = 12,554
+|referee    = Lukasz Szpala
+|result     = W
+}}
+{{football box collapsible
+|round      = Group stage
+|date       = August 4 
+|time       = 7:30 p.m. PDT
+|team1      = [[C.D. Guadalajara|Guadalajara]] {{fbaicon|MEX}}
+|score      = 2–2
+|penaltyscore = 4–5
+|report     = https://www.leaguescup.com/competitions/leagues-cup/2024/matches/gdlvsla-08-04-2024/
+|team2      = {{fbaicon|USA}} LA Galaxy
+|goals1     = 
+*[[Alan Mozo|Mozo]] {{goal|8}}
+*[[Antonio Briseño|Briseño]] {{yel|13}}
+*[[Ricardo Martin|Martin]] {{yel|45+3}}
+*[[Fernando González (footballer, born 1994)|González]] {{yel|45+3}}
+*[[Gilberto Sepúlveda|Sepúlveda]] {{yel|80}}
+*[[Cade Cowell|Cowell]] {{goal|90+1}}
+*[[Luis Olivas|Olivas]] {{yel|90+4}}
+|goals2     = 
+*[[Joseph Paintsil|Painstsil]] {{goal|11}}
+*[[Martin Cáceres|Cáceres]] {{yel|45+3}}
+*[[Gabriel Pec|Pec]] {{goal|67}}
+| penalties1 = 
+*[[Cade Cowell|Cowell]] {{pengoal}}
+*[[Alan Mozo|Mozo]] {{pengoal}}
+*[[Roberto Alvarado|Alvarado]] {{pengoal}}
+*[[Omar Govea|Govea]] {{penmiss}}
+*[[Érick Gutiérrez|Gutiérrez]] {{pengoal}}
+*[[Gilberto Sepúlveda|Sepúlveda]] {{penmiss}}
+| penalties2 = 
+*{{pengoal}} [[Gabriel Pec|Pec]]
+*{{penmiss}} [[Diego Fagúndez|Fagúndez]]
+*{{pengoal}} [[Mark Delgado|Delgado]]
+*{{pengoal}} [[Joseph Paintsil|Paintsil]]
+*{{pengoal}} [[Riqui Puig|Puig]]
+*{{pengoal}} [[Miki Yamane|Yamane]]
+|stadium    = [[Dignity Health Sports Park]]
+|location   = [[Carson, California]]
+|attendance = 25,174
+|referee    = Pierre-Luc Lauziere
+|result     = D
+}}
+
+====Knockout stage====
+{{Main|2024 Leagues Cup knockout stage}}
+{{football box collapsible
+|round      = Round of 32
+|date       = August 8
+|time       = 7:30 p.m. PDT
+|team1      = [[Seattle Sounders FC]] {{fbaicon|USA}}
+|score      = 3–1
+|report     = https://www.leaguescup.com/competitions/leagues-cup/2024/matches/seavsla-08-08-2024/
+|team2      = {{fbaicon|USA}} LA Galaxy
+|goals1     = 
+*[[Yeimar Gómez|Yeimar]] {{goal|4}}
+*[[Jackson Rqgen|Ragen]] {{goal|7}}, {{yel|45}}
+*[[João Paulo Mior|João Paulo]] {{yel|19}}
+*[[Alex Roldan|Roldan]] {{goal|45+4}}
+*[[Paul Rothrock|Rothrock]] {{yel|52}}
+*[[Obed Vargas|Vargas]] {{yel|66}}
+*[[Reed Baker-Whiting|Baker-Whiting]] {{yel|84}}
+|goals2     = 
+*[[Edwin Cerrillo|Cerrillo]] {{yel|44}}
+*[[Riqui Puig|Puig]] {{yel|80}}
+*[[Gabriel Pec|Pec]] {{goal|83}}
+*[[Joseph Paintsil|Paintsil]] {{yel|90+2}}
+|stadium    = [[Lumen Field]]
+|location   = [[Seattle, Washington]]
+|attendance = 17,242
+|referee    = Lukasz Szpala
+|result     = L
+}}
+
+<!--== Statistics ==
+*[[|]] {{|}}
+=== Appearances and goals ===
+''Numbers after plus-sign(+) denote appearances as a [[substitute (association football)|substitute]].''
+{{Efs start|[[2024 Major League Soccer season|MLS]]|[[2024 Leagues Cup|Leagues Cup]]}}
+|-
+! colspan=14 style=background:#dcdcdc; text-align:center| Goalkeepers
+{{Efs player|no=77 |name=[[John McCarthy (soccer)|John McCarthy]] |pos=GK |nat=USA |24 |0 |0 |0 }}
+{{Efs player|no=35 |name=[[Novak Mićović]] |pos=GK |nat=SRB |0 |0 |2 |0 }}
+|-
+! colspan=14 style=background:#dcdcdc; text-align:center| Defenders
+{{Efs player|no=9 |name=[[Dejan Joveljić]] |pos=FW |nat=SRB |18+3 |0 |0 |0 }}
+|-
+! colspan=14 style=background:#dcdcdc; text-align:center| Midfielders
+
+|-
+! colspan=14 style=background:#dcdcdc; text-align:center| Forwards
+
+|-
+{{Efs end|u=--|s=[http://www.lagalaxy.com/stats/ Team Stats]}}
+
+=== Top scorers ===
+{| class="wikitable sortable" style="font-size: 95%; text-align: center;"
+|-
+!width=30|Rank
+!width=30|Position
+!width=30|Number
+!width=175|Name
+!width=75|{{nobreak|MLS}}
+!width=75|{{nobreak|Leagues Cup}}
+!width=75|{{nobreak|Playoffs}}
+!width=75|'''Total'''
+|-
+|}
+{{Efs end|u=--|s=[http://www.lagalaxy.com/stats/ Team Stats]}}-->
+
+== References ==
+{{Reflist}}
+
+== External links ==
+* {{Official website|https://www.lagalaxy.com/}}
+
+{{LA Galaxy}}
+{{2024 MLS season by team}}
+{{MLS Cup winning seasons}}
+{{2024 in American men's soccer}}
+
+[[Category:LA Galaxy seasons]]
+[[Category:2020s in Carson, California]]
+[[Category:2024 MLS season by team|La Galaxy]]
+[[Category:MLS Western Conference champion seasons]]
+[[Category:MLS Cup champion seasons]]
+[[Category:American soccer clubs 2024 season|La Galaxy]]
+[[Category:2024 in sports in Los Angeles County, California|LA Galaxy]]

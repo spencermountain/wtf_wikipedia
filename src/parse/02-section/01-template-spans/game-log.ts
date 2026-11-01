@@ -106,32 +106,37 @@ const simplifyRows = function (rows) {
   })
 }
 
-const parseLog = function (wiki, section, opts) {
-  const open = wiki.match(openReg)
-  const inner = wiki.slice(open.index + 2, templateEnd(wiki, open.index) - 2)
-  const { named, positional } = parseOpener(inner)
-  // modern templates list their column headings as positional params
-  let headings = positional.length > 1 ? positional : legacyHeadings(named)
+// rows → a table, with inline templates and html resolved first
+const buildRows = function (rowText, headings, section, opts): { rows: object[]; title?: string } {
   // a '<br/>' in a heading would corrupt the column key
   headings = headings.map((h) => h.replace(/<[^>]*>/g, ' ').trim())
-  let rowText = wiki.slice(templateEnd(wiki, open.index)).replace(closeReg, '')
   // html-syntax runs after this stage, so drop inline formatting tags ourselves
+  rowText = rowText.replace(/<br ?\/?>/gi, ' ')
   rowText = rowText.replace(/<\/?(?:span|small|big|sup|sub|center|[biu])[^>]*>/gi, '')
   // rows still hold inline templates, which single-pipe cell parsing would garble
   const parsed = parseTemplates(rowText, opts)
   section.templates.push(...parsed.templates)
   section.references.push(...parsed.references)
-  rowText = parsed.remaining
-  const table = '{|\n! ' + headings.join(' !! ') + '\n' + rowText + '\n|}'
+  const table = '{|\n! ' + headings.join(' !! ') + '\n' + parsed.remaining + '\n|}'
   const rows = simplifyRows(tableParser(table, opts).rows || [])
-  const data: { rows: object[]; title?: string } = { rows }
+  return { rows }
+}
+
+const parseLog = function (wiki, section, opts) {
+  const open = wiki.match(openReg)
+  const inner = wiki.slice(open.index + 2, templateEnd(wiki, open.index) - 2)
+  const { named, positional } = parseOpener(inner)
+  // modern templates list their column headings as positional params
+  const headings = positional.length > 1 ? positional : legacyHeadings(named)
+  const rowText = wiki.slice(templateEnd(wiki, open.index)).replace(closeReg, '')
+  const data = buildRows(rowText, headings, section, opts)
   if (named.title || named.month) {
     data.title = named.title || named.month
   }
   return data
 }
 
-const parseGameLogs = function (section: SectionData, opts: DocInfo = defaults) {
+const mlbLogs = function (section: SectionData, opts: DocInfo) {
   let text = section.remaining
   let out = ''
   let open = text.match(openReg)
@@ -148,6 +153,68 @@ const parseGameLogs = function (section: SectionData, opts: DocInfo = defaults) 
     open = text.match(openReg)
   }
   section.remaining = out + text
+  return section
+}
+
+// https://en.wikipedia.org/wiki/Template:NBA_game_log_section
+// the nba columns are fixed by the template, and there is no end-marker -
+// rows run until the next nba game-log template
+const nbaOpen = /\{\{ *nba game log (?:section|month)\s*[|}]/i
+const nbaBoundary = /\{\{ *nba game log /i
+const nbaHeadings = ['game', 'date', 'team', 'score', 'high points', 'high rebounds', 'high assists', 'location attendance', 'record']
+
+const nbaLogs = function (section: SectionData, opts: DocInfo) {
+  let text = section.remaining
+  let out = ''
+  let open = text.match(nbaOpen)
+  while (open) {
+    const headEnd = templateEnd(text, open.index)
+    if (headEnd === -1) {
+      break
+    }
+    const { positional } = parseOpener(text.slice(open.index + 2, headEnd - 2))
+    const rest = text.slice(headEnd)
+    const next = rest.match(nbaBoundary)
+    const stop = next ? next.index : rest.length
+    const wiki = text.slice(open.index, headEnd + stop)
+    const data = buildRows(rest.slice(0, stop), nbaHeadings, section, opts)
+    if (positional[1]) {
+      data.title = positional[1] //'October', or 'Preseason'
+    }
+    section.templates.push(makeResult(wiki, 'game log section', data, '', opts))
+    out += text.slice(0, open.index)
+    text = rest.slice(stop)
+    open = text.match(nbaOpen)
+  }
+  section.remaining = out + text
+  return section
+}
+
+// https://en.wikipedia.org/wiki/Template:NFL_postseason_schedule_start
+// the template renders a table-opening - rows follow as literal wikitext, closed by '|}'
+const nflOpen = /\{\{ *nfl (?:postseason |preseason )?schedule start *[|}]/i
+const nflHeader = '{|\n! Week !! Date !! Opponent !! Result !! Record !! Venue !! Recap'
+
+const nflLogs = function (section: SectionData) {
+  let text = section.remaining
+  let open = text.match(nflOpen)
+  while (open) {
+    const end = templateEnd(text, open.index)
+    if (end === -1) {
+      break
+    }
+    // swap the template for the table-start it would render, and parse as a normal table
+    text = text.slice(0, open.index) + nflHeader + text.slice(end)
+    open = text.match(nflOpen)
+  }
+  section.remaining = text
+  return section
+}
+
+const parseGameLogs = function (section: SectionData, opts: DocInfo = defaults) {
+  section = mlbLogs(section, opts)
+  section = nbaLogs(section, opts)
+  section = nflLogs(section)
   return section
 }
 export default parseGameLogs

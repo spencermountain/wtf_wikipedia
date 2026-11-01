@@ -1,0 +1,1238 @@
+{{Use Canadian English|date=March 2026}}
+{{Use mdy dates|date=June 2024}}
+{{Infobox NBA season
+| team           = Toronto Raptors
+| end_year       = 2025
+| misc           = 
+| wins           = 30
+| losses         = 52
+| division       = Atlantic
+| division_place = 3
+| conf_place     = 11
+| coach          = [[Darko Rajaković]]
+| president      = [[Masai Ujiri]]
+| gm             = [[Bobby Webster]]
+| owners         = [[Maple Leaf Sports & Entertainment]]
+| arena          = [[Scotiabank Arena]]
+| playoffs       = Did not qualify
+| bbr_team       = TOR
+| television     = [[The Sports Network|TSN]]<br>[[Sportsnet]]
+| radio          = 
+}}
+
+The '''2024–25 Toronto Raptors season''' was the 30th season for the franchise in the [[National Basketball Association]] (NBA). In honor of the Raptors' 30th season, they unveiled their 30th anniversary logo for this season.<ref>{{cite web|title=Toronto Raptors unveil 30th anniversary logo for the 2024-25 season|url=https://www.nba.com/raptors/news/toronto-raptors-unveil-30th-anniversary-logo-for-the-2024-25-season|work=NBA|date=July 30, 2024|access-date=August 5, 2024}}</ref> On April 1, the Raptors were eliminated from playoff contention for the 3rd consecutive season following a loss to the [[2024–25 Chicago Bulls season|Chicago Bulls]], becoming the last Eastern Conference team to be eliminated from competing in at least the [[NBA play-in tournament]].
+
+The Toronto Raptors drew an average home attendance of 18,744, the highest of all Canadian basketball teams.<ref>https://www.espn.com/nba/attendance/_/year/2025/sort/homeTotal</ref>
+
+==Draft==
+{{main|2024 NBA draft}}
+
+{| class="wikitable sortable sortable"
+! style="{{NBA color cell|Toronto Raptors}}" width="10%" |Round
+! style="{{NBA color cell|Toronto Raptors}}" width="10%" |Pick
+! style="{{NBA color cell|Toronto Raptors}}" width="20%" |Player
+! style="{{NBA color cell|Toronto Raptors}}" width="15%" |Position(s)
+! style="{{NBA color cell|Toronto Raptors}}" width="15%" |Nationality
+! style="{{NBA color cell|Toronto Raptors}}" width="20%" |College / club
+|- style="text-align: center"
+| 1
+| 19
+| [[Ja'Kobe Walter]]
+| [[Shooting guard|SG]]
+| {{flagicon|United States}} [[United States]]
+| [[2023-24 Baylor Bears men's basketball team|Baylor]]
+|- style="text-align: center"
+| 2
+| 31
+| [[Jonathan Mogbo]]
+| [[Center (basketball)|C]]
+| {{flagicon|United States}} [[United States]]
+| [[2023-24 San Francisco Dons men's basketball team|San Francisco]]
+|- style="text-align: center"
+|2
+|45
+|[[Jamal Shead]]
+|[[Point guard|PG]]
+|{{flagicon|United States}} [[United States]]
+|[[2023–24 Houston Cougars men's basketball team|Houston]]
+|-style="text-align: center"
+|2
+|57
+|[[Ulrich Chomche]]
+|[[Power forward|PF]]
+|{{flagicon|Cameroon}} [[Cameroon]]
+|[[NBA Academy Africa]]<br />[[APR BBC]] ([[Basketball Africa League|Rwanda]])
+|}
+
+The Raptors entered this draft with a first-round pick and a second-round pick.<ref>{{cite web|last=Quinn|first=Sam|title=2024 NBA Draft order: Complete list of picks as Atlanta Hawks win No. 1 selection in Lottery|url=https://www.cbssports.com/nba/news/2024-nba-draft-order-complete-list-of-picks-as-atlanta-hawks-win-no-1-selection-in-lottery/|work=CBS Sports|date=May 13, 2024|access-date=June 5, 2024}}</ref><ref>{{cite web|title=2024 NBA Draft Order: Picks 1-58|url=https://www.nba.com/news/2024-nba-draft-order|website=NBA.com|date=May 14, 2024|access-date=May 30, 2024}}</ref> They originally had good odds to keep a lottery draft pick as well, but they would ultimately lose that pick to the [[San Antonio Spurs]] with that pick falling to #8, which was outside of their protection range. With the Raptors having a late first round pick of their own via trading with the [[Indiana Pacers]] and an early second round pick that they acquired through trades with a pick that originally belonged to the [[Detroit Pistons]], they looked to utilize the new draft structure of working on both rounds on two separate days for the first time in franchise and League history instead of just one day like they had done since the [[NBA draft]] was implemented in two rounds properly back in [[1989 NBA draft|1989]]. Hours before the second round ensued, the Raptors commenced a trade with the [[Sacramento Kings]] which included the #45 pick in the draft. Later during the draft they also traded in cash rather than assets with the [[Minnesota Timberwolves]] to acquire the #57 pick in the draft.
+
+==Roster==
+{{NBA roster header|team=Toronto Raptors|season=2024–25}}
+<!-- list of players -->
+{{player2 | num = 30 | first = Ochai | last = Agbaji | pos = G/F | ft = 6 | in = 6 | lbs = 215 | college = Kansas | DOB = 2000-04-20 }}
+{{player2 | num = 4 | first = Scottie | last = Barnes | pos = F | ft = 6 | in = 9 | lbs = 240 | college = Florida State | DOB = 2001-08-01 }}
+{{player2 | num = 9 | first = RJ | last = Barrett | pos = G/F | ft = 6 | in = 7 | lbs = 214 | college = Duke | DOB = 2000-06-14 | inj = yes }}
+{{player2 | num = 77 | first = Jamison | last = Battle | pos = F | ft = 6 | in = 7 | lbs = 220 | college = Ohio State | DOB = 2001-05-10 }}
+{{player2 | num = 25 | first = Chris | last = Boucher | dab = basketball | pos = F/C | ft = 6 | in = 9 | lbs = 215 | college = Oregon | DOB = 1993-01-11 }}
+{{player2 | num = 11 | first = Colin | last = Castleton | pos = C | ft = 6 | in = 10 | lbs = 250 | college = Florida | DOB = 2000-05-25}}
+{{player2 | num = 22 | first = Ulrich | last = Chomche | pos = C | ft = 6 | in = 11 | lbs = 235 | school = [[NBA Academy Africa|NBA Academy Africa (SEN)]] | DOB = 2005-12-30 | inj = yes | note = TW }}
+{{player2 | num = 1 | first = Gradey | last = Dick | pos = G/F | ft = 6 | in = 6 | lbs = 210 | college = Kansas | DOB = 2003-11-20 | inj = yes }}
+{{player2 | num = 3 | first = Brandon | last = Ingram | pos = F | ft = 6 | in = 8 | lbs = 210 | college = Duke | DOB = 1997-09-02 | inj = yes }}
+{{player2 | num = 0 | first = A. J. | last = Lawson | pos = G | ft = 6 | in = 6 | lbs = 185 | college = South Carolina | DOB = 2000-07-15}}
+{{player2 | num = 2 | first = Jonathan | last = Mogbo | pos = F | ft = 6 | in = 9 | lbs = 225 | college = San Francisco | DOB = 2001-10-29 }}
+{{player2 | num = 19 | first = Jakob | last = Pöltl | pos = C | ft = 7 | in = 0 | lbs = 260 | college = Utah | DOB = 1995-10-15 }}
+{{player2 | num = 5 | first = Immanuel | last = Quickley | pos = G | ft = 6 | in = 2 | lbs = 190 | college = Kentucky | DOB = 1999-06-17 }}
+{{player2 | num = 8 | first = Jared | last = Rhoden | pos = GF | ft = 6 | in = 5 | lbs = 210 | college = Seton Hall | DOB = 1999-08-27 | note = TW }}
+{{player2 | num = 23 | first = Jamal | last = Shead | pos = G | ft = 6 | in = 1 | lbs = 200 | college = Houston | DOB = 2002-07-24 }}
+{{player2 | num = 17 | first = Garrett | last = Temple | pos = GF | ft = 6 | in = 6 | lbs = 195 | college = LSU | DOB = 1986-05-08 }}
+{{player2 | num = 14 | first = Ja'Kobe | last = Walter | pos = G | ft = 6 | in = 5 | lbs = 180 | college = Baylor | DOB = 2004-09-04 }}
+<!-- end list of players -->
+{{NBA roster footer
+| head_coach = 
+* [[Darko Rajaković]]
+| asst_coach = 
+* [[Mery Andrade]]
+* [[Michael Batiste]]
+* [[Vin Bhavnani]]
+* [[Pat Delany (basketball)|Pat Delany]]
+* [[Eric Khoury]]
+* [[Jama Mahlalela]]
+* [[Jim Sann]]
+* [[Ivo Simović]]
+* [[James Wade (basketball)|James Wade]]
+| otherlegend = '''(GL)''' On [[NBA G League#Player allocations|assignment]] to G League affiliate
+| otherlegend2 = '''(TW)''' Two-way affiliate player
+| roster_url = http://www.nba.com/raptors/roster/
+| accessdate = April 13, 2025
+}}<noinclude>
+
+==Standings==
+===Division===
+{{2024–25 NBA Atlantic standings|team=TOR}}
+
+===Conference===
+{{2024–25 NBA East standings|team=TOR}}
+
+==Game log==
+===Preseason ===
+{{NBA game log start|Toronto Raptors|preseason=yes|end_year=2025|record=Total: 3–2 (Home: 2–0; Road: 1–2)}}
+{{NBA game log section|Toronto Raptors|Preseason|first=yes|show=no
+| home_wins   = 2
+| home_losses = 0
+| road_wins   = 1
+| road_losses = 2
+}}
+|- style="background:#cfc
+| 1
+| October 6
+| [[2024–25 Washington Wizards season|Washington]]
+| {{NBA game|id=0012400007|pf=125|pa=98}}
+| [[RJ Barrett]] (17)
+| [[Bruno Fernando|Fernando]], [[Jakob Pöltl|Pöltl]] (7)
+| [[Gradey Dick|Dick]], [[Davion Mitchell|Mitchell]], [[Jonathan Mogbo|Mogbo]] (5)
+| [[Bell Centre]]<br>21,900
+| 1–0
+|- style="background:#fcc
+| 2
+| October 11
+| @ [[2024–25 Washington Wizards season|Washington]]
+| {{NBA game|id=0012400031|pf=95|pa=113}}
+| [[Chris Boucher (basketball)|Chris Boucher]] (22)
+| [[Scottie Barnes]] (8)
+| Davion Mitchell (6)
+| [[Capital One Arena]]<br>7,815
+| 1–1
+|- style="background:#fcc
+| 3
+| October 13
+| @ [[2024–25 Boston Celtics season|Boston]]
+| {{NBA game|id=0012400042|pf=111|pa=115}}
+| Gradey Dick (18)
+| Jakob Pöltl (13)
+| [[Ochai Agbaji|Agbaji]], [[Jamal Shead|Shead]] (5)
+| [[TD Garden]]<br>19,156
+| 1–2
+|- style="background:#cfc
+| 4
+| October 15
+| [[2024–25 Boston Celtics season|Boston]]
+| {{NBA game|id=0012400050|pf=119|pa=118}}
+| Gradey Dick (27)
+| Jakob Pöltl (16)
+| Barnes, Mitchell (10)
+| [[Scotiabank Arena]]<br>17,507
+| 2–2
+|- style="background:#cfc
+| 5
+| October 18
+| @ [[2024–25 Brooklyn Nets season|Brooklyn]]
+| {{NBA game|id=0012400069|pf=116|pa=112}}
+| Scottie Barnes (21)
+| Jakob Pöltl (8)
+| [[Immanuel Quickley]] (10)
+| [[Barclays Center]]<br>17,158
+| 3–2
+{{NBA game log end|tor|preseason=yes|end_year=2025}}
+
+===Regular season===
+{{NBA game log start|Toronto Raptors|end_year=2025|record=Total: 30–52 (Home: 18–23; Road: 12–29)}}
+{{NBA game log section|Toronto Raptors|October|first=yes|show=no
+| home_wins   = 1
+| home_losses = 2
+| road_wins   = 0
+| road_losses = 2
+}}
+|- style="background:#fcc
+| 1
+| October 23
+| [[2024–25 Cleveland Cavaliers season|Cleveland]]
+| {{NBA game|id=0022400067|pf=106|pa=136}}
+| [[Chris Boucher (basketball)|Chris Boucher]] (18)
+| [[Jakob Pöltl]] (9)
+| [[Scottie Barnes]] (5)
+| [[Scotiabank Arena]]<br>19,800
+| 0–1
+|- style="background:#cfc
+| 2
+| October 25
+| [[2024–25 Philadelphia 76ers season|Philadelphia]]
+| {{NBA game|id=0022400078|pf=115|pa=107}}
+| Scottie Barnes (27)
+| [[Jonathan Mogbo|Mogbo]], Pöltl (9)
+| Mogbo, [[Jamal Shead|Shead]] (5)
+| [[Scotiabank Arena]]<br>18,345
+| 1–1
+|- style="background:#fcc
+| 3
+| October 26
+| @ [[2024–25 Minnesota Timberwolves season|Minnesota]]
+| {{NBA game|id=0022400093|pf=101|pa=112}}
+| [[Gradey Dick]] (25)
+| Jakob Pöltl (10)
+| [[Davion Mitchell]] (8)
+| [[Target Center]]<br>18,978
+| 1–2
+|- style="background:#fcc
+| 4
+| October 28
+| [[2024–25 Denver Nuggets season|Denver]]
+| {{NBA game|id=0022400107|pf=125|pa=127|ot=1}}
+| Scottie Barnes (21)
+| Jakob Pöltl (19)
+| Scottie Barnes (9)
+| [[Scotiabank Arena]]<br>19,082
+| 1–3
+|- style="background:#fcc
+| 5
+| October 30
+| @ [[2024–25 Charlotte Hornets season|Charlotte]]
+| {{NBA game|id=0022400117|pf=133|pa=138}}
+| [[RJ Barrett]] (31)
+| Jakob Pöltl (16)
+| Davion Mitchell (11)
+| [[Spectrum Center]]<br>13,113
+| 1–4
+{{NBA game log section|Toronto Raptors|November|show=no
+| home_wins   = 3
+| home_losses = 2
+| road_wins   = 1
+| road_losses = 9
+}}
+|- style="background:#fcc
+| 6
+| November 1
+| [[2024–25 Los Angeles Lakers season|L.A. Lakers]]
+| {{NBA game|id=0022400137|pf=125|pa=131}}
+| [[RJ Barrett]] (33)
+| [[Jakob Pöltl]] (12)
+| RJ Barrett (12)
+| [[Scotiabank Arena]]<br>19,800
+| 1–5
+|- style="background:#cfc
+| 7
+| November 2
+| [[2024–25 Sacramento Kings season|Sacramento]]
+| {{NBA game|id=0022400143|pf=131|pa=128|ot=1}}
+| RJ Barrett (31)
+| Barrett, Pöltl (9)
+| [[Davion Mitchell]] (7)
+| [[Scotiabank Arena]]<br>19,815
+| 2–5
+|- style="background:#fcc
+| 8
+| November 4
+| @ [[2024–25 Denver Nuggets season|Denver]]
+| {{NBA game|id=0022400166|pf=119|pa=121}}
+| [[Gradey Dick]] (26)
+| Jakob Pöltl (11)
+| RJ Barrett (10)
+| [[Ball Arena]]<br>19,525
+| 2–6
+|- style="background:#fcc
+| 9
+| November 6
+| @ Sacramento
+| {{NBA game|id=0022400180|pf=107|pa=122}}
+| RJ Barrett (23)
+| Jakob Pöltl (8)
+| Davion Mitchell (6)
+| [[Golden 1 Center]]<br>16,026
+| 2–7
+|- style="background:#fcc
+| 10
+| November 9
+| @ [[2024–25 Los Angeles Clippers season|L.A. Clippers]]
+| {{NBA game|id=0022400200|pf=103|pa=105}}
+| [[Ochai Agbaji|Agbaji]], [[Immanuel Quickley|Quickley]] (21)
+| Jakob Pöltl (12)
+| Mitchell, Quickley (4)
+| [[Intuit Dome]]<br>17,927
+| 2–8
+|- style="background:#fcc
+| 11
+| November 10
+| @ L.A. Lakers
+| {{NBA game|id=0022400211|pf=103|pa=123}}
+| Barrett, [[Chris Boucher (basketball)|Boucher]] (18)
+| Jakob Pöltl (10)
+| Davion Mitchell (5)
+| [[Crypto.com Arena]]<br>18,997
+| 2–9
+|- style="background:#fcc
+| 12
+| November 12
+| @ [[2024–25 Milwaukee Bucks season|Milwaukee]]
+| {{NBA game|id=0022400005|pf=85|pa=99}}
+| Gradey Dick (32)
+| [[Bruno Fernando]] (13)
+| Davion Mitchell (8)
+| [[Fiserv Forum]]<br>17,341
+| 2–10
+|- style="background:#fcc
+| 13
+| November 15
+| [[2024–25 Detroit Pistons season|Detroit]]
+| {{NBA game|id=0022400011|pf=95|pa=99}}
+| Jakob Pöltl (25)
+| Jakob Pöltl (18)
+| RJ Barrett (7)
+| [[Scotiabank Arena]]<br>19,245
+| 2–11
+|- style="background:#fcc
+| 14
+| November 16
+| @ [[2024–25 Boston Celtics season|Boston]]
+| {{NBA game|id=0022400230|pf=123|pa=126|ot=1}}
+| Jakob Pöltl (35)
+| Jakob Pöltl (12)
+| RJ Barrett (15)
+| [[TD Garden]]<br>19,156
+| 2–12
+|- style="background:#cfc
+| 15
+| November 18
+| [[2024–25 Indiana Pacers season|Indiana]]
+| {{NBA game|id=0022400247|pf=130|pa=119}}
+| RJ Barrett (39)
+| Jakob Pöltl (15)
+| Ochai Agbaji (6)
+| [[Scotiabank Arena]]<br>19,025
+| 3–12
+|- style="background:#cfc
+| 16
+| November 21
+| [[2024–25 Minnesota Timberwolves season|Minnesota]]
+| {{NBA game|id=0022400261|pf=110|pa=105}}
+| RJ Barrett (31)
+| Jakob Pöltl (12)
+| Davion Mitchell (8)
+| [[Scotiabank Arena]]<br>19,296
+| 4–12
+|- style="background:#fcc
+| 17
+| November 24
+| @ [[2024–25 Cleveland Cavaliers season|Cleveland]]
+| {{NBA game|id=0022400275|pf=108|pa=122}}
+| [[Scottie Barnes|Barnes]], Dick (18)
+| Jakob Pöltl (19)
+| Scottie Barnes (7)
+| [[Rocket Mortgage FieldHouse]]<br>19,432
+| 4–13
+|- style="background:#fcc
+| 18
+| November 25
+| @ Detroit
+| {{NBA game|id=0022400278|pf=100|pa=102}}
+| Scottie Barnes (31)
+| Scottie Barnes (14)
+| Scottie Barnes (7)
+| [[Little Caesars Arena]]<br>18,421
+| 4–14
+|- style="background:#cfc
+| 19
+| November 27
+| @ [[2024–25 New Orleans Pelicans season|New Orleans]]
+| {{NBA game|id=0022400295|pf=119|pa=93}}
+| Agbaji, [[Jamison Battle|Battle]] (24)
+| Scottie Barnes (12)
+| RJ Barrett (11)
+| [[Smoothie King Center]]<br>17,307
+| 5–14
+|- style="background:#fcc
+| 20
+| November 29
+| @ [[2024–25 Miami Heat season|Miami]]
+| {{NBA game|id=0022400046|pf=111|pa=121}}
+| RJ Barrett (25)
+| Barnes, Pöltl (10)
+| Scottie Barnes (10)
+| [[Kaseya Center]]<br>19,607
+| 5–15
+{{NBA game log section|Toronto Raptors|December|show=no
+| home_wins   = 2
+| home_losses = 7
+| road_wins   = 0
+| road_losses = 4
+}}
+|- style="background:#cfc
+| 21
+| December 1
+| [[2024–25 Miami Heat season|Miami]]
+| {{NBA game|id=0022400309|pf=119|pa=116}}
+| [[RJ Barrett]] (37)
+| [[Jakob Pöltl]] (11)
+| [[Scottie Barnes]] (9)
+| [[Scotiabank Arena]]<br>18,153
+| 6–15
+|- style="background:#cfc
+| 22
+| December 3
+| [[2024–25 Indiana Pacers season|Indiana]]
+| {{NBA game|id=0022400054|pf=122|pa=111}}
+| Scottie Barnes (35)
+| Jakob Pöltl (10)
+| Scottie Barnes (9)
+| [[Scotiabank Arena]]<br>17,741
+| 7–15
+|- style="background:#fcc
+| 23
+| December 5
+| [[2024–25 Oklahoma City Thunder season|Oklahoma City]]
+| {{NBA game|id=0022400328|pf=92|pa=129}}
+| Barrett, [[Jonathan Mogbo|Mogbo]] (17)
+| Scottie Barnes (12)
+| Scottie Barnes (8)
+| [[Scotiabank Arena]]<br>18,356
+| 7–16
+|- style="background:#fcc
+| 24
+| December 7
+| [[2024–25 Dallas Mavericks season|Dallas]]
+| {{NBA game|id=0022400344|pf=118|pa=125}}
+| [[Gradey Dick]] (27)
+| Scottie Barnes (8)
+| Scottie Barnes (14)
+| [[Scotiabank Arena]]<br>19,625
+| 7–17
+|- style="background:#fcc
+| 25
+| December 9
+| [[2024–25 New York Knicks season|New York]]
+| {{NBA game|id=0022400359|pf=108|pa=113}}
+| RJ Barrett (30)
+| Jakob Pöltl (12)
+| [[Ochai Agbaji|Agbaji]], Barrett, Pöltl (4)
+| [[Scotiabank Arena]]<br>18,284
+| 7–18
+|- style="background:#fcc
+| 26
+| December 12
+| @ Miami
+| {{NBA game|id=0022401206|pf=104|pa=114}}
+| Gradey Dick (22)
+| RJ Barrett (11)
+| RJ Barrett (10)
+| [[Kaseya Center]]<br>19,600
+| 7–19
+|- style="background:#fcc
+| 27
+| December 16
+| [[2024–25 Chicago Bulls season|Chicago]]
+| {{NBA game|id=0022401223|pf=121|pa=122}}
+| RJ Barrett (32)
+| [[Chris Boucher (basketball)|Chris Boucher]] (10)
+| RJ Barrett (9)
+| [[Scotiabank Arena]]<br>16,324
+| 7–20
+|- style="background:#fcc
+| 28
+| December 19
+| [[2024–25 Brooklyn Nets season|Brooklyn]]
+| {{NBA game|id=0022400364|pf=94|pa=101}}
+| Ochai Agbaji (20)
+| Dick, Mogbo, [[Kelly Olynyk|Olynyk]] (6)
+| Scottie Barnes (6)
+| [[Scotiabank Arena]]<br>19,214
+| 7–21
+|- style="background:#fcc
+| 29
+| December 22
+| [[2024–25 Houston Rockets season|Houston]]
+| {{NBA game|id=0022400388|pf=110|pa=114}}
+| [[Ja'Kobe Walter]] (27)
+| Scottie Barnes (10)
+| [[Jamal Shead]] (10)
+| [[Scotiabank Arena]]<br>19,305
+| 7–22
+|- style="background:#fcc
+| 30
+| December 23
+| @ New York
+| {{NBA game|id=0022400397|pf=125|pa=139}}
+| Scottie Barnes (24)
+| RJ Barrett (6)
+| Scottie Barnes (8)
+| [[Madison Square Garden]]<br>19,812
+| 7–23
+|- style="background:#fcc
+| 31
+| December 26
+| @ [[2024–25 Memphis Grizzlies season|Memphis]]
+| {{NBA game|id=0022400414|pf=126|pa=155}}
+| RJ Barrett (27)
+| RJ Barrett (9)
+| RJ Barrett (10)
+| [[FedExForum]]<br>17,196
+| 7–24
+|- style="background:#fcc
+| 32
+| December 29
+| [[2024–25 Atlanta Hawks season|Atlanta]]
+| {{NBA game|id=0022400438|pf=107|pa=136}}
+| Scottie Barnes (19)
+| Scottie Barnes (8)
+| Jamal Shead (6)
+| [[Scotiabank Arena]]<br>19,359
+| 7–25
+|- style="background:#fcc
+| 33
+| December 31
+| @ [[2024–25 Boston Celtics season|Boston]]
+| {{NBA game|id=0022400449|pf=71|pa=125}}
+| Scottie Barnes (16)
+| Barnes, Pöltl (13)
+| [[Davion Mitchell|Mitchell]], Pöltl, Shead (3)
+| [[TD Garden]]<br>19,156
+| 7–26
+{{NBA game log section|Toronto Raptors|January|show=no
+| home_wins   = 5
+| home_losses = 3
+| road_wins   = 3
+| road_losses = 4
+}}
+|- style="background:#cfc
+| 34
+| January 1
+| [[2024–25 Brooklyn Nets season|Brooklyn]]
+| {{NBA game|id=0022400459|pf=130|pa=113}}
+| [[Scottie Barnes]] (33)
+| Scottie Barnes (13)
+| [[Immanuel Quickley]] (15)
+| [[Scotiabank Arena]]<br>19,104
+| 8–26
+|- style="background:#fcc
+| 35
+| January 3
+| [[2024–25 Orlando Magic season|Orlando]]
+| {{NBA game|id=0022400470|pf=97|pa=106}}
+| [[Jakob Pöltl]] (25)
+| Scottie Barnes (9)
+| Immanuel Quickley (11)
+| [[Scotiabank Arena]]<br>19,278
+| 8–27
+|- style="background:#fcc
+| 36
+| January 6
+| [[2024–25 Milwaukee Bucks season|Milwaukee]]
+| {{NBA game|id=0022400497|pf=104|pa=128}}
+| [[RJ Barrett]] (25)
+| RJ Barrett (9)
+| [[Jamal Shead]] (6)
+| [[Scotiabank Arena]]<br>17,829
+| 8–28
+|- style="background:#fcc
+| 37
+| January 8
+| @ [[2024–25 New York Knicks season|New York]]
+| {{NBA game|id=0022400511|pf=98|pa=112}}
+| Immanuel Quickley (22)
+| Jakob Pöltl (10)
+| Barnes, Quickley (5)
+| [[Madison Square Garden]]<br>19,812
+| 8–29
+|- style="background:#fcc
+| 38
+| January 9
+| @ [[2024–25 Cleveland Cavaliers season|Cleveland]]
+| {{NBA game|id=0022400517|pf=126|pa=132}}
+| Scottie Barnes (24)
+| [[Chris Boucher (basketball)|Chris Boucher]] (12)
+| Scottie Barnes (8)
+| [[Rocket Mortgage FieldHouse]]<br>19,432
+| 8–30
+|- style="background:#fcc
+| 39
+| January 11
+| @ [[2024–25 Detroit Pistons season|Detroit]]
+| {{NBA game|id=0022400534|pf=114|pa=123}}
+| Immanuel Quickley (25)
+| Barnes, Pöltl (12)
+| [[Kelly Olynyk|Olynyk]], Shead (5)
+| [[Little Caesars Arena]]<br>19,011
+| 8–31
+|- style="background:#cfc
+| 40
+| January 13
+| [[2024–25 Golden State Warriors season|Golden State]]
+| {{NBA game|id=0022400550|pf=104|pa=101}}
+| Scottie Barnes (23)
+| Jacob Pöltl (13)
+| Barnes, [[Davion Mitchell|Mitchell]] (6)
+| [[Scotiabank Arena]]<br>19,165
+| 9–31
+|- style="background:#cfc
+| 41
+| January 15
+| [[2024–25 Boston Celtics season|Boston]]
+| {{NBA game|id=0022400562|pf=110|pa=97}}
+| RJ Barrett (22)
+| Jakob Pöltl (11)
+| Scottie Barnes (9)
+| [[Scotiabank Arena]]<br>18,566
+| 10–31
+|- style="background:#fcc
+| 42
+| January 17
+| @ [[2024–25 Milwaukee Bucks season|Milwaukee]]
+| {{NBA game|id=0022400580|pf=112|pa=130}}
+| RJ Barrett (21)
+| Jakob Pöltl (10)
+| Barnes, Barrett (10)
+| [[Fiserv Forum]]<br>17,341
+| 10–32
+|- style="background:#cfc
+| 43
+| January 21
+| Orlando
+| {{NBA game|id=0022400608|pf=109|pa=93}}
+| RJ Barrett (19)
+| Scottie Barnes (11)
+| Scottie Barnes (8)
+| [[Scotiabank Arena]]<br>18,284
+| 11–32
+|- style="background:#cfc
+| 44
+| January 23
+| @ [[2024–25 Atlanta Hawks season|Atlanta]]
+| {{NBA game|id=0022400623|pf=122|pa=119}}
+| Scottie Barnes (25)
+| Jakob Pöltl (9)
+| Davion Mitchell (7)
+| [[State Farm Arena]]<br>14,662
+| 12–32
+|- style="background:#cfc
+| 45
+| January 25
+| @ Atlanta
+| {{NBA game|id=0022400639|pf=117|pa=94}}
+| Scottie Barnes (24)
+| Scottie Barnes (12)
+| Scottie Barnes (7)
+| [[State Farm Arena]]<br>17,868
+| 13–32
+|- style="background:#cfc
+| 46
+| January 27
+| [[2024–25 New Orleans Pelicans season|New Orleans]]
+| {{NBA game|id=0022400654|pf=113|pa=104}}
+| Barnes, Pöltl (21)
+| Jakob Pöltl (14)
+| Scottie Barnes (8)
+| [[Scotiabank Arena]]<br>18,054
+| 14–32
+|- style="background:#cfc
+| 47
+| January 29
+| @ [[2024–25 Washington Wizards season|Washington]]
+| {{NBA game|id=0022400665|pf=106|pa=82}}
+| Scottie Barnes (24)
+| Jakob Pöltl (8)
+| Davion Mitchell (9)
+| [[Capital One Arena]]<br>13,713
+| 15–32
+|- style="background:#fcc
+| 48
+| January 31
+| [[2024–25 Chicago Bulls season|Chicago]]
+| {{NBA game|id=0022400682|pf=106|pa=122}}
+| Scottie Barnes (20)
+| Scottie Barnes (10)
+| Jakob Pöltl (6)
+| [[Scotiabank Arena]]<br>19,365
+| 15–33
+{{NBA game log section|Toronto Raptors|February|show=no
+| home_wins   = 2
+| home_losses = 5
+| road_wins   = 1
+| road_losses = 4
+}}
+|- style="background:#cfc
+| 49
+| February 2
+| [[2024–25 Los Angeles Clippers season|L.A. Clippers]]
+| {{NBA game|id=0022400697|pf=115|pa=108}}
+| [[RJ Barrett]] (20)
+| [[Jakob Pöltl]] (10)
+| RJ Barrett (7)
+| [[Scotiabank Arena]]<br>18,874
+| 16–33
+|- style="background:#fcc
+| 50
+| February 4
+| [[2024–25 New York Knicks season|New York]]
+| {{NBA game|id=0022400713|pf=115|pa=121}}
+| [[Scottie Barnes]] (23)
+| [[Kelly Olynyk]] (9)
+| [[Jamal Shead]] (9)
+| [[Scotiabank Arena]]<br>17,398
+| 16–34
+|- style="background:#fcc
+| 51
+| February 5
+| [[2024–25 Memphis Grizzlies season|Memphis]]
+| {{NBA game|id=0022400722|pf=107|pa=138}}
+| [[Ochai Agbaji|Agbaji]], Shead, [[Ja'Kobe Walter|Walter]] (14)
+| [[Gradey Dick|Dick]], Olynyk (9)
+| Scottie Barnes (9)
+| [[Scotiabank Arena]]<br>18,337
+| 16–35
+|- style="background:#fcc
+| 52
+| February 7
+| @ [[2024–25 Oklahoma City Thunder season|Oklahoma City]]
+| {{NBA game|id=0022400739|pf=109|pa=121}}
+| Scottie Barnes (21)
+| Ochai Agbaji (8)
+| [[Immanuel Quickley]] (10)
+| [[Paycom Center]]<br>18,203
+| 16–36
+|- style="background:#fcc"
+| 53
+| February 9
+| @ [[2024–25 Houston Rockets season|Houston]]
+| {{NBA game|id=0022400753|pf=87|pa=94}}
+| Immanuel Quickley (20)
+| Barnes, [[Orlando Robinson|Robinson]] (9)
+| Scottie Barnes (7)
+| [[Toyota Center]]<br>16,829
+| 16–37
+|- style="background:#cfc
+| 54
+| February 11
+| @ [[2024–25 Philadelphia 76ers season|Philadelphia]]
+| {{NBA game|id=0022400764|pf=106|pa=103}}
+| Scottie Barnes (33)
+| Scottie Barnes (10)
+| [[Jonathan Mogbo|Mogbo]], Quickley, Shead (5) 
+| [[Wells Fargo Center (Philadelphia)|Wells Fargo Center]]<br>19,767
+| 17–37
+|- style="background:#fcc
+| 55
+| February 12
+| [[2024–25 Cleveland Cavaliers season|Cleveland]]
+| {{NBA game|id=0022400774|pf=108|pa=131}}
+| RJ Barrett (27)
+| Scottie Barnes (11)
+| Scottie Barnes (7)
+| [[Scotiabank Arena]]<br>16,549
+| 17–38
+|- align="center"
+|colspan="9" bgcolor="#bbcaff"|'''[[2025 NBA All-Star Game|All-Star Game]]'''
+|- style="background:#fcc
+| 56
+| February 21
+| [[2024–25 Miami Heat season|Miami]]
+| {{NBA game|id=0022400800|pf=111|pa=120|ot=1}}
+| RJ Barrett (29)
+| Gradey Dick (10)
+| Jamal Shead (5)
+| [[Scotiabank Arena]]<br>19,584
+| 17–39
+|- style="background:#cfc
+| 57
+| February 23
+| [[2024–25 Phoenix Suns season|Phoenix]]
+| {{NBA game|id=0022400816|pf=127|pa=109}}
+| Barrett, [[Chris Boucher (basketball)|Boucher]], Quickley (23)
+| Chris Boucher (10)
+| Immanuel Quickley (8)
+| [[Scotiabank Arena]]<br>18,989
+| 18–39
+|- style="background:#fcc
+| 58
+| February 25
+| [[2024–25 Boston Celtics season|Boston]]
+| {{NBA game|id=0022400829|pf=101|pa=111}}
+| RJ Barrett (22)
+| RJ Barrett (8)
+| Immanuel Quickley (7)
+| [[Scotiabank Arena]]<br>18,134
+| 18–40
+|- style="background:#fcc
+| 59
+| February 26
+| @ [[2024–25 Indiana Pacers season|Indiana]]
+| {{NBA game|id=0022400837|pf=91|pa=111}}
+| Immanuel Quickley (18)
+| Ja'Kobe Walter (8)
+| Immanuel Quickley (6)
+| [[Gainbridge Fieldhouse]]<br>16,596	
+| 18–41
+|- style="background:#fcc
+| 60
+| February 28
+| @ [[2024–25 Chicago Bulls season|Chicago]]
+| {{NBA game|id=0022400855|pf=115|pa=125|ot=1}}
+| Scottie Barnes (24)
+| Gradey Dick (9)
+| RJ Barrett (8)
+| [[United Center]]<br>20,938
+| 18–42
+{{NBA game log section|Toronto Raptors|March|show=no
+| home_wins   = 4
+| home_losses = 2
+| road_wins   = 6
+| road_losses = 3
+}}
+|- style="background:#cfc
+| 61
+| March 2
+| @ [[2024–25 Orlando Magic season|Orlando]]
+| {{NBA game|id=0022400870|pf=104|pa=102}}
+| [[Immanuel Quickley]] (24)
+| [[Jakob Pöltl]] (11)
+| [[RJ Barrett]] (5)
+| [[Kia Center]]<br>19,015
+| 19–42
+|- style="background:#cfc
+| 62
+| March 4
+| @ Orlando
+| {{NBA game|id=0022400883|pf=114|pa=113}}
+| RJ Barrett (21)
+| [[Scottie Barnes]] (13)
+| RJ Barrett (9)
+| [[Kia Center]]<br>17,406
+| 20–42
+|- style="background:#cfc
+| 63
+| March 7
+| [[2024–25 Utah Jazz season|Utah]]
+| {{NBA game|id=0022400905|pf=118|pa=109}}
+| Immanuel Quickley (34)
+| Scottie Barnes (12)
+| Scottie Barnes (6)
+| [[Scotiabank Arena]]<br>18,258
+| 21–42
+|- style="background:#fcc
+| 64
+| March 8
+| [[2024–25 Washington Wizards season|Washington]]
+| {{NBA game|id=0022400915|pf=117|pa=118}}
+| RJ Barrett (23)
+| RJ Barrett (9)
+| [[Jamal Shead]] (9)
+| [[Scotiabank Arena]]<br>19,042
+| 21–43
+|- style="background:#cfc
+| 65
+| March 10
+| Washington
+| {{NBA game|id=0022400932|pf=119|pa=104}}
+| [[A. J. Lawson]] (32)
+| Scottie Barnes (13)
+| RJ Barrett (8)
+| [[Scotiabank Arena]]<br>18,739
+| 22–43
+|- style="background:#cfc
+| 66
+| March 12
+| [[2024–25 Philadelphia 76ers season|Philadelphia]]
+| {{NBA game|id=0022400947|pf=118|pa=105}}
+| A. J. Lawson (28)
+| [[Colin Castleton]] (14)
+| [[Garrett Temple]] (8)
+| [[Scotiabank Arena]]<br>18,864
+| 23–43
+|- style="background:#cfc
+| 67
+| March 14
+| @ Utah
+| {{NBA game|id=0022400966|pf=126|pa=118}}
+| Barnes, Quickley (20)
+| Barnes, [[Orlando Robinson|Robinson]] (10)
+| Barrett, Quickley, Robinson, Shead (5)
+| [[Delta Center]]<br>18,175
+| 24–43
+|- style="background:#fcc
+| 68
+| March 16
+| @ [[2024–25 Portland Trail Blazers season|Portland]]
+| {{NBA game|id=0022400980|pf=102|pa=105}}
+| [[Ochai Agbaji|Agbaji]], Pöltl (19)  
+| Colin Castleton (12)
+| Barnes, Lawson, Shead (6)
+| [[Moda Center]]<br>18,154
+| 24–44
+|- style="background:#fcc
+| 69
+| March 17
+| @ [[2024–25 Phoenix Suns season|Phoenix]]
+| {{NBA game|id=0022400991|pf=89|pa=129}}
+| Scottie Barnes (16)
+| Orlando Robinson (8)
+| Immanuel Quickley (7)
+| [[PHX Arena]]<br>17,071
+| 24–45
+|- style="background:#fcc
+| 70
+| March 20
+| @ [[2024–25 Golden State Warriors season|Golden State]]
+| {{NBA game|id=0022401005|pf=114|pa=117}}
+| Scottie Barnes (29)
+| Scottie Barnes (10)
+| Immanuel Quickley (8)
+| [[Chase Center]]<br>18,064
+| 24–46
+|- style="background:#fcc
+| 71
+| March 23
+| [[2024–25 San Antonio Spurs season|San Antonio]]
+| {{NBA game|id=0022401033|pf=89|pa=123}}
+| Scottie Barnes (22)
+| [[Jonathan Mogbo]] (10)
+| Barnes, Shead (6)
+| [[Scotiabank Arena]]<br>18,276
+| 24–47
+|- style="background:#cfc
+| 72
+| March 24
+| @ Washington
+| {{NBA game|id=0022401039|pf=112|pa=104}}
+| Pöltl, Quickley (21)
+| Mogbo, Pöltl (11)
+| Scottie Barnes (8)
+| [[Capital One Arena]]<br>13,532
+| 25–47
+|- style="background:#cfc
+| 73
+| March 26
+| @ [[2024–25 Brooklyn Nets season|Brooklyn]]
+| {{NBA game|id=0022401054|pf=116|pa=86}}
+| Orlando Robinson (23)
+| Orlando Robinson (12)
+| Jamal Shead (8)
+| [[Barclays Center]]<br>16,413
+| 26–47
+|- style="background:#cfc
+| 74
+| March 28
+| [[2024–25 Charlotte Hornets season|Charlotte]]
+| {{NBA game|id=0022401069|pf=108|pa=97}}
+| Jakob Pöltl (24)
+| Jakob Pöltl (12)
+| Immanuel Quickley (9)
+| [[Scotiabank Arena]]<br>19,276
+| 27–47
+|- style="background:#cfc
+| 75
+| March 30
+| @ Philadelphia
+| {{NBA game|id=0022401087|pf=127|pa=109}}
+| RJ Barrett (31)
+| [[Ja'Kobe Walter]] (8)
+| Jamal Shead (9)
+| [[Wells Fargo Center (Philadelphia)|Wells Fargo Center]]<br>19,785
+| 28–47
+{{NBA game log section|Toronto Raptors|April|show=no
+| home_wins   = 1
+| home_losses = 2
+| road_wins   = 1
+| road_losses = 3
+}}
+|- style="background:#fcc
+| 76
+| April 1
+| @ [[2024–25 Chicago Bulls season|Chicago]]
+| {{NBA game|id=0022401099|pf=118|pa=137}}
+| [[Immanuel Quickley|Quickley]], [[Ja'Kobe Walter|Walter]] (17)
+| [[A. J. Lawson|Lawson]], [[Jonathan Mogbo|Mogbo]] (6)
+| Immanuel Quickley (9)
+| [[United Center]]<br>20,005
+| 28–48
+|- style="background:#fcc
+| 77
+| April 3
+| [[2024–25 Portland Trail Blazers season|Portland]]
+| {{NBA game|id=0022401116|pf=103|pa=112}}
+| [[RJ Barrett]] (18)
+| Ja'Kobe Walter (7)
+| [[Scottie Barnes|Barnes]], Mogbo (5)
+| [[Scotiabank Arena]]<br>18,548
+| 28–49
+|- style="background:#fcc
+| 78
+| April 4
+| [[2024–25 Detroit Pistons season|Detroit]]
+| {{NBA game|id=0022401121|pf=105|pa=117}}
+| Ja'Kobe Walter (22)
+| [[Jakob Pöltl]] (11)
+| [[Jamal Shead]] (9)
+| [[Scotiabank Arena]]<br>19,491
+| 28–50
+|- style="background:#cfc
+| 79
+| April 6
+| @ [[2024–25 Brooklyn Nets season|Brooklyn]]
+| {{NBA game|id=0022401134|pf=120|pa=109}}
+| Jonathan Mogbo (17)
+| Jonathan Mogbo (11)
+| Jamal Shead (12)
+| [[Barclays Center]]<br>17,007
+| 29–50
+|- style="background:#cfc
+| 80
+| April 9
+| [[2024–25 Charlotte Hornets season|Charlotte]]
+| {{NBA game|id=0022401158|pf=126|pa=96}}
+| [[Jared Rhoden]] (23)
+| [[Orlando Robinson]] (12)
+| Jonathan Mogbo (11)
+| [[Scotiabank Arena]]<br>19,800
+| 30–50
+|- style="background:#fcc
+| 81
+| April 11
+| @ [[2024–25 Dallas Mavericks season|Dallas]]
+| {{NBA game|id=0022401178|pf=102|pa=124}}
+| Scottie Barnes (26)
+| A.J. Lawson (10)
+| Jonathan Mogbo (8)
+| [[American Airlines Center]]<br>20,177
+| 30–51
+|- style="background:#fcc
+| 82
+| April 13
+| @ [[2024–25 San Antonio Spurs season|San Antonio]]
+| {{NBA game|id=0022401197|pf=118|pa=125}}
+| Scottie Barnes (35)
+| Jonathan Mogbo (14)
+| Jonathan Mogbo (10)
+| [[Frost Bank Center]]<br>18,672
+| 30–52
+{{NBA game log end|tor|end_year=2025}}
+
+===NBA Cup===
+{{Main|2024 NBA Cup}}
+The groups were revealed during the tournament announcement on July 12, 2024.<ref>{{cite web|title=NBA unveils new logo and game dates for Emirates NBA Cup 2024|url=https://www.nba.com/news/nba-unveils-new-logo-and-game-dates-for-emirates-nba-cup-2024|website=NBA.com|access-date=July 12, 2024|date=July 11, 2024}}</ref><ref>{{cite web|title=Emirates NBA Cup 2024: Group Draw Results|url=https://www.nba.com/news/2024-nba-cup-group-draw-results|website=NBA.com|access-date=July 13, 2024|date=July 12, 2024}}</ref>
+
+====East Group B====
+{{:2024 NBA Cup|transcludesection=East Group B}}
+
+==Player statistics==
+
+===Regular season===
+{| class="wikitable sortable" style="font-size: 95%; text-align:right;"
+|-
+! style="background:#CE1141; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|Player
+! style="background:#CE1141; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|{{Abbr| POS | Position}}
+! style="background:#CE1141; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|{{Abbr| GP | Games played}}
+! style="background:#CE1141; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|{{Abbr| GS | Games starter}}
+! style="background:#CE1141; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|{{Abbr| MP | Minutes played}}
+! style="background:#CE1141; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|{{Abbr| REB | Rebounds}}
+! style="background:#CE1141; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|{{Abbr| AST | Assists}}
+! style="background:#CE1141; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|{{Abbr| STL | Steals}}
+! style="background:#CE1141; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|{{Abbr| BLK | Blocks}}
+! style="background:#CE1141; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|{{Abbr| PTS | Points}}
+! style="background:#CE1141; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|{{Abbr| MPG | Minutes per game}}
+! style="background:#CE1141; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|{{Abbr| RPG | Rebounds per game}}
+! style="background:#CE1141; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|{{Abbr| APG | Assists per game}}
+! style="background:#CE1141; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|{{Abbr| SPG | Steals per game}}
+! style="background:#CE1141; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|{{Abbr| BPG | Blocks per game}}
+! style="background:#CE1141; color:#FFFFFF; border-top:#010101 3px solid; border-bottom:#010101 3px solid;"|{{Abbr| PPG | Points per game}}
+|- 
+| style="text-align:left;"|{{sortname|Jamal|Shead}}||style="text-align:center;"|PG
+| style="background:#010101; color:#FFFFFF;"|'''75''' || 11 || 1,467 || 115 || 316 || 58 || 10 || 533 || 19.6 || 1.5 || 4.2 || .8 || .1 || 7.1
+|- 
+| style="text-align:left;"|{{sortname|Scottie|Barnes}}||style="text-align:center;"|PF
+| 65 || style="background:#010101; color:#FFFFFF;"|'''65''' || style="background:#010101; color:#FFFFFF;"|'''2,134''' || 502 || style="background:#010101; color:#FFFFFF;"|'''378''' || style="background:#010101; color:#FFFFFF;"|'''93''' || 63 || style="background:#010101; color:#FFFFFF;"|'''1,252''' || style="background:#010101; color:#FFFFFF;"|'''32.8''' || 7.7 || style="background:#010101; color:#FFFFFF;"|'''{{sort|5.82|5.8}}''' || style="background:#010101; color:#FFFFFF;"|'''1.4''' || 1.0 || 19.3
+|- 
+| style="text-align:left;"|{{sortname|Ochai|Agbaji}}||style="text-align:center;"|SG
+| 64 || 45 || 1,739 || 242 || 98 || 58 || 30 || 667 || 27.2 || 3.8 || 1.5 || .9 || .5 || 10.4
+|- 
+| style="text-align:left;"|{{sortname|Jonathan|Mogbo}}||style="text-align:center;"|PF
+| 63 || 18 || 1,286 || 311 || 146 || 55 || 34 || 389 || 20.4 || 4.9 || 2.3 || .9 || .5 || 6.2
+|- 
+| style="text-align:left;"|{{sortname|Jamison|Battle}}||style="text-align:center;"|SF
+| 59 || 10 || 1,042 || 158 || 53 || 17 || 10 || 419 || 17.7 || 2.7 || .9 || .3 || .2 || 7.1
+|- 
+| style="text-align:left;"|{{sortname|RJ|Barrett}}||style="text-align:center;"|SF
+| 58 || 58 || 1,869 || 366 || 314 || 46 || 17 || 1,223 || 32.2 || 6.3 || 5.4 || .8 || .3 || style="background:#010101; color:#FFFFFF;"|'''21.1'''
+|- 
+| style="text-align:left;"|{{sortname|Jakob|Pöltl}}||style="text-align:center;"|C
+| 57 || 56 || 1,686 || style="background:#010101; color:#FFFFFF;"|'''547''' || 158 || 66 || style="background:#010101; color:#FFFFFF;"|'''71''' || 824 || 29.6 || style="background:#010101; color:#FFFFFF;"|'''9.6''' || 2.8 || 1.2 || style="background:#010101; color:#FFFFFF;"|'''1.2''' || 14.5
+|- 
+| style="text-align:left;"|{{sortname|Gradey|Dick}}||style="text-align:center;"|SG
+| 54 || 54 || 1,587 || 193 || 98 || 48 || 10 || 777 || 29.4 || 3.6 || 1.8 || .9 || .2 || 14.4
+|- 
+| style="text-align:left;"|{{sortname|Ja'Kobe|Walter}}||style="text-align:center;"|SG
+| 52 || 18 || 1,103 || 160 || 81 || 43 || 10 || 449 || 21.2 || 3.1 || 1.6 || .8 || .2 || 8.6
+|- 
+| style="text-align:left;"|{{sortname|Chris|Boucher|dab=basketball}}||style="text-align:center;"|PF
+| 50 || 0 || 862 || 224 || 33 || 24 || 25 || 502 || 17.2 || 4.5 || .7 || .5 || .5 || 10.0
+|- 
+| style="text-align:left;"|{{sortname|Davion|Mitchell}}<sup>†</sup>||style="text-align:center;"|PG
+| 44 || 22 || 1,080 || 85 || 203 || 31 || 8 || 279 || 24.5 || 1.9 || 4.6 || .7 || .2 || 6.3
+|- 
+| style="text-align:left;"|{{sortname|Orlando|Robinson}}<sup>†</sup>||style="text-align:center;"|C
+| 35 || 8 || 713 || 206 || 68 || 14 || 15 || 284 || 20.4 || 5.9 || 1.9 || .4 || .4 || 8.1
+|- 
+| style="text-align:left;"|{{sortname|Immanuel|Quickley}}||style="text-align:center;"|PG
+| 33 || 33 || 918 || 117 || 191 || 23 || 4 || 564 || 27.8 || 3.5 || {{sort|5.79|5.8}} || .7 || .1 || 17.1
+|- 
+| style="text-align:left;"|{{sortname|Garrett|Temple}}||style="text-align:center;"|SG
+| 28 || 0 || 227 || 29 || 31 || 17 || 2 || 53 || 8.1 || 1.0 || 1.1 || .6 || .1 || 1.9
+|- 
+| style="text-align:left;"|{{sortname|A. J.|Lawson}}||style="text-align:center;"|SG
+| 26 || 2 || 486 || 86 || 31 || 13 || 6 || 236 || 18.7 || 3.3 || 1.2 || .5 || .2 || 9.1
+|- 
+| style="text-align:left;"|{{sortname|Kelly|Olynyk}}<sup>†</sup>||style="text-align:center;"|C
+| 24 || 2 || 383 || 89 || 56 || 16 || 8 || 171 || 16.0 || 3.7 || 2.3 || .7 || .3 || 7.1
+|- 
+| style="text-align:left;"|{{sortname|Bruce|Brown|dab=basketball}}<sup>†</sup>||style="text-align:center;"|PG
+| 18 || 0 || 353 || 68 || 28 || 17 || 3 || 151 || 19.6 || 3.8 || 1.6 || .9 || .2 || 8.4
+|- 
+| style="text-align:left;"|{{sortname|Bruno|Fernando}}||style="text-align:center;"|C
+| 17 || 2 || 147 || 51 || 18 || 4 || 9 || 58 || 8.6 || 3.0 || 1.1 || .2 || .5 || 3.4
+|- 
+| style="text-align:left;"|{{sortname|Colin|Castleton}}<sup>†</sup>||style="text-align:center;"|C
+| 11 || 4 || 288 || 76 || 18 || 6 || 8 || 79 || 26.2 || 6.9 || 1.6 || .5 || .7 || 7.2
+|- 
+| style="text-align:left;"|{{sortname|Jared|Rhoden}}<sup>†</sup>||style="text-align:center;"|SG
+| 10 || 2 || 215 || 38 || 14 || 9 || 2 || 114 || 21.5 || 3.8 || 1.4 || .9 || .2 || 11.4
+|- 
+| style="text-align:left;"|{{sortname|Cole|Swider}}<sup>†</sup>||style="text-align:center;"|SF
+| 8 || 0 || 156 || 25 || 2 || 4 || 2 || 59 || 19.5 || 3.1 || .3 || .5 || .3 || 7.4
+|- 
+| style="text-align:left;"|{{sortname|Ulrich|Chomche}}||style="text-align:center;"|PF
+| 7 || 0 || 32 || 8 || 2 || 0 || 1 || 5 || 4.6 || 1.1 || .3 || .0 || .1 || .7
+|- 
+| style="text-align:left;"|{{sortname|D. J.|Carton}}||style="text-align:center;"|SG
+| 4 || 0 || 33 || 4 || 3 || 2 || 0 || 3 || 8.3 || 1.0 || .8 || .5 || .0 || .8
+|}
+{{Plainlist|
+* <small><sup>†</sup> Denotes player spent time with another team in the season. Stats reflect time with the Raptors only.</small>
+}}
+
+==Transactions==
+{{Main article|List of 2024–25 NBA season transactions}}
+
+===Trades===
+{| border="1" style="border-collapse:collapse; text-align:center; width:100%;"  cellpadding="5"
+|- style="background:#eee;"
+| style="width:12%" | June 28, 2024<ref>{{cite web|title=RAPTORS COMPLETE TRADE WITH KINGS|url=https://www.nba.com/raptors/news/raptors-complete-trade-with-kings|website=NBA.com|date=June 28, 2024|access-date=June 28, 2024}}</ref>
+| style="width:44%; vertical-align:top;"| To '''[[Toronto Raptors]]'''<hr>[[Davion Mitchell]]<br>[[Aleksandar Vezenkov]]<br>Draft rights to [[Jamal Shead]] (No. 45)<br>2025 POR second-round pick
+| style="width:44%; vertical-align:top;"| To '''[[Sacramento Kings]]'''<hr>[[Jalen McDaniels]]
+|-
+| style="width:12%" | February 6, 2025<ref>{{cite web|title=RAPTORS COMPLETE TRADE WITH INDIANA|url=https://www.nba.com/raptors/news/raptors-complete-trade-with-indiana-3|website=NBA.com|date=February 6, 2025|access-date=February 7, 2025}}</ref>
+| style="width:44%; vertical-align:top;"| To '''[[Toronto Raptors]]'''<hr>[[James Wiseman]]<br>Cash considerations
+| style="width:44%; vertical-align:top;"| To '''[[Indiana Pacers]]'''<hr>protected second-round pick
+|- style="background:#eee;"
+| style="width:12%" | February 6, 2025<ref>{{cite web|title=RAPTORS ACQUIRE INGRAM FROM NEW ORLEANS|url=https://www.nba.com/raptors/news/raptors-acquire-ingram-from-new-orleans|website=NBA.com|date=February 6, 2025|access-date=February 7, 2025}}</ref>
+| style="width:44%; vertical-align:top;"| To '''[[Toronto Raptors]]'''<hr>[[Brandon Ingram]]
+| style="width:44%; vertical-align:top;"| To '''[[New Orleans Pelicans]]'''<hr>[[Bruce Brown (basketball)|Bruce Brown]]<br>[[Kelly Olynyk]]<br>2026 IND protected first-round pick<br>2031 second-round pick
+|}
+
+=== Free agency ===
+
+==== Re-signed ====
+{| class="wikitable sortable sortable" style="text-align: center"
+! style="{{NBA color cell|Toronto Raptors}}" width="5%" |Date
+! style="{{NBA color cell|Toronto Raptors}}" width="10%" |Player
+! style="{{NBA color cell|Toronto Raptors}}" width="1%" class="unsortable" | Ref.
+|-
+| July 6
+| [[Garrett Temple]]
+| <ref>{{cite web|title=RAPTORS RE-SIGN TEMPLE|url=https://www.nba.com/raptors/news/raptors-re-sign-temple|website=NBA.com|date=July 6, 2024|access-date=July 7, 2024}}</ref>
+|}
+<!--
+==== Additions ====
+{| class="wikitable sortable sortable" style="text-align: center"
+! style="{{NBA color cell|Toronto Raptors}}" width="5%" |Date
+! style="{{NBA color cell|Toronto Raptors}}" width="10%" |Player
+! style="{{NBA color cell|Toronto Raptors}}" width="10%" |Former team
+! style="{{NBA color cell|Toronto Raptors}}" width="1%" class="unsortable" | Ref.
+|-
+|}-->
+
+==== Subtractions ====
+{| class="wikitable sortable sortable" style="text-align: center"
+! style="{{NBA color cell|Toronto Raptors}}" width="5%" |Date
+! style="{{NBA color cell|Toronto Raptors}}" width="10%" |Player
+! style="{{NBA color cell|Toronto Raptors}}" width="10%" |Reason left
+! style="{{NBA color cell|Toronto Raptors}}" width="10%" |New team
+! style="{{NBA color cell|Toronto Raptors}}" width="1%" class="unsortable" | Ref.
+|-
+|April 17
+|[[Jontay Porter]]
+|Banned
+|[[United States Basketball League (2026)|Seattle Super Hawks]]
+|<ref>{{cite web|first=Joe|last=Vardon|title=NBA bans Jontay Porter for violating gambling rules|url=https://www.nytimes.com/athletic/5423208/2024/04/17/jontay-porter-banned-nba-betting/|work=The Athletic|date=April 17, 2024|access-date=July 3, 2024}}</ref>
+|-
+|June 25
+|[[Mouhamadou Gueye]]
+|Waived
+|[[Capital City Go-Go]]
+|<ref>{{cite web|title=Raptors waive forward Mouhamadou Gueye, open up two-way spot|url=https://www.sportsnet.ca/nba/article/raptors-waive-forward-mouhamadou-gueye-open-up-two-way-spot/|website=SportsNet.ca|date=June 25, 2024|access-date=June 29, 2024}}</ref>
+|-
+| July 20
+| [[Gary Trent Jr.]]
+| Free agency
+| [[Milwaukee Bucks]]
+| <ref>{{cite web|title=Milwaukee Bucks Sign Gary Trent Jr.|url=https://www.nba.com/bucks/news/milwaukee-bucks-sign-gary-trent-jr|website=NBA.com|date=July 20, 2024|access-date=July 22, 2024}}</ref>
+|-
+| rowspan=2| July 22
+| [[Javon Freeman-Liberty]]
+| rowspan=2 | Waived
+| {{flagicon|TUR}} [[Manisa Basket]]
+| rowspan=2 | <ref>{{cite web|title=Raptors waive forward Sasha Vezenkov, guard Javon Freeman-Liberty|url=https://www.sportsnet.ca/nba/raptors-waive-forward-sasha-vezenkov-guard-javon-freeman-liberty/sn-amp/|website=sportsnet.ca|date=July 22, 2024|access-date=July 23, 2024}}</ref>
+|-
+| [[Aleksandar Vezenkov]]
+| {{flagicon|GRE}} [[Olympiacos B.C.|Olympiacos Piraeus B.C.]]
+|}
+
+== References ==
+{{Reflist}}
+
+{{Toronto Raptors}}
+{{Toronto Raptors seasons}}
+{{2024–25 NBA season by team}}
+
+{{DEFAULTSORT:2024-25 Toronto Raptors seasons}}
+[[Category:Toronto Raptors seasons]]
+[[Category:2024–25 NBA season by team|Toronto Raptors]]
+[[Category:2024 in Toronto|Toronto Raptors]]
+[[Category:2025 in Toronto|Toronto Raptors]]
+[[Category:2024–25 in Canadian basketball|Tor]]
+[[Category:2024 in sports in Ontario|Toronto Raptors season]]
+[[Category:2025 in sports in Ontario|Toronto Raptors season]]

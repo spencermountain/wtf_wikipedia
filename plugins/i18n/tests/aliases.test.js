@@ -1,51 +1,56 @@
+import { readdirSync } from 'node:fs'
 import test from 'tape'
 import wtf from './_lib.js'
-import birthDateAge from '../src/data/birth_date_and_age.js'
-import citation from '../src/data/citation.js'
-import citeBook from '../src/data/cite_book.js'
-import citeJournal from '../src/data/cite_journal.js'
-import citeWeb from '../src/data/cite_web.js'
-import commonsCat from '../src/data/commons_cat.js'
-import coord from '../src/data/coord.js'
-import flag from '../src/data/flag.js'
-import flagicon from '../src/data/flagicon.js'
-import formatnum from '../src/data/formatnum.js'
-import ipa from '../src/data/ipa.js'
-import isbn from '../src/data/isbn.js'
-import main from '../src/data/main.js'
-import portal from '../src/data/portal.js'
-import reflist from '../src/data/reflist.js'
-import sfn from '../src/data/sfn.js'
-import small from '../src/data/small.js'
-import persondata from '../src/data/persondata.js'
-import taxobox from '../src/data/taxobox.js'
-import startDate from '../src/data/start_date.js'
 
-// every localized alias should parse exactly like its english template
-const families = [
-  ['birth date and age', birthDateAge, '1950|3|4'],
-  ['citation', citation, 'title=Some Title|url=https://a.com'],
-  ['cite book', citeBook, 'title=Some Book|author=Smith'],
-  ['cite journal', citeJournal, 'title=Some Paper|journal=Nature'],
-  ['cite web', citeWeb, 'title=Some Page|url=https://a.com'],
-  ['commons cat', commonsCat, 'Toronto'],
-  ['coord', coord, '43|39|N|79|23|W'],
-  ['flag', flag, 'Canada'],
-  ['flagicon', flagicon, 'Canada'],
-  ['formatnum', formatnum, '1234567'],
-  ['ipa', ipa, 'tɒˈrɒntoʊ'],
-  ['isbn', isbn, '978-3-16-148410-0'],
-  ['main', main, 'History of Toronto'],
-  ['portal', portal, 'Canada'],
-  ['reflist', reflist, ''],
-  ['sfn', sfn, 'Smith|2001|p=4'],
-  ['small', small, 'tiny text'],
-  ['persondata', persondata, 'NAME=Smith, John'],
-  ['start date', startDate, '1993|02|24'],
-]
+// union every pack's names, grouped by the core template they resolve to
+const loadFamilies = async () => {
+  const dir = new URL('../src/langs/', import.meta.url)
+  const langs = readdirSync(dir).filter((f) => f !== '_lib.js' && f !== 'all' && f.startsWith('.') === false)
+  const byFam = {}
+  const infoboxes = new Set()
+  const add = (fam, name) => {
+    byFam[fam] = byFam[fam] || new Set()
+    byFam[fam].add(name)
+  }
+  for (const lang of langs) {
+    const { data } = await import(new URL(`${lang}/index.js`, dir))
+    Object.keys(data.aliases).forEach((name) => add(data.aliases[name], name))
+    Object.keys(data.parsers).forEach((name) => {
+      if (data.parsers[name].template) {
+        add(data.parsers[name].template, name)
+      }
+    })
+    data.infoboxes.forEach((name) => infoboxes.add(name))
+  }
+  return { byFam, infoboxes: [...infoboxes] }
+}
 
-const signature = (name, args) => {
-  const doc = wtf(`Hello. {{${name}${args ? '|' + args : ''}}} World.`)
+// args to exercise each family with; english param names parse identically through any alias
+const args = {
+  'birth date and age': '1950|3|4',
+  citation: 'title=Some Title|url=https://a.com',
+  'cite book': 'title=Some Book|author=Smith',
+  'cite journal': 'title=Some Paper|journal=Nature',
+  'cite web': 'title=Some Page|url=https://a.com',
+  'commons cat': 'Toronto',
+  coord: '43|39|N|79|23|W',
+  flag: 'Canada',
+  flagicon: 'Canada',
+  formatnum: '1234567',
+  ipa: 'tɒˈrɒntoʊ',
+  isbn: '978-3-16-148410-0',
+  main: 'History of Toronto',
+  nihongo: 'Tokyo|東京|Tōkyō',
+  portal: 'Canada',
+  reflist: '',
+  sfn: 'Smith|2001|p=4',
+  small: 'tiny text',
+  persondata: 'NAME=Smith, John',
+  start: '1993|02|24',
+}
+
+const signature = (name, tmplArgs) => {
+  const doc = wtf(`Hello. {{${name}${tmplArgs ? '|' + tmplArgs : ''}}} World.`)
   return {
     text: doc.text(),
     references: doc.references().length,
@@ -54,19 +59,22 @@ const signature = (name, args) => {
   }
 }
 
-families.forEach(([english, aliases, args]) => {
-  test(`i18n aliases: ${english}`, (t) => {
-    const want = signature(english, args)
+test('i18n every alias parses like its english template', async (t) => {
+  const { byFam } = await loadFamilies()
+  Object.keys(args).forEach((english) => {
+    const want = signature(english, args[english])
+    const aliases = [...(byFam[english] || [])].sort()
+    t.ok(aliases.length > 0, `${english}: has aliases`)
     aliases.forEach((alias) => {
-      const got = signature(alias, args)
+      const got = signature(alias, args[english])
       t.deepEqual(
         { ...got, templates: got.templates.length },
         { ...want, templates: want.templates.length },
         `{{${alias}}} ≈ {{${english}}}`
       )
     })
-    t.end()
   })
+  t.end()
 })
 
 test('i18n alias metadata', (t) => {
@@ -93,8 +101,10 @@ test('i18n alias metadata', (t) => {
   t.end()
 })
 
-test('i18n aliases: taxobox aliases are infoboxes', (t) => {
-  taxobox.forEach((alias) => {
+test('i18n aliases: taxobox aliases are infoboxes', async (t) => {
+  const { infoboxes } = await loadFamilies()
+  t.ok(infoboxes.length > 0, 'has taxobox aliases')
+  infoboxes.forEach((alias) => {
     const doc = wtf(`{{${alias}|regnum=Animalia|name=Cat}} x`)
     t.equal(doc.infoboxes().length, 1, `{{${alias}}} → infobox`)
   })
@@ -106,8 +116,9 @@ test('i18n aliases do not clobber core templates', (t) => {
   t.end()
 })
 
-test('i18n citation aliases inside <ref> tags', (t) => {
-  ;[...citeWeb, ...citeBook].forEach((alias) => {
+test('i18n citation aliases inside <ref> tags', async (t) => {
+  const { byFam } = await loadFamilies()
+  ;[...byFam['cite web'], ...byFam['cite book']].forEach((alias) => {
     const ref = wtf(`x.<ref>{{${alias}|url=https://a.com|title=Pagina}}</ref>`).references()[0]
     t.equal(ref?.title(), 'Pagina', `<ref>{{${alias}}}</ref> keeps its title`)
   })

@@ -1,4 +1,4 @@
-// hand-curated adjustments, applied by 04-build.js on top of the fetched data
+// hand-curated adjustments, used by 04-diff.js when comparing the fetched data against src
 export default {
   // names kept per-family although the live fetch could not confirm them
   include: {

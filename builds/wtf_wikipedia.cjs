@@ -4097,6 +4097,12 @@ let aliases$1 = {
   localday: "currentday",
   localdayname: "currentdayname",
   localyear: "currentyear",
+  "in language": "in lang",
+  "link language": "in lang",
+  "clickable button 2": "clickable button",
+  "category link": "cl",
+  lcs: "cl",
+  "category see also link": "cl",
   "birth date based on age at death": "birth based on age as of date",
   "bare anchored list": "anchored list",
   cvt: "convert",
@@ -4245,6 +4251,7 @@ let multi = {
   nihongo: ["nihongo2", "nihongo3", "nihongo-s", "nihongo foot"],
   plainlist: ["flatlist", "plain list"],
   "winning percentage": ["winpct", "winperc"],
+  "nba game": ["nba game br"],
   "win-loss record": ["win\u2013loss record", "win loss record", "wlr"],
   "collapsible list": [
     "nblist",
@@ -6359,6 +6366,334 @@ justNames.forEach((str) => {
   fns[str] = str;
 });
 
+const names = {
+  aa: "Afar",
+  ab: "Abkhazian",
+  af: "Afrikaans",
+  ak: "Akan",
+  am: "Amharic",
+  an: "Aragonese",
+  ang: "Old English",
+  ar: "Arabic",
+  arc: "Aramaic",
+  as: "Assamese",
+  ast: "Asturian",
+  av: "Avaric",
+  ay: "Aymara",
+  az: "Azerbaijani",
+  ba: "Bashkir",
+  be: "Belarusian",
+  bg: "Bulgarian",
+  bh: "Bihari",
+  bi: "Bislama",
+  bm: "Bambara",
+  bn: "Bengali",
+  bo: "Tibetan",
+  br: "Breton",
+  bs: "Bosnian",
+  ca: "Catalan",
+  ce: "Chechen",
+  ceb: "Cebuano",
+  ch: "Chamorro",
+  co: "Corsican",
+  cr: "Cree",
+  cs: "Czech",
+  cu: "Church Slavonic",
+  cv: "Chuvash",
+  cy: "Welsh",
+  da: "Danish",
+  de: "German",
+  dv: "Divehi",
+  dz: "Dzongkha",
+  ee: "Ewe",
+  egy: "Egyptian",
+  el: "Greek",
+  en: "English",
+  enm: "Middle English",
+  eo: "Esperanto",
+  es: "Spanish",
+  et: "Estonian",
+  eu: "Basque",
+  fa: "Persian",
+  ff: "Fula",
+  fi: "Finnish",
+  fil: "Filipino",
+  fj: "Fijian",
+  fo: "Faroese",
+  fr: "French",
+  fro: "Old French",
+  fy: "Western Frisian",
+  ga: "Irish",
+  gd: "Scottish Gaelic",
+  gl: "Galician",
+  gn: "Guarani",
+  grc: "Ancient Greek",
+  gsw: "Swiss German",
+  gu: "Gujarati",
+  gv: "Manx",
+  ha: "Hausa",
+  haw: "Hawaiian",
+  he: "Hebrew",
+  hi: "Hindi",
+  hr: "Croatian",
+  ht: "Haitian Creole",
+  hu: "Hungarian",
+  hy: "Armenian",
+  ia: "Interlingua",
+  id: "Indonesian",
+  ig: "Igbo",
+  is: "Icelandic",
+  it: "Italian",
+  iu: "Inuktitut",
+  ja: "Japanese",
+  jv: "Javanese",
+  ka: "Georgian",
+  kk: "Kazakh",
+  kl: "Greenlandic",
+  km: "Khmer",
+  kn: "Kannada",
+  ko: "Korean",
+  ks: "Kashmiri",
+  ku: "Kurdish",
+  ky: "Kyrgyz",
+  la: "Latin",
+  lb: "Luxembourgish",
+  lg: "Ganda",
+  ln: "Lingala",
+  lo: "Lao",
+  lt: "Lithuanian",
+  lv: "Latvian",
+  mg: "Malagasy",
+  mi: "M\u0101ori",
+  mk: "Macedonian",
+  ml: "Malayalam",
+  mn: "Mongolian",
+  mr: "Marathi",
+  ms: "Malay",
+  mt: "Maltese",
+  my: "Burmese",
+  nan: "Min Nan",
+  nb: "Norwegian Bokm\xE5l",
+  nds: "Low German",
+  ne: "Nepali",
+  nl: "Dutch",
+  nn: "Norwegian Nynorsk",
+  no: "Norwegian",
+  non: "Old Norse",
+  oc: "Occitan",
+  om: "Oromo",
+  or: "Odia",
+  os: "Ossetian",
+  pa: "Punjabi",
+  pl: "Polish",
+  ps: "Pashto",
+  pt: "Portuguese",
+  qu: "Quechua",
+  rm: "Romansh",
+  ro: "Romanian",
+  ru: "Russian",
+  rw: "Kinyarwanda",
+  sa: "Sanskrit",
+  sc: "Sardinian",
+  scn: "Sicilian",
+  sco: "Scots",
+  sd: "Sindhi",
+  se: "Northern Sami",
+  sh: "Serbo-Croatian",
+  si: "Sinhala",
+  sk: "Slovak",
+  sl: "Slovene",
+  sm: "Samoan",
+  sn: "Shona",
+  so: "Somali",
+  sq: "Albanian",
+  sr: "Serbian",
+  st: "Sotho",
+  su: "Sundanese",
+  sv: "Swedish",
+  sw: "Swahili",
+  syc: "Classical Syriac",
+  ta: "Tamil",
+  te: "Telugu",
+  tg: "Tajik",
+  th: "Thai",
+  ti: "Tigrinya",
+  tk: "Turkmen",
+  tl: "Tagalog",
+  tn: "Tswana",
+  to: "Tongan",
+  tr: "Turkish",
+  tt: "Tatar",
+  ug: "Uyghur",
+  uk: "Ukrainian",
+  ur: "Urdu",
+  uz: "Uzbek",
+  vi: "Vietnamese",
+  wa: "Walloon",
+  wo: "Wolof",
+  xh: "Xhosa",
+  yi: "Yiddish",
+  yo: "Yoruba",
+  yue: "Cantonese",
+  zh: "Chinese",
+  zu: "Zulu",
+  // script variants
+  "sr-cyr": "Serbian Cyrillic",
+  "sr-cyrl": "Serbian Cyrillic",
+  "sr-latn": "Serbian Latin",
+  "sh-cyrl": "Serbo-Croatian Cyrillic",
+  "sh-latn": "Serbo-Croatian Latin",
+  "zh-hans": "Simplified Chinese",
+  "zh-hant": "Traditional Chinese",
+  "zh-tw": "Taiwanese Mandarin",
+  "ku-arab": "Kurdish",
+  "ku-cyrl": "Kurdish Cyrillic",
+  "ms-arab": "Malay Jawi",
+  "pa-arab": "Punjabi Shahmukhi",
+  "tt-latn": "Tatar Latin",
+  "tt-cyrl": "Tatar Cyrillic",
+  "az-arab": "South Azerbaijani",
+  "uz-cyrl": "Uzbek Cyrillic",
+  "kk-arab": "Kazakh Arabic",
+  "pt-br": "Brazilian Portuguese",
+  "de-at": "Austrian German",
+  "de-ch": "Swiss Standard German",
+  "nl-be": "Belgian Dutch",
+  "en-emodeng": "Early Modern English",
+  "grc-x-doric": "Doric Greek",
+  "grc-x-medieval": "Medieval Greek",
+  "grc-gre": "Ancient Greek",
+  "la-x-medieval": "Medieval Latin",
+  "fra-que": "Quebec French",
+  "ca-valencia": "Valencian"
+};
+
+const langText = (code = "", obj = {}, opts = {}) => {
+  code = code.toLowerCase();
+  let label = obj.label;
+  if (label === void 0 && (!opts.lang || opts.lang === "en")) {
+    label = names[code] || names[code.split("-")[0]] || "";
+  }
+  let translit = obj.translit || obj.transliteration || "";
+  let lit = obj.lit || obj.translation || "";
+  let str = obj.text || "";
+  if (label && label !== "none") {
+    str = `${label}: ${str}`;
+  }
+  if (translit) {
+    str += `, romanized: ${translit}`;
+  }
+  if (lit) {
+    str += `, lit. '${lit}'`;
+  }
+  return str;
+};
+const langx = (tmpl, parse = parseTextArguments, opts = {}) => {
+  let obj = parse(tmpl, ["code", "text", "translit", "lit"]);
+  const payload = { template: "langx", lang: obj.code, text: obj.text || "" };
+  if (obj.translit || obj.transliteration) {
+    payload.translit = obj.translit || obj.transliteration;
+  }
+  if (obj.lit || obj.translation) {
+    payload.lit = obj.lit || obj.translation;
+  }
+  return { data: payload, replacement: langText(obj.code, obj, opts) };
+};
+const langDash = (tmpl, parse = parseTextArguments, opts = {}) => {
+  let obj = parse(tmpl, ["text", "translit", "lit"]);
+  let code = (obj.template || "").replace(/^lang-/, "");
+  if (/-(cyrl?|latn)-(cyrl|latn)$/.test(code)) {
+    code = code.replace(/-(cyrl|latn)$/, "");
+  }
+  return { data: null, replacement: langText(code, obj, opts) };
+};
+const zhOrder = [
+  ["c", "Chinese"],
+  ["t", "traditional Chinese"],
+  ["s", "simplified Chinese"],
+  ["p", "pinyin"],
+  ["tp", "Tongyong Pinyin"],
+  ["w", "Wade\u2013Giles"],
+  ["j", "Jyutping"],
+  ["cy", "Cantonese Yale"],
+  ["poj", "Pe\u030Dh-\u014De-j\u012B"],
+  ["l", "lit."]
+];
+const zh = (tmpl, parse = parseTextArguments) => {
+  let obj = parse(tmpl);
+  let order = zhOrder;
+  if (obj.first === "s") {
+    order = zhOrder.filter((a) => a[0] !== "t" && a[0] !== "s");
+    order.splice(1, 0, ["s", "simplified Chinese"], ["t", "traditional Chinese"]);
+  }
+  const noLabels = obj.labels === "no";
+  let parts = [];
+  order.forEach(([key, label]) => {
+    if (!obj[key]) {
+      return;
+    }
+    if (key === "l") {
+      parts.push(noLabels ? `'${obj[key]}'` : `lit. '${obj[key]}'`);
+      return;
+    }
+    parts.push(noLabels ? obj[key] : `${label}: ${obj[key]}`);
+  });
+  return { data: obj, replacement: parts.join("; ") };
+};
+const koOrder = [
+  ["hangul", "Korean"],
+  ["hanja", "Hanja"],
+  ["rr", "RR"],
+  ["mr", "MR"],
+  ["yale", "Yale"],
+  ["lit", "lit."]
+];
+const korean = (tmpl, parse = parseTextArguments) => {
+  let obj = parse(tmpl, ["hangul", "hanja", "rr", "mr"]);
+  const noLabels = obj.labels === "no";
+  let parts = [];
+  koOrder.forEach(([key, label]) => {
+    if (!obj[key]) {
+      return;
+    }
+    if (key === "lit") {
+      parts.push(noLabels ? `'${obj[key]}'` : `lit. '${obj[key]}'`);
+      return;
+    }
+    parts.push(noLabels ? obj[key] : `${label}: ${obj[key]}`);
+  });
+  return { data: obj, replacement: parts.join("; ") };
+};
+const ruby = (tmpl, parse = parseTextArguments) => {
+  let obj = parse(tmpl, ["text", "ruby"]);
+  if (obj.ruby) {
+    return { data: obj, replacement: `${obj.text || ""} (${obj.ruby})` };
+  }
+  return { data: obj, replacement: obj.text || "" };
+};
+const respell = (tmpl, parse = parseTextArguments) => {
+  let obj = parse(tmpl);
+  let arr = (obj.list || []).map((s) => s === "_" ? " " : s);
+  let str = arr.join("-").replace(/-? -?/g, " ");
+  return { data: { template: "respell", transcription: str }, replacement: "" };
+};
+const postNominals = (tmpl, parse = parseTextArguments) => {
+  let obj = parse(tmpl);
+  let arr = (obj.list || []).filter((s) => s);
+  if (obj.post && obj.post !== void 0) {
+    arr = obj.post.split(/[, ]+/).filter((s) => s);
+  }
+  return { data: { template: "post-nominals", list: arr, country: obj.country }, replacement: arr.join(obj.sep || " ") };
+};
+var languages = {
+  langx,
+  zh,
+  korean,
+  ruby,
+  respell,
+  "post-nominals": postNominals
+};
+
 let templates$b = {};
 let more = [
   "sr-latn-cyrl",
@@ -6855,10 +7190,10 @@ let more = [
   // Santali
 ];
 more.forEach((k) => {
-  templates$b["lang-" + k] = 0;
+  templates$b["lang-" + k] = langDash;
 });
 Object.keys(languages$1).forEach((k) => {
-  templates$b["lang-" + k] = 0;
+  templates$b["lang-" + k] = langDash;
 });
 
 var flags = [
@@ -7682,7 +8017,37 @@ const tlx = (tmpl, parse = parseTextArguments) => {
   let obj = parse(tmpl, ["name"]);
   return { data: null, replacement: obj.name || "" };
 };
+const inLang = (tmpl, parse = parseTextArguments) => {
+  let obj = parse(tmpl);
+  let codes = (obj.list || []).map((s) => s.trim().toLowerCase()).filter((s) => s);
+  let names$1 = codes.map((c) => names[c] || names[c.split("-")[0]] || c);
+  if (names$1.length === 0) {
+    return { data: null, replacement: "" };
+  }
+  let str = names$1.length > 1 ? names$1.slice(0, -1).join(", ") + " and " + names$1.at(-1) : names$1[0];
+  return { data: { codes }, replacement: `(in ${str})` };
+};
+const clickableButton = (tmpl, parse = parseTextArguments) => {
+  let obj = parse(tmpl, ["text"]);
+  return { data: null, replacement: obj.text || obj.label || "" };
+};
+const box = (tmpl, parse = parseTextArguments) => {
+  let obj = parse(tmpl, ["text"]);
+  return { data: null, replacement: obj["1"] || obj.text || "" };
+};
+const categoryLink = (tmpl, parse = parseTextArguments) => {
+  let obj = parse(tmpl, ["category", "text"]);
+  if (!obj.category) {
+    return { data: null, replacement: "" };
+  }
+  let name = obj.category.replace(/^category:/i, "");
+  return { data: null, replacement: `[[:Category:${name}|${obj.text || "Category:" + name}]]` };
+};
 var inline = {
+  "in lang": inLang,
+  "clickable button": clickableButton,
+  box,
+  cl: categoryLink,
   tlx,
   harv,
   harvtxt,
@@ -9894,17 +10259,25 @@ var dates = {
     let d = /* @__PURE__ */ new Date();
     return { data: null, replacement: String(d.getFullYear()) };
   },
+  lastyear: () => {
+    return { data: null, replacement: String((/* @__PURE__ */ new Date()).getFullYear() - 1) };
+  },
+  nextyear: () => {
+    return { data: null, replacement: String((/* @__PURE__ */ new Date()).getFullYear() + 1) };
+  },
   monthyear: () => {
     let d = /* @__PURE__ */ new Date();
     return { data: null, replacement: months[d.getMonth()] + " " + d.getFullYear() };
   },
   "monthyear-1": () => {
     let d = /* @__PURE__ */ new Date();
+    d.setDate(1);
     d.setMonth(d.getMonth() - 1);
     return { data: null, replacement: months[d.getMonth()] + " " + d.getFullYear() };
   },
   "monthyear+1": () => {
     let d = /* @__PURE__ */ new Date();
+    d.setDate(1);
     d.setMonth(d.getMonth() + 1);
     return { data: null, replacement: months[d.getMonth()] + " " + d.getFullYear() };
   },
@@ -10500,111 +10873,6 @@ Object.keys(codes).forEach((k) => {
   exchanges[k] = parseStockExchange;
 });
 
-const langx = (tmpl, parse = parseTextArguments) => {
-  let obj = parse(tmpl, ["code", "text", "translit", "lit"]);
-  let translit = obj.translit || obj.transliteration || "";
-  let lit = obj.lit || obj.translation || "";
-  let parts = [obj.text || "", translit];
-  if (lit) {
-    parts.push(`lit. '${lit}'`);
-  }
-  parts = parts.filter((s) => s);
-  const payload = { template: "langx", lang: obj.code, text: obj.text || "" };
-  if (translit) {
-    payload.translit = translit;
-  }
-  if (lit) {
-    payload.lit = lit;
-  }
-  return { data: payload, replacement: parts.join(", ") };
-};
-const zhOrder = [
-  ["c", "Chinese"],
-  ["t", "traditional Chinese"],
-  ["s", "simplified Chinese"],
-  ["p", "pinyin"],
-  ["tp", "Tongyong Pinyin"],
-  ["w", "Wade\u2013Giles"],
-  ["j", "Jyutping"],
-  ["cy", "Cantonese Yale"],
-  ["poj", "Pe\u030Dh-\u014De-j\u012B"],
-  ["l", "lit."]
-];
-const zh = (tmpl, parse = parseTextArguments) => {
-  let obj = parse(tmpl);
-  let order = zhOrder;
-  if (obj.first === "s") {
-    order = zhOrder.filter((a) => a[0] !== "t" && a[0] !== "s");
-    order.splice(1, 0, ["s", "simplified Chinese"], ["t", "traditional Chinese"]);
-  }
-  const noLabels = obj.labels === "no";
-  let parts = [];
-  order.forEach(([key, label]) => {
-    if (!obj[key]) {
-      return;
-    }
-    if (key === "l") {
-      parts.push(noLabels ? `'${obj[key]}'` : `lit. '${obj[key]}'`);
-      return;
-    }
-    parts.push(noLabels ? obj[key] : `${label}: ${obj[key]}`);
-  });
-  return { data: obj, replacement: parts.join("; ") };
-};
-const koOrder = [
-  ["hangul", "Korean"],
-  ["hanja", "Hanja"],
-  ["rr", "RR"],
-  ["mr", "MR"],
-  ["yale", "Yale"],
-  ["lit", "lit."]
-];
-const korean = (tmpl, parse = parseTextArguments) => {
-  let obj = parse(tmpl, ["hangul", "hanja", "rr", "mr"]);
-  const noLabels = obj.labels === "no";
-  let parts = [];
-  koOrder.forEach(([key, label]) => {
-    if (!obj[key]) {
-      return;
-    }
-    if (key === "lit") {
-      parts.push(noLabels ? `'${obj[key]}'` : `lit. '${obj[key]}'`);
-      return;
-    }
-    parts.push(noLabels ? obj[key] : `${label}: ${obj[key]}`);
-  });
-  return { data: obj, replacement: parts.join("; ") };
-};
-const ruby = (tmpl, parse = parseTextArguments) => {
-  let obj = parse(tmpl, ["text", "ruby"]);
-  if (obj.ruby) {
-    return { data: obj, replacement: `${obj.text || ""} (${obj.ruby})` };
-  }
-  return { data: obj, replacement: obj.text || "" };
-};
-const respell = (tmpl, parse = parseTextArguments) => {
-  let obj = parse(tmpl);
-  let arr = (obj.list || []).map((s) => s === "_" ? " " : s);
-  let str = arr.join("-").replace(/-? -?/g, " ");
-  return { data: { template: "respell", transcription: str }, replacement: "" };
-};
-const postNominals = (tmpl, parse = parseTextArguments) => {
-  let obj = parse(tmpl);
-  let arr = (obj.list || []).filter((s) => s);
-  if (obj.post && obj.post !== void 0) {
-    arr = obj.post.split(/[, ]+/).filter((s) => s);
-  }
-  return { data: { template: "post-nominals", list: arr, country: obj.country }, replacement: arr.join(obj.sep || " ") };
-};
-var languages = {
-  langx,
-  zh,
-  korean,
-  ruby,
-  respell,
-  "post-nominals": postNominals
-};
-
 const enc = (str = "") => encodeURIComponent(str).replace(/%2F/g, "/").replace(/%3A/g, ":");
 const first = (str = "") => str.charAt(0).toLowerCase();
 const displayUrl = (url = "") => url.replace(/^[a-z]+:\/\//i, "").replace(/\/$/, "");
@@ -10968,6 +11236,19 @@ let sports = {
       arr.push(obj.t || obj.d);
     }
     return { data: obj, replacement: arr.join("\u2013") };
+  },
+  // https://en.wikipedia.org/wiki/Template:NBA_game
+  // {{NBA game|id=0012400007|pf=125|pa=98}} → '125–98' (points for–against)
+  "nba game": (tmpl, parse = parseTextArguments) => {
+    let obj = parse(tmpl);
+    if (!obj.pf || !obj.pa) {
+      return { data: obj, replacement: "" };
+    }
+    let str = `${obj.pf}\u2013${obj.pa}`;
+    if (obj.ot) {
+      str += " (OT)";
+    }
+    return { data: obj, replacement: str };
   },
   player: (tmpl, parse = parseTextArguments) => {
     let res = parse(tmpl, ["number", "country", "name", "dl"]);
@@ -11894,27 +12175,30 @@ const simplifyRows = function(rows) {
     return out;
   });
 };
-const parseLog = function(wiki, section, opts) {
-  const open = wiki.match(openReg$1);
-  const inner = wiki.slice(open.index + 2, templateEnd(wiki, open.index) - 2);
-  const { named, positional } = parseOpener(inner);
-  let headings = positional.length > 1 ? positional : legacyHeadings(named);
+const buildRows = function(rowText, headings, section, opts) {
   headings = headings.map((h) => h.replace(/<[^>]*>/g, " ").trim());
-  let rowText = wiki.slice(templateEnd(wiki, open.index)).replace(closeReg$1, "");
+  rowText = rowText.replace(/<br ?\/?>/gi, " ");
   rowText = rowText.replace(/<\/?(?:span|small|big|sup|sub|center|[biu])[^>]*>/gi, "");
   const parsed = process(rowText, opts);
   section.templates.push(...parsed.templates);
   section.references.push(...parsed.references);
-  rowText = parsed.remaining;
-  const table = "{|\n! " + headings.join(" !! ") + "\n" + rowText + "\n|}";
+  const table = "{|\n! " + headings.join(" !! ") + "\n" + parsed.remaining + "\n|}";
   const rows = simplifyRows(parseTable(table, opts).rows || []);
-  const data = { rows };
+  return { rows };
+};
+const parseLog = function(wiki, section, opts) {
+  const open = wiki.match(openReg$1);
+  const inner = wiki.slice(open.index + 2, templateEnd(wiki, open.index) - 2);
+  const { named, positional } = parseOpener(inner);
+  const headings = positional.length > 1 ? positional : legacyHeadings(named);
+  const rowText = wiki.slice(templateEnd(wiki, open.index)).replace(closeReg$1, "");
+  const data = buildRows(rowText, headings, section, opts);
   if (named.title || named.month) {
     data.title = named.title || named.month;
   }
   return data;
 };
-const parseGameLogs = function(section, opts = defaults$1) {
+const mlbLogs = function(section, opts) {
   let text = section.remaining;
   let out = "";
   let open = text.match(openReg$1);
@@ -11931,6 +12215,57 @@ const parseGameLogs = function(section, opts = defaults$1) {
     open = text.match(openReg$1);
   }
   section.remaining = out + text;
+  return section;
+};
+const nbaOpen = /\{\{ *nba game log (?:section|month)\s*[|}]/i;
+const nbaBoundary = /\{\{ *nba game log /i;
+const nbaHeadings = ["game", "date", "team", "score", "high points", "high rebounds", "high assists", "location attendance", "record"];
+const nbaLogs = function(section, opts) {
+  let text = section.remaining;
+  let out = "";
+  let open = text.match(nbaOpen);
+  while (open) {
+    const headEnd = templateEnd(text, open.index);
+    if (headEnd === -1) {
+      break;
+    }
+    const { positional } = parseOpener(text.slice(open.index + 2, headEnd - 2));
+    const rest = text.slice(headEnd);
+    const next = rest.match(nbaBoundary);
+    const stop = next ? next.index : rest.length;
+    const wiki = text.slice(open.index, headEnd + stop);
+    const data = buildRows(rest.slice(0, stop), nbaHeadings, section, opts);
+    if (positional[1]) {
+      data.title = positional[1];
+    }
+    section.templates.push(makeResult(wiki, "game log section", data, "", opts));
+    out += text.slice(0, open.index);
+    text = rest.slice(stop);
+    open = text.match(nbaOpen);
+  }
+  section.remaining = out + text;
+  return section;
+};
+const nflOpen = /\{\{ *nfl (?:postseason |preseason )?schedule start *[|}]/i;
+const nflHeader = "{|\n! Week !! Date !! Opponent !! Result !! Record !! Venue !! Recap";
+const nflLogs = function(section) {
+  let text = section.remaining;
+  let open = text.match(nflOpen);
+  while (open) {
+    const end = templateEnd(text, open.index);
+    if (end === -1) {
+      break;
+    }
+    text = text.slice(0, open.index) + nflHeader + text.slice(end);
+    open = text.match(nflOpen);
+  }
+  section.remaining = text;
+  return section;
+};
+const parseGameLogs = function(section, opts = defaults$1) {
+  section = mlbLogs(section, opts);
+  section = nbaLogs(section, opts);
+  section = nflLogs(section);
   return section;
 };
 

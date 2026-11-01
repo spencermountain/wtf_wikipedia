@@ -78,6 +78,132 @@ test('2025 blue jays: game-log templates + postseason', (t) => {
   t.end()
 })
 
+test('2024-25 raptors: nba game templates + preseason excluded', (t) => {
+  const res = fixture('2024-25-toronto-raptors.txt', '2024–25 Toronto Raptors season').nbaSeason()
+  t.equal(res.team, 'Toronto Raptors', 'team')
+  t.equal(res.year, 2024, 'year')
+  t.equal(res.games.length, 82, 'preseason games excluded')
+  t.deepEqual(tally(res.games), { win: 30, loss: 52 }, 'outcomes match the 30–52 record')
+
+  const g1 = res.games[0]
+  t.equal(g1.opponent, 'Cleveland Cavaliers', 'opponent from season-page link')
+  t.equal(g1.home, true, 'home game')
+  t.deepEqual(g1.result, { us: 106, them: 136 }, 'score from the {{NBA game}} template')
+  t.equal(g1.attendance, 19800, 'attendance after location')
+  t.equal(g1.location, 'Scotiabank Arena', 'arena')
+  t.equal(g1.leaders.points, 'Chris Boucher (18)', 'high-points leader')
+
+  t.equal(res.playoffs.length, 0, 'missed the playoffs')
+  t.equal(res.roster.length, 17, 'player2 roster templates')
+  t.ok(res.playerStats.season.length > 15, 'player statistics table')
+  t.deepEqual(res.standings.record, { wins: 30, losses: 52, games: 82, winPct: 0.366 }, 'record from wins/losses fields')
+  t.equal(res.standings.divisionPlace, 3, 'division place')
+  t.end()
+})
+
+test('1995-96 bulls: nba game br templates + playoffs', (t) => {
+  const res = fixture('1995-96-chicago-bulls.txt', '1995–96 Chicago Bulls season').nbaSeason()
+  t.equal(res.games.length, 82, 'all 82 games')
+  t.deepEqual(tally(res.games), { win: 72, loss: 10 }, 'the 72–10 season')
+  t.deepEqual(
+    res.playoffs.map((s) => s.length),
+    [3, 5, 4, 6],
+    'four playoff rounds to the title'
+  )
+  const g1 = res.games[0]
+  t.equal(g1.opponent, 'Charlotte Hornets', 'opponent resolved for the era')
+  t.deepEqual(g1.result, { us: 105, them: 91 }, 'score from {{NBA game br}}')
+  t.equal(g1.leaders.points, 'Michael Jordan (42)', 'high scorer')
+  t.end()
+})
+
+test('1985-86 celtics: external-link scores', (t) => {
+  const res = fixture('1985-86-boston-celtics.txt', '1985–86 Boston Celtics season').nbaSeason()
+  t.equal(res.games.length, 82, 'all 82 games')
+  t.deepEqual(tally(res.games), { win: 67, loss: 15 }, 'outcomes match the 67–15 record')
+  const g1 = res.games[0]
+  t.equal(g1.opponent, 'New Jersey Nets', 'opponent from season-page link')
+  t.equal(g1.home, false, 'away game from @ marker')
+  t.deepEqual(g1.result, { us: 109, them: 113 }, "'L 109–113 (OT)' link text parsed")
+  t.equal(g1.outcome, 'loss', 'loss')
+  t.equal(g1.overtime, true, 'overtime from the score suffix')
+  t.deepEqual(
+    res.playoffs.map((s) => s.length),
+    [3, 5, 4, 6],
+    'four playoff rounds'
+  )
+  t.end()
+})
+
+test('2024 bills: nfl schedule tables + postseason template', (t) => {
+  const res = fixture('2024-buffalo-bills.txt', '2024 Buffalo Bills season').nflSeason()
+  t.equal(res.team, 'Buffalo Bills', 'team')
+  t.equal(res.games.length, 17, 'seventeen games, bye-week excluded')
+  t.deepEqual(tally(res.games), { win: 13, loss: 4 }, 'outcomes match the 13–4 record')
+
+  const g1 = res.games[0]
+  t.equal(g1.opponent, 'Arizona Cardinals', 'opponent from season-page link')
+  t.equal(g1.home, true, 'home game - no at-marker')
+  t.deepEqual(g1.result, { us: 34, them: 28 }, "ours-first 'W 34–28' result")
+  t.equal(g1.venue, 'Highmark Stadium', 'venue')
+
+  t.equal(res.playoffs.length, 3, 'three playoff games, flat')
+  const afccg = res.playoffs[2]
+  t.equal(afccg.opponent, 'Kansas City Chiefs', 'playoff opponent')
+  t.equal(afccg.home, false, "away game from 'at' marker")
+  t.deepEqual(afccg.result, { us: 29, them: 32 }, 'playoff loss score')
+
+  t.deepEqual(res.standings.record, { wins: 13, losses: 4, games: 17, winPct: 0.765 }, 'infobox record')
+  t.equal(res.standings.division, 'AFC East', 'division split from place')
+  t.equal(res.standings.divisionPlace, 1, 'division place')
+  t.end()
+})
+
+test('1995 cowboys: older nfl format', (t) => {
+  const res = fixture('1995-dallas-cowboys.txt', '1995 Dallas Cowboys season').nflSeason()
+  t.equal(res.games.length, 16, 'sixteen games')
+  t.deepEqual(tally(res.games), { win: 12, loss: 4 }, 'outcomes match the 12–4 record')
+  t.equal(res.playoffs.length, 3, 'three playoff games')
+  t.equal(res.playoffs.filter((g) => g.win).length, 3, 'won the super bowl')
+  t.end()
+})
+
+test('2024 la galaxy: football-box matches', (t) => {
+  const res = fixture('2024-la-galaxy.txt', '2024 LA Galaxy season').mlsSeason()
+  t.equal(res.team, 'LA Galaxy', 'team')
+  t.equal(res.games.length, 34, 'all 34 league matches, cups + preseason excluded')
+  t.deepEqual(tally(res.games), { win: 19, loss: 8, tie: 7 }, 'outcomes match the 19–8–7 record')
+
+  const g1 = res.games[0]
+  t.equal(g1.opponent, 'Inter Miami CF', 'opponent from the box')
+  t.equal(g1.home, true, 'team1 is the home side')
+  t.equal(g1.outcome, 'tie', 'draw from result param')
+  t.deepEqual(g1.result, { us: 1, them: 1 }, 'score')
+  t.equal(g1.attendance, 27642, 'attendance')
+  t.equal(g1.stadium, 'Dignity Health Sports Park', 'stadium')
+
+  t.equal(res.playoffs.length, 5, 'five playoff matches')
+  const final = res.playoffs.at(-1)
+  t.equal(final.round, 'Final', 'mls cup final')
+  t.equal(final.opponent, 'New York Red Bulls', 'final opponent')
+  t.equal(final.win, true, 'won the cup')
+
+  t.deepEqual(res.standings.record, { wins: 19, losses: 8, ties: 7, games: 34, winPct: 0.559 }, 'computed record')
+  t.equal(res.standings.stadium, 'Dignity Health Sports Park', 'stadium from infobox')
+  t.end()
+})
+
+test('1996 dc united: first mls season', (t) => {
+  const res = fixture('1996-dc-united.txt', '1996 D.C. United season').mlsSeason()
+  t.equal(res.games.length, 32, 'all 32 league matches')
+  t.equal(res.playoffs.length, 6, 'six playoff matches')
+  t.equal(res.playoffs.filter((g) => g.win).length, 5, 'won the first mls cup')
+  const g1 = res.games[0]
+  t.ok(g1.opponent, 'opponent present')
+  t.ok(g1.date, 'date present')
+  t.end()
+})
+
 test('2002-03 maple leafs: four-part records + ties era', (t) => {
   const res = fixture('2002-03-toronto-maple-leafs.txt', '2002–03 Toronto Maple Leafs season').nhlSeason()
   t.equal(res.games.length, 82, 'all 82 games')

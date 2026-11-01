@@ -34,6 +34,20 @@ let sports = {
     return { data: obj, replacement: arr.join('–') }
   },
 
+  // https://en.wikipedia.org/wiki/Template:NBA_game
+  // {{NBA game|id=0012400007|pf=125|pa=98}} → '125–98' (points for–against)
+  'nba game': (tmpl, parse = defaultParse) => {
+    let obj = parse(tmpl)
+    if (!obj.pf || !obj.pa) {
+      return { data: obj, replacement: '' }
+    }
+    let str = `${obj.pf}–${obj.pa}`
+    if (obj.ot) {
+      str += ' (OT)'
+    }
+    return { data: obj, replacement: str }
+  },
+
   player: (tmpl, parse = defaultParse) => {
     let res = parse(tmpl, ['number', 'country', 'name', 'dl'])
     let str = `[[${res.name}]]`

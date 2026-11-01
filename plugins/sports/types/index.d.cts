@@ -6,5 +6,8 @@ declare const sports: {
   version: Esm['version']
   mlb: Esm['mlb']
   nhl: Esm['nhl']
+  nba: Esm['nba']
+  nfl: Esm['nfl']
+  mls: Esm['mls']
 }
 export = sports

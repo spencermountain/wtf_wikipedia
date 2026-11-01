@@ -30,11 +30,11 @@ const parseScore = function (txt = '') {
   return [arr[0], arr[1]]
 }
 
-// 'Rogers Centre (23,987)' or '19,108' → 19108
+// 'Rogers Centre (23,987)', 'Bell Centre 21,900' or '19,108' → 19108
 const parseAttendance = function (txt = '') {
   let str = String(txt)
-  const m = str.match(/\(([0-9, ]+)\)/)
-  if (m) {
+  const m = str.match(/\(([0-9, ]+)\)/) || str.match(/([0-9][0-9,]{2,}) *$/)
+  if (m && m[1]) {
     str = m[1]
   }
   return parseInt(str.replace(/[, ]/g, ''), 10) || null
@@ -133,6 +133,10 @@ const buildGame = function (row, ctx) {
   if (!date) {
     return null
   }
+  // bye-weeks have a week number, but no game
+  if (/\bbye\b/i.test(date)) {
+    return null
+  }
   const scoreText = getCell(cells, ['score', 'result', 'box score'])
   const score = parseScore(scoreText)
   const game = {
@@ -150,14 +154,14 @@ const buildGame = function (row, ctx) {
   if (found === false) {
     return null
   }
-  // the ot/so flag is its own column, or tacked onto the score: '2–2 OT'
-  const ot = getCell(cells, ['ot', 'overtime']) || String(scoreText).replace(/\(.*?\)/g, '')
+  // the ot/so flag is its own column, or tacked onto the score: '2–2 OT', '109–113 (OT)'
+  const ot = getCell(cells, ['ot', 'overtime']) || String(scoreText)
   game.overtime = /\b([0-9]?ot|so)\b/i.test(ot)
   if (/\bso\b/i.test(ot)) {
     game.shootout = true
   }
   game.record = parseRecord(getCell(cells, ['record', 'series']), ctx.record)
-  game.attendance = parseAttendance(getCell(cells, ['attendance', 'location (attendance)']))
+  game.attendance = parseAttendance(getCell(cells, ['attendance', 'location (attendance)', 'location attendance']))
   if (ctx.extras) {
     ctx.extras(game, row)
   }
@@ -169,4 +173,4 @@ const buildGame = function (row, ctx) {
 }
 
 export default buildGame
-export { parseScore, fromSeasonPage }
+export { parseScore, fromSeasonPage, sameTeam, parseAttendance }

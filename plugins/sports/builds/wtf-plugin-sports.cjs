@@ -264,11 +264,11 @@ const parseScore = function (txt = '') {
   return [arr[0], arr[1]]
 };
 
-// 'Rogers Centre (23,987)' or '19,108' → 19108
+// 'Rogers Centre (23,987)', 'Bell Centre 21,900' or '19,108' → 19108
 const parseAttendance = function (txt = '') {
   let str = String(txt);
-  const m = str.match(/\(([0-9, ]+)\)/);
-  if (m) {
+  const m = str.match(/\(([0-9, ]+)\)/) || str.match(/([0-9][0-9,]{2,}) *$/);
+  if (m && m[1]) {
     str = m[1];
   }
   return parseInt(str.replace(/[, ]/g, ''), 10) || null
@@ -367,6 +367,10 @@ const buildGame = function (row, ctx) {
   if (!date) {
     return null
   }
+  // bye-weeks have a week number, but no game
+  if (/\bbye\b/i.test(date)) {
+    return null
+  }
   const scoreText = getCell(cells, ['score', 'result', 'box score']);
   const score = parseScore(scoreText);
   const game = {
@@ -384,14 +388,14 @@ const buildGame = function (row, ctx) {
   if (found === false) {
     return null
   }
-  // the ot/so flag is its own column, or tacked onto the score: '2–2 OT'
-  const ot = getCell(cells, ['ot', 'overtime']) || String(scoreText).replace(/\(.*?\)/g, '');
+  // the ot/so flag is its own column, or tacked onto the score: '2–2 OT', '109–113 (OT)'
+  const ot = getCell(cells, ['ot', 'overtime']) || String(scoreText);
   game.overtime = /\b([0-9]?ot|so)\b/i.test(ot);
   if (/\bso\b/i.test(ot)) {
     game.shootout = true;
   }
   game.record = parseRecord(getCell(cells, ['record', 'series']), ctx.record);
-  game.attendance = parseAttendance(getCell(cells, ['attendance', 'location (attendance)']));
+  game.attendance = parseAttendance(getCell(cells, ['attendance', 'location (attendance)', 'location attendance']));
   if (ctx.extras) {
     ctx.extras(game, row);
   }
@@ -480,7 +484,7 @@ const finish = (games) => orientScores(inferFromRecord(games));
 // subsections or log-titles that are not regular-season games
 const postseasonish = /postseason|playoff|world series|championship|division series|wild card/i;
 const notRegularSeason =
-  /postseason|playoff|world series|championship|division series|wild card|detailed record|composite box|month.by.month/i;
+  /postseason|playoff|world series|championship|division series|wild card|preseason|pre-season|exhibition|detailed record|composite box|month.by.month/i;
 
 // all games under the best matching section, in one flat list
 const findGames = function (doc, ctx, titles) {
@@ -587,7 +591,7 @@ const resolveTeam = function (franchises, input, year) {
 };
 
 // current mlb franchises - renamed ones list each name, newest-first
-var franchises$1 = [
+var franchises$4 = [
   [{ name: 'Arizona Diamondbacks', from: 1998 }],
   [
     { name: 'Athletics', from: 2025 },
@@ -632,7 +636,7 @@ var franchises$1 = [
 ];
 
 // the roster is {{MLBplayer}} templates in a 'Roster' section
-const parseRoster = function (doc, year) {
+const parseRoster$1 = function (doc, year) {
   const s = findSection(doc, ['roster', 'players', `${year} roster`]);
   if (!s) {
     return []
@@ -655,7 +659,7 @@ const parseDraftPicks = function (doc) {
 };
 
 // batting + pitching tables, split by their columns
-const parsePlayerStats = function (doc) {
+const parsePlayerStats$1 = function (doc) {
   const res = { batters: [], pitchers: [] };
   const seen = new Set();
   const sections = [];
@@ -703,7 +707,7 @@ const parsePlayerStats = function (doc) {
 };
 
 // '2025 Toronto Blue Jays season' → {year: 2025, team: 'Toronto Blue Jays'}
-const parseTitle$1 = function (title = '') {
+const parseTitle$2 = function (title = '') {
   const m = String(title).match(/^(\d{4}) (.+?) season$/);
   if (m) {
     return { year: Number(m[1]), team: m[2] }
@@ -713,16 +717,16 @@ const parseTitle$1 = function (title = '') {
 };
 
 // before opening-day in april, "this season" usually means last year's
-const defaultYear$1 = function () {
+const defaultYear$4 = function () {
   const now = new Date();
   return now.getMonth() >= 3 ? now.getFullYear() : now.getFullYear() - 1
 };
 
 const noSave = /^[–\-−—]*$/;
-const gameTitles$1 = ['game log', 'season game log', 'schedule and results', 'schedule', 'regular season'];
+const gameTitles$4 = ['game log', 'season game log', 'schedule and results', 'schedule', 'regular season'];
 
 // per-game extras: the pitchers of record, and games-back
-const extras$1 = function (game, row) {
+const extras$3 = function (game, row) {
   const win = stripNotes(getCell(row.cells, ['win']));
   const loss = stripNotes(getCell(row.cells, ['loss']));
   let save = stripNotes(getCell(row.cells, ['save']));
@@ -736,7 +740,7 @@ const extras$1 = function (game, row) {
   }
 };
 
-const standings$1 = function (season) {
+const standings$3 = function (season) {
   return {
     record: season.record || null,
     league: getCell(season, ['league']) || '',
@@ -747,18 +751,18 @@ const standings$1 = function (season) {
   }
 };
 
-const parse$1 = function (doc) {
+const parse$4 = function (doc) {
   if (!doc) {
     return null
   }
-  const meta = parseTitle$1(doc.title || '');
+  const meta = parseTitle$2(doc.title || '');
   const ctx = {
     team: meta.team,
     year: meta.year,
     record: {},
     dateYear: (date, year) => (year && /\d{4}/.test(date) === false ? `${date} ${year}` : date),
-    fullName: (name) => resolveTeam(franchises$1, name, meta.year || new Date().getFullYear()),
-    extras: extras$1,
+    fullName: (name) => resolveTeam(franchises$4, name, meta.year || new Date().getFullYear()),
+    extras: extras$3,
   };
   const season = parseInfobox(doc, ['baseball team season', 'mlb yearly'], ctx.record);
   return {
@@ -766,33 +770,58 @@ const parse$1 = function (doc) {
     year: meta.year,
     page: doc.title || '',
     season,
-    standings: standings$1(season),
-    games: findGames(doc, ctx, gameTitles$1),
-    postseason: findSeries(doc, ctx, ['postseason game log', 'postseason', 'playoffs'], gameTitles$1),
-    roster: parseRoster(doc, meta.year),
+    standings: standings$3(season),
+    games: findGames(doc, ctx, gameTitles$4),
+    postseason: findSeries(doc, ctx, ['postseason game log', 'postseason', 'playoffs'], gameTitles$4),
+    roster: parseRoster$1(doc, meta.year),
     draftPicks: parseDraftPicks(doc),
-    playerStats: parsePlayerStats(doc),
+    playerStats: parsePlayerStats$1(doc),
   }
 };
 
-const makeTitle$1 = function (team, year) {
+const makeTitle$4 = function (team, year) {
   return `${year} ${team} season`.replace(/ /g, '_')
 };
 
-const addMethod$1 = function (models) {
+const addMethod$4 = function (models) {
   models.wtf.mlbSeason = async function (team, year, options) {
-    year ||= defaultYear$1();
-    team = resolveTeam(franchises$1, team, year);
-    const doc = await models.wtf.fetch(makeTitle$1(team, year), options);
-    return parse$1(doc)
+    year ||= defaultYear$4();
+    team = resolveTeam(franchises$4, team, year);
+    const doc = await models.wtf.fetch(makeTitle$4(team, year), options);
+    return parse$4(doc)
   };
   models.Doc.prototype.mlbSeason = function () {
-    return parse$1(this)
+    return parse$4(this)
   };
 };
 
+// nhl + nba seasons span two years: '2024–25', with '1999–2000' at the century
+const seasonSlug = function (year) {
+  const next = year + 1;
+  let suffix = String(next % 100).padStart(2, '0');
+  if (suffix === '00') {
+    suffix = String(next);
+  }
+  return `${year}–${suffix}`
+};
+
+// '2024–25 Toronto Raptors season', as a page-title
+const twoYearTitle = function (team, year) {
+  return `${seasonSlug(year)} ${team} season`.replace(/ /g, '_')
+};
+
+// and back again → {year: 2024, team: 'Toronto Raptors'}
+const parseTwoYearTitle = function (title = '') {
+  const m = String(title).match(/^(\d{4})(?:[–-]\d{2,4})? (.+?) season$/);
+  if (m) {
+    return { year: Number(m[1]), team: m[2] }
+  }
+  const year = String(title).match(/\d{4}/);
+  return { year: year ? Number(year[0]) : null, team: '' }
+};
+
 // current nhl franchises - renamed ones list each name, newest-first
-var franchises = [
+var franchises$3 = [
   [{ name: 'Anaheim Ducks', from: 2006 }, { name: 'Mighty Ducks of Anaheim', from: 1993 }],
   [{ name: 'Boston Bruins', from: 1924 }],
   [{ name: 'Buffalo Sabres', from: 1970 }],
@@ -833,14 +862,14 @@ var franchises = [
   [{ name: 'Winnipeg Jets', from: 2011 }, { name: 'Atlanta Thrashers', from: 1999 }],
 ];
 
-const asNum = (val) => Number(String(val).replace(/[−–]/, '-')) || 0;
+const asNum$1 = (val) => Number(String(val).replace(/[−–]/, '-')) || 0;
 
 const playerName = function (row) {
   let name = getCell(row, ['player', 'name']);
   return stripNotes(name)
 };
 
-const notTotal = (p) => p.name && /^totals?$/i.test(p.name) === false;
+const notTotal$1 = (p) => p.name && /^totals?$/i.test(p.name) === false;
 
 // the 'Skaters' table - games, goals, assists, points
 const parseSkaters = function (doc) {
@@ -855,14 +884,14 @@ const parseSkaters = function (doc) {
   const players = tables[0].rows().map((row) => {
     return {
       name: playerName(row),
-      games: asNum(getCell(row, ['gp'])),
-      goals: asNum(getCell(row, ['g', 'goals'])),
-      assists: asNum(getCell(row, ['a', 'assists'])),
-      points: asNum(getCell(row, ['pts', 'points'])),
-      plusMinus: asNum(getCell(row, ['+/−', '+/-'])),
+      games: asNum$1(getCell(row, ['gp'])),
+      goals: asNum$1(getCell(row, ['g', 'goals'])),
+      assists: asNum$1(getCell(row, ['a', 'assists'])),
+      points: asNum$1(getCell(row, ['pts', 'points'])),
+      plusMinus: asNum$1(getCell(row, ['+/−', '+/-'])),
     }
   });
-  return players.filter(notTotal)
+  return players.filter(notTotal$1)
 };
 
 // the 'Goaltenders' table - wins, losses, save-percentage
@@ -878,52 +907,30 @@ const parseGoalies = function (doc) {
   const players = table.rows().map((row) => {
     return {
       name: playerName(row),
-      games: asNum(getCell(row, ['gp', 'games'])),
-      wins: asNum(getCell(row, ['w', 'wins'])),
-      losses: asNum(getCell(row, ['l', 'losses'])),
-      otLosses: asNum(getCell(row, ['ot', 'otl'])),
-      goalsAgainstAvg: asNum(getCell(row, ['gaa'])),
-      savePct: asNum(getCell(row, ['sv%', 'sv', 'save %'])),
-      shutouts: asNum(getCell(row, ['so'])),
+      games: asNum$1(getCell(row, ['gp', 'games'])),
+      wins: asNum$1(getCell(row, ['w', 'wins'])),
+      losses: asNum$1(getCell(row, ['l', 'losses'])),
+      otLosses: asNum$1(getCell(row, ['ot', 'otl'])),
+      goalsAgainstAvg: asNum$1(getCell(row, ['gaa'])),
+      savePct: asNum$1(getCell(row, ['sv%', 'sv', 'save %'])),
+      shutouts: asNum$1(getCell(row, ['so'])),
     }
   });
-  return players.filter(notTotal)
+  return players.filter(notTotal$1)
 };
 
-// '2024–25 Toronto Maple Leafs season' → {year: 2024, team: 'Toronto Maple Leafs'}
-const parseTitle = function (title = '') {
-  const m = String(title).match(/^(\d{4})(?:[–-]\d{2,4})? (.+?) season$/);
-  if (m) {
-    return { year: Number(m[1]), team: m[2] }
-  }
-  const year = String(title).match(/\d{4}/);
-  return { year: year ? Number(year[0]) : null, team: '' }
-};
+const makeTitle$3 = twoYearTitle;
 
-// nhl seasons span two years: '2024–25', with '1999–2000' at the century
-const seasonSlug = function (year) {
-  const next = year + 1;
-  let suffix = String(next % 100).padStart(2, '0');
-  if (suffix === '00') {
-    suffix = String(next);
-  }
-  return `${year}–${suffix}`
-};
-
-const makeTitle = function (team, year) {
-  return `${seasonSlug(year)} ${team} season`.replace(/ /g, '_')
-};
-
-const gameTitles = ['regular season', 'schedule and results', 'game log', 'schedule'];
+const gameTitles$3 = ['regular season', 'schedule and results', 'game log', 'schedule'];
 
 // nhl seasons start in october - before august, "this season" began last year
-const defaultYear = function () {
+const defaultYear$3 = function () {
   const now = new Date();
   return now.getMonth() >= 7 ? now.getFullYear() : now.getFullYear() - 1
 };
 
 // per-game extras: cumulative points, and the goalie of record
-const extras = function (game, row) {
+const extras$2 = function (game, row) {
   const pts = parseInt(getCell(row.cells, ['pts', 'points']), 10);
   if (isNaN(pts) === false) {
     game.points = pts;
@@ -935,7 +942,7 @@ const extras = function (game, row) {
 };
 
 // absorb infobox key drift: 'division_place' is now 'DivisionRank'
-const standings = function (season) {
+const standings$2 = function (season) {
   return {
     record: season.record || null,
     division: getCell(season, ['division']) || '',
@@ -947,11 +954,11 @@ const standings = function (season) {
   }
 };
 
-const parse = function (doc) {
+const parse$3 = function (doc) {
   if (!doc) {
     return null
   }
-  const meta = parseTitle(doc.title || '');
+  const meta = parseTwoYearTitle(doc.title || '');
   const ctx = {
     team: meta.team,
     year: meta.year,
@@ -963,8 +970,8 @@ const parse = function (doc) {
       // the season wraps into the next calendar-year
       return /^(jan|feb|mar|apr|may|jun)/i.test(date) ? `${date} ${year + 1}` : `${date} ${year}`
     },
-    fullName: (name) => resolveTeam(franchises, name, meta.year || new Date().getFullYear()),
-    extras,
+    fullName: (name) => resolveTeam(franchises$3, name, meta.year || new Date().getFullYear()),
+    extras: extras$2,
   };
   const season = parseInfobox(doc, ['ice hockey team season', 'nhl team season'], ctx.record);
   return {
@@ -972,26 +979,615 @@ const parse = function (doc) {
     year: meta.year,
     page: doc.title || '',
     season,
-    standings: standings(season),
-    games: findGames(doc, ctx, gameTitles),
-    playoffs: findSeries(doc, ctx, ['playoffs', 'postseason'], gameTitles),
+    standings: standings$2(season),
+    games: findGames(doc, ctx, gameTitles$3),
+    playoffs: findSeries(doc, ctx, ['playoffs', 'postseason'], gameTitles$3),
     skaters: parseSkaters(doc),
     goalies: parseGoalies(doc),
   }
 };
 
-const addMethod = function (models) {
+const addMethod$3 = function (models) {
   models.wtf.nhlSeason = async function (team, year, options) {
+    year ||= defaultYear$3();
+    team = resolveTeam(franchises$3, team, year);
+    const doc = await models.wtf.fetch(makeTitle$3(team, year), options);
+    return parse$3(doc)
+  };
+  models.Doc.prototype.nhlSeason = function () {
+    return parse$3(this)
+  };
+};
+
+// current nba franchises - renamed ones list each name, newest-first
+var franchises$2 = [
+  [{ name: 'Atlanta Hawks', from: 1968 }],
+  [{ name: 'Boston Celtics', from: 1946 }],
+  [
+    { name: 'Brooklyn Nets', from: 2012 },
+    { name: 'New Jersey Nets', from: 1977 },
+    { name: 'New York Nets', from: 1968 },
+  ],
+  [{ name: 'Charlotte Hornets', from: 2014 }, { name: 'Charlotte Bobcats', from: 2004 }],
+  [{ name: 'Chicago Bulls', from: 1966 }],
+  [{ name: 'Cleveland Cavaliers', from: 1970 }],
+  [{ name: 'Dallas Mavericks', from: 1980 }],
+  [{ name: 'Denver Nuggets', from: 1974 }],
+  [{ name: 'Detroit Pistons', from: 1957 }],
+  [{ name: 'Golden State Warriors', from: 1971 }],
+  [{ name: 'Houston Rockets', from: 1971 }],
+  [{ name: 'Indiana Pacers', from: 1976 }],
+  [
+    { name: 'Los Angeles Clippers', from: 1984 },
+    { name: 'San Diego Clippers', from: 1978 },
+    { name: 'Buffalo Braves', from: 1970 },
+  ],
+  [{ name: 'Los Angeles Lakers', from: 1960 }],
+  [{ name: 'Memphis Grizzlies', from: 2001 }, { name: 'Vancouver Grizzlies', from: 1995 }],
+  [{ name: 'Miami Heat', from: 1988 }],
+  [{ name: 'Milwaukee Bucks', from: 1968 }],
+  [{ name: 'Minnesota Timberwolves', from: 1989 }],
+  [
+    { name: 'New Orleans Pelicans', from: 2013 },
+    { name: 'New Orleans Hornets', from: 2007 },
+    { name: 'New Orleans/Oklahoma City Hornets', from: 2005 },
+    { name: 'New Orleans Hornets', from: 2002 },
+    { name: 'Charlotte Hornets', from: 1988 },
+  ],
+  [{ name: 'New York Knicks', from: 1946 }],
+  [{ name: 'Oklahoma City Thunder', from: 2008 }, { name: 'Seattle SuperSonics', from: 1967 }],
+  [{ name: 'Orlando Magic', from: 1989 }],
+  [{ name: 'Philadelphia 76ers', from: 1963 }],
+  [{ name: 'Phoenix Suns', from: 1968 }],
+  [{ name: 'Portland Trail Blazers', from: 1970 }],
+  [{ name: 'Sacramento Kings', from: 1985 }, { name: 'Kansas City Kings', from: 1975 }],
+  [{ name: 'San Antonio Spurs', from: 1976 }],
+  [{ name: 'Toronto Raptors', from: 1995 }],
+  [{ name: 'Utah Jazz', from: 1979 }, { name: 'New Orleans Jazz', from: 1974 }],
+  [{ name: 'Washington Wizards', from: 1997 }, { name: 'Washington Bullets', from: 1974 }],
+];
+
+const asNum = (val) => Number(String(val).replace(/[*†‡]/g, '')) || 0;
+
+const notTotal = (p) => p.name && /^totals?$/i.test(p.name) === false;
+
+// the roster is {{player2}} templates in a 'Roster' section
+const parseRoster = function (doc) {
+  const s = findSection(doc, ['roster', 'current roster']);
+  if (!s) {
+    return []
+  }
+  const players = withChildren(doc, s).flatMap((c) => c.templates('player2'));
+  return players.map((tmpl) => ({ ...tmpl.json().data }))
+};
+
+// per-player averages from the 'Player statistics' tables
+const statRow = function (row) {
+  return {
+    name: stripNotes(getCell(row, ['player', 'name'])),
+    games: asNum(getCell(row, ['gp', 'g', 'games'])),
+    gamesStarted: asNum(getCell(row, ['gs'])),
+    minutesPerGame: asNum(getCell(row, ['mpg', 'mp'])),
+    reboundsPerGame: asNum(getCell(row, ['rpg', 'reb'])),
+    assistsPerGame: asNum(getCell(row, ['apg', 'ast'])),
+    stealsPerGame: asNum(getCell(row, ['spg', 'stl'])),
+    blocksPerGame: asNum(getCell(row, ['bpg', 'blk'])),
+    pointsPerGame: asNum(getCell(row, ['ppg', 'pts'])),
+  }
+};
+
+const parsePlayerStats = function (doc) {
+  const res = { season: [], playoffs: [] };
+  const s = findSection(doc, ['player statistics', 'player stats', 'statistics']);
+  if (!s) {
+    return res
+  }
+  withChildren(doc, s).forEach((c) => {
+    const kind = /playoff|postseason/i.test(c.title()) ? 'playoffs' : 'season';
+    c.tables().forEach((t) => {
+      t.rows().forEach((row) => {
+        const p = statRow(row);
+        if (notTotal(p)) {
+          res[kind].push(p);
+        }
+      });
+    });
+  });
+  return res
+};
+
+const makeTitle$2 = twoYearTitle;
+
+const gameTitles$2 = ['regular season', 'game log', 'schedule', 'schedule and results'];
+
+// nba seasons start in october - before august, "this season" began last year
+const defaultYear$2 = function () {
+  const now = new Date();
+  return now.getMonth() >= 7 ? now.getFullYear() : now.getFullYear() - 1
+};
+
+// per-game extras: statistical leaders, and the arena
+const extras$1 = function (game, row) {
+  const points = getCell(row.cells, ['high points']);
+  const rebounds = getCell(row.cells, ['high rebounds']);
+  const assists = getCell(row.cells, ['high assists']);
+  if (points || rebounds || assists) {
+    game.leaders = { points, rebounds, assists };
+  }
+  const loc = getCell(row.cells, ['location attendance', 'location', 'arena']);
+  if (loc) {
+    game.location = loc.replace(/[0-9][0-9,]* *$/, '').trim();
+  }
+};
+
+// the nba infobox keeps wins and losses as separate fields
+const standings$1 = function (season) {
+  let record = season.record || null;
+  const wins = getCell(season, ['wins']);
+  const losses = getCell(season, ['losses']);
+  if (!record && wins !== '' && losses !== '') {
+    record = parseRecord(`${wins}–${losses}`);
+  }
+  return {
+    record,
+    division: getCell(season, ['division']) || '',
+    divisionPlace: getCell(season, ['division_place', 'divisionrank']) || null,
+    conference: getCell(season, ['conference']) || '',
+    conferencePlace: getCell(season, ['conf_place', 'conference_place']) || null,
+    coach: getCell(season, ['coach', 'coaches']) || '',
+    arena: getCell(season, ['arena']) || '',
+  }
+};
+
+const parse$2 = function (doc) {
+  if (!doc) {
+    return null
+  }
+  const meta = parseTwoYearTitle(doc.title || '');
+  const ctx = {
+    team: meta.team,
+    year: meta.year,
+    record: {},
+    dateYear: (date, year) => {
+      if (!year || /\d{4}/.test(date)) {
+        return date
+      }
+      // the season wraps into the next calendar-year
+      return /^(jan|feb|mar|apr|may|jun)/i.test(date) ? `${date} ${year + 1}` : `${date} ${year}`
+    },
+    fullName: (name) => resolveTeam(franchises$2, name, meta.year || new Date().getFullYear()),
+    extras: extras$1,
+  };
+  const season = parseInfobox(doc, ['nba season'], ctx.record);
+  return {
+    team: meta.team,
+    year: meta.year,
+    page: doc.title || '',
+    season,
+    standings: standings$1(season),
+    games: findGames(doc, ctx, gameTitles$2),
+    playoffs: findSeries(doc, ctx, ['playoffs', 'postseason'], gameTitles$2),
+    roster: parseRoster(doc),
+    playerStats: parsePlayerStats(doc),
+  }
+};
+
+const addMethod$2 = function (models) {
+  models.wtf.nbaSeason = async function (team, year, options) {
+    year ||= defaultYear$2();
+    team = resolveTeam(franchises$2, team, year);
+    const doc = await models.wtf.fetch(makeTitle$2(team, year), options);
+    return parse$2(doc)
+  };
+  models.Doc.prototype.nbaSeason = function () {
+    return parse$2(this)
+  };
+};
+
+// current nfl franchises - renamed ones list each name, newest-first
+var franchises$1 = [
+  [
+    { name: 'Arizona Cardinals', from: 1994 },
+    { name: 'Phoenix Cardinals', from: 1988 },
+    { name: 'St. Louis Cardinals', from: 1960 },
+  ],
+  [{ name: 'Atlanta Falcons', from: 1966 }],
+  [{ name: 'Baltimore Ravens', from: 1996 }],
+  [{ name: 'Buffalo Bills', from: 1960 }],
+  [{ name: 'Carolina Panthers', from: 1995 }],
+  [{ name: 'Chicago Bears', from: 1922 }],
+  [{ name: 'Cincinnati Bengals', from: 1968 }],
+  [{ name: 'Cleveland Browns', from: 1946 }],
+  [{ name: 'Dallas Cowboys', from: 1960 }],
+  [{ name: 'Denver Broncos', from: 1960 }],
+  [{ name: 'Detroit Lions', from: 1934 }],
+  [{ name: 'Green Bay Packers', from: 1921 }],
+  [{ name: 'Houston Texans', from: 2002 }],
+  [{ name: 'Indianapolis Colts', from: 1984 }, { name: 'Baltimore Colts', from: 1953 }],
+  [{ name: 'Jacksonville Jaguars', from: 1995 }],
+  [{ name: 'Kansas City Chiefs', from: 1963 }],
+  [
+    { name: 'Las Vegas Raiders', from: 2020 },
+    { name: 'Oakland Raiders', from: 1995 },
+    { name: 'Los Angeles Raiders', from: 1982 },
+    { name: 'Oakland Raiders', from: 1960 },
+  ],
+  [{ name: 'Los Angeles Chargers', from: 2017 }, { name: 'San Diego Chargers', from: 1961 }],
+  [
+    { name: 'Los Angeles Rams', from: 2016 },
+    { name: 'St. Louis Rams', from: 1995 },
+    { name: 'Los Angeles Rams', from: 1946 },
+  ],
+  [{ name: 'Miami Dolphins', from: 1966 }],
+  [{ name: 'Minnesota Vikings', from: 1961 }],
+  [{ name: 'New England Patriots', from: 1971 }],
+  [{ name: 'New Orleans Saints', from: 1967 }],
+  [{ name: 'New York Giants', from: 1925 }],
+  [{ name: 'New York Jets', from: 1963 }],
+  [{ name: 'Philadelphia Eagles', from: 1933 }],
+  [{ name: 'Pittsburgh Steelers', from: 1945 }],
+  [{ name: 'San Francisco 49ers', from: 1946 }],
+  [{ name: 'Seattle Seahawks', from: 1976 }],
+  [{ name: 'Tampa Bay Buccaneers', from: 1976 }],
+  [
+    { name: 'Tennessee Titans', from: 1999 },
+    { name: 'Tennessee Oilers', from: 1997 },
+    { name: 'Houston Oilers', from: 1960 },
+  ],
+  [
+    { name: 'Washington Commanders', from: 2022 },
+    { name: 'Washington Football Team', from: 2020 },
+    { name: 'Washington Redskins', from: 1937 },
+  ],
+];
+
+// '2024 Buffalo Bills season' → {year: 2024, team: 'Buffalo Bills'}
+const parseTitle$1 = function (title = '') {
+  const m = String(title).match(/^(\d{4}) (.+?) season$/);
+  if (m) {
+    return { year: Number(m[1]), team: m[2] }
+  }
+  const year = String(title).match(/\d{4}/);
+  return { year: year ? Number(year[0]) : null, team: '' }
+};
+
+const makeTitle$1 = function (team, year) {
+  return `${year} ${team} season`.replace(/ /g, '_')
+};
+
+const gameTitles$1 = ['regular season', 'schedule', 'game log', 'schedule and results'];
+
+// nfl seasons are named by their september start - before august, use last year's
+const defaultYear$1 = function () {
+  const now = new Date();
+  return now.getMonth() >= 7 ? now.getFullYear() : now.getFullYear() - 1
+};
+
+// per-game extras: the stadium
+const extras = function (game, row) {
+  const venue = getCell(row.cells, ['venue', 'game site', 'stadium', 'location']);
+  if (venue) {
+    game.venue = venue;
+  }
+};
+
+// '1st AFC East' → {divisionPlace: 1, division: 'AFC East'}
+const standings = function (season) {
+  const out = {
+    record: season.record || null,
+    division: '',
+    divisionPlace: null,
+    coach: getCell(season, ['coach', 'coaches']) || '',
+    stadium: getCell(season, ['stadium']) || '',
+  };
+  const place = String(getCell(season, ['division_place', 'division place']) || '');
+  const m = place.match(/^(\d+)(?:st|nd|rd|th)\b *(.*)/);
+  if (m) {
+    out.divisionPlace = Number(m[1]);
+    out.division = m[2].trim();
+  } else if (place) {
+    out.division = place;
+  }
+  return out
+};
+
+const parse$1 = function (doc) {
+  if (!doc) {
+    return null
+  }
+  const meta = parseTitle$1(doc.title || '');
+  const ctx = {
+    team: meta.team,
+    year: meta.year,
+    record: { ties: true }, //nfl records are W–L–T
+    dateYear: (date, year) => {
+      if (!year || /\d{4}/.test(date)) {
+        return date
+      }
+      // playoff games run into january
+      return /^(jan|feb)/i.test(date) ? `${date} ${year + 1}` : `${date} ${year}`
+    },
+    fullName: (name) => resolveTeam(franchises$1, name, meta.year || new Date().getFullYear()),
+    extras,
+  };
+  const season = parseInfobox(doc, ['nfl team season', 'nfl season'], ctx.record);
+  return {
+    team: meta.team,
+    year: meta.year,
+    page: doc.title || '',
+    season,
+    standings: standings(season),
+    games: findGames(doc, ctx, gameTitles$1),
+    // nfl playoffs are single games, not series - keep them flat
+    playoffs: findSeries(doc, ctx, ['postseason schedule', 'postseason', 'playoffs'], gameTitles$1).flat(),
+  }
+};
+
+const addMethod$1 = function (models) {
+  models.wtf.nflSeason = async function (team, year, options) {
+    year ||= defaultYear$1();
+    team = resolveTeam(franchises$1, team, year);
+    const doc = await models.wtf.fetch(makeTitle$1(team, year), options);
+    return parse$1(doc)
+  };
+  models.Doc.prototype.nflSeason = function () {
+    return parse$1(this)
+  };
+};
+
+// soccer seasons record each match as a {{football box}} template, not a table row
+const boxNames = ['football box collapsible', 'footballbox collapsible', 'football box', 'footballbox'];
+
+// every match-box under a section, with a `skip` regex dropping matching subtrees
+const collectBoxes = function (doc, section, skip) {
+  const boxes = [];
+  let skipBelow = null;
+  withChildren(doc, section).forEach((s, i) => {
+    if (i > 0 && skip) {
+      if (skipBelow !== null && s.depth() > skipBelow) {
+        return
+      }
+      skipBelow = null;
+      if (skip.test(s.title())) {
+        skipBelow = s.depth();
+        return
+      }
+    }
+    boxNames.forEach((name) => {
+      s.templates(name).forEach((t) => boxes.push(t.json().data || {}));
+    });
+  });
+  return boxes
+};
+
+const outcomes = { w: 'win', l: 'loss', d: 'tie', t: 'tie' };
+
+// one {{football box}} → one game
+const buildMatch = function (data, ctx) {
+  if (!data.team1 && !data.team2) {
+    return null
+  }
+  const game = {
+    date: ctx.dateYear ? ctx.dateYear(data.date || '', ctx.year) : data.date || '',
+    opponent: '',
+    home: null,
+    outcome: outcomes[String(data.result || '').trim().toLowerCase()] || null,
+    result: null,
+  };
+  // team1 is the home side
+  if (sameTeam(data.team1, ctx.team)) {
+    game.home = true;
+  } else if (sameTeam(data.team2, ctx.team)) {
+    game.home = false;
+  }
+  const opp = game.home === false ? data.team1 : data.team2;
+  game.opponent = ctx.fullName ? ctx.fullName(String(opp || '').trim()) : String(opp || '').trim();
+  const score = parseScore(data.score);
+  if (score && game.home !== null) {
+    game.result = game.home ? { us: score[0], them: score[1] } : { us: score[1], them: score[0] };
+    if (game.outcome === null && score[0] !== score[1]) {
+      game.outcome = game.result.us > game.result.them ? 'win' : 'loss';
+    }
+    if (game.outcome === null && score[0] === score[1]) {
+      game.outcome = 'tie';
+    }
+  }
+  game.win = game.outcome === null ? null : game.outcome === 'win';
+  if (data.round) {
+    game.round = data.round;
+  }
+  if (data.stadium) {
+    game.stadium = data.stadium;
+  }
+  if (data.location) {
+    game.location = data.location;
+  }
+  game.attendance = parseAttendance(data.attendance || '');
+  return game
+};
+
+// every match-box on the page, with `skip` dropping matching subtrees
+const collectAll = function (doc, skip) {
+  const boxes = [];
+  let skipBelow = null;
+  doc.sections().forEach((s) => {
+    if (skip) {
+      if (skipBelow !== null && s.depth() > skipBelow) {
+        return
+      }
+      skipBelow = null;
+      if (skip.test(s.title())) {
+        skipBelow = s.depth();
+        return
+      }
+    }
+    boxNames.forEach((name) => {
+      s.templates(name).forEach((t) => boxes.push(t.json().data || {}));
+    });
+  });
+  return boxes
+};
+
+const build = (boxes, ctx) => boxes.map((data) => buildMatch(data, ctx)).filter((g) => g !== null);
+
+// all matches under the best matching section -
+// or anywhere on the page, when sections don't nest the way they read
+const findMatches = function (doc, ctx, titles, skip) {
+  const all = doc.sections();
+  for (const title of titles) {
+    const want = title.toLowerCase();
+    const sections = all.filter((s) => s.title().trim().toLowerCase() === want);
+    for (const section of sections) {
+      const games = build(collectBoxes(doc, section, skip), ctx);
+      if (games.length > 0) {
+        return games
+      }
+    }
+  }
+  if (skip) {
+    return build(collectAll(doc, skip), ctx)
+  }
+  return []
+};
+
+// current mls clubs - renamed ones list each name, newest-first
+// includes folded clubs, so their old seasons still resolve
+var franchises = [
+  [{ name: 'Atlanta United FC', from: 2017 }],
+  [{ name: 'Austin FC', from: 2021 }],
+  [{ name: 'Charlotte FC', from: 2022 }],
+  [{ name: 'Chicago Fire FC', from: 2020 }, { name: 'Chicago Fire', from: 1998 }],
+  [{ name: 'FC Cincinnati', from: 2019 }],
+  [{ name: 'Colorado Rapids', from: 1996 }],
+  [
+    { name: 'Columbus Crew', from: 2021 },
+    { name: 'Columbus Crew SC', from: 2015 },
+    { name: 'Columbus Crew', from: 1996 },
+  ],
+  [{ name: 'D.C. United', from: 1996 }],
+  [{ name: 'FC Dallas', from: 2005 }, { name: 'Dallas Burn', from: 1996 }],
+  [{ name: 'Houston Dynamo FC', from: 2021 }, { name: 'Houston Dynamo', from: 2006 }],
+  [
+    { name: 'Sporting Kansas City', from: 2011 },
+    { name: 'Kansas City Wizards', from: 1997 },
+    { name: 'Kansas City Wiz', from: 1996 },
+  ],
+  [{ name: 'LA Galaxy', from: 2011 }, { name: 'Los Angeles Galaxy', from: 1996 }],
+  [{ name: 'Los Angeles FC', from: 2018 }],
+  [{ name: 'Inter Miami CF', from: 2020 }],
+  [{ name: 'Minnesota United FC', from: 2017 }],
+  [{ name: 'CF Montréal', from: 2021 }, { name: 'Montreal Impact', from: 2012 }],
+  [{ name: 'Nashville SC', from: 2020 }],
+  [{ name: 'New England Revolution', from: 1996 }],
+  [{ name: 'New York City FC', from: 2015 }],
+  [
+    { name: 'New York Red Bulls', from: 2006 },
+    { name: 'MetroStars', from: 1998 },
+    { name: 'New York/New Jersey MetroStars', from: 1996 },
+  ],
+  [{ name: 'Orlando City SC', from: 2015 }],
+  [{ name: 'Philadelphia Union', from: 2010 }],
+  [{ name: 'Portland Timbers', from: 2011 }],
+  [{ name: 'Real Salt Lake', from: 2005 }],
+  [{ name: 'San Diego FC', from: 2025 }],
+  [{ name: 'San Jose Earthquakes', from: 2000 }, { name: 'San Jose Clash', from: 1996 }],
+  [{ name: 'Seattle Sounders FC', from: 2009 }],
+  [{ name: 'St. Louis City SC', from: 2023 }],
+  [{ name: 'Toronto FC', from: 2007 }],
+  [{ name: 'Vancouver Whitecaps FC', from: 2011 }],
+  // folded clubs
+  [{ name: 'Chivas USA', from: 2005 }],
+  [{ name: 'Tampa Bay Mutiny', from: 1996 }],
+  [{ name: 'Miami Fusion', from: 1998 }],
+];
+
+// '2024 LA Galaxy season' → {year: 2024, team: 'LA Galaxy'}
+const parseTitle = function (title = '') {
+  const m = String(title).match(/^(\d{4}) (.+?) season$/);
+  if (m) {
+    return { year: Number(m[1]), team: m[2] }
+  }
+  const year = String(title).match(/\d{4}/);
+  return { year: year ? Number(year[0]) : null, team: '' }
+};
+
+const makeTitle = function (team, year) {
+  return `${year} ${team} season`.replace(/ /g, '_')
+};
+
+const gameTitles = ['regular season', 'match results', 'matches', 'major league soccer', 'results'];
+
+// league matches only - cups, friendlies and the playoffs parse separately
+const notLeague = /playoff|cup|friendl|preseason|pre-season|invitational|champions|exhibition|all-star/i;
+
+// the mls season runs within one calendar year, from late february
+const defaultYear = function () {
+  const now = new Date();
+  return now.getMonth() >= 2 ? now.getFullYear() : now.getFullYear() - 1
+};
+
+// count the record from the matches themselves - soccer infoboxes rarely state one
+const recordOf = function (games) {
+  const rec = { wins: 0, losses: 0, ties: 0, games: games.length };
+  games.forEach((g) => {
+    if (g.outcome === 'win') {
+      rec.wins += 1;
+    } else if (g.outcome === 'loss') {
+      rec.losses += 1;
+    } else if (g.outcome === 'tie') {
+      rec.ties += 1;
+    }
+  });
+  rec.winPct = rec.games > 0 ? Number((rec.wins / rec.games).toFixed(3)) : 0;
+  return rec
+};
+
+const parse = function (doc) {
+  if (!doc) {
+    return null
+  }
+  const meta = parseTitle(doc.title || '');
+  const ctx = {
+    team: meta.team,
+    year: meta.year,
+    dateYear: (date, year) => (year && /\d{4}/.test(date) === false ? `${date} ${year}` : date),
+    fullName: (name) => resolveTeam(franchises, name, meta.year || new Date().getFullYear()),
+  };
+  const season = parseInfobox(doc, ['soccer club season', 'football club season'], {});
+  const games = findMatches(doc, ctx, gameTitles, notLeague);
+  const playoffs = findMatches(doc, ctx, ['mls cup playoffs', 'playoffs', 'postseason'], null);
+  return {
+    team: meta.team,
+    year: meta.year,
+    page: doc.title || '',
+    season,
+    standings: {
+      record: recordOf(games),
+      league: getCell(season, ['league']) || '',
+      position: getCell(season, ['position', 'league_result', 'league result']) || null,
+      manager: getCell(season, ['manager', 'mgrtitle', 'head coach']) || '',
+      stadium: getCell(season, ['stadium', 'stdtitle']) || '',
+    },
+    games,
+    playoffs,
+  }
+};
+
+const addMethod = function (models) {
+  models.wtf.mlsSeason = async function (team, year, options) {
     year ||= defaultYear();
     team = resolveTeam(franchises, team, year);
     const doc = await models.wtf.fetch(makeTitle(team, year), options);
     return parse(doc)
   };
-  models.Doc.prototype.nhlSeason = function () {
+  models.Doc.prototype.mlsSeason = function () {
     return parse(this)
   };
 };
 
-exports.mlb = addMethod$1;
-exports.nhl = addMethod;
+exports.mlb = addMethod$4;
+exports.mls = addMethod;
+exports.nba = addMethod$2;
+exports.nfl = addMethod$1;
+exports.nhl = addMethod$3;
 exports.version = _version;

@@ -1,0 +1,1176 @@
+{{Use American English|date=March 2026}}
+{{Use mdy dates|date=August 2023}}
+{{Infobox football club season
+| club        = [[D.C. United]]
+| season      = 1996
+| chrtitle    = General manager
+| chairman    = Dave Kasper
+| mgrtitle    = Head coach
+| manager     = [[Bruce Arena]]
+| stadium     = [[Robert F. Kennedy Memorial Stadium|RFK Stadium]]
+| league      = <!--[[Major League Soccer]]-->[[1996 Major League Soccer season|MLS]]
+| league result = 3rd
+| cup1        = [[1996 MLS Cup|MLS Cup]]
+| cup1 result = Champions
+| cup2        = [[1996 U.S. Open Cup|U.S. Open Cup]]
+| cup2 result = Champions
+| cup3        =
+| cup3 result =
+| cup4        =
+| cup5        =
+| cup6        =
+| cup7        =
+| highest attendance = 32,864 vs [[New England Revolution|New&nbsp;England]]<br />(April&nbsp;27,&nbsp;1996)
+| lowest attendance =
+| average attendance = 15,585
+| league topscorer =<br> [[Raúl Díaz Arce]] (23)
+| season topscorer =<br> [[Raúl Díaz Arce]] (24)
+| pattern_la1 = _thinredborder
+| pattern_b1  = _DCU_96h
+| pattern_ra1 = _thinredborder
+| pattern_sh1 = _DCU_96
+| pattern_so1 = _3_stripes_white
+| leftarm1    = 000000
+| body1       = FFFFFF
+| rightarm1   = 000000
+| shorts1     = 000000
+| socks1      = 000000
+| pattern_la2 = _DCU_96a
+| pattern_b2  = _DCU_96a
+| pattern_ra2 = _DCU_96a
+| pattern_sh2 = _DCU_96
+| pattern_so2 = _3_stripes_black
+| leftarm2    = FFFFFF
+| body2       = FFFFFF
+| rightarm2   = FFFFFF
+| shorts2     = FF0000
+| socks2      = FFFFFF
+| American   = true
+| prevseason = 
+| nextseason = [[1997 D.C. United season|1997]]
+}}
+
+The '''1996 D.C. United season''' was the teams debutant season in [[Major League Soccer]] (MLS), and 1996 was the [[1996 Major League Soccer season|inaugural year of play in MLS competition]]. United would become the first club to win the [[MLS Cup]] this year.
+
+This was the first year since 1981 that a pro soccer team from the [[Washington metropolitan area]] played in the top tier of the American soccer pyramid.
+
+== Background ==
+{{See also|Washington Diplomats|Washington Diplomats (1988–90)}}
+
+Prior to [[Major League Soccer]]'s inaugural season, it had been six years since the Washington Metropolitan Area had a professional soccer club play within the region. The last team, was the late 1980s/early 1990s version of the Washington Diplomats. The Diplomats, played in the [[American Soccer League (1988–89)|American Soccer League]], which at the time was, by ''de facto'', the top division of soccer in the United States although it was not sanctioned by [[United States Soccer Federation|U.S. Soccer]] or [[FIFA]] as a top tier soccer league. With the installation of the D.C. United franchise, it was the first time since the 1981 that a top division pro soccer club played in the region.
+
+The foundation of the team came on June 15, 1994, when [[Major League Soccer]] selected Washington, D.C. out of twenty-two applicants to host one of the first seven teams, with three more added before the league's launch.<ref name=overview>{{cite web |url= http://web.mlsnet.com/about/ |title= General Overview |work= [[Major League Soccer]] |year= 2009 |accessdate= June 26, 2009|archiveurl = https://web.archive.org/web/20080625214719/http://web.mlsnet.com/about/ |archivedate = June 25, 2008|url-status=dead}}</ref>
+
+== Club name ==
+
+Once an [[Major League Soccer|MLS]] franchise was awarded to Washington, the new club management sought a name for the club. Attempting to allude to the [[Sports in the United States|American sporting culture]], original suppositions included the area's name followed by a mascot for the club. Some ideas included the "Spies", "Americans" and "Eagles". Eventually, the idea of simply naming the team "D.C. United" was decided upon as the club name. The moniker "United" alluded to European club names such as [[Leeds United A.F.C.|Leeds]] and [[Manchester United F.C.|Manchester United]], as well as reflecting on being based in capital of the United States.<ref name="dc united name">{{cite book|last=Dure|first=Beau|title=Long Range Goals: The Success Story of Major League Soccer|year=2010|publisher=Potomac Books|location=Dulles, Virginia|isbn=978-1-59797-509-4|pages=21–23}}</ref>
+
+==MLS regular season==
+{{expand section|date=October 2021}}
+
+The team got off to a slow start, losing its first three games in April, but improved during the season, including a four-match winning streak in August, and qualified for the playoffs.
+
+== MLS Playoffs ==
+
+The final month of D.C. United's inaugural season saw the club compete in the first ever [[MLS Cup Playoffs]], eventually being crowned the MLS Cup champions. Ten days later, United earned [[Double (association football)|the double]] by winning the [[1996 U.S. Open Cup]], the United States' domestic knockout cup competition. Such a feat would not be accomplished again until the [[Chicago Fire Soccer Club|Chicago Fire]] did so in 1998. To date, only four other MLS sides have ever achieved any sort of "double", being regular season, playoffs, or cup competition.
+
+Playoff play continued into October with game three of the conference semifinal series, with kickoff on October 2. United, tied with the [[New York Red Bulls|New York/New Jersey MetroStars]] were level 1–1 in the series. Played in front of a crowd of 20,423, United would emerge victorious in the match and in the series winning the match and series by a 2–1 scoreline. In game three, [[Steve Rammel]] opened the scoring in the 67th minute, giving United a crucial 1–0 victory. Inside 20 minutes later, the MetroStars leveled things up off an 86th-minute strike from NY/NJ's [[Antony de Ávila]]. The match, looking destined for sudden death extra time was abruptly halted when a penalty was called against NY/NJ in the box. The call resulted with United's [[Raúl Díaz Arce]] notching the eventual match winner in the 89th minute of play. The win booked United into the 1996 MLS Eastern Conference Finals.
+
+D.C. United took on the [[Supporters' Shield]] winners, [[Tampa Bay Mutiny]] on October 10 to open up the Eastern Conference Finals. The first match of the three-game series was held at RFK Stadium, where United posted a 4–1 victory. The score was United's largest margin of victory throughout the playoffs. The match saw Díaz Arce notch a hat trick, making him the first player in [[MLS Cup Playoffs]] history to score a hat trick in a playoff match. Díaz Arce scored in the 38th minute to give United the go-ahead lead, only for Tampa Bay's [[Roy Lassiter]] to equalize in the 42nd minute. United's [[Steve Rammel]] score what would eventually be the match-winning goal in the 52nd minute to give United a 2–1 lead over the Mutiny. Díaz Arce would score insurance goals for United in a three-minute span, scoring in the 58th and 60th minutes of play.
+
+Held two days later, game two of the conference finals took place at [[Houlihan's Stadium]] near [[Tampa, Florida]]. With a crowd of 9,339 on hand, Tampa Bay took a 1–0 lead against D.C. inside 15 minutes, thanks to a strike from [[Steve Ralston]]. Ralston's goal proved to be the difference between the two sides for the remainder of the first half. However, four minutes into the second half of play, United's [[Richie Williams]] netted the equalizer. Díaz Arce would, once again, provide last minute heroics scoring in the 82nd minute to give United the 2–1 lead, and to book themselves in the inaugural MLS Cup [[championship]].
+
+== Match results ==
+
+=== Major League Soccer ===
+{{see also|1996 Major League Soccer season}}
+
+==== Regular season ====
+
+{{football box collapsible
+|round      = [[San Jose Clash v D.C. United (April 1996)|Matchday 1]]
+|team1=[[San Jose Clash]]
+|date=April 6, 1996
+|time= 
+|score= [[San Jose Clash v D.C. United (April 1996)|1–0]]
+|report=[https://fbref.com/en/matches/53c93fa6/San-Jose-Clash-DC-United-April-6-1996-Major-League-Soccer Report]
+|team2=[[D.C. United]]
+|goals1= 
+*[[Michael Emenalo|Emenalo]] {{yel|44}}
+*[[Eric Wynalda|Wynalda]] {{goal|88}}
+|goals2= 
+*[[Raúl Díaz Arce|Diaz Arce]] {{yel|5}}
+*[[Mario Gori|Gori]] {{yel|44}}
+*[[John Harkes|Harkes]] {{yel|72}}
+*[[Said Fazlagić|Fazlagic]] {{yel|87}}
+|stadium=[[Spartan Stadium (San Jose)|Spartan Stadium]]
+|location=[[San Jose, California]]
+|attendance= 31,683
+|referee=[[Esfandiar Baharmast|Esse Baharmast]]
+|result=L
+}}
+{{football box collapsible
+|round      = Matchday 2
+|team1=[[Columbus Crew]]
+|date=April 13, 1996
+|time=
+|score= 4–0
+|report=[https://fbref.com/en/matches/71519d4c/Columbus-Crew-DC-United-April-13-1996-Major-League-Soccer Report]
+|team2=[[D.C. United]]
+|goals1= 
+*[[Thor Lee|Lee]] {{goal|18|o.g.}}
+*[[Brian McBride|McBride]] {{goal|29||86}}
+*[[Mike Clark (soccer)|Clark]] {{yel|39}}
+*[[Pete Marino|Marino]] {{goal|48}}
+*[[Bo Oshoniyi|Oshoniyi]] {{yel|79}}
+|goals2= 
+*[[Richie Williams|Williams]] {{yel|19}}
+*[[Thor Lee|Lee]] {{yel|33}}
+*[[Marco Etcheverry|Etcheverry]] {{yel|66}}
+|stadium= [[Crew Stadium]]
+|location= [[Columbus, Ohio]]
+|attendance= 25,266
+|referee=Raul Dominguez
+|result=L
+}}
+{{football box collapsible
+|round      = Matchday 3
+|team1=[[D.C. United]]
+|date=April 20, 1996
+|time=
+|score= 1–2
+|report=[https://fbref.com/en/matches/b97425be/DC-United-LA-Galaxy-April-20-1996-Major-League-Soccer Report]
+|team2=[[Los Angeles Galaxy]]
+|goals1= 
+*[[Raúl Díaz Arce|Diaz Arce]] {{goal|7}}
+|goals2= 
+*[[Mauricio Cienfuegos|Cienfuegos]] {{goal|21|pen.}}, {{yel|89}}
+*[[Dan Calichman|Calichman]] {{yel|37}}
+*[[Jorge Salcedo (soccer)|Salcedo]] {{goal|72}}
+*[[Jose Vasquez (soccer)|Vasquez]] {{yel|77}}
+|stadium=[[Robert F. Kennedy Memorial Stadium|RFK Stadium]]
+|location=[[Washington, D.C.]]
+|attendance= 35,032
+|referee=[[Paul Tamberino]]
+|result=L
+}}
+{{football box collapsible
+|round      = Matchday 4
+|team1=[[New England Revolution]]
+|date=April 27, 1996
+|time=
+|score= 1–1
+|shootoutscore = 3–2
+|report=[https://fbref.com/en/matches/f9ff67eb/New-England-Revolution-DC-United-April-27-1996-Major-League-Soccer Report]
+|team2=[[D.C. United]]
+|goals1= 
+*[[John DeBrito|DeBrito]] {{yel|26}}
+*[[Geoff Aunger|Aunger]] {{goal|78|pen.}}
+|goals2= 
+*[[John Harkes|Harkes]] {{yel|24}}
+*[[Raúl Díaz Arce|Diaz Arce]] {{goal|69}}
+|shootout1 =
+*[[Wélton (footballer)|Welton]] {{pengoal}}
+*[[Paul Keegan (footballer, born 1972)|Paul Keegan]] {{penmiss}}
+*[[Robert Ukrop|Ukrop]] {{penmiss}}
+*[[Peter Woodring|Woodring]] {{penmiss}}
+*[[Geoff Aunger|Aunger]] {{pengoal}}
+*[[Darren Sawatzky|Sawatzky]] {{pengoal}}
+|shootout2 = 
+* {{penmiss}} [[Ben Crawley|Crawley]] 
+* {{penmiss}} [[John Harkes|Harkes]] 
+* {{pengoal}} [[Raúl Díaz Arce|Diaz Arce]]
+* {{pengoal}} [[Kris Kelderman|Kelderman]]
+* {{penmiss}} [[Clint Peay|Peay]]
+* {{penmiss}} [[Eddie Pope|Pope]]
+|stadium= [[Foxboro Stadium]]
+|location= [[Foxborough, Massachusetts]]
+|attendance= 32,864
+|referee=Esse Baharmast
+|result= D
+}}
+{{football box collapsible
+|round      = Matchday 5
+|team1=[[D.C. United]]
+|date=May 1, 1996
+|time=
+|score= 3–1
+|report=[https://fbref.com/en/matches/b87e5579/DC-United-Dallas-Burn-May-1-1996-Major-League-Soccer Report]
+|team2=[[Dallas Burn]]
+|goals1= 
+*[[Raúl Díaz Arce|Diaz Arce]] {{goal|15|pen.}}
+*[[Steve Rammel|Rammel]] {{yel|39}}, {{goal|64}}
+*[[Jeff Agoos|Agoos]] {{yel|52}}
+*[[Marco Etcheverry|Etcheverry]] {{goal|53}}
+|goals2= 
+*[[Ed Puskarich|Puskarich]] {{yel|15}}
+*[[Lawrence Lozzano|Lozzano]] {{yel|24}}
+*[[Washington Rodríguez (footballer)|Rodriguez]] {{yel|31}}, {{goal|43|pen.}}
+*[[Mark Santel|Santel]] {{yel|53}}
+*[[Leonel Álvarez (footballer, born 1965)|Alvarez]] {{yel|62}}
+|stadium= [[Robert F. Kennedy Memorial Stadium|RFK Stadium]]
+|location= Washington, D.C.
+|attendance= 11,253
+|referee=Byungil Noh
+|result=W
+}}
+{{football box collapsible
+|round      = Matchday 6
+|team1=[[Los Angeles Galaxy]]
+|date=May 5, 1996
+|time= 
+|score= 3–1
+|report=[https://fbref.com/en/matches/47eb1488/LA-Galaxy-DC-United-May-5-1996-Major-League-Soccer Report]
+|team2= [[D.C. United]]
+|goals1= 
+*[[Jose Vasquez (soccer)|Vasquez]] {{goal|42}}
+*[[Eduardo Hurtado|Hurtado]] {{goal|53}}
+*[[Mauricio Cienfuegos|Cienfuegos]] {{yel|54}}
+*[[Jorge Salcedo (soccer)|Salcedo]] {{goal|71}}
+*[[Jorge Campos|Campos]] {{yel|88}}
+|goals2= 
+*[[Clint Peay|Peay]] {{yel|13}}
+*[[Raúl Díaz Arce|Diaz Arce]] {{yel|16}}
+*[[Steve Rammel|Rammel]] {{goal|28}}
+*[[Ben Crawley|Crawley]] {{yel|90}}
+*[[Marco Etcheverry|Etcheverry]] {{yel|90}}
+|stadium= [[Rose Bowl (stadium)|Rose Bowl]]
+|location= [[Pasadena, California]]
+|attendance= 20,471
+|referee=[[Arturo Angeles]]
+|result=L
+}}
+{{football box collapsible
+|round      = Matchday 7
+|team1= [[D.C. United]]
+|date= May 12, 1996
+|time= 
+|score= 1–1
+|shootoutscore = 1–2
+|report=[https://fbref.com/en/matches/3bfdec00/DC-United-NYNJ-MetroStars-May-12-1996-Major-League-Soccer Report]
+|team2= [[NY/NJ MetroStars]]
+|goals1= 
+*[[John Harkes|Harkes]] {{goal|11}}
+*[[Mike Huwiler|Huwiler]] {{yel|24}}
+*[[Clint Peay|Peay]] {{yel|36}}
+|goals2= 
+*[[Andrew Restrepo|Restrepo]] {{yel|21}}
+*[[Tab Ramos|Ramos]] {{sent off|2|36|77}}
+*[[Matt Knowles (soccer)|Knowles]] {{yel|52}}
+*[[Giovanni Savarese|Savarese]] {{goal|64}}
+|shootout1 =
+*[[Jeff Agoos|Agoos]] {{penmiss}}
+*[[Shawn Medved|Medved]] {{penmiss}}
+*[[Ben Crawley|Crawley]] {{pengoal}}
+*[[Raúl Díaz Arce|Diaz Arce]] {{penmiss}}
+*[[John Harkes|Harkes]] {{penmiss}}
+|shootout2 = 
+* {{penmiss}} [[Giovanni Savarese|Savarese]]
+* {{penmiss}} [[Peter Vermes|Vermes]]
+* {{pengoal}} [[Nicola Caricola|Caricola]]
+* {{pengoal}} [[Rubén Darío Hernández|Hernandez]]
+* {{penmiss}} [[Roberto Donadoni|Donadoni]]
+|stadium= [[Robert F. Kennedy Memorial Stadium|RFK Stadium]]
+|location= Washington, D.C.
+|attendance= 14,722
+|referee=[[Kevin Stott]]
+|result= D
+}}
+{{football box collapsible
+|round      = Matchday 8
+|team1= [[D.C. United]]
+|date= May 15, 1996
+|time= 
+|score= 5–2
+|report=[https://fbref.com/en/matches/36c3d76e/DC-United-Columbus-Crew-May-15-1996-Major-League-Soccer Report]
+|team2= [[Columbus Crew]]
+|goals1= 
+*[[Steve Rammel|Rammel]] {{goal|28||49||53}}
+*[[Raúl Díaz Arce|Diaz Arce]] {{goal|67||70}}, {{yel|88}}
+|goals2= 
+*[[Doctor Khumalo|Khumalo]] {{yel|51}}
+*[[Brian McBride|McBride]] {{goal|76}}
+*[[Rubén Paz|Paz]] {{goal|85|pen.}}
+|stadium= [[Robert F. Kennedy Memorial Stadium|RFK Stadium]]
+|location= Washington, D.C.
+|attendance= 7,422
+|referee=Esse Baharmast
+|result= W
+}}
+{{football box collapsible
+|round      = Matchday 9
+|team1= [[Dallas Burn]]
+|date= May 18, 1996
+|time= 
+|score= 3–2
+|report=[https://fbref.com/en/matches/7a11d0d5/Dallas-Burn-DC-United-May-18-1996-Major-League-Soccer Report]
+|team2= [[D.C. United]]
+|goals1= 
+*[[Jason Kreis|Kreis]] {{goal|40||82}}
+*[[Ted Eck|Eck]] {{yel|63}}
+*[[Leonel Álvarez (footballer, born 1965)|Alvarez]] {{yel|75}}
+*[[Hugo Sánchez|Sanchez]] {{goal|88}}, {{yel|90}}
+|goals2= 
+*[[John Harkes|Harkes]] {{yel|37}}
+*[[Tony Sanneh|Sanneh]] {{goal|65}}
+*[[Jeff Agoos|Agoos]] {{goal|90}}
+|stadium= [[Cotton Bowl (stadium)|Cotton Bowl]]
+|location= [[Dallas|Dallas, Texas]]
+|attendance= 23,351
+|referee=Arturo Angeles
+|result= L
+}}
+{{football box collapsible
+|round      = Matchday 10
+|team1= [[NY/NJ MetroStars]]
+|date= May 30, 1996
+|time= 
+|score= 1–2
+|report=[https://fbref.com/en/matches/eae54fcf/NYNJ-MetroStars-DC-United-May-30-1996-Major-League-Soccer Report]
+|team2= [[D.C. United]]
+|goals1= 
+*[[Mickey Kydes|Kydes]] {{yel|26}}
+*[[A. J. Wood|Wood]] {{goal|27}}
+*[[Matt Knowles (soccer)|Knowles]] {{yel|45}}
+|goals2= 
+*[[Steve Rammel|Rammel]] {{goal|19}}
+*[[Mario Gori|Gori]] {{yel|23}}
+*[[Tony Sanneh|Sanneh]] {{goal|32}}
+*[[Richie Williams|Williams]] {{yel|38}}
+|stadium= [[Giants Stadium]]
+|location= [[East Rutherford, New Jersey]]
+|attendance= 25,322
+|referee=Zimmerman Boulos
+|result= W
+}}
+{{football box collapsible
+|round      = Matchday 11
+|team1= [[Colorado Rapids]]
+|date= June 2, 1996
+|time= 
+|score= 2–2
+|report=[https://fbref.com/en/matches/c94ab33d/Colorado-Rapids-DC-United-June-2-1996-Major-League-Soccer Report]
+|team2= [[D.C. United]]
+|goals1= 
+*[[Dominic Kinnear|Kinnear]] {{yel|34}}
+*[[Marcelo Balboa|Balboa]] {{yel|44}}
+*[[Steve Trittschuh|Trittschuh]] {{goal|67}}
+*[[Jean Harbor|Harbor]] {{goal|77}}
+*[[Matt Kmosko|Kmosko]] {{yel|84}}
+|goals2= 
+*[[Raúl Díaz Arce|Diaz Arce]] {{goal|34}}
+*[[Marco Etcheverry|Etcheverry]] {{yel|84}}
+*[[John Maessner|Maessner]] {{goal|88}}
+|shootoutscore = 1–3
+|shootout1 = 
+*[[Chris Henderson|Henderson]] {{pengoal}}
+*[[Scott Benedetti|Benedetti]] {{penmiss}}
+*[[Roy Wegerle|Wegerle]] {{penmiss}}
+*[[Dominic Kinnear|Kinnear]] {{penmiss}}
+|shootout2 = 
+* {{pengoal}} [[Marco Etcheverry|Etcheverry]]
+* {{pengoal}} [[Shawn Medved|Medved]]
+* {{penmiss}} [[Jeff Agoos|Agoos]]
+* {{penmiss}} [[Steve Rammel|Rammel]]
+* {{pengoal}} [[Erik Imler|Imler]]
+|stadium= [[Mile High Stadium]]
+|location= [[Denver|Denver, Colorado]]
+|attendance= 8,517
+|referee=Kevin Stott
+|result= D
+}}
+{{football box collapsible
+|round      = Matchday 12
+|team1= [[D.C. United]]
+|date= June 5, 1996
+|time= 
+|score= 3–1
+|report=[https://fbref.com/en/matches/f5564d95/DC-United-San-Jose-Clash-June-5-1996-Major-League-Soccer Report]
+|team2= [[San Jose Clash]]
+|goals1= 
+*[[Raúl Díaz Arce|Diaz Arce]] {{goal|23}}
+*[[Marco Etcheverry|Etcheverry]] {{yel|32}}
+*[[Steve Rammel|Rammel]] {{goal|36||49}}
+*[[Richie Williams|Williams]] {{yel|69}}
+|goals2= 
+*[[Benedict Iroha|Iroha]] {{yel|33}}
+*[[Michael Emenalo|Emenalo]] {{yel|35}}
+*[[Jorge Rodas|Rodas]] {{yel|43}}
+*[[Altimont Butler|Butler]] {{goal|68}}
+|stadium= [[Robert F. Kennedy Memorial Stadium|RFK Stadium]]
+|location= Washington, D.C.
+|attendance= 15,845
+|referee=Paul Tamberino
+|result= W
+}}
+{{football box collapsible
+|round      = Matchday 13
+|team1= [[Kansas City Wiz]]
+|date= June 20, 1996
+|time= 
+|score= 5–1
+|report=[https://fbref.com/en/matches/4f652167/Kansas-City-Wiz-DC-United-June-20-1996-Major-League-Soccer Report]
+|team2= [[D.C. United]]
+|goals1= 
+*[[Preki]] {{goal|6|pen.}}
+*[[Vitalis Takawira|Takawira]] {{goal|28||54}}
+*[[Mark Chung (soccer)|Chung]] {{goal|30}}
+*[[Mike Sorber|Sorber]] {{goal|35}}
+*[[Mo Johnston|Johnston]] {{yel|35}}
+|goals2= 
+*[[Richie Williams|Williams]] {{sent off|0|5}}
+*[[Tony Sanneh|Sanneh]] {{goal|42}}
+|stadium= [[Arrowhead Stadium]]
+|location= [[Kansas City, Missouri]]
+|attendance= 9,458
+|referee=Rich Grady
+|result= L
+}}
+{{football box collapsible
+|round      = Matchday 14
+|team1= [[San Jose Clash]]
+|date= June 23, 1996
+|time= 
+|score= 2–1
+|report=[https://fbref.com/en/matches/bd22e9b9/San-Jose-Clash-DC-United-June-23-1996-Major-League-Soccer Report]
+|team2= [[D.C. United]]
+|goals1= 
+*[[Missael Espinoza|Espinoza]] {{goal|41}}
+*[[Oscar Draguicevich|Draguicevich]] {{yel|58}}
+*[[Jeff Baicher|Baicher]] {{goal|66}}
+*[[Missael Espinoza|Espinoza]] {{yel|86}}
+|goals2= 
+*[[Raúl Díaz Arce|Diaz Arce]] {{goal|50}}
+*[[Steve Rammel|Rammel]] {{yel|51}}
+*[[Tony Sanneh|Sanneh]] {{yel|67}}
+|stadium= [[Spartan Stadium (San Jose, California)|Spartan Stadium]]
+|location= San Jose, California
+|attendance= 14,088
+|referee=Frank Gorog
+|result= L
+}}
+{{football box collapsible
+|round      = Matchday 15
+|team1= [[D.C. United]]
+|date= June 30, 1996
+|time= 
+|score= 3–1
+|report=[https://fbref.com/en/matches/92fa4051/DC-United-New-England-Revolution-June-30-1996-Major-League-Soccer Report]
+|team2= [[New England Revolution]]
+|goals1= 
+*[[Steve Rammel|Rammel]] {{goal|1}}
+*[[John Harkes|Harkes]] {{yel|30}}
+*[[Raúl Díaz Arce|Diaz Arce]] {{goal|46}}
+*[[John Harkes|Harkes]] {{goal|89}}
+|goals2= 
+*[[Geoff Aunger|Aunger]] {{yel|30}}
+*[[Alberto Naveda|Naveda]] {{goal|38}}
+|stadium= [[Robert F. Kennedy Memorial Stadium|RFK Stadium]]
+|location= Washington, D.C.
+|attendance= 19,355
+|referee=Esse Baharmast
+|result= W
+}}
+{{football box collapsible
+|round      = Matchday 16
+|team1= [[Dallas Burn]]
+|date= July 4, 1996
+|time= 
+|score= 1–1
+|shootoutscore = 3–1
+|report=[https://fbref.com/en/matches/d450d0d2/Dallas-Burn-DC-United-July-4-1996-Major-League-Soccer Report]
+|team2= [[D.C. United]]
+|goals1= 
+*[[Jason Kreis|Kreis]] {{goal|33}}
+*[[Mark Santel|Santel]] {{yel|39}}
+*[[Hugo Sánchez|Sanchez]] {{yel|71}}
+|goals2= 
+*[[Tony Sanneh|Sanneh]] {{yel|21}}
+*[[Raúl Díaz Arce|Diaz Arce]] {{goal|61}}, {{yel|77}}
+|shootout1=
+*[[Chad Ashton|Ashton]] {{pengoal}}
+*[[Mark Santel|Santel]] {{penmiss}}
+*[[Hugo Sánchez|Sanchez]] {{pengoal}}
+*[[Richard Farrer|Farrer]] {{pengoal}}
+|shootout2=
+* {{penmiss}} [[Erik Imler|Imler]]
+* {{penmiss}} [[Kris Kelderman|Kelderman]]
+* {{pengoal}} [[Jeff Agoos|Agoos]]
+* {{penmiss}} [[Tony Sanneh|Sanneh]]
+|stadium= [[Cotton Bowl (stadium)|Cotton Bowl]]
+|location= Dallas, Texas
+|attendance= 16,177
+|referee=Tim Weyland
+|result= D
+}}
+{{football box collapsible
+|round      = Matchday 17
+|team1= [[D.C. United]]
+|date= July 7, 1996
+|time= 
+|score= 6–1
+|report=[https://fbref.com/en/matches/1a7db3d8/DC-United-Dallas-Burn-July-7-1996-Major-League-Soccer Report]
+|team2= [[Dallas Burn]]
+|goals1= 
+*[[Raúl Díaz Arce|Diaz Arce]] {{goal|3||48||61||63}}
+*[[Steve Rammel|Rammel]] {{goal|18||77}}
+*[[Richie Williams|Williams]] {{yel|68}}
+|goals2= 
+*[[Chad Ashton|Ashton]] {{goal|69}}
+|stadium= [[Robert F. Kennedy Memorial Stadium|RFK Stadium]]
+|location= Washington, D.C.
+|attendance= 11,244
+|referee=Paul Tamberino
+|result= W
+}}
+{{football box collapsible
+|round      = Matchday 18
+|team1= [[D.C. United]]
+|date= July 12, 1996
+|time= 
+|score= 1–0
+|report=[https://fbref.com/en/matches/9491489e/DC-United-Tampa-Bay-Mutiny-July-12-1996-Major-League-Soccer Report]
+|team2= [[Tampa Bay Mutiny]]
+|goals1= 
+*[[Marco Etcheverry|Etcheverry]] {{goal|72}}
+|goals2= 
+*[[Frank Yallop|Yallop]] {{yel|13}}
+*[[Cle Kooiman|Kooiman]] {{yel|26}}
+|stadium= [[Robert F. Kennedy Memorial Stadium|RFK Stadium]]
+|location= Washington, D.C.
+|attendance= 20,014
+|referee=Robert Sheker
+|result= W
+}}
+{{football box collapsible
+|round      = Matchday 19
+|team1= [[New England Revolution]]
+|date= July 20, 1996
+|time= 
+|score= 2–0
+|report=[https://fbref.com/en/matches/16694e28/New-England-Revolution-DC-United-July-20-1996-Major-League-Soccer Report]
+|team2= [[D.C. United]]
+|goals1= 
+*[[Geoff Aunger|Aunger]] {{yel|44}}
+*[[Tom Lips|Lips]] {{yel|44}}
+*[[Peter Woodring|Woodring]] {{yel|53}}
+*[[Darren Sawatzky|Sawatzky]] {{goal|54||77}}, {{yel|70}}
+*[[Paul Keegan (footballer, born 1972)|Paul Keegan]] {{yel|72}}
+*[[Beto Naveda|Naveda]] {{yel|81}}
+|goals2= 
+*[[Raúl Díaz Arce|Diaz Arce]] {{sent off|2|22|36}}
+|stadium= [[Gillette Stadium|Foxboro Stadium]]
+|location= Foxborough, Massachusetts
+|attendance= 18,347
+|referee=Kevin Stott
+|result= L
+}}
+{{football box collapsible
+|round      = Matchday 20
+|team1= [[D.C. United]]
+|date= July 28, 1996
+|time= 
+|score= 2–0
+|report=[https://fbref.com/en/matches/a3386a8e/DC-United-Columbus-Crew-July-28-1996-Major-League-Soccer Report]
+|team2= [[Columbus Crew]]
+|goals1= 
+*[[Steve Rammel|Rammel]] {{goal|1}}
+*[[Jesse Marsch|Marsch]] {{goal|83}}
+|goals2= 
+*[[Robert Warzycha|Warzycha]] {{yel|61}}
+|stadium= [[Robert F. Kennedy Memorial Stadium|RFK Stadium]]
+|location= Washington, D.C.
+|attendance= 11,373
+|referee=Ruben Rodhas
+|result= W
+}}
+{{football box collapsible
+|round      = Matchday 21
+|team1= [[D.C. United]]
+|date= July 31, 1996
+|time= 
+|score= 2–3
+|report=[https://fbref.com/en/matches/87b7b639/DC-United-Kansas-City-Wiz-July-31-1996-Major-League-Soccer Report]
+|team2= [[Kansas City Wiz]]
+|goals1= 
+*[[Shawn Medved|Medved]] {{goal|9}}
+*[[Marco Etcheverry|Etcheverry]] {{goal|69}}
+|goals2= 
+*[[David Vaudreuil|Vaudreuil]] {{goal|19|o.g.}}
+*[[Preki]] {{goal|32}}
+*[[Mark Chung (soccer)|Chung]] {{goal|64}}
+|stadium= [[Robert F. Kennedy Memorial Stadium|RFK Stadium]]
+|location= Washington, D.C.
+|attendance= 9,457
+|referee=Kevin Terry
+|result= L
+}}
+{{football box collapsible
+|round      = Matchday 22
+|team1= [[D.C. United]]
+|date= August 4, 1996
+|time= 
+|score= 2–4
+|report=[https://fbref.com/en/matches/e30bbf2b/DC-United-Kansas-City-Wiz-August-4-1996-Major-League-Soccer Report]
+|team2= [[Kansas City Wiz]]
+|goals1= 
+*[[Marco Etcheverry|Etcheverry]] {{yel|20}}
+*[[Raúl Díaz Arce|Diaz Arce]] {{goal|32|pen.}}
+*[[Mario Gori|Gori]] {{goal|47}}
+|goals2= 
+*[[Mark Chung (soccer)|Chung]] {{goal|16||59}}
+*[[Preki]] {{yel|29}}
+*[[Mo Johnston|Johnston]] {{yel|30}}
+*[[Sean Bowers|Bowers]] {{yel|36}}
+*[[Mike Sorber|Sorber]] {{yel|53}}
+*[[Vitalis Takawira|Takawira]] {{goal|66||78}}
+|stadium= [[Robert F. Kennedy Memorial Stadium|RFK Stadium]]
+|location= Washington, D.C.
+|attendance= 12,356
+|referee=Joshua Patlak
+|result= L
+}}
+{{football box collapsible
+|round      = Matchday 23
+|team1= [[Tampa Bay Mutiny]]
+|date= August 7, 1996
+|time= 
+|score= 1–3
+|report=[https://fbref.com/en/matches/e72f5c27/Tampa-Bay-Mutiny-DC-United-August-7-1996-Major-League-Soccer Report]
+|team2= [[D.C. United]]
+|goals1= 
+*[[Ivan McKinley|McKinley]] {{yel|8}}
+*[[Steve Pittman|Pittman]] {{yel|31}}
+*[[Roy Lassiter|Lassiter]] {{goal|90|pen.}}
+|goals2= 
+*[[Jaime Moreno (footballer, born 1974)|Moreno]] {{goal|4}}
+*[[Jeff Agoos|Agoos]] {{yel|19}}
+*[[Tony Sanneh|Sanneh]] {{yel|39}}
+*[[Raúl Díaz Arce|Diaz Arce]] {{goal|45|p|87}}
+*[[Marco Etcheverry|Etcheverry]] {{yel|53}}
+*[[Jeff Causey|Causey]] {{yel|78}}
+|stadium= [[Houlihan's Stadium]]
+|location= [[Tampa, Florida]]
+|attendance= 6,476
+|referee=Rich Grady
+|result= W
+}}
+{{football box collapsible
+|round      = Matchday 24
+|team1= [[Columbus Crew]]
+|date= August 10, 1996
+|time= 
+|score= 3–2
+|report=[https://fbref.com/en/matches/9be0ce59/Columbus-Crew-DC-United-August-10-1996-Major-League-Soccer Report]
+|team2= [[D.C. United]]
+|goals1= 
+*[[Rob Smith (soccer)|Smith]] {{yel|18}}
+*[[Ricardo Iribarren|Iribarren]] {{goal|55}}
+*[[Brian McBride|McBride]] {{goal|57}}
+*[[Adrián Paz|Paz]] {{goal|60}}
+|goals2= 
+*[[Jaime Moreno (footballer, born 1974)|Moreno]] {{goal|27}}
+*[[Raúl Díaz Arce|Diaz Arce]] {{goal|31}}
+*[[Eddie Pope|Pope]] {{yel|75}}
+|stadium= [[Ohio Stadium]]
+|location= Columbus, Ohio
+|attendance= 18,587
+|referee=Steve Olson
+|result=L
+}}
+{{football box collapsible
+|round      = Matchday 25
+|team1= [[D.C. United]]
+|date= August 18, 1996
+|time= 
+|score= 2–1
+|report=[https://fbref.com/en/matches/ee9dfae3/DC-United-LA-Galaxy-August-18-1996-Major-League-Soccer Report]
+|team2= [[Los Angeles Galaxy]]
+|goals1= 
+*[[John Harkes|Harkes]] {{goal|3}}
+*[[Eddie Pope|Pope]] {{goal|56}}
+|goals2= 
+*[[Mark Semioli|Semioli]] {{yel|64}}
+*[[Eduardo Hurtado|Hurtado]] {{goal|77}}
+|stadium= [[Robert F. Kennedy Memorial Stadium|RFK Stadium]]
+|location= Washington, D.C.
+|attendance= 24,536
+|referee=Esse Baharmast
+|result=W
+}}
+{{football box collapsible
+|round      = Matchday 26
+|team1= [[NY/NJ MetroStars]]
+|date= August 21, 1996
+|time= 
+|score= 2–3
+|report=[https://fbref.com/en/matches/9086490b/NYNJ-MetroStars-DC-United-August-21-1996-Major-League-Soccer Report]
+|team2= [[D.C. United]]
+|goals1= 
+*[[Antony de Ávila|de Avila]] {{goal|26||65}}
+*[[Tab Ramos|Ramos]] {{yel|36}}
+*[[Rhett Harty|Harty]] {{yel|48}}
+*[[Jeff Zaun|Zaun]] {{yel|56}}
+|goals2= 
+*[[Jeff Agoos|Agoos]] {{yel|27}}
+*[[Richie Williams|Williams]] {{goal|34}}
+*[[Marco Etcheverry|Etcheverry]] {{goal|45}}, {{yel|79}}
+*[[Raúl Díaz Arce|Diaz Arce]] {{yel|56}}, {{goal|77}}
+*[[Eddie Pope|Pope]] {{yel|59}}
+|stadium= [[Giants Stadium]]
+|location= East Rutherford, New Jersey
+|attendance= 20,416
+|referee=Arturo Angeles
+|result= W
+}}
+{{football box collapsible
+|round      = Matchday 27
+|team1= [[D.C. United]]
+|date= August 25, 1996
+|time= 
+|score= 3–0
+|report=[https://fbref.com/en/matches/2f265462/DC-United-Tampa-Bay-Mutiny-August-25-1996-Major-League-Soccer Report]
+|team2= [[Tampa Bay Mutiny]]
+|goals1= 
+*[[Steve Rammel|Rammel]] {{goal|25}}
+*[[Jaime Moreno (footballer, born 1974)|Moreno]] {{goal|29}}
+*[[Kris Kelderman|Kelderman]] {{goal|81}}
+|goals2= 
+|stadium= [[Robert F. Kennedy Memorial Stadium|RFK Stadium]]
+|location= Washington, D.C.
+|attendance= 15,804
+|referee=Roberto Van de Wyngard
+|result= W
+}}
+{{football box collapsible
+|round      = Matchday 28
+|team1= [[Colorado Rapids]]
+|date= August 29, 1996
+|time= 
+|score= 1–2
+|report=[https://fbref.com/en/matches/32f00644/Colorado-Rapids-DC-United-August-29-1996-Major-League-Soccer Report]
+|team2= [[D.C. United]]
+|goals1= 
+*[[Jean Harbor|Harbor]] {{goal|40}}
+*[[Richard Sharpe (soccer)|Sharpe]] {{goal|56}}
+|goals2= 
+*[[Shawn Medved|Medved]] {{goal|3}}
+*[[Steve Rammel|Rammel]] {{yel|38}}, {{goal|49}}
+*[[Richie Williams|Williams]] {{yel|82}}
+*[[Jeff Causey|Causey]] {{yel|85}}
+|stadium= [[Mile High Stadium]]
+|location= Denver, Colorado
+|attendance= 6,368
+|referee= Ali Saheli
+|result= W
+}}
+{{football box collapsible
+|round      = Matchday 29
+|team1= [[D.C. United]]
+|date= September 6, 1996
+|time= 
+|score= 1–2
+|report=[https://fbref.com/en/matches/8dba49b8/DC-United-NYNJ-MetroStars-September-6-1996-Major-League-Soccer Report]
+|team2= [[NY/NJ MetroStars]]
+|goals1= 
+*[[Tony Sanneh|Sanneh]] {{yel|17}}, {{goal|50}}
+*[[Jeff Agoos|Agoos]] {{yel|31}}
+*[[Steve Rammel|Rammel]] {{yel|88}}
+|goals2= 
+*[[Peter Vermes|Vermes]] {{yel|13}}
+*[[Antony de Ávila|de Avila]] {{goal|18}}, {{yel|76}}
+*[[Miles Joseph|Joseph]] {{goal|30}}
+*[[Nicola Caricola|Caricola]] {{yel|37}}
+*[[Cristian da Silva|da Silva]] {{yel|45}}
+|stadium= [[Robert F. Kennedy Memorial Stadium|RFK Stadium]]
+|location= Washington, D.C.
+|attendance= 8,053
+|referee=Zimmerman Boulos
+|result= L
+}}
+{{football box collapsible
+|round      = Matchday 30
+|team1= [[Tampa Bay Mutiny]]
+|date= September 14, 1996
+|time= 
+|score= 2–0
+|report=[https://fbref.com/en/matches/b8db1a03/Tampa-Bay-Mutiny-DC-United-September-14-1996-Major-League-Soccer Report]
+|team2= [[D.C. United]]
+|goals1= 
+*[[Steve Ralston|Ralston]] {{goal|4}}
+*[[Roy Lassiter|Lassiter]] {{goal|51}}
+|goals2= 
+|stadium= [[Houlihan's Stadium]]
+|location= [[Tampa, Florida]]
+|attendance= 8,135
+|referee=Paul Tamberino
+|result= L
+}}
+{{football box collapsible
+|round      = Matchday 31
+|team1= [[D.C. United]]
+|date= September 17, 1996
+|time= 
+|score= 3–2
+|report=[https://fbref.com/en/matches/fb834998/DC-United-New-England-Revolution-September-17-1996-Major-League-Soccer Report]
+|team2= [[New England Revolution]]
+|goals1= 
+*[[Eddie Pope|Pope]] {{goal|58}}
+*[[Raúl Díaz Arce|Diaz Arce]] {{goal|62||89}}
+|goals2= 
+*[[Joe-Max Moore|Moore]] {{goal|39|p|78}}
+*[[Francis Okaroh|Okaroh]] {{yel|57}}
+|stadium= [[Robert F. Kennedy Memorial Stadium|RFK Stadium]]
+|location= Washington, D.C.
+|attendance= 7,360
+|referee=Marcel Yonan
+|result=W
+}}
+{{football box collapsible
+|round      = Matchday 32
+|team1= [[D.C. United]]
+|date= September 21, 1996
+|time= 
+|score= 3–1
+|report=[https://fbref.com/en/matches/8ee1b13e/DC-United-Colorado-Rapids-September-21-1996-Major-League-Soccer Report]
+|team2= [[Colorado Rapids]]
+|goals1= 
+*[[Raúl Díaz Arce|Diaz Arce]] {{goal|27||53|p}}
+*[[Mario Gori|Gori]] {{yel|60}}
+*[[Shawn Medved|Medved]] {{goal|32}}
+|goals2= 
+*[[Josh McKay (soccer)|McKay]] {{yel|50}}
+*[[Denis Hamlett|Hamlett]] {{yel|53}}
+*[[Chris Henderson|Henderson]] {{goal|90}}
+|stadium= [[Robert F. Kennedy Memorial Stadium|RFK Stadium]]
+|location= Washington, D.C.
+|attendance= 20,573
+|referee=Arturo Angeles
+|result=W
+}}
+
+==== Playoffs ====
+
+===== Conference semifinals =====
+
+{{football box collapsible
+|round      = [[1996 Major League Soccer season#Conference semifinals|Game 1]]
+|team1=[[NY/NJ MetroStars]]
+|date=September 24, 1996
+|time= 
+|score= 2–2
+|shootoutscore = 6–5
+|report=https://fbref.com/en/matches/88719fdb/NYNJ-MetroStars-DC-United-September-24-1996-Major-League-Soccer
+|team2=[[D.C. United]] 
+|goals1=
+*[[Antony de Ávila|de Ávila]] {{goal|38}}
+*[[Giovanni Savarese|Savarese]] {{goal|75}}
+|goals2=
+*[[Raúl Díaz Arce|Díaz Arce]] {{goal|24}}
+*[[Richie Williams|Williams]] {{yel|44}}
+*[[Jaime Moreno (footballer, born 1974)|Moreno]] {{goal|56}}
+|stadium=[[Giants Stadium]]
+|location=[[East Rutherford, New Jersey]]
+|attendance= 14,416
+|referee={{flagicon|California}} [[Esfandiar Baharmast|Esse Baharmast]]
+|result=L
+|shootout1 =
+*[[Antony de Ávila|de Ávila]] {{pengoal}}
+*[[Roberto Donadoni|Donadoni]] {{pengoal}}
+*[[Tab Ramos|Ramos]] {{penmiss}}
+*[[Miles Joseph|Joseph]] {{pengoal}}
+*[[Matt Knowles (soccer)|Knowles]] {{pengoal}}
+*[[Damian Silvera|Silvera]] {{penmiss}}
+*[[Giovanni Savarese|Savarese]] {{pengoal}}
+*[[Jeff Zaun|Zaun]] {{penmiss}}
+*[[Tony Meola|Meola]] {{penmiss}}
+*[[Rob Johnson (soccer)|Johnson]] {{penmiss}}
+*[[Peter Vermes|Vermes]] {{pengoal}}
+|shootout2 = 
+* {{pengoal}} [[Jeff Agoos|Agoos]]
+* {{pengoal}} [[Marco Etcheverry|Etcheverry]]
+* {{pengoal}} [[Jaime Moreno (footballer, born 1974)|Moreno]]
+* {{penmiss}} [[Raúl Díaz Arce|Díaz Arce]] 
+* {{pengoal}} [[Tony Sanneh|Sanneh]]
+* {{penmiss}} [[John Harkes|Harkes]]
+* {{pengoal}} [[Mario Gori|Gori]]
+* {{penmiss}} [[Richie Williams|Williams]]
+* {{penmiss}} [[Clint Peay|Peay]]
+* {{penmiss}} [[Eddie Pope|Pope]]
+* {{penmiss}} [[Jeff Causey|Causey]]
+|note = MetroStars lead the series 1–0
+}}
+{{football box collapsible
+|round      = [[1996 Major League Soccer season#Conference semifinals|Game 2]]
+|team1= [[D.C. United]]  
+|date=September 27, 1996
+|time= 
+|score= 1–0
+|report=https://fbref.com/en/matches/d303470a/DC-United-NYNJ-MetroStars-September-27-1996-Major-League-Soccer
+|team2= [[New York Red Bulls|NY/NJ MetroStars]] 
+|goals1= 
+*[[Marco Etcheverry|Etcheverry]] {{yel|5}}, {{goal|72}}
+*[[Jaime Moreno (footballer, born 1974)|Moreno]] {{sent off|0|89}}
+|goals2= 
+*[[Jeff Zaun|Zaun]] {{yel|47}}
+*[[Nicola Caricola|Caricola]] {{yel|62}}
+|stadium=[[Robert F. Kennedy Memorial Stadium|RFK Stadium]]
+|location=Washington, D.C.
+|attendance= 21,442
+|referee={{flagicon|Maryland}} [[Paul Tamberino]]
+|result=W
+|note = Series tied 1–1
+}}
+{{football box collapsible
+|round      = [[1996 Major League Soccer season#Conference semifinals|Game 3]]
+|date = October 2, 1996
+|time = 
+|team1 = [[D.C. United]]
+|score = 2–1
+|report = https://fbref.com/en/matches/a40faa34/DC-United-NYNJ-MetroStars-October-2-1996-Major-League-Soccer
+|team2 = [[New York Red Bulls|NY/NJ MetroStars]]
+|goals1 = 
+*[[Clint Peay|Peay]] {{yel|61}}
+*[[Steve Rammel|Rammel]] {{goal|67}}
+*[[Raúl Díaz Arce|Díaz Arce]] {{goal|89|pen.}}
+|goals2 = 
+*[[Nicola Caricola|Caricola]] {{yel|38}}
+*[[Miles Joseph|Joseph]] {{yel|57}}
+*[[Antony de Ávila|de Ávila]] {{goal|86}}
+*[[Tony Meola|Meola]] {{yel|89}}
+|stadium =[[Robert F. Kennedy Memorial Stadium|RFK Stadium]]
+|location= Washington, D.C.
+|attendance = 20,423
+|referee={{flagicon|California}} [[Brian Hall (referee)|Brian Hall]]
+|result=W
+|note = D.C. United win series 2–1
+}}
+
+===== Conference finals =====
+
+{{football box collapsible
+|round      = [[1996 Major League Soccer season#Conference finals|Game 1]]
+|team1=[[D.C. United]]
+|date= October 10, 1996
+|time= 
+|score= 4–1
+|report=https://fbref.com/en/matches/2242f769/DC-United-Tampa-Bay-Mutiny-October-10-1996-Major-League-Soccer
+|team2=[[Tampa Bay Mutiny]] 
+|goals1=
+*[[Raúl Díaz Arce|Díaz Arce]] {{goal|36||58||60}}
+*[[Steve Rammel|Rammel]] {{goal|54}}
+*[[Mario Gori|Gori]] {{yel|61}}
+|goals2= 
+*[[Giuseppe Galderisi|Galderisi]] {{yel|34}}
+*[[Roy Lassiter|Lassiter]] {{goal|42}}
+*[[Goran Hunjak|Hunjak]] {{yel|65}}
+|stadium=[[Robert F. Kennedy Memorial Stadium|RFK Stadium]]
+|location=Washington, D.C.
+|attendance= 23,566
+|referee= [[Kevin Stott]]
+|result=W
+|note = D.C. United lead the series 1–0
+}}
+{{football box collapsible
+|round      = [[1996 Major League Soccer season#Conference finals|Game 2]]
+|team1= [[Tampa Bay Mutiny]]
+|date= October 12, 1996
+|time= 
+|type=
+|score= 1–2
+|report=https://fbref.com/en/matches/48da5340/Tampa-Bay-Mutiny-DC-United-October-12-1996-Major-League-Soccer
+|team2= [[D.C. United]] 
+|goals1= 
+*[[Steve Ralston|Ralston]] {{goal|14}}
+*[[Martín Vásquez|Vásquez]] {{yel|27}}
+*[[Carlos Valderrama|Valderrama]] {{sent off|2|28|83}}
+*[[Steve Pittman|Pittman]] {{yel|54}}
+*[[Ivan McKinley|McKinley]] {{yel|62}}
+|goals2= 
+*[[Jeff Agoos|Agoos]] {{yel|41}}
+*[[Richie Williams|Williams]] {{goal|49}}
+*[[Jaime Moreno (footballer, born 1974)|Moreno]] {{yel|54}}
+*[[David Vaudreuil|Vaudreuil]] {{yel|63}}
+*[[Raúl Díaz Arce|Díaz Arce]] {{goal|82}}
+*[[Mark Simpson (soccer)|Simpson]] {{yel|90}}
+|stadium=[[Houlihan's Stadium]]
+|location=[[Tampa, Florida]]
+|attendance= 9,339
+|referee= Rich Grady
+|result=W
+|note = D.C. United wins series 2–0
+}}
+
+===== MLS Cup =====
+{{further|MLS Cup 1996}}
+
+{{football box collapsible
+|round      = [[MLS Cup '96|Final]]
+|team1= LA Galaxy
+|date= October 20
+|time= 
+|score= 2–3
+|aet = yes
+|report=https://fbref.com/en/matches/053a9edd/LA-Galaxy-DC-United-October-20-1996-Major-League-Soccer
+|team2= D.C. United 
+|goals1= 
+*[[Eduardo Hurtado|Hurtado]] {{goal|5}}, {{yel|41}}
+*[[Chris Armas|Armas]] {{goal|56}}
+*[[Arash Noamouz|Noamouz]] {{yel|74}}
+|goals2= 
+*[[Marco Etcheverry|Etcheverry]] {{yel|39}}
+*[[Clint Peay|Peay]] {{yel|53}}
+*[[Tony Sanneh|Sanneh]] {{goal|72}}
+*[[Shawn Medved|Medved]] {{goal|81}}
+*[[Eddie Pope|Pope]] {{golden goal|94}}
+|stadium=[[Foxboro Stadium]]
+|location=[[Foxborough, Massachusetts]]
+|attendance= 34,643
+|referee= [[Esfandiar Baharmast]]
+|result=W
+}}
+
+=== U.S. Open Cup ===
+{{main|1996 U.S. Open Cup}} 
+{{football box collapsible
+|round      = [[1996 U.S. Open Cup#Quarterfinals|Quarterfinals]]
+|team1=D.C. United (MLS) {{flagicon|Washington, D.C.}}
+|date=September 4
+|time= 
+|score= 2–0
+|report=https://lhusoc.tripod.com/history/1996/1996c.htm
+|team2= {{flagicon|North Carolina}} [[Carolina Dynamo]] ([[United Soccer League|USISL]])
+|goals1= 
+*[[Steve Rammel|Rammel]] {{goal|50||83}}
+*[[Jeff Agoos|Agoos]] {{yel|87}}
+|goals2= 
+*[[Yari Allnutt|Allnutt]] {{yel|87}}
+|stadium=[[Klöckner Stadium]]
+|location=[[Charlottesville, Virginia]]
+|attendance= 1,829
+|referee= Ruben Rodhas
+|result=W
+}}
+{{football box collapsible
+|round      = [[1996 U.S. Open Cup#Semifinals|Semifinals]]
+|team1=[[FC Dallas|Dallas Burn]] (MLS) {{flagicon|Texas}} 
+|date=October 27
+|time= 
+|score= 0–2
+|report=[https://lhusoc.tripod.com/history/1996/1996d.htm Report] 
+|team2= {{flagicon|Washington, D.C.}} D.C. United (MLS)
+|goals1= 
+*[[Brian Haynes (footballer)|Haynes]] {{yel|26}}
+*[[Tom Soehn|Soehn]] {{yel|58}}
+*[[Richard Farrer|Farrer]] {{yel|63}}
+|goals2= 
+*[[Jaime Moreno (footballer, born 1974)|Moreno]] {{goal|12||82}}
+|stadium=[[Cotton Bowl (stadium)|Cotton Bowl]]
+|location=[[Dallas, Texas]]
+|attendance= 1,958
+|referee= [[Kevin Terry]]
+|result=W
+}}
+{{football box collapsible
+|round      = [[1996 U.S. Open Cup#Final|Final]]
+|date =October 30
+|time = 
+|team1 =D.C. United (MLS) {{flagicon|Washington, D.C.}}
+|score = 3–0
+|report = [https://lhusoc.tripod.com/history/1996/1996d.htm Report] 
+|team2 = {{flagicon|New York}} [[Rochester New York FC|Rochester Raging Rhinos]] ([[A-League (1995–2004)|A-L]])
+|goals1 =
+*[[Raúl Díaz Arce|Díaz Arce]] {{goal|45}}
+*[[Eddie Pope|Pope]] {{goal|63}}
+*[[Richie Williams|Williams]] {{yel|72}}
+*[[Eddie Pope|Pope]] {{yel|72}}
+*[[Jaime Moreno (footballer, born 1974)|Moreno]] {{goal|89}}
+|goals2 =
+*[[Fuseini Dauda|Dauda]] {{yel|77}}
+|stadium =[[RFK Stadium]]
+|location=Washington, D.C.
+|attendance = 7,234
+|referee=Esse Baharast 
+|result=W
+}}
+
+== League standings ==
+
+===Conference===
+{{1996 Major League Soccer Eastern Conference table|showteam=DCU}}
+
+===Overall===
+{{1996 Major League Soccer season table|showteam=DCU}}
+
+== Transfers ==
+
+===In===
+{| class="wikitable" style="text-align:left; font-size:95%;"
+|-
+! Date
+! Player
+! Previous club
+! Fee/notes
+! Ref
+|-
+|-
+| January 24, 1996 || {{flagicon|USA}} [[Jeff Agoos]] || {{flagicon|GER}} [[SV Wehen Wiesbaden|Wehen]] || [[1996 MLS Inaugural Allocations|Allocated]] || 
+|-
+| January 24, 1996 || {{flagicon|BOL}} [[Marco Etcheverry]] || {{flagicon|COL}} [[América de Cali]] || [[1996 MLS Inaugural Allocations|Allocated]] || 
+|-
+| January 24, 1996 || {{flagicon|USA}} [[John Harkes]]  || {{flagicon|ENG}} [[West Ham United F.C.|West Ham United]] || [[1996 MLS Inaugural Allocations|Allocated]] || 
+|-
+| January 24, 1996 || {{flagicon|BOL}} [[Berthy Suárez]] || {{flagicon|BOL}} [[Guabirá]] || [[1996 MLS Inaugural Allocations|Allocated]] || 
+|-
+| February 6, 1996 || {{flagicon|SLV}} [[Raúl Díaz Arce]] || {{flagicon|SLV}} [[C.D. Luis Ángel Firpo|Luis Ángel Firpo]] || [[1996 MLS Inaugural Player Draft|Drafted]] || 
+|-
+| February 6, 1996 || {{flagicon|USA}} [[Shawn Medved]] || {{flagicon|USA}} [[Seattle Sounders (1994–2008)|Seattle Sounders]] || [[1996 MLS Inaugural Player Draft|Drafted]] || 
+|-
+| February 6, 1996 || {{flagicon|USA}} [[Erik Imler]] || {{flagicon|USA}} [[Raleigh Flyers (soccer)|Raleigh Flyers]] || [[1996 MLS Inaugural Player Draft|Drafted]] || 
+|-
+| February 6, 1996 || {{flagicon|USA}} [[Richie Williams]] || {{flagicon|USA}} [[Richmond Kickers]] || [[1996 MLS Inaugural Player Draft|Drafted]] || 
+|-
+| February 6, 1996 || {{flagicon|USA}} [[Thor Lee]] || {{flagicon|USA}} [[Wichita Wings]] || [[1996 MLS Inaugural Player Draft|Drafted]] || 
+|-
+| February 6, 1996 || {{flagicon|USA}} [[Brian Kamler]] || {{flagicon|USA}} [[Richmond Kickers]] || [[1996 MLS Inaugural Player Draft|Drafted]] || 
+|-
+| February 6, 1996 || {{flagicon|USA}} [[Mile Milovac]] || {{flagicon|USA}} [[Indiana Twisters|Indianapolis Twisters]] || [[1996 MLS Inaugural Player Draft|Drafted]] || 
+|-
+| February 6, 1996 || {{flagicon|USA}} [[Kris Kelderman]] || {{flagicon|USA}} [[St. Louis Ambush (NPSL)|St. Louis Ambush]] || [[1996 MLS Inaugural Player Draft|Drafted]] || 
+|-
+| February 7, 1996 || {{flagicon|USA}} [[Clint Peay]] || {{flagicon|USA}} [[Virginia Cavaliers#Soccer|Virginia Cavaliers]] || [[1996 MLS Inaugural Player Draft|Drafted]] || 
+|-
+| February 7, 1996 || {{flagicon|USA}} [[Ben Crawley]] || {{flagicon|GER}} [[TuS Celle FC|TuS Celle]] || [[1996 MLS Inaugural Player Draft|Drafted]] || 
+|-
+| February 7, 1996 || {{flagicon|BIH}} [[Said Fazlagić]] || {{flagicon|BIH}} [[FK Sarajevo|Sarajevo]] || [[1996 MLS Inaugural Player Draft|Drafted]] || 
+|-
+| February 7, 1996 || {{flagicon|VEN}} [[Daniel de Oliveira (football)|Daniel de Oliveira]] || {{flagicon|SLV}} [[C.D. Luis Ángel Firpo|Luis Ángel Firpo]] || [[1996 MLS Inaugural Player Draft|Drafted]] || 
+|-
+| February 7, 1996 || {{flagicon|USA}} [[Matthew Olson]] || {{flagicon|USA}} [[Seattle BigFoot|Everett BigFoot]] || [[1996 MLS Inaugural Player Draft|Drafted]] || 
+|-
+| February 7, 1996 || {{flagicon|USA}} [[Sterling Wescott]] || {{flagicon|Hawaii}} [[Hawaii Tsunami]] || [[1996 MLS Inaugural Player Draft|Drafted]] || 
+|-
+| February 7, 1996 || {{flagicon|USA}} [[Garth Lagerwey]] || {{flagicon|USA}} [[Hampton Roads Mariners]] || [[1996 MLS Inaugural Player Draft|Drafted]] ||
+|-
+| February 7, 1996 || {{flagicon|MEX}} [[Carlos Garcia (American soccer)|Carlos Garcia]] || {{flagicon|USA}} [[Myrtle Beach Boyz]] || [[1996 MLS Inaugural Player Draft|Drafted]] ||
+|-
+| April 19, 1996 || {{flagicon|USA}} [[Steve Rammel]] || {{flagicon|USA}} [[Washington Mustangs]] || Loan || <ref>{{Cite web|url=http://www.intermark.com/Rapids/rp070397.html|title=Intermark - Home Page}}</ref>
+|-
+| July 18, 1996 || {{flagicon|BOL}} [[Jaime Moreno (footballer, born 1974)|Jaime Moreno]] || {{flagicon|ENG}} [[Middlesbrough F.C.|Middlesbrough]] || Lottery || 
+|}
+
+==References==
+{{external media|video1={{youTube|yuGdfdYkkAw|San Jose Clash vs D.C. United First-Ever MLS Match}}}}
+{{reflist}}
+
+{{D.C. United seasons}}
+{{1996 in American soccer}}
+{{MLS Cup winning seasons}}
+
+[[Category:D.C. United seasons|1996]]
+[[Category:American soccer clubs 1996 season|Dc United]]
+[[Category:1996 MLS season by team|Dc United]]
+[[Category:1996 in sports in Washington, D.C.]]
+[[Category:MLS Cup champion seasons|1996]]
+[[Category:MLS Eastern Conference champion seasons|1996]]
+[[Category:U.S. Open Cup champion seasons|1996]]

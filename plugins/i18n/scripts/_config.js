@@ -1,42 +1,39 @@
 // the template families this plugin localizes.
 // key is the core registry key the aliases resolve to.
 // `page` anchors the family to its wikidata item (via `site`, enwiki unless noted).
-// `file` is the generated file in ../src/data/ — these names are also test imports.
 // `params: true` → also fetch TemplateData for localized→english parameter names.
 const families = {
-  citation: { page: 'Template:Citation', file: 'citation', params: true },
-  coord: { page: 'Template:Coord', file: 'coord' },
-  flag: { page: 'Template:Flag', file: 'flag' },
-  flagicon: { page: 'Template:Flag icon', file: 'flagicon' },
-  formatnum: { page: 'Template:Formatnum', file: 'formatnum' },
-  ipa: { page: 'Template:IPA', file: 'ipa' },
-  isbn: { page: 'Template:ISBN', file: 'isbn' },
-  main: { page: 'Template:Main', file: 'main' },
-  nihongo: { page: 'Template:Nihongo', file: 'nihongo' },
-  portal: { page: 'Template:Portal', file: 'portal' },
-  reflist: { page: 'Template:Reflist', file: 'reflist' },
-  sfn: { page: 'Template:Sfn', file: 'sfn' },
-  small: { page: 'Template:Small', file: 'small' },
-  start: { page: 'Template:Start date', file: 'start_date' },
-  taxobox: { page: 'Template:Taxobox', file: 'taxobox', infobox: true },
-  persondata: { site: 'dewiki', page: 'Vorlage:Personendaten', file: 'persondata' },
-  'birth date and age': { page: 'Template:Birth date and age', file: 'birth_date_and_age', params: true },
+  citation: { page: 'Template:Citation', params: true },
+  coord: { page: 'Template:Coord' },
+  flag: { page: 'Template:Flag' },
+  flagicon: { page: 'Template:Flag icon' },
+  formatnum: { page: 'Template:Formatnum' },
+  ipa: { page: 'Template:IPA' },
+  isbn: { page: 'Template:ISBN' },
+  main: { page: 'Template:Main' },
+  nihongo: { page: 'Template:Nihongo' },
+  portal: { page: 'Template:Portal' },
+  reflist: { page: 'Template:Reflist' },
+  sfn: { page: 'Template:Sfn' },
+  small: { page: 'Template:Small' },
+  start: { page: 'Template:Start date' },
+  taxobox: { page: 'Template:Taxobox', infobox: true },
+  persondata: { site: 'dewiki', page: 'Vorlage:Personendaten' },
+  'birth date and age': { page: 'Template:Birth date and age', params: true },
   'cite book': {
     page: 'Template:Cite book',
-    file: 'cite_book',
     params: true,
     // de's native book-citation is its own wikidata item
     extra: [{ site: 'dewiki', page: 'Vorlage:Literatur' }],
   },
-  'cite journal': { page: 'Template:Cite journal', file: 'cite_journal', params: true },
+  'cite journal': { page: 'Template:Cite journal', params: true },
   'cite web': {
     page: 'Template:Cite web',
-    file: 'cite_web',
     params: true,
     // de's native web-citation is its own wikidata item
     extra: [{ site: 'dewiki', page: 'Vorlage:Internetquelle' }],
   },
-  'commons cat': { page: 'Template:Commons category', file: 'commons_cat' },
+  'commons cat': { page: 'Template:Commons category' },
 }
 
 // wikis we also fetch per-wiki redirects + TemplateData from.

@@ -1,0 +1,1673 @@
+{{Short description|65th season in franchise history}}
+{{Use mdy dates|date=January 2025}}
+{{Use American English|date=March 2026}}
+{{Infobox NFL team season
+| team            = Buffalo Bills
+| logo            =
+| year            = 2024
+| record          = 13–4
+| division_place  = 1st [[AFC East]]
+| coach           = [[Sean McDermott]]
+| off_coach       = [[Joe Brady (American football coach)|Joe Brady]]
+| def_coach       = [[Bobby Babich]]
+| general_manager = [[Brandon Beane]]
+| owner           = [[Terrence Pegula|Terry]] and [[Kim Pegula]]
+| stadium         = [[Ralph Wilson Stadium|Highmark Stadium]]
+| playoffs        = '''Won [[2024–25 NFL playoffs|Wild Card Playoffs]]'''<br>(vs. [[2024 Denver Broncos season|Broncos]]) 31–7<br>'''Won [[2024–25 NFL playoffs|Divisional Playoffs]]'''<br>(vs. [[2024 Baltimore Ravens season|Ravens]]) 27–25<br>Lost [[2024-25 NFL playoffs|AFC Championship]]<br>(at [[2024 Kansas City Chiefs season|Chiefs]]) 29–32
+| pro_bowlers     = QB [[Josh Allen]]<br>RB [[James Cook (running back)|James Cook]]<br>T [[Dion Dawkins]]<br>C [[Connor McGovern (American football, born 1997)|Connor McGovern]]
+| AP_All-pros     = QB [[Josh Allen]] ''<small>(2nd team)</small>''
+| uniform         = [[File:Buffalo Bills Uniforms 2021-Present.png|250px]]
+| shortnavlink    = Bills seasons
+}}
+The [[2024 NFL season|2024 season]] was the [[Buffalo Bills]]' 55th in the [[National Football League]] (NFL), their 65th overall, their tenth full season under the ownership of [[Terrence Pegula|Terry]] and [[Kim Pegula]], and their eighth under the [[List of Buffalo Bills head coaches|head coach]]/[[General manager (American football)|general manager]] tandem of [[Sean McDermott]] and [[Brandon Beane]].
+
+This was their first season since [[2019 Buffalo Bills season|2019]] without wide receiver [[Stefon Diggs]], as he was traded to the [[Houston Texans]]. The team also released several veterans such as center [[Mitch Morse]], cornerback [[Tre'Davious White]], and safety [[Jordan Poyer]], several players who had been key contributors during the McDermott era, among others.
+
+Due to the roster turnover, many outlets went into the season expecting regression for the Bills. Despite this, the Bills finished the regular season with a record of 13–4, their best since the introduction of the 17-game season in 2021, also improving on their 11–6 record from the previous season. The success of the Bills' offense despite the loss of star offensive players was in part because of a shift in offensive philosophy, dubbed "Everybody Eats," in which the offense was spread out among the team's wide receivers, running backs and tight ends along with superstar quarterback [[Josh Allen]]. This would prevent opposing defenses from keying on one star. A total of 13 players scored at least one receiving touchdown in 2024, tying an NFL record.<ref>{{Cite web |last=Wawrow |first=John |date=2025-01-01 |title=Bills offense sets the table with an 'everybody eats' approach that has 13 players with a TD catch |url=https://apnews.com/article/buffalo-bills-josh-allen-7ce3fc8ddcb6da68f7d1b83109912ab7 |access-date=2025-01-25 |website=AP News |language=en}}</ref><ref>{{Cite web |last=Kinkhabwala |first=Aditi  |author-link=Aditi Kinkhabwala |date=2025-01-10 |title='Everybody eats': How the Bills' revamped, 'selfless' receiver room has fueled Josh Allen's MVP-caliber season |url=https://www.cbssports.com/nfl/news/everybody-eats-how-the-bills-revamped-selfless-receiver-room-has-fueled-josh-allens-mvp-caliber-season/ |access-date=2025-01-25 |website=CBSSports.com |language=en}}</ref>
+
+Highlights of the regular season included a Week 11 win over the then-undefeated [[2024 Kansas City Chiefs season|Kansas City Chiefs]] that clinched the Bills' sixth consecutive winning season. Two weeks later, they clinched their fifth consecutive [[AFC East]] title, as well as their sixth consecutive playoff appearance since [[2019 Buffalo Bills season|2019]], with a Week 13 win over the [[2024 San Francisco 49ers season|San Francisco 49ers]]. This broke the franchise record set when they won four consecutive division titles from [[1988 Buffalo Bills season|1988]]–[[1991 Buffalo Bills season|1991]].<ref>{{cite web|last=Smith|first=Coral|title=Bills clinch AFC East with victory over 49ers; become first team to sew up division title|url=https://www.nfl.com/news/bills-clinch-afc-east-with-victory-over-49ers-become-first-team-to-sew-up-division-title|website=NFL.com|date=December 1, 2024|access-date=December 1, 2024}}</ref> Lastly, a Week 17 win over the [[2024 New York Jets season|New York Jets]] helped the team secure the no. 2 seed in the AFC for the third consecutive year.
+
+In addition, the Bills won all eight of their home games for the first time since 1990 and scored a franchise-record 525 points, surpassing their total from 2020. The team drew an average home attendance of 70,696 in 8 home games in the 2024 NFL season, a 9.8% increase from the previous year. Josh Allen received the title of [[AP NFL Most Valuable Player Award|NFL Most Valuable Player]] for his efforts this season, the first Bills player to win the award since [[Thurman Thomas]] in 1991.
+
+In the playoffs, the Bills defeated the seventh seed [[2024 Denver Broncos season|Denver Broncos]] 31–7 in the [[Wild card (sports)#National Football League|Wild Card Round]], followed by a close 27–25 win against the third seed [[2024 Baltimore Ravens season|Baltimore Ravens]] in the Divisional Round to advance to the AFC Championship for the first time since [[2020 Buffalo Bills season|2020]].<ref>{{Cite news |last=Verderame |first=Matt |date=January 19, 2025 |title=NFL Divisional Rapid Reaction: Bills Get Another Shot at Chiefs and Patrick Mahomes |url=https://pix11.com/sports/sports-illustrated/fc7f3404/nfl-divisional-rapid-reaction-bills-get-another-shot-at-chiefs-and-patrick-mahomes/ |access-date=January 20, 2025 |publisher=Pix11 |archive-url=https://web.archive.org/web/20250329112609/https://pix11.com/sports/sports-illustrated/fc7f3404/nfl-divisional-rapid-reaction-bills-get-another-shot-at-chiefs-and-patrick-mahomes/ |archive-date=March 29, 2025 |url-status=dead}}</ref> In doing this, the Bills made just their second AFC Championship since 1993. In the championship, they [[2024 AFC Championship Game|lost]] to the first seed [[2024 Kansas City Chiefs season|Kansas City Chiefs]] for the fourth time over the course of five consecutive postseasons. {{TOC limit|3}}
+
+==Transactions==
+
+===Arrivals===
+{| class="wikitable sortable" style="text-align:center"
+|-
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Position
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Player
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| 2023 team(s)
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Date signed
+|-
+| WR || [[K. J. Hamler]] || [[Indianapolis Colts]] || rowspan=2|January 22, 2024<ref>{{cite web|title=Bills sign 11 players to Reserve/Futures contracts|url=https://www.buffalobills.com/news/bills-sign-11-players-to-reserve-futures-contracts|author=White, Alec|website=BuffaloBills.com|date=January 22, 2024}}</ref>
+|-
+| S || [[Kendall Williamson]] || [[Chicago Bears]]
+|-
+| P || [[Matt Haack]] || [[Cleveland Browns]] || March 6, 2024<ref>{{cite web|title=Bills re-sign guard David Edwards, sign punter Matt Haack|url=https://www.buffalobills.com/news/bills-re-sign-guard-david-edwards-sign-punter-matt-haack|author=Warren, Patrick|website=BuffaloBills.com|date=March 6, 2024}}</ref>
+|-
+| QB || [[Mitchell Trubisky]] || [[Pittsburgh Steelers]] || March 7, 2024<ref>{{cite web|title=Buffalo Bills sign quarterback Mitch Trubisky to two-year deal|url=https://www.buffalobills.com/news/buffalo-bills-agree-to-terms-with-quarterback-mitch-trubisky|author=Warren, Patrick|website=BuffaloBills.com|date=March 7, 2024}}</ref>
+|-
+| WR || [[Mack Hollins]] || [[Atlanta Falcons]] || rowspan=2|March 14, 2024<ref>{{cite web|title=Bills sign WR Mack Hollins & LB Nicholas Morrow to one-year deals|url=https://www.buffalobills.com/news/bills-sign-wr-mack-hollins-lb-nicholas-morrow-to-one-year-deals|author1=White, Alec|author2=Glab, Maddy|website=BuffaloBills.com|date=March 14, 2024}}</ref>
+|-
+| LB || [[Nicholas Morrow]] || [[Philadelphia Eagles]]
+|-
+| WR || [[Curtis Samuel]] || rowspan=2|[[Washington Commanders]] || March 15, 2024<ref>{{cite web|title=Bills sign WR Curtis Samuel to three-year deal|url=https://www.buffalobills.com/news/bills-sign-wr-curtis-samuel-to-three-year-deal|author=Glab, Maddy|website=BuffaloBills.com|date=March 15, 2024}}</ref>
+|-
+| DE || [[Casey Toohill]] || March 19, 2024<ref>{{cite web|title=Bills sign DE Casey Toohill to one-year contract|url=https://www.buffalobills.com/news/bills-sign-de-casey-toohill-to-one-year-contract|author=Warren, Patrick|website=BuffaloBills.com|date=March 19, 2024}}</ref>
+|-
+| S || [[Mike Edwards (safety)|Mike Edwards]] || [[Kansas City Chiefs]] || March 20, 2024<ref>{{cite web|title=Bills sign safety Mike Edwards to one-year deal|url=https://www.buffalobills.com/news/bills-sign-safety-mike-edwards-to-one-year-deal|author=Glab, Maddy|website=BuffaloBills.com|date=March 20, 2024}}</ref>
+|-
+| C || [[Will Clapp]] || rowspan=2|[[Los Angeles Chargers]] || March 22, 2024<ref>{{cite web|title=Bills sign OL Will Clapp to one-year deal|url=https://www.buffalobills.com/news/bills-sign-ol-will-clapp-to-one-year-deal|author=White, Alec|website=BuffaloBills.com|date=March 22, 2024}}</ref>
+|-
+| DT || [[Austin Johnson (defensive lineman)|Austin Johnson]] || rowspan=2|March 28, 2024<ref>{{cite web|title=Bills sign DT Austin Johnson to one-year deal|url=https://www.buffalobills.com/news/buffalo-bills-sign-dt-austin-johnson-to-one-year-deal|author=Warren, Patrick|website=BuffaloBills.com|date=March 28, 2024}}</ref><ref>{{cite web|title=Bills sign DT DeShawn Williams to one-year deal|url=https://www.buffalobills.com/news/bills-sign-dt-deshawn-williams-to-one-year-deal|author=Warren, Patrick|website=BuffaloBills.com|date=March 28, 2024}}</ref>
+|-
+| DT || [[DeShawn Williams]] || [[Carolina Panthers]]
+|-
+| OT || [[La'el Collins]] || [[Cincinnati Bengals]] / [[Dallas Cowboys]] || April 9, 2024<ref>{{cite web|title=Bills sign OL La'el Collins to one-year deal|url=https://www.buffalobills.com/news/bills-sign-ot-la-el-collins-to-one-year-deal|author=White, Alec|website=BuffaloBills.com|date=April 9, 2024}}</ref>
+|-
+| WR || [[Quintez Cephus]] || [[Detroit Lions]] (2022) || April 29, 2024<ref>{{cite web|title=Bill sign WR Quintez Cephus to one-year deal|url=https://www.buffalobills.com/news/bill-sign-wr-quintez-cephus-to-one-year-deal|author=Glab, Maddy|website=BuffaloBills.com|date=April 29, 2024}}</ref>
+|-
+| WR || [[Chase Claypool]] || [[Chicago Bears]] / [[Miami Dolphins]] || rowspan=3|May 3, 2024<ref>{{cite web|title=Bills announce three free agent signings to one-year deals|url=https://www.buffalobills.com/news/bills-announce-three-free-agent-signings-to-one-year-deals|author1=White, Alec|author2=Glab, Maddy|website=BuffaloBills.com|date=May 3, 2024}}</ref>
+|-
+| LB || [[Deion Jones]] || [[Carolina Panthers]]
+|-
+| DE || [[Dawuane Smoot]] || [[Jacksonville Jaguars]]
+|-
+| WR || [[Marquez Valdes-Scantling]] || [[Kansas City Chiefs]] || May 14, 2024<ref>{{cite web|title=WR Marquez Valdes-Scantling signs one-year deal with Bills|url=https://www.buffalobills.com/news/wr-marquez-valdes-scantling-signs-one-year-deal-with-bills|author=Glab, Maddy|website=BuffaloBills.com|date=May 14, 2024}}</ref>
+|-
+| S || [[Dee Delaney]] || [[Tampa Bay Buccaneers]] || May 16, 2024<ref>{{cite web|title=Bills sign safety Dee Delaney|url=https://www.buffalobills.com/news/bills-sign-safety-dee-delaney|author=Glab, Maddy|website=BuffaloBills.com|date=May 16, 2024}}</ref>
+|-
+| S || [[Kareem Jackson]] || [[Houston Texans]] || July 30, 2024<ref>{{cite web|title=Bills sign safety Kareem Jackson|url=https://www.buffalobills.com/news/bills-sign-safety-kareem-jackson|author=Jenkins, Chris|website=BuffaloBills.com|date=July 30, 2024}}</ref>
+|-
+| S || [[Terrell Burgess]] || [[Washington Commanders]] || July 31, 2024<ref>{{cite web|title=Bills sign safety Terrell Burgess|url=https://www.buffalobills.com/news/bills-sign-safety-terrell-burgess|author=White, Alec|website=BuffaloBills.com|date=July 31, 2024}}</ref>
+|-
+| QB || [[Ben DiNucci]] || [[Denver Broncos]] || rowspan=3|August 13, 2024<ref>{{cite web|title=Bills sign a quarterback and two wide receivers|url=https://www.buffalobills.com/news/bills-sign-a-quarterback-and-two-wide-receivers|author=Glab, Maddy|website=BuffaloBills.com|date=August 13, 2024}}</ref>
+|-
+| WR || [[Damiere Byrd]] || [[Carolina Panthers]] / [[Atlanta Falcons]]
+|-
+| WR || [[Deon Cain]] || [[Birmingham Stallions (2022)|Birmingham Stallions]] / [[Philadelphia Eagles]]
+|-
+| QB || [[Anthony Brown (quarterback)|Anthony Brown]] || [[Baltimore Ravens]] || August 20, 2024<ref>{{cite web|title=Bills sign QB Anthony Brown, another wide receiver waived/injured|url=https://www.buffalobills.com/news/bills-sign-qb-anthony-brown-another-wide-receiver-waived-injured|author=Glab, Maddy|website=BuffaloBills.com|date=August 20, 2024}}</ref>
+|-
+| DT || [[Zion Logue]] || [[Georgia Bulldogs]] / [[Atlanta Falcons]] (2024) || October 1, 2024<ref>{{cite web|title=NFL released this statement on Von Miller suspension, Bills add defensive tackle to 53-man roster|url=https://www.buffalobills.com/news/nfl-released-this-statement-on-von-miller-suspension-bills-add-defensive-tackle-to-53-man-roster|author=Alerte, Dorian|website=BuffaloBills.com|date=October 1, 2024}}</ref>
+|-
+|DT || [[Jordan Phillips]] || [[Dallas Cowboys]] (2024) || rowspan="2"|November 6, 2024<ref>{{cite web|title=Bills sign DT Jordan Phillips & DT Quinton Jefferson|url=https://www.buffalobills.com/news/bills-sign-dt-jordan-phillips-dt-quinton-jefferson|author=White, Alec|website=BuffaloBills.com|date=November 6, 2024|access-date=2024-11-14}}</ref>
+|-
+|DT
+|[[Quinton Jefferson]]
+|[[Cleveland Browns]] (2024)
+|}
+
+===Departures===
+{| class="wikitable sortable" style="text-align:center"
+|-
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Position
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Player
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| 2024 team
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Date signed
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Notes
+|-
+| DT || [[Andrew Brown (American football)|Andrew Brown]] || — || [[Free agent#National Football League (NFL)|Free Agent]] || rowspan=5|Contracts expired January 21, 2024
+|-
+| OT || [[Germain Ifedi]] || [[Cleveland Browns]] || April 18, 2024<ref>{{Cite web |title=Browns sign OL Germain Ifedi |url=https://www.clevelandbrowns.com/news/browns-sign-ol-germain-ifedi |access-date=2024-04-18 |website=ClevelandBrowns.com |language=en-US}}</ref>
+|-
+| LB || [[A. J. Klein]] || — || Retired<ref>{{cite web|title=A.J. Klein announces his retirement|url=https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/a-j-klein-announces-his-retirement|author=Alper, Josh|website=NBCSports.com|date=July 30, 2024}}</ref>
+|-
+| C || [[Greg Mancz]] || — || Free Agent
+|-
+| CB || [[Josh Norman]] || — || Free Agent
+|-
+| WR || [[Deonte Harty]] || [[Baltimore Ravens]] || April 14, 2024<ref>{{cite web|title=Ravens Sign Receiver/Returner Deonte Harty|url=https://www.baltimoreravens.com/news/deonte-harty-baltimore-ravens-news-signing-receiver-returner|author=Mink, Ryan|website=BaltimoreRavens.com|date=April 14, 2024}}</ref> || rowspan=5|Released March 6, 2024<ref>{{cite web|title=Buffalo Bills release five players including Jordan Poyer, Mitch Morse and Siran Neal|url=https://www.buffalobills.com/news/buffalo-bills-release-five-players-including-jordan-poyer-mitch-morse-and-siran-neal|author1=White, Alec|author2=Glab, Maddy|website=BuffaloBills.com|date=March 6, 2024}}</ref>
+|-
+| RB || [[Nyheim Hines]] || [[Cleveland Browns]] || March 13, 2024<ref>{{cite web|title=Browns agree to terms with RB Nyheim Hines|url=https://www.clevelandbrowns.com/news/browns-agree-to-terms-with-rb-nyheim-hines|author=Russo, Kelsey|website=ClevelandBrowns.com|date=March 13, 2024}}</ref>
+|-
+| C || [[Mitch Morse]] || [[Jacksonville Jaguars]] || March 13, 2024<ref>{{cite web|title=Official: Jaguars Sign Veteran Offensive Lineman Mitch Morse|url=https://www.jaguars.com/news/official-jaguars-sign-veteran-center-mitch-morse-2024|author=Oehser, John|website=Jaguars.com|date=March 13, 2024}}</ref>
+|-
+| CB || [[Siran Neal]] || rowspan=2|[[Miami Dolphins]] || March 13, 2024<ref>{{cite web|title=Miami Dolphins Sign Siran Neal|url=https://www.miamidolphins.com/news/miami-dolphins-sign-siran-neal|website=MiamiDolphins.com|date=March 13, 2024}}</ref>
+|-
+| S || [[Jordan Poyer]] || March 18, 2024<ref>{{cite web|title=Miami Dolphins Sign Jordan Poyer|url=https://www.miamidolphins.com/news/miami-dolphins-sign-jordan-poyer|website=MiamiDolphins.com|date=March 18, 2024}}</ref>
+|-
+| QB || [[Kyle Allen (American football)|Kyle Allen]] || [[Pittsburgh Steelers]] || March 25, 2024<ref>{{cite web|title=Steelers sign Kyle Allen, Dean Lowry|url=https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/steelers-sign-kyle-allen-dean-lowry|author=Smith, Michael David|website=NBCSports.com|date=March 25, 2024}}</ref> || rowspan=14|Contracts expired March 13, 2024
+|-
+| WR || [[Gabe Davis]] || [[Jacksonville Jaguars]] || March 13, 2024<ref>{{cite web|title=Official: Wide Receiver Gabe Davis Agreed to Terms with Jaguars|url=https://www.jaguars.com/news/official-wide-receiver-gabe-davis-agreed-to-terms-with-jaguars|author=Oehser, John|website=Jaguars.com|date=March 13, 2024}}</ref>
+|-
+| LB || [[Tyrel Dodson]] || [[Seattle Seahawks]] || March 14, 2024<ref>{{cite web|title=Seahawks Sign Former Bills LB Tyrel Dodson|url=https://www.si.com/nfl/seahawks/news/seattle-seahawks-tyrel-dodson-free-agent-contract-signed |author=Smith, Corbin K.|website=SI.com|date=March 14, 2024}}</ref>
+|-
+| DE || [[Leonard Floyd]] || [[San Francisco 49ers]] || March 18, 2024<ref>{{cite web|title=49ers Sign DL Floyd and Four Additional Free Agents; Re-Sign OL|url=https://www.49ers.com/news/49ers-sign-dl-floyd-and-four-additional-free-agents-re-sign-ol-feliciano|website=49ers.com|date=March 18, 2024}}</ref>
+|-
+| DT || [[Poona Ford]] || [[Los Angeles Chargers]] || March 16, 2024<ref>{{cite web|title=Los Angeles Chargers Sign Poona Ford|url=https://www.chargers.com/news/los-angeles-chargers-sign-poona-ford-2024|website=Chargers.com|date=March 16, 2024}}</ref>
+|-
+| RB || [[Damien Harris]] || — || Retired<ref>{{cite web|title=Damien Harris: Announces retirement|url=https://www.cbssports.com/fantasy/football/news/damien-harris-announces-retirement/|website=CBSSports.com|date=March 25, 2024}}</ref>
+|-
+| CB || [[Dane Jackson (American football)|Dane Jackson]] || [[Carolina Panthers]] || March 13, 2024<ref>{{cite web|title=Panthers officially agree to terms with five free agents|url=https://www.panthers.com/news/panthers-officially-agree-to-terms-with-five-free-agents|author=Hill, Kassidy|website=Panthers.com|date=March 13, 2024}}</ref>
+|-
+| DT || [[Linval Joseph]] || [[Dallas Cowboys]] || August 21, 2024<ref>{{cite web|title=Cowboys signing veteran DT Linval Joseph as Dallas continues beefing up defensive line|url=https://www.cbssports.com/nfl/news/cowboys-signing-veteran-dt-linval-joseph-as-team-continues-beefing-up-defensive-line/|author=Podell, Garrett|website=CBSSports.com|date=August 21, 2024}}</ref>
+|-
+| DE || [[Shaq Lawson]] || [[Carolina Panthers]] || October 8, 2024<ref>{{cite web|title=Panthers sign DeShawn Williams to 53, add Shaq Lawson|url=https://www.panthers.com/news/panthers-add-deshawn-williams-to-53-add-shaq-lawson|author=Gantt, Darin|website=Panthers.com|date=October 8, 2024}}</ref>
+|-
+| LB || [[Tyler Matakevich]] || [[Pittsburgh Steelers]] || July 17, 2024<ref>{{cite web|title=Matakevich signed to one-year contract|url=https://www.steelers.com/news/matakevich-signed-to-one-year-contract|author=Varley, Teresa|website=Steelers.com|date=July 17, 2024}}</ref>
+|-
+| RB || [[Latavius Murray]] || — || Free Agent
+|-
+| DT || [[Jordan Phillips]] || [[New York Giants]] || April 11, 2024<ref>{{cite web|title=Giants sign veteran DL Jordan Phillips|url=https://www.giants.com/news/giants-sign-veteran-defensive-lineman-jordan-phillips-buffalo-bills-free-agency-nfl|author=Salomone, Dan|website=Giants.com|date=April 12, 2024}}</ref>
+|-
+| DT || [[Tim Settle]] || [[Houston Texans]] || March 15, 2024<ref>{{cite web|title=Houston Texans Transactions (03-15-2024)|url=https://www.houstontexans.com/news/houston-texans-transactions-03-15-2024|website=HoustonTexans.com|date=March 15, 2024}}</ref>
+|-
+| WR || [[Trent Sherfield]] || [[Minnesota Vikings]] || March 14, 2024<ref>{{cite web|title=Vikings Agree to Terms with Defensive Lineman Jerry Tillery & Receiver Trent Sherfield|url=https://www.vikings.com/news/jerry-tillery-raiders-trent-sherfield-bills-agree-to-terms|author=Young, Lindsey|website=Vikings.com|date=March 14, 2024}}</ref>
+|-
+| CB || [[Tre'Davious White]] || [[Los Angeles Rams]] || March 26, 2024<ref>{{cite web|title=Rams signing cornerback Tre'Davious White to one-year deal worth up to $10 million|url=https://www.nfl.com/news/rams-signing-cornerback-tre-davious-white-to-one-year-deal-worth-up-to-10-million|author=Kownack, Bobby|website=NFL.com|date=March 26, 2024}}</ref> || Released March 13, 2024<ref>{{cite web|title=Tre’Davious White to visit Raiders, Rams|url=https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/tredavious-white-to-visit-raiders-rams|author=Florio, Mike|website=NBCSports.com|date=March 17, 2024}}</ref>
+|}
+
+===Trades===
+{| class="wikitable sortable" style="text-align: center"
+|-
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Position
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Arrived
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| From
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Date of trade
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Departed
+|-
+| C || 2024 5th-round pick || [[Chicago Bears]] || March 4, 2024<ref name=Bates>{{cite web|title=Bills agree to terms to trade Ryan Bates to Chicago for a fifth-round pick in the 2024 NFL Draft|url=https://www.buffalobills.com/news/bills-agree-to-terms-to-trade-ryan-bates-to-chicago-for-a-fifth-round-pick-in-the-2024-nfl-draft|author=Jenkins, Chris|website=BuffaloBills.com|date=March 4, 2024}}</ref> || [[Ryan Bates]]
+|-
+| WR || 2025 2nd-round pick <br> (via [[Minnesota Vikings|MIN]]) || [[Houston Texans]] || April 3, 2024<ref name=Diggs>{{cite web|title=Bills and Texans agree to terms on trade to send WR Stefon Diggs to Houston|url=https://www.buffalobills.com/news/bills-and-texans-agree-to-terms-on-trade-to-send-wr-stefon-diggs-to-houston|author=White, Alec|website=BuffaloBills.com|date=April 3, 2024}}</ref> || [[Stefon Diggs]] <br> 2024 6th-round pick <br> 2025 5th-round pick
+|-
+| CB || [[Brandon Codrington]] <br> 2026 7th-round pick || [[New York Jets]] || August 27, 2024<ref>{{cite web|title=Bills finalize trade with Jets for CB/RS Brandon Codrington|url=https://www.buffalobills.com/news/bills-finalize-trade-with-jets-for-cb-rs-brandon-codrington|author=Glab, Maddy|website=BuffaloBills.com|date=August 27, 2024}}</ref> || 2026 6th-round pick
+|-
+|WR ||[[Amari Cooper]] <br> 2025 6th-round pick || [[Cleveland Browns]] || October 15, 2024<ref>{{cite web |last1=White |first1=Alec |title=Buffalo Bills finalize trade for Browns Pro Bowl WR Amari Cooper |url=https://www.buffalobills.com/news/buffalo-bills-finalize-trade-for-browns-pro-bowl-wr-amari-cooper |website=buffalobills.com |publisher=Buffalo Bills |access-date=October 15, 2024 |date=October 15, 2024}}</ref> || 2025 3rd-round pick <br> 2026 7th-round pick
+|}
+
+===Draft===
+{{main|2024 NFL draft}}
+{| class="wikitable" style="text-align:center"
+|+ 2024 Buffalo Bills draft selections
+|-
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Round
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Selection
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Player
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Position
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| College
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Notes
+|-
+!rowspan="2"| [[List of Buffalo Bills first-round draft picks|1]] || 28
+|colspan="3" style="background:#BFBFBF"| ''Traded to the [[2024 Kansas City Chiefs season|Kansas City Chiefs]]''{{efn-ua|name=Chiefs|The Bills traded first- (28th overall), fourth- (133rd overall) and seventh- (248th overall) round selections to the [[2024 Kansas City Chiefs season|Kansas City Chiefs]] in exchange for first- (32nd overall), third- (95th overall) and seventh- (221st overall) round selections.<ref>{{cite web|title=Buffalo Bills receive No. 32 overall, two more picks from Kansas City in exchange for No. 28|url=https://www.buffalobills.com/news/buffalo-bills-receive-no-32-overall-two-more-picks-from-kansas-city-in-exchange-for-no-28-overall-2024-nfl-draft|last=White|first=Alec|website=BuffaloBills.com|date=April 25, 2024}}</ref>}} ||style="background:#BFBFBF"|
+|-
+! 32
+|colspan="3" style="background:#BFBFBF"| ''Traded to the [[2024 Carolina Panthers season|Carolina Panthers]]''{{efn-ua|name=Panthers|The Bills traded first- (32nd overall) and sixth- (200th overall) round selections to the [[2024 Carolina Panthers season|Carolina Panthers]] in exchange for second- (33rd overall) and fifth- (141st overall) round selections.<ref>{{cite web|title=Buffalo Bills acquire No. 33 overall pick from Carolina Panthers|url=https://www.buffalobills.com/news/buffalo-bills-acquire-no-33-overall-pick-from-carolina-panthers-2024-nfl-draft|last=White|first=Alec|website=BuffaloBills.com|date=April 25, 2024}}</ref>}} ||style="background:#BFBFBF"| From [[2024 Kansas City Chiefs season|Chiefs]]{{efn-ua|name=Chiefs}}
+|-
+!rowspan="2"| 2 || 33
+| [[Keon Coleman]] || [[Wide receiver|WR]] || [[2023 Florida State Seminoles football team|Florida State]] || From [[2024 Carolina Panthers season|Panthers]]{{efn-ua|name=Panthers}}
+|-
+! 60
+| [[Cole Bishop]] || [[Safety (gridiron football position)|S]] || [[2023 Utah Utes football team|Utah]] ||
+|-
+!rowspan="2"| 3 || 91
+|colspan="3" style="background:#BFBFBF"| ''Traded to the [[2024 Green Bay Packers season|Green Bay Packers]]''{{efn-ua|name=Packers|The Bills traded a third-round selection (91st overall) to the [[2024 Green Bay Packers season|Green Bay Packers]] in exchange for CB [[Rasul Douglas]] and a fifth-round selection (160th overall).<ref>{{cite web|title=Buffalo Bills agree to terms to acquire CB Rasul Douglas from Green Bay Packers|url=https://www.buffalobills.com/news/buffalo-bills-agree-to-terms-to-acquire-cb-rasul-douglas-from-green-bay-packers|last=White|first=Alec|website=BuffaloBills.com|date=October 31, 2023}}</ref>}} ||style="background:#BFBFBF"|
+|-
+! 95
+| [[DeWayne Carter]] || [[Defensive tackle|DT]] || [[2023 Duke Blue Devils football team|Duke]] || From [[2024 Kansas City Chiefs season|Chiefs]]{{efn-ua|name=Chiefs}}
+|-
+!rowspan="2"| 4 || 128
+| [[Ray Davis (American football)|Ray Davis]] || [[Running back|RB]] || [[2023 Kentucky Wildcats football team|Kentucky]] ||
+|-
+! 133
+|colspan="3" style="background:#BFBFBF"| ''Traded to the [[2024 Kansas City Chiefs season|Kansas City Chiefs]]''{{efn-ua|name=Chiefs}} ||style="background:#BFBFBF"| Compensatory selection
+|-
+!rowspan="5"| 5 || 141
+| [[Sedrick Van Pran-Granger]] || [[Center (gridiron football position)|C]] || [[2023 Georgia Bulldogs football team|Georgia]] || From [[2024 Carolina Panthers season|Panthers]]{{efn-ua|name=Panthers}}
+|-
+! 144
+|colspan="3" style="background:#BFBFBF"| ''Traded to the [[2024 Chicago Bears season|Chicago Bears]]''{{efn-ua|name=Bears2|The Bills traded a fifth-round selection (144th overall) to the [[2024 Chicago Bears season|Chicago Bears]] in exchange for a 2025 fourth-round selection.<ref name=Tracker2>{{cite web|title=Buffalo Bills NFL Draft Tracker|url=https://www.buffalobills.com/news/buffalo-bills-nfl-draft-tracker-2024|last1=Jenkins|first1=Chris|last2=White|first2=Alec|website=BuffaloBills.com|date=April 27, 2024}}</ref>}} ||style="background:#BFBFBF"| From [[2024 Chicago Bears season|Bears]]{{efn-ua|name=Bears|The Bills traded C [[Ryan Bates]] to the [[2024 Chicago Bears season|Chicago Bears]] in exchange for a fifth-round selection (144th overall).<ref name=Bates />}}
+|-
+! 160
+| [[Edefuan Ulofoshio]] || [[Linebacker|LB]] || [[2023 Washington Huskies football team|Washington]] || From [[2024 Green Bay Packers season|Packers]]{{efn-ua|name=Packers}}
+|-
+! 163
+|colspan="3" style="background:#BFBFBF"| ''Traded to the [[2024 Green Bay Packers season|Green Bay Packers]]''{{efn-ua|name=Packers2|The Bills traded a fifth-round selection (163rd overall) to the [[2024 Green Bay Packers season|Green Bay Packers]] in exchange for fifth- (168th overall) and sixth- (219th overall) round selections.<ref name=Tracker2 />}} ||style="background:#BFBFBF"|
+|-
+! 168
+| [[Javon Solomon]] || [[Defensive end|DE]] || [[2023 Troy Trojans football team|Troy]] || From [[2024 Green Bay Packers season|Packers]]{{efn-ua|name=Packers2}}
+|-
+!rowspan="4"| 6 || 189
+|colspan="3" style="background:#BFBFBF"| ''Traded to the [[2024 Houston Texans season|Houston Texans]]''{{efn-ua|name=Diggs|The Bills traded WR [[Stefon Diggs]], 2024 sixth- (189th overall) and 2025 fifth-round selections to the [[2024 Houston Texans season|Houston Texans]] in exchange for a 2025 second-round selection (via [[Minnesota Vikings|MIN]]).<ref name=Diggs />}} ||style="background:#BFBFBF"| From [[2024 Los Angeles Rams season|Rams]]{{efn-ua|name=Rams|The Bills traded a 2023 sixth-round selection to the [[2024 Los Angeles Rams season|Los Angeles Rams]] in exchange for 2023 seventh- and 2024 sixth-round selections (189th overall).<ref name=Tracker>{{cite web|title=Buffalo Bills 2023 NFL Draft Tracker|url=https://www.buffalobills.com/news/buffalo-bills-2023-nfl-draft-tracker-dalton-kincaid-utah-bills-draft-picks|last=White|first=Alec|website=BuffaloBills.com|date=April 29, 2023}}</ref>}}
+|-
+! 200
+|colspan="3" style="background:#BFBFBF"| ''Traded to the [[2024 Carolina Panthers season|Carolina Panthers]]''{{efn-ua|name=Panthers}} ||style="background:#BFBFBF"| From [[2024 Houston Texans season|Texans]]{{efn-ua|name=Texans|The Bills traded a 2023 sixth-round selection to the [[2024 Houston Texans season|Houston Texans]] in exchange for 2023 seventh- and 2024 sixth-round selections (200th overall).<ref name=Tracker />}}
+|-
+! 204
+| [[Tylan Grable]] || [[Tackle (gridiron football position)|OT]] || [[2023 UCF Knights football team|UCF]] ||
+|-
+! 219
+| [[Daequan Hardy]] || [[Cornerback|CB]] || [[2023 Penn State Nittany Lions football team|Penn State]] || From [[2024 Green Bay Packers season|Packers]]{{efn-ua|name=Packers2}}
+|-
+!rowspan="2"| 7 || 221
+| [[Travis Clayton]] || [[Guard (gridiron football)|OG]] || [[International Player Pathway Program|IPPP]] || From [[2024 Kansas City Chiefs season|Chiefs]]{{efn-ua|name=Chiefs}}
+|-
+! 248
+|colspan="3" style="background:#BFBFBF"| ''Traded to the [[2024 Kansas City Chiefs season|Kansas City Chiefs]]''{{efn-ua|name=Chiefs}} ||style="background:#BFBFBF"|
+|}
+'''Draft trades'''
+{{notelist-ua}}
+
+'''Notes'''
+*The Bills received a fourth-round compensatory selection (133rd overall) for LB [[Tremaine Edmunds]] signing with the [[2023 Chicago Bears season|Chicago Bears]] last offseason.<ref>{{cite web|title=Full list of Buffalo Bills 2024 NFL Draft picks|url=https://www.buffalobills.com/news/buffalo-bills-2024-nfl-draft-picks-28-first-round|last=Warren|first=Patrick|website=BuffaloBills.com|date=March 8, 2024}}</ref>
+
+{| class="wikitable" style="text-align:center"
+|+ 2024 Buffalo Bills undrafted free agents
+|-
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Name
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Position
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| College
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Ref.
+|-
+| [[Keaton Bills]]
+| [[Guard (gridiron football)|G]]
+| [[2023 Utah Utes football team|Utah]]
+|rowspan="12"| <ref>{{cite web|title=Get to know these 12 undrafted free agent signings for Bills rookie minicamp|url=https://www.buffalobills.com/news/get-to-know-these-12-undrafted-free-agent-signings-for-bills-rookie-minicamp|last1=White|first1=Alec|last2=Glab|first2=Maddy|website=BuffaloBills.com|date=May 9, 2024}}</ref>
+|-
+| Rondell Bothroyd
+| [[Defensive tackle|DT]]
+| [[2023 Oklahoma Sooners football team|Oklahoma]]
+|-
+| [[Gunner Britton]]
+| G
+| [[2023 Auburn Tigers football team|Auburn]]
+|-
+| [[Jack Browning]]
+| [[Punter (gridiron football)|P]]
+| [[2023 San Diego State Aztecs football team|San Diego State]]
+|-
+| [[Te'Cory Couch]]
+| [[Cornerback|CB]]
+| [[2023 Miami Hurricanes football team|Miami (FL)]]
+|-
+| [[Branson Deen]]
+| DT
+| Miami (FL)
+|-
+| Mike Edwards
+| [[Tackle (gridiron football position)|OT]]
+| [[2023 Campbell Fighting Camels football team|Campbell]]
+|-
+| [[Frank Gore Jr.]]
+| [[Running back|RB]]
+| [[2023 Southern Miss Golden Eagles football team|Southern Miss]]
+|-
+| [[Xavier Johnson (American football)|Xavier Johnson]]
+| [[Wide receiver|WR]]
+| [[2023 Ohio State Buckeyes football team|Ohio State]]
+|-
+| Lawrence Keys
+| WR
+| [[2023 Tulane Green Wave football team|Tulane]]
+|-
+| [[Keni-H Lovely]]
+| CB
+| [[2023 Western Michigan Broncos football team|Western Michigan]]
+|-
+| David Ugwoegbu
+| [[Defensive end|DE]]
+| [[2023 Houston Cougars football team|Houston]]
+|-
+| [[Joe Andreessen]]
+| [[Linebacker|LB]]
+| [[2023 Buffalo Bulls football team|Buffalo]]
+| <ref>{{cite web|title=Bills sign UB standout, Depew native Joe Andreessen to active roster|url=https://www.buffalobills.com/news/bills-sign-ub-standout-depew-native-to-active-roster|last=White|first=Alec|website=BuffaloBills.com|date=May 11, 2024}}</ref>
+|-
+| [[Gable Steveson]]
+| DT
+| [[Minnesota Golden Gophers wrestling|Minnesota]]
+| <ref>{{cite web|title=Bills sign Gable Steveson as an undrafted free agent|url=https://www.buffalobills.com/news/bills-sign-gable-steveson-as-an-undrafted-free-agent|last=Jenkins|first=Chris|website=BuffaloBills.com|date=May 31, 2024}}</ref>
+|-
+| Shayne Simon
+| LB
+| [[2023 Pittsburgh Panthers football team|Pittsburgh]]
+| <ref>{{cite web|title=Bills sign rookie linebacker Shayne Simon|url=https://www.buffalobills.com/news/bills-sign-rookie-linebacker-shayne-simon|last=Jenkins|first=Chris|website=BuffaloBills.com|date=June 4, 2024}}</ref>
+|}
+
+==Staff==
+{{NFL final staff
+|Year=2024
+|TeamName=Buffalo Bills
+|Front Office=
+*Owner/CEO/president – [[Terry Pegula]] 
+*Owner – [[Kim Pegula]]
+*General manager – [[Brandon Beane]]
+*Assistant general manager – [[Brian Gaine]]
+*Director of player personnel – Terrance Gray
+*Senior advisor to the GM/football operations – Jim Overdorf
+*Senior executive – [[Lake Dawson]]
+*Senior personnel advisor – [[Malik Boyd]]
+*Co-director of pro scouting – Chris Marrow
+*Co-director of pro scouting – Curtis Rukavina
+*Assistant director of pro scouting – Asil Mulbah 
+*Vice president of football administration – Kevin Meganck
+*Director of football operations – Brendan Rowe
+*Director of college scouting – Matt Bazirgan
+|Head Coaches=
+*Head coach – [[Sean McDermott]]
+|Offensive Coaches=
+*Offensive coordinator – [[Joe Brady (American football coach)|Joe Brady]]
+*Quarterbacks – [[Ronald Curry]]
+*Running backs – [[Kelly Skipper]]
+*Wide receivers – [[Adam Henry (American football)|Adam Henry]]
+*Tight ends – [[Rob Boras]]
+*Offensive line – [[Aaron Kromer]]
+*Offensive assistant/offensive line – Austin Gund
+*Offensive quality control – [[DJ Mangas]]
+*Offensive quality control – [[Kyle Shurmur]]
+*Passing game specialist/game management – [[Marc Lubick]]
+|Defensive Coaches=
+*Defensive coordinator – [[Bobby Babich]]
+*Defensive line – [[Marcus West]]
+*Assistant defensive line – Matt Edwards
+*Linebackers – [[Al Holcomb]]
+*Cornerbacks – [[Jahmile Addae]]
+*Nickel/senior defensive assistant – Scott Booker
+*Safeties – [[Joe Danna]]
+*Defensive quality control – [[Christian Taylor (American football)|Christian Taylor]]
+|Special Teams Coaches=
+*Special teams coordinator – [[Matthew Smiley]]
+*Assistant special teams – [[Cory Harkey]]
+*Director of team administration – Matt Worswick
+|Strength and Conditioning=
+*Head strength and conditioning – Eric Ciano
+*Assistant strength and conditioning/performance development – Will Greenberg
+*Assistant strength and conditioning – Hal Luther
+*Strength and conditioning assistant – Nick Lacy
+*Strength and conditioning assistant – Jason Oszvart
+}}
+
+==Final roster==
+{{NFL final roster
+|Year=2024
+|TeamName=Buffalo Bills
+
+|Active=53
+|Inactive=6
+|Exempt=
+|PS=17
+|PS-exempt=1
+
+|Quarterbacks=
+{{NFLplayer|17|Josh Allen}}
+{{NFLplayer|11|Mitchell Trubisky}}
+{{NFLplayer|14|Mike White|d=quarterback}}
+
+|Running Backs=
+{{NFLplayer|&nbsp;4|James Cook|d=running back}}
+{{NFLplayer|22|Ray Davis|d=American football|rookie=y}}
+{{NFLplayer|41|Reggie Gilliam}}
+{{NFLplayer|26|Ty Johnson|d=American football}}
+
+|Wide Receivers=
+{{NFLplayer|&nbsp;0|Keon Coleman|rookie=y}}
+{{NFLplayer|18|Amari Cooper}}
+{{NFLplayer|13|Mack Hollins}}
+{{NFLplayer|&nbsp;1|Curtis Samuel}}
+{{NFLplayer|10|Khalil Shakir}}
+
+|Tight Ends=
+{{NFLplayer|86|Dalton Kincaid}}
+{{NFLplayer|88|Dawson Knox}}
+{{NFLplayer|85|Quintin Morris}}
+
+|Offensive Linemen=
+{{NFLplayer|70|Alec Anderson|d=American football, born 1999}} G/C
+{{NFLplayer|79|Spencer Brown|d=offensive tackle}} T
+{{NFLplayer|73|Dion Dawkins}} T
+{{NFLplayer|76|David Edwards|d=offensive lineman}} G
+{{NFLplayer|68|Tylan Grable|rookie=y}} T
+{{NFLplayer|66|Connor McGovern|d=American football, born 1997}} C
+{{NFLplayer|64|O'Cyrus Torrence}} G
+{{NFLplayer|74|Ryan Van Demark}} T
+{{NFLplayer|62|Sedrick Van Pran-Granger|rookie=y}} C
+
+|Defensive Linemen=
+{{NFLplayer|90|DeWayne Carter|rookie=y}} DT
+{{NFLplayer|57|A. J. Epenesa}} DE
+{{NFLplayer|71|Quinton Jefferson}} DT
+{{NFLplayer|98|Austin Johnson|d=defensive lineman}} DT
+{{NFLplayer|92|DaQuan Jones}} DT
+{{NFLplayer|40|Von Miller}} DE
+{{NFLplayer|91|Ed Oliver|d=American football}} DT
+{{NFLplayer|97|Jordan Phillips}} DT
+{{NFLplayer|50|Greg Rousseau}} DE
+{{NFLplayer|94|Dawuane Smoot}} DE
+{{NFLplayer|56|Javon Solomon|rookie=y}} DE
+
+|Linebackers=
+{{NFLplayer|44|Joe Andreessen|rookie=y}} MLB
+{{NFLplayer|43|Terrel Bernard}} MLB
+{{NFLplayer|58|Matt Milano}} OLB
+{{NFLplayer|48|Edefuan Ulofoshio|rookie=y}} OLB
+{{NFLplayer|42|Dorian Williams|d=American football}} OLB
+
+|Defensive Backs=
+{{NFLplayer|47|Christian Benford}} CB
+{{NFLplayer|24|Cole Bishop|rookie=y}} FS/SS
+{{NFLplayer|29|Brandon Codrington|rookie=y}} CB
+{{NFLplayer|31|Rasul Douglas}} CB
+{{NFLplayer|&nbsp;5|Kaiir Elam}} CB
+{{NFLplayer|&nbsp;3|Damar Hamlin}} FS
+{{NFLplayer|46|Ja'Marcus Ingram}} CB
+{{NFLplayer|&nbsp;7|Taron Johnson}} CB
+{{NFLplayer|39|Cam Lewis}} CB/FS
+{{NFLplayer|&nbsp;9|Taylor Rapp}} SS
+
+|Special Teams=
+{{NFLplayer|&nbsp;2|Tyler Bass}} K
+{{NFLplayer|69|Reid Ferguson}} LS
+{{NFLplayer|&nbsp;8|Sam Martin|d=American football}} P
+
+|Reserve Lists=
+{{NFLplayer|&nbsp;6|Shane Buechele|QB|IR}}
+{{NFLplayer|--|Jake Camarda|P|Futures}}
+{{NFLplayer|67|Travis Clayton|T|rookie=y|IR}}
+{{NFLplayer|72|Tommy Doyle|d=American football|T|IR}}
+{{NFLplayer|--|Armani Rogers|TE|Futures}}
+{{NFLplayer|54|Baylon Spector|OLB|IR}}
+
+|Practice Squad=
+{{NFLplayer|51|Eli Ankou|DT}}
+{{NFLplayer|77|Will Clapp|C}}
+{{NFLplayer|33|Te'Cory Couch|CB|rookie=y}}
+{{NFLplayer|84|Zach Davidson|TE}}
+{{NFLplayer|65|Mike Edwards|link=no|G|rookie=y}}
+{{NFLplayer|20|Frank Gore Jr.|RB|rookie=y}}
+{{NFLplayer|75|Richard Gouraige|T}}
+{{NFLplayer|19|K. J. Hamler|WR}}
+{{NFLplayer|25|Daequan Hardy|CB|rookie=y}}
+{{NFLplayer|23|Micah Hyde|d=American football|FS}}
+{{NFLplayer|27|Kareem Jackson|SS}}
+{{NFLplayer|59|Kingsley Jonathan|DE}}
+{{NFLplayer|93|Zion Logue|DT|rookie=y}}
+{{NFLplayer|49|Tyreek Maddox-Williams|LB}}
+{{NFLplayer|80|Tyrell Shavers|WR}}
+{{NFLplayer|99|Casey Toohill|DE}}
+{{NFLplayer|89|Jalen Virgil|WR}}
+}}
+
+==Preseason==
+{| class="wikitable" style="text-align:center"
+|-
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Week
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Date
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Opponent
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Result
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Record
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Venue
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Recap
+|- {{Game-lost}}
+! 1
+| {{dow tooltip|August 10, 2024}}
+| [[2024 Chicago Bears season|Chicago Bears]]
+| '''L''' 6–33
+| 0–1
+| [[Ralph Wilson Stadium|Highmark Stadium]]
+| [https://www.nfl.com/games/bears-at-bills-2024-pre-1 Recap]
+|- {{Game-won}}
+! 2
+| {{dow tooltip|August 17, 2024}}
+| at [[2024 Pittsburgh Steelers season|Pittsburgh Steelers]]
+| '''W''' 9–3
+| 1–1
+| [[Acrisure Stadium]]
+| [https://www.nfl.com/games/bills-at-steelers-2024-pre-2 Recap]
+|- {{Game-lost}}
+! 3
+| {{dow tooltip|August 24, 2024}}
+| [[2024 Carolina Panthers season|Carolina Panthers]]
+| '''L''' 26–31
+| 1–2
+
+| Highmark Stadium
+| [https://www.nfl.com/games/panthers-at-bills-2024-pre-3 Recap]
+|}
+
+==Regular season==
+===Schedule===
+{| class="wikitable" style="text-align:center"
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Week
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Date
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Opponent
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Result
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Record
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Venue
+!style="{{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}}"| Recap
+|- {{Game-won}}
+! [[#Week 1: vs. Arizona Cardinals|1]]
+| September 8
+| [[2024 Arizona Cardinals season|Arizona Cardinals]]
+| '''W''' 34–28
+| 1–0
+| [[Ralph Wilson Stadium|Highmark Stadium]]
+| [https://www.nfl.com/games/cardinals-at-bills-2024-reg-1 Recap]
+|- {{Game-won}}
+! [[#Week 2: at Miami Dolphins|2]]
+| {{dow tooltip|September 12, 2024}}
+| at '''[[2024 Miami Dolphins season|Miami Dolphins]]'''
+| '''W''' 31–10
+| 2–0
+| [[Hard Rock Stadium]]
+| [https://www.nfl.com/games/bills-at-dolphins-2024-reg-2 Recap]
+|- {{Game-won}}
+! [[#Week 3: vs. Jacksonville Jaguars|3]]
+| {{dow tooltip|September 23, 2024}}
+| [[2024 Jacksonville Jaguars season|Jacksonville Jaguars]]
+| '''W''' 47–10
+| 3–0
+| Highmark Stadium
+| [https://www.nfl.com/games/jaguars-at-bills-2024-reg-3 Recap]
+|- {{Game-lost}}
+! [[#Week 4: at Baltimore Ravens|4]]
+| September 29
+| at [[2024 Baltimore Ravens season|Baltimore Ravens]]
+| '''L''' 10–35
+| 3–1
+| [[M&T Bank Stadium]]
+| [https://www.nfl.com/games/bills-at-ravens-2024-reg-4 Recap]
+|- {{Game-lost}}
+! [[#Week 5: at Houston Texans|5]]
+| October 6
+| at [[2024 Houston Texans season|Houston Texans]]
+| '''L''' 20–23
+| 3–2
+| [[NRG Stadium]]
+| [https://www.nfl.com/games/bills-at-texans-2024-reg-5 Recap]
+|- {{Game-won}}
+! [[#Week 6: at New York Jets|6]]
+| {{dow tooltip|October 14, 2024}}
+| at '''[[2024 New York Jets season|New York Jets]]'''
+| '''W''' 23–20
+| 4–2
+| [[MetLife Stadium]]
+| [https://www.nfl.com/games/bills-at-jets-2024-reg-6 Recap]
+|- {{Game-won}}
+! [[#Week 7: vs. Tennessee Titans|7]]
+| October 20
+| [[2024 Tennessee Titans season|Tennessee Titans]]
+| '''W''' 34–10
+| 5–2
+| Highmark Stadium
+| [https://www.nfl.com/games/titans-at-bills-2024-reg-7 Recap]
+|- {{Game-won}}
+! [[#Week 8: at Seattle Seahawks|8]]
+| October 27
+| at [[2024 Seattle Seahawks season|Seattle Seahawks]]
+| '''W''' 31–10
+| 6–2
+| [[Lumen Field]]
+| [https://www.nfl.com/games/bills-at-seahawks-2024-reg-8 Recap]
+|- {{Game-won}}
+! [[#Week 9: vs. Miami Dolphins|9]]
+| November 3
+| '''[[2024 Miami Dolphins season|Miami Dolphins]]'''
+| '''W''' 30–27
+| 7–2
+| Highmark Stadium
+| [https://www.nfl.com/games/dolphins-at-bills-2024-reg-9 Recap]
+|- {{Game-won}}
+! [[#Week 10: at Indianapolis Colts|10]]
+| November 10
+| at [[2024 Indianapolis Colts season|Indianapolis Colts]]
+| '''W''' 30–20
+| 8–2
+| [[Lucas Oil Stadium]]
+| [https://www.nfl.com/games/bills-at-colts-2024-reg-10 Recap]
+|- {{Game-won}}
+! [[#Week 11: vs. Kansas City Chiefs|11]]
+| November 17
+| [[2024 Kansas City Chiefs season|Kansas City Chiefs]]
+| '''W''' 30–21
+| 9–2
+| Highmark Stadium
+| [https://www.nfl.com/games/chiefs-at-bills-2024-reg-11 Recap]
+|-
+! 12
+| colspan="6" |''[[Bye (sports)|Bye]]''
+|- {{Game-won}}
+! [[#Week 13: vs. San Francisco 49ers|13]]
+| December 1
+| [[2024 San Francisco 49ers season|San Francisco 49ers]]
+| '''W''' 35–10
+| 10–2
+| Highmark Stadium
+| [https://www.nfl.com/games/49ers-at-bills-2024-reg-13 Recap]
+|- {{Game-lost}}
+! [[#Week 14: at Los Angeles Rams|14]]
+| December 8
+| at [[2024 Los Angeles Rams season|Los Angeles Rams]]
+| '''L''' 42–44
+| 10–3
+| [[SoFi Stadium]]
+| [https://www.nfl.com/games/bills-at-rams-2024-reg-14 Recap]
+|- {{Game-won}}
+! [[#Week 15: at Detroit Lions|15]]
+| December 15
+| at [[2024 Detroit Lions season|Detroit Lions]]
+| '''W''' 48–42
+| 11–3
+| [[Ford Field]]
+| [https://www.nfl.com/games/bills-at-lions-2024-reg-15 Recap]
+|- {{Game-won}}
+! [[#Week 16: vs. New England Patriots|16]]
+| December 22
+| '''[[2024 New England Patriots season|New England Patriots]]'''
+| '''W''' 24–21
+| 12–3
+| Highmark Stadium
+| [https://www.nfl.com/games/patriots-at-bills-2024-reg-16 Recap]
+|- {{Game-won}}
+! [[#Week 17: vs. New York Jets|17]]
+| December 29
+| '''[[2024 New York Jets season|New York Jets]]'''
+| '''W''' 40–14
+| 13–3
+| Highmark Stadium
+| [https://www.nfl.com/games/jets-at-bills-2024-reg-17 Recap]
+|- {{Game-lost}}
+! [[#Week 18: at New England Patriots|18]]
+| January 5
+| at '''[[2024 New England Patriots season|New England Patriots]]'''
+| '''L''' 16–23
+| 13–4
+| [[Gillette Stadium]]
+| [https://www.nfl.com/games/bills-at-patriots-2024-reg-18 Recap]
+|}
+'''Note:''' Intra-division opponents are in '''bold''' text.
+
+===Game summaries===
+====Week 1: vs. Arizona Cardinals====
+{{Americanfootballbox
+|titlestyle={{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}};text-align:center;
+|state=autocollapse
+|title=Week 1: Arizona Cardinals at Buffalo Bills&nbsp;– Game summary
+|date=September 8
+|time=1:00&nbsp;p.m. [[Eastern Time Zone|EDT]]
+|road=Cardinals
+|R1=7|R2=10|R3=0|R4=11
+|home='''Bills'''
+|H1=0|H2=10|H3=14|H4=10
+|stadium=[[Ralph Wilson Stadium|Highmark Stadium]], [[Orchard Park, New York]]
+|attendance=70,542
+|weather=Cloudy, {{convert|61|F|C}}
+|referee=[[Tra Blake]]
+|TV=[[NFL on CBS|CBS]]
+|TVAnnouncers=[[Tom McCarthy (sportscaster)|Tom McCarthy]], [[Jay Feely]], [[Ross Tucker]] and [[Tiffany Blackmon]]
+|reference=[https://www.nfl.com/games/cardinals-at-bills-2024-reg-1 Recap], [https://static.www.nfl.com/gamecenter/7d40236a-1312-11ef-afd1-646009f18b2e.pdf Game Book]
+|scoring=
+'''First quarter'''
+*ARI – [[Michael Wilson (wide receiver)|Michael Wilson]] 5-yard pass from [[Kyler Murray]] ([[Matt Prater]] kick), 7:47. ''Cardinals 7–0. '''Drive: 13 plays, 70 yards, 7:13.'''''
+'''Second quarter'''
+*ARI – Matt Prater 29-yard field goal, 14:57. ''Cardinals 10–0. '''Drive: 10 plays, 60 yards, 5:27.'''''
+*BUF – [[Tyler Bass]] 37-yard field goal, 9:47. ''Cardinals 10–3. '''Drive: 9 plays, 51 yards, 5:10.'''''
+*ARI – [[James Conner (American football)|James Conner]] 3-yard run (Matt Prater kick), 2:40. ''Cardinals 17–3. '''Drive: 13 plays, 71 yards, 7:07.'''''
+*BUF – [[Josh Allen]] 7-yard run (Tyler Bass kick), 0:19. ''Cardinals 17–10. '''Drive: 7 plays, 70 yards, 2:21.'''''
+'''Third quarter'''
+*BUF – [[Mack Hollins]] 11-yard pass from Josh Allen (Tyler Bass kick), 9:51. ''Tied 17–17. '''Drive: 10 plays, 60 yards, 5:09.'''''
+*BUF – [[Khalil Shakir]] 11-yard pass from Josh Allen (Tyler Bass kick), 2:37. ''Bills 24–17. '''Drive: 5 plays, 21 yards, 2:48.'''''
+'''Fourth quarter'''
+*ARI – Matt Prater 31-yard field goal, 13:32. ''Bills 24–20. '''Drive: 8 plays, 58 yards, 4:05.'''''
+*BUF – Josh Allen 6-yard run (Tyler Bass kick), 8:44. ''Bills 31–20. '''Drive: 10 plays, 70 yards, 4:48.'''''
+*ARI – [[DeeJay Dallas]] 96-yard kickoff return ([[James Conner (American football)|James Conner]] run), 8:31. ''Bills 31–28.''
+*BUF – Tyler Bass 39-yard field goal, 1:56. ''Bills 34–28. '''Drive: 5 plays, 21 yards, 2:34.'''''
+|stats=
+'''Top passers'''
+*ARI – Kyler Murray – 21/31, 162 yards, TD
+*BUF – Josh Allen – 18/23, 232 yards, 2 TD
+'''Top rushers'''
+*ARI – Kyler Murray – 5 rushes, 57 yards
+*BUF – [[James Cook (running back)|James Cook]] – 19 rushes, 71 yards
+'''Top receivers'''
+*ARI – [[Greg Dortch]] – 6 receptions, 47 yards
+*BUF – [[Keon Coleman]] – 4 receptions, 51 yards
+}}
+Trailing 17–3 at one point in the second quarter, the Bills stormed back in the second half with 21 unanswered points to take the lead. The Cardinals had one last chance to win after the Bills expanded their lead to 34–28, but quarterback [[Kyler Murray]]'s last second [[Hail Mary pass]] attempt was denied by Bills cornerback [[Ja'Marcus Ingram]], preventing a repeat of the [[Hail Murray]] from the 2020 season.<ref>{{Cite web |last=Cortez |first=Alexis |date=2024-09-08 |title=‘Hail Murray’ attempt comes up short as Arizona Cardinals fall to Buffalo Bills |url=https://www.azfamily.com/2024/09/08/hail-murray-attempt-comes-up-short-arizona-cardinals-fall-buffalo-bills/ |access-date=2024-09-10 |website=AZFamily.com |language=en}}</ref> Bills quarterback [[Josh Allen]] had four total touchdowns in the win, tallying his fourth career game with multiple rushing and passing touchdowns, tied for the most in league history with [[Steve Young]].<ref>{{Cite web |last=Maiorana |first=Sal |date=September 8, 2024 |title=Josh Allen puts Bills on his back to lead comeback win over Cardinals |url=https://www.usatoday.com/story/sports/football/nfl/bills/2024/09/08/buffalo-bills-arizona-cardinals-score-josh-allen-fuels-comeback-nfl-season-opener/75101768007/ |access-date=2024-09-10 |website=USA TODAY |language=en-US}}</ref> The Bills would begin their season with a 1–0 record.
+
+====Week 2: at Miami Dolphins====
+{{Americanfootballbox
+|titlestyle={{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}};text-align:center;
+|state=autocollapse
+|title=Week 2: Buffalo Bills at Miami Dolphins&nbsp;– Game summary
+|date={{dow tooltip|September 12, 2024}}
+|time=8:15&nbsp;p.m. EDT
+|road='''Bills'''
+|R1=7|R2=17|R3=7|R4=0
+|home=Dolphins
+|H1=7|H2=3|H3=0|H4=0
+|stadium=[[Hard Rock Stadium]], [[Miami Gardens, Florida]]
+|attendance=65,601
+|weather=Partly cloudy, {{convert|86|F|C}}
+|referee=[[Bill Vinovich]]
+|TV=[[WKBW-TV|WKBW]]/[[NFL on Prime Video|Prime Video]]
+|TVAnnouncers=[[Al Michaels]], [[Kirk Herbstreit]] and [[Kaylee Hartung]]
+|reference=[https://www.nfl.com/games/bills-at-dolphins-2024-reg-2 Recap], [https://static.www.nfl.com/gamecenter/7d40437c-1312-11ef-afd1-646009f18b2e.pdf Game Book]
+|scoring=
+'''First quarter'''
+*BUF – [[James Cook (running back)|James Cook]] 17-yard pass from [[Josh Allen]] ([[Tyler Bass]] kick), 9:49. ''Bills 7–0. '''Drive: 6 plays, 37 yards, 2:27.'''''
+*MIA – [[De'Von Achane]] 5-yard pass from [[Tua Tagovailoa]] ([[Jason Sanders]] kick), 3:21. ''Tied 7–7. '''Drive: 10 plays, 70 yards, 6:28.'''''
+'''Second quarter'''
+*BUF – Tyler Bass 43-yard field goal, 12:41. ''Bills 10–7. '''Drive: 7 plays, 19 yards, 3:00.'''''
+*BUF – James Cook 1-yard run (Tyler Bass kick), 6:25. ''Bills 17–7. '''Drive: 8 plays, 85 yards, 4:29.'''''
+*BUF – James Cook 49-yard run (Tyler Bass kick), 3:36. ''Bills 24–7. '''Drive: 1 play, 49 yards, 0:09.'''''
+*MIA – Jason Sanders 34-yard field goal, 0:04. ''Bills 24–10. '''Drive: 13 plays, 54 yards, 3:32.'''''
+'''Third quarter'''
+*BUF – [[Ja'Marcus Ingram]] 31-yard interception return (Tyler Bass kick), 9:24. ''Bills 31–10. '''Drive: 5 plays, 19 yards, 2:43.'''''
+|stats=
+'''Top passers'''
+*BUF – Josh Allen – 13/19, 139 yards, TD
+*MIA – Tua Tagovailoa – 17/25, 145 yards, TD, 3 INT
+'''Top rushers'''
+*BUF – James Cook – 11 rushes, 78 yards, 2 TD
+*MIA – De'Von Achane – 22 rushes, 96 yards
+'''Top receivers'''
+*BUF – [[Khalil Shakir]] – 5 receptions, 54 yards
+*MIA – De'Von Achane – 7 receptions, 69 yards, TD
+}}The Bills cruised to a 31–10 win over the rival Dolphins, thanks to three total touchdowns by running back [[James Cook (running back)|James Cook]] and the defense intercepting Miami quarterback [[Tua Tagovailoa]] three times. However, the win was overshadowed by Tagovailoa suffering a [[concussion]] after running into contact with safety [[Damar Hamlin]]. This was Tagovailoa's third officially reported concussion in two years.<ref>{{Cite web |last=Reineking |first=Tyler Dragon, Cydney Henderson and Jim |title=Thursday Night Football: Highlights, score, stats from Bills' win vs. Dolphins |url=https://www.usatoday.com/story/sports/nfl/2024/09/12/bills-dolphins-thursday-night-football-score-updates/75165366007/ |access-date=2024-09-14 |website=USA TODAY |language=en-US}}</ref> With this win, the Bills improved to 2–0.
+
+====Week 3: vs. Jacksonville Jaguars====
+{{Americanfootballbox
+|titlestyle={{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}};text-align:center;
+|state=autocollapse
+|title=Week 3: Jacksonville Jaguars at Buffalo Bills&nbsp;– Game summary
+|date={{dow tooltip|September 23, 2024}}
+|time=7:30&nbsp;p.m. EDT
+|road=Jaguars
+|R1=0|R2=3|R3=7|R4=0
+|home='''Bills'''
+|H1=13|H2=21|H3=3|H4=10
+|stadium=Highmark Stadium, Orchard Park, New York
+|attendance=70,316
+|weather=Cloudy, {{convert|68|F|C}}
+|referee=[[Shawn Smith (American football)|Shawn Smith]]
+|TV=[[WIVB-TV|WIVB]]/[[Monday Night Football|ESPN]]
+|TVAnnouncers=[[Chris Fowler]], [[Louis Riddick]], [[Dan Orlovsky]] and [[Laura Rutledge]]
+|reference=[https://www.nfl.com/games/jaguars-at-bills-2024-reg-3 Recap], [https://static.www.nfl.com/gamecenter/7d408f6c-1312-11ef-afd1-646009f18b2e.pdf Game Book]
+|scoring=
+'''First quarter'''
+*BUF – [[James Cook (running back)|James Cook]] 6-yard run (kick blocked), 9:34. ''Bills 6–0. '''Drive: 10 plays, 70 yards, 5:26.'''''
+*BUF – [[Dalton Kincaid]] 6-yard pass from [[Josh Allen]] ([[Tyler Bass]] kick), 3:25. ''Bills 13–0. '''Drive: 11 plays, 65 yards, 5:12.'''''
+'''Second quarter'''
+*JAX – [[Cam Little]] 41-yard field goal, 10:39. ''Bills 13–3. '''Drive: 14 plays, 47 yards, 7:46.'''''
+*BUF – [[Keon Coleman]] 24-yard pass from Josh Allen (Tyler Bass kick), 6:19. ''Bills 20–3. '''Drive: 8 plays, 68 yards, 4:20.'''''
+*BUF – [[Khalil Shakir]] 27-yard pass from Josh Allen (Tyler Bass kick), 2:04. ''Bills 27–3. '''Drive: 5 plays, 41 yards, 2:09.'''''
+*BUF – [[Ty Johnson (American football)|Ty Johnson]] 16-yard pass from Josh Allen (Tyler Bass kick), 0:19. ''Bills 34–3. '''Drive: 5 plays, 64 yards, 0:53.'''''
+'''Third quarter'''
+*JAX – [[Brenton Strange]] 6-yard pass from [[Trevor Lawrence]] (Cam Little kick), 11:15. ''Bills 34–10. '''Drive: 8 plays, 70 yards, 3:45.'''''
+*BUF – Tyler Bass 27-yard field goal, 5:03. ''Bills 37–10. '''Drive: 11 plays, 61 yards, 6:12.'''''
+'''Fourth quarter'''
+*BUF – Tyler Bass 43-yard field goal, 7:45. ''Bills 40–10. '''Drive: 4 plays, 7 yards, 2:13.'''''
+*BUF – [[Ray Davis (American football)|Ray Davis]] 3-yard run (Tyler Bass kick), ''Bills 47–10. '''Drive: 4 plays, 21 yards, 2:17.'''''
+|stats=
+'''Top passers'''
+*JAX – Trevor Lawrence – 21/38, 178 yards, TD, INT
+*BUF – Josh Allen – 23/30, 263 yards, 4 TD
+'''Top rushers'''
+*JAX – [[Travis Etienne]] – 11 rushes, 68 yards
+*BUF – Josh Allen – 6 rushes, 44 yards
+'''Top receivers'''
+*JAX – [[Christian Kirk]] – 8 receptions, 79 yards
+*BUF – Khalil Shakir – 6 receptions, 72 yards
+}}
+The Bills turned in a strong performance against the Jaguars in Week 3 on ''[[Monday Night Football]]''. Buffalo's defensive line only allowed Jacksonville a field goal and a touchdown in the game, with Bills safety [[Damar Hamlin]] picking off Jaguar quarterback [[Trevor Lawrence]] for his first interception. Rookies [[Keon Coleman]] and [[Ray Davis (American football)|Ray Davis]] scored their first career NFL touchdowns, with Coleman catching a 24-yard pass from Josh Allen and Davis running for a 3-yard touchdown. Davis' fellow halfbacks [[James Cook (running back)|James Cook]] and [[Ty Johnson (American football)|Ty Johnson]] also scored touchdowns as the Bills improved their record to 3–0.
+
+====Week 4: at Baltimore Ravens====
+{{Americanfootballbox
+|titlestyle={{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}};text-align:center;
+|state=autocollapse
+|title=Week 4: Buffalo Bills at Baltimore Ravens&nbsp;– Game summary
+|date=September 29
+|time=8:20&nbsp;p.m. EDT
+|road=Bills
+|R1=3|R2=0|R3=7|R4=0
+|home='''Ravens'''
+|H1=7|H2=14|H3=7|H4=7
+|stadium=[[M&T Bank Stadium]], [[Baltimore, Maryland]]
+|attendance=70,636
+|weather=Cloudy, {{convert|68|F|C}}
+|referee=[[Alan Eck]]
+|TV=[[NFL on NBC|NBC]]
+|TVAnnouncers=[[Mike Tirico]], [[Cris Collinsworth]] and [[Melissa Stark]]
+|reference=[https://www.nfl.com/games/bills-at-ravens-2024-reg-4 Recap], [https://static.www.nfl.com/gamecenter/7d40b2bf-1312-11ef-afd1-646009f18b2e.pdf Game Book]
+|scoring=
+'''First quarter'''
+*BAL – [[Derrick Henry]] 87-yard run ([[Justin Tucker]] kick), 10:50. ''Ravens 7–0. '''Drive: 1 play, 87 yards, 0:12.'''''
+*BUF – [[Tyler Bass]] 50-yard field goal, 4:34. ''Ravens 7–3. '''Drive: 11 plays, 38 yards, 6:16.'''''
+'''Second quarter'''
+*BAL – Derrick Henry 5-yard pass from [[Lamar Jackson]] (Justin Tucker kick), 14:55. ''Ravens 14–3. '''Drive: 9 plays, 70 yards, 4:39.'''''
+*BAL – [[Justice Hill]] 19-yard pass from Lamar Jackson (Justin Tucker kick), 7:34. ''Ravens 21–3. '''Drive: 10 plays, 81 yards, 5:16.'''''
+'''Third quarter'''
+*BUF – [[Ty Johnson (American football)|Ty Johnson]] 3-yard run (Tyler Bass kick), 11:26. ''Ravens 21–10. '''Drive: 4 plays, 60 yards, 2:27.'''''
+*BAL – Lamar Jackson 9-yard run (Justin Tucker kick), 2:45. ''Ravens 28–10. '''Drive: 6 plays, 59 yards, 3:35.'''''
+'''Fourth quarter'''
+*BAL – [[Patrick Ricard (American football)|Patrick Ricard]] fumble recovery in the end zone (Justin Tucker kick), 11:23. ''Ravens 35–10. '''Drive: 6 plays, 62 yards, 3:32.'''''
+|stats=
+'''Top passers'''
+*BUF – [[Josh Allen]] – 16/29, 180 yards
+*BAL – Lamar Jackson – 13/18, 156 yards, 2 TD
+'''Top rushers'''
+*BUF – [[James Cook (running back)|James Cook]] – 9 rushes, 39 yards
+*BAL – Derrick Henry – 24 rushes, 199 yards, TD
+'''Top receivers'''
+*BUF – [[Khalil Shakir]] – 4 receptions, 62 yards
+*BAL – Justice Hill – 6 receptions, 78 yards, TD
+}}
+After three consecutive wins to open the season, the Bills took a sour loss from the Ravens on ''[[NBC Sunday Night Football|Sunday Night Football]]''. With the defense missing several key players due to ongoing injuries, they were unable to contain Baltimore running back [[Derrick Henry]] as he rushed for 199 yards. The offense was outgained 236 to 427 culminating in the Bills' first loss of the 2024 season as they fell to 3–1.
+
+====Week 5: at Houston Texans====
+{{Americanfootballbox
+|titlestyle={{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}};text-align:center;
+|state=autocollapse
+|title=Week 5: Buffalo Bills at Houston Texans&nbsp;– Game summary
+|date=October 6
+|time=1:00&nbsp;p.m. EDT/12:00&nbsp;p.m. [[Central Time Zone|CDT]]
+|road=Bills
+|R1=3|R2=0|R3=14|R4=3
+|home='''Texans'''
+|H1=14|H2=3|H3=3|H4=3
+|stadium=[[NRG Stadium]], [[Houston, Texas]]
+|attendance=71,427
+|weather=None ([[retractable roof]] closed)
+|referee=[[Clay Martin]]
+|TV=CBS
+|TVAnnouncers=[[Ian Eagle]], [[Charles Davis (defensive back)|Charles Davis]] and [[Evan Washburn]]
+|reference=[https://www.nfl.com/games/bills-at-texans-2024-reg-5 Recap], [https://static.www.nfl.com/gamecenter/7d40c2c2-1312-11ef-afd1-646009f18b2e.pdf Game Book]
+|scoring=
+'''First quarter'''
+*BUF – [[Tyler Bass]] 38-yard field goal, 6:27. ''Bills 3–0. '''Drive: 10 plays, 29 yards, 5:37.'''''
+*HOU – [[Cam Akers]] 15-yard run ([[Kaʻimi Fairbairn]] kick), 2:55. ''Texans 7–3. '''Drive: 6 plays, 70 yards, 3:32.'''''
+*HOU – [[Nico Collins]] 67-yard pass from [[C. J. Stroud]] (Kaʻimi Fairbairn kick), 1:34. ''Texans 14–3. '''Drive: 1 play, 67 yards, 0:09.'''''
+'''Second quarter'''
+*HOU – Kaʻimi Fairbairn 50-yard field goal, 0:00. ''Texans 17–3. '''Drive: 6 plays, 19 yards, 0:30.'''''
+'''Third quarter'''
+*HOU – Kaʻimi Fairbairn 47-yard field goal, 11:15. ''Texans 20–3. '''Drive: 8 plays, 41 yards, 3:45.'''''
+*BUF – [[James Cook (running back)|James Cook]] 5-yard run (Tyler Bass kick), 8:48. ''Texans 20–10. '''Drive: 6 plays, 70 yards, 2:27.'''''
+*BUF – [[Keon Coleman]] 49-yard pass from [[Josh Allen]] (Tyler Bass kick), 4:20. ''Texans 20–17. '''Drive: 5 plays, 65 yards, 2:46.'''''
+'''Fourth quarter'''
+*BUF – Tyler Bass 33-yard field goal, 3:30. ''Tied 20–20. '''Drive: 4 plays, 0 yards, 1:03.'''''
+*HOU – Kaʻimi Fairbairn 59-yard field goal, 0:00. ''Texans 23–20. '''Drive: 2 plays, 5 yards, 0:07.'''''
+|stats=
+'''Top passers'''
+*BUF – Josh Allen – 9/30, 131 yards, TD
+*HOU – C. J. Stroud – 28/38, 331 yards, TD, INT
+'''Top rushers'''
+*BUF – James Cook – 20 rushes, 82 yards, TD
+*HOU – Cam Akers – 9 rushes, 42 yards, TD
+'''Top receivers'''
+*BUF – Keon Coleman – 1 reception, 49 yards, TD
+*HOU – [[Stefon Diggs]] – 6 receptions, 82 yards
+}}
+The Bills faced off against former receiver [[Stefon Diggs]] for the first time since they traded him to the Texans in the offseason. The game started off with a 38-yard [[Tyler Bass]] field goal, only for Texans running back [[Cam Akers]] to rush for a 15-yard touchdown and Houston quarterback [[C. J. Stroud]] to throw a 67-yard pass touchdown pass to wide receiver [[Nico Collins]]. The Bills would ultimately turn around in the second half with touchdowns from [[James Cook (running back)|James Cook]] and [[Keon Coleman]], and another Tyler Bass field goal put the Bills in a tied situation against the Texans. However, in what was seen as a major gaffe, the Bills opted to pass three consecutive times from their own end zone with just seconds left in regulation, resulting in three incompletions from Josh Allen, who finished with a career-worst 30% completion percentage. Buffalo punted with 16 seconds left in the game and Houston retaining all three of its timeouts. After a quick gain to get into field goal range and a timeout taken by Houston, [[Kaʻimi Fairbairn]] kicked a 59-yard field goal just as time expired, denying Buffalo’s attempt to come back. With the loss, Buffalo dropped back-to-back games and fell to 3–2 on the season.
+
+Head coach [[Sean McDermott]] took the blame for deciding to pass in the waning moments of the game instead of running, which would have forced the Texans to burn their timeouts and likely taken the game to overtime,<ref>{{Cite web |date=2024-10-06 |title=Sean McDermott explains decision-making in loss to Texans |url=https://www.rochesterfirst.com/sports/buffalo-bills/sean-mcdermott-explains-end-of-game-playcalling-in-loss-to-texans/ |access-date=2024-10-14 |website=RochesterFirst |language=en-US}}</ref> and the team's training staff was criticized for allowing Allen back into the game after he suffered what appeared to be a concussion at first glance, though a later review found no violation of the NFL's concussion protocol.<ref>{{Cite web |last=Miller |first=Ryan |date=2024-10-09 |title=Bills say Josh Allen passed concussion protocol, but athletes call out NFL for his return |url=https://sports.yahoo.com/bills-josh-allen-passed-concussion-222948735.html |access-date=2024-10-12 |website=Democrat and Chronicle (published on Yahoo Sports) |language=en-US}}</ref>
+
+====Week 6: at New York Jets====
+{{Americanfootballbox
+|titlestyle={{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}};text-align:center;
+|state=autocollapse
+|title=Week 6: Buffalo Bills at New York Jets&nbsp;– Game summary
+|date={{dow tooltip|October 14, 2024}}
+|time=8:15&nbsp;p.m. EDT
+|road='''Bills'''
+|R1=7|R2=13|R3=0|R4=3
+|home=Jets
+|H1=10|H2=7|H3=3|H4=0
+|stadium=[[MetLife Stadium]], [[East Rutherford, New Jersey]]
+|attendance=81,118
+|weather=Clear, {{convert|49|F|C}}
+|referee=[[Adrian Hill (American football official)|Adrian Hill]]
+|TV=ESPN/[[NFL on ABC|ABC]]
+|TVAnnouncers=[[Joe Buck]], [[Troy Aikman]] and Laura Rutledge
+|reference=[https://www.nfl.com/games/bills-at-jets-2024-reg-6 Recap], [https://static.www.nfl.com/gamecenter/7d410013-1312-11ef-afd1-646009f18b2e.pdf Game Book]
+|scoring=
+'''First quarter'''
+*NYJ – [[Greg Zuerlein]] 34-yard field goal, 11:06. ''Jets 3–0. '''Drive: 8 plays, 54 yards, 3:54.'''''
+*BUF – [[Josh Allen]] 1-yard run ([[Tyler Bass]] kick), 6:12. ''Bills 7–3. '''Drive: 9 plays, 70 yards, 4:54.'''''
+*NYJ – [[Garrett Wilson]] 5-yard pass from [[Aaron Rodgers]] (Greg Zuerlein kick), 2:06. ''Jets 10–7. '''Drive: 9 plays, 70 yards, 4:11.'''''
+'''Second quarter'''
+*BUF – [[Mack Hollins]] 8-yard pass from Josh Allen (kick failed, wide left), 6:54. ''Bills 13–10. '''Drive: 10 plays, 90 yards, 5:12.'''''
+*BUF – [[Dawson Knox]] 12-yard pass from Josh Allen (Tyler Bass kick), 0:21. ''Bills 20–10. '''Drive: 10 plays, 80 yards, 2:28.'''''
+*NYJ – [[Allen Lazard]] 52-yard pass from Aaron Rodgers (Greg Zuerlein kick), 0:00. ''Bills 20–17. '''Drive: 3 plays, 70 yards, 0:21.'''''
+'''Third quarter'''
+*NYJ – Greg Zuerlein 22-yard field goal, 6:13. ''Tied 20–20. '''Drive: 10 plays, 60 yards, 4:53.'''''
+'''Fourth quarter'''
+*BUF – Tyler Bass 22-yard field goal, 3:43. ''Bills 23–20. '''Drive: 11 plays, 64 yards, 6:01.'''''
+|stats=
+'''Top passers'''
+*BUF – Josh Allen – 19/25, 215 yards, 2 TD
+*NYJ – Aaron Rodgers – 23/35, 294 yards, 2 TD, INT
+'''Top rushers'''
+*BUF – [[Ray Davis (American football)|Ray Davis]] – 20 rushes, 97 yards
+*NYJ – [[Breece Hall]] – 18 rushes, 113 yards
+'''Top receivers'''
+*BUF – Ray Davis – 3 receptions, 55 yards
+*NYJ – Allen Lazard – 6 receptions, 114 yards, TD
+}}
+After suffering back-to-back losses, the Bills started this ''Monday Night Football'' game against the division rival Jets with a strong rushing attack, despite missing starting tailback James Cook due to a toe injury, and Josh Allen scoring three touchdowns in the first half, namely a one-yard rushing touchdown and scoring passes to Mack Hollins and Dawson Knox. The defense struggled to contain [[Aaron Rodgers]] and [[Breece Hall]] at times, despite the returns of cornerback [[Taron Johnson]] and safety [[Taylor Rapp]], culminating in the Jets keeping the score close, with Rodgers throwing a 52-yard Hail Mary pass to [[Allen Lazard]] as time expired in the first half. During a low-scoring second half, Bills kicker [[Tyler Bass]] kicked a go-ahead field goal with just three minutes to go, and Rodgers was intercepted by Johnson on the ensuing drive, sealing Buffalo’s fourth win in the 2024 season.
+
+Ray Davis filled in admirably for Cook, rushing for 97 yards overall. [[Khalil Shakir]] also returned to play in limited snaps after missing the week prior due to an injury he suffered in the Ravens game two weeks prior. Both Bass and Jets kicker [[Greg Zuerlein]] struggled in the game, missing two kicks apiece, and the two teams combined for 22 accepted penalty flags for 204 yards in a sloppy, tension-filled game.<ref>{{Cite web |date=2024-10-15 |title=Bills vs. Jets score: Taron Johnson picks off Aaron Rodgers to seal penalty-filled win |url=https://www.usatoday.com/story/sports/football/nfl/bills/2024/10/14/buffalo-bills-vs-ny-jets-score-stats-updates-highlights-monday-night-football/75660924007/ |website=Rochester Democrat & Chronicle (published on USA Today Sports)}}</ref> The Bills improved to 4–2, with their first win in three weeks.
+
+====Week 7: vs. Tennessee Titans====
+{{Americanfootballbox
+|titlestyle={{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}};text-align:center;
+|state=autocollapse
+|title=Week 7: Tennessee Titans at Buffalo Bills&nbsp;– Game summary
+|date=October 20
+|time=1:00&nbsp;p.m. EDT
+|road=Titans
+|R1=3|R2=7|R3=0|R4=0
+|home='''Bills'''
+|H1=0|H2=7|H3=10|H4=17
+|stadium=Highmark Stadium, Orchard Park, New York
+|attendance=70,842
+|weather=Sunny, {{convert|66|F|C}}
+|referee=[[John Hussey (American football official)|John Hussey]]
+|TV=CBS
+|TVAnnouncers=[[Andrew Catalon]], [[Tiki Barber]], [[Jason McCourty]] and A.J. Ross
+|reference=[https://www.nfl.com/games/titans-at-bills-2024-reg-7 Recap], [https://static.www.nfl.com/gamecenter/ae9c5ce2-1312-11ef-afd1-646009f18b2e.pdf Game Book]
+|scoring=
+'''First quarter'''
+*TEN – [[Nick Folk]] 25-yard field goal, 2:57. ''Titans 3–0. '''Drive: 13 plays, 61 yards, 7:03.'''''
+'''Second quarter'''
+*TEN – [[Nick Westbrook-Ikhine]] 4-yard pass from [[Mason Rudolph (American football)|Mason Rudolph]] (Nick Folk kick), 11:31. ''Titans 10–0. '''Drive: 8 plays, 75 yards, 4:45.'''''
+*BUF – [[James Cook (running back)|James Cook]] 11-yard run ([[Tyler Bass]] kick), 10:04. ''Titans 10–7. '''Drive: 3 plays, 61 yards, 1:27.'''''
+'''Third quarter'''
+*BUF – [[Amari Cooper]] 12-yard pass from [[Josh Allen]] (Tyler Bass kick), 10:23. ''Bills 14–10. '''Drive: 6 plays, 41 yards, 2:32.'''''
+*BUF – Tyler Bass 28-yard field goal, 4:12. ''Bills 17–10. '''Drive: 9 plays, 64 yards, 3:53.'''''
+'''Fourth quarter'''
+*BUF – [[Ty Johnson (American football)|Ty Johnson]] 4-yard pass from Josh Allen (Tyler Bass kick), 14:54. ''Bills 24–10. '''Drive: 6 plays, 56 yards, 2:55.'''''
+*BUF – Tyler Bass 30-yard field goal, 9:26. ''Bills 27–10. '''Drive: 10 plays, 59 yards, 4:59.'''''
+*BUF – [[Ray Davis (American football)|Ray Davis]] 16-yard run (Tyler Bass kick), 1:53. ''Bills 34–10. '''Drive: 5 plays, 84 yards, 2:44.'''''
+|stats=
+'''Top passers'''
+*TEN – Mason Rudolph – 25/40, 215 yards, TD, INT
+*BUF – Josh Allen – 21/33, 323 yards, 2 TD
+'''Top rushers'''
+*TEN – [[Tony Pollard]] – 16 rushes, 61 yards
+*BUF – Ray Davis – 5 rushes, 41 yards, TD
+'''Top receivers'''
+*TEN – [[Chig Okonkwo]] – 4 receptions, 50 yards
+*BUF – [[Keon Coleman]] – 4 receptions, 125 yards
+}}
+Despite Tennessee leading 10–0 at one point in the second quarter, Buffalo ultimately took control in the second half, overcoming consecutive three-and-out possessions in the first half to score 34 unanswered points. All three of Buffalo's active halfbacks, namely James Cook, [[Ty Johnson (American football)|Ty Johnson]], and Ray Davis, scored touchdowns, in addition to newly-acquired receiver [[Amari Cooper]]. With the win, Buffalo improved to 5–2 in Josh Allen's 100th career game.<ref name="l760">{{cite web | last=Auberger | first=Rachel | title=Bills vs. Titans, Week 7 Shoutouts: Everybody ate | website=Buffalo Rumblings | date=2024-10-21 | url=https://www.buffalorumblings.com/2024/10/21/24275374/buffalo-bills-vs-tennessee-titans-week-7-shoutouts-everybody-ate-josh-allen-100th-career-start | access-date=2025-01-27}}</ref>
+
+====Week 8: at Seattle Seahawks====
+{{Americanfootballbox
+|titlestyle={{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}};text-align:center;
+|state=autocollapse
+|title=Week 8: Buffalo Bills at Seattle Seahawks&nbsp;– Game summary
+|date=October 27
+|time=4:05&nbsp;p.m. EDT/1:05&nbsp;p.m. [[Pacific Time Zone|PDT]]
+|road='''Bills'''
+|R1=7|R2=7|R3=10|R4=7
+|home=Seahawks
+|H1=0|H2=3|H3=0|H4=7
+|stadium=[[Lumen Field]], [[Seattle, Washington]]
+|attendance=68,704
+|weather=Mostly cloudy, {{convert|55|F|C}}
+|referee=[[Ronald Torbert]]
+|TV=[[NFL on Fox|Fox]]
+|TVAnnouncers=[[Kevin Burkhardt]], [[Tom Brady]], [[Erin Andrews]] and [[Tom Rinaldi]]
+|reference=[https://www.nfl.com/games/bills-at-seahawks-2024-reg-8 Recap], [https://static.www.nfl.com/gamecenter/ae9cb979-1312-11ef-afd1-646009f18b2e.pdf Game Book]
+|scoring=
+'''First quarter'''
+*BUF – [[Keon Coleman]] 2-yard pass from [[Josh Allen]] ([[Tyler Bass]] kick), 4:51. ''Bills 7–0. '''Drive: 14 plays, 90 yards, 9:07.'''''
+'''Second quarter'''
+*SEA – [[Jason Myers]] 38-yard field goal, 8:14. ''Bills 7–3. '''Drive: 13 plays, 71 yards, 7:04.'''''
+*BUF – [[Dalton Kincaid]] 12-yard pass from Josh Allen (Tyler Bass kick), 0:18. ''Bills 14–3. '''Drive: 12 plays, 93 yards, 4:26
+'''Third quarter'''
+*BUF – Tyler Bass 27-yard field goal, 8:31. ''Bills 17–3. '''Drive: 11 plays, 69 yards, 6:29.'''''
+*BUF – [[James Cook (running back)|James Cook]] 2-yard run (Tyler Bass kick), 1:57. ''Bills 24–3. '''Drive: 7 plays, 51 yards, 4:02.'''''
+'''Fourth quarter'''
+*BUF – James Cook 7-yard run (Tyler Bass kick), 11:19. ''Bills 31–3. '''Drive: 7 plays, 73 yards, 3:44.'''''
+*SEA – [[Zach Charbonnet]] 1-yard run (Jason Myers kick), 8:02. ''Bills 31–10. '''Drive: 9 plays, 70 yards, 3:17.'''''
+|stats=
+'''Top passers'''
+*BUF – Josh Allen – 24/34, 283 yards, 2 TD, INT
+*SEA – [[Geno Smith]] – 21/29, 212 yards, INT
+'''Top rushers'''
+*BUF – James Cook – 17 rushes, 111 yards, 2 TD
+*SEA – Geno Smith – 5 rushes, 16 yards
+'''Top receivers'''
+*BUF – [[Khalil Shakir]] – 9 receptions, 107 yards
+*SEA – [[Jaxon Smith-Njigba]] – 6 receptions, 69 yards
+}}
+Buffalo's dominance continued once more against Seattle, with the Seahawks' defense unable to contain the Bills' offense, resulting in the Bills gaining 31 unanswered points. Buffalo got touchdowns from Keon Coleman and Dalton Kincaid, while James Cook rushed for two touchdowns and Tyler Bass successfully made a 27-yard field goal. Buffalo's defensive line only allowed Seattle a field goal and a touchdown. However, Josh Allen's streak of no interceptions in 2024 ended when Seahawks cornerback [[Josh Jobe]] picked him off. Despite that interception, the Bills improved to 6–2.<ref>{{cite web|url=https://www.espn.com/nfl/recap?gameId=401671760|title=Josh Allen throws 2 TD passes and the Bills cruise past the Seahawks 31-10|website=ESPN.com|date=2024-10-27}}</ref>
+
+====Week 9: vs. Miami Dolphins====
+{{Americanfootballbox
+|titlestyle={{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}};text-align:center;
+|state=autocollapse
+|title=Week 9: Miami Dolphins at Buffalo Bills&nbsp;– Game summary
+|date=November 3
+|time=1:00&nbsp;p.m. EST
+|road=Dolphins
+|R1=3|R2=7|R3=3|R4=14
+|home='''Bills'''
+|H1=3|H2=3|H3=14|H4=10
+|stadium=Highmark Stadium, Orchard Park, New York
+|attendance=70,862
+|weather=Sunny, {{convert|54|F|C}}
+|referee=Tra Blake
+|TV=CBS
+|TVAnnouncers=[[Kevin Harlan]], [[Trent Green]] and [[Melanie Collins]]
+|reference=[https://www.nfl.com/games/dolphins-at-bills-2024-reg-9 Recap], [https://static.www.nfl.com/gamecenter/ae9ce486-1312-11ef-afd1-646009f18b2e.pdf Game Book]
+|scoring=
+'''First quarter'''
+*BUF – [[Tyler Bass]] 40-yard field goal, 6:30. ''Bills 3–0. '''Drive: 7 plays, 15 yards, 3:57.'''''
+*MIA – [[Jason Sanders]] 39-yard field goal, 1:19. ''Tied 3–3. '''Drive: 9 plays, 49 yards, 5:11.'''''
+'''Second quarter'''
+*MIA – [[De'Von Achane]] 14-yard pass from [[Tua Tagovailoa]] (Jason Sanders kick), 3:20. ''Dolphins 10–3. '''Drive: 14 plays, 97 yards, 8:21.'''''
+*BUF – Tyler Bass 49-yard field goal, 0:07. ''Dolphins 10–6. '''Drive: 12 plays, 39 yards, 3:13.'''''
+'''Third quarter'''
+*BUF – [[Mack Hollins]] 1-yard pass from [[Josh Allen]] (kick failed, wide left), 7:20. ''Bills 12–10. '''Drive: 11 plays, 64 yards, 6:23.'''''
+*MIA – Jason Sanders 23-yard field goal, 2:59. ''Dolphins 13–12. '''Drive: 9 plays, 65 yards, 4:21.'''''
+*BUF – [[Ray Davis (American football)|Ray Davis]] 63-yard pass from Josh Allen (Josh Allen–[[Keon Coleman]] pass), 2:07. ''Bills 20–13. '''Drive: 2 plays, 70 yards, 0:52.'''''
+'''Fourth quarter'''
+*MIA – De'Von Achane 8-yard run (Jason Sanders kick), 12:14. ''Tied 20–20. '''Drive: 9 plays, 70 yards, 4:53.'''''
+*BUF – [[Quintin Morris]] 2-yard pass from Josh Allen (Tyler Bass kick), 6:18. ''Bills 27–20. '''Drive: 10 plays, 70 yards, 5:56.'''''
+*MIA – [[Jaylen Waddle]] 7-yard pass from Tua Tagovailoa (Jason Sanders kick), 1:38. ''Tied 27–27. '''Drive: 11 plays, 81 yards, 4:40.'''''
+*BUF – Tyler Bass 61-yard field goal, 0:05. ''Bills 30–27. '''Drive: 9 plays, 27 yards, 1:33.'''''
+|stats=
+'''Top passers'''
+*MIA – Tua Tagovailoa – 25/28, 231 yards, 2 TD
+*BUF – Josh Allen – 25/39, 235 yards, 3 TD, INT
+'''Top rushers'''
+*MIA – De'Von Achane – 12 rushes, 63 yards, TD
+*BUF – [[James Cook (running back)|James Cook]] – 10 rushes, 44 yards
+'''Top receivers'''
+*MIA – [[Tyreek Hill]] – 4 receptions, 80 yards
+*BUF – Ray Davis – 2 receptions, 70 yards, TD
+}}
+The Bills opened the scoring in their second regular-season meeting with the Dolphins, with [[Tyler Bass]] making a 40-yard field goal. The Buffalo defense allowed Miami to put points on the board in two consecutive drives. The Dolphins took advantage of Josh Allen's second interception of the season, where a pass intended for [[Keon Coleman]] bounced off of the receiver's hands and was picked off by Miami cornerback [[Jalen Ramsey]] on the 3-yard line. Miami drove 97 yards to score their first touchdown of the game, putting them ahead 10–3. The Bills were forced to settle for a 49-yard field goal from Bass to end the first half after two consecutive plays ending in touchdowns were negated by holding penalties. The Dolphins received the kickoff to start the second half, but their first drive ended in a forced fumble by [[Taron Johnson]], with [[Kaiir Elam]] recovering the ball for the Bills. Miami and Buffalo traded scores through the third and fourth quarter, leading to a 27–27 score in the final moments. The Bills got into field goal range on their final drive of the game with the help of a personal foul penalty called on Miami safety (and former Bill) [[Jordan Poyer]] after he hit Coleman in the head.<ref>{{Cite web |last=Miller |first=Ryan |title=Jordan Poyer helps Bills sweep the Dolphins again, even while playing for Miami |url=https://www.democratandchronicle.com/story/sports/football/nfl/bills/2024/11/04/buffalo-bills-jordan-poyer-siran-neal-former-players-penalties-miami-dolphins/76039850007/ |access-date=2024-11-05 |website=Democrat and Chronicle |language=en-US}}</ref> The penalty set the Bills up for a game-winning, 61-yard field goal by Bass,<ref>{{Cite web |title=Bass' 61-yard field goal gives Allen and Bills a thrilling 30-27 win over Tagovailoa and Dolphins |url=https://www.espn.com/nfl/recap/_/gameId/401671493 |access-date=2024-11-04 |website=ESPN |language=en}}</ref> setting a new record for the longest field goal in Bills history.<ref name="g686">{{cite web | last=Miller | first=Anthony | title=Bills K Tyler Bass breaks franchise record with game-winning kick vs. Dolphins | website=SI.com| date=2024-11-03 | url=https://www.si.com/nfl/bills/news/buffalo-bills-tyler-bass-week-9-franchise-record | access-date=2025-01-27}}</ref> The Dolphins were unable to score in the time remaining, improving Buffalo's record to 7–2. This was the Bills' fourth consecutive victory and their fifth consecutive regular-season victory against Miami.
+
+====Week 10: at Indianapolis Colts====
+{{Americanfootballbox
+|titlestyle={{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}};text-align:center;
+|state=autocollapse
+|title=Week 10: Buffalo Bills at Indianapolis Colts&nbsp;– Game summary
+|date=November 10
+|time=1:00&nbsp;p.m. EST
+|road='''Bills'''
+|R1=10|R2=10|R3=0|R4=10
+|home=Colts
+|H1=3|H2=10|H3=0|H4=7
+|stadium=[[Lucas Oil Stadium]], [[Indianapolis, Indiana]]
+|attendance=66,474
+|weather=Partly sunny, {{convert|63|F|C}} (retractable roof open)
+|referee=[[Scott Novak]]
+|TV=CBS
+|TVAnnouncers=Andrew Catalon, Tiki Barber, Jason McCourty and A.J. Ross
+|reference=[https://www.nfl.com/games/bills-at-colts-2024-reg-10 Recap], [https://static.www.nfl.com/gamecenter/ae9d22f8-1312-11ef-afd1-646009f18b2e.pdf Game Book]
+|scoring=
+'''First quarter'''
+*BUF – [[Taron Johnson]] 23-yard interception return ([[Tyler Bass]] kick), 12:14. ''Bills 7–0. '''Drive: 1 play, 0 yards, 0:10.'''''
+*BUF – Tyler Bass 29-yard field goal, 5:33. ''Bills 10–0. '''Drive: 9 plays, 42 yards, 3:33.'''''
+*IND – [[Matt Gay]] 27-yard field goal, 3:31. ''Bills 10–3. '''Drive: 6 plays, 61 yards, 2:02.'''''
+'''Second quarter'''
+*IND – [[Tyler Goodson]] 2-yard pass from [[Joe Flacco]] (Matt Gay kick), 9:22. ''Tied 10–10. '''Drive: 11 plays, 72 yards, 5:46.'''''
+*IND – Matt Gay 23-yard field goal, 6:32. ''Colts 13–10. '''Drive: 5 plays, 28 yards, 2:40.'''''
+*BUF – [[Josh Allen]] 13-yard run (Tyler Bass kick), 2:14. ''Bills 17–13. '''Drive: 8 plays, 70 yards, 4:18.'''''
+*BUF – Tyler Bass 47-yard field goal, 0:00. ''Bills 20–13. '''Drive: 8 plays, 60 yards, 1:10.'''''
+'''Third quarter'''
+*''No scoring plays.''
+'''Fourth quarter'''
+*BUF – Tyler Bass 28-yard field goal, 10:58. ''Bills 23–13. '''Drive: 13 plays, 60 yards, 6:47.'''''
+*BUF – [[James Cook (running back)|James Cook]] 2-yard run (Tyler Bass kick), 3:04. ''Bills 30–13. '''Drive: 13 plays, 84 yards, 6:42.'''''
+*IND – [[Alec Pierce]] 10-yard pass from Joe Flacco (Matt Gay kick), 0:02. ''Bills 30–20. '''Drive: 10 plays, 70 yards, 3:02.'''''
+|stats=
+'''Top passers'''
+*BUF – Josh Allen – 22/37, 280 yards, 2 INT
+*IND – Joe Flacco – 26/35, 272 yards, 2 TD, 3 INT
+'''Top rushers'''
+*BUF – James Cook – 19 rushes, 80 yards, TD
+*IND – [[Jonathan Taylor (American football)|Jonathan Taylor]] – 21 rushes, 114 yards
+'''Top receivers'''
+*BUF – [[Mack Hollins]] – 4 receptions, 86 yards
+*IND – Alec Pierce – 4 receptions, 81 yards, TD
+}}
+The Bills started this matchup against the Colts with a pick six by [[Taron Johnson]], who intercepted a pass from Indianapolis backup quarterback [[Joe Flacco]], and a 29-yard [[Tyler Bass]] field goal. Both teams put up a strong performance against each other, although Josh Allen threw his third and fourth interceptions of 2024 to Colts linebacker [[E. J. Speed]] and cornerback [[Kenny Moore II]]. The Bills' defense at times struggled to contain the Colts' offense, with [[Matt Gay]] kicking two field goals and Flacco throwing a touchdown pass to [[Tyler Goodson]] to put the Colts ahead by three points in the second quarter. However, a 13-yard touchdown run by Allen and a 47-yard field goal from Bass put the Bills ahead again by seven points. Buffalo put the game out of reach in the final quarter, as [[James Cook (running back)|James Cook]] ran for a two-yard touchdown and Bass kicked his third field goal of the game, this time for 28 yards. The Bills improved to 8–2 on the season and secured their first win in Indianapolis since [[1998 NFL season|1998]].
+
+With his 13-yard touchdown, Allen became tied for second in Bills franchise history for rushing touchdowns at 57. Furthermore, the Bills had no passing touchdowns in the game. Also this was first time when the Bills won five consecutive games in a 8–2 record since [[1993 Buffalo Bills season|1993]].<ref name="o779">{{cite web | last=Maiorana | first=Sal | title=Bills report card: Buffalo keeps rolling with resilient win over Colts | website=Democrat and Chronicle | date=2024-11-11 | url=https://www.democratandchronicle.com/story/sports/football/nfl/bills/2024/11/10/buffalo-bills-report-card-grades-indianapolis-colts-josh-allen-james-cook-sean-mcdermott/76126798007/ | access-date=2024-11-15}}</ref>
+
+====Week 11: vs. Kansas City Chiefs====
+{{Americanfootballbox
+|titlestyle={{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}};text-align:center;
+|state=autocollapse
+|title=Week 11: Kansas City Chiefs at Buffalo Bills&nbsp;– Game summary
+|date=November 17
+|time=4:25&nbsp;p.m. EST
+|road=Chiefs
+|R1=0|R2=14|R3=0|R4=7
+|home='''Bills'''
+|H1=6|H2=10|H3=0|H4=14
+|stadium=Highmark Stadium, Orchard Park, New York
+|attendance=71,112
+|weather=Cloudy, {{convert|50|F|C}}
+|referee=[[Land Clark]]
+|TV=CBS
+|TVAnnouncers=[[Jim Nantz]], [[Tony Romo]] and [[Tracy Wolfson]]
+|reference=[https://www.nfl.com/games/chiefs-at-bills-2024-reg-11 Recap], [https://static.www.nfl.com/gamecenter/ae9d7662-1312-11ef-afd1-646009f18b2e.pdf Game Book]
+|scoring=
+'''First quarter'''
+*BUF – [[James Cook (running back)|James Cook]] 3-yard run (kick failed, wide right), 10:00. ''Bills 6–0. '''Drive: 8 plays, 65 yards, 4:15.'''''
+'''Second quarter'''
+*KC – [[Xavier Worthy]] 10-yard pass from [[Patrick Mahomes]] ([[Spencer Shrader]] kick), 14:53. ''Chiefs 7–6. '''Drive: 11 plays, 88 yards, 5:27.'''''
+*BUF – James Cook 6-yard run ([[Tyler Bass]] kick), 10:06. ''Bills 13–7. '''Drive: 9 plays, 70 yards, 4:45.'''''
+*KC – [[Noah Gray]] 2-yard pass from Patrick Mahomes (Spencer Shrader kick), 2:51. ''Chiefs 14–13. '''Drive: 9 plays, 40 yards, 4:34.'''''
+*BUF – Tyler Bass 33-yard field goal, 0:00. ''Bills 16–14. '''Drive: 12 plays, 62 yards, 2:51.'''''
+'''Third quarter'''
+*''No scoring plays.''
+'''Fourth quarter'''
+*BUF – [[Curtis Samuel]] 12-yard pass from Josh Allen (Tyler Bass kick), 12:51. ''Bills 23–14. '''Drive: 10 plays, 83 yards, 6:03.'''''
+*KC – Noah Gray 1-yard pass from Patrick Mahomes (Spencer Shrader kick), 7:53. ''Bills 23–21. '''Drive: 10 plays, 70 yards, 4:58.'''''
+*BUF – Josh Allen 26-yard run (Tyler Bass kick), 2:17. ''Bills 30–21. '''Drive: 12 plays, 70 yards, 5:36.'''''
+|stats=
+'''Top passers'''
+*KC – Patrick Mahomes – 23/33, 196 yards, 3 TD, 2 INT
+*BUF – Josh Allen – 27/40, 262 yards, TD, INT
+'''Top rushers'''
+*KC – [[Kareem Hunt]] – 14 rushes, 60 yards
+*BUF – Josh Allen – 12 rushes, 55 yards, TD
+'''Top receivers'''
+*KC – Xavier Worthy – 4 receptions, 61 yards, TD
+*BUF – [[Khalil Shakir]] – 8 receptions, 70 yards
+}}
+The Buffalo Bills hosted the Kansas City Chiefs for their fifth consecutive regular season matchup. The Chiefs received the ball to start, but the Bills defense forced a turnover on the second play of the game. [[Taylor Rapp]] picked off a pass thrown by [[Patrick Mahomes]] as he was being tackled by [[DaQuan Jones]], and the Bills capitalized on the takeaway with an 8-play, 65-yard drive to go up 6–0. There were four lead changes during the second quarter of the tame, beginning with the Chiefs driving 88 yards for a touchdown to make it 7–6 and the Bills answering with a 70-yard touchdown drive to go up 13–7. The Chiefs took advantage of a miscue to make it 14–13 after picking off [[Josh Allen]], and the Bills ended the first half with a 33-yard field goal to bring the score to 16–14.
+
+After trading punts on the first four plays of the second half, the Bills held onto the ball for 6:03 on their longest touchdown drive of the game, putting them two scores ahead of the Chiefs at 23–14. The Chiefs responded with a touchdown, bringing the game within 2 points. Facing 4th & 2 on the Chiefs' 26 yard line, Josh Allen took control of the game and brought his team to 30–21 with a 26-yard rushing touchdown. The Chiefs attempted to bring the game within one score, but with 1:17 left to play, [[Terrel Bernard]] intercepted a pass intended for [[Travis Kelce]] and clinched the game for Buffalo. The Bills ended the Chiefs' undefeated season and their 15-game win streak, and the Bills became the first team to score 28 or more points against Kansas City since the 2022 season.<ref>{{Cite web |last=Kerr |first=Jeff |date=2024-11-18 |title=Bills vs. Chiefs score, takeaways: Josh Allen's fourth-down TD propels Buffalo, hands Kansas City first loss |url=https://www.cbssports.com/nfl/news/bills-vs-chiefs-score-takeaways-josh-allens-fourth-down-td-propels-buffalo-hands-kansas-city-first-loss/live/#:~:text=The%20Chiefs%20defense%20turned%20in,back%20to%20the%202022%20season. |access-date=2024-11-19 |website=CBSSports.com |language=en}}</ref> Josh Allen's rushing touchdown put him in 2nd place for [[Thurman Thomas|most rushing touchdowns in Bills history]], with 58.<ref>{{Cite web |title=Buffalo Bills Career Rushing Leaders |url=https://www.pro-football-reference.com/teams/buf/career-rushing.htm#rushing::9 |access-date=2024-11-19 |website=Pro-Football-Reference.com |language=en}}</ref> He also tied Hall of Fame quarterback [[Jim Kelly]] for the most total touchdowns, at 244.<ref name="b513">{{cite web | last=Silagyi | first=Kyle | title=Bills QB Josh Allen ties unbelievable franchise record with stellar TD run vs. Chiefs | website=SI.com| date=2024-11-18 | url=https://www.si.com/nfl/bills/news/buffalo-bills-week-11-leading-touchdown-scorer-tie-record | access-date=2024-11-26}}</ref> With their fourth consecutive win against Kansas City, and first home win against the Chiefs since [[2012 Buffalo Bills season|2012]], the Bills entered their bye week at 9–2. It was the first time this particular matchup had been decided by more than one score since Week 5 of the [[2021 Buffalo Bills season|2021]] season. The win also dashed the Chiefs' hopes of going undefeated, and prevented the Chiefs from being the first NFL team to start a season 10–0 since the [[2020 Pittsburgh Steelers season|2020 Pittsburgh Steelers]].
+
+The game was watched by 31.2 million viewers, becoming the highest-rated football game of the [[2024 NFL season]]. It was the highest-rated regular season and non-holiday game since the Week 9 matchup of the [[2007 New England Patriots season|New England Patriots]] and [[2007 Indianapolis Colts season|Indianapolis Colts]] during the [[2007 NFL season]].
+
+====Week 13: vs. San Francisco 49ers====
+{{Americanfootballbox
+|titlestyle={{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}};text-align:center;
+|state=autocollapse
+|title=Week 13: San Francisco 49ers at Buffalo Bills&nbsp;– Game summary
+|date=December 1
+|time=8:20&nbsp;p.m. EST
+|road=49ers
+|R1=3|R2=0|R3=7|R4=0
+|home='''Bills'''
+|H1=7|H2=14|H3=7|H4=7
+|stadium=Highmark Stadium, Orchard Park, New York
+|attendance=70,437
+|weather=Snow, {{convert|28|F|C}}
+|referee=[[Alex Kemp (American football official)|Alex Kemp]]
+|TV=NBC
+|TVAnnouncers=Mike Tirico, Cris Collinsworth and Melissa Stark
+|reference=[https://www.nfl.com/games/49ers-at-bills-2024-reg-13 Recap], [https://static.www.nfl.com/gamecenter/45c1219f-1313-11ef-afd1-646009f18b2e.pdf Game Book]
+|scoring=
+'''First quarter'''
+*SF – [[Jake Moody]] 33-yard field goal, 7:41. ''49ers 3–0. '''Drive: 9 plays, 48 yards, 4:40.'''''
+*BUF – [[Ray Davis (American football)|Ray Davis]] 5-yard run ([[Tyler Bass]] kick), 0:03. ''Bills 7–3. '''Drive: 13 plays, 70 yards, 7:38.'''''
+'''Second quarter'''
+*BUF – [[James Cook (running back)|James Cook]] 65-yard run (Tyler Bass kick), 8:38. ''Bills 14–3. '''Drive: 1 play, 65 yards, 0:10.'''''
+*BUF – [[Mack Hollins]] 7-yard pass from [[Josh Allen]] (Tyler Bass kick), 0:41. ''Bills 21–3. '''Drive: 9 plays, 97 yards, 2:50.'''''
+'''Third quarter'''
+*BUF – Josh Allen 7-yard pass play by Josh Allen (Tyler Bass kick), 5:58. ''Bills 28–3. '''Drive: 6 plays, 44 yards, 3:05.'''''
+*SF – [[Isaac Guerendo]] 15-yard run (Jake Moody kick), 2:54. ''Bills 28–10. '''Drive: 6 plays, 48 yards, 3:04.'''''
+'''Fourth quarter'''
+*BUF – Josh Allen 8-yard run (Tyler Bass kick), 12:31. ''Bills 35–10. '''Drive: 4 plays, 25 yards, 2:22.'''''
+|stats=
+'''Top passers'''
+*SF – [[Brock Purdy]] – 11/18, 94 yards
+*BUF – Josh Allen – 13/17, 148 yards, 2 TD
+'''Top rushers'''
+*SF – [[Jordan Mason]] – 13 rushes, 78 yards
+*BUF – James Cook – 14 rushes, 107 yards, TD
+'''Top receivers'''
+*SF – [[Jauan Jennings]] – 3 receptions, 56 yards
+*BUF – [[Dawson Knox]] – 2 receptions, 56 yards
+}}
+The Bills' ''Sunday Night Football'' matchup against the 49ers saw Buffalo cruise to their 7th consecutive victory and 10th overall victory in 2024. They did so in a dominant fashion, with the Bills Defense Line only allowing San Francisco a field goal and a touchdown. Meanwhile, the Bills offense gained 35 points with 28 of them unanswered. These points included rushing touchdowns from Ray Davis, James Cook, and Josh Allen, while Allen and Mack Hollis scored passing touchdowns. Allen also became the first quarterback in NFL history to score passing, receiving, and rushing touchdowns all in the same game. This game would improve the Bills to 10–2 and win their fifth consecutive AFC East title. It is the fastest an NFL team has clinched their division since the [[2009 Indianapolis Colts season|2009 Indianapolis Colts]], a complete opposite scenario compared to the Bills [[2023 Buffalo Bills season|2023 season]] where they clinched their division in the last regular season game. This marks the team's best start to a season since [[1991 Buffalo Bills season|1991]].<ref name="a668">{{cite web | last=Butler | first=Alex | title=Josh Allen, Buffalo Bills dominate San Francisco 49ers; Christian McCaffrey injured | website=UPI | date=2024-12-02 | url=https://www.upi.com/Sports_News/NFL/2024/12/02/Josh-Allen-Buffalo-Bills-beat-San-Francisco-49ers/7441733140632/ | access-date=2024-12-02}}</ref>
+
+====Week 14: at Los Angeles Rams====
+{{Americanfootballbox
+|titlestyle={{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}};text-align:center;
+|state=autocollapse
+|title=Week 14: Buffalo Bills at Los Angeles Rams&nbsp;– Game summary
+|date=December 8
+|time=4:25&nbsp;p.m. EST/1:25&nbsp;p.m. PST
+|road=Bills
+|R1=7|R2=7|R3=7|R4=21
+|home='''Rams'''
+|H1=7|H2=17|H3=14|H4=6
+|stadium=[[SoFi Stadium]], [[Inglewood, California]]
+|attendance=73,493
+|weather=Sunny, {{convert|68|F|C}} (fixed roof)
+|referee=[[Craig Wrolstad]]
+|TV=Fox
+|TVAnnouncers=Kevin Burkhardt, Tom Brady, Erin Andrews and Tom Rinaldi
+|reference=[https://www.nfl.com/games/bills-at-rams-2024-reg-14 Recap], [https://static.www.nfl.com/gamecenter/45c15d10-1313-11ef-afd1-646009f18b2e.pdf Game Book]
+|scoring=
+'''First quarter'''
+*LAR – [[Kyren Williams]] 3-yard run ([[Joshua Karty]] kick), 8:26. ''Rams 7–0. '''Drive: 12 plays, 70 yards, 6:34.'''''
+*BUF – [[Josh Allen]] 1-yard run ([[Tyler Bass]] kick), 3:22. ''Tied 7–7. '''Drive: 9 plays, 70 yards, 5:04.'''''
+'''Second quarter'''
+*LAR – Joshua Karty 22-yard field goal, 13:37. ''Rams 10–7. '''Drive: 10 plays, 65 yards, 4:45.'''''
+*LAR – [[Hunter Long]] 22-yard return of blocked punt (Joshua Karty kick), 12:29. ''Rams 17–7.''
+*BUF – [[Ty Johnson (American football)|Ty Johnson]] 41-yard pass from Josh Allen (Tyler Bass kick), 10:23. ''Rams 17–14. '''Drive: 4 plays, 70 yards, 2:06.'''''
+*LAR – [[Puka Nacua]] 4-yard run (Joshua Karty kick), 2:36. ''Rams 24–14. '''Drive: 12 plays, 76 yards, 7:47.'''''
+'''Third quarter'''
+*LAR – Kyren Williams 7-yard run (Joshua Karty kick), 8:26. ''Rams 31–14. '''Drive: 11 plays, 76 yards, 5:29.'''''
+*BUF – [[Khalil Shakir]] 51-yard pass from Josh Allen (Tyler Bass kick), 3:54. ''Rams 31–21. '''Drive: 6 plays, 80 yards, 4:32.'''''
+*LAR – [[Cooper Kupp]] 17-yard pass from [[Matthew Stafford]] (Joshua Karty kick), 0:18. ''Rams 38–21. '''Drive: 7 plays, 70 yards, 3:36.'''''
+'''Fourth quarter'''
+*BUF – Josh Allen 1-yard run (Tyler Bass kick), 14:27. ''Rams 38–28. '''Drive: 5 plays, 70 yards, 0:51.'''''
+*BUF – [[Mack Hollins]] 21-yard pass from Josh Allen (Tyler Bass kick), 8:49. ''Rams 38–35. '''Drive: 10 plays, 91 yards, 4:03.'''''
+*LAR – Puka Nacua 19-yard pass from Matthew Stafford (kick failed, wide left), 1:54. ''Rams 44–35. '''Drive: 11 plays, 71 yards, 6:55.'''''
+*BUF – Josh Allen 1-yard run (Tyler Bass kick), 1:00. ''Rams 44–42. '''Drive: 8 plays, 70 yards, 0:54.'''''
+|stats=
+'''Top passers'''
+*BUF – Josh Allen – 22/37, 342 yards, 3 TD
+*LAR – Matthew Stafford – 23/30, 320 yards, 2 TD
+'''Top rushers'''
+*BUF – Josh Allen – 10 rushes, 82 yards, 3 TD
+*LAR – Kyren Williams – 29 rushes, 87 yards, 2 TD
+'''Top receivers'''
+*BUF – Khalil Shakir – 5 receptions, 106 yards, TD
+*LAR – Puka Nacua – 12 receptions, 162 yards, TD
+}}
+Following seven consecutive victories, Buffalo’s dominance took a hard loss from the Rams with Buffalo’s defense constantly struggling to contain the Matthew Stafford led Rams offense with the team gaining multiple points, including a blocked punt by Rams tight end, Hunter Long. The Bills would attempt to come back with touchdowns by Josh Allen, Ty Johnson, Khalil Shakir, and Mack Hollins, but it wouldn’t be enough as an attempted punt return would be stopped as time expired in the game, dropping their record to 10–3.<ref name="m397">{{cite web | title=Bills vs. Rams: Buffalo's comeback bid falls short in wild 44–42 game | publisher=FOX Sports | date=2024-12-08 | url=https://www.foxsports.com/live-blog/nfl/bills-vs-rams-live-updates-score-top-moments-analysis-from-week-14 | access-date=2025-01-20}}</ref> Despite this, Allen had yet another [[Josh Allen#NFL records|record]]-breaking performance, including becoming the first player in modern NFL history to score three passing touchdowns and three rushing touchdowns in a single game.
+
+====Week 15: at Detroit Lions====
+{{Americanfootballbox
+|titlestyle={{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}};text-align:center;
+|state=autocollapse
+|title=Week 15: Buffalo Bills at Detroit Lions&nbsp;– Game summary
+|date=December 15
+|time=4:25&nbsp;p.m. EST
+|road='''Bills'''
+|R1=14|R2=7|R3=14|R4=13
+|home=Lions
+|H1=0|H2=14|H3=7|H4=21
+|stadium=[[Ford Field]], [[Detroit, Michigan]]
+|attendance=65,327
+|weather=None (indoor stadium)
+|referee=Adrian Hill
+|TV=CBS
+|TVAnnouncers=Jim Nantz, Tony Romo and Tracy Wolfson
+|reference=[https://www.nfl.com/games/bills-at-lions-2024-reg-15 Recap], [https://static.www.nfl.com/gamecenter/45c19983-1313-11ef-afd1-646009f18b2e.pdf Game Book]
+|scoring=
+'''First quarter'''
+*BUF – [[Josh Allen]] 1-yard run ([[Tyler Bass]] kick), 10:56. ''Bills 7–0. '''Drive: 7 plays, 73 yards, 3:06.'''''
+*BUF – Josh Allen 4-yard run (Tyler Bass kick), 2:01. ''Bills 14–0. '''Drive: 9 plays, 78 yards, 5:43.'''''
+'''Second quarter'''
+*DET – [[Tim Patrick]] 12-yard pass from [[Jared Goff]] ([[Jake Bates]] kick), 13:36. ''Bills 14–7. '''Drive: 9 plays, 70 yards, 3:25.'''''
+*BUF – [[James Cook (running back)|James Cook]] 6-yard run (Tyler Bass kick), 8:15. ''Bills 21–7. '''Drive: 9 plays, 70 yards, 5:21.'''''
+*DET – [[Dan Skipper]] 9-yard pass from Jared Goff (Jake Bates kick), 3:01. ''Bills 21–14. '''Drive: 10 plays, 70 yards, 5:14.'''''
+'''Third quarter'''
+*BUF – James Cook 41-yard run (Tyler Bass kick), 13:11. ''Bills 28–14. '''Drive: 4 plays, 70 yards, 1:49.'''''
+*BUF – [[Khalil Shakir]] 3-yard pass from Josh Allen (Tyler Bass kick), 3:31. ''Bills 35–14. '''Drive: 5 plays, 26 yards, 1:37.'''''
+*DET – [[Amon-Ra St. Brown]] 66-yard pass from Jared Goff (Jake Bates kick), 1:41. ''Bills 35–21. '''Drive: 5 plays, 70 yards, 1:50.'''''
+'''Fourth quarter'''
+*BUF – Tyler Bass 50-yard field goal, 14:02. ''Bills 38–21. '''Drive: 7 plays, 38 yards, 2:39.'''''
+*DET – [[Jahmyr Gibbs]] 12-yard pass from Jared Goff (Jake Bates kick), 12:00. ''Bills 38–28. '''Drive: 5 plays, 70 yards, 2:02.'''''
+*BUF – [[Ray Davis (American football)|Ray Davis]] 5-yard pass from Josh Allen (Tyler Bass kick), 11:51. ''Bills 45–28. '''Drive: 1 play, 5 yards, 0:09.'''''
+*DET – Jahmyr Gibbs 1-yard run (Jake Bates kick), 8:02. ''Bills 45–35. '''Drive: 11 plays, 70 yards, 3:49.'''''
+*BUF – Tyler Bass 41-yard field goal, 2:03. ''Bills 48–35. '''Drive: 10 plays, 47 yards, 5:59.'''''
+*DET – [[Jameson Williams]] 3-yard pass from Jared Goff (Jake Bates kick), 0:12. ''Bills 48–42. '''Drive: 16 plays, 70 yards, 1:51.'''''
+|stats=
+'''Top passers'''
+*BUF – Josh Allen – 23/34, 362 yards, 2 TD
+*DET – Jared Goff – 38/59, 494 yards, 5 TD
+'''Top rushers'''
+*BUF – James Cook – 14 rushes, 105 yards, 2 TD
+*DET – Jahmyr Gibbs – 8 rushes, 31 yards, TD
+'''Top receivers'''
+*BUF – [[Ty Johnson (American football)|Ty Johnson]] – 5 receptions, 114 yards
+*DET – Amon-Ra St. Brown – 14 receptions, 193 yards, TD
+}}
+Following a hard loss the week prior, Buffalo utilized their strong rushing attack in game to gain multiple points. Despite the rare scenario of being the underdogs of the match, Buffalo would start the game off with a 14–0 lead. However, from there, both teams put up good performances against each other during the game, consistently scoring points back and forth. For the Bills, Josh Allen and James Cook rushed for two touchdowns each, Khalil Shakir and Ray Davis each caught passing touchdowns and Tyler Bass made two of his three attempted field goals. However, it would ultimately be Bass’ two field goals that played a factor in the Bills putting the game out of reach of Detroit. To finish it off, Taron Johnson narrowly recovered an onside kick with twelve seconds left in the game, giving the Bills the win. This victory would raise them to an 11–3 record.
+
+====Week 16: vs. New England Patriots====
+{{Americanfootballbox
+|titlestyle={{NFLAltPrimaryStyle|Buffalo Bills}}; border:2px solid #322C76;text-align:center;
+|state=autocollapse
+|title=Week 16: New England Patriots at Buffalo Bills&nbsp;– Game summary
+|date=December 22
+|time=4:25&nbsp;p.m. EST
+|road=Patriots
+|R1=7|R2=7|R3=0|R4=7
+|home='''Bills'''
+|H1=0|H2=7|H3=10|H4=7
+|stadium=Highmark Stadium, Orchard Park, New York
+|attendance=70,725
+|weather=Sunny, {{convert|14|F|C}}
+|referee=[[Brad Allen]]
+|TV=CBS
+|TVAnnouncers=Ian Eagle, Charles Davis and Evan Washburn
+|reference=[https://www.nfl.com/games/patriots-at-bills-2024-reg-16 Recap], [https://static.www.nfl.com/gamecenter/45c1c753-1313-11ef-afd1-646009f18b2e.pdf Game Book]
+|scoring=
+'''First quarter'''
+*NE – [[Kayshon Boutte]] 28-yard pass from [[Drake Maye]] ([[Joey Slye]] kick), 12:01. ''Patriots 7–0. '''Drive: 6 plays, 58 yards, 2:59.'''''
+'''Second quarter'''
+*NE – [[Rhamondre Stevenson]] 14-yard run (Joey Slye kick), 14:16. ''Patriots 14–0. '''Drive: 16 plays, 91 yards, 9:57.'''''
+*BUF – [[James Cook (running back)|James Cook]] 46-yard run ([[Tyler Bass]] kick), 11:56. ''Patriots 14–7. '''Drive: 4 plays, 70 yards, 2:20.'''''
+'''Third quarter'''
+*BUF – James Cook 4-yard pass from [[Josh Allen]] (Tyler Bass kick), 9:41. ''Tied 14–14. '''Drive: 9 plays, 68 yards, 5:19.'''''
+*BUF – Tyler Bass 50-yard field goal, 6:02. ''Bills 17–14. '''Drive: 6 plays, 10 yards, 3:02.'''''
+'''Fourth quarter'''
+*BUF – [[Taron Johnson]] fumble recovery in the end zone (Tyler Bass kick), 10:10. ''Bills 24–14.''
+*NE – [[Hunter Henry]] 9-yard pass from Drake Maye (Joey Slye kick), 1:13. ''Bills 24–21. '''Drive: 13 plays, 75 yards, 3:16.'''''
+|stats=
+'''Top passers'''
+*NE – Drake Maye – 22/36, 260 yards, 2 TD, INT
+*BUF – Josh Allen – 16/29, 154 yards, TD, INT
+'''Top rushers'''
+*NE – Rhamondre Stevenson – 12 rushes, 60 yards, TD
+*BUF – James Cook – 11 rushes, 100 yards, TD
+'''Top receivers'''
+*NE – Kayshon Boutte – 5 receptions, 95 yards, TD
+*BUF – James Cook – 3 receptions, 26 yards, TD
+}}
+After earning an explosive win the previous week, Buffalo began their first meeting of the season against their division rival sluggishly, as both the offense and defense struggled against New England. After trailing 14–0, Buffalo managed to find rhythm and scored 24 unanswered points to make it a two-score game. These points included a rushing touchdown by James Cook, a field goal by Tyler Bass, a passing touchdown from Josh Allen to Cook, and a 0-yard fumble return touchdown by Taron Johnson. New England answered back with another touchdown towards the end of the game, but were unable to recover their onside kick. From there, Buffalo secured enough first-downs to run out the game clock and secure the win. The Bills would now go up to a record of 12–3, improving upon their regular season record from the previous year.
+
+====Week 17: vs. New York Jets====
+{{Americanfootballbox
+|titlestyle={{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}};text-align:center;
+|state=autocollapse
+|title=Week 17: New York Jets at Buffalo Bills&nbsp;– Game summary
+|date=December 29
+|time=1:00&nbsp;p.m. EST
+|road=Jets
+|R1=0|R2=0|R3=0|R4=14
+|home='''Bills'''
+|H1=7|H2=5|H3=21|H4=7
+|stadium=Highmark Stadium, Orchard Park, New York
+|attendance=70,728
+|weather=Cloudy, {{convert|54|F|C}}
+|referee=[[Clete Blakeman]]
+|TV=CBS
+|TVAnnouncers=Jim Nantz, Tony Romo and Tracy Wolfson
+|reference=[https://www.nfl.com/games/jets-at-bills-2024-reg-17 Recap], [https://static.www.nfl.com/gamecenter/45c21a9f-1313-11ef-afd1-646009f18b2e.pdf Game Book]
+|scoring=
+'''First quarter'''
+*BUF – [[Josh Allen]] 1-yard run ([[Tyler Bass]] kick), 8:11. ''Bills 7–0. '''Drive: 12 plays, 70 yards, 6:49.'''''
+'''Second quarter'''
+*BUF – [[Aaron Rodgers]] sacked in the end zone by [[A. J. Epenesa]] for a safety, 2:31. ''Bills 9–0.''
+*BUF – Tyler Bass 39-yard field goal, 0:00. ''Bills 12–0. '''Drive: 9 plays, 47 yards, 2:31.'''''
+'''Third quarter'''
+*BUF – [[Amari Cooper]] 30-yard pass from Josh Allen (Tyler Bass kick), 5:13. ''Bills 19–0. '''Drive: 5 plays, 38 yards, 2:07.'''''
+*BUF – [[James Cook (running back)|James Cook]] 1-yard run (Tyler Bass kick), 1:15. ''Bills 26–0. '''Drive: 5 plays, 37 yards, 1:50.'''''
+*BUF – [[Keon Coleman]] 14-yard pass from Josh Allen (Tyler Bass kick), 0:12. ''Bills 33–0. '''Drive: 3 plays, 15 yards, 0:56.'''''
+'''Fourth quarter'''
+*BUF – [[Tyrell Shavers]] 69-yard pass from [[Mitch Trubisky]] (Tyler Bass kick), 12:37. ''Bills 40–0. '''Drive: 3 plays, 65 yards, 1:38.'''''
+*NYJ – [[Garrett Wilson]] 9-yard pass from [[Tyrod Taylor]] (Tyrod Taylor–[[Tyler Conklin]] pass), 6:59. ''Bills 40–8. '''Drive: 13 plays, 75 yards, 5:38.'''''
+*NYJ – Tyler Conklin 20-yard pass from Tyrod Taylor (pass failed), 1:55. ''Bills 40–14. '''Drive: 8 plays, 58 yards, 2:49.'''''
+|stats=
+'''Top passers'''
+*NYJ – Aaron Rodgers – 12/18, 112 yards, 2 INT
+*BUF – Josh Allen – 16/27, 182 yards, 2 TD
+'''Top rushers'''
+*NYJ – [[Breece Hall]] – 10 rushes, 45 yards
+*BUF – James Cook – 15 rushes, 53 yards, TD
+'''Top receivers'''
+*NYJ – Garrett Wilson – 7 receptions, 66 yards, TD
+*BUF – Tyrell Shavers – 1 reception, 69 yards, TD
+}}
+After a close game with the Jets earlier in the season, the Bills approached their rematch with dominance by shutting the Jets out 33–0 by the end of the third quarter. Josh Allen scored one rushing touchdown and two passing touchdowns, the latter being caught by Amari Cooper and Keon Coleman. A safety by A.J. Epenesa and a field goal by Tyler Bass contributed to the lead as well. With this performance, the Bills would rest their starters. Shortly after doing so, they scored a 69-yard touchdown pass from Mitchell Trubisky to Tyrell Shavers to make it 40–0. The Jets responded back with two touchdowns, but ultimately had no shot of making a comeback. With this win, the Bills would rise to a 13–3 record and secure the no. 2 seed in the AFC for the third consecutive year.
+
+In addition to this, Allen became the first quarterback in NFL history with 40+ touchdowns in five consecutive seasons, while Cooper eclipsed 10,000 receiving yards across his career. Franchise milestones were also achieved, such as the Bills going undefeated at home for the first time since [[1990 Buffalo Bills season|1990]].
+
+====Week 18: at New England Patriots====
+{{Americanfootballbox
+|titlestyle={{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}};text-align:center;
+|state=autocollapse
+|title=Week 18: Buffalo Bills at New England Patriots&nbsp;– Game summary
+|date=January 5
+|time=1:00&nbsp;p.m. EST
+|road=Bills
+|R1=0|R2=10|R3=6|R4=0
+|home='''Patriots'''
+|H1=7|H2=7|H3=3|H4=6
+|stadium=[[Gillette Stadium]], [[Foxborough, Massachusetts]]
+|attendance=64,626
+|weather=Cloudy, {{convert|33|F|C}}
+|referee=Alan Eck
+|TV=CBS
+|TVAnnouncers=[[Spero Dedes]], [[Adam Archuleta]] and [[Aditi Kinkhabwala]]
+|reference=[https://www.nfl.com/games/bills-at-patriots-2024-reg-18 Recap], [https://static.www.nfl.com/gamecenter/45c26450-1313-11ef-afd1-646009f18b2e.pdf Game Book]
+|scoring=
+'''First quarter'''
+*NE – [[Joe Milton III]] 1-yard run ([[Joey Slye]] kick), 4:25. ''Patriots 7–0. '''Drive: 13 plays, 55 yards, 7:18.'''''
+'''Second quarter'''
+*BUF – [[Ray Davis (American football)|Ray Davis]] 2-yard pass from [[Mitch Trubisky]] ([[Tyler Bass]] kick), 12:09. ''Tied 7–7. '''Drive: 13 plays, 75 yards, 7:16.'''''
+*NE – [[Kayshon Boutte]] 48-yard pass from Joe Milton III (Joey Slye kick), 9:10. ''Patriots 14–7. '''Drive: 5 plays, 70 yards, 2:59.'''''
+*BUF – Tyler Bass 49-yard field goal, 4:39. ''Patriots 14–10. '''Drive: 8 plays, 39 yards, 4:31.'''''
+'''Third quarter'''
+*BUF – [[James Cook (running back)|James Cook]] 1-yard run (kick failed), 7:56. ''Bills 16–14. '''Drive: 5 plays, 16 yards, 2:21.'''''
+*NE – Joey Slye 41-yard field goal, 1:00. ''Patriots 17–16. '''Drive: 12 plays, 54 yards, 6:56.'''''
+'''Fourth quarter'''
+*NE – Joey Slye 42-yard field goal, 8:53. ''Patriots 20–16. '''Drive: 11 plays, 55 yards, 5:09.'''''
+*NE – Joey Slye 50-yard field goal, 1:55. ''Patriots 23–16. '''Drive: 6 plays, 14 yards, 1:19.'''''
+|stats=
+'''Top passers'''
+*BUF – Mitch Trubisky – 15/21, 101 yards, TD
+*NE – Joe Milton III – 22/29, 241 yards, TD
+'''Top rushers'''
+*BUF – Ray Davis – 15 rushes, 64 yards
+*NE – [[Antonio Gibson]] – 12 rushes, 41 yards
+'''Top receivers'''
+*BUF – [[Curtis Samuel]] – 7 receptions, 52 yards
+*NE – Kayshon Boutte – 7 receptions, 117 yards
+}}
+
+With the no. 2 seed in the AFC secured, the Bills largely played their backups in the final matchup of the regular season, though Josh Allen got the start and played one snap, a hand-off, to continue his active starts streak.<ref name="s543">{{cite web | last=Treppedi | first=Sean | title=Bills Start Josh Allen for One Play Before Replacing Him With Tribuisky | website=Newsweek | date=2025-01-05 | url=https://www.newsweek.com/sports/nfl/bills-start-josh-allen-one-play-before-replacing-him-mitch-tribuisky-2009937 | access-date=2025-01-27}}</ref> Backup quarterback [[Mitchell Trubisky]] led the Bills to 16 points including a James Cook touchdown run, which helped Cook tie [[O. J. Simpson]]'s franchise record for rushing touchdowns in a season.<ref name="c717">{{Cite web |last=Massey |first=Evan |title=Buffalo Bills RB ties major O.J. Simpson record |url=https://www.si.com/nfl/bills/news/buffalo-bills-james-cook-ties-major-oj-simpson-record |access-date=2025-01-27 |website=SI.com |date=2025-01-05}}</ref> However, the backup defense allowed the Patriots offense, led by backup quarterback [[Joe Milton III]], to score 23 points, resulting in a win for New England that cost them the number one pick in the [[2025 NFL draft]].<ref>{{Cite web |last=Schooley |first=Matt |date=2025-01-05 |title=Patriots squander chance at No. 1 pick in 2025 NFL Draft, will pick fourth after beating Bills – CBS Boston |url=https://www.cbsnews.com/boston/news/new-england-patriots-draft-scenarios-for-week-18/ |access-date=2025-01-06 |website=CBS News – Boston |language=en-US}}</ref>
+
+With the loss, the Bills finished the regular season with a 13–4 record. In addition to this, they would score 525 points throughout the season, the highest in franchise history. This surpasses the record of 501 points from [[2020 Buffalo Bills season|2020]].
+
+===Standings===
+====Division====
+{{2024 AFC East standings|team=BUF}}
+
+====Conference====
+{{2024 AFC standings|team=BUF}}
+
+==Postseason==
+{{see also|2024–25 NFL playoffs}}
+
+===Schedule===
+{{NFL postseason schedule start|team=Buffalo Bills|year=2024}}
+|- {{Game-won}}
+! [[#AFC Wild Card Playoffs: vs. (7) Denver Broncos|Wild Card]]
+| January 12
+| [[2024 Denver Broncos season|Denver Broncos]] (7)
+| '''W''' 31–7
+| 1–0
+| [[Ralph Wilson Stadium|Highmark Stadium]]
+| [https://www.nfl.com/games/broncos-at-bills-2024-post-1 Recap]
+|- {{Game-won}}
+! [[#AFC Divisional Playoffs: vs. (3) Baltimore Ravens|Divisional]]
+| January 19
+| [[2024 Baltimore Ravens season|Baltimore Ravens]] (3)
+| '''W''' 27–25
+| 2–0
+| Highmark Stadium
+| [https://www.nfl.com/games/ravens-at-bills-2024-post-2 Recap]
+|- {{Game-lost}}
+! [[#AFC Championship: at (1) Kansas City Chiefs|AFC Championship]]
+| January 26
+| at [[2024 Kansas City Chiefs season|Kansas City Chiefs]] (1)
+| '''L''' 29–32
+| 2–1
+| [[Arrowhead Stadium]]
+| [https://www.nfl.com/games/bills-at-chiefs-2024-post-3 Recap]
+|}
+
+===Game summaries===
+====AFC Wild Card Playoffs: vs. (7) Denver Broncos====
+{{Americanfootballbox
+|titlestyle={{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}};text-align:center;
+|state=autocollapse
+|title=AFC Wild Card Playoffs: (7) Denver Broncos at (2) Buffalo Bills&nbsp;– Game Summary
+|date=January 12, 2025
+|time=1:05&nbsp;p.m. [[Eastern Time Zone|EST]]
+|road=Broncos
+|R1=7|R2=0|R3=0|R4=0
+|home='''Bills'''
+|H1=3|H2=7|H3=11|H4=10
+|stadium=[[Ralph Wilson Stadium|Highmark Stadium]], [[Orchard Park, New York]]
+|attendance=70,332
+|weather=Cloudy, {{convert|32|F|C}}
+|referee=[[Bill Vinovich]]
+|TV=[[NFL on CBS|CBS]]
+|TVAnnouncers=[[Jim Nantz]], [[Tony Romo]], [[Tracy Wolfson]] and [[Jay Feely]]
+|reference=[https://www.nfl.com/games/broncos-at-bills-2024-post-1 Recap], [https://static.www.nfl.com/gamecenter/e86f7d18-cbd7-11ef-88ab-663bf7d456c2.pdf Game Book]
+|scoring=
+'''First quarter'''
+*DEN – [[Troy Franklin]] 43-yard pass from [[Bo Nix]] ([[Wil Lutz]] kick), 12:36. ''Broncos 7–0. '''Drive: 5 plays, 70 yards, 2:24.'''''
+*BUF – [[Tyler Bass]] 26-yard field goal, 7:07. ''Broncos 7–3. '''Drive: 12 plays, 59 yards, 5:29.'''''
+'''Second quarter'''
+*BUF – [[James Cook (running back)|James Cook]] 5-yard run (Tyler Bass kick), 12:57. ''Bills 10–7. '''Drive: 13 plays, 81 yards, 7:35.'''''
+'''Third quarter'''
+*BUF – Tyler Bass 27-yard field goal, 10:03. ''Bills 13–7. '''Drive: 8 plays, 55 yards, 4:57.'''''
+*BUF – [[Ty Johnson (American football)|Ty Johnson]] 24-yard pass from [[Josh Allen]] (Josh Allen–[[Keon Coleman]] pass), 3:06. ''Bills 21–7. '''Drive: 9 plays, 73 yards, 5:34.'''''
+'''Fourth quarter'''
+*BUF – [[Curtis Samuel]] 55-yard pass from Josh Allen (Tyler Bass kick), 14:49. ''Bills 28–7. '''Drive: 3 plays, 59 yards, 1:17.'''''
+*BUF – Tyler Bass 34-yard field goal, 4:37. ''Bills 31–7. '''Drive: 14 plays, 70 yards, 6:55.'''''
+|stats=
+'''Top passers'''
+*DEN – Bo Nix – 13/22, 144 yards, TD
+*BUF – Josh Allen – 20/26, 272 yards, 2 TD
+'''Top rushers'''
+*DEN – Bo Nix – 4 rushes, 43 yards
+*BUF – James Cook – 23 rushes, 120 yards, TD
+'''Top receivers'''
+*DEN – [[Courtland Sutton]] – 5 receptions, 75 yards
+*BUF – Curtis Samuel – 3 receptions, 68 yards, TD
+}}
+This was the second playoff meeting between Buffalo and Denver; the first was in the 1991 AFC Championship when the Bills beat the Broncos 10–7 in Buffalo to reach Super Bowl XXVI. The Bills and the Broncos did not meet in the regular season. It was Denver's first postseason appearance since winning Super Bowl 50 nine years earlier.
+
+On the opening possession of the game, rookie Bo Nix capped a five-play opening drive with a 43-yard touchdown pass to former college teammate Troy Franklin. The Bills responded with a field goal by Tyler Bass to cap a 12-play drive on their opening possession and then forced a quick three-and-out to get the ball back. James Cook added a touchdown on a 5-yard run early in the second quarter to give the Bills a 10–7 lead. Before the end of the first half, Broncos kicker Wil Lutz missed a 50-yard field goal that would have tied the game at 10–10.
+
+After Bass knocked home a 27-yard field goal at the beginning of the third quarter, leading 13–7, Buffalo broke open the game with a Josh Allen touchdown pass to Ty Johnson on fourth down with 3:06 left in the third quarter. The score held up following a replay review, which showed Johnson's foot touching out of bounds but only after he secured the ball. Moments later, a two-point conversion was successful on an Allen pass to Keon Coleman. On the first play of the fourth quarter, Allen's 55-yard touchdown pass to Curtis Samuel effectively sealed the game for Buffalo. Bass added two more field goals, with the final score being 31–7. The Bills methodically wore down the Broncos in the game with a combined 210 yards rushing (120 yards from Cook, 46 from Allen, 44 from Johnson). Allen added 272 yards through the air, with two touchdowns.
+
+====AFC Divisional Playoffs: vs. (3) Baltimore Ravens====
+{{Americanfootballbox
+|titlestyle={{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}};text-align:center;
+|state=autocollapse
+|title=AFC Divisional Playoffs: (3) Baltimore Ravens at (2) Buffalo Bills&nbsp;– Game Summary
+|date=January 19, 2025
+|time=6:40&nbsp;p.m. EST
+|road=Ravens
+|R1=7|R2=3|R3=9|R4=6
+|home='''Bills'''
+|H1=7|H2=14|H3=0|H4=6
+|stadium=Highmark Stadium, Orchard Park, New York
+|attendance=70,697
+|weather=Cloudy, {{convert|19|F|C}}
+|referee=[[Carl Cheffers]]
+|TV=CBS
+|TVAnnouncers=Jim Nantz, Tony Romo, Tracy Wolfson and Jay Feely
+|reference=[https://www.nfl.com/games/ravens-at-bills-2024-post-2 Recap], [https://static.www.nfl.com/gamecenter/71fb3bcd-d165-11ef-bc5c-bb619a5d558e.pdf Game Book]
+|scoring=
+'''First quarter'''
+*BAL – [[Rashod Bateman]] 16-yard pass from [[Lamar Jackson]] ([[Justin Tucker]] kick), 10:40. ''Ravens 7–0. '''Drive: 8 plays, 73 yards, 4:20.'''''
+*BUF – [[Ray Davis (American football)|Ray Davis]] 1-yard run ([[Tyler Bass]] kick), 4:43. ''Tied 7–7. '''Drive: 11 plays, 70 yards, 5:57.'''''
+'''Second quarter'''
+*BUF – [[Josh Allen]] 1-yard run (Tyler Bass kick), 8:52. ''Bills 14–7. '''Drive: 4 plays, 24 yards, 2:13.'''''
+*BAL – Justin Tucker 26-yard field goal, 3:43. ''Bills 14–10. '''Drive: 9 plays, 57 yards, 5:09.'''''
+*BUF – Josh Allen 4-yard run (Tyler Bass kick), 0:16. ''Bills 21–10. '''Drive: 9 plays, 70 yards, 3:27.'''''
+'''Third quarter'''
+*BAL – Justin Tucker 47-yard field goal, 9:47. ''Bills 21–13. '''Drive: 9 plays, 35 yards, 4:01.'''''
+*BAL – [[Derrick Henry]] 5-yard run (pass failed), 1:37. ''Bills 21–19. '''Drive: 7 plays, 80 yards, 3:44.'''''
+'''Fourth quarter'''
+*BUF – Tyler Bass 51-yard field goal, 12:04. ''Bills 24–19. '''Drive: 10 plays, 37 yards, 4:33.'''''
+*BUF – Tyler Bass 21-yard field goal, 3:29. ''Bills 27–19. '''Drive: 11 plays, 52 yards, 5:12.'''''
+*BAL – [[Isaiah Likely]] 24-yard pass from Lamar Jackson (pass failed), 1:33. ''Bills 27–25. '''Drive: 8 plays, 88 yards, 1:56.'''''
+|stats=
+'''Top passers'''
+*BAL – Lamar Jackson – 18/25, 254 yards, 2 TD, INT
+*BUF – Josh Allen – 16/22, 127 yards
+'''Top rushers'''
+*BAL – Derrick Henry – 16 rushes, 84 yards, TD
+*BUF – [[James Cook (running back)|James Cook]] – 17 rushes, 67 yards
+'''Top receivers'''
+*BAL – Isaiah Likely – 4 receptions, 73 yards, TD
+*BUF – [[Khalil Shakir]] – 6 receptions, 67 yards
+}}
+This was the second overall playoff meeting between the Bills and Ravens. In their only other meeting, the Bills won the 2020 AFC Divisional Game, 17–3. In the regular season, the Ravens defeated the Bills 35–10 during Week 4 in Baltimore. This game featured the two favorites for the NFL MVP, Bills quarterback Josh Allen and Ravens quarterback Lamar Jackson.
+
+Before the game, at a press conference on January 13, Ravens head coach John Harbaugh, alongside the rest of the press conference, laughed when a reporter called Buffalo a "city of losers" about a clip he made on his radio show. As the Ravens took the field, the Bills played the clip from the radio show over the stadium loud-speakers resulting in a chorus of boos from fans.
+
+The Ravens received to start the game. The teams traded touchdowns on their opening dives, with a 16-yard Jackson pass to Rashod Bateman being followed by a drive that ended with a 1-yard Ray Davis rushing touchdown for the Bills. On the subsequent drive, Jackson threw an interception to Buffalo safety Taylor Rapp; the Bills failed to score and punted after four plays. The Ravens started from their 9-yard line and drove the ball to the Buffalo 28-yard line but Jackson fumbled the ball when being sacked by Damar Hamlin saw Von Miller recover the fumble and return it to the Baltimore 24-yard line. Four plays later, Josh Allen scored on a tush push rush to give Buffalo the lead. The Ravens marched the ball down the field on their next drive (getting as close as the 2-yard line) before being stopped on the goal line, which saw them decide to have Justin Tucker kicked a 26-yard field goal to narrow the deficit. The Bills responded by also marching the ball down the field (going 70 yards in 3:27) with Allen again scoring a rushing touchdown on a 4-yard play action draw that saw Buffalo go up 21–10 with 0:16 in the first half.
+
+The Bills received the ball to start the half but punted after three plays. The Ravens drove from their 36-yard line to the Buffalo 27-yard line but could not get any further and elected to take the field goal by Tucker from 47 yards out to make it 21–13. The Bills continued to struggle, again punting on their next drive. The Ravens went 80 yards in seven plays, scoring off a Derrick Henry 5-yard run; however, the two-point conversion attempt to try and tie the game was batted down by Bills linebacker Matt Milano for an incompletion. Starting at their own 30, the Bills went 37 yards to set up a 51-yard field goal attempt by Tyler Bass to make the score 24–19 with 12:04 remaining in the fourth quarter. On the next drive, when Jackson completed a pass to tight end Mark Andrews to the 44-yard line of Buffalo, Terrel Bernard forced a fumble that he recovered to give Buffalo the ball. The Bills responded with a grinding drive of 52 yards that took five minutes off the clock and culminated with Bass making a 21-yard field goal (after Buffalo elected to kick on 4th-and-goal from the 2-yard line) with 3:29 remaining to give Buffalo a 27–19 lead. A subsequent penalty on the kick return meant Baltimore started at their own 2-yard line. The Ravens drove down the field quickly, going 88 yards in eight plays that saw Jackson throw a 24-yard pass to Isaiah Likely in the end zone to cut the deficit to two. On the two-point conversion attempt, Jackson threw it to Andrews near the pylon, but Andrews dropped the pass. With 1:33 remaining, the Ravens attempted an onside kick, but Rasul Douglas recovered it for the Bills. Buffalo had one 17-yard running play to burn the last Ravens timeout before kneeling the ball to end the game.
+
+The Ravens outgained the Bills in total yards (416–273) while punting zero times but had three turnovers, while Buffalo had none while not trailing after the first quarter. With the win, Buffalo was guaranteed to face Kansas City for the fourth time in the last five postseasons in the AFC Championship Game; the last time Buffalo had played in the AFC Championship Game was in 2021 against the Chiefs.
+
+====AFC Championship: at (1) Kansas City Chiefs====
+{{Americanfootballbox
+|titlestyle={{NFLPrimaryStyle|Buffalo Bills|year=2024|border=2}};text-align:center;
+|title=AFC Championship: (2) Buffalo Bills at (1) Kansas City Chiefs – Game summary
+|date=January 26, 2025
+|time=6:40{{nbsp}}p.m. EST/5:40{{nbsp}}p.m. [[Central Time Zone|CST]]
+|road=Bills
+|R1=3|R2=13|R3=6|R4=7
+|home='''Chiefs'''
+|H1=7|H2=14|H3=0|H4=11
+|stadium=[[Arrowhead Stadium]], [[Kansas City, Missouri]]
+|attendance=73,487
+|weather={{convert|31|F|C}}
+|referee= [[Clete Blakeman]]
+|TV=[[NFL on CBS|CBS]]
+|TVAnnouncers=Jim Nantz, Tony Romo, Tracy Wolfson, [[Evan Washburn]] and Jay Feely
+|reference=[https://www.nfl.com/games/bills-at-chiefs-2024-post-3 Recap], [https://static.www.nfl.com/gamecenter/12bd1cfd-d5fc-11ef-929f-5655038981b2.pdf Game Book]
+|scoring=
+'''First quarter'''
+*KC – [[Kareem Hunt]] 12-yard run ([[Harrison Butker]] kick), 8:56. ''Chiefs 7–0. '''Drive: 9 plays, 90 yards, 5:05.'''''
+*BUF – [[Tyler Bass]] 53-yard field goal, 3:45. ''Chiefs 7–3. '''Drive: 10 plays, 35 yards, 5:11.'''''
+'''Second quarter'''
+*BUF – [[James Cook (running back)|James Cook]] 6-yard run (Tyler Bass kick), 10:25. ''Bills 10–7. '''Drive: 10 plays, 72 yards, 5:32.'''''
+*KC – [[Xavier Worthy]] 11-yard pass from [[Patrick Mahomes]] (Harrison Butker kick), 4:13. ''Chiefs 14–10. '''Drive: 11 plays, 70 yards, 6:12.'''''
+*KC – Patrick Mahomes 1-yard run (Harrison Butker kick), 1:55. ''Chiefs 21–10. '''Drive: 6 plays, 34 yards, 1:44.'''''
+*BUF – [[Mack Hollins]] 34-yard pass from [[Josh Allen]] (run failed), 0:23. ''Chiefs 21–16. '''Drive: 7 plays, 73 yards, 1:32.'''''
+'''Third quarter'''
+*BUF – James Cook 1-yard run (pass failed), 2:56. ''Bills 22–21. '''Drive: 12 plays, 80 yards, 7:05.'''''
+'''Fourth quarter'''
+*KC – Patrick Mahomes 10-yard run (Patrick Mahomes–[[Justin Watson (wide receiver)|Justin Watson]] pass), 10:14. ''Chiefs 29–22. '''Drive: 5 plays, 59 yards, 2:41.'''''
+*BUF – [[Curtis Samuel]] 4-yard pass from Josh Allen (Tyler Bass kick), 6:15. ''Tied 29–29. '''Drive: 9 plays, 70 yards, 3:59.'''''
+*KC – Harrison Butker 35-yard field goal, 3:33. ''Chiefs 32–29. '''Drive: 8 plays, 51 yards, 2:42.'''''
+|stats=
+'''Top passers'''
+*BUF – Josh Allen – 22/34, 237 yards, 2 TD
+*KC – Patrick Mahomes – 18/26, 245 yards, TD
+'''Top rushers'''
+*BUF – James Cook – 13 rushes, 85 yards, TD
+*KC – Kareem Hunt – 17 rushes, 64 yards, TD
+'''Top receivers'''
+*BUF – Mack Hollins – 3 receptions, 73 yards, TD
+*KC – Xavier Worthy – 6 receptions, 85 yards, TD
+}}
+
+This was the fourth meeting between Patrick Mahomes and Josh Allen in the postseason, and their second meeting in the AFC Championship. Earlier in the season, Buffalo secured a 30–21 win at home in Week 11, and attempted to secure another win for the Championship in the postseason.
+
+The game began with Buffalo receiving the ball first and being forced to punt. Like the Broncos and Ravens games, Kansas City would score first from Kareem Hunt's 12-yard run to make it 7–0. Tyler Bass' 53-yard field goal kick would put the Bills on the board at 7–3. In the second quarter, after Mahomes fumbled the ball, James Cook's 6-yard run would give the Bills a 10–7 lead. However, the lead was cut shortly after Xavier Worthy gave the Chiefs a 14–10 lead. After the Bills forced a punt, a controversial catch was made by the Chiefs as the ball appeared to land on the ground. Sean McDermott would throw a challenge flag to overturn the call as incomplete pass, but after review, the call stood, leading to a 1-yard run by Mahomes to make it 21–10. The Bills would immediately respond with Mack Hollins’ 34-yard pass to make it 21–16 before halftime.
+
+The second half saw some adjustments by the Bills as they would stop the Chiefs in the opening drive. The Bills would regain the lead from James Cook's leaping reach to the endzone, making it 22–21. However, the Bills failed to convert the 2-point for the second time after the Mack Hollins touchdown. The Bills would stop the Chiefs once again and thus have a chance to extend the lead. However, another controversy sparked when Allen supposedly made the 1st down from a 4th down conversion, but the officials reviewed it as a turnover on downs.
+
+The Chiefs would get the ball at midfield as Patrick Mahomes's 10-yard run brought the lead back and successfully converted 2 points, making it 29–22 Kansas City. The Bills would respond with a Curtis Samuel 4-yard pass, tying the game 29–29. The Chiefs would keep their momentum from the turnover on downs, but the Bills would successfully prevent the Chiefs from scoring a touchdown. With Harrison Butker's 35-yard field goal kick, Kansas City gained the lead again, at 32–29. 
+
+With 3:33 left on the clock, the Bills regained possession of the ball. After a couple of plays, the Bills reached a 4th and 5 with a two-minute warning. Following the warning, the Bills' offensive line was not able to contain the Chiefs defenders rushed to Josh Allen, pressuring him to throw the ball. The ball slightly landed in the hands of Dalton Kincaid, but dropped it, thus sealing the game in favor of Kansas City. The Chiefs would get a couple of first downs to further cement their win. The Bills' season ended with their fourth postseason loss to the Chiefs over the course of five postseasons.
+
+==Notes==
+{{notelist}}
+
+== References ==
+{{reflist}}
+
+==External links==
+*{{official website|https://www.buffalobills.com/}}
+
+{{Buffalo Bills}}
+{{Buffalo Bills seasons}}
+{{2024 NFL season by team}}
+
+[[Category:2024 NFL season by team|Buffalo]]
+[[Category:Buffalo Bills seasons]]
+[[Category:2024 in sports in New York (state)|Buffalo Bills]]
+[[Category:AFC East championship seasons]]
