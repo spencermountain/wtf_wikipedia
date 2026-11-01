@@ -58,7 +58,7 @@ test('infobox-deathdate', (t) => {
   const doc = wtf(str)
 
   t.equal(doc.infobox().get('birth_date').text(), 'June 24, 1931', 'birth')
-  t.equal(doc.infobox().get('death_date').text(), 'February 7, 2015', 'death')
+  t.equal(doc.infobox().get('death_date').text(), 'February 7, 2015 (aged 83)', 'death')
 
   t.end()
 })

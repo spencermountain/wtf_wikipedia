@@ -25,6 +25,8 @@
   "sideEffects": false,
   "scripts": {
     "build": "node ./scripts/version.js && rollup -c",
+    "data": "node ./scripts/01-fetch-sitelinks.js && node ./scripts/02-fetch-redirects.js && node ./scripts/03-fetch-templatedata.js && node ./scripts/04-build.js",
+    "data:build": "node ./scripts/04-build.js",
     "test": "tape --strict \"tests/**/*.test.js\" | tap-dancer",
     "testb": "TESTENV=prod tape --strict \"tests/**/*.test.js\" | tap-dancer",
     "version": "node ./scripts/version.js"

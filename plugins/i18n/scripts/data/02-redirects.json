@@ -1,0 +1,4846 @@
+{
+  "_fetched": "2026-10-31",
+  "ar": {
+    "portal": [
+      "قالب:Portal"
+    ],
+    "taxobox": [
+      "قالب:Taxobox",
+      "قالب:معلومات كائن",
+      "قالب:Taxobox NCBI",
+      "قالب:Taxobox ITIS",
+      "قالب:تصنيف علمي",
+      "قالب:Automatic taxobox",
+      "قالب:تصنيف",
+      "قالب:Automatic Taxobox",
+      "قالب:تصنيف كائن",
+      "قالب:صندوق صنف",
+      "قالب:Speciesbox",
+      "قالب:صندوق معلومات فيروس",
+      "قالب:معلومات فيروس",
+      "قالب:Virusbox"
+    ],
+    "commons cat": [
+      "قالب:تصنيف كومونز",
+      "قالب:Commons category",
+      "قالب:تك"
+    ],
+    "cite journal": [
+      "قالب:استشهاد صحيفة",
+      "قالب:استشهاد بدورية",
+      "قالب:يستشهد مجلة",
+      "قالب:مرجع مجلة",
+      "قالب:Cite journal",
+      "قالب:Cita publicación",
+      "قالب:استشهاد بدورية أكاديمية"
+    ],
+    "flagicon": [
+      "قالب:Flagicon",
+      "قالب:صورة علم",
+      "قالب:Flag icon",
+      "قالب:ايقونة علم",
+      "قالب:علم دولة",
+      "قالب:علم فقط",
+      "قالب:FlAgicon",
+      "قالب:إيقونة علم",
+      "قالب:أيقونة علم"
+    ],
+    "reflist": [
+      "قالب:مصادر",
+      "قالب:Reflist",
+      "قالب:ثبت المراجع",
+      "قالب:المراجع",
+      "قالب:Références",
+      "قالب:ثبت المصادر",
+      "قالب:قائمة مصادر",
+      "قالب:Footnotes"
+    ],
+    "cite web": [
+      "قالب:مرجع موقع",
+      "قالب:استشهاد بويب/إنجليزي",
+      "قالب:Cite web",
+      "قالب:Citeweb",
+      "قالب:مرجع وب",
+      "قالب:مرجع وب/إنجليزي",
+      "قالب:Cita web",
+      "قالب:يستشهد ويب",
+      "قالب:استشهاد بموقع",
+      "قالب:Web cite",
+      "قالب:مرجع ويب",
+      "قالب:مرجع ويب/إنجليزي",
+      "قالب:Cw",
+      "قالب:اقتباس ويب",
+      "قالب:استشهاد ويب",
+      "قالب:استشهاد ويب/إنجليزي",
+      "قالب:یادکرد وب",
+      "قالب:Web kaynağı",
+      "قالب:Internetquelle"
+    ],
+    "ipa": [
+      "قالب:IPA"
+    ],
+    "coord": [
+      "قالب:Geolinks-start",
+      "قالب:إحداثيات 2",
+      "قالب:إحداثيات 3",
+      "قالب:إحداثيات 3 نص",
+      "قالب:إحداثيات 2 نص",
+      "قالب:كوورد",
+      "قالب:إحداث",
+      "قالب:Coord",
+      "قالب:Coords"
+    ],
+    "citation": [
+      "قالب:Cite",
+      "قالب:مرجع هارفرد",
+      "قالب:Harvard reference",
+      "قالب:Citation"
+    ],
+    "main": [
+      "قالب:رئيسي",
+      "قالب:Main",
+      "قالب:مقال رئيسي",
+      "قالب:رئيسية",
+      "قالب:Main article",
+      "قالب:مقالة تفصيلية",
+      "قالب:مقال تفصيلي",
+      "قالب:مقالة رئيسية",
+      "قالب:مقالة مفصلة",
+      "قالب:مقالة منفصلة",
+      "قالب:Mainarticle",
+      "قالب:Main articles"
+    ],
+    "birth date and age": [
+      "قالب:Birth date and age",
+      "قالب:Bda",
+      "قالب:الميلاد والسن",
+      "قالب:تاريخ الميلاد و العمر",
+      "قالب:تاريخ الميلاد والسن",
+      "قالب:الولادة والسن",
+      "قالب:تاريخ ميلاد والعمر",
+      "قالب:تاريخ ميلاد وعمر"
+    ],
+    "start": [
+      "قالب:تاريخ البدء",
+      "قالب:Start date",
+      "قالب:Startdate"
+    ],
+    "nihongo": [
+      "قالب:Nihongo"
+    ],
+    "small": [
+      "قالب:Small",
+      "قالب:صغ"
+    ],
+    "isbn": [
+      "قالب:Isbn",
+      "قالب:ISBN"
+    ],
+    "sfn": [
+      "قالب:HarvRef",
+      "قالب:Harvnp",
+      "قالب:Sf"
+    ],
+    "formatnum": [
+      "قالب:صيغةعدد",
+      "قالب:Formatnumber"
+    ],
+    "cite book": [
+      "قالب:Cite book",
+      "قالب:يستشهد كتاب",
+      "قالب:مرجع كتاب",
+      "قالب:Cita libro",
+      "قالب:Cite manual"
+    ],
+    "flag": [
+      "قالب:Flag",
+      "قالب:Country",
+      "قالب:العلم",
+      "قالب:Flag data"
+    ]
+  },
+  "az": {
+    "commons cat": [
+      "Şablon:Commons category",
+      "Şablon:Commonscat",
+      "Şablon:Commons cat",
+      "Şablon:Commonscategory",
+      "Şablon:Commons kateqoriyası",
+      "Şablon:CommonsKat",
+      "Şablon:Vikianbar kat",
+      "Şablon:Commonskateqoriyası",
+      "Şablon:Commonskat",
+      "Şablon:Commons kat"
+    ],
+    "reflist": [
+      "Şablon:Reflist",
+      "Şablon:İstinadlar",
+      "Şablon:Ref list",
+      "Şablon:İstinadlar siyahısı"
+    ],
+    "cite web": [
+      "Şablon:Sayt Mənbə",
+      "Şablon:Citeweb",
+      "Şablon:Web kaynağı",
+      "Şablon:AntCat",
+      "Şablon:Cite EBD",
+      "Şablon:Cite ODNB",
+      "Şablon:Lien web"
+    ],
+    "flagicon": [
+      "Şablon:Bayraq-ölkə",
+      "Şablon:Flaq",
+      "Şablon:Flag",
+      "Şablon:Flagdeco"
+    ],
+    "birth date and age": [
+      "Şablon:DTY",
+      "Şablon:Doğum tarixi və yaş",
+      "Şablon:Birth date and age"
+    ],
+    "main": [
+      "Şablon:Main",
+      "Şablon:Əsas səhifə",
+      "Şablon:Əsas məqalə"
+    ],
+    "cite journal": [
+      "Şablon:Cite paper"
+    ],
+    "start": [
+      "Şablon:Başlama tarixi",
+      "Şablon:Start date"
+    ],
+    "small": [
+      "Şablon:Small"
+    ],
+    "isbn": [
+      "Şablon:İsbn"
+    ]
+  },
+  "be": {
+    "main": [
+      "Шаблон:Catmain",
+      "Шаблон:Галоўны артыкул у катэгорыі",
+      "Шаблон:Main2",
+      "Шаблон:Галоўны артыкул",
+      "Шаблон:Catmore",
+      "Шаблон:Болей",
+      "Шаблон:Асноўны артыкул па тэме катэгорыі",
+      "Шаблон:Maincat",
+      "Шаблон:CatMain",
+      "Шаблон:See",
+      "Шаблон:Main",
+      "Шаблон:Cat main",
+      "Шаблон:Галоўная",
+      "Шаблон:Асноўны",
+      "Шаблон:Асноўная",
+      "Шаблон:Глядзіце таксама",
+      "Шаблон:Асноўны артыкул катэгорыі",
+      "Шаблон:Асноўныя артыкулы"
+    ],
+    "reflist": [
+      "Шаблон:Refs",
+      "Шаблон:Reflist+",
+      "Шаблон:Reflist"
+    ],
+    "coord": [
+      "Шаблон:Каардынаты",
+      "Шаблон:Coord/display"
+    ],
+    "flagicon": [
+      "Шаблон:Flag",
+      "Шаблон:Flagcountry",
+      "Шаблон:Flagicon"
+    ],
+    "commons cat": [
+      "Шаблон:Вікісховішча",
+      "Шаблон:Вікісховішча-кат",
+      "Шаблон:Commons category",
+      "Шаблон:CommonsCat",
+      "Шаблон:Commons cat"
+    ],
+    "portal": [
+      "Шаблон:Portal"
+    ],
+    "cite book": [
+      "Шаблон:Harvard reference"
+    ],
+    "cite journal": [
+      "Шаблон:Cite paper"
+    ],
+    "cite web": [
+      "Шаблон:Citeweb",
+      "Шаблон:Cw",
+      "Шаблон:Cita web",
+      "Шаблон:Cite web 2",
+      "Шаблон:Cite"
+    ],
+    "taxobox": [
+      "Шаблон:Таксанамія",
+      "Шаблон:Taxobox"
+    ],
+    "nihongo": [
+      "Шаблон:Ніханго"
+    ],
+    "sfn": [
+      "Шаблон:Зноска",
+      "Шаблон:Sfn-1",
+      "Шаблон:Sfnp",
+      "Шаблон:Odn",
+      "Шаблон:Sfn"
+    ],
+    "start": [
+      "Шаблон:Initial release"
+    ],
+    "isbn": [
+      "Шаблон:Isbn"
+    ]
+  },
+  "bg": {
+    "commons cat": [
+      "Шаблон:Commons category"
+    ],
+    "main": [
+      "Шаблон:Main"
+    ],
+    "cite book": [
+      "Шаблон:Цитат книга"
+    ],
+    "ipa": [
+      "Шаблон:МФА"
+    ],
+    "taxobox": [
+      "Шаблон:Таксокутия"
+    ],
+    "cite journal": [
+      "Шаблон:Cite document",
+      "Шаблон:Цитат периодика"
+    ],
+    "cite web": [
+      "Шаблон:Cite web",
+      "Шаблон:Citeweb",
+      "Шаблон:Cita web"
+    ],
+    "birth date and age": [
+      "Шаблон:Дрг"
+    ],
+    "flag": [
+      "Шаблон:Flag"
+    ],
+    "sfn": [
+      "Шаблон:Sfn"
+    ],
+    "flagicon": [
+      "Шаблон:Икона-флаг"
+    ]
+  },
+  "bn": {
+    "ipa": [
+      "টেমপ্লেট:IPA",
+      "টেমপ্লেট:আইপিএ",
+      "টেমপ্লেট:Ipa"
+    ],
+    "main": [
+      "টেমপ্লেট:Main",
+      "টেমপ্লেট:মূল",
+      "টেমপ্লেট:Seemain",
+      "টেমপ্লেট:Main article",
+      "টেমপ্লেট:প্রধান",
+      "টেমপ্লেট:AP",
+      "টেমপ্লেট:মুখ্য",
+      "টেমপ্লেট:Main Article"
+    ],
+    "flag": [
+      "টেমপ্লেট:Country",
+      "টেমপ্লেট:Flag",
+      "টেমপ্লেট:দেশের উপাত্ত এরিত্রিয়া"
+    ],
+    "cite book": [
+      "টেমপ্লেট:Citebook",
+      "টেমপ্লেট:Book reference",
+      "টেমপ্লেট:Cite book",
+      "টেমপ্লেট:Cite publication",
+      "টেমপ্লেট:Cite work",
+      "টেমপ্লেট:গ্রন্থ উদ্ধৃতি",
+      "টেমপ্লেট:Cite chapter",
+      "টেমপ্লেট:Kitap kaynağı",
+      "টেমপ্লেট:Cite manual"
+    ],
+    "cite web": [
+      "টেমপ্লেট:Citeweb",
+      "টেমপ্লেট:Cita web",
+      "টেমপ্লেট:Cite web",
+      "টেমপ্লেট:Cite Web",
+      "টেমপ্লেট:استشهاد ويب",
+      "টেমপ্লেট:Cite website",
+      "টেমপ্লেট:Web kaynağı",
+      "টেমপ্লেট:ওয়েব উদ্বৃতি",
+      "টেমপ্লেট:ওয়েব উৎস"
+    ],
+    "cite journal": [
+      "টেমপ্লেট:Cite journal",
+      "টেমপ্লেট:সাইট জার্নাল",
+      "টেমপ্লেট:Cite Journal",
+      "টেমপ্লেট:Akademik dergi kaynağı"
+    ],
+    "taxobox": [
+      "টেমপ্লেট:শ্রেণীবিন্যাস ছক",
+      "টেমপ্লেট:প্রজাতিছক",
+      "টেমপ্লেট:শ্রেণিবিন্যাস ছক",
+      "টেমপ্লেট:তথ্যছক শ্রেণীবিন্যাস"
+    ],
+    "flagicon": [
+      "টেমপ্লেট:Flag icon",
+      "টেমপ্লেট:Flagicon"
+    ],
+    "reflist": [
+      "টেমপ্লেট:Footnote",
+      "টেমপ্লেট:Refs",
+      "টেমপ্লেট:Reflist",
+      "টেমপ্লেট:সূত্রতালিকা",
+      "টেমপ্লেট:সূতা",
+      "টেমপ্লেট:Kaynakça",
+      "টেমপ্লেট:Références"
+    ],
+    "birth date and age": [
+      "টেমপ্লেট:Bda",
+      "টেমপ্লেট:Birth date and age",
+      "টেমপ্লেট:জন্ম তারিখ এবং বয়স",
+      "টেমপ্লেট:Birthdate and age"
+    ],
+    "citation": [
+      "টেমপ্লেট:Cite",
+      "টেমপ্লেট:Cite study",
+      "টেমপ্লেট:Citation",
+      "টেমপ্লেট:Kaynak"
+    ],
+    "coord": [
+      "টেমপ্লেট:Coor d",
+      "টেমপ্লেট:Coor dm",
+      "টেমপ্লেট:Coor dms",
+      "টেমপ্লেট:Inline coordinates",
+      "টেমপ্লেট:Coordinate",
+      "টেমপ্লেট:Coord",
+      "টেমপ্লেট:স্থানাংক",
+      "টেমপ্লেট:Coordinates",
+      "টেমপ্লেট:Coords"
+    ],
+    "portal": [
+      "টেমপ্লেট:তথ্যছক-portals",
+      "টেমপ্লেট:Portalpar",
+      "টেমপ্লেট:Portal box",
+      "টেমপ্লেট:Portal",
+      "টেমপ্লেট:পোর্টাল"
+    ],
+    "small": [
+      "টেমপ্লেট:Small"
+    ],
+    "start": [
+      "টেমপ্লেট:Foundation date",
+      "টেমপ্লেট:Start date",
+      "টেমপ্লেট:Start Date",
+      "টেমপ্লেট:Launch date"
+    ],
+    "commons cat": [
+      "টেমপ্লেট:কমন্সক্যাট",
+      "টেমপ্লেট:Commonscat",
+      "টেমপ্লেট:Commons Categories",
+      "টেমপ্লেট:PoSA Commons",
+      "টেমপ্লেট:Commons cat",
+      "টেমপ্লেট:Commons category",
+      "টেমপ্লেট:Commons Category",
+      "টেমপ্লেট:Wikimedia commons cat",
+      "টেমপ্লেট:Ccat",
+      "টেমপ্লেট:COMMONSCAT",
+      "টেমপ্লেট:CC",
+      "টেমপ্লেট:Commonsimages cat",
+      "টেমপ্লেট:Commonscategory",
+      "টেমপ্লেট:C cat",
+      "টেমপ্লেট:Category commons",
+      "টেমপ্লেট:Cc"
+    ],
+    "isbn": [
+      "টেমপ্লেট:ISBN",
+      "টেমপ্লেট:Isbn"
+    ],
+    "sfn": [
+      "টেমপ্লেট:Shortened footnote template"
+    ]
+  },
+  "ca": {
+    "ipa": [
+      "Plantilla:IPA",
+      "Plantilla:IPA-pl"
+    ],
+    "commons cat": [
+      "Plantilla:Commons cat",
+      "Plantilla:Commons category"
+    ],
+    "main": [
+      "Plantilla:Main",
+      "Plantilla:Principal",
+      "Plantilla:AP",
+      "Plantilla:Article detallat"
+    ],
+    "flag": [
+      "Plantilla:Flag icon"
+    ],
+    "nihongo": [
+      "Plantilla:Nihongo"
+    ],
+    "cite book": [
+      "Plantilla:Ref-capítol",
+      "Plantilla:Cita llibre",
+      "Plantilla:Citar llibre",
+      "Plantilla:Cita diccionari",
+      "Plantilla:Ref llibre",
+      "Plantilla:Cite Book",
+      "Plantilla:Cite work"
+    ],
+    "reflist": [
+      "Plantilla:Reflist",
+      "Plantilla:Listaref",
+      "Plantilla:Referències2",
+      "Plantilla:Amaga",
+      "Plantilla:Amaga ref",
+      "Plantilla:Amaga Ref2",
+      "Plantilla:Referencies",
+      "Plantilla:Amaga Ref",
+      "Plantilla:Referència",
+      "Plantilla:Références"
+    ],
+    "coord": [
+      "Plantilla:Coor d",
+      "Plantilla:Coordenades",
+      "Plantilla:Coor dm",
+      "Plantilla:Coor dms",
+      "Plantilla:Coor title dms",
+      "Plantilla:CoorHeader",
+      "Plantilla:Coords"
+    ],
+    "birth date and age": [
+      "Plantilla:Data de naixement i edat",
+      "Plantilla:Bda",
+      "Plantilla:Birth date and age",
+      "Plantilla:Birthdate and age"
+    ],
+    "citation": [
+      "Plantilla:Obra citada"
+    ],
+    "cite web": [
+      "Plantilla:Cite website",
+      "Plantilla:Ref web",
+      "Plantilla:Citar web"
+    ],
+    "cite journal": [
+      "Plantilla:Article",
+      "Plantilla:Ref-artículo",
+      "Plantilla:Cite paper",
+      "Plantilla:Cita revista",
+      "Plantilla:Cita publicació",
+      "Plantilla:Ref publicació",
+      "Plantilla:Citar publicació",
+      "Plantilla:Cite document"
+    ],
+    "isbn": [
+      "Plantilla:Isbn"
+    ],
+    "start": [
+      "Plantilla:Initial release",
+      "Plantilla:Start date",
+      "Plantilla:Data d'inici"
+    ],
+    "sfn": [
+      "Plantilla:Societat Catalana de Matemàtiques",
+      "Plantilla:Harvnp"
+    ],
+    "taxobox": [
+      "Plantilla:Taxocaixa",
+      "Plantilla:Taxocaixa mamífer",
+      "Plantilla:Taxocaixa peix",
+      "Plantilla:Taxocaixa amfibi",
+      "Plantilla:Taxocaixa ocell",
+      "Plantilla:Taxocaixa mol·lusc",
+      "Plantilla:Taxocaixa artròpode",
+      "Plantilla:Taxocaixa dinosaure",
+      "Plantilla:Taxocaixa eubacteri",
+      "Plantilla:Taxocaixa arqueobacteri",
+      "Plantilla:Taxocaixa planta",
+      "Plantilla:Taxocaixa rèptil",
+      "Plantilla:Taxocaixa fong",
+      "Plantilla:Taxocaixa virus",
+      "Plantilla:Taxocaixa eucariota",
+      "Plantilla:Taxocaixa animal",
+      "Plantilla:Taxocaixa mamaliaforme",
+      "Plantilla:Fitxa de tàxon",
+      "Plantilla:Taxocaixa platihelmint",
+      "Plantilla:Taxobox",
+      "Plantilla:Taxocaixa sinàpsid",
+      "Plantilla:Taxocaixa mammaliaforme",
+      "Plantilla:Taxocaixa cnidari",
+      "Plantilla:Taxocaixa anèl·lid",
+      "Plantilla:Taxocaixa equinoderm",
+      "Plantilla:Ficha de taxón",
+      "Plantilla:Taxocaixa avial",
+      "Plantilla:Infotaula taxonòmica",
+      "Plantilla:Infotaula esser viu",
+      "Plantilla:Esser viu",
+      "Plantilla:Ésser viu",
+      "Plantilla:IEV",
+      "Plantilla:Speciesbox",
+      "Plantilla:Infotaula d'ésser viu"
+    ]
+  },
+  "cs": {
+    "cite book": [
+      "Šablona:Citace knihy"
+    ],
+    "cite web": [
+      "Šablona:Citace webu",
+      "Šablona:Citace databáze",
+      "Šablona:Citace elektronického zdroje"
+    ],
+    "flagicon": [
+      "Šablona:Flag",
+      "Šablona:Vlajka"
+    ],
+    "taxobox": [
+      "Šablona:Taxonbox"
+    ],
+    "cite journal": [
+      "Šablona:Cite magazine",
+      "Šablona:Cite techreport"
+    ],
+    "birth date and age": [
+      "Šablona:Narození"
+    ],
+    "small": [
+      "Šablona:Small"
+    ],
+    "coord": [
+      "Šablona:Coord"
+    ],
+    "reflist": [
+      "Šablona:References scrollable"
+    ],
+    "isbn": [
+      "Šablona:Isbn"
+    ]
+  },
+  "cy": {
+    "main": [
+      "Nodyn:Main"
+    ],
+    "flagicon": [
+      "Nodyn:Eiconbaner",
+      "Nodyn:Flag icon"
+    ],
+    "birth date and age": [
+      "Nodyn:Birth date and age"
+    ],
+    "reflist": [
+      "Nodyn:Reflist"
+    ],
+    "coord": [
+      "Wicipedia:COORD",
+      "Nodyn:Coor",
+      "Nodyn:Coordinates",
+      "Nodyn:Location"
+    ],
+    "commons cat": [
+      "Nodyn:Commonscat",
+      "Nodyn:Commons cat",
+      "Nodyn:Commons category"
+    ],
+    "small": [
+      "Nodyn:Bach"
+    ]
+  },
+  "da": {
+    "ipa": [
+      "Skabelon:Ipa"
+    ],
+    "flag": [
+      "Skabelon:Land flag",
+      "Skabelon:Flag2",
+      "Skabelon:Flagg"
+    ],
+    "flagicon": [
+      "Skabelon:Land flagikon",
+      "Skabelon:Flagkant",
+      "Skabelon:Flagikon2",
+      "Skabelon:Drapeau"
+    ],
+    "cite web": [
+      "Skabelon:Cite www",
+      "Skabelon:Citeweb",
+      "Skabelon:Cite website"
+    ],
+    "birth date and age": [
+      "Skabelon:DoA",
+      "Skabelon:Fødselsdato og alder",
+      "Skabelon:Dato og Alder",
+      "Skabelon:Birth date and age"
+    ],
+    "cite journal": [
+      "Skabelon:Kilde artikel",
+      "Skabelon:Cite paper",
+      "Skabelon:Cite pmid",
+      "Skabelon:Cite magazine",
+      "Skabelon:Cite document",
+      "Skabelon:Citepaper",
+      "Skabelon:Cite Journal",
+      "Skabelon:Citejournal",
+      "Skabelon:Kilde tidsskrift",
+      "Skabelon:Cite tidsskrift"
+    ],
+    "coord": [
+      "Skabelon:Coor title dm",
+      "Skabelon:Coor dms",
+      "Skabelon:Coor title dms",
+      "Skabelon:Coor title d",
+      "Skabelon:Geobox coor",
+      "Skabelon:Coor d",
+      "Skabelon:Coor dm",
+      "Skabelon:Coords",
+      "Skabelon:Coordinates",
+      "Skabelon:Koordinater"
+    ],
+    "citation": [
+      "Skabelon:Cite",
+      "Skabelon:Citation"
+    ],
+    "main": [
+      "Skabelon:Uddybende artikel",
+      "Skabelon:Se også2"
+    ],
+    "taxobox": [
+      "Wikipedia:Skabeloner/Taksonomi",
+      "Skabelon:Taxobox2",
+      "Skabelon:Taxobox3",
+      "Skabelon:Taxobox"
+    ],
+    "sfn": [
+      "Skabelon:SFN",
+      "Skabelon:Shortened footnote template"
+    ],
+    "start": [
+      "Skabelon:Start date"
+    ],
+    "isbn": [
+      "Skabelon:Isbn"
+    ]
+  },
+  "de": {
+    "cite web": [
+      "Wikipedia:IQ"
+    ],
+    "main": [
+      "Vorlage:Hauptseite",
+      "Vorlage:Main"
+    ],
+    "coord": [
+      "Vorlage:Lagewunsch",
+      "Vorlage:Koordinate"
+    ]
+  },
+  "el": {
+    "portal": [
+      "Πρότυπο:Portal",
+      "Πρότυπο:Portal box"
+    ],
+    "ipa": [
+      "Πρότυπο:IPA link",
+      "Πρότυπο:Σύνδεσμος IPA",
+      "Πρότυπο:IPA"
+    ],
+    "cite book": [
+      "Πρότυπο:Cita libro",
+      "Πρότυπο:Ouvrage",
+      "Πρότυπο:Citebook",
+      "Πρότυπο:Cite manual"
+    ],
+    "cite journal": [
+      "Πρότυπο:Cite document",
+      "Πρότυπο:Cite magazine",
+      "Πρότυπο:Cita BOE",
+      "Πρότυπο:Cite Journal"
+    ],
+    "cite web": [
+      "Πρότυπο:Citeweb",
+      "Πρότυπο:Lien web",
+      "Πρότυπο:Cite website"
+    ],
+    "reflist": [
+      "Πρότυπο:Reflist",
+      "Πρότυπο:Σημειώσεις"
+    ],
+    "flag": [
+      "Πρότυπο:Flagcountry",
+      "Πρότυπο:Country data",
+      "Πρότυπο:Country"
+    ],
+    "main": [
+      "Πρότυπο:Κύριο άρθρο",
+      "Πρότυπο:Main",
+      "Πρότυπο:Κύριο λήμμα",
+      "Πρότυπο:Main page",
+      "Πρότυπο:Main article"
+    ],
+    "coord": [
+      "Πρότυπο:Coords"
+    ],
+    "birth date and age": [
+      "Πρότυπο:Ηγη",
+      "Πρότυπο:Birth date and age"
+    ],
+    "taxobox": [
+      "Πρότυπο:Taxobox",
+      "Πρότυπο:Ταξονομοπλαίσιο"
+    ],
+    "citation": [
+      "Πρότυπο:Cite"
+    ],
+    "commons cat": [
+      "Πρότυπο:Commons cat",
+      "Πρότυπο:Commonscat",
+      "Πρότυπο:Commons Category",
+      "Πρότυπο:Commonscategory",
+      "Πρότυπο:Ccat"
+    ],
+    "start": [
+      "Πρότυπο:Start date"
+    ],
+    "small": [
+      "Πρότυπο:Petit"
+    ],
+    "isbn": [
+      "Πρότυπο:Isbn"
+    ]
+  },
+  "eo": {
+    "commons cat": [
+      "Ŝablono:Komuneja kategorio",
+      "Ŝablono:Commons category"
+    ],
+    "main": [
+      "Ŝablono:Plu",
+      "Ŝablono:Ĉefa",
+      "Ŝablono:Lupeo",
+      "Ŝablono:Main",
+      "Ŝablono:Ĉefa artikolo"
+    ],
+    "ipa": [
+      "Ŝablono:IPA"
+    ],
+    "cite web": [
+      "Ŝablono:Citreto",
+      "Ŝablono:Citaĵo el reto",
+      "Ŝablono:Citaĵo el retejo",
+      "Ŝablono:CER"
+    ],
+    "cite journal": [
+      "Ŝablono:Citado de ĵurnalo",
+      "Ŝablono:Citgazeto",
+      "Ŝablono:Citajxo el gazeto",
+      "Ŝablono:CEG"
+    ],
+    "coord": [
+      "Ŝ:KOORD",
+      "Vikipedio:KOORD",
+      "Ŝablono:Coor dm",
+      "Ŝablono:Coord"
+    ],
+    "birth date and age": [
+      "Ŝablono:Naskiĝtago kaj aĝo"
+    ],
+    "cite book": [
+      "Ŝablono:Citlibro",
+      "Ŝablono:Citado de libro",
+      "Ŝablono:Citaĵo de libro",
+      "Ŝablono:Citajxo el libro"
+    ],
+    "small": [
+      "Ŝablono:Eta",
+      "Ŝablono:Small"
+    ],
+    "sfn": [
+      "Ŝablono:Odn"
+    ],
+    "formatnum": [
+      "Ŝablono:FormatNum"
+    ],
+    "start": [
+      "Ŝablono:Start date"
+    ]
+  },
+  "es": {
+    "cite book": [
+      "Plantilla:Ref-libro",
+      "Plantilla:Citalibro",
+      "Plantilla:Cite book",
+      "Plantilla:Ouvrage",
+      "Plantilla:Ref libro",
+      "Plantilla:Cite iucn",
+      "Plantilla:Literatur",
+      "Plantilla:Книга",
+      "Plantilla:Citar libro"
+    ],
+    "ipa": [
+      "Plantilla:IPA",
+      "Plantilla:IPAlink",
+      "Plantilla:IPA link",
+      "Plantilla:IPAblink",
+      "Plantilla:IPAslink"
+    ],
+    "main": [
+      "Plantilla:Main",
+      "Plantilla:Catmas",
+      "Plantilla:Cp",
+      "Plantilla:Catmain",
+      "Plantilla:CP",
+      "Plantilla:Catmás",
+      "Plantilla:Principal",
+      "Plantilla:Catmore",
+      "Plantilla:Artículo principal",
+      "Plantilla:Cat main",
+      "Plantilla:Ap",
+      "Plantilla:Main article",
+      "Plantilla:Article détaillé"
+    ],
+    "portal": [
+      "Plantilla:Portal2",
+      "Plantilla:Portalpar",
+      "Plantilla:Portail",
+      "Plantilla:Portal box",
+      "Plantilla:Portal bar"
+    ],
+    "nihongo": [
+      "Plantilla:Nihongo4"
+    ],
+    "cite web": [
+      "Plantilla:Cite web",
+      "Plantilla:Citar web",
+      "Plantilla:Cite-web",
+      "Plantilla:Citeweb",
+      "Plantilla:Cite website",
+      "Plantilla:Cita website",
+      "Plantilla:Web cite",
+      "Plantilla:Cite new",
+      "Plantilla:Lien web",
+      "Plantilla:Ref-web",
+      "P:CW",
+      "Plantilla:Citaweb",
+      "Plantilla:Cita-web",
+      "Plantilla:C w",
+      "Plantilla:Internetquelle",
+      "Plantilla:Citado en web",
+      "Plantilla:Cita Web"
+    ],
+    "coord": [
+      "Plantilla:Coor dm",
+      "Plantilla:Coor",
+      "Plantilla:Coor dms",
+      "Plantilla:Coor URL",
+      "Plantilla:Coor site",
+      "Plantilla:Coor title dms",
+      "Plantilla:Coordenadas"
+    ],
+    "commons cat": [
+      "Plantilla:Commons cat",
+      "Plantilla:Categoría Commons",
+      "Plantilla:Commonscat-inline",
+      "Plantilla:Commons category",
+      "Plantilla:Commons category-inline"
+    ],
+    "cite journal": [
+      "Plantilla:Cite paper",
+      "Plantilla:Cita revista",
+      "Plantilla:Cite document",
+      "Plantilla:Cite journal",
+      "Plantilla:Citar jornal",
+      "Plantilla:Cite magazine",
+      "Plantilla:Citar publicación",
+      "Plantilla:Ref-publicació",
+      "Plantilla:Cita documento",
+      "Plantilla:Cite publication"
+    ],
+    "reflist": [
+      "Plantilla:Reflist",
+      "Plantilla:References",
+      "Plantilla:Listref",
+      "Plantilla:Références",
+      "Plantilla:Notelist",
+      "Plantilla:Notelist-ua",
+      "Plantilla:Referències"
+    ],
+    "small": [
+      "Plantilla:Pequeño"
+    ],
+    "citation": [
+      "Plantilla:Cite",
+      "Plantilla:Citation",
+      "Plantilla:Citar patente",
+      "Plantilla:Cita informe",
+      "Plantilla:Cita informe técnico",
+      "Plantilla:Cite report"
+    ],
+    "taxobox": [
+      "Plantilla:Ficha de taxon",
+      "Plantilla:Ficha de virus",
+      "Plantilla:Taxobox",
+      "Plantilla:Speciesbox",
+      "Plantilla:Automatic taxobox"
+    ],
+    "isbn": [
+      "Plantilla:Isbn"
+    ],
+    "sfn": [
+      "Plantilla:Sfn",
+      "Plantilla:Sfnp",
+      "Plantilla:Harvref",
+      "Plantilla:Sfnb",
+      "Plantilla:HarvnpHP"
+    ]
+  },
+  "et": {
+    "flag": [
+      "Mall:Pisilipp"
+    ],
+    "flagicon": [
+      "Mall:Riigi lipp",
+      "Mall:Riigiikoon",
+      "Mall:Flagicon"
+    ],
+    "main": [
+      "Mall:Main",
+      "Mall:Pikemalt artiklis",
+      "Mall:Pikemalt",
+      "Mall:Peamine artikkel"
+    ],
+    "reflist": [
+      "Mall:Reflist"
+    ],
+    "cite journal": [
+      "Mall:Cite document"
+    ],
+    "birth date and age": [
+      "Mall:Birth date and age",
+      "Mall:Süv",
+      "Mall:Bda"
+    ],
+    "start": [
+      "Mall:Start date"
+    ],
+    "cite web": [
+      "Mall:Cite url",
+      "Mall:Cite press release",
+      "Mall:Cite mailing list",
+      "Mall:Citeweb"
+    ],
+    "commons cat": [
+      "Mall:Commonscat",
+      "Mall:Commonskat",
+      "Mall:Commons cat",
+      "Mall:Commons category"
+    ],
+    "taxobox": [
+      "Mall:Taxobox"
+    ],
+    "coord": [
+      "Mall:Koordinaadid",
+      "Mall:Geokoordinaadid",
+      "Mall:Coordinate",
+      "Mall:Asukoht"
+    ]
+  },
+  "eu": {
+    "reflist": [
+      "Txantiloi:Erref zer",
+      "Txantiloi:Reflist",
+      "Txantiloi:Txikipedia-Erreferentzia zerrenda"
+    ],
+    "commons cat": [
+      "Txantiloi:Commonscat",
+      "Txantiloi:Txikipedia-Commonskat"
+    ],
+    "coord": [
+      "Txantiloi:Coord"
+    ],
+    "citation": [
+      "Txantiloi:Albiste erref",
+      "Txantiloi:Web erref",
+      "Txantiloi:Liburu erref",
+      "Txantiloi:Cite web",
+      "Txantiloi:Cite news",
+      "Txantiloi:Cite book",
+      "Txantiloi:Cite journal",
+      "Txantiloi:Cite aldizkari",
+      "Txantiloi:Txikipedia-Erreferentzia",
+      "Txantiloi:Citation"
+    ],
+    "flagicon": [
+      "Txantiloi:Flagicon",
+      "Txantiloi:Txikipedia-Banderaikur"
+    ],
+    "isbn": [
+      "Txantiloi:Isbn"
+    ],
+    "taxobox": [
+      "Wikipedia:Taxotaula",
+      "Txantiloi:Taxotaula"
+    ],
+    "nihongo": [
+      "Txantiloi:Jp"
+    ],
+    "start": [
+      "Txantiloi:Start date",
+      "Txantiloi:Txikipedia-Data"
+    ],
+    "sfn": [
+      "Txantiloi:Harvnp"
+    ],
+    "formatnum": [
+      "Txantiloi:Formatnum"
+    ]
+  },
+  "fa": {
+    "flagicon": [
+      "الگو:Flagicon",
+      "الگو:Flag icon",
+      "الگو:پرچم‌ها",
+      "الگو:Flags",
+      "الگو:آیکون پرچم"
+    ],
+    "commons cat": [
+      "الگو:Commonscat",
+      "الگو:Commons cat",
+      "الگو:انبار رده",
+      "الگو:Commons category",
+      "الگو:ویکی انبار-رده",
+      "الگو:ویکی‌انبار رده",
+      "الگو:CommonsCat",
+      "الگو:ویکی‌انبار-رده",
+      "الگو:انبار-رده",
+      "الگو:رده-انبار",
+      "الگو:Cc",
+      "الگو:CC"
+    ],
+    "taxobox": [
+      "الگو:جعبه زیست",
+      "الگو:Taxobox",
+      "الگو:زیسترده",
+      "الگو:جعبه اطلاعات آرایه زیستی"
+    ],
+    "cite web": [
+      "الگو:Cite url",
+      "الگو:Citeweb",
+      "الگو:Web reference",
+      "الگو:Cite blog",
+      "الگو:Cite Web",
+      "الگو:Cite webpage",
+      "الگو:Cite website",
+      "الگو:Cit web",
+      "الگو:Web kaynağı",
+      "الگو:Citace elektronické monografie",
+      "الگو:Web cite",
+      "الگو:Web-reference",
+      "الگو:Cite-web",
+      "الگو:Web citation",
+      "الگو:Weblink",
+      "الگو:C web",
+      "الگو:Cw",
+      "الگو:Cite web.",
+      "الگو:Cite website article",
+      "الگو:Cite web/lua",
+      "الگو:Cite w",
+      "الگو:Cite wb",
+      "الگو:Chú thích web",
+      "الگو:웹 인용",
+      "الگو:Cite we",
+      "الگو:Citat web",
+      "الگو:Citweb",
+      "الگو:مرجع ویب",
+      "الگو:Web link",
+      "الگو:Navedi splet",
+      "الگو:Cite URL",
+      "الگو:Citaweb",
+      "الگو:Cite web/German"
+    ],
+    "main": [
+      "الگو:مقاله اصلی",
+      "الگو:نوشتار اصلی",
+      "الگو:Main",
+      "الگو:Mainarticle",
+      "الگو:Main article",
+      "الگو:AP"
+    ],
+    "flag": [
+      "الگو:Flag"
+    ],
+    "portal": [
+      "الگو:Portal",
+      "الگو:Portal box",
+      "الگو:Portalpar",
+      "الگو:جعبه درگاه",
+      "الگو:Portalbox",
+      "الگو:پورتال"
+    ],
+    "coord": [
+      "الگو:Coor dms",
+      "الگو:Coordinate",
+      "الگو:مختصات",
+      "الگو:Mokhtasat",
+      "الگو:مختصات‌دهی",
+      "الگو:Coords",
+      "الگو:کاربر جدید/مختصات‌دهی",
+      "الگو:Coor title d",
+      "الگو:Location",
+      "کاربر:جعبه کاربر/جدید/مختصات‌دهی",
+      "الگو:Coor dm",
+      "الگو:Coordinates",
+      "الگو:عرض جغرافیایی",
+      "الگو:طول جغرافیایی",
+      "الگو:لوکیشن",
+      "الگو:Coor title dms"
+    ],
+    "cite book": [
+      "الگو:Ouvrage",
+      "الگو:Citebook",
+      "الگو:Cita libro",
+      "الگو:Citace monografie",
+      "الگو:Cite Book",
+      "Cite book",
+      "الگو:Book reference url",
+      "الگو:Book reference",
+      "الگو:Cite books",
+      "الگو:Cite-book",
+      "الگو:Cite book/Archive index",
+      "الگو:Cite book/Archive 1",
+      "الگو:Cite book/Archive 2",
+      "الگو:Cite book/Archive 3",
+      "الگو:Cite book/Archive 4",
+      "الگو:Cite book/Archive 6",
+      "الگو:Cite book/Archive 7",
+      "الگو:Cite book/Archive 8",
+      "الگو:C book",
+      "الگو:Cit book",
+      "الگو:Cite ebook",
+      "الگو:Cite work",
+      "الگو:Cite book/lua",
+      "الگو:Book cite",
+      "الگو:Cite publication",
+      "الگو:Citar livro",
+      "الگو:Ref-llibre",
+      "الگو:Cite chapter",
+      "الگو:Citeer boek",
+      "الگو:Cite score",
+      "الگو:서적 인용",
+      "الگو:Cite page",
+      "الگو:Book reference 2",
+      "الگو:ارجاع کتاب"
+    ],
+    "ipa": [
+      "الگو:IPA",
+      "الگو:Ipa",
+      "الگو:آی‌پی‌ای"
+    ],
+    "isbn": [
+      "الگو:ISBN",
+      "الگو:شابک۲",
+      "الگو:شابک2",
+      "الگو:Isbn"
+    ],
+    "cite journal": [
+      "الگو:Cite paper",
+      "الگو:Cite document",
+      "الگو:Cite magazine article",
+      "الگو:Citepaper",
+      "الگو:Citejournal",
+      "الگو:Cite Journal",
+      "الگو:Cita publicación",
+      "الگو:Citation journal"
+    ],
+    "birth date and age": [
+      "الگو:Birth date and age",
+      "الگو:تولد و سن",
+      "الگو:Bda",
+      "الگو:Birthdate and age",
+      "الگو:Birthdateandage",
+      "الگو:Date of birth and age"
+    ],
+    "citation": [
+      "الگو:Cite"
+    ],
+    "start": [
+      "الگو:Startdate",
+      "الگو:Start date",
+      "الگو:تاریخ شروع",
+      "الگو:Initial release",
+      "الگو:Foundation date"
+    ],
+    "reflist": [
+      "الگو:Reflist",
+      "الگو:پانویس‌ها",
+      "الگو:پانویس۲",
+      "الگو:پانویس ۲",
+      "الگو:پی‌نوشت",
+      "الگو:Listaref",
+      "الگو:Références",
+      "الگو:مراجع",
+      "الگو:منابع",
+      "الگو:Footnote"
+    ],
+    "nihongo": [
+      "الگو:Nihongo"
+    ],
+    "sfn": [
+      "الگو:Hf",
+      "الگو:Snf",
+      "الگو:Sf",
+      "الگو:Shortened footnote",
+      "الگو:Shortened footnote template",
+      "الگو:Odn"
+    ]
+  },
+  "fi": {
+    "cite book": [
+      "Malline:Cite book"
+    ],
+    "cite journal": [
+      "Malline:Cite news",
+      "Malline:Cite journal",
+      "Malline:Cite document",
+      "Malline:Cite magazine"
+    ],
+    "nihongo": [
+      "Malline:Japonais"
+    ],
+    "commons cat": [
+      "Malline:Commons category"
+    ],
+    "main": [
+      "Malline:Main",
+      "Malline:Pääartikkelit"
+    ],
+    "cite web": [
+      "Malline:Cite web",
+      "Malline:Citeweb"
+    ],
+    "reflist": [
+      "Malline:Reflist",
+      "Malline:Refs"
+    ],
+    "coord": [
+      "Malline:Coor d",
+      "Malline:Coor dm",
+      "Malline:Coor dms",
+      "Malline:Koordinaatit"
+    ],
+    "isbn": [
+      "Malline:Isbn"
+    ]
+  },
+  "fr": {
+    "ipa": [
+      "Modèle:Phonétique",
+      "Modèle:Phon",
+      "Modèle:Api"
+    ],
+    "commons cat": [
+      "Modèle:Commons category"
+    ],
+    "main": [
+      "Modèle:Détails",
+      "Modèle:Voir",
+      "Modèle:Détail",
+      "Modèle:Loupe"
+    ],
+    "flagicon": [
+      "Modèle:Flagicon",
+      "Modèle:Bandiera",
+      "Modèle:Bandera"
+    ],
+    "isbn": [
+      "Modèle:Isbn"
+    ],
+    "cite book": [
+      "Modèle:Cite document",
+      "Modèle:Cite",
+      "Modèle:Literatur",
+      "Modèle:Cite iucn"
+    ],
+    "nihongo": [
+      "Modèle:Nihongo"
+    ],
+    "reflist": [
+      "Modèle:References",
+      "Modèle:Reflist"
+    ],
+    "flag": [
+      "Modèle:Flag",
+      "Modèle:Flagcountry",
+      "Modèle:Flagu"
+    ],
+    "cite web": [
+      "Modèle:Cite web",
+      "Modèle:Référence web",
+      "Modèle:Citeweb",
+      "Modèle:Cite press release",
+      "Modèle:Lien Web",
+      "Modèle:Lienweb",
+      "Modèle:Cita web",
+      "Modèle:Site web",
+      "Modèle:Cite pr",
+      "Modèle:Cytuj stronę",
+      "Modèle:Citar web"
+    ],
+    "cite journal": [
+      "Modèle:Cite journal",
+      "Modèle:Lien news",
+      "Modèle:Périodique",
+      "Modèle:Cita noticia",
+      "Modèle:Cite article",
+      "Modèle:Cite magazine",
+      "Modèle:Cite Journal"
+    ],
+    "birth date and age": [
+      "Modèle:Date de naissance-",
+      "Modèle:Date naissance"
+    ],
+    "small": [
+      "Modèle:Small"
+    ],
+    "start": [
+      "Modèle:Start date"
+    ],
+    "formatnum": [
+      "Modèle:Affiche nombre"
+    ]
+  },
+  "gl": {
+    "coord": [
+      "Modelo:Coor"
+    ],
+    "ipa": [
+      "Modelo:IPA"
+    ],
+    "cite book": [
+      "Modelo:Cite book",
+      "Modelo:Citar libro",
+      "Modelo:Cite document"
+    ],
+    "main": [
+      "Modelo:Ver artigo principal",
+      "Modelo:Principal",
+      "Modelo:AP",
+      "Modelo:Ap",
+      "Modelo:Artigo Principal",
+      "Modelo:Main"
+    ],
+    "reflist": [
+      "Modelo:Referencias",
+      "Modelo:Reflist"
+    ],
+    "cite journal": [
+      "Modelo:Cite journal",
+      "Modelo:Cita publicación",
+      "Modelo:Cite magazine",
+      "Modelo:Cita revista"
+    ],
+    "cite web": [
+      "Modelo:Cite web",
+      "Modelo:Citar web",
+      "Modelo:Cita Web",
+      "Modelo:Obra citada",
+      "Modelo:Citation",
+      "Modelo:Citaweb",
+      "Modelo:Lien web",
+      "Modelo:WebCite",
+      "Vorlage:Internetquelle"
+    ],
+    "commons cat": [
+      "Modelo:Commonscategoría"
+    ],
+    "small": [
+      "Modelo:Small"
+    ],
+    "sfn": [
+      "Modelo:Harvnp",
+      "Modelo:Nota curta"
+    ],
+    "flag": [
+      "Modelo:Bandeira2",
+      "Modelo:Flag"
+    ],
+    "isbn": [
+      "Modelo:Isbn"
+    ]
+  },
+  "he": {
+    "main": [
+      "תבנית:ערך מורחב",
+      "תבנית:ערכים מורחבים"
+    ],
+    "ipa": [
+      "תבנית:IPA"
+    ],
+    "cite web": [
+      "תבנית:Citeweb",
+      "תבנית:Cite Web"
+    ],
+    "reflist": [
+      "תבנית:סימוכין"
+    ],
+    "cite journal": [
+      "תבנית:Cite document",
+      "תבנית:Cite paper",
+      "תבנית:Cite magazine"
+    ],
+    "citation": [
+      "תבנית:Cite"
+    ],
+    "isbn": [
+      "תבנית:Isbn"
+    ],
+    "start": [
+      "תבנית:Start date",
+      "תבנית:End date"
+    ]
+  },
+  "hi": {
+    "cite book": [
+      "साँचा:Cite Book",
+      "साँचा:पुस्तक सन्दर्भ"
+    ],
+    "flag": [
+      "साँचा:Flag"
+    ],
+    "birth date and age": [
+      "साँचा:Birth date and age",
+      "साँचा:Bda",
+      "साँचा:Birthdate and age"
+    ],
+    "flagicon": [
+      "साँचा:देश पताका",
+      "साँचा:पताकाचिन्ह",
+      "साँचा:देशपताका",
+      "साँचा:Flag icon"
+    ],
+    "reflist": [
+      "साँचा:टिप्पणीसूची",
+      "साँचा:टिप्पणी सूची",
+      "साँचा:सन्दर्भ",
+      "साँचा:रेफ़्लिस्ट",
+      "साँचा:संसूची",
+      "साँचा:रेफलिस्ट",
+      "साँचा:टिसू",
+      "साँचा:सूत्र सूची"
+    ],
+    "cite journal": [
+      "साँचा:Citejournal",
+      "साँचा:जर्नल सन्दर्भ"
+    ],
+    "citation": [
+      "साँचा:उद्धरण",
+      "साँचा:संदर्भ",
+      "साँचा:Cite"
+    ],
+    "ipa": [
+      "साँचा:IPA",
+      "साँचा:IPA-yo"
+    ],
+    "commons cat": [
+      "साँचा:Commons2",
+      "साँचा:Commons cat",
+      "साँचा:कॉमन्स",
+      "साँचा:Commonscat"
+    ],
+    "portal": [
+      "साँचा:Portal/doc",
+      "साँचा:Portal",
+      "साँचा:प्रवॆशद्वार"
+    ],
+    "taxobox": [
+      "साँचा:टैक्सोबॉक्स"
+    ],
+    "main": [
+      "साँचा:Main",
+      "साँचा:Main article",
+      "साँचा:Mainarticle",
+      "साँचा:Seemain",
+      "साँचा:See main"
+    ],
+    "cite web": [
+      "साँचा:उद्धृत अंतर्जाल",
+      "साँचा:Cite Web",
+      "साँचा:Cite website",
+      "साँचा:Web cite",
+      "साँचा:Cite-web",
+      "साँचा:Cite blog",
+      "साँचा:वेब सन्दर्भ",
+      "साँचा:वेब संदर्भ",
+      "साँचा:Web kaynağı"
+    ],
+    "small": [
+      "साँचा:छोटा"
+    ],
+    "sfn": [
+      "साँचा:Sf"
+    ],
+    "coord": [
+      "साँचा:Coor dms",
+      "साँचा:Coor title d",
+      "साँचा:Coor at dms",
+      "साँचा:निर्देशांक",
+      "साँचा:Coor title dms",
+      "साँचा:Coor title dm",
+      "साँचा:Coor at d",
+      "साँचा:Coor at dm",
+      "साँचा:Location",
+      "साँचा:Location dec",
+      "साँचा:Coords",
+      "विकिपीडिया:COORD"
+    ],
+    "isbn": [
+      "साँचा:Isbn"
+    ],
+    "start": [
+      "साँचा:Initial release",
+      "साँचा:Initial-release",
+      "साँचा:Startdate"
+    ]
+  },
+  "hr": {
+    "commons cat": [
+      "Predložak:Commons category",
+      "Predložak:Commons cat"
+    ],
+    "taxobox": [
+      "Predložak:Taxobox"
+    ],
+    "cite journal": [
+      "Predložak:Cite journal",
+      "Predložak:Citiranje časopisa/1",
+      "Predložak:Cite document",
+      "Predložak:Tidskriftsref"
+    ],
+    "cite book": [
+      "Predložak:Cite book",
+      "Predložak:Citiraj knjigu",
+      "Predložak:Cite manual",
+      "Predložak:Citiranje knjige/1",
+      "Predložak:Citebook",
+      "Predložak:Bokref"
+    ],
+    "cite web": [
+      "Predložak:Cite web",
+      "Predložak:Citiranje www",
+      "Predložak:Citiranje weba/1",
+      "Predložak:Webbref"
+    ],
+    "coord": [
+      "Predložak:Koordinate"
+    ],
+    "reflist": [
+      "Predložak:Reflist"
+    ],
+    "citation": [
+      "Predložak:Cite",
+      "Predložak:Citiranje"
+    ],
+    "isbn": [
+      "Predložak:Isbn"
+    ],
+    "birth date and age": [
+      "Predložak:Birth date and age"
+    ],
+    "flagicon": [
+      "Predložak:ZD",
+      "Predložak:DZ"
+    ],
+    "flag": [
+      "Predložak:ZD+X",
+      "Predložak:ZD+X/A",
+      "Predložak:ZD+X/B",
+      "Predložak:ZD+X/Č",
+      "Predložak:ZD+X/D",
+      "Predložak:ZD+X/Đ",
+      "Predložak:ZD+X/C",
+      "Predložak:ZD+X/E",
+      "Predložak:ZD+X/F",
+      "Predložak:ZD+X/G",
+      "Predložak:ZD+X/H",
+      "Predložak:ZD+X/I",
+      "Predložak:ZD+X/J",
+      "Predložak:ZD+X/K",
+      "Predložak:ZD+X/L",
+      "Predložak:ZD+X/M",
+      "Predložak:ZD+X/N",
+      "Predložak:ZD+X/O",
+      "Predložak:ZD+X/P",
+      "Predložak:ZD+X/Q",
+      "Predložak:ZD+X/R",
+      "Predložak:ZD+X/S",
+      "Predložak:ZD+X/Š",
+      "Predložak:ZD+X/T",
+      "Predložak:ZD+X/U",
+      "Predložak:ZD+X/V",
+      "Predložak:ZD+X/W",
+      "Predložak:ZD+X/Z",
+      "Predložak:ZD+X/HŽ",
+      "Predložak:ZD+X/Y",
+      "Predložak:ZD+X/Ž",
+      "Predložak:DZ+X"
+    ]
+  },
+  "hu": {
+    "commons cat": [
+      "Sablon:Commonscat",
+      "Sablon:Közvagyonkat",
+      "Sablon:Commons category"
+    ],
+    "main": [
+      "Sablon:Kategóriaszócikk",
+      "Sablon:Főcikk",
+      "Sablon:Katsz",
+      "Sablon:Főszócikk",
+      "Sablon:Fő",
+      "Sablon:Main"
+    ],
+    "flag": [
+      "Sablon:Flagicon"
+    ],
+    "coord": [
+      "Sablon:Coor dms",
+      "Sablon:Coor dm",
+      "Sablon:Coor d",
+      "Sablon:Coor title dm",
+      "Sablon:Coor title d",
+      "Sablon:Coor title dms",
+      "Sablon:Coord",
+      "Szerkesztő:JulesWinnfield-hu/homokozó/Sablon:Koord"
+    ],
+    "cite web": [
+      "Sablon:Weblap hivatkozás",
+      "Sablon:Citeweb",
+      "Sablon:Cite-web",
+      "Sablon:Web cite"
+    ],
+    "cite journal": [
+      "Sablon:Cite paper"
+    ],
+    "reflist": [
+      "Sablon:Refs"
+    ],
+    "formatnum": [
+      "Sablon:FormatNum"
+    ],
+    "citation": [
+      "Sablon:Cite"
+    ],
+    "birth date and age": [
+      "Sablon:Birth date and age"
+    ],
+    "isbn": [
+      "Sablon:Isbn"
+    ],
+    "cite book": [
+      "Sablon:Cite publication",
+      "Sablon:Cite chapter"
+    ],
+    "taxobox": [
+      "Wikipédia:Taxobox szerkesztése"
+    ]
+  },
+  "hy": {
+    "main": [
+      "Կաղապար:Հիմնական",
+      "Կաղապար:Main",
+      "Կաղապար:Հիմնական հոդված2",
+      "Կաղապար:Գլխավորը",
+      "Կաղապար:Main article"
+    ],
+    "reflist": [
+      "Կաղապար:Reflist",
+      "Կաղապար:Ծանոթագրություններ",
+      "Կաղապար:Աղբյուրներ",
+      "Կաղապար:Աղբյուր",
+      "Կաղապար:Refs",
+      "Կաղապար:Примечания"
+    ],
+    "cite web": [
+      "Կաղապար:Citeweb",
+      "Կաղապար:Cytuj stronę",
+      "Կաղապար:Cw",
+      "Կաղապար:Lien web",
+      "Կաղապար:Cita web",
+      "Կաղապար:Citar web",
+      "Կաղապար:웹 인용"
+    ],
+    "citation": [
+      "Կաղապար:Cite"
+    ],
+    "cite book": [
+      "Կաղապար:Ouvrage",
+      "Կաղապար:Cytuj książkę"
+    ],
+    "portal": [
+      "Կաղապար:Portal",
+      "Կաղապար:Portal bar"
+    ],
+    "birth date and age": [
+      "Կաղապար:Birth date and age",
+      "Կաղապար:ԾԱՏ"
+    ],
+    "cite journal": [
+      "Կաղապար:Cytuj pismo"
+    ],
+    "coord": [
+      "Կաղապար:Կոորդինատներ",
+      "Կաղապար:Կոորդ",
+      "Կաղապար:Coord-nocat"
+    ],
+    "taxobox": [
+      "Կաղապար:Taxobox"
+    ],
+    "nihongo": [
+      "Կաղապար:Nihongo"
+    ],
+    "small": [
+      "Կաղապար:Small",
+      "Կաղապար:Smaller"
+    ],
+    "isbn": [
+      "Կաղապար:Isbn"
+    ]
+  },
+  "id": {
+    "ipa": [
+      "Templat:Ipa"
+    ],
+    "flagicon": [
+      "Templat:Flag icon",
+      "Templat:Bandiera",
+      "Templat:Bandera"
+    ],
+    "commons cat": [
+      "Templat:Commons cat",
+      "Templat:Commons2",
+      "Templat:CommonsCat",
+      "Templat:Commons Category",
+      "Templat:Commonscategory",
+      "Templat:Commonscat",
+      "Templat:Kategori Commons",
+      "Templat:Cc"
+    ],
+    "main": [
+      "Templat:Artikel",
+      "Templat:Main article",
+      "Templat:Main",
+      "Templat:Main articles",
+      "Templat:Main page"
+    ],
+    "cite book": [
+      "Templat:Referensi buku",
+      "Templat:Citebook",
+      "Templat:Book reference",
+      "Templat:Cite publication",
+      "Templat:Cite work",
+      "Templat:Cite Book",
+      "Templat:Kutipan buku",
+      "Templat:Kutip buku",
+      "Templat:Buku kutipan",
+      "Templat:Cite buku",
+      "Templat:Citar livro"
+    ],
+    "cite web": [
+      "Templat:Web reference",
+      "Templat:Cite-web",
+      "Templat:Citeweb",
+      "Templat:Referensi web",
+      "Templat:Cite website",
+      "Templat:Web cite",
+      "Templat:Memetik web",
+      "Templat:Cite blog",
+      "Templat:Cita web",
+      "Templat:Web",
+      "Templat:Citar web",
+      "Templat:Cite webpage",
+      "Templat:Cite web.",
+      "Templat:Chú thích web",
+      "Templat:Cite url",
+      "Templat:Kutip web",
+      "Templat:Cite Web",
+      "Templat:Mengutip web",
+      "Templat:Kutipan web"
+    ],
+    "taxobox": [
+      "Templat:KotakTaksonomi",
+      "Templat:KotakTaksonomi phylum entry",
+      "Templat:KotakTaksonomi subfamilia entry",
+      "Templat:KotakTaksonomi bagian binomial",
+      "Templat:KotakTaksonomi subclassis entry",
+      "Templat:KotakTaksonomi subordo entry",
+      "Templat:Taxobox begin"
+    ],
+    "flag": [
+      "Templat:Bendera",
+      "Templat:NL-vlag",
+      "Templat:Flag2"
+    ],
+    "cite journal": [
+      "Templat:Citejournal",
+      "Templat:Citation journal",
+      "Templat:Cite magazine article",
+      "Templat:Tidskriftsref",
+      "Templat:Cite Journal"
+    ],
+    "birth date and age": [
+      "Templat:Birth date and age",
+      "Templat:Bda",
+      "Templat:Birthdate and age",
+      "Templat:Birthdateandage",
+      "Templat:Date of birth",
+      "Templat:Birth Date and age"
+    ],
+    "citation": [
+      "Templat:Cite study",
+      "Templat:Cite"
+    ],
+    "coord": [
+      "Templat:Coor dm",
+      "Templat:Coor",
+      "Templat:Coor d",
+      "Templat:Coor dm id",
+      "Templat:Coor title dm",
+      "Templat:Coor title d",
+      "Templat:Coor at d",
+      "Templat:Coor at dm",
+      "Templat:Coor at dms",
+      "Templat:Coor title dms",
+      "Templat:Geobox coor",
+      "Templat:CoorHeader",
+      "Templat:Coords",
+      "Templat:Coord-small",
+      "Templat:Coordinates"
+    ],
+    "start": [
+      "Templat:Start date",
+      "Templat:Start-date",
+      "Templat:Initial release",
+      "Templat:Startdate",
+      "Templat:Launch date",
+      "Templat:Start Date",
+      "Templat:Start year",
+      "Templat:Initial-release"
+    ],
+    "portal": [
+      "Templat:Wikiportal",
+      "Templat:Portalpar",
+      "Templat:Portalbox",
+      "Templat:Portal box"
+    ],
+    "small": [
+      "Templat:Kecil"
+    ],
+    "reflist": [
+      "Templat:Ref-list",
+      "Templat:References",
+      "Templat:Refs",
+      "Templat:RefList",
+      "Templat:Listaref",
+      "Templat:Reference list",
+      "Templat:Daftar referensi",
+      "Templat:Daftarref",
+      "Templat:Rflist",
+      "Templat:Footnotes"
+    ],
+    "sfn": [
+      "Templat:Sf",
+      "Templat:Snf"
+    ],
+    "isbn": [
+      "Templat:Isbn"
+    ]
+  },
+  "it": {
+    "ipa": [
+      "Template:IPA-fr",
+      "Template:Ipa"
+    ],
+    "taxobox": [
+      "Template:Taxobox"
+    ],
+    "cite web": [
+      "Template:Cita sito",
+      "Template:Lien web",
+      "Template:URL",
+      "Template:Cw"
+    ],
+    "cite journal": [
+      "Template:Cita rivista",
+      "Template:Cita periodico"
+    ],
+    "reflist": [
+      "Template:Reflist"
+    ],
+    "flagicon": [
+      "Template:Flagicon",
+      "Template:Flag"
+    ],
+    "portal": [
+      "Template:Portali"
+    ],
+    "commons cat": [
+      "Template:Commons category",
+      "Template:Commons cat",
+      "Template:Commons cat left",
+      "Template:Commonscat-inline",
+      "Template:Commonscat left"
+    ],
+    "sfn": [
+      "Template:Cite"
+    ],
+    "birth date and age": [
+      "Template:Bda",
+      "Template:Birth date and age"
+    ],
+    "citation": [
+      "Template:Cita documento"
+    ],
+    "coord": [
+      "Template:Coordinate"
+    ],
+    "start": [
+      "Template:Release date"
+    ]
+  },
+  "ja": {
+    "commons cat": [
+      "Template:Commons cat",
+      "Template:Commons category",
+      "Template:CommonsCat",
+      "Template:Commons Category",
+      "Template:コモンズカテゴリ"
+    ],
+    "portal": [
+      "Template:WikiPortal",
+      "Template:Portal",
+      "Template:Portalpar",
+      "Template:Portalbox"
+    ],
+    "cite book": [
+      "Template‐ノート:Cite book/Draft/Cite book",
+      "Template:Citebook",
+      "Cite book",
+      "Template:Cite manual",
+      "Template:Cite Book",
+      "Template:Cite work"
+    ],
+    "cite web": [
+      "Cite web",
+      "Template:Cite web/和書",
+      "Template:Citeweb",
+      "Template:Cite url",
+      "Template:Web cite",
+      "Template:Cite Web",
+      "Template:Cw",
+      "Template:Cite website",
+      "Template:Cite blog",
+      "Template:Cite-web",
+      "Template:Ref web",
+      "Template:Internetquelle"
+    ],
+    "cite journal": [
+      "Template:Cite paper",
+      "Template:Cite magazine",
+      "Template:Cite Journal",
+      "Template:Citejournal",
+      "Cite journal"
+    ],
+    "flagicon": [
+      "Template:Country flagcountry",
+      "Template:Country flagicon2",
+      "Flagicon",
+      "Template:Flag icon"
+    ],
+    "main": [
+      "Template:Main article",
+      "Template:Further",
+      "Template:Mainarticle",
+      "Template:Details",
+      "Template:本文",
+      "Template:More",
+      "Template:Further information",
+      "Template:詳細記事"
+    ],
+    "taxobox": [
+      "生物分類表"
+    ],
+    "small": [
+      "Template:Sma"
+    ],
+    "reflist": [
+      "Template:Refls",
+      "Template:脚注リスト",
+      "Template:Refs",
+      "Reflist"
+    ],
+    "citation": [
+      "Template:Harvard reference",
+      "Template:Cite",
+      "Template:Cite study"
+    ],
+    "birth date and age": [
+      "Template:Birth date and age",
+      "Template:Bda",
+      "生年月日と年齢",
+      "Template:Alter"
+    ],
+    "start": [
+      "Template:Initial release",
+      "Template:Startdate"
+    ],
+    "persondata": [
+      "Template:Personendaten"
+    ],
+    "coord": [
+      "Template:ウィキ座標度分秒",
+      "Template:ウィキ座標度分",
+      "Template:ウィキ座標度",
+      "Template:Coor d",
+      "Template:ウィキ座標2段度分秒",
+      "Template:Coor dm",
+      "Template:Coor dms",
+      "Template:Coor",
+      "Template:位置情報度分秒",
+      "Template:ウィキ座標世界",
+      "Template:Location",
+      "Template:Location dec",
+      "Template:ウィキ座標1段度分秒",
+      "Template:Coordinate",
+      "Template:Coords",
+      "Template:Coord2",
+      "Template:Coordinates"
+    ],
+    "flag": [
+      "Template:旗"
+    ],
+    "isbn": [
+      "Template:ISBN2",
+      "Template:Isbn",
+      "Template:Isbn2"
+    ]
+  },
+  "ka": {
+    "flagicon": [
+      "თარგი:Flag icon",
+      "თარგი:დროშანიშანი"
+    ],
+    "main": [
+      "თარგი:დეტალები",
+      "თარგი:Main",
+      "თარგი:მთავარი სტატია",
+      "თარგი:Main article"
+    ],
+    "portal": [
+      "თარგი:Portal"
+    ],
+    "cite web": [
+      "თარგი:Citeweb"
+    ],
+    "reflist": [
+      "თარგი:სქოლიო",
+      "თარგი:სქოლიოს სია გრძელი",
+      "თარგი:Reflist"
+    ],
+    "taxobox": [
+      "თარგი:Taxobox",
+      "თარგი:ტაქსოდაფა *"
+    ],
+    "cite journal": [
+      "თარგი:Cite magazine"
+    ],
+    "flag": [
+      "თარგი:Flag"
+    ],
+    "commons cat": [
+      "თარგი:Commonscat",
+      "თარგი:Commons category"
+    ],
+    "start": [
+      "თარგი:Start date"
+    ],
+    "birth date and age": [
+      "თარგი:Birth date and age"
+    ],
+    "coord": [
+      "თარგი:კოორდ",
+      "თარგი:კოორდინატი"
+    ],
+    "nihongo": [
+      "თარგი:ნიჰონგი",
+      "თარგი:Nihongo"
+    ],
+    "isbn": [
+      "თარგი:Isbn"
+    ]
+  },
+  "kk": {
+    "main": [
+      "Үлгі:Mainarticle",
+      "Үлгі:Негізгі мақала",
+      "Үлгі:Main"
+    ],
+    "reflist": [
+      "Үлгі:References",
+      "Үлгі:Reflist"
+    ],
+    "cite web": [
+      "Үлгі:Citeweb",
+      "Үлгі:Веб-сайт",
+      "Үлгі:Веб сайт",
+      "Үлгі:Cw"
+    ],
+    "coord": [
+      "Үлгі:Coord/conversion",
+      "Үлгі:Coor/new",
+      "Үлгі:Coor d/new"
+    ],
+    "cite journal": [
+      "Үлгі:Cite magazine"
+    ],
+    "citation": [
+      "Үлгі:Cite"
+    ],
+    "commons cat": [
+      "Үлгі:Commons2",
+      "Үлгі:Commons cat",
+      "Үлгі:Commons category"
+    ],
+    "portal": [
+      "Үлгі:Портал 2",
+      "Үлгі:Portal"
+    ]
+  },
+  "ko": {
+    "ipa": [
+      "틀:Ipa",
+      "틀:IPAc"
+    ],
+    "main": [
+      "틀:Main",
+      "틀:원문",
+      "틀:Main article",
+      "틀:Main2",
+      "틀:Main articles",
+      "틀:Vedi anche"
+    ],
+    "flagicon": [
+      "틀:Flagicon",
+      "틀:Flag icon",
+      "틀:국기 그림",
+      "틀:Fbaicon"
+    ],
+    "taxobox": [
+      "틀:Taxobox",
+      "틀:새 정보"
+    ],
+    "commons cat": [
+      "틀:Commons cat",
+      "틀:공용분류",
+      "틀:Commons category",
+      "틀:공용 분류",
+      "틀:Commonscat"
+    ],
+    "citation": [
+      "틀:Citation",
+      "틀:Cite"
+    ],
+    "cite web": [
+      "틀:Cite web",
+      "틀:Citeweb",
+      "틀:웹인용",
+      "틀:Cite blog",
+      "틀:Cite Web",
+      "틀:Cite website",
+      "틀:Cita web",
+      "틀:Cite-web"
+    ],
+    "cite journal": [
+      "틀:문서 인용",
+      "틀:Cite journal",
+      "사용자:배우는사람/틀:Cite magazine/영문판",
+      "틀:저널인용",
+      "틀:Cite paper",
+      "틀:Cite document",
+      "틀:학술지 인용"
+    ],
+    "reflist": [
+      "틀:Reflist",
+      "틀:Refs",
+      "틀:주석",
+      "틀:참고주"
+    ],
+    "birth date and age": [
+      "틀:출생일과 만나이",
+      "틀:Birth date and age",
+      "틀:Bda",
+      "틀:Birth-date and age"
+    ],
+    "flag": [
+      "틀:Flag",
+      "틀:Country",
+      "틀:국가"
+    ],
+    "portal": [
+      "틀:Portal",
+      "틀:들머리",
+      "틀:Portalpar",
+      "틀:Portal box"
+    ],
+    "coord": [
+      "틀:좌표도분",
+      "틀:좌표도분초",
+      "틀:좌표도",
+      "틀:좌표1",
+      "틀:좌표2",
+      "틀:좌표3",
+      "틀:Coor d",
+      "틀:Coor dm",
+      "틀:Coor dms",
+      "틀:Coor",
+      "틀:좌표도분초/상단",
+      "사용자:Integral/작업/틀:Coor title dms",
+      "틀:Coor title dms",
+      "틀:Coords",
+      "틀:Coord",
+      "틀:Coordinates"
+    ],
+    "sfn": [
+      "틀:Snf",
+      "틀:Sf",
+      "틀:Cita"
+    ],
+    "start": [
+      "틀:Startdate",
+      "틀:Start date",
+      "틀:Release date",
+      "틀:생성일"
+    ],
+    "cite book": [
+      "틀:Cite book",
+      "틀:도서 인용",
+      "틀:책 인용",
+      "틀:Cite manual",
+      "틀:서적인용",
+      "틀:Cite work",
+      "틀:Cita libro",
+      "틀:Citebook"
+    ],
+    "isbn": [
+      "틀:Isbn",
+      "틀:ISBN2"
+    ]
+  },
+  "lt": {
+    "portal": [
+      "Šablonas:Portal"
+    ],
+    "main": [
+      "Šablonas:Main"
+    ],
+    "commons cat": [
+      "Šablonas:Commons cat",
+      "Šablonas:Commons category"
+    ],
+    "flagicon": [
+      "Šablonas:Vlv",
+      "Šablonas:Flag icon",
+      "Šablonas:Fb",
+      "Šablonas:Fbicon",
+      "Šablonas:Bandera",
+      "Šablonas:Bandiera",
+      "Šablonas:Fbaicon"
+    ],
+    "cite web": [
+      "Šablonas:Citeweb"
+    ],
+    "isbn": [
+      "Šablonas:Isbn"
+    ],
+    "cite book": [
+      "Šablonas:Book"
+    ],
+    "cite journal": [
+      "Šablonas:Cite paper"
+    ],
+    "reflist": [
+      "Šablonas:Išn",
+      "Šablonas:Reflist",
+      "Šablonas:Ref"
+    ],
+    "coord": [
+      "Šablonas:Coor dms",
+      "Šablonas:Coor dm",
+      "Šablonas:Coor title dm",
+      "Šablonas:Coor title dms",
+      "Šablonas:Coor title d",
+      "Šablonas:Coor at dms"
+    ],
+    "citation": [
+      "Šablonas:Citation"
+    ],
+    "small": [
+      "Šablonas:Small"
+    ]
+  },
+  "lv": {
+    "commons cat": [
+      "Veidne:CommonsCat",
+      "Veidne:Commons cat",
+      "Veidne:Commonscat",
+      "Veidne:Commons category"
+    ],
+    "cite web": [
+      "Veidne:Citeweb",
+      "Veidne:Cite web",
+      "Veidne:Tīmekļa vietne",
+      "Veidne:Web cite"
+    ],
+    "ipa": [
+      "Veidne:IPA",
+      "Veidne:IPAslink"
+    ],
+    "main": [
+      "Veidne:Galvenais",
+      "Veidne:Main"
+    ],
+    "flag": [
+      "Veidne:Flag"
+    ],
+    "reflist": [
+      "Veidne:Reflist",
+      "Veidne:Atsauces2",
+      "Veidne:RefList",
+      "Veidne:Viited"
+    ],
+    "cite book": [
+      "Veidne:Cite book"
+    ],
+    "coord": [
+      "Veidne:Coordinates"
+    ],
+    "birth date and age": [
+      "Veidne:Dzim diena un vecums",
+      "Veidne:Birth date and age",
+      "Veidne:Datdv",
+      "Veidne:Ddv",
+      "Veidne:Birth year and age"
+    ],
+    "taxobox": [
+      "Veidne:Dzīvnieki infobox",
+      "Veidne:Info Taxo",
+      "Veidne:Info BioTakso",
+      "Veidne:Biotaksonomijas infokaste",
+      "Veidne:Taksonomijas infokaste",
+      "Veidne:Bioloģiskās taksonomijas infokaste",
+      "Veidne:Biotakso infokaste",
+      "Veidne:Taxobox",
+      "Veidne:Biotakso"
+    ],
+    "cite journal": [
+      "Veidne:Cite paper",
+      "Veidne:Cite magazine",
+      "Veidne:Cite journal",
+      "Veidne:Žurnāla atsauce",
+      "Veidne:Cite press release",
+      "Veidne:Dokumenta atsauce",
+      "Veidne:Cite press",
+      "Veidne:Laikraksta atsauce"
+    ],
+    "citation": [
+      "Veidne:Citation",
+      "Veidne:Cite"
+    ],
+    "flagicon": [
+      "Veidne:Flagicon",
+      "Veidne:Karoga ikona"
+    ],
+    "portal": [
+      "Veidne:Portal2",
+      "Veidne:Portāls2"
+    ]
+  },
+  "mk": {
+    "flagicon": [
+      "Предлошка:Flagicon"
+    ],
+    "taxobox": [
+      "Предлошка:Taxobox"
+    ],
+    "portal": [
+      "Предлошка:Portal",
+      "Предлошка:Portalpar"
+    ],
+    "main": [
+      "Предлошка:Main",
+      "Предлошка:Главна статија",
+      "Предлошка:Main article",
+      "Предлошка:Главно",
+      "Предлошка:AP"
+    ],
+    "commons cat": [
+      "Предлошка:Commonscat",
+      "Предлошка:Commons cat",
+      "Предлошка:CommonsCat",
+      "Предлошка:Commons2",
+      "Предлошка:Commons category",
+      "Предлошка:Р-в",
+      "Предлошка:Рв",
+      "Предлошка:РВ",
+      "Предлошка:Р-В"
+    ],
+    "cite book": [
+      "Предлошка:Cite book",
+      "Предлошка:Книга",
+      "Предлошка:Citebook"
+    ],
+    "ipa": [
+      "Предлошка:IPA",
+      "Предлошка:ИФА",
+      "Предлошка:Ipa"
+    ],
+    "cite web": [
+      "Предлошка:Citeweb",
+      "Предлошка:Cite web",
+      "Предлошка:Web cite",
+      "Предлошка:Cw",
+      "Предлошка:Нмс",
+      "Предлошка:Lien web",
+      "Предлошка:Cite website",
+      "Предлошка:Наведено мрежно место"
+    ],
+    "cite journal": [
+      "Предлошка:Cite journal",
+      "Предлошка:Cite document",
+      "Предлошка:Cite дневник",
+      "Предлошка:Наведен документ"
+    ],
+    "flag": [
+      "Предлошка:Country",
+      "Предлошка:Flag"
+    ],
+    "reflist": [
+      "Предлошка:Refs",
+      "Предлошка:Reflist",
+      "Предлошка:Референци"
+    ],
+    "citation": [
+      "Предлошка:Cite",
+      "Предлошка:Citation",
+      "Предлошка:Цитирање"
+    ],
+    "coord": [
+      "Предлошка:Coor",
+      "Предлошка:Geolinks-US-hoodscale",
+      "Предлошка:Coor at dms",
+      "Предлошка:Coords",
+      "Предлошка:Coordinates"
+    ],
+    "nihongo": [
+      "Предлошка:Nihongo",
+      "Предлошка:Нихонго"
+    ],
+    "birth date and age": [
+      "Предлошка:Дата на раѓање и возраст",
+      "Предлошка:Birth date and age",
+      "Предлошка:Bda",
+      "Предлошка:Датум на раѓање и возраст",
+      "Предлошка:Дата на раѓање и години",
+      "Предлошка:Рнив",
+      "Предлошка:Родена на и возраст",
+      "Предлошка:Рнв"
+    ],
+    "start": [
+      "Предлошка:Initial release",
+      "Предлошка:Start date",
+      "Предлошка:Start-date",
+      "Предлошка:Почеток-датум",
+      "Предлошка:Foundation date"
+    ],
+    "small": [
+      "Предлошка:Small"
+    ],
+    "isbn": [
+      "Предлошка:Isbn"
+    ],
+    "sfn": [
+      "Предлошка:Snf"
+    ]
+  },
+  "ml": {
+    "portal": [
+      "ഫലകം:Portalpar"
+    ],
+    "main": [
+      "ഫലകം:പ്രധാന ലേഖനം",
+      "ഫലകം:പ്രലേ",
+      "ഫലകം:Mainarticle",
+      "ഫലകം:Main article",
+      "ഫലകം:AP"
+    ],
+    "cite book": [
+      "ഫലകം:Citebook",
+      "ഫലകം:Cite manual",
+      "ഫലകം:Cite work",
+      "ഫലകം:Cite Book",
+      "ഫലകം:Cite-book"
+    ],
+    "flag": [
+      "ഫലകം:Country"
+    ],
+    "birth date and age": [
+      "ഫലകം:Bda",
+      "ഫലകം:Date of birth and age",
+      "ഫലകം:Birthdate and age",
+      "ഫലകം:Birthdateandage",
+      "ഫലകം:ജന്മദിനം, വയസ്സ്"
+    ],
+    "reflist": [
+      "ഫലകം:Refs",
+      "ഫലകം:Ref list",
+      "ഫലകം:RL",
+      "ഫലകം:അവലംബങ്ങൾ",
+      "ഫലകം:RefList",
+      "ഫലകം:Realist",
+      "ഫലകം:Reference"
+    ],
+    "coord": [
+      "ഫലകം:Coor d",
+      "ഫലകം:Geolinks-US-cityscale",
+      "വിക്കിപീഡിയ:COORD",
+      "ഫലകം:Location",
+      "ഫലകം:Coords",
+      "ഫലകം:Coordinates"
+    ],
+    "citation": [
+      "ഫലകം:Cite"
+    ],
+    "small": [
+      "ഫലകം:Smaller",
+      "ഫലകം:Small"
+    ],
+    "cite web": [
+      "ഫലകം:Citeweb",
+      "ഫലകം:Cite Web",
+      "ഫലകം:Web cite",
+      "ഫലകം:Cite-web",
+      "ഫലകം:Cite website",
+      "ഫലകം:Cita web",
+      "Cite web",
+      "ഫലകം:Cite blog"
+    ],
+    "commons cat": [
+      "ഫലകം:Commonscat",
+      "ഫലകം:Cms-catlist-up",
+      "ഫലകം:Commons cat",
+      "ഫലകം:Commons2",
+      "ഫലകം:CC",
+      "ഫലകം:Ccat",
+      "ഫലകം:Commons Category",
+      "ഫലകം:C cat",
+      "ഫലകം:Commonscategory"
+    ],
+    "flagicon": [
+      "ഫലകം:Flagicon"
+    ],
+    "sfn": [
+      "ഫലകം:Snf"
+    ],
+    "cite journal": [
+      "ഫലകം:Cite paper",
+      "ഫലകം:Citejournal",
+      "ഫലകം:Cite document"
+    ],
+    "isbn": [
+      "ഫലകം:Isbn"
+    ]
+  },
+  "ms": {
+    "main": [
+      "Templat:Main",
+      "Templat:Mainarticle",
+      "Templat:Main article",
+      "Templat:Main Article"
+    ],
+    "ipa": [
+      "Templat:Pronounced",
+      "Templat:Disebut",
+      "Templat:IPA",
+      "Templat:Pron",
+      "Templat:Ipa"
+    ],
+    "cite book": [
+      "Templat:Book reference",
+      "Templat:Citebook",
+      "Templat:Petik buku",
+      "Templat:Cite work",
+      "Templat:Kutip buku",
+      "Templat:Cite publication"
+    ],
+    "flagicon": [
+      "Templat:Flag icon",
+      "Templat:Ikonbendera",
+      "Templat:Flagicon"
+    ],
+    "coord": [
+      "Templat:CoorHeader",
+      "Templat:Coor title/at d/dm/dms",
+      "Templat:Coor title dm",
+      "Templat:Koord"
+    ],
+    "cite journal": [
+      "Templat:Cite paper",
+      "Templat:Cite Journal",
+      "Templat:Petik jurnal",
+      "Templat:Kutip jurnal"
+    ],
+    "cite web": [
+      "Templat:Citeweb",
+      "Templat:Web cite",
+      "Templat:Cite-web",
+      "Templat:Cite website",
+      "Templat:Petik web",
+      "Templat:Kutip web",
+      "Templat:Cite url",
+      "Templat:Cita web"
+    ],
+    "taxobox": [
+      "Templat:Taxobox",
+      "Templat:Kotak taksonomi"
+    ],
+    "portal": [
+      "Templat:Portalpar"
+    ],
+    "reflist": [
+      "Templat:FootnotesSmall",
+      "Templat:Refs",
+      "Templat:Footnotes",
+      "Templat:Listaref",
+      "Templat:Senarairujuk",
+      "Templat:Reflist"
+    ],
+    "birth date and age": [
+      "Templat:Bda",
+      "Templat:Birthdate and age",
+      "Templat:Birth date & age",
+      "Templat:Birth date and age"
+    ],
+    "flag": [
+      "Templat:Country",
+      "Templat:Flag"
+    ],
+    "citation": [
+      "Templat:Cite",
+      "Templat:Kutipan"
+    ],
+    "start": [
+      "Templat:Release date",
+      "Templat:Startdate",
+      "Templat:Initial release",
+      "Templat:Start date"
+    ],
+    "small": [
+      "Templat:Small"
+    ],
+    "commons cat": [
+      "Templat:Commonscat",
+      "Templat:Commons category",
+      "Templat:Commons cat",
+      "Templat:Kategori commons",
+      "Templat:Commonscategory",
+      "Templat:Cc"
+    ],
+    "isbn": [
+      "Templat:Isbn"
+    ]
+  },
+  "nl": {
+    "ipa": [
+      "Sjabloon:Ipa"
+    ],
+    "isbn": [
+      "Sjabloon:Isbn"
+    ],
+    "coord": [
+      "Sjabloon:Coordinaten"
+    ],
+    "reflist": [
+      "Sjabloon:Referenties",
+      "Sjabloon:Refs",
+      "Sjabloon:Reflist"
+    ],
+    "cite journal": [
+      "Sjabloon:Cite journal"
+    ],
+    "cite web": [
+      "Sjabloon:Cite web",
+      "Gebruiker:Jayden54~nlwiki/voetnoot web",
+      "Sjabloon:Citeweb",
+      "Sjabloon:Voetnoot web"
+    ],
+    "cite book": [
+      "Sjabloon:Cite book"
+    ],
+    "main": [
+      "Sjabloon:Main",
+      "Sjabloon:Hoofdartikel"
+    ],
+    "sfn": [
+      "Sjabloon:Footnotes"
+    ]
+  },
+  "nn": {
+    "taxobox": [
+      "Mal:Taxobox",
+      "Mal:Taxoboks",
+      "Mal:Taksobox",
+      "Mal:Taxonomibox",
+      "Mal:Taxonomiboks",
+      "Mal:Taksonomibox",
+      "Mal:Taksonomiboks",
+      "Wikipedia:Prosjekt taksonomi/Bruk av taksoboksen",
+      "Mal:Taksoboks2",
+      "Wikipedia:Prosjekt taksonomi/Lag ein taksoboks"
+    ],
+    "main": [
+      "Mal:Hovud",
+      "Mal:Main",
+      "Mal:Hovedartikkel",
+      "Mal:Hovudartikkel"
+    ],
+    "commons cat": [
+      "Mal:Commons cat",
+      "Mal:Commons category",
+      "Mal:Commonscat"
+    ],
+    "coord": [
+      "Mal:Coor dms",
+      "Mal:Koor",
+      "Mal:Koordinatar",
+      "Mal:Coor title dm",
+      "Mal:Coor title",
+      "Mal:Coor title dms"
+    ],
+    "reflist": [
+      "Mal:Reflist",
+      "Mal:Kjeldeliste",
+      "Mal:Notelist"
+    ],
+    "cite web": [
+      "Mal:Cite-web",
+      "Mal:Citeweb",
+      "Mal:Cite website",
+      "Mal:Kjelde AV-medium"
+    ],
+    "small": [
+      "Mal:Litenskrift",
+      "Mal:Small"
+    ],
+    "cite book": [
+      "Mal:Citebook",
+      "Mal:Cite book/en",
+      "Mal:Cite book-en",
+      "Mal:Cite work"
+    ],
+    "flagicon": [
+      "Mal:Flagicon",
+      "Mal:Flaggbild"
+    ],
+    "citation": [
+      "Mal:Kjelde film",
+      "Mal:Cite article",
+      "Mal:Cite report",
+      "Mal:Citenews"
+    ],
+    "birth date and age": [
+      "Mal:Birth date and age"
+    ],
+    "sfn": [
+      "Mal:Sf"
+    ],
+    "isbn": [
+      "Mal:Isbn"
+    ]
+  },
+  "no": {
+    "taxobox": [
+      "Mal:Infoboks taksoboks",
+      "Mal:Taksoboks-kunstig-gruppe",
+      "Mal:Taksoboks fugl",
+      "Mal:Taksoboks krepsdyr"
+    ],
+    "cite book": [
+      "Mal:Bok",
+      "Mal:Kilde tidsskrift"
+    ],
+    "cite web": [
+      "Mal:Kilde web"
+    ],
+    "commons cat": [
+      "Mal:Commonscat2",
+      "Mal:Commons cat",
+      "Mal:Commons category",
+      "Mal:Commonskat",
+      "Mal:Comcat"
+    ],
+    "cite journal": [
+      "Mal:Tidsskriftsref"
+    ],
+    "main": [
+      "Mal:Hovedartikkel",
+      "Mal:Catmore",
+      "Mal:Main",
+      "Mal:Utdypende",
+      "Mal:Hoved",
+      "Mal:Videre informasjon",
+      "Mal:Further",
+      "Mal:Cat main",
+      "Mal:Mer informasjon",
+      "Mal:Nærmere informasjon",
+      "Mal:Main article",
+      "Mal:Videre",
+      "Mal:Utfyllende"
+    ],
+    "birth date and age": [
+      "Mal:FDA"
+    ],
+    "citation": [
+      "Mal:Cite"
+    ],
+    "reflist": [
+      "Mal:Reflist"
+    ],
+    "start": [
+      "Mal:Start date"
+    ],
+    "flag": [
+      "Mal:Fltest",
+      "Mal:Flag",
+      "Mal:Flagdeco"
+    ],
+    "coord": [
+      "Mal:Coord",
+      "Mal:Geobox coor"
+    ],
+    "isbn": [
+      "Mal:Isbn"
+    ],
+    "flagicon": [
+      "Mal:Flagicon",
+      "Mal:Lippukuvake"
+    ]
+  },
+  "pl": {
+    "main": [
+      "Szablon:Main",
+      "Szablon:Osobna strona"
+    ],
+    "cite journal": [
+      "Szablon:Cytuj czasopismo"
+    ],
+    "coord": [
+      "Szablon:Koordynaty",
+      "Szablon:Coord",
+      "Szablon:Lokalizacja"
+    ],
+    "sfn": [
+      "Szablon:Sfn"
+    ]
+  },
+  "pt": {
+    "main": [
+      "Predefinição:Artigos principais",
+      "Predefinição:Ver artigo principal",
+      "Predefinição:Principal",
+      "Predefinição:Principais",
+      "Predefinição:Ver também artigo principal",
+      "Predefinição:Ver artigos principais",
+      "Predefinição:Main",
+      "Predefinição:APs",
+      "Predefinição:Detalhes",
+      "Predefinição:Artigoprincipal",
+      "Predefinição:AP",
+      "Predefinição:Details",
+      "Predefinição:Ver artigo",
+      "Predefinição:Artigo Principal",
+      "Predefinição:Ap"
+    ],
+    "ipa": [
+      "Predefinição:IPA"
+    ],
+    "commons cat": [
+      "Predefinição:Commons cat",
+      "Predefinição:Commons category",
+      "Predefinição:Categoria no Commons",
+      "Predefinição:Commons-cat",
+      "Predefinição:Commons Category"
+    ],
+    "cite book": [
+      "Predefinição:Cite book",
+      "Predefinição:Ref-livro",
+      "Predefinição:Cita libro",
+      "Predefinição:Referência a livro",
+      "Predefinição:Literatur",
+      "Predefinição:Ouvrage",
+      "Predefinição:Cite manual",
+      "Predefinição:Citar manual",
+      "Predefinição:Citarlivro",
+      "Predefinição:Cite chapter"
+    ],
+    "flagicon": [
+      "Predefinição:Country flagicon",
+      "Predefinição:Bandera",
+      "Predefinição:Flagicon1",
+      "Predefinição:Ícone bandeira",
+      "Predefinição:Flagicon",
+      "Predefinição:Flag icon",
+      "Predefinição:Bandiera"
+    ],
+    "cite web": [
+      "Predefinição:Cite web",
+      "Predefinição:Citeweb",
+      "Predefinição:Cita web",
+      "Predefinição:Lien web",
+      "Predefinição:Citar página",
+      "Predefinição:Citar Web",
+      "Predefinição:Ref-web",
+      "Predefinição:Citeer web",
+      "Predefinição:Webbref"
+    ],
+    "nihongo": [
+      "Predefinição:Nihongo"
+    ],
+    "isbn": [
+      "Predefinição:Isbn"
+    ],
+    "taxobox": [
+      "Predefinição:Taxoboxe",
+      "Predefinição:Ficha de taxón",
+      "Predefinição:Takson infobox"
+    ],
+    "reflist": [
+      "Predefinição:Refs",
+      "Predefinição:Ref-list"
+    ],
+    "cite journal": [
+      "Predefinição:Cite journal",
+      "Predefinição:Cite paper",
+      "Predefinição:Cite document",
+      "Predefinição:Article",
+      "Predefinição:Cita publicación periódica",
+      "Predefinição:Citar periodico"
+    ],
+    "small": [
+      "Predefinição:Pequeno"
+    ],
+    "birth date and age": [
+      "Predefinição:Data de nascimento e idade"
+    ],
+    "flag": [
+      "Predefinição:Flagu"
+    ],
+    "start": [
+      "Predefinição:Start-date",
+      "Predefinição:Start date",
+      "Predefinição:Data de Início"
+    ]
+  },
+  "ro": {
+    "ipa": [
+      "Format:IPA"
+    ],
+    "main": [
+      "Format:Articolprincipal",
+      "Format:Principal",
+      "Format:Main",
+      "Format:AP",
+      "Format:Mainarticle",
+      "Format:ARP",
+      "Format:See",
+      "Format:Main article"
+    ],
+    "flagicon": [
+      "Format:Flag icon"
+    ],
+    "commons cat": [
+      "Format:Commons cat",
+      "Format:CommonsCat",
+      "Format:Commons category",
+      "Format:Commons Category",
+      "Format:Commonscategory"
+    ],
+    "cite book": [
+      "Format:Literatur",
+      "Format:Cite Book",
+      "Format:Cite book",
+      "Format:Harvard reference",
+      "Format:Citat carte-LUA",
+      "Format:Citează cartea",
+      "Format:Cita libro",
+      "Format:Citace monografie"
+    ],
+    "cite web": [
+      "Format:Citeweb",
+      "Format:Cite web",
+      "Format:Citar web",
+      "Format:Cita news",
+      "Format:Cite press",
+      "Format:Cita web",
+      "Format:Citat website",
+      "Format:Citat web-LUA",
+      "Format:Web cite",
+      "Format:Cite website",
+      "Format:Citează web",
+      "Format:Citați web",
+      "Format:Link web",
+      "Format:Cîte web",
+      "Format:Cite web2"
+    ],
+    "cite journal": [
+      "Format:Cite journal",
+      "Format:Cite paper",
+      "Format:Cite document",
+      "Format:Cite revistă",
+      "Format:Cita publicación",
+      "Format:Citați jurnalul"
+    ],
+    "flag": [
+      "Format:Country",
+      "Format:Steag",
+      "Format:Flag",
+      "Format:Flagu",
+      "Format:Runionflag"
+    ],
+    "coord": [
+      "Format:Location"
+    ],
+    "reflist": [
+      "Format:Listareferinte",
+      "Format:Reflist",
+      "Format:References",
+      "Format:ListaNote",
+      "Format:Lista note",
+      "Format:Listă note",
+      "Format:Listaref",
+      "Format:Références"
+    ],
+    "birth date and age": [
+      "Format:Bda",
+      "Format:Zi de naștere și vârstă",
+      "Format:Zi de naştere şi vârstă",
+      "Format:Birth-date and age",
+      "Format:Birthdate",
+      "Format:Birth date and age",
+      "Format:Dnv",
+      "Format:Data naşterii şi vârsta"
+    ],
+    "citation": [
+      "Format:Cite",
+      "Format:Citare"
+    ],
+    "taxobox": [
+      "Format:CutieTaxonomie",
+      "Format:Casetă taxonomie"
+    ],
+    "start": [
+      "Format:Release date",
+      "Format:Startdate",
+      "Format:Launch date",
+      "Format:Initial release"
+    ],
+    "sfn": [
+      "Format:Harvnp"
+    ],
+    "isbn": [
+      "Format:Isbn"
+    ]
+  },
+  "ru": {
+    "commons cat": [
+      "Шаблон:Викисклад-кат",
+      "Шаблон:Commons category",
+      "Шаблон:Commons cat",
+      "Шаблон:Cc"
+    ],
+    "coord": [
+      "Шаблон:Coord/display",
+      "Шаблон:Coord/link",
+      "Шаблон:Coord-simple",
+      "Шаблон:Coord/Печать",
+      "Шаблон:Coord/linkprint",
+      "Шаблон:Координаты",
+      "Шаблон:Координаты объекта",
+      "Шаблон:Location"
+    ],
+    "main": [
+      "Шаблон:Основная статья категории",
+      "Шаблон:Catmain",
+      "Шаблон:Main articles",
+      "Шаблон:Основная статья раздела",
+      "Шаблон:Главное",
+      "Шаблон:Главная",
+      "Шаблон:CatMain",
+      "Шаблон:Основная",
+      "Шаблон:Maincat",
+      "Шаблон:Cat main",
+      "Шаблон:Главная статья",
+      "Шаблон:Main",
+      "Шаблон:Main article",
+      "Шаблон:Основная статья по теме категории",
+      "Шаблон:Mainarticle",
+      "Шаблон:Основные статьи",
+      "Шаблон:Общая тема категории",
+      "Шаблон:See main"
+    ],
+    "nihongo": [
+      "Шаблон:Nihongo"
+    ],
+    "cite web": [
+      "Шаблон:Citeweb",
+      "Шаблон:Cw",
+      "Шаблон:Cita web",
+      "Шаблон:Веб-сайт"
+    ],
+    "cite book": [
+      "Шаблон:Cite work",
+      "Шаблон:Cita libro",
+      "Шаблон:Cytuj książkę",
+      "Шаблон:Article"
+    ],
+    "cite journal": [
+      "Шаблон:Citejournal",
+      "Шаблон:Cite paper",
+      "Шаблон:Cite mag",
+      "Шаблон:Cita publicación",
+      "Шаблон:Cite Magazine",
+      "Шаблон:Cite Journal",
+      "Шаблон:Cite periodical"
+    ],
+    "ipa": [
+      "Шаблон:МФА"
+    ],
+    "reflist": [
+      "Шаблон:Reflist",
+      "Шаблон:Список примечаний"
+    ],
+    "birth date and age": [
+      "Шаблон:Родилась",
+      "Шаблон:Birth date and age"
+    ],
+    "citation": [
+      "Шаблон:Harvard reference",
+      "Шаблон:Cite"
+    ],
+    "portal": [
+      "Шаблон:Portal",
+      "Шаблон:Портал 2",
+      "Шаблон:Портал2",
+      "Шаблон:Portal-inline",
+      "Шаблон:Portail",
+      "Шаблон:Portale",
+      "Шаблон:Portalpar"
+    ],
+    "flagicon": [
+      "Шаблон:Flagicon",
+      "Шаблон:Flagcountry",
+      "Шаблон:Flag",
+      "Шаблон:Flag icon",
+      "Шаблон:Fbicon",
+      "Шаблон:Flagdeco",
+      "Шаблон:Fbaicon",
+      "Шаблон:Bandiera"
+    ],
+    "sfn": [
+      "Шаблон:Sfn-1",
+      "Шаблон:Sfnp",
+      "Шаблон:Ыат",
+      "Шаблон:Odn",
+      "Шаблон:Sfb",
+      "Шаблон:Harvnp",
+      "Шаблон:Sfnb"
+    ],
+    "isbn": [
+      "Шаблон:Isbn"
+    ]
+  },
+  "sh": {
+    "portal": [
+      "Šablon:Portal-lat"
+    ],
+    "taxobox": [
+      "Šablon:Taxobox-lat",
+      "Šablon:Taxobox",
+      "Šablon:Taksonomska infokutija",
+      "Šablon:Taksonomska kutija",
+      "Šablon:Taksonomski okvir",
+      "Šablon:Taksonomski infokvir",
+      "Šablon:Taksonomski infookvir",
+      "Šablon:Infokutija taksonomija",
+      "Šablon:Infookvir taksonomija",
+      "Šablon:Infokvir taksonomija",
+      "Šablon:Infokutija takson",
+      "Šablon:Infookvir takson",
+      "Šablon:Infokvir takson"
+    ],
+    "commons cat": [
+      "Šablon:Commons cat",
+      "Šablon:CommonsCat",
+      "Šablon:Commons category",
+      "Šablon:Spremnik",
+      "Šablon:Commonscategory",
+      "Šablon:Commonscat-lat",
+      "Šablon:Commons Category",
+      "Šablon:Category commons",
+      "Šablon:Commons category-lat",
+      "Šablon:Kategorija na Ostavi",
+      "Šablon:Commonscat"
+    ],
+    "main": [
+      "Šablon:Poseban članak",
+      "Šablon:Glavni članak",
+      "Šablon:Mainarticle",
+      "Šablon:Маин",
+      "Šablon:Main-lat",
+      "Šablon:Glavni-lat",
+      "Šablon:Main article",
+      "Šablon:Main article-lat",
+      "Šablon:Main"
+    ],
+    "cite book": [
+      "Šablon:Book reference",
+      "Šablon:Citebook",
+      "Šablon:Citiranje knjige",
+      "Šablon:Knjiga",
+      "Šablon:Knjiga (SR)"
+    ],
+    "cite web": [
+      "Šablon:Web reference",
+      "Šablon:Citeweb",
+      "Šablon:Web cite",
+      "Šablon:Cite web-lat",
+      "Šablon:Citiranje weba"
+    ],
+    "ipa": [
+      "Šablon:MFA",
+      "Šablon:МФА",
+      "Šablon:ИПА"
+    ],
+    "reflist": [
+      "Šablon:Refs",
+      "Šablon:Ref-list",
+      "Šablon:Reference",
+      "Šablon:Refspisak",
+      "Šablon:Reflist",
+      "Šablon:Spisref",
+      "Šablon:Извори",
+      "Šablon:Рефлист",
+      "Šablon:Izvori"
+    ],
+    "cite journal": [
+      "Šablon:Cite document",
+      "Šablon:Cite journal2",
+      "Šablon:Citiranje časopisa"
+    ],
+    "flagicon": [
+      "Šablon:ZD",
+      "Šablon:ЗД",
+      "Šablon:Ikonazastave",
+      "Šablon:Flag icon",
+      "Šablon:Zas"
+    ],
+    "flag": [
+      "Šablon:Zastava",
+      "Šablon:ZID"
+    ],
+    "citation": [
+      "Šablon:Cite"
+    ],
+    "small": [
+      "Šablon:Malo"
+    ],
+    "coord": [
+      "Šablon:Координате"
+    ],
+    "start": [
+      "Šablon:Startdate"
+    ],
+    "isbn": [
+      "Šablon:Isbn"
+    ]
+  },
+  "simple": {
+    "ipa": [
+      "Template:Ipa"
+    ],
+    "main": [
+      "Template:Mainarticle",
+      "Template:Main article",
+      "Template:Hurricane main",
+      "Template:Main articles"
+    ],
+    "cite journal": [
+      "Template:Citejournal",
+      "Template:Cite document",
+      "Template:Cite Journal",
+      "Template:BibISBN"
+    ],
+    "nihongo": [
+      "Template:Jp",
+      "Template:Nihongo4"
+    ],
+    "flagicon": [
+      "Template:Flagiconb",
+      "Template:Flag icon"
+    ],
+    "reflist": [
+      "Template:Refs",
+      "Template:RefList",
+      "Template:Footnotes",
+      "Template:Reference list",
+      "Template:Ref list",
+      "Template:Rflist",
+      "Template:Reference",
+      "Template:REFLIST",
+      "Template:Ref List"
+    ],
+    "birth date and age": [
+      "Template:Bda",
+      "Template:Birthdateandage",
+      "Template:Birthdate and age"
+    ],
+    "citation": [
+      "Template:Cite",
+      "Template:Cite study"
+    ],
+    "flag": [
+      "Template:Vbw",
+      "Template:Vb",
+      "Template:Hb",
+      "Template:Country",
+      "Template:Flag country"
+    ],
+    "coord": [
+      "Template:Coor dms",
+      "Template:Coor at dms",
+      "Wikipedia:COORD",
+      "Template:Location",
+      "Template:Coords",
+      "Template:Coordinates"
+    ],
+    "small": [
+      "Template:Smaller"
+    ],
+    "start": [
+      "Template:Release date",
+      "Template:Startdate",
+      "Template:Start Date",
+      "Template:Start year"
+    ],
+    "isbn": [
+      "Template:Isbn"
+    ],
+    "sfn": [
+      "Template:Snf"
+    ],
+    "commons cat": [
+      "Template:Commonscat",
+      "Template:Commons cat",
+      "Template:Commonscat2",
+      "Template:Ccat",
+      "Template:Wikimedia commons cat",
+      "Template:Category commons",
+      "Template:C cat",
+      "Template:Commonscategory",
+      "Template:Commonsimages cat",
+      "Template:Commons Category"
+    ],
+    "cite web": [
+      "Template:Web-cite",
+      "Template:Citeweb",
+      "Template:Cite website",
+      "Template:Cita web",
+      "Template:Web link",
+      "Template:Internetquelle"
+    ],
+    "cite book": [
+      "Template:Citebook",
+      "Template:Citebooks",
+      "Template:Cite manual",
+      "Template:Cite work",
+      "Template:Cite publication",
+      "Template:Book source"
+    ],
+    "taxobox": [
+      "Wikipedia:TX"
+    ],
+    "portal": [
+      "Template:Portal box"
+    ]
+  },
+  "sk": {
+    "main": [
+      "Šablóna:Main"
+    ],
+    "flagicon": [
+      "Šablóna:Flagicon"
+    ],
+    "reflist": [
+      "Šablóna:Reflist"
+    ],
+    "birth date and age": [
+      "Šablóna:Dnv"
+    ],
+    "small": [
+      "Šablóna:Small"
+    ]
+  },
+  "sl": {
+    "ipa": [
+      "Predloga:Ipa"
+    ],
+    "portal": [
+      "Predloga:Portalpar",
+      "Predloga:Portal box"
+    ],
+    "commons cat": [
+      "Predloga:Commonscat",
+      "Predloga:Kategorija v zbirki",
+      "Predloga:Commons cat",
+      "Predloga:Katzbirke",
+      "Predloga:Commons category"
+    ],
+    "taxobox": [
+      "Predloga:Taxobox"
+    ],
+    "cite web": [
+      "Predloga:Test-Cite web",
+      "Predloga:Cite web",
+      "Predloga:Citeweb",
+      "Predloga:Navedi splet/lua",
+      "Predloga:Navedi splet/old",
+      "Predloga:Cite website",
+      "Predloga:Cite Sports-Reference"
+    ],
+    "flagicon": [
+      "Predloga:Flagicon",
+      "Predloga:Flag icon",
+      "Predloga:Ikonazastave"
+    ],
+    "cite book": [
+      "Predloga:Cite book",
+      "Predloga:Navedi knjigo/lua"
+    ],
+    "main": [
+      "Predloga:Glavno",
+      "Predloga:Main",
+      "Predloga:Main articles",
+      "Predloga:Main Article",
+      "Predloga:Main article"
+    ],
+    "birth date and age": [
+      "Predloga:Birth date and age",
+      "Predloga:Bda"
+    ],
+    "citation": [
+      "Predloga:Citation",
+      "Predloga:Cite",
+      "Predloga:Citat/new",
+      "Predloga:Citation/new",
+      "Predloga:Navedi citat"
+    ],
+    "coord": [
+      "Predloga:Coord",
+      "Predloga:Geopolje koor/peskovnik",
+      "Wikipedija:COORD",
+      "Wikipedija:KOORD",
+      "Predloga:Koord novi",
+      "Predloga:Coords"
+    ],
+    "flag": [
+      "Predloga:Flag",
+      "Predloga:Country"
+    ],
+    "start": [
+      "Predloga:Start date",
+      "Predloga:Start-date"
+    ],
+    "sfn": [
+      "Predloga:SFN",
+      "Predloga:Shortened footnote template"
+    ],
+    "reflist": [
+      "Predloga:Reflist",
+      "Predloga:Refsez",
+      "Predloga:Seznam referenc"
+    ],
+    "isbn": [
+      "Predloga:Isbn"
+    ],
+    "cite journal": [
+      "Predloga:Cite journal",
+      "Predloga:Cite newspaper"
+    ]
+  },
+  "sq": {
+    "commons cat": [
+      "Stampa:Commonscat",
+      "Stampa:Commons cat"
+    ],
+    "ipa": [
+      "Stampa:SAPI"
+    ],
+    "main": [
+      "Stampa:Main",
+      "Stampa:Kryesore",
+      "Stampa:Artikulli kryesor",
+      "Stampa:Main article"
+    ],
+    "reflist": [
+      "Stampa:Referencat",
+      "Stampa:Referime"
+    ],
+    "cite web": [
+      "Stampa:Cito uebin",
+      "Stampa:Cito web"
+    ],
+    "cite journal": [
+      "Stampa:Cito revistë shk"
+    ],
+    "citation": [
+      "Stampa:Cite document",
+      "Stampa:Citim"
+    ],
+    "coord": [
+      "Stampa:Coordinates"
+    ],
+    "birth date and age": [
+      "Stampa:DM",
+      "Stampa:DLM",
+      "Stampa:Dm",
+      "Stampa:Birth date and age/Mashkull",
+      "Stampa:Birth date and age/Femër",
+      "Stampa:Date of birth and age",
+      "Stampa:Ditëlindja dhe mosha",
+      "Stampa:Ditëlindja dhe mosha/Femër",
+      "Stampa:Ditëlindja dhe mosha/Mashkull",
+      "Stampa:Bda"
+    ],
+    "isbn": [
+      "Stampa:Isbn"
+    ]
+  },
+  "sr": {
+    "commons cat": [
+      "Шаблон:CommonsCat",
+      "Шаблон:Commons cat",
+      "Шаблон:Kategorija na Ostavi-lat",
+      "Шаблон:Commons category",
+      "Шаблон:Commons Category",
+      "Шаблон:Ccat",
+      "Шаблон:Commons category-lat",
+      "Шаблон:Ccat-lat",
+      "Шаблон:Commonscat",
+      "Шаблон:Commonscat-lat",
+      "Шаблон:Категорија на остави"
+    ],
+    "main": [
+      "Шаблон:ГлавниЧланак",
+      "Шаблон:Посебан чланак",
+      "Шаблон:Главни чланак",
+      "Шаблон:Mainarticle",
+      "Шаблон:Readmain",
+      "Шаблон:Main article",
+      "Шаблон:Seemain",
+      "Шаблон:See main",
+      "Шаблон:Main articles",
+      "Шаблон:Comprehensive",
+      "Шаблон:Full article",
+      "Шаблон:Main page",
+      "Шаблон:Главни чланци",
+      "Шаблон:Main"
+    ],
+    "portal": [
+      "Шаблон:Портал2",
+      "Шаблон:Portal box"
+    ],
+    "cite web": [
+      "Шаблон:Цитат веба",
+      "Шаблон:Citeweb",
+      "Шаблон:Web cite",
+      "Шаблон:WebCite",
+      "Шаблон:Ците веб",
+      "Шаблон:Cite website",
+      "Шаблон:Cita web",
+      "Шаблон:Citiranje weba",
+      "Шаблон:Web kaynağı"
+    ],
+    "cite book": [
+      "Шаблон:Цитирање књиге",
+      "Шаблон:Citebook",
+      "Шаблон:Cite manual",
+      "Шаблон:Cite Book",
+      "Шаблон:Cite chapter",
+      "Шаблон:Cite work"
+    ],
+    "birth date and age": [
+      "Шаблон:Birth date and age"
+    ],
+    "flag": [
+      "Шаблон:Flag",
+      "Шаблон:Country",
+      "Шаблон:ZID"
+    ],
+    "flagicon": [
+      "Шаблон:Flagicon",
+      "Шаблон:Flag icon"
+    ],
+    "reflist": [
+      "Шаблон:Наводи",
+      "Шаблон:Reflista",
+      "Шаблон:Списреф",
+      "Шаблон:Reflist",
+      "Шаблон:Извори"
+    ],
+    "citation": [
+      "Шаблон:Cite",
+      "Шаблон:Ouvrage",
+      "Шаблон:Citation/lua",
+      "Шаблон:Cytuj"
+    ],
+    "coord": [
+      "Шаблон:Coor",
+      "Шаблон:Coor d",
+      "Шаблон:Coor dm",
+      "Шаблон:Coor dms",
+      "Шаблон:Коор наслов",
+      "Шаблон:Координате",
+      "Шаблон:Coor title dms",
+      "Шаблон:Coor title dm",
+      "Шаблон:Coor dm2",
+      "Шаблон:Coor at dm",
+      "Шаблон:Координате горе",
+      "Шаблон:CoorHeader",
+      "Шаблон:Koord",
+      "Шаблон:Location",
+      "Шаблон:Coords",
+      "Шаблон:Coordinates"
+    ],
+    "ipa": [
+      "Шаблон:МФА"
+    ],
+    "sfn": [
+      "Шаблон:Извор",
+      "Шаблон:Sfn"
+    ],
+    "start": [
+      "Шаблон:Launch date",
+      "Шаблон:Release date",
+      "Шаблон:Start date",
+      "Шаблон:Почетни датум"
+    ],
+    "small": [
+      "Шаблон:Small",
+      "Шаблон:Мало",
+      "Шаблон:Умањи"
+    ],
+    "cite journal": [
+      "Шаблон:Cite paper",
+      "Шаблон:Cite document",
+      "Шаблон:Cite Journal",
+      "Шаблон:Citiranje časopisa"
+    ],
+    "isbn": [
+      "Шаблон:Isbn"
+    ]
+  },
+  "sv": {
+    "portal": [
+      "Mall:+Portal",
+      "Mall:Portal länk",
+      "Mall:Portalbox"
+    ],
+    "main": [
+      "Mall:Katmer",
+      "Mall:Main",
+      "Mall:Catmore",
+      "Mall:Huvudartiklar",
+      "Mall:Huvudartikel saknas",
+      "Mall:Sammanfattning",
+      "Mall:Huvudsida",
+      "Mall:Huvudartikeln",
+      "Mall:Ursprunglig artikel",
+      "Mall:Vidare information",
+      "Mall:Huvudartiklel",
+      "Mall:Huvudsidor",
+      "Mall:Huvud"
+    ],
+    "flag": [
+      "Mall:Flag",
+      "Mall:Flagg"
+    ],
+    "flagicon": [
+      "Mall:Flagicon",
+      "Mall:Flaggikon",
+      "Mall:Flag icon"
+    ],
+    "commons cat": [
+      "Mall:Commonscat-rad",
+      "Mall:Commonskat",
+      "Mall:Commons cat",
+      "Mall:Commons category",
+      "Mall:Commonskategori",
+      "Mall:Commonscat-inline",
+      "Mall:Commons category-inline"
+    ],
+    "cite journal": [
+      "Mall:Citejournal"
+    ],
+    "cite web": [
+      "Mall:Källa www"
+    ],
+    "birth date and age": [
+      "Mall:Födelsedatumochålder",
+      "Mall:Birth date",
+      "Mall:Birth date and age"
+    ],
+    "coord": [
+      "Mall:Koordinat",
+      "Mall:Koordinat2",
+      "Mall:Coor dm",
+      "Mall:Koor d",
+      "Mall:Coor d",
+      "Mall:Koor",
+      "Mall:Coor dms",
+      "Mall:Location",
+      "Mall:Coor title dm",
+      "Mall:Coordinate",
+      "Mall:Koord",
+      "Mall:Coor",
+      "Mall:Coor title dms"
+    ],
+    "cite book": [
+      "Mall:Citebook"
+    ],
+    "citation": [
+      "Mall:Cite",
+      "Mall:Cite magazine",
+      "Mall:Cite letter"
+    ],
+    "start": [
+      "Mall:Start date"
+    ],
+    "isbn": [
+      "Mall:Isbn"
+    ]
+  },
+  "ta": {
+    "main": [
+      "வார்ப்புரு:முதன்மை",
+      "வார்ப்புரு:Seemain",
+      "வார்ப்புரு:Mainarticle",
+      "வார்ப்புரு:Main",
+      "வார்ப்புரு:முதன்மைக் கட்டுரை",
+      "வார்ப்புரு:Main articles"
+    ],
+    "portal": [
+      "வார்ப்புரு:வலைவாசல்",
+      "வார்ப்புரு:Portalpar"
+    ],
+    "cite journal": [
+      "வார்ப்புரு:Cite paper",
+      "வார்ப்புரு:Cite Journal",
+      "வார்ப்புரு:Citejournal",
+      "வார்ப்புரு:Cite document"
+    ],
+    "cite book": [
+      "வார்ப்புரு:Citebook",
+      "வார்ப்புரு:Cite publication",
+      "வார்ப்புரு:Cite books"
+    ],
+    "flag": [
+      "வார்ப்புரு:Flag"
+    ],
+    "flagicon": [
+      "வார்ப்புரு:Flag icon"
+    ],
+    "birth date and age": [
+      "வார்ப்புரு:Bda",
+      "வார்ப்புரு:Birthdate and age",
+      "வார்ப்புரு:Birth date and age"
+    ],
+    "reflist": [
+      "வார்ப்புரு:Ref list",
+      "வார்ப்புரு:Refs",
+      "வார்ப்புரு:^",
+      "வார்ப்புரு:மேற்கோள்பட்டியல்",
+      "வார்ப்புரு:சான்று"
+    ],
+    "coord": [
+      "வார்ப்புரு:Coor d",
+      "வார்ப்புரு:Coor dm",
+      "வார்ப்புரு:Coor dms",
+      "வார்ப்புரு:புவியியல் அமைவு",
+      "வார்ப்புரு:Coor title dms",
+      "வார்ப்புரு:Coor at dm",
+      "வார்ப்புரு:Coor title dm",
+      "வார்ப்புரு:Coor title d",
+      "வார்ப்புரு:Coor at d",
+      "வார்ப்புரு:Coor at dms",
+      "வார்ப்புரு:Coords",
+      "வார்ப்புரு:Coordinates",
+      "வார்ப்புரு:Coor"
+    ],
+    "citation": [
+      "வார்ப்புரு:Cite",
+      "வார்ப்புரு:Cite gazette"
+    ],
+    "start": [
+      "வார்ப்புரு:Startdate",
+      "வார்ப்புரு:Start Date"
+    ],
+    "sfn": [
+      "வார்ப்புரு:Snf"
+    ],
+    "commons cat": [
+      "வார்ப்புரு:Commonscat",
+      "வார்ப்புரு:Commons cat",
+      "வார்ப்புரு:Commoncat",
+      "வார்ப்புரு:Commons2",
+      "வார்ப்புரு:Commons+cat",
+      "வார்ப்புரு:Ccat"
+    ],
+    "isbn": [
+      "வார்ப்புரு:Isbn"
+    ]
+  },
+  "te": {
+    "cite web": [
+      "మూస:వెబ్ మూలము",
+      "మూస:Citeweb",
+      "మూస:Cite blog",
+      "మూస:Web reference"
+    ],
+    "cite book": [
+      "మూస:Book reference",
+      "మూస:Citebook"
+    ],
+    "flag": [
+      "మూస:Country",
+      "మూస:Flag"
+    ],
+    "reflist": [
+      "మూస:మూలాలజాబితా",
+      "మూస:Refs",
+      "మూస:మూలాలు",
+      "మూస:మూలాల జాబితా"
+    ],
+    "flagicon": [
+      "మూస:Flagicon"
+    ],
+    "start": [
+      "మూస:Release date",
+      "మూస:Launch date"
+    ],
+    "citation": [
+      "మూస:Cite"
+    ],
+    "sfn": [
+      "మూస:Shortened footnote template"
+    ],
+    "commons cat": [
+      "మూస:Commonscat",
+      "మూస:Commons cat",
+      "మూస:Ccat"
+    ],
+    "main": [
+      "మూస:Seemain",
+      "మూస:Main2",
+      "మూస:Mainarticle"
+    ],
+    "isbn": [
+      "మూస:Isbn"
+    ],
+    "coord": [
+      "మూస:Coor dm",
+      "మూస:Coor dms",
+      "మూస:Coor at d",
+      "మూస:Coordinates",
+      "మూస:Coor at dm",
+      "మూస:Coor at dms",
+      "మూస:Coor title d",
+      "మూస:Coords"
+    ]
+  },
+  "th": {
+    "ipa": [
+      "แม่แบบ:Ipa"
+    ],
+    "portal": [
+      "แม่แบบ:Portal",
+      "แม่แบบ:Portal box",
+      "แม่แบบ:สถานีย่อย2"
+    ],
+    "commons cat": [
+      "แม่แบบ:Commons cat",
+      "แม่แบบ:Commons category",
+      "แม่แบบ:CommonsCat",
+      "แม่แบบ:Commonscat",
+      "แม่แบบ:Commons Category",
+      "แม่แบบ:หมวดหมู่คอมมอนส์",
+      "แม่แบบ:Cc",
+      "แม่แบบ:คอมมอนส์หมวดหมู่"
+    ],
+    "main": [
+      "แม่แบบ:Main",
+      "แม่แบบ:Mainarticle",
+      "แม่แบบ:ดูบทความหลัก",
+      "แม่แบบ:บทความหลัก2",
+      "แม่แบบ:บทความหลัก",
+      "แม่แบบ:Main article"
+    ],
+    "nihongo": [
+      "แม่แบบ:Nihongo",
+      "แม่แบบ:Nhg",
+      "แม่แบบ:Nhg1",
+      "แม่แบบ:Lang-jpn",
+      "แม่แบบ:ญป"
+    ],
+    "taxobox": [
+      "แม่แบบ:อนุกรมภิธาน",
+      "แม่แบบ:Taxobox",
+      "แม่แบบ:สัตววิทยา",
+      "แม่แบบ:พฤกษศาสตร์"
+    ],
+    "flagicon": [
+      "แม่แบบ:ธง",
+      "แม่แบบ:Flag icon"
+    ],
+    "cite journal": [
+      "แม่แบบ:Cite paper",
+      "แม่แบบ:Cite Journal"
+    ],
+    "cite web": [
+      "แม่แบบ:Citeweb",
+      "แม่แบบ:Cite-web",
+      "แม่แบบ:Cite webpage",
+      "แม่แบบ:Cite website",
+      "แม่แบบ:Cita web",
+      "Cite web",
+      "แม่แบบ:Cw",
+      "แม่แบบ:Citar web",
+      "แม่แบบ:Cite blog",
+      "แม่แบบ:Internetquelle"
+    ],
+    "cite book": [
+      "แม่แบบ:Citebook",
+      "แม่แบบ:Cite work",
+      "แม่แบบ:Cite manual",
+      "แม่แบบ:Cite หนังสือ"
+    ],
+    "birth date and age": [
+      "แม่แบบ:生年月日と年齢",
+      "แม่แบบ:Date of birth and age"
+    ],
+    "coord": [
+      "แม่แบบ:Geobox coor",
+      "แม่แบบ:Location dec",
+      "แม่แบบ:Coords",
+      "แม่แบบ:Coordinates"
+    ],
+    "flag": [
+      "แม่แบบ:ธง-ประเทศ"
+    ],
+    "reflist": [
+      "แม่แบบ:Reflist",
+      "แม่แบบ:Refist"
+    ],
+    "start": [
+      "แม่แบบ:Release date"
+    ],
+    "citation": [
+      "แม่แบบ:Cite",
+      "แม่แบบ:Harvard reference"
+    ],
+    "small": [
+      "แม่แบบ:เล็ก",
+      "แม่แบบ:Smaller"
+    ],
+    "sfn": [
+      "แม่แบบ:Snf"
+    ],
+    "isbn": [
+      "แม่แบบ:Isbn"
+    ]
+  },
+  "tr": {
+    "commons cat": [
+      "Şablon:Commonscat",
+      "Şablon:Commons cat",
+      "Şablon:Commons category",
+      "Şablon:CommonsKat",
+      "Şablon:Commons kategorisi",
+      "Şablon:Commons Category",
+      "Şablon:Commonscategory"
+    ],
+    "isbn": [
+      "Şablon:İsbn"
+    ],
+    "taxobox": [
+      "Şablon:Taxobox",
+      "Şablon:Taksokutu",
+      "Şablon:Takso kutu"
+    ],
+    "ipa": [
+      "Şablon:İpa"
+    ],
+    "coord": [
+      "Şablon:Coor dms",
+      "Şablon:Koor başlık dm",
+      "Şablon:Coor title dm",
+      "Şablon:Koordinatlar",
+      "Şablon:Coords",
+      "Şablon:Geobox coor",
+      "Şablon:Coord",
+      "Şablon:Koor dms"
+    ],
+    "main": [
+      "Şablon:Anamadde",
+      "Şablon:Main",
+      "Şablon:Kat",
+      "Şablon:Catmain",
+      "Şablon:Cat main",
+      "Şablon:Main article",
+      "Şablon:Kategori açıklaması",
+      "Şablon:Kategori ana maddesi",
+      "Şablon:Ana madde",
+      "Şablon:Category main article"
+    ],
+    "reflist": [
+      "Şablon:Reference",
+      "Şablon:Refs",
+      "Şablon:Reflist",
+      "Şablon:References",
+      "Şablon:Referanslar",
+      "Şablon:Kaynak listesi",
+      "Şablon:Kaynakca"
+    ],
+    "small": [
+      "Şablon:Small"
+    ],
+    "start": [
+      "Şablon:Start date",
+      "Şablon:Başlama tarihi",
+      "Şablon:Kuruluş tarihi"
+    ],
+    "birth date and age": [
+      "Şablon:Birth date and age",
+      "Şablon:Doğum-tarihi ve yaşı",
+      "Şablon:Bda"
+    ],
+    "flagicon": [
+      "Şablon:Flagicon",
+      "Şablon:Flag icon"
+    ],
+    "sfn": [
+      "Şablon:Sfn",
+      "Şablon:Snf",
+      "Şablon:Kdş"
+    ],
+    "cite web": [
+      "Şablon:Web cite",
+      "Şablon:Webkaynağı",
+      "Şablon:Citeweb",
+      "Şablon:Cite web",
+      "Şablon:İnternet kaynağı",
+      "Şablon:Webbref",
+      "Şablon:Cytuj"
+    ],
+    "citation": [
+      "Şablon:Cite",
+      "Şablon:Citation",
+      "Şablon:Kaynaklar"
+    ],
+    "cite book": [
+      "Şablon:Kaynak Kitap",
+      "Şablon:Kitapkaynağı",
+      "Şablon:Cite book"
+    ],
+    "cite journal": [
+      "Şablon:Cite journal",
+      "Şablon:Cite science"
+    ]
+  },
+  "uk": {
+    "flagicon": [
+      "Шаблон:Прапорець20",
+      "Шаблон:Flagicon",
+      "Шаблон:Прапор",
+      "Шаблон:Flag",
+      "Шаблон:Flag icon",
+      "Шаблон:Прапорець країни",
+      "Шаблон:Флаг"
+    ],
+    "coord": [
+      "Шаблон:Координати ГМС",
+      "Шаблон:Координати ГМ",
+      "Шаблон:Coord dm",
+      "Шаблон:Coor dm",
+      "Шаблон:Coor dms",
+      "Шаблон:Geobox coor",
+      "Шаблон:Координати",
+      "Шаблон:Location",
+      "Шаблон:Location dec",
+      "Шаблон:Object location dec",
+      "Шаблон:Geocoordenadas",
+      "Шаблон:Coord2",
+      "Шаблон:WikidataCoord",
+      "Шаблон:Coords"
+    ],
+    "commons cat": [
+      "Шаблон:Commons cat",
+      "Шаблон:Commons category",
+      "Шаблон:COMMONSCAT"
+    ],
+    "taxobox": [
+      "Шаблон:Taxobox",
+      "Шаблон:Таксобокс",
+      "Шаблон:Організм"
+    ],
+    "cite book": [
+      "Шаблон:Cite книга",
+      "Шаблон:КнигаАПА",
+      "Шаблон:Cite manual",
+      "Шаблон:Cite work",
+      "Шаблон:Cite publication"
+    ],
+    "ipa": [
+      "Шаблон:IPA",
+      "Шаблон:Pronounced",
+      "Шаблон:Ipa",
+      "Шаблон:Pron"
+    ],
+    "cite web": [
+      "Шаблон:Цитата:Інтернет",
+      "Шаблон:Citeweb",
+      "Шаблон:Cite web/uk",
+      "Шаблон:Web cite",
+      "Шаблон:Привести сайту",
+      "Шаблон:Citat web",
+      "Шаблон:Tīmekļa atsauce",
+      "Шаблон:Cw",
+      "Шаблон:Ref-web",
+      "Шаблон:Citar web",
+      "Шаблон:Citace elektronické monografie",
+      "Шаблон:Cite-web",
+      "Шаблон:Cited web",
+      "Шаблон:Site web",
+      "Шаблон:Web citation",
+      "Шаблон:Cite url",
+      "Шаблон:Cite blog",
+      "Шаблон:Lien Web",
+      "Шаблон:Citeer web",
+      "Шаблон:Internetquelle"
+    ],
+    "cite journal": [
+      "Шаблон:Cite document",
+      "Шаблон:Ref-publicació",
+      "Шаблон:Article",
+      "Шаблон:Cited journal",
+      "Шаблон:Цитувати журнал",
+      "Шаблон:Vcite2 journal",
+      "Шаблон:Citejournal"
+    ],
+    "portal": [
+      "Шаблон:Portal",
+      "Шаблон:Portal box"
+    ],
+    "main": [
+      "Шаблон:See",
+      "Шаблон:Основна стаття",
+      "Шаблон:Головна",
+      "Шаблон:Головна стаття",
+      "Шаблон:Main article",
+      "Шаблон:Главная"
+    ],
+    "reflist": [
+      "Шаблон:References",
+      "Шаблон:Примітки",
+      "Шаблон:Зноски",
+      "Шаблон:Виноски",
+      "Шаблон:Ref-list",
+      "Шаблон:Примечания",
+      "Шаблон:Przypisy"
+    ],
+    "birth date and age": [
+      "Шаблон:Дата рождения"
+    ],
+    "small": [
+      "Шаблон:Petit"
+    ],
+    "citation": [
+      "Шаблон:Cite",
+      "Шаблон:Cite citation",
+      "Шаблон:Citazione"
+    ],
+    "nihongo": [
+      "Шаблон:Nihongo",
+      "Шаблон:Ніхонго",
+      "Шаблон:Ніхонга"
+    ],
+    "isbn": [
+      "Шаблон:Isbn"
+    ],
+    "sfn": [
+      "Шаблон:Odn"
+    ]
+  },
+  "ur": {
+    "portal": [
+      "سانچہ:Portal",
+      "سانچہ:Portal box",
+      "سانچہ:باب 2",
+      "سانچہ:Portalpar",
+      "سانچہ:Portalbox",
+      "سانچہ:Ports",
+      "سانچہ:Portal-2"
+    ],
+    "ipa": [
+      "سانچہ:Ipa"
+    ],
+    "flag": [
+      "سانچہ:Flag",
+      "سانچہ:Flagu",
+      "سانچہ:العلم",
+      "سانچہ:Country"
+    ],
+    "flagicon": [
+      "سانچہ:پرچم تصویر"
+    ],
+    "birth date and age": [
+      "سانچہ:Bda",
+      "سانچہ:Birth date and age",
+      "سانچہ:تاریخ-پیدائش اور عمر",
+      "سانچہ:Birth-date and age",
+      "سانچہ:تاريخ الميلاد والعمر",
+      "سانچہ:B-da",
+      "سانچہ:Birth date ad age"
+    ],
+    "cite book": [
+      "سانچہ:حوالہ-کتاب",
+      "سانچہ:Citebook",
+      "سانچہ:Cite کتاب",
+      "سانچہ:یادکرد کتاب",
+      "سانچہ:Cite book",
+      "سانچہ:مرجع كتاب",
+      "سانچہ:استشهاد بكتاب",
+      "سانچہ:Kitap kaynağı"
+    ],
+    "cite web": [
+      "سانچہ:حوالہ جالبین",
+      "سانچہ:حوالہ-جال",
+      "سانچہ:Citeweb",
+      "سانچہ:Cite web",
+      "سانچہ:یادکرد وب",
+      "سانچہ:Lien web",
+      "سانچہ:Cite Web",
+      "سانچہ:فرما:Cite web",
+      "سانچہ:Chú thích web",
+      "سانچہ:Cite blog",
+      "سانچہ:استشهاد ويب",
+      "سانچہ:Cite website",
+      "سانچہ:Web kaynağı",
+      "سانچہ:استشهاد بويب"
+    ],
+    "cite journal": [
+      "سانچہ:Cite paper",
+      "سانچہ:Cite journal",
+      "سانچہ:استشهاد بدورية أكاديمية",
+      "سانچہ:استشهاد بدورية محكمة"
+    ],
+    "reflist": [
+      "سانچہ:Reflist",
+      "سانچہ:Refs",
+      "سانچہ:پانویس",
+      "سانچہ:حوالے",
+      "سانچہ:Reference",
+      "سانچہ:RE",
+      "سانچہ:Listaref",
+      "سانچہ:Ref-list",
+      "سانچہ:FootnotesSmall",
+      "سانچہ:Reference list",
+      "سانچہ:Ref list",
+      "سانچہ:Footnotes",
+      "سانچہ:Footnote",
+      "Reflist",
+      "ویکیپیڈیا:REFLIST",
+      "سانچہ:Referencias",
+      "سانچہ:Références",
+      "سانچہ:RefList",
+      "سانچہ:Ref List",
+      "سانچہ:مراجع",
+      "سانچہ:حوالا جات"
+    ],
+    "taxobox": [
+      "سانچہ:خاعت",
+      "سانچہ:تصنيف كائن",
+      "سانچہ:خانہ معلومات پھل",
+      "سانچہ:صندوق معلومات كائن"
+    ],
+    "coord": [
+      "سانچہ:Coord/conversion",
+      "سانچہ:Coords",
+      "سانچہ:Coordinates",
+      "سانچہ:إحداثيات",
+      "سانچہ:متناسقاتی مقام"
+    ],
+    "commons cat": [
+      "سانچہ:Commonscat",
+      "سانچہ:زمرہ العام",
+      "سانچہ:Commons cat",
+      "سانچہ:Commons category",
+      "سانچہ:ویکی کومنز-زمرہ",
+      "سانچہ:کومنز زمرہ",
+      "سانچہ:انبار-رده",
+      "سانچہ:زمرہ کومنز",
+      "سانچہ:زمرہ ویکی ذخائر"
+    ],
+    "citation": [
+      "سانچہ:Cite"
+    ],
+    "start": [
+      "سانچہ:Release date",
+      "سانچہ:Start-date",
+      "سانچہ:Initial release",
+      "سانچہ:Start date",
+      "سانچہ:Foundation date",
+      "سانچہ:Launch date",
+      "سانچہ:Startdate",
+      "سانچہ:Date start",
+      "سانچہ:Starting date",
+      "سانچہ:Start Date"
+    ],
+    "isbn": [
+      "سانچہ:ISBN",
+      "سانچہ:আইএসবিএন",
+      "سانچہ:Isbn"
+    ],
+    "main": [
+      "سانچہ:مکمل مضمون",
+      "سانچہ:Main",
+      "سانچہ:اصل",
+      "سانچہ:ام",
+      "سانچہ:اصل مقالہ",
+      "سانچہ:اس",
+      "سانچہ:تفصیلی مضمون",
+      "سانچہ:مرکزی مضمون",
+      "سانچہ:Main article",
+      "سانچہ:Article détaillé",
+      "سانچہ:AP",
+      "سانچہ:مین"
+    ],
+    "small": [
+      "سانچہ:چھوٹا",
+      "سانچہ:صغير",
+      "سانچہ:Small"
+    ],
+    "sfn": [
+      "سانچہ:Shortened footnote template",
+      "سانچہ:Sf",
+      "سانچہ:Sfnnb",
+      "سانچہ:Sfn-en"
+    ]
+  },
+  "uz": {
+    "commons cat": [
+      "Andoza:Commons cat",
+      "Andoza:Commons category",
+      "Andoza:Commonscat"
+    ],
+    "birth date and age": [
+      "Andoza:Birth date and age",
+      "Andoza:Bda",
+      "Andoza:Tavallud sanasi va yoshi",
+      "Andoza:Tugilgan sanasi va yoshi"
+    ],
+    "flag": [
+      "Andoza:Flag",
+      "Andoza:Country"
+    ],
+    "cite web": [
+      "Andoza:Citeweb",
+      "Andoza:Cite web",
+      "Andoza:Web manba",
+      "Andoza:Web manbasi",
+      "Andoza:Web cite"
+    ],
+    "cite book": [
+      "Andoza:Cite book"
+    ],
+    "coord": [
+      "Andoza:Koord",
+      "Andoza:Koordinata"
+    ],
+    "main": [
+      "Andoza:Main article",
+      "Andoza:Main",
+      "Andoza:Asosiy maqola"
+    ],
+    "cite journal": [
+      "Andoza:Cite document"
+    ],
+    "citation": [
+      "Andoza:Cite"
+    ],
+    "reflist": [
+      "Andoza:Reflist"
+    ],
+    "nihongo": [
+      "Andoza:Nixonga",
+      "Andoza:Nihongo"
+    ],
+    "isbn": [
+      "Andoza:ISBN2",
+      "Andoza:Isbn",
+      "Andoza:Isbn2"
+    ]
+  },
+  "vi": {
+    "ipa": [
+      "Bản mẫu:Ipa",
+      "Bản mẫu:IPA char"
+    ],
+    "portal": [
+      "Bản mẫu:Portalpar",
+      "Bản mẫu:Portal",
+      "Bản mẫu:Portal box",
+      "Bản mẫu:Portalbox",
+      "Bản mẫu:Chủ đề"
+    ],
+    "main": [
+      "Bản mẫu:Main",
+      "Bản mẫu:Bài chính",
+      "Bản mẫu:Main articles",
+      "Bản mẫu:Bài chi tiết",
+      "Bản mẫu:Main article",
+      "Bản mẫu:Mainarticle",
+      "Bản mẫu:AP",
+      "Bản mẫu:See main"
+    ],
+    "commons cat": [
+      "Bản mẫu:Commons2",
+      "Bản mẫu:Commons cat",
+      "Bản mẫu:Commons category",
+      "Bản mẫu:Common cats",
+      "Bản mẫu:Commonscat",
+      "Bản mẫu:Thể loại commons",
+      "Bản mẫu:Commons Category",
+      "Bản mẫu:COMMONSCAT",
+      "Bản mẫu:Commonscategory",
+      "Bản mẫu:Commons-cat",
+      "Bản mẫu:Commons Thể loại"
+    ],
+    "taxobox": [
+      "Bản mẫu:Phân loại khoa học",
+      "Bản mẫu:Taxobox"
+    ],
+    "cite web": [
+      "Bản mẫu:Web reference",
+      "Bản mẫu:Web reference simple",
+      "Bản mẫu:Cite Web",
+      "Bản mẫu:Cite web",
+      "Bản mẫu:Citeweb",
+      "Bản mẫu:Cite website",
+      "Bản mẫu:Web cite",
+      "Bản mẫu:Lien web",
+      "Bản mẫu:Cite url",
+      "Bản mẫu:Trích dẫn web",
+      "Bản mẫu:Chú thích Web",
+      "Bản mẫu:Citar web",
+      "Bản mẫu:Cite-web",
+      "Bản mẫu:Chú thích website",
+      "Bản mẫu:Webbref",
+      "Bản mẫu:Chú thích web web",
+      "Bản mẫu:Internetquelle",
+      "Bản mẫu:Cite web/German"
+    ],
+    "cite book": [
+      "Bản mẫu:Book reference",
+      "Bản mẫu:Cite book",
+      "Bản mẫu:Citebook",
+      "Bản mẫu:Ouvrage",
+      "Bản mẫu:Trích dẫn cuốn sách",
+      "Bản mẫu:Cite book zh",
+      "Bản mẫu:Cite books",
+      "Bản mẫu:Chú thích sách zh",
+      "Bản mẫu:Cite publication",
+      "Bản mẫu:Cite work",
+      "Bản mẫu:Cite manual",
+      "Bản mẫu:Trích dẫn sách",
+      "Bản mẫu:Cite chapter"
+    ],
+    "nihongo": [
+      "Bản mẫu:Jpn",
+      "Bản mẫu:Nihongo4",
+      "Bản mẫu:Japonais"
+    ],
+    "flagicon": [
+      "Bản mẫu:Flag icon",
+      "Bản mẫu:Flagicon",
+      "Bản mẫu:Lá cờ icon"
+    ],
+    "birth date and age": [
+      "Bản mẫu:Birth date and age",
+      "Bản mẫu:Birthdate and age",
+      "Bản mẫu:Bda",
+      "Bản mẫu:Birthdateandage",
+      "Bản mẫu:Birth-date and age",
+      "Bản mẫu:B-da",
+      "Bản mẫu:Date of birth and age",
+      "Bản mẫu:Birth Date and age"
+    ],
+    "flag": [
+      "Bản mẫu:Country",
+      "Bản mẫu:Flag",
+      "Bản mẫu:Флаг Канады"
+    ],
+    "reflist": [
+      "Bản mẫu:Refs",
+      "Bản mẫu:Reflist",
+      "Bản mẫu:Reference",
+      "Bản mẫu:Nguồn tham khảo",
+      "Bản mẫu:Danh sách tham khảo"
+    ],
+    "coord": [
+      "Bản mẫu:Coor dm",
+      "Bản mẫu:Coor dms",
+      "Bản mẫu:Coor title dm",
+      "Bản mẫu:Coor title dms",
+      "Bản mẫu:CoorHeader",
+      "Bản mẫu:Coor d",
+      "Bản mẫu:Coor",
+      "Bản mẫu:Coor title d",
+      "Bản mẫu:Coor at dm",
+      "Bản mẫu:Coor at dms",
+      "Bản mẫu:Coor at d",
+      "Bản mẫu:Coord",
+      "Bản mẫu:Toạ độ",
+      "Bản mẫu:Coordinates",
+      "Bản mẫu:Location",
+      "Bản mẫu:Geocoordinate",
+      "Bản mẫu:Coor dec",
+      "Bản mẫu:Coords",
+      "Bản mẫu:Location dec",
+      "Bản mẫu:Coordnoglobe",
+      "Bản mẫu:Geocoord"
+    ],
+    "citation": [
+      "Bản mẫu:Citation",
+      "Bản mẫu:Cite"
+    ],
+    "small": [
+      "Bản mẫu:Small"
+    ],
+    "isbn": [
+      "Bản mẫu:Isbn"
+    ],
+    "start": [
+      "Bản mẫu:Release date",
+      "Bản mẫu:Startdate",
+      "Bản mẫu:Foundation date",
+      "Bản mẫu:Initial release",
+      "Bản mẫu:Launch date",
+      "Bản mẫu:Date start",
+      "Bản mẫu:Starting date",
+      "Bản mẫu:Start Date",
+      "Bản mẫu:Cssdate",
+      "Bản mẫu:Css1date",
+      "Bản mẫu:Start date"
+    ],
+    "sfn": [
+      "Bản mẫu:Shortened footnote template",
+      "Bản mẫu:Shortened footnote",
+      "Bản mẫu:Snf",
+      "Bản mẫu:Sf",
+      "Bản mẫu:Hf"
+    ],
+    "cite journal": [
+      "Bản mẫu:Cite journal",
+      "Bản mẫu:Chú thích journal",
+      "Bản mẫu:Chú thích tập san"
+    ]
+  },
+  "zh": {
+    "sfn": [
+      "Template:Shortened footnote template"
+    ],
+    "taxobox": [
+      "Template:分类框"
+    ],
+    "ipa": [
+      "Template:国际音标",
+      "Template:Ipa"
+    ],
+    "commons cat": [
+      "Template:Commons cat",
+      "Template:Commonscat",
+      "Template:Commons Category",
+      "Template:Commonscategory",
+      "Template:共享资源分类",
+      "Template:共享資源分類",
+      "Template:Cc",
+      "Template:Ccat"
+    ],
+    "portal": [
+      "Template:Portalpar",
+      "Template:主題",
+      "Template:主題首頁",
+      "Template:Portal box",
+      "Template:入口",
+      "Template:門戶",
+      "Template:Portalbox",
+      "Template:指南"
+    ],
+    "flagicon": [
+      "Template:Flag icon",
+      "Template:旗幟圖示",
+      "Template:旗幟標誌"
+    ],
+    "main": [
+      "Template:Main articles",
+      "Template:主条目",
+      "Template:Hurricane main",
+      "Template:条目",
+      "Template:主",
+      "Template:頁面",
+      "Template:主頁面",
+      "Template:主頁",
+      "Template:主題目",
+      "Template:MAIN",
+      "Template:Main article",
+      "Template:AP",
+      "Template:主條目"
+    ],
+    "coord": [
+      "Template:Coor dms",
+      "Template:Coor",
+      "Template:Coordinate",
+      "Template:经纬",
+      "Template:經緯",
+      "Template:坐標",
+      "Template:经纬度",
+      "Template:Coord title dms",
+      "Template:座標",
+      "Template:CoorHeader",
+      "Template:Coords",
+      "Template:地理座標",
+      "Template:Coordinates",
+      "Template:Coor title dms",
+      "Template:Coordonnées"
+    ],
+    "citation": [
+      "Template:Cite",
+      "Template:Cite study",
+      "Template:CITE",
+      "Template:Cytuj",
+      "Template:引证"
+    ],
+    "reflist": [
+      "Template:FootnotesSmall",
+      "Template:註腳",
+      "Template:注脚",
+      "Template:參考資料",
+      "Template:RefList",
+      "Template:References",
+      "Template:Refs",
+      "Template:REFLIST",
+      "Template:参考列表",
+      "Template:脚注",
+      "Template:参考文献"
+    ],
+    "flag": [
+      "Template:旗幟"
+    ],
+    "start": [
+      "Template:Release date",
+      "Template:Startdate",
+      "Template:Start Date",
+      "Template:Releasedate",
+      "Template:Starting date",
+      "Template:Date start",
+      "Template:Foundation date",
+      "Template:Launch date"
+    ],
+    "small": [
+      "Template:小"
+    ],
+    "isbn": [
+      "Template:圖書",
+      "Template:Isbn"
+    ],
+    "cite web": [
+      "Template:Web reference",
+      "Template:Cite web en",
+      "Template:Cite web 2",
+      "Template:Cite web/en",
+      "Template:Cite website",
+      "Template:Citeweb",
+      "Template:Web cite",
+      "Template:Cite Web",
+      "Template:Cite blog",
+      "Template:Cite url",
+      "Template:引網",
+      "Template:Cite-web",
+      "Template:Cita web",
+      "Template:Cite web2",
+      "Template:Cite web url",
+      "Template:引用网页",
+      "Template:Cite web ja",
+      "Template:Cite web site"
+    ],
+    "cite book": [
+      "Template:Book reference",
+      "Template:Book reference 3",
+      "Template:Cite book en",
+      "Template:Cite book zh",
+      "Template:Cite book/en",
+      "Template:Citebook",
+      "Template:Cite article",
+      "Template:Cite manual",
+      "Template:Cite work",
+      "Template:Cite chapter",
+      "Template:Cytuj książkę",
+      "Template:引用书籍",
+      "Template:Cite Book"
+    ],
+    "cite journal": [
+      "Template:Journal reference",
+      "Template:Cite paper",
+      "Template:Cite journal zh",
+      "Template:Cite journal en",
+      "Template:Cite document",
+      "Template:Citejournal",
+      "Template:C-j"
+    ],
+    "birth date and age": [
+      "Template:生日和年齡",
+      "Template:Bda",
+      "Template:Birthdate and age",
+      "Template:生年月日と年齢",
+      "Template:Birthdateandage",
+      "Template:BDA"
+    ]
+  }
+}

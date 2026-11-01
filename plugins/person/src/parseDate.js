@@ -72,20 +72,13 @@ const parseDate = function (str) {
   }
   // parse the full date; return null if unsuccessful
   const s = spacetime(str)
+  if (!s.isValid()) {
+    return null
+  }
   const res = {
     year: s.year(),
     month: s.month(),
     date: s.date(),
-  }
-
-  const epoch = {
-    // epoch is returned when unsuccessful
-    year: 1970,
-    month: 0,
-    date: 1,
-  }
-  if (JSON.stringify(res) === JSON.stringify(epoch)) {
-    return null
   }
   res.year = year || s.year()
   if (inaccurateOriginal) {
