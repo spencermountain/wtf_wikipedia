@@ -70,7 +70,7 @@ const leagues = {
     franchises: mlsFranchises,
     title: mlsTitle,
     parse: (doc) => doc.mlsSeason(),
-    players: () => 0, //mls squads use their own template system
+    players: (res) => res.roster.length,
   },
   wnba: {
     from: 1997,
@@ -84,7 +84,7 @@ const leagues = {
     franchises: nwslFranchises,
     title: nwslTitle,
     parse: (doc) => doc.nwslSeason(),
-    players: () => 0, //nwsl squads are plain tables
+    players: (res) => res.roster.length,
   },
   pwhl: {
     from: 2023,
@@ -155,7 +155,8 @@ const checkSeason = async function (league, team, year) {
   // the infobox record, or the one standings derives from separate win/loss fields
   const recWins = res.season?.record?.wins ?? res.standings?.record?.wins
   if (games === 0) {
-    const po = res.playoffs ?? res.postseason ?? (res.cups ? Object.values(res.cups).flat() : [])
+    const cupGames = res.cups ? Object.values(res.cups).flat() : []
+    const po = (res.playoffs ?? res.postseason ?? []).concat(cupGames)
     if (po.length > 0) {
       out.flag = 'NO LOG'
       out.note = 'page only logs the playoffs'

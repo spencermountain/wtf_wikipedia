@@ -1,15 +1,15 @@
 import test from 'tape'
-import wtf from './_lib.js'
-import { normalize, toUrlParams, defaults } from '../src/_fns.js'
-import makeHeaders from '../src/_headers.js'
-import getRedirects from '../src/getRedirects.js'
-import getIncoming from '../src/getIncoming.js'
-import getPageViews from '../src/getPageViews.js'
-import getTransclusions from '../src/getTransclusions.js'
-import getCategory from '../src/getCategory.js'
-import getRandom from '../src/getRandom.js'
-import getRandomCategory from '../src/getRandomCategory.js'
-import fetchList from '../src/fetchList.js'
+import wtf from '../_lib.js'
+import { normalize, toUrlParams, defaults } from '../../src/_fns.js'
+import makeHeaders from '../../src/_headers.js'
+import getRedirects from '../../src/getRedirects.js'
+import getIncoming from '../../src/getIncoming.js'
+import getPageViews from '../../src/getPageViews.js'
+import getTransclusions from '../../src/getTransclusions.js'
+import getCategory from '../../src/getCategory.js'
+import getRandom from '../../src/getRandom.js'
+import getRandomCategory from '../../src/getRandomCategory.js'
+import fetchList from '../../src/fetchList.js'
 
 // fake http: returns queued responses in order, records every request
 const mockHttp = (...responses) => {
@@ -227,16 +227,15 @@ test('fetchList chunks into groups of 5', async (t) => {
 
 test('doc.getRedirects / doc.getIncoming use the title getter', async (t) => {
   const seen = []
-  const http = (url) => {
-    seen.push(url)
-    return Promise.resolve({ query: {} })
+  const oldFetch = globalThis.fetch
+  globalThis.fetch = async (url) => {
+    seen.push(String(url))
+    return { ok: true, json: async () => ({ query: {} }) }
   }
-  wtf.extend((models) => {
-    models.http = http
-  })
   const doc = wtf('hello', { title: 'Toronto' })
   t.deepEqual(await doc.getRedirects(), [], 'getRedirects resolves')
   t.deepEqual(await doc.getIncoming(), [], 'getIncoming resolves')
   t.ok(seen.every((url) => url.includes('titles=Toronto')), 'both requests use doc.title')
+  globalThis.fetch = oldFetch
   t.end()
 })

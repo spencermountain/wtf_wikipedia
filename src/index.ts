@@ -1,6 +1,6 @@
 import fetch from './API/_fetch/index.ts'
 import version from './_version.ts'
-import http from './API/_lib/fetch.ts'
+import { warnDeprecated } from './API/_lib/warn.ts'
 import parse from './parse/index.ts'
 import templates, { i18n } from './world/templates/index.ts'
 import infoboxes from './world/data/infoboxes.ts'
@@ -39,12 +39,19 @@ const models = {
   Table,
   Template,
   Block,
-  http,
   wtf: wtf,
 }
 
 wtf.fetch = function (title, options, cb) {
-  return fetch(title, options, cb)
+  // the callback/errback form has been removed
+  if (typeof cb === 'function') {
+    warnDeprecated(
+      'callback removed',
+      `wtf.fetch() no longer accepts a callback - the one passed-in will never be called.`,
+      `use the promise:  let doc = await wtf.fetch(title)`
+    )
+  }
+  return fetch(title, options)
 }
 wtf.extend = function (fn) {
   fn(models, templates, infoboxes, i18n)

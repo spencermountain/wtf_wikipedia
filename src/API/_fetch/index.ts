@@ -39,7 +39,7 @@ const getJson = function (url, headers) {
 //a single pageID, title, or URL returns one Document; an array of pageIDs or
 //titles returns an array of Documents. an array must be all pageIDs or all
 //titles - the two can't be mixed.
-const fetchPage = function (title, options, callback) {
+const fetchPage = function (title, options) {
   // support lang as 2nd param
   if (typeof options === 'string') {
     options = { lang: options }
@@ -66,7 +66,7 @@ const fetchPage = function (title, options, callback) {
     }
   }
 
-  const promise = Promise.resolve()
+  return Promise.resolve()
     .then(() =>
       Promise.all(
         groups.map((group) => {
@@ -91,13 +91,5 @@ const fetchPage = function (title, options, callback) {
       const found = results.flat()
       return parseDoc(found, title)
     })
-
-  if (typeof callback === 'function') {
-    return promise.then(
-      (data) => callback(null, data),
-      (e) => callback(e, null)
-    )
-  }
-  return promise
 }
 export default fetchPage

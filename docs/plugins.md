@@ -55,12 +55,12 @@ wtf.getIncoming(title, opts?)          // pages linking to a title
 wtf.getRedirects(title, opts?)         // redirects pointing at a title
 ```
 
-## image
+Image methods (formerly the `image` plugin):
 
-- `doc.mainImage()` → `Image | null` — the representative image
-- `img.commonsURL()` → `string` — the wikimedia-commons page for the file
-- `img.exists()` → `Promise<boolean>` — does the file url resolve
-- `img.license()` → `Promise<object | null>`
+- `doc.mainImage()` → `Image | null` — the representative image (no request made)
+- `img.commonsURL()` → `string` — a direct url on the wikimedia-commons server (no request made)
+- `img.exists(options?)` → `Promise<boolean | null>` — does the file url resolve
+- `img.license(options?)` → `Promise<object | null>` — license + attribution info, from the commons API
 
 ## html / markdown / latex
 

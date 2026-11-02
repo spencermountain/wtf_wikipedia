@@ -173,4 +173,12 @@ const warnApi = function (error, url) {
   render(`api ${info.title}`, info.why, info.fix, url)
 }
 
-export { warnHttp, warnNetwork, warnApi }
+// a library api that no longer exists
+const warnDeprecated = function (head, why, fix) {
+  if (!shouldWarn(`deprecated-${head}`)) {
+    return
+  }
+  render(head, why, fix, '')
+}
+
+export { warnHttp, warnNetwork, warnApi, warnDeprecated }

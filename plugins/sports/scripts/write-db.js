@@ -29,14 +29,13 @@ const gamesTable = `CREATE TABLE IF NOT EXISTS games (
   us INTEGER, them INTEGER, overtime BOOLEAN, attendance INTEGER, playoffs BOOLEAN
 )`
 
-// mlb says 'postseason', nfl/mls/nwsl/cfl keep theirs flat, the rest are arrays per series.
-// epl keeps its cup runs in an object - those are its non-league games here
+// nfl/mls/nwsl/cfl playoffs are flat, the rest are arrays per series.
+// soccer cup runs are the other non-league games
 const playoffGames = function (res) {
-  if (res.cups) {
-    return Object.values(res.cups).flat()
-  }
   const po = res.playoffs ?? res.postseason ?? []
-  return Array.isArray(po[0]) ? po.flat() : po
+  const flat = Array.isArray(po[0]) ? po.flat() : po
+  const cups = res.cups ? Object.values(res.cups).flat() : []
+  return [...flat, ...cups]
 }
 
 const insertGame = async function (conn, key, g, isPlayoff) {

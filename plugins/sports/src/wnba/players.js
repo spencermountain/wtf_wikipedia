@@ -1,4 +1,5 @@
 import { findSection, withChildren } from '../_lib.js'
+import { rosterRow } from '../nba/players.js'
 
 // the roster is one {{sports roster}} holding {{sports roster/entry}} rows
 const parseRoster = function (doc) {
@@ -8,8 +9,9 @@ const parseRoster = function (doc) {
   }
   const entries = withChildren(doc, s).flatMap((c) => c.templates('sports roster/entry'))
   return entries
-    .map((tmpl) => ({ ...tmpl.json().data }))
+    .map((tmpl) => tmpl.json().data || {})
     .filter((p) => p.num !== undefined) //coach + trainer entries have no number
+    .map(rosterRow)
 }
 
 export { parseRoster }

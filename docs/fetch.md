@@ -11,7 +11,6 @@ wtf.fetch(title: string | number | URL): Promise<Document | null>
 wtf.fetch(title, lang: string): Promise<Document | null>          // 'fr', 'de', ...
 wtf.fetch(title, options: FetchOptions): Promise<Document | null>
 wtf.fetch(titles: string[] | number[], options?): Promise<Document[]>
-wtf.fetch(title, options, callback)   // legacy callback form also works
 ```
 
 - a **string** title fetches that page: `wtf.fetch('Toronto Raptors')`

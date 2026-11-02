@@ -2,6 +2,7 @@ import { getCell } from '../_lib.js'
 import { findGames, findSeries } from '../engine/games.js'
 import parseInfobox from '../engine/infobox.js'
 import parseRecord from '../engine/record.js'
+import { coachOf, gmOf, venueOf, seasonDates, avgAttendance } from '../engine/season.js'
 import resolveTeam from '../engine/teams.js'
 import { twoYearTitle, parseTwoYearTitle } from '../engine/slug.js'
 import franchises from './franchises.js'
@@ -39,13 +40,18 @@ const standings = function (season) {
   if (!record && wins !== '' && losses !== '') {
     record = parseRecord(`${wins}–${losses}`)
   }
+  const divisionPlace = getCell(season, ['division_place', 'divisionrank']) || null
+  const conferencePlace = getCell(season, ['conf_place', 'conference_place']) || null
   return {
     record,
+    place: divisionPlace || conferencePlace,
+    coach: coachOf(season),
+    gm: gmOf(season),
+    venue: venueOf(season),
     division: getCell(season, ['division']) || '',
-    divisionPlace: getCell(season, ['division_place', 'divisionrank']) || null,
+    divisionPlace,
     conference: getCell(season, ['conference']) || '',
-    conferencePlace: getCell(season, ['conf_place', 'conference_place']) || null,
-    coach: getCell(season, ['coach', 'coaches']) || '',
+    conferencePlace,
     arena: getCell(season, ['arena']) || '',
   }
 }
@@ -70,13 +76,16 @@ const parse = function (doc) {
     extras,
   }
   const season = parseInfobox(doc, ['nba season'], ctx.record)
+  const games = findGames(doc, ctx, gameTitles)
   return {
     team: meta.team,
     year: meta.year,
     page: doc.title || '',
+    ...seasonDates(games),
+    attendance: avgAttendance(games, season),
     season,
     standings: standings(season),
-    games: findGames(doc, ctx, gameTitles),
+    games,
     playoffs: findSeries(doc, ctx, ['playoffs', 'postseason'], gameTitles),
     roster: parseRoster(doc),
     playerStats: parsePlayerStats(doc),

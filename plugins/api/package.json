@@ -24,8 +24,9 @@
   "sideEffects": false,
   "scripts": {
     "build": "node ./scripts/version.js && rollup -c",
-    "test": "tape --strict \"tests/**/*.test.js\" | tap-dancer",
-    "testb": "TESTENV=prod tape --strict \"tests/**/*.test.js\" | tap-dancer",
+    "test": "tape --strict \"tests/unit/**/*.test.js\" | tap-dancer",
+    "testb": "TESTENV=prod tape --strict \"tests/unit/**/*.test.js\" | tap-dancer",
+    "test:fetch": "tape --strict \"tests/fetch/**/*.test.js\" | tap-dancer",
     "version": "node ./scripts/version.js",
     "lint": "eslint ."
   },

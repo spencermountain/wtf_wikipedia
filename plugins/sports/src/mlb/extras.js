@@ -1,13 +1,33 @@
 import { findSection, withChildren } from '../_lib.js'
 
+// roster sections group players by position
+const positions = {
+  pitchers: 'P',
+  catchers: 'C',
+  infielders: 'IF',
+  outfielders: 'OF',
+  'designated hitters': 'DH',
+}
+
 // the roster is {{MLBplayer}} templates in a 'Roster' section
 const parseRoster = function (doc, year) {
   const s = findSection(doc, ['roster', 'players', `${year} roster`])
   if (!s) {
     return []
   }
-  const players = withChildren(doc, s).flatMap((c) => c.templates('mlbplayer'))
-  return players.map((tmpl) => ({ ...tmpl.json().data }))
+  const players = []
+  withChildren(doc, s).forEach((c) => {
+    const pos = positions[c.title().trim().toLowerCase()] || ''
+    c.templates('mlbplayer').forEach((tmpl) => {
+      const data = tmpl.json().data || {}
+      players.push({
+        number: parseInt(data.number, 10) || null,
+        name: data.name || '',
+        position: pos,
+      })
+    })
+  })
+  return players.filter((p) => p.name)
 }
 
 // a table in a '2008 draft picks' section

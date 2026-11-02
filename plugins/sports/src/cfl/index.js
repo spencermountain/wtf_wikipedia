@@ -2,6 +2,7 @@ import { getCell } from '../_lib.js'
 import { findGames, findSeries } from '../engine/games.js'
 import findQuarterGames from '../engine/quarters.js'
 import parseInfobox from '../engine/infobox.js'
+import { coachOf, gmOf, venueOf, seasonDates, avgAttendance } from '../engine/season.js'
 import resolveTeam from '../engine/teams.js'
 import { oneYearTitle, parseOneYearTitle } from '../engine/slug.js'
 import franchises from './franchises.js'
@@ -29,15 +30,19 @@ const extras = function (game, row) {
 const standings = function (season) {
   const out = {
     record: season.record || null,
+    place: null,
+    coach: coachOf(season),
+    gm: gmOf(season),
+    venue: venueOf(season),
     division: '',
     divisionPlace: null,
-    coach: getCell(season, ['coach', 'coaches']) || '',
     stadium: getCell(season, ['stadium']) || '',
   }
   const place = String(getCell(season, ['division_place', 'division place']) || '')
   const m = place.match(/^(\d+)(?:st|nd|rd|th)\b[, ]*(.*)/)
   if (m) {
     out.divisionPlace = Number(m[1])
+    out.place = out.divisionPlace
     out.division = m[2].trim()
   } else if (place) {
     out.division = place
@@ -67,13 +72,16 @@ const parse = function (doc) {
   if (playoffs.length === 0) {
     playoffs = findQuarterGames(doc, ctx, playoffTitles)
   }
+  const games = findGames(doc, ctx, gameTitles)
   return {
     team: meta.team,
     year: meta.year,
     page: doc.title || '',
+    ...seasonDates(games),
+    attendance: avgAttendance(games, season),
     season,
     standings: standings(season),
-    games: findGames(doc, ctx, gameTitles),
+    games,
     playoffs,
     roster: parseRoster(doc),
   }

@@ -107,9 +107,9 @@ wtf.fetch('Toronto', 'fr').then((d) => d && console.log(d))
 wtf
   .fetch(['Toronto', 'Vancouver'], { follow_redirects: false, origin: '*' })
   .then((ds: Document[]) => console.log(ds.length))
-wtf.fetch(64646, { lang: 'en' }, (err, d) => {
-  console.log(err, d)
-})
+wtf.fetch(64646, { lang: 'en' }).then((d) => d && console.log(d))
+// @ts-expect-error - the callback form was removed
+wtf.fetch(64646, { lang: 'en' }, (err: Error, d: Document) => console.log(err, d))
 
 // ---- plugin authoring ----
 declare module 'wtf_wikipedia' {
@@ -129,7 +129,8 @@ const shout: Plugin = (models: Models, templates, infoboxes) => {
   }
   templates['my-tmpl'] = () => ''
   infoboxes['my-box'] = true
-  models.http('https://example.com').then((res: unknown) => console.log(res))
+  // @ts-expect-error - models.http was removed; plugins use their own fetch
+  models.http('https://example.com')
 }
 const lib = wtf.extend(shout)
 const loud: string = lib('hello').shout()

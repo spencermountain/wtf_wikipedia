@@ -207,12 +207,9 @@ type FetchOptions = {
   'Api-User-Agent'?: string | undefined
 }
 
-type FetchCallback<T> = (...args: [err: Error, result: null] | [err: null, result: FetchResult<T>]) => void
-
 type Fetch = <T extends string | number | string[] | number[] | URL>(
   title: T,
-  options?: FetchOptions | string | undefined, // a string is a language-code, like 'en'
-  callback?: FetchCallback<T>
+  options?: FetchOptions | string | undefined // a string is a language-code, like 'en'
 ) => Promise<FetchResult<T>>
 
 type FetchResult<T> = T extends unknown[] ? Document[] : Document | null
@@ -311,7 +308,6 @@ type Models = {
   Table: typeof Table
   Template: typeof Template
   /** the fetch helper wtf uses internally */
-  http: (url: string, options?: object) => Promise<unknown>
   wtf: typeof wtf
 }
 

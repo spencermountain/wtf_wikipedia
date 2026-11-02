@@ -1,10 +1,12 @@
 import { getCell } from '../_lib.js'
-import { findMatches } from '../engine/matches.js'
+import { findMatches, findCompetitions } from '../engine/matches.js'
 import parseInfobox from '../engine/infobox.js'
 import { countRecord } from '../engine/record.js'
+import { coachOf, gmOf, venueOf, placeOf, seasonDates, avgAttendance } from '../engine/season.js'
 import resolveTeam from '../engine/teams.js'
 import { oneYearTitle, parseOneYearTitle } from '../engine/slug.js'
 import franchises from './franchises.js'
+import parseSquad from '../epl/players.js'
 
 const makeTitle = oneYearTitle
 
@@ -12,6 +14,10 @@ const gameTitles = ['regular season', 'match results', 'matches', 'major league 
 
 // league matches only - cups, friendlies and the playoffs parse separately
 const notLeague = /playoff|cup|friendl|preseason|pre-season|invitational|champions|exhibition|all-star/i
+
+// each cup run keeps its own list - the playoffs (and the MLS Cup final) stay under `playoffs`
+const cupish = /\bcup\b|champions/i
+const notCup = /play-?off|postseason|friendl|pre-?season|invitational|exhibition|all-star|^mls cup/i
 
 // the mls season runs within one calendar year, from late february
 const defaultYear = function () {
@@ -33,20 +39,31 @@ const parse = function (doc) {
   const season = parseInfobox(doc, ['soccer club season', 'football club season'], {})
   const games = findMatches(doc, ctx, gameTitles, notLeague)
   const playoffs = findMatches(doc, ctx, ['mls cup playoffs', 'playoffs', 'postseason'], null)
+  const position = getCell(season, ['position', 'league_result', 'league result']) || null
+  const squad = parseSquad(doc)
   return {
     team: meta.team,
     year: meta.year,
     page: doc.title || '',
+    ...seasonDates(games),
+    attendance: avgAttendance(games, season),
     season,
     standings: {
       record: countRecord(games),
+      place: placeOf(position),
+      coach: coachOf(season),
+      gm: gmOf(season),
+      venue: venueOf(season),
       league: getCell(season, ['league']) || '',
-      position: getCell(season, ['position', 'league_result', 'league result']) || null,
+      position,
       manager: getCell(season, ['manager', 'mgrtitle', 'head coach']) || '',
       stadium: getCell(season, ['stadium', 'stdtitle']) || '',
     },
     games,
     playoffs,
+    cups: findCompetitions(doc, ctx, cupish, notCup),
+    roster: squad,
+    squad,
   }
 }
 

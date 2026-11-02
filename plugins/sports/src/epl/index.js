@@ -3,6 +3,7 @@ import { findMatches, findCompetitions } from '../engine/matches.js'
 import { findGames } from '../engine/games.js'
 import parseInfobox from '../engine/infobox.js'
 import { countRecord } from '../engine/record.js'
+import { coachOf, gmOf, venueOf, placeOf, seasonDates, avgAttendance } from '../engine/season.js'
 import resolveTeam from '../engine/teams.js'
 import { twoYearTitle, parseTwoYearTitle } from '../engine/slug.js'
 import franchises from './franchises.js'
@@ -57,22 +58,31 @@ const parse = function (doc) {
     games = findGames(doc, ctx, gameTitles)
   }
   const rec = countRecord(games)
+  const position = getCell(season, ['position', 'league_result', 'league result']) || null
+  const squad = parseSquad(doc)
   return {
     team: meta.team,
     year: meta.year,
     page: doc.title || '',
+    ...seasonDates(games),
+    attendance: avgAttendance(games, season),
     season,
     standings: {
       record: rec,
+      place: placeOf(position),
+      coach: coachOf(season),
+      gm: gmOf(season),
+      venue: venueOf(season),
       points: rec.wins * 3 + rec.ties, //three points for a win, since 1981
       league: getCell(season, ['league']) || '',
-      position: getCell(season, ['position', 'league_result', 'league result']) || null,
+      position,
       manager: getCell(season, ['manager', 'mgrtitle', 'head coach']) || '',
       stadium: getCell(season, ['stadium', 'stdtitle']) || '',
     },
     games,
     cups: findCompetitions(doc, ctx, cupish, friendly),
-    squad: parseSquad(doc),
+    roster: squad,
+    squad,
   }
 }
 

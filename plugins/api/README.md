@@ -6,11 +6,11 @@
 
   <!-- npm version -->
   <a href="https://npmjs.org/package/wtf-plugin-api">
-    <img src="https://img.shields.io/npm/v/wtf-plugin-image.svg?style=flat-square" />
+    <img src="https://img.shields.io/npm/v/wtf-plugin-api.svg?style=flat-square" />
   </a>
 
   <!-- file size -->
-  <a href="https://unpkg.com/wtf-plugin-markdown/builds/wtf-plugin-api.min.js">
+  <a href="https://unpkg.com/wtf-plugin-api/builds/wtf-plugin-api.min.js">
     <img src="https://img.shields.io/bundlephobia/min/wtf-plugin-api" />
   </a>
 </div>
@@ -186,6 +186,39 @@ let docs = await wtf.fetchList(pages)
 // Ayla Huser 1.68 m
 ````
 
+## Images
+
+Some additional methods for using and rendering a page's images (formerly the `wtf-plugin-image` plugin):
+
+```js
+let doc = await wtf.fetch('Toronto')
+
+// choose a good, representative image for this page (no request made)
+let img = doc.mainImage()
+console.log(img.src())
+// https://wikipedia.org/wiki/Special:Redirect/file/Montage_of_Toronto_7.jpg
+
+// instead of using the redirect api, generate a direct img url (no request made)
+let url = img.commonsURL()
+// https://upload.wikimedia.org/wikipedia/commons/4/4e/RybnoeDistrict_06-13_Konstantinovo_village_05.jpg
+
+// make a {method: 'HEAD'} request to test the image is there
+let bool = await img.exists()
+
+// make a request to get the license and attribution information (results are HTML formatted)
+let license = await img.license()
+/*
+{
+  license: 'CC BY-SA 3.0',
+  artist: '<b><span class="plainlinks"> ... (more HTML)',
+  credit: '<span class="int-own-work" lang="en">Own work</span>',
+  attributionRequired: 'true'
+}
+*/
+```
+
+`exists()` and `license()` accept an options object, for setting a `userAgent`, like the other methods.
+
 ---
 
 ## API
@@ -193,6 +226,11 @@ let docs = await wtf.fetchList(pages)
 - **doc.getRedirects()** - fetch all pages that redirect to this document
 - **doc.getIncoming()** - fetch all pages that link to this document
 - **doc.getPageViews()** - daily traffic report for this document
+- **doc.mainImage()** - choose a good, representative image for this page
+
+- **image.exists()** - double-check that the image is on the server
+- **image.commonsURL()** - instead of the wikimedia redirect server, generate a url for the commons server
+- **image.license()** - get license and attribution information for the image
 
 - **wtf.getRandomCategory()** - get the name of a random wikipedia category
 - **wtf.getTemplatePages()** - fetches all pages that use a specific template or infobox

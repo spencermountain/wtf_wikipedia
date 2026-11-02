@@ -1,3 +1,12 @@
+<!--
+#### [unreleased]
+- **[fix]** -
+-->
+
+#### [unreleased]
+
+- **[new]** - image methods, moved-in from wtf-plugin-image: `doc.mainImage()`, `img.commonsURL()`, `img.exists()`, `img.license()`
+
 #### 2.0.1 [Jul 2024]
 
 - **[fix]** - i18n recursive category fetching

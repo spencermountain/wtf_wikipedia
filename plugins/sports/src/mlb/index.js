@@ -1,6 +1,7 @@
 import { getCell, stripNotes } from '../_lib.js'
 import { findGames, findSeries } from '../engine/games.js'
 import parseInfobox from '../engine/infobox.js'
+import { coachOf, gmOf, venueOf, seasonDates, avgAttendance } from '../engine/season.js'
 import resolveTeam from '../engine/teams.js'
 import franchises from './franchises.js'
 import { parseRoster, parseDraftPicks, parsePlayerStats } from './extras.js'
@@ -40,11 +41,16 @@ const extras = function (game, row) {
 }
 
 const standings = function (season) {
+  const divisionPlace = getCell(season, ['divisional_place', 'division_place', 'divisionrank']) || null
   return {
     record: season.record || null,
+    place: divisionPlace,
+    coach: coachOf(season),
+    gm: gmOf(season),
+    venue: venueOf(season),
     league: getCell(season, ['league']) || '',
     division: getCell(season, ['division']) || '',
-    divisionPlace: getCell(season, ['divisional_place', 'division_place', 'divisionrank']) || null,
+    divisionPlace,
     manager: getCell(season, ['manager', 'managers']) || '',
     ballpark: getCell(season, ['ballpark', 'stadium']) || '',
   }
@@ -64,14 +70,19 @@ const parse = function (doc) {
     extras,
   }
   const season = parseInfobox(doc, ['baseball team season', 'mlb yearly'], ctx.record)
+  const games = findGames(doc, ctx, gameTitles)
+  const postseason = findSeries(doc, ctx, ['postseason game log', 'postseason', 'playoffs'], gameTitles)
   return {
     team: meta.team,
     year: meta.year,
     page: doc.title || '',
+    ...seasonDates(games),
+    attendance: avgAttendance(games, season),
     season,
     standings: standings(season),
-    games: findGames(doc, ctx, gameTitles),
-    postseason: findSeries(doc, ctx, ['postseason game log', 'postseason', 'playoffs'], gameTitles),
+    games,
+    postseason,
+    playoffs: postseason, //the standard key - mlb pages say 'postseason'
     roster: parseRoster(doc, meta.year),
     draftPicks: parseDraftPicks(doc),
     playerStats: parsePlayerStats(doc),

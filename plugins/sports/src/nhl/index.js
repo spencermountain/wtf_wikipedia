@@ -1,10 +1,11 @@
 import { getCell, stripNotes } from '../_lib.js'
 import { findGames, findSeries } from '../engine/games.js'
 import parseInfobox from '../engine/infobox.js'
+import { coachOf, gmOf, venueOf, seasonDates, avgAttendance } from '../engine/season.js'
 import resolveTeam from '../engine/teams.js'
 import { seasonSlug, twoYearTitle, parseTwoYearTitle } from '../engine/slug.js'
 import franchises from './franchises.js'
-import { parseSkaters, parseGoalies } from './players.js'
+import { parseSkaters, parseGoalies, parseRoster } from './players.js'
 
 const makeTitle = twoYearTitle
 
@@ -30,12 +31,18 @@ const extras = function (game, row) {
 
 // absorb infobox key drift: 'division_place' is now 'DivisionRank'
 const standings = function (season) {
+  const divisionPlace = getCell(season, ['divisionrank', 'division_place', 'divisionplace']) || null
+  const conferencePlace = getCell(season, ['conferencerank', 'conference_place']) || null
   return {
     record: season.record || null,
+    place: divisionPlace || conferencePlace,
+    coach: coachOf(season),
+    gm: gmOf(season),
+    venue: venueOf(season),
     division: getCell(season, ['division']) || '',
-    divisionPlace: getCell(season, ['divisionrank', 'division_place', 'divisionplace']) || null,
+    divisionPlace,
     conference: getCell(season, ['conference']) || '',
-    conferencePlace: getCell(season, ['conferencerank', 'conference_place']) || null,
+    conferencePlace,
     goalsFor: getCell(season, ['goalsfor', 'goals_for']) || null,
     goalsAgainst: getCell(season, ['goalsagainst', 'goals_against']) || null,
   }
@@ -61,16 +68,20 @@ const parse = function (doc) {
     extras,
   }
   const season = parseInfobox(doc, ['ice hockey team season', 'nhl team season'], ctx.record)
+  const games = findGames(doc, ctx, gameTitles)
   return {
     team: meta.team,
     year: meta.year,
     page: doc.title || '',
+    ...seasonDates(games),
+    attendance: avgAttendance(games, season),
     season,
     standings: standings(season),
-    games: findGames(doc, ctx, gameTitles),
+    games,
     playoffs: findSeries(doc, ctx, ['playoffs', 'postseason'], gameTitles),
     skaters: parseSkaters(doc),
     goalies: parseGoalies(doc),
+    roster: parseRoster(doc),
   }
 }
 

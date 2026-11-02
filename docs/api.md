@@ -22,7 +22,7 @@ Conventions:
 
 ```ts
 wtf(wikitext: string, options?: DocumentOptions): Document
-wtf.fetch(title, options?, callback?): Promise<Document | Document[] | null>  // see fetch.md
+wtf.fetch(title, options?): Promise<Document | Document[] | null>  // see fetch.md
 wtf.extend(plugin): typeof wtf   // install a plugin — see plugins.md
 wtf.plugin(plugin): typeof wtf   // alias of extend
 wtf.version: string

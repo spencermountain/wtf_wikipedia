@@ -4,6 +4,21 @@ const asNum = (val) => Number(String(val).replace(/[*†‡]/g, '')) || 0
 
 const notTotal = (p) => p.name && /^totals?$/i.test(p.name) === false
 
+// {{player2}} and wnba's {{sports roster/entry}} share their field names
+const rosterRow = function (data = {}) {
+  const num = parseInt(data.num, 10)
+  return {
+    number: isNaN(num) ? null : num,
+    name: [data.first, data.last].filter(Boolean).join(' '),
+    position: data.pos || '',
+    height: data.ft ? `${data.ft}'${data.in || 0}"` : '',
+    weight: parseInt(data.lbs, 10) || null,
+    college: data.college || '',
+    dob: data.dob || '',
+    nation: data.nat || '',
+  }
+}
+
 // the roster is {{player2}} templates in a 'Roster' section
 const parseRoster = function (doc) {
   const s = findSection(doc, ['roster', 'current roster'])
@@ -11,7 +26,7 @@ const parseRoster = function (doc) {
     return []
   }
   const players = withChildren(doc, s).flatMap((c) => c.templates('player2'))
-  return players.map((tmpl) => ({ ...tmpl.json().data }))
+  return players.map((tmpl) => rosterRow(tmpl.json().data)).filter((p) => p.name)
 }
 
 // per-player averages from the 'Player statistics' tables
@@ -49,4 +64,4 @@ const parsePlayerStats = function (doc) {
   return res
 }
 
-export { parseRoster, parsePlayerStats }
+export { parseRoster, parsePlayerStats, rosterRow }

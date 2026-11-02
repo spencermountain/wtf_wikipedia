@@ -1,5 +1,5 @@
 import test from 'tape'
-import wtf from './_lib.js'
+import wtf from '../_lib.js'
 
 test('smoketests', function (t) {
   const doc = wtf('')

@@ -12,6 +12,25 @@ export const defaults = {
   path: 'w/api.php',
 }
 
+const isWikimedia = /(wikibooks|wikidata|wikimedia|wikinews|wikipedia|wikiquote|wikisource|wikispecies|wikiversity|wikivoyage|wiktionary)\.org$/
+const isBare = /^(wikibooks|wikidata|wikimedia|wikinews|wikipedia|wikiquote|wikisource|wikispecies|wikiversity|wikivoyage|wiktionary)\.org$/
+
+// the api's base-url. a fetched doc's options() store a bare project
+// domain like 'wikipedia.org' + path 'api.php' - neither is usable alone
+export function apiBase(options) {
+  let { lang, domain, path } = options
+  if (domain && isBare.test(domain) && lang) {
+    domain = `${lang}.${domain}`
+  }
+  if (domain && isWikimedia.test(domain)) {
+    path = 'w/api.php'
+  }
+  if (!domain) {
+    return `https://${lang}.wikipedia.org/${path}?`
+  }
+  return `https://${domain}/${path}?`
+}
+
 export function toUrlParams(obj) {
   const arr = Object.entries(obj).map(([key, value]) => {
     return `${encodeURIComponent(key)}=${encodeURIComponent(value)}`

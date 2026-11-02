@@ -20,7 +20,7 @@
   <code>npm install wtf-plugin-person</code>
 </div>
 
-A plugin that finds `birth date, birth place`, and `death date` information for people, in its various places in a wikipedia article.
+A plugin that finds biographical information for people - names, dates, places, occupation, and family - in its various places in a wikipedia article.
 
 ```js
 const wtf = require('wtf_wikipedia')
@@ -98,6 +98,38 @@ same as `.birthDate()`
 
 same as `.birthPlace()`
 
-work-in-progress
+### `.nationality()`
+
+returns a plain-text string from the infobox `nationality` field, or null
+
+### `.names()`
+
+returns `{ name, birthName, aliases }`, or null
+
+- `name` - the infobox name, the first bold text of the first sentence, or the page title
+- `birthName` - infobox `birth_name`, `fullname`, or `real_name` fields
+- `aliases` - nicknames, stage names and other names, as an array
+
+### `.occupation()`
+
+returns an array of strings, like `['actor', 'director']`
+
+- looks at the infobox `occupation` or `profession` fields
+- falls back to the first sentence - `'was an American professional golfer'` → `['professional golfer']`
+
+### `.spouses()`
+
+returns an array of `{ name, from, to, end }` objects
+
+- parses `{{marriage|Jane Doe|1990|2001|end=div.}}` templates into structured data
+- falls back to the infobox `spouse` or `partner` field text
+
+### `.children()`
+
+returns `{ count, names }`, or null - the infobox field is a count, a list of names, or both, like `'11, including [[Bob]]'`
+
+### `.age()`
+
+returns the current age of a living person, or null for the dead
 
 MIT

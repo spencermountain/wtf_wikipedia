@@ -9,7 +9,7 @@ wtf.extend(myPlugin)
 
 | argument | what it is |
 | --- | --- |
-| `models` | the classes: `{ Doc, Section, Paragraph, Sentence, Image, Infobox, Link, List, Reference, Table, Template, http, wtf }` — note the Document class is named **`Doc`** here |
+| `models` | the classes: `{ Doc, Section, Paragraph, Sentence, Image, Infobox, Link, List, Reference, Table, Template, wtf }` — note the Document class is named **`Doc`** here |
 | `templates` | the template-parser registry — assign to add custom `{{...}}` parsers |
 | `infoboxes` | registry of which template names count as infoboxes |
 | `i18n` | template names for other wikis: `{ byLang: { fr: {...} }, byProject: { wikinews: {...} } }` |
@@ -27,8 +27,8 @@ doc.isPerson()
 ```
 
 Any class works the same way: `models.Sentence.prototype.shout = ...`.
-`models.http(url, opts?)` is the library's fetch helper (promise of parsed json).
 `models.wtf` is the library itself, for adding statics: `models.wtf.myHelper = ...`.
+A plugin that fetches data should use the native `fetch` directly.
 
 ## Custom template parsers
 
