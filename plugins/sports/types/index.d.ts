@@ -303,6 +303,30 @@ export interface AhlSeason {
   roster: { number: number | null; name: string; position: string }[]
 }
 
+export interface EplSeason {
+  team: string
+  year: number | null
+  page: string
+  /** the raw club-season infobox */
+  season: Record<string, string | number | SeasonRecord>
+  standings: {
+    /** counted from the league matches - draws land in `ties` */
+    record: SeasonRecord
+    /** three points for a win, one for a draw */
+    points: number
+    league: string
+    position: string | number | null
+    manager: string
+    stadium: string
+  }
+  /** league matches only - each cup run parses separately */
+  games: Game[]
+  /** cup and european matches, keyed by competition section - {'FA Cup': [...]} */
+  cups: Record<string, Game[]>
+  /** {{Fs player}} / {{Efs player}} squad rows, where the page has them */
+  squad: { number: number | null; name: string; position: string; nation: string }[]
+}
+
 declare module 'wtf_wikipedia' {
   interface Document {
     /** parse an mlb team-season page into game data */
@@ -325,6 +349,8 @@ declare module 'wtf_wikipedia' {
     cflSeason(): CflSeason | null
     /** parse an ahl team-season page into game data */
     ahlSeason(): AhlSeason | null
+    /** parse a premier-league club-season page into match data */
+    eplSeason(): EplSeason | null
   }
   interface Wtf {
     /** fetch + parse an mlb team's season page, like ('Toronto Blue Jays', 2025) */
@@ -347,6 +373,8 @@ declare module 'wtf_wikipedia' {
     cflSeason(team: string, year?: string | number, options?: object): Promise<CflSeason | null>
     /** fetch + parse an ahl team's season page, like ('Hershey Bears', 2023) */
     ahlSeason(team: string, year?: string | number, options?: object): Promise<AhlSeason | null>
+    /** fetch + parse a premier-league club's season page, like ('Arsenal', 2023) */
+    eplSeason(team: string, year?: string | number, options?: object): Promise<EplSeason | null>
   }
 }
 
@@ -361,5 +389,6 @@ export declare const nwsl: Plugin
 export declare const pwhl: Plugin
 export declare const cfl: Plugin
 export declare const ahl: Plugin
+export declare const epl: Plugin
 
 export declare const version: string

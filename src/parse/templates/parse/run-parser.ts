@@ -1,4 +1,4 @@
-import { builtins } from '../../../templates/index.ts'
+import { builtins } from '../../../world/templates/index.ts'
 import parseTextArguments from './toJSON/text.ts'
 import runCustomParser from './custom-parser.ts'
 

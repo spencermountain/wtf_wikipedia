@@ -1,4 +1,4 @@
-import { stubs } from '../../_data/i18n/index.ts'
+import { stubs } from '../../world/data/i18n/index.ts'
 let allStubs = new Set(stubs)
 
 const isStub = function (doc) {

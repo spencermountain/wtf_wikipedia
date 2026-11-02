@@ -1,5 +1,5 @@
 import type { LinkData, InternalLinkData, ExternalLinkData } from '../../../types/index.ts'
-import wikis from '../../../_data/interwiki.ts'
+import wikis from '../../../world/data/interwiki.ts'
 import normalizeProject from '../../../_lib/project.ts'
 
 class Link {

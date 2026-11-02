@@ -1,7 +1,7 @@
 import type { DocInfo } from '../../../types/index.ts'
 import defaults from '../../../_lib/defaults.ts'
 import { normalizeKey } from '../../../_lib/helpers.ts'
-import { resolve } from '../../../templates/index.ts'
+import { resolve } from '../../../world/templates/index.ts'
 import ignore from './_ignore.ts'
 import { isInfobox } from './infobox.ts'
 import runParser from './run-parser.ts'
@@ -32,7 +32,8 @@ const parseTemplate = (wiki: string, name: string, opts: DocInfo = defaults) => 
   if (/^cite [a-z]/.test(name)) {
     // a dedicated handler (eg. 'cite gnis') knows its own fields; otherwise parse generically
     const cite = resolve(name, opts)
-    const payload = cite?.handler != null ? runParser(cite.handler, wiki, opts).data : parseTextArguments(wiki, [], opts)
+    const payload =
+      cite?.handler != null ? runParser(cite.handler, wiki, opts).data : parseTextArguments(wiki, [], opts)
     return finish(wiki, 'citation', payload, opts)
   }
   const found = resolve(name, opts)

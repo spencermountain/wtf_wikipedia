@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import wtf from '../../../src/API/index.js'
-import languages from '../../../src/_data/languages.js'
+import languages from '../../../src/world/data/languages.js'
 const langs = Object.keys(languages)
 
 for (let i = 0; i < langs.length; i += 1) {

@@ -1,7 +1,7 @@
 import type { DocInfo } from '../../../types/index.ts'
 import defaults from '../../../_lib/defaults.ts'
-import languages from '../../../_data/languages.ts'
-import interwikis from '../../../_data/interwiki.ts'
+import languages from '../../../world/data/languages.ts'
+import interwikis from '../../../world/data/interwiki.ts'
 import normalizeProject from '../../../_lib/project.ts'
 import type { InternalLinkData } from '../../../types/index'
 //some colon symbols are valid links, like `America: That place`

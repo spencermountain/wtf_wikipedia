@@ -20,7 +20,7 @@ const fromTeamPage = function (page = '') {
 // '4–2', 'W 31–7', '2–1 (11)' → [4, 2]
 const parseScore = function (txt = '') {
   txt = String(txt)
-    .replace(/^ *[WLT]\b\.? */i, '')
+    .replace(/^ *[WLTD]\b\.? */i, '')
     .replace(/\(.*?\)/g, '')
     .trim()
   const arr = txt.split(dashSplit).map((s) => parseInt(s.trim(), 10))
@@ -40,10 +40,19 @@ const parseAttendance = function (txt = '') {
   return parseInt(str.replace(/[, ]/g, ''), 10) || null
 }
 
+// '🏴 Chelsea' and 'Chelsea F.C.' both reduce to 'chelsea'
+const bareName = function (str = '') {
+  return String(str)
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N} .&'-]/gu, '')
+    .replace(/ (a\.?f\.?c\.?|f\.?c\.?)$/, '')
+    .trim()
+}
+
 // 'Toronto' matches 'Toronto Maple Leafs'
 const sameTeam = function (cell = '', team = '') {
-  cell = cell.trim().toLowerCase()
-  team = team.trim().toLowerCase()
+  cell = bareName(cell)
+  team = bareName(team)
   if (!cell || !team) {
     return false
   }
@@ -154,13 +163,14 @@ const buildGame = function (row, ctx) {
   if (/\bbye\b/i.test(date)) {
     return null
   }
-  const scoreText = getCell(cells, ['score', 'result', 'box score'])
+  // 'result f-a' is the soccer for–against column, always our-score-first
+  const scoreText = getCell(cells, ['score', 'result', 'box score', 'result f-a', 'score f-a'])
   const score = parseScore(scoreText)
   const game = {
     date: ctx.dateYear ? ctx.dateYear(date, ctx.year) : date,
     opponent: '',
     home: null,
-    outcome: outcomeOf(attrs, scoreText),
+    outcome: outcomeOf(attrs, scoreText, ctx.draws === true),
     result: null,
   }
   const num = parseInt(getCell(cells, ['#', 'game', 'week']), 10)
@@ -170,6 +180,15 @@ const buildGame = function (row, ctx) {
   const found = visitorHome(game, row, ctx, score) || opponentCol(game, row, ctx, score)
   if (found === false) {
     return null
+  }
+  // an 'H/A' or venue letter-column beats the opponent-prefix guess
+  const ha = String(getCell(cells, ['h/a', 'home/away', 'venue', 'ground'])).trim()
+  if (/^h$/i.test(ha)) {
+    game.home = true
+  } else if (/^a$/i.test(ha)) {
+    game.home = false
+  } else if (/^n$/i.test(ha)) {
+    game.home = null //neutral ground
   }
   // the ot/so flag is its own column, or tacked onto the score: '2–2 OT', '109–113 (OT)'
   const ot = getCell(cells, ['ot', 'overtime']) || String(scoreText)

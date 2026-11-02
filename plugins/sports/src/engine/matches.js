@@ -1,5 +1,8 @@
 import { withChildren } from '../_lib.js'
 import { parseScore, sameTeam, parseAttendance } from './game.js'
+import buildGame from './game.js'
+import rowGroups from './rows.js'
+import { finish } from './games.js'
 
 // soccer seasons record each match as a {{football box}} template, not a table row
 const boxNames = ['football box collapsible', 'footballbox collapsible', 'football box', 'footballbox']
@@ -28,6 +31,14 @@ const collectBoxes = function (doc, section, skip) {
 
 const outcomes = { w: 'win', l: 'loss', d: 'tie', t: 'tie' }
 
+// flag icons ride along on european opponents - '🇪🇸 Barcelona' → 'Barcelona'
+const cleanName = function (str = '') {
+  return String(str)
+    .replace(/[^\p{L}\p{N} .&'()-]/gu, '')
+    .replace(/ {2,}/g, ' ')
+    .trim()
+}
+
 // one {{football box}} → one game
 const buildMatch = function (data, ctx) {
   if (!data.team1 && !data.team2) {
@@ -46,8 +57,8 @@ const buildMatch = function (data, ctx) {
   } else if (sameTeam(data.team2, ctx.team)) {
     game.home = false
   }
-  const opp = game.home === false ? data.team1 : data.team2
-  game.opponent = ctx.fullName ? ctx.fullName(String(opp || '').trim()) : String(opp || '').trim()
+  const opp = cleanName(game.home === false ? data.team1 : data.team2)
+  game.opponent = ctx.fullName ? ctx.fullName(opp) : opp
   const score = parseScore(data.score)
   if (score && game.home !== null) {
     game.result = game.home ? { us: score[0], them: score[1] } : { us: score[1], them: score[0] }
@@ -122,4 +133,32 @@ const findMatches = function (doc, ctx, titles, skip) {
   return []
 }
 
-export { findMatches, buildMatch, collectBoxes }
+// every cup and continental run on the page, each under its own section title
+const findCompetitions = function (doc, ctx, include, skip) {
+  const res = {}
+  let below = null
+  doc.sections().forEach((s) => {
+    // a 'Final' inside an already-collected cup is not its own competition
+    if (below !== null && s.depth() > below) {
+      return
+    }
+    below = null
+    const title = s.title().trim()
+    if (include.test(title) === false || (skip && skip.test(title))) {
+      return
+    }
+    below = s.depth()
+    let games = build(collectBoxes(doc, s, skip), ctx)
+    if (games.length === 0) {
+      // older pages table their cup runs instead
+      const rows = rowGroups(doc, s).flatMap((g) => g.rows)
+      games = finish(rows.map((row) => buildGame(row, ctx)).filter((g) => g !== null))
+    }
+    if (games.length > 0) {
+      res[title] = games
+    }
+  })
+  return res
+}
+
+export { findMatches, buildMatch, collectBoxes, findCompetitions }

@@ -1,4 +1,4 @@
-import aliases from '../_data/project-aliases.ts'
+import aliases from '../world/data/projects.ts'
 
 const normalizeProject = (project: string) => {
   project = project.toLowerCase()

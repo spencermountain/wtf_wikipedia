@@ -1,0 +1,270 @@
+import parsers from './_parsers.ts'
+import defaultParse from '../../../../parse/templates/parse/toJSON/text.ts'
+import { days, timeSince, delta } from './_lib.ts'
+import { toOrdinal } from '../../_lib.ts'
+import { ymd, toText, toTextBritish, fmt } from './_format.ts'
+
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+]
+
+//date- templates we support
+export default {
+  monthname: (tmpl, parse = defaultParse) => {
+    const obj = parse(tmpl, ['month'])
+    return { data: null, replacement: months[Number(obj.month) - 1] || '' }
+  },
+  currentday: () => {
+    let d = new Date()
+    return { data: null, replacement: String(d.getDate()) }
+  },
+  currentdayname: () => {
+    let d = new Date()
+    return { data: null, replacement: days[d.getDay()] }
+  },
+  currentmonth: () => {
+    let d = new Date()
+    return { data: null, replacement: months[d.getMonth()] }
+  },
+  currentyear: () => {
+    let d = new Date()
+    return { data: null, replacement: String(d.getFullYear()) }
+  },
+  lastyear: () => {
+    return { data: null, replacement: String(new Date().getFullYear() - 1) }
+  },
+  nextyear: () => {
+    return { data: null, replacement: String(new Date().getFullYear() + 1) }
+  },
+  monthyear: () => {
+    let d = new Date()
+    return { data: null, replacement: months[d.getMonth()] + ' ' + d.getFullYear() }
+  },
+  'monthyear-1': () => {
+    let d = new Date()
+    d.setDate(1) // so the 31st does not roll over into the wrong month
+    d.setMonth(d.getMonth() - 1)
+    return { data: null, replacement: months[d.getMonth()] + ' ' + d.getFullYear() }
+  },
+  'monthyear+1': () => {
+    let d = new Date()
+    d.setDate(1) // so the 31st does not roll over into the wrong month
+    d.setMonth(d.getMonth() + 1)
+    return { data: null, replacement: months[d.getMonth()] + ' ' + d.getFullYear() }
+  },
+
+  year: (tmpl, parse = defaultParse) => {
+    let date = parse(tmpl, ['date']).date
+    let d = new Date(date)
+    if (date && isNaN(d.getTime()) === false) {
+      return { data: null, replacement: String(d.getFullYear()) }
+    }
+    return { data: null, replacement: '' }
+  },
+
+  'time ago': (tmpl, parse = defaultParse) => {
+    let time = parse(tmpl, ['date', 'fmt']).date
+    return { data: null, replacement: timeSince(time) }
+  },
+  //https://en.wikipedia.org/wiki/Template:Birth_date_and_age
+  // {{birth date and age|2001|5|3}} → May 3, 2001 (age 25)
+  // {{death date and age|2020|5|3|2001|5|3}} → May 3, 2020 (aged 19)
+  'birth date and age': (tmpl, parse = defaultParse) => {
+    let obj = parse(tmpl, ['year', 'month', 'day', 'birth_year', 'birth_month', 'birth_day'])
+    //support 'one property' version
+    if (obj.year && /[a-z]/i.test(obj.year)) {
+      return parsers.natural_date(tmpl, parse)
+    }
+    const payload = obj
+    let date = ymd([obj.year, obj.month, obj.day])
+    let str = fmt(date, payload)
+    const isDeath = /^death/.test(obj.template || '')
+    let from = isDeath ? ymd([obj.birth_year, obj.birth_month, obj.birth_day]) : date
+    let to = date
+    if (!isDeath) {
+      let now = new Date()
+      to = ymd([now.getFullYear(), now.getMonth() + 1, now.getDate()])
+    }
+    if (from.year && to.year && date.month) {
+      let age = delta(from, to).years || 0
+      str += isDeath ? ` (aged ${age})` : ` (age ${age})`
+    }
+    return { data: payload, replacement: str }
+  },
+  'birth year and age': (tmpl, parse = defaultParse) => {
+    let obj = parse(tmpl, ['birth_year', 'birth_month'])
+    //support 'one property' version
+    if (obj.death_year && /[a-z]/i.test(obj.death_year)) {
+      return parsers.natural_date(tmpl, parse)
+    }
+    const payload = obj
+    let age = new Date().getFullYear() - parseInt(obj.birth_year, 10)
+    obj = ymd([obj.birth_year, obj.birth_month])
+    let str = toText(obj)
+    if (age) {
+      str += ` (age ${age})`
+    }
+    return { data: payload, replacement: str }
+  },
+  'death year and age': (tmpl, parse = defaultParse) => {
+    let obj = parse(tmpl, ['death_year', 'birth_year', 'death_month'])
+    //support 'one property' version
+    if (obj.death_year && /[a-z]/i.test(obj.death_year)) {
+      return parsers.natural_date(tmpl, parse)
+    }
+    const payload = obj
+    obj = ymd([obj.death_year, obj.death_month])
+    return { data: payload, replacement: toText(obj) }
+  },
+  //https://en.wikipedia.org/wiki/Template:Birth_date_and_age2
+  'birth date and age2': (tmpl, parse = defaultParse) => {
+    let order = ['at_year', 'at_month', 'at_day', 'birth_year', 'birth_month', 'birth_day']
+    let obj = parse(tmpl, order)
+    const payload = obj
+    obj = ymd([obj.birth_year, obj.birth_month, obj.birth_day])
+    return { data: payload, replacement: fmt(obj, payload) }
+  },
+  //https://en.wikipedia.org/wiki/Template:Birth_based_on_age_as_of_date
+  'birth based on age as of date': (tmpl, parse = defaultParse) => {
+    let obj = parse(tmpl, ['age', 'year', 'month', 'day'])
+    let age = parseInt(obj.age, 10)
+    let year = parseInt(obj.year, 10)
+    let born = year - age
+    if (born && age) {
+      return { data: obj, replacement: `${born} (age ${obj.age})` }
+    }
+    return { data: obj, replacement: `(age ${obj.age})` }
+  },
+  //https://en.wikipedia.org/wiki/Template:Death_date_and_given_age
+  'death date and given age': (tmpl, parse = defaultParse) => {
+    let obj = parse(tmpl, ['year', 'month', 'day', 'age'])
+    const payload = obj
+    obj = ymd([obj.year, obj.month, obj.day])
+    let str = fmt(obj, payload)
+    if (payload.age) {
+      str += ` (aged ${payload.age})`
+    }
+    return { data: payload, replacement: str }
+  },
+  //sortable dates - https://en.wikipedia.org/wiki/Template:Dts
+  dts: (tmpl, parse = defaultParse) => {
+    //remove formatting stuff, ewww
+    tmpl = tmpl.replace(/\|format=[ymd]+/i, '')
+    tmpl = tmpl.replace(/\|abbr=(on|off)/i, '')
+    let obj = parse(tmpl, ['year', 'month', 'date', 'bc'])
+    if (obj.year && obj.month) {
+      let date = ymd([obj.year, obj.month, obj.date])
+      let str = toText(date)
+      // keep an abbreviated month-name as written, eg 'Jun 12 2024'
+      if (/^[a-z]{3}$/i.test(obj.month) && obj.date) {
+        str = [obj.month, obj.date, obj.year].join(' ')
+      }
+      if (str) {
+        return { data: null, replacement: str }
+      }
+    }
+    if (obj.year) {
+      let year = String(obj.year).trim()
+      if (/^-\d+$/.test(year)) {
+        year = year.replace(/^-/, '') + ' BC'
+      }
+      return { data: null, replacement: year }
+    }
+    return { data: null, replacement: '' }
+  },
+
+  //we can't do timezones, so fake this one a little bit
+  //https://en.wikipedia.org/wiki/Template:Time
+  time: () => {
+    let d = new Date()
+    let obj = ymd([d.getFullYear(), d.getMonth() + 1, d.getDate()])
+    return { data: null, replacement: toText(obj) }
+  },
+
+  // https://en.wikipedia.org/wiki/Template:MILLENNIUM
+  millennium: (tmpl, parse = defaultParse) => {
+    let obj = parse(tmpl, ['year'])
+    let year = parseInt(obj.year, 10)
+    // 1001-2000 is the 2nd millennium; 1000-1 BC is the 1st millennium BC
+    year = year > 0 ? Math.ceil(year / 1000) : Math.floor(year / 1000)
+    const era = year < 0 ? ' BC' : ''
+    const ordinal = toOrdinal(Math.abs(year))
+    if (obj.abbr && obj.abbr === 'y') {
+      return { data: null, replacement: `${ordinal}${era}` }
+    }
+    return { data: null, replacement: `${ordinal} millennium${era}` }
+  },
+  // https://en.wikipedia.org/wiki/Template:Date
+  date: (tmpl, parse = defaultParse) => {
+    let obj = parse(tmpl, ['date', 'format'])
+    let str = (obj.date || '').trim()
+    let format = (obj.format || 'dmy').trim().toLowerCase()
+    let m = str.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/)
+    if (!m || format === 'iso' || format === 'none') {
+      return { data: null, replacement: str }
+    }
+    let date = { year: Number(m[1]), month: Number(m[2]), date: Number(m[3]) }
+    if (format === 'y') {
+      return { data: null, replacement: String(date.year) }
+    }
+    if (format === 'mdy') {
+      return { data: null, replacement: toText(date) }
+    }
+    return { data: null, replacement: toTextBritish(date) }
+  },
+  //date/age/time templates
+  start: parsers.date,
+  'start-date': parsers.natural_date,
+  birthdeathage: parsers.two_dates,
+  age: parsers.age,
+  'age nts': parsers.age,
+  'age in years': parsers['diff-y'],
+  'age in years and months': parsers['diff-ym'],
+  'age in years, months and days': parsers['diff-ymd'],
+  'age in years and days': parsers['diff-yd'],
+  'age in days': parsers['diff-d'],
+  // 'birth date and age2': date,
+  // 'age in years, months, weeks and days': true,
+  // 'age as of date': true,
+  // https://en.wikipedia.org/wiki/Template:As_of
+  'as of': (tmpl, parse = defaultParse) => {
+    let obj = parse(tmpl, ['year', 'month', 'day'])
+    if (obj.alt) {
+      return { data: null, replacement: obj.alt }
+    }
+    let out = 'As of '
+    if (obj.since) {
+      out = 'Since '
+    }
+    if (obj.lc) {
+      out = out.toLowerCase()
+    }
+    if (obj.bare) {
+      out = ''
+    }
+    if (obj.pre) {
+      out += obj.pre + ' '
+    }
+    let format = toTextBritish
+    if (obj.df == 'US') {
+      format = toText
+    }
+    let dateObj = ymd([obj.year, obj.month, obj.day])
+    out += format(dateObj)
+    if (obj.post) {
+      out += obj.post
+    }
+    return { data: null, replacement: out }
+  },
+}

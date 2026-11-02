@@ -1,3 +1,3 @@
 import loadPlugin from '../../../tests/lib/plugin.js'
 
-export default await loadPlugin(new URL('../', import.meta.url), ['mlb', 'nhl', 'nba', 'nfl', 'mls', 'wnba', 'nwsl', 'pwhl', 'cfl', 'ahl'])
+export default await loadPlugin(new URL('../', import.meta.url), ['mlb', 'nhl', 'nba', 'nfl', 'mls', 'wnba', 'nwsl', 'pwhl', 'cfl', 'ahl', 'epl'])

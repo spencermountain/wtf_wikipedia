@@ -33,6 +33,7 @@ const colors = {
   ffe: 'otl',
   ffffbb: 'otl',
   ffffcc: 'otl',
+  ffffdd: 'otl',
   fff1c1: 'otl',
   ffeeaa: 'otl',
   bbb: 'postponed',
@@ -43,9 +44,9 @@ const colors = {
   '090': 'win', //mlb 'clinched division'
 }
 
-const prefixes = { w: 'win', l: 'loss', t: 'tie' }
+const prefixes = { w: 'win', l: 'loss', t: 'tie', d: 'tie' }
 
-const outcomeOf = function (attrs = '', scoreText = '') {
+const rawOutcome = function (attrs = '', scoreText = '') {
   const str = String(attrs).toLowerCase()
   const cl = str.match(/game-([a-z]+)/)
   if (cl && classes[cl[1]]) {
@@ -58,13 +59,22 @@ const outcomeOf = function (attrs = '', scoreText = '') {
   if (/postponed|cancell?ed|suspended/i.test(scoreText)) {
     return 'postponed'
   }
-  // 'W 31–7' / 'L 2–9' score prefixes
+  // 'W 31–7' / 'L 2–9' / 'D 2–2' score prefixes
   const pre = String(scoreText)
     .trim()
-    .match(/^([WLT])\b/i)
+    .match(/^([WLTD])\b/i)
   if (pre) {
     return prefixes[pre[1].toLowerCase()]
   }
   return null
+}
+
+// soccer tables use the same yellow for a draw that hockey uses for an ot-loss
+const outcomeOf = function (attrs = '', scoreText = '', draws = false) {
+  const res = rawOutcome(attrs, scoreText)
+  if (draws === true && res === 'otl') {
+    return 'tie'
+  }
+  return res
 }
 export default outcomeOf

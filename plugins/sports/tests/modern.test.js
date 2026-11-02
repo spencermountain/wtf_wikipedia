@@ -448,3 +448,72 @@ test('2023-24 hershey: playoff-only log stays out of the regular season', (t) =>
   t.equal(res.roster[0].name, 'Garin Bjorklund', 'roster name')
   t.end()
 })
+
+test('2023-24 luton: football-box matches, abandoned-game skip + cup split', (t) => {
+  const res = fixture('2023-24-luton-town.txt', '2023–24 Luton Town F.C. season').eplSeason()
+  t.equal(res.team, 'Luton Town F.C.', 'team')
+  t.equal(res.year, 2023, 'year')
+  t.equal(res.games.length, 38, 'all 38 league matches - the abandoned one stays out')
+  t.deepEqual(tally(res.games), { win: 6, tie: 8, loss: 24 }, 'outcomes match the 6–8–24 season')
+  t.equal(res.standings.points, 26, 'three points a win, one a draw')
+  t.equal(res.standings.position, '18th (relegated)', 'league position from the infobox')
+
+  const g1 = res.games[0]
+  t.equal(g1.opponent, 'Brighton & Hove Albion F.C.', 'opponent resolved to the full club name')
+  t.equal(g1.home, false, 'team2 side is the away side')
+  t.deepEqual(g1.result, { us: 1, them: 4 }, 'score oriented from team order')
+  t.equal(g1.attendance, 31672, 'attendance')
+
+  t.equal(res.cups['FA Cup'].length, 4, 'fa cup run kept apart')
+  t.equal(res.cups['EFL Cup'].length, 2, 'efl cup run kept apart')
+  const final = res.cups['FA Cup'].at(-1)
+  t.equal(final.opponent, 'Manchester City F.C.', 'fifth-round opponent')
+  t.deepEqual(final.result, { us: 2, them: 6 }, 'cup scores oriented too')
+
+  t.equal(res.squad.length, 30, 'efs-player squad rows')
+  t.deepEqual(res.squad[0], { number: 1, name: 'James Shea', position: 'GK', nation: 'ENG' }, 'squad row shape')
+  t.end()
+})
+
+test('1995-96 man utd: table-era league with draws, h/a column + tabled cups', (t) => {
+  const res = fixture('1995-96-manchester-united.txt', '1995–96 Manchester United F.C. season').eplSeason()
+  t.equal(res.games.length, 38, 'all 38 from the results table')
+  t.deepEqual(tally(res.games), { win: 25, tie: 7, loss: 6 }, 'yellow rows count as draws')
+  t.equal(res.standings.points, 82, 'title-winning 82 points')
+  t.equal(res.standings.position, 1, 'league position')
+
+  const g1 = res.games[0]
+  t.equal(g1.opponent, 'Aston Villa F.C.', 'opponent from the page link')
+  t.equal(g1.home, false, 'away, from the H/A column')
+  t.deepEqual(g1.result, { us: 1, them: 3 }, 'for–against column is ours-first')
+  t.equal(g1.attendance, 34655, 'attendance')
+
+  t.equal(res.cups['FA Cup'].length, 7, 'fa cup run from plain tables')
+  t.equal(res.cups['League Cup'].length, 2, 'league cup')
+  t.equal(res.cups['UEFA Cup'].length, 2, 'europe')
+  const final = res.cups['FA Cup'].at(-1)
+  t.equal(final.opponent, 'Liverpool F.C.', 'cup-final opponent')
+  t.equal(final.home, null, 'neutral venue from the N column')
+  t.equal(final.win, true, 'the double, won 1–0')
+  t.end()
+})
+
+test('2005-06 chelsea: champions league run + flag-icon opponents', (t) => {
+  const res = fixture('2005-06-chelsea.txt', '2005–06 Chelsea F.C. season').eplSeason()
+  t.equal(res.games.length, 38, 'all 38 league matches')
+  t.deepEqual(tally(res.games), { win: 29, tie: 4, loss: 5 }, 'the 91-point title season')
+  t.equal(res.standings.points, 91, 'points')
+
+  t.equal(res.cups['UEFA Champions League'].length, 8, 'group stage + round of 16')
+  const r16 = res.cups['UEFA Champions League'].at(-1)
+  t.equal(r16.opponent, 'Barcelona', 'flag icon stripped from the european opponent')
+  t.equal(r16.home, false, 'second leg at camp nou')
+  t.deepEqual(r16.result, { us: 1, them: 1 }, 'drawn leg')
+
+  t.equal(res.cups['FA Community Shield'].length, 1, 'community shield counts as a cup')
+  t.equal(res.cups['FA Community Shield'][0].win, true, 'shield won')
+  t.equal(res.cups['FA Cup'].length, 6, 'fa cup run')
+  t.equal(res.squad.length, 63, 'fs-player rows, loans and departures included')
+  t.equal(res.squad[0].name, 'Petr Čech', 'squad name')
+  t.end()
+})

@@ -1,6 +1,6 @@
 import type { DocInfo } from '../../../types/index.ts'
 import defaults from '../../../_lib/defaults.ts'
-import { redirects } from '../../../_data/i18n/index.ts'
+import { redirects } from '../../../world/data/i18n/index.ts'
 import parseLink from '../../block/links/parse.ts'
 
 //pulls target link out of redirect page

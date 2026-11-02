@@ -1,5 +1,5 @@
 import defaults from '../../../_lib/defaults.ts'
-import { images } from '../../../_data/i18n/index.ts'
+import { images } from '../../../world/data/i18n/index.ts'
 import parseArguments from '../../templates/parse/toJSON/index.ts'
 import normalizeFile from './normalize.ts'
 import type { DocInfo, ImageData } from '../../../types/index.ts'

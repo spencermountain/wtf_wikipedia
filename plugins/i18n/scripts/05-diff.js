@@ -9,19 +9,27 @@ import { readdirSync } from 'node:fs'
 import { families } from './_config.js'
 import { readData } from './_lib.js'
 import overrides from './overrides.js'
-import coreTemplates from '../../../src/templates/index.ts'
-import coreAliases from '../../../src/templates/aliases.ts'
+import coreTemplates from '../../../src/world/templates/index.ts'
+import coreAliases from '../../../src/world/templates/aliases.ts'
 
 const sitelinks = readData('01-sitelinks.json')
 const redirects = readData('02-redirects.json')
 const paramData = readData('03-params.json')
 
 // 'Modèle:Lien web' → 'lien web'
-const strip = (title) => title.replace(/^[^:]+:/, '').toLowerCase().trim()
+const strip = (title) =>
+  title
+    .replace(/^[^:]+:/, '')
+    .toLowerCase()
+    .trim()
 // single-character names are fine outside ascii ('旗', '門'), never inside it.
 // a ':' reads as parser-function syntax, so those names can never match anyway.
 const badName = (name) =>
-  name.length === 0 || name.length > 60 || (name.length === 1 && /[\x20-\x7e]/.test(name)) || /[|{}=[\]<>#:]/.test(name) || /^\d+$/.test(name)
+  name.length === 0 ||
+  name.length > 60 ||
+  (name.length === 1 && /[\x20-\x7e]/.test(name)) ||
+  /[|{}=[\]<>#:]/.test(name) ||
+  /^\d+$/.test(name)
 
 // every localized name for one family, with the wikis it was seen on
 const gather = (fam) => {
@@ -59,7 +67,8 @@ const report = (line) => {
 
 const excluded = new Set(overrides.exclude)
 // junk, excluded names, and anything the core registry already owns can never register
-const unusable = (name) => badName(name) || excluded.has(name) || coreTemplates[name] !== undefined || coreAliases[name] !== undefined
+const unusable = (name) =>
+  badName(name) || excluded.has(name) || coreTemplates[name] !== undefined || coreAliases[name] !== undefined
 
 // a name can only serve one family — pin decides, unpinned claims are unusable either way
 const claims = {}
@@ -191,7 +200,9 @@ packNames.forEach((lang) => {
       .filter((def) => def && def.template === fam && def.map)
       .map((def) => def.map)
     if (maps.length === 0) {
-      report(`+ ${lang}: ${fam} has ${Object.keys(fetchedMap).length} param renames on wikipedia — add a { template, map } def`)
+      report(
+        `+ ${lang}: ${fam} has ${Object.keys(fetchedMap).length} param renames on wikipedia — add a { template, map } def`
+      )
       return
     }
     Object.keys(fetchedMap).forEach((key) => {

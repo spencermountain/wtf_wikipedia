@@ -1,7 +1,7 @@
 import test from 'tape'
 import wtf from '../../lib/index.js'
 import parse from '../../../src/parse/index.ts'
-import templates from '../../../src/templates/index.ts'
+import templates from '../../../src/world/templates/index.ts'
 import parseDoc from '../../../src/API/_fetch/parseDoc.ts'
 
 const pages = (value) => {
@@ -30,7 +30,10 @@ test('project options reach every content parser', (t) => {
     const lower = pages(parse(wiki, { project: 'wiktionary' }))
     const upper = pages(parse(wiki))
     t.ok(lower.length > 0, `${wiki} contains parsed links`)
-    t.ok(lower.every((page) => page === 'paris'), `${wiki} respects project`)
+    t.ok(
+      lower.every((page) => page === 'paris'),
+      `${wiki} respects project`
+    )
     t.ok(upper.length > 0 && upper.every((page) => page === 'Paris'), `${wiki} defaults to Wikipedia`)
   })
   t.end()
@@ -66,7 +69,11 @@ test('API and parser share defaults without mutating caller options', (t) => {
   t.equal(wtf('[[paris]]').language, 'en', 'default language')
   t.equal(wtf('[[paris]]').domain, 'wikipedia.org', 'default domain')
   t.equal(wtf('[[paris]]', { project: 'custom' }).links()[0].page(), 'paris', 'unknown project preserves case')
-  t.equal(wtf('[[wikipedia:paris]]', opts).links()[0].page(), 'Paris', 'explicit Wikipedia target overrides source project')
+  t.equal(
+    wtf('[[wikipedia:paris]]', opts).links()[0].page(),
+    'Paris',
+    'explicit Wikipedia target overrides source project'
+  )
   t.equal(wtf('[[fr:paris]]', opts).links()[0].page(), 'paris', 'language prefix stays in the source project')
   t.end()
 })

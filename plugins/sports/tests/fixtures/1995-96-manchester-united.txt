@@ -1,0 +1,919 @@
+{{Short description|English football club season}}
+{{Use British English|date=March 2015}}
+{{Use dmy dates|date=December 2021}}
+{{Infobox football club season
+| club               = [[Manchester United F.C.|Manchester United]]
+| season             = 1995–96
+| manager            = [[Alex Ferguson]]
+| chairman           = [[Martin Edwards]]
+| league             = [[FA Premier League]]
+| league result      = [[1995–96 FA Premier League|1st]]
+| cup1               = [[FA Cup]]
+| cup1 result        = [[1995–96 FA Cup|Winners]]
+| cup2               = [[Football League Cup|League Cup]]
+| cup2 result        = [[1995–96 Football League Cup|Second round]]
+| cup3               = [[UEFA Cup]]
+| cup3 result        = [[1995–96 UEFA Cup|First round]]
+| league topscorer   = <br />[[Eric Cantona]] (14)
+| season topscorer   = <br />Eric Cantona (19)
+| highest attendance = 53,926 vs [[Nottingham Forest F.C.|Nottingham Forest]] (28 April 1996)
+| lowest attendance  = 31,966 vs [[West Ham United F.C.|West Ham United]] (23 August 1995)
+| average attendance = 41,681<!-- (791,940 attendance / 19 LEAGUE games) = 41,681.052631579 = 41,681 -->
+| pattern_la1        = |pattern_b1 = _manutdh9496 |pattern_ra1 = |pattern_sh1 = _manutdh9496 |pattern_so1 = _manutdh9496
+| leftarm1           = E20E0E |body1 = E20E0E |rightarm1 = E20E0E |shorts1 = FFFFFF |socks1 = 000000
+| pattern_la2        = _manutda9596 |pattern_b2 = _manutda9596 |pattern_ra2 = _manutda9596 |pattern_sh2 = _manutda9596 |pattern_so2 = _manutda9596 
+| leftarm2           = C0C0C0 |body2 = C0C0C0 |rightarm2 = C0C0C0 |shorts2 = 404040 |socks2 = 404040
+| pattern_la3        = _manutd39496 |pattern_b3 = _manutd39496 |pattern_ra3 = _manutd39496 |pattern_sh3 = _manutd39496 |pattern_so3 = _manutd39496
+| leftarm3           = 0000C0 |body3 = 0000C0 |rightarm3 = 0000C0 |shorts3 = 0000C0 |socks3 = 0000C0
+| prevseason         = [[1994–95 Manchester United F.C. season|1994–95]]
+| nextseason         = [[1996–97 Manchester United F.C. season|1996–97]]
+}}
+The 1995–96 season was [[Manchester United F.C.|Manchester United]]'s fourth season in the [[FA Premier League]], and their 21st consecutive season in the top division of [[Football in England|English football]].<ref>{{cite web |url=http://www.stretfordend.co.uk/seasons/season1996.html |title=Manchester United Season 1995/96 |access-date=12 November 2007 |work=StretfordEnd.co.uk }}</ref> United finished the season by becoming the first English team to win [[Double (association football)|the Double]] (league title and [[FA Cup]]) twice. Their triumph was made all the more remarkable by the fact that [[Alex Ferguson]] had sold experienced players [[Paul Ince]], [[Mark Hughes]] and [[Andrei Kanchelskis]] before the start of the season, and not made any major signings. Instead, he had drafted in young players like [[Nicky Butt]], [[David Beckham]], [[Paul Scholes]] and the Neville brothers, [[Gary Neville|Gary]] and [[Phil Neville|Phil]].
+
+[[Eric Cantona]] returned from his eight-month suspension at the beginning of October, and finished the season as the club's top scorer with 19 goals in all competitions, the last one being the winner against [[Liverpool F.C.|Liverpool]] in the [[1996 FA Cup final|FA Cup final]]. He also picked up a Premier League winner's medal and the [[FWA Player of the Year]] award. The [[1995–96 Premier League|Premier League title]] was sealed on the final day of the season with a 3–0 win at [[Bryan Robson]]'s [[Middlesbrough F.C.|Middlesbrough]].
+
+==Season overview==
+Having started the season without a major summer signing, the critics were ready to pounce on United, and made no apologies for writing United's chances of success off as they lost their first game of the season 3–1 at Aston Villa, a side who, by contrast, had spent heavily on players in recent months after a difficult period of transition. United hit back by winning their next five league games and were soon second to Newcastle United, spearheaded by multimillion-pound new signings [[Les Ferdinand]] and [[David Ginola]]. They actually went top of the league after a goalless draw at Sheffield Wednesday towards the end of September, only for the [[Tyneside]]rs to return to the top of the table soon after. Then came Cantona's comeback on 1 October, when he scored a penalty to equalise and hold Liverpool to a 2–2 draw at Old Trafford.
+
+The autumn saw United suffer first-hurdle exits to York City in the League Cup and Rotor Volgograd in the UEFA Cup, although United did preserve their 39-year home unbeaten record in European competitions thanks to a late equaliser by goalkeeper Peter Schmeichel in the second leg of the European tie. On the domestic scene, the 3–0 defeat they suffered at home to the Division Two strugglers in the first leg of the League Cup second round was their only home defeat of the season. A 3–1 win in the return leg at [[Bootham Crescent]] was not enough and United suffered a humiliating exit, although at least these disappointments meant that United only had the league to concentrate on until after Christmas, unlike some of their fellow title contenders.
+
+United remained unbeaten throughout October and November, although they remained second behind Newcastle in the league. Then came a five match winless run which saw them 10 points behind Newcastle by Christmas. On 27 December, they hosted Newcastle at Old Trafford and won 2–0, with one of the goals coming from Andy Cole, the former Newcastle goal machine who had arrived at Old Trafford the previous winter, and the gap was down to seven points. A 2–1 win over QPR briefly cut the gap to four points. Making his debut in that game was French defender [[William Prunier]] signed on a trial contract following an injury to [[Gary Pallister]]. Prunier also appeared in the United team at Tottenham on New Year's Day, but United crashed 4–1 at [[White Hart Lane]] and Prunier was soon gone. United's title hopes appeared to be fading, and when they went 2–1 down at Old Trafford in the FA Cup third round to Division One promotion challengers Sunderland, it looked as though this season could prove to be another trophyless season for United. But an Eric Cantona equaliser with 10 minutes remaining forced a replay at [[Roker Park]], where Sunderland once again took the lead before United finally won 2–1. There was more frustration in the league as United's second league game of 1996 saw them draw 0–0 at home to Aston Villa. The last league game of the month was won 1–0 at West Ham, and then came an easy 3–0 win over Reading in the FA Cup fourth round at [[Elm Park (stadium)|Elm Park]].
+
+United narrowed the gap between themselves and leaders Newcastle once again in February, winning all four of their league games that month. A 4–2 away win over Wimbledon was followed by a home clash with Blackburn, who were mid-table in a disappointing defence of their league title. Lee Sharpe was on the scoresheet as United won 1–0, and their next game was a 2–0 home win over Everton. The month was completed with a 6–0 away win over Bolton, which pushed their hosts closer to eventual relegation but also gave United's goal difference a major boost as well as putting United just four points behind Newcastle. United had also defeated Manchester City 2–1 in the FA Cup fifth round at Old Trafford, and so a unique second double was suddenly looking like a very serious possibility.
+
+March began with a visit to Tyneside, for what was billed by many as the title decider. United kept their hosts, who had yet to drop points at home, at bay in the first half of the game, thanks largely to the goalkeeping heroics of Schmeichel. The deadlock was finally broken in the second half with a Cantona goal, and the gap was now down to a single point. United briefly went top the following weekend with a 1–1 draw at struggling QPR, and after another Cantona goal gave them a 1–0 home win over Arsenal on 20 March, United went top of the table and stayed there for the rest of the season.
+
+The title race went down to the wire, but United went into the last game of the season knowing that a draw at Middlesbrough would give them the title, and Newcastle needed to beat Tottenham to have any chance of depriving them of title glory. A 3–0 victory gave United the title, and the following Saturday they triumphed 1–0 over Liverpool in the FA Cup final, with a late goal from Cantona (already voted [[FWA Player of the Year]]) making them the first team to win the double twice.
+
+Veteran defenders [[Steve Bruce]] and [[Paul Parker (footballer)|Paul Parker]] moved on at the end of the season, as did goalkeeper [[Tony Coton]], who had only joined the club in January and never played a first team game. As the season drew to a close, speculation mounted that United would sign a world-class striker – possibly [[Alan Shearer]] – to partner Eric Cantona in the bid to bring the [[UEFA Champions League|European Cup]] to [[Old Trafford]].
+
+The season also produced one of the most infamous moments in football shirt history, when United changed their kits at half-time during their away defeat to [[Southampton F.C.|Southampton]], with Alex Ferguson stating that it was because he felt the kit left players unable to spot each other on the pitch, as well as the fact that United had not won a single of their five games played wearing the kit.<ref>{{cite news|url=https://www.theguardian.com/football/2006/apr/15/sport.comment2|author=Lee Sharpe|access-date=15 April 2006|work=The Guardian|title=13.04.96 Manchester United's grey day at The Dell|date=15 April 2006|publisher=Guardian News and Media}}</ref>
+
+==Pre-season and friendlies==
+{| class="wikitable" style="text-align:center"
+|-
+!Date
+!Opponents
+!H / A
+!Result<br />F–A
+!Scorers
+!Attendance
+|- bgcolor="#ddffdd"
+|31 July 1995
+|[[Selangor FA|Selangor]]
+|A
+|4–1
+|[[Steve Bruce|Bruce]], [[Nicky Butt|Butt]], [[Gary Pallister|Pallister]], [[Lee Sharpe|Sharpe]]
+|50,000
+|- bgcolor="#ddffdd"
+|2 August 1995
+|[[Selangor FA|Selangor]]
+|A
+|2–0
+|[[Steve Bruce|Bruce]], [[Paul Scholes|Scholes]]
+|20,000
+|- bgcolor="#ffdddd"
+|7 August 1995
+|[[Birmingham City F.C.|Birmingham City]]
+|A
+|0–1
+|
+|13,330
+|- bgcolor="#ddffdd"
+|9 August 1995
+|[[Bradford City A.F.C.|Bradford City]]
+|A
+|1–0
+|[[Roy Keane|Keane]]
+|13,457
+|- bgcolor="#ffffdd"
+|11 August 1995
+|[[Shelbourne F.C.|Shelbourne]]
+|A
+|2–2
+|[[Nicky Butt|Butt]], [[David Beckham|Beckham]]
+|12,500
+|- bgcolor="#ddffdd"
+|13 August 1995
+|[[East Fife F.C.|East Fife]]
+|A
+|4–0
+|[[David Beckham|Beckham]] (2), [[Brian McClair|McClair]], [[Lee Sharpe|Sharpe]]
+|5,385
+|- bgcolor="#ddffdd"
+|15 August 1995
+|[[Oldham Athletic A.F.C.|Oldham Athletic]]
+|A
+|2–0
+|[[Lee Sharpe|Sharpe]], [[Richard Jobson (footballer)|Jobson]] ([[Own goal|o.g.]])
+|8,766
+|- bgcolor="#ffdddd"
+|5 December 1995
+|International Select
+|[[Windsor Park|N]]
+|1–2
+|[[Paul Scholes|Scholes]]
+|22,000
+|- bgcolor="#ffdddd"
+|12 December 1995
+|[[Celtic F.C.|Celtic]]
+|A
+|1–3
+|[[Paul Scholes|Scholes]]
+|37,306
+|}
+
+==FA Premier League==
+{{main|1995–96 FA Premier League}}
+
+Manchester United opened the 1995–96 season with a 3–1 defeat away to [[Aston Villa F.C.|Aston Villa]], after which their young team was written off by all the media, most famously by [[Alan Hansen]] who claimed "you can't win anything with kids". The younger players were partnered with veterans like [[Steve Bruce]], [[Roy Keane]] and [[Peter Schmeichel]], and began to look a convincing outfit, particularly after a 2–1 win away to defending champions [[Blackburn Rovers F.C.|Blackburn Rovers]]. A 1–0 defeat at [[Arsenal F.C.|Arsenal]] was only their second league defeat of the campaign, but in the run-up to Christmas they endured a five-match winless run which left [[Newcastle United F.C.|Newcastle United]] looking uncatchable with a 10-point lead. A 2–0 home win over the [[Tyneside]]rs on 27 December cut the gap to seven points, but it widened again on New Year's Day when United were crushed 4–1 at [[Tottenham Hotspur F.C.|Tottenham Hotspur]].
+
+United then went on a strong run of form which saw the gap between themselves and Newcastle cut to four points by the end of February, and on 4 March they won 1–0 at Newcastle to cut the gap to a single point. They went top of the league soon afterwards and went into the final game of the season at [[Middlesbrough F.C.|Middlesbrough]] only needing a point to put the title beyond all doubt. United sealed their third league title in four seasons by beating the [[Teesside]]rs 3–0.
+
+{| class="wikitable" style="text-align:center"
+|-
+!Date
+!Opponents
+!H / A
+!Result<br />F–A
+!Scorers
+!Attendance
+!League<br />position
+|- bgcolor="#ffdddd"
+|19 August 1995
+|[[Aston Villa F.C.|Aston Villa]]
+|A
+|1–3
+|[[David Beckham|Beckham]] 84'
+|34,655
+|19th
+|- bgcolor="#ddffdd"
+|23 August 1995
+|[[West Ham United F.C.|West Ham United]]
+|H
+|2–1
+|[[Paul Scholes|Scholes]] 50', [[Roy Keane|Keane]] 68'
+|31,966
+|5th
+|- bgcolor="#ddffdd"
+|26 August 1995
+|[[Wimbledon F.C.|Wimbledon]]
+|H
+|3–1
+|[[Roy Keane|Keane]] (2) 28', 80', [[Andy Cole|Cole]] 60'
+|32,226
+|4th
+|- bgcolor="#ddffdd"
+|28 August 1995
+|[[Blackburn Rovers F.C.|Blackburn Rovers]]
+|A
+|2–1
+|[[Lee Sharpe|Sharpe]] 46', [[David Beckham|Beckham]] 67'
+|29,843
+|2nd
+|- bgcolor="#ddffdd"
+|9 September 1995
+|[[Everton F.C.|Everton]]
+|A
+|3–2
+|[[Lee Sharpe|Sharpe]] (2) 3', 49', [[Ryan Giggs|Giggs]] 74'
+|39,496
+|2nd
+|- bgcolor="#ddffdd"
+|16 September 1995
+|[[Bolton Wanderers F.C.|Bolton Wanderers]]
+|H
+|3–0
+|[[Paul Scholes|Scholes]] (2) 18', 86', [[Ryan Giggs|Giggs]] 34'
+|32,812
+|2nd
+|- bgcolor="#ffffdd"
+|23 September 1995
+|[[Sheffield Wednesday F.C.|Sheffield Wednesday]]
+|A
+|0–0
+|
+|34,101
+|3rd
+|- bgcolor="#ffffdd"
+|1 October 1995
+|[[Liverpool F.C.|Liverpool]]
+|H
+|2–2
+|[[Nicky Butt|Butt]] 2', [[Eric Cantona|Cantona]] 71' ([[Penalty kick (association football)|pen.]])
+|34,934
+|3rd
+|- bgcolor="#ddffdd"
+|14 October 1995
+|[[Manchester City F.C.|Manchester City]]
+|H
+|1–0
+|[[Paul Scholes|Scholes]] 5'
+|35,707
+|2nd
+|- bgcolor="#ddffdd"
+|21 October 1995
+|[[Chelsea F.C.|Chelsea]]
+|A
+|4–1
+|[[Paul Scholes|Scholes]] (2) 4', 10', [[Ryan Giggs|Giggs]] 78', [[Brian McClair|McClair]] 85'
+|31,019
+|2nd
+|- bgcolor="#ddffdd"
+|28 October 1995
+|[[Middlesbrough F.C.|Middlesbrough]]
+|H
+|2–0
+|[[Gary Pallister|Pallister]] 44', [[Andy Cole|Cole]] 88'
+|36,580
+|2nd
+|- bgcolor="#ffdddd"
+|4 November 1995
+|[[Arsenal F.C.|Arsenal]]
+|A
+|0–1
+|
+|38,317
+|2nd
+|- bgcolor="#ddffdd"
+|18 November 1995
+|[[Southampton F.C.|Southampton]]
+|H
+|4–1
+|[[Ryan Giggs|Giggs]] (2) 1', 4', [[Paul Scholes|Scholes]] 9', [[Andy Cole|Cole]] 69'
+|39,301
+|2nd
+|- bgcolor="#ddffdd"
+|22 November 1995
+|[[Coventry City F.C.|Coventry City]]
+|A
+|4–0
+|[[Denis Irwin|Irwin]] 28', [[Brian McClair|McClair]] (2) 48', 76', [[David Beckham|Beckham]] 58'
+|23,400
+|2nd
+|- bgcolor="#ffffdd"
+|27 November 1995
+|[[Nottingham Forest F.C.|Nottingham Forest]]
+|A
+|1–1
+|[[Eric Cantona|Cantona]] 67' ([[Penalty kick (association football)|pen.]])
+|29,263
+|2nd
+|- bgcolor="#ffffdd"
+|2 December 1995
+|[[Chelsea F.C.|Chelsea]]
+|H
+|1–1
+|[[David Beckham|Beckham]] 61'
+|42,019
+|2nd
+|- bgcolor="#ffffdd"
+|9 December 1995
+|[[Sheffield Wednesday F.C.|Sheffield Wednesday]]
+|H
+|2–2
+|[[Eric Cantona|Cantona]] (2) 18', 84'
+|41,849
+|2nd
+|- bgcolor="#ffdddd"
+|17 December 1995
+|[[Liverpool F.C.|Liverpool]]
+|A
+|0–2
+|
+|40,546
+|2nd
+|- bgcolor="#ffdddd"
+|24 December 1995
+|[[Leeds United F.C.|Leeds United]]
+|A
+|1–3
+|[[Andy Cole|Cole]] 30'
+|39,801
+|2nd
+|- bgcolor="#ddffdd"
+|27 December 1995
+|[[Newcastle United F.C.|Newcastle United]]
+|H
+|2–0
+|[[Andy Cole|Cole]] 6', [[Roy Keane|Keane]] 53'
+|42,024
+|2nd
+|- bgcolor="#ddffdd"
+|30 December 1995
+|[[Queens Park Rangers F.C.|Queens Park Rangers]]
+|H
+|2–1
+|[[Andy Cole|Cole]] 45', [[Ryan Giggs|Giggs]] 52'
+|41,890
+|2nd
+|- bgcolor="#ffdddd"
+|1 January 1996
+|[[Tottenham Hotspur F.C.|Tottenham Hotspur]]
+|A
+|1–4
+|[[Andy Cole|Cole]] 36'
+|32,852
+|2nd
+|- bgcolor="#ffffdd"
+|13 January 1996
+|[[Aston Villa F.C.|Aston Villa]]
+|H
+|0–0
+|
+|42,667
+|3rd
+|- bgcolor="#ddffdd"
+|22 January 1996
+|[[West Ham United F.C.|West Ham United]]
+|A
+|1–0
+|[[Eric Cantona|Cantona]] 9'
+|24,197
+|2nd
+|- bgcolor="#ddffdd"
+|3 February 1996
+|[[Wimbledon F.C.|Wimbledon]]
+|A
+|4–2
+|[[Andy Cole|Cole]] 41', [[Chris Perry (English footballer)|Perry]] 45' ([[Own goal|o.g.]]), [[Eric Cantona|Cantona]] (2) 71', 81' ([[Penalty kick (association football)|pen.]])
+|25,380
+|2nd
+|- bgcolor="#ddffdd"
+|10 February 1996
+|[[Blackburn Rovers F.C.|Blackburn Rovers]]
+|H
+|1–0
+|[[Lee Sharpe|Sharpe]] 15'
+|42,681
+|2nd
+|- bgcolor="#ddffdd"
+|21 February 1996
+|[[Everton F.C.|Everton]]
+|H
+|2–0
+|[[Roy Keane|Keane]] 30', [[Ryan Giggs|Giggs]] 82'
+|42,459
+|2nd
+|- bgcolor="#ddffdd"
+|25 February 1996
+|[[Bolton Wanderers F.C.|Bolton Wanderers]]
+|A
+|6–0
+|[[David Beckham|Beckham]] 5', [[Steve Bruce|Bruce]] 15', [[Andy Cole|Cole]] 70', [[Paul Scholes|Scholes]] (2) 76', 79', [[Nicky Butt|Butt]] 90'
+|21,381
+|2nd
+|- bgcolor="#ddffdd"
+|4 March 1996
+|[[Newcastle United F.C.|Newcastle United]]
+|A
+|1–0
+|[[Eric Cantona|Cantona]] 52'
+|36,584
+|2nd
+|- bgcolor="#ffffdd"
+|16 March 1996
+|[[Queens Park Rangers F.C.|Queens Park Rangers]]
+|A
+|1–1
+|[[Eric Cantona|Cantona]] 90'
+|18,817
+|2nd
+|- bgcolor="#ddffdd"
+|20 March 1996
+|[[Arsenal F.C.|Arsenal]]
+|H
+|1–0
+|[[Eric Cantona|Cantona]] 65'
+|50,028
+|1st
+|- bgcolor="#ddffdd"
+|24 March 1996
+|[[Tottenham Hotspur F.C.|Tottenham Hotspur]]
+|H
+|1–0
+|[[Eric Cantona|Cantona]] 51'
+|50,157
+|1st
+|- bgcolor="#ddffdd"
+|6 April 1996
+|[[Manchester City F.C.|Manchester City]]
+|A
+|3–2
+|[[Eric Cantona|Cantona]] 7' ([[Penalty kick (association football)|pen.]]), [[Andy Cole|Cole]] 42', [[Ryan Giggs|Giggs]] 78'
+|29,668
+|1st
+|- bgcolor="#ddffdd"
+|8 April 1996
+|[[Coventry City F.C.|Coventry City]]
+|H
+|1–0
+|[[Eric Cantona|Cantona]] 47'
+|50,332
+|1st
+|- bgcolor="#ffdddd"
+|13 April 1996
+|[[Southampton F.C.|Southampton]]
+|A
+|1–3
+|[[Ryan Giggs|Giggs]] 89'
+|15,262
+|1st
+|- bgcolor="#ddffdd"
+|17 April 1996
+|[[Leeds United F.C.|Leeds United]]
+|H
+|1–0
+|[[Roy Keane|Keane]] 72'
+|48,382
+|1st
+|- bgcolor="#ddffdd"
+|28 April 1996
+|[[Nottingham Forest F.C.|Nottingham Forest]]
+|H
+|5–0
+|[[Paul Scholes|Scholes]] 42', [[David Beckham|Beckham]] (2) 45', 55', [[Ryan Giggs|Giggs]] 70', [[Eric Cantona|Cantona]] 90'
+|53,926
+|1st
+|- bgcolor="#ddffdd"
+|5 May 1996
+|[[Middlesbrough F.C.|Middlesbrough]]
+|A
+|3–0
+|[[David May (footballer)|May]] 14', [[Andy Cole|Cole]] 54', [[Ryan Giggs|Giggs]] 81'
+|29,921
+|1st
+|}
+{{:1995–96 FA Premier League|showteam=MUN}}
+
+==FA Cup==
+{{main|1995–96 FA Cup}}
+United won the FA Cup by beating [[Liverpool F.C.|Liverpool]] 1–0 in the [[1996 FA Cup final|final]] at [[Wembley Stadium (1923)|Wembley Stadium]], with the only goal coming from [[Eric Cantona]] in the 85th minute. On the way to the final, Manchester United defeated [[Sunderland A.F.C.|Sunderland]], [[Reading F.C.|Reading]], [[Manchester City F.C.|Manchester City]], [[Southampton F.C.|Southampton]] and [[Chelsea F.C.|Chelsea]].
+
+{| class="wikitable" style="text-align:center"
+|-
+!Date
+!Round
+!Opponents
+!H / A
+!Result<br />F–A
+!Scorers
+!Attendance
+|- bgcolor="#ffffdd"
+|6 January 1996
+|Round 3
+|[[Sunderland A.F.C.|Sunderland]]
+|H
+|2–2
+|[[Nicky Butt|Butt]] 13', [[Eric Cantona|Cantona]] 80'
+|41,563
+|- bgcolor="#ddffdd"
+|16 January 1996
+|Round 3<br />Replay
+|[[Sunderland A.F.C.|Sunderland]]
+|A
+|2–1
+|[[Paul Scholes|Scholes]] 70', [[Andy Cole|Cole]] 90'
+|21,378
+|- bgcolor="#ddffdd"
+|27 January 1996
+|Round 4
+|[[Reading F.C.|Reading]]
+|A
+|3–0
+|[[Ryan Giggs|Giggs]] 37', [[Paul Parker (footballer)|Parker]] 57', [[Eric Cantona|Cantona]] 90'
+|14,780
+|- bgcolor="#ddffdd"
+|18 February 1996
+|Round 5
+|[[Manchester City F.C.|Manchester City]]
+|H
+|2–1
+|[[Eric Cantona|Cantona]] 39' ([[Penalty kick (association football)|pen.]]), [[Lee Sharpe|Sharpe]] 78'
+|42,692
+|- bgcolor="#ddffdd"
+|11 March 1996
+|Round 6
+|[[Southampton F.C.|Southampton]]
+|H
+|2–0
+|[[Eric Cantona|Cantona]] 49', [[Lee Sharpe|Sharpe]] 90'
+|45,446
+|- bgcolor="#ddffdd"
+|31 March 1996
+|Semi-final
+|[[Chelsea F.C.|Chelsea]]
+|[[Villa Park|N]]
+|2–1
+|[[Andy Cole|Cole]] 55', [[David Beckham|Beckham]] 59'
+|38,421
+|- bgcolor="#ddffdd"
+|11 May 1996
+|[[1996 FA Cup final|Final]]
+|[[Liverpool F.C.|Liverpool]]
+|[[Wembley Stadium (1923)|N]]
+|1–0
+|[[Eric Cantona|Cantona]] 86'
+|79,007
+|}
+
+==League Cup==
+{{main|1995–96 Football League Cup}}
+As in the previous seasons, United rested many of their first-team players in the League Cup, instead using the competition to provide first team experience to the club's younger players and reserves. This proved to be a bad move, as the Red Devils fell at the first hurdle, losing in the Second Round to [[Football League Second Division|Second Division]] side [[York City F.C.|York City]], 4–3 on aggregate.
+
+{| class="wikitable" style="text-align:center"
+|-
+!Date
+!Round
+!Opponents
+!H / A
+!Result<br />F–A
+!Scorers
+!Attendance
+|- bgcolor="#ffdddd"
+|20 September 1995
+|Round 2<br />First leg
+|[[York City F.C.|York City]]
+|H
+|0–3
+|
+|29,049
+|- bgcolor="#ddffdd"
+|3 October 1995
+|Round 2<br />Second leg
+|[[York City F.C.|York City]]
+|A
+|3–1
+|[[Paul Scholes|Scholes]] (2) 7', 80', [[Terry Cooke|Cooke]] 14'
+|9,386
+|}
+
+==UEFA Cup==
+{{main|1995–96 UEFA Cup}}
+{| class="wikitable" style="text-align:center"
+|-
+!Date
+!Round
+!Opponents
+!H / A
+!Result<br />F–A
+!Scorers
+!Attendance
+|- bgcolor="#ffffdd"
+|12 September 1995
+|Round 1<br />First leg
+|[[FC Rotor Volgograd|Rotor Volgograd]]
+|A
+|0–0
+|
+|33,000
+|- bgcolor="#ffffdd"
+|26 September 1995
+|Round 1<br />Second leg
+|[[FC Rotor Volgograd|Rotor Volgograd]]
+|H
+|2–2
+|[[Paul Scholes|Scholes]] 60', [[Peter Schmeichel|Schmeichel]] 89'
+|29,724
+|}
+
+==Squad statistics==
+{| class="wikitable" style="text-align:center"
+|-
+!rowspan="2" valign="bottom"|No.
+!rowspan="2" valign="bottom"|Pos.
+!rowspan="2" valign="bottom"|Name
+!colspan="2" width="85"|League
+!colspan="2" width="85"|FA Cup
+!colspan="2" width="85"|League Cup
+!colspan="2" width="85"|Europe
+!colspan="2" width="85"|Total
+|-
+!Apps
+!Goals
+!Apps
+!Goals
+!Apps
+!Goals
+!Apps
+!Goals
+!Apps
+!Goals
+|-
+|align=left|1||align=left|GK||align=left|{{flagicon|DEN}} [[Peter Schmeichel]]
+|36||0||6||0||1||0||2||1||45||1
+|-
+|align=left|2||align=left|DF||align=left|{{flagicon|ENG}} [[Paul Parker (footballer)|Paul Parker]]
+|5(1)||0||1(1)||1||1||0||0(1)||0||7(3)||1
+|-
+|align=left|3||align=left|DF||align=left|{{flagicon|IRL}} [[Denis Irwin]]
+|31||1||6||0||1||0||1||0||39||1
+|-
+|align=left|4||align=left|DF||align=left|{{flagicon|ENG}} [[Steve Bruce]] ([[Captain (association football)|c]])
+|30||1||5||0||1(1)||0||2||0||38(1)||1
+|-
+|align=left|5||align=left|MF||align=left|{{flagicon|ENG}} [[Lee Sharpe]]
+|21(10)||4||4(2)||2||2||0||2||0||29(12)||6
+|-
+|align=left|6||align=left|DF||align=left|{{flagicon|ENG}} [[Gary Pallister]]
+|21||1||3||0||2||0||2||0||28||1
+|-
+|align=left|7||align=left|FW||align=left|{{flagicon|FRA}} [[Eric Cantona]]
+|30||14||7||5||1||0||0||0||38||19
+|-
+|align=left|9||align=left|MF||align=left|{{flagicon|SCO}} [[Brian McClair]]
+|12(10)||3||0||0||1||0||0||0||13(10)||3
+|-
+|align=left|11||align=left|MF||align=left|{{flagicon|WAL}} [[Ryan Giggs]]
+|30(3)||11||7||1||2||0||2||0||41(3)||12
+|-
+|align=left|12||align=left|DF||align=left|{{flagicon|ENG}} [[David May (footballer)|David May]]
+|11(5)||1||2||0||0||0||0||0||13(5)||1
+|-
+|align=left|13||align=left|GK||align=left|{{flagicon|ENG}} [[Tony Coton]]
+|0||0||0||0||0||0||0||0||0||0
+|-
+|align=left|15||align=left|FW||align=left|{{flagicon|ENG}} [[Graeme Tomlinson]]
+|0||0||0||0||0||0||0||0||0||0
+|-
+|align=left|16||align=left|MF||align=left|{{flagicon|IRL}} [[Roy Keane]]
+|29||6||7||0||0(1)||0||2||0||38(1)||6
+|-
+|align=left|17||align=left|FW||align=left|{{flagicon|ENG}} [[Andy Cole]]
+|32(2)||11||7||2||1||0||1||0||42(2)||13
+|-
+|align=left|18||align=left|MF||align=left|{{flagicon|WAL}} [[Simon Davies (footballer born 1974)|Simon Davies]]
+|1(5)||0||0||0||1||0||0(1)||0||2(6)||0
+|-
+|align=left|19||align=left|MF||align=left|{{flagicon|ENG}} [[Nicky Butt]]
+|31(1)||2||7||1||0||0||2||0||40(1)||3
+|-
+|align=left|20||align=left|DF||align=left|{{flagicon|ENG}} [[Gary Neville]]
+|30(1)||0||5(1)||0||1||0||1||0||37(2)||0
+|-
+|align=left|21||align=left|DF||align=left|{{flagicon|NIR}} [[Pat McGibbon]]
+|0||0||0||0||1||0||0||0||1||0
+|-
+|align=left|22||align=left|MF||align=left|{{flagicon|ENG}} [[Paul Scholes]]
+|16(10)||10||0(2)||1||1||2||1(1)||1||18(13)||14
+|-
+|align=left|23||align=left|DF||align=left|{{flagicon|ENG}} [[Phil Neville]]
+|21(3)||0||6(1)||0||1(1)||0||1||0||29(5)||0
+|-
+|align=left|24||align=left|MF||align=left|{{flagicon|ENG}} [[David Beckham]]
+|26(7)||7||3||1||2||0||2||0||33(7)||8
+|-
+|align=left|25||align=left|GK||align=left|{{flagicon|ENG}} [[Kevin Pilkington]]
+|2(1)||0||1||0||1||0||0||0||4(1)||0
+|-
+|align=left|26||align=left|DF||align=left|{{flagicon|ENG}} [[Chris Casper]]
+|0||0||0||0||0||0||0||0||0||0
+|-
+|align=left|27||align=left|MF||align=left|{{flagicon|ENG}} [[Terry Cooke]]
+|1(3)||0||0||0||1(1)||1||0(1)||0||2(5)||1
+|-
+|align=left|29||align=left|MF||align=left|{{flagicon|ENG}} [[Ben Thornley]]
+|0(1)||0||0||0||0||0||0||0||0(1)||0
+|-
+|align=left|30||align=left|DF||align=left|{{flagicon|ENG}} [[John O'Kane]]
+|0(1)||0||0||0||0||0||1||0||1(1)||0
+|-
+|align=left|31||align=left|DF||align=left|{{flagicon|FRA}} [[William Prunier]]
+|2||0||0||0||0||0||0||0||2||0
+|}
+
+==Transfers==
+United's first departure of the 1995–96 season was [[Matthew Barrass (footballer born 1980)|Matthew Barrass]], who joined [[San Diego Nomads]] on 1 July. A day later, David Gardner was released, [[Paul Heckingbottom]] joined [[Sunderland A.F.C.|Sunderland]], Patrick Lee joined [[Middlesbrough F.C.|Middlesbrough]], and Paul Lyons joined [[Rochdale A.F.C.|Rochdale]]. [[Richard Irving (footballer)|Richard Irving]] signed for [[Nottingham Forest F.C.|Nottingham Forest]] on 19 July, while a week later, [[Ashley Westwood (footballer born 1976)|Ashley Westwood]] departed for [[Crewe Alexandra F.C.|Crewe Alexandra]]. [[Gary Walsh]] signed for Middlesbrough on 11 August, [[Andrei Kanchelskis]] joined [[Everton F.C.|Everton]], while in late September, Elliott Dickman joined Sunderland, and Stephen Hall was released. John Hudson was released on 5 November.
+
+United's only summer arrival of the 1995–96 season was [[Nick Culkin]], who signed from [[York City F.C.|York City]] on 25 September.
+
+United's only winter departure was [[Matthew Wicks]], who joined [[Arsenal F.C.|Arsenal]] on a free transfer on 23 January. Former captain [[Steve Bruce]] left for [[Birmingham City F.C.|Birmingham City]] on 22 May, while on 30 June, [[Dessie Baker]], Daniel Hall, [[Paul Parker (footballer)|Paul Parker]], and Phillip Whittam left the club.
+
+United's only winter arrival was [[Tony Coton]], who signed from United's rivals [[Manchester City F.C.|Manchester City]] on 31 January. [[Raimond van der Gouw]] joined United from Dutch club [[SBV Vitesse|Vitesse]] on 25 June 1996.
+
+===In===
+{| class="wikitable"
+|-
+! Date
+! Pos.
+! Name
+! From
+! Fee
+|-
+| 25 September 1995
+| GK
+| {{flagicon|ENG}} [[Nick Culkin]]
+| {{flagicon|ENG}} [[York City F.C.|York City]]
+| £250k
+|-
+| 31 January 1996
+| GK
+| {{flagicon|ENG}} [[Tony Coton]]
+| {{flagicon|ENG}} [[Manchester City F.C.|Manchester City]]
+| £500k
+|-
+| 25 June 1996
+| GK
+| {{flagicon|NED}} [[Raimond van der Gouw]]
+| {{flagicon|NED}} [[SBV Vitesse|Vitesse]]
+| Free
+|}
+
+===Out===
+{| class="wikitable"
+|-
+! Date
+! Pos.
+! Name
+! To
+! Fee
+|-
+| 1 July 1995
+| MF
+| {{flagicon|ENG}} [[Matt Barrass (footballer born 1980)|Matthew Barrass]]
+| {{flagicon|USA}} [[San Diego Nomads]]
+| Free
+|-
+| 2 July 1995
+| MF
+| {{flagicon|ENG}} David Gardner
+| Released
+| Free
+|-
+|rowspan=3| 2 July 1995
+| DF
+| {{flagicon|ENG}} [[Paul Heckingbottom]]
+| {{flagicon|ENG}} [[Sunderland A.F.C.|Sunderland]]
+| Free
+|-
+| MF
+| {{flagicon|IRE}} Patrick Lee
+| {{flagicon|ENG}} [[Middlesbrough F.C.|Middlesbrough]]
+| Free
+|-
+| MF
+| {{flagicon|ENG}} [[Paul Lyons (footballer)|Paul Lyons]]
+| {{flagicon|ENG}} [[Rochdale A.F.C.|Rochdale]]
+| Free
+|-
+| 19 July 1995
+| FW
+| {{flagicon|ENG}} [[Richard Irving (footballer)|Richard Irving]]
+| {{flagicon|ENG}} [[Nottingham Forest F.C.|Nottingham Forest]]
+| £75k
+|-
+| 26 July 1995
+| DF
+| {{flagicon|ENG}} [[Ashley Westwood (footballer born 1976)|Ashley Westwood]]
+| {{flagicon|ENG}} [[Crewe Alexandra F.C.|Crewe Alexandra]]
+| £40k
+|-
+| 11 August 1995
+| GK
+| {{flagicon|ENG}} [[Gary Walsh (English footballer)|Gary Walsh]]
+| {{flagicon|ENG}} [[Middlesbrough F.C.|Middlesbrough]]
+| £250k
+|-
+| 25 August 1995
+| MF
+| {{flagicon|RUS}} [[Andrei Kanchelskis]]
+| {{flagicon|ENG}} [[Everton F.C.|Everton]]
+| £5m
+|-
+| 27 September 1995
+| DF
+| {{flagicon|ENG}} Elliott Dickman
+| {{flagicon|ENG}} [[Sunderland A.F.C.|Sunderland]]
+| Free
+|-
+| 30 September 1995
+| FW
+| {{flagicon|ENG}} Stephen Hall
+| Released
+| Free
+|-
+| 5 November 1995
+| MF
+| {{flagicon|ENG}} John Hudson
+| Released
+| Free
+|-
+| 23 January 1996
+| DF
+| {{flagicon|ENG}} [[Matt Wicks]]
+| {{flagicon|ENG}} [[Arsenal F.C.|Arsenal]]
+| Free
+|-
+| 22 May 1996
+| DF
+| {{flagicon|ENG}} [[Steve Bruce]]
+| {{flagicon|ENG}} [[Birmingham City F.C.|Birmingham City]]
+| Free
+|-
+|rowspan=4| 30 June 1996
+| FW
+| {{flagicon|IRE}} [[Dessie Baker]]
+| Released
+| Free
+|-
+| DF
+| {{flagicon|ENG}} Daniel Hall
+| Released
+| Free
+|-
+| DF
+| {{flagicon|ENG}} [[Paul Parker (footballer)|Paul Parker]]
+| {{flagicon|ENG}} [[Derby County F.C.|Derby County]]
+| Free
+|-
+| DF
+| {{flagicon|ENG}} Phillip Whittam
+| Released
+| Free
+|}
+
+===Loan in===
+{| class="wikitable"
+|-
+! Date from
+! Date to
+! Pos.
+! Name
+! From
+|-
+| 29 December 1995
+| 1 March 1996
+| DF
+| {{flagicon|FRA}} [[William Prunier]]
+| {{flagicon|FRA}} [[FC Girondins de Bordeaux|Bordeaux]]
+|}
+
+===Loan out===
+{| class="wikitable"
+|-
+! Date from
+! Date to
+! Pos.
+! Name
+! To
+|-
+| 1 July 1995
+| 1 August 1995
+| MF
+| {{flagicon|ENG}} [[Michael Appleton]]
+| {{flagicon|ENG}} [[Wimbledon F.C.|Wimbledon]]
+|-
+| 15 September 1995
+| 15 October 1995
+| MF
+| {{flagicon|ENG}} [[Michael Appleton]]
+| {{flagicon|ENG}} [[Lincoln City F.C.|Lincoln City]]
+|-
+| 6 November 1995
+| 15 February 1996
+| MF
+| {{flagicon|ENG}} [[Ben Thornley]]
+| {{flagicon|ENG}} [[Stockport County F.C.|Stockport County]]
+|-
+| 11 January 1996
+| 11 April 1996
+| DF
+| {{flagicon|ENG}} [[Chris Casper]]
+| {{flagicon|ENG}} [[AFC Bournemouth]]
+|-
+| 29 January 1996
+| 29 February 1996
+| MF
+| {{flagicon|ENG}} [[Terry Cooke]]
+| {{flagicon|ENG}} [[Sunderland A.F.C.|Sunderland]]
+|-
+| 2 February 1996
+| 20 March 1996
+| GK
+| {{flagicon|ENG}} [[Kevin Pilkington]]
+| {{flagicon|ENG}} [[Rochdale A.F.C.|Rochdale]]
+|-
+| 22 February 1996
+| 18 May 1997
+| MF
+| {{flagicon|ENG}} [[Ben Thornley]]
+| {{flagicon|ENG}} [[Huddersfield Town A.F.C.|Huddersfield Town]]
+|-
+| 22 March 1996
+| 22 May 1996
+| FW
+| {{flagicon|ENG}} [[Graeme Tomlinson]]
+| {{flagicon|ENG}} [[Luton Town F.C.|Luton Town]]
+|}
+
+==References==
+{{reflist}}
+{{Commons|1995–96 Manchester United F.C. kits}}
+
+{{Manchester United F.C. seasons}}
+{{1995–96 in English football}}
+
+{{DEFAULTSORT:1995-96 Manchester United F.C. season}}
+[[Category:Manchester United F.C. seasons]]
+[[Category:1995–96 FA Premier League by team|Manchester United]]
+[[Category:English football championship–winning seasons|1996]]

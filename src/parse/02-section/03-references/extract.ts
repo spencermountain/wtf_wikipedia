@@ -5,7 +5,7 @@ import parseBlock from '../../block/index.ts'
 import parseLinks from '../../block/links/parse.ts'
 import makeResult from '../../templates/result.ts'
 import getTemplates from '../../templates/find/flat.ts'
-import templates from '../../../templates/index.ts'
+import templates from '../../../world/templates/index.ts'
 import runParser from '../../templates/parse/run-parser.ts'
 
 // Keep the existing limits for plain, self-closing, and attributed references.

@@ -1,5 +1,5 @@
 import type { PageData } from '../../../types/index.ts'
-import { categories as _categories } from '../../../_data/i18n/index.ts'
+import { categories as _categories } from '../../../world/data/i18n/index.ts'
 
 const cat_reg = new RegExp('\\[\\[(' + _categories.join('|') + '):(.{2,178}?)]](w{0,10})', 'gi')
 const cat_remove_reg = new RegExp('^\\[\\[:?(' + _categories.join('|') + '):', 'gi')

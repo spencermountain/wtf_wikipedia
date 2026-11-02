@@ -1,6 +1,6 @@
 import parseBlocks from './toJSON/index.ts'
 import simplifyArguments from './toJSON/simplify.ts'
-import parseShortcut from '../../../templates/_shortcuts.ts'
+import parseShortcut from '../../../world/templates/_shortcuts.ts'
 
 // Preserve format aliases and the callback signature for existing plugins.
 const parseArguments = (opts, text, order = [], format?: string) => {

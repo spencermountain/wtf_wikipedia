@@ -3,6 +3,7 @@ import makeUrl from './makeUrl.ts'
 import getResult from './getResult.ts'
 import parseDoc from './parseDoc.ts'
 import makeHeaders from './_headers.ts'
+import { warnHttp, warnNetwork, warnApi } from '../_lib/warn.ts'
 import { isArray } from '../../_lib/helpers.ts'
 import docDefaults from '../../_lib/defaults.ts'
 import normalizeProject from '../../_lib/project.ts'
@@ -20,12 +21,19 @@ const defaults = {
 }
 
 const getJson = function (url, headers) {
-  return fetch(url, headers).then((res) => {
-    if (res.ok !== true) {
-      throw new Error(`HTTP ${res.status} error fetching: ${url}`)
-    }
-    return res.json()
-  })
+  return fetch(url, headers)
+    .catch((e) => {
+      // the request never got a response - explain why, then reject as before
+      warnNetwork(url, e)
+      throw e
+    })
+    .then((res) => {
+      if (res.ok !== true) {
+        warnHttp(res.status, url, res.headers?.get?.('retry-after'))
+        throw new Error(`HTTP ${res.status} error fetching: ${url}`)
+      }
+      return res.json()
+    })
 }
 
 //a single pageID, title, or URL returns one Document; an array of pageIDs or
@@ -69,6 +77,10 @@ const fetchPage = function (title, options, callback) {
           return getJson(url, headers).then((res) => {
             if (!res) {
               throw new Error(`No JSON Data Found For ${url}`)
+            }
+            // a 200-ok response can still carry an api error, like 'maxlag'
+            if (res.error) {
+              warnApi(res.error, url)
             }
             return getResult(res, options) || []
           })

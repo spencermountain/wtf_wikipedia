@@ -1,5 +1,5 @@
-import languages from '../../../_data/languages.ts'
-import namespaceNames from '../../../_data/namespaces.ts'
+import languages from '../../../world/data/languages.ts'
+import namespaceNames from '../../../world/data/namespaces.ts'
 import defaults from '../../../_lib/defaults.ts'
 import normalizeProject from '../../../_lib/project.ts'
 import type { DocInfo } from '../../../types/index.ts'

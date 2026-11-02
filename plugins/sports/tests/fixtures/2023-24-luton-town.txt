@@ -1,0 +1,1618 @@
+{{Primary|date=July 2023}}
+{{Short description|English football club season}}
+{{Infobox football club season
+| club = [[Luton Town F.C.|Luton Town]]
+| season = [[2023–24 in English football|2023–24]]
+| image = File:Luton v West Ham 2023.jpeg
+| image_size = 300px
+| caption = Luton Town and [[West Ham United F.C.|West Ham United]] players shaking hands before a league match on 1 September 2023
+| owner = Luton Town Football Club 2020 Ltd
+| chairman = David Wilkinson
+| manager = [[Rob Edwards (footballer, born 1982)|Rob Edwards]]
+| stadium = [[Kenilworth Road]]
+| league = [[Premier League]]
+| league result = [[2023–24 Premier League|18th]] (relegated)
+| cup1 = [[FA Cup]]
+| cup1 result = [[2023–24 FA Cup|Fifth round]]
+| cup2 = [[EFL Cup]]
+| cup2 result = [[2023–24 EFL Cup|Third round]]
+| league topscorer = <br>[[Carlton Morris]] (11)
+| season topscorer = <br>Carlton Morris (11)
+| highest attendance = 12,027 v [[Fulham F.C.|Fulham]]<br/>(9 May 2024, Premier League)
+| lowest attendance = 9,468 v [[Gillingham F.C.|Gillingham]]<br/>(29 Aug 2023, EFL Cup)
+| average attendance = 11,278
+| largest win = '''4–0''' v [[Brighton & Hove Albion F.C.|Brighton & Hove Albion]]<br/>(Home, 30 Jan 2024, Premier League)
+| largest loss = '''2–6''' v [[Manchester City F.C.|Manchester City]]<br/>(Home, 27 Feb 2024, FA Cup)<br/>'''5–1''' v Manchester City<br/>(Away, 13 Apr 2024, Premier League)<br/>'''1–5''' v [[Brentford F.C.|Brentford]]<br/>(Home, 20 Apr 2024, Premier League)
+| pattern_la1 = _luton2324h
+| pattern_b1 = _luton2324h
+| pattern_ra1 = _luton2324h
+| pattern_sh1 = _luton2324h
+| pattern_so1 = _luton2324hl
+| leftarm1 = FF4000
+| body1 = FF4000
+| rightarm1 = FF4000
+| shorts1 = 002244
+| socks1 = FF4000
+| pattern_la2 = _luton2324a
+| pattern_b2 = _luton2324a
+| pattern_ra2 = _luton2324a
+| pattern_sh2 = _luton2324a
+| pattern_so2 = _luton2324al
+| leftarm2 = FFFFFF
+| body2 = FFFFFF
+| rightarm2 = FFFFFF
+| shorts2 = FFFFFF
+| socks2 = FFFFFF
+| pattern_la3 = _luton2324t
+| pattern_b3 = _luton2324t
+| pattern_ra3 = _luton2324t
+| pattern_sh3 = 
+| pattern_so3 = _luton2324tl
+| leftarm3 = 00051d
+| body3 = 00051d
+| rightarm3 = 00051d
+| shorts3 = 00051d
+| socks3 = 00051d
+| prevseason = [[2022–23 Luton Town F.C. season|2022–23]]
+| nextseason = [[2024–25 Luton Town F.C. season|2024–25]]
+}}
+The '''2023–24 season''' was the 138th season in the history of [[Luton Town F.C.|Luton Town]] and their first ever season in the [[Premier League]].<ref name="A Brief History of Luton Town FC">{{cite web |title=A Brief History of Luton Town FC |url=https://www.lutontown.co.uk/club/club-history/ |publisher=Luton Town F.C.}}</ref> It was the club's first return to the top flight of English football since the [[1991–92 Football League First Division|1991–92 season]].<ref name="A Brief History of Luton Town FC"/> In addition to the [[2023–24 Premier League|domestic league]], the club also participated in the [[2023–24 FA Cup|FA Cup]] and the [[2023–24 EFL Cup|EFL Cup]].
+
+Luton were relegated from the Premier League on the final day of the season following a 4–2 home loss to [[Fulham F.C.|Fulham]], combined with results elsewhere.<ref>{{cite news|url=https://www.premierleague.com/news/4016996|title=Luton relegated after defeat to Fulham|publisher=Premier League|date=19 May 2024|access-date=19 May 2024}}</ref>
+
+== Squad ==
+{{updated|18 March 2024}}
+
+{| class="wikitable" style="text-align:center; font-size:84.5%; width:101%;"
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033; text-align:center;"| No.
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033; text-align:center;"| Player
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033; text-align:center;"| Position
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033; text-align:center;"| Nationality
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033; text-align:center;"| Place of birth
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033; text-align:center;"| Date of birth (age)
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033; text-align:center;"| Signed from
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033; text-align:center;"| Date signed
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033; text-align:center;"| Fee
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033; text-align:center;"| Contract end
+|-
+! colspan="14" style="background:#dcdcdc; tepxt-align:center;"| Goalkeepers
+|-
+| 1 || [[James Shea]] || [[Goalkeeper (association football)|GK]] || {{flagicon|ENG}} || [[Islington, London|Islington]] || {{bda|1991|7|16|df=y}} ||[[AFC Wimbledon]] || 3 July 2017 || Undisclosed || 30 June 2024
+|-
+| 23 || [[Tim Krul]] || [[Goalkeeper (association football)|GK]] || {{flagicon|NED}} || [[The Hague]] || {{birth date and age|1988|4|3|df=yes}} || [[Norwich City F.C.|Norwich City]] || 17 August 2023 || Undisclosed || 30 June 2024
+|-
+| 24 || [[Thomas Kaminski]] || [[Goalkeeper (association football)|GK]] || {{flagicon|BEL}} || [[Dendermonde]] || {{birth date and age|1992|10|23|df=yes}} || [[Blackburn Rovers F.C.|Blackburn Rovers]] || 3 August 2023 || £2,500,000 || 30 June 2026
+|-
+! colspan="14" style="background:#dcdcdc; tepxt-align:center;"| Defenders
+|-
+| 2 || [[Gabriel Osho]] || [[Defender (association football)|CB/DM]] || {{flagicon|ENG}} || [[Reading, Berkshire|Reading]] || {{bda|1998|8|14|df=y}} || [[Reading F.C.|Reading]] || 18 November 2020 || Free transfer || 30 June 2024
+|-
+| 3 || [[Dan Potts (footballer)|Dan Potts]] || [[Defender (association football)|CB/LB]] || {{flagicon|ENG}} || [[Barking, London|Barking]] || {{bda|1994|4|13|df=y}} || [[West Ham United F.C.|West Ham United]] || 29 May 2015 || Free transfer || 30 June 2024
+|-
+| 4 || [[Tom Lockyer]] || [[Defender (association football)#Centre-back|CB]] || {{flagicon|WAL}} || [[Cardiff]] || {{birth date and age|1994|12|3|df=yes}} || [[Charlton Athletic F.C.|Charlton Athletic]] || 1 September 2020 || Undisclosed || 30 June 2025
+|-
+| 5 || [[Mads Juel Andersen|Mads Andersen]] || [[Defender (association football)#Centre-back|CB]] || {{flagicon|DEN}} || [[Albertslund]] || {{birth date and age|1997|12|27|df=yes}} || [[Barnsley F.C.|Barnsley]] || 3 July 2023 || Undisclosed || 30 June 2026
+|-
+| 12 || [[Issa Kaboré]] || [[Defender (association football)#Full-back|RB]] || {{flagicon|BFA}} || [[Bobo-Dioulasso]] || {{birth date and age|2001|5|12|df=yes}} || [[Manchester City F.C.|Manchester City]] || 21 July 2023 || Loan || 31 May 2024
+|-
+| 15|| [[Teden Mengi]] || [[Defender (association football)#Centre-back|CB]] || {{flagicon|ENG}} || [[Manchester]] || {{bda|2002|4|30|df=y}} || [[Manchester United F.C.|Manchester United]] || 31 August 2023 || Undisclosed || Unknown
+|-
+| 16 || [[Reece Burke]] || [[Defender (association football)#Centre-back|CB]] || {{flagicon|ENG}} || [[London Borough of Newham|Newham]] || {{bda|1996|9|2|df=y}} || [[Hull City A.F.C.|Hull City]] || 1 July 2021 || Free transfer || 30 June 2025
+|-
+| 27 || [[Daiki Hashioka]] || [[Defender (association football)#Full-back|RB]] || {{flagicon|JPN}} || [[Saitama (city)|Saitama]] || {{birth date and age|1999|05|17|df=yes}} || {{fbaicon|BEL}} [[Sint-Truidense V.V.|Sint-Truiden]] || 30 January 2024 || Undisclosed || 30 June 2026
+|-
+| 29 || [[Amari'i Bell]] || [[Defender (association football)#Full-back|CB/LB]] || {{flagicon|JAM}} || {{flagicon|ENG}}  [[Burton upon Trent]] || {{birth date and age|1994|5|5|df=y}} || [[Blackburn Rovers F.C.|Blackburn Rovers]] || 1 July 2021 || Free transfer || 30 June 2024
+|-
+| 38 || [[Joe Johnson (footballer, born 2006)|Joe Johnson]] || [[Defender (association football)#Full-back|LB]] || {{flagicon|ENG}} || [[London Borough of Barnet|Barnet]] || {{birth date and age|2006|1|9|df=yes}} || Academy || 9 August 2023 || {{N/A}} || 30 June 2024
+|-
+| 45 || [[Alfie Doughty]] || [[Defender (association football)|LB/LWB]] || {{flagicon|ENG}} || [[Poplar, London|Poplar]] || {{bda|1999|12|21|df=y}} || [[Stoke City F.C.|Stoke City]] || 20 June 2022 || Undisclosed || 30 June 2024
+|-
+! colspan="14" style="background:#dcdcdc; tepxt-align:center;"| Midfielders
+|-
+| 6 || [[Ross Barkley]] || [[Midfielder#Central midfielder|CM]] || {{flagicon|ENG}} || [[Liverpool]] || {{birth date and age|1993|12|5|df=yes}} || {{fbaicon|FRA}} [[OGC Nice|Nice]] || 9 August 2023 || Free Transfer || 30 June 2024
+|-
+| 8 || [[Luke Berry]] || [[Midfielder#Central midfielder|CM]] || {{flagicon|ENG}} || [[Cambridge]] || {{bda|1992|7|12|df=y}} || [[Cambridge United F.C.|Cambridge United]] || 25 August 2017 || Undisclosed || 30 June 2024
+|-
+| 13 || [[Marvelous Nakamba]] || [[Midfielder#Defensive midfielder|DM]] || {{fbicon|ZIM}} || [[Hwange]] || {{birth date and age|1994|1|19|df=yes}} || [[Aston Villa F.C.|Aston Villa]] || 20 July 2023 || Undisclosed || 30 June 2026
+|-
+| 17 || [[Pelly Ruddock Mpanzu]] || [[Midfielder#Defensive midfielder|DM]] || {{flagicon|COD}} || {{flagicon|ENG}} [[Hendon]] || {{birth date and age|1994|3|22|df=y}} || [[West Ham United F.C.|West Ham United]] || 28 January 2014 || Undisclosed || 30 June 2025
+|-
+| 18 || [[Jordan Clark (English footballer)|Jordan Clark]] || [[Midfielder (association football)|CAM/RW]] || {{flagicon|ENG}} || [[Hoyland]] || {{bda|1993|9|22|df=y}} ||  [[Accrington Stanley F.C.|Accrington Stanley]] || 5 August 2020 || Free transfer || 30 June 2024
+|-
+| 28|| [[Albert Sambi Lokonga]] || [[Midfielder#Central midfielder|CM]] || {{flagicon|BEL}} || [[Verviers]] || {{birth date and age|1999|10|22|df=yes}} || [[Arsenal F.C.|Arsenal]] || 1 September 2023 || Loan || 31 May 2024
+|-
+| 32 || [[Fred Onyedinma]] || [[Midfielder#Attacking midfielder|AM]] || {{flagicon|NGA}} || [[Lagos]] || {{bda|1996|11|24|df=y}} ||[[Wycombe Wanderers F.C.|Wycombe Wanderers]] || 25 May 2021 || Undisclosed || 30 June 2024
+|-
+| 43 || [[Zack Nelson]] || [[Midfielder#Central midfielder|CM]]  || {{flagicon|ENG}} || [[London Borough of Enfield|Enfield]] || {{birth date and age|2005|5|21|df=yes}} || Academy || 21 January 2023 || {{N/A}} || 30 June 2025
+|-
+| — || [[Axel Piesold]] || [[Midfielder#Central midfielder|CM]] || {{flagicon|ENG}} || {{flagicon|ENG}} [[Muswell Hill]] || {{birth date and age|2000|11|9|df=y}} || [[Free agent]] || 24 September 2021 || {{N/A}} || 30 June 2024
+
+|-
+! colspan="14" style="background:#dcdcdc; tepxt-align:center;"| Forwards
+|-
+| 7 || [[Chiedozie Ogbene]] || [[Forward (association football)#Winger|RW]] || {{flagicon|IRL}} || {{flagicon|NGA}} [[Lagos]] || {{birth date and age|1997|5|1|df=y}} || [[Rotherham United F.C.|Rotherham United]] || 1 July 2023 || Free transfer || 30 June 2025
+|-
+| 9 || [[Carlton Morris]] || [[Forward (association football)#Centre forward|CF]] || {{flagicon|ENG}} || [[Cambridge]] || {{birth date and age|1995|12|16|df=yes}} || [[Barnsley F.C.|Barnsley]] || 1 July 2022 || Undisclosed || 30 June 2026
+|-
+| 10 || [[Cauley Woodrow]] || [[Forward (association football)#Centre forward|CF]] || {{flagicon|ENG}} || [[Hemel Hempstead]] || {{birth date and age|1994|12|2|df=yes}} || [[Barnsley F.C.|Barnsley]] || 6 July 2022 || £1,700,000 || 30 June 2026
+|-
+| 11 || [[Elijah Adebayo]] || [[Forward (association football)#Centre forward|CF]] || {{flagicon|ENG}} || [[London Borough of Brent|Brent]] || {{bda|1998|1|7|df=y}} || [[Walsall F.C.|Walsall]] || 1 February 2021 || Undisclosed || 30 June 2024
+|-
+| 14 || [[Tahith Chong]] || [[Forward (association football)#Winger|RW]] || {{flagicon|NED}} || {{flagicon|CUW}} [[Willemstad]] || {{birth date and age|1999|12|4|df=yes}} || [[Birmingham City F.C.|Birmingham City]] || 13 July 2023 || Undisclosed || 30 June 2026
+|-
+| 19 || [[Jacob Brown (footballer)|Jacob Brown]] || [[Forward (association football)|CF]] || {{flagicon|SCO}} || {{flagicon|ENG}} [[Halifax, West Yorkshire|Halifax]] || {{birth date and age|1998|4|10|df=yes}} || [[Stoke City F.C.|Stoke City]] || 10 August 2023 || Undisclosed || 30 June 2026
+|-
+| 30 || [[Andros Townsend]] || [[Forward (association football)#Winger|RW]] || {{flagicon|ENG}} || [[Leytonstone]] || {{birth date and age|1991|7|16|df=yes}} || [[Free agent]] || 11 October 2023 || Free transfer || 30 June 2026
+|-
+! colspan="14" style="background:#dcdcdc; tepxt-align:center;"| Out on Loan
+|-
+| 15 || [[Admiral Muskwe]] || [[Forward (association football)|CF]] || {{flagicon|ZIM}} || [[Harare]] || {{birth date and age|1998|8|21|df=yes}} || [[Leicester City F.C.|Leicester City]] || 15 July 2021 || Undisclosed || 30 June 2024
+|-
+| 20 || [[Louie Watson]] || [[Midfielder (association football)|CM]] || {{flagicon|IRE}} || {{flagicon|ENG}} [[Croydon, London|Croydon]] || {{bda|2001|7|7|df=y}} || [[Derby County F.C.|Derby County]] || 1 July 2022 || Undisclosed || 30 June 2024
+|-
+| 21 || [[John McAtee]] || [[Forward (association football)|CF]] || {{flagicon|ENG}} || [[Salford]] || {{bda|1999|7|23|df=y}} || [[Grimsby Town F.C.|Grimsby Town]] || 2 August 2022 || Undisclosed || 30 June 2024
+|-
+| 22 || [[Allan Campbell (footballer)|Allan Campbell]] || [[Midfielder (association football)|CM]] || {{flagicon|SCO}} || [[Glasgow, Scotland|Glasgow]] || {{bda|1998|7|4|df=y}} || {{fbaicon|SCO}} [[Motherwell F.C.|Motherwell]] || 15 June 2021 || Undisclosed || 30 June 2024
+|-
+| 25 || [[Joe Taylor (footballer, born 2002)|Joe Taylor]] || [[Forward (association football)|CF]] || {{flagicon|ENG}} || [[Peterborough]] || {{bda|2002|11|18|df=y}} || [[Peterborough United F.C.|Peterborough United]] || 31 January 2022 || Undisclosed || 30 June 2024
+|-
+| 26 || [[Ryan Giles]] || [[Defender (association football)#Full-back|LB]] || {{flagicon|ENG}} || [[Telford]] || {{birth date and age|2000|1|26|df=yes}} || [[Wolverhampton Wanderers F.C.|Wolverhampton Wanderers]] || 28 July 2023 || Undisclosed || 30 June 2026
+|-
+
+| 40 || Aidan Francis-Clarke || [[Midfielder (association football)|CM]] || {{flagicon|ENG}} || || {{birth date and age|2004|7|2|df=yes}} || Academy || 1 July 2022 || {{N/A}} || 30 June 2025
+|-
+| — || [[Tom Holmes (footballer)|Tom Holmes]] || [[Defender (association football)#Centre-back|CB]] || {{flagicon|ENG}} || [[Reading, Berkshire|Reading]] || {{birth date and age|2000|03|12|df=yes}} || [[Reading F.C.|Reading]] || 17 January 2024 || Undisclosed || 30 June 2027
+|-
+| — || [[Aribim Pepple]] || [[Forward (association football)|CF]] || {{flagicon|CAN}} || {{flagicon|ENG}} [[Kettering]] || {{birth date and age|2002|12|25|df=yes}} || {{fbaicon|CAN}} [[Cavalry FC|Cavalry]] || 2 August 2022 || Undisclosed || 30 June 2024
+|-
+| — || [[Dion Pereira]] || [[Forward (association football)#Winger|LW]] || {{flagicon|ATG}} || {{flagicon|ENG}} [[Watford]] || {{birth date and age|1999|3|25|df=yes}} || [[Free agent]] || 3 November 2020 || {{N/A}} || 30 June 2024
+|-
+| — || [[Jack Walton (footballer)|Jack Walton]] || [[Goalkeeper (association football)|GK]] || {{flagicon|ENG}} || [[Bury, Greater Manchester|Bury]] || {{bda|1998|4|23|df=y}} || [[Barnsley F.C.|Barnsley]] || 30 January 2023 || Undisclosed || 30 June 2024
+|}
+
+== Transfers ==
+=== In ===
+{| class="wikitable plainrowheaders sortable"
+|-
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033;" |Date
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033;" |Pos.
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033;" |Player
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033;" |Transferred from
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033;" |Fee
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033;" |Ref.
+|-
+| 1 July 2023 || [[Forward (association football)#Winger|RW]] || {{flagicon|IRL}} [[Chiedozie Ogbene]] || {{fbaicon|ENG}} [[Rotherham United F.C.|Rotherham United]] || Free transfer || <ref>{{cite news |title=Chiedozie Ogbene joins Luton Town! |url=https://www.lutontown.co.uk/news/2023/june/ogbene-signs/ |access-date=27 June 2023 |publisher=Luton Town FC |date=27 June 2023}}</ref>
+|-
+| 3 July 2023 || [[Defender (association football)#Centre-back|CB]] || {{flagicon|DEN}} [[Mads Juel Andersen|Mads Andersen]] || {{fbaicon|ENG}} [[Barnsley F.C.|Barnsley]] || Undisclosed || <ref>{{cite news |title=Mads Andersen signs for Luton Town! |url=https://www.lutontown.co.uk/news/2023/july/mads-andersen-joins-luton-town/ |access-date=3 Jul 2023 |publisher=Luton Town FC |date=3 Jul 2023}}</ref>
+|-
+| 14 July 2023 || [[Forward (association football)#Winger|RW]] || {{flagicon|NED}} [[Tahith Chong]] || {{fbaicon|ENG}} [[Birmingham City F.C.|Birmingham City]] || Undisclosed || <ref>{{cite news |title=Tahith Chong is a Hatter! |url=https://www.lutontown.co.uk/news/2023/july/tahith-is-a-hatter/ |access-date=14 July 2023 |publisher=Luton Town FC |date=14 July 2023}}</ref>
+|-
+| 20 July 2023 || [[Midfielder#Defensive midfielder|DM]] || {{flagicon|ZIM}} [[Marvelous Nakamba]] || {{fbaicon|ENG}} [[Aston Villa F.C.|Aston Villa]] || Undisclosed || <ref>{{cite news |title=Marvelous, just marvellous |url=https://www.lutontown.co.uk/news/2023/july/marvelous-just-marvellous/ |access-date=20 July 2023 |publisher=Luton Town FC |date=20 July 2023}}</ref>
+|-
+| 28 July 2023 || [[Defender (association football)#Full-back|LB]] || {{flagicon|ENG}} [[Ryan Giles]] || {{fbaicon|ENG}} [[Wolverhampton Wanderers F.C.|Wolverhampton Wanderers]] || Undisclosed || <ref>{{cite news |title=We've signed Ryan Giles |url=https://www.lutontown.co.uk/news/2023/july/our-next-new-arrival-is-ryan-giles/ |access-date=28 July 2023 |publisher=Luton Town FC |date=28 July 2023}}</ref>
+|-
+| 3 August 2023 || [[Goalkeeper (association football)|GK]] || {{flagicon|BEL}} [[Thomas Kaminski]] || {{fbaicon|ENG}} [[Blackburn Rovers F.C.|Blackburn Rovers]] || Undisclosed || <ref>{{cite news |title=Goalkeeper Kaminski captured! |url=https://www.lutontown.co.uk/news/2023/august/kaminski-signs/ |access-date=3 August 2023 |publisher=Luton Town FC |date=3 August 2023}}</ref>
+|-
+| 9 August 2023 || [[Midfielder|MF]] || {{flagicon|ENG}} [[Ross Barkley]] || {{fbaicon|FRA}} [[OGC Nice|Nice]] || Free transfer || <ref>{{cite news |title=Ross Barkley is a Hatter! |url=https://www.lutontown.co.uk/news/2023/august/ross-barkley-signs-for-luton-town |access-date=9 August 2023 |publisher=Luton Town FC |date=9 August 2023}}</ref>
+|-
+| 10 August 2023 || [[Forward (association football)#Centre forward|CF]] || {{flagicon|SCO}} [[Jacob Brown (footballer)|Jacob Brown]] || {{fbaicon|ENG}} [[Stoke City F.C.|Stoke City]] || Undisclosed || <ref>{{cite news |title=Luton sign forward Brown from Stoke |url=https://www.premierleague.com/news/3624827 |access-date=10 August 2023 |publisher=Premier League |date=10 August 2023}}</ref>
+|-
+| 17 August 2023 || [[Goalkeeper (association football)|GK]] || {{flagicon|NED}} [[Tim Krul]] || {{fbaicon|ENG}} [[Norwich City F.C.|Norwich City]] || Undisclosed || <ref>{{cite news |title=Tim Krul has signed for Luton Town! |url=https://www.lutontown.co.uk/news/2023/august/tim-krul/ |access-date=17 August 2023 |publisher=Luton Town FC |date=17 August 2023}}</ref>
+|-
+| 31 August 2023 || [[Defender (association football)#Centre-back|CB]] || {{flagicon|ENG}} [[Teden Mengi]] || {{fbaicon|ENG}} [[Manchester United F.C.|Manchester United]] || Undisclosed || <ref>{{cite news |title=Teden Mengi signs from Manchester United! |url=https://www.lutontown.co.uk/news/2023/august/teden-mengi-signs-from-manchester-united/ |access-date=31 August 2023 |publisher=Luton Town FC |date=31 August 2023}}</ref>
+|-
+| 11 October 2023 || [[Forward (association football)#Winger|RW]] || {{flagicon|ENG}} [[Andros Townsend]] || [[Free agent]]<br/>(previously {{fbaicon|ENG}} [[Everton F.C.|Everton]]) || Free transfer || <ref>{{cite web|url=https://www.lutontown.co.uk/news/2023/october/luton-town-sign-andros-townsend/|title=Andros Townsend signs for the Hatters|publisher=Luton Town FC|date=11 October 2023}}</ref>
+|-
+| 17 January 2024 || [[Defender (association football)#Centre-back|CB]] || {{flagicon|ENG}} [[Tom Holmes (footballer)|Tom Holmes]] || {{fbaicon|ENG}} [[Reading F.C.|Reading]] || Undisclosed || <ref name="THolmes">{{cite news |title=Holmes agrees switch and rejoins Reading on loan |url=https://www.lutontown.co.uk/news/2024/january/holmes-signs/ |access-date=17 January 2024 |publisher=Luton Town FC |date=17 January 2024}}</ref>
+|-
+| 30 January 2024 || [[Defender (association football)#Full-back|RB]] || {{flagicon|JPN}} [[Daiki Hashioka]] || {{fbaicon|BEL}} [[Sint-Truidense V.V.|Sint-Truiden]] || Undisclosed || <ref>{{cite news |title=Japanese international Hashioka joins the Hatters |url=https://www.lutontown.co.uk/news/2024/january/japanese-international-daiki-hashioka-signs-for-luton-town/ |access-date=30 January 2024 |publisher=Luton Town FC |date=30 January 2024}}</ref>
+|-
+| 1 February 2024 || [[Goalkeeper (association football)|GK]] || {{flagicon|AUS}} Henry Blackledge || {{fbaicon|AUS}} [[Brisbane Roar FC|Brisbane Roar]] || Undisclosed || <ref name="BlackledgeCamis">{{cite news |title=Hatters add teenage goalkeepers to development squad |url=https://www.lutontown.co.uk/news/2024/february/hatters-add-teenage-goalkeepers-to-development-squad/ |access-date=1 February 2024 |publisher=Luton Town FC |date=1 February 2024}}</ref>
+|-
+| 1 February 2024 || [[Goalkeeper (association football)|GK]] || {{flagicon|WAL}} Oliver Camis || [[Free agent]] || {{N/A}} || <ref name="BlackledgeCamis" />
+|-
+| 1 February 2024 || [[Forward (association football)#Centre forward|CF]] || {{flagicon|ENG}} [[Taylan Harris]] || {{fbaicon|ENG}} [[Reading F.C.|Reading]] || Undisclosed || <ref>{{cite news |title=Hatters snap up Taylan Harris from Reading |url=https://www.lutontown.co.uk/news/2024/february/taylan-harris-joins-luton-town-from-reading/ |access-date=1 February 2024 |publisher=Luton Town FC |date=1 February 2024}}</ref>
+|}
+
+=== Out ===
+{| class="wikitable plainrowheaders sortable"
+|-
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033;" |Date
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033;" |Pos.
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033;" |Player
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033;" |Transferred to
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033;" |Fee
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033;" |Ref.
+|-
+| 30 June 2023 || [[Defender (association football)#Centre-back|CB]] || {{flagicon|ENG}} [[Sonny Bradley]] || {{fbaicon|ENG}} [[Derby County F.C.|Derby County]] || End of contract || <ref>{{cite news |title=Captain Sonny Bradley to leave the Hatters this summer |url=https://www.lutontown.co.uk/news/2023/may/sonny-bradley/ |access-date=12 May 2023 |publisher=Luton Town FC |date=10 May 2023}}</ref><ref>{{cite news |title=Experienced Defender Bradley Becomes Summer Signing Number Five |url=https://www.dcfc.co.uk/news/2023/07/experienced-defender-bradley-becomes-summer-signing-number-five |access-date=8 July 2023 |publisher=Derby County FC |date=7 July 2023}}</ref>
+|-
+| 30 June 2023 || [[Goalkeeper (association football)|GK]] || {{flagicon|ENG}} [[Harry Isted]] || {{fbaicon|ENG}} [[Charlton Athletic F.C.|Charlton Athletic]] || Released || <ref name="RetainedList" /><ref>{{cite news |title=Harry Isted is an Addick |url=https://www.charltonafc.com/news/done-deal-harry-isted-addick |access-date=24 June 2023 |publisher=Charlton Athletic FC |date=24 June 2023}}</ref>
+|-
+| 30 June 2023 || [[Defender (association football)#Full-back|RB]] || {{flagicon|ENG}} Avan Jones || {{fbaicon|ENG}} [[Chesham United F.C.|Chesham United]] || Released || <ref name="RetainedList" /><ref>{{cite news |title=Avan Jones |url=https://www.cheshamunited.co.uk/player/avan-jones/ |access-date=25 September 2023 |publisher=Chesham United |date=25 September 2023}}</ref>
+|-
+| 30 June 2023 || [[Midfielder#Central midfielder|CM]] || {{flagicon|ENG}} [[Henri Lansbury]] || [[Retired]] || Released || <ref name="RetainedList">{{cite news |title=Luton Town Retained / Released List 2023 |url=https://www.lutontown.co.uk/news/2023/june/retained-list/ |access-date=1 June 2023 |publisher=Luton Town FC |date=1 June 2023}}</ref>
+|-
+| 30 June 2023 || [[Midfielder#Defensive midfielder|DM]] || {{flagicon|ENG}} [[Conor Lawless]] || {{fbaicon|ENG}} [[Dagenham & Redbridge F.C.|Dagenham & Redbridge]] || Released || <ref name="RetainedList" /><ref>{{cite news |title=Daggers Sign Conor Lawless |url=https://www.daggers.co.uk/news/-NagI2CmHJ7uKeLNy_Rx |access-date=1 August 2023 |publisher=Dagenham & Redbridge FC |date=31 July 2023}}</ref>
+|-
+| 30 June 2023 || [[Forward (association football)#Winger|RW]] || {{flagicon|ENG}} [[Josh Neufville]] || {{fbaicon|ENG}} [[AFC Wimbledon]] || Released || <ref name="RetainedList" /><ref>{{cite news |title=Forward joins after leaving Premier League new boys |url=https://www.afcwimbledon.co.uk/news/2023/june/forward-joins-after-leaving-premier-league-new-boys/ |access-date=1 June 2023 |publisher=AFC Wimbledon |date=1 June 2023}}</ref>
+|-
+| 30 June 2023 || [[Midfielder#Central midfielder|CM]] || {{flagicon|ENG}} Callum Nicolson || {{fbaicon|ENG}} [[AFC Dunstable]] || Released || <ref name="RetainedList" /><ref>{{cite news |title=OD's Sign Former Hatter |url=https://southern-football-league.co.uk/news/134591/ODs-Sign-Former-Hatter |access-date=3 August 2023 |publisher=Southern Football League |date=3 August 2023}}</ref>
+|-
+| 30 June 2023 || [[Midfielder#Defensive midfielder|DM]] || {{flagicon|ENG}} Casey Pettit || {{fbaicon|ENG}} [[Maidenhead United F.C.|Maidenhead United]] || Released || <ref name="RetainedList" />
+|-
+| 30 June 2023 || [[Defender (association football)#Full-back|LB]] || {{flagicon|WAL}} Josh Williams || {{fbaicon|ENG}} [[Hemel Hempstead Town F.C.|Hemel Hempstead]] || Released || <ref name="RetainedList" /><ref>{{cite news |title=Josh Williams signs permanently for Hemel Hempstead |url=https://www.youtube.com/watch?v=PsLF2_8zL2Q |access-date=25 September 2023 |publisher=Hemel Hempstead FC |date=1 July 2023}}</ref>
+|-
+| 24 July 2023 || [[Forward (association football)#Winger|RW]] || {{flagicon|GNB}} [[Carlos Mendes Gomes]] || {{fbaicon|ENG}} [[Bolton Wanderers F.C.|Bolton Wanderers]] || Undisclosed || <ref>{{cite news |title=Carlos Mendes Gomes signs for Bolton |url=https://www.lutontown.co.uk/news/2023/july/cmg-bolton/ |access-date=24 July 2023 |publisher=Luton Town FC |date=24 July 2023}}</ref>
+|-
+| 24 August 2023 || [[Midfielder#Attacking midfielder|AM]] || {{flagicon|ENG}} [[Luke Freeman]] || {{fbaicon|ENG}} [[Barnet F.C.|Barnet]] || Mutual consent || <ref>{{cite news |title=Luke Freeman departs |url=https://www.lutontown.co.uk/news/2023/august/luke-freeman-departs/ |access-date=24 August 2023 |publisher=Luton Town FC |date=24 August 2023}}</ref>
+|-
+| 2 September 2023 || [[Goalkeeper (association football)|GK]] || {{flagicon|ENG}} [[Matt Macey]] || {{fbaicon|ENG}} [[Portsmouth F.C.|Portsmouth]] || Mutual Consent || <ref>{{cite news |title=Matt Macey departs |url=https://www.lutontown.co.uk/news/2023/september/matt-macey/ |access-date=2 September 2023 |publisher=Luton Town FC |date=2 September 2023}}</ref>
+|-
+| 2 September 2023 || [[Midfielder#Defensive midfielder|DM]] || {{flagicon|ENG}} [[Glen Rea]] || {{fbaicon|ENG}} [[Worthing F.C.|Worthing]] || Mutual consent || <ref>{{cite news |title=Thank you and good luck, Glen! |url=https://www.lutontown.co.uk/news/2023/september/glen-rea/ |access-date=2 September 2023 |publisher=Luton Town FC |date=2 September 2023}}</ref>
+|-
+| 1 February 2024 || [[Midfielder#Defensive midfielder|DM]] || {{flagicon|ENG}} Tyrelle Newton || || Mutual consent || <ref name="PinningtonAllenBurgerNewton" />
+|}
+
+=== Loaned in ===
+{| class="wikitable plainrowheaders sortable"
+|-
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033;" |Date
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033;" |Pos.
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033;" |Player
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033;" |Loaned from
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033;" |Until
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033;" |Ref.
+|-
+| 21 July 2023 || [[Defender (association football)#Full-back|RB]] || {{flagicon|BFA}} [[Issa Kaboré]] || {{fbaicon|ENG}} [[Manchester City F.C.|Manchester City]] || End of season || <ref>{{cite news |title=Issa wonderful piece of business |url=https://www.lutontown.co.uk/news/2023/july/kabore-arrives-in-town/ |access-date=21 July 2023 |publisher=Luton Town FC |date=21 July 2023}}</ref>
+|-
+| 1 September 2023 || [[Midfielder#Central midfielder|CM]] || {{flagicon|BEL}} [[Albert Sambi Lokonga]] || {{fbaicon|ENG}} [[Arsenal F.C.|Arsenal]] || End of season || <ref>{{cite news |title=Sambi Lokonga joins Luton Town on loan |url=https://www.arsenal.com/news/sambi-lokonga-joins-luton-town-loan |access-date=2 September 2023 |publisher=Arsenal FC |date=1 September 2023}}</ref>
+|}
+
+=== Loaned out ===
+{| class="wikitable plainrowheaders sortable"
+|-
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033;" |Date
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033;" |Pos.
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033;" |Player
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033;" |Loaned to
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033;" |Date until
+! style="background:#FF3300; color:#ffffff; border:1px solid #000033;" |Ref.
+|-
+| 10 July 2023 || [[Goalkeeper (association football)|GK]] || {{flagicon|ENG}} [[Jack Walton (footballer)|Jack Walton]] || {{fbaicon|SCO}} [[Dundee United F.C.|Dundee United]] || End of season || <ref>{{cite news |title=Jack Walton joins Dundee United on loan |url=https://www.lutontown.co.uk/news/2023/july/jack-walton-dundee-united/ |access-date=10 July 2023 |publisher=Luton Town FC |date=10 July 2023}}</ref>
+|-
+| 12 July 2023 || [[Midfielder#Central midfielder|CM]] || {{flagicon|WAL}} [[Elliot Thorpe]] || {{fbaicon|ENG}} [[Shrewsbury Town F.C.|Shrewsbury Town]] || 8 January 2024{{efn|On 8 January, Thorpe was recalled back early from his season-long loan at Shrewsbury.}} || <ref>{{cite news |title=Elliot Thorpe moves to Shrewsbury Town on season-long loan! |url=https://www.lutontown.co.uk/news/2023/july/thorpe-shrewsbury/ |access-date=12 July 2023 |publisher=Luton Town FC |date=12 July 2023}}</ref><ref name="Returnees" />
+|-
+| 26 July 2023 || [[Midfielder#Attacking midfielder|AM]] || {{flagicon|NGA}} [[Fred Onyedinma]] || {{fbaicon|ENG}} [[Rotherham United F.C.|Rotherham United]] || 10 January 2024{{efn|On 10 January, Onyedinma returned back early from his season-long loan at Rotherham.}} || <ref>{{cite news |title=Fred Onyedinma joins Rotherham United on loan |url=https://www.lutontown.co.uk/news/2023/july/onyedinma-rotherham/ |access-date=28 July 2023 |publisher=Luton Town FC |date=28 July 2023}}</ref><ref>{{cite news |title=Fred Onyedinma returns from loan |url=https://www.lutontown.co.uk/news/2024/january/onyedinma-return/ |access-date=10 January 2024 |publisher=Luton Town FC |date=10 January 2024}}</ref>
+|-
+| 30 July 2023 || [[Defender (association football)#Centre-back|CB]] || {{flagicon|ENG}} Ben Tompkins || {{fbaicon|ENG}} [[Braintree Town F.C.|Braintree Town]] || End of season{{efn|On 8 January, Tompkins' loan at Braintree was extended until the end of season.}} || <ref>{{cite web |title=Ben Tompkins signs on a one month's loan |url=https://twitter.com/braintreetownfc/status/1685679881407856641 |website=Twitter |publisher=Braintree Town FC |access-date=31 July 2023}}</ref><ref name="Returnees" />
+|-
+| 5 August 2023 || [[Forward (association football)#Centre forward|CF]] || {{flagicon|WAL}} [[Joe Taylor (footballer, born 2002)|Joe Taylor]] || {{fbaicon|ENG}} [[Colchester United F.C.|Colchester United]] || 8 January 2024{{efn|On 8 January, Taylor was recalled back early from his season-long loan at Colchester.}} || <ref>{{cite news |title=Joe Taylor joins Colchester United on loan |url=https://www.lutontown.co.uk/news/2023/august/taylor-colchester/ |access-date=5 August 2023 |publisher=Luton Town FC |date=5 August 2023}}</ref><ref name="Returnees">{{cite news |title=Trio return from loan spells |url=https://www.lutontown.co.uk/news/2024/january/trio-return-from-loan/ |access-date=8 January 2024 |publisher=Luton Town FC |date=8 January 2024}}</ref>
+|-
+| 18 August 2023 || [[Forward (association football)#Centre forward|CF]] || {{flagicon|CAN}} [[Aribim Pepple]] || {{fbaicon|ENG}} [[Bromley F.C.|Bromley]] || 8 January 2024{{efn|On 8 January, Pepple was recalled back early from his season-long loan at Bromley.}} || <ref>{{cite news |title=Forward Bim Pepple becomes latest arrival |url=https://www.bromleyfc.co.uk/news/forward-bim-pepple-becomes-latest-arrival/ |access-date=18 August 2023 |publisher=Bromley FC |date=18 August 2023}}</ref><ref name="Returnees" />
+|-
+| 23 August 2023 || [[Forward (association football)#Centre forward|CF]] || {{flagicon|ENG}} Tobias Braney || {{fbaicon|ENG}} [[Bishop's Stortford F.C.|Bishop's Stortford]] || 1 January 2024 || <ref>{{cite news |title=Tobias Braney joins Bishop's Stortford on loan |url=https://www.lutontown.co.uk/news/2023/august/braney-loan/ |access-date=23 August 2023 |publisher=Luton Town FC |date=23 August 2023}}</ref>
+|-
+| 24 August 2023 || [[Forward (association football)#Second striker|SS]] || {{flagicon|ENG}} [[John McAtee]] || {{fbaicon|ENG}} [[Barnsley F.C.|Barnsley]] || End of season || <ref>{{cite news |title=John McAtee joins Barnsley on loan |url=https://www.lutontown.co.uk/news/2023/august/mcatee-barnsley/ |access-date=24 August 2023 |publisher=Luton Town FC |date=24 August 2023}}</ref>
+|-
+| 25 August 2023 || [[Forward (association football)#Centre forward|CF]] || {{flagicon|ENG}} Josh Allen || {{fbaicon|ENG}} [[Chesham United F.C.|Chesham United]] || 1 January 2024 || <ref>{{cite news |title=Chesham loan move for Josh Allen |url=https://www.lutontown.co.uk/news/2023/august/chesham-loan-move-for-josh-allen-chesham-loan-move-for-josh-allen/ |access-date=25 August 2023 |publisher=Luton Town FC |date=25 August 2023}}</ref>
+|-
+| 1 September 2023 || [[Midfielder#Central midfielder|CM]] || {{flagicon|SCO}} [[Allan Campbell (footballer)|Allan Campbell]] || {{fbaicon|ENG}} [[Millwall F.C.|Millwall]] || End of season || <ref>{{cite news |title=Millwall complete Allan Campbell loan move |url=https://www.millwallfc.co.uk/news/2023/september/01/millwall-complete-allan-campbell-loan-move/ |access-date=1 September 2023 |publisher=Millwall FC |date=1 September 2023}}</ref>
+|-
+| 1 September 2023 || [[Forward (association football)#Centre forward|CF]] || {{flagicon|ZIM}} [[Admiral Muskwe]] || {{fbaicon|ENG}} [[Exeter City F.C.|Exeter City]] || End of season || <ref>{{cite news |title=Welcome the Admiral: Muskwe is a Grecian |url=https://www.exetercityfc.co.uk/news/2023/september/admiral-muskwe-joins/ |access-date=1 September 2023 |publisher=Exeter City FC |date=1 September 2023}}</ref>
+|-
+| 1 September 2023 || [[Forward (association football)#Winger|LW]] || {{flagicon|ATG}} [[Dion Pereira]] || {{fbaicon|ENG}} [[Sutton United F.C.|Sutton United]] || 9 January 2024{{efn|On 9 January, Pereira was recalled back early from his season-long loan at Sutton.}} || <ref>{{cite news |title=Dion Pereira joins Sutton on loan |url=https://www.lutontown.co.uk/news/2023/september/dion-pereira-joins-sutton-on-loan/ |access-date=1 September 2023 |publisher=Luton Town FC |date=1 September 2023}}</ref><ref name="TaylorPereira" />
+|-
+| 1 September 2023 || [[Midfielder#Central midfielder|CM]] || {{flagicon|IRL}} [[Louie Watson]] || {{fbaicon|ENG}} [[Charlton Athletic F.C.|Charlton Athletic]] || End of season || <ref>{{cite news |title=Addicks complete Louie Watson loan |url=https://www.charltonafc.com/news/done-deal-addicks-complete-louie-watson-loan |access-date=1 September 2023 |publisher=Charlton Athletic FC |date=1 September 2023}}</ref>
+|-
+| 2 September 2023 || [[Defender (association football)#Centre-back|CB]] || {{flagicon|ENG}} Aidan Francis-Clarke || {{fbaicon|ENG}} [[Dagenham & Redbridge F.C.|Dagenham & Redbridge]] || End of season || <ref>{{cite news |title=Daggers Sign Aidan Francis-Clarke |url=https://www.daggers.co.uk/news/-NdJsLIK-bwJ-U5u2_Oi |access-date=2 September 2023 |publisher=Dagenham & Redbridge FC |date=2 September 2023}}</ref>
+|-
+| 2 January 2024 || [[Goalkeeper (association football)|GK]] || {{flagicon|ENG}} Jameson Horlick || {{fbaicon|ENG}} [[Dorchester Town F.C.|Dorchester Town]] || End of season || <ref>{{cite news |title=Horlick signs contract extension and joins Dorchester Town on loan! |url=https://www.lutontown.co.uk/news/2024/january/horlick-contract/ |access-date=2 January 2024 |publisher=Luton Town FC |date=2 January 2024}}</ref>
+|-
+| 8 January 2024 || [[Forward (association football)#Centre forward|CF]] || {{flagicon|ENG}} Tobias Braney || {{fbaicon|ENG}} [[Hayes & Yeading United F.C.|Hayes & Yeading United]] || End of season || <ref name="Returnees" />
+|-
+| 9 January 2024 || [[Forward (association football)#Centre forward|CF]] || {{flagicon|WAL}} [[Joe Taylor (footballer, born 2002)|Joe Taylor]] || {{fbaicon|ENG}} [[Lincoln City F.C.|Lincoln City]] || End of season || <ref name="TaylorPereira">{{cite news |title=Joe Taylor joins Lincoln on loan |url=https://www.lutontown.co.uk/news/2024/january/joe-taylor-joins-lincoln-on-loan/ |access-date=9 January 2024 |publisher=Luton Town FC |date=9 January 2024}}</ref>
+|-
+| 16 January 2024 || [[Midfielder#Central midfielder|CM]] || {{flagicon|ENG}} Jayden Luker || {{fbaicon|ENG}} [[Woking F.C.|Woking]] || End of season || <ref>{{cite news |title=Luker heads to Woking on loan |url=https://www.lutontown.co.uk/news/2024/january/luker-woking-loan/ |access-date=16 January 2024 |publisher=Luton Town FC |date=16 January 2024}}</ref>
+|-
+| 17 January 2024 || [[Defender (association football)#Centre-back|CB]] || {{flagicon|ENG}} [[Tom Holmes (footballer)|Tom Holmes]] || {{fbaicon|ENG}} [[Reading F.C.|Reading]] || End of season || <ref name="THolmes" />
+|-
+| 18 January 2024 || [[Midfielder#Central midfielder|CM]] || {{flagicon|ENG}} Millar Matthews-Lewis || {{fbaicon|ENG}} [[Farnborough F.C.|Farnborough]] || End of season || <ref>{{cite news |title=Millar Matthews-Lewis joins Farnborough on loan |url=https://www.lutontown.co.uk/news/2024/january/millar-matthews-lewis-farnborough/ |access-date=18 January 2024 |publisher=Luton Town FC |date=18 January 2024}}</ref>
+|-
+| 27 January 2024 || [[Forward (association football)#Winger|LW]] || {{flagicon|ATG}} [[Dion Pereira]] || {{fbaicon|ENG}} [[Dagenham & Redbridge F.C.|Dagenham & Redbridge]] || End of season || <ref>{{cite news |title=Dion Pereira joins Dagenham on loan |url=https://www.lutontown.co.uk/news/2024/january/pereira-loan-dagenham/ |access-date=28 January 2024 |publisher=Luton Town FC |date=27 January 2024}}</ref>
+|-
+| 30 January 2024 || [[Defender (association football)#Full-back|LB]] || {{flagicon|ENG}} [[Ryan Giles]] || {{fbaicon|ENG}} [[Hull City A.F.C.|Hull City]] || End of season || <ref>{{cite news |title=Ryan Giles completes loan switch to Hull |url=https://www.lutontown.co.uk/news/2024/january/ryan-giles-makes-loan-move-to-hull-city/ |access-date=30 January 2024 |publisher=Luton Town FC |date=30 January 2024}}</ref>
+|-
+| 1 February 2024 || [[Forward (association football)#Centre forward|CF]] || {{flagicon|ENG}} Josh Allen || {{fbaicon|ENG}} [[AFC Sudbury]] || End of season || <ref name="PinningtonAllenBurgerNewton" />
+|-
+| 1 February 2024 || [[Midfielder#Central midfielder|CM]] || {{flagicon|ENG}} Jake Burger || {{fbaicon|ENG}} [[St Albans City F.C.|St Albans City]] || End of season || <ref name="PinningtonAllenBurgerNewton" />
+|-
+| 1 February 2024 || [[Forward (association football)#Centre forward|CF]] || {{flagicon|CAN}} [[Aribim Pepple]] || {{fbaicon|SCO}} [[Inverness Caledonian Thistle F.C.|Inverness Caledonian Thistle]] || End of season || <ref>{{cite news |title=Aribim Pepple joins Inverness Caledonian Thistle on loan |url=https://www.lutontown.co.uk/news/2024/february/pepple-inverness/ |access-date=1 February 2024 |publisher=Luton Town FC |date=1 February 2024}}</ref>
+|-
+| 1 February 2024 || [[Defender (association football)#Centre-back|CB]] || {{flagicon|ENG}} Jacob Pinnington || {{fbaicon|ENG}} [[AFC Sudbury]] || End of season || <ref name="PinningtonAllenBurgerNewton">{{cite news |title=Young trio head out on loan |url=https://www.lutontown.co.uk/news/2024/february/young-trio-head-out-on-loan/ |access-date=1 February 2024 |publisher=Luton Town FC |date=1 February 2024}}</ref>
+|-
+| 5 February 2024 || [[Defender (association football)#Centre-back|CB]] || {{flagicon|ENG}} Jack Bateson || {{fbaicon|ENG}} [[Hitchin Town F.C.|Hitchin Town]] || End of season || <ref name="LynchBateson" />
+|-
+| 5 February 2024 || [[Forward (association football)#Centre forward|CF]] || {{flagicon|ENG}} Oliver Lynch || {{fbaicon|ENG}} [[Hitchin Town F.C.|Hitchin Town]] || End of season || <ref name="LynchBateson">{{cite news |title=Young duo head to Hitchin on loan |url=https://www.lutontown.co.uk/news/2024/february/young-duo-head-to-hitchin-on-loan/ |access-date=5 February 2024 |publisher=Luton Town FC |date=5 February 2024}}</ref>
+|}
+{{notelist}}
+
+==Pre-season and friendlies==
+On 4 July, the ''Hatters'' announced their first pre-season friendly, against [[Ipswich Town F.C.|Ipswich Town]].<ref>{{cite news |title=Hatters to face Ipswich Town in pre-season |url=https://www.lutontown.co.uk/news/2023/july/pre-season-fixtures/ |access-date=4 July 2023 |publisher=Luton Town FC |date=4 July 2023}}</ref> Three days later, a second was added, against [[Sheffield Wednesday F.C.|Sheffield Wednesday]].<ref>{{cite news |title=Town travel to Sheffield Wednesday for pre-season friendly |url=https://www.lutontown.co.uk/news/2023/july/sheffield-wednesday/ |access-date=8 July 2023 |publisher=Luton Town FC |date=7 July 2023}}</ref> A third was added, against [[Wolverhampton Wanderers F.C.|Wolverhampton Wanderers]].<ref>{{cite news |title=Town travel to Wolves for August pre-season friendly! |url=https://www.lutontown.co.uk/news/2023/july/wolves-friendly/ |access-date=11 July 2023 |publisher=Luton Town FC |date=11 July 2023}}</ref> The club's final friendly was confirmed to be against [[VfL Bochum]] in a double-header.<ref>{{cite news |title=Hatters to face German side VfL Bochum in final friendlies! |url=https://www.lutontown.co.uk/news/2023/july/bochum/ |access-date=17 July 2023 |publisher=Luton Town FC |date=17 July 2023}}</ref>
+
+{{legend2|#CCFFCC|Win|border=1px solid #AAAAAA}}
+{{legend2|#FFFFCC|Draw|border=1px solid #AAAAAA}}
+{{legend2|#FFCCCC|Loss|border=1px solid #AAAAAA}}
+{{legend2|#FFFFFF|Fixtures|border=1px solid #AAAAAA}}
+
+{{football box collapsible
+| round      = [[Exhibition game#Club football|Friendly]]
+| date       = 14 July 2023
+| time       = 14:00 [[British Summer Time|BST]]
+| team1      = Luton Town
+| score      = 3–1
+| report     = https://www.lutontown.co.uk/news/2023/july/peterborough-report/
+| team2      = [[Peterborough United F.C.|Peterborough United]]
+| goals1     = 
+*[[Carlton Morris|Morris]] {{goal|28}}
+*[[John McAtee|McAtee]] {{goal|68}}<br>[[Dion Pereira|Pereira]] {{goal|70}}
+| goals2     = [[Jonson Clarke-Harris|Clarke-Harris]] {{goal|65}}
+| stadium    = [[St George's Park National Football Centre]]
+| location   = [[Burton upon Trent]]
+| attendance = 0 ([[Behind closed doors (sport)|behind closed doors]])
+| referee    = 
+| result     = W
+}}
+{{football box collapsible
+| round      = [[Exhibition game#Club football|Friendly]]
+| date       = 25 July 2023
+| time       = 19:30 [[British Summer Time|BST]]
+| team1      = [[Ipswich Town F.C.|Ipswich Town]]
+| score      = 1–1
+| report     = https://www.lutontown.co.uk/news/2023/july/report-ipswich-luton-friendly/
+| team2      = Luton Town
+| goals1     = 
+*[[Wes Burns|Burns]] {{goal|14}}
+| goals2     = 
+*[[Carlton Morris|Morris]] {{goal|75|pen.}}
+| stadium    = [[Colchester Community Stadium|JobServe Community Stadium]]
+| location   = [[Colchester]]
+| attendance = 
+| referee    = 
+| result     = D
+}}
+{{football box collapsible
+| round      = [[Exhibition game#Club football|Friendly]]
+| date       = 29 July 2023
+| time       = 15:00 [[British Summer Time|BST]]
+| team1      = [[Sheffield Wednesday F.C.|Sheffield Wednesday]]
+| score      = 1–2
+| report     = https://www.lutontown.co.uk/news/2023/july/sheff-wed-report/
+| team2      = Luton Town
+| goals1     = 
+*[[Michael Smith (footballer, born 1991)|Smith]] {{goal|8|pen.}}
+| goals2     = 
+*[[Pelly Ruddock Mpanzu|Mpanzu]] {{goal|23}}
+*[[Carlton Morris|Morris]] {{goal|82}}
+| stadium    = [[Hillsborough Stadium]]
+| location   = [[Sheffield]]
+| attendance = 
+| referee    = 
+| result     = W
+}}
+{{football box collapsible
+| round      = [[Exhibition game#Club football|Friendly]]
+| date       = 2 August 2023
+| time       = 19:30 [[British Summer Time|BST]]
+| team1      = [[Wolverhampton Wanderers F.C.|Wolverhampton Wanderers]]
+| score      = 0–0
+| report     = https://www.lutontown.co.uk/news/2023/august/wolves-friendly-report/
+| team2      = Luton Town
+| goals1     = 
+| goals2     = 
+| stadium    = [[Molineux Stadium]]
+| location   = [[Wolverhampton]]
+| attendance = 
+| referee    = 
+| result     = D
+}}
+{{football box collapsible
+| round      = [[Exhibition game#Club football|Friendly]]
+| date       = 5 August 2023
+| time       = 13:30 [[Central European Summer Time|CEST]]<br>12:30 [[British Summer Time|BST]]
+| team1      = [[VfL Bochum]]
+| score      = 2–1
+| report     = https://www.lutontown.co.uk/news/2023/august/report-bochum/
+| team2      = Luton Town
+| goals1     = 
+*[[Kevin Stöger|Stöger]] {{goal|9}}
+*[[Takuma Asano|Asano]] {{goal|51}}
+| goals2     = 
+*[[Tom Lockyer|Lockyer]] {{goal|38}}
+| stadium    = [[Ruhrstadion|Vonovia Ruhrstadion]]
+| location   = [[Bochum]], Germany
+| attendance = 
+| referee    = 
+| result     = L
+}}
+{{football box collapsible
+| round      = [[Exhibition game#Club football|Friendly]]
+| date       = 5 August 2023
+| time       = 15:15 [[Central European Summer Time|CEST]]<br>16:15 [[British Summer Time|BST]]
+| team1      = [[VfL Bochum]]
+| score      = 1–3
+| report     = https://www.lutontown.co.uk/news/2023/august/report-bochum/
+| team2      = Luton Town
+| goals1     = 
+*[[Matúš Bero|Bero]] {{goal|17}}
+| goals2     = 
+*[[Luke Berry|Berry]] {{goal|14||76}}
+*[[Elijah Adebayo|Adebayo]] {{goal|70}}
+| stadium    = [[Ruhrstadion|Vonovia Ruhrstadion]]
+| location   = [[Bochum]], Germany
+| attendance = 
+| referee    = 
+| result     = W
+}}
+
+== Competitions ==
+=== Overall record ===
+{{Fb overview2
+|c=3
+|c1=[[2023–24 Premier League|Premier League]] |fm1=12 August 2023 |lm1=19 May 2024 |sr1=Matchday 1 |fp1=18th |w1=6 |d1=8 |l1=24 |f1=52 |a1=85
+|c2=[[2023–24 FA Cup|FA Cup]] |fm2=7 January 2024 |lm2=27 February 2024 |sr2=Third round |fp2=Fifth round |w2=2 |d2=1 |l2=1 |f2=6 |a2=7
+|c3=[[2023–24 EFL Cup|EFL Cup]] |fm3=29 August 2023 |lm3= 26 September 2023|sr3=Second round |fp3=Third round |w3=1 |d3=0 |l3=1 |f3=3 |a3=3
+|s=[https://int.soccerway.com/teams/england/luton-town-fc/712/ Soccerway]
+}}
+
+=== Premier League ===
+{{main|2023–24 Premier League}}
+
+====League table====
+{{:2023–24 Premier League|showteam=LUT}}
+
+====Results summary====
+{{Fb_rs |hw=4 |hd=4 |hl=11 |hgf=28 |hga=37 |aw=2 |ad=4 |al=13 |agf=24 |aga=48 }}
+{{Fb_rs footer|s=[https://int.soccerway.com/teams/england/luton-town-fc/712/ Soccerway]|date=July 2023}}
+
+====Results by round====
+{{#invoke:sports rbr table|table|legendpos=b
+| header=Round
+| rnd2=3 |rnd3=4 |rnd4=5 |rnd5=6 |rnd6=7 |rnd7=2<sup>1</sup> |rnd26=26<sup>3</sup> |rnd29=17<sup>4</sup>
+|rnd30=29 |rnd31=30 |rnd32=31 |rnd33=32 |rnd34=33 |rnd35=34 |rnd36=35 |rnd37=36 |rnd38=37 |rnd39=38
+| label1=Ground
+| res1=A/A/H/A/H/A/H/H/A/A/H/A/H/A/H/H/A/H/A/H/A/H/A/H/H/A/H/A/A/H/A/A/H/A/H/A/H/A/H
+| label2=Result
+| res2=L/L/L/L/D/W/L/L/D/L/D/L/W/L/L/L/V/W/W/L/D/W/D/L/L/L/L/D/L/D/L/L/W/L/L/L/D/L/L
+| label3=Position
+| pos3=18/19/19/20/18/17/17/17/17/18/17/17<sup>2</sup>/17/17/18/18/—/18/18/18/18/17/17/17/18/18/18/18/18/17<sup>5</sup>/18/18/18/18/18/18/18/18/18
+| label4=Points
+| pos4=0p/0p/0p/0p/1p/4p/4p/4p/5p/5p/6p/6p/9p/9p/9p/9p/—/12p/15p/15p/16p/19p/20p/20p/20p/20p/20p/21p/21p/22p/22p/22p/25p/25p/25p/25p/26p/26p/26p
+| color_W=green1|text_W=Win
+| color_D=yellow1|text_D=Draw
+| color_L=red1|text_L=Loss
+| color_V=lightgrey|text_V=Void
+| text_H=Home|text_A=Away
+| color1=gold|color_2-4=green1|color_5-6=blue1|color_18–20=red1
+| source=[https://int.soccerway.com/teams/england/luton-town-fc/712/ Soccerway]
+| notes= {{plainlist|
+* <sup>'''1'''</sup> Matchday 2 (vs [[Burnley F.C.|Burnley]]) was postponed due to renovation works at [[Kenilworth Road]].
+* <sup>'''2'''</sup> Luton Town were originally 18th at the end of Matchday 12. On 17 November 2023, Everton were deducted 10 points, subsequently bringing Luton Town up to 17th.
+* <sup>'''3'''</sup> Matchday 26 (vs [[Liverpool F.C.|Liverpool]]) was postponed due to Liverpool's [[2024 EFL Cup final|EFL Cup final]] involvement.
+* <sup>'''4'''</sup> Matchday 17 (vs [[AFC Bournemouth|Bournemouth]]) was rescheduled and replayed in full due to a [[Tom Lockyer]] cardiac arrest which happened during the original match.
+* <sup>'''5'''</sup> Luton Town were originally 18th at the end of Matchday 29. On 18 March 2024, Nottingham Forest were deducted 4 points, subsequently bringing Luton Town up to 17th.}}
+}}
+
+==== Matches ====
+On 15 June, the Premier League fixtures were released.<ref>{{cite news |title=Luton Town 2023-24 Premier League fixtures |url=https://www.lutontown.co.uk/news/2023/june/pl-fixture-release/ |access-date=15 June 2023 |publisher=Luton Town F.C. |date=15 June 2023}}</ref>
+
+{{legend2|#CCFFCC|Win|border=1px solid #AAAAAA}}
+{{legend2|#FFFFCC|Draw|border=1px solid #AAAAAA}}
+{{legend2|#FFCCCC|Loss|border=1px solid #AAAAAA}}
+{{legend2|#FFFFFF|Fixtures|border=1px solid #AAAAAA}}
+
+{{football box collapsible
+| round      = 1
+| date       = 12 August 2023
+| time       = 15:00 [[British Summer Time|BST]]
+| team1      = [[Brighton & Hove Albion F.C.|Brighton & Hove Albion]]
+| score      = 4–1
+| report     = https://www.premierleague.com/match/93324
+| team2      = Luton Town
+| goals1     = 
+*[[Pervis Estupiñán|Estupiñán]] {{yel|7}}
+*[[Solly March|March]] {{goal|36}}
+*[[Kaoru Mitoma|Mitoma]] {{yel|43}}
+*[[João Pedro (footballer, born 2001)|João Pedro]] {{goal|71|pen.}}
+*[[Simon Adingra|Adingra]] {{goal|85}}
+*[[Evan Ferguson|Ferguson]] {{goal|90+5}}
+| goals2     = 
+*[[Mads Juel Andersen|Andersen]] {{yel|51}}
+*[[Issa Kaboré|Kaboré]] {{yel|59}}
+*[[Carlton Morris|Morris]] {{goal|81|pen.}}
+| stadium    = [[Falmer Stadium]]
+| location   = [[Brighton and Hove]]
+| attendance = 31,672
+| referee    = [[David Coote (referee)|David Coote]]
+| result     = L
+}}
+{{football box collapsible
+| round      = 3
+| date       = 25 August 2023
+| time       = 20:00 [[British Summer Time|BST]]
+| team1      = [[Chelsea F.C.|Chelsea]]
+| score      = 3–0
+| report     = https://www.premierleague.com/match/93346
+| team2      = Luton Town
+| goals1     = 
+*[[Raheem Sterling|Sterling]] {{goal|17||68}}
+*[[Enzo Fernández|Fernández]] {{yel|73}}
+*[[Nicolas Jackson|Jackson]] {{goal|75}}
+*[[Ian Maatsen|Maatsen]] {{yel|90}}
+| goals2     = 
+*[[Tom Lockyer|Lockyer]] {{yel|27}}
+*[[Marvelous Nakamba|Nakamba]] {{yel|30}}
+*[[Jacob Brown (footballer)|Brown]] {{yel|78}}
+| stadium    = [[Stamford Bridge (stadium)|Stamford Bridge]]
+| location   = [[Fulham]]
+| attendance = 39,893
+| referee    = [[Robert Jones (referee)|Robert Jones]]
+| result     = L
+| note       = Live on [[Sky Sports]]
+}}
+{{football box collapsible
+| date       = 1 September 2023
+| time       = 20:00 [[British Summer Time|BST]]
+| round      = 4
+| team1      = Luton Town
+| score      = 1–2
+| report     = https://www.premierleague.com/match/93358
+| team2      = [[West Ham United F.C.|West Ham United]]
+| goals1     = 
+*[[Marvelous Nakamba|Nakamba]] {{yel|87}}
+*[[Mads Juel Andersen|Andersen]] {{goal|90+2}}
+| goals2     = 
+*[[Jarrod Bowen|Bowen]] {{goal|37}}
+*[[Emerson Palmieri|Emerson]] {{yel|81}}
+*[[Kurt Zouma|Zouma]] {{goal|85}}
+| stadium    = [[Kenilworth Road]]
+| location   = [[Luton]]
+| attendance = 10,802
+| referee    = [[Paul Tierney (referee)|Paul Tierney]]
+| result     = L
+}}
+{{football box collapsible
+| round      = 5
+| date       = 16 September 2023
+| time       = 15:00 [[British Summer Time|BST]]
+| team1      = [[Fulham F.C.|Fulham]]
+| score      = 1–0
+| report     = https://www.premierleague.com/match/93364
+| team2      = Luton Town
+| goals1     = 
+*[[Timothy Castagne|Castagne]] {{yel|40}}
+*[[Issa Diop (footballer)|Diop]] {{yel|44}}
+*[[Carlos Vinícius]] {{goal|65}}
+| goals2     = 
+*[[Tahith Chong|Chong]] {{yel|27}}
+*[[Thomas Kaminski|Kaminski]] {{yel|37}}
+| stadium    = [[Craven Cottage]]
+| location   = [[Fulham]]
+| attendance = 24,467
+| referee    = [[Michael Salisbury]]
+| result     = L
+}}
+{{football box collapsible
+| round      = 6
+| date       = 23 September 2023
+| time       = 15:00 [[British Summer Time|BST]]
+| team1      = Luton Town
+| score      = 1–1
+| report     = https://www.premierleague.com/match/93378
+| team2      = [[Wolverhampton Wanderers F.C.|Wolverhampton Wanderers]]
+| goals1     =
+*[[Carlton Morris|Morris]] {{goal|65|pen.}} 
+| goals2     =
+*[[Jean-Ricner Bellegarde|Bellegarde]] {{sentoff|0|39}}
+*[[João Gomes (footballer, born 2001)|João Gomes]] {{yel|45+1}}
+*[[Pedro Neto|Neto]] {{goal|50}}
+*[[Mario Lemina|Lemina]] {{yel|90+6}} 
+| stadium    = [[Kenilworth Road]]
+| location   = [[Luton]]
+| attendance = 10,893
+| referee    = Josh Smith
+| result     = D
+}}
+{{football box collapsible
+| round      = 7
+| date       = 30 September 2023
+| time       = 15:00 [[British Summer Time|BST]]
+| team1      = [[Everton F.C.|Everton]]
+| score      = 1–2
+| report     = https://www.premierleague.com/match/93383
+| team2      = Luton Town
+| goals1     = 
+*[[Dominic Calvert-Lewin|Calvert-Lewin]] {{goal|41}}
+| goals2     = 
+*[[Tom Lockyer|Lockyer]] {{goal|24}}
+*[[Carlton Morris|Morris]] {{goal|31}}
+*[[Issa Kaboré|Kaboré]] {{yel|66}}
+| stadium    = [[Goodison Park]]
+| location   = [[Liverpool]]
+| attendance = 39,289
+| referee    = [[Anthony Taylor (referee)|Anthony Taylor]]
+| result     = W
+}}
+{{football box collapsible
+| round      = 2
+| date       = 3 October 2023
+| time       = 19:30 [[British Summer Time|BST]]
+| team1      = Luton Town
+| score      = 1–2
+| report     = https://www.premierleague.com/match/93335
+| team2      = [[Burnley F.C.|Burnley]]
+| goals1     = 
+*[[Jacob Brown (footballer)|Brown]] {{yel|36}}
+*[[Reece Burke|Burke]] {{yel|59}}
+*[[Elijah Adebayo|Adebayo]] {{goal|84}}
+*[[Tahith Chong|Chong]] {{yel|90+2}}
+*[[Marvelous Nakamba|Nakamba]] {{yel|90+3}}
+| goals2     = 
+*[[Lyle Foster|Foster]] {{goal|45+2}}
+*[[Connor Roberts (footballer, born 1995)|Roberts]] {{yel|66}}
+*[[Jacob Bruun Larsen|Bruun Larsen]] {{goal|85}}
+*[[Charlie Taylor (footballer, born 1993)|Taylor]] {{yel|90+4}}
+| stadium    = [[Kenilworth Road]]
+| location   = [[Luton]]
+| attendance = 10,918
+| referee    = [[Peter Bankes]]
+| result     = L
+| note       = Match, originally scheduled for 19 August 2023, but was postponed due to ground improvements works in relation to Premier League broadcast and media requirements.<ref>{{cite news |title=Burnley match postponed |url=https://www.lutontown.co.uk/news/2023/july/burnley/ |access-date=19 August 2023 |publisher=Luton Town F.C. |date=14 July 2023}}</ref>
+}}
+{{football box collapsible
+| round      = 8
+| date       = 7 October 2023
+| time       = 12:30 [[British Summer Time|BST]]
+| team1      = Luton Town
+| score      = 0–1
+| report     = https://www.premierleague.com/match/93397
+| team2      = [[Tottenham Hotspur F.C.|Tottenham Hotspur]]
+| goals1     = 
+*[[Tom Lockyer|Lockyer]] {{yel|19}}
+*[[Carlton Morris|Morris]] {{yel|34}}
+| goals2     = 
+*[[Yves Bissouma|Bissouma]] {{sentoff|2|38|45+4}}
+*[[Micky van de Ven|Van de Ven]] {{goal|52}}
+*[[Pierre-Emile Højbjerg|Højbjerg]] {{yel|68}}
+| stadium    = [[Kenilworth Road]]
+| location   = [[Luton]]
+| attendance = 10,929
+| referee    = [[John Brooks (referee)|John Brooks]]
+| result     = L
+}}
+{{football box collapsible
+| round      = 9
+| date       = 21 October 2023
+| time       = 15:00 [[British Summer Time|BST]]
+| team1      = [[Nottingham Forest F.C.|Nottingham Forest]]
+| score      = 2–2
+| report     = https://www.premierleague.com/match/93408
+| team2      = Luton Town
+| goals1     = 
+*[[Chris Wood (footballer, born 1991)|Wood]] {{goal|48||76}}
+*[[Ibrahim Sangaré (Ivorian footballer)|Sangaré]] {{yel|60}}
+*[[Morgan Gibbs-White|Gibbs-White]] {{yel|82}}
+*[[Murillo (footballer)|Murillo]] {{yel|90+8}}
+| goals2     = 
+*[[Chiedozie Ogbene|Ogbene]] {{goal|83}}
+*[[Elijah Adebayo|Adebayo]] {{goal|90+2}}
+| stadium    = [[City Ground]]
+| location   = [[West Bridgford]]
+| attendance = 29,361
+| referee    = [[Craig Pawson]]
+| result     = D
+}}
+{{football box collapsible
+| round      = 10
+| date       = 29 October 2023
+| time       = 14:00 [[Greenwich Mean Time|GMT]]
+| team1      = [[Aston Villa F.C.|Aston Villa]]
+| score      = 3–1
+| report     = https://www.premierleague.com/match/93412
+| team2      = Luton Town
+| goals1     = 
+*[[John McGinn|McGinn]] {{goal|17}}
+*[[Nicolò Zaniolo|Zaniolo]] {{yel|28}}
+*[[Moussa Diaby|Diaby]] {{goal|49}} 
+*[[Matty Cash|Cash]] {{yel|51}}
+*[[Tom Lockyer|Lockyer]] {{goal|62|o.g.}}
+*[[Boubacar Kamara|Kamara]] {{yel|71}}
+| goals2     = 
+*[[Issa Kaboré|Kaboré]] {{yel|53}}
+*[[Alfie Doughty|Doughty]] {{yel|75}}
+*[[Emiliano Martínez|Martínez]] {{goal|83|o.g.}}
+| stadium    = [[Villa Park]]
+| location   = [[Birmingham]]
+| attendance = 41,785
+| referee    = [[John Brooks (referee)|John Brooks]]
+| result     = L
+}}
+{{football box collapsible
+| round      = 11
+| date       = 5 November 2023
+| time       = 16:30 [[Greenwich Mean Time|GMT]]
+| team1      = Luton Town
+| score      = 1–1
+| report     = https://www.premierleague.com/match/93425
+| team2      = [[Liverpool F.C.|Liverpool]]
+| goals1     = 
+*[[Marvelous Nakamba|Nakamba]] {{yel|44}}
+*[[Tahith Chong|Chong]] {{goal|80}}
+| goals2     = 
+*[[Alexis Mac Allister|Mac Allister]] {{yel|54}}
+*[[Luis Díaz (footballer, born 1997)|Díaz]] {{goal|90+5}}
+| stadium    = [[Kenilworth Road]]
+| location   = [[Luton]]
+| attendance = 11,049
+| referee    = [[Andrew Madley]]
+| result     = D
+}}
+{{football box collapsible
+| round      = 12
+| date       = 11 November 2023
+| time       = 15:00 [[Greenwich Mean Time|GMT]]
+| team1      = [[Manchester United F.C.|Manchester United]]
+| score      = 1–0
+| report     = https://www.premierleague.com/match/93438
+| team2      = Luton Town
+| goals1     = 
+*[[Victor Lindelöf|Lindelöf]] {{goal|59}}
+| goals2     = 
+*[[Issa Kaboré|Kaboré]] {{yel|74}}
+*[[Tom Lockyer|Lockyer]] {{yel|90+3}}
+| stadium    = [[Old Trafford]]
+| location   = [[Trafford]]
+| attendance = 73,599
+| referee    = [[Graham Scott (referee)|Graham Scott]]
+| result     = L
+}}
+{{football box collapsible
+| round      = 13
+| date       = 25 November 2023
+| time       = 15:00 [[Greenwich Mean Time|GMT]]
+| team1      = Luton Town
+| score      = 2–1
+| report     = https://www.premierleague.com/match/93445
+| team2      = [[Crystal Palace F.C.|Crystal Palace]]
+| goals1     = 
+*[[Tom Lockyer|Lockyer]] {{yel|44}}
+*[[Gabriel Osho|Osho]] {{yel|50}}
+*[[Ross Barkley|Barkley]] {{yel|59}}
+*[[Jordan Clark (English footballer)|Clark]] {{yel|69}}
+*[[Teden Mengi|Mengi]] {{goal|72}}
+*[[Jacob Brown (footballer)|Brown]] {{goal|83}}
+*[[Elijah Adebayo|Adebayo]] {{yel|90+1}}
+*[[Thomas Kaminski|Kaminski]] {{yel|90+10}}
+| goals2     = 
+*[[Jefferson Lerma|Lerma]] {{yel|13}}
+*[[Michael Olise|Olise]] {{goal|74}}
+| stadium    = [[Kenilworth Road]]
+| location   = [[Luton]]
+| attendance = 11,029
+| referee    = [[Jarred Gillett]]
+| result     = W
+}}
+{{football box collapsible
+| round      = 14
+| date       = 2 December 2023
+| time       = 15:00 [[Greenwich Mean Time|GMT]]
+| team1      = [[Brentford F.C.|Brentford]]
+| score      = 3–1
+| report     = https://www.premierleague.com/match/93453
+| team2      = Luton Town
+| goals1     = 
+*[[Neal Maupay|Maupay]] {{goal|49}}
+*[[Ben Mee|Mee]] {{goal|56}}
+*[[Shandon Baptiste|Baptiste]] {{goal|81}}
+*[[Christian Nørgaard|Nørgaard]] {{yel|81}}
+| goals2     = 
+*[[Thomas Kaminski|Kaminski]] {{yel|38}}
+*[[Tahith Chong|Chong]] {{yel|50}}
+*[[Jacob Brown (footballer)|Brown]] {{goal|76}}
+| stadium    = [[Brentford Community Stadium]]
+| location   = [[Brentford]]
+| attendance = 17,075
+| referee    = [[Anthony Taylor (referee)|Anthony Taylor]]
+| result     = L
+}}
+{{football box collapsible
+| round      = 15
+| date       = 5 December 2023
+| time       = 20:15 [[Greenwich Mean Time|GMT]]
+| team1      = Luton Town
+| score      = 3–4
+| report     = https://www.premierleague.com/match/93466
+| team2      = [[Arsenal F.C.|Arsenal]]
+| goals1     = 
+*[[Gabriel Osho|Osho]] {{goal|25}}
+*[[Jacob Brown (footballer)|Brown]] {{yel|33}}
+*[[Ross Barkley|Barkley]] {{yel|44}}, {{goal|57}}
+*[[Elijah Adebayo|Adebayo]] {{goal|49}}
+| goals2     = 
+*[[Gabriel Martinelli|Martinelli]] {{goal|20}}
+*[[Gabriel Jesus]] {{goal|45}}, {{yel|45+1}}
+*[[Kai Havertz|Havertz]] {{goal|60}}
+*[[Declan Rice|Rice]] {{goal|90+7}}
+| stadium    = [[Kenilworth Road]] 
+| location   = [[Luton]]
+| attendance = 11,112
+| referee    = [[Sam Barrott]]
+| result     = L
+}}
+{{football box collapsible
+| round      = 16
+| date       = 10 December 2023
+| time       = 14:00 [[Greenwich Mean Time|GMT]]
+| team1      = Luton Town
+| score      = 1–2
+| report     = https://www.premierleague.com/match/93476
+| team2      = [[Manchester City F.C.|Manchester City]]
+| goals1     = 
+*[[Elijah Adebayo|Adebayo]] {{goal|45+2}}
+*[[Marvelous Nakamba|Nakamba]] {{yel|58}}
+*[[Alfie Doughty|Doughty]] {{yel|77}}
+| goals2     = 
+*[[Bernardo Silva|Silva]] {{goal|62}}
+*[[Jack Grealish|Grealish]] {{goal|65}}
+*[[Rodri (footballer, born 1996)|Rodri]] {{yel|73}}
+| stadium    = [[Kenilworth Road]]
+| location   = [[Luton]]
+| attendance = 11,047
+| referee    = [[Tim Robinson (referee)|Tim Robinson]]
+| result     = L
+}}
+{{football box collapsible
+| date       = 23 December 2023
+| time       = 15:00 [[Greenwich Mean Time|GMT]]
+| round      = 18
+| team1      = Luton Town
+| score      = 1–0
+| report     = https://www.premierleague.com/match/93495
+| team2      = [[Newcastle United F.C.|Newcastle United]]
+| goals1     = 
+*[[Andros Townsend|Townsend]] {{goal|25}}
+*[[Ross Barkley|Barkley]] {{yel|56}}
+*[[Teden Mengi|Mengi]] {{yel|89}}
+| goals2     = 
+*[[Lewis Hall (footballer)|Hall]] {{yel|90+4}}
+ | stadium    = [[Kenilworth Road]]
+| location   = [[Luton]]
+| attendance = 11,042
+| referee    = [[Darren England]]
+| result     = W
+}}
+{{football box collapsible
+| round      = 19
+| date       = 26 December 2023
+| time       = 15:00 [[Greenwich Mean Time|GMT]]
+| team1      = [[Sheffield United F.C.|Sheffield United]]
+| score      = 2–3
+| report     = https://www.premierleague.com/match/93510
+| team2      = Luton Town
+| goals1     = 
+*[[Anel Ahmedhodžić|Ahmedhodžić]] {{yel|14}}, {{goal|69}}
+*[[Gustavo Hamer|Hamer]] {{yel|41}}
+*[[Oli McBurnie|McBurnie]] {{goal|61}}
+*[[George Baldock|Baldock]] {{yel|78}}
+*[[Jack Robinson (footballer, born 1993)|Robinson]] {{yel|79}}
+*[[Oliver Norwood|Norwood]] {{yel|90+4}}
+| goals2     = 
+*[[Alfie Doughty|Doughty]] {{goal|17}}
+*[[Jack Robinson (footballer, born 1993)|Robinson]] {{goal|77|o.g.}}
+*[[Anis Ben Slimane|Ben Slimane]] {{goal|81|o.g.}}
+| stadium    = [[Bramall Lane]]
+| location   = [[Sheffield]]
+| attendance = 31,041
+| referee    = [[Sam Allison]]
+| result     = W
+}}
+{{football box collapsible
+| round      = 20
+| date       = 30 December 2023
+| time       = 12:30 [[Greenwich Mean Time|GMT]]
+| team1      = Luton Town
+| score      = 2–3
+| report     = https://www.premierleague.com/match/93515
+| team2      = [[Chelsea F.C.|Chelsea]]
+| goals1     = 
+*[[Jacob Brown (footballer)|Brown]] {{yel|27}}
+*[[Teden Mengi|Mengi]] {{yel|77}}
+*[[Ross Barkley|Barkley]] {{goal|80}}
+*[[Elijah Adebayo|Adebayo]] {{goal|87}}
+| goals2     = 
+*[[Cole Palmer|Palmer]] {{goal|12||70}}
+*[[Noni Madueke|Madueke]] {{goal|37}}
+*[[Axel Disasi|Disasi]] {{yel|87}}
+*[[Malo Gusto|Gusto]] {{yel|90+4}}
+| stadium    = [[Kenilworth Road]]
+| location   = [[Luton]]
+| attendance = 11,041
+| referee    = [[Paul Tierney (referee)|Paul Tierney]]
+| result     = L
+}}
+{{football box collapsible
+| round      = 21
+| date       = 12 January 2024
+| time       = 19:45 [[Greenwich Mean Time|GMT]]
+| team1      = [[Burnley F.C.|Burnley]]
+| score      = 1–1
+| report     = https://www.premierleague.com/match/93525
+| team2      = Luton Town
+| goals1     = 
+*[[Zeki Amdouni|Amdouni]] {{goal|36}}
+*[[James Trafford|Trafford]] {{yel|90+3}}
+| goals2     = 
+*[[Carlton Morris|Morris]] {{goal|90+2}}
+| stadium    = [[Turf Moor]]
+| location   = [[Burnley]]
+| attendance = 20,155
+| referee    = [[Tony Harrington]]
+| result     = D
+| note       = The match was originally scheduled for 15 January 2024, but was moved forward due to Luton's involvement in an FA Cup replay.<ref>{{cite news |title=Burnley v Luton fixture rescheduled |url=https://www.premierleague.com/news/3851226 |access-date=7 January 2024 |publisher=Premier League |date=7 January 2024}}</ref>
+}}
+{{football box collapsible
+| round      = 22
+| date       = 30 January 2024
+| time       = 19:45 [[Greenwich Mean Time|GMT]]
+| team1      = Luton Town
+| score      = 4–0
+| report     = https://www.premierleague.com/match/93534
+| team2      = [[Brighton & Hove Albion F.C.|Brighton & Hove Albion]]
+| goals1     = 
+*[[Elijah Adebayo|Adebayo]] {{goal|1||42||56}}
+*[[Chiedozie Ogbene|Ogbene]] {{goal|3}}
+*[[Albert Sambi Lokonga|Sambi Lokonga]] {{yel|25}}
+*[[Jordan Clark (English footballer)|Clark]] {{yel|64}}
+| goals2     = 
+*[[Igor Julio|Igor]] {{yel|13}}
+*[[Carlos Baleba|Baleba]] {{yel|73}}
+| stadium    = [[Kenilworth Road]]
+| location   = [[Luton]]
+| attendance = 10,994
+| referee    = [[Robert Jones (referee)|Robert Jones]]
+| result     = W
+}}
+{{football box collapsible
+| round      = 23
+| date       = 3 February 2024
+| time       = 15:00 [[Greenwich Mean Time|GMT]]
+| team1      = [[Newcastle United F.C.|Newcastle United]]
+| score      = 4–4
+| report     = https://www.premierleague.com/match/93549
+| team2      = Luton Town
+| goals1     = 
+*[[Sean Longstaff|Longstaff]] {{goal|7||23}}
+*[[Dan Burn|Burn]] {{yel|56}}
+*[[Kieran Trippier|Trippier]] {{goal|67}}
+*[[Harvey Barnes|Barnes]] {{goal|73}}
+*[[Jacob Murphy|Murphy]] {{yel|76}}
+| goals2     = 
+*[[Gabriel Osho|Osho]] {{goal|21}}, {{yel|90}}
+*[[Ross Barkley|Barkley]] {{goal|40}}
+*[[Carlton Morris|Morris]] {{goal|59|pen.}}
+*[[Albert Sambi Lokonga|Sambi Lokonga]] {{yel|60}}
+*[[Elijah Adebayo|Adebayo]] {{goal|62}}
+| stadium    = [[St James' Park]]
+| location   = [[Newcastle upon Tyne]]
+| attendance = 52,211
+| referee    = [[Thomas Bramall]]
+| result     = D
+}}
+{{football box collapsible
+| round      = 24
+| date       = 10 February 2024
+| time       = 15:00 [[Greenwich Mean Time|GMT]]
+| team1      = Luton Town
+| score      = 1–3
+| report     = https://www.premierleague.com/match/93555
+| team2      = [[Sheffield United F.C.|Sheffield United]]
+| goals1     = 
+*[[Carlton Morris|Morris]] {{yel|41}}, {{goal|52|pen.}}
+| goals2     = 
+*[[Mason Holgate|Holgate]] {{yel|10}}
+*[[Gustavo Hamer|Hamer]] {{yel|26}}
+*[[Cameron Archer|Archer]] {{goal|30}}
+*[[James McAtee|McAtee]] {{goal|36|pen.}}
+*[[Vinícius Souza|Vinícius]] {{goal|72}}
+| stadium    = [[Kenilworth Road]]
+| location   = [[Luton]]
+| attendance = 11,138
+| referee    = [[Chris Kavanagh (referee)|Chris Kavanagh]]
+| result     = L
+}}
+{{football box collapsible
+| round      = 25
+| date       = 18 February 2024
+| time       = 16:30 [[Greenwich Mean Time|GMT]]
+| team1      = Luton Town
+| score      = 1–2
+| report     = https://www.premierleague.com/match/93565
+| team2      = [[Manchester United F.C.|Manchester United]]
+| goals1     = 
+*[[Carlton Morris|Morris]] {{goal|14}}
+*[[Cauley Woodrow|Woodrow]] {{yel|17}}
+*[[Andros Townsend|Townsend]] {{yel|70}}
+*[[Gabriel Osho|Osho]] {{yel|87}}
+| goals2     = 
+*[[Rasmus Højlund|Højlund]] {{goal|1||7}}
+*[[Luke Shaw|Shaw]] {{yel|20}}
+*[[Casemiro]] {{yel|34}}
+*[[Harry Maguire|Maguire]] {{yel|42}}
+*[[Kobbie Mainoo|Mainoo]] {{yel|75}}
+*[[Victor Lindelöf|Lindelöf]] {{yel|81}}
+| stadium    = [[Kenilworth Road]]
+| location   = [[Luton]]
+| attendance = 11,483
+| referee    = [[David Coote (referee)|David Coote]]
+| result     = L
+}}
+{{football box collapsible
+| round      = 26
+| date       = 21 February 2024
+| time       = 19:30 [[Greenwich Mean Time|GMT]]
+| team1      = [[Liverpool F.C.|Liverpool]]
+| score      = 4–1
+| report     = https://www.premierleague.com/match/93577
+| team2      = Luton Town
+| goals1     =
+*[[Virgil van Dijk|Van Dijk]] {{goal|56}}
+*[[Cody Gakpo|Gakpo]] {{goal|58}}
+*[[Luis Díaz (footballer, born 1997)|Díaz]] {{goal|71}}
+*[[Joe Gomez (footballer)|Gomez]] {{yel|82}}
+*[[Harvey Elliott|Elliott]] {{goal|90}}
+| goals2     =
+*[[Chiedozie Ogbene|Ogbene]] {{goal|12}}
+*[[Alfie Doughty|Doughty]] {{yel|18}}
+*[[Cauley Woodrow|Woodrow]] {{yel|42}}
+*[[Ross Barkley|Barkley]] {{yel|77}}
+*[[Issa Kaboré|Kaboré]] {{yel|89}}
+| stadium    = [[Anfield]]
+| location   = [[Liverpool]]
+| attendance = 59,896
+| referee    = [[Andrew Madley]]
+| result     = L
+| note       = The match was originally scheduled for 25 February 2024, but was brought forward due to Liverpool's involvement in the [[2024 EFL Cup final|EFL Cup final]].<ref>{{cite news |title=New date needed for Liverpool trip |url=https://www.lutontown.co.uk/news/2024/january/liverpool-game-postponed/ |access-date=25 January 2024 |publisher=Luton Town F.C. |date=25 January 2024}}</ref><ref>{{cite news |title=Liverpool v Luton Town: Rearranged fixture details confirmed |url=https://www.liverpoolfc.com/news/liverpool-v-luton-town-rearranged-fixture-details-confirmed |access-date=3 February 2024 |publisher=Liverpool F.C. |date=3 February 2024}}</ref>
+}}
+{{football box collapsible
+| round      = 27
+| date       = 2 March 2024
+| time       = 17:30 [[Greenwich Mean Time|GMT]]
+| team1      = Luton Town
+| score      = 2–3
+| report     = https://www.premierleague.com/match/93585
+| team2      = [[Aston Villa F.C.|Aston Villa]]
+| goals1     = 
+*[[Reece Burke|Burke]] {{yel|38}}
+*[[Tahith Chong|Chong]] {{goal|66}}
+*[[Carlton Morris|Morris]] {{goal|72}}
+| goals2     = 
+*[[Ollie Watkins|Watkins]] {{goal|24||38}}
+*[[Douglas Luiz]] {{yel|45}}
+*[[Leon Bailey|Bailey]] {{yel|45+5}}
+*[[Morgan Rogers|Rogers]] {{yel|50}}
+*[[Lucas Digne|Digne]] {{goal|89}}
+*[[Nicolò Zaniolo|Zaniolo]] {{yel|90+2}}
+| stadium    = [[Kenilworth Road]]
+| location   = [[Luton]]
+| attendance = 11,594
+| referee    = [[Michael Oliver (referee)|Michael Oliver]]
+| result     = L
+| note       = The match was originally scheduled to kick-off at 15:00, but was moved forward for live [[Sky Sports]] coverage.<ref>{{cite news |title=Aston Villa kick-off moved for live coverage on Sky Sports |url=https://www.lutontown.co.uk/news/2024/january/aston-villa-tv/ |access-date=26 January 2024 |publisher=Luton Town F.C. |date=26 January 2024}}</ref>
+}}
+{{football box collapsible
+| round      = 28
+| date       = 9 March 2024
+| time       = 15:00 [[Greenwich Mean Time|GMT]]
+| team1      = [[Crystal Palace F.C.|Crystal Palace]]
+| score      = 1–1
+| report     = https://www.premierleague.com/match/93596
+| team2      = Luton Town
+| goals1     =
+*[[Jean-Philippe Mateta|Mateta]] {{goal|11}}
+*[[Eberechi Eze|Eze]] {{yel|39}} 
+*[[Daniel Muñoz (footballer)|Muñoz]] {{yel|86}}
+| goals2     = 
+*[[Issa Kaboré|Kaboré]] {{yel|27}}
+*[[Reece Burke|Burke]] {{yel|57}}
+*[[Luke Berry|Berry]] {{yel|90+1}}
+*[[Cauley Woodrow|Woodrow]] {{goal|90+6}}
+| stadium    = [[Selhurst Park]]
+| location   = [[Selhurst]]
+| attendance = 25,103
+| referee    = [[Sunny Singh Gill]]
+| result     = D
+}}
+{{football box collapsible
+| round      = 17
+| date       = 13 March 2024
+| time       = 19:30 [[Greenwich Mean Time|GMT]]
+| team1      = [[AFC Bournemouth|Bournemouth]]
+| score      = 4–3
+| report     = https://www.premierleague.com/match/93482
+| team2      = Luton Town
+| goals1     = 
+*[[Dominic Solanke|Solanke]] {{goal|50}}
+*[[Illya Zabarnyi|Zabarnyi]] {{goal|62}}
+*[[Antoine Semenyo|Semenyo]] {{goal|64||83}}
+*[[Adam Smith (footballer, born 1991)|Smith]] {{yel|69}}
+| goals2     = 
+*[[Tahith Chong|Chong]] {{goal|9}}
+*[[Jordan Clark (English footballer)|Clark]] {{yel|30}}
+*[[Chiedozie Ogbene|Ogbene]] {{goal|31}}, {{yel|66}}
+*[[Ross Barkley|Barkley]] {{goal|45+1}}
+| stadium    = [[Dean Court]]
+| location   = [[Bournemouth]]
+| attendance = 11,198
+| referee    = [[Sam Allison]]
+| result     = L
+| note       = Match, originally scheduled for 16 December 2023, was abandoned and rescheduled to 13 March 2024 to be replayed in full due to a [[Tom Lockyer]] cardiac arrest which happened during the original match.<ref>{{cite news |title=AFC Bournemouth v Luton fixture rescheduled |url=https://www.premierleague.com/news/3885238 |access-date=22 February 2024 |publisher=Premier League |date=7 February 2024}}</ref>
+}}
+{{football box collapsible
+| round      = 29
+| date       = 16 March 2024
+| time       = 15:00 [[Greenwich Mean Time|GMT]]
+| team1      = Luton Town
+| score      = 1–1
+| report     = https://www.premierleague.com/match/93607
+| team2      = [[Nottingham Forest F.C.|Nottingham Forest]]
+| goals1     = 
+*[[Issa Kaboré|Kaboré]] {{yel|30}}
+*[[Luke Berry|Berry]] {{goal|89}}
+| goals2     =
+*[[Chris Wood (footballer, born 1991)|Wood]] {{goal|34}}
+*[[Harry Toffolo|Toffolo]] {{yel|84}}
+*[[Matz Sels|Sels]] {{yel|90}}
+| stadium    = [[Kenilworth Road]]
+| location   = [[Luton]]
+| attendance = 11,630
+| referee    = [[Darren England]]
+| result     = D
+}}
+{{football box collapsible
+| round      = 30
+| date       = 30 March 2024
+| time       = 15:00 [[Greenwich Mean Time|GMT]]
+| team1      = [[Tottenham Hotspur F.C.|Tottenham Hotspur]]
+| score      = 2–1
+| report     = https://www.premierleague.com/match/93620
+| team2      = Luton Town
+| goals1     = 
+*[[Issa Kaboré|Kaboré]] {{goal|51|o.g.}}
+*[[Son Heung-min]] {{goal|86}}
+*[[Pierre-Emile Højbjerg|Højbjerg]] {{yel|90+5}}
+*[[Giovanni Lo Celso|Lo Celso]] {{yel|90+6}}
+| goals2     =
+*[[Tahith Chong|Chong]] {{goal|3}}
+*[[Ross Barkley|Barkley]] {{yel|31}}
+*[[Reece Burke|Burke]] {{yel|36}}
+*[[Pelly Ruddock Mpanzu|Mpanzu]] {{yel|46}}
+*[[Teden Mengi|Mengi]] {{yel|90}}
+| stadium    = [[Tottenham Hotspur Stadium]]
+| location   = [[Tottenham]]
+| attendance = 61,534
+| referee    = [[Jarred Gillett]]
+| result     = L
+}}
+{{football box collapsible
+| round      = 31
+| date       = 3 April 2024
+| time       = 19:30 [[British Summer Time|BST]]
+| team1      = [[Arsenal F.C.|Arsenal]]
+| score      = 2–0
+| report     = https://www.premierleague.com/match/93621
+| team2      = Luton Town
+| goals1     = 
+*[[Martin Ødegaard|Ødegaard]] {{goal|24}}
+*[[Daiki Hashioka|Hashioka]] {{goal|44|o.g.}}
+*[[Kai Havertz|Havertz]] {{yel|66}}
+| goals2     = 
+*[[Fred Onyedinma|Onyedinma]] {{yel|74}}
+| stadium    = [[Emirates Stadium]]
+| location   = [[Holloway, London|Holloway]]
+| attendance = 60,262
+| referee    = [[Craig Pawson]]
+| result     = L
+}}
+{{football box collapsible
+| round      = 32
+| date       = 6 April 2024
+| time       = 15:00 [[British Summer Time|BST]]
+| team1      = Luton Town
+| score      = 2–1
+| report     = https://www.premierleague.com/match/93636
+| team2      = [[AFC Bournemouth|Bournemouth]]
+| goals1     = 
+*[[Jordan Clark (English footballer)|Clark]] {{goal|73}}
+*[[Carlton Morris|Morris]] {{goal|90}}
+| goals2     = 
+*[[Marcus Tavernier|Tavernier]] {{goal|52}}
+| stadium    = [[Kenilworth Road]]
+| location   = [[Luton]]
+| attendance = 11,797
+| referee    = [[Andrew Madley]]
+| result     = W
+}}
+{{football box collapsible
+| round      = 33
+| date       = 13 April 2024
+| time       = 15:00 [[British Summer Time|BST]]
+| team1      = [[Manchester City F.C.|Manchester City]]
+| score      = 5–1
+| report     = https://www.premierleague.com/match/93647
+| team2      = Luton Town
+| goals1     = 
+*[[Daiki Hashioka|Hashioka]] {{goal|2|o.g.}}
+*[[Kevin De Bruyne|De Bruyne]] {{yel|43}}
+*[[Mateo Kovačić|Kovačić]] {{goal|64}}
+*[[Erling Haaland|Haaland]] {{goal|76|pen.}}
+*[[Jérémy Doku|Doku]] {{goal|87}}
+*[[Joško Gvardiol|Gvardiol]] {{goal|90+3}}
+| goals2 =
+*[[Ross Barkley|Barkley]] {{goal|81}}
+| stadium    = [[City of Manchester Stadium]]
+| location   = [[Manchester]]
+| attendance = 
+| referee    = [[John Brooks (referee)|John Brooks]]
+| result     = L
+}}
+{{football box collapsible
+| round      = 34
+| date       = 20 April 2024
+| time       = 15:00 [[British Summer Time|BST]]
+| team1      = Luton Town
+| score      = 1–5
+| report     = https://www.premierleague.com/match/93656
+| team2      = [[Brentford F.C.|Brentford]]
+| goals1     = 
+*[[Alfie Doughty|Doughty]] {{yel|88}}
+*[[Luke Berry|Berry]] {{goal|90+2}}
+| goals2     =
+*[[Yoane Wissa|Wissa]] {{goal|24||45+1}}
+*[[Ethan Pinnock|Pinnock]] {{yel|38}}, {{goal|62}}
+*[[Mikkel Damsgaard|Damsgaard]] {{yel|48}}
+*[[Keane Lewis-Potter|Lewis-Potter]] {{goal|64}}
+*[[Kevin Schade|Schade]] {{goal|86}}
+| stadium    = [[Kenilworth Road]]
+| location   = [[Luton]]
+| attendance = 11,877 
+| referee    = [[Jarred Gillett]]
+| result     = L
+}}
+{{football box collapsible
+| round      = 35
+| date       = 27 April 2024
+| time       = 15:00 [[British Summer Time|BST]]
+| team1      = [[Wolverhampton Wanderers F.C.|Wolverhampton Wanderers]]
+| score      = 2–1
+| report     = https://www.premierleague.com/match/93670
+| team2      = Luton Town
+| goals1     = 
+*[[João Gomes (footballer, born 2001)|João Gomes]] {{yel|11}}
+*[[Hwang Hee-chan]] {{goal|39}}, {{yel|81}}
+*[[Toti Gomes|Toti]] {{goal|50}}
+*[[Pablo Sarabia|Sarabia]] {{yel|90+5}}
+| goals2      = 
+*[[Albert Sambi Lokonga|Sambi Lokonga]] {{yel|58}}
+*[[Carlton Morris|Morris]] {{goal|80}}
+| stadium    = [[Molineux Stadium|Molineux]]
+| location   = [[Wolverhampton]]
+| attendance = 31,512
+| referee    = [[David Coote (referee)|David Coote]]
+| result     = L
+}}
+{{football box collapsible
+| round      = 36
+| date       = 3 May 2024
+| time       = 20:00 [[British Summer Time|BST]]
+| team1      = Luton Town
+| score      = 1–1
+| report     = https://www.premierleague.com/match/93678
+| team2      = [[Everton F.C.|Everton]]
+| goals1     = 
+*[[Elijah Adebayo|Adebayo]] {{goal|31}}
+*[[Tahith Chong|Chong]] {{yel|43}}
+| goals2     = 
+*[[James Garner (footballer, born 2001)|Garner]] {{yel|9}}
+*[[Dominic Calvert-Lewin|Calvert-Lewin]] {{goal|24|pen.}}
+*[[Idrissa Gueye|Gueye]] {{yel|53}}
+*[[André Gomes|Gomes]] {{yel|90+3}}
+| stadium    = [[Kenilworth Road]]
+| location   = [[Luton]]
+| attendance = 11,873
+| referee    = [[Tim Robinson (referee)|Tim Robinson]]
+| result     = D
+| note       = Fixture was initially scheduled for 4 May, but was moved for live [[Sky Sports]] broadcast.<ref>{{cite news |title=Everton game moved to Friday night |url=https://www.lutontown.co.uk/news/2024/april/everton-selection/ |access-date=5 April 2024 |publisher=Luton Town F.C. |date=5 April 2024}}</ref>
+}}
+{{football box collapsible
+| round      = 37
+| date       = 11 May 2024
+| time       = 15:00 [[British Summer Time|BST]]
+| team1      = [[West Ham United F.C.|West Ham United]]
+| score      = 3–1
+| report     = https://www.premierleague.com/match/93689
+| team2      = Luton Town
+| goals1     = 
+*[[Emerson Palmieri|Emerson]] {{yel|52}}
+*[[James Ward-Prowse|Ward-Prowse]] {{goal|54}}
+*[[Tomáš Souček|Souček]] {{goal|65}}
+*[[George Earthy|Earthy]] {{goal|76}}
+| goals2     = 
+*[[Albert Sambi Lokonga|Sambi Lokonga]] {{goal|6}}
+*[[Ross Barkley|Barkley]] {{yel|10}}
+*[[Reece Burke|Burke]] {{yel|79}}
+*[[Carlton Morris|Morris]] {{yel|83}}
+| stadium    = [[London Stadium]]
+| location   = [[Stratford, London|Stratford]]
+| attendance = 
+| referee    = [[Michael Oliver (referee)|Michael Oliver]]
+| result     = L
+}}
+{{football box collapsible
+| round      = 38
+| date       = 19 May 2024
+| time       = 16:00 [[British Summer Time|BST]]
+| team1      = Luton Town
+| score      = 2–4
+| report     = https://www.premierleague.com/match/93698
+| team2      = [[Fulham F.C.|Fulham]]
+| goals1     =
+*[[Albert Sambi Lokonga|Sambi Lokonga]] {{yel|34}}
+*[[Carlton Morris|Morris]] {{goal|45+1|pen.}}, {{yel|73}}
+*[[Jordan Clark (English footballer)|Clark]] {{yel|48}}
+*[[Alfie Doughty|Doughty]] {{goal|55}}, {{yel|59}}
+*[[Joe Johnson (footballer, born 2006)|Johnson]] {{yel|75}}
+| goals2     =
+*[[Harrison Reed (footballer)|Reed]] {{yel|22}}
+*[[Adama Traoré (footballer, born 1996)|Traoré]] {{goal|43}}, {{yel|73}}
+*[[Raúl Jiménez|Jiménez]] {{goal|45+3||49}}
+*[[Antonee Robinson|Robinson]] {{yel|54}}
+*[[Harry Wilson (footballer, born 1997)|Wilson]] {{goal|69}}
+*[[Tom Cairney|Cairney]] {{yel|88}}
+| stadium    = [[Kenilworth Road]]
+| location   = [[Luton]]
+| attendance = 12,027
+| referee    = Matt Donohue
+| result     = L
+}}
+
+====Abandoned match with Bournemouth====
+On 16 December 2023, during the match away against [[AFC Bournemouth|Bournemouth]], Luton defender [[Tom Lockyer]] collapsed due to a cardiac arrest in the 59th minute of the match resulting in the match being abandoned in the 65th minute.<ref>{{cite news|url=https://www.nbcsports.com/soccer/news/luton-captain-tom-lockyer-collapses-during-game-at-bournemouth|title=Tom Lockyer suffers cardiac arrest as Bournemouth vs Luton abandoned|publisher=NBC Sports|date=16 December 2023|access-date=16 December 2023|archive-url=https://web.archive.org/web/20231217004252/https://www.nbcsports.com/soccer/news/luton-captain-tom-lockyer-collapses-during-game-at-bournemouth|archive-date=17 December 2023}}</ref>
+On 20 December 2023, the Premier League ruled the match would be replayed in full at a later date.<ref>{{cite news|url=https://www.premierleague.com/news/3830154|title=Premier League statement on AFC Bournemouth v Luton|publisher=Premier League|date=20 December 2023|access-date=20 December 2023|archive-date=20 December 2023|archive-url=https://web.archive.org/web/20231220185742/https://www.premierleague.com/news/3830154|url-status=live}}</ref> On 7 February 2024, it was announced that the rearranged fixture would take place on 13 March 2024.<ref>{{cite news|url=https://www.afcb.co.uk/news/first-team/new-date-set-for-luton-home-game/|title=New Date Set For Luton Home Game|publisher=AFC Bournemouth|date=7 February 2024|access-date=7 February 2024|archive-date=7 February 2024|archive-url=https://web.archive.org/web/20240207174336/https://www.afcb.co.uk/news/first-team/new-date-set-for-luton-home-game/|url-status=live}}</ref>
+
+{{football box collapsible
+| round      = 17
+| date       = 16 December 2023
+| time       = 15:00 [[Greenwich Mean Time|GMT]]
+| team1      = [[AFC Bournemouth|Bournemouth]]
+| score      = 1–1<br>Abandoned
+| report     = https://www.premierleague.com/match/93482
+| team2      = Luton Town
+| goals1     = 
+*[[Dominic Solanke|Solanke]] {{goal|58}}
+| goals2     =  
+*[[Elijah Adebayo|Adebayo]] {{goal|3}}
+*[[Alfie Doughty|Doughty]] {{yel|12}}
+| stadium    = [[Dean Court]]
+| location   = [[Bournemouth]]
+| attendance = 11,185
+| referee    = [[Simon Hooper]]
+| result     = V
+}}
+
+=== FA Cup ===
+{{main|2023–24 FA Cup}}
+
+As a Premier League side, Luton entered in the third round, and were drawn at home to [[EFL League One]] club [[Bolton Wanderers F.C.|Bolton Wanderers]].<ref>{{cite news |title=Hatters to host Bolton in FA Cup third round |url=https://www.lutontown.co.uk/news/2023/december/bolton-in-the-cup/ |access-date=4 December 2023 |publisher=Luton Town F.C. |date=3 December 2023}}</ref><ref>{{cite news |title=Date and ticket prices confirmed for Bolton tie |url=https://www.lutontown.co.uk/news/2023/december/date-and-ticket-prices-confirmed-for-bolton-tie/ |access-date=8 December 2023 |publisher=Luton Town F.C. |date=8 December 2023}}</ref> In the fifth round, they were drawn at home to the holders, [[Manchester City F.C.|Manchester City]].<ref>{{cite news |title=Hatters host holders Man City in fifth round |url=https://www.lutontown.co.uk/news/2024/january/fifth-round-draw/ |access-date=29 January 2024 |publisher=Luton Town FC |date=28 January 2024}}</ref><ref>{{cite news |title=Man City tie to be televised on ITV |url=https://www.lutontown.co.uk/news/2024/february/man-city-fa-cup-tie-televised/ |access-date=7 February 2024 |publisher=Luton Town FC |date=2 February 2024}}</ref>
+
+{{legend2|#CCFFCC|Win|border=1px solid #AAAAAA}}
+{{legend2|#FFFFCC|Draw|border=1px solid #AAAAAA}}
+{{legend2|#FFCCCC|Loss|border=1px solid #AAAAAA}}
+{{legend2|#FFFFFF|Fixtures|border=1px solid #AAAAAA}}
+
+{{football box collapsible
+| round      = [[2023–24 FA Cup#Third round proper|Third round]]
+| date       = 7 January 2024
+| time       = 14:00 [[Greenwich Mean Time|GMT]]
+| team1      = Luton Town
+| score      = 0–0
+| report     = https://www.bbc.co.uk/sport/football/67903538
+| team2      = [[Bolton Wanderers F.C.|Bolton Wanderers]]
+| goals1     =
+*[[Jordan Clark (English footballer)|Clark]] {{yel|90+1}}
+| goals2     =
+| stadium    = [[Kenilworth Road]]
+| location   = [[Luton]]
+| attendance = 10,739
+| referee    = [[Andrew Madley]]
+| result     = D
+}}
+{{football box collapsible
+| round      = [[2023–24 FA Cup#Third round proper|Third round replay]]
+| date       = 16 January 2024
+| time       = 19:45 [[Greenwich Mean Time|GMT]]
+| team1      = [[Bolton Wanderers F.C.|Bolton Wanderers]]
+| score      = 1–2
+| report     = https://www.bbc.co.uk/sport/football/67984491
+| team2      = Luton Town
+| goals1     =
+*[[Dion Charles|Charles]] {{goal|11}}
+*[[Will Forrester|Forrester]] {{yel|27}}
+|goals2 =
+*[[Tahith Chong|Chong]] {{goal|15}}
+*[[Teden Mengi|Mengi]] {{yel|31}}
+*[[Chiedozie Ogbene|Ogbene]] {{goal|57}}
+*[[Jordan Clark (English footballer)|Clark]] {{yel|64}}
+| stadium    = [[Toughsheet Community Stadium]]
+| location   = [[Bolton]]
+| attendance = 10,878
+| referee    = [[Thomas Bramall]]
+| result     = W
+}}
+{{football box collapsible
+| round      = [[2023–24 FA Cup#Fourth round proper|Fourth round]]
+| date       = 27 January 2024
+| time       = 15:00 [[Greenwich Mean Time|GMT]]
+| team1      = [[Everton F.C.|Everton]]
+| score      = 1–2
+| report     = https://www.bbc.co.uk/sport/football/68110770
+| team2      = Luton Town
+| goals1     = 
+*[[Jack Harrison (footballer, born 1996)|Harrison]] {{goal|55}}
+*[[Youssef Chermiti|Chermiti]] {{yel|90+1}}
+| goals2     = 
+*[[Vitaliy Mykolenko|Mykolenko]] {{goal|39|o.g.}}
+*[[Reece Burke|Burke]] {{yel|90+1}}
+*[[Cauley Woodrow|Woodrow]] {{goal|90+6}}
+| stadium    = [[Goodison Park]]
+| location   = [[Liverpool]]
+| attendance = 37,713
+| referee    = [[Simon Hooper]]
+| result     = W
+}}
+{{football box collapsible
+| round      = [[2023–24 FA Cup#Fifth round proper|Fifth round]]
+| date       = 27 February 2024
+| time       = 20:00 [[Greenwich Mean Time|GMT]]
+| team1      = Luton Town
+| score      = 2–6
+| report     = https://www.bbc.co.uk/sport/football/68417647
+| team2      = [[Manchester City F.C.|Manchester City]]
+| goals1     =
+*[[Jordan Clark (English footballer)|Clark]] {{goal|45||52}}
+| goals2     =
+*[[Erling Haaland|Haaland]] {{goal|3||18||40||55||58}}
+*[[Mateo Kovačić|Kovačić]] {{goal|72}}
+| stadium    = [[Kenilworth Road]]
+| location   = [[Luton]]
+| attendance = 11,163
+| referee    = [[Anthony Taylor (referee)|Anthony Taylor]]
+| result     = L
+}}
+
+=== EFL Cup ===
+{{main|2023–24 EFL Cup}}
+
+Luton entered the competition in the second round, and were drawn at home to [[Gillingham F.C.|Gillingham]].<ref>{{cite news |title=Carabao Cup Second Round opponent confirmed! |url=https://www.lutontown.co.uk/news/2023/august/carabao-cup-second-round/ |access-date=10 August 2023 |publisher=Luton Town F.C. |date=9 August 2023}}</ref> They were then drawn away to [[Exeter City F.C.|Exeter City]] in the third round.<ref>{{cite news |title=Carabao Cup third round opponent confirmed! |url=https://www.lutontown.co.uk/news/2023/august/carabao-cup-third-round/ |access-date=30 August 2023 |publisher=Luton Town F.C. |date=30 August 2023}}</ref>
+
+{{legend2|#CCFFCC|Win|border=1px solid #AAAAAA}}
+{{legend2|#FFFFCC|Draw|border=1px solid #AAAAAA}}
+{{legend2|#FFCCCC|Loss|border=1px solid #AAAAAA}}
+{{legend2|#FFFFFF|Fixtures|border=1px solid #AAAAAA}}
+
+{{football box collapsible
+| round      = [[2023–24 EFL Cup#Second round|Second round]]
+| date       = 29 August 2023
+| time       = 19:45 [[British Summer Time|BST]]
+| team1      = Luton Town
+| score      = 3–2
+| report     = https://www.efl.com/match-centre/g2404277
+| team2      = [[Gillingham F.C.|Gillingham]]
+| goals1     = 
+*[[Jacob Brown (footballer)|Brown]] {{goal|2}}
+*[[Alfie Doughty|Doughty]] {{goal|28}}
+*[[Luke Berry|Berry]] {{yel|34}}
+*[[Cauley Woodrow|Woodrow]] {{goal|66}}
+| goals2     = 
+*[[Timothée Dieng|Dieng]] {{yel|43}}
+*[[Jayden Clarke|Clarke]] {{goal|55}}
+*[[Tom Nichols (footballer)|Nichols]] {{goal|88}}
+| stadium    = [[Kenilworth Road]]
+| location   = [[Luton]]
+| attendance = 9,468
+| referee    = Jeremy Simpson
+| result     = W
+}}
+{{football box collapsible
+| round      = [[2023–24 EFL Cup#Third round|Third round]]
+| date       = 26 September 2023
+| time       = 19:45 [[British Summer Time|BST]]
+| team1      = [[Exeter City F.C.|Exeter City]]
+| score      = 1–0
+| report     = https://www.efl.com/match-centre/g2407902
+| team2      = Luton Town
+| goals1     = 
+*[[Demetri Mitchell|Mitchell]] {{sentoff|2|48|88}}, {{goal|83}}
+*[[Vincent Harper|Harper]] {{yel|51}}
+*[[Viljami Sinisalo|Sinisalo]] {{yel|78}}
+*[[Pierce Sweeney|Sweeney]] {{yel|90+6}}
+*[[Tom Carroll (English footballer)|Carroll]] {{yel|90+6}}
+| goals2     = 
+*[[Teden Mengi|Mengi]] {{yel|35}}
+*[[Tahith Chong|Chong]] {{yel|42}}
+| stadium    = [[St James Park (Exeter)|St James Park]]
+| location   = [[Exeter]]
+| attendance = 7,360
+| referee    = James Bell
+| result     = L
+}}
+
+==Squad statistics==
+{{updated|18 March 2024}}
+===Appearances and goals===
+{{Efs start|[[2023–24 Premier League|Premier League]]|[[2023–24 FA Cup|FA Cup]]|[[2023–24 EFL Cup|EFL Cup]]}}
+|-
+! colspan=14 style="background:#FF3300; color:white; text-align:center| Goalkeepers
+{{Efs player|no=1 |name=[[James Shea]]|pos=GK|nat=ENG |1    |0  |0   |0  |0   |0 }}
+{{Efs player|no=23|name=[[Tim Krul]]|pos=GK|nat=NED |0   |0  |4   |0 |2   |0 }}
+{{Efs player|no=24|name=[[Thomas Kaminski]]|pos=GK|nat=BEL                                              |29     |0  |0   |0 |0   |0 }}
+
+|-
+! colspan=14 style="background:#FF3300; color:white; text-align:center| Defenders
+{{Efs player|no=2 |name=[[Gabriel Osho]]|pos=DF|nat=ENG |16  |2  |2   |0 |2   |0}}
+{{Efs player|no=3 |name=[[Dan Potts (footballer)|Dan Potts]]|pos=DF|nat=ENG                                          |0    |0  |0 |0 |0 |0  }}
+{{Efs player|no=4 |name=[[Tom Lockyer]]|pos=DF|nat=WAL |14  |1  |0 |0 |1 |0 }}
+{{Efs player|no=5 |name=[[Mads Juel Andersen|Mads Andersen]]|pos=DF|nat=DEN |8    |1  |0   |0 |2 |0 }}
+{{Efs player|no=12|name=[[Issa Kaboré]]|pos=DF|nat=BKF |20   |0  |0 |0 |2 |0 }}
+{{Efs player|no=15|name=[[Teden Mengi]]|pos=DF|nat=ENG |22   |1  |4  |0 |1   |0 }}
+{{Efs player|no=16|name=[[Reece Burke]]|pos=DF|nat=ENG                                                |14  |0  |3 |0 |1 |0 }}
+{{Efs player|no=27|name=[[Daiki Hashioka]]|pos=DF|nat=JPN                                                  |3  |0  |1   |0 |0   |0 }}
+{{Efs player|no=29|name=[[Amari'i Bell]]|pos=DF|nat=JAM |21   |0  |4  |0 |2  |0 }}
+{{Efs player|no=38|name=[[Joe Johnson (footballer, born 2006)|Joe Johnson]]|pos=DF|nat=ENG                      |0   |0  |2   |0   |1   |0}}
+{{Efs player|no=45|name=[[Alfie Doughty]]|pos=DF|nat=ENG                      |28   |2  |4   |0 |2   |1 }}
+
+|-
+! colspan=14 style="background:#FF3300; color:white; text-align:center| Midfielders
+{{Efs player|no=6 |name=[[Ross Barkley]]|pos=MF|nat=ENG                                            |24  |5  |4 |0 |1  |0  |}}
+{{Efs player|no=8 |name=[[Luke Berry]]|pos=MF|nat=ENG |9  |2  |1 |0  |2 |0}}
+{{Efs player|no=13|name=[[Marvelous Nakamba]]|pos=MF|nat=ZIM                                             |13 |0  |0 |0 |1 |0 }}
+{{Efs player|no=17|name=[[Pelly Ruddock Mpanzu]]|pos=MF|nat=DRC |21  |0  |3 |0 |2 |0 }}
+{{Efs player|no=18|name=[[Jordan Clark (English footballer)|Jordan Clark]]|pos=MF|nat=ENG |15  |0  |3 |2 |0 |0 }}
+{{Efs player|no=23|name=[[Fred Onyedinma]]|pos=MF|nat=NGA |0   |0  |0 |0 |0 |0 }}
+{{Efs player|no=28|name=[[Albert Sambi Lokonga]]|pos=MF|nat=BEL                                             |12 |0  |2 |0 |0 |0  }}
+{{Efs player|no=43|name=[[Zack Nelson]]|pos=MF|nat=ENG |1 |0  |0 |0 |0 |0  }}
+|-
+
+! colspan=14 style="background:#FF3300; color:white; text-align:center| Forwards
+{{Efs player|no=7 |name=[[Chiedozie Ogbene]]|pos=FW|nat=IRL                                                   |28   |4  |4 |1   |2   |0  }}
+{{Efs player|no=9 |name=[[Carlton Morris]]|pos=FW|nat=ENG |29  |11  |4 |0  |1  |0  }}
+{{Efs player|no=10|name=[[Cauley Woodrow]]|pos=FW|nat=ENG                                             |15 |1  |3   |1  |2   |1  }}
+{{Efs player|no=11|name=[[Elijah Adebayo]]|pos=FW|nat=ENG                                         |23  |10 |3 |0  |2   |0  }}
+{{Efs player|no=14|name=[[Tahith Chong]]|pos=FW|nat=NED                                                  |24     |4  |4   |1 |1   |0 }}
+{{Efs player|no=19|name=[[Jacob Brown (footballer)|Jacob Brown]]|pos=FW|nat=SCO |19 |2  |1   |0  |2  |1  }}
+{{Efs player|no=30|name=[[Andros Townsend]]|pos=FW|nat=ENG                                                  |20     |1  |4   |0 |0   |0  }}
+
+|-
+! colspan=14 style="background:#FF3300; color:white; text-align:center| Players transferred out during the season
+{{Efs player|no=26 |name=[[Ryan Giles]]|pos=DF|nat=ENG |11  |0  |2   |0   |1   |0}}
+
+|}
+
+==References==
+{{reflist}}
+
+{{Luton Town F.C.}}
+{{Luton Town F.C. seasons}}
+{{2023–24 in English men's football}}
+
+{{DEFAULTSORT:2023-24 Luton Town F.C. Season}}
+[[Category:Luton Town F.C. seasons]]
+[[Category:2023–24 Premier League by team|Luton Town]]

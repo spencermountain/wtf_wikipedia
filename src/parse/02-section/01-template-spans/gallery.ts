@@ -2,7 +2,7 @@ import makeResult from '../../templates/result.ts'
 import defaults from '../../../_lib/defaults.ts'
 import type { DocInfo, SectionData } from '../../../types/index.ts'
 import parseImgString from '../../03-paragraph/02-images/parse.ts'
-import { images } from '../../../_data/i18n/index.ts'
+import { images } from '../../../world/data/i18n/index.ts'
 
 const namespace = new RegExp(`^(?:${images.join('|')}):`, 'i')
 
@@ -15,14 +15,16 @@ const parseGallery = function (section: SectionData, opts: DocInfo = defaults) {
     lines = lines.filter((str: string) => str && str.trim() !== '')
 
     //parse the line, which has an image and sometimes a caption
-    lines = lines.map((str: string) => {
-      str = str.trim()
-      // Gallery filenames may omit the image namespace.
-      if (!namespace.test(str)) {
-        str = `File:${str}`
-      }
-      return parseImgString(`[[${str}]]`, opts)
-    }).filter(Boolean)
+    lines = lines
+      .map((str: string) => {
+        str = str.trim()
+        // Gallery filenames may omit the image namespace.
+        if (!namespace.test(str)) {
+          str = `File:${str}`
+        }
+        return parseImgString(`[[${str}]]`, opts)
+      })
+      .filter(Boolean)
 
     //add it to our templates list
     if (lines.length > 0) {

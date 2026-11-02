@@ -1,6 +1,6 @@
 // shared league table + season-checker for the live scripts (smoke-test, write-db)
 import wtf from '../../../src/index.ts'
-import { mlb, nhl, nba, nfl, mls, wnba, nwsl, pwhl, cfl, ahl } from '../src/index.js'
+import { mlb, nhl, nba, nfl, mls, wnba, nwsl, pwhl, cfl, ahl, epl } from '../src/index.js'
 import mlbFranchises from '../src/mlb/franchises.js'
 import nhlFranchises from '../src/nhl/franchises.js'
 import nbaFranchises from '../src/nba/franchises.js'
@@ -11,6 +11,7 @@ import nwslFranchises from '../src/nwsl/franchises.js'
 import pwhlFranchises from '../src/pwhl/franchises.js'
 import cflFranchises from '../src/cfl/franchises.js'
 import ahlFranchises from '../src/ahl/franchises.js'
+import eplFranchises from '../src/epl/franchises.js'
 import { makeTitle as mlbTitle } from '../src/mlb/index.js'
 import { makeTitle as nhlTitle } from '../src/nhl/index.js'
 import { makeTitle as nbaTitle } from '../src/nba/index.js'
@@ -21,6 +22,7 @@ import { makeTitle as nwslTitle } from '../src/nwsl/index.js'
 import { makeTitle as pwhlTitle } from '../src/pwhl/index.js'
 import { makeTitle as cflTitle } from '../src/cfl/index.js'
 import { makeTitle as ahlTitle } from '../src/ahl/index.js'
+import { makeTitle as eplTitle } from '../src/epl/index.js'
 wtf.extend(mlb)
 wtf.extend(nhl)
 wtf.extend(nba)
@@ -31,6 +33,7 @@ wtf.extend(nwsl)
 wtf.extend(pwhl)
 wtf.extend(cfl)
 wtf.extend(ahl)
+wtf.extend(epl)
 
 // `from` is the earliest season the sweep bothers with
 const leagues = {
@@ -103,6 +106,13 @@ const leagues = {
     title: ahlTitle,
     parse: (doc) => doc.ahlSeason(),
     players: (res) => res.skaters.length + res.goalies.length || res.roster.length,
+  },
+  epl: {
+    from: 1992, //the premier-league era - franchises carry promotion/relegation stints
+    franchises: eplFranchises,
+    title: eplTitle,
+    parse: (doc) => doc.eplSeason(),
+    players: (res) => res.squad.length,
   },
 }
 

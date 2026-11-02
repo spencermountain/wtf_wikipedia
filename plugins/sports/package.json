@@ -39,7 +39,8 @@
     "write:nwsl": "node ./scripts/write-db.js nwsl",
     "write:pwhl": "node ./scripts/write-db.js pwhl",
     "write:cfl": "node ./scripts/write-db.js cfl",
-    "write:ahl": "node ./scripts/write-db.js ahl"
+    "write:ahl": "node ./scripts/write-db.js ahl",
+    "write:epl": "node ./scripts/write-db.js epl"
   },
   "files": [
     "builds",

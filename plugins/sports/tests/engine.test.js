@@ -13,6 +13,7 @@ import nwslFranchises from '../src/nwsl/franchises.js'
 import pwhlFranchises from '../src/pwhl/franchises.js'
 import cflFranchises from '../src/cfl/franchises.js'
 import ahlFranchises from '../src/ahl/franchises.js'
+import eplFranchises from '../src/epl/franchises.js'
 
 test('outcome from row attributes', (t) => {
   t.equal(outcomeOf('class="game-won"'), 'win', 'game-won template class')
@@ -28,6 +29,9 @@ test('outcome from row attributes', (t) => {
   t.equal(outcomeOf('', 'Postponed due to rain'), 'postponed', 'postponed text')
   t.equal(outcomeOf('', 'W 31–7'), 'win', 'W score prefix')
   t.equal(outcomeOf('', 'L 2–9'), 'loss', 'L score prefix')
+  t.equal(outcomeOf('', 'D 2–2'), 'tie', 'D score prefix')
+  t.equal(outcomeOf('bgcolor="#ffffdd"'), 'otl', 'pale yellow is an ot-loss by default')
+  t.equal(outcomeOf('bgcolor="#ffffdd"', '', true), 'tie', 'the same yellow is a draw in soccer')
   t.equal(outcomeOf('', '6–5'), null, 'no signal')
   t.equal(outcomeOf('style="text-align:center"'), null, 'unrelated style')
   t.end()
@@ -131,6 +135,11 @@ test('team resolution across renames', (t) => {
   t.equal(resolveTeam(ahlFranchises, 'Hartford Wolf Pack', 2011), 'Connecticut Whale', 'whale interlude')
   t.equal(resolveTeam(ahlFranchises, 'Laval Rocket', 2015), "St. John's IceCaps", 'icecaps era')
   t.equal(resolveTeam(ahlFranchises, 'Manitoba Moose', 2024), 'Manitoba Moose', 'moose back home')
+  // epl - no renames, but 51 clubs with promotion/relegation stints
+  t.equal(resolveTeam(eplFranchises, 'Arsenal', 2005), 'Arsenal F.C.', 'short club name resolves')
+  t.equal(resolveTeam(eplFranchises, 'Leicester', 2015), 'Leicester City F.C.', 'leicester title season')
+  t.equal(resolveTeam(eplFranchises, 'Bournemouth', 2022), 'AFC Bournemouth', 'afc-prefix club')
+  t.equal(resolveTeam(eplFranchises, 'Brighton', 2023), 'Brighton & Hove Albion F.C.', 'ampersand club')
   t.end()
 })
 
