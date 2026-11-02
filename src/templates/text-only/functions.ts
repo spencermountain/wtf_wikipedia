@@ -3,7 +3,7 @@ import parseArguments from '../../parse/templates/parse/toJSON/index.ts'
 import strip from '../../parse/templates/parse/toJSON/_strip.ts'
 import roundNumber from './_lib.ts'
 import { titlecase, percentage, toOrdinal } from '../_lib.ts'
-import { units, symbols as unitSymbols } from '../../_data/units.ts'
+import { units, symbols as unitSymbols, names as unitNames } from '../../_data/units.ts'
 
 // 2001, 2002 → '02'  (1999, 2000 → '2000')
 const shortYear = (year, after) => {
@@ -20,6 +20,23 @@ const superscript = (str = '') => {
 }
 
 const unitSymbol = (unit = '') => unitSymbols[unit] || unit
+// '37 feet', '1 foot', 'kilometers' with sp=us - temperatures are always symbols
+const unitName = (unit = '', value = '', opts: any = {}) => {
+  let names = unitNames[unit] || unitNames[unit.toLowerCase()]
+  if (!names) {
+    return unitSymbol(unit)
+  }
+  const us = opts.sp === 'us' && names.length === 4
+  const plural = opts.adj !== 'on' && Number(String(value).replace(/,/g, '')) !== 1
+  let i = plural ? 1 : 0
+  if (us) {
+    i += 2
+  }
+  return names[i]
+}
+// which side gets the spelled-out name: wikipedia abbreviates the output by default
+const spellInput = (opts: any = {}) => opts.abbr !== 'on' && opts.abbr !== 'in' && opts.abbr !== 'values'
+const spellOutput = (opts: any = {}) => opts.abbr === 'off' || opts.abbr === 'in'
 
 // significant figures of '37', '1.5', '0.80' - the converted value keeps the same (at least 2)
 const sigFigs = (str = '') => {
@@ -54,6 +71,7 @@ const fmtNumber = (n: number, sig: number) => {
 }
 // {{convert|37|ft|m}} → 11 m, or null when we don't know the units
 const convertUnits = (value: string, from: string, to?: string, opts: any = {}) => {
+  const outUnit = (unit: string, out: string) => (spellOutput(opts) ? unitName(unit, out, opts) : unitSymbol(unit))
   let n = Number(value.replace(/,/g, ''))
   if (!Number.isFinite(n)) {
     return null
@@ -99,7 +117,8 @@ const convertUnits = (value: string, from: string, to?: string, opts: any = {}) 
       return null
     }
   }
-  return `${format(n * factor)} ${unitSymbol(to)}`
+  const out = format(n * factor)
+  return `${out} ${outUnit(to, out)}`
 }
 
 export default {
@@ -507,26 +526,31 @@ export default {
   },
 
   //https://en.wikipedia.org/wiki/Template:Convert#Ranges_of_values
+  // {{convert|37|ft|m}} → 37 feet (11 m) - the input unit is spelled out, the output abbreviated
   convert: (tmpl, parse = defaultParse) => {
     let obj = parse(tmpl, ['num', 'two', 'three', 'four'])
-    //todo: support plural units
+    // {{cvt}} is {{convert}} with abbr=on
+    if (obj.template === 'cvt' && obj.abbr === undefined) {
+      obj.abbr = 'on'
+    }
+    const fmtNum = (n = '') => (/^-?\d+(\.\d+)?$/.test(n) && obj.comma !== 'off' ? withCommas(n) : n)
+    const input = (unit = '', value = '') => (spellInput(obj) ? unitName(unit, value, obj) : unitSymbol(unit))
+    // {{convert|7|to|8|km}}
     if (obj.two === '-' || obj.two === 'to' || obj.two === 'and') {
       if (obj.four) {
-        return { data: null, replacement: `${obj.num} ${obj.two} ${obj.three} ${unitSymbol(obj.four)}` }
+        return { data: null, replacement: `${fmtNum(obj.num)} ${obj.two} ${fmtNum(obj.three)} ${input(obj.four, obj.three)}` }
       }
-      return { data: null, replacement: `${obj.num} ${obj.two} ${unitSymbol(obj.three)}` }
+      return { data: null, replacement: `${fmtNum(obj.num)} ${obj.two} ${input(obj.three, obj.num)}` }
     }
     // {{convert|5|ft|11|in|m}} - a second unit pair
     if (obj.three && /^[0-9.]+$/.test(obj.three) && obj.four && /^[a-z]+$/i.test(obj.four)) {
-      return { data: null, replacement: `${obj.num} ${unitSymbol(obj.two)} ${obj.three} ${unitSymbol(obj.four)}` }
+      return { data: null, replacement: `${fmtNum(obj.num)} ${input(obj.two, obj.num)} ${fmtNum(obj.three)} ${input(obj.four, obj.three)}` }
     }
-    // {{convert|37|ft|m}} → 37 ft (11 m), {{convert|52419|sqmi}} → 52,419 sq mi
-    let num = obj.num || ''
-    if (/^-?\d+(\.\d+)?$/.test(num) && obj.comma !== 'off') {
-      num = withCommas(num)
+    let str = `${fmtNum(obj.num)} ${input(obj.two, obj.num)}`
+    if (obj.adj === 'on') {
+      str = `${fmtNum(obj.num)}-${input(obj.two, obj.num)}`
     }
-    let str = `${num} ${unitSymbol(obj.two)}`
-    let converted = convertUnits(obj.num || '', obj.two || '', obj.three, { precision: obj.four, sigfig: obj.sigfig })
+    let converted = convertUnits(obj.num || '', obj.two || '', obj.three, { precision: obj.four, sigfig: obj.sigfig, abbr: obj.abbr, sp: obj.sp })
     if (converted && obj.disp !== 'output only' && obj.disp !== 'number') {
       str += ` (${converted})`
     } else if (converted && obj.disp === 'output only') {

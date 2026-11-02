@@ -6,8 +6,7 @@ const meta = {
   // pageImage: 'Grand_Bend_2.JPG',
 }
 str = '[[Stonehenge]], in [[Wiltshire]], was erected around 2500 BC'
-str = `
-  {{FoobarContract|one=yes|caption=long text with [[link]]}}
+str = `{{convert|524|ft|m}}
 `
 
 // str = readPage('United-Kingdom')
@@ -40,9 +39,9 @@ str = `
 // }}`
 
 // str = `hello <asd f> world </asd>`
-// const doc = wtf(str, meta)
+const doc = wtf(str, meta)
+
+console.log(doc.text())
 
 // console.log(doc.templates('FoobarContract')?.json('xl'))
 // console.log(doc.template().json('xl'))
-
-console.log(wtf('{{lang-la|Salix}}', { lang: 'de' }).debug())

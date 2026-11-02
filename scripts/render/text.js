@@ -15,16 +15,31 @@ const toText = (html) => {
       }
     })
 
-  const lineBreaks =
-    'div, p, br, li, ul, ol, h1, h2, h3, h4, h5, h6, section, article, header, footer, blockquote, pre, dl, dt, dd, hr'
-  $(lineBreaks).prepend('\n').append('\n')
+  // Keep paragraph boundaries distinct until the final newline conversion.
+  $('.mw-heading').replaceWith('\u2029')
+  $('p').prepend('\u2029').append('\u2029')
 
-  return $('body')
+  $('li').prepend('* ')
+
+  const lineBreaks =
+    'div, br, li, ul, ol, h1, h2, h3, h4, h5, h6, section, article, header, footer, blockquote, pre, dl, dt, dd, hr'
+  $(lineBreaks).prepend('\n').append('\n\n')
+
+  let text = $('body')
     .text()
-    .split('\n')
-    .map((line) => line.replace(/[^\S\n]+/g, ' ').trim())
+    .split('\u2029')
+    .map((section) =>
+      section
+        .split('\n')
+        .map((line) => line.replace(/[^\S\n]+/g, ' ').trim())
+        .filter(Boolean)
+        .join('\n')
+    )
     .filter(Boolean)
-    .join('\n')
+    .join('\n\n')
+
+  // text = text.replace(/\n\n+/g, '\n\n')
+  return text
 }
 export default toText
 // const html = '<div>Paragraph 1</div><div>Paragraph 2</div>'

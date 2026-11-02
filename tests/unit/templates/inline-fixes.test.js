@@ -97,11 +97,11 @@ test('season-year links shorten the second year', (t) => {
 test('convert keeps both unit pairs and degree symbols', (t) => {
   check(t, [
     ['{{convert|5|ft|11|in|m|abbr=on}}', '5 ft 11 in'],
-    ['{{convert|6|ft|2|in|cm}}', '6 ft 2 in'],
+    ['{{convert|6|ft|2|in|cm}}', '6 feet 2 inches'],
     ['{{convert|10|C|F}}', '10 °C (50 °F)'],
     ['{{convert|98.6|F|C}}', '98.6 °F (37.0 °C)'],
-    ['{{convert|37|ft}}', '37 ft (11 m)'],
-    ['{{convert|7|and|8|km}}', '7 and 8 km'],
+    ['{{convert|37|ft}}', '37 feet (11 m)'],
+    ['{{convert|7|and|8|km}}', '7 and 8 kilometres'],
     ['{{convert|7|to|8|C}}', '7 to 8 °C'],
   ])
   t.end()

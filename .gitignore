@@ -11,3 +11,4 @@ npm-debug.log
 _missing_templates.json
 .vscode/
 .pnpm-store/
+scripts/render/_output

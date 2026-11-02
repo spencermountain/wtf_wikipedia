@@ -5,8 +5,8 @@ import parse from './parse/index.ts'
 import templates, { i18n } from './templates/index.ts'
 import infoboxes from './_data/infoboxes.ts'
 import { refreshWrappers } from './_lib/plural-wrapper.ts'
-
 import type { DocInfo } from './types/index.ts'
+
 import {
   Document,
   Section,
