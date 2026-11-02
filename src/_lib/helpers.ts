@@ -16,7 +16,7 @@ function trim_whitespace(str) {
   return ''
 }
 
-function isArray(x) {
+function isArray(x: unknown): x is any[] {
   return Object.prototype.toString.call(x) === '[object Array]'
 }
 

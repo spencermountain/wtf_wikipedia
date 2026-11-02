@@ -124,3 +124,19 @@ export interface DocInfo {
   description?: string
   pageImage?: string
 }
+
+// options accepted by fetch() - document metadata, plus request options
+export interface FetchOptions extends Omit<DocInfo, 'title'> {
+  title?: string | number | Array<string | number>
+  wiki?: string
+  path?: string
+  follow_redirects?: boolean
+  origin?: string
+  Origin?: string
+  noOrigin?: boolean
+  userAgent?: string
+  'User-Agent'?: string
+  'Api-User-Agent'?: string
+  // suppress the console warnings for failed requests
+  silent?: boolean
+}

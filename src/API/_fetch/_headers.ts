@@ -1,4 +1,6 @@
-const makeHeaders = function (options) {
+import type { FetchOptions } from '../../types/index.ts'
+
+const makeHeaders = function (options: FetchOptions): RequestInit {
   let agent =
     options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'User of the wtf_wikipedia library'
 

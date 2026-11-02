@@ -2,6 +2,7 @@ import { getCell } from '../_lib.js'
 import { findGames, findSeries } from '../engine/games.js'
 import findQuarterGames from '../engine/quarters.js'
 import parseInfobox from '../engine/infobox.js'
+import findTransactions from '../engine/transactions.js'
 import { coachOf, gmOf, venueOf, seasonDates, avgAttendance } from '../engine/season.js'
 import resolveTeam from '../engine/teams.js'
 import { oneYearTitle, parseOneYearTitle } from '../engine/slug.js'
@@ -82,6 +83,7 @@ const parse = function (doc) {
     season,
     standings: standings(season),
     games,
+    transactions: findTransactions(doc, ctx),
     playoffs,
     roster: parseRoster(doc),
   }

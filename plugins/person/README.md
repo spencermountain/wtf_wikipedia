@@ -81,6 +81,8 @@ returns `year`, `month` and `date` properties (also `originalDate` if the date i
 returns a plain-text string, like `'San Diego, California'`, or null
 
 - looks at various person infoboxes
+- looks for `'born in ...'` in the first sentence
+- looks at category information, like `'Category:People from Geneva'`
 
 ### `.isAlive()`
 
@@ -100,7 +102,10 @@ same as `.birthPlace()`
 
 ### `.nationality()`
 
-returns a plain-text string from the infobox `nationality` field, or null
+returns a plain-text string, like `'American'`, or null
+
+- looks at the infobox `nationality` or `citizenship` fields
+- falls back to the first-sentence demonym - `'was an American professional golfer'` → `'American'`
 
 ### `.names()`
 

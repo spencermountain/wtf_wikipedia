@@ -1,6 +1,7 @@
 import { getCell } from '../_lib.js'
 import { findMatches, findCompetitions } from '../engine/matches.js'
 import parseInfobox from '../engine/infobox.js'
+import findTransactions from '../engine/transactions.js'
 import { countRecord } from '../engine/record.js'
 import { coachOf, gmOf, venueOf, placeOf, seasonDates, avgAttendance } from '../engine/season.js'
 import resolveTeam from '../engine/teams.js'
@@ -60,6 +61,7 @@ const parse = function (doc) {
       stadium: getCell(season, ['stadium', 'stdtitle']) || '',
     },
     games,
+    transactions: findTransactions(doc, ctx),
     playoffs,
     cups: findCompetitions(doc, ctx, cupish, notCup),
     roster: squad,

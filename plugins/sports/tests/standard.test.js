@@ -106,6 +106,80 @@ test('nwsl: cups and squad come along', (t) => {
   t.end()
 })
 
+const typeTally = (tx) =>
+  tx.reduce((h, row) => {
+    h[row.type] = (h[row.type] || 0) + 1
+    return h
+  }, {})
+
+test('transactions: every league returns the same row shape', (t) => {
+  Object.entries(leagues).forEach(([league, [file, title]]) => {
+    const res = fixture(file, title)[`${league}Season`]()
+    t.ok(Array.isArray(res.transactions), `${league} transactions is an array`)
+    res.transactions.slice(0, 3).forEach((row) => {
+      t.equal(typeof row.text, 'string', `${league} transaction text`)
+      t.ok('date' in row && 'type' in row, `${league} transaction date+type`)
+    })
+  })
+  t.end()
+})
+
+test('transactions: mlb prose bullets', (t) => {
+  const res = fixture(...leagues.mlb).mlbSeason()
+  t.equal(res.transactions.length, 9, 'one row per dated bullet')
+  const g1 = res.transactions[0]
+  t.equal(g1.date, 'March 27 2025', 'date lifted from the bullet, year added')
+  t.equal(g1.type, 'injured list', 'il placement classified')
+  t.equal(res.transactions[1].type, 'roster move', 'optioned/recalled classified')
+  t.equal(typeTally(res.transactions).trade, 1, 'the Robertson trade')
+  t.end()
+})
+
+test('transactions: nhl tables', (t) => {
+  const res = fixture(...leagues.nhl).nhlSeason()
+  t.deepEqual(typeTally(res.transactions), { trade: 9, signing: 22, release: 8 }, 'typed from subsection titles')
+  const trade = res.transactions[0]
+  t.equal(trade.date, 'June 29, 2024', 'start-date template rendered')
+  t.equal(trade.text.includes('Christopher Tanev'), true, 'both sides of the trade')
+  const signing = res.transactions.find((row) => row.player === 'Philippe Myers')
+  t.equal(signing.type, 'signing', 'players-acquired rows are signings')
+
+  const old = fixture('2002-03-toronto-maple-leafs.txt', '2002–03 Toronto Maple Leafs season').nhlSeason()
+  t.equal(old.transactions[0].text.includes('3rd-round pick in 2002'), true, 'blist trade details kept')
+  t.end()
+})
+
+test('transactions: nfl roster tables inherit rowspan dates', (t) => {
+  const res = fixture(...leagues.nfl).nflSeason()
+  t.equal(res.transactions.length, 92, 'arrivals, departures, trades and draft')
+  const [g1, g2] = res.transactions
+  t.equal(g1.player, 'K. J. Hamler', 'player column')
+  t.equal(g2.date, g1.date, 'rowspan date carried to the next row')
+  t.equal(typeTally(res.transactions).draft, 35, 'draft picks included')
+  t.end()
+})
+
+test('transactions: soccer transfer tables', (t) => {
+  const epl = fixture(...leagues.epl).eplSeason()
+  t.deepEqual(
+    epl.transactions[0],
+    {
+      date: '1 July 2023',
+      type: 'transfer in',
+      text: 'RW - Chiedozie Ogbene - Rotherham United - Free transfer',
+      player: 'Chiedozie Ogbene',
+    },
+    'luton transfer row, flag icons stripped'
+  )
+  t.equal(typeTally(epl.transactions)['loan out'], 28, 'loaned-out rows typed')
+
+  const mls = fixture(...leagues.mls).mlsSeason()
+  const tally = typeTally(mls.transactions)
+  t.equal(tally['transfer in'], 12, 'galaxy transfers in')
+  t.equal(tally['transfer out'], 15, 'galaxy transfers out')
+  t.end()
+})
+
 test('ahl: infobox fallbacks when the page has no game log', (t) => {
   const res = fixture(...leagues.ahl).ahlSeason()
   t.equal(res.start, null, 'no games, no start date')

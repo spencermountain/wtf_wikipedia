@@ -3650,6 +3650,64 @@ const isDisambig = function(doc) {
   return false;
 };
 
+const shouldSkip = /^see also$/i;
+const escapeRegExp = (str) => {
+  str = str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return new RegExp(str, "i");
+};
+const getMain = function(s) {
+  const txt = s.text().slice(0, 120);
+  if (!/ is /.test(txt)) {
+    return null;
+  }
+  const link = s.links()[0];
+  if (!link) {
+    return null;
+  }
+  const reg = escapeRegExp(link.text());
+  const m = txt.match(reg);
+  if (!m || m.index > 20) {
+    return null;
+  }
+  return link.page();
+};
+const getTitle = function(doc) {
+  let title = doc.title || "";
+  title = title.replace(/ \(disambig|disambiguation\)$/, "");
+  return title;
+};
+const parseDisambig = function(doc) {
+  const opening = doc.sections()[0].sentences().slice(0, 2);
+  const hasIntroduction = opening.some((sentence) => / may (also )?refer to\b/i.test(sentence.text()));
+  if (!doc.isDisambiguation() && !hasIntroduction) {
+    return null;
+  }
+  const intro = doc.sections()[0].sentences()[0];
+  const main = getMain(intro);
+  const pages = [];
+  doc.sections().forEach((s) => {
+    const title = s.title();
+    if (shouldSkip.test(title) === true) {
+      return;
+    }
+    s.lists().forEach((list) => {
+      list.lines().forEach((line) => {
+        const found = line.json("lg");
+        if (found) {
+          found.page = found.links[0]?.page;
+          found.section = title;
+          pages.push(found);
+        }
+      });
+    });
+  });
+  return {
+    text: getTitle(doc),
+    main,
+    pages
+  };
+};
+
 let allStubs = new Set(stubs);
 const isStub = function(doc) {
   const templates = doc.templates();
@@ -3792,6 +3850,9 @@ class Document {
   }
   isDisambiguation() {
     return isDisambig(this);
+  }
+  disambiguation() {
+    return parseDisambig(this);
   }
   categories() {
     return this.#data.categories || [];
@@ -4254,9 +4315,14 @@ let multi = {
   "nba game": ["nba game br"],
   "win-loss record": ["win\u2013loss record", "win loss record", "wlr"],
   "collapsible list": [
+    "blist",
+    "bulleted list",
+    "bulleted",
+    "bulletedlist",
     "nblist",
     "nonbulleted list",
     "ubl",
+    "ulist",
     "ublist",
     "ubt",
     "unbullet",
@@ -13308,6 +13374,12 @@ const warnApi = function(error, url) {
   };
   render(`api ${info.title}`, info.why, info.fix, url);
 };
+const warnDeprecated = function(head, why, fix) {
+  if (!shouldWarn(`deprecated-${head}`)) {
+    return;
+  }
+  render(head, why, fix, "");
+};
 
 const isUrl = /^https?:\/\//;
 const chunkSize = 50;
@@ -13319,54 +13391,58 @@ const defaults = {
   path: "api.php"
   //some 3rd party sites use a weird path
 };
-const getJson = function(url, headers) {
+const getJson = function(url, headers, silent) {
   return fetch(url, headers).catch((e) => {
-    warnNetwork(url, e);
+    if (!silent) {
+      warnNetwork(url, e);
+    }
     throw e;
   }).then((res) => {
     if (res.ok !== true) {
-      warnHttp(res.status, url, res.headers?.get?.("retry-after"));
+      if (!silent) {
+        warnHttp(res.status, url, res.headers?.get?.("retry-after"));
+      }
       throw new Error(`HTTP ${res.status} error fetching: ${url}`);
     }
     return res.json();
   });
 };
-const fetchPage = function(title, options, callback) {
+const fetchPage = function(title, options) {
   if (typeof options === "string") {
     options = { lang: options };
   }
-  if (title && typeof title.href === "string") {
+  if (title && typeof title === "object" && "href" in title && typeof title.href === "string") {
     title = title.href;
   }
   const project = normalizeProject(options?.project ?? options?.wiki ?? defaults$1.project);
-  options = { ...defaults, ...options, wiki: project, project };
-  options.title = title;
+  let opts = { ...defaults, ...options, wiki: project, project };
+  opts.title = title;
   if (typeof title === "string" && isUrl.test(title)) {
-    options = { ...options, ...parseUrl(title) };
+    opts = { ...opts, ...parseUrl(title) };
   }
-  const headers = makeHeaders(options);
-  let groups = [options.title];
-  if (isArray(options.title) && options.title.length > chunkSize) {
+  const headers = makeHeaders(opts);
+  let groups = [opts.title];
+  if (isArray(opts.title) && opts.title.length > chunkSize) {
     groups = [];
-    for (let i = 0; i < options.title.length; i += chunkSize) {
-      groups.push(options.title.slice(i, i + chunkSize));
+    for (let i = 0; i < opts.title.length; i += chunkSize) {
+      groups.push(opts.title.slice(i, i + chunkSize));
     }
   }
-  const promise = Promise.resolve().then(
+  return Promise.resolve().then(
     () => Promise.all(
       groups.map((group) => {
-        const url = makeUrl({ ...options, title: group });
+        const url = makeUrl({ ...opts, title: group });
         if (!url) {
           throw new Error(`Could not create a fetch-url from '${title}'`);
         }
-        return getJson(url, headers).then((res) => {
+        return getJson(url, headers, opts.silent).then((res) => {
           if (!res) {
             throw new Error(`No JSON Data Found For ${url}`);
           }
-          if (res.error) {
+          if (res.error && !opts.silent) {
             warnApi(res.error, url);
           }
-          return getResult(res, options) || [];
+          return getResult(res, opts) || [];
         });
       })
     )
@@ -13374,29 +13450,9 @@ const fetchPage = function(title, options, callback) {
     const found = results.flat();
     return parseDoc(found, title);
   });
-  if (typeof callback === "function") {
-    return promise.then(
-      (data) => callback(null, data),
-      (e) => callback(e, null)
-    );
-  }
-  return promise;
 };
 
 var version = "10.5.0";
-
-const request = function(url, opts) {
-  return fetch(url, opts).then((res) => {
-    if (res.ok !== true) {
-      warnHttp(res.status, url, res.headers?.get?.("retry-after"));
-      return {};
-    }
-    return res.json();
-  }).catch((e) => {
-    warnNetwork(url, e);
-    return {};
-  });
-};
 
 const wtf = function(wiki, info) {
   const data = parse(wiki, info);
@@ -13414,11 +13470,17 @@ const models = {
   Table,
   Template,
   Block,
-  http: request,
   wtf
 };
 wtf.fetch = function(title, options, cb) {
-  return fetchPage(title, options, cb);
+  if (typeof cb === "function") {
+    warnDeprecated(
+      "callback removed",
+      `wtf.fetch() no longer accepts a callback - the one passed-in will never be called.`,
+      `use the promise:  let doc = await wtf.fetch(title)`
+    );
+  }
+  return fetchPage(title, options);
 };
 wtf.extend = function(fn) {
   fn(models, templates, infoboxes$1, i18n);

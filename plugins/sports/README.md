@@ -85,6 +85,36 @@ Each game's `outcome` is one of `win`, `loss`, `otl`, `tie`, `postponed`, or
 `null` - read from the row's styling when available, or inferred from the
 running record column. `win` is a convenience boolean (`null` when undecided).
 
+Whatever the league, every season returns the same core: `start` / `end`
+(the first and last game dates), `attendance` (the average home crowd), a
+`roster` of `{ number, name, position }` rows, and a `standings` object
+carrying `record`, `place`, `coach`, `gm` and `venue` - alongside each
+sport's own fields (`manager`, `arena`, `divisionPlace`, and so on):
+
+```js
+let season = await wtf.cflSeason('Toronto Argonauts', 2024)
+season.standings.coach // 'Ryan Dinwiddie'
+season.standings.gm // 'Michael Clemons'
+season.standings.venue // 'BMO Field'
+season.standings.place // 2
+season.attendance // 15127
+season.start // 'Sun, June 9 2024' - the date as the game-log writes it
+```
+
+Pages that keep a transactions or transfers section also return `transactions` -
+one `{ date, type, text, player? }` row per move, whether the page tables them
+(nhl trades, nfl arrivals, soccer transfer windows) or writes dated bullets
+(mlb). `type` is one of `trade`, `signing`, `release`, `waiver`, `claim`,
+`draft`, `loan in/out`, `transfer in/out`, `injured list`, `roster move` -
+or `null` when a move resists classification:
+
+```js
+let season = await wtf.eplSeason('Luton Town', 2023)
+season.transactions[0]
+// { date: '1 July 2023', type: 'transfer in',
+//   text: 'RW - Chiedozie Ogbene - Rotherham United - Free transfer', player: 'Chiedozie Ogbene' }
+```
+
 Team names resolve across renames and relocations - asking for the
 `('Cleveland Guardians', 2015)` season fetches the Indians page, and
 `('Arizona Coyotes', 2026)` finds the Utah Mammoth. Old names work too.
@@ -146,6 +176,8 @@ season.games[0]
   attendance: 27642
 } */
 season.playoffs // mls cup playoff matches, flat
+season.cups // { 'Leagues Cup': [...] } - each cup run, match by match
+season.roster // {{Fs player}} squad rows
 ```
 
 The same shapes come back for the **wnba** (like the nba, plus a

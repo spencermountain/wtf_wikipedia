@@ -184,9 +184,14 @@ let multi = {
   'win-loss record': ['win–loss record', 'win loss record', 'wlr'],
 
   'collapsible list': [
+    'blist',
+    'bulleted list',
+    'bulleted',
+    'bulletedlist',
     'nblist',
     'nonbulleted list',
     'ubl',
+    'ulist',
     'ublist',
     'ubt',
     'unbullet',

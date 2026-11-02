@@ -1,5 +1,5 @@
 import test from 'tape'
-import wtf from '../../../plugins/api/tests/_lib.js'
+import wtf from '../_lib.js'
 
 test('random', async (t) => {
   t.plan(2)

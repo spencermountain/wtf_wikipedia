@@ -186,7 +186,7 @@ const parseSentence = function (doc) {
   return null
 };
 
-const byCategory$1 = function (doc) {
+const byCategory$2 = function (doc) {
   const cats = doc.categories();
   for (let i = 0; i < cats.length; i += 1) {
     const m = cats[i].match(/([0-9]{4}) births/);
@@ -301,19 +301,62 @@ const birthDate = function (doc) {
   }
 
   // try to get year from 'Category:1955 births'
-  const year = byCategory$1(doc);
+  const year = byCategory$2(doc);
   if (year) {
     return { year: year }
   }
   return null
 };
 
+// 'was born in Tupelo, Mississippi.' → 'Tupelo, Mississippi'
+const bySentence$2 = function (doc) {
+  const s = doc.sentences()[0];
+  if (!s) {
+    return null
+  }
+  const txt = s.text();
+  const idx = txt.search(/\bborn\b/);
+  if (idx === -1) {
+    return null
+  }
+  // the first 'in Place' after 'born'
+  const m = txt.slice(idx).match(/ in ([A-Z][^.;()]*)/);
+  if (!m) {
+    return null
+  }
+  // cut trailing clauses
+  let place = m[1].split(/,? (?:and|where|to|on) /)[0];
+  place = place.trim().replace(/,$/, '');
+  if (!place) {
+    return null
+  }
+  return place
+};
+
+// 'Category:People from Geneva' → 'Geneva'
+const byCategory$1 = function (doc) {
+  const cats = doc.categories();
+  for (let i = 0; i < cats.length; i += 1) {
+    const m = cats[i].match(/^People from (.+)$/);
+    if (m && m[1]) {
+      return m[1]
+    }
+  }
+  return null
+};
+
 const birthPlace = function (doc) {
-  const res = byInfobox(doc, ['birth_place', 'birthplace']);
+  let res = byInfobox(doc, ['birth_place', 'birthplace']);
   if (res) {
     return res
   }
-  return null
+  // try 'born in ...' in the first sentence
+  res = bySentence$2(doc);
+  if (res) {
+    return res
+  }
+  // try 'Category:People from ...'
+  return byCategory$1(doc)
 };
 
 const aliveCats = {
@@ -508,12 +551,47 @@ const deathPlace = function (doc) {
   return null
 };
 
+// parse the first-sentence predicate - 'was an American professional golfer'
+// → { demonym: 'American', words: ['professional', 'golfer'] }
+const parsePredicate = function (doc) {
+  const s = doc.sentences()[0];
+  if (!s) {
+    return null
+  }
+  const m = s.text().match(/\b(?:is|was) (?:an?|the) ([^.,;]+)/);
+  if (!m) {
+    return null
+  }
+  // cut trailing clauses
+  const phrase = m[1].split(/ (?:who|that|known|best|famous|from|based) /)[0];
+  const words = phrase.trim().split(/ +/);
+  const demonym = [];
+  // leading capitalized adjectives are usually a nationality
+  while (words.length > 1 && /^[A-Z]/.test(words[0])) {
+    demonym.push(words.shift());
+  }
+  return { demonym: demonym.join(' '), words: words }
+};
+
+// 'was an American professional golfer' → 'American'
+const bySentence$1 = function (doc) {
+  const found = parsePredicate(doc);
+  if (!found || !found.demonym) {
+    return null
+  }
+  // long matches are usually not demonyms, like 'Major League Baseball'
+  if (found.demonym.split(' ').length > 2) {
+    return null
+  }
+  return found.demonym
+};
+
 const getNationality = function (doc) {
-  const res = byInfobox(doc, ['nationality']);
+  const res = byInfobox(doc, ['nationality', 'citizenship']);
   if (res) {
     return res
   }
-  return null
+  return bySentence$1(doc)
 };
 
 // the subject's common name is usually the first bold text of the first sentence
@@ -558,25 +636,11 @@ const splitList = function (str) {
 
 // '... is an American professional golfer.' → ['professional golfer']
 const bySentence = function (doc) {
-  const s = doc.sentences()[0];
-  if (!s) {
+  const found = parsePredicate(doc);
+  if (!found || found.words.length === 0 || /^[A-Z]/.test(found.words[0])) {
     return []
   }
-  const m = s.text().match(/\b(?:is|was) (?:an?|the) ([^.,;]+)/);
-  if (!m) {
-    return []
-  }
-  // cut trailing clauses
-  const phrase = m[1].split(/ (?:who|that|known|best|famous|from|based) /)[0];
-  const words = phrase.trim().split(/ +/);
-  // drop leading demonyms, like 'American' in 'American professional golfer'
-  while (words.length > 1 && /^[A-Z]/.test(words[0])) {
-    words.shift();
-  }
-  if (words.length === 0 || /^[A-Z]/.test(words[0])) {
-    return []
-  }
-  return splitList(words.join(' '))
+  return splitList(found.words.join(' '))
 };
 
 const occupation = function (doc) {

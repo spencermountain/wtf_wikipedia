@@ -3,9 +3,12 @@ import fetchWiki from './fetch-wiki.js'
 import toText from './text.js'
 import splitScreen from 'splitscreen-diff'
 import wtf from '../../src/index.ts'
+import apiPlugin from '../../plugins/api/src/index.js'
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
+
+wtf.plugin(apiPlugin)
 const dir = path.dirname(fileURLToPath(import.meta.url))
 
 const renderText = async (page, lang, debug = false) => {
@@ -27,4 +30,4 @@ const renderText = async (page, lang, debug = false) => {
 }
 
 const res = await renderText('Delta Toronto Hotel', 'en', true)
-// console.log(res)
+console.log(res)

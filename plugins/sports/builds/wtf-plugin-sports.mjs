@@ -415,7 +415,7 @@ const months = {
 };
 
 // some logs name the date column after the month, with day-of-month cells like '14' or '1*'
-const findDate = function (cells) {
+const findDate$1 = function (cells) {
   // prefix-match, for combined headings like 'Date / Time (ET)'
   const key = findKey(cells, ['date']);
   if (key && cells[key]) {
@@ -436,7 +436,7 @@ const findDate = function (cells) {
 // one normalized row → one game, or null for legend/filler rows
 const buildGame = function (row, ctx) {
   const { cells, attrs } = row;
-  const date = findDate(cells);
+  const date = findDate$1(cells);
   if (!date) {
     return null
   }
@@ -663,6 +663,212 @@ const parseInfobox = function (doc, names = [], recordOpts = {}) {
   return data
 };
 
+// a transactions / transfers block starts at one of these sections
+const anchor = /^(player )?(transactions?|transfers?|roster (changes|moves)|free agency)$/i;
+
+// subsection titles name the kind of move - first match wins
+const kinds = [
+  [/^trades?$/i, 'trade'],
+  [/^(signings?|free agency|re-?signed|additions?|arrivals?|new contracts?|contract (operations|extensions))$/i, 'signing'],
+  [/^players? acquired$/i, 'signing'],
+  [/^(departures?|subtractions?|released|players? lost)$/i, 'release'],
+  [/^waivers?$/i, 'waiver'],
+  [/^(transfers? |transferred )?in$/i, 'transfer in'],
+  [/^(transfers? |transferred )?out$/i, 'transfer out'],
+  [/^loan(s|ed)? ?in$/i, 'loan in'],
+  [/^loan(s|ed)? ?out$/i, 'loan out'],
+  [/^loans?$/i, 'loan'],
+  [/^transfers?$/i, 'transfer'],
+  [/draft/i, 'draft'],
+];
+
+const kindOf = function (title = '') {
+  const t = title.trim();
+  const found = kinds.find(([reg]) => reg.test(t));
+  return found ? found[1] : null
+};
+
+// classify a prose row - 'placed X on the 15-day injured list' and friends
+const verbs = [
+  [/injured (list|reserve)|disabled list/i, 'injured list'],
+  [/\btraded?\b|\bacquired\b/i, 'trade'],
+  [/\bwaiv/i, 'waiver'],
+  [/\breleased?\b/i, 'release'],
+  [/\bclaimed\b/i, 'claim'],
+  [/\bdraft(ed)?\b/i, 'draft'],
+  [/\bloan(ed)?\b/i, 'loan'],
+  [/re-?signed|\bsigned\b|new contract|extension/i, 'signing'],
+  [/option(ed)?|recall(ed)?|outright(ed)?|designated .{0,40}for assignment|selected the contract|activated|called up/i, 'roster move'],
+  [/\bretired?\b/i, 'retired'],
+];
+
+const classify = function (text = '') {
+  const found = verbs.find(([reg]) => reg.test(text));
+  return found ? found[1] : null
+};
+
+// flag icons render as emoji - strip them from table text
+const deflag = function (str = '') {
+  return String(str)
+    .replace(/[^\p{L}\p{N} .,:;&'()/–-]/gu, '')
+    .replace(/ {2,}/g, ' ')
+    .trim()
+};
+
+const dateLike = /^\d{1,2} [a-z]+ \d{4}$|^[a-z]+\.? \d{1,2}(,? \d{4})?$/i;
+const noise = /^(date|ref|source|notes?)/i;
+
+// find the date cell, even in header-less col1/col2 tables
+const findDate = function (cells) {
+  const date = getCell(cells, ['date', 'date signed', 'date announced', 'moving date']);
+  if (date) {
+    return String(date).trim()
+  }
+  const key = Object.keys(cells).find((k) => dateLike.test(String(cells[k]).trim()));
+  return key ? String(cells[key]).trim() : ''
+};
+
+// one table row → one transaction
+const buildRow = function (row, kind) {
+  const date = findDate(row.cells);
+  const player = deflag(getCell(row.cells, ['player', 'personnel', 'name']));
+  const text = Object.entries(row.cells)
+    .filter(([k, v]) => v && noise.test(k.trim()) === false && String(v).trim() !== date)
+    .map(([, v]) => deflag(v))
+    .filter(Boolean)
+    .join(' - ');
+  if (!text) {
+    return null
+  }
+  const res = { date, type: kind || classify(text), text };
+  if (player) {
+    res.player = player;
+  }
+  return res
+};
+
+// one '* On March 30, placed...' bullet → one transaction
+const buildBullet = function (line, kind) {
+  let text = String(line).trim();
+  let date = '';
+  const m = text.match(/^On ([A-Z][a-z]+ \d{1,2}(?:, \d{4})?)[,:]? */);
+  if (m) {
+    date = m[1].replace(/,/g, '');
+    text = text.slice(m[0].length);
+  }
+  if (!text) {
+    return null
+  }
+  return { date, type: kind || classify(text), text }
+};
+
+const addYear = function (res, ctx) {
+  if (res && res.date && ctx.dateYear) {
+    res.date = ctx.dateYear(res.date, ctx.year);
+  }
+  return res
+};
+
+// every dated move under the page's transactions / transfers sections
+const findTransactions = function (doc, ctx) {
+  const out = [];
+  const seen = new Set();
+  doc.sections().forEach((sec) => {
+    if (seen.has(sec.index()) || anchor.test(sec.title().trim()) === false) {
+      return
+    }
+    const stack = []; //nearest ancestor kind, by depth
+    withChildren(doc, sec).forEach((s) => {
+      seen.add(s.index());
+      while (stack.length > 0 && stack[stack.length - 1].depth >= s.depth()) {
+        stack.pop();
+      }
+      let kind = kindOf(s.title());
+      for (let i = stack.length - 1; i >= 0 && kind === null; i -= 1) {
+        kind = stack[i].kind;
+      }
+      stack.push({ depth: s.depth(), kind });
+      s.tables().forEach((t) => {
+        let lastDate = ''; //rowspan date cells only appear on their first row
+        fromTable(t).forEach((row) => {
+          const res = buildRow(row, kind);
+          if (res) {
+            res.date = res.date || lastDate;
+            lastDate = res.date;
+            out.push(addYear(res, ctx));
+          }
+        });
+      });
+      s.lists().forEach((l) => {
+        const items = l.json().items || [];
+        items.forEach((item) => {
+          const res = buildBullet(item.text, kind);
+          if (res) {
+            out.push(addYear(res, ctx));
+          }
+        });
+      });
+    });
+  });
+  return out
+};
+
+// season-level values every league surfaces under the same key,
+// whatever the sport's own infobox calls them
+
+// the head coach - soccer and baseball call them a manager
+const coachOf = function (season = {}) {
+  return getCell(season, ['coach', 'coaches', 'manager', 'managers', 'head coach']) || ''
+};
+
+// the general manager - soccer clubs have chairmen and owners instead
+const gmOf = function (season = {}) {
+  return getCell(season, ['general_manager', 'general_managers', 'generalmanager', 'gm']) || ''
+};
+
+// the home ground, whether the sport calls it a stadium, arena or ballpark
+const venueOf = function (season = {}) {
+  return String(getCell(season, ['stadium', 'arena', 'ballpark']) || '')
+    .replace(/ *\(capacity:.*?\)/i, '')
+    .trim()
+};
+
+// '18th (relegated)', 'Conference: 2nd Overall: 4th' → a plain number
+const placeOf = function (val) {
+  if (typeof val === 'number') {
+    return val
+  }
+  const str = String(val || '');
+  const overall = str.match(/overall:? *(\d+)/i);
+  if (overall) {
+    return Number(overall[1])
+  }
+  const m = str.match(/(\d+)(?:st|nd|rd|th)/i);
+  if (m) {
+    return Number(m[1])
+  }
+  return val || null
+};
+
+// the dates of the first and last game played
+const seasonDates = function (games = []) {
+  const dates = games.map((g) => g.date).filter(Boolean);
+  if (dates.length === 0) {
+    return { start: null, end: null }
+  }
+  return { start: dates[0], end: dates[dates.length - 1] }
+};
+
+// average home attendance, from the per-game numbers or the infobox
+const avgAttendance = function (games = [], season = {}) {
+  const nums = games.filter((g) => g.home === true && typeof g.attendance === 'number').map((g) => g.attendance);
+  if (nums.length > 0) {
+    return Math.round(nums.reduce((a, b) => a + b, 0) / nums.length)
+  }
+  const avg = String(getCell(season, ['average_attendance', 'attendance']) || '');
+  return parseInt(avg.replace(/[, ]/g, ''), 10) || null
+};
+
 // franchises are lists of {name, from}, newest-first
 const matches = (name, want) => name.toLowerCase().includes(want);
 const validFor = (names, year) => names.find((o) => o.from <= year) || null;
@@ -739,14 +945,34 @@ var franchises$a = [
   [{ name: 'Washington Nationals', from: 2005 }, { name: 'Montreal Expos', from: 1969 }],
 ];
 
+// roster sections group players by position
+const positions = {
+  pitchers: 'P',
+  catchers: 'C',
+  infielders: 'IF',
+  outfielders: 'OF',
+  'designated hitters': 'DH',
+};
+
 // the roster is {{MLBplayer}} templates in a 'Roster' section
 const parseRoster$4 = function (doc, year) {
   const s = findSection(doc, ['roster', 'players', `${year} roster`]);
   if (!s) {
     return []
   }
-  const players = withChildren(doc, s).flatMap((c) => c.templates('mlbplayer'));
-  return players.map((tmpl) => ({ ...tmpl.json().data }))
+  const players = [];
+  withChildren(doc, s).forEach((c) => {
+    const pos = positions[c.title().trim().toLowerCase()] || '';
+    c.templates('mlbplayer').forEach((tmpl) => {
+      const data = tmpl.json().data || {};
+      players.push({
+        number: parseInt(data.number, 10) || null,
+        name: data.name || '',
+        position: pos,
+      });
+    });
+  });
+  return players.filter((p) => p.name)
 };
 
 // a table in a '2008 draft picks' section
@@ -845,11 +1071,16 @@ const extras$7 = function (game, row) {
 };
 
 const standings$7 = function (season) {
+  const divisionPlace = getCell(season, ['divisional_place', 'division_place', 'divisionrank']) || null;
   return {
     record: season.record || null,
+    place: divisionPlace,
+    coach: coachOf(season),
+    gm: gmOf(season),
+    venue: venueOf(season),
     league: getCell(season, ['league']) || '',
     division: getCell(season, ['division']) || '',
-    divisionPlace: getCell(season, ['divisional_place', 'division_place', 'divisionrank']) || null,
+    divisionPlace,
     manager: getCell(season, ['manager', 'managers']) || '',
     ballpark: getCell(season, ['ballpark', 'stadium']) || '',
   }
@@ -869,14 +1100,20 @@ const parse$a = function (doc) {
     extras: extras$7,
   };
   const season = parseInfobox(doc, ['baseball team season', 'mlb yearly'], ctx.record);
+  const games = findGames(doc, ctx, gameTitles$a);
+  const postseason = findSeries(doc, ctx, ['postseason game log', 'postseason', 'playoffs'], gameTitles$a);
   return {
     team: meta.team,
     year: meta.year,
     page: doc.title || '',
+    ...seasonDates(games),
+    attendance: avgAttendance(games, season),
     season,
     standings: standings$7(season),
-    games: findGames(doc, ctx, gameTitles$a),
-    postseason: findSeries(doc, ctx, ['postseason game log', 'postseason', 'playoffs'], gameTitles$a),
+    games,
+    transactions: findTransactions(doc, ctx),
+    postseason,
+    playoffs: postseason, //the standard key - mlb pages say 'postseason'
     roster: parseRoster$4(doc, meta.year),
     draftPicks: parseDraftPicks(doc),
     playerStats: parsePlayerStats$1(doc),
@@ -1038,6 +1275,19 @@ const parseGoalies = function (doc) {
   return players.filter(notTotal$1)
 };
 
+// the {{Ice hockey team player}} roster rows - stat-less pages often have these instead
+const parseRoster$3 = function (doc) {
+  const players = doc.templates('ice hockey team player').map((t) => {
+    const data = t.json().data || {};
+    return {
+      number: parseInt(data.num, 10) || null,
+      name: [data.first, data.last].filter(Boolean).join(' '),
+      position: data.pos || '',
+    }
+  });
+  return players.filter((p) => p.name)
+};
+
 const makeTitle$9 = twoYearTitle;
 
 const gameTitles$9 = ['regular season', 'schedule and results', 'game log', 'schedule'];
@@ -1062,12 +1312,18 @@ const extras$6 = function (game, row) {
 
 // absorb infobox key drift: 'division_place' is now 'DivisionRank'
 const standings$6 = function (season) {
+  const divisionPlace = getCell(season, ['divisionrank', 'division_place', 'divisionplace']) || null;
+  const conferencePlace = getCell(season, ['conferencerank', 'conference_place']) || null;
   return {
     record: season.record || null,
+    place: divisionPlace || conferencePlace,
+    coach: coachOf(season),
+    gm: gmOf(season),
+    venue: venueOf(season),
     division: getCell(season, ['division']) || '',
-    divisionPlace: getCell(season, ['divisionrank', 'division_place', 'divisionplace']) || null,
+    divisionPlace,
     conference: getCell(season, ['conference']) || '',
-    conferencePlace: getCell(season, ['conferencerank', 'conference_place']) || null,
+    conferencePlace,
     goalsFor: getCell(season, ['goalsfor', 'goals_for']) || null,
     goalsAgainst: getCell(season, ['goalsagainst', 'goals_against']) || null,
   }
@@ -1093,16 +1349,21 @@ const parse$9 = function (doc) {
     extras: extras$6,
   };
   const season = parseInfobox(doc, ['ice hockey team season', 'nhl team season'], ctx.record);
+  const games = findGames(doc, ctx, gameTitles$9);
   return {
     team: meta.team,
     year: meta.year,
     page: doc.title || '',
+    ...seasonDates(games),
+    attendance: avgAttendance(games, season),
     season,
     standings: standings$6(season),
-    games: findGames(doc, ctx, gameTitles$9),
+    games,
+    transactions: findTransactions(doc, ctx),
     playoffs: findSeries(doc, ctx, ['playoffs', 'postseason'], gameTitles$9),
     skaters: parseSkaters(doc),
     goalies: parseGoalies(doc),
+    roster: parseRoster$3(doc),
   }
 };
 
@@ -1170,14 +1431,29 @@ const asNum = (val) => Number(String(val).replace(/[*†‡]/g, '')) || 0;
 
 const notTotal = (p) => p.name && /^totals?$/i.test(p.name) === false;
 
+// {{player2}} and wnba's {{sports roster/entry}} share their field names
+const rosterRow = function (data = {}) {
+  const num = parseInt(data.num, 10);
+  return {
+    number: isNaN(num) ? null : num,
+    name: [data.first, data.last].filter(Boolean).join(' '),
+    position: data.pos || '',
+    height: data.ft ? `${data.ft}'${data.in || 0}"` : '',
+    weight: parseInt(data.lbs, 10) || null,
+    college: data.college || '',
+    dob: data.dob || '',
+    nation: data.nat || '',
+  }
+};
+
 // the roster is {{player2}} templates in a 'Roster' section
-const parseRoster$3 = function (doc) {
+const parseRoster$2 = function (doc) {
   const s = findSection(doc, ['roster', 'current roster']);
   if (!s) {
     return []
   }
   const players = withChildren(doc, s).flatMap((c) => c.templates('player2'));
-  return players.map((tmpl) => ({ ...tmpl.json().data }))
+  return players.map((tmpl) => rosterRow(tmpl.json().data)).filter((p) => p.name)
 };
 
 // per-player averages from the 'Player statistics' tables
@@ -1247,13 +1523,18 @@ const standings$5 = function (season) {
   if (!record && wins !== '' && losses !== '') {
     record = parseRecord(`${wins}–${losses}`);
   }
+  const divisionPlace = getCell(season, ['division_place', 'divisionrank']) || null;
+  const conferencePlace = getCell(season, ['conf_place', 'conference_place']) || null;
   return {
     record,
+    place: divisionPlace || conferencePlace,
+    coach: coachOf(season),
+    gm: gmOf(season),
+    venue: venueOf(season),
     division: getCell(season, ['division']) || '',
-    divisionPlace: getCell(season, ['division_place', 'divisionrank']) || null,
+    divisionPlace,
     conference: getCell(season, ['conference']) || '',
-    conferencePlace: getCell(season, ['conf_place', 'conference_place']) || null,
-    coach: getCell(season, ['coach', 'coaches']) || '',
+    conferencePlace,
     arena: getCell(season, ['arena']) || '',
   }
 };
@@ -1278,15 +1559,19 @@ const parse$8 = function (doc) {
     extras: extras$5,
   };
   const season = parseInfobox(doc, ['nba season'], ctx.record);
+  const games = findGames(doc, ctx, gameTitles$8);
   return {
     team: meta.team,
     year: meta.year,
     page: doc.title || '',
+    ...seasonDates(games),
+    attendance: avgAttendance(games, season),
     season,
     standings: standings$5(season),
-    games: findGames(doc, ctx, gameTitles$8),
+    games,
+    transactions: findTransactions(doc, ctx),
     playoffs: findSeries(doc, ctx, ['playoffs', 'postseason'], gameTitles$8),
-    roster: parseRoster$3(doc),
+    roster: parseRoster$2(doc),
     playerStats: parsePlayerStats(doc),
   }
 };
@@ -1382,15 +1667,19 @@ const extras$4 = function (game, row) {
 const standings$4 = function (season) {
   const out = {
     record: season.record || null,
+    place: null,
+    coach: coachOf(season),
+    gm: gmOf(season),
+    venue: venueOf(season),
     division: '',
     divisionPlace: null,
-    coach: getCell(season, ['coach', 'coaches']) || '',
     stadium: getCell(season, ['stadium']) || '',
   };
   const place = String(getCell(season, ['division_place', 'division place']) || '');
   const m = place.match(/^(\d+)(?:st|nd|rd|th)\b *(.*)/);
   if (m) {
     out.divisionPlace = Number(m[1]);
+    out.place = out.divisionPlace;
     out.division = m[2].trim();
   } else if (place) {
     out.division = place;
@@ -1418,15 +1707,20 @@ const parse$7 = function (doc) {
     extras: extras$4,
   };
   const season = parseInfobox(doc, ['nfl team season', 'nfl season'], ctx.record);
+  const games = findGames(doc, ctx, gameTitles$7);
   return {
     team: meta.team,
     year: meta.year,
     page: doc.title || '',
+    ...seasonDates(games),
+    attendance: avgAttendance(games, season),
     season,
     standings: standings$4(season),
-    games: findGames(doc, ctx, gameTitles$7),
+    games,
+    transactions: findTransactions(doc, ctx),
     // nfl playoffs are single games, not series - keep them flat
     playoffs: findSeries(doc, ctx, ['postseason schedule', 'postseason', 'playoffs'], gameTitles$7).flat(),
+    roster: [], //nfl rosters transclude from separate template pages
   }
 };
 
@@ -1656,12 +1950,34 @@ var franchises$6 = [
   [{ name: 'Miami Fusion', from: 1998, to: 2001 }],
 ];
 
+// the {{Fs player}} / {{Efs player}} squad rows - most club pages list a first-team squad
+const rowNames = ['efs player', 'fs player', 'extended football squad player', 'football squad player'];
+
+const parseSquad = function (doc) {
+  const players = rowNames
+    .flatMap((name) => doc.templates(name))
+    .map((t) => {
+      const data = t.json().data || {};
+      return {
+        number: parseInt(data.no, 10) || null,
+        name: data.name || '',
+        position: data.pos || '',
+        nation: data.nat || '',
+      }
+    });
+  return players.filter((p) => p.name)
+};
+
 const makeTitle$6 = oneYearTitle;
 
 const gameTitles$6 = ['regular season', 'match results', 'matches', 'major league soccer', 'results'];
 
 // league matches only - cups, friendlies and the playoffs parse separately
 const notLeague$2 = /playoff|cup|friendl|preseason|pre-season|invitational|champions|exhibition|all-star/i;
+
+// each cup run keeps its own list - the playoffs (and the MLS Cup final) stay under `playoffs`
+const cupish$2 = /\bcup\b|champions/i;
+const notCup$1 = /play-?off|postseason|friendl|pre-?season|invitational|exhibition|all-star|^mls cup/i;
 
 // the mls season runs within one calendar year, from late february
 const defaultYear$6 = function () {
@@ -1683,20 +1999,32 @@ const parse$6 = function (doc) {
   const season = parseInfobox(doc, ['soccer club season', 'football club season'], {});
   const games = findMatches(doc, ctx, gameTitles$6, notLeague$2);
   const playoffs = findMatches(doc, ctx, ['mls cup playoffs', 'playoffs', 'postseason'], null);
+  const position = getCell(season, ['position', 'league_result', 'league result']) || null;
+  const squad = parseSquad(doc);
   return {
     team: meta.team,
     year: meta.year,
     page: doc.title || '',
+    ...seasonDates(games),
+    attendance: avgAttendance(games, season),
     season,
     standings: {
       record: countRecord(games),
+      place: placeOf(position),
+      coach: coachOf(season),
+      gm: gmOf(season),
+      venue: venueOf(season),
       league: getCell(season, ['league']) || '',
-      position: getCell(season, ['position', 'league_result', 'league result']) || null,
+      position,
       manager: getCell(season, ['manager', 'mgrtitle', 'head coach']) || '',
       stadium: getCell(season, ['stadium', 'stdtitle']) || '',
     },
     games,
+    transactions: findTransactions(doc, ctx),
     playoffs,
+    cups: findCompetitions(doc, ctx, cupish$2, notCup$1),
+    roster: squad,
+    squad,
   }
 };
 
@@ -1752,15 +2080,16 @@ var franchises$5 = [
 ];
 
 // the roster is one {{sports roster}} holding {{sports roster/entry}} rows
-const parseRoster$2 = function (doc) {
+const parseRoster$1 = function (doc) {
   const s = findSection(doc, ['roster', 'current roster']);
   if (!s) {
     return []
   }
   const entries = withChildren(doc, s).flatMap((c) => c.templates('sports roster/entry'));
   return entries
-    .map((tmpl) => ({ ...tmpl.json().data }))
+    .map((tmpl) => tmpl.json().data || {})
     .filter((p) => p.num !== undefined) //coach + trainer entries have no number
+    .map(rosterRow)
 };
 
 const makeTitle$5 = oneYearTitle;
@@ -1795,11 +2124,15 @@ const standings$3 = function (season) {
   if (!record && wins !== '' && losses !== '') {
     record = parseRecord(`${wins}–${losses}`);
   }
+  const conferencePlace = getCell(season, ['conf_place', 'conference_place']) || null;
   return {
     record,
+    place: conferencePlace,
+    coach: coachOf(season),
+    gm: gmOf(season),
+    venue: venueOf(season),
     conference: getCell(season, ['conf', 'conference']) || '',
-    conferencePlace: getCell(season, ['conf_place', 'conference_place']) || null,
-    coach: getCell(season, ['coach', 'coaches']) || '',
+    conferencePlace,
     arena: getCell(season, ['arena']) || '',
   }
 };
@@ -1818,15 +2151,19 @@ const parse$5 = function (doc) {
     extras: extras$3,
   };
   const season = parseInfobox(doc, ['wnba team season'], ctx.record);
+  const games = findGames(doc, ctx, gameTitles$5);
   return {
     team: meta.team,
     year: meta.year,
     page: doc.title || '',
+    ...seasonDates(games),
+    attendance: avgAttendance(games, season),
     season,
     standings: standings$3(season),
-    games: findGames(doc, ctx, gameTitles$5),
+    games,
+    transactions: findTransactions(doc, ctx),
     playoffs: findSeries(doc, ctx, ['playoffs', 'postseason'], gameTitles$5),
-    roster: parseRoster$2(doc),
+    roster: parseRoster$1(doc),
     playerStats: parsePlayerStats(doc),
   }
 };
@@ -1891,6 +2228,10 @@ const gameTitles$4 = ['regular season', 'match results', 'matches', 'results'];
 // league matches only - cups, friendlies and the playoffs parse separately
 const notLeague$1 = /playoff|cup|friendl|preseason|pre-season|invitational|champions|exhibition|all-star|international|fall series/i;
 
+// each cup run keeps its own list - the playoffs stay under `playoffs`
+const cupish$1 = /\bcup\b|champions/i;
+const notCup = /play-?off|postseason|friendl|pre-?season|invitational|exhibition|all-star|international/i;
+
 // the nwsl season runs within one calendar year, from march
 const defaultYear$4 = function () {
   const now = new Date();
@@ -1911,20 +2252,32 @@ const parse$4 = function (doc) {
   const season = parseInfobox(doc, ['football club season', 'soccer club season'], {});
   const games = findMatches(doc, ctx, gameTitles$4, notLeague$1);
   const playoffs = findMatches(doc, ctx, ['playoffs', 'postseason'], null);
+  const position = getCell(season, ['position', 'league_result', 'league result']) || null;
+  const squad = parseSquad(doc);
   return {
     team: meta.team,
     year: meta.year,
     page: doc.title || '',
+    ...seasonDates(games),
+    attendance: avgAttendance(games, season),
     season,
     standings: {
       record: countRecord(games),
+      place: placeOf(position),
+      coach: coachOf(season),
+      gm: gmOf(season),
+      venue: venueOf(season),
       league: getCell(season, ['league']) || '',
-      position: getCell(season, ['position', 'league_result', 'league result']) || null,
+      position,
       manager: getCell(season, ['manager', 'mgrtitle', 'head coach']) || '',
       stadium: getCell(season, ['stadium', 'stdtitle']) || '',
     },
     games,
+    transactions: findTransactions(doc, ctx),
     playoffs,
+    cups: findCompetitions(doc, ctx, cupish$1, notCup),
+    roster: squad,
+    squad,
   }
 };
 
@@ -1998,9 +2351,11 @@ const standings$2 = function (season) {
   return {
     record: season.record || null,
     place: getCell(season, ['leaguerank', 'league_place', 'leagueplace']) || null,
+    coach: coachOf(season),
+    gm: gmOf(season),
+    venue: venueOf(season),
     goalsFor: getCell(season, ['goalsfor', 'goals_for']) || null,
     goalsAgainst: getCell(season, ['goalsagainst', 'goals_against']) || null,
-    coach: getCell(season, ['coach', 'coaches']) || '',
     arena: getCell(season, ['arena']) || '',
   }
 };
@@ -2025,16 +2380,21 @@ const parse$3 = function (doc) {
     extras: extras$2,
   };
   const season = parseInfobox(doc, ['ice hockey team season'], ctx.record);
+  const games = findGames(doc, ctx, gameTitles$3);
   return {
     team: meta.team,
     year: meta.year,
     page: doc.title || '',
+    ...seasonDates(games),
+    attendance: avgAttendance(games, season),
     season,
     standings: standings$2(season),
-    games: findGames(doc, ctx, gameTitles$3),
+    games,
+    transactions: findTransactions(doc, ctx),
     playoffs: findSeries(doc, ctx, ['playoffs', 'postseason'], gameTitles$3),
     skaters: parseSkaters(doc),
     goalies: parseGoalies(doc),
+    roster: parseRoster$3(doc),
   }
 };
 
@@ -2131,7 +2491,7 @@ var franchises$2 = [
 ];
 
 // the roster is a list of {{CFL player|21|N|[[Daniel Adeboboye]]}} templates
-const parseRoster$1 = function (doc) {
+const parseRoster = function (doc) {
   const s = findSection(doc, ['roster', 'current roster']);
   if (!s) {
     return []
@@ -2141,8 +2501,9 @@ const parseRoster$1 = function (doc) {
     const list = tmpl.json().data?.list || [];
     return {
       number: parseInt(String(list[0]).replace(/[^0-9]/g, ''), 10) || null,
-      status: String(list[1] || '').trim(), //N=national, I=international, G=global
       name: String(list[2] || '').trim(),
+      position: '', //the cfl template carries no position
+      status: String(list[1] || '').trim(), //N=national, I=international, G=global
     }
   })
 };
@@ -2169,15 +2530,19 @@ const extras$1 = function (game, row) {
 const standings$1 = function (season) {
   const out = {
     record: season.record || null,
+    place: null,
+    coach: coachOf(season),
+    gm: gmOf(season),
+    venue: venueOf(season),
     division: '',
     divisionPlace: null,
-    coach: getCell(season, ['coach', 'coaches']) || '',
     stadium: getCell(season, ['stadium']) || '',
   };
   const place = String(getCell(season, ['division_place', 'division place']) || '');
   const m = place.match(/^(\d+)(?:st|nd|rd|th)\b[, ]*(.*)/);
   if (m) {
     out.divisionPlace = Number(m[1]);
+    out.place = out.divisionPlace;
     out.division = m[2].trim();
   } else if (place) {
     out.division = place;
@@ -2207,15 +2572,19 @@ const parse$2 = function (doc) {
   if (playoffs.length === 0) {
     playoffs = findQuarterGames(doc, ctx, playoffTitles);
   }
+  const games = findGames(doc, ctx, gameTitles$2);
   return {
     team: meta.team,
     year: meta.year,
     page: doc.title || '',
+    ...seasonDates(games),
+    attendance: avgAttendance(games, season),
     season,
     standings: standings$1(season),
-    games: findGames(doc, ctx, gameTitles$2),
+    games,
+    transactions: findTransactions(doc, ctx),
     playoffs,
-    roster: parseRoster$1(doc),
+    roster: parseRoster(doc),
   }
 };
 
@@ -2296,19 +2665,6 @@ var franchises$1 = [
   [{ name: 'Binghamton Devils', from: 2017, to: 2020 }, { name: 'Albany Devils', from: 2010 }],
 ];
 
-// the {{Ice hockey team player}} roster rows - many ahl pages have no stat tables
-const parseRoster = function (doc) {
-  const players = doc.templates('ice hockey team player').map((t) => {
-    const data = t.json().data || {};
-    return {
-      number: parseInt(data.num, 10) || null,
-      name: [data.first, data.last].filter(Boolean).join(' '),
-      position: data.pos || '',
-    }
-  });
-  return players.filter((p) => p.name)
-};
-
 const makeTitle$1 = twoYearTitle;
 
 const gameTitles$1 = ['regular season', 'schedule and results', 'game log', 'schedule'];
@@ -2332,12 +2688,18 @@ const extras = function (game, row) {
 };
 
 const standings = function (season) {
+  const divisionPlace = getCell(season, ['divisionrank', 'division_place', 'divisionplace']) || null;
+  const conferencePlace = getCell(season, ['conferencerank', 'conference_place']) || null;
   return {
     record: season.record || null,
+    place: divisionPlace || conferencePlace,
+    coach: coachOf(season),
+    gm: gmOf(season),
+    venue: venueOf(season),
     division: getCell(season, ['division']) || '',
-    divisionPlace: getCell(season, ['divisionrank', 'division_place', 'divisionplace']) || null,
+    divisionPlace,
     conference: getCell(season, ['conference']) || '',
-    conferencePlace: getCell(season, ['conferencerank', 'conference_place']) || null,
+    conferencePlace,
     goalsFor: getCell(season, ['goalsfor', 'goals_for']) || null,
     goalsAgainst: getCell(season, ['goalsagainst', 'goals_against']) || null,
   }
@@ -2370,17 +2732,21 @@ const parse$1 = function (doc) {
     extras,
   };
   const season = parseInfobox(doc, ['ice hockey team season'], ctx.record);
+  const games = findGames(doc, ctx, gameTitles$1);
   return {
     team: meta.team,
     year: meta.year,
     page: doc.title || '',
+    ...seasonDates(games),
+    attendance: avgAttendance(games, season),
     season,
     standings: standings(season),
-    games: findGames(doc, ctx, gameTitles$1),
+    games,
+    transactions: findTransactions(doc, ctx),
     playoffs: findSeries(doc, ctx, ['playoffs', 'postseason'], gameTitles$1),
     skaters: parseSkaters(doc),
     goalies: parseGoalies(doc),
-    roster: parseRoster(doc),
+    roster: parseRoster$3(doc),
   }
 };
 
@@ -2454,24 +2820,6 @@ const franchises = [
   [{ name: 'Wolverhampton Wanderers F.C.', from: 2018 }, { name: 'Wolverhampton Wanderers F.C.', from: 2009, to: 2011 }, { name: 'Wolverhampton Wanderers F.C.', from: 2003, to: 2003 }],
 ];
 
-// the {{Fs player}} / {{Efs player}} squad rows - most club pages list a first-team squad
-const rowNames = ['efs player', 'fs player', 'extended football squad player', 'football squad player'];
-
-const parseSquad = function (doc) {
-  const players = rowNames
-    .flatMap((name) => doc.templates(name))
-    .map((t) => {
-      const data = t.json().data || {};
-      return {
-        number: parseInt(data.no, 10) || null,
-        name: data.name || '',
-        position: data.pos || '',
-        nation: data.nat || '',
-      }
-    });
-  return players.filter((p) => p.name)
-};
-
 const makeTitle = twoYearTitle;
 
 // the league phase hides under different names across three decades
@@ -2521,22 +2869,32 @@ const parse = function (doc) {
     games = findGames(doc, ctx, gameTitles);
   }
   const rec = countRecord(games);
+  const position = getCell(season, ['position', 'league_result', 'league result']) || null;
+  const squad = parseSquad(doc);
   return {
     team: meta.team,
     year: meta.year,
     page: doc.title || '',
+    ...seasonDates(games),
+    attendance: avgAttendance(games, season),
     season,
     standings: {
       record: rec,
+      place: placeOf(position),
+      coach: coachOf(season),
+      gm: gmOf(season),
+      venue: venueOf(season),
       points: rec.wins * 3 + rec.ties, //three points for a win, since 1981
       league: getCell(season, ['league']) || '',
-      position: getCell(season, ['position', 'league_result', 'league result']) || null,
+      position,
       manager: getCell(season, ['manager', 'mgrtitle', 'head coach']) || '',
       stadium: getCell(season, ['stadium', 'stdtitle']) || '',
     },
     games,
+    transactions: findTransactions(doc, ctx),
     cups: findCompetitions(doc, ctx, cupish, friendly),
-    squad: parseSquad(doc),
+    roster: squad,
+    squad,
   }
 };
 

@@ -205,6 +205,8 @@ type FetchOptions = {
   userAgent?: string | undefined
   'User-Agent'?: string | undefined
   'Api-User-Agent'?: string | undefined
+  /** suppress the console warnings for failed requests */
+  silent?: boolean | undefined
 }
 
 type Fetch = <T extends string | number | string[] | number[] | URL>(

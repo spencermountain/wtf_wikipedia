@@ -1,6 +1,7 @@
 import { getCell, stripNotes } from '../_lib.js'
 import { findGames, findSeries } from '../engine/games.js'
 import parseInfobox from '../engine/infobox.js'
+import findTransactions from '../engine/transactions.js'
 import { coachOf, gmOf, venueOf, seasonDates, avgAttendance } from '../engine/season.js'
 import resolveTeam from '../engine/teams.js'
 import franchises from './franchises.js'
@@ -81,6 +82,7 @@ const parse = function (doc) {
     season,
     standings: standings(season),
     games,
+    transactions: findTransactions(doc, ctx),
     postseason,
     playoffs: postseason, //the standard key - mlb pages say 'postseason'
     roster: parseRoster(doc, meta.year),

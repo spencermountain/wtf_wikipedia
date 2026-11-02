@@ -16,7 +16,7 @@ const bySentence = function (doc) {
   }
   // cut trailing clauses
   let place = m[1].split(/,? (?:and|where|to|on) /)[0]
-  place = place.replace(/[,\s]+$/, '').trim()
+  place = place.trim().replace(/,$/, '')
   if (!place) {
     return null
   }

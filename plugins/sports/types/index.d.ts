@@ -50,6 +50,70 @@ export interface Game {
   stadium?: string
 }
 
+/** the standings fields every league shares */
+export interface StandingsCore {
+  record: SeasonRecord | null
+  /** where the team finished - its division, conference or league table */
+  place: string | number | null
+  /** the head coach - or the manager, in soccer and baseball */
+  coach: string
+  /** the general manager, where the sport has one */
+  gm: string
+  /** the home ground, whether the sport calls it a stadium, arena or ballpark */
+  venue: string
+}
+
+/** a roster/squad row - leagues add extra fields where their pages carry them */
+export interface RosterRow {
+  number: number | null
+  name: string
+  position: string
+}
+
+/** nba/wnba {{player2}} / {{sports roster/entry}} rows */
+export interface BallRosterRow extends RosterRow {
+  /** like `6'6"` */
+  height: string
+  /** in pounds */
+  weight: number | null
+  college: string
+  dob: string
+  nation: string
+}
+
+/** soccer {{Fs player}} / {{Efs player}} squad rows */
+export interface SquadRow extends RosterRow {
+  nation: string
+}
+
+/** one move from the page's transactions / transfers sections */
+export interface Transaction {
+  date: string
+  /** 'trade', 'signing', 'release', 'waiver', 'claim', 'draft', 'loan', 'loan in/out',
+   * 'transfer', 'transfer in/out', 'injured list', 'roster move', 'retired' - or null */
+  type: string | null
+  text: string
+  player?: string
+}
+
+/** the season fields every league shares */
+export interface SeasonBase {
+  team: string
+  year: number | null
+  page: string
+  /** date of the first league game */
+  start: string | null
+  /** date of the last league game */
+  end: string | null
+  /** average home attendance */
+  attendance: number | null
+  /** the raw team-season infobox */
+  season: Record<string, string | number | SeasonRecord>
+  games: Game[]
+  roster: RosterRow[]
+  transactions: Transaction[]
+}
+
 export interface NhlSkater {
   name: string
   games: number
@@ -70,14 +134,8 @@ export interface NhlGoalie {
   shutouts: number
 }
 
-export interface NhlSeason {
-  team: string
-  year: number | null
-  page: string
-  /** the raw team-season infobox */
-  season: Record<string, string | number | SeasonRecord>
-  standings: {
-    record: SeasonRecord | null
+export interface NhlSeason extends SeasonBase {
+  standings: StandingsCore & {
     division: string
     divisionPlace: number | null
     conference: string
@@ -85,31 +143,24 @@ export interface NhlSeason {
     goalsFor: number | null
     goalsAgainst: number | null
   }
-  games: Game[]
   /** one array per playoff series */
   playoffs: Game[][]
   skaters: NhlSkater[]
   goalies: NhlGoalie[]
 }
 
-export interface MlbSeason {
-  team: string
-  year: number | null
-  page: string
-  /** the raw team-season infobox */
-  season: Record<string, string | number | SeasonRecord>
-  standings: {
-    record: SeasonRecord | null
+export interface MlbSeason extends SeasonBase {
+  standings: StandingsCore & {
     league: string
     division: string
     divisionPlace: number | null
     manager: string
     ballpark: string
   }
-  games: Game[]
   /** one array per postseason series */
   postseason: Game[][]
-  roster: Record<string, unknown>[]
+  /** the same series, under the standard key */
+  playoffs: Game[][]
   draftPicks: object
   playerStats: {
     batters: Record<string, string>[]
@@ -129,57 +180,37 @@ export interface NbaPlayerStats {
   pointsPerGame: number
 }
 
-export interface NbaSeason {
-  team: string
-  year: number | null
-  page: string
-  /** the raw team-season infobox */
-  season: Record<string, string | number | SeasonRecord>
-  standings: {
-    record: SeasonRecord | null
+export interface NbaSeason extends SeasonBase {
+  standings: StandingsCore & {
     division: string
     divisionPlace: number | null
     conference: string
     conferencePlace: number | null
-    coach: string
     arena: string
   }
-  games: Game[]
   /** one array per playoff series */
   playoffs: Game[][]
-  /** {{player2}} roster rows */
-  roster: Record<string, unknown>[]
+  roster: BallRosterRow[]
   playerStats: {
     season: NbaPlayerStats[]
     playoffs: NbaPlayerStats[]
   }
 }
 
-export interface NflSeason {
-  team: string
-  year: number | null
-  page: string
-  /** the raw team-season infobox */
-  season: Record<string, string | number | SeasonRecord>
-  standings: {
-    record: SeasonRecord | null
+export interface NflSeason extends SeasonBase {
+  standings: StandingsCore & {
     division: string
     divisionPlace: number | null
-    coach: string
     stadium: string
   }
-  games: Game[]
   /** nfl playoffs are single games, kept flat */
   playoffs: Game[]
+  /** always empty - nfl rosters transclude from separate template pages */
+  roster: RosterRow[]
 }
 
-export interface MlsSeason {
-  team: string
-  year: number | null
-  page: string
-  /** the raw club-season infobox */
-  season: Record<string, string | number | SeasonRecord>
-  standings: {
+export interface MlsSeason extends SeasonBase {
+  standings: StandingsCore & {
     /** counted from the league matches */
     record: SeasonRecord
     league: string
@@ -187,43 +218,32 @@ export interface MlsSeason {
     manager: string
     stadium: string
   }
-  /** league matches - cups, friendlies and playoffs excluded */
-  games: Game[]
   /** mls cup playoff matches, kept flat */
   playoffs: Game[]
+  /** cup runs, keyed by competition section - {'Leagues Cup': [...]} */
+  cups: Record<string, Game[]>
+  roster: SquadRow[]
+  /** the same rows, under the soccer name */
+  squad: SquadRow[]
 }
 
-export interface WnbaSeason {
-  team: string
-  year: number | null
-  page: string
-  /** the raw team-season infobox */
-  season: Record<string, string | number | SeasonRecord>
-  standings: {
-    record: SeasonRecord | null
+export interface WnbaSeason extends SeasonBase {
+  standings: StandingsCore & {
     conference: string
     conferencePlace: number | null
-    coach: string
     arena: string
   }
-  games: Game[]
   /** one array per playoff series */
   playoffs: Game[][]
-  /** {{sports roster/entry}} rows */
-  roster: Record<string, unknown>[]
+  roster: BallRosterRow[]
   playerStats: {
     season: NbaPlayerStats[]
     playoffs: NbaPlayerStats[]
   }
 }
 
-export interface NwslSeason {
-  team: string
-  year: number | null
-  page: string
-  /** the raw club-season infobox */
-  season: Record<string, string | number | SeasonRecord>
-  standings: {
+export interface NwslSeason extends SeasonBase {
+  standings: StandingsCore & {
     /** counted from the league matches */
     record: SeasonRecord
     league: string
@@ -231,62 +251,43 @@ export interface NwslSeason {
     manager: string
     stadium: string
   }
-  /** league matches - cups, friendlies and playoffs excluded */
-  games: Game[]
   /** nwsl playoff matches, kept flat */
   playoffs: Game[]
+  /** cup runs, keyed by competition section - {'NWSL Challenge Cup': [...]} */
+  cups: Record<string, Game[]>
+  roster: SquadRow[]
+  /** the same rows, under the soccer name */
+  squad: SquadRow[]
 }
 
-export interface PwhlSeason {
-  team: string
-  year: number | null
-  page: string
-  /** the raw team-season infobox */
-  season: Record<string, string | number | SeasonRecord>
-  standings: {
-    record: SeasonRecord | null
+export interface PwhlSeason extends SeasonBase {
+  standings: StandingsCore & {
     /** the pwhl is one table - no divisions */
     place: number | null
     goalsFor: number | null
     goalsAgainst: number | null
-    coach: string
     arena: string
   }
-  games: Game[]
   /** one array per playoff series */
   playoffs: Game[][]
   skaters: NhlSkater[]
   goalies: NhlGoalie[]
 }
 
-export interface CflSeason {
-  team: string
-  year: number | null
-  page: string
-  /** the raw team-season infobox */
-  season: Record<string, string | number | SeasonRecord>
-  standings: {
-    record: SeasonRecord | null
+export interface CflSeason extends SeasonBase {
+  standings: StandingsCore & {
     division: string
     divisionPlace: number | null
-    coach: string
     stadium: string
   }
-  games: Game[]
   /** cfl playoffs are single games, kept flat */
   playoffs: Game[]
   /** {{CFL player}} rows: N=national, I=international, G=global */
-  roster: { number: number | null; status: string; name: string }[]
+  roster: (RosterRow & { status: string })[]
 }
 
-export interface AhlSeason {
-  team: string
-  year: number | null
-  page: string
-  /** the raw team-season infobox */
-  season: Record<string, string | number | SeasonRecord>
-  standings: {
-    record: SeasonRecord | null
+export interface AhlSeason extends SeasonBase {
+  standings: StandingsCore & {
     division: string
     divisionPlace: number | null
     conference: string
@@ -294,22 +295,16 @@ export interface AhlSeason {
     goalsFor: number | null
     goalsAgainst: number | null
   }
-  games: Game[]
   /** one array per playoff series */
   playoffs: Game[][]
   skaters: NhlSkater[]
   goalies: NhlGoalie[]
   /** {{Ice hockey team player}} roster rows, where the page has them */
-  roster: { number: number | null; name: string; position: string }[]
+  roster: RosterRow[]
 }
 
-export interface EplSeason {
-  team: string
-  year: number | null
-  page: string
-  /** the raw club-season infobox */
-  season: Record<string, string | number | SeasonRecord>
-  standings: {
+export interface EplSeason extends SeasonBase {
+  standings: StandingsCore & {
     /** counted from the league matches - draws land in `ties` */
     record: SeasonRecord
     /** three points for a win, one for a draw */
@@ -323,8 +318,9 @@ export interface EplSeason {
   games: Game[]
   /** cup and european matches, keyed by competition section - {'FA Cup': [...]} */
   cups: Record<string, Game[]>
-  /** {{Fs player}} / {{Efs player}} squad rows, where the page has them */
-  squad: { number: number | null; name: string; position: string; nation: string }[]
+  roster: SquadRow[]
+  /** the same rows, under the soccer name */
+  squad: SquadRow[]
 }
 
 declare module 'wtf_wikipedia' {

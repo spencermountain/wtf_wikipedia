@@ -7,7 +7,7 @@ const defaults = {
   action: 'query',
   prop: 'revisions|pageprops', // we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
   rvprop: 'content|ids|timestamp',
-  maxlag: 5,
+  maxlag: 5, //timeout in seconds
   rvslots: 'main',
   origin: '*',
   format: 'json',

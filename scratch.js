@@ -106,12 +106,14 @@ str = `'''Barry''' may refer to:
 
 {{Disambiguation|geo}}
 `
-const doc = wtf(str)
-const pages = doc.disambiguation().pages.map((page) => page.page)
-console.log(pages)
-console.log(pages.length)
+// const doc = wtf(str)
+// const pages = doc.disambiguation().pages.map((page) => page.page)
+// console.log(pages)
+// console.log(pages.length)
 
-// wtf.fetch('Bremner').then((doc) => {
-//   console.log(doc.isDisambiguation())
-//   console.log(doc.disambiguations())
-// })
+wtf.fetch('Bremner').then((doc) => {
+  console.log(doc.pageID)
+  console.log(doc.wikidata)
+  // console.log(doc.isDisambiguation())
+  // console.log(doc.disambiguations())
+})
