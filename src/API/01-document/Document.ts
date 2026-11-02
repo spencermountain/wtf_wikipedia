@@ -96,6 +96,20 @@ class Document {
   set pageImage(str) {
     this.#info.pageImage = str
   }
+  // the title as rendered on the page, set by {{DISPLAYTITLE:}}
+  get displayTitle() {
+    return this.#info.displayTitle || this.title
+  }
+  set displayTitle(str) {
+    this.#info.displayTitle = str
+  }
+  // the page's category sort-key, like 'Beauvoir, Simone de'
+  get defaultSort() {
+    return this.#info.defaultSort || null
+  }
+  set defaultSort(str) {
+    this.#info.defaultSort = str
+  }
 
   // don'y allow setting thesese
   wikitext() {
@@ -130,6 +144,10 @@ class Document {
     return link ?? null
   }
   isDisambiguation() {
+    // the disambiguation pageprop from the api is authoritative, when we have it
+    if (this.#info.isDisambig === true) {
+      return true
+    }
     return isDisambig(this)
   }
   disambiguation() {

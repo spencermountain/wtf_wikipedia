@@ -1,4 +1,12 @@
 //parses the mediawiki api response into something usable - its data-format is nutso
+
+// displaytitle may carry html, like '<i>The Art of War</i>'
+const stripHtml = function (str: string) {
+  str = str.replace(/<[^<>]*>/g, '')
+  str = str.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#0?39;/g, "'")
+  return str
+}
+
 const getResult = function (data, options: any = {}) {
   // handle nothing found or no data passed
   if (!data?.query?.pages) {
@@ -24,12 +32,8 @@ const getResult = function (data, options: any = {}) {
     if (!rev) {
       return null
     }
-    // get the text from the object
-    let text = rev['*']
-    // if the text is not found in the regular place than it is at the other place
-    if (!text && rev.slots) {
-      text = rev.slots.main['*']
-    }
+    // formatversion=2 puts the text in .content - older wikis return the v1 '*' shapes
+    let text = rev.slots?.main?.content ?? rev.slots?.main?.['*'] ?? rev['*']
     let revisionID = rev.revid
     let timestamp = rev.timestamp
 
@@ -40,6 +44,7 @@ const getResult = function (data, options: any = {}) {
       domain = `${options.wiki}.org`
     }
 
+    let props = page.pageprops
     let meta = {
       ...options,
       title: page.title,
@@ -48,9 +53,17 @@ const getResult = function (data, options: any = {}) {
       domain,
       revisionId: revisionID,
       timestamp,
-      pageImage: page.pageprops['page_image_free'],
-      wikidata: page.pageprops.wikibase_item,
-      description: page.pageprops['wikibase-shortdesc'],
+      // prefer the free-licensed page-image, fall back to the non-free one
+      pageImage: props['page_image_free'] || props['page_image'],
+      wikidata: props.wikibase_item,
+      // prop=description works in any language - the shortdesc pageprop is enwiki-only
+      description: page.description || props['wikibase-shortdesc'],
+      // set by {{DISPLAYTITLE:}}, present only when it differs from the title
+      displayTitle: props.displaytitle ? stripHtml(props.displaytitle) : undefined,
+      // the page's category sort-key, like 'Beauvoir, Simone de'
+      defaultSort: props.defaultsort,
+      // authoritative flag from the mediawiki disambiguator extension
+      isDisambig: Object.hasOwn(props, 'disambiguation') ? true : undefined,
     }
 
     return { wiki: text, meta: meta }

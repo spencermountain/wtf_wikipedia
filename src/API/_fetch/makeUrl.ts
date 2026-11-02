@@ -5,12 +5,15 @@ const isInterWiki =
 
 const defaults = {
   action: 'query',
-  prop: 'revisions|pageprops', // we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
+  // we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
+  // 'description' is the central wikidata one - wikis without that extension warn, and skip it
+  prop: 'revisions|pageprops|description',
   rvprop: 'content|ids|timestamp',
   maxlag: 5, //timeout in seconds
   rvslots: 'main',
   origin: '*',
   format: 'json',
+  formatversion: 2, //cleaner response format - wikis older than 2015 ignore it, and return v1
   redirects: 'true',
 }
 

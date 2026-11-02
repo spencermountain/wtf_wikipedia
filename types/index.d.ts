@@ -72,6 +72,10 @@ declare class Document {
   description: string | null
   timestamp: string | null
   pageImage: string | null
+  /** the title as rendered on the page, set by DISPLAYTITLE */
+  displayTitle: string | null
+  /** the page's category sort-key, like 'Beauvoir, Simone de' */
+  defaultSort: string | null
 }
 
 declare class Section {
@@ -232,6 +236,9 @@ type DocumentOptions = {
   timestamp?: string
   revisionID?: number | string
   pageImage?: string
+  displayTitle?: string
+  defaultSort?: string
+  isDisambig?: boolean
   userAgent?: string
   'User-Agent'?: string
   'Api-User-Agent'?: string

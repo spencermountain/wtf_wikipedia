@@ -19,9 +19,10 @@ const chunkSize = 50
 type FetchInput = string | number | Array<string | number> | { href: string }
 
 //the parts of a mediawiki api json response we look at
+//formatversion=2 returns pages as an array - v1 keys them by pageid
 type ApiResponse = {
   error?: { code?: string; info?: string }
-  query?: { pages?: Record<string, unknown> }
+  query?: { pages?: Record<string, unknown> | unknown[] }
 }
 
 const defaults: FetchOptions = {

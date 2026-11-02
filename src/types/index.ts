@@ -123,6 +123,9 @@ export interface DocInfo {
   timestamp?: string
   description?: string
   pageImage?: string
+  displayTitle?: string
+  defaultSort?: string
+  isDisambig?: boolean
 }
 
 // options accepted by fetch() - document metadata, plus request options
