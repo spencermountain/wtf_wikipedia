@@ -33,16 +33,43 @@ const translate = (key, map) => {
   return fn
 };
 
-// registers one language pack onto the core template registry. a pack's data is:
+// expand a core-style shorthand definition into a parser fn (mirrors core src/templates/_shortcuts.ts):
+//   'гео': ['lat', 'lon', 'zoom']   → parse positional params into named data
+//   'имя': 1                        → the text of that pipe
+//   'флаг': '🏴'                     → static replacement text
+//   'возраст': { props: [...], out: 'age' } → parse props, output one of them
+const positions = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+const fromShortcut = (def) => {
+  return (tmpl, parse) => {
+    if (typeof def === 'number') {
+      const data = parse(tmpl, positions);
+      return { data: null, replacement: data[String(def)] || '' }
+    }
+    if (typeof def === 'string') {
+      return { data: null, replacement: def }
+    }
+    if (Array.isArray(def)) {
+      return { data: parse(tmpl, def), replacement: '' }
+    }
+    if (def && typeof def === 'object') {
+      const data = parse(tmpl, def.props);
+      return { data, replacement: data[def.out] || '' }
+    }
+    return { data: parse(tmpl), replacement: '' }
+  }
+};
+
+// registers one language pack onto the core template registry. every section is optional:
 //   aliases   — localized name → the core template key it resolves to
 //   infoboxes — names recognised as infoboxes, not parsed
+//   templates — localized name → a core-style shorthand def: ['lat', 'lon'], 1, 'text', {props, out}
 //   parsers   — localized name → a core-style parser fn (see langs/_lib.js translate())
 
 const register = (data, templates, infoboxes = {}) => {
-  data.infoboxes.forEach((name) => {
+(data.infoboxes || []).forEach((name) => {
     infoboxes[name] = true;
   });
-  Object.keys(data.aliases).forEach((name) => {
+  Object.keys(data.aliases || {}).forEach((name) => {
     const key = data.aliases[name];
     const parser = templates[key];
     // fail at extend-time, not parse-time, if a core registry key moves
@@ -64,8 +91,14 @@ const register = (data, templates, infoboxes = {}) => {
     templates[name].kind = /^cite /.test(key) ? 'citation' : key;
     templates[name].i18n = 'alias';
   });
-  Object.keys(data.parsers).forEach((name) => {
-    let fn = data.parsers[name];
+  // shorthand defs become standalone parser fns, alongside any hand-written ones
+  const parsers = Object.assign({}, data.parsers);
+  Object.keys(data.templates || {}).forEach((name) => {
+    const def = data.templates[name];
+    parsers[name] = typeof def === 'function' ? def : fromShortcut(def);
+  });
+  Object.keys(parsers).forEach((name) => {
+    let fn = parsers[name];
     if (fn.template && typeof templates[fn.template] !== 'function') {
       throw new Error(`wtf-plugin-i18n: '${fn.template}' is not a core template`)
     }
@@ -96,7 +129,6 @@ const register = (data, templates, infoboxes = {}) => {
 var version = '2.0.0';
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // arabic template names → the core template they resolve to
 const aliases$W = {
   'commons category': 'commons cat',
@@ -159,24 +191,9 @@ const aliases$W = {
   'نيهونغو': 'nihongo',
 };
 
-// names recognised as infoboxes
-const infoboxes$W = [
-  'automatic taxobox',
-  'speciesbox',
-  'taxobox itis',
-  'taxobox ncbi',
-  'virusbox',
-  'تصنيف',
-  'تصنيف علمي',
-  'تصنيف كائن',
-  'صندوق صنف',
-  'صندوق معلومات فيروس',
-  'صندوق معلومات كائن',
-  'معلومات فيروس',
-  'معلومات كائن',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeBook$G = translate('cite book', {
   'ردمك': 'isbn',
   'تاريخ-الوصول': 'access-date',
@@ -988,13 +1005,8 @@ const citation$e = translate('citation', {
   'الطبعة': 'edition',
   'رقم الطبعة': 'edition',
 });
-const birthDateAndAge = translate('birth date and age', {
-  'العام': 'year',
-  'السنة': 'year',
-  'سنة': 'year',
-});
 
-const parsers$W = {
+const citations$Q = {
   'cita libro': citeBook$G,
   'cita publicación': citeJournal$u,
   'cita web': citeWeb$N,
@@ -1017,13 +1029,6 @@ const parsers$W = {
   'استشهاد ويب': citeWeb$N,
   'استشهاد ويب/إنجليزي': citeWeb$N,
   'اقتباس ويب': citeWeb$N,
-  'الميلاد والسن': birthDateAndAge,
-  'الولادة والسن': birthDateAndAge,
-  'تاريخ الميلاد و العمر': birthDateAndAge,
-  'تاريخ الميلاد والسن': birthDateAndAge,
-  'تاريخ الميلاد والعمر': birthDateAndAge,
-  'تاريخ ميلاد والعمر': birthDateAndAge,
-  'تاريخ ميلاد وعمر': birthDateAndAge,
   'مرجع كتاب': citeBook$G,
   'مرجع مجلة': citeJournal$u,
   'مرجع موقع': citeWeb$N,
@@ -1038,14 +1043,48 @@ const parsers$W = {
   'یادکرد وب': citeWeb$N,
 };
 
-const data$W = { aliases: aliases$W, infoboxes: infoboxes$W, parsers: parsers$W };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$W = [
+  'automatic taxobox',
+  'speciesbox',
+  'taxobox itis',
+  'taxobox ncbi',
+  'virusbox',
+  'تصنيف',
+  'تصنيف علمي',
+  'تصنيف كائن',
+  'صندوق صنف',
+  'صندوق معلومات فيروس',
+  'صندوق معلومات كائن',
+  'معلومات فيروس',
+  'معلومات كائن',
+];
+
+const birthDateAndAge = translate('birth date and age', {
+  'العام': 'year',
+  'السنة': 'year',
+  'سنة': 'year',
+});
+
+const parsers$6 = {
+  ...citations$Q,
+  'الميلاد والسن': birthDateAndAge,
+  'الولادة والسن': birthDateAndAge,
+  'تاريخ الميلاد و العمر': birthDateAndAge,
+  'تاريخ الميلاد والسن': birthDateAndAge,
+  'تاريخ الميلاد والعمر': birthDateAndAge,
+  'تاريخ ميلاد والعمر': birthDateAndAge,
+  'تاريخ ميلاد وعمر': birthDateAndAge,
+};
+
+const data$W = { aliases: aliases$W, infoboxes: infoboxes$W, parsers: parsers$6 };
 
 const plugin$X = (_models, templates, boxes) => register(data$W, templates, boxes);
 plugin$X.lang = 'ar';
 plugin$X.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // azerbaijani template names → the core template they resolve to
 const aliases$V = {
   'bayraq': 'flagicon',
@@ -1079,12 +1118,9 @@ const aliases$V = {
   'əsas səhifə': 'main',
 };
 
-// names recognised as infoboxes
-const infoboxes$V = [
-  'taksoqutu',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeWeb$M = translate('cite web', {
   'accessdate': 'access-date',
   'author1-last': 'author',
@@ -1108,7 +1144,7 @@ const citeWeb$M = translate('cite web', {
   'host': 'authors',
 });
 
-const parsers$V = {
+const citations$P = {
   'antcat': citeWeb$M,
   'cite ebd': citeWeb$M,
   'cite odnb': citeWeb$M,
@@ -1118,14 +1154,19 @@ const parsers$V = {
   'web kaynağı': citeWeb$M,
 };
 
-const data$V = { aliases: aliases$V, infoboxes: infoboxes$V, parsers: parsers$V };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$V = [
+  'taksoqutu',
+];
+
+const data$V = { aliases: aliases$V, infoboxes: infoboxes$V, parsers: citations$P };
 
 const plugin$W = (_models, templates, boxes) => register(data$V, templates, boxes);
 plugin$W.lang = 'az';
 plugin$W.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // belarusian template names → the core template they resolve to
 const aliases$U = {
   'catmain': 'main',
@@ -1166,12 +1207,9 @@ const aliases$U = {
   'сцяг': 'flagicon',
 };
 
-// names recognised as infoboxes
-const infoboxes$U = [
-  'таксанамія',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeWeb$L = translate('cite web', {
   'datepublished': 'date',
   'lang': 'language',
@@ -1198,7 +1236,7 @@ const internetquelle$n = translate('cite web', {
   'accessdate': 'access-date',
 });
 
-const parsers$U = {
+const citations$O = {
   'cita web': citeWeb$L,
   'cite web 2': citeWeb$L,
   'citeweb': citeWeb$L,
@@ -1206,14 +1244,19 @@ const parsers$U = {
   'internetquelle': internetquelle$n,
 };
 
-const data$U = { aliases: aliases$U, infoboxes: infoboxes$U, parsers: parsers$U };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$U = [
+  'таксанамія',
+];
+
+const data$U = { aliases: aliases$U, infoboxes: infoboxes$U, parsers: citations$O };
 
 const plugin$V = (_models, templates, boxes) => register(data$U, templates, boxes);
 plugin$V.lang = 'be';
 plugin$V.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // bulgarian template names → the core template they resolve to
 const aliases$T = {
   'commons category': 'commons cat',
@@ -1229,12 +1272,9 @@ const aliases$T = {
   'портал': 'portal',
 };
 
-// names recognised as infoboxes
-const infoboxes$T = [
-  'таксокутия',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeWeb$K = translate('cite web', {
   'уеб_адрес': 'url',
   'заглавие': 'title',
@@ -1259,7 +1299,7 @@ const citeJournal$t = translate('cite journal', {
   'архив_дата': 'archive-date',
 });
 
-const parsers$T = {
+const citations$N = {
   'cita web': citeWeb$K,
   'citeweb': citeWeb$K,
   'цитат книга': citeBook$F,
@@ -1267,14 +1307,19 @@ const parsers$T = {
   'цитат уеб': citeWeb$K,
 };
 
-const data$T = { aliases: aliases$T, infoboxes: infoboxes$T, parsers: parsers$T };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$T = [
+  'таксокутия',
+];
+
+const data$T = { aliases: aliases$T, infoboxes: infoboxes$T, parsers: citations$N };
 
 const plugin$U = (_models, templates, boxes) => register(data$T, templates, boxes);
 plugin$U.lang = 'bg';
 plugin$U.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // bengali template names → the core template they resolve to
 const aliases$S = {
   'ap': 'main',
@@ -1332,15 +1377,9 @@ const aliases$S = {
   'স্থানাঙ্ক': 'coord',
 };
 
-// names recognised as infoboxes
-const infoboxes$S = [
-  'তথ্যছক শ্রেণীবিন্যাস',
-  'প্রজাতিছক',
-  'শ্রেণিবিন্যাস ছক',
-  'শ্রেণীবিন্যাস ছক',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeJournal$s = translate('cite journal', {
   'ইউআরএল': 'url',
   'শিরোনাম': 'title',
@@ -1475,7 +1514,7 @@ const citation$d = translate('citation', {
   'editor1-surname': 'editor',
 });
 
-const parsers$S = {
+const citations$M = {
   'akademik dergi kaynağı': citeJournal$s,
   'book reference': citeBook$E,
   'cita web': citeWeb$J,
@@ -1500,14 +1539,22 @@ const parsers$S = {
   'সাময়িকী উদ্ধৃতি': citeJournal$s,
 };
 
-const data$S = { aliases: aliases$S, infoboxes: infoboxes$S, parsers: parsers$S };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$S = [
+  'তথ্যছক শ্রেণীবিন্যাস',
+  'প্রজাতিছক',
+  'শ্রেণিবিন্যাস ছক',
+  'শ্রেণীবিন্যাস ছক',
+];
+
+const data$S = { aliases: aliases$S, infoboxes: infoboxes$S, parsers: citations$M };
 
 const plugin$T = (_models, templates, boxes) => register(data$S, templates, boxes);
 plugin$T.lang = 'bn';
 plugin$T.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // catalan template names → the core template they resolve to
 const aliases$R = {
   'afi': 'ipa',
@@ -1542,45 +1589,9 @@ const aliases$R = {
   'societat catalana de matemàtiques': 'sfn',
 };
 
-// names recognised as infoboxes
-const infoboxes$R = [
-  'esser viu',
-  'ficha de taxón',
-  'fitxa de tàxon',
-  'iev',
-  'infotaula d\'ésser viu',
-  'infotaula esser viu',
-  'infotaula taxonòmica',
-  'infotaula ésser viu',
-  'speciesbox',
-  'taxocaixa',
-  'taxocaixa amfibi',
-  'taxocaixa animal',
-  'taxocaixa anèl·lid',
-  'taxocaixa arqueobacteri',
-  'taxocaixa artròpode',
-  'taxocaixa avial',
-  'taxocaixa cnidari',
-  'taxocaixa dinosaure',
-  'taxocaixa equinoderm',
-  'taxocaixa eubacteri',
-  'taxocaixa eucariota',
-  'taxocaixa fong',
-  'taxocaixa mamaliaforme',
-  'taxocaixa mammaliaforme',
-  'taxocaixa mamífer',
-  'taxocaixa mol·lusc',
-  'taxocaixa ocell',
-  'taxocaixa peix',
-  'taxocaixa planta',
-  'taxocaixa platihelmint',
-  'taxocaixa rèptil',
-  'taxocaixa sinàpsid',
-  'taxocaixa virus',
-  'ésser viu',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeJournal$r = translate('cite journal', {
   'cognom': 'last',
   'apellidos': 'last',
@@ -1667,7 +1678,7 @@ const citeWeb$I = translate('cite web', {
   'arxiudata': 'archive-date',
 });
 
-const parsers$R = {
+const citations$L = {
   'article': citeJournal$r,
   'cita diccionari': citeBook$D,
   'cita llibre': citeBook$D,
@@ -1689,14 +1700,52 @@ const parsers$R = {
   'ref-web': citeWeb$I,
 };
 
-const data$R = { aliases: aliases$R, infoboxes: infoboxes$R, parsers: parsers$R };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$R = [
+  'esser viu',
+  'ficha de taxón',
+  'fitxa de tàxon',
+  'iev',
+  'infotaula d\'ésser viu',
+  'infotaula esser viu',
+  'infotaula taxonòmica',
+  'infotaula ésser viu',
+  'speciesbox',
+  'taxocaixa',
+  'taxocaixa amfibi',
+  'taxocaixa animal',
+  'taxocaixa anèl·lid',
+  'taxocaixa arqueobacteri',
+  'taxocaixa artròpode',
+  'taxocaixa avial',
+  'taxocaixa cnidari',
+  'taxocaixa dinosaure',
+  'taxocaixa equinoderm',
+  'taxocaixa eubacteri',
+  'taxocaixa eucariota',
+  'taxocaixa fong',
+  'taxocaixa mamaliaforme',
+  'taxocaixa mammaliaforme',
+  'taxocaixa mamífer',
+  'taxocaixa mol·lusc',
+  'taxocaixa ocell',
+  'taxocaixa peix',
+  'taxocaixa planta',
+  'taxocaixa platihelmint',
+  'taxocaixa rèptil',
+  'taxocaixa sinàpsid',
+  'taxocaixa virus',
+  'ésser viu',
+];
+
+const data$R = { aliases: aliases$R, infoboxes: infoboxes$R, parsers: citations$L };
 
 const plugin$S = (_models, templates, boxes) => register(data$R, templates, boxes);
 plugin$S.lang = 'ca';
 plugin$S.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // czech template names → the core template they resolve to
 const aliases$Q = {
   'cite magazine': 'cite journal',
@@ -1711,12 +1760,9 @@ const aliases$Q = {
   'vlajka': 'flagicon',
 };
 
-// names recognised as infoboxes
-const infoboxes$Q = [
-  'taxonbox',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeWeb$H = translate('cite web', {
   'příjmení': 'last',
   'jméno': 'first',
@@ -1740,7 +1786,7 @@ const citeBook$C = translate('cite book', {
   'rok': 'year',
 });
 
-const parsers$Q = {
+const citations$K = {
   'citace databáze': citeWeb$H,
   'citace elektronické monografie': citeWeb$H,
   'citace elektronického zdroje': citeWeb$H,
@@ -1749,14 +1795,19 @@ const parsers$Q = {
   'citace webu': citeWeb$H,
 };
 
-const data$Q = { aliases: aliases$Q, infoboxes: infoboxes$Q, parsers: parsers$Q };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$Q = [
+  'taxonbox',
+];
+
+const data$Q = { aliases: aliases$Q, infoboxes: infoboxes$Q, parsers: citations$K };
 
 const plugin$R = (_models, templates, boxes) => register(data$Q, templates, boxes);
 plugin$R.lang = 'cs';
 plugin$R.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // welsh template names → the core template they resolve to
 const aliases$P = {
   'bach': 'small',
@@ -1773,21 +1824,21 @@ const aliases$P = {
   'prif': 'main',
 };
 
-// names recognised as infoboxes
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
 const infoboxes$P = [
   'blwch tacson',
 ];
 
-const parsers$P = {};
+const parsers$5 = {};
 
-const data$P = { aliases: aliases$P, infoboxes: infoboxes$P, parsers: parsers$P };
+const data$P = { aliases: aliases$P, infoboxes: infoboxes$P, parsers: parsers$5 };
 
 const plugin$Q = (_models, templates, boxes) => register(data$P, templates, boxes);
 plugin$Q.lang = 'cy';
 plugin$Q.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // danish template names → the core template they resolve to
 const aliases$O = {
   'commonskat': 'commons cat',
@@ -1817,15 +1868,9 @@ const aliases$O = {
   'uddybende artikel': 'main',
 };
 
-// names recognised as infoboxes
-const infoboxes$O = [
-  'skabeloner/taksonomi',
-  'taksoboks',
-  'taxobox2',
-  'taxobox3',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeJournal$q = translate('cite journal', {
   'titel': 'title',
   'efternavn': 'author',
@@ -1988,7 +2033,7 @@ const citeBook$B = translate('cite book', {
   'på': 'language',
 });
 
-const parsers$O = {
+const citations$J = {
   'cite magazine': citeJournal$q,
   'cite paper': citeJournal$q,
   'cite pmid': citeJournal$q,
@@ -2004,14 +2049,22 @@ const parsers$O = {
   'kilde tidsskrift': citeJournal$q,
 };
 
-const data$O = { aliases: aliases$O, infoboxes: infoboxes$O, parsers: parsers$O };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$O = [
+  'skabeloner/taksonomi',
+  'taksoboks',
+  'taxobox2',
+  'taxobox3',
+];
+
+const data$O = { aliases: aliases$O, infoboxes: infoboxes$O, parsers: citations$J };
 
 const plugin$P = (_models, templates, boxes) => register(data$O, templates, boxes);
 plugin$P.lang = 'da';
 plugin$P.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // german template names → the core template they resolve to
 const aliases$N = {
   'commonscat': 'commons cat',
@@ -2025,9 +2078,9 @@ const aliases$N = {
   'personendaten': 'persondata',
 };
 
-const infoboxes$N = [];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const internetquelle$m = translate('cite web', {
   'titel': 'title',
   'autor': 'author',
@@ -2068,20 +2121,23 @@ const literatur$4 = translate('cite book', {
   'online': 'url',
 });
 
-const parsers$N = {
+const citations$I = {
   'internetquelle': internetquelle$m,
   'iq': citeWeb$F,
   'literatur': literatur$4,
 };
 
-const data$N = { aliases: aliases$N, infoboxes: infoboxes$N, parsers: parsers$N };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$N = [];
+
+const data$N = { aliases: aliases$N, infoboxes: infoboxes$N, parsers: citations$I };
 
 const plugin$O = (_models, templates, boxes) => register(data$N, templates, boxes);
 plugin$O.lang = 'de';
 plugin$O.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // greek template names → the core template they resolve to
 const aliases$M = {
   'ccat': 'commons cat',
@@ -2111,13 +2167,9 @@ const aliases$M = {
   'σύνδεσμος ipa': 'ipa',
 };
 
-// names recognised as infoboxes
-const infoboxes$M = [
-  'ταξινομοπλαίσιο',
-  'ταξονομοπλαίσιο',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeBook$A = translate('cite book', {
   'τίτλος': 'title',
   'επώνυμο': 'author',
@@ -2177,7 +2229,7 @@ const internetquelle$l = translate('cite web', {
   'editors': 'editor',
 });
 
-const parsers$M = {
+const citations$H = {
   'cita libro': citeBook$A,
   'cite manual': citeBook$A,
   'cite website': citeWeb$E,
@@ -2188,14 +2240,20 @@ const parsers$M = {
   'ouvrage': citeBook$A,
 };
 
-const data$M = { aliases: aliases$M, infoboxes: infoboxes$M, parsers: parsers$M };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$M = [
+  'ταξινομοπλαίσιο',
+  'ταξονομοπλαίσιο',
+];
+
+const data$M = { aliases: aliases$M, infoboxes: infoboxes$M, parsers: citations$H };
 
 const plugin$N = (_models, templates, boxes) => register(data$M, templates, boxes);
 plugin$N.lang = 'el';
 plugin$N.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // esperanto template names → the core template they resolve to
 const aliases$L = {
   'ceg': 'cite journal',
@@ -2236,21 +2294,21 @@ const aliases$L = {
   'ĉefartikolo': 'main',
 };
 
-// names recognised as infoboxes
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
 const infoboxes$L = [
   'taksonomio',
 ];
 
-const parsers$L = {};
+const parsers$4 = {};
 
-const data$L = { aliases: aliases$L, infoboxes: infoboxes$L, parsers: parsers$L };
+const data$L = { aliases: aliases$L, infoboxes: infoboxes$L, parsers: parsers$4 };
 
 const plugin$M = (_models, templates, boxes) => register(data$L, templates, boxes);
 plugin$M.lang = 'eo';
 plugin$M.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // spanish template names → the core template they resolve to
 const aliases$K = {
   'afi': 'ipa',
@@ -2294,16 +2352,9 @@ const aliases$K = {
   'sfnp': 'sfn',
 };
 
-// names recognised as infoboxes
-const infoboxes$K = [
-  'automatic taxobox',
-  'ficha de taxon',
-  'ficha de taxón',
-  'ficha de virus',
-  'speciesbox',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeWeb$D = translate('cite web', {
   'título': 'title',
   'títulotrad': 'trans-title',
@@ -2519,7 +2570,7 @@ const literatur$3 = translate('cite book', {
   'cita': 'quote',
 });
 
-const parsers$K = {
+const citations$G = {
   'c w': citeWeb$D,
   'cita informe': citation$b,
   'cita informe técnico': citation$b,
@@ -2559,14 +2610,23 @@ const parsers$K = {
   'книга': citeBook$z,
 };
 
-const data$K = { aliases: aliases$K, infoboxes: infoboxes$K, parsers: parsers$K };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$K = [
+  'automatic taxobox',
+  'ficha de taxon',
+  'ficha de taxón',
+  'ficha de virus',
+  'speciesbox',
+];
+
+const data$K = { aliases: aliases$K, infoboxes: infoboxes$K, parsers: citations$G };
 
 const plugin$L = (_models, templates, boxes) => register(data$K, templates, boxes);
 plugin$L.lang = 'es';
 plugin$L.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // estonian template names → the core template they resolve to
 const aliases$J = {
   'algusaeg': 'start',
@@ -2592,12 +2652,9 @@ const aliases$J = {
   'viited': 'reflist',
 };
 
-// names recognised as infoboxes
-const infoboxes$J = [
-  'taksonitabel',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeWeb$C = translate('cite web', {
   'accessdate': 'access-date',
   'author1-last': 'author',
@@ -2623,21 +2680,26 @@ const citeWeb$C = translate('cite web', {
   'credits': 'authors',
 });
 
-const parsers$J = {
+const citations$F = {
   'cite mailing list': citeWeb$C,
   'cite press release': citeWeb$C,
   'cite url': citeWeb$C,
   'citeweb': citeWeb$C,
 };
 
-const data$J = { aliases: aliases$J, infoboxes: infoboxes$J, parsers: parsers$J };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$J = [
+  'taksonitabel',
+];
+
+const data$J = { aliases: aliases$J, infoboxes: infoboxes$J, parsers: citations$F };
 
 const plugin$K = (_models, templates, boxes) => register(data$J, templates, boxes);
 plugin$K.lang = 'et';
 plugin$K.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // basque template names → the core template they resolve to
 const aliases$I = {
   'atari': 'portal',
@@ -2659,13 +2721,9 @@ const aliases$I = {
   'txikipedia-erreferentzia zerrenda': 'reflist',
 };
 
-// names recognised as infoboxes
-const infoboxes$I = [
-  'taxotaula',
-  'taxotaula automatikoa',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citation$a = translate('citation', {
   'izenburua': 'title',
   'urtea': 'year',
@@ -2698,7 +2756,7 @@ const citation$a = translate('citation', {
   'argitaletxea': 'publisher',
 });
 
-const parsers$I = {
+const citations$E = {
   'albiste erref': citation$a,
   'cite news': citation$a,
   'erreferentzia': citation$a,
@@ -2707,14 +2765,20 @@ const parsers$I = {
   'web erref': citation$a,
 };
 
-const data$I = { aliases: aliases$I, infoboxes: infoboxes$I, parsers: parsers$I };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$I = [
+  'taxotaula',
+  'taxotaula automatikoa',
+];
+
+const data$I = { aliases: aliases$I, infoboxes: infoboxes$I, parsers: citations$E };
 
 const plugin$J = (_models, templates, boxes) => register(data$I, templates, boxes);
 plugin$J.lang = 'eu';
 plugin$J.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // persian template names → the core template they resolve to
 const aliases$H = {
   'ap': 'main',
@@ -2853,15 +2917,9 @@ const aliases$H = {
   '웹 인용': 'cite web',
 };
 
-// names recognised as infoboxes
-const infoboxes$H = [
-  'جعبه آرایه زیستی',
-  'جعبه اطلاعات آرایه زیستی',
-  'جعبه زیست',
-  'زیسترده',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeJournal$o = translate('cite journal', {
   'trans_title': 'trans-title',
   'accessdate': 'access-date',
@@ -2882,7 +2940,7 @@ const internetquelle$j = translate('cite web', {
   'archiv-datum': 'archive-date',
 });
 
-const parsers$H = {
+const citations$D = {
   'cita publicación': citeJournal$o,
   'citation journal': citeJournal$o,
   'cite magazine article': citeJournal$o,
@@ -2892,14 +2950,22 @@ const parsers$H = {
   'internetquelle': internetquelle$j,
 };
 
-const data$H = { aliases: aliases$H, infoboxes: infoboxes$H, parsers: parsers$H };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$H = [
+  'جعبه آرایه زیستی',
+  'جعبه اطلاعات آرایه زیستی',
+  'جعبه زیست',
+  'زیسترده',
+];
+
+const data$H = { aliases: aliases$H, infoboxes: infoboxes$H, parsers: citations$D };
 
 const plugin$I = (_models, templates, boxes) => register(data$H, templates, boxes);
 plugin$I.lang = 'fa';
 plugin$I.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // finnish template names → the core template they resolve to
 const aliases$G = {
   'aloituspäivämäärä': 'start',
@@ -2919,12 +2985,9 @@ const aliases$G = {
   'viitteet': 'reflist',
 };
 
-// names recognised as infoboxes
-const infoboxes$G = [
-  'taksonomia',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeJournal$n = translate('cite journal', {
   'tekijä': 'author',
   'vauthors': 'author',
@@ -2993,7 +3056,7 @@ const citeBook$y = translate('cite book', {
   'kieli': 'language',
 });
 
-const parsers$G = {
+const citations$C = {
   'cite magazine': citeJournal$n,
   'citeweb': citeWeb$B,
   'kirjaviite': citeBook$y,
@@ -3001,14 +3064,19 @@ const parsers$G = {
   'verkkoviite': citeWeb$B,
 };
 
-const data$G = { aliases: aliases$G, infoboxes: infoboxes$G, parsers: parsers$G };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$G = [
+  'taksonomia',
+];
+
+const data$G = { aliases: aliases$G, infoboxes: infoboxes$G, parsers: citations$C };
 
 const plugin$H = (_models, templates, boxes) => register(data$G, templates, boxes);
 plugin$H.lang = 'fi';
 plugin$H.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // french template names → the core template they resolve to
 const aliases$F = {
   'affiche nombre': 'formatnum',
@@ -3038,9 +3106,9 @@ const aliases$F = {
   'voir': 'main',
 };
 
-const infoboxes$F = [];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeJournal$m = translate('cite journal', {
   'langue': 'language',
   'lang': 'language',
@@ -3202,7 +3270,7 @@ const literatur$2 = translate('cite book', {
   'citation': 'quote',
 });
 
-const parsers$F = {
+const citations$B = {
   'article': citeJournal$m,
   'cita noticia': citeJournal$m,
   'cita web': citeWeb$A,
@@ -3223,14 +3291,17 @@ const parsers$F = {
   'site web': citeWeb$A,
 };
 
-const data$F = { aliases: aliases$F, infoboxes: infoboxes$F, parsers: parsers$F };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$F = [];
+
+const data$F = { aliases: aliases$F, infoboxes: infoboxes$F, parsers: citations$B };
 
 const plugin$G = (_models, templates, boxes) => register(data$F, templates, boxes);
 plugin$G.lang = 'fr';
 plugin$G.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // galician template names → the core template they resolve to
 const aliases$E = {
   'afi': 'ipa',
@@ -3255,9 +3326,9 @@ const aliases$E = {
   'ver artigo principal': 'main',
 };
 
-const infoboxes$E = [];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeBook$w = translate('cite book', {
   'apelidos-editor': 'editor',
   'apelidos-editor1': 'editor',
@@ -3286,7 +3357,7 @@ const internetquelle$i = translate('cite web', {
   'apelidos-editor1': 'editor',
 });
 
-const parsers$E = {
+const citations$A = {
   'cita libro': citeBook$w,
   'cita web': citeWeb$z,
   'citar libro': citeBook$w,
@@ -3296,14 +3367,17 @@ const parsers$E = {
   'lien web': citeWeb$z,
 };
 
-const data$E = { aliases: aliases$E, infoboxes: infoboxes$E, parsers: parsers$E };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$E = [];
+
+const data$E = { aliases: aliases$E, infoboxes: infoboxes$E, parsers: citations$A };
 
 const plugin$F = (_models, templates, boxes) => register(data$E, templates, boxes);
 plugin$F.lang = 'gl';
 plugin$F.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // hebrew template names → the core template they resolve to
 const aliases$D = {
   'cite magazine': 'cite journal',
@@ -3321,12 +3395,9 @@ const aliases$D = {
   'תאריך התחלה': 'start',
 };
 
-// names recognised as infoboxes
-const infoboxes$D = [
-  'מיון',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeWeb$y = translate('cite web', {
   'author1-last': 'author',
   'author-last': 'author',
@@ -3347,18 +3418,23 @@ const citeWeb$y = translate('cite web', {
   'host': 'authors',
 });
 
-const parsers$D = {
+const citations$z = {
   'citeweb': citeWeb$y,
 };
 
-const data$D = { aliases: aliases$D, infoboxes: infoboxes$D, parsers: parsers$D };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$D = [
+  'מיון',
+];
+
+const data$D = { aliases: aliases$D, infoboxes: infoboxes$D, parsers: citations$z };
 
 const plugin$E = (_models, templates, boxes) => register(data$D, templates, boxes);
 plugin$E.lang = 'he';
 plugin$E.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // hindi template names → the core template they resolve to
 const aliases$C = {
   'birthdate and age': 'birth date and age',
@@ -3405,12 +3481,9 @@ const aliases$C = {
   'सूत्र सूची': 'reflist',
 };
 
-// names recognised as infoboxes
-const infoboxes$C = [
-  'टैक्सोबॉक्स',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeWeb$x = translate('cite web', {
   'accessdate': 'access-date',
   'author1-last': 'author',
@@ -3509,7 +3582,7 @@ const citeBook$v = translate('cite book', {
   'credits': 'authors',
 });
 
-const parsers$C = {
+const citations$y = {
   'cite blog': citeWeb$x,
   'cite website': citeWeb$x,
   'cite-web': citeWeb$x,
@@ -3525,14 +3598,19 @@ const parsers$C = {
   'संदर्भ': citation$9,
 };
 
-const data$C = { aliases: aliases$C, infoboxes: infoboxes$C, parsers: parsers$C };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$C = [
+  'टैक्सोबॉक्स',
+];
+
+const data$C = { aliases: aliases$C, infoboxes: infoboxes$C, parsers: citations$y };
 
 const plugin$D = (_models, templates, boxes) => register(data$C, templates, boxes);
 plugin$D.lang = 'hi';
 plugin$D.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // croatian template names → the core template they resolve to
 const aliases$B = {
   'citiranje': 'citation',
@@ -3580,12 +3658,9 @@ const aliases$B = {
   'zd+x/ž': 'flag',
 };
 
-// names recognised as infoboxes
-const infoboxes$B = [
-  'taksokvir',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeBook$u = translate('cite book', {
   'author1-last': 'author',
   'author-last': 'author',
@@ -3720,7 +3795,7 @@ const citeJournal$k = translate('cite journal', {
   'glava': 'chapter',
 });
 
-const parsers$B = {
+const citations$x = {
   'bokref': citeBook$u,
   'cite manual': citeBook$u,
   'citebook': citeBook$u,
@@ -3736,14 +3811,19 @@ const parsers$B = {
   'webbref': citeWeb$w,
 };
 
-const data$B = { aliases: aliases$B, infoboxes: infoboxes$B, parsers: parsers$B };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$B = [
+  'taksokvir',
+];
+
+const data$B = { aliases: aliases$B, infoboxes: infoboxes$B, parsers: citations$x };
 
 const plugin$C = (_models, templates, boxes) => register(data$B, templates, boxes);
 plugin$C.lang = 'hr';
 plugin$C.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // hungarian template names → the core template they resolve to
 const aliases$A = {
   'bővebben': 'main',
@@ -3768,12 +3848,9 @@ const aliases$A = {
   'életkor-élő-dátummal': 'birth date and age',
 };
 
-// names recognised as infoboxes
-const infoboxes$A = [
-  'taxobox szerkesztése',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeBook$t = translate('cite book', {
   'pp': 'pages',
 });
@@ -3802,7 +3879,7 @@ const internetquelle$h = translate('cite web', {
   'archivedate': 'archive-date',
 });
 
-const parsers$A = {
+const citations$w = {
   'cite chapter': citeBook$t,
   'cite paper': citeJournal$j,
   'cite-web': citeWeb$v,
@@ -3812,14 +3889,19 @@ const parsers$A = {
   'weblap hivatkozás': citeWeb$v,
 };
 
-const data$A = { aliases: aliases$A, infoboxes: infoboxes$A, parsers: parsers$A };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$A = [
+  'taxobox szerkesztése',
+];
+
+const data$A = { aliases: aliases$A, infoboxes: infoboxes$A, parsers: citations$w };
 
 const plugin$B = (_models, templates, boxes) => register(data$A, templates, boxes);
 plugin$B.lang = 'hu';
 plugin$B.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // armenian template names → the core template they resolve to
 const aliases$z = {
   'coord-nocat': 'coord',
@@ -3846,12 +3928,9 @@ const aliases$z = {
   'փոքր': 'small',
 };
 
-// names recognised as infoboxes
-const infoboxes$z = [
-  'տաքսոտուփ',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeWeb$u = translate('cite web', {
   'accessdate': 'access-date',
   'author1-last': 'author',
@@ -3935,7 +4014,7 @@ const internetquelle$g = translate('cite web', {
   'archivedate': 'archive-date',
 });
 
-const parsers$z = {
+const citations$v = {
   'cita web': citeWeb$u,
   'citar web': citeWeb$u,
   'citeweb': citeWeb$u,
@@ -3948,14 +4027,19 @@ const parsers$z = {
   '웹 인용': citeWeb$u,
 };
 
-const data$z = { aliases: aliases$z, infoboxes: infoboxes$z, parsers: parsers$z };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$z = [
+  'տաքսոտուփ',
+];
+
+const data$z = { aliases: aliases$z, infoboxes: infoboxes$z, parsers: citations$v };
 
 const plugin$A = (_models, templates, boxes) => register(data$z, templates, boxes);
 plugin$A.lang = 'hy';
 plugin$A.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // indonesian template names → the core template they resolve to
 const aliases$y = {
   'artikel': 'main',
@@ -4015,18 +4099,9 @@ const aliases$y = {
   'wikiportal': 'portal',
 };
 
-// names recognised as infoboxes
-const infoboxes$y = [
-  'kotaktaksonomi',
-  'kotaktaksonomi bagian binomial',
-  'kotaktaksonomi phylum entry',
-  'kotaktaksonomi subclassis entry',
-  'kotaktaksonomi subfamilia entry',
-  'kotaktaksonomi subordo entry',
-  'taxobox begin',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeBook$r = translate('cite book', {
   'author1-last': 'author',
   'author-last': 'author',
@@ -4108,7 +4183,7 @@ const internetquelle$f = translate('cite web', {
   'archivedate': 'archive-date',
 });
 
-const parsers$y = {
+const citations$u = {
   'book reference': citeBook$r,
   'buku kutipan': citeBook$r,
   'chú thích web': citeWeb$t,
@@ -4143,14 +4218,25 @@ const parsers$y = {
   'web reference': citeWeb$t,
 };
 
-const data$y = { aliases: aliases$y, infoboxes: infoboxes$y, parsers: parsers$y };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$y = [
+  'kotaktaksonomi',
+  'kotaktaksonomi bagian binomial',
+  'kotaktaksonomi phylum entry',
+  'kotaktaksonomi subclassis entry',
+  'kotaktaksonomi subfamilia entry',
+  'kotaktaksonomi subordo entry',
+  'taxobox begin',
+];
+
+const data$y = { aliases: aliases$y, infoboxes: infoboxes$y, parsers: citations$u };
 
 const plugin$z = (_models, templates, boxes) => register(data$y, templates, boxes);
 plugin$z.lang = 'id';
 plugin$z.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // italian template names → the core template they resolve to
 const aliases$x = {
   'bandiera': 'flagicon',
@@ -4166,12 +4252,9 @@ const aliases$x = {
   'release date': 'start',
 };
 
-// names recognised as infoboxes
-const infoboxes$x = [
-  'tassobox',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeBook$q = translate('cite book', {
   'nome': 'first1',
   'first name': 'first1',
@@ -4211,7 +4294,7 @@ const citation$8 = translate('citation', {
   'vol': 'volume',
 });
 
-const parsers$x = {
+const citations$t = {
   'cita libro': citeBook$q,
   'cita periodico': citeJournal$h,
   'cita pubblicazione': citeJournal$h,
@@ -4223,14 +4306,19 @@ const parsers$x = {
   'lien web': citeWeb$s,
 };
 
-const data$x = { aliases: aliases$x, infoboxes: infoboxes$x, parsers: parsers$x };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$x = [
+  'tassobox',
+];
+
+const data$x = { aliases: aliases$x, infoboxes: infoboxes$x, parsers: citations$t };
 
 const plugin$y = (_models, templates, boxes) => register(data$x, templates, boxes);
 plugin$y.lang = 'it';
 plugin$y.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // japanese template names → the core template they resolve to
 const aliases$w = {
   'alter': 'birth date and age',
@@ -4274,12 +4362,9 @@ const aliases$w = {
   '詳細記事': 'main',
 };
 
-// names recognised as infoboxes
-const infoboxes$w = [
-  '生物分類表',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeWeb$r = translate('cite web', {
   'accessdate': 'access-date',
   'archiveurl': 'archive-url',
@@ -4345,7 +4430,7 @@ const internetquelle$e = translate('cite web', {
   'archivedate': 'archive-date',
 });
 
-const parsers$w = {
+const citations$s = {
   'cite blog': citeWeb$r,
   'cite book/draft/cite book': citeBook$p,
   'cite magazine': citeJournal$g,
@@ -4367,14 +4452,19 @@ const parsers$w = {
   'web cite': citeWeb$r,
 };
 
-const data$w = { aliases: aliases$w, infoboxes: infoboxes$w, parsers: parsers$w };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$w = [
+  '生物分類表',
+];
+
+const data$w = { aliases: aliases$w, infoboxes: infoboxes$w, parsers: citations$s };
 
 const plugin$x = (_models, templates, boxes) => register(data$w, templates, boxes);
 plugin$x.lang = 'ja';
 plugin$x.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // georgian template names → the core template they resolve to
 const aliases$v = {
   'cite magazine': 'cite journal',
@@ -4399,13 +4489,9 @@ const aliases$v = {
   'სქოლიოს სია გრძელი': 'reflist',
 };
 
-// names recognised as infoboxes
-const infoboxes$v = [
-  'ტაქსოდაფა',
-  'ტაქსოდაფა *',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeWeb$q = translate('cite web', {
   'accessdate': 'access-date',
   'author1-last': 'author',
@@ -4458,19 +4544,25 @@ const internetquelle$d = translate('cite web', {
   'archivedate': 'archive-date',
 });
 
-const parsers$v = {
+const citations$r = {
   'citeweb': citeWeb$q,
   'internetquelle': internetquelle$d,
 };
 
-const data$v = { aliases: aliases$v, infoboxes: infoboxes$v, parsers: parsers$v };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$v = [
+  'ტაქსოდაფა',
+  'ტაქსოდაფა *',
+];
+
+const data$v = { aliases: aliases$v, infoboxes: infoboxes$v, parsers: citations$r };
 
 const plugin$w = (_models, templates, boxes) => register(data$v, templates, boxes);
 plugin$w.lang = 'ka';
 plugin$w.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // kazakh template names → the core template they resolve to
 const aliases$u = {
   'commons category': 'commons cat',
@@ -4491,9 +4583,9 @@ const aliases$u = {
   'ту': 'flagicon',
 };
 
-const infoboxes$u = [];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeJournal$f = translate('cite journal', {
   'жыл': 'year',
 });
@@ -4503,7 +4595,7 @@ const citeWeb$p = translate('cite web', {
   'accessdate': 'access-date',
 });
 
-const parsers$u = {
+const citations$q = {
   'cite magazine': citeJournal$f,
   'citeweb': citeWeb$p,
   'cw': citeWeb$p,
@@ -4511,14 +4603,17 @@ const parsers$u = {
   'веб-сайт': citeWeb$p,
 };
 
-const data$u = { aliases: aliases$u, infoboxes: infoboxes$u, parsers: parsers$u };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$u = [];
+
+const data$u = { aliases: aliases$u, infoboxes: infoboxes$u, parsers: citations$q };
 
 const plugin$v = (_models, templates, boxes) => register(data$u, templates, boxes);
 plugin$v.lang = 'kk';
 plugin$v.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // korean template names → the core template they resolve to
 const aliases$t = {
   'commons category': 'commons cat',
@@ -4570,13 +4665,9 @@ const aliases$t = {
   '형식 숫자': 'formatnum',
 };
 
-// names recognised as infoboxes
-const infoboxes$t = [
-  '새 정보',
-  '생물 분류',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeBook$o = translate('cite book', {
   '제목': 'title',
   '날짜': 'date',
@@ -4720,7 +4811,7 @@ const internetquelle$c = translate('cite web', {
   '인용': 'quote',
 });
 
-const parsers$t = {
+const citations$p = {
   'cita libro': citeBook$o,
   'cita web': citeWeb$o,
   'cite blog': citeWeb$o,
@@ -4744,14 +4835,20 @@ const parsers$t = {
   '학술지 인용': citeJournal$e,
 };
 
-const data$t = { aliases: aliases$t, infoboxes: infoboxes$t, parsers: parsers$t };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$t = [
+  '새 정보',
+  '생물 분류',
+];
+
+const data$t = { aliases: aliases$t, infoboxes: infoboxes$t, parsers: citations$p };
 
 const plugin$u = (_models, templates, boxes) => register(data$t, templates, boxes);
 plugin$u.lang = 'ko';
 plugin$u.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // lithuanian template names → the core template they resolve to
 const aliases$s = {
   'bandera': 'flagicon',
@@ -4777,18 +4874,19 @@ const aliases$s = {
   'vlv': 'flagicon',
 };
 
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
 const infoboxes$s = [];
 
-const parsers$s = {};
+const parsers$3 = {};
 
-const data$s = { aliases: aliases$s, infoboxes: infoboxes$s, parsers: parsers$s };
+const data$s = { aliases: aliases$s, infoboxes: infoboxes$s, parsers: parsers$3 };
 
 const plugin$t = (_models, templates, boxes) => register(data$s, templates, boxes);
 plugin$t.lang = 'lt';
 plugin$t.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // latvian template names → the core template they resolve to
 const aliases$r = {
   'atsauce': 'citation',
@@ -4814,19 +4912,9 @@ const aliases$r = {
   'vikikrātuves kategorija': 'commons cat',
 };
 
-// names recognised as infoboxes
-const infoboxes$r = [
-  'bioloģiskās taksonomijas infokaste',
-  'biotakso',
-  'biotakso infokaste',
-  'biotaksonomijas infokaste',
-  'dzīvnieki infobox',
-  'info biotakso',
-  'info taxo',
-  'taksonomijas infokaste',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeJournal$d = translate('cite journal', {
   'trans_title': 'trans-title',
   'accessdate': 'access-date',
@@ -4875,7 +4963,7 @@ const citeBook$n = translate('cite book', {
   'quotation': 'quote',
 });
 
-const parsers$r = {
+const citations$o = {
   'cite magazine': citeJournal$d,
   'cite paper': citeJournal$d,
   'citeweb': citeWeb$n,
@@ -4889,14 +4977,26 @@ const parsers$r = {
   'žurnāla atsauce': citeJournal$d,
 };
 
-const data$r = { aliases: aliases$r, infoboxes: infoboxes$r, parsers: parsers$r };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$r = [
+  'bioloģiskās taksonomijas infokaste',
+  'biotakso',
+  'biotakso infokaste',
+  'biotaksonomijas infokaste',
+  'dzīvnieki infobox',
+  'info biotakso',
+  'info taxo',
+  'taksonomijas infokaste',
+];
+
+const data$r = { aliases: aliases$r, infoboxes: infoboxes$r, parsers: citations$o };
 
 const plugin$s = (_models, templates, boxes) => register(data$r, templates, boxes);
 plugin$s.lang = 'lv';
 plugin$s.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // macedonian template names → the core template they resolve to
 const aliases$q = {
   'ap': 'main',
@@ -4942,12 +5042,9 @@ const aliases$q = {
   'јапонски': 'nihongo',
 };
 
-// names recognised as infoboxes
-const infoboxes$q = [
-  'таксономија',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeWeb$m = translate('cite web', {
   'author1-last': 'author',
   'author-last': 'author',
@@ -5025,7 +5122,7 @@ const citeBook$m = translate('cite book', {
   'credits': 'authors',
 });
 
-const parsers$q = {
+const citations$n = {
   'cite website': citeWeb$m,
   'cite дневник': citeJournal$c,
   'citebook': citeBook$m,
@@ -5042,14 +5139,19 @@ const parsers$q = {
   'нмс': citeWeb$m,
 };
 
-const data$q = { aliases: aliases$q, infoboxes: infoboxes$q, parsers: parsers$q };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$q = [
+  'таксономија',
+];
+
+const data$q = { aliases: aliases$q, infoboxes: infoboxes$q, parsers: citations$n };
 
 const plugin$r = (_models, templates, boxes) => register(data$q, templates, boxes);
 plugin$r.lang = 'mk';
 plugin$r.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // malayalam template names → the core template they resolve to
 const aliases$p = {
   'ap': 'main',
@@ -5089,9 +5191,9 @@ const aliases$p = {
   'പ്രലേ': 'main',
 };
 
-const infoboxes$p = [];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeWeb$l = translate('cite web', {
   'accessdate': 'access-date',
   'editor-last': 'editor',
@@ -5132,7 +5234,7 @@ const citeBook$l = translate('cite book', {
   'number': 'issue',
 });
 
-const parsers$p = {
+const citations$m = {
   'cita web': citeWeb$l,
   'cite blog': citeWeb$l,
   'cite manual': citeBook$l,
@@ -5145,14 +5247,17 @@ const parsers$p = {
   'web cite': citeWeb$l,
 };
 
-const data$p = { aliases: aliases$p, infoboxes: infoboxes$p, parsers: parsers$p };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$p = [];
+
+const data$p = { aliases: aliases$p, infoboxes: infoboxes$p, parsers: citations$m };
 
 const plugin$q = (_models, templates, boxes) => register(data$p, templates, boxes);
 plugin$q.lang = 'ml';
 plugin$q.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // malay template names → the core template they resolve to
 const aliases$o = {
   'afa': 'ipa',
@@ -5193,13 +5298,9 @@ const aliases$o = {
   'utama': 'main',
 };
 
-// names recognised as infoboxes
-const infoboxes$o = [
-  'kotak info taksonomi',
-  'kotak taksonomi',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeBook$k = translate('cite book', {
   'author1-last': 'author',
   'author-last': 'author',
@@ -5313,7 +5414,7 @@ const internetquelle$b = translate('cite web', {
   'credits': 'authors',
 });
 
-const parsers$o = {
+const citations$l = {
   'book reference': citeBook$k,
   'cita web': citeWeb$k,
   'cite paper': citeJournal$b,
@@ -5333,14 +5434,20 @@ const parsers$o = {
   'web cite': citeWeb$k,
 };
 
-const data$o = { aliases: aliases$o, infoboxes: infoboxes$o, parsers: parsers$o };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$o = [
+  'kotak info taksonomi',
+  'kotak taksonomi',
+];
+
+const data$o = { aliases: aliases$o, infoboxes: infoboxes$o, parsers: citations$l };
 
 const plugin$p = (_models, templates, boxes) => register(data$o, templates, boxes);
 plugin$p.lang = 'ms';
 plugin$p.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // dutch template names → the core template they resolve to
 const aliases$n = {
   'commonscat': 'commons cat',
@@ -5356,9 +5463,9 @@ const aliases$n = {
   'zie hoofdartikel': 'main',
 };
 
-const infoboxes$n = [];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeBook$j = translate('cite book', {
   'taal': 'language',
   'lang': 'language',
@@ -5434,7 +5541,7 @@ const citeWeb$j = translate('cite web', {
   'jaar': 'year',
 });
 
-const parsers$n = {
+const citations$k = {
   'citeer boek': citeBook$j,
   'citeer journal': citeJournal$a,
   'citeer web': citeWeb$j,
@@ -5443,14 +5550,17 @@ const parsers$n = {
   'voetnoot web': citeWeb$j,
 };
 
-const data$n = { aliases: aliases$n, infoboxes: infoboxes$n, parsers: parsers$n };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$n = [];
+
+const data$n = { aliases: aliases$n, infoboxes: infoboxes$n, parsers: citations$k };
 
 const plugin$o = (_models, templates, boxes) => register(data$n, templates, boxes);
 plugin$o.lang = 'nl';
 plugin$o.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // norwegian nynorsk template names → the core template they resolve to
 const aliases$m = {
   'cite report': 'citation',
@@ -5480,21 +5590,9 @@ const aliases$m = {
   'utdjupande artikkel': 'main',
 };
 
-// names recognised as infoboxes
-const infoboxes$m = [
-  'prosjekt taksonomi/bruk av taksoboksen',
-  'prosjekt taksonomi/lag ein taksoboks',
-  'taksoboks',
-  'taksoboks2',
-  'taksobox',
-  'taksonomiboks',
-  'taksonomibox',
-  'taxoboks',
-  'taxonomiboks',
-  'taxonomibox',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeBook$i = translate('cite book', {
   'tittel': 'title',
   'author1-last': 'author',
@@ -5556,7 +5654,7 @@ const citeWeb$i = translate('cite web', {
   'nettsted': 'website',
 });
 
-const parsers$m = {
+const citations$j = {
   'cite book-en': citeBook$i,
   'cite book/en': citeBook$i,
   'cite website': citeWeb$i,
@@ -5568,14 +5666,28 @@ const parsers$m = {
   'kjelde www': citeWeb$i,
 };
 
-const data$m = { aliases: aliases$m, infoboxes: infoboxes$m, parsers: parsers$m };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$m = [
+  'prosjekt taksonomi/bruk av taksoboksen',
+  'prosjekt taksonomi/lag ein taksoboks',
+  'taksoboks',
+  'taksoboks2',
+  'taksobox',
+  'taksonomiboks',
+  'taksonomibox',
+  'taxoboks',
+  'taxonomiboks',
+  'taxonomibox',
+];
+
+const data$m = { aliases: aliases$m, infoboxes: infoboxes$m, parsers: citations$j };
 
 const plugin$n = (_models, templates, boxes) => register(data$m, templates, boxes);
 plugin$n.lang = 'nn';
 plugin$n.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // norwegian template names → the core template they resolve to
 const aliases$l = {
   'catmore': 'main',
@@ -5605,16 +5717,9 @@ const aliases$l = {
   'videre informasjon': 'main',
 };
 
-// names recognised as infoboxes
-const infoboxes$l = [
-  'infoboks taksoboks',
-  'taksoboks',
-  'taksoboks fugl',
-  'taksoboks krepsdyr',
-  'taksoboks-kunstig-gruppe',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeBook$h = translate('cite book', {
   'lenke': 'url',
   'link': 'url',
@@ -5669,7 +5774,7 @@ const citeWeb$h = translate('cite web', {
   'skole': 'publisher',
 });
 
-const parsers$l = {
+const citations$i = {
   'bok': citeBook$h,
   'kilde artikkel': citeJournal$9,
   'kilde bok': citeBook$h,
@@ -5678,14 +5783,23 @@ const parsers$l = {
   'tidsskriftsref': citeJournal$9,
 };
 
-const data$l = { aliases: aliases$l, infoboxes: infoboxes$l, parsers: parsers$l };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$l = [
+  'infoboks taksoboks',
+  'taksoboks',
+  'taksoboks fugl',
+  'taksoboks krepsdyr',
+  'taksoboks-kunstig-gruppe',
+];
+
+const data$l = { aliases: aliases$l, infoboxes: infoboxes$l, parsers: citations$i };
 
 const plugin$m = (_models, templates, boxes) => register(data$l, templates, boxes);
 plugin$m.lang = 'no';
 plugin$m.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // polish template names → the core template they resolve to
 const aliases$k = {
   'commonscat': 'commons cat',
@@ -5700,12 +5814,9 @@ const aliases$k = {
   'współrzędne': 'coord',
 };
 
-// names recognised as infoboxes
-const infoboxes$k = [
-  'takson infobox',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citation$6 = translate('citation', {
   'autor': 'author',
   'vauthors': 'author',
@@ -5773,7 +5884,7 @@ const citeWeb$g = translate('cite web', {
   'cytat': 'quote',
 });
 
-const parsers$k = {
+const citations$h = {
   'cytuj': citation$6,
   'cytuj czasopismo': citeJournal$8,
   'cytuj książkę': citeBook$g,
@@ -5781,14 +5892,19 @@ const parsers$k = {
   'cytuj stronę': citeWeb$g,
 };
 
-const data$k = { aliases: aliases$k, infoboxes: infoboxes$k, parsers: parsers$k };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$k = [
+  'takson infobox',
+];
+
+const data$k = { aliases: aliases$k, infoboxes: infoboxes$k, parsers: citations$h };
 
 const plugin$l = (_models, templates, boxes) => register(data$k, templates, boxes);
 plugin$l.lang = 'pl';
 plugin$l.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // portuguese template names → the core template they resolve to
 const aliases$j = {
   'afi': 'ipa',
@@ -5824,15 +5940,9 @@ const aliases$j = {
   'íconebandeira': 'flagicon',
 };
 
-// names recognised as infoboxes
-const infoboxes$j = [
-  'ficha de taxón',
-  'info/taxonomia',
-  'takson infobox',
-  'taxoboxe',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeJournal$7 = translate('cite journal', {
   'título': 'title',
   'titulo': 'title',
@@ -6135,7 +6245,7 @@ const literatur$1 = translate('cite book', {
   'titulo': 'title',
 });
 
-const parsers$j = {
+const citations$g = {
   'article': citeJournal$7,
   'cita libro': citeBook$f,
   'cita publicación periódica': citeJournal$7,
@@ -6162,14 +6272,22 @@ const parsers$j = {
   'webbref': citeWeb$f,
 };
 
-const data$j = { aliases: aliases$j, infoboxes: infoboxes$j, parsers: parsers$j };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$j = [
+  'ficha de taxón',
+  'info/taxonomia',
+  'takson infobox',
+  'taxoboxe',
+];
+
+const data$j = { aliases: aliases$j, infoboxes: infoboxes$j, parsers: citations$g };
 
 const plugin$k = (_models, templates, boxes) => register(data$j, templates, boxes);
 plugin$k.lang = 'pt';
 plugin$k.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // romanian template names → the core template they resolve to
 const aliases$i = {
   'afi': 'ipa',
@@ -6208,13 +6326,9 @@ const aliases$i = {
   'zi de naștere și vârstă': 'birth date and age',
 };
 
-// names recognised as infoboxes
-const infoboxes$i = [
-  'casetă taxonomie',
-  'cutietaxonomie',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeBook$e = translate('cite book', {
   'nume': 'last',
   'surname': 'last',
@@ -6387,7 +6501,7 @@ const literatur = translate('cite book', {
   'citat': 'quote',
 });
 
-const parsers$i = {
+const citations$f = {
   'cita libro': citeBook$e,
   'cita news': citeWeb$e,
   'cita publicación': citeJournal$6,
@@ -6416,14 +6530,20 @@ const parsers$i = {
   'web cite': citeWeb$e,
 };
 
-const data$i = { aliases: aliases$i, infoboxes: infoboxes$i, parsers: parsers$i };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$i = [
+  'casetă taxonomie',
+  'cutietaxonomie',
+];
+
+const data$i = { aliases: aliases$i, infoboxes: infoboxes$i, parsers: citations$f };
 
 const plugin$j = (_models, templates, boxes) => register(data$i, templates, boxes);
 plugin$j.lang = 'ro';
 plugin$j.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // russian template names → the core template they resolve to
 const aliases$h = {
   'bandiera': 'flagicon',
@@ -6480,9 +6600,9 @@ const aliases$h = {
   'ыат': 'sfn',
 };
 
-const infoboxes$h = [];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeBook$d = translate('cite book', {
   'год': 'year',
   'автор': 'author',
@@ -6527,7 +6647,7 @@ const internetquelle$9 = translate('cite web', {
   'accessdate': 'access-date',
 });
 
-const parsers$h = {
+const citations$e = {
   'cita libro': citeBook$d,
   'cita publicación': citeJournal$5,
   'cita web': citeWeb$d,
@@ -6544,14 +6664,17 @@ const parsers$h = {
   'веб-сайт': citeWeb$d,
 };
 
-const data$h = { aliases: aliases$h, infoboxes: infoboxes$h, parsers: parsers$h };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$h = [];
+
+const data$h = { aliases: aliases$h, infoboxes: infoboxes$h, parsers: citations$e };
 
 const plugin$i = (_models, templates, boxes) => register(data$h, templates, boxes);
 plugin$i.lang = 'ru';
 plugin$i.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // serbo-croatian template names → the core template they resolve to
 const aliases$g = {
   'category commons': 'commons cat',
@@ -6599,24 +6722,9 @@ const aliases$g = {
   'рефлист': 'reflist',
 };
 
-// names recognised as infoboxes
-const infoboxes$g = [
-  'infokutija takson',
-  'infokutija taksonomija',
-  'infokvir takson',
-  'infokvir taksonomija',
-  'infookvir takson',
-  'infookvir taksonomija',
-  'taksokvir',
-  'taksonomska infokutija',
-  'taksonomska kutija',
-  'taksonomski infokvir',
-  'taksonomski infookvir',
-  'taksonomski okvir',
-  'taxobox-lat',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeBook$c = translate('cite book', {
   'author-last': 'author',
   'surname': 'author',
@@ -6669,7 +6777,7 @@ const citeWeb$c = translate('cite web', {
   'archivedate': 'archive-date',
 });
 
-const parsers$g = {
+const citations$d = {
   'book reference': citeBook$c,
   'cite web-lat': citeWeb$c,
   'citebook': citeBook$c,
@@ -6682,14 +6790,31 @@ const parsers$g = {
   'web reference': citeWeb$c,
 };
 
-const data$g = { aliases: aliases$g, infoboxes: infoboxes$g, parsers: parsers$g };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$g = [
+  'infokutija takson',
+  'infokutija taksonomija',
+  'infokvir takson',
+  'infokvir taksonomija',
+  'infookvir takson',
+  'infookvir taksonomija',
+  'taksokvir',
+  'taksonomska infokutija',
+  'taksonomska kutija',
+  'taksonomski infokvir',
+  'taksonomski infookvir',
+  'taksonomski okvir',
+  'taxobox-lat',
+];
+
+const data$g = { aliases: aliases$g, infoboxes: infoboxes$g, parsers: citations$d };
 
 const plugin$h = (_models, templates, boxes) => register(data$g, templates, boxes);
 plugin$h.lang = 'sh';
 plugin$h.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // simple-english template names → the core template they resolve to
 const aliases$f = {
   'bibisbn': 'cite journal',
@@ -6731,12 +6856,9 @@ const aliases$f = {
   'wikimedia commons cat': 'commons cat',
 };
 
-// names recognised as infoboxes
-const infoboxes$f = [
-  'tx',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeBook$b = translate('cite book', {
   'author1-last': 'author',
   'author-last': 'author',
@@ -6850,7 +6972,7 @@ const internetquelle$8 = translate('cite web', {
   'host': 'authors',
 });
 
-const parsers$f = {
+const citations$c = {
   'book source': citeBook$b,
   'cita web': citeWeb$b,
   'cite manual': citeBook$b,
@@ -6866,14 +6988,19 @@ const parsers$f = {
   'web-cite': citeWeb$b,
 };
 
-const data$f = { aliases: aliases$f, infoboxes: infoboxes$f, parsers: parsers$f };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$f = [
+  'tx',
+];
+
+const data$f = { aliases: aliases$f, infoboxes: infoboxes$f, parsers: citations$c };
 
 const plugin$g = (_models, templates, boxes) => register(data$f, templates, boxes);
 plugin$g.lang = 'simple';
 plugin$g.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // slovak template names → the core template they resolve to
 const aliases$e = {
   'citácia elektronického dokumentu': 'cite web',
@@ -6891,18 +7018,19 @@ const aliases$e = {
   'súradnice': 'coord',
 };
 
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
 const infoboxes$e = [];
 
-const parsers$e = {};
+const parsers$2 = {};
 
-const data$e = { aliases: aliases$e, infoboxes: infoboxes$e, parsers: parsers$e };
+const data$e = { aliases: aliases$e, infoboxes: infoboxes$e, parsers: parsers$2 };
 
 const plugin$f = (_models, templates, boxes) => register(data$e, templates, boxes);
 plugin$f.lang = 'sk';
 plugin$f.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // slovenian template names → the core template they resolve to
 const aliases$d = {
   'cite newspaper': 'cite journal',
@@ -6933,12 +7061,9 @@ const aliases$d = {
   'začetni datum': 'start',
 };
 
-// names recognised as infoboxes
-const infoboxes$d = [
-  'taksonomka',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citation$3 = translate('citation', {
   'author1-last': 'author',
   'author-last': 'author',
@@ -7052,7 +7177,7 @@ const citeBook$a = translate('cite book', {
   'number': 'issue',
 });
 
-const parsers$d = {
+const citations$b = {
   'citat': citation$3,
   'citat/new': citation$3,
   'citation/new': citation$3,
@@ -7069,14 +7194,19 @@ const parsers$d = {
   'test-cite web': citeWeb$a,
 };
 
-const data$d = { aliases: aliases$d, infoboxes: infoboxes$d, parsers: parsers$d };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$d = [
+  'taksonomka',
+];
+
+const data$d = { aliases: aliases$d, infoboxes: infoboxes$d, parsers: citations$b };
 
 const plugin$e = (_models, templates, boxes) => register(data$d, templates, boxes);
 plugin$e.lang = 'sl';
 plugin$e.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // albanian template names → the core template they resolve to
 const aliases$c = {
   'artikulli kryesor': 'main',
@@ -7099,9 +7229,9 @@ const aliases$c = {
   'sapi': 'ipa',
 };
 
-const infoboxes$c = [];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citation$2 = translate('citation', {
   'encyclopedia': 'website',
   'encyclopaedia': 'website',
@@ -7175,21 +7305,24 @@ const internetquelle$6 = translate('cite web', {
   'host': 'authors',
 });
 
-const parsers$c = {
+const citations$a = {
   'citim': citation$2,
   'cito uebin': citeWeb$9,
   'cito web': citeWeb$9,
   'internetquelle': internetquelle$6,
 };
 
-const data$c = { aliases: aliases$c, infoboxes: infoboxes$c, parsers: parsers$c };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$c = [];
+
+const data$c = { aliases: aliases$c, infoboxes: infoboxes$c, parsers: citations$a };
 
 const plugin$d = (_models, templates, boxes) => register(data$c, templates, boxes);
 plugin$d.lang = 'sq';
 plugin$d.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // serbian template names → the core template they resolve to
 const aliases$b = {
   'ccat': 'commons cat',
@@ -7255,9 +7388,9 @@ const aliases$b = {
   'умањи': 'small',
 };
 
-const infoboxes$b = [];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeWeb$8 = translate('cite web', {
   'accessdate': 'access-date',
   'author1-last': 'author',
@@ -7365,7 +7498,7 @@ const internetquelle$5 = translate('cite web', {
   'credits': 'authors',
 });
 
-const parsers$b = {
+const citations$9 = {
   'cita web': citeWeb$8,
   'cite chapter': citeBook$9,
   'cite manual': citeBook$9,
@@ -7382,14 +7515,17 @@ const parsers$b = {
   'цитирање књиге': citeBook$9,
 };
 
-const data$b = { aliases: aliases$b, infoboxes: infoboxes$b, parsers: parsers$b };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$b = [];
+
+const data$b = { aliases: aliases$b, infoboxes: infoboxes$b, parsers: citations$9 };
 
 const plugin$c = (_models, templates, boxes) => register(data$b, templates, boxes);
 plugin$c.lang = 'sr';
 plugin$c.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // swedish template names → the core template they resolve to
 const aliases$a = {
   '+portal': 'portal',
@@ -7435,18 +7571,19 @@ const aliases$a = {
   'ålder': 'birth date and age',
 };
 
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
 const infoboxes$a = [];
 
-const parsers$a = {};
+const parsers$1 = {};
 
-const data$a = { aliases: aliases$a, infoboxes: infoboxes$a, parsers: parsers$a };
+const data$a = { aliases: aliases$a, infoboxes: infoboxes$a, parsers: parsers$1 };
 
 const plugin$b = (_models, templates, boxes) => register(data$a, templates, boxes);
 plugin$b.lang = 'sv';
 plugin$b.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // tamil template names → the core template they resolve to
 const aliases$9 = {
   'birthdate and age': 'birth date and age',
@@ -7484,9 +7621,9 @@ const aliases$9 = {
   'வலைவாசல்': 'portal',
 };
 
-const infoboxes$9 = [];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeBook$8 = translate('cite book', {
   'author1-last': 'author',
   'author-last': 'author',
@@ -7525,21 +7662,24 @@ const citeJournal$4 = translate('cite journal', {
   'archivedate': 'archive-date',
 });
 
-const parsers$9 = {
+const citations$8 = {
   'cite books': citeBook$8,
   'cite paper': citeJournal$4,
   'citebook': citeBook$8,
   'citejournal': citeJournal$4,
 };
 
-const data$9 = { aliases: aliases$9, infoboxes: infoboxes$9, parsers: parsers$9 };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$9 = [];
+
+const data$9 = { aliases: aliases$9, infoboxes: infoboxes$9, parsers: citations$8 };
 
 const plugin$a = (_models, templates, boxes) => register(data$9, templates, boxes);
 plugin$a.lang = 'ta';
 plugin$a.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // telugu template names → the core template they resolve to
 const aliases$8 = {
   'ccat': 'commons cat',
@@ -7568,9 +7708,9 @@ const aliases$8 = {
   'మూలాలు': 'reflist',
 };
 
-const infoboxes$8 = [];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeBook$7 = translate('cite book', {
   'author1-last': 'author',
   'author-last': 'author',
@@ -7638,7 +7778,7 @@ const citeWeb$7 = translate('cite web', {
   'host': 'authors',
 });
 
-const parsers$8 = {
+const citations$7 = {
   'book reference': citeBook$7,
   'cite blog': citeWeb$7,
   'citebook': citeBook$7,
@@ -7647,14 +7787,17 @@ const parsers$8 = {
   'వెబ్ మూలము': citeWeb$7,
 };
 
-const data$8 = { aliases: aliases$8, infoboxes: infoboxes$8, parsers: parsers$8 };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$8 = [];
+
+const data$8 = { aliases: aliases$8, infoboxes: infoboxes$8, parsers: citations$7 };
 
 const plugin$9 = (_models, templates, boxes) => register(data$8, templates, boxes);
 plugin$9.lang = 'te';
 plugin$9.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // thai template names → the core template they resolve to
 const aliases$7 = {
   'cc': 'commons cat',
@@ -7693,15 +7836,9 @@ const aliases$7 = {
   '生年月日と年齢': 'birth date and age',
 };
 
-// names recognised as infoboxes
-const infoboxes$7 = [
-  'ตารางจำแนกพันธุ์',
-  'พฤกษศาสตร์',
-  'สัตววิทยา',
-  'อนุกรมภิธาน',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeWeb$6 = translate('cite web', {
   'accessdate': 'access-date',
   'author1-last': 'author',
@@ -7785,7 +7922,7 @@ const internetquelle$4 = translate('cite web', {
   'archivedate': 'archive-date',
 });
 
-const parsers$7 = {
+const citations$6 = {
   'cita web': citeWeb$6,
   'citar web': citeWeb$6,
   'cite blog': citeWeb$6,
@@ -7802,14 +7939,22 @@ const parsers$7 = {
   'internetquelle': internetquelle$4,
 };
 
-const data$7 = { aliases: aliases$7, infoboxes: infoboxes$7, parsers: parsers$7 };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$7 = [
+  'ตารางจำแนกพันธุ์',
+  'พฤกษศาสตร์',
+  'สัตววิทยา',
+  'อนุกรมภิธาน',
+];
+
+const data$7 = { aliases: aliases$7, infoboxes: infoboxes$7, parsers: citations$6 };
 
 const plugin$8 = (_models, templates, boxes) => register(data$7, templates, boxes);
 plugin$8.lang = 'th';
 plugin$8.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // turkish template names → the core template they resolve to
 const aliases$6 = {
   'ana': 'main',
@@ -7856,14 +8001,9 @@ const aliases$6 = {
   'snf': 'sfn',
 };
 
-// names recognised as infoboxes
-const infoboxes$6 = [
-  'takso kutu',
-  'takso kutusu',
-  'taksokutu',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeJournal$3 = translate('cite journal', {
   'katkı-url': 'url',
   'başlık': 'title',
@@ -8389,7 +8529,7 @@ const citeBook$5 = translate('cite book', {
   'soyadı1': 'last1',
 });
 
-const parsers$6 = {
+const citations$5 = {
   'akademik dergi kaynağı': citeJournal$3,
   'cite science': citeJournal$3,
   'citeweb': citeWeb$5,
@@ -8406,14 +8546,21 @@ const parsers$6 = {
   'webkaynağı': citeWeb$5,
 };
 
-const data$6 = { aliases: aliases$6, infoboxes: infoboxes$6, parsers: parsers$6 };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$6 = [
+  'takso kutu',
+  'takso kutusu',
+  'taksokutu',
+];
+
+const data$6 = { aliases: aliases$6, infoboxes: infoboxes$6, parsers: citations$5 };
 
 const plugin$7 = (_models, templates, boxes) => register(data$6, templates, boxes);
 plugin$7.lang = 'tr';
 plugin$7.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // ukrainian template names → the core template they resolve to
 const aliases$5 = {
   'citazione': 'citation',
@@ -8464,13 +8611,9 @@ const aliases$5 = {
   'флаг': 'flagicon',
 };
 
-// names recognised as infoboxes
-const infoboxes$5 = [
-  'організм',
-  'таксобокс',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeJournal$2 = translate('cite journal', {
   'назва': 'title',
   'дата': 'date',
@@ -8624,7 +8767,7 @@ const internetquelle$2 = translate('cite web', {
   'trans_title': 'trans-title',
 });
 
-const parsers$5 = {
+const citations$4 = {
   'article': citeJournal$2,
   'citace elektronické monografie': citeWeb$4,
   'citar web': citeWeb$4,
@@ -8657,14 +8800,20 @@ const parsers$5 = {
   'цитувати журнал': citeJournal$2,
 };
 
-const data$5 = { aliases: aliases$5, infoboxes: infoboxes$5, parsers: parsers$5 };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$5 = [
+  'організм',
+  'таксобокс',
+];
+
+const data$5 = { aliases: aliases$5, infoboxes: infoboxes$5, parsers: citations$4 };
 
 const plugin$6 = (_models, templates, boxes) => register(data$5, templates, boxes);
 plugin$6.lang = 'uk';
 plugin$6.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // urdu template names → the core template they resolve to
 const aliases$4 = {
   'ap': 'main',
@@ -8744,15 +8893,9 @@ const aliases$4 = {
   'আইএসবিএন': 'isbn',
 };
 
-// names recognised as infoboxes
-const infoboxes$4 = [
-  'تصنيف كائن',
-  'خاعت',
-  'خانہ معلومات پھل',
-  'صندوق معلومات كائن',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeWeb$3 = translate('cite web', {
   'accessdate': 'access-date',
   'author1-last': 'author',
@@ -8810,7 +8953,7 @@ const citeBook$3 = translate('cite book', {
   'number': 'issue',
 });
 
-const parsers$4 = {
+const citations$3 = {
   'chú thích web': citeWeb$3,
   'cite blog': citeWeb$3,
   'cite paper': citeJournal$1,
@@ -8837,14 +8980,22 @@ const parsers$4 = {
   'یادکرد کتاب': citeBook$3,
 };
 
-const data$4 = { aliases: aliases$4, infoboxes: infoboxes$4, parsers: parsers$4 };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$4 = [
+  'تصنيف كائن',
+  'خاعت',
+  'خانہ معلومات پھل',
+  'صندوق معلومات كائن',
+];
+
+const data$4 = { aliases: aliases$4, infoboxes: infoboxes$4, parsers: citations$3 };
 
 const plugin$5 = (_models, templates, boxes) => register(data$4, templates, boxes);
 plugin$5.lang = 'ur';
 plugin$5.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // uzbek template names → the core template they resolve to
 const aliases$3 = {
   'asosiy': 'main',
@@ -8866,9 +9017,9 @@ const aliases$3 = {
   'tugʻilgan sanasi va yoshi': 'birth date and age',
 };
 
-const infoboxes$3 = [];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeWeb$2 = translate('cite web', {
   'sarlavha': 'title',
   'arxivurl': 'archive-url',
@@ -8893,7 +9044,7 @@ const citeBook$2 = translate('cite book', {
   'accessdate': 'access-date',
 });
 
-const parsers$3 = {
+const citations$2 = {
   'citeweb': citeWeb$2,
   'kitob manbasi': citeBook$2,
   'veb manbasi': citeWeb$2,
@@ -8902,14 +9053,17 @@ const parsers$3 = {
   'web manbasi': citeWeb$2,
 };
 
-const data$3 = { aliases: aliases$3, infoboxes: infoboxes$3, parsers: parsers$3 };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$3 = [];
+
+const data$3 = { aliases: aliases$3, infoboxes: infoboxes$3, parsers: citations$2 };
 
 const plugin$4 = (_models, templates, boxes) => register(data$3, templates, boxes);
 plugin$4.lang = 'uz';
 plugin$4.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // vietnamese template names → the core template they resolve to
 const aliases$2 = {
   'ap': 'main',
@@ -8987,13 +9141,9 @@ const aliases$2 = {
   'флаг канады': 'flag',
 };
 
-// names recognised as infoboxes
-const infoboxes$2 = [
-  'bảng phân loại',
-  'phân loại khoa học',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeBook$1 = translate('cite book', {
   'author1-last': 'author',
   'author-last': 'author',
@@ -9165,7 +9315,7 @@ const internetquelle$1 = translate('cite web', {
   'lần in': 'edition',
 });
 
-const parsers$2 = {
+const citations$1 = {
   'book reference': citeBook$1,
   'chú thích': citation,
   'chú thích sách': citeBook$1,
@@ -9198,14 +9348,20 @@ const parsers$2 = {
   'webbref': citeWeb$1,
 };
 
-const data$2 = { aliases: aliases$2, infoboxes: infoboxes$2, parsers: parsers$2 };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$2 = [
+  'bảng phân loại',
+  'phân loại khoa học',
+];
+
+const data$2 = { aliases: aliases$2, infoboxes: infoboxes$2, parsers: citations$1 };
 
 const plugin$3 = (_models, templates, boxes) => register(data$2, templates, boxes);
 plugin$3.lang = 'vi';
 plugin$3.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // chinese template names → the core template they resolve to
 const aliases$1 = {
   'ap': 'main',
@@ -9278,12 +9434,9 @@ const aliases$1 = {
   '頁面': 'main',
 };
 
-// names recognised as infoboxes
-const infoboxes$1 = [
-  '分类框',
-];
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// localized citation templates — translate() renames the params, then the core parser runs
 
-// templates whose parameter names differ — renamed, then parsed by the core template
 const citeBook = translate('cite book', {
   'surname': 'last',
   'surname1': 'last',
@@ -9333,7 +9486,7 @@ const internetquelle = translate('cite web', {
   'archivedate': 'archive-date',
 });
 
-const parsers$1 = {
+const citations = {
   'book reference': citeBook,
   'book reference 3': citeBook,
   'c-j': citeJournal,
@@ -9371,14 +9524,19 @@ const parsers$1 = {
   '引網': citeWeb,
 };
 
-const data$1 = { aliases: aliases$1, infoboxes: infoboxes$1, parsers: parsers$1 };
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
+const infoboxes$1 = [
+  '分类框',
+];
+
+const data$1 = { aliases: aliases$1, infoboxes: infoboxes$1, parsers: citations };
 
 const plugin$2 = (_models, templates, boxes) => register(data$1, templates, boxes);
 plugin$2.lang = 'zh';
 plugin$2.version = version;
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-
 // other template names → the core template they resolve to
 const aliases = {
   'acnyal': 'flag', // shi
@@ -9866,7 +10024,8 @@ const aliases = {
   '인물데이터': 'persondata', // kept by hand
 };
 
-// names recognised as infoboxes
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
+
 const infoboxes = [
   'boaty ny taksônômia', // mg
   'boks klassans', // kw

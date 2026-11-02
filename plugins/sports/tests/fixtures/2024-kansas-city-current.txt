@@ -1,0 +1,2124 @@
+{{Short description|Kansas City Current's fourth season}}
+{{Use mdy dates|date=March 2024}}
+{{Infobox soccer club season
+|club               = [[Kansas City Current]]
+|season             = [[2024 National Women's Soccer League season|2024]]
+|image              = 
+|image_size         = 
+|alt                = 
+|caption            = 
+|chrtitle           = President
+|chairman           = [[Raven Jemison]]
+|ownertitle         = Owners
+|owner              = {{ubl|Angie Long|Chris Long|[[Brittany Mahomes]]|[[Patrick Mahomes]]}}
+|mgrtitle           = Head coach and Sporting Director
+|manager            = [[Vlatko Andonovski]]
+|stdtitle           = 
+|stadium            = [[CPKC Stadium]]<br/>(capacity: 11,500)
+|league             = [[2024 National Women's Soccer League season|2024]]
+|league result      = 4th
+|cup1               = [[2024 NWSL x Liga MX Femenil Summer Cup|NWSL x Liga MX Femenil Summer Cup]]
+|cup1 result        = '''Champions'''
+|cup2               = [[2024 National Women's Soccer League season#Playoffs|Playoffs]]
+|cup2 result        = Semifinals
+|league topscorer   = [[Temwa Chawinga]] (20)
+|season topscorer   = Temwa Chawinga (21) <!-- 20 regular season, 1 playoffs -->
+|highest attendance = 11,500
+|lowest attendance  = 11,500
+|average attendance = 11,500
+|largest win        = 3 goals (8 times)
+|largest loss       = 1–4<br>(Aug 25 at [[Washington Spirit|WAS]])
+|pattern_name1      = Home
+|pattern_la1        = _skyblueborder
+|pattern_b1         = _kcnwsl24h
+|pattern_ra1        = _skyblueborder
+|pattern_sh1        = _whitesides2
+|pattern_so1        = 
+|leftarm1           = db2e2b
+|body1              = db2e2b
+|rightarm1          = db2e2b
+|shorts1            = db2e2b
+|socks1             = 65c7c8
+|alt1               = Red shirt, red shorts, teal socks
+|filetype1          = 
+|pattern_name2      = Away
+|pattern_la2        = 
+|pattern_b2         = _rgn24a
+|pattern_ra2        = 
+|pattern_sh2        = _whitesides2
+|pattern_so2        = 
+|leftarm2           = fff
+|body2              = 65c7c8
+|rightarm2          = fff
+|shorts2            = 65c7c8
+|socks2             = 65c7c8
+|alt2               = White shirt, white shorts, teal socks
+|filetype2          = 
+|American           = true
+|updated            = November 17, 2024
+|prevseason         = [[2023 Kansas City Current season|2023]]
+|nextseason         = ''[[2025 Kansas City Current season|2025]]''
+}}
+[[File:NC Courage vs KC Current (Sep 2024) 030.jpg|thumb|right|350px|{{center|Week 18 starting lineup:<br/>[[Nichelle Prince|Prince]], [[Ellie Wheeler|Wheeler]], [[Temwa Chawinga|Chawinga]], [[Alana Cook|Cook]], [[Hailie Mace|Mace]], [[Stine Ballisager Pedersen|Ballisager]]<br/>[[Vanessa DiBernardo|DiBernardo]], [[Bayley Feist|Feist]], [[Almuth Schult|Schult]], [[Lo'eau LaBonta|LaBonta]], [[Debinha]]}}]]
+
+The '''2024 [[Kansas City Current]] season''' was the team's fourth season as a professional [[women's association football|soccer team]]. The Current played in the [[National Women's Soccer League]] (NWSL), the top tier of [[women's soccer in the United States]].
+
+The Current finished fourth in the [[2024 National Women's Soccer League season]] and qualified for the [[NWSL playoffs]] as the fourth seed, where they defeated the fifth-seeded [[North Carolina Courage]] in the quarterfinals before losing to the top-seeded [[Orlando Pride]] in the semifinals.<ref>{{Cite news |url=https://www.espn.com/soccer/story/_/id/42450783/marta-pride-kc-current-nwsl-final-spirit |title=Marta, Pride down K.C. Current to set up NWSL final with Spirit |date=November 17, 2024 |access-date=November 17, 2024 |first1=Jeff |last1=Kassouf |work=[[ESPN]]}}</ref>
+
+== Background ==
+{{main|2023 Kansas City Current season}}
+
+Despite making it to the championship match in the 2022 season, the Current did not qualify for the 2023 playoffs. They ended the [[2023 National Women's Soccer League season|2023 regular season]] 11th out of 12 teams. In 2021, they ended their [[2021 National Women's Soccer League season|inaugural season]] in last place.
+
+== Summary ==
+
+=== Draft, trades, and transfers ===
+{{See also|#Transactions}}
+
+==== NWSL Draft ====
+{{see also|#2024 NWSL Draft}}
+In the 2024 NWSL Draft, the KC Current drafted [[Ellie Wheeler]] from [[Penn State Nittany Lions women's soccer|Penn State]], Halle Mackiewicz from [[Clemson Tigers women's soccer|Clemson]], and Hope Hisey from [[Arizona Wildcats women's soccer|Arizona]].
+
+== Stadium and facilities ==
+The KC Current began playing in their new home stadium, [[CPKC Stadium]], the first stadium in the world stadium built solely for a women's professional sports team. The stadium has a seating capacity of 11,500 with additional standing-room capacity on its north-end. The stadium is located in the Berkley Riverfront of Kansas City along the banks of the [[Missouri River]], the namesake of the team.
+
+CPKC Stadium held its first match between the Kansas City Current and the [[Portland Thorns]] on March 16, 2024. Kansas City won the match 5–4 in front of a sell-out crowd.<ref>{{cite web|url=https://www.espn.com/soccer/story/_/id/39747209/kansas-city-current-open-women-specific-nwsl-stadium-portland|title=Kansas City Current open 'game-changing' stadium with 5-4 win|website=ESPN.com|last=Kassouf|first=Jeff|date=March 16, 2024|access-date=March 16, 2024|language=en}}</ref>
+
+The Current continue to train in their dedicated practice facility in [[Riverside, Missouri]], which opened in June 2022. It was the first purpose-built practice facility for an NWSL team.<ref>{{cite news |url=https://www.insider.com/kansas-city-current-million-dollar-training-complex-nwsl-photos-2022-6 |title=Kansas City Current's sparkling new $18 million facility shows the luxury women's pro athletes have long missed out on |date=June 25, 2022 |access-date=July 20, 2022 |publisher=[[Business Insider|Insider]] |first=Meredith |last=Cash}}</ref>
+
+== Team ==
+
+=== Technical staff ===
+{{updated|March 14, 2024|.<ref>{{cite web |url=https://www.kansascitycurrent.com/news/kansas-city-current-announce-changes-to-soccer-staff-ahead-o |date=January 10, 2024 |title=Kansas City Current Announce Changes to Soccer Staff Ahead of 2024 Season |website=Kansas City Current}}</ref>}}
+
+{|class="wikitable"
+|-
+{{Fb cs staff |bg= |p=General manager |s={{flagdeco|USA}} [[Camille Levin Ashton]]}}
+{{Fb cs staff |bg= |p=Head coach |s={{flagdeco|MKD}} [[Vlatko Andonovski]]}}
+{{Fb cs staff |bg= |p=Assistant coach |s={{flagdeco|ENG}} [[Freya Coombe]]}}
+{{Fb cs staff |bg= |p=Assistant coach |s={{flagdeco|ARG}} [[Lucas Rodríguez (footballer, born 1986)|Lucas Rodríguez]]}}
+{{Fb cs staff |bg= |p=Assistant coach |s={{flagdeco|SRB}} Milan Ivanovic}}
+{{Fb cs staff| bg= |p=Goalkeeping coach |s={{flagdeco|MKD}} [[Ljupčo Kmetovski]]}}
+{{Fb cs staff |bg= |p=Director of Performance |s={{flagdeco|BRA}} Garga Caserta}}
+{{Fb cs staff |bg= |p=Head Strength Coach |s={{flagdeco|USA}} Joseph Potts}}
+|}
+
+=== Squad ===
+{{updated|March 14, 2024|}}.<ref>{{cite web |url=https://www.kansascitycurrent.com/news/kansas-city-current-set-opening-day-roster-ahead-of-historic |title=Kansas City Current Set Opening Day Roster Ahead of Historic 2024 Season | website=Kansas City Current |date=March 13, 2024}}</ref><ref>{{cite web |url=https://www.kansascitycurrent.com/team |title=Team - Kansas City Current |website=Kansas City Current }}</ref>
+<!----------------------------------------------------------------------------------------------
+  -- Do NOT add new players before their signing is officially announced by the club (acquired rights / draftees are not signings);
+  -- and do NOT assign unreferenced squad numbers as well.
+  – Players with international caps should NOT be bolded – as per Wikipedia:WikiProject_Football/Clubs
+  – This is Wikipedia, not a football gazette.
+  – Any unconfirmed and unsourced signing/transfer will be reverted at sight.
+  – Thanks in advance.
+  ----------------------------------------------------------------------------------------------->
+{| class="wikitable sortable"
+|-
+! style="background:#CF3339; color:#fff;" scope="col"|{{abbr|No.|Squad number}}
+! style="background:#CF3339; color:#fff;" scope="col"|{{abbr|Pos.|Position}}
+! style="background:#CF3339; color:#fff;" scope="col"|Nation
+! style="background:#CF3339; color:#fff;" scope="col"|Player
+|-
+{{Football squad player sort |no=2 |nat=USA |pos=DF |first=Regan |last=Steigleder }}{{Football squad player sort |no=3 |nat=SWE |pos=DF |first=Hanna |last=Glas }}
+{{Football squad player sort |no=4 |nat=USA |pos=DF |first=Hailie |last=Mace }}
+{{Football squad player sort |no=5 |nat=USA |pos=DF |first=Ellie |last=Wheeler }}
+{{Football squad player sort |no=6 |nat=MAW |pos=FW |first=Temwa |last=Chawinga }}
+{{Football squad player sort |no=7 |nat=USA |pos=DF |first=Elizabeth |last=Ball |dab=Elizabeth Ball (soccer) }}
+{{Football squad player sort |no=8 |nat=CAN |pos=FW |first=Nichelle |last=Prince }}
+{{Football squad player sort |no=9 |nat=BRA |pos=FW |first=Bia |last=Zaneratto }}
+{{Football squad player sort |no=10 |nat=USA |pos=MF |first=Lo'eau |last=LaBonta }}
+{{Football squad player sort |no=11 |nat=CAN |pos=MF |first=Desiree |last=Scott }}
+{{Football squad player sort |no=12 |nat=DEN |pos=DF |first=Stine |last=Ballisager Pedersen }}
+{{Football squad player sort |no=13 |nat=ARG |pos=MF |first=Sophia|last=Braun }}
+{{Football squad player sort |no=14 |nat=USA |pos=MF |first=Claire |last=Hutton }}
+{{Football squad player sort |no=16 |nat=USA |pos=MF |first=Vanessa |last=DiBernardo }}
+{{Football squad player sort |no=17 |nat=USA |pos=FW |first=Michelle |last=Cooper |dab=Michelle Cooper (soccer) }}
+{{Football squad player sort |no=18 |nat=USA |pos=DF |first=Izzy |last=Rodriguez }}
+{{Football squad player sort |no=20 |nat=USA |pos=DF |first=Mallory |last=Weber }}
+{{Football squad player sort |no=21 |nat=USA |pos=GK |first=Adrianna |last=Franch }}
+{{Football squad player sort |no=22 |nat=USA |pos=MF |first=Bayley |last=Feist }}
+{{Football squad player sort |no=24 |nat=USA |pos=DF |first=Gabrielle |last=Robinson }}
+{{Football squad player sort |no=25 |nat=USA |pos=FW |first=Kristen |last=Hamilton }}
+{{Football squad player sort |no=29 |nat=USA |pos=GK |first=Jordan |last=Silkowitz }}
+{{Football squad player sort |no=30 |nat=USA |pos=GK |first=Hope |last=Hisey }}
+{{Football squad player sort |no=47 |nat=USA |pos=FW |first=Alex |last=Pfeiffer|dab=Alex Pfeiffer (soccer) }}
+{{Football squad player sort |no=77 |nat=USA |pos=FW |first=Alexa |last=Spaanstra }}
+{{Football squad player sort |no=78 |nat=BRA |pos=DF |first= |last=Lauren |dab=Lauren (Brazilian footballer) }}
+{{Football squad player sort |no=94 |nat=FRA |pos=MF |first=Claire |last=Lavogez }}
+{{Football squad player sort |no=99 |nat=BRA |pos=MF |first= |last=Debinha }}
+|}
+
+== Competitions ==
+
+=== Regular season ===
+{{Main|2024 National Women's Soccer League season}}
+
+==== Matches ====
+{{football box collapsible
+|date = {{Start date|2024|03|16}}
+|time = 12:00 p.m. [[Central Time Zone|CDT]]
+|round = 1
+|score = 5–4
+|report = https://www.nwslsoccer.com/match/435428140c8240d78bc3363fd742757c/kansas-city-current-vs-portland-thorns-fc
+|team1 = Kansas City Current
+|goals1 = 
+* [[Vanessa DiBernardo|DiBernardo]] {{goal|22}}
+* [[Ellie Wheeler|Wheeler]] {{goal|25}}
+* [[Bia Zaneratto|Bia]] {{goal|34}}
+* [[Kristen Hamilton|Hamilton]] {{goal|64}}
+* [[Alex Pfeiffer (soccer)|Pfeiffer]] {{goal|68}}
+|team2 = [[Portland Thorns FC]]
+|goals2 = 
+* [[Sophia Smith (soccer, born 2000)|Smith]] {{goal|43||74}}
+* [[Janine Beckie|Beckie]] {{goal|71||90+1}}
+* [[Hina Sugita|Sugita]] {{yel|79}}
+* [[Kelli Hubly|Hubly]] {{yel|85}}
+|stadium = [[CPKC Stadium]]
+|location = [[Kansas City, Missouri]]
+|attendance = 11,500*
+|referee = Alex Billeter
+|assistantreferees = 
+|fourthofficial = 
+|result = W
+}}
+{{football box collapsible
+|date = {{Start date|2024|03|23}}
+|time = 7:00 p.m. [[Central Time Zone|PDT]]
+|round = 2
+|score = 1–2
+|report = https://www.nwslsoccer.com/match/9a5f4068b94b4d22b1b0ea456d6a3bab/san-diego-wave-fc-vs-kansas-city-current
+|team1 = [[San Diego Wave FC]]
+|goals1 = 
+* [[Sofia Jakobsson|Jakobsson]] {{goal|17}}
+|team2 = Kansas City Current
+|goals2 = 
+* [[Claire Hutton|Hutton]] {{yel|24}}
+* [[Izzy Rodriguez|Rodriguez]] {{goal|44}}
+* [[Lo'eau LaBonta|LaBonta]] {{goal|71}}
+* [[Claire Lavogez|Lavogez]] {{yel|90+9}}
+|stadium = [[Snapdragon Stadium]]
+|location = [[San Diego, California]]
+|attendance = 32,066
+|referee = 
+|assistantreferees = 
+|fourthofficial = 
+|result = W
+}}
+{{football box collapsible
+|date = {{Start date|2024|03|30}}
+|time = 2:30 p.m. [[Central Time Zone|CDT]]
+|round = 3
+|score = 4–2
+|report = https://www.nwslsoccer.com/match/3da7b58c924a4191b1e1c3244894a2be/kansas-city-current-vs-angel-city-fc
+|team1 = Kansas City Current
+|goals1 = 
+* [[Vanessa DiBernardo|DiBernardo]] {{goal|6}}
+* [[Ellie Wheeler|Wheeler]] {{yel|40}}
+* [[Alexa Spaanstra|Spaanstra]] {{goal|45+3}}
+* [[Temwa Chawinga|Chawinga]] {{goal|51}}
+* [[Bia Zaneratto|Bia]] {{goal|90+2}}
+|team2 = [[Angel City FC]]
+|goals2 = 
+* [[Sydney Leroux|Leroux]] {{goal|50}}
+* [[Paige Nielsen|Nielsen]] {{yel|75}}
+* [[Madison Curry|Curry]] {{goal|78}}
+* [[Claire Emslie|Emslie]] {{yel|90+6}}
+|stadium = [[CPKC Stadium]]
+|location = [[Kansas City, Missouri]]
+|attendance = 11,500*
+|referee = 
+|assistantreferees = 
+|fourthofficial = 
+|result = W
+}}
+{{football box collapsible
+|date       = {{start date|2024|04|14}}
+|time       = 6:00 p.m. [[Eastern Time Zone|EDT]]
+|round      = 4
+|score      = 1–1
+|report     = https://www.nwslsoccer.com/match/d104d66bcb144828b501f032b0725112/nj-ny-gotham-fc-vs-kansas-city-current
+|team1      = [[NJ/NY Gotham FC]]
+|goals1     = 
+* [[Nealy Martin|Martin]] {{yel|34}}
+* [[Esther Gonzalez|Gonzalez]] {{goal|51}}
+|team2      = Kansas City Current
+|goals2     = 
+* [[Temwa Chawinga|Chawinga]] {{goal|17}}
+* [[Claire Lavogez|Lavogez]] {{yel|71}}
+|stadium    = [[Red Bull Arena (New Jersey)|Red Bull Arena]]
+|location   = [[Harrison, New Jersey]]
+|attendance = 8,573
+|referee    = 
+|result     = D
+}}
+{{football box collapsible
+|date = {{Start date|2024|04|20}}
+|time = 6:30 p.m. [[Central Time Zone|CDT]]
+|round = 5
+|score = 5–2
+|report = https://www.nwslsoccer.com/match/b0a66acc579b490eaf7a008c82d27c5f/kansas-city-current-vs-bay-fc
+|team1 = Kansas City Current
+|goals1 = 
+* [[Bia Zaneratto|Bia]] {{goal|2}}, {{goal|73}}
+* [[Bayley Feist|Feist]] {{goal|6}}
+* [[Temwa Chawinga|Chawinga]] {{goal|56}} {{goal|62}}
+|team2 = [[Bay FC]]
+|goals2 = 
+* [[Kayla Sharples|Sharples]] {{goal|17}}, {{yel|23}}
+* [[Tess Boade|Boade]] {{goal|78}}
+* [[Princess Marfo|Princess]] {{yel|87}}
+|stadium = [[CPKC Stadium]]
+|location = [[Kansas City, Missouri]]
+|attendance = 11,500*
+|referee = 
+|assistantreferees = 
+|fourthofficial = 
+|result = W
+}}
+{{football box collapsible
+|date       = {{start date|2024|04|26}}
+|time       = 9:00 p.m. [[Central Time Zone|CDT]]
+|round      = 6
+|score      = 1–3
+|report     = https://www.nwslsoccer.com/match/0f8447a175994413aefa970905d3bf2f/angel-city-fc-vs-kansas-city-current
+|team1      = [[Angel City FC]]
+|goals1     = 
+* [[Claire Emslie|Emslie]] {{goal|34}}
+* [[Madison Hammond|Hammond]] {{yel|55}}
+* [[Megan Reid|Reid]] {{yel|77}}
+|team2      = Kansas City Current
+|goals2     = 
+* [[Claire Hutton|Hutton]] {{yel|28}}
+* [[Vanessa DiBernardo|DiBernardo]] {{goal|54}}
+* [[Michelle Cooper|Cooper]] {{yel|85}}
+* [[Claire Lavogez|Lavogez]] {{goal|90||90+3}}
+* [[Gabrielle Robinson|Robinson]] {{yel|90+7}}
+|stadium    = [[BMO Stadium]]
+|location   = [[Los Angeles, California]]
+|attendance = 19,178
+|referee    = [[Katja Koroleva|Ekaterina Koroleva]]
+|result     = w
+}}
+{{football box collapsible
+|date       = {{start date|2024|05|05}}
+|time       = 12:00 p.m. [[Central Time Zone|CDT]]
+|round      = 7
+|score      = 1–1
+|report     = https://www.nwslsoccer.com/match/8bf186f45a8f49eeab532c1e0a3038d4/houston-dash-vs-kansas-city-current
+|team1      = [[Houston Dash]]
+|goals1     = 
+* [[Ramona Bachmann|Bachmann]] {{yel|61}}
+* [[Amanda West|West]] {{goal|71}}
+|team2      = Kansas City Current
+|goals2     = 
+* [[Temwa Chawinga|Chawinga]] {{goal|24}}
+|stadium    = [[Shell Energy Stadium]]
+|location   = [[Houston, Texas]]
+|attendance = 5,099
+|referee    = Calin Radosav
+|result     = D
+}}
+{{football box collapsible
+|date       = {{start date|2024|05|08}}
+|time       = 9:00 p.m. [[Central Time Zone|CDT]]
+|round      = 8
+|score      = 0–0
+|report     = https://www.nwslsoccer.com/match/272190805e4c4afbb51c7d4c5e3e2961/seattle-reign-vs-kansas-city-current
+|team1      = [[Seattle Reign FC]]
+|goals1     = 
+|team2      = Kansas City Current
+|goals2     = 
+|stadium    = [[Lumen Field]]
+|location   = [[Seattle, Washington]]
+|attendance = 5,083
+|referee    = Anya Voigt
+|result     = D
+}}
+{{football box collapsible
+|date = {{Start date|2024|05|12}}
+|time = 5:00 p.m. [[Central Time Zone|CDT]]
+|round = 9
+|score = 1–0
+|report = https://www.nwslsoccer.com/match/aea7bd9d2b7648379ffe3d693222b3fe/kansas-city-current-vs-north-carolina-courage
+|team1 = Kansas City Current
+|goals1 = 
+*[[Vanessa DiBernardo|DiBernardo]] {{yel|51}}
+*[[Debinha]] {{goal|52}}
+|team2 = [[North Carolina Courage]]
+|goals2 =*[[Felicitas Rauch|Rauch]] {{yel|90}} 
+|stadium = [[CPKC Stadium]]
+|location = [[Kansas City, Missouri]]
+|attendance = 11,500*
+|referee = Adam Kilpatrick
+|result = w
+}}
+{{football box collapsible
+|date = {{Start date|2024|05|18}}
+|time = 8:30 p.m. [[Central Time Zone|CDT]]
+|round = 10
+|score = 3–3
+|report = https://www.nwslsoccer.com/match/27b3ad9c94324c3f8e510fafd77cb1ae/kansas-city-current-vs-racing-louisville-fc
+|team1 = Kansas City Current
+|goals1 = 
+*[[Izzy Rodriguez|Rodriguez]] {{yel|12}}
+*[[Hailie Mace|Mace]] {{yel|33}}
+*[[Lo'eau LaBonta|LaBonta]] {{goal|45+3|pen.}}
+*[[Michelle Cooper|Cooper]] {{goal|56}}
+*[[Gabrielle Robinson|Robinson]] {{yel|72}}, {{goal|90+2}}
+|team2 = [[Racing Louisville FC]]
+|goals2 = 
+*[[Emma Sears|Sears]] {{goal|18}}
+*[[Kayla Fischer|Fischer]] {{yel|23}}
+*[[Abby Erceg|Erceg]] {{goal|68}}
+*[[Taylor Flint|Flint]] {{yel|89}}
+*[[Savannah DeMelo|DeMelo]] {{goal|90+13}}
+|stadium = [[CPKC Stadium]]
+|location = [[Kansas City, Missouri]]
+|attendance = 11,500*
+|referee = Nabil Bensalah
+|assistantreferees = 
+|fourthofficial = 
+|result = t
+}}
+{{football box collapsible
+|date       = {{start date|2024|05|25}}
+|time       = 9:00 p.m. [[Central Time Zone|CDT]]
+|round      = 11
+|score      = 0–1
+|report     = https://www.nwslsoccer.com/match/7302e005c2114af886df517bbb77f838/utah-royals-fc-vs-kansas-city-current
+|team1      = [[Utah Royals FC]]
+|goals1     =[[Ana Tejada|Tejada]] {{yel|3}} 
+|team2      = Kansas City Current
+|goals2     = 
+*[[Elizabeth Ball (soccer)|Ball]] {{goal|58}}
+*[[Alexa Spaanstra|Spaanstra]] {{yel|90+6}}
+*[[Hailie Mace|Mace]] {{yel|90+9}}
+|stadium    = [[America First Field]]
+|location   = [[Salt Lake City, Utah]]
+|attendance = 7,491
+|referee    = Danielle Chesky
+|result     = w
+}}
+{{football box collapsible
+|date = {{Start date|2024|06|09}}
+|time = 5:00 p.m. [[Central Time Zone|CDT]]
+|round = 12
+|score = 5–2
+|report = https://www.nwslsoccer.com/match/7ad763b465614fbeb5ab7c3f24b493da/kansas-city-current-vs-seattle-reign
+|team1 = Kansas City Current
+|goals1 = 
+*[[Temwa Chawinga|Chawinga]] {{goal|28||47}}
+*[[Lauren (Brazilian footballer)|Lauren]] {{goal|45+2}}
+*[[Vanessa DiBernardo|DiBernardo]] {{goal|46}}
+*[[Lo'eau LaBonta|LaBonta]] {{goal|67|pen.}}
+|team2 = [[Seattle Reign FC]]
+|goals2 = 
+*[[Jordyn Huitema|Huitema]] {{goal|24||41}}
+*[[Laurel Ivory|Ivory]] {{yel|66}}
+|stadium = [[CPKC Stadium]]
+|location = [[Kansas City, Missouri]]
+|attendance = 11,500*
+|referee = Brad Jensen
+|assistantreferees = 
+|fourthofficial = 
+|result = w
+}}
+{{football box collapsible
+|date = {{Start date|2024|06|14}}
+|time = 7:00 p.m. [[Central Time Zone|CDT]]
+|round = 13
+|score = 2–2
+|report = https://www.nwslsoccer.com/match/bd0c77fede5a41358828181169880f98/kansas-city-current-vs-chicago-red-stars
+|team1 = Kansas City Current
+|goals1 = 
+* [[Bia Zaneratto|Bia]] {{goal|51}}
+* [[Temwa Chawinga|Chawinga]] {{goal|58}}
+* [[Hailie Mace|Mace]] {{yel|72}}
+|team2 = [[Chicago Red Stars]]
+|goals2 = 
+* [[Mallory Swanson|Swanson]] {{goal|6}}
+* [[Sam Staab|Staab]] {{goal|90}}
+* [[Chardonnay Curran|Curran]] {{yel|90+3}}
+|stadium = [[CPKC Stadium]]
+|location = [[Kansas City, Missouri]]
+|attendance = 11,500*
+|referee = 
+Gerald Flores
+|assistantreferees = 
+|fourthofficial = 
+|result = D
+}}
+{{football box collapsible
+|date       = {{start date|2024|06|23}}
+|time       = 3:00 p.m. [[Central Time Zone|CDT]]
+|round      = 14
+|score      = 1–4
+|report     = https://www.nwslsoccer.com/match/9353d4435b1d4c8c8d545868ace8bdab/portland-thorns-vs-kansas-city-current
+|team1      = [[Portland Thorns FC]]
+|goals1     = 
+*[[Kelli Hubly|Hubly]] {{yel|62}}
+*[[Sophia Smith (soccer, born 2000)|Smith]] {{goal|73}}
+|team2      = Kansas City Current
+|goals2     = 
+*[[Lo'eau LaBonta|LaBonta]] {{goal|30}}, {{goal|40}}
+*[[Stine Ballisager Pedersen|Ballisager]] {{goal|38}}
+*[[Temwa Chawinga|Chawinga]] {{goal|47}}
+|stadium    = [[Providence Park]]
+|location   = [[Portland, Oregon]]
+|attendance = 20,024
+|referee    =Brandon Stevis 
+|result     = W
+}}
+{{football box collapsible
+|date = {{Start date|2024|06|28}}
+|time = 7:00 p.m. [[Central Time Zone|CDT]]
+|round = 15
+|score = 2–0
+|report = https://www.nwslsoccer.com/match/6a0bf8347f1344cca5d61370435433e7/kansas-city-current-vs-houston-dash
+|team1 = Kansas City Current
+|goals1 = 
+*[[Temwa Chawinga|Chawinga]] {{goal|77}},{{goal|80}}
+|team2 = [[Houston Dash]]
+|goals2 =[[Sarah Puntigam|Puntigam]] {{yel|75}} 
+|stadium = [[CPKC Stadium]]
+|location = [[Kansas City, Missouri]]
+|attendance = 11,500*
+|referee =Katherine McCormick 
+|assistantreferees = 
+|fourthofficial = 
+|result = W
+}}
+{{football box collapsible
+|date = {{Start date|2024|07|06}}
+|time = 6:30 p.m. [[Central Time Zone|CDT]]
+|round = 16
+|score = 1–2
+|report = https://www.nwslsoccer.com/match/efec17427c7149b288218184f02a54be/kansas-city-current-vs-orlando-pride
+|team1 = Kansas City Current
+|goals1 = 
+*[[Claire Hutton|Hutton]] {{yel|28}}
+*[[Temwa Chawinga|Chawinga]] {{goal|39}}
+*[[Lo'eau LaBonta|LaBonta]] {{yel|47}}
+*[[Hailie Mace|Mace]] {{yel|57}}
+*[[Adrianna Franch|Franch]] {{yel|61}}
+|team2 = [[Orlando Pride]]
+|goals2 = 
+*[[Carrie Lawrence|Lawrence]] {{sentoff|2|14|42}}
+*[[Marta (footballer)|Marta]] {{yel|23}}, {{goal|63}}
+*[[Barbra Banda|Banda]] {{goal|37}}
+|stadium = [[CPKC Stadium]]
+|location = [[Kansas City, Missouri]]
+|attendance = 11,500*
+|referee = Joshua Encarnacion
+|assistantreferees = 
+|fourthofficial = 
+|result = L
+}}
+{{football box collapsible
+|date       = {{start date|2024|08|25}}
+|time       = 11:00 a.m. [[Central Time Zone|CDT]]
+|round      = 17
+|score      =4–1 
+|report     =https://www.nwslsoccer.com/match/d915c83213c64c15b26aabb13bf27f0e/washington-spirit-vs-kansas-city-current/stats 
+|team1      = [[Washington Spirit]]
+|goals1     =*[[Paige Metayer|Metayer]] {{goal|9}}
+*[[Ouleymata Sarr|Sarr]] {{goal|14}}
+*[[Trinity Rodman|Rodman]] {{goal|51}}
+*[[Leicy Santos|Santos]] {{goal|73}}
+*[[Brittany Ratcliffe|Ratcliffe]] {{yel|90+5}} 
+|team2      = Kansas City Current
+|goals2     =*[[Vanessa DiBernardo|DiBernardo]] {{yel|48}}
+*[[Temwa Chawinga|Chawinga]] {{goal|64}}
+*[[Alana Cook|Cook]] {{yel|71}}
+*[[Lo'eau LaBonta|LaBonta]] {{yel|84}} 
+|stadium    = [[Audi Field]]
+|location   = [[Washington, District of Columbia|Washington, D.C.]]
+|attendance = 
+|referee    =Brad Jensen 
+|result     =L 
+}}
+{{football box collapsible
+|date       = {{start date|2024|09|01}}
+|time       = 1:00 p.m. [[Central Time Zone|CDT]]
+|round      = 18
+|score      =2–1 
+|report     =https://www.nwslsoccer.com/match/7061d2139c004be29d1ce6201cb2f1ff/north-carolina-courage-vs-kansas-city-current/play-by-play 
+|team1      = [[North Carolina Courage]]
+|goals1     =*[[Cortnee Vine|Vine]] {{goal|67}}
+*[[Kaleigh Kurtz|Kurtz]] {{yel|74}}
+*[[Brianna Pinto|Pinto]] {{goal|90+2}} 
+|team2      = Kansas City Current
+|goals2     =*[[Temwa Chawinga|Chawinga]] {{goal|62}} 
+|stadium    = [[WakeMed Soccer Park]]
+|location   = [[Cary, North Carolina]]
+|attendance =6,003 
+|referee    =Elvis Osmanovic 
+|result     =L 
+}}
+{{football box collapsible
+|date = {{Start date|2024|09|07}}
+|time = 6:30 p.m. [[Central Time Zone|CDT]]
+|round = 19
+|score = 1–0
+|report = https://www.nwslsoccer.com/match/fbe61135e1d148e0a39a24f8a2961e16/kansas-city-current-vs-utah-royals-fc
+|team1 = Kansas City Current
+|goals1 = 
+*[[Temwa Chawinga|Chawinga]] {{goal|47}}
+|team2 = [[Utah Royals FC]]
+|goals2 = 
+|stadium = [[CPKC Stadium]]
+|location = [[Kansas City, Missouri]]
+|attendance = 11,500*
+|referee = Calin Radosav
+|assistantreferees = 
+|fourthofficial = 
+|result = w
+}}
+{{football box collapsible
+|date       = {{start date|2024|09|13}}
+|time       = 6:00 p.m. [[Central Time Zone|CDT]]
+|round      = 20
+|score      = 0–0
+|report     = https://www.nwslsoccer.com/match/935a21910389459ea29afcfd3031fb59/orlando-pride-vs-kansas-city-current
+|team1      = [[Orlando Pride]]
+|goals1     = 
+|team2      = Kansas City Current
+|goals2     = 
+|stadium    = [[Exploria Stadium]]
+|location   = [[Orlando, Florida]]
+|attendance = 9,396
+|referee    = [[Alyssa Nichols]]
+|result     = D
+}}
+{{football box collapsible
+|date = {{Start date|2024|09|20}}
+|time = 7:00 p.m. [[Central Time Zone|CDT]]
+|round = 21
+|score = 3–0 
+|report = [https://www.nwslsoccer.com/match/6cca690e499c4894ab864f3b3bb48b57/kansas-city-current-vs-washington-spirit Report]<br>[https://www.espn.com/soccer/match/_/gameId/697998/washington-spirit-kansas-city-current Box]
+|team1 = Kansas City Current
+|goals1 = * [[Nichelle Prince|Prince]] {{goal|3}}
+* [[Lo'eau LaBonta|LaBonta]] {{goal|30}}
+* [[Temwa Chawinga|Chawinga]] {{goal|68}} 
+|team2 = [[Washington Spirit]]
+|goals2 = * [[Lena Silano|Silano]] {{sentoff|0|90+7}} 
+|stadium = [[CPKC Stadium]]
+|location = [[Kansas City, Missouri]]
+|attendance = 11,500*
+|referee = Matthew Thompson 
+|assistantreferees = 
+|fourthofficial = 
+|result = W
+}}
+{{football box collapsible
+|date = {{Start date|2024|09|28}}
+|time = 12:00 p.m. [[Central Time Zone|CDT]]
+|round = 22
+|score =1–1 
+|report =https://www.nwslsoccer.com/match/3097d9b397ea4aad8c145c840ef1a941/kansas-city-current-vs-nj-ny-gotham-fc 
+|team1 = Kansas City Current
+|goals1 = * [[Temwa Chawinga|Chawinga]] {{goal|51}}, {{yel|80}} 
+|team2 = [[NJ/NY Gotham FC]]
+|goals2 = * [[Alana Cook|Cook]] {{goal|15|o.g.}}
+* [[Nealy Martin|Martin]] {{yel|14}} 
+|stadium = [[CPKC Stadium]]
+|location = [[Kansas City, Missouri]]
+|attendance = 11,500* 
+|referee = [[Katja Koroleva]]
+|assistantreferees = 
+|fourthofficial = 
+|result = D 
+}}
+{{football box collapsible
+|date       = {{start date|2024|10|05}}
+|time       = 6:30 p.m. [[Central Time Zone|CDT]]
+|round      = 23
+|score      = 0–2
+|report     = https://www.nwslsoccer.com/match/43a573c4812d47adbc6727b3c4783665/racing-louisville-fc-vs-kansas-city-current
+|team1      = [[Racing Louisville FC]]
+|goals1     = 
+|team2      = Kansas City Current
+|goals2     = 
+* [[Temwa Chawinga|Chawinga]] {{goal|2}}
+* [[Vanessa DiBernardo|DiBernardo]] {{goal|86}}
+|stadium    = [[Lynn Family Stadium]]
+|location   = [[Louisville, Kentucky]]
+|attendance = 6,013
+|referee    =Matthew Corrigan 
+|result     = W
+}}
+{{football box collapsible
+|date       = {{start date|2024|10|12}}
+|time       = 9:00 p.m. [[Central Time Zone|CDT]]
+|round      = 24
+|score      =0–1 
+|report     =https://www.nwslsoccer.com/match/796558fdcbc54a5b9600d3db140d3f0b/bay-fc-vs-kansas-city-current/play-by-play 
+|team1      = [[Bay FC]]
+|goals1     =*[[Penelope Hocking|Hocking]] {{yel|33}}
+*[[Asisat Oshoala|Oshoala]] {{yel|35}} 
+|team2      = Kansas City Current
+|goals2     =*[[Temwa Chawinga|Chawinga]] {{goal|34}}
+*[[Hailie Mace|Mace]] {{yel|40}}
+*[[Vanessa DiBernardo|DiBernardo]] {{yel|90+2}}
+*[[Ellie Wheeler|Wheeler]] {{yel|90+4}} 
+|stadium    = [[PayPal Park]]
+|location   = [[San Jose, California]]
+|attendance = 
+|referee    =Danielle Chesky 
+|result     =W 
+}}
+{{football box collapsible
+|date = {{Start date|2024|10|19}}
+|time = 12:00 p.m. [[Central Time Zone|CDT]]
+|round = 25
+|score = 4–1 
+|report = [https://www.nwslsoccer.com/match/23bd2ec3ad554d6e99210b41f66784b9/kansas-city-current-vs-san-diego-wave-fc Report]<br>[https://www.kansascitycurrent.com/news/match-report-kansas-city-current-caps-historic-2024-regular-season-home-slate-with-4-1-victory-over-san-diego-wave Report]
+|team1 = Kansas City Current
+|goals1 = * [[Michelle Cooper|Cooper]] {{goal|17}}
+* [[Kailen Sheridan|Sheridan]] {{goal|30|o.g.}}
+* [[Temwa Chawinga|Chawinga]] {{goal|53}}
+* [[Debinha]] {{goal|79}} 
+|team2 = [[San Diego Wave FC]]
+|goals2 = * [[Perle Morroni|Morroni]] {{yel|66}}
+* [[Delphine Cascarino|Cascarino]] {{goal|87}} 
+|stadium = [[CPKC Stadium]]
+|location = [[Kansas City, Missouri]]
+|attendance = 11,500*
+|referee = Iryna Petrunok 
+|assistantreferees = 
+|fourthofficial = 
+|result = W 
+}}
+{{football box collapsible
+|date       = {{start date|2024|11|03}}
+|time       = 12:00 p.m. [[Central Time Zone|CST]]
+|round      = 26
+|score      = 1–3
+|report     = https://www.nwslsoccer.com/match/e7e10bef457b47b18981a490bf67b0c2/chicago-red-stars-vs-kansas-city-current
+|team1      = [[Chicago Red Stars]]
+|goals1     = 
+* [[Ally Schlegel|Schlegel]] {{goal|52}}
+|team2      = Kansas City Current
+|goals2     = 
+* [[Michelle Cooper|Cooper]] {{goal|23}}
+* [[Debinha]] {{goal|26}}
+* [[Nichelle Prince|Prince]] {{goal|33}}
+* [[Hildah Magaia|Magaia]] {{yel|81}}
+|stadium    = [[SeatGeek Stadium]]
+|location   = [[Chicago, Illinois]]
+|attendance = 5,595
+|referee    = Jaclyn Metz
+|result     = W
+}}
+Note: * Indicates a sell-out crowd
+{{Fb rs footer
+|u=November 3, 2024
+|s=[https://www.nwslsoccer.com/schedule/regular-season NWSLsoccer.com]
+|date=November 2024
+}}
+
+==== Regular season standings ====
+{{2024 National Women's Soccer League season|showteam=KC|show_limit=5}}
+
+==== Results summary ====
+{{Fb rs|hw=9|hd=3|hl=1|hgf=37|hga=19|aw=7|ad=4|al=2|agf=20|aga=12|dp=0}}
+{{Fb rs footer
+|u=November 3, 2024
+|s=[https://www.nwslsoccer.com/schedule/regular-season NWSLsoccer.com]
+|date=November 2024
+}}
+
+==== Results by matchday ====
+{{#invoke:sports rbr table
+|table
+|legendpos=b
+|header=Matchday
+|label1=Stadium
+|res1= H/ A/ H/ A/ H/ A/ A/ A/ H/ H/ A/ H/ H/ A/ H/ H/ A/ A/ H/ A/ H/ H/ A/ A/ H/ A
+|label2=Result
+|res2= W/ W/ W/ D/ W/ W/ D/ D/ W/ D/ W/ W/ D/ W/ W/ L/ L/ L/ W/ D/ W/ D/ W/ W/ W/ W
+|label3=Position
+|res3= 3/ 2/ 1/ 1/ 1/ 1/ 1/ 1/ 1/ 2/ 2/ 1/ 1/ 1/ 1/ 2/ 3/ 3/ 3/ 3/ 4/ 4/ 4/ 4/ 4/ 4
+|text_H=Home|text_A=Away
+|color_W=green2|text_W=Win
+|color_D=yellow2|text_D=Draw
+|color_L=red2|text_L=Loss
+|color_1-2=green1|color_3-6=green2
+|updated=November 3, 2024
+|source=[https://www.nwslsoccer.com/standings NWSL]
+}}
+
+=== Playoffs ===
+{{main|2024 National Women's Soccer League season#Playoffs}}
+
+The Current finished the regular season in fourth place and qualified for the NWSL playoffs as the fourth seed of eight teams.
+
+==== Matches ====
+{{football box collapsible
+|date = {{Start date|2024|11|09}}
+|time = 11:00 a.m. [[Central Standard Time|CST]] ([[UTC−06:00|UTC−6]])
+|round = Quarterfinals
+|score = 1–0
+|report = https://www.nwslsoccer.com/match/36432440cb6740edb9f883c4eac702b3/4th-ranked-vs-5th-ranked
+|team1 = Kansas City Current
+|goals1 = 
+* [[Temwa Chawinga|Chawinga]] {{goal|8}}
+* [[Lo'eau LaBonta|LaBonta]] {{yel|28}}
+* [[Ellie Wheeler|Wheeler]] {{yel|90+8}}
+|team2 = [[North Carolina Courage]]
+|goals2 = 
+* [[Denise O'Sullivan|O'Sullivan]] {{yel|36}}
+* [[Bianca St-Georges|St-Georges]] {{yel|90+8}}
+|stadium = [[CPKC Stadium]]
+|location = [[Kansas City, Missouri]]
+|attendance = 
+|referee = Brad Jensen
+|result = W
+}}
+{{football box collapsible
+|date = {{start date|2024|11|17}}
+|time = 3:00 p.m. [[Eastern Standard Time|EST]] ([[UTC−05:00|UTC−5]])
+|round = Semifinals
+|score = 3–2
+|report = https://www.nwslsoccer.com/match/5f418fd97b8d44f889a65c4d1e165300/orlando-pride-vs-kansas-city-current
+|team1 = [[Orlando Pride]]
+|goals1 = 
+* [[Angelina (footballer)|Angelina]] {{yel|28}}
+* [[Haley McCutcheon|McCutcheon]] {{goal|41}} {{yel|90+13}}
+* [[Barbara Banda|Banda]] {{goal|53}}
+* [[Anna Moorhouse|Moorhouse]] {{yel|81}}
+* [[Marta (footballer)|Marta]] {{goal|82}}
+|team2 = Kansas City Current
+|goals2 = 
+* [[Debinha]] {{goal|33}}
+* [[Hailie Mace|Mace]] {{yel|55}}
+* [[Kayla Sharples|Sharples]] {{yel|90+9}}
+* [[Vanessa DiBernardo|DiBernardo]] {{goal|90+13|pen.}}
+|stadium = [[Inter&Co Stadium]]
+|location = [[Orlando, Florida]]
+|attendance = 14,524
+|referee = Danielle Chesky
+|result = L
+}}
+
+=== NWSL x Liga MX Femenil Summer Cup ===
+{{main|2024 NWSL x Liga MX Femenil Summer Cup}}
+{{:2024 NWSL x Liga MX Femenil Summer Cup group stage|transcludesection=Group C|only_pld_pts=n|show_matches=y|showteam=KC}}
+{{football box collapsible
+|date       = {{start date|2024|07|20}}
+|time       = 7:00 p.m. [[Central Daylight Time|CDT]] ([[UTC−05:00|UTC-5]])
+|round      = 1
+|score      = 3–1
+|report     = https://www.nwslsoccer.com/match/de19a984fb7f4aa092586b37e5ffc09a/kansas-city-current-vs-houston-dash 
+|team1      = Kansas City Current {{flagicon|USA}}
+|goals1     =
+* [[Michelle Cooper|Cooper]] {{goal|1}}
+* [[Lo'eau LaBonta|LaBonta]] {{goal|68}}
+* [[Kristen Hamilton|Hamilton]] {{goal|83}}
+|team2      = {{flagicon|USA}} [[Houston Dash]]
+|goals2     = 
+*[[Yūki Nagasato|Nagasato]] {{goal|20}}
+*[[Bárbara Olivieri|Olivieri]] {{yel|22}}
+*[[Allysha Chapman|Chapman]] {{yel|67}}
+*[[Sophie Schmidt|Schmidt]] {{yel|86}}
+|stadium    = [[CPKC Stadium]]
+|location   = [[Kansas City, Missouri]]
+|attendance = 
+|referee    = Corbyn May
+|result     = W
+}}
+{{football box collapsible
+|date       = {{start date|2024|07|27}}
+|time       = 7:00 p.m. [[Central Daylight Time|CDT]] ([[UTC−05:00|UTC-5]])
+|round      = 2
+|score      = 3–0
+|report     = https://www.nwslsoccer.com/match/c8527dd7afe14f2693ff1b035bed45dd/kansas-city-current-vs-pachuca 
+|team1      = Kansas City Current {{flagicon|USA}}
+|goals1     =
+* [[Debinha]] {{goal|12}},{{goal|28}}
+* [[Kristen Hamilton|Hamilton]] {{goal|32}}
+|team2      = {{flagicon|MEX}} [[C.F. Pachuca (women)|C.F. Pachuca]]
+|goals2     =*[[Nayeli Díaz|Díaz]] {{yel|36}}
+*[[Fabiola Ibarra|Ibarra]] {{yel|67}}
+*[[Julia Valadez|Valadez]] {{yel|77}} 
+|stadium    = [[CPKC Stadium]]
+|location   = [[Kansas City, Missouri]]
+|attendance = 
+|referee    = Katarzyna Waslak
+|result     = W
+}}
+{{football box collapsible
+|date       = {{start date|2024|08|01}}
+|time       = 7:00 p.m. [[Central Daylight Time|CDT]] ([[UTC−05:00|UTC-5]])
+|round      = 3
+|score      = 4–1
+|report     = https://www.nwslsoccer.com/match/f24abed132bf44478fc870a2532aaff8/kansas-city-current-vs-tigres-uanl
+|team1      = Kansas City Current {{flagicon|USA}}
+|goals1     =*[[Lo'eau LaBonta|LaBonta]] {{goal|23}}
+*[[Ellie Wheeler|Wheeler]] {{goal|29}}, {{yel|37}}
+*[[Debinha]] {{goal|57}}
+*[[Claire Hutton|Hutton]] {{goal|79}}
+|team2      = {{flagicon|MEX}} [[Tigres UANL (women)|Tigres UANL]]
+|goals2     =*[[Nicole Villarreal|Villarreal]] {{yel|22}}
+*[[Maricarmen Reyes|Reyes]] {{yel|44}}
+*[[Thembi Kgatlana|Kgatlana]] {{goal|56}}
+*[[Nayeli Rangel|Rangel]] {{yel|67}} 
+|stadium    = [[CPKC Stadium]]
+|location   = [[Kansas City, Missouri]]
+|attendance = 
+|referee    =Matt Geringer 
+|result     = W
+}}
+{{football box collapsible
+|date       = {{start date|2024|08|06}}
+|time       = 
+|round      = SF
+|score      = 2–0
+|report     = https://www.nwslsoccer.com/match/a768b9b601d94af88b8af37f3cdbfabb/kansas-city-current-vs-north-carolina-courage
+|team1      = Kansas City Current {{flagicon|USA}}
+|goals1     =
+*[[Temwa Chawinga|Chawinga]] {{goal|2}}
+*[[Debinha]] {{goal|78}}
+|team2      = {{flagicon|USA}} [[North Carolina Courage]] 
+|goals2     = 
+|stadium    = [[CPKC Stadium]]
+|location   = [[Kansas City, Missouri]]
+|attendance = 
+|referee    = [[Katja Koroleva]]
+|result     = w
+}}
+{{football box collapsible
+|round      = F
+|date       = {{start date|2024|10|25}}
+|time       = 
+|score      = 0–2
+|report     =https://www.nwslsoccer.com/match/4bb575230b374326affff8f73298578b/kansas-city-current-vs-nj-ny-gotham-fc/index 
+|team1      = [[NJ/NY Gotham FC]] {{flagicon|USA}}
+|goals1     =*[[Bruninha]] {{yel|28}}
+*[[Ella Stevens|Stevens]] {{yel|48}}
+|team2      = {{fbaicon|USA}} Kansas City Current
+|goals2     =*[[Temwa Chawinga|Chawinga]] {{goal|24||37}}
+*[[Michelle Cooper|Cooper]] {{yel|43}}
+*[[Elizabeth Ball (soccer)|Ball]] {{yel|82}} 
+|stadium    = [[Toyota Field]]
+|location   = [[San Antonio|San Antonio, Texas]]
+|attendance = 
+|referee    =[[Alyssa Nichols]]
+|result     = w
+}}
+
+==Squad statistics==
+
+{{Updated|Match played November 17, 2024}}
+
+=== Appearances ===
+''Only players who have made an appearance are listed. Starting appearances are listed first, followed by substitute appearances after the + symbol where applicable.''
+{{Efs start|{{abbr|NWSL|National Women's Soccer League regular season}}|{{Abbr|Playoffs|NWSL Playoffs}}|{{abbr|Summer Cup|2024 NWSL x Liga MX Femenil Summer Cup}}}}
+|-
+! colspan=14 style="background:#CF3339; color:#fff; width:110px;" text-align:center|''Goalkeepers''
+{{Efs player|no=1 |name=[[Almuth Schult]]|pos=GK|nat=GER                                     |9|0|2|0|1|0}}
+{{Efs player|no=21 |name=[[Adrianna Franch]]|pos=GK|nat=USA                                  |17|0|0|0|4|0}}
+|-
+! colspan=14 style="background:#CF3339; color:#fff; width:110px;" text-align:center;" |''Defenders''
+{{Efs player|no=2 |name=[[Regan Steigleder]]|pos=DF|nat=USA                                  |1+2|0|0|0|1+3|0}}
+{{Efs player|no=4 |name=[[Hailie Mace]]|pos=DF|nat=USA                                       |20+3|0|2|0|4|0}}
+{{Efs player|no=5 |name=[[Ellie Wheeler]]|pos=DF|nat=USA                                     |14+9|1|2|0|5|1}}
+{{Efs player|no=7 |name=[[Elizabeth Ball (soccer)|Elizabeth Ball]]|pos=DF|nat=USA                                    |12+7|1|0|0|0+1|0}}
+{{Efs player|no=12 |name=[[Stine Ballisager Pedersen]]|pos=DF|nat=DEN                        |11+7|1|0+1|0|3|0}}
+{{Efs player|no=15 |name=[[Alana Cook]]|pos=DF|nat=USA                                       |10|0|2|0|3|0}}
+{{Efs player|no=18 |name=[[Izzy Rodriguez]]|pos=DF|nat=USA                                   |18+3|1|0+1|0|2+1|0}}
+{{Efs player|no=24 |name=[[Gabrielle Robinson]]|pos=DF|nat=USA                               |11|1|0|0|0|0}}
+{{Efs player|no=27 |name=[[Kayla Sharples]]|pos=DF|nat=USA                                   |8|0|2|0|1|0}}
+|-
+! colspan=14 style="background:#CF3339; color:#fff; width:110px;" text-align:center;" |''Midfielders''
+{{Efs player|no=10 |name=[[Lo'eau LaBonta]]|pos=MF|nat=USA                                   |21+3|6|2|0|5|2}}
+{{Efs player|no=11 |name=[[Desiree Scott]]|pos=MF|nat=CAN                                    |0+11|0|0+1|0|0+2|0}}
+{{Efs player|no=14 |name=[[Claire Hutton]]|pos=MF|nat=USA                                    |19+3|0|2|0|3+2|1}}
+{{Efs player|no=16 |name=[[Vanessa DiBernardo]]|pos=MF|nat=USA                               |20+3|5|2|1|5|0}}
+{{Efs player|no=22 |name=[[Bayley Feist]]|pos=MF|nat=USA                                     |6+10|1|0+2|0|2+3|0}}
+{{Efs player|no=33 |name=[[Mwanalima Adam Jereko]]|pos=MF|nat=KEN                            |0+3|0|0|0|0+1|0}}
+{{Efs player|no=99 |name=[[Debinha]]|pos=MF|nat=BRA                                          |17+5|3|2|1|5|4}}
+|-
+! colspan=14 style="background:#CF3339; color:#fff; width:110px;" text-align:center;" |''Forwards''
+{{Efs player|no=6 |name=[[Temwa Chawinga]]|pos=FW|nat=MWI                                    |24+1|20|2|1|3|3}}
+{{Efs player|no=8 |name=[[Nichelle Prince]]|pos=FW|nat=CAN                                   |9+4|2|0+2|0|0|0}}
+{{Efs player|no=9 |name=[[Bia Zaneratto]]|pos=FW|nat=BRA                                     |11+5|5|0|0|0|0}}
+{{Efs player|no=17 |name=[[Michelle Cooper]]|pos=FW|nat=USA                                  |15+6|3|2|0|5|1}}
+{{Efs player|no=25 |name=[[Kristen Hamilton]]|pos=FW|nat=USA                                 |0+3|1|0+1|0|2+2|2}}
+{{Efs player|no=47 |name=[[Alex Pfeiffer (soccer)|Alex Pfeiffer]]|pos=FW|nat=USA                                    |0+10|1|0|0|0|0}}
+{{Efs player|no=66 |name=[[Hildah Magaia]]|pos=FW|nat=RSA                                    |0+6|0|0|0|0|0}}
+|-
+|colspan="14"|''Players who appeared for the club but left during the season:''
+{{Efs player|no=3 |name=[[Hanna Glas]]|pos=DF|nat=SWE                                        |0|0|0|0|1|0}}
+{{Efs player|no=31 |name=[[Allie Long]]|pos=MF|nat=USA                                       |0|0|0|0|0+1|0}}
+{{Efs player|no=32 |name=[[Grace Bahr]]|pos=MF|nat=USA                                       |0|0|0|0|0+1|0}}
+{{Efs player|no=43 |name=[[Janae DeFazio]]|pos=MF|nat=PHI                                    |0|0|0|0|0+1|0}}
+{{Efs player|no=77 |name=[[Alexa Spaanstra]]|pos=FW|nat=USA                                  |8+3|1|0|0|0+4|0}}
+{{Efs player|no=78 |name=[[Lauren (Brazilian footballer)|Lauren]]|pos=DF|nat=BRA             |1+2|1|0|0|0|0}}
+{{Efs player|no=94 |name=[[Claire Lavogez]]|pos=MF|nat=FRA                                   |4+10|2|0|0|0+2|0}}
+|}
+
+=== Goals ===
+{|class="wikitable sortable" style="text-align:center;"
+|-
+! style="background:#CF3339; color:#fff; width:35px;" scope="col"  | {{Abbr|Rank|Ranking}}
+! style="background:#CF3339; color:#fff; width:35px;" scope="col"  | {{Abbr|No.|Squad number}}
+! style="background:#CF3339; color:#fff; width:35px;" scope="col"  | {{Abbr|Pos.|Position}}
+! style="background:#CF3339; color:#fff; width:35px;" scope="col"  | {{Abbr|Nat.|FIFA nationality}}
+! style="background:#CF3339; color:#fff; width:175px;" scope="col" | Name
+! style="background:#CF3339; color:#fff; width:75px;" scope="col"  | {{abbr|NWSL|National Women's Soccer League regular season}}
+! style="background:#CF3339; color:#fff; width:75px;" scope="col"  | {{Abbr|Playoffs|NWSL playoffs}}
+! style="background:#CF3339; color:#fff; width:75px;" scope="col"  | {{abbr|Summer Cup|2024 NWSL x Liga MX Femenil Summer Cup}}
+! style="background:#CF3339; color:#fff; width:75px;" scope="col" | Total
+|-
+! scope="row" | 1
+|6
+|FW
+|{{flagicon|MWI}}||[[Temwa Chawinga]]
+|20
+|1
+|3
+!24
+|-
+!2
+|10
+|MF
+| {{flagicon|USA}}||[[Lo'eau LaBonta]]
+| 6||0
+|2
+! scope="row" |8
+|-
+!3
+|99
+|MF
+|{{flagicon|BRA}}
+|[[Debinha]]
+|3
+|1
+|4
+!8
+|-
+!4
+|16
+|MF
+|{{flagicon|USA}}
+|[[Vanessa DiBernardo]]
+|5
+|1
+|0
+!6
+|-
+!5
+|9
+|FW
+|{{flagicon|BRA}}
+|[[Bia Zaneratto]]
+|5
+|0
+|0
+!5
+|-
+!6
+|17
+|FW
+|{{flagicon|USA}}
+|[[Michelle Cooper]]
+|3
+|0
+|1
+!4
+|-
+!7
+|25
+|FW
+|{{flagicon|USA}}
+|[[Kristen Hamilton]]
+|1
+|0
+|2
+!3
+|-
+! rowspan="2" |8
+|8
+|FW
+|{{flagicon|CAN}}
+|[[Nichelle Prince]]
+|2
+|0
+|0
+!2
+|-
+|94
+|MF
+|{{flagicon|FRA}}
+|[[Claire Lavogez]]
+|2
+|0
+|0
+!2
+|-
+!9
+|5
+|DF
+|{{flagicon|USA}}
+|[[Ellie Wheeler]]
+|1
+|0
+|1
+!2
+|-
+! rowspan="8" |10
+|7
+|DF
+|{{flagicon|USA}}
+|[[Elizabeth Ball (soccer)|Elizabeth Ball]]
+|1
+|0
+|0
+!1
+|-
+|12
+|DF
+|{{flagicon|DEN}}
+|[[Stine Ballisager Pedersen]]
+|1
+|0
+|0
+!1
+|-
+|22
+|MF
+|{{flagicon|USA}}
+|[[Bayley Feist]]
+|1
+|0
+|0
+!1
+|-
+|78
+|DF
+|{{flagicon|BRA}}
+|[[Lauren (Brazilian footballer)|Lauren]]
+|1
+|0
+|0
+!1
+|-
+|47
+|FW
+|{{flagicon|USA}}
+|[[Alex Pfeiffer (soccer)|Alex Pfeiffer]]
+|1
+|0
+|0
+!1
+|-
+|24
+|DF
+|{{flagicon|USA}}
+|[[Gabrielle Robinson]]
+|1
+|0
+|0
+!1
+|-
+|18
+|DF
+|{{flagicon|USA}}
+|[[Izzy Rodriguez]]
+|1
+|0
+|0
+!1
+|-
+|77
+|FW
+|{{flagicon|USA}}
+|[[Alexa Spaanstra]]
+|1
+|0
+|0
+!1
+|-
+!11
+|14
+|MF
+|{{flagicon|USA}}
+|[[Claire Hutton]]
+|0
+|0
+|1
+!1
+|-
+! colspan="5" scope="row" | ''Own goals''
+| 1||0
+|0
+! scope="row" |1
+|-
+! colspan="5" scope="row" | Total
+! 57!!3
+! 14!!74
+|}
+
+=== Assists ===
+{|class="wikitable sortable" style="text-align:center;"
+|-
+! style="background:#CF3339; color:#fff; width:35px;" scope="col"  | {{Abbr|Rank|Ranking}}
+! style="background:#CF3339; color:#fff; width:35px;" scope="col"  | {{Abbr|No.|Squad number}}
+! style="background:#CF3339; color:#fff; width:35px;" scope="col"  | {{Abbr|Pos.|Position}}
+! style="background:#CF3339; color:#fff; width:35px;" scope="col"  | {{Abbr|Nat.|FIFA nationality}}
+! style="background:#CF3339; color:#fff; width:175px;" scope="col" | Name
+! style="background:#CF3339; color:#fff; width:75px;" scope="col"  | {{abbr|NWSL|National Women's Soccer League regular season}}
+! style="background:#CF3339; color:#fff; width:75px;" scope="col"  | {{Abbr|Playoffs|NWSL playoffs}}
+! style="background:#CF3339; color:#fff; width:75px;" scope="col"  | {{abbr|Summer Cup|2024 NWSL x Liga MX Femenil Summer Cup}}
+! style="background:#CF3339; color:#fff; width:75px;" scope="col" | Total
+|-
+!1
+|16
+|MF
+|{{flagicon|USA}}
+|[[Vanessa DiBernardo]]
+|6
+|0
+|2
+!8
+|-
+! scope="row" | 2
+|99
+|MF
+|{{flagicon|BRA}}||[[Debinha]]
+|6
+|0
+|0
+!6
+|-
+!3
+|6
+|FW
+|{{flagicon|MWI}}
+|[[Temwa Chawinga]]
+|5
+|0
+|1
+!6
+|-
+!4
+|9
+|FW
+|{{flagicon|BRA}}
+|[[Bia Zaneratto]]
+|4
+|0
+|0
+!4
+|-
+!5
+|17
+|FW
+|{{flagicon|USA}}
+|[[Michelle Cooper]]
+|2
+|1
+|1
+!4
+|-
+!6
+|7
+|DF
+|{{flagicon|USA}}
+|[[Elizabeth Ball (soccer)|Elizabeth Ball]]
+|3
+|0
+|0
+!3
+|-
+!7
+|18
+|DF
+|{{flagicon|USA}}
+|[[Izzy Rodriguez]]
+|2
+|0
+|1
+!3
+|-
+!8
+|10
+|MF
+|{{flagicon|USA}}
+|[[Lo'eau LaBonta]]
+|1
+|0
+|2
+!3
+|-
+!9
+|8
+|FW
+|{{flagicon|CAN}}
+|[[Nichelle Prince]]
+|2
+|0
+|0
+!2
+|-
+!10
+|25
+|FW
+|{{flagicon|USA}}
+|[[Kristen Hamilton]]
+|0
+|0
+|2
+!2
+|-
+! rowspan="3" |11
+|14
+|MF
+|{{flagicon|USA}}
+|[[Claire Hutton]]
+|1
+|0
+|0
+!1
+|-
+|4
+|DF
+|{{flagicon|USA}}
+|[[Hailie Mace]]
+|1
+|0
+|0
+!1
+|-
+|77
+|FW
+| {{flagicon|USA}}||[[Alexa Spaanstra]]
+| 1||0
+|0
+! scope="row" |1
+|-
+! rowspan="2" |12
+|22
+|MF
+|{{flagicon|USA}}
+|[[Bayley Feist]]
+|0
+|0
+|1
+!1
+|-
+|3
+|DF
+|{{flagicon|SWE}}
+|[[Hanna Glas]]
+|0
+|0
+|1
+!1
+|-
+! colspan="5" scope="row" | Total
+! 34!!1
+! 11!!46
+|}
+
+=== Clean sheets ===
+{|class="wikitable sortable" style="text-align:center;"
+|-
+! style="background:#CF3339; color:#fff; width:35px;" scope="col"  | {{Abbr|Rank|Ranking}}
+! style="background:#CF3339; color:#fff; width:35px;" scope="col"  | {{Abbr|No.|Squad number}}
+! style="background:#CF3339; color:#fff; width:35px;" scope="col"  | {{Abbr|Nat.|FIFA nationality}}
+! style="background:#CF3339; color:#fff; width:175px;" scope="col" | Name
+! style="background:#CF3339; color:#fff; width:75px;" scope="col"  | {{abbr|NWSL|National Women's Soccer League regular season}}
+! style="background:#CF3339; color:#fff; width:75px;" scope="col"  | {{Abbr|Playoffs|NWSL playoffs}}
+! style="background:#CF3339; color:#fff; width:75px;" scope="col"  | {{abbr|Summer Cup|2024 NWSL x Liga MX Femenil Summer Cup}}
+! style="background:#CF3339; color:#fff; width:75px;" scope="col" | Total
+|-
+!1
+|1
+| {{flagicon|GER}}||[[Almuth Schult]]
+| 5||1
+|1
+! scope="row" |7
+|-
+! scope="row" | 2
+|21
+|{{flagicon|USA}}||[[Adrianna Franch]]
+|4
+|0
+|2
+!6
+|-
+! colspan="4" scope="row" | Total
+! 9!!1
+! 3!!13
+|}
+
+=== Disciplinary record ===
+{|class="wikitable sortable" style="text-align:center;"
+|-
+!rowspan="2" style="background:#CF3339; color:white; |{{Abbr|No.|Squad Number}}
+!rowspan="2" style="background:#CF3339; color:white; |{{Abbr|Pos.|Position}}
+!rowspan="2" style="background:#CF3339; color:white; |{{Abbr|Nat.|FIFA nationality}}
+!rowspan="2" style="background:#CF3339; color:white; |Name
+!colspan="3" style="background:#CF3339; color:white; |{{Abbr|NWSL|National Women's Soccer League regular season}}
+!colspan="3" style="background:#CF3339; color:white; |{{Abbr|Playoffs|NWSL playoffs}}
+!colspan="3" style="background:#CF3339; color:white; |{{Abbr|Summer Cup|2024 NWSL x Liga MX Femenil Summer Cup}}
+!colspan="3" style="background:#CF3339; color:white; |Total
+|-
+!{{yel}} !! {{sent off|2}} !! {{sent off}} !! {{yel}} !! {{sent off|2}} !! {{sent off}} !! {{yel}} !! {{sent off|2}} !! {{sent off}} !! {{yel}} !! {{sent off|2}} !! {{sent off}}
+|-
+|4
+|DF
+|{{flagicon|USA}}
+|[[Hailie Mace]]
+|5
+|0
+|0
+|1
+|0
+|0
+|0
+|0
+|0
+|'''6'''
+|'''0'''
+|'''0'''
+|-
+|5
+|DF
+|{{flagicon|USA}}
+|[[Ellie Wheeler]]
+|2
+|0
+|0
+|1
+|0
+|0
+|1
+|0
+|0
+|'''4'''
+|'''0'''
+|'''0'''
+|-
+|6
+|FW
+|{{flagicon|MWI}}
+|[[Temwa Chawinga]]
+|1
+|0
+|0
+|0
+|0
+|0
+|0
+|0
+|0
+|'''1'''
+|'''0'''
+|'''0'''
+|-
+|7
+|DF
+|{{flagicon|USA}}
+|[[Elizabeth Ball (soccer)|Elizabeth Ball]]
+|0
+|0
+|0
+|0
+|0
+|0
+|1
+|0
+|0
+|'''1'''
+|'''0'''
+|'''0'''
+|-
+|10
+|MF
+|{{flagicon|USA}}
+|[[Lo'eau LaBonta]]
+|2
+|0
+|0
+|1
+|0
+|0
+|0
+|0
+|0
+|'''3'''
+|'''0'''
+|'''0'''
+|-
+|14
+|MF
+|{{flagicon|USA}}
+|[[Claire Hutton]]
+|3
+|0
+|0
+|0
+|0
+|0
+|0
+|0
+|0
+|'''3'''
+|'''0'''
+|'''0'''
+|-
+|15
+|DF
+|{{flagicon|USA}}
+|[[Alana Cook]]
+|1
+|0
+|0
+|0
+|0
+|0
+|0
+|0
+|0
+|'''1'''
+|'''0'''
+|'''0'''
+|-
+|16
+|MF
+|{{flagicon|USA}}
+|[[Vanessa DiBernardo]]
+|3
+|0
+|0
+|0
+|0
+|0
+|0
+|0
+|0
+|'''3'''
+|'''0'''
+|'''0'''
+|-
+|17
+|FW
+|{{flagicon|USA}}
+|[[Michelle Cooper]]
+|2
+|0
+|0
+|0
+|0
+|0
+|1
+|0
+|0
+|'''3'''
+|'''0'''
+|'''0'''
+|-
+|18
+|DF
+|{{flagicon|USA}}
+|[[Izzy Rodriguez]]
+|1
+|0
+|0
+|0
+|0
+|0
+|0
+|0
+|0
+|'''1'''
+|'''0'''
+|'''0'''
+|-
+|21
+|GK
+|{{flagicon|USA}}
+|[[Adrianna Franch]]
+|1
+|0
+|0
+|0
+|0
+|0
+|0
+|0
+|0
+|'''1'''
+|'''0'''
+|'''0'''
+|-
+|24
+|DF
+|{{flagicon|USA}}
+|[[Gabrielle Robinson]]
+|2
+|0
+|0
+|0
+|0
+|0
+|0
+|0
+|0
+|'''2'''
+|'''0'''
+|'''0'''
+|-
+|27
+|DF
+|{{flagicon|USA}}
+|[[Kayla Sharples]]
+|0
+|0
+|0
+|1
+|0
+|0
+|0
+|0
+|0
+|'''1'''
+|'''0'''
+|'''0'''
+|-
+|66
+|FW
+|{{flagicon|RSA}}
+|[[Hildah Magaia]]
+|1
+|0
+|0
+|0
+|0
+|0
+|0
+|0
+|0
+|'''1'''
+|'''0'''
+|'''0'''
+|-
+|77
+|FW
+|{{flagicon|USA}}
+|[[Alexa Spaanstra]]
+|1
+|0
+|0
+|0
+|0
+|0
+|0
+|0
+|0
+|'''1'''
+|'''0'''
+|'''0'''
+|-
+|94
+|MF
+|{{flagicon|FRA}}
+|[[Claire Lavogez]]
+|2
+|0
+|0
+|0
+|0
+|0
+|0
+|0
+|0
+|'''2'''
+|'''0'''
+|'''0'''
+|-
+! colspan="4" |Total
+! 27!! 0!! 0!! 4!! 0!! 0!! 3!! 0!! 0!! 34!! 0!!0
+|}
+
+== Transactions ==
+
+=== 2024 NWSL Draft ===
+{{main|2024 NWSL Draft}}
+
+Draft selections are not automatically signed to the team roster. The [[2024 NWSL Draft]] was held on January 12, 2024, in [[Anaheim, California]].
+{| class="wikitable sortable"
+|+ 2024 NWSL Draft selections, by round
+|-
+! style="background:#d02e35; color:#fff;" | {{abbr|R|Round number}}
+! style="background:#d02e35; color:#fff;" | {{abbr|P|Pick number within round}}
+! style="background:#d02e35; color:#fff;" | {{abbr|Nat.|FIFA nationality}}
+! style="background:#d02e35; color:#fff;" | Player
+! style="background:#d02e35; color:#fff;" | {{abbr|Pos.|Player position}}
+! style="background:#d02e35; color:#fff;" | College
+! style="background:#d02e35; color:#fff;" | Status
+! style="background:#d02e35; color:#fff;" | {{abbr|Ref.|References}}
+|-
+! scope="rowgroup" | 2
+! scope="row" | 18
+| {{fba|name=code|USA}} || [[Ellie Wheeler]]
+| {{center|DF}}
+| [[Penn State Nittany Lions women's soccer|Pennsylvania State University]]
+| Signed to a one-year contract with an option.
+| <ref name=":0">{{Cite web |title=Kansas City Current Select Three in 2024 NWSL Draft - Kansas City Current |url=https://www.kansascitycurrent.com/news/kansas-city-current-select-three-in-2024-nwsl-draft |archive-url=https://web.archive.org/web/20240831071247/https://www.kansascitycurrent.com/news/kansas-city-current-select-three-in-2024-nwsl-draft |archive-date=2024-08-31 |access-date=2025-01-05 |website=www.kansascitycurrent.com |language=en}}</ref><ref name=":1">{{Cite web |date=March 7, 2024 |title=Kansas City Current sign pair of draft picks ahead of 2024 season |url=https://www.kansascitycurrent.com/news/kansas-city-current-sign-pair-of-draft-picks-ahead-of-2024-s |access-date=January 5, 2025 |website=Kansas City Current}}</ref>
+|-
+!3
+! scope="row" | 32
+| {{fba|name=code|USA}} || [[Halle Mackiewicz]]
+| {{center|GK}}
+| [[Clemson Tigers women's soccer|Clemson University]]
+| Not signed.
+| <ref name=":0" />
+|-
+!4
+! scope="row" | 46
+| {{fba|name=code|USA}} || [[Hope Hisey]]
+| {{center|GK}}
+| [[Arizona Wildcats women's soccer|University of Arizona]]
+| Signed to a one-year contract with an option.
+| <ref name=":0" /><ref name=":1" />
+|}
+
+=== Contract operations ===
+{| class="wikitable sortable"
+|+ Contract options
+|-
+! style="background:#d02e35; color:#fff;" data-sort-type="date" | Date
+! style="background:#d02e35; color:#fff;" | {{abbr|Nat.|FIFA nationality}}
+! style="background:#d02e35; color:#fff;" | Player
+! style="background:#d02e35; color:#fff;" | {{abbr|Pos.|Player position}}
+! style="background:#d02e35; color:#fff;" | Notes
+! style="background:#d02e35; color:#fff;" | {{abbr|Ref.|References}}
+|-
+| November 20, 2023
+| {{fba|name=code|FRA}}|| [[Claire Lavogez]]
+| {{center|MF}}
+| Option exercised.
+| <ref name=":2">{{Cite web |date=November 20, 2023 |title=Kansas City Current 2024 Roster Update |url=https://www.kansascitycurrent.com/news/kansas-city-current-2024-roster-update |access-date=January 5, 2025 |website=Kansas City Current}}</ref>
+|}
+
+{| class="wikitable sortable"
+|+ Re-signings
+|-
+! style="background:#d02e35; color:#fff;" data-sort-type="date" | Date
+! style="background:#d02e35; color:#fff;" | {{abbr|Nat.|FIFA nationality}}
+! style="background:#d02e35; color:#fff;" | Player
+! style="background:#d02e35; color:#fff;" | {{abbr|Pos.|Player position}}
+! style="background:#d02e35; color:#fff;" | Notes
+! style="background:#d02e35; color:#fff;" | {{abbr|Ref.|References}}
+|-
+| November 13, 2023
+| {{fba|name=code|USA}}|| [[Gabrielle Robinson]]
+| {{center|DF}}
+| Re-signed to a three-year contract.
+| <ref>{{Cite web |title=Kansas City Current defender Gabrielle Robinson signs new three-year contract - Kansas City Current |url=https://www.kansascitycurrent.com/news/kansas-city-current-defender-gabrielle-robinson-signs-new-th |archive-url=https://web.archive.org/web/20241205121031/https://www.kansascitycurrent.com/news/kansas-city-current-defender-gabrielle-robinson-signs-new-th |archive-date=2024-12-05 |access-date=2025-01-05 |website=www.kansascitycurrent.com |language=en}}</ref>
+|-
+|December 13, 2023
+|{{fba|name=code|USA}}
+|[[Izzy Rodriguez]]
+|{{center|DF}}
+|Re-signed to a two-year contract.
+|<ref>{{Cite web |title=KC Current sign defender Izzy Rodriguez to two-year contract - Kansas City Current |url=https://www.kansascitycurrent.com/news/kc-current-sign-defender-izzy-rodriguez-to-two-year-contract |archive-url=https://web.archive.org/web/20240515021431/https://www.kansascitycurrent.com/news/kc-current-sign-defender-izzy-rodriguez-to-two-year-contract |archive-date=2024-05-15 |access-date=2025-01-05 |website=www.kansascitycurrent.com |language=en}}</ref>
+|-
+|January 23, 2024
+|{{fba|name=code|USA}}
+|[[Cassie Miller]]
+|{{center|GK}}
+|Free agent re-signed to a one-year contract.
+|<ref name=":4">{{Cite web |date=January 23, 2024 |title=Kansas City Current receives total of $100,000 in trade with NJ/NY Gotham FC |url=https://www.kansascitycurrent.com/news/kansas-city-current-receives-total-of-100-000-in-trade-with-nj-ny-gotham-fc |access-date=January 5, 2025 |website=Kansas City Current}}</ref>
+|-
+|January 24, 2024
+|{{fba|name=code|CAN}}
+|[[Desiree Scott]]
+|{{center|MF}}
+|Free agent re-signed to a one-year contract.
+|<ref>{{Cite web |title=Kansas City Current re-sign midfielder Desiree Scott through 2024 - Kansas City Current |url=https://www.kansascitycurrent.com/news/kansas-city-current-re-sign-midfielder-desiree-scott-through |archive-url=https://web.archive.org/web/20241205044029/https://www.kansascitycurrent.com/news/kansas-city-current-re-sign-midfielder-desiree-scott-through |archive-date=2024-12-05 |access-date=2025-01-05 |website=www.kansascitycurrent.com |language=en}}</ref>
+|-
+|January 29, 2024
+|{{fba|name=code|USA}}
+|[[Mallory Weber]]
+|{{center|DF}}
+|Free agent re-signed to a one-year contract.
+|<ref>{{Cite web |date=January 29, 2024 |title=Kansas City Current sign defender Mallory Weber to a one-year contract |url=https://www.kansascitycurrent.com/news/kansas-city-current-sign-defender-mallory-weber-to-a-one-yea |access-date=January 5, 2025 |website=Kansas City Current}}</ref>
+|-
+|January 31, 2024
+|{{fba|name=code|USA}}
+|[[Lo'eau LaBonta]]
+|{{center|MF}}
+|Re-signed to a two-year contract
+|<ref>{{Cite web |date=January 31, 2024 |title=Kansas City Current midfielder Lo’eau LaBonta signs new contract |url=https://www.kansascitycurrent.com/news/kansas-city-current-midfielder-loeau-labonta-signs-new-contr |access-date=January 5, 2025 |website=Kansas City Current}}</ref>
+|}
+
+=== Loans ===
+{| class="wikitable sortable"
+|+ Loans in
+|-
+! style="background:#d02e35; color:#fff;" data-sort-type="date" | Date
+! style="background:#d02e35; color:#fff;" | {{abbr|Nat.|FIFA nationality}}
+! style="background:#d02e35; color:#fff;" | Player
+! style="background:#d02e35; color:#fff;" | {{abbr|Pos.|Player position}}
+! style="background:#d02e35; color:#fff;" | Previous team
+! style="background:#d02e35; color:#fff;" | Fee/notes
+! style="background:#d02e35; color:#fff;" | {{abbr|Ref.|References}}
+|-
+| August 21, 2024
+| {{fba|name=code|South Africa}}|| [[Hildah Magaia]]
+| {{center|FW}}
+| {{flagicon|MEX}} [[Mazatlán Futbol Club Femenil|Mazatlán]]
+| Loaned through the end of the 2024 NWSL season. 
+Kansas City have the option to acquire player rights on a permanent basis at the end of the loan.
+| <ref>{{Cite web |title=Kansas City Current signs South African forward Hildah Magaia on loan from Liga MX Femenil club Mazatlán - Kansas City Current |url=https://www.kansascitycurrent.com/news/kansas-city-current-signs-south-african-forward-hildah-magai |archive-url=https://web.archive.org/web/20240925085627/https://www.kansascitycurrent.com/news/kansas-city-current-signs-south-african-forward-hildah-magai |archive-date=2024-09-25 |access-date=2025-01-05 |website=www.kansascitycurrent.com |language=en}}</ref>
+|}
+
+{| class="wikitable sortable"
+|+ Loans out
+|-
+! style="background:#d02e35; color:#fff;" data-sort-type="date" | Date
+! style="background:#d02e35; color:#fff;" | {{abbr|Nat.|FIFA nationality}}
+! style="background:#d02e35; color:#fff;" | Player
+! style="background:#d02e35; color:#fff;" | {{abbr|Pos.|Player position}}
+! style="background:#d02e35; color:#fff;" | Destination team
+! style="background:#d02e35; color:#fff;" | Fee/notes
+! style="background:#d02e35; color:#fff;" | {{abbr|Ref.|References}}
+|-
+| September 13, 2023
+| {{fba|name=code|USA}} || [[Jordan Silkowitz]]
+| {{center|GK}}
+| {{flagicon|AUS}} [[Brisbane Roar FC (women)|Brisbane Roar FC]]
+| Loaned through April 2024.{{Efn|Recalled from loan on March 8, 2024.}}
+| <ref>{{Cite web |date=September 13, 2023 |title=Kansas City Current loans goalkeeper Jordan Silkowitz to Australian A-League’s Brisbane Roar FC |url=https://www.kansascitycurrent.com/news/kansas-city-current-loans-goalkeeper-jordan-silkowitz-to-aus |access-date=January 5, 2025 |website=Kansas City Current}}</ref><ref>{{Cite web |title=Kansas City Current recall goalkeeper Jordan Silkowitz from Brisbane Roar - Kansas City Current |url=https://www.kansascitycurrent.com/news/kansas-city-current-recall-goalkeeper-jordan-silkowitz-from-brisbane-roar |archive-url=https://web.archive.org/web/20240523071909/https://www.kansascitycurrent.com/news/kansas-city-current-recall-goalkeeper-jordan-silkowitz-from-brisbane-roar |archive-date=2024-05-23 |access-date=2025-01-05 |website=www.kansascitycurrent.com |language=en}}</ref>
+|-
+|July 19, 2024
+|{{fba|name=code|ARG}}
+|[[Sophia Braun]]
+|{{center|MF}}
+|{{flagicon|USA}} [[Spokane Zephyr FC]]
+|Loaned through the end of the 2024 NWSL season.
+|<ref>{{Cite web |date=July 19, 2024 |title=Kansas City Current loans midfielder Sophie Braun to USL Super League’s Spokane Zephyr FC |url=https://www.kansascitycurrent.com/news/kansas-city-current-loans-midfielder-sophie-braun-to-usl-sup |access-date=January 5, 2025 |website=Kansas City Current}}</ref>
+|-
+|November 15, 2024
+|{{fba|name=code|NGA}}
+|[[Opeyemi Ajakaye]]
+|{{center|FW}}
+|{{flagicon|USA}} [[Carolina Ascent FC]]
+|Loaned through the end of the 2024 [[USL Super League]] fall schedule.
+|<ref>{{Cite web |title=Nigerian Youth International Opeyemi Ajakaye Joins Carolina Ascent FC on Loan from Kansas City Current |url=https://www.carolinaascent.com/news/2024/11/15/nigerian-youth-international-opeyemi-ajakaye-joins-carolina-ascent-fc-on-loan-from-kansas-city-current/ |access-date=2025-01-09 |website=Carolina Ascent FC |language=en-US}}</ref>
+|}
+{{Notelist}}
+
+=== Transfers ===
+{| class="wikitable sortable"
+|+ Transfers in
+|-
+! style="background:#d02e35; color:#fff;" data-sort-type="date" | Date
+! style="background:#d02e35; color:#fff;" | {{abbr|Nat.|FIFA nationality}}
+! style="background:#d02e35; color:#fff;" | Player
+! style="background:#d02e35; color:#fff;" | {{abbr|Pos.|Player position}}
+! style="background:#d02e35; color:#fff;" | Previous team
+! style="background:#d02e35; color:#fff;" | Fee/notes
+! style="background:#d02e35; color:#fff;" | {{abbr|Ref.|References}}
+|-
+| October 30, 2023
+| {{fba|name=code|USA}} || [[Alex Pfeiffer (soccer)|Alex Pfeiffer]]
+| {{center|FW}}
+| {{flagicon|USA}} St. Louis Scott Gallagher
+| Signed with NWSL Under-18 Entry Mechanism to a three-year contract.
+| <ref>{{Cite web |title=Kansas City Current sign US Women’s Youth National Team forward Alex Pfeiffer - Kansas City Current |url=https://www.kansascitycurrent.com/news/kansas-city-current-sign-us-womens-youth-national-team-forwa |archive-url=https://web.archive.org/web/20241230015148/https://www.kansascitycurrent.com/news/kansas-city-current-sign-us-womens-youth-national-team-forwa |archive-date=2024-12-30 |access-date=2025-01-05 |website=www.kansascitycurrent.com |language=en}}</ref>
+|-
+|December 14, 2023
+|{{fba|name=code|USA}}
+|[[Claire Hutton]]
+|{{center|MF}}
+|{{flagicon|USA}} World Class FC
+|Signed with NWSL Under-18 Entry Mechanism to a three-year contract.
+|<ref>{{Cite web |title=Kansas City Current sign U.S. Youth National Team captain to three-year contract - Kansas City Current |url=https://www.kansascitycurrent.com/news/kansas-city-current-sign-u-s-youth-national-team-captain-to-three-year-contract |archive-url=https://web.archive.org/web/20241208212909/https://www.kansascitycurrent.com/news/kansas-city-current-sign-u-s-youth-national-team-captain-to-three-year-contract |archive-date=2024-12-08 |access-date=2025-01-05 |website=www.kansascitycurrent.com |language=en}}</ref>
+|-
+|January 3, 2024
+|{{fba|name=code|Malawi}}
+|[[Temwa Chawinga]]
+|{{center|FW}}
+|{{flagicon|China}} [[Wuhan Jianghan University F.C.|Wuhan Jianghan University]]
+|Signed to a two-year contract.
+|<ref>{{Cite web |title=Kansas City Current sign Malawi international forward - Kansas City Current |url=https://www.kansascitycurrent.com/news/kansas-city-current-sign-malawi-international-forward |archive-url=https://web.archive.org/web/20241213020142/https://www.kansascitycurrent.com/news/kansas-city-current-sign-malawi-international-forward |archive-date=2024-12-13 |access-date=2025-01-05 |website=www.kansascitycurrent.com |language=en}}</ref>
+|-
+|January 17, 2024
+|{{fba|name=code|CAN}}
+|[[Nichelle Prince]]
+|{{center|FW}}
+|{{flagicon|USA}} [[Houston Dash]]
+|Traded in exchange for [[Cece Kizer]] and a 2024 international roster slot.
+|<ref name=":3">{{Cite web |date=January 17, 2024 |title=Kansas City Current trades for Olympic Gold Medal winner Nichelle Prince |url=https://www.kansascitycurrent.com/news/kansas-city-current-trades-for-olympic-gold-medal-winner-nic |access-date=January 5, 2025 |website=Kansas City Current}}</ref>
+|-
+| rowspan="2" |January 22, 2024
+|{{fba|name=code|BRA}}
+|[[Bia Zaneratto]]
+|{{center|FW}}
+|{{flagicon|BRA}} [[Sociedade Esportiva Palmeiras (women)|Palmeiras]]
+|Signed to a one-year contract with a club option.
+|<ref>{{Cite web |title=Kansas City Current signs international forward Bia Zaneratto - Kansas City Current |url=https://www.kansascitycurrent.com/news/kansas-city-current-signs-international-forward-bia-zaneratt |archive-url=https://web.archive.org/web/20240827040400/https://www.kansascitycurrent.com/news/kansas-city-current-signs-international-forward-bia-zaneratt |archive-date=2024-08-27 |access-date=2025-01-05 |website=www.kansascitycurrent.com |language=en}}</ref>
+|-
+|{{fba|name=code|USA}}
+|[[Bayley Feist]]
+|{{center|MF}}
+|{{flagicon|USA}} [[Washington Spirit]]
+|Free agent signed to a two-year contract.
+|<ref>{{Cite web |title=Kansas City Current signs free agent midfielder Bayley Feist through 2025 - Kansas City Current |url=https://www.kansascitycurrent.com/news/kansas-city-current-signs-free-agent-midfielder-bayley-feist |archive-url=https://web.archive.org/web/20241208180715/https://www.kansascitycurrent.com/news/kansas-city-current-signs-free-agent-midfielder-bayley-feist |archive-date=2024-12-08 |access-date=2025-01-05 |website=www.kansascitycurrent.com |language=en}}</ref>
+|-
+| rowspan="2" |January 30, 2024
+|{{fba|name=code|ARG}}
+|[[Sophie Braun]]
+|{{center|MF}}
+|{{flagicon|MEX}} [[Club León (women)|Club León]]
+|Signed to a one-year contract with an option.
+| rowspan="2" |<ref>{{Cite web |title=Kansas City Current sign a pair of players with international experience - Kansas City Current |url=https://www.kansascitycurrent.com/news/kansas-city-current-sign-a-pair-of-players-with-internationa |archive-url=https://web.archive.org/web/20240902182527/https://www.kansascitycurrent.com/news/kansas-city-current-sign-a-pair-of-players-with-internationa |archive-date=2024-09-02 |access-date=2025-01-05 |website=www.kansascitycurrent.com |language=en}}</ref>
+|-
+|{{fba|name=code|USA}}
+|[[Regan Steigleder]]
+|{{center|DF}}
+|{{flagicon|SWE}} [[KIF Örebro DFF]]
+|Acquired in exchange for an undisclosed transfer fee and signed to a one-year contract with an option.
+|-
+|July 18, 2024
+|{{fba|name=code|USA}}
+|[[Grace Bahr]]
+|{{center|MF}}
+|{{flagicon|USA}} [[Indy Eleven#Indy Eleven Women|Indy Eleven]]
+|Signed to a national team replacement contract.
+|<ref>{{Cite web |date=July 18, 2024 |title=Kansas City Current sign midfielder Grace Bahr ahead of International Tournaments |url=https://www.kansascitycurrent.com/news/kansas-city-current-sign-midfielder-grace-bahr-ahead-of-inte |access-date=January 5, 2025 |website=Kansas City Current}}</ref>
+|-
+|July 22, 2024
+|{{fba|name=code|USA}}
+|[[Alana Cook]]
+|{{center|DF}}
+|{{flagicon|USA}} [[Seattle Reign FC]]
+|Traded in exchange for $40,000 in allocation money, $75,000 in intra-league transfer funds, and a conditional $25,000 in intra-league transfer funds pending incentive-based requirements.
+|<ref>{{Cite web |title=Kansas City Current set to acquire two-time  NWSL Defender of the Year finalist Alana Cook - Kansas City Current |url=https://www.kansascitycurrent.com/news/kansas-city-current-set-to-acquire-two-time-nwsl-defender-of |archive-url=https://web.archive.org/web/20240825045206/https://www.kansascitycurrent.com/news/kansas-city-current-set-to-acquire-two-time-nwsl-defender-of |archive-date=2024-08-25 |access-date=2025-01-05 |website=www.kansascitycurrent.com |language=en}}</ref>
+|-
+| rowspan="2" |July 26, 2024
+|{{fba|name=code|PHI}}
+|[[Janae DeFazio]]
+|{{center|MF}}
+|{{flagicon|USA}} [[UCLA Bruins women's soccer|UCLA Bruins]] 
+| rowspan="2" |Signed to national team replacement contracts.
+| rowspan="2" |<ref>{{Cite web |title=Match Preview: Kansas City Current host Pachuca for first international match in NWSL x Liga MX Femenil Summer Cup  - Kansas City Current |url=https://www.kansascitycurrent.com/news/match-preview-kansas-city-current-host-pachuca-for-first-int |archive-url=https://web.archive.org/web/20240726234128/https://www.kansascitycurrent.com/news/match-preview-kansas-city-current-host-pachuca-for-first-int |archive-date=2024-07-26 |access-date=2025-01-05 |website=www.kansascitycurrent.com |language=en}}</ref>
+|-
+|{{fba|name=code|USA}}
+|[[Sabrina Weinman]]
+|{{center|MF}}
+|{{flagicon|USA}} Northern Colorado Rain
+|-
+|July 27, 2024
+|{{fba|name=code|USA}}
+|[[Allie Long]]
+|{{center|MF}}
+|{{flagicon|USA}} [[NJ/NY Gotham FC]]
+|Signed to an injury replacement contract.
+|<ref>{{Cite web |date=July 27, 2024 |title=Match Report: Kansas City Current remains unbeaten in Summer Cup play with 3-0 victory over Pachuca |url=https://www.kansascitycurrent.com/news/match-report-kansas-city-current-remains-unbeaten-in-summer-cup-play-with-3-0-victory-over-pachuca |access-date=January 5, 2025 |website=Kansas City Current}}</ref>
+|-
+|August 2, 2024
+|{{fba|name=code|GER}}
+|[[Almuth Schult]]
+|{{center|GK}}
+|{{flagicon|GER}} [[Hamburger SV (women)|Hamburger SV]]
+|Signed to a one-year contract.
+|<ref name=":5">{{Cite web |title=Kansas City Current sign veteran international goalkeeper Almuth Schult - Kansas City Current |url=https://www.kansascitycurrent.com/news/kansas-city-current-sign-veteran-international-goalkeeper-al |archive-url=https://web.archive.org/web/20241007112630/https://www.kansascitycurrent.com/news/kansas-city-current-sign-veteran-international-goalkeeper-al |archive-date=2024-10-07 |access-date=2025-01-05 |website=www.kansascitycurrent.com |language=en}}</ref>
+|-
+|August 16, 2024
+|{{fba|name=code|KEN}}
+|[[Mwanalima Adam Jereko]]
+|{{center|MF}}
+|{{flagicon|TUR}} [[Hakkarigücü Spor]]
+|Signed to a two-year contract through 2025 with an option.
+|<ref>{{Cite web |title=Kansas City Current signs Kenyan midfielder Mwanalima Adam Jereko - Kansas City Current |url=https://www.kansascitycurrent.com/news/kansas-city-current-signs-kenyan-midfielder-mwanalima-adam-j |archive-url=https://web.archive.org/web/20240816231227/https://www.kansascitycurrent.com/news/kansas-city-current-signs-kenyan-midfielder-mwanalima-adam-j |archive-date=2024-08-16 |access-date=2025-01-05 |website=www.kansascitycurrent.com |language=en}}</ref>
+|-
+|August 28, 2024
+|{{fba|name=code|USA}}
+|[[Kayla Sharples]]
+|{{center|DF}}
+|{{flagicon|USA}} [[Bay FC]]
+|Traded in exchange for [[Jordan Silkowitz]] and $15,000 in allocation money.
+|<ref name=":6">{{Cite web |title=Kansas City Current agree to trade for defender Kayla Sharples - Kansas City Current |url=https://www.kansascitycurrent.com/news/kansas-city-current-agree-to-trade-for-defender-kayla-sharpl |archive-url=https://web.archive.org/web/20241118065652/https://www.kansascitycurrent.com/news/kansas-city-current-agree-to-trade-for-defender-kayla-sharpl |archive-date=2024-11-18 |access-date=2025-01-05 |website=www.kansascitycurrent.com |language=en}}</ref>
+|-
+|September 13, 2024
+|{{fba|name=code|USA}}
+|[[Katie Fraine]]
+|{{center|GK}}
+|{{flagicon|SCO}} [[Hibernian W.F.C.|Hibernian]]
+|Signed to a one-year contract through the remainder of 2024.
+|<ref>{{Cite web |title=Kansas City Current sign goalkeeper Katie Fraine through 2024 - Kansas City Current |url=https://www.kansascitycurrent.com/news/kansas-city-current-sign-goalkeeper-katie-fraine-through-202 |archive-url=https://web.archive.org/web/20241006220619/https://www.kansascitycurrent.com/news/kansas-city-current-sign-goalkeeper-katie-fraine-through-202 |archive-date=2024-10-06 |access-date=2025-01-05 |website=www.kansascitycurrent.com |language=en}}</ref>
+|-
+|November 15, 2024
+|{{fba|name=code|NGA}}
+|[[Opeyemi Ajakaye]]
+|{{center|FW}}
+|{{flagicon|ESP}} [[Madrid CFF]]
+|International signing acquired prior to the NWSL roster freeze.
+|<ref>{{Cite web |title=Match Preview: Kansas City Current visit Orlando Pride for  heavyweight NWSL semifinal showdown   - Kansas City Current |url=https://www.kansascitycurrent.com/news/match-preview-kansas-city-current-visit-orlando-pride-for-he |archive-url=https://web.archive.org/web/20241116102440/https://www.kansascitycurrent.com/news/match-preview-kansas-city-current-visit-orlando-pride-for-he |archive-date=2024-11-16 |access-date=2025-01-09 |website=www.kansascitycurrent.com |language=en}}</ref>
+|}
+
+{| class="wikitable sortable"
+|+ Transfers out
+|-
+! style="background:#d02e35; color:#fff;" data-sort-type="date" | Date
+! style="background:#d02e35; color:#fff;" | {{abbr|Nat.|FIFA nationality}}
+! style="background:#d02e35; color:#fff;" | Player
+! style="background:#d02e35; color:#fff;" | {{abbr|Pos.|Player position}}
+! style="background:#d02e35; color:#fff;" | Destination team
+! style="background:#d02e35; color:#fff;" | Fee/notes
+! style="background:#d02e35; color:#fff;" | {{abbr|Ref.|References}}
+|-
+| November 15, 2023
+| {{fba|name=code|USA}} || [[Alex Loera]]
+| {{center|MF}}
+| {{flagicon|USA}} [[Bay FC]]
+| Traded in exchange for $175,000 in allocation money and protection in the [[2024 NWSL expansion draft]].
+| <ref>{{Cite web |title=Kansas City Current receives Expansion Draft protection from Bay FC and $175,000 in trade - Kansas City Current |url=https://www.kansascitycurrent.com/news/kansas-city-current-receives-expansion-draft-protection-from |archive-url=https://web.archive.org/web/20240615223801/https://www.kansascitycurrent.com/news/kansas-city-current-receives-expansion-draft-protection-from |archive-date=2024-06-15 |access-date=2025-01-05 |website=www.kansascitycurrent.com |language=en}}</ref>
+|-
+| rowspan="6" |November 20, 2023
+|{{fba|name=code|USA}}
+|[[Rylan Childers]]
+|{{center|MF}}
+|{{flagicon|USA}} [[Odense Boldklub Q]]
+| rowspan="4" |Waived.
+|<ref name=":2" /><ref>{{Cite web |date=2024-02-01 |title=Childers, Hansen Sign Professional Contracts Overseas |url=https://kuathletics.com/news/2024/2/1/childers-hansen-sign-professional-contracts-overseas |access-date=2025-01-05 |website=University of Kansas |language=en}}</ref>
+|-
+|{{fba|name=code|USA}}
+|[[Chardonnay Curran]]
+|{{center|MF}}
+|{{flagicon|USA}} [[Chicago Red Stars]]
+|<ref name=":2" /><ref>{{Cite web |last=Salazar |first=Emmanuel |date=2024-01-04 |title=Red Stars Sign Midfielder Chardonnay Curran |url=https://chicagoredstars.com/first-team/chicago-red-stars-sign-midfielder-chardonnay-curran/ |access-date=2025-01-05 |website=Chicago Red Stars |language=en-US}}</ref>
+|-
+|{{fba|name=code|USA}}
+|[[Croix Soto]]
+|{{center|DF}}
+|{{flagicon|USA}} [[Houston Dash]]
+|<ref name=":2" /><ref>{{Cite web |title=Houston Dash announce 2024 roster |url=https://www.bayoucitysoccer.net/dash/houston-dash-announce-2024-roster |access-date=2025-01-05 |website=Bayou City Soccer |language=en-US}}</ref>
+|-
+|{{fba|name=code|USA}}
+|[[Jenna Winebrenner]]
+|{{center|DF}}
+|{{flagicon|USA}} [[North Carolina Courage]]
+|<ref name=":2" /><ref>{{Cite web |title=2024 Start-of-Season Roster |url=https://www.nccourage.com/news/2024-start-of-season-roster/ |access-date=2025-01-05 |website=NC Courage |language=en-US}}</ref>
+|-
+|{{fba|name=code|USA}}
+|[[Addisyn Merrick]]
+|{{center|DF}}
+|{{flagicon|USA}} [[Utah Royals]]
+| rowspan="2" |Free agents.
+|<ref name=":2" /><ref>{{Cite web |last=rsl |title=Fast Facts: Addisyn Merrick {{!}} Utah Royals |url=https://www.rsl.com/utahroyals/news/fast-facts-addison-merrick |access-date=2025-01-05 |website=rsl |language=en}}</ref>
+|-
+|{{fba|name=code|USA}}
+|[[Sam Mewis]]
+|{{center|MF}}
+|Retired
+|<ref name=":2" /><ref>{{Cite web |date=2024-01-19 |title=USWNT's Sam Mewis retires from soccer at 31 |url=https://www.espn.com/soccer/story/_/id/39343373/world-cup-winning-uswnt-midfielder-sam-mewis-retires-31 |access-date=2025-01-05 |website=ESPN.com |language=en}}</ref>
+|-
+|December 12, 2023
+|{{fba|name=code|USA}}
+|[[Kate Del Fava]]
+|{{center|DF}}
+|{{flagicon|USA}} [[Utah Royals]]
+|Traded, along with Kansas City's natural first-round pick in the 2024 NWSL Draft, in exchange for $75,000 in allocation money and protection in the [[2024 NWSL expansion draft]].
+|<ref>{{Cite web |last=rsl |title=URFC Acquires Kate Del Fava & 2024 Draft Pick From KC Current {{!}} Utah Royals |url=https://www.rsl.com/utahroyals/news/urfc-acquires-kate-del-fava-2024-draft-pick-from-kc-current |access-date=2025-01-05 |website=rsl |language=en}}</ref>
+|-
+|January 11, 2024
+|{{fba|name=code|USA}}
+|[[Morgan Gautrat]]
+|{{center|MF}}
+|{{flagicon|USA}} [[Orlando Pride]]
+|Traded, along with $50,000 in allocation money, in exchange for a 2024 international roster spot.
+|<ref>{{Cite web |date=January 11, 2024 |title=Kansas City Current receive International Roster Spot in trade with Orlando Pride |url=https://www.kansascitycurrent.com/news/kansas-city-current-receive-international-roster-spot-in-tra |access-date=January 5, 2025 |website=Kansas City Current}}</ref>
+|-
+|January 17, 2024
+|{{fba|name=code|USA}}
+|[[Cece Kizer]]
+|{{center|FW}}
+|{{flagicon|USA}} [[Houston Dash]]
+|Traded, along with a 2024 international roster spot, in exchange for [[Nichelle Prince]].
+|<ref name=":3" />
+|-
+|January 23, 2024
+|{{fba|name=code|USA}}
+|[[Cassie Miller]]
+|{{center|GK}}
+|{{flagicon|USA}} [[NJ/NY Gotham FC]]
+|Traded in exchange for $70,000 in allocation money and $30,000 in intra-league transfer funds.
+|<ref name=":4" />
+|-
+|January 26, 2024
+|{{fba|name=code|SWE}}
+|[[Mimmi Larsson]]
+|{{center|FW}}
+|{{flagicon|GER}} [[RB Leipzig (women)|RB Leipzig]]
+|Mutual contract termination.
+|<ref>{{Cite web |date=January 26, 2024 |title=Kansas City Current and forward Mimmi Larsson mutually agree to part ways |url=https://www.kansascitycurrent.com/news/kansas-city-current-and-forward-mimmi-larsson-mutually-agree |access-date=January 5, 2025 |website=Kansas City Current}}</ref>
+|-
+|August 2, 2024
+|{{fba|name=code|USA}}
+|[[Hope Hisey]]
+|{{center|GK}}
+|{{flagicon|USA}} [[Spokane Zephyr FC]]
+|Waived.
+|<ref name=":5" />
+|-
+|August 12, 2024
+|{{fba|name=code|FRA}}
+|[[Claire Lavogez]]
+|{{center|MF}}
+|{{flagicon|ESP}} [[Real Sociedad Femenino|Real Sociedad]]
+|Mutual contract termination.
+|<ref>{{Cite web |date=August 12, 2024 |title=Kansas City Current and Claire Lavogez mutually agree to terminate contract |url=https://www.kansascitycurrent.com/news/kansas-city-current-and-claire-lavogez-mutually-agree-to-ter |access-date=January 5, 2025 |website=Kansas City Current}}</ref>
+|-
+|August 19, 2024
+|{{fba|name=code|USA}}
+|[[Alexa Spaanstra]]
+|{{center|FW}}
+|{{flagicon|USA}} [[Portland Thorns FC]]
+|Traded in exchange for $15,000 in allocation money and $25,000 in intra-league transfer funds.
+|<ref>{{Cite web |title=Kansas City Current agrees to trade with Portland Thorns - Kansas City Current |url=https://www.kansascitycurrent.com/news/kansas-city-current-agrees-to-trade-with-portland-thorns |archive-url=https://web.archive.org/web/20240827011750/https://www.kansascitycurrent.com/news/kansas-city-current-agrees-to-trade-with-portland-thorns |archive-date=2024-08-27 |access-date=2025-01-05 |website=www.kansascitycurrent.com |language=en}}</ref>
+|-
+|August 21, 2024
+|{{fba|name=code|BRA}}
+|[[Lauren (Brazilian footballer)|Lauren]]
+|{{center|DF}}
+|{{flagicon|ESP}} [[Atlético Madrid Femenino|Atlético Madrid]]
+|Free transfer.
+|<ref>{{Cite web |date=August 21, 2024 |title=Kansas City Current transfers Lauren to Atlético de Madrid |url=https://www.kansascitycurrent.com/news/kansas-city-current-transfers-lauren-to-atletico-de-madrid |access-date=January 5, 2025 |website=Kansas City Current}}</ref>
+|-
+|August 28, 2024
+|{{fba|name=code|USA}}
+|[[Jordan Silkowitz]]
+|{{center|GK}}
+|{{flagicon|USA}} [[Bay FC]]
+|Traded, along with $15,000 of allocation money, in exchange for [[Kayla Sharples]].
+|<ref name=":6" />
+|-
+|September 2, 2024
+|{{fba|name=code|SWE}}
+|[[Hanna Glas]]
+|{{center|DF}}
+|{{flagicon|USA}} [[Seattle Reign FC]]
+|Traded in exchange for $10,000 of intra-league transfer funds and an additional $10,000 of transfer funds pending conditions met.
+|<ref>{{Cite web |title=Kansas City Current receive $10,000 in transfer funds in trade with Seattle Reign in exchange for defender Hanna Glas - Kansas City Current |url=https://www.kansascitycurrent.com/news/kansas-city-current-receive-10-000-in-transfer-funds-in-trad |archive-url=https://web.archive.org/web/20241210083326/https://www.kansascitycurrent.com/news/kansas-city-current-receive-10-000-in-transfer-funds-in-trad |archive-date=2024-12-10 |access-date=2025-01-05 |website=www.kansascitycurrent.com |language=en}}</ref>
+|}
+
+== References ==
+{{reflist}}
+
+{{Kansas City Current}}
+{{2024 NWSL season by team}}
+{{2024 in American women's soccer}}
+
+[[Category:2024 National Women's Soccer League season|Kansas City]]
+[[Category:American soccer clubs 2024 season|Kansas City Current]]
+[[Category:Kansas City Current seasons]]
+[[Category:2024 in sports in Missouri|Kansas City Current season]]

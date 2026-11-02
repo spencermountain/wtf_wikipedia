@@ -1,5 +1,6 @@
 // current mls clubs - renamed ones list each name, newest-first
-// includes folded clubs, so their old seasons still resolve
+// includes folded clubs, so their old seasons still resolve -
+// a `to` year marks the fold, so year-sweeps skip the dead seasons
 export default [
   [{ name: 'Atlanta United FC', from: 2017 }],
   [{ name: 'Austin FC', from: 2021 }],
@@ -44,7 +45,7 @@ export default [
   [{ name: 'Toronto FC', from: 2007 }],
   [{ name: 'Vancouver Whitecaps FC', from: 2011 }],
   // folded clubs
-  [{ name: 'Chivas USA', from: 2005 }],
-  [{ name: 'Tampa Bay Mutiny', from: 1996 }],
-  [{ name: 'Miami Fusion', from: 1998 }],
+  [{ name: 'Chivas USA', from: 2005, to: 2014 }],
+  [{ name: 'Tampa Bay Mutiny', from: 1996, to: 2001 }],
+  [{ name: 'Miami Fusion', from: 1998, to: 2001 }],
 ]

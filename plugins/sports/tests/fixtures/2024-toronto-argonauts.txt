@@ -1,0 +1,603 @@
+{{Short description|CFL team season}}
+{{Use Canadian English|date=March 2026}}
+{{Infobox NFL season
+| logo = 
+| team = Toronto Argonauts
+| year = 2024
+| record = '''10–8'''
+| division_place = '''2nd, [[East Division (CFL)|East]]'''
+| president = [[Bill Manning]] (until July 11, 2024)
+| general_manager = [[Michael Clemons]]
+| coach = [[Ryan Dinwiddie]]
+| stadium = [[BMO Field]] 
+| playoffs = '''Won [[111th Grey Cup|Grey Cup]]'''
+| MOP = [[Ka’Deem Carey]]
+| MODP = [[DaShaun Amos]]
+| MOC = [[Lirim Hajrullahu]]
+| MOOL = [[Ryan Hunter]]
+| MOST = [[Janarion Grant]]
+| MOR = [[Makai Polk]]
+| shortnavlink = Argonauts seasons
+| uniform = CFL TOR Jersey 2024.png
+}}
+The '''2024 Toronto Argonauts season''' was the 66th season for the team in the [[Canadian Football League]] (CFL) and their 151st year of existence. The [[Toronto Argonauts|Argonauts]] qualified for the playoffs for the fourth consecutive year with a win on October 11 over the [[2024 Winnipeg Blue Bombers season|Winnipeg Blue Bombers]].<ref>{{cite web|url=https://www.cfl.ca/2024/10/11/argonauts-beat-bombers-to-punch-playoff-ticket/ |title=Argonauts beat Bombers to punch playoff ticket |publisher=[[Canadian Football League]] |date=October 11, 2024}}</ref> The team won their 19th [[Grey Cup]] championship after defeating the Blue Bombers in the [[111th Grey Cup]] game.
+
+The [[2024 CFL season]] was the fourth season for [[head coach]] [[Ryan Dinwiddie]] and the fifth season for [[Michael Clemons]] as [[general manager]].<ref name="Argos HC">{{cite web|url=https://www.argonauts.ca/2019/12/12/ryan-dinwiddie-named-45th-head-coach-argos-history/|title=Ryan Dinwiddie named 45th head coach in Argos history|work=[[Toronto Argonauts]]|date=December 12, 2019|access-date=November 12, 2023}}</ref><ref>{{cite web |author=CFL.ca Staff |title=Argos relieve GM Jim Popp of duties |url=https://www.cfl.ca/2019/10/08/report-argos-relieve-gm-jim-popp-duties/ |publisher=CFL.ca |date=October 8, 2019 |access-date=November 12, 2023}}</ref>
+
+On July 11, 2024, team owners, [[Maple Leaf Sports & Entertainment]] (MLSE), parted ways with team president, [[Bill Manning]], and stated that Clemons would report directly to MLSE President, [[Keith Pelley]].<ref>{{cite web|url=https://www.argonauts.ca/2024/07/11/mlse-and-bill-manning-president-of-tfc-and-argonauts-mutually-agree-to-part-ways/ |title=MLSE and Bill Manning, President of TFC and Argonauts, mutually agree to part ways |publisher=[[Toronto Argonauts]] |date=July 11, 2024}}</ref>
+
+The Toronto Argonauts drew an average home attendance of 15,129 in 2024.
+
+==Offseason==
+===CFL global draft===
+The [[2024 CFL global draft]] took place on April 30, 2024.<ref name=highlight>{{cite web|url=https://press.cfl.ca/cfl-combine-in-winnipeg-and-april-30-drafts-highlight-2024-offseason |title=CFL Combine in Winnipeg and April 30 drafts highlight 2024 offseason |publisher=[[Canadian Football League]] |date=January 31, 2024}}</ref> The Argonauts had two picks in the draft, selecting seventh in each round.<ref name=2024Global>{{cite news|url=https://www.cfl.ca/2024-global-draft-tracker/ |title=2024 Global draft tracker |publisher=[[Canadian Football League]] |access-date=February 5, 2024}}</ref>
+
+{| class="wikitable" style="font-size: 95%;"
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=1}};" | Round
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=1}};" | Pick
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=1}};" | Player
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=1}};" | Position
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=1}};" | Club/School
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=1}};" | Nationality
+|- align="center"
+|align=center| 1 || 7 || [[Jeremy Edwards (gridiron football)|Jeremy Edwards]] || P || [[Eastern Kentucky Colonels football|Eastern Kentucky]] || {{Flag|Australia}}
+|- align="center"
+|align=center| 2 || 16 || [[Denzel Daxon]] || DL || [[Illinois Fighting Illini football|Illinois]] || {{Flag|Bahamas}}
+|}
+
+==CFL national draft==
+The [[2024 CFL draft]] took place on April 30, 2024.<ref name=highlight/> The Argonauts had nine selections in the eight-round draft.<ref name=2024National>{{cite web|url=https://www.cfl.ca/draft-tracker/2024/ |title=Draft tracker |publisher=[[Canadian Football League]] |access-date=February 5, 2024}}</ref> Through a series of trades with [[Hamilton Tiger-Cats|Hamilton]] and [[Edmonton Elks|Edmonton]], the Argonauts improved their first-round pick by two spots, and had three selections in the third round and two each in the fifth and sixth rounds.<ref name=2024National/>
+
+{| class="wikitable" style="font-size: 95%;"
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=1}};" | Round
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=1}};" | Pick
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=1}};" | Player
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=1}};" | Position
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=1}};" | School
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=1}};" | Hometown
+|- align="center"
+|align=center| 1 || 5 || [[Kevin Mital]] || WR || [[Laval Rouge et Or football|Laval]] || [[Saint-Agapit|Saint-Agapit, QC]]
+|- align="center"
+|align=center| 3 || 24 || [[Tyson Hergott]] || DL || [[Waterloo Warriors football|Waterloo]] || [[Waterloo, Ontario|Waterloo, ON]]
+|- align="center"
+|align=center| 3 || 25 || [[John Bosse]] || OL || [[Calgary Dinos football|Calgary]] || [[Calgary|Calgary, AB]]
+|- align="center"
+|align=center| 3 || 27 || [[Tyshon Blackburn]] || DB || [[Alberta Golden Bears football|Alberta]] || Calgary, AB
+|- align="center"
+|align=center| 5 || 39 || [[Jerrell Cummings]] || DB || [[UBC Thunderbirds football|British Columbia]] || [[Vancouver|Vancouver, BC]]
+|- align="center"
+|align=center| 5 || 45 || [[Ifenna Onyeka]] || DL || [[Carleton Ravens football|Carleton]] || [[Brampton|Brampton, ON]]
+|- align="center"
+|align=center| 6 || 48 || [[Anim Dankwah]] || OL || [[Howard Bison football|Howard]] || [[Toronto|Toronto, ON]]
+|- align="center"
+|align=center| 6 || 54 || [[Justin Sambu]] || DL || [[Baylor Bears football|Baylor]] || Calgary, AB
+|- align="center"
+|align=center| 8 || 72 || [[Daniel Shin]] || OL || Alberta || [[Edmonton|Edmonton, AB]]
+|}
+
+==Preseason==
+The Argonauts' home preseason game was played at [[Alumni Stadium (Guelph)|Alumni Stadium]] in [[Guelph]], [[Ontario]].<ref name=Argoschedule>{{cite web|url=https://www.argonauts.ca/2023/12/14/argos-announce-2024-schedule/ |title=Argos announce 2024 schedule |publisher=[[Toronto Argonauts]] |date=December 14, 2023}}</ref>
+
+===Schedule===
+{| class="wikitable" style="font-size: 95%;"
+|-
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" rowspan=2 | Week
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" rowspan=2 | Game
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" rowspan=2 | Date
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" rowspan=2 | Kickoff
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" rowspan=2 | Opponent
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" colspan=2 | Results
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" rowspan=2 | TV
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" rowspan=2 | Venue
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" rowspan=2 | Attendance
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" rowspan=2 | Summary
+|-
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" | Score
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" | Record
+|-align="center"= bgcolor="ffffff"
+! align="center" | '''A'''
+| colspan=10 align="center" valign="middle" | ''Bye''
+|-align="center"= bgcolor="ffbbbb"
+! align="center" | '''B'''
+! style="text-align:center; background:white;"|<span style="color:#002147;">1</span>
+| align="center" | Sat, May 25
+| align="center" | 7:30 p.m. [[Eastern Time Zone|EDT]]
+| align="center" | at [[2024 Montreal Alouettes season|Montreal Alouettes]]
+| align="center" | L 13–30
+| align="center" | 0–1
+| align="center" | [[Réseau des sports|RDS]]/CFL+
+| align="center" | [[Molson Stadium]]
+| align="center" | 13,787
+| align="center" | [https://www.cfl.ca/games/6394/montreal-alouettes-vs-toronto-argonauts/ Recap]
+|-align="center"= bgcolor="ddffdd"
+! align="center" | '''C'''
+! style="text-align:center; background:white;"|<span style="color:#002147;">2</span>
+| align="center" | Fri, May 31
+| align="center" | 7:00 p.m. EDT
+| align="center" | vs. [[2024 Hamilton Tiger-Cats season|Hamilton Tiger-Cats]]
+| align="center" | W 25–14
+| align="center" | 1–1
+| align="center" | CFL+
+| align="center" | [[Alumni Stadium (Guelph)|Alumni Stadium]]
+| align="center" | N/A
+| align="center" | [https://www.cfl.ca/games/6400/toronto-argonauts-vs-hamilton-tiger-cats/#/gametracker/ Recap]
+|}
+<ref name="schedule">{{cite web|url=https://www.cfl.ca/schedule/2024/ |title=2024 Schedule |publisher=[[Canadian Football League]] |access-date=February 20, 2024}}</ref><ref name=broadcast>{{cite web|url=https://static.cfl.ca/wp-content/uploads/2024/05/2024-CFL-Broadcast-Schedule-4.pdf |title=2024 CFL Broadcast Schedule |publisher=[[Canadian Football League]] |access-date=May 25, 2024}}</ref>
+
+:{{color box|white|#|#002147}} Games played with white uniforms.
+
+==Regular season==
+===Standings===
+{{2024 CFL East Division standings}}
+
+===Schedule===
+The Argonauts are scheduled to play nine regular season home games in Toronto for the first time since [[2018 Toronto Argonauts season|2018]].<ref>{{cite web|url=https://members.argonauts.ca/ |title=Argos membership central |publisher=[[Toronto Argonauts]] |access-date=November 12, 2023}}</ref> The team was the designated host for [[Touchdown Atlantic]] games in [[2019 Toronto Argonauts season|2019]], [[2022 Toronto Argonauts season|2022]], and [[2023 Toronto Argonauts season|2023]], while the [[2020 CFL season]] was cancelled and the [[2021 CFL season]] had every team hosting seven home games.
+
+{| class="wikitable" style="font-size: 95%;"
+|-
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" rowspan=2 | Week
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" rowspan=2 | Game
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" rowspan=2 | Date
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" rowspan=2 | Kickoff
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" rowspan=2 | Opponent
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" colspan=2 | Results
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" rowspan=2 | TV
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" rowspan=2 | Venue
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" rowspan=2 | Attendance
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" rowspan=2 | Summary
+|-
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" | Score
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" | Record
+|-align="center"= bgcolor="ddffdd"
+! align="center" | '''1'''
+! style="text-align:center; background:#5E8EB2;"|<span style="color:#002147;">1</span>
+| align="center" | Sun, June 9
+| align="center" | 7:00 p.m. [[Eastern Time Zone|EDT]]
+| align="center" | vs. [[2024 BC Lions season|BC Lions]]
+| align="center" | W 35–27
+| align="center" | 1–0
+| align="center" | [[CFL on TSN|TSN]]/[[CBS Sports Network|CBSSN]]
+| align="center" | [[BMO Field]]
+| align="center" | 12,767
+| align="center" | [https://www.cfl.ca/2024/06/09/argos-win-back-and-forth-battle-against-bc-in-home-opener/ Recap]
+|-align="center"= bgcolor="ffffff"
+! align="center" | '''2'''
+| colspan=10 align="center" valign="middle" | ''Bye''
+|-align="center"= bgcolor="ddffdd"
+! align="center" | '''3'''
+! style="text-align:center; background:#5E8EB2;"|<span style="color:#002147;">2</span>
+| align="center" | Sat, June 22
+| align="center" | 7:00 p.m. EDT
+| align="center" | vs. [[2024 Edmonton Elks season|Edmonton Elks]]
+| align="center" | W 39–36
+| align="center" | 2–0
+| align="center" | TSN/[[Réseau des sports|RDS]]/CBSSN
+| align="center" | BMO Field
+| align="center" | 10,857
+| align="center" | [https://www.cfl.ca/2024/06/22/argos-come-out-on-top-over-elks-in-high-scoring-matchup-after-game-winning-kick/ Recap]
+|-align="center"= bgcolor="ffbbbb"
+! align="center" | '''4'''
+! style="text-align:center; background:#5E8EB2;"|<span style="color:#002147;">3</span>
+| align="center" | Fri, June 28
+| align="center" | 7:30 p.m. EDT
+| align="center" | vs. [[2024 Montreal Alouettes season|Montreal Alouettes]] 
+| align="center" | L 20–30
+| align="center" | 2–1
+| align="center" | TSN/RDS
+| align="center" | BMO Field
+| align="center" | 11,165
+| align="center" | [https://www.cfl.ca/2024/06/28/alouettes-take-down-the-argos-on-the-road/ Recap]
+|-align="center"= bgcolor="ffbbbb"
+! align="center" | '''5'''
+! style="text-align:center; background:white;"|<span style="color:#002147;">4</span>
+| align="center" | Thu, July 4
+| align="center" | 9:00 p.m. EDT
+| align="center" | at [[2024 Saskatchewan Roughriders season|Saskatchewan Roughriders]]
+| align="center" | L 23–30
+| align="center" | 2–2
+| align="center" | TSN
+| align="center" | [[Mosaic Stadium]]
+| align="center" | 23,923
+| align="center" | [https://www.cfl.ca/2024/07/05/riders-force-five-turnovers-to-beat-argos-on-thursday/ Recap]
+|-align="center"= bgcolor="ddffdd"
+! align="center" | '''6'''
+! style="text-align:center; background:white;"|<span style="color:#002147;">5</span>
+| align="center" | Thu, July 11
+| align="center" | 7:30 p.m. EDT
+| align="center" | at Montreal Alouettes
+| align="center" | W 37–18
+| align="center" | 3–2
+| align="center" | TSN/RDS
+| align="center" | [[Percival Molson Memorial Stadium|Molson Stadium]]
+| align="center" | 18,088
+| align="center" | [https://www.cfl.ca/2024/07/11/argonauts-open-week-6-with-win-in-montreal/ Recap]
+|-align="center"= bgcolor="ffbbbb"
+! align="center" | '''7'''
+! style="text-align:center; background:white;"|<span style="color:#002147;">6</span>
+| align="center" | Sat, July 20
+| align="center" | 7:00 p.m. EDT
+| align="center" | at [[2024 Hamilton Tiger-Cats season|Hamilton Tiger-Cats]]
+| align="center" | L 24–27
+| align="center" | 3–3
+| align="center" | TSN/[[RDS2]]/CBSSN
+| align="center" | [[Tim Hortons Field]]
+| align="center" | 22,910
+| align="center" | [https://www.cfl.ca/2024/07/20/tiger-cats-earn-first-win-of-the-season-over-argonauts/ Recap]
+|-align="center"= bgcolor="ddffdd"
+! align="center" | '''8'''
+! style="text-align:center; background:#5E8EB2;"|<span style="color:#002147;">7</span>
+| align="center" | Sat, July 27
+| align="center" | 7:00 p.m. EDT
+| align="center" | vs. [[2024 Winnipeg Blue Bombers season|Winnipeg Blue Bombers]]
+| align="center" | W 16–14 <small>(OT)</small>
+| align="center" | 4–3
+| align="center" | TSN/CBSSN
+| align="center" | BMO Field
+| align="center" | 14,994
+| align="center" | [https://www.cfl.ca/2024/07/27/argos-survive-overtime-to-take-down-bombers-on-saturday// Recap]
+|-align="center"= bgcolor="ffbbbb"
+! align="center" | '''9'''
+! style="text-align:center; background:white;"|<span style="color:#002147;">8</span>
+| align="center" | Sun, Aug 4
+| align="center" | 7:00 p.m. EDT
+| align="center" | at [[2024 Calgary Stampeders season|Calgary Stampeders]]
+| align="center" | L 23–27
+| align="center" | 4–4
+| align="center" | TSN
+| align="center" | [[McMahon Stadium]]
+| align="center" | 19,914
+| align="center" | [https://www.cfl.ca/games/6436/calgary-stampeders-vs-toronto-argonauts/ Recap]
+|-align="center"= bgcolor="ddffdd"
+! align="center" | '''10'''
+! style="text-align:center; background:#5E8EB2;"|<span style="color:#002147;">9</span>
+| align="center" | Fri, Aug 9
+| align="center" | 7:30 p.m. EDT
+| align="center" | vs. Calgary Stampeders
+| align="center" | W 39–25
+| align="center" | 5–4
+| align="center" | TSN
+| align="center" | BMO Field
+| align="center" | 13,481
+| align="center" | [https://www.cfl.ca/2024/08/09/argonauts-win-at-home-in-rematch-with-stampeders/ Recap]
+|-align="center"= bgcolor="ffffff"
+! align="center" | '''11'''
+| colspan=10 align="center" valign="middle" | ''Bye''
+|-align="center"= bgcolor="ddffdd"
+! align="center" | '''12'''
+! style="text-align:center; background:#5E8EB2;"|<span style="color:#002147;">10</span>
+| align="center" | Thu, Aug 22
+| align="center" | 7:30 p.m. EDT
+| align="center" | vs. Saskatchewan Roughriders
+| align="center" | W 20–19
+| align="center" | 6–4
+| align="center" | TSN/RDS
+| align="center" | BMO Field
+| align="center" | 19,327
+| align="center" | [https://www.cfl.ca/2024/08/22/argonauts-come-out-on-top-in-defensive-battle-with-roughriders/ Recap]
+|-align="center"= bgcolor="ffbbbb"
+! align="center" | '''13'''
+! style="text-align:center; background:#5E8EB2;"|<span style="color:#002147;">11</span>
+| align="center" | [[Labour Day Classic|Mon, Sept 2]]
+| align="center" | 2:30 p.m. EDT
+| align="center" | at Hamilton Tiger-Cats
+| align="center" | L 28–31
+| align="center" | 6–5
+| align="center" | TSN/RDS2/CBSSN
+| align="center" | Tim Hortons Field
+| align="center" | 25,291
+| align="center" | [https://www.cfl.ca/2024/09/02/ticats-stop-argos-comeback-for-labour-day-classic-win/ Recap]
+|-align="center"= bgcolor="ffbbbb"
+! align="center" | '''14'''
+! style="text-align:center; background:white;"|<span style="color:#002147;">12</span>
+| align="center" | Sat, Sept 7
+| align="center" | 1:00 p.m. EDT
+| align="center" | at [[2024 Ottawa Redblacks season|Ottawa Redblacks]]
+| align="center" | L 27–41
+| align="center" | 6–6
+| align="center" | TSN/RDS
+| align="center" | [[TD Place Stadium]]
+| align="center" | 17,834
+| align="center" | [https://www.cfl.ca/2024/09/07/redblacks-earn-statement-win-over-argonauts/ Recap]
+|-align="center"= bgcolor="ddffdd"
+! align="center" | '''15'''
+! style="text-align:center; background:white;"|<span style="color:#002147;">13</span>
+| align="center" | Fri, Sept 13
+| align="center" | 10:00 p.m. EDT
+| align="center" | at BC Lions
+| align="center" | W 33–17
+| align="center" | 7–6
+| align="center" | TSN/CBSSN
+| align="center" | [[BC Place]]
+| align="center" | 20,683
+| align="center" | [https://www.cfl.ca/2024/09/14/argos-play-complete-game-to-take-down-lions-in-vancouver/ Recap]
+|-align="center"= bgcolor="ffbbbb"
+! align="center" | '''16'''
+! style="text-align:center; background:#5E8EB2;"|<span style="color:#002147;">14</span>
+| align="center" | Fri, Sept 20
+| align="center" | 7:00 p.m. EDT
+| align="center" | vs. Hamilton Tiger-Cats
+| align="center" | L 31–33
+| align="center" | 7–7
+| align="center" | TSN/RDS
+| align="center" | BMO Field
+| align="center" | 18,210
+| align="center" | [https://www.cfl.ca/2024/09/20/tiger-cats-win-thriller-to-sweep-season-series-with-argonauts/ Recap]
+|-align="center"= bgcolor="ddffdd"
+! align="center" | '''17'''
+! style="text-align:center; background:#5E8EB2;"|<span style="color:#002147;">15</span>
+| align="center" | Sat, Sept 28
+| align="center" | 7:00 p.m. EDT
+| align="center" | vs. Montreal Alouettes
+| align="center" | W 37–31
+| align="center" | 8–7
+| align="center" | TSN/RDS
+| align="center" | BMO Field
+| align="center" | 14,856
+| align="center" | [https://www.cfl.ca/2024/09/28/argonauts-best-alouettes-at-home-in-back-and-forth-affair/ Recap]
+|-align="center"= bgcolor="ffffff"
+! align="center" | '''18'''
+| colspan=10 align="center" valign="middle" | ''Bye''
+|-align="center"= bgcolor="ddffdd"
+! align="center" | '''19'''
+! style="text-align:center; background:white;"|<span style="color:#002147;">16</span>
+| align="center" | Fri, Oct 11
+| align="center" | 8:30 p.m. EDT
+| align="center" | at Winnipeg Blue Bombers
+| align="center" | W 14–11
+| align="center" | 9–7
+| align="center" | TSN/RDS2
+| align="center" | [[Princess Auto Stadium]]
+| align="center" | 32,343
+| align="center" | [https://www.cfl.ca/2024/10/11/argonauts-beat-bombers-to-punch-playoff-ticket/ Recap]
+|-align="center"= bgcolor="ddffdd"
+! align="center" | '''20'''
+! style="text-align:center; background:#5E8EB2;"|<span style="color:#002147;">17</span>
+| align="center" | Sat, Oct 19
+| align="center" | 3:00 p.m. EDT
+| align="center" | vs. Ottawa Redblacks
+| align="center" | W 38–31
+| align="center" | 10–7
+| align="center" | [[CTV Television Network|CTV]]
+| align="center" | BMO Field
+| align="center" | 20,487
+| align="center" | [https://www.cfl.ca/2024/10/19/argos-hold-off-redblacks-to-secure-home-playoff-game/ Recap]
+|-align="center"= bgcolor="ffbbbb"
+! align="center" | '''21'''
+! style="text-align:center; background:white;"|<span style="color:#002147;">18</span>
+| align="center" | Fri, Oct 25
+| align="center" | 9:30 p.m. EDT
+| align="center" | at Edmonton Elks
+| align="center" | L 30–31 <small>(OT)</small>
+| align="center" | 10–8
+| align="center" | TSN
+| align="center" | [[Commonwealth Stadium (Edmonton)|Commonwealth Stadium]]
+| align="center" | 15,069
+| align="center" | [https://www.cfl.ca/2024/10/26/elks-end-season-with-walk-off-overtime-win-over-argos/ Recap]
+|}
+<ref name="schedule"/><ref name=broadcast/>
+
+:{{color box|#5E8EB2|#|#002147}} Games played with colour uniforms.
+:{{color box|white|#|#002147}} Games played with white uniforms.
+
+==Post-season==
+===Schedule===
+{| class="wikitable" style="font-size: 95%;"
+|-
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" rowspan=2 | Game
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" rowspan=2 | Date
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" rowspan=2 | Kickoff
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" rowspan=2 | Opponent
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" colspan=2 | Results
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" rowspan=2 | TV
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" rowspan=2 | Venue
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" rowspan=2 | Attendance
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" rowspan=2 | Summary
+|-
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" | Score
+! scope="col" style="{{NFLPrimaryStyle|Toronto Argonauts|border=2}};" | Record
+|-align="center" bgcolor="#ddffdd"
+! style="text-align:center; background:#5E8EB2;"|<span style="color:#002147;">East Semi-Final</span>
+| align="center" | Sat, Nov 2
+| align="center" | 3:00&nbsp;p.m. EDT
+| align="center" | vs. [[2024 Ottawa Redblacks season|Ottawa Redblacks]]
+| align="center" | W 58–38
+| align="center" | 1–0
+| align="center" | CTV/TSN/RDS
+| align="center" | [[BMO Field]]
+| align="center" | 18,060
+| align="center" | [https://www.cfl.ca/2024/11/02/double-blue-wave-argos-roll-past-redblacks-in-esf/ Recap]
+|-align="center" bgcolor="ddffdd"
+! style="text-align:center; background:#FFFFFF;"|<span style="color:#002147;">East Final</span>
+| align="center" | Sat, Nov 9
+| align="center" | 3:00&nbsp;p.m. EST
+| align="center" | at [[2024 Montreal Alouettes season|Montreal Alouettes]]
+| align="center" | W 30–28
+| align="center" | 2–0
+| align="center" | CTV/TSN/RDS
+| align="center" | [[Molson Stadium]]
+| align="center" | 23,035
+| align="center" | [https://www.cfl.ca/2024/11/09/argos-defence-special-teams-step-up-to-win-eastern-final/ Recap]
+|-align="center" bgcolor="ddffdd"
+! style="text-align:center; background:#FFFFFF;"|[[111th Grey Cup|<span style="color:#002147;">111th Grey Cup</span>]]
+| align="center" | Sun, Nov 17
+| align="center" | 6:00&nbsp;p.m. EST
+| align="center" | [[2024 Winnipeg Blue Bombers season|Winnipeg Blue Bombers]]
+| align="center" | W 41–24
+| align="center" | 3–0
+| align="center" | CTV/TSN/RDS
+| align="center" | [[BC Place]]
+| align="center" | 52,439
+| align="center" | [https://www.cfl.ca/2024/11/17/boatmen-reign-supreme-argos-win-the-111th-grey-cup/ Recap]
+|}
+<ref name="schedule"/>
+
+:{{color box|#5E8EB2|#|#002147}} Games played with colour uniforms.
+:{{color box|white|#|#002147}} Games played with white uniforms.
+
+== Roster ==
+{| class="toccolours" style="text-align: left;"
+|+ colspan="10" style="{{NFLPrimaryStyle|Toronto Argonauts|year=2023|border=2}};color:white;text-align:center;"| '''2024 Toronto Argonauts final roster'''
+|-
+| style="font-size: 95%;vertical-align:top;" | '''Quarterbacks'''
+* {{CFL player|&nbsp;4|I|[[Nick Arbuckle]]}}
+* {{CFL player|11|I|[[Cameron Dukes]]}}
+* {{CFL player|&nbsp;5|I|[[Bryan Scott (quarterback)|Bryan Scott]]}}
+
+'''Running backs'''
+* {{CFL player|21|N|[[Daniel Adeboboye]]}} 
+* {{CFL player|25|I|[[Ka'Deem Carey]]}}
+* {{CFL player|24|I|[[Deonta McMahon]]}} 
+
+'''Receivers'''
+* {{CFL player|18|N|[[Dejon Brissett]]}}
+* {{CFL player|86|I|[[Damonte Coxie]]}} 
+* {{CFL player|80|I|[[DaVaris Daniels]]}}
+* {{CFL player|&nbsp;3|I|[[Janarion Grant]]}}
+* {{CFL player|10|N|[[Kevin Mital]]}}
+* {{CFL player|15|I|[[Makai Polk]]}}
+* {{CFL player|83|N|[[David Ungerer]]}}
+
+| style="width: 25px;" |
+| style="font-size: 95%;vertical-align:top;" | '''Offensive linemen'''
+* {{CFL player|59|I|[[Dejon Allen]]}} T
+* {{CFL player|64|N|[[Dylan Giffen]]}} G
+* {{CFL player|62|N|[[Ryan Hunter]]}} G/T
+* {{CFL player|67|N|[[Gregor MacKellar]]}} G 
+* {{CFL player|52|N|[[Peter Nicastro]]}} C
+* {{CFL player|65|N|[[Landon Rice]]}} T/G
+* {{CFL player|58|N|[[Anthony Vandal]]}} G/C
+
+'''Defensive linemen'''
+* {{CFL player|91|I|[[Jared Brinkman]]}} DT
+* {{CFL player|94|I|[[Jake Ceresna]]}} DT/DE
+* {{CFL player|90|G|[[Thiadric Hansen]]}} DE
+* {{CFL player|99|I|[[Ralph Holley]]}} DT
+* {{CFL player|&nbsp;7|I|[[Folarin Orimolade]]}} DE
+* {{CFL player|98|I|[[Derek Parish]]}} DE 
+* {{CFL player|40|N|[[Robbie Smith (Canadian football)|Robbie Smith]]}} DE
+* {{CFL player|95|I|[[Jordan Williams (defensive lineman)|Jordan Williams]]}} DT
+| style="width: 25px;" |
+| style="font-size: 95%;vertical-align:top;" | '''Linebackers'''
+* {{CFL player|45|N|[[Jack Cassar]]}}
+* {{CFL player|35|I|[[Isaac Darkangelo]]}}
+* {{CFL player|26|N|[[Brian Harelimana]]}}
+* {{CFL player|48|I|[[Wynton McManis]]}} 
+* {{CFL player|32|N|[[Fraser Sopik]]}}
+
+'''Defensive backs'''
+* {{CFL player|&nbsp;3|N|[[Tunde Adeleke]]}} 
+* {{CFL player|&nbsp;8|I|[[DaShaun Amos]]}} 
+* {{CFL player|&nbsp;0|N|[[Tyshon Blackburn]]}}
+* {{CFL player|34|N|[[Kerfalla Exumé]]}}
+* {{CFL player|23|I|[[Benjie Franklin]]}} 
+* {{CFL player|&nbsp;2|I|[[Tarvarus McFadden]]}} 
+* {{CFL player|&nbsp;9|N|[[Royce Metchie]]}}
+* {{CFL player|27|I|[[Mark Milton (gridiron football)|Mark Milton]]}}
+* {{CFL player|19|I|[[Robert Priester]]}} 
+
+| style="font-size: 95%;vertical-align:top;" |'''Special teams'''
+* {{CFL player|47|N|[[Adam Guillemette]]}} LS
+* {{CFL player|29|G|[[John Haggerty (Canadian football)|John Haggerty]]}} P
+* {{CFL player|&nbsp;7|N|[[Lirim Hajrullahu]]}} K/P
+
+'''Practice roster'''
+* {{CFL player|51|N|[[John Bosse]]}} T/G
+* {{CFL player|46|N|[[Simon Chaves]]}} LS
+* {{CFL player|63|N|[[Sage Doxtater]]}} T
+* {{CFL player|39|I|[[Willie Drew]]}} DB
+* {{CFL player|41|N|[[Jonathan Edouard]]}} DB
+* {{CFL player|72|G|Jeremy Edwards}} P 
+* {{CFL player|71|G|[[Alfredo Gachuz Lozada]]}} K
+* {{CFL player|43|I|Clayton Glasco}} LB
+* {{CFL player|96|N|[[Tyson Hergott]]}} DE
+* {{CFL player|87|I|[[Jake Herslow]]}} WR
+* {{CFL player|56|I|[[George Moore (gridiron football)|George Moore]]}} T
+* {{CFL player|92|G|Baptiste Pollier}} DE
+* {{CFL player|82|I|[[Derek Slywka]]}} DB
+
+| style="width: 12px;" | 
+| style="font-size: 95%;vertical-align:top;" | '''Injured list'''
+* {{CFL player|93|I|[[Woody Baron]]}} DT
+* {{CFL player|66|I|[[Isiah Cage]]}} T
+* {{CFL player|44|N|[[Brandon Calver]]}} FB
+* {{CFL player|53|N|[[Darius Ciraco]]}} C
+* {{CFL player|33|I|[[Kenneth George Jr.|Kenneth George]]}} DB
+* {{CFL player|12|I|[[Chad Kelly]]}} QB
+* {{CFL player|38|N|[[Jamie Harry]]}} DB
+* {{CFL player|30|I|[[Jonathan Jones (Canadian football)|Jonathan Jones]]}} LB
+* {{CFL player|49|N|[[Daniel Kwamou]]}} LB
+* {{CFL player|20|I|[[Quincy Mauger]]}} DB
+* {{CFL player|81|N|[[Tommy Nield]]}} SB
+* {{CFL player|17|N|[[Richie Sindani]]}} WR
+
+'''Suspended list'''
+* {{CFL player||I|Isaiah Bowser}} RB
+* {{CFL player||I|[[DeAndre Torrey]]}} RB
+|-
+| style="text-align:center;font-size: 95%;background:#F9F9F9;border:2px solid #5E8FB0" colspan="12"| ''Italics'' indicate American player • '''Bold''' indicates Global player 
+|-
+|}
+
+==Coaching staff==
+{| class="toccolours" style="text-align: left;"
+|+ colspan="10" style="{{NFLPrimaryStyle|Toronto Argonauts|year=2024|border=2}};color:white;text-align:center;"| '''Toronto Argonauts staff'''
+|-
+| colspan=7 style="text-align:right;" |
+|-
+| style="vertical-align:top;" |
+| style="font-size: 95%;vertical-align:top;" | '''Front office and support staff'''
+*Owner – [[Maple Leaf Sports & Entertainment]]
+*President – ''Vacant''
+*General Manager – [[Pinball Clemons|Michael Clemons]]
+*Assistant General Manager – John Murphy
+*Head Athletic Therapist – Josh Shewell
+*Assistant Athletic Therapist – Mark Belmore
+*Equipment Manager – Danny Webb
+*Assistant Equipment Manager – David Sillberg
+*Strength and Conditioning – Usama Mujtaba
+*Manager, Football Media – Chris Balenovich
+*Manager, Communications – [[Mike Hogan (sportscaster)|Mike Hogan]]
+
+|width="35"|&nbsp;
+| style="vertical-align:top;" |
+| style="font-size: 95%;vertical-align:top;" |
+'''Head Coaches'''
+*Head Coach/Offensive Coordinator – [[Ryan Dinwiddie]]
+
+'''Offensive coaches'''
+*Pass Game Coordinator and Receivers – [[Pete Costanza (Canadian football)|Pete Costanza]]
+*Offensive Line – [[Kris Sweet]]
+*Quarterbacks – [[Mike Miller (American football coach)|Mike Miller]]
+*Running backs – [[Dominic Picard]]
+*Offensive assistant – [[Drew Tate]]
+
+'''Defensive coaches'''
+*Co-Defensive Coordinator and Linebackers – [[Kevin Eiben]]
+*Co-Defensive Coordinator and Secondary – [[William Fields (Canadian football)|William Fields]]
+*Defensive Line – [[Demetrious Maxie]]
+*Defensive Backs – [[Myron Lewis]]
+
+'''Special teams coaches'''
+*Special Teams Coordinator – [[Mickey Donovan]]
+
+→ <span class="plainlinks">[http://www.argonauts.ca/page/front-office-football-operations Coaching staff]</span><br>
+
+|}
+
+==References==
+{{reflist}}
+
+==External links==
+* {{official website|https://www.argonauts.ca/}}
+
+{{2024 CFL season by team}}
+{{Toronto Argonauts}}
+{{111th Grey Cup}}
+{{Toronto Argonauts seasons}}
+{{Grey Cup championship seasons}}
+
+[[Category:Toronto Argonauts seasons]]
+[[Category:2024 Canadian Football League season by team]]
+[[Category:2024 in sports in Ontario|Toronto Argonauts season]]
+[[Category:2024 in Toronto|Toronto Argonauts season]]
+[[Category:Grey Cup championship seasons]]

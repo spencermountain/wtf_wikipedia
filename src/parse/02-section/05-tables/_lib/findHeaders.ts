@@ -12,7 +12,10 @@ const findHeaders = function (rows = [], opts) {
   }
 
   let first = rows[0]
+  let misaligned = false
   if (first?.length && first.some((cell) => /^!/.test(cell))) {
+    // a group that failed to expand means the sub-header's columns won't line up
+    misaligned = first.some((cell) => /colspan *=/.test(cell))
     headers = first.map((h) => {
       h = h.replace(/^! */, '')
       h = cleanText(h)
@@ -22,7 +25,7 @@ const findHeaders = function (rows = [], opts) {
   }
   //try the second row, too (overwrite first-row, if it exists)
   first = rows[0]
-  if (first && first[0] && first[1] && /^!/.test(first[0]) && /^!/.test(first[1])) {
+  if (misaligned === false && first && first[0] && first[1] && /^!/.test(first[0]) && /^!/.test(first[1])) {
     first.forEach((h, i) => {
       h = h.replace(/^! */, '')
       h = cleanText(h)

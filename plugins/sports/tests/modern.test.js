@@ -204,6 +204,169 @@ test('1996 dc united: first mls season', (t) => {
   t.end()
 })
 
+test('2024 aces: wnba game log templates', (t) => {
+  const res = fixture('2024-las-vegas-aces.txt', '2024 Las Vegas Aces season').wnbaSeason()
+  t.equal(res.team, 'Las Vegas Aces', 'team')
+  t.equal(res.games.length, 40, 'all 40 games, preseason excluded')
+  t.deepEqual(tally(res.games), { win: 27, loss: 13 }, 'outcomes match the 27–13 record')
+
+  const g1 = res.games[0]
+  t.equal(g1.opponent, 'Phoenix Mercury', 'opponent from season-page link')
+  t.equal(g1.home, true, 'home game')
+  t.deepEqual(g1.result, { us: 89, them: 80 }, "score from the 'W 89–80' link text")
+  t.equal(g1.leaders.points, "A'ja Wilson (30)", 'high-points leader')
+  t.equal(g1.location, 'Michelob Ultra Arena', 'arena')
+  t.equal(g1.attendance, 10419, 'attendance after a <br>')
+
+  t.deepEqual(
+    res.playoffs.map((s) => s.length),
+    [2, 4],
+    'swept the first round, lost the semis in four'
+  )
+  t.equal(res.roster.length, 13, 'sports-roster entries, coaches excluded')
+  t.equal(res.playerStats.season.length, 15, 'regular-season stats table')
+  t.deepEqual(res.standings.record, { wins: 27, losses: 13, games: 40, winPct: 0.675 }, 'record from wins/losses fields')
+  t.equal(res.standings.conferencePlace, 2, 'conference place')
+  t.end()
+})
+
+test('2000 comets: generic game-log templates', (t) => {
+  const res = fixture('2000-houston-comets.txt', '2000 Houston Comets season').wnbaSeason()
+  t.equal(res.games.length, 32, 'all 32 games')
+  t.deepEqual(tally(res.games), { win: 27, loss: 5 }, 'outcomes match the 27–5 record')
+  t.deepEqual(
+    res.playoffs.map((s) => s.length),
+    [2, 2, 2],
+    'three playoff sweeps to the title'
+  )
+  t.equal(res.playoffs.flat().filter((g) => g.win).length, 6, 'won every playoff game')
+  const g1 = res.games[0]
+  t.equal(g1.opponent, 'New York Liberty', 'opponent from season-page link')
+  t.deepEqual(g1.result, { us: 84, them: 68 }, 'external-link score')
+  t.equal(res.roster.length, 11, 'roster entries')
+  t.end()
+})
+
+test('2024 kc current: nwsl football-box matches', (t) => {
+  const res = fixture('2024-kansas-city-current.txt', '2024 Kansas City Current season').nwslSeason()
+  t.equal(res.team, 'Kansas City Current', 'team')
+  t.equal(res.games.length, 26, 'all 26 league matches, cups excluded')
+  t.deepEqual(tally(res.games), { win: 16, loss: 3, tie: 7 }, 'outcomes match the 16–3–7 record')
+
+  const g1 = res.games[0]
+  t.equal(g1.opponent, 'Portland Thorns FC', 'opponent')
+  t.equal(g1.home, true, 'home opener')
+  t.deepEqual(g1.result, { us: 5, them: 4 }, 'score')
+  t.equal(g1.stadium, 'CPKC Stadium', 'stadium')
+  t.equal(g1.attendance, 11500, 'attendance')
+
+  t.equal(res.playoffs.length, 2, 'two playoff matches')
+  t.equal(res.playoffs.filter((g) => g.win).length, 1, 'won one, out in the semis')
+  t.deepEqual(res.standings.record, { wins: 16, losses: 3, ties: 7, games: 26, winPct: 0.615 }, 'computed record')
+  t.equal(res.standings.position, 4, 'league position')
+  t.end()
+})
+
+test('2013 thorns: first nwsl season', (t) => {
+  const res = fixture('2013-portland-thorns.txt', '2013 Portland Thorns FC season').nwslSeason()
+  t.equal(res.games.length, 22, 'all 22 league matches')
+  // the page prose says 10-6-6, but its own results-summary + round strip say 11-6-5
+  t.deepEqual(tally(res.games), { win: 11, loss: 6, tie: 5 }, 'outcomes match the results summary')
+  t.equal(res.playoffs.length, 2, 'semi-final + championship')
+  t.equal(res.playoffs.filter((g) => g.win).length, 2, 'won the first nwsl title')
+  t.end()
+})
+
+test('2024-25 frost: pwhl four-part records', (t) => {
+  const res = fixture('2024-25-minnesota-frost.txt', '2024–25 Minnesota Frost season').pwhlSeason()
+  t.equal(res.team, 'Minnesota Frost', 'team')
+  t.equal(res.year, 2024, 'year')
+  t.equal(res.games.length, 30, 'all 30 games, preseason excluded')
+  t.deepEqual(tally(res.games), { win: 15, loss: 11, otl: 4 }, 'outcomes match the 10–5–4–11 record')
+
+  const g1 = res.games[0]
+  t.equal(g1.opponent, 'New York Sirens', 'opponent from season-page link')
+  t.equal(g1.outcome, 'otl', 'overtime loss')
+  t.equal(g1.overtime, true, 'ot flag from its own column')
+  t.equal(g1.points, 1, 'cumulative team points')
+  t.equal(g1.decision, 'Hensley', 'goalie of record')
+  t.deepEqual(
+    g1.record,
+    { wins: 0, losses: 0, otWins: 0, otLosses: 1, games: 1, winPct: 0 },
+    'running W–OTW–OTL–L record'
+  )
+
+  t.deepEqual(
+    res.playoffs.map((s) => s.length),
+    [4, 4],
+    'two playoff rounds'
+  )
+  t.equal(res.playoffs[1].filter((g) => g.win).length, 3, 'won the walter cup final 3–1')
+
+  t.deepEqual(
+    res.season.record,
+    { wins: 15, otWins: 5, otLosses: 4, losses: 11, games: 30, winPct: 0.5 },
+    'infobox record counts ot wins as wins'
+  )
+  t.equal(res.standings.place, 4, 'league rank')
+  t.equal(res.skaters.length, 23, 'skaters')
+  t.equal(res.goalies.length, 3, 'goalies')
+  t.end()
+})
+
+test('2024 argonauts: cfl double-header schedule tables', (t) => {
+  const res = fixture('2024-toronto-argonauts.txt', '2024 Toronto Argonauts season').cflSeason()
+  t.equal(res.team, 'Toronto Argonauts', 'team')
+  t.equal(res.games.length, 18, 'all 18 games, byes excluded')
+  t.deepEqual(tally(res.games), { win: 10, loss: 8 }, 'outcomes match the 10–8 record')
+
+  const g1 = res.games[0]
+  t.equal(g1.opponent, 'BC Lions', 'opponent from season-page link')
+  t.equal(g1.home, true, "home game - 'vs.' marker")
+  t.deepEqual(g1.result, { us: 35, them: 27 }, "score through the colspan'd Results header")
+  t.deepEqual(g1.record, { wins: 1, losses: 0, games: 1, winPct: 1 }, 'record column found')
+  t.equal(g1.venue, 'BMO Field', 'venue')
+  t.equal(g1.attendance, 12767, 'attendance')
+
+  t.equal(res.playoffs.length, 3, 'three playoff games, flat')
+  t.equal(res.playoffs.filter((g) => g.win).length, 3, 'won the grey cup')
+  t.equal(res.playoffs.at(-1).opponent, 'Winnipeg Blue Bombers', 'grey cup opponent')
+
+  t.equal(res.roster.length, 72, 'cfl-player roster templates')
+  t.deepEqual(res.standings.record, { wins: 10, losses: 8, games: 18, winPct: 0.556 }, 'infobox record')
+  t.equal(res.standings.division, 'East', 'division split from place')
+  t.equal(res.standings.divisionPlace, 2, 'division place')
+  t.end()
+})
+
+test('2007 roughriders: single-header schedule + quarter-box playoffs', (t) => {
+  const res = fixture('2007-saskatchewan-roughriders.txt', '2007 Saskatchewan Roughriders season').cflSeason()
+  t.equal(res.games.length, 18, 'all 18 games')
+  t.deepEqual(tally(res.games), { win: 12, loss: 6 }, 'outcomes match the 12–6 record')
+
+  const g1 = res.games[0]
+  t.equal(g1.opponent, 'Montreal Alouettes', 'opponent')
+  t.equal(g1.home, false, "road game - 'at' marker")
+  t.deepEqual(g1.result, { us: 16, them: 7 }, 'winner-first score oriented by outcome')
+
+  t.equal(res.playoffs.length, 3, 'three quarter-box playoff games')
+  t.equal(res.playoffs.filter((g) => g.win).length, 3, 'won the grey cup')
+  const cup = res.playoffs.at(-1)
+  t.equal(cup.round, 'Grey Cup', 'round from the subsection title')
+  t.deepEqual(cup.result, { us: 23, them: 19 }, 'totals column scores')
+  t.equal(cup.opponent, 'Winnipeg Blue Bombers', 'opponent from the other row')
+  t.end()
+})
+
+test('1989 eskimos: older cfl format', (t) => {
+  const res = fixture('1989-edmonton-eskimos.txt', '1989 Edmonton Eskimos season').cflSeason()
+  t.equal(res.games.length, 18, 'all 18 games')
+  t.deepEqual(tally(res.games), { win: 16, loss: 2 }, 'the 16–2 season')
+  t.equal(res.playoffs.length, 1, 'lost the west final')
+  t.equal(res.playoffs[0].win, false, 'playoff loss')
+  t.end()
+})
+
 test('2002-03 maple leafs: four-part records + ties era', (t) => {
   const res = fixture('2002-03-toronto-maple-leafs.txt', '2002–03 Toronto Maple Leafs season').nhlSeason()
   t.equal(res.games.length, 82, 'all 82 games')

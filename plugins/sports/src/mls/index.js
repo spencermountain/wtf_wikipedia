@@ -1,22 +1,12 @@
 import { getCell } from '../_lib.js'
 import { findMatches } from '../engine/matches.js'
 import parseInfobox from '../engine/infobox.js'
+import { countRecord } from '../engine/record.js'
 import resolveTeam from '../engine/teams.js'
+import { oneYearTitle, parseOneYearTitle } from '../engine/slug.js'
 import franchises from './franchises.js'
 
-// '2024 LA Galaxy season' → {year: 2024, team: 'LA Galaxy'}
-const parseTitle = function (title = '') {
-  const m = String(title).match(/^(\d{4}) (.+?) season$/)
-  if (m) {
-    return { year: Number(m[1]), team: m[2] }
-  }
-  const year = String(title).match(/\d{4}/)
-  return { year: year ? Number(year[0]) : null, team: '' }
-}
-
-const makeTitle = function (team, year) {
-  return `${year} ${team} season`.replace(/ /g, '_')
-}
+const makeTitle = oneYearTitle
 
 const gameTitles = ['regular season', 'match results', 'matches', 'major league soccer', 'results']
 
@@ -29,27 +19,11 @@ const defaultYear = function () {
   return now.getMonth() >= 2 ? now.getFullYear() : now.getFullYear() - 1
 }
 
-// count the record from the matches themselves - soccer infoboxes rarely state one
-const recordOf = function (games) {
-  const rec = { wins: 0, losses: 0, ties: 0, games: games.length }
-  games.forEach((g) => {
-    if (g.outcome === 'win') {
-      rec.wins += 1
-    } else if (g.outcome === 'loss') {
-      rec.losses += 1
-    } else if (g.outcome === 'tie') {
-      rec.ties += 1
-    }
-  })
-  rec.winPct = rec.games > 0 ? Number((rec.wins / rec.games).toFixed(3)) : 0
-  return rec
-}
-
 const parse = function (doc) {
   if (!doc) {
     return null
   }
-  const meta = parseTitle(doc.title || '')
+  const meta = parseOneYearTitle(doc.title || '')
   const ctx = {
     team: meta.team,
     year: meta.year,
@@ -65,7 +39,7 @@ const parse = function (doc) {
     page: doc.title || '',
     season,
     standings: {
-      record: recordOf(games),
+      record: countRecord(games),
       league: getCell(season, ['league']) || '',
       position: getCell(season, ['position', 'league_result', 'league result']) || null,
       manager: getCell(season, ['manager', 'mgrtitle', 'head coach']) || '',

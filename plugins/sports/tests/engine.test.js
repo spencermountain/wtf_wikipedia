@@ -8,6 +8,10 @@ import mlbFranchises from '../src/mlb/franchises.js'
 import nbaFranchises from '../src/nba/franchises.js'
 import nflFranchises from '../src/nfl/franchises.js'
 import mlsFranchises from '../src/mls/franchises.js'
+import wnbaFranchises from '../src/wnba/franchises.js'
+import nwslFranchises from '../src/nwsl/franchises.js'
+import pwhlFranchises from '../src/pwhl/franchises.js'
+import cflFranchises from '../src/cfl/franchises.js'
 
 test('outcome from row attributes', (t) => {
   t.equal(outcomeOf('class="game-won"'), 'win', 'game-won template class')
@@ -52,6 +56,11 @@ test('record parsing', (t) => {
     '1981 split-season prefers the overall record'
   )
   t.equal(parseRecord('1st half: 16–42').wins, 16, 'ordinal prefix not read as a record')
+  t.deepEqual(
+    parseRecord('10–5–4–11', { otWins: true }),
+    { wins: 15, otWins: 5, otLosses: 4, losses: 11, games: 30, winPct: 0.5 },
+    'pwhl W–OTW–OTL–L counts ot wins as wins'
+  )
   t.equal(parseRecord(''), null, 'empty')
   t.equal(parseRecord(), null, 'undefined')
   t.end()
@@ -87,6 +96,27 @@ test('team resolution across renames', (t) => {
   t.equal(resolveTeam(mlsFranchises, 'San Jose Earthquakes', 1997), 'San Jose Clash', 'clash era')
   t.equal(resolveTeam(mlsFranchises, 'LA Galaxy', 2005), 'Los Angeles Galaxy', 'full galaxy name')
   t.equal(resolveTeam(mlsFranchises, 'CF Montréal', 2015), 'Montreal Impact', 'impact era')
+  // wnba
+  t.equal(resolveTeam(wnbaFranchises, 'Las Vegas Aces', 1999), 'Utah Starzz', 'aces were the starzz')
+  t.equal(resolveTeam(wnbaFranchises, 'Las Vegas Aces', 2015), 'San Antonio Stars', 'san antonio era')
+  t.equal(resolveTeam(wnbaFranchises, 'Dallas Wings', 2012), 'Tulsa Shock', 'tulsa era')
+  t.equal(resolveTeam(wnbaFranchises, 'Dallas Wings', 2005), 'Detroit Shock', 'detroit era')
+  t.equal(resolveTeam(wnbaFranchises, 'Connecticut Sun', 2000), 'Orlando Miracle', 'miracle era')
+  t.equal(resolveTeam(wnbaFranchises, 'Portland Fire', 2001), 'Portland Fire', 'the folded fire')
+  // nwsl
+  t.equal(resolveTeam(nwslFranchises, 'NJ/NY Gotham FC', 2015), 'Sky Blue FC', 'sky blue era')
+  t.equal(resolveTeam(nwslFranchises, 'Seattle Reign FC', 2021), 'OL Reign', 'ol reign era')
+  t.equal(resolveTeam(nwslFranchises, 'Seattle Reign FC', 2015), 'Seattle Reign FC', 'original reign')
+  t.equal(resolveTeam(nwslFranchises, 'North Carolina Courage', 2014), 'Western New York Flash', 'flash era')
+  t.equal(resolveTeam(nwslFranchises, 'Chicago Stars FC', 2020), 'Chicago Red Stars', 'red stars era')
+  // pwhl
+  t.equal(resolveTeam(pwhlFranchises, 'Minnesota Frost', 2023), 'PWHL Minnesota', 'inaugural placeholder name')
+  t.equal(resolveTeam(pwhlFranchises, 'PWHL Toronto', 2025), 'Toronto Sceptres', 'placeholder resolves forward')
+  // cfl
+  t.equal(resolveTeam(cflFranchises, 'Edmonton Elks', 2015), 'Edmonton Eskimos', 'eskimos era')
+  t.equal(resolveTeam(cflFranchises, 'Ottawa Redblacks', 2003), 'Ottawa Renegades', 'renegades era')
+  t.equal(resolveTeam(cflFranchises, 'Ottawa Redblacks', 1990), 'Ottawa Rough Riders', 'rough riders era')
+  t.equal(resolveTeam(cflFranchises, 'Montreal Alouettes', 1984), 'Montreal Concordes', 'concordes era')
   t.end()
 })
 

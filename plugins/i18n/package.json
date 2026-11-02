@@ -19,6 +19,10 @@
       }
     },
     "./package.json": "./package.json",
+    "./words": {
+      "types": "./types/words.d.ts",
+      "default": "./src/words/index.js"
+    },
     "./*": {
       "types": "./types/lang.d.ts",
       "default": "./src/langs/*/index.js"

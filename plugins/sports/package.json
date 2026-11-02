@@ -27,7 +27,18 @@
     "build": "node ./scripts/version.js && rollup -c",
     "test": "tape --strict \"tests/**/*.test.js\" | tap-dancer",
     "testb": "TESTENV=prod tape --strict \"tests/**/*.test.js\" | tap-dancer",
-    "version": "node ./scripts/version.js"
+    "version": "node ./scripts/version.js",
+    "write:all": "node ./scripts/write-db.js all",
+    "write:dump": "node ./scripts/write-db.js dump",
+    "write:mlb": "node ./scripts/write-db.js mlb",
+    "write:nhl": "node ./scripts/write-db.js nhl",
+    "write:nba": "node ./scripts/write-db.js nba",
+    "write:nfl": "node ./scripts/write-db.js nfl",
+    "write:mls": "node ./scripts/write-db.js mls",
+    "write:wnba": "node ./scripts/write-db.js wnba",
+    "write:nwsl": "node ./scripts/write-db.js nwsl",
+    "write:pwhl": "node ./scripts/write-db.js pwhl",
+    "write:cfl": "node ./scripts/write-db.js cfl"
   },
   "files": [
     "builds",
@@ -35,6 +46,7 @@
     "types"
   ],
   "devDependencies": {
+    "@duckdb/node-api": "2.0.0-r.1",
     "wtf_wikipedia": "workspace:*"
   },
   "peerDependencies": {

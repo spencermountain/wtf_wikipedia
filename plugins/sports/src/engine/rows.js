@@ -51,3 +51,4 @@ const rowGroups = function (doc, section, skip) {
   return groups.filter((g) => g.rows.length > 0)
 }
 export default rowGroups
+export { fromTable }

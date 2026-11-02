@@ -30,4 +30,30 @@ const translate = (key, map) => {
   return fn
 }
 
-export { rename, translate }
+// expand a core-style shorthand definition into a parser fn (mirrors core src/templates/_shortcuts.ts):
+//   'гео': ['lat', 'lon', 'zoom']   → parse positional params into named data
+//   'имя': 1                        → the text of that pipe
+//   'флаг': '🏴'                     → static replacement text
+//   'возраст': { props: [...], out: 'age' } → parse props, output one of them
+const positions = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+const fromShortcut = (def) => {
+  return (tmpl, parse) => {
+    if (typeof def === 'number') {
+      const data = parse(tmpl, positions)
+      return { data: null, replacement: data[String(def)] || '' }
+    }
+    if (typeof def === 'string') {
+      return { data: null, replacement: def }
+    }
+    if (Array.isArray(def)) {
+      return { data: parse(tmpl, def), replacement: '' }
+    }
+    if (def && typeof def === 'object') {
+      const data = parse(tmpl, def.props)
+      return { data, replacement: data[def.out] || '' }
+    }
+    return { data: parse(tmpl), replacement: '' }
+  }
+}
+
+export { rename, translate, fromShortcut }

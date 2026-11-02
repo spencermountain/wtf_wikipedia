@@ -157,16 +157,19 @@ const mlbLogs = function (section: SectionData, opts: DocInfo) {
 }
 
 // https://en.wikipedia.org/wiki/Template:NBA_game_log_section
-// the nba columns are fixed by the template, and there is no end-marker -
-// rows run until the next nba game-log template
+// https://en.wikipedia.org/wiki/Template:WNBA_game_log_section
+// nba/wnba columns are fixed by the template, and sections have no end-marker -
+// rows run until the next game-log template of the same family
 const nbaOpen = /\{\{ *nba game log (?:section|month)\s*[|}]/i
 const nbaBoundary = /\{\{ *nba game log /i
+const wnbaOpen = /\{\{ *wnba game log section\s*[|}]/i
+const wnbaBoundary = /\{\{ *wnba game log /i
 const nbaHeadings = ['game', 'date', 'team', 'score', 'high points', 'high rebounds', 'high assists', 'location attendance', 'record']
 
-const nbaLogs = function (section: SectionData, opts: DocInfo) {
+const fixedLogs = function (section: SectionData, opts: DocInfo, opener: RegExp, boundary: RegExp) {
   let text = section.remaining
   let out = ''
-  let open = text.match(nbaOpen)
+  let open = text.match(opener)
   while (open) {
     const headEnd = templateEnd(text, open.index)
     if (headEnd === -1) {
@@ -174,17 +177,17 @@ const nbaLogs = function (section: SectionData, opts: DocInfo) {
     }
     const { positional } = parseOpener(text.slice(open.index + 2, headEnd - 2))
     const rest = text.slice(headEnd)
-    const next = rest.match(nbaBoundary)
+    const next = rest.match(boundary)
     const stop = next ? next.index : rest.length
     const wiki = text.slice(open.index, headEnd + stop)
     const data = buildRows(rest.slice(0, stop), nbaHeadings, section, opts)
     if (positional[1]) {
-      data.title = positional[1] //'October', or 'Preseason'
+      data.title = positional[1] //'October', or 'First round vs ...'
     }
     section.templates.push(makeResult(wiki, 'game log section', data, '', opts))
     out += text.slice(0, open.index)
     text = rest.slice(stop)
-    open = text.match(nbaOpen)
+    open = text.match(opener)
   }
   section.remaining = out + text
   return section
@@ -213,7 +216,8 @@ const nflLogs = function (section: SectionData) {
 
 const parseGameLogs = function (section: SectionData, opts: DocInfo = defaults) {
   section = mlbLogs(section, opts)
-  section = nbaLogs(section, opts)
+  section = fixedLogs(section, opts, nbaOpen, nbaBoundary)
+  section = fixedLogs(section, opts, wnbaOpen, wnbaBoundary)
   section = nflLogs(section)
   return section
 }

@@ -1,0 +1,364 @@
+{{short description|Canadian football team season}}
+{{Use Canadian English|date=March 2026}}
+{{Infobox NFL team season
+| logo           =
+| team           = Edmonton Eskimos
+| year           = 1989
+| record         = '''16–2'''
+| division_place = '''1st, [[Canadian Football League West Division|West]]'''
+| general_manager = [[Hugh Campbell]]
+| coach          =  [[Joe Faragalli]]
+| stadium        = [[Commonwealth Stadium]]
+| playoffs       = '''Lost West Final'''
+| uniform        = Image:CFL EDM Jersey 1987.png
+| shortnavlink   = Eskimos seasons
+}}
+The '''[[1989 CFL season|1989]] [[Edmonton Eskimos]] season''' was the 32nd season for the team in the [[Canadian Football League]] (CFL) and their 41st overall. The Eskimos finished the season in first place with a [[List of Canadian Football League records (team)#Standings|CFL record]] 16 wins and a 16–2 record. They appeared in the West Final where they lost to the [[Saskatchewan Roughriders]].
+
+The 16–2 record-breaking regular season record was eventually matched by the [[Toronto Argonauts]] in 2023.
+
+==Pre-season==
+===Schedule===
+{| class="wikitable" style="text-align:center"
+|-
+! style="{{Gridiron primary style|Edmonton Eskimos|border=2}};" rowspan=2 | Week
+! style="{{Gridiron primary style|Edmonton Eskimos|border=2}};" rowspan=2 | Date
+! style="{{Gridiron primary style|Edmonton Eskimos|border=2}};" rowspan=2 | Opponent
+! style="{{Gridiron primary style|Edmonton Eskimos|border=2}};" colspan=2 | Results
+! style="{{Gridiron primary style|Edmonton Eskimos|border=2}};" rowspan=2 | Venue
+! style="{{Gridiron primary style|Edmonton Eskimos|border=2}};" rowspan=2 | Attendance
+|-
+! style="{{Gridiron primary style|Edmonton Eskimos|border=2}};" | Score
+! style="{{Gridiron primary style|Edmonton Eskimos|border=2}};" | Record
+|-style="background:#ffbbbb"
+! B
+| June 28
+| at [[1989 Saskatchewan Roughriders season|Saskatchewn Roughriders]]
+| L 24–28
+| 0–1
+|
+| N/A
+|-style="background:#ddffdd"
+! C
+| July 5
+| vs. [[1989 Calgary Stampeders season|Calgary Stampeders]]
+| W 41–10
+| 1–1
+|
+| 37,192
+|}
+<ref name="CFL.ca Schedule">{{Cite web |url=http://www.cfl.ca/schedule/year/1989/time_zone/0 |title=1989 Schedule &#124; CFL.ca &#124; Official Site of the Canadian Football League |archive-url=https://archive.today/20130115082347/http://www.cfl.ca/schedule/year/1989/time_zone/0 |archive-date=15 January 2013 |url-status=dead}}</ref><ref name="PF Archives">{{Cite web|url=http://www.profootballarchives.com/1989cfledm.html|title = 1989 Edmonton Eskimos (CFL) - Pro Football Archives}}</ref>
+
+==Regular season==
+===Standings===
+{{1989 CFL West Division standings}}
+
+===Season schedule===
+{| class="wikitable" style="text-align:center"
+|-
+! style="{{Gridiron primary style|Edmonton Eskimos|border=2}};" rowspan=2 | Week
+! style="{{Gridiron primary style|Edmonton Eskimos|border=2}};" rowspan=2 | Game
+! style="{{Gridiron primary style|Edmonton Eskimos|border=2}};" rowspan=2 | Date
+! style="{{Gridiron primary style|Edmonton Eskimos|border=2}};" rowspan=2 | Opponent
+! style="{{Gridiron primary style|Edmonton Eskimos|border=2}};" colspan=2 | Results
+! style="{{Gridiron primary style|Edmonton Eskimos|border=2}};" rowspan=2 | Venue
+! style="{{Gridiron primary style|Edmonton Eskimos|border=2}};" rowspan=2 | Attendance
+|-
+! style="{{Gridiron primary style|Edmonton Eskimos|border=2}};" | Score
+! style="{{Gridiron primary style|Edmonton Eskimos|border=2}};" | Record
+|-style="background:#ddffdd"
+! 1
+! 1
+| July 13
+| vs. [[1989 BC Lions season|BC Lions]]
+| W 20–15
+| 1–0
+|
+| 30,041
+|-style="background:#ddffdd"
+! 2
+! 2
+| July 21
+| at [[1989 Calgary Stampeders season|Calgary Stampeders]]
+| W 54–4
+| 2–0
+|
+| 21,235
+|-style="background:#ffbbbb"
+! 3
+! 3
+| July 27
+| at [[1989 Toronto Argonauts season|Toronto Argonauts]]
+| L 17–21
+| 2–1
+|
+| 34,840
+|-style="background:#ddffdd"
+! 4
+! 4
+| Aug 3
+| vs. Toronto Argonauts
+| W 22–21
+| 3–1
+|
+| 28,238
+|-style="background:#ddffdd"
+! 5
+! 5
+| Aug 9
+| at BC Lions
+| W 33–13
+| 4–1
+| 
+| 32,158
+|-style="background:#ddffdd"
+! 6
+! 6
+| Aug 17
+| at [[1989 Ottawa Rough Riders season|Ottawa Rough Riders]]
+| W 39–4
+| 5–1
+| 
+| 21,413
+|-style="background:#ddffdd"
+! 7
+! 7
+| Aug 23
+| vs. [[1989 Hamilton Tiger-Cats season|Hamilton Tiger-Cats]]
+| W 37–14
+| 6–1
+|
+| 28,861
+|-style="background:#ddffdd"
+! 8
+! 8
+| Aug 30
+| vs. [[1989 Saskatchewan Roughriders season|Saskatchewan Roughriders]]
+| W 45–19
+| 7–1
+|
+| 31,667
+|-style="background:#ddffdd"
+! 8
+! 9
+| Sept 4
+| at Calgary Stampeders
+| W 31–14
+| 8–1
+|
+| 33,139
+|-style="background:#ddffdd"
+! 9
+! 10
+| Sept 8
+| vs. Calgary Stampeders
+| W 28–27
+| 9–1
+|
+| 44,327
+|-style="background:#ffbbbb"
+! 10
+! 11
+| Sept 17
+| at Saskatchewan Roughriders
+| L 35–48
+| 9–2
+|
+| 24,776
+|-style="background:#ddffdd"
+! 11
+! 12
+| Sept 24
+| vs. BC Lions
+| W 32–25
+| 10–2
+|
+| 30,173
+|-style="background:#ddffdd"
+! 12
+! 13
+| Sept 29
+| at Hamilton Tiger-Cats
+| W 33–12
+| 11–2
+|
+| 16,387
+|-style="background:#ddffdd"
+! 13
+! 14
+| Oct 9
+| vs. [[1989 Winnipeg Blue Bombers season|Winnipeg Blue Bombers]]
+| W 45–7
+| 12–2
+|
+| 28,869
+|-style="background:#ddffdd"
+! 14
+! 15
+| Oct 15
+| vs. Ottawa Rough Riders
+| W 55–11
+| 13–2
+|
+| 30,920
+|-style="background:#ddffdd"
+! 15
+! 16
+| Oct 22
+| at Winnipeg Blue Bombers
+| W 34–11
+| 14–2
+| 
+| 23,590
+|-style="background:#ddffdd"
+! 16
+! 17
+| Oct 28
+| at BC Lions
+| W 25–19
+| 15–2
+|
+| 27,116
+|-style="background:#ddffdd"
+! 17
+! 18
+| Nov 5
+| vs. Saskatchewan Roughriders
+| W 49–17
+| 16–2
+| 
+| 27,471
+|}
+<ref name="CFL.ca Schedule"/><ref name="PF Archives"/>
+
+'''Total attendance:''' 280,567 <br />
+'''Average attendance:''' 31,174 (51.9%)
+
+=== CFL Single Season Records Set ===
+
+* Wins - 16 (since tied by Toronto 2023)
+* Games over .500 - 14 (since tied by Toronto 2023)
+* Home wins - 9 (since tied by several teams)
+* Points scored - 644 (since surpassed)
+* 1-point converts - 70 (since surpassed)
+* Yards net offence - 7951 (since surpassed)
+* First downs - 478 (since surpassed)
+* Kickoffs - 113 (since surpassed)
+* Turnovers forced - 84 (since surpassed)
+
+==Playoffs==
+===Schedule===
+{| class="wikitable" style="text-align:center"
+|-
+! style="{{Gridiron primary style|Edmonton Eskimos|border=2}};" rowspan=2 | Round
+! style="{{Gridiron primary style|Edmonton Eskimos|border=2}};" rowspan=2 | Date
+! style="{{Gridiron primary style|Edmonton Eskimos|border=2}};" rowspan=2 | Opponent
+! style="{{Gridiron primary style|Edmonton Eskimos|border=2}};" colspan=2 | Results
+! style="{{Gridiron primary style|Edmonton Eskimos|border=2}};" rowspan=2 | Venue
+! style="{{Gridiron primary style|Edmonton Eskimos|border=2}};" rowspan=2 | Attendance
+|-
+! style="{{Gridiron primary style|Edmonton Eskimos|border=2}};" | Score
+! style="{{Gridiron primary style|Edmonton Eskimos|border=2}};" | Record
+|-style="background:#ffbbbb"
+! Division Final
+| Nov 19
+| vs. [[1989 Saskatchewan Roughriders season|Saskatchewan Roughriders]]
+| L 21–32
+| 0–1
+| [[Commonwealth Stadium]]
+| 35,112
+|}
+<ref name="CFL.ca Schedule"/><ref name="PF Archives"/>
+==Roster==
+{| class="toccolours" style="text-align: left;"
+|-
+! colspan="7" style="background-color: #183118; color: #f7bd30; text-align: center" | 1989 Edmonton Eskimos final roster
+|-
+| style="font-size: 95%;" valign="top" | '''Quarterbacks'''
+* {{CFL player|&nbsp;8|I|[[Tracy Ham]]}}
+* {{CFL player|10|I|[[Steve Taylor (Canadian football)|Steve Taylor]]}}
+* {{CFL player|15|I|[[Rick Worman]]}}
+
+'''Running backs'''
+* {{CFL player|83|N|[[Chris Johnstone (Canadian football)|Chris Johnstone]]}} 
+* {{CFL player|22|N|[[Blake Marshall]]}} 
+* {{CFL player|32|N|[[Michael Soles]]}} 
+* {{CFL player|26|I|[[Reggie Taylor (Canadian football)|Reggie Taylor]]}}
+
+'''Receivers'''
+* {{CFL player|81|N|Randy Bec}} 
+* {{CFL player|27|N|[[Marco Cyncar]]}} K
+* {{CFL player|33|I|[[Craig Ellis (gridiron football)|Craig Ellis]]}} 
+* {{CFL player|88|I|[[Tony Hunter (wide receiver)|Tony Hunter]]}} 
+* {{CFL player|84|I|[[Walter Murray (gridiron football)|Walter Murray]]}} 
+* {{CFL player|25|N|Tom Richards}} 
+* {{CFL player|81|I|Todd Smith}}
+* {{CFL player|71|I|Keith Wright}}
+
+| style="width: 25px;" |
+| style="font-size: 95%;" valign="top" | '''Offensive linemen'''
+* {{CFL player|57|N|[[Randy Ambrosie]]}} G
+* {{CFL player|66|N|Trevor Bowles}} T
+* {{CFL player|67|N|[[Rod Connop]]}} C
+* {{CFL player|50|N|[[Blake Dermott]]}} G
+* {{CFL player|55|N|Andrew McConnell}} C
+* {{CFL player|63|N|[[Hector Pothier]]}} T
+* {{CFL player|51|N|Dave Richardson}} T
+* {{CFL player|60|N|Todd Storme}} T
+* {{CFL player|54|N|[[Pierre Vercheval]]}} G
+
+'''Defensive linemen'''
+* {{CFL player|94|N|[[Michel Bourgeau]]}} DT
+* {{CFL player|36|I|[[Stewart Hill]]}} DE
+* {{CFL player|75|I|John Mandarich}} DT
+* {{CFL player|46|I|[[Greg Stumon]]}} DE
+* {{CFL player|91|I|[[Brett Williams (defensive lineman)|Brett Williams]]}} DE/DT
+
+'''Special teams'''
+* {{CFL player|&nbsp;4|N|[[Jerry Kauric]]}} K/P
+
+| style="width: 25px;" |
+| style="font-size: 95%;" valign="top" | '''Linebackers'''
+* {{CFL player|30|I|[[Danny Bass]]}} 
+* {{CFL player|41|I|[[Leroy Blugh]]}}
+* {{CFL player|44|I|Jeff Braswell}}
+* {{CFL player|45|N|Mike McLean}}
+* {{CFL player|38|I|Brian Warren}} 
+* {{CFL player|47|N|[[Larry Wruck]]}} 
+
+'''Defensive backs'''
+* {{CFL player|&nbsp;5|I|[[Stanley Blair]]}} 
+* {{CFL player|19|N|Jerome Erdman}}
+* {{CFL player|14|I|[[Andre Francis]]}} 
+* {{CFL player|24|N|Mike Hildebrand}}
+* {{CFL player|29|I|[[Enis Jackson]]}} 
+* {{CFL player|13|I|Mark Mathis}}
+* {{CFL player|23|N|Mark Norman}} 
+* {{CFL player|20|I|[[Don Wilson (gridiron football)|Don Wilson]]}} 
+
+'''Injured list'''
+* {{CFL player|&nbsp;6|I|[[Warren Jones (Canadian football)|Warren Jones]]}}
+<br />
+''Italics'' indicate American player<br />
+|}
+
+==Awards==
+*[[CFL's Most Outstanding Player Award]] – Tracy Ham
+*[[Dave Dryburgh Memorial Trophy]] – Jerry Kauric
+*[[Jeff Nicklin Memorial Trophy]] – Tracy Ham
+*[[Norm Fieldgate Trophy]] – Danny Bass
+
+==References==
+{{Reflist}}
+
+{{Edmonton Eskimos}}
+{{Edmonton Eskimos seasons}}
+{{1989 CFL season by team}}
+
+{{DEFAULTSORT:1989 Edmonton Eskimos Season}}
+[[Category:Edmonton Elks seasons]]
+[[Category:1989 Canadian Football League season by team|Edmonton Eskimos Season, 1989]]
+[[Category:1989 in sports in Alberta]]
+
+
+{{Canadianfootball-stub}}

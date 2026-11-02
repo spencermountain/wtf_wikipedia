@@ -1,0 +1,37 @@
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// portuguese template names → the core template they resolve to
+const aliases = {
+  'afi': 'ipa',
+  'ani': 'birth date and age',
+  'ap': 'main',
+  'aps': 'main',
+  'artigo principal': 'main',
+  'artigoprincipal': 'main',
+  'artigos principais': 'main',
+  'bandera': 'flagicon',
+  'bandiera': 'flagicon',
+  'categoria no commons': 'commons cat',
+  'commons category': 'commons cat',
+  'commons-cat': 'commons cat',
+  'commonscat': 'commons cat',
+  'country flagicon': 'flagicon',
+  'data de início': 'start',
+  'data de nascimento e idade': 'birth date and age',
+  'detalhes': 'main',
+  'flag icon': 'flagicon',
+  'flagicon1': 'flagicon',
+  'japonês': 'nihongo',
+  'pequeno': 'small',
+  'principais': 'main',
+  'principal': 'main',
+  'ref-list': 'reflist',
+  'refs': 'reflist',
+  'ver artigo': 'main',
+  'ver artigo principal': 'main',
+  'ver artigos principais': 'main',
+  'ver também artigo principal': 'main',
+  'ícone bandeira': 'flagicon',
+  'íconebandeira': 'flagicon',
+}
+
+export default aliases

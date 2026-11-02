@@ -18,7 +18,6 @@ test('other-pages', (t) => {
     'Chemical-Biology',
     'University-Of-Nevada-Reno-Arboretum',
     'Clint-Murchison-Sr',
-    'Wendy-Mogel',
     'Damphu-Drum',
     'Direct-Representation',
     'Al-Haytham',

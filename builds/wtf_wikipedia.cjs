@@ -11872,13 +11872,17 @@ const removeMidSpans = function(rows) {
 
 const getRowSpan = /^.*rowspan *= *["']?([0-9]+)["']?[ |]*/m;
 const getColSpan = /^.*colspan *= *["']?([0-9]+)["']?[ |]*/m;
+const stripSpan = function(str, reg) {
+  const bang = /^ *!/.test(str) ? "! " : "";
+  return bang + str.replace(reg, "");
+};
 const doColSpan = function(rows) {
   rows.forEach((row) => {
     row.forEach((str, c) => {
       let m = str.match(getColSpan);
       if (m !== null) {
         let num = parseInt(m[1], 10);
-        row[c] = str.replace(getColSpan, "");
+        row[c] = stripSpan(str, getColSpan);
         for (let i = 1; i < num; i += 1) {
           row.splice(c + 1, 0, "");
         }
@@ -11894,7 +11898,7 @@ const doRowSpan = function(rows) {
       let m = str.match(getRowSpan);
       if (m !== null) {
         let num = parseInt(m[1], 10);
-        str = str.replace(getRowSpan, "");
+        str = stripSpan(str, getRowSpan);
         row[c] = str;
         for (let i = r + 1; i < r + num; i += 1) {
           if (!rows[i]) {
@@ -11941,7 +11945,9 @@ const findHeaders = function(rows = [], opts) {
     rows.shift();
   }
   let first = rows[0];
+  let misaligned = false;
   if (first?.length && first.some((cell) => /^!/.test(cell))) {
+    misaligned = first.some((cell) => /colspan *=/.test(cell));
     headers = first.map((h) => {
       h = h.replace(/^! */, "");
       h = cleanText(h);
@@ -11950,7 +11956,7 @@ const findHeaders = function(rows = [], opts) {
     rows.shift();
   }
   first = rows[0];
-  if (first && first[0] && first[1] && /^!/.test(first[0]) && /^!/.test(first[1])) {
+  if (misaligned === false && first && first[0] && first[1] && /^!/.test(first[0]) && /^!/.test(first[1])) {
     first.forEach((h, i) => {
       h = h.replace(/^! */, "");
       h = cleanText(h);
@@ -12219,11 +12225,13 @@ const mlbLogs = function(section, opts) {
 };
 const nbaOpen = /\{\{ *nba game log (?:section|month)\s*[|}]/i;
 const nbaBoundary = /\{\{ *nba game log /i;
+const wnbaOpen = /\{\{ *wnba game log section\s*[|}]/i;
+const wnbaBoundary = /\{\{ *wnba game log /i;
 const nbaHeadings = ["game", "date", "team", "score", "high points", "high rebounds", "high assists", "location attendance", "record"];
-const nbaLogs = function(section, opts) {
+const fixedLogs = function(section, opts, opener, boundary) {
   let text = section.remaining;
   let out = "";
-  let open = text.match(nbaOpen);
+  let open = text.match(opener);
   while (open) {
     const headEnd = templateEnd(text, open.index);
     if (headEnd === -1) {
@@ -12231,7 +12239,7 @@ const nbaLogs = function(section, opts) {
     }
     const { positional } = parseOpener(text.slice(open.index + 2, headEnd - 2));
     const rest = text.slice(headEnd);
-    const next = rest.match(nbaBoundary);
+    const next = rest.match(boundary);
     const stop = next ? next.index : rest.length;
     const wiki = text.slice(open.index, headEnd + stop);
     const data = buildRows(rest.slice(0, stop), nbaHeadings, section, opts);
@@ -12241,7 +12249,7 @@ const nbaLogs = function(section, opts) {
     section.templates.push(makeResult(wiki, "game log section", data, "", opts));
     out += text.slice(0, open.index);
     text = rest.slice(stop);
-    open = text.match(nbaOpen);
+    open = text.match(opener);
   }
   section.remaining = out + text;
   return section;
@@ -12264,7 +12272,8 @@ const nflLogs = function(section) {
 };
 const parseGameLogs = function(section, opts = defaults$1) {
   section = mlbLogs(section, opts);
-  section = nbaLogs(section, opts);
+  section = fixedLogs(section, opts, nbaOpen, nbaBoundary);
+  section = fixedLogs(section, opts, wnbaOpen, wnbaBoundary);
   section = nflLogs(section);
   return section;
 };

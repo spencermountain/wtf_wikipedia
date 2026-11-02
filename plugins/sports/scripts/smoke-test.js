@@ -6,108 +6,16 @@
 //   EMPTY LOG - log markup exists but parsed to zero games (likely a parser gap)
 //   MISMATCH  - win-count from the log disagrees with the infobox record
 //
-//   node scripts/smoke-test.js                → both leagues, all years
+//   node scripts/smoke-test.js                → every league, all years
 //   node scripts/smoke-test.js nhl            → one league
 //   node scripts/smoke-test.js mlb 1994 1998  → a year range
 //
 // it fetches one page at a time, slowly - a full run takes about an hour
-import wtf from '../../../src/index.ts'
-import { mlb, nhl, nba, nfl, mls } from '../src/index.js'
-import mlbFranchises from '../src/mlb/franchises.js'
-import nhlFranchises from '../src/nhl/franchises.js'
-import nbaFranchises from '../src/nba/franchises.js'
-import nflFranchises from '../src/nfl/franchises.js'
-import mlsFranchises from '../src/mls/franchises.js'
-import { makeTitle as mlbTitle } from '../src/mlb/index.js'
-import { makeTitle as nhlTitle } from '../src/nhl/index.js'
-import { makeTitle as nbaTitle } from '../src/nba/index.js'
-import { makeTitle as nflTitle } from '../src/nfl/index.js'
-import { makeTitle as mlsTitle } from '../src/mls/index.js'
-wtf.extend(mlb)
-wtf.extend(nhl)
-wtf.extend(nba)
-wtf.extend(nfl)
-wtf.extend(mls)
+import { leagues, teamsFor, checkSeason, sleep } from './_leagues.js'
 
 const delayMs = 500
 const firstYear = 2012 //1980
 const thisYear = new Date().getFullYear()
-
-const leagues = {
-  mlb: {
-    franchises: mlbFranchises,
-    title: mlbTitle,
-    parse: (doc) => doc.mlbSeason(),
-    players: (res) => res.roster.length,
-  },
-  nhl: {
-    franchises: nhlFranchises,
-    title: nhlTitle,
-    parse: (doc) => doc.nhlSeason(),
-    players: (res) => res.skaters.length + res.goalies.length,
-  },
-  nba: {
-    franchises: nbaFranchises,
-    title: nbaTitle,
-    parse: (doc) => doc.nbaSeason(),
-    players: (res) => res.roster.length,
-  },
-  nfl: {
-    franchises: nflFranchises,
-    title: nflTitle,
-    parse: (doc) => doc.nflSeason(),
-    players: () => 0, //nfl rosters are transcluded from separate template pages
-  },
-  mls: {
-    franchises: mlsFranchises,
-    title: mlsTitle,
-    parse: (doc) => doc.mlsSeason(),
-    players: () => 0, //mls squads use their own template system
-  },
-}
-
-// does the page even contain game-log or match markup?
-const hasLog = (wiki) =>
-  /\{\{ *(?:mlb |nba )?game log|\{\{ *football ?box|\{\{ *nfl .*schedule start|^ *=+ *(?:game log|schedule and results|schedule)/im.test(wiki)
-
-const sleep = (ms) => new Promise((res) => setTimeout(res, ms))
-
-// the name each franchise used in a given year - null before it existed
-const teamsFor = function (franchises, year) {
-  return franchises.map((names) => names.find((o) => o.from <= year)?.name).filter(Boolean)
-}
-
-const checkSeason = async function (league, team, year) {
-  let doc = null
-  let res = null
-  try {
-    doc = await wtf.fetch(leagues[league].title(team, year))
-    res = doc ? leagues[league].parse(doc) : null
-  } catch (e) {
-    return { games: 0, wins: 0, players: 0, flag: 'ERROR', note: e.message }
-  }
-  if (!res) {
-    return { games: 0, wins: 0, players: 0, flag: 'NO PAGE', note: '' }
-  }
-  const games = res.games.length
-  const wins = res.games.filter((g) => g.win === true).length
-  const players = leagues[league].players(res)
-  const out = { games, wins, players, flag: '', note: '' }
-  const recWins = res.season?.record?.wins
-  if (games === 0) {
-    if (hasLog(doc.wikitext())) {
-      out.flag = 'EMPTY LOG'
-      out.note = 'log markup exists but parsed to zero'
-    } else {
-      out.flag = 'NO LOG'
-      out.note = 'page has no game-log section'
-    }
-  } else if (recWins !== undefined && wins !== recWins) {
-    out.flag = 'MISMATCH'
-    out.note = `game-log has ${wins}W, infobox says ${recWins}W`
-  }
-  return out
-}
 
 const run = async function () {
   const args = process.argv.slice(2)

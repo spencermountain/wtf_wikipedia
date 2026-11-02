@@ -61,6 +61,34 @@ test('i18n a parser beats a plain alias when packs stack', (t) => {
   t.end()
 })
 
+test('i18n core-style shorthand defs register as parsers', (t) => {
+  const templates = {}
+  register({ templates: { 'гео': ['lat', 'lon'], 'пример': 'sample text', 'второе': 1 } }, templates)
+  const parse = (tmpl, order) => {
+    const out = {}
+    ;(order || []).forEach((key, i) => {
+      out[key] = ['a', 'b'][i]
+    })
+    return out
+  }
+  const list = []
+  t.equal(templates['гео']('{{гео|a|b}}', list, parse, null, {}), '', 'array form replaces with nothing')
+  t.deepEqual(list[0], { lat: 'a', lon: 'b' }, 'array form names positional params')
+  t.equal(templates['пример']('{{пример}}', [], parse, null, {}), 'sample text', 'string form is static text')
+  t.equal(templates['второе']('{{x|a|b}}', [], parse, null, {}), 'b', 'number form keeps that pipe')
+  t.end()
+})
+
+test('i18n shorthand defs parse end-to-end', (t) => {
+  wtf.extend((_models, templates) => register({ templates: { 'shorthand-i18n-test': ['id', 'start'] } }, templates))
+  const doc = wtf('a {{shorthand-i18n-test|abc|4:20}} b')
+  const json = doc.templates()[0].json()
+  t.equal(json.template, 'shorthand-i18n-test', 'template keeps its name')
+  t.equal(json.data.id, 'abc', 'first positional param named')
+  t.equal(json.data.start, '4:20', 'second positional param named')
+  t.end()
+})
+
 test('i18n every pack registers against the real core registry', async (t) => {
   const dir = new URL('../src/langs/', import.meta.url)
   const packs = readdirSync(dir).filter((f) => f !== '_lib.js' && f.startsWith('.') === false)

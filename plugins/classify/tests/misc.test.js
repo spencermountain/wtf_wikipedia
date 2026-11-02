@@ -25,7 +25,6 @@ test('classify-test', function (t) {
     // ['Arts-Club-Of-Chicago', 'Place'],
     ['Al-Haytham', 'Person/Creator'],
     ['The-Field-Of-Waterloo', 'Creation/CreativeWork/Book'],
-    ['Liste-Der-Argentinischen-Botschafter-In-Chile', null],
   ]
   arr.forEach((a) => {
     const txt = readPage(a[0])

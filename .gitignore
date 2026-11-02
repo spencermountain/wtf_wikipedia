@@ -6,6 +6,8 @@ npm-debug.log
 .nyc_output
 *.DS_Store
 *.tsv
+*.duckdb
+*.duckdb.wal
 _missing_templates.json
 .vscode/
 .pnpm-store/

@@ -15,13 +15,13 @@ test('article sections retain their headings and support title lookup', (t) => {
 })
 
 test('article paragraphs and sentences retain their order', (t) => {
-  const doc = wtf(readPage('Statoil'))
+  const doc = wtf(readPage('Royal-Cinema'))
   const paragraphs = doc.paragraphs()
   const sentences = doc.sentences()
-  t.equal(paragraphs.length, 12, 'paragraph count')
-  t.equal(sentences.length, 35, 'sentence count')
-  t.match(paragraphs[0].text(), /Statoil/, 'first paragraph text')
-  t.match(sentences[0].text(), /Statoil/, 'first sentence text')
+  t.equal(paragraphs.length, 6, 'paragraph count')
+  t.equal(sentences.length, 10, 'sentence count')
+  t.match(paragraphs[0].text(), /Royal Cinema/, 'first paragraph text')
+  t.match(sentences[0].text(), /Royal Cinema/, 'first sentence text')
   t.equal(doc.paragraphs()[1], paragraphs[1], 'indexed paragraph')
   t.equal(doc.paragraphs()[0], paragraphs[0], 'default paragraph')
   t.ok(doc.paragraphs('string').length === 0, 'unsupported paragraphs selector returns an empty collection')

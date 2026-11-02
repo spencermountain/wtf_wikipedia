@@ -1,0 +1,35 @@
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// azerbaijani template names → the core template they resolve to
+const aliases = {
+  'bayraq': 'flagicon',
+  'bayraq-ölkə': 'flagicon',
+  'başlama tarixi': 'start',
+  'başlanğıc tarixi': 'start',
+  'cite paper': 'cite journal',
+  'commons category': 'commons cat',
+  'commons kat': 'commons cat',
+  'commons kateqoriyası': 'commons cat',
+  'commonscat': 'commons cat',
+  'commonscategory': 'commons cat',
+  'commonskat': 'commons cat',
+  'commonskateqoriyası': 'commons cat',
+  'doğum tarixi və yaş': 'birth date and age',
+  'doğum tarixi və yaşı': 'birth date and age',
+  'dty': 'birth date and age',
+  'flaq': 'flagicon',
+  'ipa1': 'ipa',
+  'i̇sbn': 'isbn',
+  'i̇stinad siyahısı': 'reflist',
+  'i̇stinadlar': 'reflist',
+  'i̇stinadlar siyahısı': 'reflist',
+  'kiçik': 'small',
+  'nihonqo': 'nihongo',
+  'ref list': 'reflist',
+  'vikianbar kat': 'commons cat',
+  'vikianbar kateqoriyası': 'commons cat',
+  'əsas': 'main',
+  'əsas məqalə': 'main',
+  'əsas səhifə': 'main',
+}
+
+export default aliases

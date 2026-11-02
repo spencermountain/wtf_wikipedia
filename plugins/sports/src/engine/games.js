@@ -114,4 +114,4 @@ const findSeries = function (doc, ctx, titles, gameTitles) {
   return []
 }
 
-export { findGames, findSeries }
+export { findGames, findSeries, findSections }

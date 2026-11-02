@@ -2,21 +2,10 @@ import { getCell } from '../_lib.js'
 import { findGames, findSeries } from '../engine/games.js'
 import parseInfobox from '../engine/infobox.js'
 import resolveTeam from '../engine/teams.js'
+import { oneYearTitle, parseOneYearTitle } from '../engine/slug.js'
 import franchises from './franchises.js'
 
-// '2024 Buffalo Bills season' → {year: 2024, team: 'Buffalo Bills'}
-const parseTitle = function (title = '') {
-  const m = String(title).match(/^(\d{4}) (.+?) season$/)
-  if (m) {
-    return { year: Number(m[1]), team: m[2] }
-  }
-  const year = String(title).match(/\d{4}/)
-  return { year: year ? Number(year[0]) : null, team: '' }
-}
-
-const makeTitle = function (team, year) {
-  return `${year} ${team} season`.replace(/ /g, '_')
-}
+const makeTitle = oneYearTitle
 
 const gameTitles = ['regular season', 'schedule', 'game log', 'schedule and results']
 
@@ -58,7 +47,7 @@ const parse = function (doc) {
   if (!doc) {
     return null
   }
-  const meta = parseTitle(doc.title || '')
+  const meta = parseOneYearTitle(doc.title || '')
   const ctx = {
     team: meta.team,
     year: meta.year,

@@ -1,0 +1,790 @@
+{{short description|Professional Women's Hockey League season}}
+{{Use mdy dates|date=November 2024}}
+{{Use American English|date=May 2025}}
+{{Infobox ice hockey team season
+ |Season = 2024–25
+ |year = 2024
+ |Team = Minnesota Frost
+ |League = PWHL
+ |LeagueRank = 4
+ |Record = 10–5–4–11
+ |HomeRecord = 5–3–1–6
+ |RoadRecord = 5–2–3–5
+ |GoalsFor = 85
+ |GoalsAgainst = 76
+ |GeneralManager = [[Melissa Caruso]]<ref name="staff">{{cite web |url=https://www.thepwhl.com/en/stats/roster/2/5?league=1 |title=Minnesota Frost Roster |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=December 18, 2024 |archive-date=December 19, 2024 |archive-url=https://web.archive.org/web/20241219155332/https://www.thepwhl.com/en/stats/roster/2/5%3Fleague%3D1 |url-status=live }}</ref>
+ |Coach = [[Ken Klee]]<ref name="staff" />
+ |AssistantCoach = [[Mira Jalosuo]]<br />[[Chris Johnson (ice hockey)|Chris Johnson]]<br />[[Pete Samargia]]<ref name="staff" />
+ |Captain = [[Kendall Coyne Schofield]]
+ |AltCaptain = [[Kelly Pannek]]<br />[[Lee Stecklein]]
+ |Arena = [[Grand Casino Arena|Xcel Energy Center]]
+ |Attendance = 6,524
+ |GoalsLeader = [[Kendall Coyne Schofield]] (12)<ref name="minnesota-stats">{{cite web |title=Skater Stats |url=https://www.thepwhl.com/en/stats/player-stats/2/5?sort=goals |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=May 3, 2025}}</ref>
+ |AssistsLeader = [[Sophie Jaques]] (15)<ref name="minnesota-stats" />
+ |PointsLeader = Kendall Coyne Schofield (24)<ref name="minnesota-stats" />
+ |PIMLeader = [[Brooke McQuigge]] (25)<ref name="minnesota-stats" />
+ |PlusMinusLeader = [[Mae Batherson]] (+13)<ref name="minnesota-stats" />
+ |WinsLeader = [[Maddie Rooney]] (8)<ref name="minnesota-goalie-stats">{{cite web |url=https://www.thepwhl.com/en/stats/player-stats/2/5?playertype=goalie |title=Goalie Stats |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=May 3, 2025}}</ref>
+ |GAALeader = Maddie Rooney (2.07)<ref name="minnesota-goalie-stats" />
+ |Championship =[[Walter Cup]]
+ |ConferenceWin =
+ |DivisionWin =
+ |prev_season = [[2023–24 PWHL Minnesota season|2023–24]]
+ |next_season = [[2025–26 Minnesota Frost season|2025–26]]
+}}
+
+The '''2024–25 Minnesota Frost season''' was the team's second season as a member of the [[Professional Women's Hockey League]].  They played their home games at the [[Grand Casino Arena|Xcel Energy Center]] in [[Saint Paul, Minnesota]]. The Frost defeated the [[Toronto Sceptres]] in the semifinals of the [[2025 PWHL playoffs]] to advance to the [[2025 PWHL Finals]]. During the Finals they defeated the [[Ottawa Charge]] to win their second consecutive [[Walter Cup]].<ref>{{cite web |url=https://www.sportsnet.ca/pwhl/article/minnesota-frost-capture-second-walter-cup-title/ |title=Minnesota Frost capture second Walter Cup title |website=Sportsnet |date=May 26, 2025 |access-date=May 26, 2025}}</ref>
+
+== Offseason ==
+
+* On June 7, 2024, one week after winning the league's inaugural championship and with only days before the draft, it was reported the general manager [[Natalie Darwitz]] would not return for the 2024–25 season.  Darwitz was instead offered alternative options within the league.<ref>{{cite web |url=https://www.sportsnet.ca/pwhl/article/report-natalie-darwitz-out-as-gm-of-pwhl-minnesota/ |title=Report: Natalie Darwitz out as GM of PWHL Minnesota |website=sportsnet.ca |date=June 7, 2024 |quote=Just eight days after Minnesota won the PWHL’s first-ever Walter Cup championship, general manager Natalie Darwitz is reportedly departing the organization. |access-date=June 7, 2024 |archive-date=June 7, 2024 |archive-url=https://web.archive.org/web/20240607151642/https://www.sportsnet.ca/pwhl/article/report-natalie-darwitz-out-as-gm-of-pwhl-minnesota/ |url-status=live }}</ref>
+
+==Standings==
+
+{{2024–25 PWHL season standings|team=MIN}}
+
+==Schedule and results==
+
+===Preseason===
+
+The preseason schedule was published on October 1, 2024.<ref name="preseason-announcement">{{cite web |url=https://thehockeynews.com/womens/pwhl/pwhl-to-host-pre-season-in-montreal-and-toronto |title=PWHL To Host Pre-Season In Montreal and Toronto |last=Kennedy |first=Ian |date=October 1, 2024 |website=TheHockeyNews.com |publisher=[[The Hockey News]] |access-date=October 1, 2024 |quote=The PWHL will host a pair of preseason camps including scrimmages. These will take place in Montreal and Toronto beginning November 19.}}</ref>
+
+''All times in [[Central Time Zone|Central Time]].''
+
+{{Game log start|title=}}
+{{Game log section start |hide=y |title=Pre-season camp |style=background:inherit; border-top:#5A288D 5px solid; border-bottom:black 5px solid; |Date |Time |Visitor |Score |Home |OT |Notes |Box Score/Recap}}
+|- {{Game-won}}
+| November 20 || 1:15 || [[2024–25 Toronto Sceptres season|Toronto]] || 1–3 || '''Minnesota''' || || @ [[Ford Performance Centre]] 
+| <ref group="Recap" name="game-100">{{cite web |date=November 20, 2024 |title=Toronto @ Minnesota (Preseason) |url=https://www.thepwhl.com/en/stats/game-center/100 |access-date=November 20, 2024 |website=ThePWHL.com }}</ref>
+|- {{Game-otw}}
+| November 21 || 1:30 || '''Minnesota''' || 4–3 || [[2024–25 New York Sirens season|New York]] || OT || @ [[Ford Performance Centre]] 
+| <ref group="Recap" name="game-102">{{cite web |date=November 21, 2024 |title=Minnesota @ New York (Preseason) |url=https://www.thepwhl.com/en/stats/game-center/102 |access-date=November 21, 2024 |website=ThePWHL.com |archive-date=November 21, 2024 |archive-url=https://web.archive.org/web/20241121070516/https://www.thepwhl.com/en/stats/game-center/102 |url-status=live }}</ref>
+{{Game log section end}}
+{{Game log end}}
+
+===Regular season===
+
+The regular season schedule was announced on October 15, 2024. The Frost's season will begin on December 1, 2024, and will end on May 3, 2025, with each team playing 30 games; six games against every opponent.<ref name="season-schedule">{{cite web |title=2024–25 Schedule |url=https://www.thepwhl.com/en/stats/schedule/all-teams/5/all-months?league=1 |access-date=October 17, 2024 |website=thepwhl.com |publisher=[[Professional Women's Hockey League]] |archive-date=November 7, 2024 |archive-url=https://web.archive.org/web/20241107024814/https://www.thepwhl.com/en/stats/schedule/all-teams/5/all-months?league=1 |url-status=live }}</ref><ref>{{cite web |url=https://thehockeynews.com/womens/pwhl/eight-cities-to-host-stops-on-the-pwhl-takeover-tour-including-west-coast |title=Eight Cities To Host Stops On The PWHL Takeover Tour Including West Coast |last=Kennedy |first=Ian |date=November 18, 2024 |website=TheHockeyNews.com |publisher=[[The Hockey News]] |access-date=November 18, 2024 |quote=Buffalo, Denver, Detroit, Raleigh, St. Louis and Seattle to host U.S. games; Québec City and Vancouver will serve as Canadian Stops on the PWHL's 2024–25 Takeover Tour. |archive-date=November 18, 2024 |archive-url=https://web.archive.org/web/20241118215417/https://thehockeynews.com/womens/pwhl/eight-cities-to-host-stops-on-the-pwhl-takeover-tour-including-west-coast |url-status=live }}</ref>
+
+{{Game log start|title=Regular season schedule (Home: 5–3–1–6; Road: 5–2–3–5) |style=background:#FFFFFF; border-top:#5A288D 5px solid; border-bottom:black 5px solid;}}
+{{Game log section start |hide=y |title=December: 3–1–1–1, 12 points (Home: 1–0–1–1; Road: 2–1–0–0) |style=background:inherit; border-top:#5A288D 2px solid; border-bottom:black 2px solid; |Game |Date |Opponent |Score |OT |Decision |Location |Attendance |Record |Points |Recap}}
+|- {{Game-otl}}
+| 1 || December 1 || [[2024–25 New York Sirens season|New York]] || 3–4 || OT || [[Nicole Hensley|Hensley]] || [[Xcel Energy Center]] || 8,022 || 0–0–1–0 || 1 || <ref group="Recap" name="game-107">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/107 |title=New York Sirens @ Minnesota Frost |date=December 1, 2024 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=December 1, 2024 |archive-date=December 1, 2024 |archive-url=https://web.archive.org/web/20241201001833/https://www.thepwhl.com/en/stats/game-center/107 |url-status=live }}</ref>
+|- {{Game-won}}
+| 2 || December 4 || @ [[2024–25 Boston Fleet season|Boston]] || 2–1 || || [[Maddie Rooney|Rooney]] || [[Tsongas Center]] || 3,811 || 1–0–1–0 || 4 || <ref group="Recap" name="game-109">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/109 |title=Minnesota Frost @ Boston Fleet |date=December 4, 2024 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=December 4, 2024}}</ref>
+|- {{Game-won}}
+| 3 || December 7 || @ [[2024–25 Toronto Sceptres season|Toronto]] || 6–3 || || Rooney || [[Coca-Cola Coliseum]] || 7,584 || 2–0–1–0 || 7 || <ref group="Recap" name="game-111">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/111 |title=Minnesota Frost @ Toronto Sceptres |date=December 7, 2024 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=December 8, 2024 |archive-date=December 7, 2024 |archive-url=https://web.archive.org/web/20241207194119/https://www.thepwhl.com/en/stats/game-center/111 |url-status=live }}</ref>
+|- {{Game-won}}
+| 4 || December 19 || [[2024–25 Ottawa Charge season|Ottawa]] || 5–2 || || Rooney || Xcel Energy Center || 4,686 || 3–0–1–0 || 10 || <ref group="Recap" name="game-115">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/115 |title=Ottawa Charge @ Minnesota Frost |date=December 19, 2024 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=December 19, 2024 |archive-date=December 20, 2024 |archive-url=https://web.archive.org/web/20241220045256/https://www.thepwhl.com/en/stats/game-center/115 |url-status=live }}</ref>
+|- {{Game-otw}}
+| 5 || December 22 || @ New York || 4–3 || SO || Hensley || [[Prudential Center]] || 2,722 || 3–1–1–0 || 12 || <ref group="Recap" name="game-117">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/117 |title=Minnesota Frost @ New York Sirens |date=December 22, 2024 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=December 25, 2024 |archive-date=December 25, 2024 |archive-url=https://web.archive.org/web/20241225133021/https://www.thepwhl.com/en/stats/game-center/117 |url-status=live }}</ref>
+|- {{Game-lost}}
+| 6 || December 28 || [[2024–25 Montreal Victoire season|Montreal]] || 2–3 || || Rooney || Xcel Energy Center || 8,726 || 3–1–1–1 || 12 || <ref group="Recap" name="game-119">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/119 |title=Montreal Victoire @ Minnesota Frost |date=December 28, 2024 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=December 28, 2024 |archive-date=December 28, 2024 |archive-url=https://web.archive.org/web/20241228235737/https://www.thepwhl.com/en/stats/game-center/119 |url-status=live }}</ref>
+{{Game log section end}}
+{{Game log section start |hide=y |title=January: 2–3–1–3, 13 points (Home: 2–3–0–2; Road: 0–0–1–1) |style=background:inherit; border-top:#5A288D 2px solid; border-bottom:black 2px solid; |Game |Date |Opponent |Score |OT |Decision |Location |Attendance |Record |Points |Recap}}
+|- {{Game-otw}}
+| 7 || January 2 || [[2024–25 Boston Fleet season|Boston]] || 4–3 || OT || [[Nicole Hensley|Hensley]] || [[Xcel Energy Center]] || 5,066 || 3–2–1–1 || 14 || <ref group="Recap" name="game-123">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/123 |title=Boston Fleet @ Minnesota Frost |date=January 2, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=January 2, 2025 |archive-date=January 3, 2025 |archive-url=https://web.archive.org/web/20250103032227/https://www.thepwhl.com/en/stats/game-center/123 |url-status=live }}</ref>
+|- {{Game-lost}}
+| 8 || January 4 || [[2024–25 New York Sirens season|New York]] || 0–5 || || [[Lucy Morgan (ice hockey)|Morgan]] || Xcel Energy Center || 6,414 || 3–2–1–2 || 14 || <ref group="Recap" name="game-124">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/124 |title=New York Sirens @ Minnesota Frost |date=January 4, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=January 4, 2025 |archive-date=December 22, 2024 |archive-url=https://web.archive.org/web/20241222160956/https://www.thepwhl.com/en/stats/game-center/124 |url-status=live }}</ref>
+|- {{Game-otw}}
+| 9 || January 8 || Boston || 2–1 || OT || [[Maddie Rooney|Rooney]] || Xcel Energy Center || 4,248 || 3–3–1–2 || 16 || <ref group="Recap" name="game-126">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/126 |title=Boston Fleet @ Minnesota Frost |date=January 8, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=January 8, 2025}}</ref>
+|- {{Game-won}}
+| 10 || January 12 || [[2024–25 Montreal Victoire season|Montreal]] || 4–2 || || Rooney || [[Ball Arena]] || 14,018 || 4–3–1–2 || 19 || <ref group="Recap" name="game-175">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/175 |title=Minnesota Frost @ Montreal Victoire |date=January 12, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=January 12, 2025 |archive-date=December 22, 2024 |archive-url=https://web.archive.org/web/20241222160956/https://www.thepwhl.com/en/stats/game-center/175 |url-status=live }}</ref>
+|- {{Game-otl}}
+| 11 || January 15 || @ New York || 2–3 || SO || Rooney || [[Prudential Center]] || 1,780 || 4–3–2–2 || 20 || <ref group="Recap" name="game-130">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/130 |title=Minnesota Frost @ New York Sirens |date=January 15, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=January 15, 2025}}</ref>
+|- {{Game-lost}}
+| 12 || January 17 || @ Montreal || 2–4 || || Hensley || [[Place Bell]] || 10,172 || 4–3–2–3 || 20 || <ref group="Recap" name="game-131">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/131 |title=Minnesota Frost @ Montreal Victoire |date=January 17, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=January 17, 2025}}</ref>
+|- {{Game-lost}}
+| 13 || January 21 || [[2024–25 Ottawa Charge season|Ottawa]] || 0–1 || || Rooney || Xcel Energy Center || 4,165 || 4–3–2–4 || 20 || <ref group="Recap" name="game-132">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/132 |title=Ottawa Charge @ Minnesota Frost |date=January 21, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=January 21, 2025}}</ref>
+|- {{Game-won}}
+| 14 || January 26 || Boston || 5–2 || || Hensley || Xcel Energy Center || 7,838 || 5–3–2–4 || 23 || <ref group="Recap" name="game-134">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/134 |title=Boston Fleet @ Minnesota Frost |date=January 26, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=January 26, 2025}}</ref>
+|- {{Game-otw}}
+| 15 || January 28 || [[2024–25 Toronto Sceptres season|Toronto]] || 4–3 || SO || Rooney || Xcel Energy Center || 4,540 || 5–4–2–4 || 25 || <ref group="Recap" name="game-136">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/136 |title=Toronto Sceptres @ Minnesota Frost |date=January 28, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=January 28, 2025}}</ref>
+{{Game log section end}}
+{{Game log section start |hide=y |title=February: 1–0–1–3, 4 points (Home: 0–0–0–1; Road: 1–0–1–2) |style=background:inherit; border-top:#5A288D 2px solid; border-bottom:black 2px solid; |Game |Date |Opponent |Score |OT |Decision |Location |Attendance |Record |Points |Recap}}
+|- {{Game-otl}}
+| 16 || February 11 || @ [[2024–25 Toronto Sceptres season|Toronto]] || 2–3 || OT || [[Maddie Rooney|Rooney]] || [[Coca-Cola Coliseum]] || 8,183 || 5–4–3–4 || 26 || <ref group="Recap" name="game-142">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/142 |title=Minnesota Frost @ Toronto Sceptres |date=February 11, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=February 11, 2025}}</ref>
+|- {{Game-lost}}
+| 17 || February 13 || @ [[2024–25 Ottawa Charge season|Ottawa]] || 3–8 || || [[Nicole Hensley|Hensley]] || [[TD Place Arena]] || 5,854 || 5–4–3–5 || 26 || <ref group="Recap" name="game-144">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/144 |title=Minnesota Frost @ Ottawa Charge |date=February 13, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=February 13, 2025}}</ref>
+|- {{Game-lost}}
+| 18 || February 16 || @ [[2024–25 Boston Fleet season|Boston]] || 2–4 || || Rooney || [[Tsongas Center]] || 6,032 || 5–4–3–6 || 26 || <ref group="Recap" name="game-147">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/147 |title=Minnesota Frost @ Boston Fleet |date=February 16, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=February 16, 2025}}</ref>
+|- {{Game-won}}
+| 19 || February 18 || @ [[2024–25 Montreal Victoire season|Montreal]] || 4–0 || || Rooney || [[Place Bell]] || 6,696 || 6–4–3–6 || 29 || <ref group="Recap" name="game-149">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/149 |title=Minnesota Frost @ Montreal Victoire |date=February 18, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=February 18, 2025}}</ref>
+|- {{Game-lost}}
+| 20 || February 23  || Toronto || 2–1 || || Rooney || Xcel Energy Center || 8,770 || 6–4–3–7 || 29 || <ref group="Recap" name="game-153">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/153 |title=Toronto Sceptres @ Minnesota Frost |date=February 23, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=February 28, 2025}}</ref>
+{{Game log section end}}
+{{Game log section start |hide=y |title=March: 2–1–1–3, 9 points (Home: 2–0–0–1; Road: 0–1–1–2) |style=background:inherit; border-top:#5A288D 2px solid; border-bottom:black 2px solid; |Game |Date |Opponent |Score |OT |Decision |Location |Attendance |Record |Points |Recap}}
+|- {{Game-otl}}
+| 21 || March 4 || @ [[2024–25 Montreal Victoire season|Montreal]] || 1–2 || SO || [[Maddie Rooney|Rooney]] || [[Place Bell]] || 8,923 || 6–4–4–7 || 30 || <ref group="Recap" name="game-156">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/156 |title=Minnesota Frost @ Montreal Victoire |date=March 4, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=March 4, 2025}}</ref>
+|- {{Game-won}}
+| 22 || March 7 || [[2024–25 Ottawa Charge season|Ottawa]] || 5–0 || || Rooney || [[Lenovo Center]] || 10,782 || 7–4–4–7 || 33 || <ref group="Recap" name="game-181">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/181 |title=Ottawa Charge @ Minnesota Frost |date=March 7, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=March 7, 2025}}</ref>
+|- {{Game-otw}}
+| 23 || March 9 || @ [[2024–25 Toronto Sceptres season|Toronto]] || 2–1 || OT || [[Nicole Hensley|Hensley]] || [[Coca-Cola Coliseum]] || 8,510 || 7–5–4–7 || 35 || <ref group="Recap" name="game-159">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/159 |title=Minnesota Frost @ Toronto Sceptres |date=March 9, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=March 10, 2025}}</ref>
+|- {{Game-lost}}
+| 24 || March 11 || @ Ottawa || 2–3 || || Rooney || [[TD Place Arena]] || 5,851 || 7–5–4–8 || 35 || <ref group="Recap" name="game-160">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/160 |title=Minnesota Frost @ Ottawa Charge |date=March 11, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=March 12, 2025}}</ref>
+|- {{Game-lost}}
+| 25 || March 16 || @ [[2024–25 New York Sirens season|New York]] || 1–4 || || Hensley || [[Little Caesars Arena]] || 14,288 || 7–5–4–9 || 35 || <ref group="Recap" name="game-183">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/183 |title=Minnesota Frost @ New York Sirens |date=March 16, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=March 16, 2025}}</ref>
+|- {{Game-lost}}
+| 26 || March 26 || Montreal || 1–4 || || Rooney || Xcel Energy Center || 6,330 || 7–5–4–10 || 35 || <ref group="Recap" name="game-168">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/168 |title=Montreal Victoire @ Minnesota Frost |date=March 26, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=March 27, 2025}}</ref>
+|- {{Game-won}}
+| 27 || March 30 || Toronto || 5–2 || || Hensley || Xcel Energy Center || 9,536 || 8–5–4–10 || 38 || <ref group="Recap" name="game-169">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/169 |title=Toronto Sceptres @ Minnesota Frost |date=March 30, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=March 30, 2025}}</ref>
+{{Game log section end}}
+{{Game log section start |hide=y |title=April: 1–0–0–1, 3 points (Home: 0–0–0–1; Road: 1–0–0–0) |style=background:inherit; border-top:#5A288D 2px solid; border-bottom:black 2px solid; |Game |Date |Opponent |Score |OT |Decision |Location |Attendance |Record |Points |Recap}}
+|- {{Game-lost}}
+| 28 || April 27 || [[2024–25 New York Sirens season|New York]] || 0–2 || || [[Maddie Rooney|Rooney]] || [[Xcel Energy Center]] || 6,472 || 8–5–4–11 || 38 || <ref group="Recap" name="game-186">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/186 |title=New York Sirens @ Minnesota Frost |date=April 27, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=April 27, 2025}}</ref>
+|- {{Game-won}}
+| 29 || April 30 || @ [[2024–25 Ottawa Charge season|Ottawa]] || 3–0 || || [[Nicole Hensley|Hensley]] || [[TD Place Arena]] || 5,494 || 9–5–4–11 || 41 || <ref group="Recap" name="game-191">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/191 |title=Minnesota Frost @ Ottawa Charge |date=April 30, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=April 30, 2025}}</ref>
+{{Game log section end}}
+{{Game log section start |hide=y |title=May: 1–0–0–0, 3 points (Home: 0–0–0–0; Road: 1–0–0–0) |style=background:inherit; border-top:#5A288D 2px solid; border-bottom:black 2px solid; |Game |Date |Opponent |Score |OT |Decision |Location |Attendance |Record |Points |Recap}}
+|- {{Game-won}}
+| 30 || May 3 || [[2024–25 Boston Fleet season|Boston]] || 8–1 || || [[Nicole Hensley|Hensley]] || [[Tsongas Center]] || 5,013 || 10–5–4–11 || 44 || <ref group="Recap" name="game-193">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/193 |title=Minnesota Frost @ Boston Fleet |date=May 3, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=May 3, 2025}}</ref>
+{{Game log section end}}
+|- style="text-align:center;"
+| 
+{{legend2|#cfc|Regulation Win (3 points)|border=1px solid black}}
+{{legend2|#ccf|Overtime/Shootout win (2 points)|border=1px solid black}}
+{{legend2|#fff|Overtime/shootout loss (1 point)|border=1px solid black}}
+{{legend2|#fcc|Regulation Loss (0 points)|border=1px solid black}}
+{{Game log end}}
+
+=== Playoffs ===
+
+{{main|2025 PWHL playoffs}}
+
+On May 4, the first-place [[Montreal Victoire]] announced that they chose to play the third-place [[Ottawa Charge]] in the first round.  This decision meant that fourth-place Minnesota would play the second-place [[Toronto Sceptres]] in a re-match of last year's semi-finals.<ref name="montreal-playoff-selection">{{YouTube|i3S8QFMJNeQ|Playoff Opponent Selection LIVE with Jocks in Jills}}</ref><ref name="pwhl-playoff-schedule">{{cite web |url=https://www.thepwhl.com/en/news/2025/may/04/pwhl-announces-playoff-matchups-and-schedule |title=PWHL Announces Playoff Matchups and Schedule |date=May 4, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=May 4, 2025 |quote=''Montréal selected Ottawa as its semifinal opponent, Toronto to play Minnesota''}}</ref>
+
+{{Game log start|title=2025 PWHL Playoffs |style=background:#FFFFFF; border-top:#5A288D 5px solid; border-bottom:black 5px solid;}}
+{{Game log section start|hide=y |title=First round vs. [[2024–25 Toronto Sceptres season|Toronto Sceptres]]; Minnesota won 3–1 |style=background:inherit; border-top:#5A288D 2px solid; border-bottom:black 2px solid; |Game |Date |Opponent |Score |OT |Decision |Location |Attendance |Series |Recap}}
+|- {{Game-lost}}
+| 1 || May 7 || @ Toronto || 2–3 ||  || [[Nicole Hensley|Hensley]] || [[Coca-Cola Coliseum]] || 6,868 || 0–1 || <ref group="Recap" name="game-195">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/195 |title=Minnesota Frost @ Toronto Sceptres |date=May 7, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=May 7, 2025}}</ref>
+|- {{Game-won}}
+| 2 || May 9 || @ Toronto || 5–3 ||  || [[Maddie Rooney|Rooney]] || Coca-Cola Coliseum || 7,659 || 1–1 || <ref group="Recap" name="game-196">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/196 |title=Minnesota Frost @ Toronto Sceptres |date=May 9, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=May 10, 2025}}</ref>
+|- {{Game-won}}
+| 3 || May 11 || Toronto || 7–5 ||  || Rooney || [[Xcel Energy Center]] || 3,917 || 2–1 || <ref group="Recap" name="game-203">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/203 |title=Toronto Sceptres @ Minnesota Frost |date=May 11, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=May 11, 2025}}</ref>
+|- {{Game-won}}
+| 4 || May 14 || Toronto || 4–3 || OT || Hensley || Xcel Energy Center || 3,107 || 3–1 || <ref group="Recap" name="game-204">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/204 |title=Toronto Sceptres @ Minnesota Frost |date=May 14, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=May 14, 2025}}</ref>
+{{Game log section end}}
+{{Game log section start|hide=n|title=[[2025 PWHL Finals]] vs. [[Ottawa Charge]]; Minnesota wins 3–1 |style=background:inherit; border-top:#5A288D 2px solid; border-bottom:black 2px solid; |Game |Date |Opponent |Score |OT |Decision |Location |Attendance |Series |Recap}}
+|- {{Game-lost}}
+| 1 || May 20 || @ [[2024–25 Ottawa Charge season|Ottawa]] || 1–2 || OT || [[Nicole Hensley|Hensley]] || [[TD Place Arena]] || 6,184 || 0–1 || <ref group="Recap" name="game-206">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/206 |title=Minnesota Frost @ Ottawa Charge |date=May 20, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=May 20, 2025}}</ref>
+|- {{Game-won}}
+| 2 || May 22 || @ Ottawa || 2–1 || OT || [[Maddie Rooney|Rooney]] || TD Place Arena || 8,206 || 1–1 || <ref group="Recap" name="game-207">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/207 |title=Minnesota Frost @ Ottawa Charge |date=May 22, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=May 22, 2025}}</ref>
+|- {{Game-won}}
+| 3 || May 24 || Ottawa || 2–1 || 3OT || Rooney || [[Xcel Energy Center]] || 8,098 || 2–1 || <ref group="Recap" name="game-208">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/208 |title=Ottawa Charge @ Minnesota Frost |date=May 24, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=May 24, 2025}}</ref>
+|- {{Game-won}}
+| 4 || May 26 || Ottawa || 2–1 || OT || Rooney || Xcel Energy Center || 11,024 || 3–1 || <ref group="Recap" name="game-209">{{cite web |url=https://www.thepwhl.com/en/stats/game-center/209 |title=Ottawa Charge @ Minnesota Frost |date=May 26, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=May 26, 2025}}</ref>
+{{Game log section end}}
+{{Game log end}}
+
+==Player statistics==
+
+{{Updated|May 26, 2025|}}<ref name="minnesota-stats" />
+
+===Skaters===
+
+{{col-begin}}
+{{col-2}}
+{| class="wikitable sortable" style="text-align:center;"
+|+ style="background:#fff; border-top:#5A288D 5px solid; border-bottom:#000 5px solid;"|Regular season<ref name="minnesota-stats" />
+|-
+! scope="col" | Player
+! scope="col" | {{abbr|GP|Games played}}
+! scope="col" | {{abbr|G|Goals}}
+! scope="col" | {{abbr|A|Assists}}
+! scope="col" | {{abbr|Pts|Points}}
+! scope="col" | {{abbr|SOG|Shots on Goal}}
+! scope="col" data-sort-type="number" | {{abbr|+/−|Plus/Minus}}
+! scope="col" | {{abbr|PIM|Penalty minutes}}
+|-
+! scope="row" style="text-align:left;" | [[Kendall Coyne Schofield]]
+| 30 || 12 || 12 || 24 || 86 || {{sort|12|+12}} || 4
+|-
+! scope="row" style="text-align:left;" | [[Taylor Heise]]
+| 29 || 8 || 14 || 22 || 69 || {{sort|1|+1}} || 6
+|-
+! scope="row" style="text-align:left;" | [[Sophie Jaques]]
+| 25 || 7 || 15 || 22 || 75 || {{sort|12|+12}} || 10
+|-
+! scope="row" style="text-align:left;" | [[Michela Cava]]
+| 30 || 9 || 10 || 19 || 53 || {{sort|11|+11}} || 10
+|-
+! scope="row" style="text-align:left;" | [[Claire Thompson (ice hockey)|Claire Thompson]]
+| 30 || 4 || 14 || 18 || 51 || {{sort|1|+1}} || 8
+|-
+! scope="row" style="text-align:left;" | [[Britta Curl-Salemme]]
+| 28 || 9 || 6 || 15 || 64 || {{sort|3|+3}} || 24
+|-
+! scope="row" style="text-align:left;" | [[Brooke McQuigge]]
+| 29 || 8 || 7 || 15 || 40 || {{sort|2|+2}} || 25
+|-
+! scope="row" style="text-align:left;" | [[Kelly Pannek]]
+| 30 || 3 || 8 || 11 || 51 || {{sort|3|+3}} || 12
+|-
+! scope="row" style="text-align:left;" | [[Grace Zumwinkle]]
+| 22 || 4 || 6 || 10 || 49 || {{sort|-7|–7}} || 0
+|-
+! scope="row" style="text-align:left;" | [[Dominique Petrie]]
+| 18 || 3 || 7 || 10 || 32 || {{sort|2|+2}} || 4
+|-
+! scope="row" style="text-align:left;" | [[Denisa Křížová]]
+| 30 || 4 || 5 || 9 || 52 || {{sort|6|+6}} || 12
+|-
+! scope="row" style="text-align:left;" | [[Lee Stecklein]]
+| 30 || 3 || 6 || 9 || 33 || {{sort|-2|–2}} || 6
+|-
+! scope="row" style="text-align:left;" | [[Mellissa Channell-Watkins]]
+| 29 || 1 || 6 || 7 || 31 || {{sort|4|+4}} || 2
+|-
+! scope="row" style="text-align:left;" | [[Liz Schepers]]
+| 27 || 2 || 4 || 6 || 29 || {{sort|-1|–1}} || 0
+|-
+! scope="row" style="text-align:left;" | [[Claire Butorac]]
+| 29 || 2 || 3 || 5 || 13 || {{sort|0|0}} || 8
+|-
+! scope="row" style="text-align:left;" | [[Brooke Bryant]]
+| 26 || 1 || 3 || 4 || 12 || {{sort|-1|–1}} || 6
+|-
+! scope="row" style="text-align:left;" | [[Mae Batherson]]
+| 25 || 0 || 3 || 3 || 20 || {{sort|13|+13}} || 6
+|-
+! scope="row" style="text-align:left;" | [[Katy Knoll]]
+| 21 || 1 || 1 || 2 || 11 || {{sort|-2|–2}} || 6
+|-
+! scope="row" style="text-align:left;" | [[Maggie Flaherty (ice hockey)|Maggie Flaherty]]
+| 22 || 1 || 1 || 2 || 28 || {{sort|-5|–5}} || 12
+|-
+! scope="row" style="text-align:left;" | [[Klára Hymlárová]]
+| 29 || 1 || 1 || 2 || 21 || {{sort|-1|–1}} || 4
+|-
+! scope="row" style="text-align:left;" | [[Natalie Buchbinder]]
+| 19 || 0 || 2 || 2 || 19 || {{sort|-2|–2}} || 2
+|-
+! scope="row" style="text-align:left;" | [[Charlotte Akervik]]
+| 2 || 0 || 0 || 0 || 0 || {{sort|-1|–1}} || 0
+|-
+! scope="row" style="text-align:left;" | [[Kaitlyn O'Donohoe]]
+| 9 || 0 || 0 || 0 || 5 || {{sort|-2|–2}} || 0
+|}
+{{col-2}}
+{| class="wikitable sortable" style="text-align:center;"
+|+ style="background:#fff; border-top:#5A288D 5px solid; border-bottom:#000 5px solid;"|Playoffs<ref name="minnesota-stats" />
+|-
+! scope="col" | Player
+! scope="col" | {{abbr|GP|Games played}}
+! scope="col" | {{abbr|G|Goals}}
+! scope="col" | {{abbr|A|Assists}}
+! scope="col" | {{abbr|Pts|Points}}
+! scope="col" | {{abbr|SOG|Shots on Goal}}
+! scope="col" data-sort-type="number" | {{abbr|+/−|Plus/Minus}}
+! scope="col" | {{abbr|PIM|Penalty minutes}}
+|-
+! scope="row" style="text-align:left;" | [[Lee Stecklein]]
+| 8 || 4 || 4 || 8 || 12 || {{sort|1|+1}} || 2
+|-
+! scope="row" style="text-align:left;" | [[Sophie Jaques]]
+| 8 || 2 || 5 || 7 || 25 || {{sort|1|+1}} || 0
+|-
+! scope="row" style="text-align:left;" | [[Taylor Heise]]
+| 8 || 1 || 6 || 7 || 15 || {{sort|-1|–1}} || 2
+|-
+! scope="row" style="text-align:left;" | [[Claire Thompson (ice hockey)|Claire Thompson]]
+| 8 || 0 || 6 || 6 || 17 || {{sort|2|+2}} || 4
+|-
+! scope="row" style="text-align:left;" | [[Michela Cava]]
+| 8 || 3 || 2 || 5 || 17 || {{sort|-3|–3}} || 4
+|-
+! scope="row" style="text-align:left;" | [[Katy Knoll]]
+| 8 || 2 || 3 || 5 || 12 || {{sort|2|+2}} || 0
+|-
+! scope="row" style="text-align:left;" | [[Kelly Pannek]]
+| 8 || 2 || 3 || 5 || 16 || {{sort|1|+1}} || 2
+|-
+! scope="row" style="text-align:left;" | [[Mellissa Channell-Watkins]]
+| 8 || 1 || 4 || 5 || 9 || {{sort|5|+5}} || 0
+|-
+! scope="row" style="text-align:left;" | [[Klára Hymlárová]]
+| 8 || 1 || 4 || 5 || 9 || {{sort|1|+1}} || 0
+|-
+! scope="row" style="text-align:left;" | [[Kendall Coyne Schofield]]
+| 8 || 2 || 2 || 4 || 27 || {{sort|1|+1}} || 0
+|-
+! scope="row" style="text-align:left;" | [[Britta Curl-Salemme]]
+| 7 || 3 || 0 || 3 || 9 || {{sort|0|0}} || 15
+|-
+! scope="row" style="text-align:left;" | [[Brooke McQuigge]]
+| 8 || 2 || 1 || 3 || 13 || {{sort|0|0}} || 2
+|-
+! scope="row" style="text-align:left;" | [[Liz Schepers]]
+| 8 || 2 || 1 || 3 || 5 || {{sort|4|+4}} || 2
+|-
+! scope="row" style="text-align:left;" | [[Grace Zumwinkle]]
+| 8 || 0 || 3 || 3 || 25 || {{sort|4|+4}} || 4
+|-
+! scope="row" style="text-align:left;" | [[Dominique Petrie]]
+| 7 || 0 || 1 || 1 || 2 || {{sort|-1|–1}} || 4
+|-
+! scope="row" style="text-align:left;" | [[Mae Batherson]]
+| 3 || 0 || 0 || 0 || 1 || {{sort|-2|–2}} || 0
+|-
+! scope="row" style="text-align:left;" | [[Brooke Bryant]]
+| 3 || 0 || 0 || 0 || 0 || {{sort|0|0}} || 0
+|-
+! scope="row" style="text-align:left;" | [[Claire Butorac]]
+| 6 || 0 || 0 || 0 || 1 || {{sort|0|0}} || 0
+|-
+! scope="row" style="text-align:left;" | [[Maggie Flaherty (ice hockey)|Maggie Flaherty]]
+| 6 || 0 || 0 || 0 || 6 || {{sort|-1|–1}} || 4
+|-
+! scope="row" style="text-align:left;" | [[Natalie Buchbinder]]
+| 8 || 0 || 0 || 0 || 4 || {{sort|-4|–4}} || 2
+|-
+! scope="row" style="text-align:left;" | [[Denisa Křížová]]
+| 8 || 0 || 0 || 0 || 10 || {{sort|0|0}} || 0
+|}
+{{col-end}}
+
+===Goaltenders===
+
+{| class="wikitable sortable" style="text-align:center"
+|-
+|+ colspan="16" style="background:#fff; border-top:#5A288D 5px solid; border-bottom:#000 5px solid;"|Regular season<ref name="minnesota-goalie-stats" />
+|-
+! scope="col" | Player
+! scope="col" | {{abbr|GP|Games played}}
+! scope="col" | {{abbr|TOI|Time on ice}}
+! scope="col" | {{abbr|W|Win}}
+! scope="col" | {{abbr|L|Loss}}
+! scope="col" | {{abbr|OT|Overtime losses}}
+! scope="col" | {{abbr|SOL|Shootout losses}}
+! scope="col" | {{abbr|GA|Goals against}}
+! scope="col" | {{abbr|GAA|Goals against average}}
+! scope="col" | {{abbr|SA|Shots against}}
+! scope="col" | {{abbr|SV%|Save percentage}}
+! scope="col" | {{abbr|SO|Shutouts}}
+! scope="col" | {{abbr|G|Goals}}
+! scope="col" | {{abbr|A|Assists}}
+! scope="col" | {{abbr|PIM|Penalty minutes}}
+|-
+! scope="row" style="text-align:left;" | [[Maddie Rooney]]
+| 19 || 1129:12 || 8 || 7 || 1 || 2 || 39 || 2.07 || 418 || 0.907 || 2 || 0 || 0 || 0
+|-
+! scope="row" style="text-align:left;" | [[Nicole Hensley]]
+| 11 || 639:26 || 7 || 3 || 1 || 0 || 27 || 2.53 || 270 || 0.900 || 1 || 0 || 0 || 0
+|-
+! scope="row" style="text-align:left;" | [[Lucy Morgan (ice hockey)|Lucy Morgan]]
+| 1 || 60:00 || 0 || 1 || 0 || 0 || 5 || 5.00 || 34 || 0.853 || 0 || 0 || 0 || 0
+|}
+
+{| class="wikitable sortable" style="text-align:center"
+|-
+|+ colspan="16" style="background:#fff; border-top:#5A288D 5px solid; border-bottom:#000 5px solid;"|Playoffs<ref name="minnesota-goalie-stats" />
+|-
+! scope="col" | Player
+! scope="col" | {{abbr|GP|Games played}}
+! scope="col" | {{abbr|TOI|Time on ice}}
+! scope="col" | {{abbr|W|Win}}
+! scope="col" | {{abbr|L|Loss}}
+! scope="col" | {{abbr|OT|Overtime losses}}
+! scope="col" | {{abbr|SOL|Shootout losses}}
+! scope="col" | {{abbr|GA|Goals against}}
+! scope="col" | {{abbr|GAA|Goals against average}}
+! scope="col" | {{abbr|SA|Shots against}}
+! scope="col" | {{abbr|SV%|Save percentage}}
+! scope="col" | {{abbr|SO|Shutouts}}
+! scope="col" | {{abbr|G|Goals}}
+! scope="col" | {{abbr|A|Assists}}
+! scope="col" | {{abbr|PIM|Penalty minutes}}
+|-
+! scope="row" style="text-align:left;" | [[Maddie Rooney]]
+| 5 || 376:32 || 5 || 0 || 0 || 0 || 11 || 1.75 || 161 || 0.932 || 0 || 0 || 0 || 0
+|-
+! scope="row" style="text-align:left;" | [[Nicole Hensley]]
+| 3 || 197:12 || 1 || 1 || 1 || 0 || 8 || 2.43 || 85 || 0.906 || 0 || 0 || 0 || 0
+|}
+
+==Awards and honors==
+
+===Milestones===
+
+{{col-begin}}
+{{col-2}}
+{| class="wikitable"
+|+ style="background:#fff; border-top:#5A288D 5px solid; border-bottom:#000 5px solid;"|Regular season
+|-
+! scope="col" | Date
+! scope="col" | Player
+! scope="col" | Milestone
+|-
+! scope="rowgroup" rowspan="9" | December 1, 2024<ref group="Recap" name="game-107" />
+| [[Kelly Pannek]] || 15th career PWHL assist
+|-
+| rowspan="2" | [[Dominique Petrie]] || 1st career PWHL goal
+|-
+| 1st career PWHL game
+|-
+| rowspan="2" | [[Britta Curl-Salemme]] || 1st career PWHL assist
+|-
+| 1st career PWHL game
+|-
+| rowspan="2" | [[Claire Thompson (ice hockey)|Claire Thompson]] || 1st career PWHL assist
+|-
+| 1st career PWHL game
+|-
+| [[Klára Hymlárová]] || rowspan="2" | 1st career PWHL game
+|-
+| [[Brooke McQuigge]]
+|-
+! scope="rowgroup" rowspan="1" | December 4, 2024<ref group="Recap" name="game-109" />
+| [[Michela Cava]] || 10th career PWHL goal
+|-
+! scope="rowgroup" rowspan="7" | December 7, 2024<ref group="Recap" name="game-111" />
+| Britta Curl-Salemme || 1st career PWHL goal
+|-
+| Klára Hymlárová || 1st career PWHL assist
+|-
+| rowspan="2" | [[Mae Batherson]] || 1st career PWHL penalty
+|-
+| 1st career PWHL game
+|-
+| [[Kendall Coyne Schofield]] || rowspan="2" | 15th career PWHL assist
+|-
+| [[Taylor Heise]]
+|-
+| [[Katy Knoll]] || 1st career PWHL game
+|-
+! scope="rowgroup" rowspan="5" | December 19, 2024<ref group="Recap" name="game-115" />
+| [[Grace Zumwinkle]] || 15th career PWHL goal
+|-
+| [[Kelly Pannek]] || 5th career PWHL goal
+|-
+| rowspan="2" | Claire Thompson || 1st career PWHL goal
+|-
+| 5th career PWHL assist
+|-
+| Britta Curl-Salemme || 1st career PWHL penalty
+|-
+! scope="rowgroup" rowspan="2" | December 22, 2024<ref group="Recap" name="game-117" />
+| Kendall Coyne Schofield || rowspan="2" | 10th career PWHL goal
+|-
+| Taylor Heise
+|-
+! scope="rowgroup" rowspan="4" | December 28, 2024<ref group="Recap" name="game-119" />
+| Brooke McQuigge || 1st career PWHL goal
+|-
+| [[Claire Butorac]] || 5th career PWHL assist
+|-
+| Claire Thompson || 1st career PWHL penalty
+|-
+| [[Charlotte Akervik]] || 1st career PWHL game
+|-
+! scope="rowgroup" rowspan="4" | January 2, 2025<ref group="Recap" name="game-123" />
+| Britta Curl-Salemme || 1st career overtime goal
+|-
+| [[Lee Stecklein]] || 10th career PWHL assist
+|-
+| [[Claire Butorac]] || 5th career PWHL assist
+|-
+| Mae Batherson || 1st career PWHL assist
+|-
+! scope="rowgroup" rowspan="4" | January 4, 2025<ref group="Recap" name="game-124" />
+| rowspan="2" | [[Lucy Morgan (ice hockey)|Lucy Morgan]] || 1st career PWHL loss
+|-
+| 1st career PWHL game
+|-
+| Katy Knoll || 1st career PWHL penalty
+|-
+| [[Kaitlyn O'Donohoe]] || 1st career PWHL game
+|-
+! scope="rowgroup" rowspan="4" | January 12, 2025<ref group="Recap" name="game-175" />
+| Britta Curl-Salemme || 5th career PWHL goal
+|-
+| rowspan="2" | [[Sophie Jaques]] || 5th career PWHL goal
+|-
+| 15th career PWHL assist
+|-
+| [[Denisa Křížová]] || 5th career PWHL assist
+|-
+! scope="rowgroup" rowspan="1" | January 15, 2025<ref group="Recap" name="game-130" />
+| [[Mellissa Channell-Watkins]] || 1st career PWHL goal
+|-
+! scope="rowgroup" rowspan="2" | January 17, 2025<ref group="Recap" name="game-131" />
+| Taylor Heise || 20th career PWHL assist
+|-
+| Claire Thompson || 10th career PWHL assist
+|-
+! scope="rowgroup" rowspan="5" | January 26, 2025<ref group="Recap" name="game-134" />
+| rowspan="2" | Katy Knoll || 1st career PWHL goal
+|-
+| 1st career PWHL assist
+|-
+| Kendall Coyne Schofield || 20th career PWHL assist
+|-
+| Michela Cava || rowspan="2" | 10th career PWHL assist
+|-
+| Mellissa Channell-Watkins
+|-
+! scope="rowgroup" rowspan="2" | January 28, 2025<ref group="Recap" name="game-136" />
+| Michela Cava || 15th career PWHL goal
+|-
+| Brooke McQuigge || 1st career PWHL assist
+|-
+! scope="rowgroup" rowspan="1" | February 11, 2025<ref group="Recap" name="game-142" />
+| Klára Hymlárová || 1st career PWHL penalty
+|-
+! scope="rowgroup" rowspan="3" | February 16, 2025<ref group="Recap" name="game-147" />
+| Brooke McQuigge || 5th career PWHL goal
+|-
+| Sophie Jaques || rowspan="2" | 20th career PWHL assist
+|-
+| Kelly Pannek
+|-
+! scope="rowgroup" rowspan="2" | February 18, 2025<ref group="Recap" name="game-149" />
+| Kendall Coyne Schofield || 15th career PWHL goal
+|-
+| Dominique Petrie || 1st career PWHL assist
+|-
+! scope="rowgroup" rowspan="2" | March 7, 2025<ref group="Recap" name="game-181" />
+| Grace Zumwinkle || 10th career PWHL assist
+|-
+| Britta Curl-Salemme || 5th career PWHL assist
+|-
+! scope="rowgroup" rowspan="1" | March 11, 2025<ref group="Recap" name="game-160" />
+| Taylor Heise || 15th career PWHL goal
+|-
+! scope="rowgroup" rowspan="5" | March 30, 2025<ref group="Recap" name="game-169" />
+| Michela Cava || rowspan="2" | 15th career PWHL assist
+|-
+| Lee Stecklein
+|-
+| Brooke McQuigge || 5th career PWHL assist
+|-
+| rowspan="2" | Dominique Petrie || 5th career PWHL assist
+|-
+| 1st career PWHL penalty
+|-
+! scope="rowgroup" rowspan="4" | May 3, 2025<ref group="Recap" name="game-193" />
+| Sophie Jaques || 10th career PWHL goal
+|-
+| Lee Stecklein || 5th career PWHL goal
+|-
+| Klára Hymlárová || 1st career PWHL goal
+|-
+| Liz Schepers || 10th career PWHL assist
+|}
+{{col-2}}
+{| class="wikitable"
+|+ style="background:#fff; border-top:#5A288D 5px solid; border-bottom:#000 5px solid;"|Playoffs
+|-
+! scope="rowgroup" rowspan="7" | May 7, 2025<ref group="Recap" name="game-195" />
+| rowspan="2" | Britta Curl-Salemme || 10th career PWHL goal
+|-
+| 1st career PWHL playoff goal
+|-
+| Katy Knoll || 1st career PWHL playoff goal
+|-
+| Liz Schepers || 5th career PWHL playoff assist
+|-
+| rowspan="2" | Claire Thompson || 15th career PWHL assist
+|-
+| 1st career PWHL playoff assist
+|-
+| Klára Hymlárová || 1st career PWHL playoff assist
+|-
+! scope="rowgroup" rowspan="6" | May 9, 2025<ref group="Recap" name="game-196" />
+| Michela Cava || 5th career PWHL playoff goal
+|-
+| rowspan="2" | Lee Stecklein || 1st career PWHL playoff goal
+|-
+| 5th career PWHL playoff assist
+|-
+| Mellissa Channell-Watkins || 1st career PWHL playoff goal
+|-
+| Taylor Heise || 5th career PWHL playoff assist
+|-
+| Dominique Petrie || 1st career PWHL playoff assist
+|-
+! scope="rowgroup" rowspan="9" | May 11, 2025<ref group="Recap" name="game-203" />
+| rowspan="2" | Brooke McQuigge || 10th career PWHL goal
+|-
+| 1st career PWHL playoff goal
+|-
+| Taylor Heise || 30th career PWHL assist
+|-
+| rowspan="2" | Grace Zumwinkle || 15th career PWHL assist
+|-
+| 1st career PWHL playoff assist
+|-
+| Kendall Coyne Schofield || rowspan="3" | 5th career PWHL playoff assist
+|-
+| Mellissa Channell-Watkins
+|-
+| Sophie Jaques
+|-
+| Katy Knoll || 1st career PWHL playoff assist
+|-
+! scope="rowgroup" rowspan="6" | May 14, 2025<ref group="Recap" name="game-204" />
+| Kendall Coyne Schofield || 20th career PWHL goal
+|-
+| Kelly Pannek || 1st career PWHL playoff goal
+|-
+| Sophie Jaques || 30th career PWHL assist
+|-
+| Mellissa Channell-Watkins || 15th career PWHL assist
+|-
+| Michela Cava || 5th career PWHL playoff assist
+|-
+| Brooke McQuigge || 1st career PWHL playoff assist
+|-
+! scope="rowgroup" rowspan="1" | May 20, 2025<ref group="Recap" name="game-206" />
+| Klára Hymlárová || 1st career PWHL playoff goal
+|-
+! scope="rowgroup" rowspan="1" | May 24, 2025<ref group="Recap" name="game-208" />
+| Claire Thompson || 5th career PWHL playoff assist
+|-
+! scope="rowgroup" rowspan="4" | May 26, 2025<ref group="Recap" name="game-209" />
+| rowspan="2" | Liz Schepers || 2nd career Walter Cup-winning goal
+|-
+| 5th career PWHL goal
+|-
+| Claire Thompson || 20th career PWHL assist
+|-
+| Klára Hymlárová || 5th career PWHL assist
+|}
+{{col-end}}
+
+===Honors===
+
+* December 9, 2024: [[Michela Cava]] was named the Second Star of the Week<ref>{{cite web |url=https://www.thepwhl.com/en/news/2024/december/09/fillier-cava-carpenter-named-pwhl-3-stars-of-the-week-presented-by-sharkninja-canada |title=Fillier, Cava, Carpenter Named PWHL 3 Stars of the Week Presented by Sharkninja Canada |date=December 9, 2024 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=December 27, 2024 |archive-date=December 28, 2024 |archive-url=https://web.archive.org/web/20241228035441/https://www.thepwhl.com/en/news/2024/december/09/fillier-cava-carpenter-named-pwhl-3-stars-of-the-week-presented-by-sharkninja-canada |url-status=live }}</ref>
+* December 23, 2024: [[Claire Thompson (ice hockey)|Claire Thompson]] and [[Kendall Coyne Schofield]] were awarded the First and Third Stars of the Week<ref>{{cite web |url=https://www.thepwhl.com/en/news/2024/december/23/thompson-boreen-coyne-schofield-named-pwhl-3-stars-of-the-week-presented-by-sharkninja-canada |title=Thompson, Boreen, Coyne Schofield Named PWHL 3 Stars of the Week Presented by Sharkninja Canada |date=December 23, 2024 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=December 30, 2024 |archive-date=December 28, 2024 |archive-url=https://web.archive.org/web/20241228035440/https://www.thepwhl.com/en/news/2024/december/23/thompson-boreen-coyne-schofield-named-pwhl-3-stars-of-the-week-presented-by-sharkninja-canada |url-status=live }}</ref>
+* On January 2, 2025, Claire Thompson was named to the December SupraStars of the Month team<ref name="december-stars-of-month">{{cite web |url=https://www.thepwhl.com/en/news/2025/january/02/pwhl-announces-december-suprastars-of-the-month |title=PWHL Announces December SupraStars of the Month |date=January 2, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=January 2, 2025}}</ref>
+* January 20, 2025: Kendall Coyne Schofield was named Third Star of the Week<ref>{{cite web |url=https://www.thepwhl.com/en/news/2025/january/21/ambrose-boreen-coyne-schofield-named-pwhl-3-stars-of-the-week-presented-by-shark-beauty-canada |title=Ambrose, Boreen, Coyne Schofield Named PWHL 3 Stars of the Week Presented by Shark Beauty Canada |date=January 21, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=January 24, 2025}}</ref>
+* January 27, 2025: [[Taylor Heise]] was named PWHL Third Star of the Week<ref>{{cite web |url=https://www.thepwhl.com/en/news/2025/january/27/muller-miller-and-heise-named-pwhl-3-stars-of-the-week-presented-by-shark-beauty-canada |title=Müller, Miller and Heise Named PWHL 3 Stars of the Week Presented By Shark Beauty Canada |date=January 27, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=January 27, 2025}}</ref>
+* On February 3, 2025, Kendall Coyne Schofield and Claire Thompson were named as January SupraStars of the Month<ref name="january-stars-of-month">{{cite web |url=https://www.thepwhl.com/en/news/2025/february/04/pwhl-announces-january-suprastars-of-the-month |title=PWHL Announces January SupraStars of the Month |date=February 3, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=February 3, 2025}}</ref>
+* February 17, 2025: [[Sophie Jaques]] was named PWHL Third Star of the Week<ref>{{cite web |url=https://www.thepwhl.com/en/news/2025/february/17/hughes-miller-jaques-named-pwhl-3-stars-of-the-week-presented-by-shark-beauty-canada |title=Hughes, Miller, Jaques Named PWHL 3 Stars of the Week Presented by Shark Beauty Canada |date=February 17, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=February 17, 2025}}</ref>
+* On March 3, 2025, Sophie Jaques was named to the February SupraStars of the Month team<ref name="february-stars-of-month">{{cite web |url=https://www.thepwhl.com/en/news/2025/march/03/pwhl-announces-february-suprastars-of-the-month |title=PWHL Announces February SupraStars of the Month |date=March 3, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=March 3, 2025}}</ref>
+* March 10, 2025: [[Maddie Rooney]] earned PWHL Third Star of the Week<ref>{{cite web |url=https://www.thepwhl.com/en/news/2025/march/10/knight-stacey-rooney-named-pwhl-3-stars-of-the-week-presented-by-shark-beauty-canada |title=Knight, Stacey, Rooney Named PWHL 3 Stars of the Week Presented by Shark Beauty Canada |date=March 10, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=March 19, 2025}}</ref>
+* On April 3, 2025, Sophie Jaques was named to the PWHL SupraStars of the Month team for March<ref name="march-stars-of-month">{{cite web |url=https://www.thepwhl.com/en/news/2025/april/03/pwhl-announces-march-suprastars-of-the-month |title=PWHL Announces March SupraStars of the Month |date=April 3, 2025 |website=ThePWHL.com |publisher=[[Professional Women's Hockey League]] |access-date=April 3, 2025}}</ref>
+
+==Transactions==
+
+Minnesota has been involved in the following transactions during the [[2024–25 PWHL season]].
+
+===Signings===
+{| class="wikitable"
+|+ style="background:#fff; border-top:#5A288D 5px solid; border-bottom:#000 5px solid;"|Players the Minnesota Frost have signed
+|-
+! scope="col" | Date
+! scope="col" | Player
+! scope="col" | Position
+! scope="col" | Term
+! scope="col" | Previous team
+! scope="col" | Ref
+|-
+! scope="row" | June 21, 2024
+| [[Michela Cava]] || F || 1 year || Minnesota Frost || <ref name="cava-krisova-schepers">{{cite web |url=https://thehockeynews.com/womens/pwhl/one-year-extensions-in-minnesota-for-cava-krisova-and-schepers |title=One-Year Extensions In Minnesota For Cava, Krisova, and Schepers |last=Kennedy |first=Ian |date=June 21, 2024 |website=TheHockeyNews.com |publisher=[[The Hockey News]] |access-date=June 21, 2024 |quote=PWHL Minnesota is bringing back a trio of players from their 2023 Walter Cup championship roster signing Michela Cava, Liz Schepers, and Denisa Krisova to one year deals.}}</ref>
+|-
+! scope="row" | June 21, 2024
+| [[Denisa Křížová]] || F || 1 year{{efn|This represents a 1-year extension to the 2-year contract Křížová signed prior to the inaugural PWHL season.}} || Minnesota Frost || <ref name="cava-krisova-schepers" />
+|-
+! scope="row" | June 21, 2024
+| [[Liz Schepers]] || F || 1 year || Minnesota Frost || <ref name="cava-krisova-schepers" />
+|-
+! scope="row" | June 21, 2024
+| [[Britta Curl]] || F || 2 years || [[Wisconsin Badgers women's ice hockey|Wisconsin]] || <ref name="curl-hymlarova">{{cite web |url=https://thehockeynews.com/womens/pwhl/minnesota-signs-britta-curl-and-klara-hymlarova-to-two-year-deals |title=Minnesota Signs Britta Curl and Klara Hymlarova To Two-Year Deals |last=Kennedy |first=Ian |date=June 21, 2024 |website=TheHockeyNews.com |publisher=[[The Hockey News]] |access-date=June 21, 2024 |quote=PWHL Minnesota has signed their second and third round picks in the 2024 Draft inking Britta Curl and Klara Hymlarova to two-year contracts.}}</ref>
+|-
+! scope="row" | June 21, 2024
+| [[Klára Hymlárová]] || F || 2 years || [[St. Cloud State Huskies women's ice hockey|St. Cloud State]] || <ref name="curl-hymlarova" />
+|-
+! scope="row" | August 2, 2024
+| [[Claire Thompson (ice hockey)|Claire Thompson]] || D || 2 years || Team Sonnet || <ref name="thompson-signed">{{cite web |url=https://thehockeynews.com/womens/pwhl/minnesota-signs-claire-thompson-to-a-two-year-deal |title=Minnesota Signs Claire Thompson To A Two-Year Deal |last=Kennedy |first=Ian |date=August 2, 2024 |website=TheHockeyNews.com |publisher=[[The Hockey News]] |access-date=August 2, 2024 |quote=Claire Thompson, the third overall pick in the 2024 PWHL Draft has signed a two-year contract with PWHL Minnesota. |archive-date=August 3, 2024 |archive-url=https://web.archive.org/web/20240803013008/https://thehockeynews.com/womens/pwhl/minnesota-signs-claire-thompson-to-a-two-year-deal |url-status=live }}</ref>
+|}
+{{notelist}}
+
+==Draft picks==
+{{See also|List of Minnesota Frost draft picks}}
+Below are Minnesota's selections at the [[2024 PWHL Draft]], which was held on June 10, 2024, at [[Roy Wilkins Auditorium]] in [[Saint Paul, Minnesota|Saint Paul]].
+
+{| class="wikitable"
+|+ style="background:#fff; border-top:#5A288D 5px solid; border-bottom:#000 5px solid;"|Minnesota Frost 2024 draft picks
+! scope="col" | Round 
+! scope="col" | # 
+! scope="col" | Player
+! scope="col" | Pos
+! scope="col" | Nationality
+! scope="col" | College/junior/club team
+! scope="col" | Reference
+|-
+! scope="row" style="text-align:center;"|1
+| style="text-align:center;"|3
+| [[Claire Thompson (ice hockey)|Claire Thompson]]
+| D
+| {{flagu|Canada}}
+| Did not play
+| <ref name="claire-thompson-draft">{{cite web |url=https://thehockeynews.com/womens/pwhl/claire-thompson-is-back-selected-by-minnesota-third-overall |title=Claire Thompson is back, selected by Minnesota Third Overall |last=Kennedy |first=Ian |date=June 10, 2024 |website=TheHockeyNews.com |publisher=[[The Hockey News]] |access-date=June 10, 2024 |quote=PWHL Minnesota selected former Canadian national team defender Claire Thompson with the third overall pick in the PWHL Draft. |archive-date=June 11, 2024 |archive-url=https://web.archive.org/web/20240611013336/https://thehockeynews.com/womens/pwhl/claire-thompson-is-back-selected-by-minnesota-third-overall |url-status=live }}</ref>
+|-
+! scope="row" style="text-align:center;"|2
+| style="text-align:center;"|9
+| [[Britta Curl]]
+| F
+| {{flagu|United States}}
+| [[Wisconsin Badgers women's ice hockey|Wisconsin Badgers]] ([[Western Collegiate Hockey Association|WCHA]])
+| <ref name="britta-curl-draft">{{cite web |url=https://thehockeynews.com/womens/pwhl/pwhl-minnesota-picks-britta-curl-9th-overall |title=PWHL Minnesota Picks Britta Curl 9th Overall |last=Kennedy |first=Ian |date=June 10, 2024 |website=TheHockeyNews.com |publisher=[[The Hockey News]] |access-date=June 10, 2024 |quote=PWHL Minnesota selected divisive Wisconsin captain Britta Curl tenth overall in the 2024 PWHL Draft. |archive-date=June 11, 2024 |archive-url=https://web.archive.org/web/20240611015347/https://thehockeynews.com/womens/pwhl/pwhl-minnesota-picks-britta-curl-9th-overall |url-status=live }}</ref>
+|-
+! scope="row" style="text-align:center;"|3
+| style="text-align:center;"|15
+| [[Klára Hymlárová]]
+| F
+| {{flagu|Czech Republic}}
+| [[St. Cloud State Huskies women's ice hockey|St. Cloud State Huskies]] (WCHA)
+|
+|-
+! scope="row" style="text-align:center;"|4
+| style="text-align:center;"|21
+| [[Brooke McQuigge]]
+| F
+| {{flagu|Canada}}
+| [[Clarkson Golden Knights women's ice hockey|Clarkson Golden Knights]] ([[ECAC Hockey|ECAC]])
+|
+|-
+! scope="row" style="text-align:center;"|5
+| style="text-align:center;"|27
+| [[Dominique Petrie]]
+| F
+| {{flagu|United States}}
+| Clarkson Golden Knights (ECAC)
+|
+|-
+! scope="row" style="text-align:center;"|6
+| style="text-align:center;"|33
+| [[Mae Batherson]]
+| D
+| {{flagu|Canada}}
+| [[St. Lawrence Saints women's ice hockey|St. Lawrence Saints]] (ECAC)
+|
+|-
+! scope="row" style="text-align:center;"|7
+| style="text-align:center;"|39
+| [[Katy Knoll]]
+| F
+| {{flagu|United States}}
+| [[Northeastern Huskies women's ice hockey|Northeastern Huskies]] ([[Hockey East]])
+|
+|}
+
+==References==
+{{reflist}}
+
+===Recaps===
+{{reflist|group=Recap}}
+
+==External links==
+* {{Official website|https://minnesota.thepwhl.com/|Minnesota website}}
+
+{{PWHL Minnesota}}
+{{2024–25 PWHL season by team}}
+
+{{DEFAULTSORT:2024-25 PWHL Minnesota season}}
+[[Category:2024–25 PWHL season by team|Minnesota]]
+[[Category:Minnesota Frost seasons]]
+[[Category:Walter Cup championship seasons]]
+[[Category:2020s in Saint Paul, Minnesota]]

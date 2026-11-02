@@ -1,14 +1,15 @@
-// registers one language pack onto the core template registry. a pack's data is:
+// registers one language pack onto the core template registry. every section is optional:
 //   aliases   — localized name → the core template key it resolves to
 //   infoboxes — names recognised as infoboxes, not parsed
+//   templates — localized name → a core-style shorthand def: ['lat', 'lon'], 1, 'text', {props, out}
 //   parsers   — localized name → a core-style parser fn (see langs/_lib.js translate())
-import { translate } from './langs/_lib.js'
+import { translate, fromShortcut } from './langs/_lib.js'
 
 const register = (data, templates, infoboxes = {}) => {
-  data.infoboxes.forEach((name) => {
+  ;(data.infoboxes || []).forEach((name) => {
     infoboxes[name] = true
   })
-  Object.keys(data.aliases).forEach((name) => {
+  Object.keys(data.aliases || {}).forEach((name) => {
     const key = data.aliases[name]
     const parser = templates[key]
     // fail at extend-time, not parse-time, if a core registry key moves
@@ -30,8 +31,14 @@ const register = (data, templates, infoboxes = {}) => {
     templates[name].kind = /^cite /.test(key) ? 'citation' : key
     templates[name].i18n = 'alias'
   })
-  Object.keys(data.parsers).forEach((name) => {
-    let fn = data.parsers[name]
+  // shorthand defs become standalone parser fns, alongside any hand-written ones
+  const parsers = Object.assign({}, data.parsers)
+  Object.keys(data.templates || {}).forEach((name) => {
+    const def = data.templates[name]
+    parsers[name] = typeof def === 'function' ? def : fromShortcut(def)
+  })
+  Object.keys(parsers).forEach((name) => {
+    let fn = parsers[name]
     if (fn.template && typeof templates[fn.template] !== 'function') {
       throw new Error(`wtf-plugin-i18n: '${fn.template}' is not a core template`)
     }

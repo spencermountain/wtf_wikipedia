@@ -27,12 +27,15 @@ templates - and returns the same tidy schema for any season since the 1990s.
 
 ```js
 import wtf from 'wtf_wikipedia'
-import { mlb, nhl, nba, nfl, mls } from 'wtf-plugin-sports'
+import { mlb, nhl, nba, nfl, mls, wnba, nwsl, pwhl, cfl } from 'wtf-plugin-sports'
 wtf.extend(mlb)
 wtf.extend(nhl)
 wtf.extend(nba)
 wtf.extend(nfl)
 wtf.extend(mls)
+wtf.extend(wnba)
+wtf.extend(nwsl)
+wtf.extend(pwhl)
 
 let season = await wtf.nhlSeason('Toronto Maple Leafs', 2024)
 season.standings.record
@@ -143,6 +146,28 @@ season.games[0]
   attendance: 27642
 } */
 season.playoffs // mls cup playoff matches, flat
+```
+
+The same shapes come back for the **wnba** (like the nba, plus a
+`{{sports roster}}` roster), the **nwsl** (like mls football-box matches),
+the **pwhl** (like the nhl, with its `W–OTW–OTL–L` records normalized so
+`wins` counts every win), and the **cfl** (like the nfl):
+
+```js
+let season = await wtf.wnbaSeason('Las Vegas Aces', 2024)
+season.standings.record // { wins: 27, losses: 13, games: 40, winPct: 0.675 }
+season.games[0].leaders.points // "A'ja Wilson (30)"
+
+season = await wtf.nwslSeason('Kansas City Current', 2024)
+season.standings.record // { wins: 16, losses: 3, ties: 7, games: 26, winPct: 0.615 }
+
+season = await wtf.pwhlSeason('Minnesota Frost', 2024)
+season.season.record // { wins: 15, otWins: 5, otLosses: 4, losses: 11, games: 30, winPct: 0.5 }
+season.games[0].decision // 'Hensley'
+
+season = await wtf.cflSeason('Toronto Argonauts', 2024)
+season.standings.record // { wins: 10, losses: 8, games: 18, winPct: 0.556 }
+season.playoffs.at(-1) // the grey cup - older pages parse their quarter-score boxes
 ```
 
 The methods also hang off any parsed document:

@@ -1,0 +1,733 @@
+{{Use mdy dates|date=August 2023}}
+{{Use American English|date=March 2026}}
+{{Infobox WNBA team season
+| team             = Houston Comets
+| year             = 2000
+| wins             = 27
+| losses           = 5
+| conf             = Western
+| conf_place       = 2nd
+| coach            = [[Van Chancellor]]
+| arena            = [[Lakewood Church|Compaq Center]]
+| playoffs         = Won WNBA Finals
+| championship_win = yes
+}}
+
+The [[2000 WNBA season]] was the fourth season for the Houston Comets. The Comets won their fourth WNBA Championship and their final title in franchise history before the team disbanded in 2008.
+
+==Transactions==
+===Indiana Fever expansion draft===
+The following player was selected in the [[Indiana Fever]] [[expansion draft]] from the Houston Comets:
+{| class="wikitable" style="text-align:center; width:60em"
+! style="{{WNBA color cell|Houston Comets}}" width="10%"| Player
+! style="{{WNBA color cell|Houston Comets}}" width="10%"| Nationality
+! style="{{WNBA color cell|Houston Comets}}" width="10%"| School/Team/Country
+|-
+| [[Kara Wolters]]
+| {{USA}}
+| [[UConn Huskies women's basketball|UConn]]
+|}
+
+===Portland Fire expansion draft===
+The following player was selected in the [[Portland Fire (2000–2002)|Portland Fire]] [[expansion draft]] from the Houston Comets:
+{| class="wikitable" style="text-align:center; width:60em"
+! style="{{WNBA color cell|Houston Comets}}" width="10%"| Player
+! style="{{WNBA color cell|Houston Comets}}" width="10%"| Nationality
+! style="{{WNBA color cell|Houston Comets}}" width="10%"| School/Team/Country
+|-
+| [[Sophia Witherspoon]]
+| {{USA}}
+| [[Florida Gators women's basketball|Florida]]
+|}
+
+===WNBA draft===
+{{see also|2000 WNBA draft}}
+{| class="wikitable" style="text-align:center; width:60em"
+! style="{{WNBA color cell|Houston Comets}}" width="2%" | Round
+! style="{{WNBA color cell|Houston Comets}}" width="5%" | Pick
+! style="{{WNBA color cell|Houston Comets}}" width="10%" | Player
+! style="{{WNBA color cell|Houston Comets}}" width="10%" | Nationality
+! style="{{WNBA color cell|Houston Comets}}" width="10%" | School/Team/Country
+|-
+| 1
+| 16
+| [[Elen Shakirova|Elena Shakirova]]
+| {{flag|USSR}}
+| [[Dynamo Moscow (women's basketball)|Dynamo Moscow]] ([[Russia]])
+|-
+| 2
+| 32
+| [[Andrea Garner]]
+| {{USA}}
+| [[Penn State Lady Lions basketball|Penn State]]
+|-
+|3
+|48
+|Latavia Coleman
+|{{USA}}
+|[[Florida State Seminoles women's basketball|Florida State]]
+|-
+|4
+|64
+|Abbie Willenborg
+|{{USA}}
+|[[Marquette Golden Eagles women's basketball|Marquette]]
+|}
+
+===Transactions===
+{| class="wikitable" style="width:80%; text-align: center;"
+! style="{{WNBA color cell|Houston Comets}}" width=125" |Date
+! style="{{WNBA color cell|Houston Comets}}" colspan="2" |Transaction
+|-
+| rowspan="2" | December 15, 1999
+| Lost [[Kara Wolters]] to the [[Indiana Fever]] in the WNBA expansion draft<ref name=":0">{{Cite web |title=2000 Houston Comets Transactions |url=https://www.basketball-reference.com/wnba/teams/HOU/2000_transactions.html |access-date=2024-07-16 |website=Basketball-Reference.com |language=en}}</ref>
+|-
+|Lost [[Sophia Witherspoon]] to the [[Portland Fire (2000–2002)|Portland Fire]] in the WNBA expansion draft<ref name=":0" />
+|-
+|January 28, 2000
+|Traded [[Mila Nikolich]] to the [[Portland Fire (2000–2002)|Portland Fire]] in exchange for [[Coquese Washington]]<ref name=":0" />
+|-
+| rowspan="2" | April 25, 2000
+| Drafted [[Elen Shakirova|Elena Shakirova]], [[Andrea Garner]], Latavia Coleman and Abbie Willenborg in the [[2000 WNBA draft]]<ref name=":0" />
+|-
+|Traded Latavia Coleman to the [[Indiana Fever]] in exchange for Latina Davis and Renee Robinson<ref name=":0" />
+|-
+|May 27, 2000
+|Traded [[Andrea Garner]] to the [[Seattle Storm]] in exchange for a [[2001 WNBA draft|2001]] 4th Round Pick<ref name=":0" />
+|}
+
+==Roster==
+{{sports roster
+| team=Houston Comets
+| season = 2000
+| style = WNBA
+| players =
+<!-- list of players -->
+{{sports roster/entry | num = 9 | first = Janeth | last = Arcain | pos = G | ft = 5 | in = 11 | lbs = 147 | DOB = 1969-04-11 | yrs = 3 | nat = BRA}}
+{{sports roster/entry | num = 14 | first = Cynthia | last = Cooper | link=Cynthia Cooper-Dyke | pos = G | ft = 5 | in = 10 | lbs = 150 | DOB = 1963-04-14 | yrs = 3 | college = USC | nat = USA}}
+{{sports roster/entry | first = Kelley | last = Gibson | pos = F/G | ft = 5 | in = 9 | lbs = 137 | DOB = 1976-11-07 | yrs = R | college = Maryland | nat = USA}}
+{{sports roster/entry | num = 23 | first = Tammy | last = Jackson | pos = F/C | ft = 6 | in = 2 | lbs = 190 | DOB = 1962-12-03 | yrs = 3 | college = Florida | nat = USA}}
+{{sports roster/entry | num = 0 | first = Tiffani | last = Johnson | pos = C | ft = 6 | in = 4 | lbs = 195 | DOB = 1975-12-27 | yrs = 1 | college = Tennessee | nat = USA}}
+{{sports roster/entry | num = 40 | first = Monica | last = Lamb | pos = C | ft = 6 | in = 5 | lbs = 206 | DOB = 1964-10-11 | yrs = 2 | college = USC | nat = USA}}
+{{sports roster/entry | num = 21 | first = Jennifer | last = Rizzotti | pos = G | ft = 5 | in = 6 | lbs = 146 | DOB = 1974-05-15 | yrs = 1 | college = UConn | nat = USA}}
+{{sports roster/entry | num = 32 | first = Elena | last = Shakirova | pos = C | ft = 6 | in = 3 | lbs = 190 | DOB = 1970-06-02 | yrs = R | nat = USSR}}
+{{sports roster/entry | num = 22 | first = Sheryl | last = Swoopes | pos = F/G | ft = 6 | in = 0 | lbs = 145 | DOB = 1971-03-25 | yrs = 3 | college = Texas Tech | nat = USA}}
+{{sports roster/entry | num = 7 | first = Tina | last = Thompson | pos = F | ft = 6 | in = 2 | lbs = 178 | DOB = 1975-02-10 | yrs = 3 | college = USC | nat = USA}}
+{{sports roster/entry | num = 13 | first = Amaya | last = Valdemoro | pos = F | ft = 6 | in = 1 | DOB = 1976-08-18 | yrs = 2 | nat = Spanish State}}
+{{sports roster/entry | num = 4 | first = Coquese | last = Washington | pos = G | ft = 5 | in = 6 | lbs = 138 | DOB = 1971-01-17 | yrs = 2 | college = Notre Dame | nat = USA}}
+<!--  end list of players  -->
+| head_coach = 
+{{sports roster/entry |nat=USA |first=Van |last=Chancellor|college=Mississippi State}}
+| asst_coach = 
+{{sports roster/entry |nat=USA |first=Kevin|last=Cook|link=Kevin Cook (basketball)}}
+{{sports roster/entry |nat=USA |first=Alisa|last=Scott|nolink=1}}
+}}
+
+== Schedule ==
+
+===Regular season===
+{{Game log start|style=background:#ce1141; color:white|title= 2000 game log<br>Total: 27–5 (Home: 14–2; Road: 13–3)}}
+{{Game log section start|hide=y|style=background:#00285e; color:white|title=May: 2–0 (Home: 1–0; Road: 1–0)| Game| Date| Team| Score| High points| High rebounds| High assists| Location <br> Attendance | Record}}
+|-{{Game-won}}
+| 1
+| May 29
+| [[2000 New York Liberty season|New York]]
+| [https://www.basketball-reference.com/wnba/boxscores/200005290HOU.html W 84-68]
+| [[Sheryl Swoopes]] (27)
+| [[Janeth Arcain]] (8)
+| [[Cynthia Cooper-Dyke|Cooper]] <br> [[Tina Thompson|Thompson]] (6)
+| [[Lakewood Church Central Campus|Compaq Center]]
+| 1–0
+|-{{Game-won}}
+| 2
+| May 31
+| @ [[2000 Portland Fire season|Portland]]
+| [https://www.basketball-reference.com/wnba/boxscores/200005310POR.html W 93-89 (2OT)]
+| [[Sheryl Swoopes]] (29)
+| [[Tiffani Johnson|Johnson]] <br> [[Tina Thompson|Thompson]] (9)
+| [[Cynthia Cooper-Dyke|Cooper]] <br> [[Sheryl Swoopes|Swoopes]] (6)
+| [[Rose Garden (arena)|Rose Garden]]
+| 2–0
+|-
+{{Game log section end}}
+{{Game log section start|hide=y|style=background:#00285e; color:white|title=June: 12–2 (Home: 6–1; Road: 6–1)| Game| Date| Team| Score| High points| High rebounds| High assists| Location <br> Attendance | Record}}
+|-{{Game-won}}
+| 3
+| June 1
+| @ [[2000 Seattle Storm season|Seattle]]
+| [https://www.basketball-reference.com/wnba/boxscores/200006010SEA.html W 77-47]
+| [[Sheryl Swoopes]] (20)
+| [[Tiffani Johnson|Johnson]] <br> [[Tina Thompson|Thompson]] (6)
+| [[Cynthia Cooper-Dyke|Cooper]] (4)
+| [[KeyArena]]
+| 3–0
+|-{{Game-lost}}
+| 4
+| June 3
+| [[2000 Phoenix Mercury season|Phoenix]]
+| [https://www.basketball-reference.com/wnba/boxscores/200006030HOU.html L 62-80]
+| [[Sheryl Swoopes]] (31)
+| [[Tina Thompson]] (9)
+| [[Jennifer Rizzotti]] (4)
+| [[Lakewood Church Central Campus|Compaq Center]]
+| 3–1
+|-{{Game-won}}
+| 5
+| June 6
+| [[2000 Sacramento Monarchs season|Sacramento]]
+| [https://www.basketball-reference.com/wnba/boxscores/200006060HOU.html W 78-70]
+| [[Sheryl Swoopes]] (22)
+| [[Tina Thompson]] (10)
+| [[Cynthia Cooper-Dyke|Cynthia Cooper]] (8)
+| [[Lakewood Church Central Campus|Compaq Center]]
+| 4–1
+|-{{Game-won}}
+| 6
+| June 7
+| @ [[2000 Washington Mystics season|Washington]]
+| [https://www.basketball-reference.com/wnba/boxscores/200006070WAS.html W 81-54]
+| [[Cynthia Cooper-Dyke|Cooper]] <br> [[Sheryl Swoopes|Swoopes]] (20)
+| [[Tina Thompson]] (6)
+| [[Sheryl Swoopes]] (5)
+| [[MCI Center]]
+| 5–1
+|-{{Game-won}}
+| 7
+| June 10
+| @ [[2000 Utah Starzz season|Utah]]
+| [https://www.basketball-reference.com/wnba/boxscores/200006100UTA.html W 73-71]
+| [[Sheryl Swoopes]] (22)
+| [[Sheryl Swoopes|Swoopes]] <br> [[Tina Thompson|Thompson]] (6)
+| [[Sheryl Swoopes]] (4)
+| [[Delta Center]]
+| 6–1
+|-{{Game-won}}
+| 8
+| June 12
+| [[2000 Utah Starzz season|Utah]]
+| [https://www.basketball-reference.com/wnba/boxscores/200006180DET.html W 107-85]
+| [[Sheryl Swoopes]] (28)
+| [[Sheryl Swoopes]] (10)
+| [[Cynthia Cooper-Dyke|Cynthia Cooper]] (6)
+| [[Lakewood Church Central Campus|Compaq Center]]
+| 7–1
+|-{{Game-won}}
+| 9
+| June 15
+| [[2000 Miami Sol season|Miami]]
+| [https://www.basketball-reference.com/wnba/boxscores/200006150HOU.html W 77-53]
+| [[Tina Thompson]] (20)
+| [[Sheryl Swoopes]] (6)
+| [[Cynthia Cooper-Dyke|Cynthia Cooper]] (5)
+| [[Lakewood Church Central Campus|Compaq Center]]
+| 8–1
+|-{{Game-won}}
+| 10
+| June 18
+| [[2000 Minnesota Lynx season|Minnesota]]
+| [https://www.basketball-reference.com/wnba/boxscores/200006180HOU.html W 78-66]
+| [[Cynthia Cooper-Dyke|Cynthia Cooper]] (25)
+| [[Tiffani Johnson]] (12)
+| [[Sheryl Swoopes]] (7)
+| [[Lakewood Church Central Campus|Compaq Center]]
+| 9–1
+|-{{Game-lost}}
+| 11
+| June 20
+| @ [[2000 Los Angeles Sparks season|Los Angeles]]
+| [https://www.basketball-reference.com/wnba/boxscores/200006200LAS.html L 84-90]
+| [[Sheryl Swoopes]] (27)
+| [[Tiffani Johnson|Johnson]] <br> [[Sheryl Swoopes|Swoopes]] <br> [[Tina Thompson|Thompson]] (7)
+| [[Cynthia Cooper-Dyke|Cynthia Cooper]] (5)
+| [[Great Western Forum]]
+| 9–2
+|-{{Game-won}}
+| 12
+| June 23
+| @ [[2000 Utah Starzz season|Utah]]
+| [https://www.basketball-reference.com/wnba/boxscores/200006230UTA.html W 83-66]
+| [[Tina Thompson]] (28)
+| [[Tina Thompson]] (8)
+| [[Sheryl Swoopes]] (5)
+| [[Delta Center]]
+| 10–2
+|-{{Game-won}}
+| 13
+| June 24
+| [[2000 Indiana Fever season|Indiana]]
+| [https://www.basketball-reference.com/wnba/boxscores/200006240HOU.html W 93-67]
+| [[Tina Thompson]] (23)
+| [[Elena Shakirova|Shakirova]] <br> [[Tina Thompson|Thompson]] (7)
+| [[Sheryl Swoopes]] (7)
+| [[Lakewood Church Central Campus|Compaq Center]]
+| 11–2
+|-{{Game-won}}
+| 14
+| June 26
+| @ [[2000 Orlando Miracle season|Orlando]]
+| [https://www.basketball-reference.com/wnba/boxscores/200006260ORL.html W 70-58]
+| [[Tina Thompson]] (19)
+| [[Sheryl Swoopes]] (9)
+| [[Cynthia Cooper-Dyke|Cynthia Cooper]] (6)
+| [[TD Waterhouse Centre]]
+| 12–2
+|-{{Game-won}}
+| 15
+| June 28
+| @ [[2000 Charlotte Sting season|Charlotte]]
+| [https://www.basketball-reference.com/wnba/boxscores/200006280CHA.html W 76-66]
+| [[Sheryl Swoopes]] (22)
+| [[Tina Thompson]] (8)
+| [[Cynthia Cooper-Dyke|Cynthia Cooper]] (5)
+| [[Charlotte Coliseum]]
+| 13–2
+|-{{Game-won}}
+| 16
+| June 30
+| [[2000 Portland Fire season|Portland]]
+| [https://www.basketball-reference.com/wnba/boxscores/200006300HOU.html W 79-39]
+| [[Janeth Arcain]] (18)
+| [[Tina Thompson]] (7)
+| [[Sheryl Swoopes]] (6)
+| [[Lakewood Church Central Campus|Compaq Center]]
+| 14–2
+|-
+{{Game log section end}}
+{{Game log section start|hide=y|style=background:#00285e; color:white|title=July: 8–3 (Home: 5–1; Road: 3–2)| Game| Date| Team| Score| High points| High rebounds| High assists| Location <br> Attendance | Record}}
+|-{{Game-won}}
+| 17
+| July 2
+| [[2000 Phoenix Mercury season|Phoenix]]
+| [https://www.basketball-reference.com/wnba/boxscores/200007020HOU.html W 69-58]
+| [[Cynthia Cooper-Dyke|Cooper]] <br> [[Sheryl Swoopes|Swoopes]] (20)
+| [[Tina Thompson]] (11)
+| [[Tina Thompson]] (4)
+| [[Lakewood Church Central Campus|Compaq Center]]
+| 15–2
+|-{{Game-won}}
+| 18
+| July 6
+| [[2000 Seattle Storm season|Seattle]]
+| [https://www.basketball-reference.com/wnba/boxscores/200007060HOU.html W 80-50]
+| [[Tina Thompson]] (23)
+| [[Tina Thompson]] (6)
+| [[Sheryl Swoopes]] (9)
+| [[Lakewood Church Central Campus|Compaq Center]]
+| 16–2
+|-{{Game-won}}
+| 19
+| July 7
+| [[2000 Charlotte Sting season|Charlotte]]
+| [https://www.basketball-reference.com/wnba/boxscores/200007070HOU.html W 86-71]
+| [[Sheryl Swoopes]] (30)
+| [[Sheryl Swoopes]] (8)
+| [[Cynthia Cooper-Dyke|Cynthia Cooper]] (7)
+| [[Lakewood Church Central Campus|Compaq Center]]
+| 17–2
+|-{{Game-won}}
+| 20
+| July 9
+| @ [[2000 Minnesota Lynx season|Minnesota]]
+| [https://www.basketball-reference.com/wnba/boxscores/200007090MIN.html W 70-60]
+| [[Sheryl Swoopes]] (19)
+| [[Tina Thompson]] (10)
+| [[Cynthia Cooper-Dyke|Cynthia Cooper]] (7)
+| [[Target Center]]
+| 18–2
+|-{{Game-won}}
+| 21
+| July 12
+| [[2000 Sacramento Monarchs season|Sacramento]]
+| [https://www.basketball-reference.com/wnba/boxscores/200007120HOU.html W 77-62]
+| [[Sheryl Swoopes]] (25)
+| [[Sheryl Swoopes|Swoopes]] <br> [[Tina Thompson|Thompson]] (9)
+| [[Cynthia Cooper-Dyke|Cynthia Cooper]] (7)
+| [[Lakewood Church Central Campus|Compaq Center]]
+| 19–2
+|-{{Game-lost}}
+| 22
+| July 14
+| @ [[2000 Los Angeles Sparks season|Los Angeles]]
+| [https://www.basketball-reference.com/wnba/boxscores/200007140LAS.html L 58-63]
+| [[Sheryl Swoopes]] (26)
+| [[Tina Thompson]] (7)
+| [[Coquese Washington]] (4)
+| [[Great Western Forum]]
+| 19–3
+|-{{Game-won}}
+| 23
+| July 20
+| @ [[2000 Cleveland Rockers season|Cleveland]]
+| [https://www.basketball-reference.com/wnba/boxscores/200007200CLE.html W 74-56]
+| [[Sheryl Swoopes]] (19)
+| [[Tina Thompson]] (12)
+| [[Cynthia Cooper-Dyke|Cynthia Cooper]] (5)
+| [[Gund Arena]]
+| 20–3
+|-{{Game-won}}
+| 24
+| July 21
+| @ [[2000 Detroit Shock season|Detroit]]
+| [https://www.basketball-reference.com/wnba/boxscores/200007210DET.html W 76-74 (OT)]
+| [[Cynthia Cooper-Dyke|Cynthia Cooper]] (27)
+| [[Tiffani Johnson]] (15)
+| [[Cynthia Cooper-Dyke|Cynthia Cooper]] (4)
+| [[The Palace of Auburn Hills]]
+| 21–3
+|-{{Game-lost}}
+| 25
+| July 23
+| @ [[2000 New York Liberty season|New York]]
+| [https://www.basketball-reference.com/wnba/boxscores/200007230NYL.html L 64-69]
+| [[Sheryl Swoopes]] (18)
+| [[Sheryl Swoopes]] (9)
+| [[Sheryl Swoopes]] (5)
+| [[Madison Square Garden]]
+| 21–4
+|-{{Game-won}}
+| 26
+| July 25
+| [[2000 Seattle Storm season|Seattle]]
+| [https://www.basketball-reference.com/wnba/boxscores/200007250HOU.html W 79-53]
+| [[Cynthia Cooper-Dyke|Cynthia Cooper]] (28)
+| [[Tina Thompson]] (6)
+| [[Cynthia Cooper-Dyke|Cynthia Cooper]] (5)
+| [[Lakewood Church Central Campus|Compaq Center]]
+| 22–4
+|-{{Game-lost}}
+| 27
+| July 29
+| [[2000 Los Angeles Sparks season|Los Angeles]]
+| [https://www.basketball-reference.com/wnba/boxscores/200007290HOU.html L 74-84]
+| [[Cynthia Cooper-Dyke|Cynthia Cooper]] (25)
+| [[Tina Thompson]] (8)
+| [[Cynthia Cooper-Dyke|Cynthia Cooper]] (6)
+| [[Lakewood Church Central Campus|Compaq Center]]
+| 22–5
+|-
+{{Game log section end}}
+{{Game log section start|hide=y|style=background:#00285e; color:white|title=August: 5–0 (Home: 2–0; Road: 3–0)| Game| Date| Team| Score| High points| High rebounds| High assists| Location <br> Attendance | Record}}
+|-{{Game-won}}
+| 28
+| August 1
+| [[2000 Washington Mystics season|Washington]]
+| [https://www.basketball-reference.com/wnba/boxscores/200008010HOU.html W 68-60]
+| [[Tina Thompson]] (16)
+| [[Janeth Arcain|Arcain]] <br> [[Cynthia Cooper-Dyke|Cooper]] <br> [[Tina Thompson|Thompson]] (5)
+| [[Cynthia Cooper-Dyke|Cynthia Cooper]] (8)
+| [[Lakewood Church Central Campus|Compaq Center]]
+| 23–5
+|-{{Game-won}}
+| 29
+| August 4
+| @ [[2000 Portland Fire season|Portland]]
+| [https://www.basketball-reference.com/wnba/boxscores/200008040POR.html W 81-56]
+| [[Cynthia Cooper-Dyke|Cynthia Cooper]] (26)
+| [[Sheryl Swoopes|Swoopes]] <br> [[Tina Thompson|Thompson]] (10)
+| [[Cynthia Cooper-Dyke|Cynthia Cooper]] (5)
+| [[Rose Garden (arena)|Rose Garden]]
+| 24–5
+|-{{Game-won}}
+| 30
+| August 6
+| @ [[2000 Sacramento Monarchs season|Sacramento]]
+| [https://www.basketball-reference.com/wnba/boxscores/200008060SAC.html W 76-63]
+| [[Sheryl Swoopes]] (25)
+| [[Tina Thompson]] (13)
+| [[Cynthia Cooper-Dyke|Cynthia Cooper]] (6)
+| [[ARCO Arena]]
+| 25–5
+|-{{Game-won}}
+| 31
+| August 7
+| @ [[2000 Phoenix Mercury season|Phoenix]]
+| [https://www.basketball-reference.com/wnba/boxscores/200008070PHO.html W 71-54]
+| [[Tina Thompson]] (26)
+| [[Tina Thompson]] (10)
+| [[Cynthia Cooper-Dyke|Cynthia Cooper]] (6)
+| [[America West Arena]]
+| 26–5
+|-{{Game-won}}
+| 32
+| August 9
+| [[2000 Minnesota Lynx season|Minnesota]]
+| [https://www.basketball-reference.com/wnba/boxscores/200008090HOU.html W 77-64]
+| [[Tina Thompson]] (25)
+| [[Sheryl Swoopes|Swoopes]] <br> [[Tina Thompson|Thompson]] (8)
+| [[Janeth Arcain|Arcain]] <br> [[Cynthia Cooper-Dyke|Cooper]] <br> [[Tina Thompson|Thompson]] (3)
+| [[Lakewood Church Central Campus|Compaq Center]]
+| 27–5
+|-
+{{Game log section end}}
+{{Game log end}}
+
+===Playoffs===
+{{WNBA game log start|Houston Comets|playoffs=yes|end_year=2000}}
+{{WNBA game log section|Houston Comets|First round vs. Sacramento Monarchs<br>Won Series: 2–0|playoffs=yes|first=yes|show=no}}
+|-{{Game-won}}
+| 1
+| August 12
+| @ [[2000 Sacramento Monarchs season|Sacramento]]
+| [https://www.basketball-reference.com/wnba/boxscores/200008120SAC.html W 72–64]
+| [[Cynthia Cooper-Dyke|Cynthia Cooper]] (25)
+| [[Tiffani Johnson]] (8)
+| [[Cynthia Cooper-Dyke|Cooper]] <br> [[Tina Thompson|Thompson]] (3)
+| [[ARCO Arena]]
+| 1–0
+|-{{Game-won}}
+| 2
+| August 14
+| [[2000 Sacramento Monarchs season|Sacramento]]
+| [https://www.basketball-reference.com/wnba/boxscores/200008140HOU.html W 75–70]
+| [[Sheryl Swoopes]] (27)
+| [[Tina Thompson]] (14)
+| [[Sheryl Swoopes]] (6)
+| [[Lakewood Church Central Campus|Compaq Center]]
+| 2–0
+{{WNBA game log section|Houston Comets|Conference Finals vs. Los Angeles Sparks<br>Won Series: 2–0|playoffs=yes|show=no}}
+|-{{Game-won}}
+| 1
+| August 17
+| [[1999 Los Angeles Sparks season|Los Angeles]]
+| [https://www.basketball-reference.com/wnba/boxscores/200008170HOU.html W 77–56]
+| [[Sheryl Swoopes]] (22)
+| [[Janeth Arcain|Arcain]] <br> [[Sheryl Swoopes|Swoopes]] (6)
+| [[Janeth Arcain|Arcain]] <br> [[Tina Thompson|Thompson]] (3)
+| [[Lakewood Church Central Campus|Compaq Center]]
+| 1–0
+|-{{Game-won}}
+| 2
+| August 29
+| @ [[1999 Los Angeles Sparks season|Los Angeles]]
+| [https://www.basketball-reference.com/wnba/boxscores/200008200LAS.html W 74–69]
+| [[Cynthia Cooper-Dyke|Cynthia Cooper]] (29)
+| [[Tina Thompson]] (6)
+| [[Sheryl Swoopes]] (6)
+| [[Great Western Forum]]
+| 2–0
+{{WNBA game log section|Houston Comets|Championship vs. New York Liberty<br>Won Series: 2–0|playoffs=yes|show=no}}
+|-{{Game-won}}
+| 1
+| [[2000 WNBA Championship|August 24]]
+| @ [[2000 New York Liberty season|New York]]
+| [https://www.basketball-reference.com/wnba/boxscores/200008240NYL.html W 59–52]
+| [[Cynthia Cooper-Dyke|Cynthia Cooper]] (20)
+| [[Sheryl Swoopes|Swoopes]] <br> [[Tina Thompson|Thompson]] (8)
+| [[Cynthia Cooper-Dyke|Cynthia Cooper]] (5)
+| [[Madison Square Garden]]
+| 1–0
+|-{{Game-won}}
+| 2
+| [[2000 WNBA Championship|August 26]]
+| [[2000 New York Liberty season|New York]]
+| [https://www.basketball-reference.com/wnba/boxscores/200008260HOU.html W 79–73 (OT)]
+| [[Sheryl Swoopes]] (31)
+| [[Tina Thompson]] (8)
+| [[Cynthia Cooper-Dyke|Cynthia Cooper]] (7)
+| [[Lakewood Church Central Campus|Compaq Center]]
+| 2–0
+{{WNBA game log end|HOU|playoffs=yes|end_year=2000}}
+
+===Season standings===
+{{2000 WNBA Western Conference standings|team=HOU}}
+
+==Statistics==
+{{WNBA roster statistics legend}}
+
+===Regular season===
+{| class="wikitable sortable" style="text-align:center;"
+|-
+! style="{{WNBA color cell|Houston Comets}}" width="6%" | Player
+! style="{{WNBA color cell|Houston Comets}}" width="6%" | GP
+! style="{{WNBA color cell|Houston Comets}}" width="6%" | GS
+! style="{{WNBA color cell|Houston Comets}}" width="6%" | MPG
+! style="{{WNBA color cell|Houston Comets}}" width="6%" | FG%
+! style="{{WNBA color cell|Houston Comets}}" width="6%" | 3P%
+! style="{{WNBA color cell|Houston Comets}}" width="6%" | FT%
+! style="{{WNBA color cell|Houston Comets}}" width="6%" | RPG
+! style="{{WNBA color cell|Houston Comets}}" width="5%" | APG
+! style="{{WNBA color cell|Houston Comets}}" width="6%" | SPG
+! style="{{WNBA color cell|Houston Comets}}" width="6%" | BPG
+! style="{{WNBA color cell|Houston Comets}}" width="6%" | PPG
+|-
+| [[Sheryl Swoopes]]
+| 31
+| 31
+| style="background:#D3D3D3;"| 35.5
+| .506
+| .374
+| .821
+| 6.3
+| 3.8
+| style="background:#D3D3D3;"| 2.8
+| style="background:#D3D3D3;"| 1.1
+| style="background:#D3D3D3;"| 20.7
+|-
+| [[Cynthia Cooper-Dyke|Cynthia Cooper]]
+| 31
+| 31
+| 35.0
+| .459
+| .355
+| .875
+| 2.7
+| style="background:#D3D3D3;"| 5.0
+| 1.3
+| 0.2
+| 17.7
+|-
+| [[Tina Thompson]]
+| style="background:#D3D3D3;"| 32
+| style="background:#D3D3D3;"| 32
+| 34.0
+| .469
+| .417
+| .837
+| style="background:#D3D3D3;"| 7.7
+| 1.5
+| 1.5
+| 0.8
+| 16.9
+|-
+| [[Janeth Arcain]]
+| style="background:#D3D3D3;"| 32
+| style="background:#D3D3D3;"| 32
+| 30.5
+| .468
+| .200
+| .837
+| 3.7
+| 1.9
+| 1.3
+| 0.1
+| 8.4
+|-
+| [[Tiffani Johnson]]
+| 31
+| 29
+| 22.2
+| .480
+| N/A
+| .700
+| 4.7
+| 0.3
+| 0.3
+| 0.5
+| 4.2
+|-
+| [[Jennifer Rizzotti]]
+| style="background:#D3D3D3;"| 32
+| 2
+| 13.7
+| .382
+| .308
+| .667
+| 1.1
+| 1.4
+| 0.5
+| 0.1
+| 1.9
+|-
+| [[Tammy Jackson]]
+| 29
+| 1
+| 11.7
+| style="background:#D3D3D3;"|.574
+| N/A
+| .545
+| 2.1
+| 0.4
+| 0.4
+| 0.3
+| 2.6
+|-
+| [[Monica Lamb-Powell|Monica Lamb]]
+| 13
+| 2
+| 10.8
+| .500
+| N/A
+| .500
+| 2.0
+| 0.2
+| 0.2
+| 0.3
+| 2.0
+|-
+| [[Elen Shakirova|Elena Shakirova]]
+| 14
+| 0
+| 10.7
+| .433
+| .167
+| .879
+| 2.2
+| 0.3
+| 0.4
+| 0.1
+| 4.1
+|-
+| [[Coquese Washington]]
+| 25
+| 0
+| 9.4
+| .364
+| .200
+| .800
+| 0.8
+| 1.0
+| 0.6
+| 0.0
+| 1.7
+|-
+| [[Amaya Valdemoro]]
+| 22
+| 0
+| 7.8
+| .333
+| .379
+| style="background:#D3D3D3;"| 1.000
+| 1.0
+| 0.6
+| 0.4
+| 0.2
+| 2.6
+|-
+|[[Kelley Gibson]]
+|17
+|0
+|4.5
+|.368
+|style="background:#D3D3D3;"| .429
+|.875
+|0.7
+|0.1
+|0.1
+|0.0
+|1.4
+|-
+|}
+<br /><sup>‡</sup>Waived/Released during the season
+<br /><sup>†</sup>Traded during the season
+<br /><sup>≠</sup>Acquired during the season
+
+==Awards and honors==
+*[[Cynthia Cooper-Dyke|Cynthia Cooper]], '''[[WNBA Finals MVP Award]]'''
+*Cynthia Cooper, '''[[Best WNBA Player ESPY Award]]'''
+*[[Sheryl Swoopes]], '''[[WNBA Most Valuable Player Award]]'''
+*[[Sheryl Swoopes]], '''[[WNBA Defensive Player of the Year Award]]'''
+
+==References==
+{{reflist}}
+
+== External links ==
+* [https://www.basketball-reference.com/wnba/teams/HOU/2000.html Comets on Basketball Reference]
+
+{{Houston Comets 2000 WNBA champions}} 
+{{2000 WNBA season by team}}
+
+[[Category:Houston Comets seasons]]
+[[Category:2000 WNBA season|Houston]]
+[[Category:2000 in sports in Texas|Houston]]
+[[Category:Western Conference (WNBA) championship seasons]]
+[[Category:WNBA championship seasons]]

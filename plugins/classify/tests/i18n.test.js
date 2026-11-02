@@ -1,4 +1,4 @@
-import { readPage } from '../../../tests/_examples/index.js'
+import { readPage } from '../../i18n/tests/_examples/index.js'
 import test from 'tape'
 import wtf from './_lib.js'
 import i18n from '../../i18n/src/index.js'
@@ -8,6 +8,7 @@ test('i18n-classify-test', async function (t) {
   const arr = [
     ['Sara-C-Bisel', 'Person'],
     ['Wendy-Mogel', 'Person'],
+    ['Liste-Der-Argentinischen-Botschafter-In-Chile', null],
   ]
 
   arr.forEach((a) => {

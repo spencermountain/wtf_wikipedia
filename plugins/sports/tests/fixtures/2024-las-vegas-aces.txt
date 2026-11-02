@@ -1,0 +1,1015 @@
+{{Short description|28th season of the WNBA}}
+{{Use mdy dates|date=January 2025}}
+{{Use American English|date=March 2026}}
+{{Infobox WNBA team season
+| team       = Las Vegas Aces
+| year       = 2024
+| wins       = 27
+| losses     = 13
+| conf       = [[WNBA Western Conference|Western]]
+| conf_place = 2
+| coach      = [[Becky Hammon]]
+| arena      = [[Michelob Ultra Arena]]
+| playoffs   = 4th seed; Lost in Semifinals 1–3 to [[2024 New York Liberty season|New York Liberty]]
+}}
+
+The '''2024 Las Vegas Aces season''' was the franchise's 27th season in the [[Women's National Basketball Association]] and the seventh year the franchise is based in Las Vegas - after relocating from San Antonio and Utah. This was the third season under head coach [[Becky Hammon]]. They were the defending WNBA champions, after defeating the [[New York Liberty]] in the [[2023 WNBA Finals]]. In 2023, the Aces also finished with the most regular season wins in WNBA history, 34.<ref>{{cite web|url=https://www.espn.com/wnba/story/_/id/38254961/aces-set-wnba-single-season-wins-record-30th-victory|title=Aces set WNBA single-season wins record with 30th victory|work=[[ESPN]]|date=August 25, 2023|access-date=October 22, 2023}}</ref> Additionally, the Aces won back-to-back WNBA titles, and were the first team to do so since 2001–2002. The season tipped off on Tuesday, May 14, 2024, at home versus the [[2024 Phoenix Mercury season|Phoenix Mercury]].<ref>{{cite web|url=https://aces.wnba.com/schedule/#?season=2024&seasontype=02|title=2024 Las Vegas Aces Schedule|website=aces.wnba.com|publisher=[[WNBA]]|access-date=February 26, 2024}}</ref>
+
+On May 17, 2024, the [[Las Vegas Convention and Visitors Authority]] (LVCVA) announced that they would be gifting each player on the 2024 Aces roster a $100,000 sponsorship.<ref name=100K>{{cite news |first1=Mark |last1=Puleo |first2=Sabreena |last2=Merchant |title=Every Las Vegas Aces player receives $100,000 sponsorship from city |url=https://www.nytimes.com/athletic/5502336/2024/05/17/las-vegas-aces-sponsorship/ |work=[[The Athletic]] |publisher=[[The New York Times]] |date=May 17, 2024 |accessdate=May 17, 2024}}</ref> This sponsorship is independent of the Aces organization as per the WNBA's [[Collective agreement|collective bargaining agreement]].<ref name=100K/> On May 18, 2024, the [[WNBA]] opened an investigation into these sponsorships.<ref>{{cite news |first1= Ben |last1=Pickman |first2=Mark |last2=Puleo |title=WNBA opens investigation into Aces players receiving $100,000 sponsorships |url=https://www.nytimes.com/athletic/5503533/2024/05/18/wnba-investigation-aces-sponsorship/|work=[[The Athletic]] |publisher=[[The New York Times]] |date=May 18, 2024 |accessdate=May 23, 2024}}</ref> As of June 2025, no results of the league's probe into this sponsorship had been made public.<ref>{{cite news |first=Callie |last=Fin |title=Aces get $100K LVCVA sponsorships again despite WNBA probe |url=https://www.reviewjournal.com/sports/aces/aces-get-100k-lvcva-sponsorships-again-despite-wnba-probe-3380436/ |work=[[Las Vegas Review-Journal]] |date=June 2, 2025 |access-date=July 2, 2025}}</ref>
+
+The transgressions didn't have an effect on the start of the season as the Aces won their first two games. They did lose to [[2024 Phoenix Mercury season|Phoenix]] by ten points on May 21 for their first loss. They won their next two games before losing to [[2024 Atlanta Dream season|Atlanta]] to finish May 4–2. They defeated [[2024 Dallas Wings season|Dallas]] to start June, but would lose their next three games. They defeated Phoenix to break the streak, but lost to [[2024 New York Liberty season|New York]] in the next game. Their losing streak would end after that as the Aces won their next four games to finish June 6–4. They extended their winning streak to six games by defeating [[2024 Indiana Fever season|Indiana]] and [[2024 Washington Mystics season|Washington]] to start July. An [[Overtime (sports)#Basketball|overtime]] loss to [[2024 Los Angeles Sparks season|Los Angeles]] would break their winning streak. The Aces built a new streak winning their next four games in a row. They would lose to [[2024 Chicago Sky season|Chicago]] to finish July 6–2 and head into the Olympic break with a 16–8 record. The Aces were not as dominant upon returning from the break, losing their first game back to New York. They would defeat Los Angeles before losing two games in a row to [[2024 Minnesota Lynx season|Minnesota]]. Two wins bookended a loss to see the Aces finish August 3–4. With a win over Atlanta on August 30, the Aces clinched their playoff berth. The Aces became dominant in September, winning their first three games of the month. A four point loss to New York on September 8 would be the only mar on their record for the month. The would the remaining five straight games, with the closest being a four point win in Indiana on September 13. The Aces finished the regular season 27–13.
+
+The Aces' 27–13 record saw them finish in fourth place in the overall standings. As the fourth seed in the [[2024 WNBA Playoffs]], they faced-off against fifth seed [[2024 Seattle Storm season|Seattle]] in the First Round. The first two games were held in Las Vegas and the Aces won them both, 78–67 and 86–73. They advanced to the Semifinals where they faced New York in a best-of-five series. The Aces lost the first two games in New York, 77–87 and 84–88. They would win game three in Las Vegas to extend the series, 95–81. The Aces were unable to win game four at home and were eliminated from the playoffs, losing the series one game to three.
+
+==Transactions==
+===WNBA draft===
+{{see also|2024 WNBA draft}}
+{| class="wikitable sortable sortable" style="text-align: center"
+! width="5%" style="{{NBA color cell|Las Vegas Aces}};" | Round
+! width="5%" style="{{NBA color cell|Las Vegas Aces}};" | Pick
+! width="20%" style="{{NBA color cell|Las Vegas Aces}};" | Player
+! width="5%" style="{{NBA color cell|Las Vegas Aces}};" | Position
+! width="20%" style="{{NBA color cell|Las Vegas Aces}};" | Nationality
+! width="20%" style="{{NBA color cell|Las Vegas Aces}};" | College/Club
+! width="20%" style="{{NBA color cell|Las Vegas Aces}}" | Outcome
+|-
+| 2
+| 16
+| [[Dyaisha Fair]]
+| G
+| {{USA}}
+| [[2023-24 Syracuse Orange women's basketball team|Syracuse]]
+| Waived 
+|-
+| 2
+| 18
+| [[Kate Martin]]
+| G
+| {{USA}}
+| [[2023-24 Iowa Hawkeyes women's basketball team|Iowa]]
+| Signed
+|-
+| 2
+| 24
+| [[Elizabeth Kitley]]
+| C
+| {{USA}}
+| [[2023-24 Virginia Tech Hokies women's basketball team|Virginia Tech]]
+| Unsigned – due to injury 
+|-
+| 3
+| 36
+| [[Angel Jackson]]
+| C
+| {{USA}}
+| [[2023–24 Jackson State Lady Tigers basketball team|Jackson State]]
+| Waived
+|}
+
+===Transactions===
+{| class="wikitable" style="width:80%; text-align: center;"
+! style="{{WNBA color cell|Las Vegas Aces}}" width=125" |Date
+! style="{{WNBA color cell|Las Vegas Aces}}" colspan="2" |Details
+|-
+| rowspan=4 | February 1, 2024
+| Signed [[Megan Gustafson]]<ref>{{cite web|url=https://aces.wnba.com/news/las-vegas-aces-sign-megan-gustafson-as-free-agent/|title=Las Vegas Aces Sign Megan Gustafson as Free Agent|website=aces.wnba.com|publisher=[[WNBA]]|date=February 1, 2024|access-date=February 26, 2024}}</ref>
+|-
+| Re-signed [[Kiah Stokes]]<ref>{{cite web|url=https://aces.wnba.com/news/las-vegas-aces-re-sign-veteran-center-two-time-wnba-champion-kiah-stokes/|title=Las Vegas Aces Re-Sign Veteran Center, Two-Time WNBA Champion Kiah Stokes|website=aces.wnba.com|publisher=[[WNBA]]|date=February 1, 2024|access-date=February 26, 2024}}</ref>
+|-
+| Re-signed [[Sydney Colson]]<ref>{{cite web|url=https://aces.wnba.com/news/las-vegas-aces-re-sign-two-time-wnba-champion-guard-sydney-colson/|title=Las Vegas Aces Re-Sign Two-Time WNBA Champion Guard Sydney Colson|website=aces.wnba.com|publisher=[[WNBA]]|date=February 1, 2024|access-date=February 26, 2024}}</ref>
+|-
+| Signed Morgan Jones to a Training Camp Contract<ref>{{cite web|url=https://aces.wnba.com/news/aces-sign-former-louisville-and-florida-state-guard-morgan-jones-to-training-camp-contract/|title=Aces Sign Former Louisville and Florida State Guard Morgan Jones to Training Camp Contract|website=aces.wnba.com|publisher=[[WNBA]]|date=February 1, 2024|access-date=February 26, 2024}}</ref>
+|-
+| February 4, 2024
+| Signed Kamaria McDaniel to a Training Camp Contract<ref>{{cite web|url=https://aces.wnba.com/news/aces-sign-former-michigan-state-guard-kamaria-mcdaniel-to-training-camp-contract/|title=Aces Sign Former Michigan State Guard Kamaria McDaniel to Training Camp Contract|website=aces.wnba.com|publisher=[[WNBA]]|date=February 4, 2024|access-date=February 26, 2024}}</ref>
+|-
+| February 7, 2024
+| Re-signed [[Candace Parker]]<ref>{{cite web|url=https://aces.wnba.com/news/three-time-wnba-champion-two-time-league-mvp-candace-parker-re-signs-with-aces/|title=Three-Time WNBA Champion, Two-Time League MVP Candace Parker Re-Signs with Aces|website=aces.wnba.com|publisher=[[WNBA]]|date=February 7, 2024|access-date=February 26, 2024}}</ref>
+|-
+| February 8, 2024
+| Signed [[Bria Hartley]] to a Training Camp Contract<ref>{{cite web|url=https://aces.wnba.com/news/las-vegas-aces-sign-wnba-veteran-guard-bria-hartley-to-training-camp-contract/|title=Las Vegas Aces Sign WNBA Veteran Guard Bria Hartley to Training Camp Contract|website=aces.wnba.com|publisher=[[WNBA]]|date=February 8, 2024|access-date=February 26, 2024}}</ref>
+|-
+| March 28, 2024
+| Signed [[Brea Beal]] to a Training Camp Contract<ref>{{cite web|url=https://aces.wnba.com/news/aces-sign-former-south-carolina-guard-brea-beal-to-training-camp-contract/|title=Aces Sign Former South Carolina Guard Brea Beal to Training Camp Contract|website=aces.wnba.com|publisher=[[WNBA]]|date=March 28, 2024|access-date=March 29, 2024}}</ref>
+|-
+| April 17, 2024
+| Signed [[Dyaisha Fair]] and [[Angel Jackson]] to Rookie Contracts<ref name="ATT">{{cite web |title=WNBA Transactions |url=https://acrossthetimeline.com/wnba/transactions.html#team=Las%20Vegas%20Aces |website=acrossthetimeline.com |publisher=Across the Timeline |access-date=20 April 2024}}</ref>
+|-
+| April 22, 2024
+| Signed [[Kate Martin]] to Rookie Contract<ref>{{cite web |title=Kate Martin - Transactions |url=https://acrossthetimeline.com/wnba/players.html#player=Kate%20Martin&tab=Transactions |website=acrossthetimeline.com |publisher=Across the Timeline |access-date=25 April 2024}}</ref>
+|-
+| April 28, 2024
+| [[Candace Parker]] announced her retirement<ref>{{cite web|url=https://www.espn.com/wnba/story/_/id/40044481/candace-parker-two-wnba-mvp-announces-retirement|title=Candace Parker, two-time WNBA MVP, announces retirement|work=[[ESPN]]|first=Alexa|last=Philippou|date=April 28, 2024|access-date=April 28, 2024}}</ref>
+|-
+| April 29, 2024
+| Signed [[Chelsea Gray]] to a Contract Extension<ref>{{cite tweet|user=LVAces|date=April 30, 2024|number=1785368399641788770|title= 𝐏𝐎𝐈𝐍𝐓𝐆𝐀𝐖𝐃𝐃𝐃𝐃𝐃 🎥🪄 The Las Vegas Aces have signed @cgray209 to a contract extension. #ALLINLV}}</ref>
+|-
+| May 2, 2024
+| Waived [[Brea Beal]] and Morgan Jones<ref>{{cite web |title=Las Vegas Aces - Transactions |url=https://acrossthetimeline.com/wnba/teams.html#segment=reg&tab=Transactions&team=Las%20Vegas%20Aces |website=acrossthetimeline.com |publisher=Across the Timeline |access-date=2 May 2024}}</ref>
+|-
+| May 3, 2024
+| Signed [[Jackie Young]] to a Contract Extension<ref>{{cite tweet|user=RichardCohen1|date=May 3, 2024|number=1786545452336271732|title= Source confirms that Jackie Young's extension with the Las Vegas Aces adds one year to her current deal (covering 2025), fully protected, at $169,950. Another Aces player adding an extra season at the exact same salary as this year, but in Young's case for well below max. #WNBA}}</ref>
+|-
+| rowspan=3| May 6, 2024
+| Waived [[Bria Hartley]]<ref>{{cite news |first=Callie |last=Lawson-Freeman |title=Aces waive veteran guard in latest roster move |url=https://www.reviewjournal.com/sports/aces/aces-waive-veteran-guard-in-latest-roster-move-3045958/ |work=Las Vegas Review-Journal |date=May 6, 2024}}</ref>
+|-
+| Waived Kamaria McDaniel<ref>{{cite web |title=Las Vegas Aces Waive Kamaria McDaniel |url=https://aces.wnba.com/news/las-vegas-aces-waive-kamaria-mcdaniel/ |publisher=WNBA |date=May 6, 2024}}</ref>
+|-
+| Claimed/Awarded [[Emma Cannon]] from Waivers<ref>{{cite web |title=Las Vegas Aces Sign Emma Cannon |url=https://aces.wnba.com/news/las-vegas-aces-sign-emma-cannon/ |publisher=WNBA |date=May 6, 2024}}</ref>
+|-
+| May 7, 2024
+| Waived [[Angel Jackson]]<ref>{{cite web |title=Las Vegas Aces Waive Angel Jackson |url=https://aces.wnba.com/news/las-vegas-aces-waive-angel-jackson/ |publisher=WNBA |date=May 7, 2024}}</ref>
+|-
+| May 13, 2024
+| Exercised fourth-year option for [[Kierstan Bell]]<ref>{{cite tweet|number=1790117119075528979|user=LVAces |date=May 13, 2024 |access-date=May 13, 2024 |title=𝐎𝐅𝐅𝐈𝐂𝐈𝐀𝐋: The Las Vegas Aces have exercised the fourth-year option for @Dotmug_330. #ALLINLV}}</ref>
+|-
+| May 26, 2024
+| Waived [[Dyaisha Fair]]<ref>{{cite web |title=Aces Waive Rookie Guard Dyaisha Fair
+|url=https://aces.wnba.com/news/aces-waive-rookie-guard-dyaisha-fair/ |publisher=[[WNBA]] |date=May 26, 2024}}</ref>
+|-
+| May 31, 2024
+| Signed [[Tiffany Hayes]]<ref>{{cite web|url=https://aces.wnba.com/news/aces-sign-11-year-wnba-veteran-guard-tiffany-hayes/|title=Aces Sign 11-Year WNBA Veteran Guard Tiffany Hayes|website=aces.wnba.com|publisher=[[WNBA]]|date=May 31, 2024|access-date=May 31, 2024}}</ref>
+|-
+| rowspan=2| June 16, 2024
+| Waived [[Emma Cannon]]<ref name=CanCar>{{cite web|url=https://aces.wnba.com/news/aces-sign-jessika-carter-waive-emma-cannon/ |title=Aces Sign Jessika Carter, Waive Emma Cannon |website=aces.wnba.com|publisher=[[WNBA]]|date=June 16, 2024|access-date=June 16, 2024}}</ref>
+|-
+| Signed [[Jessika Carter]]<ref name=CanCar/>
+|-
+| June 30, 2024
+| Waived [[Jessika Carter]]<ref>{{cite tweet|number=1807523207332893074|user=LVAces |date=June 30, 2024 |access-date=June 30, 2024 |title=Roster Update: The Las Vegas Aces have waived Jessika Carter.}}</ref>
+|-
+| September 2, 2024
+| Signed [[Queen Egbo]] to 7-day contract<ref>{{cite web|title=Aces Sign Queen Egbo to Seven-Day Contract|url=https://aces.wnba.com/news/aces-sign-queen-egbo-to-seven-day-contract/|website=aces.wnba.com|publisher=[[WNBA]]|date=September 2, 2024|access-date=September 2, 2024}}</ref>
+|}
+
+===Roster changes===
+{{col-begin}}{{col-break|width=52%}}
+
+====Additions====
+{|class="wikitable" style="text-align: center"
+|- align="center" bgcolor="#dddddd"
+! style="{{NBA color cell|Las Vegas Aces}}; width:140px""|'''Personnel'''
+! style="{{NBA color cell|Las Vegas Aces}}; width:100px""|'''Signed/Trade'''
+! style="{{NBA color cell|Las Vegas Aces}}; width:210px""|'''Former team'''
+|-
+| [[Emma Cannon]]
+| Signed
+| [[Dallas Wings]]
+|-
+| [[Jessika Carter]]
+| Signed 
+| [[Mississippi State Bulldogs women's basketball|Mississippi State]]
+|-
+| [[Dyaisha Fair]]
+| Draft
+| [[Syracuse Orange women's basketball|Syracuse]]
+|- 
+| [[Megan Gustafson]]
+| Signed
+| [[Phoenix Mercury]]
+|-
+| [[Tiffany Hayes]]
+| Signed
+| [[Connecticut Sun]]
+|-
+| [[Angel Jackson]]
+| Draft 
+| [[Jackson State Lady Tigers basketball|Jackson State]]
+|-
+| [[Kate Martin]]
+| Draft
+| [[Iowa Hawkeyes women's basketball|Iowa]]
+|}
+{{col-break}}
+
+====Subtractions====
+{|class="wikitable" style="text-align: center"
+|- align="center"  bgcolor="#dddddd"
+! style="{{NBA color cell|Las Vegas Aces}}; width:140px""|'''Personnel'''
+! style="{{NBA color cell|Las Vegas Aces}}; width:100px""|'''Reason'''
+! style="{{NBA color cell|Las Vegas Aces}}; width:210px""|'''New team'''
+|-
+| [[Emma Cannon]]
+| Waived
+| —
+|-
+| [[Jessika Carter]]
+| Waived
+| —
+|-
+| [[Dyaisha Fair]]
+| Waived
+| —
+|- 
+| [[Cayla George]]
+| Released
+| —
+|-
+| [[Angel Jackson]]
+| Waived
+| —
+|- 
+| [[Candace Parker]]
+| colspan=2 | Retired
+|}
+{{col-end}}
+
+==Roster==
+{{sports roster
+| team=Las Vegas Aces
+| season = 2024
+| style = WNBA
+| players =
+<!-- list of players -->
+{{sports roster/entry | num = 1 | first = Kierstan | last = Bell | pos = F | ft = 6 | in = 1 | lbs = 176 | DOB = 03-16-2000 | yrs = 2 | college = Florida Gulf Coast | nat = USA | inj=}}
+{{sports roster/entry | num = 7 | first = Alysha | last = Clark | pos = F | ft = 5 | in = 11 | lbs = 167 | DOB = 07-07-1987 | yrs = 11 | college = Middle Tennessee | nat = ISR}}
+{{sports roster/entry | num = 51 | first = Sydney | last = Colson | pos = G | ft = 5 | in = 8 | lbs = 140 | DOB = 1989-08-06 | yrs = 9 | college = Texas A&M | nat = USA}}
+{{sports roster/entry | num = 4 | first = Queen | last = Egbo | pos = F/C | ft = 6 | in = 4 | lbs = 190 | DOB = 06-29-2000 | yrs = 2 | college = Baylor | nat = USA}}
+{{sports roster/entry | num = 12 | first = Chelsea | last = Gray | pos = G | ft = 5 | in = 11 | lbs = 170 | DOB = 1992-10-08 | yrs = 9 | college = Duke | nat = USA | }}
+{{sports roster/entry | num = 17 | first = Megan | last = Gustafson | pos = C | ft = 6 | in = 3 | lbs = 195 | DOB = 12-13-1996 | yrs = 5 | college = Iowa | nat = ESP }}
+{{sports roster/entry | num = 15 | first = Tiffany | last = Hayes | pos = G | ft = 5 | in = 10 | lbs = 155 | DOB = 1989-09-20 | yrs = 11 | college = Connecticut | nat = AZE}}
+{{sports roster/entry | num = 33 | first = Elizabeth | last = Kitley | pos = C | ft = 6 | in = 5 | lbs =  | DOB = 09-17-2001 | yrs = R | college = Virginia Tech | nat = USA |note=DP | inj=yes}}
+{{sports roster/entry | num = 20 | first = Kate | last = Martin | pos = G | ft = 6 | in = 0 | lbs = 172 | DOB = 06-05-2000 | yrs = R | college = Iowa | nat = USA}}
+{{sports roster/entry | num = 10 | first = Kelsey | last = Plum | pos = G | ft = 5 | in = 8 | lbs = 145 | DOB = 1994-08-24 | yrs = 6 | college = Washington | nat = USA}}
+{{sports roster/entry | num = 41 | first = Kiah | last = Stokes | pos = C | ft = 6 | in = 3 | lbs = 191 | DOB = 1993-03-30 | yrs = 8 | college = Connecticut | nat = USA}}
+{{sports roster/entry | num = 22 | first = A'ja | last = Wilson | pos = F | ft = 6 | in = 4 | lbs = 195 | DOB = 1996-08-08 | yrs = 6 | college = South Carolina | nat = USA}}
+{{sports roster/entry | num = 0 | first = Jackie | last = Young | pos = G | ft = 6 | in = 0 | lbs = 165 | DOB = 1997-09-16 | yrs = 5 | college = Notre Dame | nat = USA}}
+<!--  end list of players  -->
+| head_coach =
+{{sports roster/entry|nat=USA| first = Becky | last = Hammon| college = Colorado State}}
+| asst_coach =
+{{sports roster/entry|nat=USA| first = Natalie | last = Nakase| college = UCLA}}
+{{sports roster/entry|nat=USA| first = Tyler | last = Marsh| college = Birmingham Southern}}
+{{sports roster/entry|nat=USA| first = Charlene | last = Thomas-Swinson| college = Auburn}}
+| ath_train  =
+{{sports roster/entry|nat=USA| first = Michelle | last = Anumba | nolink = 1| college = Duke}}
+| str_cond   = 
+}}
+
+===Depth chart===
+{| style="text-align:center; {{NBA color cell|Las Vegas Aces}}"; color:white"
+!width="50"|Pos.
+!width="250"|Starter
+!width="250"|Bench
+|-style="height:40px; background:white; color:#092C57"
+! {{color box|#000000}} | [[Point guard|<span style="color:white;">PG</span>]]
+| '''[[Chelsea Gray]]'''
+| [[Sydney Colson]]<br>
+|-style="height:40px; background:white; color:#092C57"
+! {{color box|#000000}} | [[Shooting guard|<span style="color: white;">SG</span>]]
+| '''[[Kelsey Plum]]'''
+| [[Tiffany Hayes]]
+|-style="height:40px; background:white; color:#092C57"
+! {{color box|#000000}}  | [[Small forward|<span style="color: white;">SF</span>]]
+| '''[[Jackie Young]]'''
+|  [[Alysha Clark]]<br>[[Kate Martin]]
+|-style="height:40px; background:white; color:#092C57"
+! {{color box|#000000}}  | [[Power forward (basketball)|<span style="color: white;">PF</span>]]
+| '''[[A'ja Wilson]]'''
+| [[Kierstan Bell]]
+|-style="height:40px; background:white; color:#092C57"
+! {{color box|#000000}}  | [[Center (basketball)|<span style="color: white;">C</span>]]
+| '''[[Kiah Stokes]]'''
+| [[Megan Gustafson]]
+|}
+
+==Schedule==
+===Pre-season===
+{{WNBA game log start|Las Vegas Aces|pre-season=yes|end_year=2024|note=<br>Total: 1–0 (Home: 1–0; Road: 0–0)}}
+{{WNBA game log section|Las Vegas Aces|May|first=yes
+| home_wins   = 1
+| home_losses = 0
+| road_wins   = 0
+| road_losses = 0
+}}
+|-{{Game-won}}
+| 1
+| May 11
+| [[Puerto Rico women's national basketball team|Puerto Rico]]
+| [https://www.wnba.com/game/1012400010 W 102–50]
+| [[A'ja Wilson]] (27)
+| A'ja Wilson (14)
+| ''{{tooltip|Tied–3|Bell, Plum, Young}}'' (3)
+| [[Colonial Life Arena]]<br>13,507
+| 1–0
+{{WNBA game log end|lva|pre-season=yes|end_year=2024}}
+
+===Regular season===
+{{WNBA game log start|Las Vegas Aces|end_year=2024|note=<br>Total: 27–13 (Home: 13–7; Road: 14–6)}}
+{{WNBA game log section|Las Vegas Aces|May|first=yes
+| home_wins   = 3
+| home_losses = 1
+| road_wins   = 1
+| road_losses = 1
+}}
+|-{{Game-won}}
+| 1
+| May 14
+| [[2024 Phoenix Mercury season|Phoenix]]
+| [https://www.wnba.com/game/1022400003/PHO-vs-LVA W 89–80]
+| [[A'ja Wilson]] (30)
+| A'ja Wilson (13)
+| [[Jackie Young]] (6)
+| [[Michelob Ultra Arena]]<br>10,419
+| 1–0
+|-{{Game-won}}
+| 2
+| May 18
+| [[2024 Los Angeles Sparks season|Los Angeles]]
+| [https://www.wnba.com/game/1022400011/LAS-vs-LVA W 89–82]
+| ''{{tooltip|Tied|Wilson, Young}}'' (22)
+| A'ja Wilson (10)
+| Jackie Young (11)
+| Michelob Ultra Arena<br>10,286
+| 2–0
+|-{{Game-lost}}
+| 3
+| May 21
+| Phoenix
+| [https://www.wnba.com/game/1022400018/PHO-vs-LVA L 88–98]
+| [[Kelsey Plum]] (27)
+| A'ja Wilson (13)
+| Jackie Young (8)
+| Michelob Ultra Arena<br>10,374
+| 2–1
+|-{{Game-won}}
+| 4
+| May 25
+| [[2024 Indiana Fever season|Indiana]]
+| [https://www.wnba.com/game/1022400027/IND-vs-LVA W 99–80]
+| A'ja Wilson (29)
+| A'ja Wilson (15)
+| Kelsey Plum (7)
+| Michelob Ultra Arena<br>10,399
+| 3–1
+|-{{Game-won}}
+| 5
+| May 29
+| @ [[2024 Minnesota Lynx season|Minnesota]]
+| [https://www.wnba.com/game/1022400037/LVA-vs-MIN W 80–66] 
+| A'ja Wilson (29)
+| A'ja Wilson (15)
+| Jackie Young (10)
+| [[Target Center]]<br>7,409
+| 4–1
+|-{{Game-lost}}
+| 6
+| May 31
+| @ [[2024 Atlanta Dream season|Atlanta]]
+| [https://www.wnba.com/game/1022400040/LVA-vs-ATL L 74–78]
+| A'ja Wilson (28)
+| A'ja Wilson (9)
+| Kelsey Plum (6)
+| [[Gateway Center Arena]]<br>4,015
+| 4–2
+
+{{WNBA game log section|Las Vegas Aces|June
+| home_wins   = 2
+| home_losses = 3
+| road_wins   = 4
+| road_losses = 1
+}}
+|-{{Game-won}}
+| 7
+| June 5
+| @ [[2024 Dallas Wings season|Dallas]]
+| [https://www.wnba.com/game/1022400052/LVA-vs-DAL W 95–81]
+| [[A'ja Wilson]] (36)
+| A'ja Wilson (12)
+| [[Jackie Young]] (7)
+| [[College Park Center]]<br>6,251
+| 5–2
+|-{{Game-lost}}
+| 8
+| June 7
+| [[2024 Seattle Storm season|Seattle]]
+| [https://www.wnba.com/game/1022400057/SEA-vs-LVA L 65–78]
+| A'ja Wilson (29)
+| A'ja Wilson (11)
+| [[Tiffany Hayes]] (4)
+| [[Michelob Ultra Arena]]<br>10,380
+| 5–3
+|-{{Game-lost}}
+| 9
+| June 9
+| @ [[2024 Los Angeles Sparks season|Los Angeles]]
+| [https://www.wnba.com/game/1022400065/LVA-vs-LAS L 92–96]
+| A'ja Wilson (31)
+| A'ja Wilson (8)
+|''{{tooltip|Tied|Plum, Wilson}}'' (5)
+| [[Crypto.com Arena]]<br>13,900
+| 5–4
+|-{{Game-lost}}
+| 10
+| June 11
+| [[2024 Minnesota Lynx season|Minnesota]]
+| [https://www.wnba.com/game/1022400068/MIN-vs-LVA L 86–100]
+| A'ja Wilson (28)
+| [[Kiah Stokes]] (9)
+|''{{tooltip|Tied|Plum, Young}}'' (4)
+| Michelob Ultra Arena<br>10,368
+| 5–5
+|-{{Game-won}}
+| 11
+| June 13
+| @ [[2024 Phoenix Mercury season|Phoenix]]
+| [https://www.wnba.com/game/1022400073/LVA-vs-PHO W 103–99]
+| Jackie Young (34)
+| A'ja Wilson (15)
+| [[Kelsey Plum]] (5)
+| [[Footprint Center]]<br>9,325
+| 6–5
+|-{{Game-lost}}
+| 12
+| June 15
+| [[2024 New York Liberty season|New York]]
+| [https://www.wnba.com/game/1022400077/NYL-vs-LVA L 82–90]
+| Kelsey Plum (22)
+| Kiah Stokes (12)
+| Jackie Young (6)
+| Michelob Ultra Arena<br>10,424
+| 6–6
+|-{{Game-won}}
+| 13
+| June 19
+| Seattle
+| [https://www.wnba.com/game/1022400086/SEA-vs-LVA W 94–83]
+| Jackie Young (32)
+| A'ja Wilson (9)
+| Kelsey Plum (8)
+| Michelob Ultra Arena<br>10,380
+| 7–6
+|-{{Game-won}}
+| 14
+| June 21
+| [[2024 Connecticut Sun season|Connecticut]]
+| [https://www.wnba.com/game/1022400090/CON-vs-LVA W 85–74]
+| A'ja Wilson (26)
+| A'ja Wilson (16)
+| Jackie Young (5)
+| Michelob Ultra Arena<br>10,385
+| 8–6
+|-{{Game-won}}
+| 15
+| June 27
+| @ [[2024 Chicago Sky season|Chicago]]
+| [https://www.wnba.com/game/1022400100/LVA-vs-CHI W 95–83]
+| A'ja Wilson (31)
+| Kiah Stokes (8)
+|{{tooltip|Tied| Gray, Plum}} (5)
+| [[Wintrust Arena]]<br>9,025
+| 9–6
+|-{{Game-won}}
+| 16
+| June 29
+| @ [[2024 Washington Mystics season|Washington]]
+| [https://www.wnba.com/game/1022400104/LVA-vs-WAS W 88–77]
+| Jackie Young (26)
+| A'ja Wilson (9)
+| Kelsey Plum (8)
+| [[Entertainment and Sports Arena]]<br>4,200
+| 10–6
+
+{{WNBA game log section|Las Vegas Aces|July
+| home_wins   = 3
+| home_losses = 1
+| road_wins   = 3
+| road_losses = 1
+}}
+|-{{Game-won}}
+| 17
+| July 2
+| [[2024 Indiana Fever season|Indiana]]
+| [https://www.wnba.com/game/1022400113/IND-vs-LVA W 88–69]
+| [[Kelsey Plum]] (34)
+| [[Kiah Stokes]] (12)
+| rowspan=2| [[Jackie Young]] (10)
+| [[T-Mobile Arena]]<br>20,366
+| 11–6
+|-{{Game-won}}
+| 18
+| July 4
+| [[2024 Washington Mystics season|Washington]]
+| [https://www.wnba.com/game/1022400117/WAS-vs-LVA W 98–77]
+| Kelsey Plum (28)
+| [[A'ja Wilson]] (9)
+| [[Michelob Ultra Arena]]<br>10,376
+| 12–6
+|- style="background:#ffbbbb"
+| 19
+| July 5
+| @ [[2024 Los Angeles Sparks season|Los Angeles]]
+| [https://www.wnba.com/game/1022400119/LVA-vs-LAS L 93–98 (OT)]
+| A'ja Wilson (35)
+| A'ja Wilson (12)
+| ''{{tooltip|Tied|Clark, Gray}}'' (6)
+| [[Crypto.com Arena]]<br>13,840
+| 12–7
+|-{{Game-won}}
+| 20
+| July 7
+| [[2024 Dallas Wings season|Dallas]]
+| [https://www.wnba.com/game/1022400124/DAL-vs-LVA W 104–85]
+| A'ja Wilson (28)
+| A'ja Wilson (10)
+| Jackie Young (5)
+| Michelob Ultra Arena<br>10,369
+| 13–7
+|-{{Game-won}}
+| 21
+| July 10
+| @ [[2024 Seattle Storm season|Seattle]]
+| [https://www.wnba.com/game/1022400131/LVA-vs-SEA W 84–79]
+| Jackie Young (27)
+| A'ja Wilson (20)
+| [[Chelsea Gray]] (6)
+| [[Climate Pledge Arena]]<br>12,500
+| 14–7
+|-{{Game-won}}
+| 22
+| July 12
+| @ [[2024 Atlanta Dream season|Atlanta]]
+| [https://www.wnba.com/game/1022400134/LVA-vs-ATL W 84–70]
+| A'ja Wilson (33)
+| A'ja Wilson (18)
+| Kelsey Plum (7)
+| [[Gateway Center Arena]]<br>3,344
+| 15–7
+|-{{Game-won}}
+| 23
+| July 14
+| @ Washington
+| [https://www.wnba.com/game/1022400140/LVA-vs-WAS W 89–77]
+| A'ja Wilson (28)
+| A'ja Wilson (17)
+| Chelsea Gray (6)
+| [[Entertainment and Sports Arena]]<br>4,200
+| 16–7
+|-{{Game-lost}}
+| 24
+| July 16
+| [[2024 Chicago Sky season|Chicago]]
+| [https://www.wnba.com/game/1022400146/CHI-vs-LVA L 85–93]
+| A'ja Wilson (28)
+| A'ja Wilson (14)
+| Gray, Plum (5)
+| Michelob Ultra Arena<br>10,396
+| 16–8
+{{WNBA game log section|Las Vegas Aces|August
+| home_wins   = 2
+| home_losses = 2
+| road_wins   = 1
+| road_losses = 2
+}}
+|-{{Game-lost}}
+| 25
+| August 17
+| [[2024 New York Liberty season|New York]]
+| [https://www.wnba.com/game/1022400156/NYL-vs-LVA L 67–79]
+| [[A'ja Wilson]] (24)
+| A'ja Wilson (11)
+| [[Chelsea Gray]] (6)
+| [[Michelob Ultra Arena]]<br>10,397
+| 16–9
+|-{{Game-won}}
+| 26
+| August 18
+| [[2024 Los Angeles Sparks season|Los Angeles]]
+| [https://www.wnba.com/game/1022400159/LAS-vs-LVA W 87–71]
+| A'ja Wilson (34)
+| A'ja Wilson (13)
+| ''{{tooltip|Tied|Gray, Young}}'' (4)
+| Michelob Ultra Arena<br>10,311
+| 17–9
+|-{{Game-lost}}
+| 27
+| August 21
+| [[2024 Minnesota Lynx season|Minnesota]]
+| [https://www.wnba.com/game/1022400166/MIN-vs-LVA L 87–98]
+| [[Jackie Young]] (26)
+| A'ja Wilson (9)
+| A'ja Wilson (6)
+| Michelob Ultra Arena<br>10,429
+| 17–10
+|-{{Game-lost}} 
+| 28
+| August 23
+| @ Minnesota
+| [https://www.wnba.com/game/1022400171/LVA-vs-MIN L 74–87]
+| A'ja Wilson (24)
+| A'ja Wilson (7)
+| [[Alysha Clark]] (4)
+| [[Target Center]]<br>9,124
+| 17–11
+|-{{Game-won}}
+| 29
+| August 25
+| @ [[2024 Chicago Sky season|Chicago]]
+| [https://www.wnba.com/game/1022400174/LVA-vs-CHI W 77–75]
+| A'ja Wilson (20)
+| A'ja Wilson (18)
+| Chelsea Gray (7)
+| [[Wintrust Arena]]<br>9,025
+| 18–11
+|-{{Game-lost}}
+| 30
+| August 27
+| @ [[2024 Dallas Wings season|Dallas]]
+| [https://www.wnba.com/game/1022400179/LVA-vs-DAL L 90–93]
+| A'ja Wilson (42)
+| ''{{tooltip|Tied|Wilson, Young}}'' (6)
+| Jackie Young (6)
+| [[College Park Center]]<br>6,251
+| 18–12
+|-{{Game-won}}
+| 31
+| August 30
+| [[2024 Atlanta Dream season|Atlanta]]
+| [https://www.wnba.com/game/1022400187/ATL-vs-LVA W 83–72]
+| A'ja Wilson (26)
+| A'ja Wilson (16)
+| A'ja Wilson (5)
+| Michelob Ultra Arena<br>10,397
+| 19–12
+{{WNBA game log section|Las Vegas Aces|September
+| home_wins   = 3
+| home_losses = 0
+| road_wins   = 5
+| road_losses = 1
+}}
+|-{{Game-won}}
+| 32
+| September 1
+| @ [[2024 Phoenix Mercury season|Phoenix]]
+| [https://www.wnba.com/game/1022400194/LVA-vs-PHO W 97–79]
+| [[A'ja Wilson]] (41)
+| A'ja Wilson (17)
+| [[Jackie Young]] (14)
+| [[Footprint Center]]<br>13,981
+| 20–12
+|-{{Game-won}}
+| 33
+| September 3
+| [[2024 Chicago Sky season|Chicago]]
+| [https://www.wnba.com/game/1022400197/CHI-vs-LVA W 90–71]
+| A'ja Wilson (30)
+| A'ja Wilson (14)
+| [[Chelsea Gray]] (10)
+| [[T-Mobile Arena]]<br>18,394
+| 21–12
+|-{{Game-won}}
+| 34
+| September 6
+| @ [[2024 Connecticut Sun season|Connecticut]]
+| [https://www.wnba.com/game/1022400203/LVA-vs-CON W 72–67]
+| [[Kelsey Plum]] (27)
+| A'ja Wilson (8)
+| Chelsea Gray (6)
+| [[Mohegan Sun Arena]]<br>8,910
+| 22–12
+|-{{Game-lost}}
+| 35
+| September 8
+| @ [[2024 New York Liberty season|New York]]
+| [https://www.wnba.com/game/1022400209/LVA-vs-NYL L 71–75]
+| Kelsey Plum (25)
+| [[Kiah Stokes]] (9)
+| Gray, Plum (6)
+| [[Barclays Center]]<br>15,393
+| 22–13
+|-{{Game-won}}
+| 36
+| September 11
+| rowspan=2| @ [[2024 Indiana Fever season|Indiana]]
+| [https://www.wnba.com/game/1022400215/LVA-vs-IND W 86–75]
+| A'ja Wilson (27)
+| A'ja Wilson (12)
+| ''{{tooltip|Tied|Colson, Gray, Young}}'' (4)
+| rowspan=2| [[Gainbridge Fieldhouse]]<br>17,274
+| 23–13
+|-{{Game-won}}
+| 37
+| September 13
+| [https://www.wnba.com/game/1022400220/LVA-vs-IND W 78–74]
+| Chelsea Gray (21)
+| A'ja Wilson (17)
+| ''{{tooltip|Tied|Gray, Young}}'' (6)
+| 24–13
+|-{{Game-won}} 
+| 38
+| September 15
+| Connecticut
+| [https://www.wnba.com/game/1022400228/CON-vs-LVA W 84–71]
+| A'ja Wilson (29)
+| A'ja Wilson (9)
+| Jackie Young (7)
+| [[Michelob Ultra Arena]]<br>10,431
+| 25–13
+|-{{Game-won}}
+| 39
+| September 17
+| @ [[2024 Seattle Storm season|Seattle]]
+| [https://www.wnba.com/game/1022400234/LVA-vs-SEA W 85–72]
+| ''{{tooltip|Tied|Plum, Wilson}}'' (21)
+| ''{{tooltip|Tied|Plum, Wilson}}'' (7)
+| Jackie Young (6)
+| [[Climate Pledge Arena]]<br>14,298
+| 26–13
+|-{{Game-won}}
+| 40
+| September 19
+| [[2024 Dallas Wings season|Dallas]]
+| [https://www.wnba.com/game/1022400239/DAL-vs-LVA W 98–84]
+| [[Megan Gustafson]] (24)
+| Megan Gustafson (7)
+| [[Kierstan Bell|Bell]], [[Tiffany Hayes|Hayes]] (5)
+| Michelob Ultra Arena<br>10,376
+| 27–13
+{{WNBA game log end|lva|end_year=2024}}
+
+===Playoffs===
+{{WNBA game log start|Las Vegas Aces|playoffs=yes|end_year=2024}}
+{{WNBA game log section|Las Vegas Aces|First round vs. Seattle Storm<br>Won Series: 2–0|playoffs=yes|first=yes}}
+|-{{Game-won}}
+| 1
+| September 22
+| rowspan=2| [[2024 Seattle Storm season|Seattle]]
+| [https://www.wnba.com/game/1042400131/SEA-vs-LVA W 78–67]
+| [[A'ja Wilson]] (21)
+| [[Kiah Stokes|Stokes]], Wilson (8)
+| [[Chelsea Gray]] (7)
+| [[Michelob Ultra Arena]]<br>10,369
+| 1–0
+|-{{Game-won}}
+| 2
+| September 24
+| [https://www.wnba.com/game/1042400132/SEA-vs-LVA W 86–73]
+| [[Kelsey Plum]] (29)
+| A'ja Wilson (13)
+| Chelsea Gray (9)
+| Michelob Ultra Arena<br>10,370
+| 2–0
+{{WNBA game log section|Las Vegas Aces|Semifinals vs. New York Liberty<br>Lost Series: 1–3|playoffs=yes|show=no}}
+|-{{Game-lost}}
+| 1
+| September 29
+| rowspan=2| @ [[2024 New York Liberty season|New York]]
+| [https://www.wnba.com/game/1042400201/LVA-vs-NYL L 77–87]
+| [[Kelsey Plum]] (24)
+| [[A'ja Wilson]] (6)
+| A'ja Wilson (5)
+| [[Barclays Center]]<br>14,015
+| 0–1
+|-{{Game-lost}}
+| 2
+| October 1
+| [https://www.wnba.com/game/1042400202/LVA-vs-NYL L 84–88]
+| A'ja Wilson (24)
+| A'ja Wilson (7)
+| [[Chelsea Gray]] (7)
+| Barclays Center<br>14,321
+| 0–2
+|-{{Game-won}}
+| 3
+| October 4
+| New York
+| [https://www.wnba.com/game/1042400203/NYL-vs-LVA W 95–81]
+| [[Jackie Young]] (24)
+| A'ja Wilson (14)
+| Chelsea Gray (7)
+| [[Michelob Ultra Arena]]<br>10,369
+| 1–2
+|-{{Game-lost}}
+| 4
+| October 6
+| New York
+| [https://wnba.com/game/1042400204/NYL-vs-LVA L 62–76]
+| A'ja Wilson (19)
+| A'ja Wilson (10)
+| Chelsea Gray (6)
+| Michelob Ultra Arena<br>10,374
+| 1–3
+{{WNBA game log end|LVA|playoffs=yes|end_year=2024}}
+
+==Standings==
+{{2024 WNBA standings|team=LVA|notes=yes}}
+
+== Playoffs ==
+{{see also|2024 WNBA Playoffs}}
+{{trim|{{#section-h:2024 WNBA Playoffs|Bracket}}}}
+
+==Statistics==
+{{WNBA roster statistics legend}}
+
+===Regular season===
+{| class="wikitable sortable" style="text-align:center;"
+|-
+! style="{{WNBA color cell|Las Vegas Aces}}" width="16%" | Player
+! style="{{WNBA color cell|Las Vegas Aces}}" width="6%" | GP
+! style="{{WNBA color cell|Las Vegas Aces}}" width="6%" | GS
+! style="{{WNBA color cell|Las Vegas Aces}}" width="6%" | MPG
+! style="{{WNBA color cell|Las Vegas Aces}}" width="6%" | FG%
+! style="{{WNBA color cell|Las Vegas Aces}}" width="6%" | 3P%
+! style="{{WNBA color cell|Las Vegas Aces}}" width="6%" | FT%
+! style="{{WNBA color cell|Las Vegas Aces}}" width="6%" | RPG
+! style="{{WNBA color cell|Las Vegas Aces}}" width="6%" | APG
+! style="{{WNBA color cell|Las Vegas Aces}}" width="6%" | SPG
+! style="{{WNBA color cell|Las Vegas Aces}}" width="6%" | BPG
+! style="{{WNBA color cell|Las Vegas Aces}}" width="6%" | TO
+! style="{{WNBA color cell|Las Vegas Aces}}" width="6%" | PF
+! style="{{WNBA color cell|Las Vegas Aces}}" width="6%" | PPG
+|-
+| [[A'ja Wilson]]||38||style="background:#D3D3D3;"| 38|| style="background:#D3D3D3;"| 34.4||.518||.317||.844|| style="background:#D3D3D3;"| 11.9||2.3||style="background:#D3D3D3;"|1.8||style="background:yellow;"|2.6||1.3||1.8||style="background:yellow;"|26.9
+|-
+| [[Kelsey Plum]]||38||style="background:#D3D3D3;"|38||34.0||.423||.368||.866||2.6||4.2||0.7||0.0||2.4||2.7||17.8
+|-
+| [[Jackie Young]]||37||37||32.6||.430||.337||.867||4.4||style="background:#D3D3D3;"|5.3||1.0||0.2||2.1||2.5||15.8
+|-
+| [[Tiffany Hayes]] <sup>≠</sup>||33||5||21.5||.500||.402||.714||2.8||2.1||0.8||0.3||0.8||2.1||9.5
+|-
+| [[Chelsea Gray]]||27||25||26.0||.408||.338||.813||2.9||4.9||1.3||0.7||2.4||1.4||8.6
+|-
+| [[Alysha Clark]]||style="background:yellow;"|40||18||24.3||.443||.373||.821||3.6||1.8||0.8||0.3||1.4||2.7||6.0
+|-
+| [[Megan Gustafson]]||38||7||10.7||.500||.386||.765||1.9||0.2||0.3||0.1||0.4||1.6||3.7
+|-
+| [[Kierstan Bell]]||6||0||7.2||.375||style="background:#D3D3D3;"|.500||.500||1.0||0.8||0.0||0.0||0.2||0.8||2.8
+|-
+| [[Queen Egbo]] <sup>≠</sup>||3||0||6.0||style="background:#D3D3D3;"|.667||—||—||1.7||0.0||0.7||0.3||style="background:#D3D3D3;"|0.0||0.7||2.7
+|-
+| [[Kate Martin]]||34||2||11.5||.307||.355||style="background:#D3D3D3;"|.917||1.6|||0.9||0.2||0.2||0.6||0.9||2.6
+|-
+| [[Sydney Colson]]|| 31||1||8.0||.422||.378||.889||0.5||1.0||0.5||0.2||0.5||0.7||2.5
+|-
+| [[Kiah Stokes]]||39||29||18.4||.323||.225||.667||4.7||0.7||0.5||0.8||0.4||1.7||1.4
+|-
+| [[Emma Cannon]] <sup>‡</sup>||5||0||1.8||style="background:#D3D3D3;"|.667||.000||—||0.4||0.2||0.0||0.0||0.2||style="background:#D3D3D3;"|0.0||0.8
+|-
+| [[Dyaisha Fair]] <sup>‡</sup>||1||0||4.0||.000||.000||—||0.0||2.0||0.0||0.0||style="background:#D3D3D3;"|0.0||style="background:#D3D3D3;"|0.0||0.0
+|-
+| [[Jessika Carter]] <sup>≠</sup> <sup>‡</sup>||2||0||2.0||.000||—||.000||0.0||0.0||0.0||0.0||style="background:#D3D3D3;"|0.0||style="background:#D3D3D3;"|0.0||0.0
+|}
+<br /><sup>‡</sup>Waived/Released during the season
+<br /><sup>†</sup>Traded during the season
+<br /><sup>≠</sup>Acquired during the season
+
+===Playoffs===
+{| class="wikitable sortable" style="text-align:center;"
+|-
+! style="{{WNBA color cell|Las Vegas Aces}}" width="16%" | Player
+! style="{{WNBA color cell|Las Vegas Aces}}" width="6%" | GP
+! style="{{WNBA color cell|Las Vegas Aces}}" width="6%" | GS
+! style="{{WNBA color cell|Las Vegas Aces}}" width="6%" | MPG
+! style="{{WNBA color cell|Las Vegas Aces}}" width="6%" | FG%
+! style="{{WNBA color cell|Las Vegas Aces}}" width="6%" | 3P%
+! style="{{WNBA color cell|Las Vegas Aces}}" width="6%" | FT%
+! style="{{WNBA color cell|Las Vegas Aces}}" width="6%" | RPG
+! style="{{WNBA color cell|Las Vegas Aces}}" width="6%" | APG
+! style="{{WNBA color cell|Las Vegas Aces}}" width="6%" | SPG
+! style="{{WNBA color cell|Las Vegas Aces}}" width="6%" | BPG
+! style="{{WNBA color cell|Las Vegas Aces}}" width="6%" | TO
+! style="{{WNBA color cell|Las Vegas Aces}}" width="6%" | PF
+! style="{{WNBA color cell|Las Vegas Aces}}" width="6%" | PPG
+|-
+| [[A'ja Wilson]] ||style="background:#D3D3D3;"|6||style="background:#D3D3D3;"|6||style="background:#D3D3D3;"|36.5||style="background:#D3D3D3;"|.535||style="background:#D3D3D3;"|.500||.750||style="background:#D3D3D3;"|9.7||2.8||0.3||style="background:#D3D3D3;"|2.5||1.3||1.2||style="background:#D3D3D3;"|21.3
+|-
+| [[Kelsey Plum]] ||style="background:#D3D3D3;"|6||style="background:#D3D3D3;"|6||33.0||.461||.359||.778||2.5||2.2||0.7||0.0||1.8||2.8||16.3
+|-
+| [[Jackie Young]] ||style="background:#D3D3D3;"|6||style="background:#D3D3D3;"|6||30.5||.375||.359||.818||5.8||3.0||0.8||0.3||1.2||2.5||13.8
+|-
+| [[Chelsea Gray]] ||style="background:#D3D3D3;"|6||style="background:#D3D3D3;"|6||32.0||.383||.286||.818||2.7||style="background:#D3D3D3;"| 6.2||0.7||1.0||2.8||1.0||10.5
+|-
+| [[Tiffany Hayes]] ||style="background:#D3D3D3;"|6||0||21.7||.512||style="background:#D3D3D3;"|.500||.813||3.5||2.8||style="background:#D3D3D3;"|1.8||0.2||1.0||2.7||10.5
+|-
+| [[Alysha Clark]] ||style="background:#D3D3D3;"|6||3||25.8||.364||.333||style="background:#D3D3D3;"|1.000||3.8||2.0||0.7||0.2||0.7||2.8||6.0
+|-
+| [[Kierstan Bell]] ||1||0||3.0||.500||—||—||0.0||0.0||0.0||0.0||style="background:#D3D3D3;"|0.0||style="background:#D3D3D3;"|0.0||2.0
+|-
+| [[Sydney Colson]] ||style="background:#D3D3D3;"|6||0||4.7||.143||.167||.500||0.0||0.5||0.2||0.2||0.7||0.5||0.7
+|-
+| [[Megan Gustafson]] ||4||0||7.5||.200||.000||—||0.5||0.3||0.0||0.0||0.3||0.3||0.5
+|-
+| [[Kiah Stokes]] ||4||3||13.8||.000||.000||—||4.8||0.0||0.0||0.3||0.8||1.5||0.0
+|-
+| [[Queen Egbo]] ||1||0||3.0||—||—||—||1.0||1.0||0.0||0.0||style="background:#D3D3D3;"|0.0||1.0||0.0
+|-
+| [[Kate Martin]] ||1||0||3.0||—||—||—||0.0||0.0||0.0||0.0||style="background:#D3D3D3;"|0.0||style="background:#D3D3D3;"|0.0||0.0
+|}
+
+==Awards and honors==
+{| class="wikitable sortable sortable" style="text-align: center"
+! style="{{WNBA color cell|Las Vegas Aces}}" width="5%" | Recipient
+! style="{{WNBA color cell|Las Vegas Aces}}" width="9%" | Award
+! style="{{WNBA color cell|Las Vegas Aces}}" width="5%" | Date awarded
+! style="{{WNBA color cell|Las Vegas Aces}}" width="1%" class="unsortable" | Ref.
+|-
+| [[Chelsea Gray]]
+| [[2024 WNBA All-Star Game|WNBA All-Star]]
+| July 2, 2024
+| <ref name=24Allstar/>
+|-
+| [[Becky Hammon]]
+| [[2024 WNBA season#Coach of the Month Award|Coach of the Month – September]]
+| September 20, 2024
+| <ref>{{cite web|url=https://aces.wnba.com/news/becky-hammon-earns-wnba-coach-of-the-month-award/|title=Becky Hammon Earns WNBA Coach of the Month Award|website=aces.wnba.com|publisher=[[WNBA]]|date=September 20, 2024|access-date=September 20, 2024}}</ref>
+|-
+| rowspan=2| [[Tiffany Hayes]]
+| [[Associated Press|AP]] Sixth Woman of the Year
+| September 22, 2024
+| <ref name=AP2024Awards>{{cite news |first=Doug |last=Feinberg |title=A'ja Wilson and Caitlin Clark are unanimous choices for WNBA AP Player and Rookie of the Year |url=https://apnews.com/article/awards-wilson-clark-ap-wnba-55eb092dba5a1face9dff9031a564d15 |work=[[Associated Press]] |date=September 22, 2024 |access-date=September 22, 2024}}</ref>
+|-
+| [[WNBA Sixth Player of the Year|WNBA Sixth Player of the Year]]
+| October 4, 2024
+| <ref>{{cite news|title=Tiffany Hayes latest from Aces to win Sixth Person of the Year|url=https://www.espn.com/wnba/story/_/id/41608805/tiffany-hayes-latest-aces-win-sixth-person-year |work=[[ESPN]] |publisher=Associated Press |date=October 4, 2024 |access-date=October 4, 2024}}</ref>
+|-
+| [[Kelsey Plum]]
+| [[2024 WNBA All-Star Game|WNBA All-Star]]
+| July 2, 2024
+| <ref name=24Allstar/>
+|-
+| rowspan=18 | [[A'ja Wilson]]
+| [[2024 WNBA season#Player of the Month Award|Western Conference Player of the Month – May]]
+| June 3, 2024
+| <ref>{{cite web|url=https://aces.wnba.com/news/aja-wilson-named-kia-western-conference-player-of-the-month-for-record-tying-ninth-time/|title=A'ja Wilson Named KIA Western Conference Player of the Month For Record-Tying Ninth Time|website=aces.wnba.com|publisher=[[WNBA]]|date=June 3, 2024|access-date=June 3, 2024}}</ref>
+|-
+| rowspan=6 | [[2024 WNBA season#Player of the Week Award|Western Conference Player of the Week]]
+| June 4, 2024
+| <ref>{{cite web|url=https://aces.wnba.com/news/aja-wilson-named-western-conference-player-of-the-week-4/|title=A'ja Wilson Named Western Conference Player Of The Week|website=aces.wnba.com|publisher=[[WNBA]]|date=June 4, 2024|access-date=June 4, 2024}}</ref>
+|-
+| June 25, 2024
+| <ref>{{cite web|url=https://aces.wnba.com/news/aja-wilson-named-western-conference-player-of-the-week-5/|title=A'ja Wilson Named Western Conference Player Of The Week For 18th Time|website=aces.wnba.com|publisher=[[WNBA]]|date=June 25, 2024|access-date=June 25, 2024}}</ref>
+|-
+| July 9, 2024
+| <ref>{{cite tweet|number=1810748381704376833|user=WNBA|date=July 9, 2024|access-date=July 9, 2024|title=🏀 Week 7 Players of the Week 🏀 Eastern Conference: @Reese10angel @chicagosky 16.8 PPG, 14.0 RPG and 1.2 APG Western Conference: @_ajawilson22 @lvaces 25.2 PPG, 9.2 RPG and 3.0 APG #WelcometotheW}}</ref>
+|-
+| July 18, 2024
+| <ref>{{cite tweet|number=1814058413363691584|user=WNBA|date=July 18, 2024 |title=🏀 Week 8 Players of the Week 🏀}}</ref>
+|-
+| September 3, 2024
+| <ref>{{cite web|url=https://aces.wnba.com/news/aja-wilson-named-western-conference-player-the-week-for-21st-time/|title=A'ja Wilson Named Western Conference Player the Week For 21st Time|website=aces.wnba.com|publisher=[[WNBA]]|date=September 3, 2024|access-date=September 3, 2024}}</ref>
+|-
+| September 20, 2024
+| <ref>{{cite web|url=https://aces.wnba.com/news/aja-wilson-named-western-conference-player-of-the-week-for-22nd-time/|title=A'ja Wilson Named Western Conference Player of the Week for 22nd Time|website=aces.wnba.com|publisher=[[WNBA]]|date=September 20, 2024|access-date=September 20, 2024}}</ref>
+|-
+| [[2024 WNBA All-Star Game|WNBA All-Star]]
+| July 2, 2024
+| <ref name=24Allstar>{{cite press release |title=Rosters Set for AT&T WNBA All-Star 2024 on July 20 |url=https://www.wnba.com/news/all-star-2024-selections |work=WNBA |date=July 2, 2024}}</ref>
+|-
+| [[2024 WNBA season#Player of the Month Award|Western Conference Player of the Month – June]]
+| July 2, 2024
+| <ref>{{cite news |first=Dustin |last=Schutte |title=WNBA Announces Eastern, Western Conference Players of the Month for June
+|url=https://www.si.com/fannation/nba/fastbreak/news/wnba-announces-players-of-the-month-for-june-sabrina-ionescu-new-york-liberty-aja-wilson-las-vegas-aces-wnba-news |work=Sports Illustrated |date=July 2, 2024}}</ref>
+|-
+| [[2024 WNBA season#Player of the Month Award|Western Conference Player of the Month – July]]
+| July 19, 2024
+|<ref>{{cite web|title=A'ja Wilson Earns 11th Career & 3rd Consecutive KIA WNBA Western Conference Player of the Month Award |url=https://aces.wnba.com/news/aja-wilson-earns-11th-career-3rd-consecutive-kia-wnba-western-conference-player-of-the-month-award/ |website=[[WNBA]] |date=July 19, 2024 |access-date=July 19, 2024}}</ref>
+|-
+| [[Associated Press|AP]] Player of the Week
+| September 3, 2024
+|<ref>{{cite news |first=Doug |last=Feinberg |title=Kelsey Mitchell becomes strong complement to Caitlin Clark, and they have the Fever in the playoffs
+ |url=https://apnews.com/article/wnba-fever-caitlin-clark-kelsey-mitchell-3951b1f41166a979d3ffcdd1d8dd142e |work=Associated Press |date=September 3, 2024 |access-date=September 4, 2024}}</ref>
+|-
+| [[2024 WNBA season#Player of the Month Award|Western Conference Player of the Month – September]]
+| rowspan=2| September 20, 2024
+| <ref>{{cite web|title=A'ja Wilson Earns 12th Career Kia WNBA Western Conference Player of the Month Award
+|url=https://aces.wnba.com/news/aja-wilson-earns-12th-career-kia-wnba-western-conference-player-of-the-month-award/ |website=[[WNBA]] |date=September 20, 2024 |access-date=September 20, 2024}}</ref>
+|-
+| [[WNBA Peak Performers|Peak Performer: Points]]
+|<ref name="peak24">{{cite web |first=Spencer |last=Ostrow |title=WNBA Announces Major Caitlin Clark, Angel Reese, A'ja Wilson News |url=https://athlonsports.com/wnba/wnba-announces-major-indiana-fever-caitlin-clark-chiacgo-sky-angel-reese-las-vegas-aces-aja-wilson-news |website=Athlon Sports |date=September 20, 2024 |access-date=September 20, 2024}}</ref>
+|-
+| [[WNBA Most Valuable Player]]
+| rowspan=3| September 22, 2024
+| <ref>{{cite news |first=Michael |last=Voepel |author-link=Michael Voepel |title=Aces' A'ja Wilson becomes second unanimous MVP in WNBA history |url=https://www.espn.com/wnba/story/_/id/41375494/aces-aja-wilson-becomes-second-unanimous-mvp-wnba-history |work=[[ESPN]] |date=September 22, 2024 |access-date=September 22, 2024}}</ref>
+|-
+| [[Associated Press|AP]] Player of the Year
+| rowspan=2| <ref name=AP2024Awards/>
+|-
+| [[Associated Press|AP]] All-WNBA First Team
+|-
+| [[WNBA All-Defensive Team|WNBA All-Defensive First Team]]
+| September 29, 2024
+| <ref name="dfence">{{cite news |first=Jack |last=Maloney |title=WNBA Defensive Player of the Year: Lynx's Napheesa Collier edges Aces star A'ja Wilson for first honor|url=https://www.cbssports.com/wnba/news/wnba-defensive-player-of-the-year-lynxs-napheesa-collier-edges-aces-star-aja-wilson-for-first-honor/ |work=CBS Sports |date=September 29, 2024 |access-date=September 29, 2024}}</ref>
+|-
+| [[All-WNBA Team|All-WNBA First Team]]
+| October 16, 2024
+|<ref name="allteams24">{{cite news |first= |last= |title=Fever's Caitlin Clark, Aces' A'ja Wilson named All-WNBA |url=https://www.espn.com/wnba/story/_/id/41834362/fever-caitlin-clark-aces-aja-wilson-named-all-wnba |work=ESPN |date=October 16, 2024 |access-date=October 16, 2024}}</ref>
+|-
+| [[Jackie Young]]
+| [[2024 WNBA All-Star Game|WNBA All-Star]]
+| July 2, 2024
+| <ref name=24Allstar/>
+|}
+
+==References==
+{{Reflist|}}
+
+==External links==
+* [https://aces.wnba.com/ Official website of the Las Vegas Aces]
+
+{{Las Vegas Aces}}
+{{2024 WNBA season by team}}
+
+[[Category:2024 WNBA season|Las Vegas Aces]]
+[[Category:Las Vegas Aces seasons]]
+[[Category:2024 in sports in Nevada|Las Vegas Aces]]
+[[Category:2024 in the Las Vegas Valley|Las Vegas Aces]]

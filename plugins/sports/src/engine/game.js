@@ -72,7 +72,7 @@ const visitorHome = function (game, row, ctx, score) {
   return true
 }
 
-// an opponent column marks away-games with '@' or 'at'
+// an opponent column marks away-games with '@' or 'at', home-games sometimes with 'vs.'
 const opponentCol = function (game, row, ctx, score) {
   // combined headers like 'Opponent / Time' still count as the opponent column
   const key = findKey(row.cells, ['opponent', 'opp', 'team'])
@@ -81,7 +81,7 @@ const opponentCol = function (game, row, ctx, score) {
     return false
   }
   game.home = /^ *(@|at )/i.test(opp) === false
-  opp = opp.replace(/^ *(@|at ) */i, '').trim()
+  opp = opp.replace(/^ *(@|at |vs\.? ) */i, '').trim()
   opp = opp.replace(/ *\(\d{4}[^)]*\)$/, '') //a '(2002–03)' season-link suffix
   opp = opp.replace(/ \d{1,2}:\d{2} ?[ap]\.?m.*$/i, '') //a '6:05pm (ESPN)' suffix
   const oppLink = row.links[key]

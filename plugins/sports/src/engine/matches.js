@@ -100,13 +100,19 @@ const build = (boxes, ctx) => boxes.map((data) => buildMatch(data, ctx)).filter(
 // or anywhere on the page, when sections don't nest the way they read
 const findMatches = function (doc, ctx, titles, skip) {
   const all = doc.sections()
-  for (const title of titles) {
-    const want = title.toLowerCase()
-    const sections = all.filter((s) => s.title().trim().toLowerCase() === want)
-    for (const section of sections) {
-      const games = build(collectBoxes(doc, section, skip), ctx)
-      if (games.length > 0) {
-        return games
+  // exact titles first, then a looser pass - 'Postseason playoff' still counts as 'postseason'
+  for (const loose of [false, true]) {
+    for (const title of titles) {
+      const want = title.toLowerCase()
+      const sections = all.filter((s) => {
+        const t = s.title().trim().toLowerCase()
+        return loose ? t.includes(want) : t === want
+      })
+      for (const section of sections) {
+        const games = build(collectBoxes(doc, section, skip), ctx)
+        if (games.length > 0) {
+          return games
+        }
       }
     }
   }

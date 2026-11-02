@@ -23,4 +23,19 @@ const parseTwoYearTitle = function (title = '') {
   return { year: year ? Number(year[0]) : null, team: '' }
 }
 
-export { seasonSlug, twoYearTitle, parseTwoYearTitle }
+// '2024 Buffalo Bills season' - for leagues played within one calendar year
+const oneYearTitle = function (team, year) {
+  return `${year} ${team} season`.replace(/ /g, '_')
+}
+
+// and back again → {year: 2024, team: 'Buffalo Bills'}
+const parseOneYearTitle = function (title = '') {
+  const m = String(title).match(/^(\d{4}) (.+?) season$/)
+  if (m) {
+    return { year: Number(m[1]), team: m[2] }
+  }
+  const year = String(title).match(/\d{4}/)
+  return { year: year ? Number(year[0]) : null, team: '' }
+}
+
+export { seasonSlug, twoYearTitle, parseTwoYearTitle, oneYearTitle, parseOneYearTitle }

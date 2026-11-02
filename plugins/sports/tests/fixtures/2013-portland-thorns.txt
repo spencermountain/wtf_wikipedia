@@ -1,0 +1,908 @@
+{{Use mdy dates|date=August 2023}}
+{{Use American English|date=March 2026}}
+{{Infobox football club season
+| club               = [[Portland Thorns FC]]
+| season             = [[2013 National Women's Soccer League season|2013]]
+| chrtitle           = President
+| chairman           = [[Merritt Paulson]]
+| mgrtitle           = Head coach
+| manager            = [[Cindy Parlow|Cindy Parlow Cone]]
+| stdtitle           = 
+| stadium            = [[Jeld-Wen Field]]<br />[[Portland, Oregon]]<br /><small>([[List of association football stadiums by capacity|Capacity]]: 20,438)</small>
+| league             = [[2013 National Women's Soccer League season|National Women's Soccer League]]
+| league result      = '''3rd'''
+| cup1               = NWSL Playoffs
+| cup1 result        = '''Champions'''
+| highest attendance = 16,479
+| lowest attendance  = 10,886
+| average attendance = 13,320
+| league topscorer   = [[Alex Morgan]]<br />[[Christine Sinclair]]<small> (8 goals)</small>
+| American           = true
+| pattern_la1=
+| pattern_b1=_nwsl13
+| pattern_ra1=
+| leftarm1=ff0000
+| body1=ff0000
+| rightarm1=ff0000
+| shorts1=000000
+| socks1=ff0000
+| pattern_la2=
+| pattern_b2=
+| pattern_ra2=
+| leftarm2=ffffff
+| body2=ffffff
+| rightarm2=ffffff
+| shorts2=000000
+| socks2=ffffff
+| nextseason         = [[2014 Portland Thorns FC season|2014]]
+}}
+
+The '''2013 season''' was the '''Portland Thorns{{'}}''' inaugural season in the newly created [[National Women's Soccer League]] (NWSL), the top division of women's [[United States soccer league system|professional soccer in the United States]]. The Thorns ended the 22-game regular season in third place with a 10-6-6 record, qualifying them for the NWSL playoffs. In their semi-final game the team beat [[FC Kansas City]] 3-2 in [[Overtime (sports)|extra time]], qualifying them to play [[Western New York Flash]] in the championship. The Thorns beat the Flash 2–0, making Portland Thorns FC the NWSL champion.
+
+==Background==
+[[File:Portland Thorns.JPG|thumb|in 2013]]
+The league's founding was announced on November 21, 2012, with Portland as a host for one of eight teams.<ref name="soccer wire league">{{cite web|title=U.S. Soccer to announce new women’s professional league today|url=http://www.soccerwire.com/news/u-s-soccer-to-announce-new-womens-professional-league-today/|work=Leagues|publisher=Soccer Wire|access-date=14 December 2012|date=November 21, 2012|archive-date=28 April 2014|archive-url=https://web.archive.org/web/20140428042951/http://www.soccerwire.com/news/u-s-soccer-to-announce-new-womens-professional-league-today/|url-status=dead}}</ref><ref name="pbj league">{{cite news |last=Giegerich |first=Andy |title=Women's pro soccer coming to Portland |url= http://www.bizjournals.com/portland/news/2012/11/21/womens-pro-soccer-coming-to-portland.html |access-date=14 December 2012|newspaper=[[Portland Business Journal]]|date=November 21, 2012}}</ref> At that time it was announced by [[Portland Timbers]]' owner [[Merritt Paulson]] that the Timbers would own the team.<ref name="pbj league"/>
+
+The chosen team, Portland Thorns FC, was announced on December 13, 2012, accompanied by the unveiling of its logo.<ref name="pbj name">{{cite news|last=Siemers|first=Erik|title=Timbers name new women's club Portland Thorns|url=http://www.bizjournals.com/portland/blog/2012/12/timbers-name-new-womens-club-portland.html|access-date=14 December 2012|newspaper=Portland Business Journal|date=December 13, 2012}}</ref><ref>{{cite news|last=Manning|first=Rob|title=Women's Soccer Team To Be Named 'Portland Thorns'|url=http://www.opb.org/news/article/womens-soccer-team-to-be-named-portland-thorns/|access-date=14 December 2012|work=Oregon Public Broadcasting|date=December 13, 2012|archive-date=December 8, 2015|archive-url=https://web.archive.org/web/20151208162725/http://www.opb.org/news/article/womens-soccer-team-to-be-named-portland-thorns/|url-status=dead}}</ref><ref>{{cite news|last=Arnold|first=Geoffrey C.|title=Portland Thorns: Women's professional soccer team unveils name, logo|url=http://www.oregonlive.com/timbers/index.ssf/2012/12/portland_thorns_womens_profess.html|access-date=14 December 2012|newspaper=[[The Oregonian]] |date= December 13, 2012}}</ref> Both the name and logo were intended to invoke Portland's nickname of the [[Nicknames of Portland, Oregon#City of Roses|Rose City]].<ref name="pbj name"/><ref name="soccer wire name">{{cite web|title=Portland women’s pro team unveils "Thorns FC" as identity|url=http://www.soccerwire.com/news/12129/|work=Clubs|publisher=Soccer Wire|access-date=14 December 2012|date=December 13, 2012|archive-date=27 February 2014|archive-url=https://web.archive.org/web/20140227114739/http://www.soccerwire.com/news/12129/|url-status=dead}}</ref>
+
+[[Cindy Parlow|Cindy Parlow Cone]] was announced as the first head coach on December 19, 2012.<ref>{{cite news|title=Cindy Parlow Cone hired as Portland Thorns FC coach|url=http://www.oregonlive.com/timbers/index.ssf/2012/12/cindy_parlow_cone_hired_as_por_1.html|access-date=20 December 2012|newspaper=The Oregonian|date=December 19, 2012}}</ref>
+
+== Club ==
+===Executive staff===
+{{fb oi header}}
+{{Fb oi information |bg=  |id=Majority Owner & President |i=[[Merritt Paulson]]}}
+{{Fb oi information |bg=  |id=Chief Operating Officer |i=[[Mike Golub]]}}
+{{Fb oi information |bg=  |id=General Manager / Technical Director |i=[[Gavin Wilkinson]]}}
+{{fb oi information |bg=y |id={{Fb oi ground}} |i={{Fb oi ground|g=[[Jeld-Wen Field]]|c=20,438 |d=110x70&nbsp;yards}} }}
+{{Fb oi footer|u=February 11, 2013 |s=[http://www.portlandtimbers.com/team/front-office Portland Timbers]|date=November 2011}}
+
+===Coaching staff===
+{{Fb cs header}}
+{{Fb cs staff |bg=  |p=Head Coach                           |s=[[Cindy Parlow|Cindy Parlow Cone]]}}
+{{Fb cs staff |bg=y |p=Assistant Coach                      |s=John Galas}}
+{{Fb cs footer|u=February 11, 2013|s=[http://www.portlandtimbers.com/women/portland-thorns-fc-roster]|date=February 2013}}
+
+== Roster ==
+In the [[National Women's Soccer League]]'s (NWSL) inaugural season, the eight founding clubs filled out their rosters through numerous mechanisms. First, teams are allocated national team players from the United States, Canada, and Mexico. Next, teams go through the NWSL College Draft, a free agency period, the NWSL Supplemental Draft, and the signing of Discovery Players.<ref>{{cite web|title=Frequently Asked Questions: NWSL Roster Procedures|url=http://www.nwslsoccer.com/News/694142.html|publisher=NWSL|access-date=May 20, 2013|date=January 18, 2013}}</ref>
+
+{| class="wikitable" style="text-align:left; font-size:90%; width:85%"
+|-
+! style="background:#00000; color:black; text-align:center;"| No.
+! style="background:#00000; color:black; text-align:center;"| Name
+! style="background:#00000; color:black; text-align:center;"| Nationality
+! style="background:#00000; color:black; text-align:center;"| Date of birth (age)
+! style="background:#00000; color:black; text-align:center;"| Previous club
+! style="background:#00000; color:black; text-align:center;"| Signed Via / Notes
+|-
+! colspan=6 style="background:#dcdcdc; text-align:center;"| Goalkeepers
+|-
+| 1
+| [[Karina LeBlanc]]
+| {{Flag icon|Canada}}
+| {{Birth date and age|1980|3|30|df=yes}}
+| {{flagicon|USA}} [[magicJack (WPS)]]
+| National team allocation<ref name="national team allocation">{{cite web|title=Alex Morgan, Christine Sinclair among first seven players added to Portland Thorns FC through allocation process |url=http://www.portlandtimbers.com/news/2013/01/alex-morgan-christine-sinclair-among-first-seven-players-added-portland-thorns-fc-throu |publisher=Portland Timbers |access-date=February 14, 2013 |date=January 11, 2013 |url-status=dead |archive-url=https://web.archive.org/web/20130113093839/http://www.portlandtimbers.com/news/2013/01/alex-morgan-christine-sinclair-among-first-seven-players-added-portland-thorns-fc-throu |archive-date=January 13, 2013 }}</ref>
+|-
+| 23
+| [[Adelaide Gay]]
+| {{Flag icon|USA}}
+| {{Birth date and age|1989|11|3|df=yes}}
+| [[University of North Carolina]]
+| Discovery player<ref name="Discovery">{{cite web|title=NWSL 101: How National Women's Soccer League teams were formed|url=http://www.portlandtimbers.com/news/2013/04/nwsl-101-how-national-womens-soccer-league-teams-were-formed|publisher=Portland Timbers|access-date=April 12, 2013|date=April 11, 2013|archive-url=https://archive.today/20130616113533/http://www.portlandtimbers.com/news/2013/04/nwsl-101-how-national-womens-soccer-league-teams-were-formed|archive-date=June 16, 2013|url-status=dead|df=mdy-all}}</ref>
+|-
+! colspan=6 style="background:#dcdcdc; text-align:center;"| Defenders
+|-
+| 2
+| [[Marian Dalmy|Marian Dougherty]]
+| {{Flag icon|USA}}
+| {{Birth date and age|1984|11|25|df=yes}}
+| {{flagicon|USA}} [[magicJack (WPS)]]
+| Supplemental draft<ref name="supplemental">{{cite web|title=TThorns FC select five players in NWSL Supplemental Draft|url=http://www.portlandtimbers.com/news/2013/02/thorns-fc-select-five-players-nwsl-supplemental-draft|publisher=Portland Timbers|access-date=February 14, 2013|date=February 7, 2013|archive-url=https://web.archive.org/web/20130212211054/http://www.portlandtimbers.com/news/2013/02/thorns-fc-select-five-players-nwsl-supplemental-draft|archive-date=February 12, 2013|url-status=dead|df=mdy-all}}</ref>  
+|-
+| 4
+| [[Emilee O'Neil]]
+| {{Flag icon|USA}}
+| {{Birth date and age|1983|3|26|df=yes}}
+| [[Stanford University]]
+| Discovery player<ref name="Discovery" />
+|-
+| 15
+| [[Casey Ramirez]]
+| {{Flag icon|USA}}
+| {{Birth date and age|1989|12|08|df=yes}}
+| [[Fortuna Hjorring]]
+| Discovery player<ref name="Discovery" />
+|-
+| 5
+| [[Kathryn Williamson]]
+| {{Flag icon|USA}}
+| {{Birth date and age|1989|8|1|df=yes}}
+| [[University of Florida]]
+| NWSL College Draft<ref name="college draft">{{cite web|title=Thorns FC add four players in inaugural NWSL College Draft|url=http://www.portlandtimbers.com/news/2013/01/thorns-fc-add-four-players-inaugural-nwsl-college-draft|publisher=Portland Timbers|access-date=February 14, 2013|date=January 18, 2013|archive-url=https://web.archive.org/web/20130222042211/http://www.portlandtimbers.com/news/2013/01/thorns-fc-add-four-players-inaugural-nwsl-college-draft|archive-date=February 22, 2013|url-status=dead|df=mdy-all}}</ref>
+|-
+| 7
+| [[Nikki Marshall]]
+| {{Flag icon|USA}}
+| {{Birth date and age|1988|6|2|df=yes}}
+| {{flagicon|USA}}[[Western New York Flash]]
+| Free agent<ref name="4 signed">{{cite web|title=Thorns FC sign four former U.S. youth internationals|url=http://www.portlandtimbers.com/news/2013/02/thorns-fc-sign-four-former-us-youth-internationals|publisher=Portland Timbers|access-date=February 14, 2013|date=February 6, 2013|archive-url=https://web.archive.org/web/20130210005955/http://www.portlandtimbers.com/news/2013/02/thorns-fc-sign-four-former-us-youth-internationals|archive-date=February 10, 2013|url-status=dead|df=mdy-all}}</ref>  
+|-
+| 11
+| [[Jazmyne Avant]]
+| {{Flag icon|USA}}
+| {{Birth date and age|1990|1|30|df=yes}}
+| {{flagicon|USA}}[[New York Fury]]
+| Discovery player<ref>{{cite web|title=Thorns FC sign defender Jazmyne Avant|url=http://www.portlandtimbers.com/news/2013/02/thorns-fc-sign-defender-jazmyne-avant|publisher=Portland Timbers|access-date=February 20, 2013|date=February 20, 2013|archive-url=https://web.archive.org/web/20130225074256/http://www.portlandtimbers.com/news/2013/02/thorns-fc-sign-defender-jazmyne-avant|archive-date=2013-02-25|url-status=dead}}</ref>
+|-
+| 16
+| [[Rachel Van Hollebeke]] 
+| {{Flag icon|USA}}
+| {{Birth date and age|1985|8|26|df=yes}}
+| {{flagicon|USA}} [[Boston Breakers]]
+| National team allocation<ref name="national team allocation"/>
+|-
+! colspan=6 style="background:#dcdcdc; text-align:center;"| Midfielders
+|-
+| 3
+| [[Elizabeth Guess]]
+| {{Flag icon|USA}}
+| {{Birth date and age|1985|1|11|df=yes}}
+| {{flagicon|USA}} [[Boston Breakers]]
+| Waivers<ref name="Waivers">{{cite web|title=Portland Signs Midfielder Elizabeth Guess|url=http://www.oregonlive.com/portland-thorns/2013/04/portland_thorns_sign_midfielde.html|publisher=Oregon Live|access-date=April 24, 2013|date=April 24, 2013}}</ref>
+|-
+| 6
+| [[Meleana Shim]]
+| {{flag icon|USA}}
+| {{birth date and age|1991|9|25|df=yes}}
+| [[Santa Clara University]]
+| Discovery player<ref name="Discovery" />
+|-
+| 8
+| [[Angie Kerr]]
+| {{Flag icon|USA}}
+| {{Birth date and age|1987|3|29|df=yes}}
+| {{flagicon|USA}}[[Sky Blue FC]]
+| Supplemental draft<ref name="supplemental"/>
+|-
+| 10
+| [[Allie Long]] 
+| {{Flag icon|USA}}
+| {{Birth date and age|1987|8|13|df=yes}}
+| {{flagicon|USA}}[[New York Fury]] 
+| Free Agent<ref name="4 signed"/>
+|-
+| 12
+| [[Becky Edwards (soccer)|Becky Edwards]]
+| {{Flag icon|USA}}
+| {{Birth date and age|1988|5|22|df=yes}}
+| {{flagicon|SWE}}[[Kristianstads DFF]]
+| Free agent<ref name="4 signed"/>
+|-
+| 17
+| [[Tobin Heath]]
+| {{Flag icon|USA}}
+| {{Birth date and age|1988|5|29|df=yes}}
+| {{flagicon|FRA}}[[Paris Saint-Germain F.C. (Ladies)|Paris Saint-Germain]]
+| National team allocation<ref name="national team allocation"/><ref name="HeathPSG">{{cite news|last=Farley|first=Richard|url=http://soccer.nbcsports.com/2013/01/22/tobin-heath-signs-paris-saint-germain/|title=One more: Tobin Heath headed for Paris Saint-Germain|access-date=May 20, 2013|publisher=NBC Sports|date=January 22, 2013}}</ref>
+|-
+| 20
+| [[Courtney Wetzel]]
+| {{Flag icon|USA}}
+| {{Birth date and age|1989|2|25|df=yes}}
+| [[Oregon State University]]
+| Discovery player<ref name="Discovery" />
+|-
+| 21
+| [[Nikki Washington]]
+| {{Flag icon|USA}}
+| {{Birth date and age|1988|8|1|df=yes}}
+| {{flagicon|AUS}}[[Canberra United FC]]
+| Free agent<ref name="4 signed"/>
+|-
+! colspan=6 style="background:#dcdcdc; text-align:center;"| Forwards
+|-
+| 9
+| [[Danielle Foxhoven]]
+| {{Flag icon|USA}}
+| {{Birth date and age|1989|11|8|df=yes}}
+| {{flagicon|RUS}}[[FC Energy Voronezh]]
+| Discovery player<ref>{{cite web|title=Thorns FC sign forward Danielle Foxhoven|url=http://www.portlandtimbers.com/news/2013/02/thorns-fc-sign-forward-danielle-foxhoven|publisher=Portland Timbers|access-date=February 21, 2013|date=February 21, 2013|archive-url=https://web.archive.org/web/20130225053613/http://www.portlandtimbers.com/news/2013/02/thorns-fc-sign-forward-danielle-foxhoven|archive-date=February 25, 2013|url-status=dead|df=mdy-all}}</ref>  
+|-
+| 12
+| [[Christine Sinclair]] ([[Captain (association football)|captain]])
+| {{Flag icon|Canada}}
+| {{Birth date and age|1983|6|12|df=yes}}
+| {{flagicon|USA}} [[Western New York Flash]]
+| National team allocation<ref name="national team allocation"/>
+|- 
+| 13
+| [[Alex Morgan]]
+| {{Flag icon|USA}}
+| {{Birth date and age|1989|7|2|df=yes}}
+| {{flagicon|USA}} [[Seattle Sounders Women]] 
+| National team allocation<ref name="national team allocation"/>
+|-
+| 18
+| [[Jessica Shufelt]]
+| {{flag icon|USA}}
+| {{Birth date and age|1990|5|29|df=yes}}
+| {{flagicon|CAN}}[[Ottawa Fury Women]]
+| Supplemental draft<ref name="supplemental"/>
+
+{{Fb cs footer|u=May 20, 2013|s=[https://web.archive.org/web/20130114215409/http://www.portlandtimbers.com:80/women/portland-thorns-fc-roster]|date=May 20, 2013}}
+
+== Competitions ==
+:''All times [[Pacific Time Zone|Pacific Daylight Time]] ([[UTC−07:00]])''
+
+=== Preseason===
+{{football box collapsible
+|date = March 30, 2013
+|time = 19:00
+|round = 
+|team1 = Portland Thorns FC
+|score = 2—1
+|report = [http://www.portlandtimbers.com/news/2013/03/thorns-fc-defeat-university-portland-2-1-preseason-friendly Report]
+|team2 = [[University of Portland]]
+|goals1 = [[Danielle Foxhoven|Foxhoven]] {{goal|52}}<br/>[[Allie Long|Long]] {{goal|73}}
+|goals2 = Frisbie {{goal|30}}
+|stadium = [[Merlo Field]]
+|location = [[Portland, Oregon]]
+|attendance = 4,892
+|referee = Ekaterina Koroleva
+|result  = W
+}}
+
+===Regular season===
+
+{{football box collapsible
+|date = April 13, 2013
+|time = 17:35
+|round = 1
+|team1 = [[FC Kansas City]]
+|score      = 1–1
+|report     = [http://www.fckansascity.com/2013/04/14/fc-kansas-city-earns-point-in-league-opener/ KC Report]<br>[http://www.portlandtimbers.com/news/2013/04/christine-sinclair-penalty-kick-leads-thorns-fc-1-1-draw-against-fc-kansas-city Portland Report]
+|team2      = Portland Thorns FC
+|goals1     = [[Renae Cuellar|Cuellar]] {{goal|3}} <br> [[Kristie Mewis|Mewis]] {{yel|43}}
+|goals2     = [[Christine Sinclair|Sinclair]] {{goal|66|pen.}}<br>[[Nikki Washington|Washington]] {{yel|70}}<br>[[Kathryn Williamson|Williamson]] {{yel|82}}
+|stadium    = [[Shawnee Mission District Stadium]]
+|location   = [[Overland Park, Kansas]]
+|attendance = 6,784
+|referee    = [[Kari Seitz]]
+|result     = D
+}}
+{{football box collapsible
+|date = April 21, 2013
+|time = 14:00
+|round = 2
+|team1 = Portland Thorns FC
+|score = 2–1
+|report = [http://www.portlandtimbers.com/news/2013/04/recap-thorns-fc-earn-2-1-win-over-seattle-home-opener Portland Report]
+|team2 = [[Seattle Reign FC]]
+|goals1 = [[Marian Dalmy|Dougherty]] {{goal|45}}<br>[[Alex Morgan|Morgan]] {{goal|52}}<br>[[Angie Kerr|Kerr]] {{yel|8}}<br>[[Allie Long|Long]] {{yel|11}}<br>[[Nikki Washington|Washington]] {{yel|68}}
+|goals2 = [[Jessica Fishlock|Fishlock]] {{goal|74}} {{yel|78}}<br>[[Elli Reed|Reed]] {{yel|30}}<br>[[Christine Nairn|Nairn]] {{yel|33}}  
+|stadium = [[Jeld-Wen Field]]
+|location = [[Portland, Oregon]]
+|attendance = 16,479
+|referee = [[Josh Wilkens]]
+|result  = W
+}}
+{{football box collapsible
+|date = April 27, 2013
+|time = 17:00
+|round = 3
+|team1 = [[Chicago Red Stars]]
+|score = 0–2
+|report = [http://www.portlandtimbers.com/news/2013/04/recap-thorns-fc-2-chicago-red-stars-0 Portland Report]
+|team2 = Portland Thorns FC
+|goals1 = [[Alyssa Mautz|Mautz]] {{yel|69}}
+|goals2 = [[Danielle Foxhoven|Foxhoven]] {{goal|70}}<br>[[Christine Sinclair|Sinclair]] {{goal|81}}
+|stadium = [[Benedictine University#Athletics|Village Sports Complex]]
+|location = [[Lisle, Illinois]]
+|attendance = 2,855
+|referee = [[Donovan Noocha]]
+|result  = W
+}}
+{{football box collapsible
+|date = May 4, 2013
+|time = 16:00
+|round = 4
+|team1 = [[Washington Spirit]]
+|score = 1–2
+|report = [https://web.archive.org/web/20130507020626/http://www.portlandtimbers.com/news/2013/05/recap-portland-thorns-fc-2-washington-spirit-1 Portland Report]
+|team2 = Portland Thorns FC
+|goals1 = [[Diana Matheson|Matheson]] {{goal|86|pen.}}<br>[[Ashlyn Harris|Harris]] {{yel|13}}
+|goals2 = [[Alex Morgan|Morgan]] {{goal|12|pen.}}<br>[[Nikki Washington|Washington]] {{goal|51}}<br>[[Allie Long|Long]] {{yel|70}}<br>[[Becky Edwards (soccer)|Edwards]] {{yel|82}}
+|stadium = [[Maryland SoccerPlex]]
+|location = [[Boyds, Maryland]]
+|attendance = 5,011
+|referee = [[Christina Unkel]]
+|result  = W
+}}
+{{football box collapsible
+|date = May 12, 2013
+|time = 15:00
+|round = 5
+|team1 = [[Chicago Red Stars]]
+|score = 0–2
+|report = [http://www.portlandtimbers.com/news/2013/05/recap-portland-thorns-fc-2-chicago-red-stars-0 Portland Report]
+|team2 = Portland Thorns FC
+|goals1 = [[Alyssa Mautz|Mautz]] {{yel|54}}
+|goals2 = [[Alex Morgan|Morgan]] {{goal|3}}<br>[[Allie Long|Long]] {{goal|34}}<br>[[Rachel Buehler|Buehler]] {{yel|52}}
+|stadium = [[Benedictine University#Athletics|Village Sports Complex]]
+|location = [[Lisle, Illinois]]
+|attendance = 1,329
+|referee = [[Kari Seitz]]
+|result  = W
+}}
+{{football box collapsible
+|date = May 16, 2013
+|time = 19:30
+|round = 6
+|team1 = Portland Thorns FC
+|score = 0–1
+|report = [http://www.portlandtimbers.com/news/2013/05/thorns-recap-thorns-fc-0-sky-blue-fc-1 Portland Report]
+|team2 = [[Sky Blue FC]]
+|goals1 = [[Christine Sinclair|Sinclair]] {{yel|80}}
+|goals2 = [[Taylor Lytle|Lytle]] {{goal|80}}
+|stadium = [[Jeld-Wen Field]]
+|location = [[Portland, Oregon]]
+|attendance = 11,055
+|referee = [[Josh Wilkens]] 
+|result  = L
+}}
+{{football box collapsible
+|date = May 19, 2013
+|time = 14:00
+|round = 7
+|team1 = Portland Thorns FC
+|score = 2–0
+|report = [http://www.portlandtimbers.com/news/2013/05/thorns-recap-portland-thorns-fc-2-washington-spirit-0 Portland Report]
+|team2 = [[Washington Spirit]]
+|goals1 = [[Christine Sinclair|Sinclair]] {{goal|41}}<br>[[Alex Morgan|Morgan]] {{goal|86}}<br>[[Nikki Marshall|Marshall]] {{yel|65}}
+|goals2 = [[Robyn Gayle|Gayle]] {{yel|83}}
+|stadium = [[Jeld-Wen Field]]
+|location = [[Portland, Oregon]]
+|attendance = 12,474
+|referee = [[Robert Sibiga]]
+|result  = W
+}}
+{{football box collapsible
+|date = May 25, 2013
+|time = 19:00
+|round = 8
+|team1 = [[Seattle Reign FC]]
+|score = 0–1
+|report = [http://www.portlandtimbers.com/news/2013/05/recap-portland-thorns-fc-1-seattle-reign-fc-0 Portland Report]
+|team2 = Portland Thorns FC
+|goals1 = 
+|goals2 = [[Christine Sinclair|Sinclair]] {{goal|84|pen.}}<br>[[Becky Edwards (soccer)|Edwards]] {{yel|30}}<br>[[Alex Morgan|Morgan]] {{yel|38}}<br>[[Marian Dalmy|Dougherty]] {{yel|51}}
+|stadium = [[Starfire Sports|Starfire Stadium]]
+|location = [[Tukwila, Washington]]
+|attendance = 3,324
+|referee = [[Margaret Domka]]
+|result  = W
+}}
+{{football box collapsible
+|date = June 1, 2013
+|time = 19:30
+|round = 9
+|team1 = Portland Thorns FC
+|score = 0–2
+|report = [http://www.portlandtimbers.com/news/2013/06/thorns-fc-recap-portland-thorns-0-chicago-red-stars-2 Portland Report]
+|team2 = [[Chicago Red Stars]]
+|goals1 = [[Becky Edwards (soccer)|Edwards]] {{yel|41}}<br>[[Elizabeth Guess|Guess]] {{yel|90}}
+|goals2 = [[Zakiya Bywaters|Bywaters]] {{goal|35}}<br>[[Jackie Santacaterina|Santacaterina]] {{goal|61}}<br>[[Lori Chalupny|Chalupny]] {{yel|56}}
+|stadium = [[Jeld-Wen Field]]
+|location = [[Portland, Oregon]]
+|attendance = 12,446
+|referee = [[Christina Unkel]]
+|result  = L
+}}
+{{football box collapsible
+|date = June 6, 2013
+|time = 19:30
+|round = 10
+|team1 = Portland Thorns FC
+|score = 4–3
+|report = [http://www.portlandtimbers.com/news/2013/06/recap-portland-thorns-fc-4-fc-kansas-city-3 Portland Report]
+|team2 = [[FC Kansas City]]
+|goals1 = [[Alex Morgan|Morgan]] {{goal|13}} {{yel|80}}<br>[[Courtney Wetzel|Wetzel]] {{goal|20}}<br>[[Danielle Foxhoven|Foxhoven]] {{goal|48}}<br>[[Allie Long|Long]] {{goal|66}}
+|goals2 = [[Lauren Cheney|Cheney]] {{goal|34|pen.||goal|56}}<br>[[Erika Tymrak|Tymrak]] {{goal|81}}<br>[[Merritt Mathias|Mathias]] {{yel|88}}
+|stadium = [[Jeld-Wen Field]]
+|location = [[Portland, Oregon]]
+|attendance = 10,886
+|referee = [[Miguel Panduro, Jr.]]
+|result  = W
+}}
+{{football box collapsible
+|date = June 16, 2013
+|time = 14:00
+|round = 11
+|team1 = Portland Thorns FC
+|score = 2–0
+|report = [https://web.archive.org/web/20130821032039/http://www.portlandtimbers.com/news/2013/06/recap-portland-thorns-fc-2-seattle-reign-fc-0 Portland Report]
+|team2 = [[Seattle Reign FC]]
+|goals1 = [[Danielle Foxhoven|Foxhoven]] {{goal|48}}<br>[[Meleana Shim|Shim]] {{goal|66}}<br>[[Elizabeth Guess|Guess]] {{yel|39}}<br>[[Nikki Washington|Washington]] {{yel|43}}
+|goals2 = 
+|stadium = [[Jeld-Wen Field]]
+|location = [[Portland, Oregon]]
+|attendance = 13,802
+|referee = [[Robert Sibiga]]
+|result  = W
+}}
+{{football box collapsible
+|date = June 22, 2013
+|time = 16:00
+|round = 12
+|team1 = [[Sky Blue FC]]
+|score = 0–0
+|report = [http://www.portlandtimbers.com/news/2013/06/recap-portland-thorns-fc-0-sky-blue-fc-0 Portland Report]
+|team2 = Portland Thorns FC
+|goals1 = 
+|goals2 = 
+|stadium = [[Yurcak Field]]
+|location = [[Piscataway, New Jersey]]
+|attendance = 3,002
+|referee = [[Kari Seitz]]
+|result  = D
+}}
+{{football box collapsible
+|date = June 30, 2013
+|time = 13:10
+|round = 13
+|team1 = [[FC Kansas City]]
+|score = 2–0
+|report = 
+|team2 = Portland Thorns FC
+|goals1 = [[Lauren Cheney|Cheney]] {{goal|10}}<br> [[Merritt Mathias|Mathias]] {{goal|71}}
+|goals2 = 
+|stadium = [[Shawnee Mission District Stadium]]
+|location = [[Overland Park, Kansas]]
+|attendance = 4,774
+|referee = [[Christina Unkel]]
+|result  = L
+}}
+{{football box collapsible
+|date = July 6, 2013
+|time = 19:30
+|round = 14
+|team1 = Portland Thorns FC
+|score = 0–2
+|report = [http://www.nwslsoccer.com/News/735267.html Report]
+|team2 = [[Boston Breakers]]
+|goals1 = 
+|goals2 = [[Sydney Leroux|Leroux]] {{goal|11||39}}
+|stadium = [[Jeld-Wen Field]]
+|location = [[Portland, Oregon]]
+|attendance = 12,436
+|referee = [[Robert Sibiga]]
+|result  = L
+}}
+{{football box collapsible
+|date = July 14, 2013
+|time = 14:00
+|round = 15
+|team1 = Portland Thorns FC
+|score = 1–1
+|report = [http://www.nwslsoccer.com/News/737758.html Report]
+|team2 = [[Western New York Flash]]
+|goals1 = [[Meleana Shim|Shim]] {{goal|39}}
+|goals2 = [[Abby Wambach|Wambach]] {{goal|38}}
+|stadium = [[Jeld-Wen Field]]
+|location = [[Portland, Oregon]]
+|attendance = 13,021
+|referee = Ted Unkel
+|result  = D
+}}
+{{football box collapsible
+|date = July 21, 2013
+|time = 13:00
+|round = 16
+|team1 = [[Boston Breakers]]
+|score = 1–2
+|report = [http://www.nwslsoccer.com/News/739522.html Report]
+|team2 = Portland Thorns FC
+|goals1 = [[Lianne Sanderson|Sanderson]] {{goal|13}}
+|goals2 = [[Alex Morgan|Morgan]] {{goal|23}}<br>[[Meleana Shim|Shim]] {{goal|86}}
+|stadium = [[Dilboy Stadium]]
+|location = [[Somerville, Massachusetts]]
+|attendance = 2,978
+|referee = [[Robert Sibiga]]
+|result  = W
+}}
+{{football box collapsible
+|date = July 28, 2013
+|time = 14:00
+|round = 17
+|team1 = Portland Thorns FC
+|score = 3–3
+|report = [http://www.nwslsoccer.com/News/742116.html Report]
+|team2 = [[Chicago Red Stars]]
+|goals1 = [[Christine Sinclair|Sinclair]] {{goal|23||63}}<br/>[[Meleana Shim|Shim]] {{goal|55}}
+|goals2 = [[Alyssa Mautz|Mautz]] {{goal|60||75}}<br/>[[Julianne Sitch|Sitch]] {{goal|86}}
+|stadium = [[Jeld-Wen Field]]
+|location = [[Portland, Oregon]]
+|attendance = 12,534
+|referee = [[Kari Seitz]]
+|result  = D
+}}
+{{football box collapsible
+|round= 18
+|date={{Start date|2013|7|31}}
+|time= 19:30 [[UTC−05:00|PST]]
+|team1= Portland Thorns FC
+|score= 3–1
+|report= [https://web.archive.org/web/20140111022822/http://www.nwslsoccer.com/News/743261.html Report]
+|team2= [[Sky Blue FC]]
+|goals1= [[Alex Morgan|Morgan]] {{goal|37}}<br/>[[Meleana Shim|Shim]] {{goal|65}}<br/>[[Allie Long|Long]] {{goal|73}}
+|goals2= [[Nikki Marshall|Marshall]] {{goal|18|o.g.}}
+|stadium= [[Jeld-Wen Field]]
+|location= [[Portland, Oregon|Portland]], [[Oregon]]
+|attendance= 13,769 
+|referee= Margaret Domka
+|result= W
+}}
+{{football box collapsible
+|date = August 4, 2013
+|time = 14:00
+|round = 19
+|team1 = Portland Thorns FC
+|score = 2–3
+|report = [http://uk.women.soccerway.com/matches/2013/08/05/united-states/national-womens-soccer-league/portland-thorns/kansas-city/1461116/ Summary]
+|team2 = [[FC Kansas City]]
+|goals1 = [[Danielle Foxhoven|Foxhoven]] {{goal|51}}<br>[[Alex Morgan|Morgan]] {{goal|89}}<br>[[Rachel Buehler|Buehler]] {{yel|90+4}}
+|goals2 = [[Lauren Holiday|Holiday]] {{goal|23||55}}<br>[[Kristen Mewis|Mewis]] {{goal|74}}
+|stadium = [[Jeld-Wen Field]]
+|location = [[Portland, Oregon]]
+|attendance = 17,619
+|referee = {{flagicon|USA}} John McCloskey
+|result  = L
+}}
+{{football box collapsible
+|date = August 7, 2013
+|time = 16:00
+|round = 20
+|team1 = [[Boston Breakers]]
+|score = 2–1 
+|report = [http://uk.women.soccerway.com/matches/2013/08/08/united-states/national-womens-soccer-league/boston-breakers/portland-thorns/1461117/ Summary] 
+|team2 = Portland Thorns FC
+|goals1 = [[Lianne Sanderson|Sanderson]] {{goal|68}}<br>[[Heather O'Reilly|O'Reilly]] {{goal|84}}
+|goals2 = [[Tiffany Weimer|Weimer]] {{goal|52}}
+|stadium = [[Dilboy Stadium]]
+|location = [[Somerville, Massachusetts]]
+|attendance = 3,012
+|referee = {{flagicon|USA}} Elvis Mahmutovic
+|result  = L
+}}
+{{football box collapsible
+|date = August 10, 2013
+|time = 16:35
+|round = 21
+|team1 = [[Western New York Flash]]
+|score = 0–0 
+|report = [http://uk.women.soccerway.com/matches/2013/08/11/united-states/national-womens-soccer-league/buffalo-flash/portland-thorns/1461123/ Summary]
+|team2 = Portland Thorns FC
+|goals1 = [[Adriana Martín]] {{yel|67}}
+|goals2 = [[Marian Dalmy|Dalmy]] {{yel|90+1}}
+|stadium = [[Marina Auto Stadium|Sahlen's Stadium]]
+|location = [[Rochester, New York]]
+|attendance = 7,606 
+|referee = {{flagicon|USA}} Maraget Domka
+|result  = D
+}}
+{{football box collapsible
+|date = August 17, 2013
+|time = 20:00
+|round = 22
+|team1 = [[Seattle Reign FC]]
+|score = 1–2 
+|report = [http://uk.women.soccerway.com/matches/2013/08/18/united-states/national-womens-soccer-league/seattle-reign/portland-thorns/1461125/ Summary]
+|team2 = Portland Thorns FC
+|goals1 = [[Megan Rapinoe|Rapinoe]] {{goal|3}}
+|goals2 = [[Christine Sinclair|Sinclair]] {{goal|8||83}}<br>[[Nikki Marshall|Marshall]] {{yel|69}}<br>[[Meleana Shim|Shim]] {{yel|78}}
+|stadium = [[Starfire Sports|Starfire Stadium]]
+|location = [[Tukwila, Washington]]
+|attendance = 3,855
+|referee = {{flagicon|USA}} Christina Unkel
+|result  = W
+}}
+
+=== Results summary ===
+
+{{Fb rs mls |hw=5 |hl=4 |ht=2 |hgf=19|hga=17|aw=6 |al=2|at=3 |agf=13|aga=8}}
+{{Fb rs mls footer|u=August 18, 2013 |date=June 2013}}
+
+=== Results by round ===
+{{#invoke:sports rbr table|table|legendpos=b|header=Round
+
+|label1= Stadium
+| res1=A/H/A/A/A/H/H/A/H/H/H/A/A/H/H/A/H/H/H/A/A/A
+|label2= Result
+| res2=D/W/W/W/W/L/W/W/L/W/W/D/L/L/D/W/D/W/L/L/D/W
+|label3= Position
+| res3=2/1/1/1/1/2/2/2/2/2/2/2/3/3/3/3/3/3/3/3/3/3
+<!-- -->
+|text_H=Home|text_A=Away
+|color_W=green2|text_W=Win
+|color_D=yellow2|text_D=Draw
+|color_L=red2|text_L=Loss
+|color_1=1st|color_2=2nd|color_3=3rd|color_18-=red1
+
+|updated=August 18, 2013 
+|source=
+|date=May 2013
+}}
+
+==Playoffs and Championship==
+See also [[2013 National Women's Soccer League season#NWSL Championship|2013 NWSL playoffs]] and [[2013 NWSL Championship]].{{football box collapsible
+|result=W
+|date=24 August 2013
+|time=21:00 
+|round=Semi Final
+|team1=[[FC Kansas City]]
+|score=2—3
+|aet=yes
+|report=[http://uk.women.soccerway.com/matches/2013/08/24/united-states/national-womens-soccer-league/kansas-city/portland-thorns/1577149/ Summary]
+|team2= Portland Thorns FC
+|goals1=[[Erika Tymrak|Tymrak]] {{goal|12}}<br>[[Melissa Henderson|Henderson]] {{goal|25}}<br>[[Desiree Scott|Scott]] {{yel|72}}<br>[[Jen Buczkowski|Buczkowski]] {{yel|86}}
+|goals2=[[Tobin Heath|Heath]] {{goal|33}}<br>[[Marian Dalmy|Dalmy]] {{yel|50}}<br>[[Allie Long|Long]] {{yel|60}} {{goal|103}}<br>[[Tiffany Weimer|Weimer]] {{goal|65}}
+|stadium=[[Shawnee Mission District Stadium]]
+|location=[[Overland Park, Kansas]]
+|attendance=4,016
+|referee={{flagicon|USA}} Christina Unkel
+}}
+{{football box collapsible
+|result=W
+|date=31 August 2013
+|time=21:00 
+|round=Final
+|team1=[[Western New York Flash]]
+|score=0—2
+|report=[http://uk.women.soccerway.com/matches/2013/09/01/united-states/national-womens-soccer-league/buffalo-flash/portland-thorns/1579862/ Summary]
+|team2=Portland Thorns FC
+|goals1=[[Estelle Johnson|Johnson]] {{yel|33}}<br>[[Adriana Martín]] {{yel|73}}
+|goals2=[[Tobin Heath|Heath]] {{goal|40}}<br>[[Kathryn Williamson|Williamson]] {{yel|49}} {{sent off|0|57}}<br>[[Allie Long|Long]] {{yel|88}}<br>[[Christine Sinclair|Sinclair]] {{goal|90+2}}
+|stadium=[[Marina Auto Stadium|Sahlen's Stadium]]
+|location=[[Rochester, New York]]
+|attendance=9,129
+|referee={{flagicon|USA}} Kari Seitz 
+}}
+
+== Statistics ==
+=== Team statistics ===
+{| class="wikitable" style="text-align:center"
+|-
+!rowspan=2 valign="bottom"|No.
+!rowspan=2 valign="bottom"|Pos.
+!rowspan=2 class="unsortable" | Name
+!colspan=5 width="85"|[[National Women's Soccer League|League]]
+!colspan=2 width="85"|Discipline
+|-
+!{{Tooltip|GP|Games played}}
+!{{Tooltip|GS|Games started}}
+!{{Tooltip|MP|Minutes played}}
+!{{tooltip|G|Goals}}
+!{{tooltip|A|Assists}}
+![[Image:Yellow card.svg|13px]]
+![[Image:Red card.svg|13px]]
+|-
+|align=left|1||align=left|GK||align=left|{{flagicon|CAN}} [[Karina LeBlanc]]
+|21||21||1890||0||0||0||0
+|-
+|align=left|2||align=left|DF||align=left|{{flagicon|USA}} [[Marian Dougherty]]
+|19||19||1666||1||1||2||0
+|-
+|align=left|3||align=left|MF||align=left|{{flagicon|USA}} [[Elizabeth Guess]]
+|4||1||67||0||0||2||0
+|-
+|align=left|4||align=left|DF/MF||align=left|{{flagicon|USA}} [[Emilee O'Neil]]
+|4||1||141||0||0||0||0
+|-
+|align=left|5||align=left|DF||align=left|{{flagicon|USA}} [[Kathryn Williamson]]
+|22||22||1944||0||0||1||0
+|-
+|align=left|6||align=left|MF||align=left|{{flagicon|USA}} [[Meleana Shim]]
+|19||17||1416||5||2||1||0
+|-
+|align=left|7||align=left|DF||align=left|{{flagicon|USA}} [[Nikki Marshall]]
+|22||22||1871||0||1||1||0
+|-
+|align=left|8||align=left|MF||align=left|{{flagicon|USA}} [[Angie Kerr]]
+|15||9||762||0||1||0||0
+|-
+|align=left|9||align=left|FW||align=left|{{flagicon|USA}} [[Danielle Foxhoven]]
+|21||7||997||4||0||1||0
+|-
+|align=left|10||align=left|MF||align=left|{{flagicon|USA}} [[Allie Long]]
+|22||22||1956||3||3||2||0
+|-
+|align=left|11||align=left|DF||align=left|{{flagicon|USA}} [[Jazmyne Avant]]
+|4||2||212||0||0||0||0
+|-
+|align=left|12||align=left|FW||align=left|{{flagicon|CAN}} [[Christine Sinclair]]
+|20||20||1783||8||2||2||0
+|-
+|align=left|13||align=left|FW||align=left|{{flagicon|USA}} [[Alex Morgan]]
+|18||18||1525||8||5||4||0
+|-
+|align=left|14||align=left|MF||align=left|{{flagicon|USA}} [[Becky Edwards (soccer)|Becky Edwards]]
+|10||10||900||0||0||3||0
+|-
+|align=left|15||align=left|DF/MF||align=left|{{flagicon|USA}} [[Casey Ramirez]]
+|4||1||159||0||0||0||0
+|-
+|align=left|16||align=left|DF||align=left|{{flagicon|USA}} [[Rachel Buehler]]
+|20||20||1800||0||2||2||0
+|-
+|align=left|17||align=left|MF||align=left|{{flagicon|USA}} [[Tobin Heath]]
+|7||7||630||0||3||4||0
+|-
+|align=left|18||align=left|FW||align=left|{{flagicon|USA}} [[Jessica Shufelt]]
+|4||0||31||0||0||0||0
+|-
+|align=left|19||align=left|FW||align=left|{{flagicon|USA}} [[Tiffany Weimer]]
+|10||5||522||1||1||0||0
+|-
+|align=left|20||align=left|MF||align=left|{{flagicon|USA}} [[Courtney Wetzel]]
+|16||6||602||1||1||0||0
+|-
+|align=left|21||align=left|MF||align=left|{{flagicon|USA}} [[Nikki Washington]]
+|11||10||776||1||2||3||0
+|-
+|align=left|24||align=left|DF||align=left|{{flagicon|USA}} [[Tina Ellertson]]
+|3||0||40||0||0||0||0
+|-
+|align=left|26||align=left|GK||align=left|{{flagicon|USA}} [[Cris Lewis]]
+|1||1||90||0||0||0||0
+|-
+|colspan=3 align=right|'''[[Portland Thorns FC]]'''
+|colspan=2|22||1980||32||24||29||0
+|-
+|colspan=3 align=right|'''Opponents'''
+|colspan=2|22||1980||25||19||18||0
+|}
+<small>Statistics accurate as of October 11, 2013<ref>{{cite web|title=Season 2013 – Player Stats and Leaderboards |url=http://www.nwslsoccer.com/Stats/index_E.html |publisher=NWSL |access-date=23 June 2013 |url-status=dead |archive-url=https://web.archive.org/web/20150107064658/http://www.nwslsoccer.com/Stats/index_E.html |archive-date=7 January 2015 }}</ref></small>
+
+=== Goalkeeper stats ===
+
+''Last updated: October 11, 2013''
+{| class="wikitable" style="text-align:center"
+|-
+| style="width:1%; text-align:center;"|'''{{Tooltip|No.|Squad Number}}'''
+| style="width:1%; text-align:center;"|'''{{Tooltip|Nat|Nationality}}'''
+| style="width:42%; text-align:center;"|'''Player'''
+| width=60|{{Tooltip|MIN|Minutes played}}
+| width=60|{{Tooltip|GA|Goals against}}
+| width=60|{{Tooltip|GAA|Goals against average}}
+| width=60|{{Tooltip|SV|Saves}}
+|-
+| style="text-align: right;" |1
+|{{flagicon|CAN}}
+| style="text-align: left;" |[[Karina LeBlanc]]
+|1890
+|23
+|1.1
+|92
+|-
+| style="text-align: right;" |23
+|{{flagicon|USA}}
+| style="text-align: left;" |[[Adelaide Gay]]
+|0
+|0
+|0
+|0
+|-
+| style="text-align: right;" |26
+|{{flagicon|USA}}
+| style="text-align: left;" |[[Cris Lewis]]
+|90
+|2
+|2
+|0
+|}
+
+==Honors==
+'''[[NWSL Player of the Month]]'''
+{| class=wikitable
+|-
+!Month
+!Result
+!Player
+!Ref
+|-
+|align=center|April
+|{{Won}}
+|{{flagicon|CAN}} [[Christine Sinclair]]
+|<ref>{{cite web|title=APRIL'S BEST: CHRISTINE SINCLAIR|url=http://www.nwslsoccer.com/News/716974.html|publisher=NWSL|access-date=May 20, 2013|date=May 7, 2013}}</ref>
+|}
+
+== Player Transactions ==
+=== National Team Player Allocation ===
+On January 11, 2013, the league held its player allocation for the national team players, with Portland receiving seven players: [[Rachel Buehler]], [[Tobin Heath]], [[Karina LeBlanc]], [[Alex Morgan]], [[Marlene Sandoval]], [[Luz Saucedo]], and [[Christine Sinclair]].<ref name="national team allocation"/> On January 23, 2013, Heath signed a six-month contract with [[Paris Saint-Germain F.C. (Ladies)|Paris Saint-Germain]] and expected to join the Thorns FC once the French club's season is concluded.<ref name="HeathPSG"/> On March 21, 2013, Sandoval and Saucedo, the two allocated [[Mexico national football team|Mexico national team]] [[defender (association football)|defenders]], were removed from the team roster, due to an injury and decision by the [[Mexican Football Federation]], respectively.<ref>{{cite web|title=Portland Thorns FC: Mexican Players Luz Saucedo and Marlene Sandoval Removed from Roster|url=http://www.stumptownfooty.com/2013/3/21/4133576/portland-thorns-fc-mexican-players-removed-from-roster|publisher=stumptownfooty.com|access-date=March 21, 2013|date=March 21, 2013}}</ref>
+
+=== National Women's Soccer League College Draft ===
+Each team in the NWSL got to pick once per round, with the draft order based on how well each team did in allocation. The Thorns picked eighth (last) in each round.<ref name="Discovery" />
+
+{| class="wikitable" style="text-align:left; font-size:95%"
+|-
+!  style="background:#c2ddff; width:125px;"|Date
+!  style="background:#c2ddff; width:170px;"|Player
+!  style="background:#c2ddff; width:25px;"|Pos
+!  style="background:#c2ddff; width:200px;"|Previous club
+!  style="background:#c2ddff; width:50px;"|Round (Overall)
+!  style="background:#c2ddff; width:30px;"|Ref
+|-
+| January 18, 2013 || {{flagicon|USA}} [[Kathryn Williamson]] || DF || [[University of Florida]] || 1 (8) || <ref name="college draft"/>
+|-
+| January 18, 2013 || {{flagicon|USA}} [[Nicolette Radovcic]] || MF || [[University of Central Florida]] || 2 (16) || <ref name="college draft" /><ref name="3 out">{{cite web|title=Portland Thorns FC Training Report: Roster Changes, Strategy, and, uh, Singing|url=http://www.stumptownfooty.com/portland-women/2013/4/4/4183790/portland-thorns-fc-training-report-roster-changes-strategy|publisher=stumptownfooty.com|access-date=April 4, 2013|date=April 4, 2013}}</ref>   
+|-
+| January 18, 2013 || {{flagicon|USA}} [[Amber Brooks]] || MF || [[University of North Carolina at Chapel Hill|University of North Carolina]] || 3 (24) || <ref name="college draft" /> 
+|-
+| January 18, 2013 || {{flagicon|RSA}} [[Roxanne Barker]] || GK || [[Pepperdine University]] || 4 (32) || <ref name="college draft" /><ref name="3 out" />
+|-
+|}
+
+=== Supplemental Draft Picks ===
+Any player that wasn’t selected in the NWSL College Draft, and was done with her college eligibility, was eligible for the NWSL Supplemental Draft. The draft lasted six rounds. Again, the Thorns selected eighth (last) in each round.<ref name="Discovery" />
+
+{| class="wikitable" style="text-align:left; font-size:95%"
+|-
+!  style="background:#c2ddff; width:125px;"|Date
+!  style="background:#c2ddff; width:170px;"|Player
+!  style="background:#c2ddff; width:25px;"|Pos
+!  style="background:#c2ddff; width:200px;"|Previous club
+!  style="background:#c2ddff; width:50px;"|Pick (Overall)
+!  style="background:#c2ddff; width:30px;"|Ref
+|-
+| February 7, 2013 || {{flagicon|USA}} [[Tina Ellertson]] || DF || {{flagicon|USA}}[[magicJack (WPS)]] || 1 (8) || <ref name="supplemental" />
+|-
+| February 7, 2013 || {{flagicon|USA}} [[Angie Kerr]] || MF || {{flagicon|USA}}[[Sky Blue FC]] || 2 (16) || <ref name="supplemental" /> 
+|-
+| February 7, 2013 || {{flagicon|USA}} [[Michele Weissenhofer]] || FW || {{flagicon|USA}}[[Chicago Red Stars]] || 3 (24) || <ref name="supplemental" /> 
+|-
+| February 7, 2013 || {{flagicon|USA}} [[Marian Dalmy|Marian Dougherty (Dalmy)]] || DF || {{flagicon|USA}}[[magicJack (WPS)]] || 4 (32) || <ref name="supplemental" /> 
+|-
+| February 7, 2013 || {{flagicon|USA}} [[Jessica Shufelt]] || FW || {{flagicon|CAN}}[[Ottawa Fury Women]] || 5 (40) || <ref name="supplemental" /> 
+|-
+|}
+
+=== Transfers In ===
+{| class="wikitable" style="text-align:left; font-size:95%"
+|-
+!  style="background:#c2ddff; width:125px;"|Date
+!  style="background:#c2ddff; width:170px;"|Player
+!  style="background:#c2ddff; width:25px;"|Pos
+!  style="background:#c2ddff; width:200px;"|Previous club
+!  style="background:#c2ddff; width:250px;"|Notes
+!  style="background:#c2ddff; width:30px;"|Ref
+|-
+| April 24, 2013 || {{flagicon|USA}} [[Elizabeth Guess]] || MF || [[Boston Breakers]] || Signed off Waivers || <ref name="Waivers" />
+|}
+
+=== Transfers Out ===
+{| class="wikitable" style="text-align:left; font-size:95%"
+|-
+!  style="background:#c2ddff; width:125px;"|Date
+!  style="background:#c2ddff; width:170px;"|Player
+!  style="background:#c2ddff; width:25px;"|Pos
+!  style="background:#c2ddff; width:200px;"|Destination Club
+!  style="background:#c2ddff; width:250px;"|Notes
+!  style="background:#c2ddff; width:30px;"|Ref
+|-
+|}
+
+== References ==
+{{Commons category}}
+{{Reflist|30em}}
+
+{{Portland Thorns FC}}
+{{2013 NWSL season by team}}
+{{2013 in American soccer}}
+
+{{DEFAULTSORT:2013 Portland Thorns Football Club Season}}
+[[Category:2013 National Women's Soccer League season|Portland Thorns]]
+[[Category:American soccer clubs 2013 season|Portland Thorns]]
+[[Category:Portland Thorns FC seasons]]
+[[Category:2013 in Portland, Oregon|Portland Thorns]]
+[[Category:2013 in sports in Oregon|Portland]]
+[[Category:National Women's Soccer League championship–winning seasons]]

@@ -95,9 +95,10 @@ const packFam = {}
 packNames.forEach((lang) => {
   const map = new Map()
   const data = packs[lang]
-  Object.keys(data.aliases).forEach((name) => map.set(name, data.aliases[name]))
-  Object.keys(data.parsers).forEach((name) => map.set(name, data.parsers[name].template || 'custom'))
-  data.infoboxes.forEach((name) => map.set(name, infoboxFam))
+  Object.keys(data.aliases || {}).forEach((name) => map.set(name, data.aliases[name]))
+  Object.keys(data.parsers || {}).forEach((name) => map.set(name, data.parsers[name].template || 'custom'))
+  Object.keys(data.templates || {}).forEach((name) => map.set(name, 'custom'))
+  ;(data.infoboxes || []).forEach((name) => map.set(name, infoboxFam))
   packFam[lang] = map
 })
 

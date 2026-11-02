@@ -1,0 +1,36 @@
+// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// catalan template names → the core template they resolve to
+const aliases = {
+  'afi': 'ipa',
+  'amaga': 'reflist',
+  'amaga ref': 'reflist',
+  'amaga ref2': 'reflist',
+  'ap': 'main',
+  'article detallat': 'main',
+  'article principal': 'main',
+  'birthdate and age': 'birth date and age',
+  'commons category': 'commons cat',
+  'commonscat': 'commons cat',
+  'coor d': 'coord',
+  'coordenades': 'coord',
+  'coords': 'coord',
+  'coorheader': 'coord',
+  'data d\'inici': 'start',
+  'data de naixement i edat': 'birth date and age',
+  'data inici': 'start',
+  'data naixement i edat': 'birth date and age',
+  'harvnp': 'sfn',
+  'initial release': 'start',
+  'japonès': 'nihongo',
+  'listaref': 'reflist',
+  'obra citada': 'citation',
+  'principal': 'main',
+  'referencies': 'reflist',
+  'referència': 'reflist',
+  'referències': 'reflist',
+  'referències2': 'reflist',
+  'références': 'reflist',
+  'societat catalana de matemàtiques': 'sfn',
+}
+
+export default aliases

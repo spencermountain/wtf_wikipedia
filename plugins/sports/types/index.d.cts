@@ -9,5 +9,9 @@ declare const sports: {
   nba: Esm['nba']
   nfl: Esm['nfl']
   mls: Esm['mls']
+  wnba: Esm['wnba']
+  nwsl: Esm['nwsl']
+  pwhl: Esm['pwhl']
+  cfl: Esm['cfl']
 }
 export = sports

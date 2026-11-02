@@ -1,0 +1,464 @@
+{{Short description|CFL team season}}
+{{Use Canadian English|date=March 2026}}
+{{Infobox NFL season
+| logo =  
+| team = Saskatchewan Roughriders
+| year = 2007
+| record = '''12–6'''
+| division_place = '''2nd, West'''
+| coach = [[Kent Austin]]
+| general_manager = [[Eric Tillman]]
+| stadium = [[Mosaic Stadium at Taylor Field]]
+| playoffs = '''Won [[95th Grey Cup|Grey Cup]]'''
+| MOP = [[Kerry Joseph]]
+| MOC = [[Andy Fantuz]]
+| MOR = [[John Chick]]
+| uniform = Image:CFL SSK Jersey 2007.png
+| shortnavlink = Roughriders seasons
+}}
+[[Image:Roughriders win3.jpg|thumb|The Roughriders celebrate their [[Grey Cup]] victory]]
+The '''[[2007 CFL season|2007]] [[Saskatchewan Roughriders]]''' finished in second place in the West Division with a 12–6 record, which was their highest finish since 1988 when they also finished 2nd. The Roughriders won their third [[Grey Cup]] championship after playing the [[Winnipeg Blue Bombers]] for the title.
+
+==Offseason==
+=== CFL draft===
+{| class="wikitable sortable sortable"
+! style="background:#00994D;color:white;" width="8%"| Round
+! style="background:#00994D;color:white" width="20%"| Player
+! style="background:#00994D;color:white" width="15%"| Position
+! style="background:#00994D;color:white" width="20%"| School/Club team
+|-
+| align=center| 9 (Via [[Hamilton Tiger-Cats|Hamilton]]) || [[David McKoy]] || WR || [[Guelph Gryphons|Guelph]]
+|-
+|align=center| 20 || [[Yannick Carter]] || LB || Wilfrid Laurier
+|-
+|align=center| 28 || [[Ryan Ackerman]] || OL || Regina
+|-
+|align=center| 34 (Via [[Winnipeg Blue Bombers|Winnipeg]] Via [[Edmonton Eskimos|Edmonton]]) || [[Reggie Bradshaw]] || RB || [[Montana Grizzlies football|Montana]]
+|-
+|align=center| 39 (Via [[Montreal Alouettes|Montreal]]) || [[Ryan Karhut]] || OL || Manitoba
+|-
+|}
+
+==Preseason==
+{| class="wikitable sortable"
+! style="background:#00994D;color:white;" width="8%"| Week
+! style="background:#00994D;color:white;" width="10%"| Date
+! style="background:#00994D;color:white;" width="20%"| Opponent
+! style="background:#00994D;color:white;" width="10%"| Score
+! style="background:#00994D;color:white;" width="10%"| Result
+! style="background:#00994D;color:white;" width="10%"| Attendance
+|-align="center" bgcolor="#ddffdd"
+| B
+| Fri, June 15
+| at [[BC Lions]]
+| 24–15
+| Win
+| 25,321
+|-align="center" bgcolor="#ddffdd"
+| C
+| Fri, June 22
+| vs. [[Calgary Stampeders]]
+| 23–21
+| Win
+| 28,600
+|-
+|}
+
+==Regular season==
+===Season standings===
+{{2007 CFL West Division Standings}}
+
+===Season schedule===
+{| class="wikitable sortable"
+|-
+! style="background:#00994D;color:White;"  width="8%"| Week
+! style="background:#00994D;color:White;"  width="10%"| Date
+! style="background:#00994D;color:White;"  width="20%"| Opponent
+! style="background:#00994D;color:White;"  width="10%"| Score
+! style="background:#00994D;color:White;"  width="10%"| Result
+! style="background:#00994D;color:White;"  width="10%"| Attendance
+! style="background:#00994D;color:White;"  width="10%"| Record
+|- style="text-align:center; background:#ddffdd;"
+! style="text-align:center; background:white;"|<span style="color:#006241;">'''1'''</span>
+| Fri, June 29
+| at [[2007 Montreal Alouettes season|Montreal Alouettes]]
+| 16–7 <ref>{{Cite web |url=http://www2.sportsnet.ca/football/cfl/scores/2007/1 |title=CFL Scores – Sportsnet.ca<!-- Bot generated title --> |access-date=2008-04-18 |archive-url=https://web.archive.org/web/20071210094751/http://www2.sportsnet.ca/football/cfl/scores/2007/1 |archive-date=2007-12-10 |url-status=dead }}</ref>
+| Win
+| 20,202
+| 1–0
+|- style="text-align:center; background:#ddffdd;"
+! style="text-align:center; background:#006241;"|<span style="color:white;">'''2'''</span>
+| Sun, July 8
+| vs. [[2007 Calgary Stampeders season|Calgary Stampeders]]
+| 49–8 <ref>{{Cite web |url=http://www2.sportsnet.ca/football/cfl/scores/2007/2 |title=CFL Scores – Sportsnet.ca<!-- Bot generated title --> |access-date=2008-04-18 |archive-url=https://web.archive.org/web/20080709012808/http://www2.sportsnet.ca/football/cfl/scores/2007/2 |archive-date=2008-07-09 |url-status=dead }}</ref>
+| Win
+| 25,862
+| 2–0
+|- style="text-align:center; background:#ffbbbb;"
+! style="text-align:center; background:#006241;"|<span style="color:white;">'''3'''</span>
+| Fri, July 13
+| vs. [[2007 BC Lions season|BC Lions]]
+| 42–12 <ref>{{Cite web |url=http://www2.sportsnet.ca/football/cfl/scores/2007/3 |title=CFL Scores – Sportsnet.ca<!-- Bot generated title --> |access-date=2008-04-18 |archive-url=https://web.archive.org/web/20071210094946/http://www2.sportsnet.ca/football/cfl/scores/2007/3 |archive-date=2007-12-10 |url-status=dead }}</ref>
+| Loss
+| 26,981
+| 2–1
+|- style="text-align:center; background:#ffbbbb;"
+! style="text-align:center; background:white;"|<span style="color:#006241;">'''4'''</span>
+| Fri, July 20
+| at [[2007 Edmonton Eskimos season|Edmonton Eskimos]]
+| 21–20 <ref>{{Cite web |url=http://www2.sportsnet.ca/football/cfl/scores/2007/4 |title=CFL Scores – Sportsnet.ca<!-- Bot generated title --> |access-date=2008-04-18 |archive-url=https://web.archive.org/web/20071210094951/http://www2.sportsnet.ca/football/cfl/scores/2007/4 |archive-date=2007-12-10 |url-status=dead }}</ref>
+| Loss
+| 46,704
+| 2–2
+|- style="text-align:center; background:#ddffdd;"
+! style="text-align:center; background:white;"|<span style="color:#006241;">'''5'''</span>
+| Sat, July 28
+| vs. Edmonton Eskimos
+| 54–14 <ref>{{Cite web |url=http://www2.sportsnet.ca/football/cfl/scores/2007/5 |title=CFL Scores – Sportsnet.ca<!-- Bot generated title --> |access-date=2008-04-18 |archive-url=https://web.archive.org/web/20071210094956/http://www2.sportsnet.ca/football/cfl/scores/2007/5 |archive-date=2007-12-10 |url-status=dead }}</ref>
+| Win
+| 26,840
+| 3–2
+|- style="text-align:center; background:#ddffdd;"
+! style="text-align:center; background:white;"|<span style="color:#006241;">'''6'''</span>
+| Thurs, Aug 2
+| at BC Lions
+| 21–9 <ref>{{Cite web |url=http://www2.sportsnet.ca/football/cfl/scores/2007/6 |title=CFL Scores – Sportsnet.ca<!-- Bot generated title --> |access-date=2008-04-18 |archive-url=https://web.archive.org/web/20071210095001/http://www2.sportsnet.ca/football/cfl/scores/2007/6 |archive-date=2007-12-10 |url-status=dead }}</ref>
+| Win
+| 31,858
+| 4–2
+|- style="text-align:center; background:#ddffdd;"
+! style="text-align:center; background:white;"|<span style="color:#006241;">'''7'''</span>
+| Fri, Aug 10
+| at [[2007 Toronto Argonauts season|Toronto Argonauts]]
+| 24–13 <ref>{{Cite web |url=http://www2.sportsnet.ca/football/cfl/scores/2007/7 |title=CFL Scores – Sportsnet.ca<!-- Bot generated title --> |access-date=2008-04-18 |archive-url=https://web.archive.org/web/20071210095006/http://www2.sportsnet.ca/football/cfl/scores/2007/7 |archive-date=2007-12-10 |url-status=dead }}</ref>
+| Win
+| 34,234
+| 5–2
+|- style="text-align:center; background:#ddffdd;"
+! style="text-align:center; background:#006241;"|<span style="color:white;">'''8'''</span>
+| Sat, Aug 18
+| vs. Edmonton Eskimos
+| 39–32 <ref name="CFL Scores - Sportsnet.ca">{{Cite web |url=http://www2.sportsnet.ca/football/cfl/scores/2007/8 |title=CFL Scores – Sportsnet.ca<!-- Bot generated title --> |access-date=2008-04-18 |archive-url=https://web.archive.org/web/20071210095011/http://www2.sportsnet.ca/football/cfl/scores/2007/8 |archive-date=2007-12-10 |url-status=dead }}</ref>
+| Win
+| 28,800
+| 6–2
+|-align="center"
+|9
+| colSpan=6 align="center" | ''Bye''
+|- style="text-align:center; background:#ddffdd;"
+! style="text-align:center; background:#006241;"|<span style="color:white;">'''‖10‖'''</span>
+| [[Labour Day Classic|Sun, Sept 2]]
+| vs. [[2007 Winnipeg Blue Bombers season|Winnipeg Blue Bombers]]
+| 31–26<ref>{{Cite web |url=http://www2.sportsnet.ca/football/cfl/scores/2007/10 |title=CFL Scores – Sportsnet.ca<!-- Bot generated title --> |access-date=2008-04-18 |archive-url=https://web.archive.org/web/20071210094756/http://www2.sportsnet.ca/football/cfl/scores/2007/10 |archive-date=2007-12-10 |url-status=dead }}</ref>
+| Win
+| 28,800
+| 7–2
+|- style="text-align:center; background:#ffbbbb;"
+! style="text-align:center; background:white;"|<span style="color:#006241;">'''11'''</span>
+| [[Banjo Bowl|Sun, Sept 9]]
+| at Winnipeg Blue Bombers
+| 34–15<ref>{{Cite web |url=http://www2.sportsnet.ca/football/cfl/scores/2007/11 |title=CFL Scores – Sportsnet.ca<!-- Bot generated title --> |access-date=2008-04-21 |archive-url=https://web.archive.org/web/20071210094805/http://www2.sportsnet.ca/football/cfl/scores/2007/11 |archive-date=2007-12-10 |url-status=dead }}</ref>
+| Loss
+| 29,783
+| 7–3
+|- style="text-align:center; background:#ffbbbb;"
+! style="text-align:center; background:white;"|<span style="color:#006241;">'''12'''</span>
+| Sat, Sept 15
+| at Calgary Stampeders
+| 44–22<ref>{{Cite web |url=http://www2.sportsnet.ca/football/cfl/scores/2007/12 |title=CFL Scores – Sportsnet.ca<!-- Bot generated title --> |access-date=2008-04-18 |archive-url=https://web.archive.org/web/20071210094809/http://www2.sportsnet.ca/football/cfl/scores/2007/12 |archive-date=2007-12-10 |url-status=dead }}</ref>
+| Loss
+| 35,650
+| 7–4
+|- style="text-align:center; background:#ffbbbb;"
+! style="text-align:center; background:#006241;"|<span style="color:white;">'''13'''</span>
+| Sat, Sept 22
+| vs. BC Lions
+| 37–34<ref>{{Cite web |url=http://www2.sportsnet.ca/football/cfl/scores/2007/13 |title=CFL Scores – Sportsnet.ca<!-- Bot generated title --> |access-date=2008-04-21 |archive-url=https://web.archive.org/web/20071210094814/http://www2.sportsnet.ca/football/cfl/scores/2007/13 |archive-date=2007-12-10 |url-status=dead }}</ref>
+| Loss
+| 28,800
+| 7–5
+|- style="text-align:center; background:#ddffdd;"
+! style="text-align:center; background:#006241;"|<span style="color:white;">'''14'''</span>
+| Sat, Sept 29
+| vs. Montreal Alouettes
+| 33–22<ref>{{Cite web |url=http://www2.sportsnet.ca/football/cfl/scores/2007/14 |title=CFL Scores – Sportsnet.ca<!-- Bot generated title --> |access-date=2008-04-21 |archive-url=https://web.archive.org/web/20071210094821/http://www2.sportsnet.ca/football/cfl/scores/2007/14 |archive-date=2007-12-10 |url-status=dead }}</ref>
+| Win
+| 28,800
+| 8–5
+|- style="text-align:center; background:#ddffdd;"
+! style="text-align:center; background:white;"|<span style="color:#006241;">'''15'''</span>
+| [[Thanksgiving Day Classic|Mon, Oct 8]]
+| at Calgary Stampeders
+| 33–21<ref>{{Cite web |url=http://www2.sportsnet.ca/football/cfl/scores/2007/15 |title=CFL Scores – Sportsnet.ca<!-- Bot generated title --> |access-date=2008-04-21 |archive-url=https://web.archive.org/web/20071210094827/http://www2.sportsnet.ca/football/cfl/scores/2007/15 |archive-date=2007-12-10 |url-status=dead }}</ref>
+| Win
+| 33,075
+| 9–5
+|- style="text-align:center; background:#ddffdd;"
+! style="text-align:center; background:white;"|<span style="color:#006241;">'''16'''</span>
+| Sun, Oct 14
+| at [[2007 Hamilton Tiger-Cats season|Hamilton Tiger Cats]]
+| 40–23<ref>{{Cite web |url=http://www2.sportsnet.ca/football/cfl/scores/2007/16 |title=CFL Scores – Sportsnet.ca<!-- Bot generated title --> |access-date=2008-04-21 |archive-url=https://web.archive.org/web/20071210094832/http://www2.sportsnet.ca/football/cfl/scores/2007/16 |archive-date=2007-12-10 |url-status=dead }}</ref>
+| Win
+| 22,167
+| 10–5
+|- style="text-align:center; background:#ddffdd;"
+! style="text-align:center; background:#006241;"|<span style="color:white;">'''‖17‖'''</span>
+| Sun, Oct 21
+| vs. Hamilton Tiger Cats
+| 38–11<ref>{{Cite web |url=http://www2.sportsnet.ca/football/cfl/scores/2007/17 |title=CFL Scores – Sportsnet.ca<!-- Bot generated title --> |access-date=2008-04-21 |archive-url=https://web.archive.org/web/20071210094838/http://www2.sportsnet.ca/football/cfl/scores/2007/17 |archive-date=2007-12-10 |url-status=dead }}</ref>
+| Win
+| 28,800
+| 11–5
+|- style="text-align:center; background:#ddffdd;"
+! style="text-align:center; background:white;"|<span style="color:#006241;">'''18'''</span>
+| Fri, Oct 26
+| at Edmonton Eskimos
+| 36–29 (OT)<ref>{{Cite web |url=http://www2.sportsnet.ca/football/cfl/scores/2007/18 |title=CFL Scores – Sportsnet.ca<!-- Bot generated title --> |access-date=2008-04-21 |archive-url=https://web.archive.org/web/20071029050938/http://www2.sportsnet.ca/football/cfl/scores/2007/18 |archive-date=2007-10-29 |url-status=dead }}</ref>
+| Win
+| 40,127
+| 12–5
+|- style="text-align:center; background:#ffbbbb;"
+! style="text-align:center; background:#006241;"|<span style="color:white;">'''19'''</span>
+| Sat, Nov 3
+| vs. Toronto Argonauts
+| 41–13<ref>{{Cite web |url=http://www2.sportsnet.ca/football/cfl/scores/2007/19 |title=CFL Scores – Sportsnet.ca<!-- Bot generated title --> |access-date=2008-04-21 |archive-url=https://web.archive.org/web/20071210094931/http://www2.sportsnet.ca/football/cfl/scores/2007/19 |archive-date=2007-12-10 |url-status=dead }}</ref> 
+| Loss 
+| 28,800 
+| 12–6 
+|- 
+|}
+
+:{{color box|#006241|#|white}} Games played with primary home uniforms.
+:{{color box|white|#|#006241}} Games played with primary white uniforms.
+:{{color box|#006241|‖#‖|white}} Games played with green retro uniforms.
+
+==Player stats==
+
+===Passing===
+{| border="1" class="wikitable sortable"
+|-
+
+! style="background:#00994D;color:white;" width="16%" | Player
+! style="background:#00994D;color:white;"  width="9%" | Att
+! style="background:#00994D;color:white;" width="9%" | Comp
+! style="background:#00994D;color:white;" width="9%" | %
+! style="background:#00994D;color:white;" width="9%" | Yards
+! style="background:#00994D;color:white;" width="9%" | TD
+! style="background:#00994D;color:white;" width="9%" | INT
+! style="background:#00994D;color:white;" width="9%" | Rating
+|- style="text-align:center;"
+| Kerry Joseph || 459 || 267 || 58.2 || 4002 || 24 || 8  || 97.1
+|- style="text-align:center;"
+| Marcus Crandell || 131 || 78 || 59.5 || 982 || 5 || 5 || 79.8
+|- style="text-align:center;"
+| Andy Fantuz || 1 || 0 || 0.0 || 0 || 0 || 0 || 2.1
+|}<ref>{{cite web |url=https://www.cfl.ca/statistics/league/stat/Passing/year/2007/team/saskatchewan |title=CFL.ca |publisher=Cfl.ca |accessdate=2009-08-22 |archiveurl=https://web.archive.org/web/20120806022917/http://www.cfl.ca/statistics/league/stat/Passing/year/2007/team/saskatchewan |archivedate=2012-08-06 |url-status=dead }}</ref>
+
+===Rushing===
+{| border="1" class="wikitable sortable"
+|-
+! style="background:#00994D;color:white;" width="16%" | Player
+! style="background:#00994D;color:white;"  width="9%" | No.
+! style="background:#00994D;color:white;" width="9%" | Yards
+! style="background:#00994D;color:white;" width="9%" | Average
+! style="background:#00994D;color:white;" width="9%" | TD
+! style="background:#00994D;color:white;" width="9%" | Fumbles
+|- style="text-align:center;"
+| Wes Cates || 153 || 866 || 5.7 || 5 || 2
+|- style="text-align:center;"
+| Kerry Joseph || 90 || 737 || 8.2 || 13 || 5
+|- style="text-align:center;"
+| Henri Childs || 38 || 143 || 3.8 || 2 || 1
+|- style="text-align:center;"
+| Chris Szarka || 25 || 104 || 4.2 || 1 || 1
+|- style="text-align:center;"
+| Corey Holmes || 14 || 73 || 5.2 || 2 || 1
+|}<ref name="cfl.ca">{{cite web |url=https://www.cfl.ca/statistics/league/stat/Rushing/year/2007/team/saskatchewan |title=CFL.ca |publisher=Cfl.ca |accessdate=2009-08-22 |archive-url=https://web.archive.org/web/20120806022929/http://www.cfl.ca/statistics/league/stat/Rushing/year/2007/team/saskatchewan |archive-date=2012-08-06 |url-status=dead }}</ref>
+
+===Receiving===
+{| border="1" class="wikitable sortable"
+|-
+! style="background:#00994D;color:white;" width="16%" | Player
+! style="background:#00994D;color:white;"  width="9%" | No.
+! style="background:#00994D;color:white;" width="9%" | Yards
+! style="background:#00994D;color:white;" width="9%" | Avg.
+! style="background:#00994D;color:white;" width="9%" | Long
+! style="background:#00994D;color:white;" width="9%" | TD
+|- style="text-align:center;"
+| D.J. Flick ||70|| 1020 || 14.6 || 53 || 10
+|- style="text-align:center;"
+| Andy Fantuz ||66|| 978 || 17.5 || 72 || 7
+|- style="text-align:center;"
+| Matt Dominguez ||45|| 761 || 16.9 || 69 || 5
+|- style="text-align:center;"
+| Corey Grant ||38|| 458 || 12.1 || 30 || 0
+|- style="text-align:center;"
+| Wes Cates ||45|| 452|| 10.0 || 40 || 0
+|}<ref>{{cite web |url=https://www.cfl.ca/statistics/league/stat/Receiving/year/2007/team/saskatchewan |title=CFL.ca |publisher=Cfl.ca |accessdate=2009-08-22 |archive-url=https://web.archive.org/web/20120806022940/http://www.cfl.ca/statistics/league/stat/Receiving/year/2007/team/saskatchewan |archive-date=2012-08-06 |url-status=dead }}</ref>
+
+==Postseason==
+=== Scotiabank West Semi-Finals===
+{| class="wikitable"
+! Team !! Q1 !! Q2 !! Q3 !! Q4 !! Total
+|-
+|[[Calgary Stampeders]] || 0 || 7 || 10 || 7 || 24
+|- style="background-color:#DDFFDD"
+|[[Saskatchewan Roughriders]] || 13 || 6 || 3 || 4 || '''26'''
+|}
+
+===Scotiabank West Finals===
+{| class="wikitable"
+! Team !! Q1 !! Q2 !! Q3 !! Q4 !! Total
+|-style="background-color:#DDFFDD"
+|[[Saskatchewan Roughriders]] || 10 || 3 || 13 || 0 || '''26'''
+|-
+|[[BC Lions]] || 7 || 3 || 7 || 0 || 17
+|}
+
+===Grey Cup===
+{| class="wikitable"
+! Team !! Q1 !! Q2 !! Q3 !! Q4 !! Total
+|-style="background-color:#DDFFDD"
+|[[Saskatchewan Roughriders]] || 0 || 10 || 6 || 7 || '''23'''
+|-
+|[[Winnipeg Blue Bombers]] || 3 || 4 || 7 || 5 || 19
+|} <ref name="nationalpost.com">[https://nationalpost.com/sports/story.html?id=123061 Green glory: Riders win sloppy Grey Cup<!-- Bot generated title -->]{{dead link|date=October 2025|bot=medic}}{{cbignore|bot=medic}}</ref>
+
+Saskatchewan ended the [[Canadian Football League]]'s longest championship drought with a 23–19 victory over the Winnipeg Blue Bombers in the [[95th Grey Cup]] at [[Rogers Centre]]. The Roughriders had not won a title since [[77th Grey Cup|1989]], and had lost in 13 of their 15 all-time appearances.<ref name="nationalpost.com"/>
+
+An interception by defensive back [[James Johnson (Canadian football)|James Johnson]] with 54 seconds left in the fourth quarter sealed the victory. It also earned Johnson a place in CFL history – because he became the first player to intercept three passes in a Grey Cup game, and also because he was named the game's [[Grey Cup Most Valuable Player|MVP]].<ref name="nationalpost.com"/> Roughriders receiver Andy Fantuz was named the game's [[Dick Suderman Trophy|Most Outstanding Canadian]]. The 23-year-old caught four passes for 70 yards and a touchdown.<ref name="nationalpost.com"/>
+==Roster==
+{| class="toccolours" style="text-align: left;"
+|-
+! colspan="7" style="background-color: #00704a;color:white;text-align:center;" | 2007 Saskatchewan Roughriders final roster
+|-
+| style="font-size: 95%;" valign="top" | '''Quarterbacks'''
+* {{CFL player|&nbsp;8|I|[[Marcus Crandell]]}}
+* {{CFL player|14|I|[[Darian Durant]]}} 
+* {{CFL player|&nbsp;4|I|[[Kerry Joseph]]}}
+
+'''Running backs'''
+* {{CFL player|20|I|[[Wes Cates]]}}
+* {{CFL player|&nbsp;1|I|[[Corey Holmes]]}} 
+* {{CFL player|32|N|[[Neal Hughes]]}} 
+* {{CFL player|33|N|[[Chris Szarka]]}} 
+
+'''Receivers'''
+* {{CFL player|83|I|[[Andy Fantuz]]}}
+* {{CFL player|&nbsp;3|I|[[D. J. Flick]]}} 
+* {{CFL player|&nbsp;2|N|[[Corey Grant]]}}
+* {{CFL player|86|N|Nathan Hoffart}} 
+* {{CFL player|&nbsp;5|I|[[Yo Murphy]]}}
+* {{CFL player|77|N|[[Michael Palmer (Canadian football)|Michael Palmer]]}}
+
+| style="width: 25px;" |
+| style="font-size: 95%;" valign="top" | '''Offensive linemen'''
+* {{CFL player|67|N|[[Mike Abou-Mechrek]]}} G
+* {{CFL player|59|N|[[Jocelyn Frenette]]}} G/C
+* {{CFL player|56|I|[[Belton Johnson]]}} T
+* {{CFL player|53|I|Jermese Jones}} T
+* {{CFL player|60|N|[[Gene Makowsky]]}} T
+* {{CFL player|54|I|[[Jeremy O'Day]]}} C
+* {{CFL player|57|N|[[Marc Parenteau]]}} G/C
+* {{CFL player|52|N|[[Wayne Smith (offensive lineman)|Wayne Smith]]}} G/T
+
+'''Defensive linemen'''
+* {{CFL player|51|I|[[Marcus Adams (Canadian football)|Marcus Adams]]}} DT
+* {{CFL player|97|I|[[John Chick]]}} DE
+* {{CFL player|46|I|[[Kitwana Jones]]}} DE
+* {{CFL player|95|N|[[Luc Mullinder]]}} DT
+* {{CFL player|41|I|[[Fred Perry (Canadian football)|Fred Perry]]}} DE
+* {{CFL player|96|N|[[Scott Schultz]]}} DT
+
+'''Special teams'''
+* {{CFL player|30|N|[[Jamie Boreham]]}} P/K
+* {{CFL player|10|N|[[Luca Congi]]}} K
+
+| style="width: 25px;" |
+| style="font-size: 95%;" valign="top" | '''Linebackers '''
+* {{CFL player|49|N|[[Yannick Carter]]}}
+* {{CFL player|&nbsp;9|I|[[Reggie Hunt]]}}
+* {{CFL player|47|I|[[Maurice Lloyd]]}}
+* {{CFL player|31|I|[[Sean Lucas]]}}
+* {{CFL player|35|I|[[Brandon Lynch]]}}
+* {{CFL player|45|N|[[Mike McCullough (Canadian football)|Mike McCullough]]}}
+* {{CFL player|42|I|[[Anton McKenzie]]}}
+
+'''Defensive backs'''
+* {{CFL player|37|N|[[Tristan Clovis]]}} 
+* {{CFL player|29|I|[[Eddie Davis (Canadian football)|Eddie Davis]]}}
+* {{CFL player|15|I|[[Lance Frazier]]}} 
+* {{CFL player|26|N|[[Scott Gordon (Canadian football)|Scott Gordon]]}} 
+* {{CFL player|19|I|[[James Johnson (Canadian football)|James Johnson]]}}
+* {{CFL player|24|I|[[Airabin Justin]]}} 
+* {{CFL player|17|I|[[Tad Kornegay]]}} 
+* {{CFL player|21|I|[[Rontarius Robinson]]}}
+
+'''Reserve roster'''
+* {{CFL player|22|N|[[Dustin Cherniawski]]}} DB
+* {{CFL player|87|I|[[Kahlil Hill]]}} WR
+* {{CFL player|25|I|[[Josh Ranek]]}} RB
+
+| style="width: 25px;" |
+| style="font-size: 95%;" valign="top" |'''Injured list'''
+* {{CFL player|&nbsp;6|N|Imokhai Atogwe}} DB
+* {{CFL player|80|I|[[Carl Berman]]}} SB
+* {{CFL player|66|N|[[Chris Best]]}} C/G
+* {{CFL player|27|I|[[Henri Childs]]}} RB 
+* {{CFL player|99|I|Brent Curvey}} DT
+* {{CFL player|88|I|[[Matt Dominguez]]}} WR
+* {{CFL player|43|N|[[Tim Fleiszer]]}} DE
+* {{CFL player|79|I|Terrell Jurineack}} DE
+* {{CFL player|18|I|[[Vincent Marshall]]}} WR
+* {{CFL player|85|N|[[David McKoy]]}} WR
+* {{CFL player|20|N|[[Kennedy Nkeyasen]]}} DB
+* {{CFL player|38|I|[[Marcus Rucker]]}} LB
+* {{CFL player|50|N|[[Val St. Germain]]}} G
+* {{CFL player|13|I|[[T. J. Stancil]]}} LB
+* {{CFL player|--|I|[[Drew Tate]]}} QB
+* {{CFL player|82|I|Michael Washington}} WR
+* {{CFL player|48|I|[[Renauld Williams]]}} LB
+
+'''Suspended'''
+* {{CFL player||I|Nick Turner}} RB
+<br />
+''Italics'' indicate American player
+|-
+|}
+
+==Awards and records==
+* Kent Austin, [[Annis Stukus Trophy|CFL Coach of the Year]]
+* Kerry Joseph, [[CFL's Most Outstanding Player Award|Most Outstanding Player Award]]
+* Kerry Joseph, [[Jeff Nicklin Memorial Trophy]]
+* James Johnson, [[Grey Cup Most Valuable Player]]
+* James Johnson, first player to intercept three passes in a Grey Cup game
+* Andy Fantuz, [[Dick Suderman Trophy|Grey Cup Most Outstanding Canadian]]
+
+===CFL All-Stars===
+*[[Kerry Joseph]], Quarterback
+*[[Jeremy O'Day]], Centre
+
+===CFL Western All-Stars===
+*[[D. J. Flick]], Receiver
+*[[Reggie Hunt]], Linebacker
+*[[James Johnson (Canadian football)|James Johnson]], Cornerback
+*[[Kerry Joseph]], Quarterback
+*[[Maurice Lloyd]], Linebacker
+*[[Gene Makowsky]], Offensive Tackle
+*[[Jeremy O'Day]], Centre
+*[[Fred Perry (Canadian football)|Fred Perry]], Defensive End
+
+==References==
+{{reflist|30em}}
+
+{{2007 CFL season by team}}
+{{Saskatchewan Roughriders seasons}}
+{{Saskatchewan Roughriders}}
+{{95th Grey Cup}}
+{{Grey Cup championship seasons}}
+
+{{DEFAULTSORT:2007 Saskatchewan Roughriders Season}}
+[[Category:2007 Canadian Football League season by team|Saskatchewan Roughriders]]
+[[Category:Saskatchewan Roughriders seasons]]
+[[Category:Grey Cup championship seasons]]
+[[Category:2007 in sports in Saskatchewan]]

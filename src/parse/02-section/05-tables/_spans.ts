@@ -1,6 +1,12 @@
 const getRowSpan = /^.*rowspan *= *["']?([0-9]+)["']?[ |]*/m
 const getColSpan = /^.*colspan *= *["']?([0-9]+)["']?[ |]*/m
 
+// stripping the attributes must not eat a '!' header marker
+const stripSpan = function (str, reg) {
+  const bang = /^ *!/.test(str) ? '! ' : ''
+  return bang + str.replace(reg, '')
+}
+
 //colspans stretch ←left/right→
 const doColSpan = function (rows) {
   rows.forEach((row) => {
@@ -15,7 +21,7 @@ const doColSpan = function (rows) {
         //   return
         // }
         //splice-in n empty columns right here
-        row[c] = str.replace(getColSpan, '')
+        row[c] = stripSpan(str, getColSpan)
         for (let i = 1; i < num; i += 1) {
           row.splice(c + 1, 0, '')
         }
@@ -34,7 +40,7 @@ const doRowSpan = function (rows) {
       if (m !== null) {
         let num = parseInt(m[1], 10)
         //copy this cell down n rows
-        str = str.replace(getRowSpan, '')
+        str = stripSpan(str, getRowSpan)
         row[c] = str
         for (let i = r + 1; i < r + num; i += 1) {
           if (!rows[i]) {

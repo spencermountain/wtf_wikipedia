@@ -10,8 +10,8 @@ test('i18n language packs are well-formed', async (t) => {
   const conflicts = []
   for (const lang of langs) {
     const mod = await import(new URL(`${lang}/index.js`, dir))
-    const { aliases, infoboxes, parsers } = mod.data
-    const names = [...Object.keys(aliases), ...Object.keys(parsers), ...infoboxes]
+    const { aliases = {}, infoboxes = [], parsers = {}, templates = {} } = mod.data
+    const names = [...Object.keys(aliases), ...Object.keys(parsers), ...Object.keys(templates), ...infoboxes]
     t.ok(names.length > 0, `${lang}: has names`)
     const bad = names.filter(
       (name) => typeof name !== 'string' || name !== name.toLowerCase().trim() || name.length === 0 || /[|{}=[\]<>#:]/.test(name)
@@ -23,6 +23,14 @@ test('i18n language packs are well-formed', async (t) => {
     t.deepEqual(badTargets, [], `${lang}: alias targets are lowercase core keys`)
     const badParsers = Object.keys(parsers).filter((name) => typeof parsers[name] !== 'function')
     t.deepEqual(badParsers, [], `${lang}: parsers are functions`)
+    const okDef = (def) => {
+      if (Array.isArray(def)) {
+        return def.every((prop) => typeof prop === 'string')
+      }
+      return ['number', 'string', 'function', 'object'].includes(typeof def)
+    }
+    const badDefs = Object.keys(templates).filter((name) => okDef(templates[name]) === false)
+    t.deepEqual(badDefs, [], `${lang}: shorthand defs are core-style`)
     const badMapTargets = Object.keys(parsers)
       .filter((name) => parsers[name].map)
       .flatMap((name) => Object.values(parsers[name].map))
@@ -33,6 +41,9 @@ test('i18n language packs are well-formed', async (t) => {
       let fam = aliases[name]
       if (fam === undefined && parsers[name]) {
         fam = parsers[name].template || 'custom'
+      }
+      if (fam === undefined && templates[name] !== undefined) {
+        fam = 'custom'
       }
       if (fam === undefined) {
         fam = 'taxobox'

@@ -1,51 +1,7 @@
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
+// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
 import register from '../../register.js'
 import version from '../../_version.js'
-
-// swedish template names → the core template they resolve to
-const aliases = {
-  '+portal': 'portal',
-  'catmore': 'main',
-  'cite letter': 'citation',
-  'citebook': 'cite book',
-  'citejournal': 'cite journal',
-  'commons category': 'commons cat',
-  'commonscat': 'commons cat',
-  'commonscat-rad': 'commons cat',
-  'commonskat': 'commons cat',
-  'commonskategori': 'commons cat',
-  'coor d': 'coord',
-  'coor title dm': 'coord',
-  'flag icon': 'flagicon',
-  'flagg': 'flag',
-  'flagga': 'flag',
-  'flaggbild': 'flagicon',
-  'flaggikon': 'flagicon',
-  'födelsedatumochålder': 'birth date and age',
-  'huvud': 'main',
-  'huvudartikel': 'main',
-  'huvudartikel saknas': 'main',
-  'huvudartikeln': 'main',
-  'huvudartiklar': 'main',
-  'huvudartiklel': 'main',
-  'huvudsida': 'main',
-  'huvudsidor': 'main',
-  'katmer': 'main',
-  'koor': 'coord',
-  'koor d': 'coord',
-  'koord': 'coord',
-  'koordinat': 'coord',
-  'koordinat2': 'coord',
-  'källa www': 'cite web',
-  'location': 'coord',
-  'portal länk': 'portal',
-  'portalbox': 'portal',
-  'sammanfattning': 'main',
-  'startdatum': 'start',
-  'ursprunglig artikel': 'main',
-  'vidare information': 'main',
-  'ålder': 'birth date and age',
-}
+import aliases from './aliases.js'
 
 const infoboxes = []
 
