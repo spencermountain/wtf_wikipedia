@@ -15,12 +15,30 @@
   - **[fix]** - typescript declarations for all bundled plugins
   - **[fix]** - use cleaner own-property checks
 
+- fetch improvements:
+  - **[new]** - `{silent: true}` fetch option suppresses console warnings
+  - **[new]** - `.displayTitle` and `.defaultSort` document properties
+  - **[change]** - `.description` is now set in any language, via the api's description module
+  - **[change]** - `.pageImage` falls back to a page's non-free image
+  - **[change]** - `.isDisambiguation()` uses the api's authoritative flag, when fetched
+  - **[change]** - requests favour `formatversion=2` (wikis older than 2015 still parse fine)
+  - **[fix]** - array fetches return documents in input order
+  - **[fix]** - follow api 'continue' responses, so huge batches don't drop pages
+  - **[change]** - chunked batch requests now run serially, per the api guidelines
+  - **[change]** - honor a short `Retry-After` on 429/503/maxlag responses, retrying once
+  - **[change]** - default user-agent now identifies the library, with version + repo url
+
 * coordinates
   - **[fix]** - preserve coordinates on the equator and prime meridian
   - **[fix]** - choose coordinate name 'lon' vs 'lng'
 
 * Plugins:
   - **[change]** - classify plugin's empty result uses the same shape (root/details keys)
+  - **[change]** - more leagues in sports plugin
+  - **[change]** - new shape for nsfw results
+  - **[change]** - combine image and api plugins
+  - **[change]** - support per-lang i18n plugin exports
+  - **[change]** - more fallthrough values in person plugin
 
 * Misc Fixes:
   - **[fix]** - #358 HTML links containing parentheses and brackets now render.

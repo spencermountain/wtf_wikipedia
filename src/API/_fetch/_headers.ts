@@ -1,8 +1,11 @@
+import version from '../../_version.ts'
 import type { FetchOptions } from '../../types/index.ts'
 
+// the api guidelines want 'name/version (contact)' - still, set your own
+const defaultAgent = `wtf_wikipedia/${version} (https://github.com/spencermountain/wtf_wikipedia)`
+
 const makeHeaders = function (options: FetchOptions): RequestInit {
-  let agent =
-    options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || 'User of the wtf_wikipedia library'
+  let agent = options.userAgent || options['User-Agent'] || options['Api-User-Agent'] || defaultAgent
 
   let origin
   if (options.noOrigin) {

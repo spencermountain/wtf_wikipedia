@@ -30,7 +30,8 @@ wtf.version: string
 
 `DocumentOptions` (all optional): `title`, `pageID` (or `id`), `namespace` (or
 `ns`), `lang` (or `language`), `domain`, `project`, `wikidata`, `description`,
-`timestamp`, `revisionID`, `pageImage`, `userAgent`. Pass `title` when parsing
+`timestamp`, `revisionID`, `pageImage`, `displayTitle`, `defaultSort`,
+`userAgent`. Pass `title` when parsing
 raw wikitext if you want `doc.title` / `doc.url()` to work:
 
 ```js
@@ -50,10 +51,12 @@ Metadata — plain get/set properties:
 | `.domain`      | `string \| null`           | default `'wikipedia.org'`                             |
 | `.language`    | `string \| null`           | default `'en'`                                        |
 | `.namespace`   | `string \| number \| null` | numeric IDs preserved, including `0`                  |
-| `.description` | `string \| null`           | the 'short description'                               |
-| `.timestamp`   | `string \| null`           | last-edit time, when fetched                          |
-| `.revisionID`  | `number \| null`           |                                                       |
-| `.pageImage`   | `string \| null`           | file name, when fetched                               |
+| `.description`  | `string \| null`           | the short description — set in any language, when fetched |
+| `.timestamp`    | `string \| null`           | last-edit time, when fetched                          |
+| `.revisionID`   | `number \| null`           |                                                       |
+| `.pageImage`    | `string \| null`           | file name, when fetched; may be a non-free image      |
+| `.displayTitle` | `string \| null`           | rendered title (`{{DISPLAYTITLE}}`), falls back to `.title` |
+| `.defaultSort`  | `string \| null`           | category sort-key, like `'de Beauvoir, Simone'`       |
 
 ```js
 doc.title = 'Glastonbury' // set
@@ -68,7 +71,7 @@ Methods:
 | `.options()`                                              | `DocumentOptions`  | the options the doc was created with      |
 | `.isRedirect()`                                           | `boolean`          |                                           |
 | `.redirectTo()` (aliases `.redirect()`, `.redirectsTo()`) | `LinkJson \| null` | `{ type, page, text, wiki, anchor? }`     |
-| `.isDisambiguation()` / `.isDisambig()`                   | `boolean`          |                                           |
+| `.isDisambiguation()` / `.isDisambig()`                   | `boolean`          | authoritative when fetched, else heuristic |
 | `.isStub()`                                               | `boolean`          |                                           |
 | `.debug()`                                                | `Document`         | prints the section outline to the console |
 

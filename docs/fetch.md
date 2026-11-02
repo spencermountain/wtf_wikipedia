@@ -17,7 +17,9 @@ wtf.fetch(titles: string[] | number[], options?): Promise<Document[]>
 - a **number** is a wikimedia pageID: `wtf.fetch(64646, 'de')`
 - a **full url** hits that wiki: `wtf.fetch('https://muppet.fandom.com/wiki/Miss_Piggy')`
 - an **array** returns an array (must be all-titles or all-pageIDs, not mixed).
-  Requests are chunked 50 titles per API call automatically.
+  Requests are chunked 50 titles per API call automatically, and batches that
+  overflow the API's response-size limit are continued automatically. Results
+  come back in input order; missing pages are skipped.
 - a **missing/invalid page resolves to `null`** — always check before using.
 
 ## Options
@@ -29,7 +31,8 @@ wtf.fetch(titles: string[] | number[], options?): Promise<Document[]>
 | `domain` | — | full domain override for 3rd-party wikis |
 | `path` | `'api.php'` | some 3rd-party wikis use `'w/api.php'` etc |
 | `follow_redirects` | `true` | fetch the redirect target instead of the stub |
-| `'Api-User-Agent'` (or `userAgent`) | generic | identify your script — set this |
+| `silent` | `false` | suppress the console warnings for failed requests |
+| `'Api-User-Agent'` (or `userAgent`) | `wtf_wikipedia/<version> (...)` | identify your script — set this |
 | `origin` / `noOrigin` | — | CORS origin param handling (browser) |
 
 ```js
@@ -45,8 +48,12 @@ let docs = await wtf.fetch(['Royal Cinema', 'Aldous Huxley'], {
 
 ## Etiquette (from the wikimedia API guidelines)
 
-- always pass an `Api-User-Agent`
-- batch page-titles into arrays (groups of ~5) instead of separate calls
+The library handles most of it: requests are batched 50-per-call and run
+serially, `maxlag=5` is always sent, and a short `Retry-After` from a lagged
+or rate-limiting server is waited-out once. What's left for you:
+
+- always pass an `Api-User-Agent` with contact info
+- batch page-titles into arrays instead of separate `fetch()` calls
 - run large jobs serially, not in parallel
 
 ## Errors
@@ -57,6 +64,18 @@ Network/HTTP failures **reject** the promise; missing pages **resolve `null`**:
 let doc = await wtf.fetch('Page that does not exist zzz')
 // doc === null
 ```
+
+Failures also print a console warning explaining what happened — pass
+`{ silent: true }` to suppress them.
+
+## Metadata from fetch
+
+Fetched documents carry extra properties parsed from the API response:
+`doc.description` (set in any language), `doc.pageImage` (preferring the
+free-licensed image), `doc.displayTitle`, `doc.defaultSort`, `doc.wikidata`,
+`doc.timestamp` and `doc.revisionID` — see [api.md](./api.md#document).
+`doc.isDisambiguation()` also uses the wiki's own authoritative flag, instead
+of a heuristic.
 
 ## More API methods (wtf-plugin-api)
 

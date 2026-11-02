@@ -22,19 +22,7 @@ const mockResponse = async (makeRes, run) => {
   }
 }
 
-test('429 rejects, and warns to slow down', async (t) => {
-  const warn = stubWarn()
-  const res = () => ({ ok: false, status: 429, headers: { get: () => '5' } })
-  await mockResponse(res, async () => {
-    await assert.rejects(wtf.fetch('Toronto'), { message: /^HTTP 429/ }, 'still rejects')
-  })
-  warn.restore()
-  t.equal(warn.calls.length, 1, 'one warning printed')
-  t.ok(/too many requests/.test(warn.calls[0]), 'explains the status code')
-  t.ok(/slow down/.test(warn.calls[0]), 'says to slow down')
-  t.ok(/retry-after: 5s/.test(warn.calls[0]), 'passes-through retry-after header')
-  t.end()
-})
+// note: the 429 + Retry-After case now waits and retries, so it lives in tests/fetch/retry.test.js
 
 test('403 warns about the User-Agent policy', async (t) => {
   const warn = stubWarn()

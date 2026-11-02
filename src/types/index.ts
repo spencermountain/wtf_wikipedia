@@ -95,7 +95,7 @@ export interface PageData {
   // optional data from api/dumpster
   title?: string
   pageId?: number
-  wikidata?: number
+  wikidata?: string // 'Q172'
   domain?: string
   lang?: string
   namespace?: string
@@ -113,7 +113,7 @@ export interface PageData {
 export interface DocInfo {
   title?: string
   pageId?: number
-  wikidata?: number
+  wikidata?: string // 'Q172'
   domain?: string
   lang?: string
   project?: string
