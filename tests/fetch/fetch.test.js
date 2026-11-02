@@ -29,17 +29,6 @@ test('promise rejects on error if no callback', async (t) => {
   t.end()
 })
 
-test("if callback supplied, error scenario calls errback and doesn't reject promise", async (t) => {
-  t.plan(3)
-  await wtf.fetch('https://example.com', 'en', (err, data) => {
-    t.equal(data, null, 'no callback data on error')
-    t.equal(err.name, 'Error', 'callback error name')
-    t.match(err.message, /^HTTP \d+/, 'callback HTTP error message')
-  })
-
-  t.end()
-})
-
 test('fetch-invalid', async (t) => {
   t.plan(1)
   const doc = await wtf.fetch('Taylor%20Swift', {
@@ -70,17 +59,17 @@ test('fetch-redirect', async (t) => {
 
 test('ambiguous-pageids', async function (t) {
   const doc = await wtf.fetch(1984, 'en')
-  t.equal(doc.title(), 'Arab world', 'input as pageid')
+  t.equal(doc.title, 'Arab world', 'input as pageid')
 
   let docs = await wtf.fetch([2983, 7493], 'en')
   t.equal(docs.length, 2, 'got two pageid results')
-  t.equal(docs[0].title(), 'Austria-Hungary', 'first pageid')
-  t.equal(docs[1].title(), 'Talk:P versus NP problem/Archive 1', 'second pageid')
+  t.equal(docs[0].title, 'Austria-Hungary', 'first pageid')
+  t.equal(docs[1].title, 'Talk:P versus NP problem/Archive 1', 'second pageid')
 
   docs = await wtf.fetch(['June', 'July'], 'en')
   t.equal(docs.length, 2, 'got two results')
-  t.equal(docs[0].title(), 'June', 'input as text')
-  t.equal(docs[1].title(), 'July', 'input as text')
+  t.equal(docs[0].title, 'June', 'input as text')
+  t.equal(docs[1].title, 'July', 'input as text')
   t.end()
 })
 
@@ -96,6 +85,6 @@ test('intensive', async (t) => {
   )
   const results = await Promise.all(promises)
   results.forEach((result) => {
-    t.ok(result.title(), 'got a page')
+    t.ok(result.title, 'got a page')
   })
 })

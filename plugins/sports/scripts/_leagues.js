@@ -155,7 +155,7 @@ const checkSeason = async function (league, team, year) {
   // the infobox record, or the one standings derives from separate win/loss fields
   const recWins = res.season?.record?.wins ?? res.standings?.record?.wins
   if (games === 0) {
-    const po = res.playoffs ?? res.postseason ?? []
+    const po = res.playoffs ?? res.postseason ?? (res.cups ? Object.values(res.cups).flat() : [])
     if (po.length > 0) {
       out.flag = 'NO LOG'
       out.note = 'page only logs the playoffs'
@@ -169,6 +169,15 @@ const checkSeason = async function (league, team, year) {
   } else if (recWins !== undefined && wins !== recWins) {
     out.flag = 'MISMATCH'
     out.note = `game-log has ${wins}W, infobox says ${recWins}W`
+  } else if (league === 'epl') {
+    // club pages carry their own {{Fb rs}} results summary - catch pages whose
+    // match boxes disagree with it (some write away scores flipped)
+    const rs = doc.templates('fb rs')[0]?.json().data
+    const rsWins = rs && rs.hw !== undefined ? Number(rs.hw) + Number(rs.aw) : undefined
+    if (rsWins !== undefined && wins !== rsWins) {
+      out.flag = 'MISMATCH'
+      out.note = `match boxes have ${wins}W, the page's results-summary says ${rsWins}W`
+    }
   }
   return out
 }

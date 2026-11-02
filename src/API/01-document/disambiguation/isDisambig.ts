@@ -1,5 +1,5 @@
-import { disambig_titles, disambig_templates } from '../../world/data/i18n/index.ts'
-import alt_disambig from './_disambig.ts'
+import { disambig_titles, disambig_templates } from '../../../world/data/i18n/index.ts'
+import alt_disambig from './templates.ts'
 const mayAlsoReg = /. may (also )?refer to\b/i
 
 // templates that signal page is not a disambiguation

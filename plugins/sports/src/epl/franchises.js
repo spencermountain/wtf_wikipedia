@@ -25,7 +25,8 @@ const franchises = [
   [{ name: 'Huddersfield Town A.F.C.', from: 2017, to: 2018 }],
   [{ name: 'Hull City A.F.C.', from: 2016, to: 2016 }, { name: 'Hull City A.F.C.', from: 2013, to: 2014 }, { name: 'Hull City A.F.C.', from: 2008, to: 2009 }],
   [{ name: 'Ipswich Town F.C.', from: 2024, to: 2024 }, { name: 'Ipswich Town F.C.', from: 2000, to: 2001 }, { name: 'Ipswich Town F.C.', from: 1992, to: 1994 }],
-  [{ name: 'Leeds United F.C.', from: 2025 }, { name: 'Leeds United F.C.', from: 2020, to: 2022 }, { name: 'Leeds United F.C.', from: 1992, to: 2003 }],
+  //wikipedia keeps leeds' pre-2018 season pages under the club's old A.F.C. name
+  [{ name: 'Leeds United F.C.', from: 2025 }, { name: 'Leeds United F.C.', from: 2020, to: 2022 }, { name: 'Leeds United A.F.C.', from: 1992, to: 2003 }],
   [{ name: 'Leicester City F.C.', from: 2024, to: 2024 }, { name: 'Leicester City F.C.', from: 2014, to: 2022 }, { name: 'Leicester City F.C.', from: 2003, to: 2003 }, { name: 'Leicester City F.C.', from: 1996, to: 2001 }, { name: 'Leicester City F.C.', from: 1994, to: 1994 }],
   [{ name: 'Liverpool F.C.', from: 1992 }],
   [{ name: 'Luton Town F.C.', from: 2023, to: 2023 }],

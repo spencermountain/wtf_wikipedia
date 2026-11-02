@@ -28,6 +28,7 @@
     "test": "tape --strict \"tests/**/*.test.js\" | tap-dancer",
     "testb": "TESTENV=prod tape --strict \"tests/**/*.test.js\" | tap-dancer",
     "version": "node ./scripts/version.js",
+    "lint": "eslint .",
     "write:all": "node ./scripts/write-db.js all",
     "write:dump": "node ./scripts/write-db.js dump",
     "write:mlb": "node ./scripts/write-db.js mlb",

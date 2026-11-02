@@ -4105,6 +4105,8 @@ let aliases$1 = {
   "bare anchored list": "anchored list",
   cvt: "convert",
   cricon: "flagicon",
+  fbaicon: "flagicon",
+  sentoff: "sent off",
   sqrt: "radic",
   "unreferenced section": "unreferenced",
   redir: "redirect",
@@ -4146,7 +4148,7 @@ let aliases$1 = {
   "harvard citation": "harv",
   harvcoltxt: "harvtxt",
   "harvard citation text": "harvtxt",
-  "harvcolnb": "harvard citation no brackets",
+  harvcolnb: "harvard citation no brackets",
   tlp: "tlx",
   // sports
   "nft-women": "fbw",
@@ -4997,7 +4999,10 @@ let arr = [
 arr.forEach((word) => {
   templates$c[word] = (tmpl, parse = parseTextArguments) => {
     let { name, id } = parse(tmpl, ["name", "id"]);
-    return { data: null, replacement: id ? `[[${word.toUpperCase()} ${name} (${id})]]` : `[[${word.toUpperCase()} ${name}]]` };
+    return {
+      data: null,
+      replacement: id ? `[[${word.toUpperCase()} ${name} (${id})]]` : `[[${word.toUpperCase()} ${name}]]`
+    };
   };
 });
 let links = ["no redirect", "tl-r", "template link no redirect", "redirect?", "auto link", "bl"];
@@ -5139,6 +5144,39 @@ const symbols = {
   "C-change": "\xB0C",
   "F-change": "\xB0F"
 };
+const names$1 = {
+  km: ["kilometre", "kilometres", "kilometer", "kilometers"],
+  mi: ["mile", "miles"],
+  m: ["metre", "metres", "meter", "meters"],
+  ft: ["foot", "feet"],
+  cm: ["centimetre", "centimetres", "centimeter", "centimeters"],
+  mm: ["millimetre", "millimetres", "millimeter", "millimeters"],
+  in: ["inch", "inches"],
+  yd: ["yard", "yards"],
+  nmi: ["nautical mile", "nautical miles"],
+  km2: ["square kilometre", "square kilometres", "square kilometer", "square kilometers"],
+  sqmi: ["square mile", "square miles"],
+  m2: ["square metre", "square metres", "square meter", "square meters"],
+  sqft: ["square foot", "square feet"],
+  ha: ["hectare", "hectares"],
+  acre: ["acre", "acres"],
+  acres: ["acre", "acres"],
+  kg: ["kilogram", "kilograms"],
+  lb: ["pound", "pounds"],
+  g: ["gram", "grams"],
+  oz: ["ounce", "ounces"],
+  t: ["tonne", "tonnes", "metric ton", "metric tons"],
+  LT: ["long ton", "long tons"],
+  l: ["litre", "litres", "liter", "liters"],
+  ml: ["millilitre", "millilitres", "milliliter", "milliliters"],
+  impgal: ["imperial gallon", "imperial gallons"],
+  impoz: ["imperial fluid ounce", "imperial fluid ounces"],
+  "km/h": ["kilometre per hour", "kilometres per hour", "kilometer per hour", "kilometers per hour"],
+  mph: ["mile per hour", "miles per hour"],
+  "m/s": ["metre per second", "metres per second", "meter per second", "meters per second"],
+  "ft/s": ["foot per second", "feet per second"],
+  kn: ["knot", "knots"]
+};
 
 const shortYear = (year, after) => {
   if (Math.floor(year / 100) === Math.floor(after / 100)) {
@@ -5147,10 +5185,38 @@ const shortYear = (year, after) => {
   return String(after);
 };
 const superscript$1 = (str = "") => {
-  const sup = { "0": "\u2070", "1": "\xB9", "2": "\xB2", "3": "\xB3", "4": "\u2074", "5": "\u2075", "6": "\u2076", "7": "\u2077", "8": "\u2078", "9": "\u2079", "-": "\u207B", "+": "\u207A" };
+  const sup = {
+    "0": "\u2070",
+    "1": "\xB9",
+    "2": "\xB2",
+    "3": "\xB3",
+    "4": "\u2074",
+    "5": "\u2075",
+    "6": "\u2076",
+    "7": "\u2077",
+    "8": "\u2078",
+    "9": "\u2079",
+    "-": "\u207B",
+    "+": "\u207A"
+  };
   return String(str).split("").map((c) => sup[c] || c).join("");
 };
 const unitSymbol = (unit = "") => symbols[unit] || unit;
+const unitName = (unit = "", value = "", opts = {}) => {
+  let names = names$1[unit] || names$1[unit.toLowerCase()];
+  if (!names) {
+    return unitSymbol(unit);
+  }
+  const us = opts.sp === "us" && names.length === 4;
+  const plural = opts.adj !== "on" && Number(String(value).replace(/,/g, "")) !== 1;
+  let i = plural ? 1 : 0;
+  if (us) {
+    i += 2;
+  }
+  return names[i];
+};
+const spellInput = (opts = {}) => opts.abbr !== "on" && opts.abbr !== "in" && opts.abbr !== "values";
+const spellOutput = (opts = {}) => opts.abbr === "off" || opts.abbr === "in";
 const sigFigs = (str = "") => {
   let digits = str.replace(/[^0-9.]/g, "").replace(/^0+/, "");
   if (!digits.includes(".")) {
@@ -5179,16 +5245,17 @@ const fmtNumber$1 = (n, sig) => {
   return withCommas(str);
 };
 const convertUnits = (value, from, to, opts = {}) => {
+  const outUnit = (unit2, out2) => spellOutput(opts) ? unitName(unit2, out2, opts) : unitSymbol(unit2);
   let n = Number(value.replace(/,/g, ""));
   if (!Number.isFinite(n)) {
     return null;
   }
   let sig = sigFigs(value);
-  let format = (out) => fmtNumber$1(out, Number(opts.sigfig) || sig);
+  let format = (out2) => fmtNumber$1(out2, Number(opts.sigfig) || sig);
   if (opts.precision !== void 0 && /^-?\d+$/.test(opts.precision)) {
     let places = Number(opts.precision);
-    format = (out) => {
-      let rounded = Math.round(out / Math.pow(10, -places)) * Math.pow(10, -places);
+    format = (out2) => {
+      let rounded = Math.round(out2 / Math.pow(10, -places)) * Math.pow(10, -places);
       return places > 0 ? rounded.toFixed(places) : rounded.toLocaleString("en-US");
     };
   }
@@ -5199,13 +5266,13 @@ const convertUnits = (value, from, to, opts = {}) => {
     if (to === "C" && from === "C") {
       return null;
     }
-    let out = fn(n);
+    let out2 = fn(n);
     if (from === "C" && to === "K") {
-      out = n + 273.15;
+      out2 = n + 273.15;
     } else if (to !== def) {
       return null;
     }
-    return `${format(out)} ${unitSymbol(to)}`;
+    return `${format(out2)} ${unitSymbol(to)}`;
   }
   let unit = units[from] || units[from.toLowerCase()];
   if (!unit) {
@@ -5221,7 +5288,8 @@ const convertUnits = (value, from, to, opts = {}) => {
       return null;
     }
   }
-  return `${format(n * factor)} ${unitSymbol(to)}`;
+  const out = format(n * factor);
+  return `${out} ${outUnit(to, out)}`;
 };
 var functions = {
   transliteration: (tmpl, parse = parseTextArguments) => {
@@ -5577,23 +5645,39 @@ var functions = {
     return { data: null, replacement: `1/${obj.a}` };
   },
   //https://en.wikipedia.org/wiki/Template:Convert#Ranges_of_values
+  // {{convert|37|ft|m}} → 37 feet (11 m) - the input unit is spelled out, the output abbreviated
   convert: (tmpl, parse = parseTextArguments) => {
     let obj = parse(tmpl, ["num", "two", "three", "four"]);
+    if (obj.template === "cvt" && obj.abbr === void 0) {
+      obj.abbr = "on";
+    }
+    const fmtNum = (n = "") => /^-?\d+(\.\d+)?$/.test(n) && obj.comma !== "off" ? withCommas(n) : n;
+    const input = (unit = "", value = "") => spellInput(obj) ? unitName(unit, value, obj) : unitSymbol(unit);
     if (obj.two === "-" || obj.two === "to" || obj.two === "and") {
       if (obj.four) {
-        return { data: null, replacement: `${obj.num} ${obj.two} ${obj.three} ${unitSymbol(obj.four)}` };
+        return {
+          data: null,
+          replacement: `${fmtNum(obj.num)} ${obj.two} ${fmtNum(obj.three)} ${input(obj.four, obj.three)}`
+        };
       }
-      return { data: null, replacement: `${obj.num} ${obj.two} ${unitSymbol(obj.three)}` };
+      return { data: null, replacement: `${fmtNum(obj.num)} ${obj.two} ${input(obj.three, obj.num)}` };
     }
     if (obj.three && /^[0-9.]+$/.test(obj.three) && obj.four && /^[a-z]+$/i.test(obj.four)) {
-      return { data: null, replacement: `${obj.num} ${unitSymbol(obj.two)} ${obj.three} ${unitSymbol(obj.four)}` };
+      return {
+        data: null,
+        replacement: `${fmtNum(obj.num)} ${input(obj.two, obj.num)} ${fmtNum(obj.three)} ${input(obj.four, obj.three)}`
+      };
     }
-    let num = obj.num || "";
-    if (/^-?\d+(\.\d+)?$/.test(num) && obj.comma !== "off") {
-      num = withCommas(num);
+    let str = `${fmtNum(obj.num)} ${input(obj.two, obj.num)}`;
+    if (obj.adj === "on") {
+      str = `${fmtNum(obj.num)}-${input(obj.two, obj.num)}`;
     }
-    let str = `${num} ${unitSymbol(obj.two)}`;
-    let converted = convertUnits(obj.num || "", obj.two || "", obj.three, { precision: obj.four, sigfig: obj.sigfig });
+    let converted = convertUnits(obj.num || "", obj.two || "", obj.three, {
+      precision: obj.four,
+      sigfig: obj.sigfig,
+      abbr: obj.abbr,
+      sp: obj.sp
+    });
     if (converted && obj.disp !== "output only" && obj.disp !== "number") {
       str += ` (${converted})`;
     } else if (converted && obj.disp === "output only") {
@@ -6331,7 +6415,7 @@ let shorthands = [
   ["died-in", "d. "],
   ["married-in", "m. "]
 ];
-let fns = shorthands.reduce((h, a) => {
+let fns$1 = shorthands.reduce((h, a) => {
   let [name, out] = a;
   h[name] = (tmpl, parse = parseTextArguments) => {
     let { first } = parse(tmpl, ["first"]);
@@ -6361,7 +6445,7 @@ let justNames = [
   "his/her"
 ];
 justNames.forEach((str) => {
-  fns[str] = str;
+  fns$1[str] = str;
 });
 
 const names = {
@@ -7691,6 +7775,23 @@ let templates$a = {
     let found = findFlag(obj.flag) || [];
     return { data: null, replacement: found[0] || "" };
   },
+  //https://en.wikipedia.org/wiki/Template:Flagg
+  // a format-string flag - 'n' in the mode shows the name, 'u' leaves it unlinked
+  // {{flagg|unce|ESP}} → 🇪🇸 Spain,  {{flagg|cxxlo|ENG}} → 🏴󠁧󠁢󠁥󠁮󠁧󠁿
+  flagg: (tmpl, parse = parseTextArguments) => {
+    let obj = parse(tmpl, ["mode", "flag"]);
+    let found = findFlag(obj.flag);
+    if (!found) {
+      return { data: null, replacement: obj.flag || "" };
+    }
+    let mode = (obj.mode || "").toLowerCase();
+    if (mode.includes("n")) {
+      let name = titleCase(found[2]);
+      let str = mode.includes("u") ? `${found[0]} ${name}` : `${found[0]} [[${name}]]`;
+      return { data: null, replacement: str };
+    }
+    return { data: null, replacement: `[[${titleCase(found[2])}|${found[0]}]]` };
+  },
   //same, but a soccer team
   fb: (tmpl, parse = parseTextArguments) => {
     let obj = parse(tmpl, order);
@@ -7840,7 +7941,11 @@ let moreCells = [
   ["dunno", "?"],
   ["draw", ""],
   ["cnone", ""],
-  ["nocontest", ""]
+  ["nocontest", ""],
+  ["won", "Won"],
+  ["loss", "Loss"],
+  ["windl", ""]
+  //{{WinDL|'''5'''–0 (H)}} keeps its score text
 ];
 moreCells.forEach((a) => {
   templates$9[a[0]] = (tmpl, parse = parseTextArguments) => {
@@ -7952,7 +8057,28 @@ const ordinal = (tmpl, parse = parseTextArguments) => {
   }
   return { data: null, replacement: toOrdinal(n) };
 };
-const ones = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"];
+const ones = [
+  "zero",
+  "one",
+  "two",
+  "three",
+  "four",
+  "five",
+  "six",
+  "seven",
+  "eight",
+  "nine",
+  "ten",
+  "eleven",
+  "twelve",
+  "thirteen",
+  "fourteen",
+  "fifteen",
+  "sixteen",
+  "seventeen",
+  "eighteen",
+  "nineteen"
+];
 const tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
 const spellOut = (n) => {
   if (n < 20) {
@@ -7977,7 +8103,22 @@ const spell = (tmpl, parse = parseTextArguments) => {
   }
   return { data: null, replacement: spellOut(n) };
 };
-const arrows = { right: "\u2192", left: "\u2190", up: "\u2191", down: "\u2193", "left-right": "\u2194", "up-down": "\u2195", ne: "\u2197", nw: "\u2196", se: "\u2198", sw: "\u2199", r: "\u2192", l: "\u2190", u: "\u2191", d: "\u2193" };
+const arrows = {
+  right: "\u2192",
+  left: "\u2190",
+  up: "\u2191",
+  down: "\u2193",
+  "left-right": "\u2194",
+  "up-down": "\u2195",
+  ne: "\u2197",
+  nw: "\u2196",
+  se: "\u2198",
+  sw: "\u2199",
+  r: "\u2192",
+  l: "\u2190",
+  u: "\u2191",
+  d: "\u2193"
+};
 const arrow = (tmpl, parse = parseTextArguments) => {
   let obj = parse(tmpl, ["dir"]);
   return { data: null, replacement: arrows[(obj.dir || "right").toLowerCase()] || "\u2192" };
@@ -8434,7 +8575,21 @@ const templates$8 = {
 };
 
 const superscript = (str = "") => {
-  const sup = { 0: "\u2070", 1: "\xB9", 2: "\xB2", 3: "\xB3", 4: "\u2074", 5: "\u2075", 6: "\u2076", 7: "\u2077", 8: "\u2078", 9: "\u2079", "-": "\u207B", "+": "\u207A", "\u2212": "\u207B" };
+  const sup = {
+    0: "\u2070",
+    1: "\xB9",
+    2: "\xB2",
+    3: "\xB3",
+    4: "\u2074",
+    5: "\u2075",
+    6: "\u2076",
+    7: "\u2077",
+    8: "\u2078",
+    9: "\u2079",
+    "-": "\u207B",
+    "+": "\u207A",
+    "\u2212": "\u207B"
+  };
   return String(str).split("").map((c) => sup[c] || c).join("");
 };
 const subscript = (str = "") => {
@@ -8888,7 +9043,7 @@ var textTmpl = {
   ...handlers,
   ...templates$c,
   ...functions,
-  ...fns,
+  ...fns$1,
   ...templates$9,
   ...inline,
   ...templates$8,
@@ -8969,7 +9124,7 @@ const keys$1 = {
 };
 const labels = /* @__PURE__ */ new Set(["pron", "lang", "local", "uk", "us", "ukus", "usuk", "also", "alt", "ipa", "wasm", "pronunciation", "english"]);
 
-var dataFns = {
+var fns = {
   // just parse it and do nothing
   "citation needed": (tmpl, parse = parseTextArguments) => {
     const payload = parse(tmpl);
@@ -9339,8 +9494,36 @@ var dataFns = {
   }
 };
 
-const pageList = ["main", "main article", "see also", "seealso", "further", "further information", "details", "broader", "main list", "see", "excerpt", "category see also", "cat main", "main category", "wikipedia books"];
-const aboutList = ["about", "for", "other uses", "other uses of", "other people", "other places", "other ships", "redirect-distinguish", "distinguish", "self reference", "selfref"];
+const pageList = [
+  "main",
+  "main article",
+  "see also",
+  "seealso",
+  "further",
+  "further information",
+  "details",
+  "broader",
+  "main list",
+  "see",
+  "excerpt",
+  "category see also",
+  "cat main",
+  "main category",
+  "wikipedia books"
+];
+const aboutList = [
+  "about",
+  "for",
+  "other uses",
+  "other uses of",
+  "other people",
+  "other places",
+  "other ships",
+  "redirect-distinguish",
+  "distinguish",
+  "self reference",
+  "selfref"
+];
 let templates$6 = {};
 pageList.forEach((name) => {
   templates$6[name] = (tmpl, parse = parseTextArguments) => {
@@ -9395,7 +9578,7 @@ let templates$5 = {
   geo: ["lat", "lon", "zoom"]
   //https://en.wikivoyage.org/wiki/Template:Geo
 };
-templates$5 = Object.assign(templates$5, templates$6, dataFns);
+templates$5 = Object.assign(templates$5, templates$6, fns);
 var dataTmpl = templates$5;
 
 const mlbplayer = {
@@ -11370,28 +11553,7 @@ const as = (handler, kind) => {
   fn.kind = kind;
   return fn;
 };
-const byLang = {
-  fr: {
-    monnaie: as(templates$3.currency, "currency"),
-    unit\u00E9: as(templates$3.currency, "currency"),
-    nombre: as(templates$3.currency, "currency"),
-    nb: as(templates$3.currency, "currency"),
-    iso4217: as(templates$3.currency, "currency")
-  },
-  es: {
-    "cita requerida": as(dataFns["citation needed"], "citation needed")
-  },
-  it: {
-    "citazione necessaria": as(dataFns["citation needed"], "citation needed")
-  },
-  pt: {
-    pbpe: 0
-    // https://pt.wikipedia.org/wiki/Predefinição:PBPE - português brasileiro/europeu
-  },
-  eu: {
-    egiptekas: "{|-\n"
-  }
-};
+const byLang = {};
 const byProject = {
   wikinews: {
     byline: as(parsers.date, "date"),
@@ -11591,7 +11753,7 @@ const allTemplates = (wiki, opts) => {
   return state;
 };
 
-const process = (wiki, opts = defaults$1) => {
+const process$1 = (wiki, opts = defaults$1) => {
   const { templates, remaining } = allTemplates(wiki, opts);
   const { infoboxes, references, others } = sortOut(templates);
   return {
@@ -11682,7 +11844,7 @@ const parseHeading = function(heading, opts = defaults$1) {
   let depth = Math.max(level - 2, 0);
   const { wiki, citations } = extractReferences(title.trim(), opts);
   const references = citations.filter((c) => !c.reuse).flatMap((c) => c.references);
-  const { remaining } = process(wiki.trim(), opts);
+  const { remaining } = process$1(wiki.trim(), opts);
   const block = fromText(remaining.trim(), opts);
   block.wiki = heading;
   return { block, depth, references };
@@ -11745,7 +11907,7 @@ const parsePage = function(wiki, opts = defaults$1) {
 
 const parseElection = function(section, opts = defaults$1) {
   section.remaining = section.remaining.replace(/\{\{election box begin(.+?)\{\{election box end\}\}/gis, (tmpl) => {
-    const { templates } = process(tmpl, opts);
+    const { templates } = process$1(tmpl, opts);
     const start = templates.find((t) => t.kind === "election box begin");
     let candidates = templates.filter((t) => t.kind === "election box candidate");
     const summary = templates.find((t) => t.kind === "election box gain" || t.kind === "election box hold");
@@ -12183,7 +12345,7 @@ const buildRows = function(rowText, headings, section, opts) {
   headings = headings.map((h) => h.replace(/<[^>]*>/g, " ").trim());
   rowText = rowText.replace(/<br ?\/?>/gi, " ");
   rowText = rowText.replace(/<\/?(?:span|small|big|sup|sub|center|[biu])[^>]*>/gi, "");
-  const parsed = process(rowText, opts);
+  const parsed = process$1(rowText, opts);
   section.templates.push(...parsed.templates);
   section.references.push(...parsed.references);
   const table = "{|\n! " + headings.join(" !! ") + "\n" + parsed.remaining + "\n|}";
@@ -12384,7 +12546,7 @@ const parseLiterals = (section) => {
 
 const sectionTemplates = (section, opts = defaults$1) => {
   section = parseLiterals(section);
-  const { infoboxes, references, templates, remaining } = process(section.remaining, opts);
+  const { infoboxes, references, templates, remaining } = process$1(section.remaining, opts);
   section.infoboxes = infoboxes;
   section.references.push(...references);
   section.templates.push(...templates);
@@ -12988,6 +13150,165 @@ const makeHeaders = function(options) {
   };
 };
 
+const explain = {
+  400: {
+    title: "bad request",
+    why: `the api couldn't understand the request - usually a malformed title or parameter.`,
+    fix: `double-check the page title and any fetch options.`
+  },
+  403: {
+    title: "request blocked",
+    why: `wikimedia requires a descriptive User-Agent header, and blocks empty or generic ones.`,
+    fix: `identify yourself:  wtf.fetch(title, { 'Api-User-Agent': 'my-app/1.0 (me@example.com)' })`
+  },
+  404: {
+    title: "api not found",
+    why: `no api exists at this url - the domain or path may be wrong.`,
+    fix: `check the 'domain' and 'path' options - many wikis use 'w/api.php'.`
+  },
+  408: {
+    title: "request timeout",
+    why: `the server gave-up waiting for this request.`,
+    fix: `try again in a moment, or fetch fewer pages at once.`
+  },
+  414: {
+    title: "url too long",
+    why: `too many page-titles (or very-long ones) packed into one request.`,
+    fix: `fetch fewer pages at a time.`
+  },
+  429: {
+    title: "too many requests",
+    why: `wikimedia wants you to slow down - anonymous clients get ~10 requests/minute.`,
+    fix: `run requests one-at-a-time, add a delay between them, and set an Api-User-Agent with contact-info.`
+  },
+  500: {
+    title: "wikimedia server error",
+    why: `something went wrong on their end, not yours.`,
+    fix: `wait a moment and retry.`
+  },
+  502: {
+    title: "bad gateway",
+    why: `a wikimedia proxy couldn't reach its api servers.`,
+    fix: `wait a moment and retry.`
+  },
+  503: {
+    title: "servers overloaded",
+    why: `wikimedia's servers are temporarily overloaded, or down for maintenance.`,
+    fix: `wait ~5 seconds and retry - back-off longer if it continues.`
+  },
+  504: {
+    title: "gateway timeout",
+    why: `the api servers took too-long to respond.`,
+    fix: `wait a moment and retry.`
+  }
+};
+const apiErrors = {
+  ratelimited: {
+    title: "rate-limited",
+    why: `you've hit a wikimedia rate-limit.`,
+    fix: `slow down - run requests one-at-a-time, with a delay between them.`
+  },
+  maxlag: {
+    title: "servers lagged",
+    why: `wikimedia's databases are busy, and are asking non-urgent clients to wait.`,
+    fix: `wait ~5 seconds, then retry.`
+  }
+};
+const inBrowser = function() {
+  return typeof globalThis.window !== "undefined" && typeof globalThis.window.document !== "undefined";
+};
+const wantsAnsi = function() {
+  if (typeof process === "undefined" || !process.stderr) {
+    return false;
+  }
+  if (process.env.NO_COLOR) {
+    return false;
+  }
+  return process.stderr.isTTY === true;
+};
+let lastWarn = {};
+const shouldWarn = function(key) {
+  let now = Date.now();
+  if (lastWarn[key] && now - lastWarn[key] < 5e3) {
+    return false;
+  }
+  lastWarn[key] = now;
+  return true;
+};
+const render = function(head, why, fix, url) {
+  if (inBrowser()) {
+    console.warn(
+      `%c\u26A0 wtf_wikipedia  %c${head}
+%c  ${why}
+%c  \u2192 ${fix}%c${url ? "\n  " + url : ""}`,
+      "color:#999",
+      "color:#e6a23c; font-weight:bold",
+      "color:inherit",
+      "color:#3a7bd5",
+      "color:#999"
+    );
+    return;
+  }
+  const y = "\x1B[33m";
+  const b = "\x1B[1m";
+  const c = "\x1B[36m";
+  const d = "\x1B[2m";
+  const r = "\x1B[0m";
+  if (wantsAnsi()) {
+    console.warn(`${d}\u26A0 wtf_wikipedia${r}  ${b}${y}${head}${r}
+  ${why}
+  ${c}\u2192 ${fix}${r}${url ? `
+  ${d}${url}${r}` : ""}`);
+    return;
+  }
+  console.warn(`\u26A0 wtf_wikipedia  ${head}
+  ${why}
+  \u2192 ${fix}${url ? "\n  " + url : ""}`);
+};
+const warnHttp = function(status, url, retryAfter) {
+  if (!shouldWarn(`http-${status}`)) {
+    return;
+  }
+  let info = explain[status] || {
+    title: "request failed",
+    why: `the wikimedia api responded with an http-${status} error.`,
+    fix: `wait a moment and retry.`
+  };
+  let why = info.why;
+  if (retryAfter) {
+    why += `  (retry-after: ${retryAfter}s)`;
+  }
+  render(`${status} - ${info.title}`, why, info.fix, url);
+};
+const warnNetwork = function(url, e) {
+  if (!shouldWarn("network")) {
+    return;
+  }
+  if (e && e.name === "SyntaxError") {
+    render(`bad response - ${e.message}`, `the response wasn't valid json.`, `check the url, and the 'path' option.`, url);
+    return;
+  }
+  let head = "network error";
+  if (e && e.message) {
+    head += ` - ${e.message}`;
+  }
+  let why = `the request never reached wikimedia - no network, a dns failure, or a blocked cors request.`;
+  let fix = `check your connection - in a browser, check cors and the 'origin' option.`;
+  render(head, why, fix, url);
+};
+const warnApi = function(error, url) {
+  let code = error.code || "error";
+  if (!shouldWarn(`api-${code}`)) {
+    return;
+  }
+  let info = apiErrors[code] || {
+    title: code,
+    why: error.info || `the api returned an '${code}' error.`,
+    fix: `see https://www.mediawiki.org/wiki/API:Errors_and_warnings`
+  };
+  render(`api ${info.title}`, info.why, info.fix, url);
+};
+
 const isUrl = /^https?:\/\//;
 const chunkSize = 50;
 const defaults = {
@@ -12999,8 +13320,12 @@ const defaults = {
   //some 3rd party sites use a weird path
 };
 const getJson = function(url, headers) {
-  return fetch(url, headers).then((res) => {
+  return fetch(url, headers).catch((e) => {
+    warnNetwork(url, e);
+    throw e;
+  }).then((res) => {
     if (res.ok !== true) {
+      warnHttp(res.status, url, res.headers?.get?.("retry-after"));
       throw new Error(`HTTP ${res.status} error fetching: ${url}`);
     }
     return res.json();
@@ -13038,6 +13363,9 @@ const fetchPage = function(title, options, callback) {
           if (!res) {
             throw new Error(`No JSON Data Found For ${url}`);
           }
+          if (res.error) {
+            warnApi(res.error, url);
+          }
           return getResult(res, options) || [];
         });
       })
@@ -13058,12 +13386,14 @@ const fetchPage = function(title, options, callback) {
 var version = "10.5.0";
 
 const request = function(url, opts) {
-  return fetch(url, opts).then(function(res) {
+  return fetch(url, opts).then((res) => {
+    if (res.ok !== true) {
+      warnHttp(res.status, url, res.headers?.get?.("retry-after"));
+      return {};
+    }
     return res.json();
   }).catch((e) => {
-    console.error("\n\n=-=- http response error =-=-=-");
-    console.error(url);
-    console.error(e);
+    warnNetwork(url, e);
     return {};
   });
 };

@@ -18,6 +18,7 @@ const colors = {
   ddffdd: 'win',
   afa: 'win',
   '9f9': 'win',
+  d0ffe3: 'win', //mint, with the pink below on 90s-00s soccer pages
   fbb: 'loss',
   fcc: 'loss',
   fcf: 'loss', //pink, on ahl playoff logs
@@ -28,8 +29,10 @@ const colors = {
   ffdddd: 'loss',
   faa: 'loss',
   f99: 'loss',
+  ffd0e3: 'loss',
   ffb: 'otl',
   ffc: 'otl',
+  ffd: 'otl',
   ffe: 'otl',
   ffffbb: 'otl',
   ffffcc: 'otl',
@@ -69,11 +72,17 @@ const rawOutcome = function (attrs = '', scoreText = '') {
   return null
 }
 
-// soccer tables use the same yellow for a draw that hockey uses for an ot-loss
+// soccer tables use the same yellow for a draw that hockey uses for an ot-loss,
+// and some 90s pages shade draws a light grey that means nothing elsewhere
 const outcomeOf = function (attrs = '', scoreText = '', draws = false) {
   const res = rawOutcome(attrs, scoreText)
-  if (draws === true && res === 'otl') {
-    return 'tie'
+  if (draws === true) {
+    if (res === 'otl') {
+      return 'tie'
+    }
+    if (res === null && /f3f3f3/i.test(String(attrs))) {
+      return 'tie'
+    }
   }
   return res
 }

@@ -42,7 +42,8 @@
     "data:diff": "node ./scripts/05-diff.js",
     "test": "tape --strict \"tests/**/*.test.js\" | tap-dancer",
     "testb": "TESTENV=prod tape --strict \"tests/**/*.test.js\" | tap-dancer",
-    "version": "node ./scripts/version.js"
+    "version": "node ./scripts/version.js",
+    "lint": "eslint ."
   },
   "files": [
     "builds",

@@ -1,6 +1,5 @@
 import { withChildren } from '../_lib.js'
-import { parseScore, sameTeam, parseAttendance } from './game.js'
-import buildGame from './game.js'
+import buildGame, { parseScore, sameTeam, parseAttendance } from './game.js'
 import rowGroups from './rows.js'
 import { finish } from './games.js'
 
@@ -62,10 +61,11 @@ const buildMatch = function (data, ctx) {
   const score = parseScore(data.score)
   if (score && game.home !== null) {
     game.result = game.home ? { us: score[0], them: score[1] } : { us: score[1], them: score[0] }
-    if (game.outcome === null && score[0] !== score[1]) {
+    // an unequal score settles it - `result` letters are sometimes written from
+    // the home side's perspective. a drawn score keeps the letter (penalty shootouts)
+    if (score[0] !== score[1]) {
       game.outcome = game.result.us > game.result.them ? 'win' : 'loss'
-    }
-    if (game.outcome === null && score[0] === score[1]) {
+    } else if (game.outcome === null) {
       game.outcome = 'tie'
     }
   }
@@ -117,6 +117,10 @@ const findMatches = function (doc, ctx, titles, skip) {
       const want = title.toLowerCase()
       const sections = all.filter((s) => {
         const t = s.title().trim().toLowerCase()
+        // 'league' must not loose-match a 'League Cup' section
+        if (skip && skip.test(t)) {
+          return false
+        }
         return loose ? t.includes(want) : t === want
       })
       for (const section of sections) {

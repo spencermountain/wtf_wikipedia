@@ -10,7 +10,8 @@ import Blocks from '../Block/Blocks.ts'
 import Tables from '../02-section/table/Tables.ts'
 import Templates from '../02-section/template/Templates.ts'
 import { withDefaults } from '../../_lib/defaults.ts'
-import isDisambig from './isDisambig.ts'
+import isDisambig from './disambiguation/isDisambig.ts'
+import parseDisambig from './disambiguation/index.ts'
 import isStub from './isStub.ts'
 import sectionMap from './_sectionMap.ts'
 import parseImage from '../../parse/03-paragraph/02-images/parse.ts'
@@ -130,6 +131,9 @@ class Document {
   }
   isDisambiguation() {
     return isDisambig(this)
+  }
+  disambiguation() {
+    return parseDisambig(this)
   }
 
   categories() {

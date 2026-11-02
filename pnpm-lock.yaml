@@ -231,25 +231,6 @@ importers:
         specifier: workspace:*
         version: link:../..
 
-  plugins/debug:
-    devDependencies:
-      wtf_wikipedia:
-        specifier: workspace:*
-        version: link:../..
-
-  plugins/disambig:
-    dependencies:
-      compromise:
-        specifier: 14.15.1
-        version: 14.15.1
-      spacetime:
-        specifier: 7.12.1
-        version: 7.12.1
-    devDependencies:
-      wtf_wikipedia:
-        specifier: workspace:*
-        version: link:../..
-
   plugins/html:
     devDependencies:
       wtf_wikipedia:
@@ -269,6 +250,16 @@ importers:
         version: link:../..
 
   plugins/markdown:
+    devDependencies:
+      wtf_wikipedia:
+        specifier: workspace:*
+        version: link:../..
+
+  plugins/nsfw:
+    dependencies:
+      spacetime:
+        specifier: 7.12.1
+        version: 7.12.1
     devDependencies:
       wtf_wikipedia:
         specifier: workspace:*

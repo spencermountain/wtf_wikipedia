@@ -190,6 +190,10 @@ const buildGame = function (row, ctx) {
   } else if (/^n$/i.test(ha)) {
     game.home = null //neutral ground
   }
+  // a bare W/L/D letter-column beside a separate score column
+  if (game.outcome === null) {
+    game.outcome = outcomeOf('', getCell(cells, ['result', 'outcome']), ctx.draws === true)
+  }
   // the ot/so flag is its own column, or tacked onto the score: '2–2 OT', '109–113 (OT)'
   const ot = getCell(cells, ['ot', 'overtime']) || String(scoreText)
   game.overtime = /\b([0-9]?ot|so)\b/i.test(ot)
