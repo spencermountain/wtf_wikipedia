@@ -18,6 +18,7 @@ export default [
         clearInterval: 'readonly',
         __dirname: 'readonly',
         __filename: 'readonly',
+        URLSearchParams: 'readonly',
         fetch: 'readonly',
         URL: 'readonly',
       },
