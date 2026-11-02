@@ -26,8 +26,9 @@ A plugin that finds `birth date, birth place`, and `death date` information for 
 const wtf = require('wtf_wikipedia')
 wtf.extend(require('wtf-plugin-person'))
 ;(async () => {
-  await wtf.fetch('David Phillips (entrepreneur)').birthDate()
-  // {year: 1964, month:null, date:null}
+  let doc = await wtf.fetch('David Phillips (entrepreneur)')
+  doc.birthDate()
+  // {year: 1964}
 })()
 ```
 
@@ -68,7 +69,8 @@ wtf.fetch('Billy Elliot').then((doc) => {
   
 ### `.birthDate()`
 
-returns `month`, `year` and `date` properties (also `originalDate` if the date is inaccurate), or a null response
+returns `year`, `month` and `date` properties (also `originalDate` if the date is inaccurate), or a null response.
+`month` is 0-indexed (January is `0`), following the spacetime convention. When only the year is known, `month` and `date` are omitted.
 
 - looks at various person-infoboxes, like `Infobox officeholder` or `Infobox ice hockey player`
 - looks at first-sentence parentheses, like `'Wayne Douglas Gretzky CC (/ˈɡrɛtski/; born January 26, 1961) is a ...'`
@@ -76,10 +78,9 @@ returns `month`, `year` and `date` properties (also `originalDate` if the date i
 
 ### `.birthPlace()`
 
-returns a string - and a wikipedia article title, if possible
+returns a plain-text string, like `'San Diego, California'`, or null
 
 - looks at various person infoboxes
-- looks at category information, like `'Category:People from Geneva'`
 
 ### `.isAlive()`
 

@@ -1,15 +1,12 @@
-// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
-import register from '../../register.js'
-import version from '../../_version.js'
 import aliases from './aliases.js'
-import parsers from './citations.js'
+import citations from './citations.js'
 
 const infoboxes = [
   'esser viu',
   'ficha de taxón',
   'fitxa de tàxon',
   'iev',
-  'infotaula d\'ésser viu',
+  "infotaula d'ésser viu",
   'infotaula esser viu',
   'infotaula taxonòmica',
   'infotaula ésser viu',
@@ -41,11 +38,18 @@ const infoboxes = [
   'ésser viu',
 ]
 
-const data = { aliases, infoboxes, parsers }
-
-const plugin = (_models, templates, boxes) => register(data, templates, boxes)
-plugin.lang = 'ca'
-plugin.version = version
-
-export { data }
-export default plugin
+export default {
+  lang: 'ca',
+  enLang: 'catalan',
+  category: ['categoria'],
+  redirect: ['redireccio', 'redireccion', 'redirecció'],
+  stub: ['esborrany'],
+  infobox: [],
+  image: ['fitxer', 'imatge'],
+  reference: [],
+  disambig: ['desambiguació'],
+  disambigTitle: [],
+  aliases,
+  infoboxes,
+  templates: citations,
+}

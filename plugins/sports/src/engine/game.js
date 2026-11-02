@@ -97,31 +97,48 @@ const opponentCol = function (game, row, ctx, score) {
   return true
 }
 
-const monthNames = [
-  'january',
-  'february',
-  'march',
-  'april',
-  'may',
-  'june',
-  'july',
-  'august',
-  'september',
-  'october',
-  'november',
-  'december',
-]
+const months = {
+  jan: 'January',
+  feb: 'February',
+  mar: 'March',
+  apr: 'April',
+  may: 'May',
+  jun: 'June',
+  jul: 'July',
+  aug: 'August',
+  sep: 'September',
+  sept: 'September',
+  oct: 'October',
+  nov: 'November',
+  dec: 'December',
+  january: 'January',
+  february: 'February',
+  march: 'March',
+  april: 'April',
+  june: 'June',
+  july: 'July',
+  august: 'August',
+  september: 'September',
+  october: 'October',
+  november: 'November',
+  december: 'December',
+}
 
-// some 1980s logs name the date column after the month, with day-of-month cells
+// some logs name the date column after the month, with day-of-month cells like '14' or '1*'
 const findDate = function (cells) {
   // prefix-match, for combined headings like 'Date / Time (ET)'
   const key = findKey(cells, ['date'])
   if (key && cells[key]) {
     return cells[key]
   }
-  const month = Object.keys(cells).find((k) => monthNames.includes(k))
-  if (month && cells[month] && /^\d{1,2}$/.test(String(cells[month]).trim())) {
-    return `${month.charAt(0).toUpperCase()}${month.slice(1)} ${String(cells[month]).trim()}`
+  const month = Object.keys(cells).find((k) => months[k] !== undefined)
+  if (month && cells[month]) {
+    const day = String(cells[month])
+      .trim()
+      .match(/^(\d{1,2})\*?$/)
+    if (day) {
+      return `${months[month]} ${day[1]}`
+    }
   }
   return ''
 }

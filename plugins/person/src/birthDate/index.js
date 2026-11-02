@@ -4,7 +4,7 @@ import byCategory from './byCategory.js'
 import parseDate from '../parseDate.js'
 
 const birthDate = function (doc) {
-  let res = byInfobox(doc, 'birth_date')
+  let res = byInfobox(doc, ['birth_date', 'birthdate', 'born'])
   if (res) {
     return parseDate(res)
   }

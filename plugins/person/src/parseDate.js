@@ -45,19 +45,17 @@ const parseDate = function (str) {
       }
     }
   }
-  // just the year
+  // just the year - no month/day knowledge, so return only the year
   const justYear = str.match(regJustYear)
   if (justYear) {
-    const res = { year: 0, month: 0, date: 1 }
+    const res = { year: parseInt(justYear[1], 10) }
+    if (regBCE.test(str)) {
+      res.year = -res.year
+    }
     if (inaccurateOriginal) {
       Object.defineProperty(res, 'originalDate', {
         value: inaccurateOriginal,
       })
-    }
-    if (regBCE.test(str)) {
-      res.year = -parseInt(justYear[1], 10)
-    } else {
-      res.year = parseInt(justYear[1], 10)
     }
     return res
   }

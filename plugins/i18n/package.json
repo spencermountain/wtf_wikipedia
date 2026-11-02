@@ -19,9 +19,13 @@
       }
     },
     "./package.json": "./package.json",
-    "./words": {
-      "types": "./types/words.d.ts",
-      "default": "./src/words/index.js"
+    "./plugin": {
+      "types": "./types/plugin.d.ts",
+      "default": "./src/plugin.js"
+    },
+    "./all": {
+      "types": "./types/index.d.ts",
+      "default": "./src/langs/all/index.js"
     },
     "./*": {
       "types": "./types/lang.d.ts",
@@ -34,8 +38,8 @@
   "sideEffects": false,
   "scripts": {
     "build": "node ./scripts/version.js && rollup -c",
-    "data": "node ./scripts/01-fetch-sitelinks.js && node ./scripts/02-fetch-redirects.js && node ./scripts/03-fetch-templatedata.js && node ./scripts/04-diff.js",
-    "data:diff": "node ./scripts/04-diff.js",
+    "data": "node ./scripts/01-fetch-sitelinks.js && node ./scripts/02-fetch-redirects.js && node ./scripts/03-fetch-templatedata.js && node ./scripts/04-fetch-words.js && node ./scripts/05-diff.js",
+    "data:diff": "node ./scripts/05-diff.js",
     "test": "tape --strict \"tests/**/*.test.js\" | tap-dancer",
     "testb": "TESTENV=prod tape --strict \"tests/**/*.test.js\" | tap-dancer",
     "version": "node ./scripts/version.js"

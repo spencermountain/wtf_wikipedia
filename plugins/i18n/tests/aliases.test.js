@@ -5,7 +5,7 @@ import wtf from './_lib.js'
 // union every pack's names, grouped by the core template they resolve to
 const loadFamilies = async () => {
   const dir = new URL('../src/langs/', import.meta.url)
-  const langs = readdirSync(dir).filter((f) => f !== '_lib.js' && f !== 'all' && f.startsWith('.') === false)
+  const langs = readdirSync(dir).filter((f) => f !== 'all' && f.startsWith('.') === false)
   const byFam = {}
   const infoboxes = new Set()
   const add = (fam, name) => {
@@ -13,11 +13,11 @@ const loadFamilies = async () => {
     byFam[fam].add(name)
   }
   for (const lang of langs) {
-    const { data } = await import(new URL(`${lang}/index.js`, dir))
+    const { default: data } = await import(new URL(`${lang}/index.js`, dir))
     Object.keys(data.aliases).forEach((name) => add(data.aliases[name], name))
-    Object.keys(data.parsers).forEach((name) => {
-      if (data.parsers[name].template) {
-        add(data.parsers[name].template, name)
+    Object.keys(data.templates).forEach((name) => {
+      if (data.templates[name] && data.templates[name].template) {
+        add(data.templates[name].template, name)
       }
     })
     data.infoboxes.forEach((name) => infoboxes.add(name))

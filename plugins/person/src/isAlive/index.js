@@ -2,10 +2,10 @@ import byCat from './byCategory.js'
 import byTemplate from './byTemplate.js'
 
 // maximum age of a person
-const d = new Date()
-const minYear = d.getFullYear() - 105
+const maxAge = 105
 
 const isAlive = function (doc) {
+  const minYear = new Date().getFullYear() - maxAge
   // if we have a death date
   const death = doc.deathDate()
   if (death) {

@@ -1,19 +1,20 @@
-// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
-import register from '../../register.js'
-import version from '../../_version.js'
 import aliases from './aliases.js'
-import parsers from './citations.js'
+import citations from './citations.js'
 
-const infoboxes = [
-  'bảng phân loại',
-  'phân loại khoa học',
-]
+const infoboxes = ['bảng phân loại', 'phân loại khoa học']
 
-const data = { aliases, infoboxes, parsers }
-
-const plugin = (_models, templates, boxes) => register(data, templates, boxes)
-plugin.lang = 'vi'
-plugin.version = version
-
-export { data }
-export default plugin
+export default {
+  lang: 'vi',
+  enLang: 'vietnamese',
+  category: ['thể loại'],
+  redirect: ['đổi'],
+  stub: ['sơ khai'],
+  infobox: ['hộp thông tin'],
+  image: ['hình', 'tập tin'],
+  reference: [],
+  disambig: ['trang định hướng'],
+  disambigTitle: [],
+  aliases,
+  infoboxes,
+  templates: citations,
+}

@@ -1,18 +1,20 @@
-// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
-import register from '../../register.js'
-import version from '../../_version.js'
 import aliases from './aliases.js'
-import parsers from './citations.js'
+import citations from './citations.js'
 
-const infoboxes = [
-  '生物分類表',
-]
+const infoboxes = ['生物分類表']
 
-const data = { aliases, infoboxes, parsers }
-
-const plugin = (_models, templates, boxes) => register(data, templates, boxes)
-plugin.lang = 'ja'
-plugin.version = version
-
-export { data }
-export default plugin
+export default {
+  lang: 'ja',
+  enLang: 'japanese',
+  category: ['カテゴリ'],
+  redirect: ['リダイレクト', '転送', '＃リダイレクト', '＃転送'],
+  stub: [],
+  infobox: [],
+  image: ['ファイル', '画像'],
+  reference: ['脚注'],
+  disambig: ['aimai', '曖昧さ回避'],
+  disambigTitle: ['曖昧さ回避'],
+  aliases,
+  infoboxes,
+  templates: citations,
+}

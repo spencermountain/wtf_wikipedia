@@ -396,3 +396,55 @@ test('2002-03 maple leafs: four-part records + ties era', (t) => {
   t.equal(res.goalies.length, 3, 'goalies')
   t.end()
 })
+
+test('2013-14 griffins: ahl game-log tables + four-part records', (t) => {
+  const res = fixture('2013-14-grand-rapids-griffins.txt', '2013–14 Grand Rapids Griffins season').ahlSeason()
+  t.equal(res.team, 'Grand Rapids Griffins', 'team')
+  t.equal(res.games.length, 76, 'all 76 games')
+  t.deepEqual(tally(res.games), { win: 46, loss: 23, otl: 7 }, 'outcomes match the 46–23–2–5 record')
+  t.deepEqual(
+    res.season.record,
+    { wins: 46, losses: 23, otLosses: 7, soLosses: 5, games: 76, winPct: 0.605 },
+    'W–L–OTL–SOL record, shootout losses counted in otLosses'
+  )
+  const g1 = res.games[0]
+  t.equal(g1.opponent, 'Rochester Americans', 'opponent resolved to the full name')
+  t.equal(g1.decision, 'McCollum', 'goalie of record')
+  t.deepEqual(g1.result, { us: 8, them: 1 }, 'score')
+  t.deepEqual(
+    res.playoffs.map((s) => s.length),
+    [4, 6],
+    'two playoff rounds'
+  )
+  t.equal(res.playoffs[1][5].opponent, 'Texas Stars', 'playoff opponent')
+  t.equal(res.skaters.length, 37, 'skaters')
+  t.equal(res.goalies.length, 3, 'goalies')
+  t.equal(res.goalies[0].savePct, 0.924, 'goalie save pct')
+  t.equal(res.roster.length, 32, 'roster templates')
+  t.equal(res.standings.conferencePlace, 1, 'conference rank')
+  t.end()
+})
+
+test('2023-24 hershey: playoff-only log stays out of the regular season', (t) => {
+  const res = fixture('2023-24-hershey-bears.txt', '2023–24 Hershey Bears season').ahlSeason()
+  t.equal(res.games.length, 0, 'the page has no regular-season log')
+  t.deepEqual(
+    res.playoffs.map((s) => s.length),
+    [4, 3, 7, 6],
+    'four calder-cup rounds'
+  )
+  t.deepEqual(tally(res.playoffs[2]), { win: 4, loss: 3 }, 'conference-finals outcomes from green/pink rows')
+  const cup = res.playoffs[3]
+  t.equal(cup.filter((g) => g.win).length, 4, 'won the finals 4–2')
+  t.equal(cup[5].opponent, 'Coachella Valley Firebirds', 'finals opponent')
+  t.equal(cup[5].overtime, true, 'cup clincher in overtime')
+  t.deepEqual(
+    res.season.record,
+    { wins: 53, losses: 14, otLosses: 5, soLosses: 5, games: 72, winPct: 0.736 },
+    'infobox record'
+  )
+  t.equal(res.standings.divisionPlace, 1, 'division rank')
+  t.equal(res.roster.length, 35, 'ice-hockey-team-player roster rows')
+  t.equal(res.roster[0].name, 'Garin Bjorklund', 'roster name')
+  t.end()
+})

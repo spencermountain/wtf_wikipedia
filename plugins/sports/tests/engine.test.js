@@ -12,6 +12,7 @@ import wnbaFranchises from '../src/wnba/franchises.js'
 import nwslFranchises from '../src/nwsl/franchises.js'
 import pwhlFranchises from '../src/pwhl/franchises.js'
 import cflFranchises from '../src/cfl/franchises.js'
+import ahlFranchises from '../src/ahl/franchises.js'
 
 test('outcome from row attributes', (t) => {
   t.equal(outcomeOf('class="game-won"'), 'win', 'game-won template class')
@@ -19,6 +20,7 @@ test('outcome from row attributes', (t) => {
   t.equal(outcomeOf('class="game-tied"'), 'tie', 'game-tied template class')
   t.equal(outcomeOf('style="background:#bfb;"'), 'win', 'mlb green')
   t.equal(outcomeOf('style="background:#fbb;"'), 'loss', 'mlb red')
+  t.equal(outcomeOf('style="background:#fcf;"'), 'loss', 'ahl playoff pink')
   t.equal(outcomeOf('style="background:#bbb;"'), 'postponed', 'mlb grey')
   t.equal(outcomeOf('style="background-color:#ffbbbb"'), 'loss', 'longhand color')
   t.equal(outcomeOf('bgcolor=#bfb'), 'win', 'bgcolor syntax')
@@ -60,6 +62,11 @@ test('record parsing', (t) => {
     parseRecord('10–5–4–11', { otWins: true }),
     { wins: 15, otWins: 5, otLosses: 4, losses: 11, games: 30, winPct: 0.5 },
     'pwhl W–OTW–OTL–L counts ot wins as wins'
+  )
+  t.deepEqual(
+    parseRecord('46–23–2–5', { soLosses: true }),
+    { wins: 46, losses: 23, otLosses: 7, soLosses: 5, games: 76, winPct: 0.605 },
+    'ahl W–L–OTL–SOL counts shootout losses in otLosses'
   )
   t.equal(parseRecord(''), null, 'empty')
   t.equal(parseRecord(), null, 'undefined')
@@ -117,6 +124,13 @@ test('team resolution across renames', (t) => {
   t.equal(resolveTeam(cflFranchises, 'Ottawa Redblacks', 2003), 'Ottawa Renegades', 'renegades era')
   t.equal(resolveTeam(cflFranchises, 'Ottawa Redblacks', 1990), 'Ottawa Rough Riders', 'rough riders era')
   t.equal(resolveTeam(cflFranchises, 'Montreal Alouettes', 1984), 'Montreal Concordes', 'concordes era')
+  // ahl
+  t.equal(resolveTeam(ahlFranchises, 'Cleveland Monsters', 2010), 'Lake Erie Monsters', 'lake erie era')
+  t.equal(resolveTeam(ahlFranchises, 'Calgary Wranglers', 2016), 'Stockton Heat', 'stockton era')
+  t.equal(resolveTeam(ahlFranchises, 'Lehigh Valley Phantoms', 2012), 'Adirondack Phantoms', 'adirondack era')
+  t.equal(resolveTeam(ahlFranchises, 'Hartford Wolf Pack', 2011), 'Connecticut Whale', 'whale interlude')
+  t.equal(resolveTeam(ahlFranchises, 'Laval Rocket', 2015), "St. John's IceCaps", 'icecaps era')
+  t.equal(resolveTeam(ahlFranchises, 'Manitoba Moose', 2024), 'Manitoba Moose', 'moose back home')
   t.end()
 })
 

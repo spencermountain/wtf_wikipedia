@@ -89,15 +89,18 @@ const packNames = readdirSync(langDir).filter((f) => f !== '_lib.js' && f !== 'a
 const packLangs = new Set(packNames.filter((lang) => lang !== 'other'))
 const packs = {}
 for (const lang of packNames) {
-  packs[lang] = (await import(new URL(`${lang}/index.js`, langDir))).data
+  const mod = await import(new URL(`${lang}/index.js`, langDir))
+  packs[lang] = mod.default
 }
 const packFam = {}
 packNames.forEach((lang) => {
   const map = new Map()
   const data = packs[lang]
   Object.keys(data.aliases || {}).forEach((name) => map.set(name, data.aliases[name]))
-  Object.keys(data.parsers || {}).forEach((name) => map.set(name, data.parsers[name].template || 'custom'))
-  Object.keys(data.templates || {}).forEach((name) => map.set(name, 'custom'))
+  Object.keys(data.templates || {}).forEach((name) => {
+    const def = data.templates[name]
+    map.set(name, (def && def.template) || 'custom')
+  })
   ;(data.infoboxes || []).forEach((name) => map.set(name, infoboxFam))
   packFam[lang] = map
 })
@@ -166,7 +169,7 @@ const trimMap = (found) => {
   return map
 }
 
-// param maps: what live TemplateData offers vs what a pack's translate() parsers carry
+// param maps: what live TemplateData offers vs what a pack's template defs carry
 packNames.forEach((lang) => {
   if (lang === 'other' || paramData[lang] === undefined) {
     return
@@ -184,11 +187,11 @@ packNames.forEach((lang) => {
     if (shipsFam === false) {
       return
     }
-    const maps = Object.values(packs[lang].parsers)
-      .filter((fn) => fn.template === fam && fn.map)
-      .map((fn) => fn.map)
+    const maps = Object.values(packs[lang].templates)
+      .filter((def) => def && def.template === fam && def.map)
+      .map((def) => def.map)
     if (maps.length === 0) {
-      report(`+ ${lang}: ${fam} has ${Object.keys(fetchedMap).length} param renames on wikipedia — add a translate() parser`)
+      report(`+ ${lang}: ${fam} has ${Object.keys(fetchedMap).length} param renames on wikipedia — add a { template, map } def`)
       return
     }
     Object.keys(fetchedMap).forEach((key) => {
@@ -199,6 +202,29 @@ packNames.forEach((lang) => {
         report(`~ ${lang} ${fam}: '${key}' → '${fetchedMap[key]}' (src has '${hit[key]}')`)
       }
     })
+  })
+})
+
+// page-level words: fetched category/redirect namespaces + stub/infobox sitelinks vs each pack.
+// extra words in a pack are hand-kept and fine; only fetched-but-missing ones are drift.
+const fetchedWords = readData('04-words.json')
+packNames.forEach((lang) => {
+  if (lang === 'other') {
+    return
+  }
+  const pack = packs[lang]
+  const wanted = {
+    category: fetchedWords.langs[lang]?.category || [],
+    redirect: fetchedWords.langs[lang]?.redirect || [],
+    image: fetchedWords.langs[lang]?.image || [],
+    stub: fetchedWords.stub[lang] ? [fetchedWords.stub[lang]] : [],
+    infobox: fetchedWords.infobox[lang] ? [fetchedWords.infobox[lang]] : [],
+    disambig: fetchedWords.disambig[lang] ? [fetchedWords.disambig[lang]] : [],
+  }
+  Object.keys(wanted).forEach((kind) => {
+    wanted[kind]
+      .filter((word) => word !== kind && (pack[kind] || []).includes(word) === false)
+      .forEach((word) => report(`+ ${lang}: ${kind}: '${word}',`))
   })
 })
 

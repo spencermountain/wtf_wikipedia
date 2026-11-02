@@ -20,6 +20,8 @@ const colors = {
   '9f9': 'win',
   fbb: 'loss',
   fcc: 'loss',
+  fcf: 'loss', //pink, on ahl playoff logs
+  ffccff: 'loss',
   fdd: 'loss',
   ffbbbb: 'loss',
   ffcccc: 'loss',

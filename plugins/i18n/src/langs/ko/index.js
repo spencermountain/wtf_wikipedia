@@ -1,19 +1,20 @@
-// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
-import register from '../../register.js'
-import version from '../../_version.js'
 import aliases from './aliases.js'
-import parsers from './citations.js'
+import citations from './citations.js'
 
-const infoboxes = [
-  '새 정보',
-  '생물 분류',
-]
+const infoboxes = ['새 정보', '생물 분류']
 
-const data = { aliases, infoboxes, parsers }
-
-const plugin = (_models, templates, boxes) => register(data, templates, boxes)
-plugin.lang = 'ko'
-plugin.version = version
-
-export { data }
-export default plugin
+export default {
+  lang: 'ko',
+  enLang: 'korean',
+  category: ['분류'],
+  redirect: ['넘겨주기'],
+  stub: ['토막글'],
+  infobox: ['정보상자'],
+  image: ['그림', '파일'],
+  reference: [],
+  disambig: ['동음이의'],
+  disambigTitle: ['동음이의'],
+  aliases,
+  infoboxes,
+  templates: citations,
+}

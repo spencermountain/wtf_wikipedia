@@ -1,8 +1,5 @@
-// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
-import register from '../../register.js'
-import version from '../../_version.js'
 import aliases from './aliases.js'
-import parsers from './citations.js'
+import citations from './citations.js'
 
 const infoboxes = [
   'infokutija takson',
@@ -20,11 +17,18 @@ const infoboxes = [
   'taxobox-lat',
 ]
 
-const data = { aliases, infoboxes, parsers }
-
-const plugin = (_models, templates, boxes) => register(data, templates, boxes)
-plugin.lang = 'sh'
-plugin.version = version
-
-export { data }
-export default plugin
+export default {
+  lang: 'sh',
+  enLang: 'serbo-croatian',
+  category: ['kat', 'kategorija', 'kt', 'кат', 'категорија', 'кт'],
+  redirect: ['preusmeri', 'preusmjeri', 'преусмери', 'преусмјери'],
+  stub: ['u začetku'],
+  infobox: ['infokutija'],
+  image: ['datoteka', 'dt', 'fotografija', 'slika', 'датотека', 'дт', 'слика', 'фотографија'],
+  reference: [],
+  disambig: ['razvrstavanje'],
+  disambigTitle: [],
+  aliases,
+  infoboxes,
+  templates: citations,
+}

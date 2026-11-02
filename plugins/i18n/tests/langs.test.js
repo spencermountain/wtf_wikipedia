@@ -2,40 +2,49 @@ import { readdirSync } from 'node:fs'
 import test from 'tape'
 import wtf from './_lib.js'
 import register from '../src/register.js'
-import { translate } from '../src/langs/_lib.js'
-import frPlugin, { data as fr } from '../src/langs/fr/index.js'
-import { data as de } from '../src/langs/de/index.js'
-import { data as other } from '../src/langs/other/index.js'
+import plugin from '../src/plugin.js'
+import fr from '../src/langs/fr/index.js'
+import de from '../src/langs/de/index.js'
+import other from '../src/langs/other/index.js'
 
-test('i18n fr pack has the french aliases', (t) => {
+test('i18n packs are pure data', (t) => {
+  t.equal(fr.lang, 'fr', 'pack carries its language')
+  t.equal(fr.enLang, 'french', 'pack carries its english name')
+  t.deepEqual(fr.category, ['catégorie'], 'pack carries its category word')
+  t.deepEqual(fr.redirect, ['redirection'], 'pack carries its redirect word')
+  t.deepEqual(fr.stub, ['ébauche'], 'pack carries its stub word')
   t.equal(fr.aliases.portail, 'portal', 'portail → portal')
-  t.equal(fr.parsers['lien web'].template, 'cite web', 'lien web → cite web')
-  t.equal(fr.parsers['lien web'].map.titre, 'title', 'titre → title')
-  t.equal(fr.parsers.ouvrage.template, 'cite book', 'ouvrage → cite book')
+  t.equal(fr.templates['lien web'].template, 'cite web', 'lien web → cite web')
+  t.equal(fr.templates['lien web'].map.titre, 'title', 'titre → title')
+  t.equal(fr.templates.ouvrage.template, 'cite book', 'ouvrage → cite book')
+  t.equal(JSON.parse(JSON.stringify(fr)).templates.ouvrage.template, 'cite book', 'pack survives JSON round-trip')
   t.end()
 })
 
 test('i18n de pack keeps its hand-written param maps', (t) => {
-  t.equal(de.parsers.internetquelle.template, 'cite web', 'internetquelle → cite web')
-  t.equal(de.parsers.internetquelle.map.titel, 'title', 'titel → title')
-  t.equal(de.parsers.internetquelle.map.abruf, 'access-date', 'abruf → access-date')
+  t.equal(de.templates.internetquelle.template, 'cite web', 'internetquelle → cite web')
+  t.equal(de.templates.internetquelle.map.titel, 'title', 'titel → title')
+  t.equal(de.templates.internetquelle.map.abruf, 'access-date', 'abruf → access-date')
   t.end()
 })
 
 test('i18n the other pack holds the long tail', (t) => {
   t.ok(Object.keys(other.aliases).length > 400, 'hundreds of tail aliases')
-  t.deepEqual(other.parsers, {}, 'tail names are pure aliases')
+  t.deepEqual(other.templates, {}, 'tail names are pure aliases')
   t.end()
 })
 
 test('i18n a pack registers through the plugin bridge', (t) => {
   const templates = {}
-  const coreKeys = [...Object.values(fr.aliases), ...Object.values(fr.parsers).map((fn) => fn.template)]
+  const coreKeys = [
+    ...Object.values(fr.aliases),
+    ...Object.values(fr.templates).map((def) => def.template),
+  ]
   coreKeys.forEach((key) => {
     templates[key] = (tmpl, parse) => ({ data: parse(tmpl, [], 'tmpl'), replacement: 'ok' })
   })
   const infoboxes = {}
-  frPlugin(null, templates, infoboxes)
+  plugin(fr)(null, templates, infoboxes)
   t.equal(typeof templates['lien web'], 'function', 'lien web is registered')
   t.equal(templates['lien web'].kind, 'citation', 'cite-family names are citations')
   const list = []
@@ -47,17 +56,17 @@ test('i18n a pack registers through the plugin bridge', (t) => {
   t.end()
 })
 
-test('i18n a parser beats a plain alias when packs stack', (t) => {
+test('i18n a param-map def beats a plain alias when packs stack', (t) => {
   const templates = { 'cite web': (tmpl, parse) => ({ data: parse(tmpl, [], 'tmpl'), replacement: '' }) }
-  register({ aliases: { foo: 'cite web' }, infoboxes: [], parsers: {} }, templates)
-  register({ aliases: {}, infoboxes: [], parsers: { foo: translate('cite web', { titre: 'title' }) } }, templates)
+  register({ aliases: { foo: 'cite web' } }, templates)
+  register({ templates: { foo: { template: 'cite web', map: { titre: 'title' } } } }, templates)
   const list = []
   templates.foo('{{foo}}', list, () => ({ titre: 'X' }), null, {})
-  t.equal(list[0].title, 'X', 'a later parser upgrades the plain alias')
-  register({ aliases: { foo: 'cite web' }, infoboxes: [], parsers: {} }, templates)
+  t.equal(list[0].title, 'X', 'a later param-map def upgrades the plain alias')
+  register({ aliases: { foo: 'cite web' } }, templates)
   const list2 = []
   templates.foo('{{foo}}', list2, () => ({ titre: 'Y' }), null, {})
-  t.equal(list2[0].title, 'Y', 'a later plain alias never downgrades the parser')
+  t.equal(list2[0].title, 'Y', 'a later plain alias never downgrades the def')
   t.end()
 })
 
@@ -80,7 +89,7 @@ test('i18n core-style shorthand defs register as parsers', (t) => {
 })
 
 test('i18n shorthand defs parse end-to-end', (t) => {
-  wtf.extend((_models, templates) => register({ templates: { 'shorthand-i18n-test': ['id', 'start'] } }, templates))
+  wtf.extend(plugin({ templates: { 'shorthand-i18n-test': ['id', 'start'] } }))
   const doc = wtf('a {{shorthand-i18n-test|abc|4:20}} b')
   const json = doc.templates()[0].json()
   t.equal(json.template, 'shorthand-i18n-test', 'template keeps its name')
@@ -91,14 +100,16 @@ test('i18n shorthand defs parse end-to-end', (t) => {
 
 test('i18n every pack registers against the real core registry', async (t) => {
   const dir = new URL('../src/langs/', import.meta.url)
-  const packs = readdirSync(dir).filter((f) => f !== '_lib.js' && f.startsWith('.') === false)
+  const packs = readdirSync(dir).filter((f) => f.startsWith('.') === false)
   for (const lang of packs) {
     const mod = await import(new URL(`${lang}/index.js`, dir))
-    // throws at extend-time if a pack points at a core key that moved
-    wtf.extend(mod.default)
-    if (lang !== 'all') {
-      t.equal(mod.default.lang, lang, `${lang}: plugin is tagged with its language`)
+    if (lang === 'all') {
+      wtf.extend(mod.default)
+      continue
     }
+    t.equal(mod.default.lang, lang, `${lang}: pack is tagged with its language`)
+    // throws at extend-time if a pack points at a core key that moved
+    wtf.extend(plugin(mod.default))
   }
   t.ok(packs.length > 55, `${packs.length} packs extended cleanly`)
   t.end()

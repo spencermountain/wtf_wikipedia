@@ -1,20 +1,20 @@
-// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
-import register from '../../register.js'
-import version from '../../_version.js'
 import aliases from './aliases.js'
-import parsers from './citations.js'
+import citations from './citations.js'
 
-const infoboxes = [
-  'takso kutu',
-  'takso kutusu',
-  'taksokutu',
-]
+const infoboxes = ['takso kutu', 'takso kutusu', 'taksokutu']
 
-const data = { aliases, infoboxes, parsers }
-
-const plugin = (_models, templates, boxes) => register(data, templates, boxes)
-plugin.lang = 'tr'
-plugin.version = version
-
-export { data }
-export default plugin
+export default {
+  lang: 'tr',
+  enLang: 'turkish',
+  category: ['kat', 'kategori'],
+  redirect: ['yönlendir', 'yönlendirme', 'yönlendi̇r', 'yönlendi̇rme'],
+  stub: ['taslak'],
+  infobox: ['bilgi', 'bilgi kutusu'],
+  image: ['dosya', 'resim'],
+  reference: [],
+  disambig: ['anlam ayrımı'],
+  disambigTitle: [],
+  aliases,
+  infoboxes,
+  templates: citations,
+}

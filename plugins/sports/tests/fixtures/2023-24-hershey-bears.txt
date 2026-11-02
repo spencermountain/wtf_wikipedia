@@ -1,0 +1,305 @@
+{{Short description|Hockey team season}}
+{{Use mdy dates|date=April 2024}}
+{{Infobox ice hockey team season
+  |Season=2023–24
+  |year=2023
+  |Team=Hershey Bears
+  |League=AHL
+  |LeagueRank=1st
+  |Conference=Eastern
+  |ConferenceRank=1st
+  |Division=Atlantic
+  |DivisionRank=1st
+  |Record=53–14–0–5 (111 pts)
+  |HomeRecord=29–7–0-0
+  |RoadRecord=24–7–0-5
+  |GoalsFor=229
+  |GoalsAgainst=151
+  |GeneralManager=[[Bryan Helmer]] (de facto - VP of Hockey Operations)
+  |Coach=[[Todd Nelson (ice hockey)|Todd Nelson]]
+  |AssistantCoach=[[Patrick Wellar]]<br />[[Nick Bootland]]
+  |Captain=[[Dylan McIlrath]]
+  |AltCaptain=[[Aaron Ness]]<br/>[[Mike Vecchione]]
+  |Arena=[[Giant Center]]
+  |Attendance=9,439
+  |GoalsLeader=[[Ethen Frank]] (29)
+  |AssistsLeader=[[Joe Snively]] (45)
+  |PointsLeader=Joe Snively (59)
+  |PIMLeader=Dylan McIlrath (100)
+  |WinsLeader=[[Hunter Shepard]] (27)
+  |GAALeader=Hunter Shepard (2.26)
+  |Championship=[[Calder Cup]]
+  |ConferenceWin=yes
+  |DivisionWin=yes
+  |prev_season = [[2022–23 AHL season|2022–23]]
+  |next_season = [[2024–25 AHL season|2024–25]]
+}}
+The '''2023–24 Hershey Bears season''' was the franchise's [[List of Hershey Bears seasons|86th season]] in the [[American Hockey League]] (AHL), starting on October 14, 2023, and ending during the [[2024 Calder Cup playoffs|Calder Cup playoffs]]. They play their home games at [[Giant Center]].
+
+On April 2, 2024, the Bears clinched a playoff berth for the third consecutive season following a 1–0 win over the [[Lehigh Valley Phantoms]].<ref>{{Cite web |title=Bears Clinch Atlantic Division in 1–0 Win Over Phantoms |url=https://www.hersheybears.com/news/bears-clinch-atlantic-division-in-1-0-win-over-phantoms/#:~:text=The%20Hershey%20Bears%20(48-12,Tuesday%20night%20at%20GIANT%20Center. |access-date=2024-05-28 |website=Hershey Bears}}</ref> In that same game, they clinched their division.
+
+The Bears finished the season as Atlantic Division champions, their second in franchise history, and [[Macgregor Kilpatrick Trophy]] winners for the fourth time in franchise history, with a record-setting 111 points from 53 wins, 15 losses, and 5 shootout losses, their 53 wins also serving as a new AHL record under a 72 game season.<ref>{{ cite web | url=https://theahl.com/news/bears-fall-short-of-record-turn-attention-to-cup-repeat | title=Bears fall short of record, turn attention to Cup repeat | date = 21 April 2024}} </ref>
+
+The Bears would win the [[Calder Cup]] in back to back years, beating the [[2023-24 Coachella Valley Firebirds season|Coachella Valley Firebirds]] in 6 games.<ref>{{cite web |url=https://theahl.com/news/new-faces-spark-bears-to-latest-calder-cup-championship |title=New faces spark Bears to latest Calder Cup championship |publisher=American Hockey League |date=June 25, 2024 |access-date=June 25, 2024}}</ref>
+
+<!-- ==Regular season== -->
+==Standings==
+
+{{color box|#97DEFF|'''y–'''}} ''indicates team has clinched division and a playoff spot''<br />
+{{color box|#bbffbb|'''x–'''}} ''indicates team has clinched a playoff spot''<br /> 
+{{color box|#ffcccc|'''e–'''}} ''indicates team has been eliminated from playoff contention''
+
+===Division===
+
+{| class="wikitable" style="width:50em"
+|-
+! width="35%" | Atlantic Division
+! width="5%" | {{abbr|GP|Games played}}
+! width="5%" | {{abbr|W|Wins}}
+! width="5%" | {{abbr|L|Losses}}
+! width="5%" | {{abbr|OTL|Overtime losses}}
+! width="5%" | {{abbr|SOL|Shootout losses}}
+! width="7.5%" | {{abbr|Pts|Points}}
+! width="7.5%" | {{abbr|Pts%|Points Percentage}}
+! width="7.5%" | {{abbr|GF|Goals for}}
+! width="7.5%" | {{abbr|GA|Goals against}}
+|- bgcolor=#97DEFF
+| '''y–'''[[Hershey Bears]] ([[Washington Capitals|WSH]]) || 72 || 53 || 14 || 0 || 5 || '''111''' || .771 || 229 || 151
+|- bgcolor=#bbffbb
+| '''x–'''[[Providence Bruins]] ([[Boston Bruins|BOS]]) || 72 || 42 || 21 || 6 || 3 || '''93''' || .646 || 239 || 208
+|- bgcolor=#bbffbb
+| '''x–'''[[Wilkes-Barre/Scranton Penguins]] ([[Pittsburgh Penguins|PIT]]) || 72 || 39 || 24 || 8 || 1 || '''87''' || .604 || 211 || 194
+|- bgcolor=#bbffbb
+| '''x–'''[[Charlotte Checkers]] ([[Florida Panthers|FLA]]) || 72 || 39 || 26 || 7 || 0 || '''85''' || .590 || 217 || 203
+|- bgcolor=#bbffbb
+| '''x–'''[[Hartford Wolf Pack]] ([[New York Rangers|NYR]]) || 72 || 34 || 28 || 7 || 3 || '''78''' || .542 || 204 || 219
+|- bgcolor=#bbffbb
+| '''x–'''[[Lehigh Valley Phantoms]] ([[Philadelphia Flyers|PHI]]) || 72 || 32 || 31 || 6 || 3 || '''73''' || .507 || 191 || 217
+|- bgcolor=#ffcccc
+| '''e–'''[[Springfield Thunderbirds]] ([[St. Louis Blues|STL]]) || 72 || 30 || 37 || 3 || 2 || '''65''' || .451 || 226 || 244
+|- bgcolor=#ffcccc
+| '''e–'''[[Bridgeport Islanders]] ([[New York Islanders|NYI]]) || 72 || 25 || 38 || 7 || 2 || '''59''' || .410 || 162 || 222
+|}
+
+===Conference===
+
+{| class="wikitable" style="width:50em"
+|-
+! width="35%" | Eastern Conference
+! width="5%" | {{abbr|GP|Games played}}
+! width="5%" | {{abbr|W|Wins}}
+! width="5%" | {{abbr|L|Losses}}
+! width="5%" | {{abbr|OTL|Overtime losses}}
+! width="5%" | {{abbr|SOL|Shootout losses}}
+! width="7.5%" | {{abbr|Pts|Points}}
+! width="7.5%" | {{abbr|Pts%|Points Percentage}}
+! width="7.5%" | {{abbr|GF|Goals for}}
+! width="7.5%" | {{abbr|GA|Goals against}}
+|- bgcolor=#97DEFF
+| '''y–'''[[Hershey Bears]] ([[Washington Capitals|WSH]]) || 72 || 53 || 14 || 0 || 5 || '''111''' || .771 || 229 || 151
+|- bgcolor=#bbffbb
+| '''x–'''[[Providence Bruins]] ([[Boston Bruins|BOS]]) || 72 || 42 || 21 || 6 || 3 || '''93''' || .646 || 239 || 208
+|- bgcolor=#97DEFF
+| '''y–'''[[Cleveland Monsters]] ([[Columbus Blue Jackets|CBJ]]) || 72 || 40 || 24 || 5 || 3 || '''88''' || .611 || 233 || 238
+|- bgcolor=#bbffbb
+| '''x–'''[[Rochester Americans]] ([[Buffalo Sabres|BUF]]) || 72 || 39 || 23 || 7 || 3 || '''88''' || .611 || 234 || 239
+|- bgcolor=#bbffbb
+| '''x–'''[[Wilkes-Barre/Scranton Penguins]] ([[Pittsburgh Penguins|PIT]]) || 72 || 39 || 24 || 8 || 1 || '''87''' || .604 || 211 || 194
+|- bgcolor=#bbffbb
+| '''x–'''[[Syracuse Crunch]] ([[Tampa Bay Lightning|TBL]]) || 72 || 39 || 24 || 4 || 5 || '''87''' || .604 || 220 || 203
+|- bgcolor=#bbffbb
+| '''x–'''[[Charlotte Checkers]] ([[Florida Panthers|FLA]]) || 72 || 39 || 26 || 7 || 0 || '''85''' || .590 || 217 || 203
+|- bgcolor=#bbffbb
+| '''x–'''[[Belleville Senators]] ([[Ottawa Senators|OTT]]) || 72 || 38 || 28 || 3 || 3 || '''82''' || .569 || 209 || 211
+|- bgcolor=#bbffbb
+| '''x–'''[[Toronto Marlies]] ([[Toronto Maple Leafs|TOR]]) || 72 || 34 || 26 || 10 || 2 || '''80''' || .556 || 249 || 220
+|- bgcolor=#bbffbb
+| '''x–'''[[Hartford Wolf Pack]] ([[New York Rangers|NYR]]) || 72 || 34 || 28 || 7 || 3 || '''78''' || .542 || 204 || 219
+|- bgcolor=#ffcccc
+| '''e–'''[[Utica Comets]] ([[New Jersey Devils|NJD]]) || 72 || 32 || 29 || 5 || 6 || '''75''' || .521 || 221 || 226
+|- bgcolor=#bbffbb
+| '''x–'''[[Lehigh Valley Phantoms]] ([[Philadelphia Flyers|PHI]]) || 72 || 32 || 31 || 6 || 3 || '''73''' || .507 || 191 || 217
+|- bgcolor=#ffcccc
+| '''e–'''[[Laval Rocket]] ([[Montreal Canadiens|MTL]]) || 72 || 33 || 31 || 6 || 2 || '''74''' || .514 || 235 || 242
+|- bgcolor=#ffcccc
+| '''e–'''[[Springfield Thunderbirds]] ([[St. Louis Blues|STL]]) || 72 || 30 || 37 || 3 || 2 || '''65''' || .451 || 226 || 244
+|- bgcolor=#ffcccc
+| '''e–'''[[Bridgeport Islanders]] ([[New York Islanders|NYI]]) || 72 || 25 || 38 || 7 || 2 || '''59''' || .410 || 162 || 222
+|}
+
+==Roster==
+===2024 roster===
+<small>Updated April 29, 2024.<ref>{{cite web|title=Hershey Bears – Team roster|url=http://www.hersheybears.com/team/|access-date= April 29, 2024|website=Hershey Bears|publisher=}}</ref><ref>{{cite web |url=https://www.eliteprospects.com/team/98/hershey-bears |title=Hershey Bears Elite Prospects |website=Elite Prospects |access-date= April 29, 2024}}</ref></small><br>
+{{Ice hockey team roster |contract=yes}}
+
+<!-- list of players --><!-- DO NOT add/remove any players, as this is the 2024 championship roster, the current roster can be found on the Hershey Bears website. -->
+
+{{Ice hockey team player
+| first = Garin | last = Bjorklund | dab = | num = 1 | pos = G | nat = Canada | s/g = L | birthyear = 2002 | birthmonth = 5 | birthday = 28 | acq = [[2021–22 AHL season|2022]] | birthplace = [[Calgary, Alberta]] | contract = [[Washington Capitals|Capitals]] | inj = no | cap =  | fa = }}
+
+{{Ice hockey team player
+| first = Andrew | last = Cristall | dab =   | num = 36 | pos = RW | nat = Canada | s/g = L | birthyear = 2005 | birthmonth = 2 | birthday = 4 | acq = [[2023–24 AHL season|2024]] | birthplace = [[Vancouver, British Columbia]] | contract =  [[Washington Capitals|Capitals]] | inj = no | cap = | fa =  }}
+
+{{Ice hockey team player
+| first = Logan | last = Day | dab =   | num = 26 | pos = D | nat = United States | s/g = R | birthyear = 1994 | birthmonth = 9 | birthday = 19 | acq = [[2022–23 AHL season|2022]] | birthplace = [[Seminole, Florida]] | contract =  Bears | inj = no | cap = | fa =  }}
+
+{{Ice hockey team player
+| first = Pierrick | last = Dube | dab =   | num = 18 | pos = RW | nat = France | s/g = R | birthyear = 2001 | birthmonth = 1 | birthday = 07 | acq = [[2023–24 AHL season|2023]] | birthplace = [[Lyon, France]] | contract =  [[Washington Capitals|Capitals]] | inj = no | cap = | fa =  }}
+
+{{Ice hockey team player
+| first = Tyson | last = Empey | dab = | num = 20 | pos = F | nat = Canada | s/g = L | birthyear = 1995 | birthmonth = 6 | birthday = 29 | acq = [[2023–24 AHL season|2023]] | birthplace = [[Swift Current, Saskatchewan]] | contract = Bears | inj = no | cap = | fa =  }}
+
+{{Ice hockey team player
+| first = Ethen | last = Frank | dab = | num = 28 | pos = C | nat = United States | s/g = R | birthyear = 1998 | birthmonth = 2 | birthday = 5 | acq = [[2021–22 AHL season|2022]] | birthplace = [[Papillion, Nebraska]] | contract = [[Washington Capitals|Capitals]] | inj = no | cap =  | fa = }}
+
+{{Ice hockey team player
+| first = Mitch | last = Gibson | dab = Mitch Gibson (ice hockey) | num = 35 | pos = G | nat = United States | s/g = L | birthyear = 1999 | birthmonth = 6 | birthday = 25 | acq = [[2023–24 AHL season|2023]] | birthplace = [[Phoenixville, Pennsylvania]] | contract = [[Washington Capitals|Capitals]] | inj = no | cap =  | fa = }}
+
+{{Ice hockey team player
+| first = Hardy | last =  Haman Aktell  | dab = Hardy Häman Aktell | num = 7 | pos = D | nat = Sweden | s/g = L | birthyear = 1998 | birthmonth = 7 | birthday = 4 | acq = [[2023–24 AHL season|2023]] | birthplace = [[Kåge]], [[Sweden]] | contract = [[Washington Capitals|Capitals]] | inj = no | cap = | fa =  }}
+
+{{Ice hockey team player
+| first = Ryan | last = Hofer | dab = | num = 25 | pos = C | nat = Canada | s/g = L | birthyear = 2002 | birthmonth = 5 | birthday = 10 | acq = [[2023–24 AHL season|2023]] | birthplace = [[Headingley, Manitoba]] | contract = [[Washington Capitals|Capitals]] | inj = no | cap = | fa =  }}
+
+{{Ice hockey team player
+| first = Jimmy | last = Huntington | dab = | num = 15 | pos = C | nat = Canada | s/g = L | birthyear = 1998 | birthmonth = 11 | birthday = 18 | acq = [[2023–24 AHL season|2023]] | birthplace = [[Laval, Quebec]] | contract = Bears | inj = no | cap = | fa =  }}
+
+{{Ice hockey team player
+| first = Vincent | last = Iorio | dab = | num = 6 | pos = D | nat = Canada | s/g = R | birthyear = 2002 | birthmonth = 11 | birthday = 14 | acq = [[2021–22 AHL season|2022]] | birthplace = [[Coquitlam, British Columbia]] | contract = [[Washington Capitals|Capitals]] | inj = no | cap =  | fa = }}
+
+{{Ice hockey team player
+| first = Lucas | last = Johansen | dab =  | num = 5 |  pos = D | nat = Canada | s/g = L | birthyear = 1997 | birthmonth = 11 | birthday = 16 | acq = [[2016–17 AHL season|2017]] | birthplace = [[Port Moody, British Columbia]] | contract = [[Washington Capitals|Capitals]] | inj = no | cap = | fa = }}
+
+{{Ice hockey team player
+| first = Hendrix | last = Lapierre | dab = | num = 29 | pos = C | nat = Canada | s/g = L | birthyear = 2002 | birthmonth = 2 | birthday = 9 | acq = [[2022-23 AHL season|2022]] | birthplace = [[Gatineau, Quebec]] | contract = [[Washington Capitals|Capitals]] | inj = no | cap | fa = }}
+
+{{Ice hockey team player
+| first = Nick | last = Leivermann | dab = | num = 4 | pos = D | nat = United States | s/g = L | birthyear = 1998 | birthmonth = 9 | birthday = 14 | acq = [[2023–24 AHL season|2023]] | birthplace = [[Eden Prairie, Minnesota]] | contract = Bears | inj = no | cap = | fa =  }}
+
+{{Ice hockey team player
+| first = Alex | last = Limoges | dab = | num = 12 | pos = LW | nat = United States | s/g = L | birthyear = 1997 | birthmonth = 9 | birthday = 16 | acq = [[2023–24 AHL season|2023]] | birthplace = [[Boulder, Colorado]] | contract = [[Washington Capitals|Capitals]] | inj = no | cap =  | fa =  }}
+
+{{Ice hockey team player
+| first = Jake | last = Massie | dab =  | num = 2  | pos = D | nat = Canada | s/g = L | birthyear = 1997 | birthmonth = 1 | birthday = 21 | acq = [[2021–22 AHL season|2021]] | birthplace = [[St-Lazare, Quebec]] |contract = Bears | inj = no | cap = | fa =  }}
+
+{{Ice hockey team player
+| first = Jon | last = McDonald | dab = Jon McDonald (ice hockey) | num = 47 | pos = D | nat = United States | s/g = L | birthyear = 1998 | birthmonth = 6 | birthday = 15 | acq = [[2023–24 AHL season|2023]] | birthplace = [[Livonia, Michigan]] | contract =  Bears | inj = no | cap = | fa =  }}
+
+{{Ice hockey team player
+| first = Dylan | last =  McIlrath | dab = | num = 42 | pos = D | nat = Canada | s/g = R | birthyear = 1992 | birthmonth = 4 | birthday = 20 | acq = [[2021–22 AHL season|2021]] | birthplace = [[Winnipeg, Manitoba]] | contract = [[Washington Capitals|Capitals]] | inj = no | cap = C | fa = }}
+
+{{Ice hockey team player
+| first = Ivan | last = Miroshnichenko | dab = Ivan Miroshnichenko (ice hockey) | num = 10 | pos = LW | nat = Russia | s/g = R | birthyear = 2004 | birthmonth = 2 | birthday = 4 | acq = [[2023-24 AHL season|2023]] | birthplace = [[Ussuriysk]], [[Russia]] | contract = [[Washington Capitals|Capitals]] | inj = no | cap = | fa = }}
+
+{{Ice hockey team player
+| first = Aaron | last = Ness | dab = | num = 27 | pos = D | nat = United States | s/g = L | birthyear = 1990 | birthmonth = 5 | birthday = 18 | acq = [[2022–23 AHL season|2022]] | birthplace = [[Bemidji, Minnesota]] | contract = Bears | inj = no | cap = A | fa = }}
+
+{{Ice hockey team player
+| first = Kevin | last = O'Neil | dab = Kevin O'Neil (ice hockey) | num = 39 | pos = RW | nat = United States | s/g = R | birthyear = 1998 | birthmonth = 2 | birthday = 23 | acq = [[2023–24 AHL season|2023]] | birthplace = [[Latham, New York]] | contract = Bears | inj = no | cap = | fa = }}
+
+{{Ice hockey team player
+| first = Dmitry | last = Osipov | dab = Dmitry Osipov (ice hockey, born 1996) | num = 34 | pos = RW | nat = Russia | s/g = R | birthyear = 1996 | birthmonth = 10 | birthday = 4 | acq = [[2023–24 AHL season|2023]] | birthplace = [[Moscow, Russia]] | contract = Bears | inj = no | cap = | fa = }}
+
+{{Ice hockey team player
+| first = Matthew | last = Phillips | dab = Matthew Phillips (ice hockey) | num = 11 | pos = RW | nat = Canada | s/g = R | birthyear = 1998 | birthmonth = 4 | birthday = 6 | acq = [[2023–24 AHL season|2024]] | birthplace = [[Calgary, Alberta]] | contract = [[Washington Capitals|Capitals]] | inj = no | cap = | fa = }}
+
+{{Ice hockey team player
+| first = Chase | last =  Priskie | dab = | num = 22 | pos = D | nat = United States | s/g = R | birthyear = 1996 | birthmonth = 3 | birthday = 19 | acq = [[2023–24 AHL season|2023]] | birthplace =  [[Pembroke Pines, Florida]] | contract = [[Washington Capitals|Capitals]] | inj = no | cap =  | fa = }}
+
+{{Ice hockey team player
+| first = Garrett | last = Roe | dab = | num =  65 | pos = C | nat = United States | s/g = L | birthyear = 1988 | birthmonth = 2 | birthday = 22 | acq = [[2023–24 AHL season|2023]] | birthplace = [[Vienna, Virginia]] | contract = Bears | inj = no | cap =  | fa = }}
+
+{{Ice hockey team player
+| first = Henrik | last = Rybinski | dab = | num = 38 | pos = RW | nat = Canada | s/g = R | birthyear = 2001 | birthmonth = 6 | birthday = 26 | acq = [[2022–23 AHL season|2022]] | birthplace = [[Vancouver, British Columbia]] | contract = [[Washington Capitals|Capitals]] | inj = no | cap =  | fa = }}
+
+{{Ice hockey team player
+| first = Hunter | last = Shepard | dab = | num = 30 | pos = G | nat = United States | s/g = L | birthyear = 1995 | birthmonth = 11 | birthday = 7 | acq = [[2020–21 AHL season|2020]] | birthplace = [[Cohasset, Minnesota]] | contract = [[Washington Capitals|Capitals]] | inj = no | cap = | fa = }}
+
+{{Ice hockey team player
+| first = Joe | last = Snively | dab =  | num = 21 |  pos = LW | nat = United States | s/g = L | birthyear = 1996 | birthmonth = 1 | birthday = 1 | acq = [[2018–19 AHL season|2019]] | birthplace = [[Herndon, Virginia]] | contract = [[Washington Capitals|Capitals]] | inj = no | cap = | fa = }}
+
+{{Ice hockey team player
+| first = Clay | last = Stevenson | dab = | num = 31 | pos = G | nat = Canada | s/g = L | birthyear = 1999 | birthmonth = 3 | birthday = 3 | acq = [[2021–22 AHL season|2022]] | birthplace = [[Drayton Valley, Alberta]] | contract = [[Washington Capitals|Capitals]] | inj = no | cap =  | fa = }}
+
+{{Ice hockey team player
+| first = Matthew | last = Strome | dab = | num = 45 | pos = LW | nat = Canada | s/g= L | birthyear = 1999 | birthmonth = 1 | birthday = 3 | acq = [[2022-23 AHL season|2022]] | birthplace = [[Mississauga, Ontario]] | contract = Bears | inj = no | cap = | fa =  }}
+
+{{Ice hockey team player
+| first = Riley | last = Sutter | dab = | num = 24 |  pos = RW | nat = Canada | s/g = R | birthyear = 1999 | birthmonth = 10 | birthday = 25 | acq = [[2018–19 AHL season|2019]] | birthplace = [[Calgary, Alberta]] | contract = [[Washington Capitals|Capitals]] | inj = no | cap = | fa = }}
+
+{{Ice hockey team player
+| first = Alexander | last = Suzdalev | dab = | num = 41 |  pos = LW | nat = Sweden | s/g = L | birthyear = 2004 | birthmonth = 3 | birthday = 5 | acq = [[2022–23 AHL season|2023]] | birthplace = [[Khabarovsk]], [[Russia]] | contract = [[Washington Capitals|Capitals]] | inj = no | cap = | fa = }}
+
+{{Ice hockey team player
+| first = Colin | last = Swoyer | dab = | num = 37 | pos = D | nat = United States | s/g = R | birthyear = 1998 | birthmonth = 3 | birthday = 31 |acq = [[2023–24 AHL season|2023]] | birthplace = [[Hinsdale, Illinois]] | contract = Bears | inj = no | cap = | fa = }}
+
+{{Ice hockey team player
+| first = Bogdan | last = Trineyev | dab =  | num = 44 | pos = LW | nat = Russia | s/g = R | birthyear = 2002 | birthmonth = 3 | birthday = 4 | acq = [[2022–23 AHL season|2023]] | birthplace = [[Voronezh]], [[Russia]] | contract = [[Washington Capitals|Capitals]] | inj = no | cap = | fa = }}
+
+{{Ice hockey team player
+| first = Mike | last =  Vecchione | dab = | num = 19 | pos = RW | nat = United States | s/g = R | birthyear = 1993 | birthmonth = 2 | birthday = 25 | acq = [[2021–22 AHL season|2021]] | birthplace = [[Saugus, Massachusetts]] | contract = Bears | inj = no | cap = A | fa = }}
+
+|}
+<!-- end list of players -->
+
+==Playoffs==
+{{main|2024 Calder Cup playoffs}}
+
+=== Game log ===
+{{Game log start|style=background:#FFFFFF; border-bottom:#e7d2ad 5px solid; border-top:#472a2b 5px solid;|title=2024 Game Log – Playoffs}}
+{{Game log section start|hide=y|style=background:#FFFFFF; border-bottom:#e7d2ad 2px solid; border-top:#472a2b 2px solid;|title=Eastern Conference First Round vs. (A6) Lehigh Valley Phantoms: Bears won 3–1|# |Date |Visitor |Score |Home |OT |Starting Goalie |Attendance |Series |Recap}}
+|- style="background:#cfc;"
+| 1 || May 1 || Lehigh Valley || 1–6 || Hershey || || [[Hunter Shepard|Shepard]] || 8,038 || 1–0 || [https://theahl.com/stats/game-center/1026407 Recap]
+|- style="background:#cfc;"
+| 2 || May 4 || Lehigh Valley || 2–4 || Hershey || || Shepard || 10,520 || 2–0 || [https://theahl.com/stats/game-center/1026408 Recap]
+|- style="background:#fcf;"
+| 3 || May 8 || Hershey || 0–2 || Lehigh Valley || || Shepard || 6,240 || 2–1 || [https://theahl.com/stats/game-center/1026409 Recap]
+|- style="background:#cfc;"
+| 4 || May 11 || Hershey || 5–3 || Lehigh Valley || || Shepard || 7,089 || 3–1 || [https://theahl.com/stats/game-center/1026410 Recap]
+{{Game log section end}}
+{{Game log section start|hide=y|style=background:#FFFFFF; border-bottom:#e7d2ad 2px solid; border-top:#472a2b 2px solid;|title=Eastern Conference Second Round vs. (A5) Hartford Wolf Pack: Bears won 3–0|# |Date |Visitor |Score |Home |OT |Starting Goalie |Attendance |Series |Recap}}
+|- style="background:#cfc;"
+| 1 || May 16 || Hartford || 1–6 || Hershey || || [[Hunter Shepard|Shepard]] || 8,384 || 1–0 || [https://theahl.com/stats/game-center/1026442 Recap]
+|- style="background:#cfc;"
+| 2 || May 18 || Hartford || 2–4 || Hershey || || Shepard || 10,714 || 2–0 || [https://theahl.com/stats/game-center/1026443 Recap]
+|- style="background:#cfc;"
+| 3 || May 22 || Hershey || 4–1 || Hartford || || Shepard || 3,954 || 3–0 || [https://theahl.com/stats/game-center/1026444 Recap]
+{{Game log section end}}
+{{Game log section start|hide=y|style=background:#FFFFFF; border-bottom:#e7d2ad 2px solid; border-top:#472a2b 2px solid;|title=Eastern Conference Finals vs. (N1) Cleveland Monsters: Bears won 4–3|# |Date |Visitor |Score |Home |OT |Starting Goalie |Attendance |Series |Recap}}
+|- style="background:#cfc;"
+| 1 || May 30 || Cleveland || 4–5 || Hershey || OT || [[Hunter Shepard|Shepard]] || 9,229 || 0–1 || [https://theahl.com/stats/game-center/1026452 Recap]
+|- style="background:#cfc;"
+| 2 || June 1 || Cleveland || 2–3 || Hershey || OT || Shepard || 10,562 || 0–2 || [https://theahl.com/stats/game-center/1026453 Recap]
+|- style="background:#cfc;"
+| 3 || June 4 || Hershey || 6–2 || Cleveland || || Shepard || 14,675 || 0–3 || [https://theahl.com/stats/game-center/1026454 Recap]
+|- style="background:#fcf;"
+| 4 || June 6 || Hershey || 2–3 || Cleveland || || Shepard || 12,814 || 3–1 || [https://theahl.com/stats/game-center/1026455 Recap] 
+|- style="background:#fcf;"
+| 5 || June 8 || Hershey || 1–5 || Cleveland || || Shepard || 13,159 || 3–2 || [https://theahl.com/stats/game-center/1026456 Recap]
+|- style="background:#fcf;"
+| 6 || June 10 || Cleveland || 3–2 || Hershey || OT || Shepard || 9,511 || 3–3 || [https://theahl.com/stats/game-center/1026457 Recap]
+|- style="background:#cfc;"
+| 7 || June 12 || Cleveland || 2–3 || Hershey || OT || Shepard || 10,520 || 4–3 || [https://theahl.com/stats/game-center/1026458 Recap]
+{{Game log section end}}
+{{Game log section start|hide=y|style=background:#FFFFFF; border-bottom:#e7d2ad 2px solid; border-top:#472a2b 2px solid;|title=Calder Cup Finals vs. (P1) [[2023-24 Coachella Valley Firebirds season|Coachella Valley Firebirds]]: Hershey won series 4–2 |# |Date |Visitor |Score |Home |OT |Starting Goalie |Attendance |Series |Recap}}
+|- style="background:#fcf;"
+| 1 || June 14 || Coachella Valley || 4–3 || Hershey || || [[Hunter Shepard|Shepard]]  || 10,154 || 0–1 || [https://theahl.com/stats/game-center/1026468 Recap]
+|- style="background:#cfc;"
+| 2 || June 16 || Coachella Valley || 2–5 || Hershey || || Shepard || 10,507 || 1–1 || [https://theahl.com/stats/game-center/1026469 Recap] 
+|- style="background:#fcf;"
+| 3 || June 18 || Hershey || 2-6 || Coachella Valley || || Shepard || 9.034 || 1-2 || [https://theahl.com/stats/game-center/1026470 Recap]
+|- style="background:#cfc;"
+| 4 || June 20 || Hershey || 3-2 || Coachella Valley || || Shepard || 10,087 || 2-2 || [https://theahl.com/stats/game-center/1026471 Recap]
+|- style="background:#cfc;"
+| 5 || June 22 || Hershey || 3-2 || Coachella Valley || || Shepard || 10,087 || 3-2 || [https://theahl.com/stats/game-center/1026472 Recap] 
+|- style="background:#cfc;"
+| 6 || June 24 || Coachella Valley || 4-5 || Hershey || OT || Shepard || 11,013 || 4-2 || [https://theahl.com/stats/game-center/1026473 Recap] 
+{{Game log section end}}
+| ''Legend:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{Color box|#cfc|border=darkgray}} = Win&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{Color box|#fcf|border=darkgray}} = Loss&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;''
+{{Game log end}}
+
+==References==
+{{reflist}}
+[[Category:Hershey Bears seasons| ]]
+[[Category:2023–24 AHL season by team|Hershey Bears]]
+[[Category:Calder Cup championship seasons]]

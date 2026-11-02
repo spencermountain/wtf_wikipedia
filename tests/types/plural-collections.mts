@@ -32,8 +32,7 @@ export const namedSectionText: string = doc.section('History').text()
 export const indexedSectionText: string = wtfCjs('Hello').section(0).text()
 // @ts-expect-error use sentences()[0].
 doc.sentence()
-// @ts-expect-error use templates()[0].
-doc.template()
+export const firstTemplate: wtf.Template | null = doc.template('coord')
 // @ts-expect-error use templates()[0] on sections too.
 doc.sections()[0].template()
 

@@ -13,5 +13,6 @@ declare const sports: {
   nwsl: Esm['nwsl']
   pwhl: Esm['pwhl']
   cfl: Esm['cfl']
+  ahl: Esm['ahl']
 }
 export = sports

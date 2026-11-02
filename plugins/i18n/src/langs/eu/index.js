@@ -1,19 +1,23 @@
-// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
-import register from '../../register.js'
-import version from '../../_version.js'
 import aliases from './aliases.js'
-import parsers from './citations.js'
+import citations from './citations.js'
 
-const infoboxes = [
-  'taxotaula',
-  'taxotaula automatikoa',
-]
+const infoboxes = ['taxotaula', 'taxotaula automatikoa']
 
-const data = { aliases, infoboxes, parsers }
-
-const plugin = (_models, templates, boxes) => register(data, templates, boxes)
-plugin.lang = 'eu'
-plugin.version = version
-
-export { data }
-export default plugin
+export default {
+  lang: 'eu',
+  enLang: 'basque',
+  category: ['kategoria'],
+  redirect: ['birzuzendu'],
+  stub: ['zirriborroa'],
+  infobox: ['infotaula'],
+  image: ['fitxategi', 'irudi'],
+  reference: [],
+  disambig: ['argipen'],
+  disambigTitle: [],
+  aliases,
+  infoboxes,
+  templates: citations,
+  gated: {
+    'egiptekas': '{|-\n', // hieroglyph blocks render as an empty table
+  },
+}

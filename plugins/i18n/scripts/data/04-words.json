@@ -1,0 +1,1308 @@
+{
+  "_fetched": "2026-11-02",
+  "langs": {
+    "ar": {
+      "category": [
+        "تصنيف"
+      ],
+      "redirect": [
+        "تحويل"
+      ],
+      "image": [
+        "ملف",
+        "صورة"
+      ]
+    },
+    "az": {
+      "category": [
+        "kateqoriya",
+        "kat"
+      ],
+      "redirect": [
+        "i̇sti̇qamətləndi̇rmə",
+        "i̇sti̇qamətləndi̇r",
+        "yönləndi̇rmə"
+      ],
+      "image": [
+        "fayl",
+        "fl",
+        "şəkil"
+      ]
+    },
+    "be": {
+      "category": [
+        "катэгорыя"
+      ],
+      "redirect": [],
+      "image": [
+        "файл",
+        "выява"
+      ]
+    },
+    "bg": {
+      "category": [
+        "категория"
+      ],
+      "redirect": [
+        "пренасочване",
+        "виж"
+      ],
+      "image": [
+        "файл",
+        "картинка"
+      ]
+    },
+    "bn": {
+      "category": [
+        "বিষয়শ্রেণী"
+      ],
+      "redirect": [
+        "পুনর্নির্দেশ",
+        "পুনঃর্নির্দেশ",
+        "পুনঃনির্দেশ",
+        "পুননির্দেশ"
+      ],
+      "image": [
+        "চিত্র"
+      ]
+    },
+    "ca": {
+      "category": [
+        "categoria"
+      ],
+      "redirect": [
+        "redirecció",
+        "redireccio",
+        "redireccion"
+      ],
+      "image": [
+        "fitxer",
+        "imatge"
+      ]
+    },
+    "cs": {
+      "category": [
+        "kategorie",
+        "kat"
+      ],
+      "redirect": [
+        "přesměruj",
+        "presmeruj"
+      ],
+      "image": [
+        "soubor",
+        "obrázok"
+      ]
+    },
+    "cy": {
+      "category": [
+        "categori"
+      ],
+      "redirect": [
+        "ail-cyfeirio",
+        "ailgyfeirio"
+      ],
+      "image": [
+        "delwedd"
+      ]
+    },
+    "da": {
+      "category": [
+        "kategori"
+      ],
+      "redirect": [],
+      "image": [
+        "fil",
+        "billede"
+      ]
+    },
+    "de": {
+      "category": [
+        "kategorie"
+      ],
+      "redirect": [
+        "weiterleitung"
+      ],
+      "image": [
+        "datei",
+        "bild"
+      ]
+    },
+    "el": {
+      "category": [
+        "κατηγορία"
+      ],
+      "redirect": [
+        "ανακατευθυνση"
+      ],
+      "image": [
+        "αρχείο",
+        "εικόνα"
+      ]
+    },
+    "eo": {
+      "category": [
+        "kategorio"
+      ],
+      "redirect": [
+        "alidirekti",
+        "alidirektu",
+        "al"
+      ],
+      "image": [
+        "dosiero"
+      ]
+    },
+    "es": {
+      "category": [
+        "categoría",
+        "cat"
+      ],
+      "redirect": [
+        "redirección",
+        "redireccion"
+      ],
+      "image": [
+        "archivo",
+        "imagen"
+      ]
+    },
+    "et": {
+      "category": [
+        "kategooria"
+      ],
+      "redirect": [
+        "suuna"
+      ],
+      "image": [
+        "fail",
+        "pilt"
+      ]
+    },
+    "eu": {
+      "category": [
+        "kategoria"
+      ],
+      "redirect": [
+        "birzuzendu"
+      ],
+      "image": [
+        "fitxategi",
+        "irudi"
+      ]
+    },
+    "fa": {
+      "category": [
+        "رده"
+      ],
+      "redirect": [
+        "تغییر_مسیر",
+        "تغییرمسیر"
+      ],
+      "image": [
+        "پرونده",
+        "تصویر"
+      ]
+    },
+    "fi": {
+      "category": [
+        "luokka"
+      ],
+      "redirect": [
+        "ohjaus",
+        "uudelleenohjaus"
+      ],
+      "image": [
+        "tiedosto",
+        "kuva"
+      ]
+    },
+    "fr": {
+      "category": [
+        "catégorie"
+      ],
+      "redirect": [
+        "redirection"
+      ],
+      "image": [
+        "fichier"
+      ]
+    },
+    "gl": {
+      "category": [
+        "categoría"
+      ],
+      "redirect": [
+        "redirección",
+        "redirecionamento"
+      ],
+      "image": [
+        "ficheiro",
+        "arquivo",
+        "imagem",
+        "imaxe"
+      ]
+    },
+    "he": {
+      "category": [
+        "קטגוריה",
+        "קט"
+      ],
+      "redirect": [
+        "הפניה"
+      ],
+      "image": [
+        "קובץ",
+        "קו",
+        "תמונה"
+      ]
+    },
+    "hi": {
+      "category": [
+        "श्रेणी",
+        "श्र"
+      ],
+      "redirect": [
+        "पुनर्प्रेषित",
+        "अनुप्रेषित"
+      ],
+      "image": [
+        "चित्र"
+      ]
+    },
+    "hr": {
+      "category": [
+        "kategorija",
+        "ct",
+        "kt"
+      ],
+      "redirect": [
+        "preusmjeri",
+        "preusmjeri"
+      ],
+      "image": [
+        "datoteka",
+        "dt",
+        "slika"
+      ]
+    },
+    "hu": {
+      "category": [
+        "kategória"
+      ],
+      "redirect": [
+        "átirányítás"
+      ],
+      "image": [
+        "fájl",
+        "kép"
+      ]
+    },
+    "hy": {
+      "category": [
+        "կատեգորիա"
+      ],
+      "redirect": [
+        "վերահղում"
+      ],
+      "image": [
+        "պատկեր"
+      ]
+    },
+    "id": {
+      "category": [
+        "kategori"
+      ],
+      "redirect": [
+        "alih"
+      ],
+      "image": [
+        "berkas",
+        "gambar"
+      ]
+    },
+    "it": {
+      "category": [
+        "categoria",
+        "cat"
+      ],
+      "redirect": [
+        "rinvia",
+        "rinvio",
+        "rimando"
+      ],
+      "image": [
+        "immagine"
+      ]
+    },
+    "ja": {
+      "category": [
+        "カテゴリ"
+      ],
+      "redirect": [
+        "転送",
+        "リダイレクト",
+        "＃転送",
+        "＃リダイレクト"
+      ],
+      "image": [
+        "ファイル",
+        "画像"
+      ]
+    },
+    "ka": {
+      "category": [
+        "კატეგორია"
+      ],
+      "redirect": [
+        "გადამისამართება"
+      ],
+      "image": [
+        "ფაილი",
+        "სურათი"
+      ]
+    },
+    "kk": {
+      "category": [
+        "санат",
+        "sanat",
+        "سانات"
+      ],
+      "redirect": [
+        "айдау"
+      ],
+      "image": [
+        "сурет",
+        "swret",
+        "سۋرەت"
+      ]
+    },
+    "ko": {
+      "category": [
+        "분류"
+      ],
+      "redirect": [
+        "넘겨주기"
+      ],
+      "image": [
+        "파일",
+        "그림"
+      ]
+    },
+    "lt": {
+      "category": [
+        "kategorija"
+      ],
+      "redirect": [
+        "peradresavimas"
+      ],
+      "image": [
+        "vaizdas"
+      ]
+    },
+    "lv": {
+      "category": [
+        "kategorija"
+      ],
+      "redirect": [],
+      "image": [
+        "attēls"
+      ]
+    },
+    "mk": {
+      "category": [
+        "категорија"
+      ],
+      "redirect": [
+        "пренасочување",
+        "види",
+        "пренасочување",
+        "пренасочување"
+      ],
+      "image": [
+        "податотека",
+        "слика"
+      ]
+    },
+    "ml": {
+      "category": [
+        "വർഗ്ഗം",
+        "വ",
+        "വി",
+        "വിഭാഗം"
+      ],
+      "redirect": [
+        "തിരിച്ചുവിടുക",
+        "തിരിച്ചുവിടൽ"
+      ],
+      "image": [
+        "പ്രമാണം",
+        "ചി",
+        "ചിത്രം",
+        "പ്ര"
+      ]
+    },
+    "ms": {
+      "category": [
+        "kategori"
+      ],
+      "redirect": [
+        "lencong"
+      ],
+      "image": [
+        "fail",
+        "imej"
+      ]
+    },
+    "nl": {
+      "category": [
+        "categorie"
+      ],
+      "redirect": [
+        "doorverwijzing"
+      ],
+      "image": [
+        "bestand",
+        "afbeelding"
+      ]
+    },
+    "nn": {
+      "category": [
+        "kategori"
+      ],
+      "redirect": [
+        "omdiriger",
+        "omdiriger",
+        "omdirigering"
+      ],
+      "image": [
+        "fil",
+        "bilde"
+      ]
+    },
+    "no": {
+      "category": [
+        "kategori"
+      ],
+      "redirect": [
+        "omdirigering",
+        "omdiriger",
+        "omdiriger"
+      ],
+      "image": [
+        "fil",
+        "bilde"
+      ]
+    },
+    "pl": {
+      "category": [
+        "kategoria"
+      ],
+      "redirect": [
+        "patrz",
+        "przekieruj",
+        "tam"
+      ],
+      "image": [
+        "plik",
+        "grafika"
+      ]
+    },
+    "pt": {
+      "category": [
+        "categoria",
+        "cat"
+      ],
+      "redirect": [
+        "redirecionamento"
+      ],
+      "image": [
+        "ficheiro",
+        "arquivo",
+        "imagem"
+      ]
+    },
+    "ro": {
+      "category": [
+        "categorie"
+      ],
+      "redirect": [
+        "redirecteaza"
+      ],
+      "image": [
+        "fișier",
+        "fişier",
+        "imagine"
+      ]
+    },
+    "ru": {
+      "category": [
+        "категория",
+        "к"
+      ],
+      "redirect": [
+        "перенаправление",
+        "перенапр"
+      ],
+      "image": [
+        "файл",
+        "изображение"
+      ]
+    },
+    "sh": {
+      "category": [
+        "kategorija",
+        "kat",
+        "kt",
+        "кат",
+        "кт",
+        "категорија"
+      ],
+      "redirect": [
+        "preusmjeri",
+        "preusmeri",
+        "preusmjeri",
+        "preusmeri",
+        "preusmeri",
+        "preusmjeri",
+        "преусмери",
+        "преусмери",
+        "преусмери",
+        "преусмјери",
+        "преусмјери",
+        "преусмјери"
+      ],
+      "image": [
+        "datoteka",
+        "dt",
+        "fotografija",
+        "slika",
+        "дт",
+        "датотека",
+        "слика",
+        "фотографија"
+      ]
+    },
+    "simple": {
+      "category": [],
+      "redirect": [],
+      "image": []
+    },
+    "sk": {
+      "category": [
+        "kategória"
+      ],
+      "redirect": [
+        "presmeruj",
+        "přesměruj"
+      ],
+      "image": [
+        "súbor",
+        "obrázok"
+      ]
+    },
+    "sl": {
+      "category": [
+        "kategorija"
+      ],
+      "redirect": [
+        "preusmeritev"
+      ],
+      "image": [
+        "slika"
+      ]
+    },
+    "sq": {
+      "category": [
+        "kategoria",
+        "kategori"
+      ],
+      "redirect": [
+        "ridrejto"
+      ],
+      "image": [
+        "skeda",
+        "figura"
+      ]
+    },
+    "sr": {
+      "category": [
+        "категорија",
+        "kategorija"
+      ],
+      "redirect": [
+        "преусмери",
+        "преусмери",
+        "преусмери",
+        "преусмјери",
+        "преусмјери",
+        "преусмјери",
+        "preusmeri",
+        "preusmeri",
+        "preusmeri",
+        "preusmjeri",
+        "preusmjeri",
+        "preusmjeri"
+      ],
+      "image": [
+        "датотека",
+        "datoteka",
+        "fotografija",
+        "slika",
+        "слика",
+        "фотографија"
+      ]
+    },
+    "sv": {
+      "category": [
+        "kategori"
+      ],
+      "redirect": [
+        "omdirigering"
+      ],
+      "image": [
+        "fil",
+        "bild"
+      ]
+    },
+    "ta": {
+      "category": [
+        "பகுப்பு"
+      ],
+      "redirect": [
+        "வழிமாற்று"
+      ],
+      "image": [
+        "படிமம்"
+      ]
+    },
+    "te": {
+      "category": [
+        "వర్గం"
+      ],
+      "redirect": [
+        "దారిమార్పు"
+      ],
+      "image": [
+        "దస్త్రం",
+        "ఫైలు",
+        "బొమ్మ"
+      ]
+    },
+    "th": {
+      "category": [
+        "หมวดหมู่"
+      ],
+      "redirect": [
+        "เปลี่ยนทาง"
+      ],
+      "image": [
+        "ไฟล์",
+        "ภาพ"
+      ]
+    },
+    "tr": {
+      "category": [
+        "kategori",
+        "kat"
+      ],
+      "redirect": [
+        "yönlendi̇rme",
+        "yönlendi̇r",
+        "yönlendirme",
+        "yönlendir"
+      ],
+      "image": [
+        "dosya",
+        "resim"
+      ]
+    },
+    "uk": {
+      "category": [
+        "категорія",
+        "категория"
+      ],
+      "redirect": [
+        "перенаправлення",
+        "перенапр",
+        "перенапр",
+        "перенаправление"
+      ],
+      "image": [
+        "файл",
+        "зображення",
+        "изображение"
+      ]
+    },
+    "ur": {
+      "category": [
+        "زمرہ"
+      ],
+      "redirect": [
+        "رجوع_مکرر"
+      ],
+      "image": [
+        "فائل",
+        "تصویر",
+        "ملف"
+      ]
+    },
+    "uz": {
+      "category": [
+        "turkum",
+        "kategoriya"
+      ],
+      "redirect": [
+        "yoʻnaltirish",
+        "yonaltirish"
+      ],
+      "image": [
+        "fayl",
+        "tasvir"
+      ]
+    },
+    "vi": {
+      "category": [
+        "thể loại"
+      ],
+      "redirect": [
+        "đổi"
+      ],
+      "image": [
+        "tập tin",
+        "hình"
+      ]
+    },
+    "zh": {
+      "category": [
+        "cat",
+        "分类",
+        "分類"
+      ],
+      "redirect": [
+        "重定向",
+        "重新導向"
+      ],
+      "image": [
+        "图像",
+        "图片",
+        "圖像",
+        "圖片",
+        "文件",
+        "档案",
+        "檔案"
+      ]
+    }
+  },
+  "stub": {
+    "ab": "ацәаҳәа",
+    "ace": "cahrot",
+    "af": "saadjie",
+    "als": "stumpen",
+    "am": "መዋቅር",
+    "ang": "stycce",
+    "anp": "आधार",
+    "an": "borrador",
+    "ar": "بذرة",
+    "ary": "زريعة",
+    "arz": "تقاوى",
+    "ast": "entamu",
+    "as": "পোখালি",
+    "av": "хӏадурунжо",
+    "azb": "قارالاما",
+    "az": "qaralama",
+    "bar": "skizze",
+    "ba": "әҙерләмә",
+    "be-x-old": "накід",
+    "bg": "мъниче",
+    "bh": "आधार",
+    "bn": "অসম্পূর্ণ",
+    "bo": "ཆ་མི་ཚང་བ",
+    "br": "danvez pennad",
+    "bs": "u začetku",
+    "bug": "rintiseng",
+    "ca": "esborrany",
+    "cdo": "buáng-nàng-hâ",
+    "ceb": "saha",
+    "ce": "кечдар",
+    "ckb": "کۆلکە",
+    "co": "c-supranu",
+    "crh": "taslaq",
+    "csb": "ùzémk artikla",
+    "cs": "pahýl",
+    "cu": "нєꙁаврьшєнъ члѣнъ",
+    "cy": "eginyn",
+    "diq": "vernuşte",
+    "dsb": "zarodk",
+    "el": "επέκταση",
+    "eo": "ĝermo",
+    "es": "esbozo",
+    "eu": "zirriborroa",
+    "ext": "por mejoral",
+    "fa": "خرد",
+    "fi": "tynkä",
+    "fo": "stubbi",
+    "fr": "ébauche",
+    "fur": "aboç",
+    "fy": "stobbe",
+    "ga": "síol",
+    "gd": "bun",
+    "gl": "en progreso",
+    "gom": "धाक्टें पान",
+    "gor": "buntato",
+    "gu": "સ્ટબ",
+    "gv": "bun",
+    "haw": "ʻōmuku",
+    "he": "קצרמר",
+    "hi": "आधार",
+    "hr": "mrva",
+    "ht": "ebòch",
+    "hu": "csonk",
+    "hy": "անավարտ",
+    "hyw": "անաւարտ",
+    "ia": "pecietta",
+    "iba": "telinsu",
+    "ig": "édéntạ",
+    "ilo": "pungol",
+    "io": "klado",
+    "isv": "začetok",
+    "is": "stubbur",
+    "it": "s",
+    "jam": "stob",
+    "jbo": "na mulno",
+    "kaa": "shala",
+    "kai": "wàalài",
+    "ka": "ესკიზი",
+    "kg": "ndâmbu",
+    "km": "អត្ថបទខ្លីមិនពេញលេញ",
+    "kn": "ಚುಟುಕು",
+    "ko": "토막글",
+    "ks": "نامُکَمَل مَضموٗن",
+    "ku": "şitil",
+    "kw": "stock",
+    "lad": "esbozo",
+    "la": "stipula",
+    "lbe": "кьурхь",
+    "lb": "skizz",
+    "lij": "s",
+    "li": "sjtumpke",
+    "lmo": "sbozz",
+    "ln": "ndámbo",
+    "ltg": "nadabeigts rakstīņs",
+    "lv": "aizmetnis",
+    "mag": "आधार",
+    "map-bms": "rintisan",
+    "mdf": "керф",
+    "mg": "vangovango",
+    "min": "rancangan",
+    "mi": "maramara",
+    "mk": "никулец",
+    "ml": "അപൂർണ്ണം",
+    "mr": "विस्तार",
+    "ms": "tunas",
+    "mwl": "rabisco",
+    "mzn": "پچوک بنویشته",
+    "nds-nl": "begin",
+    "nds": "stubben",
+    "ne": "ठुटो",
+    "nl": "beginnetje",
+    "nn": "spire",
+    "no": "spire",
+    "nrm": "choutchette",
+    "oc": "esbòs",
+    "om": "xinnoo",
+    "or": "ଅଧାଗଢ଼ା",
+    "os": "къæртт",
+    "pam": "suli",
+    "pcd": "ébeuche",
+    "ps": "نابشپړ",
+    "pt": "esboço",
+    "rmy": "bibarilo",
+    "roa-rup": "ahurhire",
+    "roa-tara": "s",
+    "ro": "ciot",
+    "rsk": "дополнїц",
+    "rue": "стыржень",
+    "ru": "заготовка",
+    "sah": "омоон",
+    "sa": "अपूर्णलेखः",
+    "sc": "s",
+    "sd": "ڪچو",
+    "se": "nalta",
+    "sg": "mayele",
+    "shi": "amud",
+    "sh": "u začetku",
+    "si": "අංකුරය",
+    "sk": "výhonok",
+    "sl": "škrbina",
+    "smn": "narcce",
+    "so": "gumud",
+    "sq": "cung",
+    "sr": "клица",
+    "stq": "stump",
+    "su": "pondok",
+    "sw": "mbegu",
+    "syl": "ꠇꠥꠠꠤ",
+    "ta": "குறுங்கட்டுரை",
+    "te": "మొలక",
+    "tg": "хурд",
+    "th": "โครง",
+    "ti": "መዋቕር",
+    "tok": "lili ike",
+    "to": "potuʻi",
+    "tr": "taslak",
+    "tt": "мәкалә төпчеге",
+    "uk": "заготовка",
+    "ur": "نامکمل",
+    "uz": "chala",
+    "vec": "avixo de spigaso",
+    "vi": "sơ khai",
+    "vo": "sid",
+    "war": "turók",
+    "wa": "djermon",
+    "wo": "junj",
+    "xal": "белдлһн",
+    "yi": "שטומף",
+    "yo": "ẹ̀kúnrẹ́rẹ́",
+    "zea": "stompje",
+    "zgh": "ⴰⵎⵏⵏⵉ ⴰⵎⵓⴷ",
+    "zh-classical": "芻文",
+    "zh-min-nan": "phí",
+    "zh-yue": "楔"
+  },
+  "infobox": {
+    "ab": "акарточка",
+    "ady": "карточка",
+    "af": "inligtingskas4",
+    "alt": "карточка",
+    "am": "መረጃሳጥን",
+    "an": "ficha",
+    "arc": "ܨܢܕܘܩ ܪܡܙܐ2",
+    "ary": "صندوق معلومات",
+    "ast": "ficha",
+    "av": "инфобокс",
+    "az": "məlumat qutusu",
+    "ba": "карточкарус",
+    "be-x-old": "картка",
+    "be": "картка",
+    "bg": "инфокутия",
+    "bn": "তথ্যছক",
+    "bs": "infokutija",
+    "bxr": "инфобокс",
+    "ce": "карточка",
+    "cv": "карточка",
+    "da": "infoboks",
+    "dsb": "infokašćik",
+    "el": "πλαίσιο πληροφοριών",
+    "eo": "informkesto",
+    "es": "ficha",
+    "et": "infokast",
+    "eu": "infotaula",
+    "fi": "tietolaatikko",
+    "fo": "infoboks",
+    "fur": "infoschede",
+    "fy": "ynfoboks generyk",
+    "gag": "bilgi kutusu",
+    "ga": "wd bosca sonraí",
+    "gv": "kishtey fys",
+    "haw": "anuāmapa",
+    "he": "תבנית מידע",
+    "hi": "ज्ञानसन्दूक",
+    "hr": "infookvir",
+    "hsb": "infokašćik",
+    "hy": "տեղեկաքարտ",
+    "hyw": "տեղեկաքարտ",
+    "ia": "infobox generic",
+    "inh": "карточка",
+    "isv": "kartka",
+    "jbo": "tertcita tanxe",
+    "kaa": "maǵqutı",
+    "kai": "infobox4",
+    "ka": "ინფოდაფა",
+    "kk": "инфобокс",
+    "km": "ប្រអប់ព័ត៌មាន",
+    "koi": "картуш",
+    "ko": "정보상자",
+    "ks": "معلوٗمات ڈَبہٕ",
+    "kv": "карточка",
+    "ky": "карточка",
+    "lad": "ficha",
+    "la": "metacapsa tabellaria",
+    "lbe": "карточка",
+    "lo": "ກ່ອງຂໍ້ມູນ",
+    "ltg": "infoskreine",
+    "lt": "infolentelė",
+    "mag": "ज्ञानसन्दूक",
+    "mdf": "карточка",
+    "mg": "boaty fampahalalana",
+    "mhr": "аҥа",
+    "mk": "инфокутија",
+    "mn": "инфобокс",
+    "mwl": "anfo",
+    "myv": "карточка",
+    "nah": "amatl",
+    "nl": "infobox generiek",
+    "nn": "infoboks",
+    "no": "infoboks",
+    "oc": "infotaula",
+    "os": "къопп",
+    "pap": "infobox generiek",
+    "pnt": "πλαίσιον πληροφοριών",
+    "ps": "مالوماتبکس",
+    "pt": "infocaixa",
+    "qu": "ficha",
+    "rm": "infochascha",
+    "ro": "infocasetă",
+    "rsk": "инфорамик",
+    "rue": "інфобокс",
+    "ru": "карточка",
+    "sah": "карточка",
+    "sd": "ڄاڻ دٻو",
+    "se": "diehtokássa",
+    "sh": "infokutija",
+    "si": "තොරතුරුකොටුව",
+    "sl": "infopolje",
+    "smn": "tiätuloová",
+    "sr": "инфокутија",
+    "ss": "simple box",
+    "su": "kotak info",
+    "sv": "faktamall",
+    "sw": "jedwali",
+    "tg": "қуттӣ",
+    "th": "กล่องข้อมูล",
+    "tok": "poki sona",
+    "tpi": "infobokis",
+    "tr": "bilgi kutusu",
+    "tt": "карточка",
+    "tyv": "карточка",
+    "udm": "карточка",
+    "uk": "картка",
+    "ur": "خانہ معلومات",
+    "uz": "bilgiquti",
+    "vep": "карточка",
+    "vi": "hộp thông tin",
+    "wa": "infoboesse 2",
+    "xal": "инфобокс",
+    "yi": "אינפאקעסטל",
+    "zgh": "ⵜⴰⴼⵍⵓⵖⵎⵉⵙⵜ",
+    "zh-yue": "明細"
+  },
+  "disambig": {
+    "ab": "аҵакырацәа",
+    "af": "dubbelsinnig",
+    "als": "begriffsklärung",
+    "alt": "бир аайы јок",
+    "am": "መንታ",
+    "ang": "disambig",
+    "an": "desambigación",
+    "arc": "ܬ.ܐ.",
+    "ar": "توضيح",
+    "ary": "توضيح",
+    "arz": "توضيح",
+    "ast": "dixebra",
+    "av": "цо магӏна гуреб",
+    "ay": "desambiguación",
+    "azb": "دقیقلشدیرمه",
+    "az": "dəqiqləşdirmə",
+    "ban": "disambiguasi",
+    "bar": "begriffsklearung",
+    "bat-smg": "disambig",
+    "ba": "күп мәғәнәлелек",
+    "bcl": "disambig",
+    "be-x-old": "неадназначнасьць",
+    "be": "неадназначнасць",
+    "bew": "pembédaan",
+    "bg": "пояснение",
+    "bh": "बहुअर्थी",
+    "bjn": "disambiguasi",
+    "bn": "দ্ব্যর্থতা নিরসন",
+    "br": "disheñvelout",
+    "bs": "višeznačnica",
+    "bxr": "олон удхатай",
+    "ca": "desambiguació",
+    "cdo": "gì-ngiê",
+    "ceb": "giklaro",
+    "ce": "чолхалла",
+    "ckb": "ڕوونکردنەوە",
+    "co": "disambig",
+    "cs": "rozcestník",
+    "cu": "мъногосъмꙑслиѥ",
+    "cv": "disambig",
+    "cy": "gwahaniaethu",
+    "da": "flertydig",
+    "de": "begriffsklärung",
+    "diq": "maneyo bin",
+    "dsb": "wěcejwóznamowosć",
+    "dv": "disambig",
+    "el": "αποσαφήνιση",
+    "eo": "apartigilo",
+    "es": "desambiguación",
+    "et": "täpsustuslehekülg",
+    "eu": "argipen",
+    "ext": "desambiguáncia",
+    "fa": "ابهام‌زدایی",
+    "fiu-vro": "täpsüstüslehekülg",
+    "fi": "täsmennyssivu",
+    "fj": "sega ni vakatakilakilataki",
+    "fo": "fleiri týdningar",
+    "frr": "muardüüdag artiikel",
+    "fr": "homonymie",
+    "fur": "disambiguazion",
+    "fy": "neibetsjuttings",
+    "gag": "anlam ayrımı",
+    "gan": "扤清楚",
+    "ga": "idirdhealú",
+    "gd": "soilleireachadh",
+    "gl": "homónimos",
+    "gn": "myesakãrã",
+    "gu": "સંદિગ્ધ શીર્ષક",
+    "gv": "reddaghey",
+    "hak": "disambig",
+    "ha": "disambig",
+    "haw": "huaʻōlelo puana like",
+    "he": "פירושונים",
+    "hif": "disambig",
+    "hi": "बहुविकल्पी शब्द",
+    "hr": "razdvojba",
+    "hsb": "wjacezmyslnosć",
+    "ht": "omonimi",
+    "hu": "egyért",
+    "hy": "բազմիմաստություն",
+    "hyw": "բազմիմաստութիւն",
+    "id": "disambiguasi",
+    "ilo": "panangilawlawag",
+    "inh": "массехк маӏан хилар",
+    "io": "homonimo",
+    "isv": "mnogoznačnost",
+    "is": "aðgreining",
+    "it": "disambigua",
+    "ja": "aimai",
+    "jbo": "suzmunski",
+    "jv": "disambig",
+    "kaa": "disambig",
+    "ka": "მრავალმნიშვნელოვანი",
+    "kbd": "disambig",
+    "kg": "bisongidila",
+    "kk": "айрық",
+    "km": "អសង្ស័យកម្ម",
+    "kn": "ದ್ವಂದ್ವ ನಿವಾರಣೆ",
+    "ko": "동음이의",
+    "krc": "кёб магъаналы",
+    "ksh": "disambig",
+    "ku": "cudakirin",
+    "kw": "clerheans",
+    "ky": "текмаанисиздик",
+    "lad": "desambiguasion",
+    "la": "pagina discretiva",
+    "lbe": "неоднозначность",
+    "lb": "homonymie",
+    "lez": "са шумуд манавал",
+    "lfn": "desambigui",
+    "lij": "dizanbigoaçión",
+    "li": "verdudeliking",
+    "lld": "disambigua",
+    "lmo": "desambiguassiù",
+    "ln": "bokokani",
+    "lo": "ການແກ້ຄວາມກຳກວມ",
+    "ltg": "zeimeibu škiršona",
+    "lt": "nuorodinis",
+    "lv": "nozīmju atdalīšana",
+    "mad": "disambiguasi",
+    "mag": "बहुविकल्पी शब्द",
+    "mai": "बहुविकल्पी शब्द",
+    "map-bms": "disambig",
+    "mg": "pejy mitovy anarana",
+    "mhr": "шуко ончыктымаш-влак",
+    "min": "disingkek",
+    "mi": "disambig",
+    "mk": "појаснување",
+    "ml": "വിവക്ഷകൾ",
+    "mn": "салаа утгатай",
+    "ms": "nyahkekaburan",
+    "mt": "diżambigwazzjoni",
+    "mwl": "zambiguaçon",
+    "my": "သံတူကြောင်းကွဲ",
+    "mzn": "گجگجی بیری",
+    "nah": "tlahtolmelahuacatlaliztli",
+    "nap": "disambigua",
+    "nds-nl": "dv",
+    "nds": "mehrdüdig begreep",
+    "new": "disambig",
+    "nl": "dp",
+    "nn": "fleirtyding",
+    "nov": "desambig",
+    "no": "peker",
+    "nrm": "page dé frouque",
+    "nv": "ałtsʼáʼáztiin",
+    "oc": "omonimia",
+    "olo": "selvendyssivu",
+    "os": "disambig",
+    "pap": "dp",
+    "pcd": "homonymie",
+    "pdc": "begriffsklärung",
+    "pfl": "bkl",
+    "pl": "ujednoznacznienie",
+    "pms": "gestion dj'omònim",
+    "ps": "څومانيز",
+    "pt": "desambiguação",
+    "qu": "sut'ichana qillqa",
+    "rm": "sclerir noziun",
+    "rmy": "dudalipen",
+    "roa-rup": "disambig",
+    "roa-tara": "disambigue",
+    "ro": "dezambiguizare",
+    "rue": "чеперушка",
+    "ru": "неоднозначность",
+    "sah": "суолталар",
+    "scn": "disambigua",
+    "sc": "disambìgua",
+    "sd": "سلجهائپ",
+    "shi": "ismawn mmrwasnin",
+    "shn": "ငမ်းငဝ်း",
+    "sh": "razvrstavanje",
+    "si": "බහුරුත්හරණය",
+    "sk": "rozlišovacia stránka",
+    "sl": "razločitev",
+    "smn": "tärkkilistemsijđo",
+    "sm": "faaleaogaina",
+    "sn": "kujekesa",
+    "so": "caddayn",
+    "sq": "kthjellim",
+    "srn": "dp",
+    "sr": "вишезначна одредница",
+    "stq": "begriepskloorenge",
+    "su": "disambiguasi",
+    "sv": "förgrening",
+    "sw": "maana",
+    "szl": "disambig",
+    "ta": "பக்கவழி நெறிப்படுத்தல்",
+    "tet": "disambig",
+    "te": "అయోమయ నివృత్తి",
+    "tg": "муайянкунӣ",
+    "th": "แก้ความกำกวม",
+    "tl": "paglilinaw",
+    "tok": "nimi pi kon mute",
+    "tpi": "disambig",
+    "tr": "anlam ayrımı",
+    "tt": "күп мәгънәләр",
+    "tyv": "disambig",
+    "udm": "disambig",
+    "uk": "disambig",
+    "ur": "ضد ابہام",
+    "uz": "disambig",
+    "vec": "dezanbìgua",
+    "vep": "z",
+    "vi": "trang định hướng",
+    "vls": "db",
+    "vo": "telplänov",
+    "war": "pansayod",
+    "wa": "omonimeye",
+    "yi": "באדייטן",
+    "za": "disambig",
+    "zea": "dp",
+    "zgh": "ⵉⵙⵎⴰⵡⵏ ⵉⵎⵎⵔⵡⴰⵙⵏ",
+    "zh-classical": "釋義",
+    "zh-min-nan": "khu-pia̍t",
+    "zh-yue": "搞清楚"
+  }
+}

@@ -5,5 +5,8 @@ type Esm = typeof import('./index.js', { with: { 'resolution-mode': 'import' } }
 declare const plugin: Esm['default']
 declare namespace plugin {
   export type PersonDate = import('./index.js', { with: { 'resolution-mode': 'import' } }).PersonDate
+  export type PersonNames = import('./index.js', { with: { 'resolution-mode': 'import' } }).PersonNames
+  export type Spouse = import('./index.js', { with: { 'resolution-mode': 'import' } }).Spouse
+  export type PersonChildren = import('./index.js', { with: { 'resolution-mode': 'import' } }).PersonChildren
 }
 export = plugin

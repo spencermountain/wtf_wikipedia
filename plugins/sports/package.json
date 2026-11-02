@@ -38,7 +38,8 @@
     "write:wnba": "node ./scripts/write-db.js wnba",
     "write:nwsl": "node ./scripts/write-db.js nwsl",
     "write:pwhl": "node ./scripts/write-db.js pwhl",
-    "write:cfl": "node ./scripts/write-db.js cfl"
+    "write:cfl": "node ./scripts/write-db.js cfl",
+    "write:ahl": "node ./scripts/write-db.js ahl"
   },
   "files": [
     "builds",

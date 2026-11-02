@@ -1,6 +1,19 @@
 import rowGroups from './rows.js'
 import buildGame from './game.js'
 
+// titles of the sections this one is nested under
+const ancestorTitles = function (all, i) {
+  const titles = []
+  let depth = all[i].depth()
+  for (let j = i - 1; j >= 0 && depth > 0; j -= 1) {
+    if (all[j].depth() < depth) {
+      titles.push(all[j].title().trim().toLowerCase())
+      depth = all[j].depth()
+    }
+  }
+  return titles
+}
+
 // candidate sections in title-priority order - pages can have
 // a prose 'Regular season' section besides the real schedule one
 const findSections = function (doc, titles, exclude) {
@@ -8,11 +21,15 @@ const findSections = function (doc, titles, exclude) {
   const found = []
   const seen = new Set()
   const addMatches = function (want, loose) {
-    all.forEach((s) => {
+    all.forEach((s, i) => {
       const title = s.title().trim().toLowerCase()
       const hit = loose ? title.includes(want) : title === want
       if (hit && seen.has(s.index()) === false) {
         if (exclude && exclude.test(title)) {
+          return
+        }
+        // a 'Game log' nested under 'Playoffs' is not the regular-season log
+        if (exclude && ancestorTitles(all, i).some((t) => exclude.test(t))) {
           return
         }
         seen.add(s.index())

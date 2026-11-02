@@ -36,6 +36,10 @@ const parseRecord = function (str = '', opts = {}) {
       rec.otWins = nums[1]
       rec.otLosses = nums[2]
       rec.losses = nums[3]
+    } else if (opts.soLosses === true) {
+      //the ahl format: W–L–OTL–SOL - a shootout loss is an overtime loss, split out
+      rec.otLosses = nums[2] + nums[3]
+      rec.soLosses = nums[3]
     } else {
       //the 1999-2005 nhl format: W–L–T–OTL
       rec.ties = nums[2]

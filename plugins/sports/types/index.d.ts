@@ -10,6 +10,8 @@ export interface SeasonRecord {
   otLosses?: number
   /** pwhl overtime/shootout wins, also counted in wins */
   otWins?: number
+  /** ahl shootout losses, also counted in otLosses */
+  soLosses?: number
   games: number
   winPct: number
 }
@@ -277,6 +279,30 @@ export interface CflSeason {
   roster: { number: number | null; status: string; name: string }[]
 }
 
+export interface AhlSeason {
+  team: string
+  year: number | null
+  page: string
+  /** the raw team-season infobox */
+  season: Record<string, string | number | SeasonRecord>
+  standings: {
+    record: SeasonRecord | null
+    division: string
+    divisionPlace: number | null
+    conference: string
+    conferencePlace: number | null
+    goalsFor: number | null
+    goalsAgainst: number | null
+  }
+  games: Game[]
+  /** one array per playoff series */
+  playoffs: Game[][]
+  skaters: NhlSkater[]
+  goalies: NhlGoalie[]
+  /** {{Ice hockey team player}} roster rows, where the page has them */
+  roster: { number: number | null; name: string; position: string }[]
+}
+
 declare module 'wtf_wikipedia' {
   interface Document {
     /** parse an mlb team-season page into game data */
@@ -297,6 +323,8 @@ declare module 'wtf_wikipedia' {
     pwhlSeason(): PwhlSeason | null
     /** parse a cfl team-season page into game data */
     cflSeason(): CflSeason | null
+    /** parse an ahl team-season page into game data */
+    ahlSeason(): AhlSeason | null
   }
   interface Wtf {
     /** fetch + parse an mlb team's season page, like ('Toronto Blue Jays', 2025) */
@@ -317,6 +345,8 @@ declare module 'wtf_wikipedia' {
     pwhlSeason(team: string, year?: string | number, options?: object): Promise<PwhlSeason | null>
     /** fetch + parse a cfl team's season page, like ('Toronto Argonauts', 2024) */
     cflSeason(team: string, year?: string | number, options?: object): Promise<CflSeason | null>
+    /** fetch + parse an ahl team's season page, like ('Hershey Bears', 2023) */
+    ahlSeason(team: string, year?: string | number, options?: object): Promise<AhlSeason | null>
   }
 }
 
@@ -330,5 +360,6 @@ export declare const wnba: Plugin
 export declare const nwsl: Plugin
 export declare const pwhl: Plugin
 export declare const cfl: Plugin
+export declare const ahl: Plugin
 
 export declare const version: string

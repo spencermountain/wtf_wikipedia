@@ -1,18 +1,20 @@
-// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
-import register from '../../register.js'
-import version from '../../_version.js'
 import aliases from './aliases.js'
-import parsers from './citations.js'
+import citations from './citations.js'
 
-const infoboxes = [
-  'takson infobox',
-]
+const infoboxes = ['takson infobox']
 
-const data = { aliases, infoboxes, parsers }
-
-const plugin = (_models, templates, boxes) => register(data, templates, boxes)
-plugin.lang = 'pl'
-plugin.version = version
-
-export { data }
-export default plugin
+export default {
+  lang: 'pl',
+  enLang: 'polish',
+  category: ['kategoria'],
+  redirect: ['patrz', 'przekieruj', 'tam'],
+  stub: [],
+  infobox: [],
+  image: ['grafika', 'plik'],
+  reference: [],
+  disambig: ['ujednoznacznienie'],
+  disambigTitle: ['ujednoznacznienie'],
+  aliases,
+  infoboxes,
+  templates: citations,
+}

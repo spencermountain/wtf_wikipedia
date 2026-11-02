@@ -1,16 +1,28 @@
-// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
-import register from '../../register.js'
-import version from '../../_version.js'
 import aliases from './aliases.js'
-import parsers from './citations.js'
+import citations from './citations.js'
 
 const infoboxes = []
 
-const data = { aliases, infoboxes, parsers }
-
-const plugin = (_models, templates, boxes) => register(data, templates, boxes)
-plugin.lang = 'fr'
-plugin.version = version
-
-export { data }
-export default plugin
+export default {
+  lang: 'fr',
+  enLang: 'french',
+  category: ['catégorie'],
+  redirect: ['redirection'],
+  stub: ['ébauche'],
+  infobox: [],
+  image: ['fichier'],
+  reference: ['notes et références', 'références'],
+  disambig: ['homonymie'],
+  disambigTitle: ['homonymie'],
+  aliases,
+  infoboxes,
+  templates: citations,
+  // too generic to claim globally — applied only when a document's lang is 'fr'
+  gated: {
+    'monnaie': { template: 'currency' },
+    'unité': { template: 'currency' },
+    'nombre': { template: 'currency' },
+    'nb': { template: 'currency' },
+    'iso4217': { template: 'currency' },
+  },
+}

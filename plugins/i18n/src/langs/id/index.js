@@ -1,8 +1,5 @@
-// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
-import register from '../../register.js'
-import version from '../../_version.js'
 import aliases from './aliases.js'
-import parsers from './citations.js'
+import citations from './citations.js'
 
 const infoboxes = [
   'kotaktaksonomi',
@@ -14,11 +11,18 @@ const infoboxes = [
   'taxobox begin',
 ]
 
-const data = { aliases, infoboxes, parsers }
-
-const plugin = (_models, templates, boxes) => register(data, templates, boxes)
-plugin.lang = 'id'
-plugin.version = version
-
-export { data }
-export default plugin
+export default {
+  lang: 'id',
+  enLang: 'indonesian',
+  category: ['kategori'],
+  redirect: ['alih'],
+  stub: [],
+  infobox: [],
+  image: ['berkas', 'gambar'],
+  reference: [],
+  disambig: ['disambiguasi'],
+  disambigTitle: [],
+  aliases,
+  infoboxes,
+  templates: citations,
+}

@@ -1,6 +1,6 @@
 // shared league table + season-checker for the live scripts (smoke-test, write-db)
 import wtf from '../../../src/index.ts'
-import { mlb, nhl, nba, nfl, mls, wnba, nwsl, pwhl, cfl } from '../src/index.js'
+import { mlb, nhl, nba, nfl, mls, wnba, nwsl, pwhl, cfl, ahl } from '../src/index.js'
 import mlbFranchises from '../src/mlb/franchises.js'
 import nhlFranchises from '../src/nhl/franchises.js'
 import nbaFranchises from '../src/nba/franchises.js'
@@ -10,6 +10,7 @@ import wnbaFranchises from '../src/wnba/franchises.js'
 import nwslFranchises from '../src/nwsl/franchises.js'
 import pwhlFranchises from '../src/pwhl/franchises.js'
 import cflFranchises from '../src/cfl/franchises.js'
+import ahlFranchises from '../src/ahl/franchises.js'
 import { makeTitle as mlbTitle } from '../src/mlb/index.js'
 import { makeTitle as nhlTitle } from '../src/nhl/index.js'
 import { makeTitle as nbaTitle } from '../src/nba/index.js'
@@ -19,6 +20,7 @@ import { makeTitle as wnbaTitle } from '../src/wnba/index.js'
 import { makeTitle as nwslTitle } from '../src/nwsl/index.js'
 import { makeTitle as pwhlTitle } from '../src/pwhl/index.js'
 import { makeTitle as cflTitle } from '../src/cfl/index.js'
+import { makeTitle as ahlTitle } from '../src/ahl/index.js'
 wtf.extend(mlb)
 wtf.extend(nhl)
 wtf.extend(nba)
@@ -28,6 +30,7 @@ wtf.extend(wnba)
 wtf.extend(nwsl)
 wtf.extend(pwhl)
 wtf.extend(cfl)
+wtf.extend(ahl)
 
 // `from` is the earliest season the sweep bothers with
 const leagues = {
@@ -94,6 +97,13 @@ const leagues = {
     parse: (doc) => doc.cflSeason(),
     players: (res) => res.roster.length,
   },
+  ahl: {
+    from: 2010, //wikipedia only has ~20 ahl team-season pages - expect NO PAGE flags
+    franchises: ahlFranchises,
+    title: ahlTitle,
+    parse: (doc) => doc.ahlSeason(),
+    players: (res) => res.skaters.length + res.goalies.length || res.roster.length,
+  },
 }
 
 // does the page even contain game-log or match markup?
@@ -135,7 +145,11 @@ const checkSeason = async function (league, team, year) {
   // the infobox record, or the one standings derives from separate win/loss fields
   const recWins = res.season?.record?.wins ?? res.standings?.record?.wins
   if (games === 0) {
-    if (hasLog(doc.wikitext())) {
+    const po = res.playoffs ?? res.postseason ?? []
+    if (po.length > 0) {
+      out.flag = 'NO LOG'
+      out.note = 'page only logs the playoffs'
+    } else if (hasLog(doc.wikitext())) {
       out.flag = 'EMPTY LOG'
       out.note = 'log markup exists but parsed to zero'
     } else {

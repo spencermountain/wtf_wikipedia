@@ -1,7 +1,3 @@
-// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
-import register from '../../register.js'
-import version from '../../_version.js'
-import { translate } from '../_lib.js'
 import aliases from './aliases.js'
 import citations from './citations.js'
 
@@ -21,28 +17,36 @@ const infoboxes = [
   'معلومات كائن',
 ]
 
-const birthDateAndAge = translate('birth date and age', {
-  'العام': 'year',
-  'السنة': 'year',
-  'سنة': 'year',
-})
-
-const parsers = {
-  ...citations,
-  'الميلاد والسن': birthDateAndAge,
-  'الولادة والسن': birthDateAndAge,
-  'تاريخ الميلاد و العمر': birthDateAndAge,
-  'تاريخ الميلاد والسن': birthDateAndAge,
-  'تاريخ الميلاد والعمر': birthDateAndAge,
-  'تاريخ ميلاد والعمر': birthDateAndAge,
-  'تاريخ ميلاد وعمر': birthDateAndAge,
+const birthDateAndAge = {
+  template: 'birth date and age',
+  map: {
+    العام: 'year',
+    السنة: 'year',
+    سنة: 'year',
+  },
 }
 
-const data = { aliases, infoboxes, parsers }
-
-const plugin = (_models, templates, boxes) => register(data, templates, boxes)
-plugin.lang = 'ar'
-plugin.version = version
-
-export { data }
-export default plugin
+export default {
+  lang: 'ar',
+  enLang: 'arabic',
+  category: ['تصنيف'],
+  redirect: ['تحويل'],
+  stub: ['بذرة'],
+  infobox: ['بطاقة'],
+  image: ['صورة', 'ملف'],
+  reference: [],
+  disambig: ['توضيح'],
+  disambigTitle: ['توضيح'],
+  aliases,
+  infoboxes,
+  templates: {
+    ...citations,
+    'الميلاد والسن': birthDateAndAge,
+    'الولادة والسن': birthDateAndAge,
+    'تاريخ الميلاد و العمر': birthDateAndAge,
+    'تاريخ الميلاد والسن': birthDateAndAge,
+    'تاريخ الميلاد والعمر': birthDateAndAge,
+    'تاريخ ميلاد والعمر': birthDateAndAge,
+    'تاريخ ميلاد وعمر': birthDateAndAge,
+  },
+}

@@ -1,18 +1,20 @@
-// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
-import register from '../../register.js'
-import version from '../../_version.js'
 import aliases from './aliases.js'
-import parsers from './citations.js'
+import citations from './citations.js'
 
-const infoboxes = [
-  '分类框',
-]
+const infoboxes = ['分类框']
 
-const data = { aliases, infoboxes, parsers }
-
-const plugin = (_models, templates, boxes) => register(data, templates, boxes)
-plugin.lang = 'zh'
-plugin.version = version
-
-export { data }
-export default plugin
+export default {
+  lang: 'zh',
+  enLang: 'chinese',
+  category: ['cat', '分类', '分類'],
+  redirect: ['重定向', '重新導向'],
+  stub: [],
+  infobox: [],
+  image: ['图像', '图片', '圖像', '圖片', '文件', '档案', '檔案'],
+  reference: [],
+  disambig: ['消歧义'],
+  disambigTitle: ['消歧義'],
+  aliases,
+  infoboxes,
+  templates: citations,
+}

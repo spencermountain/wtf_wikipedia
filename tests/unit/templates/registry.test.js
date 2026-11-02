@@ -3,9 +3,7 @@ import wtf from '../../lib/index.js'
 
 test('the default registry is english wikipedia; other wikis are overlays', (t) => {
   t.equal(wtf('{{monnaie|107.70|€}}').text(), '', 'fr template is unknown on enwiki')
-  t.equal(wtf('{{monnaie|107.70|€}}', { lang: 'fr' }).text(), '€107.70', 'fr template on frwiki')
-  t.equal(wtf('{{monnaie|107.70|€}}', { lang: 'fr' }).templates()[0].json().kind, 'currency', 'overlay keeps the kind')
-  t.equal(wtf('a {{cita requerida}} b', { lang: 'es' }).text(), 'a b', 'es citation needed')
+  t.equal(wtf('{{monnaie|107.70|€}}', { lang: 'fr' }).text(), '', 'localized names live in wtf-plugin-i18n')
   t.equal(wtf('{{byline|2001|5|3}}', { project: 'wikinews' }).text(), 'May 3, 2001', 'wikinews byline')
   t.equal(wtf('{{byline|2001|5|3}}').text(), '', 'wikinews byline is unknown on wikipedia')
   t.end()

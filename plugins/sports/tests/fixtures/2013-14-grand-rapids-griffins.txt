@@ -1,0 +1,706 @@
+{{Short description|Ice hockey league season}}
+{{Use mdy dates|date=August 2023}}
+{{Infobox ice hockey team season
+|Season = 2013–14
+|year = 2013
+|Team = Grand Rapids Griffins
+|League = AHL
+|LeagueRank =
+|Conference = Western Conference
+|ConferenceRank = 1st
+|Division = Midwest Division
+|DivisionRank = 2nd
+|Record = 46–23–2–5 
+|HomeRecord = 21–12–0–2
+|RoadRecord = 23–10–2–3
+|GoalsFor = 238
+|GoalsAgainst = 187
+|GeneralManager = [[Dan DeVos]]
+|Coach = [[Jeff Blashill]]
+|AssistantCoach = [[Jim Paek]]<br>[[Spiros Anastas]]
+|Captain = [[Jeff Hoggan]]
+|AltCaptain = [[Brennan Evans]]<br>[[Nathan Paetsch]]
+|Arena = [[Van Andel Arena]]
+|Attendance = 8,220 (75.9%)<br>Total: 312,355
+|GoalsLeader = [[Teemu Pulkkinen]] (31)
+|AssistsLeader = [[Adam Almqvist]] (49)
+|PointsLeader = Teemu Pulkkinen (59)
+|PIMLeader = [[Brennan Evans]] (111)
+|PlusMinusLeader = (+) [[Mitch Callahan]] (+23)<br>(−) [[Martin Frk]] (−12)
+|WinsLeader = [[Tom McCollum]] (24)
+|GAALeader = [[Petr Mrázek]] (2.10)
+|Championship =
+|ConferenceWin =
+|DivisionWin =
+|prev_season = [[2012–13 Grand Rapids Griffins season|2012–13]]
+|next_season = 
+}}
+
+The '''[[2013–14 AHL season|2013–14]] [[Grand Rapids Griffins]] [[season (sports)|season]]''' was the franchise's [[List of Grand Rapids Griffins seasons|13th season]] in the [[American Hockey League]].
+
+==Off-season==
+Following the Grand Rapids Griffins' [[Calder Cup]]-winning season last year, several of the players were called up to the [[Detroit Red Wings]], including forwards [[Joakim Andersson]] and [[Tomáš Tatar]]; and defensemen [[Danny DeKeyser]], [[Brian Lashoff]] and [[Brendan Smith (ice hockey)|Brendan Smith]].<ref name="WS0930">{{cite news |last=Duff |first=Bob |title=AHL stars shine in Windsor |work=[[Windsor Star]] |date=September 30, 2013 |url=https://windsorstar.com/sports/stars+shine+Windsor/8976180/story.html |accessdate=October 16, 2013 |archiveurl=https://web.archive.org/web/20131017041710/http://www.windsorstar.com/sports/stars+shine+Windsor/8976180/story.html |archivedate=2013-10-17 |url-status=live }}</ref> There was a great deal of roster movements between the two teams throughout the off-season, with some players getting repeatedly called back and forth, which meant Griffins coach [[Jeff Blashill]] could not finalize the roster or [[Power play (sporting term)|power play]] and [[Short-handed|penalty kill]] teams until just before the regular season began.<ref name="Wallner1004">{{cite news|last=Wallner |first=Peter J. |title=Ready or not, Grand Rapids Griffins open season tonight and coach Jeff Blashill offers no excuses |publisher=[[Booth Newspapers]] |date=October 4, 2013 |url=http://www.mlive.com/griffins/index.ssf/2013/10/ready_or_not_grand_rapids_grif.html |accessdate=October 16, 2013 |archiveurl=https://web.archive.org/web/20131017052842/http://www.mlive.com/griffins/index.ssf/2013/10/ready_or_not_grand_rapids_grif.html |archivedate=October 17, 2013 |url-status=live }}</ref> Ten of the 20 players on Detroit's starting roster had played with Grand Rapids the previous year.<ref>{{cite web|last=Katje |first=Jonathan |title=Detroit Red Wings: 8 Prospects To Watch During 2013-14 Season |publisher=Rant Sports |date=October 4, 2013 |url=http://www.rantsports.com/nhl/2013/10/04/detroit-red-wings-8-prospects-to-watch-during-2013-14-season/ |accessdate=October 15, 2013 |archiveurl=https://web.archive.org/web/20150924090242/http://www.rantsports.com/nhl/2013/10/04/detroit-red-wings-8-prospects-to-watch-during-2013-14-season/ |archivedate=September 24, 2015 |url-status=live }}</ref> Other Griffins departures included defenseman [[Chad Billins]],<ref name="Wallner0922" /> goaltender [[Jordan Pearce]],<ref>{{cite web|last=Katje |first=Jonathan |title=Detroit Red Wings: Goaltender Tom McCollum Sticking Around After All |publisher=Rant Sports |date=July 4, 2013 |url=http://www.rantsports.com/nhl/2013/07/04/detroit-red-wings-goaltender-tom-mccollum-sticking-around-after-all/ |accessdate=October 15, 2013 |archiveurl=https://web.archive.org/web/20130706205507/http://www.rantsports.com/nhl/2013/07/04/detroit-red-wings-goaltender-tom-mccollum-sticking-around-after-all/ |archivedate=July 6, 2013 |url-status=live }}</ref> and forwards [[Jan Muršak]],<ref>{{cite news|last=Wallner |first=Peter J. |title=Jan Mursak ends stay with Detroit organization, signs deal with Russian team Amur |publisher=[[Booth Newspapers]] |date=May 7, 2013 |url=http://www.mlive.com/griffins/index.ssf/2013/05/jan_mursak_to_end_stay_with_de.html |accessdate=October 15, 2013 |archiveurl=https://web.archive.org/web/20131017052837/http://www.mlive.com/griffins/index.ssf/2013/05/jan_mursak_to_end_stay_with_de.html |archivedate=October 17, 2013 |url-status=live }}</ref> and [[Francis Paré]].<ref>{{cite web|title=Paré, Sexton and Seiga sign contracts |date=July 8, 2013 |language=Finnish |publisher=[[HC TPS]] |url=http://hc.tps.fi/uutiset-ajankohtaista-pare_sexton_ja_seigo_tpsaan |accessdate=October 15, 2013 |archiveurl=https://web.archive.org/web/20131017055209/http://hc.tps.fi/uutiset-ajankohtaista-pare_sexton_ja_seigo_tpsaan |archivedate=October 17, 2013 |url-status=dead }}</ref> Winger [[Cory Emmerton]] began the regular season with Detroit after [[Patrick Eaves]] was placed on long-term [[Injured reserve list|injured reserve]].<ref>{{cite news|last=Khan |first=Ansar |title=Cory Emmerton to start season with Red Wings after Patrick Eaves placed on long-term injured reserve |publisher=[[Booth Newspapers]] |date=September 30, 2013 |url=http://www.mlive.com/redwings/index.ssf/2013/09/cory_emmerton_to_start_season.html |accessdate=October 15, 2013 |archiveurl=https://web.archive.org/web/20131017054352/http://www.mlive.com/redwings/index.ssf/2013/09/cory_emmerton_to_start_season.html |archivedate=October 17, 2013 |url-status=live }}</ref>
+
+[[Gustav Nyquist]] was sent down to Grand Rapids from Detroit, but was not expected to remain there long. The move was primarily intended to keep the team under its [[salary cap]], since Nyquist could be transferred without having to clear [[Waivers (NHL)|waivers]].<ref>{{cite news|last=Khan |first=Ansar |title=Red Wings assign forward Gustav Nyquist, goaltender Petr Mrazek to Grand Rapids Griffins |publisher=[[Booth Newspapers]] |date=September 30, 2013 |url=http://www.mlive.com/redwings/index.ssf/2013/09/red_wings_assign_forward_gusta.html |accessdate=October 15, 2013 |archiveurl=https://web.archive.org/web/20131017052830/http://www.mlive.com/redwings/index.ssf/2013/09/red_wings_assign_forward_gusta.html |archivedate=October 17, 2013 |url-status=live }}</ref> The Griffins signed several new skaters during the off-season, giving the roster a mix of veterans and young prospects. New additions included goaltender Jared Coreau; defensemen [[Alexey Marchenko]], [[Richard Nedomlel]] and [[Xavier Ouellet]]; forwards [[Martin Frk]], [[David McIntyre]] and [[Marek Tvrdoň|Marek Tvrdon]]. McIntyre was the only one of the seven with previous [[American Hockey League]] experience.<ref name="Wallner0927">{{cite news|last=Wallner |first=Peter J. |title=Prized first-year forwards look for opportunities with Grand Rapids Griffins |publisher=[[Booth Newspapers]] |date=September 27, 2013 |url=http://www.mlive.com/griffins/index.ssf/2013/09/prized_frontliners_look_for_op.html |accessdate=October 16, 2013 |archiveurl=https://web.archive.org/web/20131017052834/http://www.mlive.com/griffins/index.ssf/2013/09/prized_frontliners_look_for_op.html |archivedate=October 17, 2013 |url-status=live }}</ref> The team re-signed defensemen [[Nathan Paetsch]] and [[Brennan Evans]], and forwards [[Triston Grant]] and team captain [[Jeff Hoggan]],<ref name="Wallner0922">{{cite news|last=Wallner |first=Peter J. |title=Grand Rapids Griffins to open camp, here are main storylines to follow |date=September 22, 2013 |publisher=[[Booth Newspapers]] |url=http://www.mlive.com/griffins/index.ssf/2013/09/grand_rapids_griffins_set_to_o.html |accessdate=October 16, 2013 |archiveurl=https://web.archive.org/web/20131017052823/http://www.mlive.com/griffins/index.ssf/2013/09/grand_rapids_griffins_set_to_o.html |archivedate=October 17, 2013 |url-status=live }}</ref> as well as several skaters who had played only a handful of games the previous year, including center [[Calle Järnkrok]], winger [[Teemu Pulkkinen]],<ref name="Wallner0927" /> and defenseman [[Ryan Sproul]].<ref name="Wallner1004" />
+
+After a training camp that began September 23 at [[Van Andel Arena]],<ref name="Wallner0922" /> the Griffins played a pair of off-season games against the [[Lake Erie Monsters]], although eight of their players were absent due to a call-up to Detroit.<ref>{{cite news|last=Khan |first=Ansar |title=Red Wings recall eight players from Grand Rapids for Saturday's preseason finale in Toronto |publisher=[[Booth Newspapers]] |date=September 27, 2013 |url=http://www.mlive.com/redwings/index.ssf/2013/09/red_wings_recall_eight_players.html |accessdate=October 15, 2013 |archiveurl=https://web.archive.org/web/20131017054354/http://www.mlive.com/redwings/index.ssf/2013/09/red_wings_recall_eight_players.html |archivedate=October 17, 2013 |url-status=live }}</ref> Grand Rapids won the first game 3–2 in a shootout, with Frk scoring the sole shootout goal and McCollum making 36 saves and stopped five shootout shots.<ref>{{cite news|title=Rapids Griffins win shootout in exhibition against Lake Erie |date=September 18, 2013 |publisher=[[Booth Newspapers]] |url=http://www.mlive.com/griffins/index.ssf/2013/09/grand_rapids_griffins_win_shoo.html |accessdate=October 15, 2013 |archiveurl=https://web.archive.org/web/20131017052827/http://www.mlive.com/griffins/index.ssf/2013/09/grand_rapids_griffins_win_shoo.html |archivedate=October 17, 2013 |url-status=live }}</ref> Lake Erie won the second game in a 2–0 shutout.<ref>{{cite news|title=Grand Rapids Griffins blanked in second exhibition game |date=September 30, 2013 |publisher=[[Booth Newspapers]] |url=http://www.mlive.com/griffins/index.ssf/2013/09/grand_rapids_griffins_blanked_1.html |accessdate=October 15, 2013 |archiveurl=https://web.archive.org/web/20131017054348/http://www.mlive.com/griffins/index.ssf/2013/09/grand_rapids_griffins_blanked_1.html |archivedate=October 17, 2013 |url-status=live }}</ref> Center [[Landon Ferraro]], the team's third-highest score the previous year, suffered a foot injury during the off-season that kept him out of the first two weeks of the regular season.<ref name="Wallner1004" />
+
+==Regular season==
+On October 4, the Grand Rapids Griffins won their season opener against the [[Rochester Americans]] by a score of 8–1, setting a franchise record for largest margin of victory in a season debut, breaking the previous record of four goals in 2004. [[Gustav Nyquist]] and [[Adam Almquist]] led the scoring with three points apiece.
+
+==Schedule and results==
+
+===Pre-season===
+{| class="toccolours collapsible collapsed"  style="width:90%; clear:both; margin:1.5em auto; text-align:center;"
+|-
+! colspan="11" style="background:#fff; border-top:#004677 5px solid; border-bottom:#C7A963 5px solid;"| 2013–14 Pre-season Game Log: 1–1–0–0
+|-
+| colspan=11 |
+{| class="toccolours collapsible collapsed" style="width:100%;"
+|-
+|-  style="text-align:center; background:#ddd;"
+| '''#''' || '''Date''' || '''Visitor''' || '''Score''' || '''Home''' || '''OT''' || '''Decision''' ||  '''Record'''
+|- align="center" bgcolor="#cfc"
+| 1 || September 28{{ref|Note1|1|}} || Lake Erie || 2–3 || Grand Rapids || SO || McCollum ||1–0–0–0
+|- align="center" bgcolor="#fcc"
+| 2 || September 29{{ref|Note1|2|}} || Grand Rapids || 0–2 ||Lake Erie |||| Coreau ||1–1–0–0
+|-  style="text-align:center; background:;"
+| colspan="11" style="text-align:center;"|
+{{refbegin}}
+* {{note|Note1|}}Game played at [[Compuware Arena]] in [[Plymouth Township, Michigan]]
+* {{note|Note2|}}Game played at [[WFCU Centre]] in [[Windsor, Ontario]]
+{{refend}}
+|}
+|}
+
+===Regular season===
+{| class="toccolours"  style="width:90%; clear:both; margin:1.5em auto; text-align:center;"
+|-
+! colspan="11" style="background:#fff; border-top:#004677 5px solid; border-bottom:#C7A963 5px solid;"| 2013–14 Regular season Game Log
+|-
+| colspan=11 |
+{| class="toccolours collapsible collapsed" style="width:100%;"
+|-
+! colspan="11" style="background:#fff; border-top:#643b0f 2px solid; border-bottom:#e0d67d 2px solid;"| October: 5–2–1–1 (Home: 1–2–0–0; Road: 4–0–1–1)
+|-  style="text-align:center; background:#ddd;"
+! # !! Date !! Visitor !! Score !! Home !! OT !! Decision !! Attendance !! Record !! Pts !! Gamesheet
+|-  style="text-align:center; background:#cfc;"
+| 1 || October 4 || Grand Rapids || 8–1 || Rochester || || McCollum || 6,500 || 1–0–0–0 || 2 || [https://theahl.com/stats/game-summary/1011107 Gamesheet]
+|-  style="text-align:center; background:#ffc;"
+| 2 || October 5 || Grand Rapids || 3–4 || Toronto || OT || Coreau || 6,525 || 1–0–1–0 || 3 || [https://theahl.com/stats/game-summary/1011120 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 3 || October 12 || Grand Rapids || 4–3 || Hamilton || SO || Mrazek || 3,416 || 2–0–1–0 || 5 || [https://theahl.com/stats/game-summary/1011137 Gamesheet]
+|-  style="text-align:center; background:#fcc;"
+| 4 || October 18 || Milwaukee || 3–2 || Grand Rapids || || Mrazek || 10,834 || 2–1–1–0 || 5 || [https://theahl.com/stats/game-summary/1011153 Gamesheet]
+|-  style="text-align:center; background:#ffc;"
+| 5 || October 19 || Grand Rapids || 5–4 || Rockford || SO || Mrazek || 6,202 || 2–1–1–1 || 6 || [https://theahl.com/stats/game-summary/1011173 Gamesheet]
+|-  style="text-align:center; background:#fcc;"
+| 6 || October 25 || Charlotte || 5–0 || Grand Rapids || || Mrazek || 5,494 || 2–2–1–1 || 6 || [https://theahl.com/stats/game-summary/1011194 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 7 || October 26 || Grand Rapids || 3–2 || Chicago || || McCollum || 4,484 || 3–2–1–1 || 8 || [https://theahl.com/stats/game-summary/1011203 Gamesheet] 
+|-  style="text-align:center; background:#cfc;"
+| 8 || October 27 || Grand Rapids || 3–2 || Iowa || || McCollum || 3,825 || 4–2–1–1 || 10 || [https://theahl.com/stats/game-summary/1011217 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 9 || October 30 || Charlotte || 2–5 || Grand Rapids || || Mrazek || 2,974 || 5–2–1–1 || 12 || [https://theahl.com/stats/game-summary/1011222 Gamesheet]
+|-  style="text-align:center; background:;"
+|}
+|-
+| colspan=11 |
+{| class="toccolours collapsible collapsed" style="width:100%;"
+|-
+! colspan="11" style="background:#fff; border-top:#643b0f 2px solid; border-bottom:#e0d67d 2px solid;"| November: 10–2–0–0 (Home: 5–0–0–0; Road: 5–2–0–0)
+|-  style="text-align:center; background:#ddd;"
+! # !! Date !! Visitor !! Score !! Home !! OT !! Decision !! Attendance !! Record !! Pts !! Gamesheet
+|-  style="text-align:center; background:#cfc;"
+| 10 || November 1 || Grand Rapids || 6–4 || Lake Erie || || McCollum || 7,044 || 6–2–1–1 || 14 || [https://theahl.com/stats/game-summary/1011232 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 11 || November 3 || Grand Rapids || 3–1 || Rockford || || McCollum || 3,033 || 7–2–1–1 || 16 || [https://theahl.com/stats/game-summary/1011255 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 12 || November 6 || Rockford || 2–6 || Grand Rapids || || McCollum || 6,118 || 8–2–1–1 || 18 || [https://theahl.com/stats/game-summary/1011260 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 13 || November 8 || Grand Rapids || 6–1 || Hamilton || || Mrazek || 3,088 || 9–2–1–1 || 20 || [https://theahl.com/stats/game-summary/1011265 Gamesheet]
+|-  style="text-align:center; background:#fcc;"
+| 14 || November 13 || Grand Rapids || 1–2 || Milwaukee || || McCollum || 2,659 || 9–3–1–1 || 20 || [https://theahl.com/stats/game-summary/1011302 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 15 || November 15 || Rockford || 3–5 || Grand Rapids || || Mrazek || 9,260 || 10–3–1–1 || 22 || [https://theahl.com/stats/game-summary/1011308 Gamesheet]
+|-  style="text-align:center; background:#fcc;"
+| 16 || November 16 || Grand Rapids || 3–4 || Chicago || || McCollum || 9,226 || 10–4–1–1 || 22 || [https://theahl.com/stats/game-summary/1011322 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 17 || November 20 || Milwaukee || 0–5 || Grand Rapids || || Mrazek || 5,056 || 11–4–1–1 || 24 || [https://theahl.com/stats/game-summary/1011341 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 18 || November 22 || Grand Rapids || 2–1 || Iowa || || Mrazek || 7,580 || 12–4–1–1 || 26 || [https://theahl.com/stats/game-summary/1011347 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 19 || November 23 || Grand Rapids || 2–1 || Chicago || || Mrazek || 7,228 || 13–4–1–1 || 28 || [https://theahl.com/stats/game-summary/1011359 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 20 || November 29 || Texas || 4–5 || Grand Rapids || || Mrazek || 8,288 || 14–4–1–1 || 30 || [https://theahl.com/stats/game-summary/1011391 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 21 || November 30 || Texas || 1–5 || Grand Rapids || || McCollum  || 5,749 || 15–4–1–1 || 32 || [https://theahl.com/stats/game-summary/1011405 Gamesheet]
+|-  style="text-align:center; background:;"
+|}
+|-
+| colspan=11 |
+{| class="toccolours collapsible collapsed" style="width:100%;"
+|-
+! colspan="11" style="background:#fff; border-top:#643b0f 2px solid; border-bottom:#e0d67d 2px solid;"| December: 7–4–0–1 (Home: 5–2–0–1; Road: 2–2–0–0)
+|-  style="text-align:center; background:#ddd;"
+! # !! Date !! Visitor !! Score !! Home !! OT !! Decision !! Attendance !! Record !! Pts !! Gamesheet
+|-  style="text-align:center; background:#cfc;"
+| 22 || December 6 || Rochester || 1–5 || Grand Rapids || || Mrazek || 6,901 || 16–4–1–1 || 34 || [https://theahl.com/stats/game-summary/1011427 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 23 || December 7 || Rochester || 1–3 || Grand Rapids || || Mrazek || 5,115 || 17–4–1–1 || 36 || [https://theahl.com/stats/game-summary/1011442 Gamesheet]
+|-  style="text-align:center; background:#fcc;"
+| 24 || December 11 || Chicago || 4–2 || Grand Rapids || || McCollum || 6,290 || 17–5–1–1 || 36 || [https://theahl.com/stats/game-summary/1011459 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 25 || December 13 || Milwaukee || 2–4 || Grand Rapids || || McCollum || 5,976 || 18–5–1–1 || 38 || [https://theahl.com/stats/game-summary/1011467 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 26 || December 14 || Milwaukee || 0–5 || Grand Rapids || || McCollum || 8,002 || 19–5–1–1 || 40 || [https://theahl.com/stats/game-summary/1011481 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 27 || December 18 || Grand Rapids || 2–1 || Iowa || OT || McCollum || 3,619 || 20–5–1–1 || 42 || [https://theahl.com/stats/game-summary/1011498 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 28 || December 20 || Rockford || 2–3 || Grand Rapids || OT || McCollum || 8,269 || 21–5–1–1 || 44 || [https://theahl.com/stats/game-summary/1011504 Gamesheet]
+|-  style="text-align:center; background:#fcc;"
+| 29 || December 21 || Grand Rapids || 2–3 || Chicago || || McCollum || 5,724 || 21–6–1–1 || 44 || [https://theahl.com/stats/game-summary/1011519 Gamesheet]
+|-  style="text-align:center; background:#fcc;"
+| 30 || December 26 || Grand Rapids || 1–4 || Milwaukee || || McCollum || 5,197 || 21–7–1–1 || 44 || [https://theahl.com/stats/game-summary/1011537 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 31 || December 27 || Grand Rapids || 4–2 || Rockford || || McCollum || 4,105 || 22–7–1–1 || 46 || [https://theahl.com/stats/game-summary/1011547 Gamesheet]
+|-  style="text-align:center; background:#ffc;"
+| 32 || December 30{{ref|Note1|1|}} || Toronto || 4–2 || Grand Rapids || SO || McCollum || 20,337 || 22–7–1–2 || 47 || [https://theahl.com/stats/game-summary/1011568 Gamesheet]
+|-  style="text-align:center; background:#fcc;"
+| 33 || December 31 || Toronto ||  3–1 || Grand Rapids || || McCollum || 10,834 || 22–8–1–2 || 47 || [https://theahl.com/stats/game-summary/1011572 Gamesheet]
+|-  style="text-align:center; background:;"
+| colspan="11" style="text-align:left;"|
+{{refbegin}}
+* {{note|Note1|}}Game played at [[Comerica Park]] in [[Detroit|Detroit, Michigan]]
+{{refend}}
+|}
+|-
+| colspan=11 |
+{| class="toccolours collapsible collapsed" style="width:100%;"
+|-
+! colspan="11" style="background:#fff; border-top:#643b0f 2px solid; border-bottom:#e0d67d 2px solid;"| January: 6–5–1–0 (Home: 5–3–0–0; Road: 1–2–1–0)
+|-  style="text-align:center; background:#ddd;"
+! # !! Date !! Visitor !! Score !! Home !! OT !! Decision !! Attendance !! Record !! Pts !! Gamesheet
+|-  style="text-align:center; background:#cfc;"
+| 34 || January 3 || Chicago || 1–3 || Grand Rapids || || McCollum || 6,963 || 23–8–1–2 || 49 || [https://theahl.com/stats/game-summary/1011584 Gamesheet]
+|-  style="text-align:center; background:#fcc;"
+| 35 || January 4 || Grand Rapids || 2–4 || Rockford || || Coreau || 4,145 || 23–9–1–2 || 49 || [https://theahl.com/stats/game-summary/1011602 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 36 || January 8 || Rockford || 2–4 || Grand Rapids || || McCollum || 3,672 || 24–9–1–2 || 51 || [https://theahl.com/stats/game-summary/1011616 Gamesheet]
+|-  style="text-align:center; background:#fcc;"
+| 37 || January 10 || Iowa || 3–2 || Grand Rapids || || McCollum || 7,285 || 24–10–1–2 || 51 || [https://theahl.com/stats/game-summary/1011622 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 38 || January 11 || Iowa || 1–4 || Grand Rapids || || McCollum || 9,360 || 25–10–1–2 || 53 || [https://theahl.com/stats/game-summary/1011636 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 39 || January 15 || Chicago || 1–3 || Grand Rapids || || McCollum || 5,493 || 26–10–1–2 || 55 || [https://theahl.com/stats/game-summary/1011657 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 40 || January 17 || Abbotsford || 0–3 || Grand Rapids || || McCollum || 8,098 || 27–10–1–2 || 57 || [https://theahl.com/stats/game-summary/1011666 Gamesheet]
+|-  style="text-align:center; background:#fcc;"
+| 41 || January 18 || Abbotsford || 3–2 || Grand Rapids || || McCollum || 9,170 || 27–11–1–2 || 57 || [https://theahl.com/stats/game-summary/1011678 Gamesheet]
+|-  style="text-align:center; background:#fcc;"
+| 42 || January 24 || Grand Rapids || 4–6 || Texas || || Coreau || 4,639 || 27–12–1–2 || 57 || [https://theahl.com/stats/game-summary/1011715 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 43 || January 25 || Grand Rapids || 4–1 || Texas || || McCollum || 6,863 || 28–12–1–2 || 59 || [https://theahl.com/stats/game-summary/1011727 Gamesheet]
+|-  style="text-align:center; background:#ffc;"
+| 44 || January 26 || Grand Rapids || 5–6 || San Antonio || OT || Coreau || 4,995 || 28–12–2–2 || 60 || [https://theahl.com/stats/game-summary/1011737 Gamesheet]
+|-  style="text-align:center; background:#fcc;"
+| 45 || January 31 || Chicago || 6–2 || Grand Rapids || || McCollum || 10,834 || 28–13–2–2 || 60 || [https://theahl.com/stats/game-summary/1011752 Gamesheet]
+|-  style="text-align:center; background:;"
+|}
+|-
+| colspan=11 |
+{| class="toccolours collapsible collapsed" style="width:100%;"
+|-
+! colspan="11" style="background:#fff; border-top:#643b0f 2px solid; border-bottom:#e0d67d 2px solid;"| February: 6–4–0–1 (Home: 2–3–0–1; Road: 4–1–0–0)
+|-  style="text-align:center; background:#ddd;"
+! # !! Date !! Visitor !! Score !! Home !! OT !! Decision !! Attendance !! Record !! Pts !! Gamesheet
+|-  style="text-align:center; background:#cfc;"
+| 46 || February 1 || Grand Rapids || 3–2 || Milwaukee || SO || Mrazek || 7,621 || 29–13–2–2 || 62 || [https://theahl.com/stats/game-summary/1011770 Gamesheet]
+|-  style="text-align:center; background:#fcc;"
+| 47 || February 5 || Lake Erie || 4–0 || Grand Rapids || || Mrazek || 6,346 || 29–14–2–2 || 62 || [https://theahl.com/stats/game-summary/1011789 Gamesheet]
+|-  style="text-align:center; background:#fcc;"
+| 48 || February 7 || Grand Rapids || 1–4 || Toronto || || Mrazek || 5,237 || 29–15–2–2 || 62 || [https://theahl.com/stats/game-summary/1011802 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 49 || February 8 || Grand Rapids || 5–1 || Rochester || || McCollum || 17,968 || 30–15–2–2 || 64 || [https://theahl.com/stats/game-summary/1011811 Gamesheet]
+|-  style="text-align:center; background:#ffc;"
+| 50 || February 14 || San Antonio || 2–1 || Grand Rapids || SO || McCollum || 6,724 || 30–15–2–3 || 65 || [https://theahl.com/stats/game-summary/1011830 Gamesheet]
+|-  style="text-align:center; background:#fcc;"
+| 51 || February 15 || San Antonio || 3–0 || Grand Rapids || || Mrazek || 10,018 || 30–16–2–3 || 65 || [https://theahl.com/stats/game-summary/1011842 Gamesheet]
+|-  style="text-align:center; background:#fcc;"
+| 52 || February 21 || Oklahoma City || 4–2 || Grand Rapids || || McCollum || 10,834 || 30–17–2–3 || 65 || [https://theahl.com/stats/game-summary/1011869 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 53 || February 22 || Oklahoma City || 3–4 || Grand Rapids || || Mrazek || 8,254 || 31–17–2–3 || 67 || [https://theahl.com/stats/game-summary/1011884 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 54 || February 23 || Milwaukee || 0–1 || Grand Rapids || SO || Mrazek || 8,451 || 32–17–2–3 || 69 || [https://theahl.com/stats/game-summary/1011898 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 55 || February 26 || Grand Rapids || 5–1 || Milwaukee || || Mrazek || 3,002 || 33–17–2–3 || 71 || [https://theahl.com/stats/game-summary/1011910 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 56 || February 28 || Grand Rapids || 4–3 || Abbotsford || SO || Mrazek || 3,068 || 34–17–2–3 || 73 || [https://theahl.com/stats/game-summary/1011915 Gamesheet]
+|-  style="text-align:center; background:;"
+|}
+|-
+| colspan=11 |
+{| class="toccolours collapsible collapsed" style="width:100%;"
+|-
+! colspan="11" style="background:#fff; border-top:#643b0f 2px solid; border-bottom:#e0d67d 2px solid;"| March: 9–3–0–1 (Home: 3–1–0–0; Road: 6–2–0–1)
+|-  style="text-align:center; background:#ddd;"
+! # !! Date !! Visitor !! Score !! Home !! OT !! Decision !! Attendance !! Record !! Pts !! Gamesheet
+|-  style="text-align:center; background:#cfc;"
+| 57 || March 1 || Grand Rapids || 5–2 || Abbotsford || || Mrazek || 2,774 || 35–17–2–3 || 75 || [https://theahl.com/stats/game-summary/1011927 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 58 || March 5 || Chicago || 2–4 || Grand Rapids || || Mrazek || 5,343 || 36–17–2–3 || 77 || [https://theahl.com/stats/game-summary/1011952 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 59 || March 7 || Iowa || 0–4 || Grand Rapids || || Mrazek || 8,594 || 37–17–2–3 || 79 || [https://theahl.com/stats/game-summary/1011954 Gamesheet]
+|-  style="text-align:center; background:#fcc;"
+| 60 || March 8 || Iowa || 3–1 || Grand Rapids || || McCollum || 10,834 || 37–18–2–3 || 79 || [https://theahl.com/stats/game-summary/1011970 Gamesheet]
+|-  style="text-align:center; background:#ffc;"
+| 61 || March 13 || Grand Rapids || 1–2 || San Antonio || SO || McCollum || 6,772 || 37–18–2–4 || 80 || [https://theahl.com/stats/game-summary/1011997 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 62 || March 14 || Grand Rapids || 3–2 || Oklahoma City || || McCollum || 3,294 || 38–18–2–4 || 82 || [https://theahl.com/stats/game-summary/1012003 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 63 || March 15 || Grand Rapids || 4–3 || Oklahoma City || || McCollum || 4,494 || 39–18–2–4 || 84 || [https://theahl.com/stats/game-summary/1012018 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 64 || March 21 || Grand Rapids || 4–1 || Iowa || || McCollum || 6,547 || 40–18–2–4 || 86 || [https://theahl.com/stats/game-summary/1012042 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 65 || March 22 || Grand Rapids || 3–2 || Iowa || || Mrazek || 6,359 || 41–18–2–4 || 88 || [https://theahl.com/stats/game-summary/1012054 Gamesheet]
+|-  style="text-align:center; background:#fcc;"
+| 66 || March 23 || Grand Rapids || 2–6 || Chicago || || Mrazek || 11,388 || 41–19–2–4 || 88 || [https://theahl.com/stats/game-summary/1012068 Gamesheet]
+|-  style="text-align:center; background:#fcc;"
+| 67 || March 28 || Grand Rapids || 4–5 || Rockford || || McCollum || 5,223 || 41–20–2–4 || 88 || [https://theahl.com/stats/game-summary/1012094 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 68 || March 29 || Rockford || 1–4 || Grand Rapids || || Mrazek || 10,834 || 42–20–2–4 || 90 || [https://theahl.com/stats/game-summary/1012102 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 69 || March 30 || Grand Rapids || 3–1 || Milwaukee || || Mrazek || 8,090 || 43–20–2–4 || 92 || [https://theahl.com/stats/game-summary/1012114 Gamesheet]
+|-  style="text-align:center; background:;"
+|}
+|-
+| colspan=11 |
+{| class="toccolours collapsible collapsed" style="width:100%;"
+|-
+! colspan="11" style="background:#fff; border-top:#643b0f 2px solid; border-bottom:#e0d67d 2px solid;"| April: 3–3–0–1 (Home: 2–2–0–0; Road: 1–1–0–1)
+|-  style="text-align:center; background:#ddd;"
+! # !! Date !! Visitor !! Score !! Home !! OT !! Decision !! Attendance !! Record !! Pts !! Gamesheet
+|-  style="text-align:center; background:#cfc;"
+| 70 || April 2 || Iowa || 1–6 || Grand Rapids || || Mrazek || 8,077 || 44–20–2–4 || 94 || [https://theahl.com/stats/game-summary/1012123 Gamesheet]
+|-  style="text-align:center; background:#fcc;"
+| 71 || April 4 || Hamilton || 4–1 || Grand Rapids || || Mrazek || 10,834 || 44–21–2–4 || 94 || [https://theahl.com/stats/game-summary/1012128 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 72 || April 5 || Hamilton || 1–2 || Grand Rapids || SO || McCollum || 10,006 || 45–21–2–4 || 96 || [https://theahl.com/stats/game-summary/1012144 Gamesheet]
+|-  style="text-align:center; background:#fcc;"
+| 73 || April 10 || Grand Rapids || 0–3 || Charlotte || || Mrazek || 6,709 || 45–22–2–4 || 96 || [https://theahl.com/stats/game-summary/1012168 Gamesheet]
+|-  style="text-align:center; background:#cfc;"
+| 74 || April 13 || Grand Rapids || 2–1 || Charlotte || || McCollum || 8,002 || 46–22–2–4 || 98 || [https://theahl.com/stats/game-summary/1012198 Gamesheet]
+|-  style="text-align:center; background:#fcc;"
+| 75 || April 18 || Lake Erie || 4–2 || Grand Rapids || || Mrazek || 10,834 || 46–23–2–4 || 98 || [https://theahl.com/stats/game-summary/1012218 Gamesheet]
+|-  style="text-align:center; background:#ffc;"
+| 76 || April 19 || Grand Rapids || 3–4 || Lake Erie || SO || McCollum || 14,064 || 46–22–2–5 || 99 || [https://theahl.com/stats/game-summary/1012236 Gamesheet]
+|-  style="text-align:center; background:;"
+|}
+|-
+| colspan="11" style="text-align:center;"|
+'''''Legend''''':
+{{legend2|#cfc|Win (2 points)|border=1px solid #AAAAAA}}
+{{legend2|#fcc|Loss (0 points)|border=1px solid #AAAAAA}}
+{{legend2|#ffc|Overtime/shootout loss (1-point)|border=1px solid #AAAAAA}}
+|}
+
+==Playoffs==
+{| class="toccolours"  style="width:90%; clear:both; margin:1.5em auto; text-align:center;"
+|-
+! colspan="9" style="background:#fff; border-top:#004677 5px solid; border-bottom:#C7A963 5px solid;"| 2014 Calder Cup Playoffs
+|-
+| colspan=9 |
+{| class="toccolours collapsible collapsed" style="width:100%;" 
+! colspan="11" style="background:#fff; border-top:#643b0f 2px solid; border-bottom:#e0d67d 2px solid;"| Western Conference Quarterfinals vs. (5) Abbotsford Heat – Grand Rapids won series 3–1
+|-  style="text-align:center; background:#ddd;"
+| '''#''' || '''Date''' || '''Visitor''' || '''Score''' || '''Home''' || '''OT''' || '''Decision''' ||  '''Attendance''' || '''Series''' || '''Recap'''
+|-  style="text-align:center; background:#cfc;"
+| 1 || April 25 || Grand Rapids || 2–1 || Abbotsford || 2 OT || Mrazek || 2,420 || 1–0 || [https://theahl.com/stats/game-summary/1013406 Recap]
+|-  style="text-align:center; background:#cfc;"
+| 2 || April 26 || Grand Rapids || 7–2 || Abbotsford || || Mrazek || 2,154 || 2–0 || [https://theahl.com/stats/game-summary/1013407 Recap]
+|-  style="text-align:center; background:#fcc;"
+| 3 || April 30 || Abbotsford || 2–1 || Grand Rapids || || Mrazek || 7,193 || 2–1 || [https://theahl.com/stats/game-summary/1013408 Recap]
+|-  style="text-align:center; background:#cfc;"
+| 4 || May 2 || Abbotsford || 3–5 || Grand Rapids || || Mrazek || 7,641 || 3–1 || [https://theahl.com/stats/game-summary/1013409 Recap]
+|-  style="text-align:center; background:;"
+|}
+|-
+| colspan=9 |
+{| class="toccolours collapsible collapsed" style="width:100%;" 
+! colspan="11" style="background:#fff; border-top:#643b0f 2px solid; border-bottom:#e0d67d 2px solid;"| Western Conference Semifinals vs. (1) Texas Stars – Texas won series 4–2
+|-  style="text-align:center; background:#ddd;"
+| '''#''' || '''Date''' || '''Visitor''' || '''Score''' || '''Home''' || '''OT''' || '''Decision''' ||  '''Attendance''' || '''Series''' || '''Recap'''
+|-  style="text-align:center; background:#fcc;"
+| 1 || May 8 || Grand Rapids || 2–5 || Texas || || Mrazek || 2,661 || 0–1 || [https://theahl.com/stats/game-summary/1013420 Recap]
+|-  style="text-align:center; background:#fcc;"
+| 2 || May 10 || Grand Rapids || 0–4 || Texas || || Mrazek || 4,635 || 0–2 || [https://theahl.com/stats/game-summary/1013421 Recap]
+|-  style="text-align:center; background:#cfc;"
+| 3 || May 13 || Texas || 2–5 || Grand Rapids || || Mrazek || 4,293 || 1–2 || [https://theahl.com/stats/game-summary/1013422 Recap]
+|-  style="text-align:center; background:#cfc;"
+| 4 || May 14 || Texas || 2–3 || Grand Rapids || || Mrazek || 5,089 || 2–2 || [https://theahl.com/stats/game-summary/1013423 Recap]
+|-  style="text-align:center; background:#fcc;"
+| 5 || May 16 || Texas || 3–2 || Grand Rapids || OT || Mrazek || 8,057 || 2–3 || [https://theahl.com/stats/game-summary/1013424 Recap]
+|-  style="text-align:center; background:#fcc;"
+| 6 || May 18 || Grand Rapids || 1–7 || Texas || || Mrazek || 4,010 || 2–4 || [https://theahl.com/stats/game-summary/1013425 Recap]
+|-  style="text-align:center; background:;"
+|}
+|-
+| colspan="11" style="text-align:center;"|
+'''''Legend''''':
+{{legend2|#cfc|Win|border=1px solid #cfc}}
+{{legend2|#fcc|Loss|border=1px solid #fcc}}
+|}
+
+==Player statistics==
+
+===Skaters===
+''Note: GP = Games played; G = Goals; A = Assists; Pts = Points; +/− = Plus/minus; PIM = Penalty minutes''<br>
+{{col-begin}}
+{{col-2}}
+{| class="wikitable sortable" style="width:100%;"
+|+ style="background:#FFFFFF; border-top:#004677 5px solid; border-bottom:#C7A963 5px solid;"| Regular season
+|- align=center
+! Player
+! {{abbr|GP|Games played}}
+! {{abbr|G|Goals}}
+! {{abbr|A|Assists}}
+! {{abbr|Pts|Points}}
+! data-sort-type="number" | {{abbr|+/-|Plus/minus}}
+! {{abbr|PIM|Penalty minutes}}
+|- align=center
+| {{sortname|Teemu|Pulkkinen}}<sup>*</sup> || 71 || 31 || 28 || 59 || 18 || 34
+|- align=center
+| {{sortname|Adam|Almquist}} || 73 || 4 || 49 || 53 || 9 || 56
+|- align=center
+| {{sortname|Cory|Emmerton}} || 53 || 16 || 30 || 46 || 17 || 14
+|- align=center
+| {{sortname|Mitch|Callahan}} || 70 || 26 || 18 || 44 || 23 || 51
+|- align=center
+| {{sortname|Andrej|Nestrasil|Andrej Nestrašil}} || 70 || 16 || 20 || 36 || 0 || 24
+|- align=center
+| {{sortname|Calle|Jarnkrok|Calle Järnkrok}}<sup>‡</sup> || 57 || 13 || 23 || 36 || 19 || 14
+|- align=center
+| {{sortname|Tomas|Jurco|Tomáš Jurčo}}<sup>‡</sup> || 32 || 13 || 19 || 32 || 10 || 14
+|- align=center
+| {{sortname|Ryan|Sproul}}<sup>*</sup> || 72 || 11 || 21 || 32 || 0 || 49
+|- align=center
+| {{sortname|Landon|Ferraro}} || 70 || 15 || 16 || 31 || −3 || 52
+|- align=center
+| {{sortname|Jeff|Hoggan}} || 59 || 14 || 17 || 31 || 1 || 31
+|- align=center
+| {{sortname|Nathan|Paetsch}} || 68 || 4 || 27 || 31 || 18 || 40
+|- align=center
+| {{sortname|David|McIntyre}} || 64 || 8 || 13 || 21 || −1 || 45
+|- align=center
+| {{sortname|Gustav|Nyquist}}<sup>‡</sup> || 15 || 7 || 14 || 21 || 6 || 6
+|- align=center
+| {{sortname|Riley|Sheahan}}<sup>‡</sup> || 31 || 8 || 10 || 18 || −2 || 12
+|- align=center
+| {{sortname|Jordin|Tootoo}} || 51 || 6 || 12 || 18 || −1 || 104
+|- align=center
+| {{sortname|Alexey|Marchenko}}<sup>*</sup> || 49 || 3 || 15 || 18 || 11 || 14
+|- align=center
+| {{sortname|Brennan|Evans}} || 68 || 4 || 13 || 17 || 14 || 111
+|- align=center
+| {{sortname|Xavier|Ouellet}} || 70 || 4 || 13 || 17 || 3 || 22
+|- align=center
+| {{sortname|Triston|Grant}} || 51 || 6 || 10 || 16 || 6 || 103
+|- align=center
+| {{sortname|Luke|Glendening}}<sup>‡</sup> || 18 || 5 || 7 || 12 || 8 || 18
+|- align=center
+| {{sortname|Martin|Frk}} || 50 || 3 || 9 || 12 || −12 || 22
+|- align=center
+| {{sortname|Trevor|Parkes}} || 36 || 6 || 3 || 9 || 5 || 27
+|- align=center
+| {{sortname|Nick|Jensen}} || 45 || 0 || 9 || 9 || 12 || 8
+|- align=center
+| {{sortname|Patrick|Eaves}}<sup>‡</sup> || 8 || 4 || 2 || 6 || 1 || 8
+|- align=center
+| {{sortname|Louis-Marc|Aubry}} || 38 || 2 || 2 || 4 || −1 || 16
+|- align=center
+| {{sortname|Andreas|Athanasiou}} || 2 || 1 || 2 || 3 || 0 || 0
+|- align=center
+| {{sortname|Travis|Novak}}<sup>‡</sup> || 9 || 1 || 2 || 3 || 3 || 6
+|- align=center
+| {{sortname|Alden|Hirschfeld}} || 13 || 1 || 1 || 2 || 3 || 7
+|- align=center
+| {{sortname|Gleason|Fournier}} || 25 || 0 || 2 || 2 || 4 || 4
+|- align=center
+| {{sortname|Colin|Campbell|Colin Campbell (ice hockey, born 1991)}} || 13 || 1 || 0 || 1 || −2 || 5
+|- align=center
+| {{sortname|Marek|Tvrdon|Marek Tvrdoň}}<sup>‡</sup> || 1 || 0 || 0 || 0 || 0 || 0
+|- align=center
+| {{sortname|Mattias|Backman|Mattias Bäckman}} || 2 || 0 || 0 || 0 || −1 || 0
+|- align=center
+| {{sortname|Darren|Helm}}<sup>‡</sup> || 2 || 0 || 0 || 0 || 0 || 0
+|- align=center
+| {{sortname|Mattias|Janmark-Nylen|Mattias Janmark-Nylén}} || 2 || 0 || 0 || 0 || 1 || 2
+|- align=center
+| {{sortname|Mikael|Samuelsson}}<sup>‡</sup> || 2 || 0 || 0 || 0 || −4 || 0
+|- align=center
+| {{sortname|Richard|Nedomlel}} || 3 || 0 || 0 || 0 || −2 || 2
+|- align=center
+| {{sortname|Zach|Nastasiuk|nolink=1}} || 5 || 0 || 0 || 0 || −2 || 0
+|}
+{{col-2}}
+
+{| class="wikitable sortable" style="width:100%;"
+|+ style="background:#FFFFFF; border-top:#004677 5px solid; border-bottom:#C7A963 5px solid;"| Playoffs
+|- align=center
+! Player
+! {{abbr|GP|Games played}}
+! {{abbr|G|Goals}}
+! {{abbr|A|Assists}}
+! {{abbr|Pts|Points}}
+! data-sort-type="number" | {{abbr|+/-|Plus/minus}}
+! {{abbr|PIM|Penalty minutes}}
+|- align=center
+| {{sortname|Teemu|Pulkkinen}} || 10 || 5 || 6 || 11 || 8 || 10
+|- align=center
+| {{sortname|Cory|Emmerton}} || 10 || 2 || 7 || 9 || 4 || 2
+|- align=center
+| {{sortname|Tomas|Jurco|Tomáš Jurčo}} || 8 || 5 || 2 || 7 || −5 || 11
+|- align=center
+| {{sortname|Andrej|Nestrasil|Andrej Nestrašil}} || 10 || 4 || 2 || 6 || 4 || 4
+|- align=center
+| {{sortname|Mattias|Backman|Mattias Bäckman}} || 10 || 1 || 5 || 6 || −6 || 2
+|- align=center
+| {{sortname|Jeff|Hoggan}} || 10 || 4 || 1 || 5 || −4 || 12
+|- align=center
+| {{sortname|Ryan|Sproul}} || 10 || 2 || 3 || 5 || 2 || 4
+|- align=center
+| {{sortname|Mitch|Callahan}} || 8 || 1 || 4 || 5 || −5 || 6
+|- align=center
+| {{sortname|Riley|Sheahan}} || 8 || 1 || 4 || 5 || −5 || 0
+|- align=center
+| {{sortname|Nathan|Paetsch}} || 10 || 0 || 5 || 5 || 2 || 4
+|- align=center
+| {{sortname|Landon|Ferraro}} || 9 || 1 || 2 || 3 || −4 || 2
+|- align=center
+| {{sortname|David|McIntyre}} || 10 || 1 || 1 || 2 || 0 || 9
+|- align=center
+| {{sortname|Trevor|Parkes}} || 3 || 1 || 0 || 1 || 2 || 12
+|- align=center
+| {{sortname|Gleason|Fournier}} || 1 || 0 || 1 || 1 || 2 || 2
+|- align=center
+| {{sortname|Jordin|Tootoo}} || 4 || 0 || 1 || 1 || −3 || 4
+|- align=center
+| {{sortname|Andreas|Athanasiou}} || 6 || 0 || 1 || 1 || 2 || 6
+|- align=center
+| {{sortname|Mattias|Janmark-Nylen|Mattias Janmark-Nylén}} || 6 || 0 || 1 || 1 || −1 || 0
+|- align=center
+| {{sortname|Zach|Nastasiuk|nolink=1}} || 6 || 0 || 1 || 1 || −1 || 0
+|- align=center
+| {{sortname|Nick|Jensen}} || 10 || 0 || 1 || 1 || −3 || 2
+|- align=center
+| {{sortname|Adam|Almquist}} || 1 || 0 || 0 || 0 || 0 || 0
+|- align=center
+| {{sortname|Colin|Campbell|Colin Campbell (ice hockey, born 1991)}} || 3 || 0 || 0 || 0 || 1 || 2
+|- align=center
+| {{sortname|Martin|Frk}} || 4 || 0 || 0 || 0 || −4 || 0
+|- align=center
+| {{sortname|Triston|Grant}} || 4 || 0 || 0 || 0 || 0 || 4
+|- align=center
+| {{sortname|Xavier|Ouellet}} || 8 || 0 || 0 || 0 || −5 || 4
+|- align=center
+| {{sortname|Brennan|Evans}} || 10 || 0 || 0 || 0 || 2 || 30
+|}
+
+{{col-end}}
+
+===Goaltenders===
+''Note: GP = Games played; TOI = Time on ice; W = Wins; L = Losses; GA = Goals against; GAA = Goals against average; SV = Saves; SA = Shots against; SV% = Save percentage; SO = Shutouts; G = Goals; A = Assists; PIM = Penalty minutes''<br>
+{| class="wikitable sortable" style="width:100%;"
+|+ style="background:#FFFFFF; border-top:#004677 5px solid; border-bottom:#C7A963 5px solid;"| Regular season
+|-  style="text-align:center; background:#ddd;"
+! Player
+! {{abbr|GP|Games played}} 
+! {{abbr|TOI|Time on ice}} 
+! {{abbr|W|Wins}}
+! {{abbr|L|Losses}}
+! {{abbr|GA|Goals against}}
+! {{abbr|GAA|Goals against average}}
+! {{abbr|SV|Saves}}
+! {{abbr|SA|Shots against}}
+! {{abbr|SV%|Save percentage}}
+! {{abbr|SO|Shutouts}}
+! {{abbr|G|Goals}}
+! {{abbr|A|Assists}}
+! {{abbr|PIM|Penalty minutes}}
+|- align=center
+|style=white-space:nowrap| {{sortname|Petr|Mrazek|Petr Mrázek}} || 32 || 1829:52 || 22 || 9 || 64 || 2.10 || 774 || 838 || .924 || 3 || 0 || 2 || 2
+|- align=center
+|style=white-space:nowrap| {{sortname|Tom|McCollum}} || 46 || 2560:46 || 24 || 12 || 98 || 2.30 || 1158 || 1256 || .922 || 2 || 0 || 0 || 6
+|- align=center
+|style=white-space:nowrap| {{sortname|Jared|Coreau}} || 5 || 205:06 || 0 || 4 || 15 || 4.39 || 103 || 118 || .873 || 0 || 0 || 1 || 0
+|- class="unsortable"
+! colspan=2 | Totals || 4622:56 || 46 || 25 || 182 || 2.36 || 2035 || 2217 || .918 || 5 || 0 || 3 || 8
+|}
+
+{| class="wikitable sortable" style="width:100%;"
+|+ style="background:#FFFFFF; border-top:#004677 5px solid; border-bottom:#C7A963 5px solid;"| Playoffs
+|-  style="text-align:center; background:#ddd;"
+! Player
+! {{abbr|GP|Games played}} 
+! {{abbr|TOI|Time on ice}} 
+! {{abbr|W|Wins}}
+! {{abbr|L|Losses}}
+! {{abbr|GA|Goals against}}
+! {{abbr|GAA|Goals against average}}
+! {{abbr|SV|Saves}}
+! {{abbr|SA|Shots against}}
+! {{abbr|SV%|Save percentage}}
+! {{abbr|SO|Shutouts}}
+! {{abbr|G|Goals}}
+! {{abbr|A|Assists}}
+! {{abbr|PIM|Penalty minutes}}
+|- align=center
+|style=white-space:nowrap| {{sortname|Petr|Mrazek|Petr Mrázek}} || 10 || 599:32 || 5 || 5 || 28 || 2.80 || 288 || 316 || .911 || 0 || 0 || 0 || 0
+|- align=center
+|style=white-space:nowrap| {{sortname|Tom|McCollum}} || 1 || 28:01 || 0 || 0 || 2 || 4.28 || 14 || 16 || .875 || 0 || 0 || 0 || 0
+|- class="unsortable"
+! colspan=2 | Totals || 632:49 || 5 || 5 || 31 || 2.94 || 302 || 333 || .907 || 0 || 0 || 0 || 0
+|}
+<sup>†</sup>Denotes player spent time with another team before joining team. Stats reflect time with the team only.
+<br /><sup>‡</sup>Left the team mid-season
+<br /><sup>*</sup>Rookie
+
+==Final roster==
+<small>Updated April 19, 2014<ref>{{cite web | url=https://theahl.com/stats/roster/328/43 | title= Grand Rapids Griffins 2013-14 Regular Season | access-date=2014-04-19}}</ref></small>
+{{Ice hockey team roster |contract=yes}}
+
+<!-- list of players -->
+{{Ice hockey team player
+| first = Adam | last = Almqvist | dab = | num = 5 | pos = D | nat = Sweden | s/g = L | birthyear = 1991 | birthmonth = 2 | birthday = 27 | acq = [[2011–12 AHL season|2012]] | birthplace = [[Jönköping|Jönköping, Sweden]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap = | year = 2014 | month = 4 |day = 19}}
+
+<!--{{Ice hockey team player
+| first = Joakim | last = Andersson | dab = | num = 18 | pos = C | nat = Sweden | s/g = L | birthyear = 1989 | birthmonth = 2 | birthday = 5 | acq = [[2008–09 AHL season|2009]] | birthplace = [[Munkedal|Munkedal, Sweden]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap = | year = 2014 | month = 4 |day = 19}}-->
+
+{{Ice hockey team player
+| first = Andreas | last = Athanasiou | dab = | num = 47 | pos = LW | nat = Canada | s/g = L | birthyear = 1994 | birthmonth = 8 | birthday = 6 | acq = [[2012 NHL Entry Draft|2012]] | birthplace = [[Woodbridge, Ontario]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap = | year = 2014 | month = 4 |day = 19}}
+
+{{Ice hockey team player
+| first = Louis-Marc | last = Aubry | dab = | num = 22 | pos = C | nat = Canada | s/g = L | birthyear = 1991 | birthmonth = 11 | birthday = 11 | acq = [[2010 NHL Entry Draft|2010]] | birthplace = [[Arthabaska Regional County Municipality, Quebec|Arthabaska, Quebec]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no| cap = | year = 2014 | month = 4 |day = 19}}
+
+{{Ice hockey team player
+| first =  Mattias | last =  Backman | dab = Mattias Bäckman | num = 46 | pos = D | nat = Sweden | s/g = L | birthyear = 1992 | birthmonth = 10 | birthday = 3 | acq = [[2013–14 AHL season|2013]] | birthplace = [[Linköping|Linköping, Sweden]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap = | year = 2014 | month = 4 |day = 19}}
+
+{{Ice hockey team player
+| first =  Mitch | last =  Callahan | dab = | num = 15 | pos = RW | nat = United States | s/g = R | birthyear = 1991 | birthmonth = 8 | birthday = 17 | acq = [[2011–12 AHL season|2011]] | birthplace = [[Whittier, California]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap = | year = 2014 | month = 4 |day = 19}}
+
+{{Ice hockey team player
+| first =  Colin | last =  Campbell | dab = Colin Campbell (ice hockey, born 1991) | num = 32 | pos = F | nat = Canada | s/g = R | birthyear = 1991 | birthmonth = 4 | birthday = 17 | acq = [[2013–14 AHL season|2013]] | birthplace = [[Pickering, Ontario]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap = | year = 2014 | month = 4 |day = 19}}
+
+{{Ice hockey team player
+| first =  Willie | last =  Coetzee | dab = | num = 8 | pos = RW | nat = South Africa | s/g = R | birthyear = 1990 | birthmonth = 11 | birthday = 7 | acq = [[2009–10 AHL season|2009]] | birthplace = [[Johannesburg|Johannesburg, South Africa]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap = | year = 2014 | month = 4 |day = 19}}
+
+{{Ice hockey team player
+| first =  Jared | last =  Coreau | dab = | num = 31 | pos = G | nat = Canada | s/g = L | birthyear = 1991 | birthmonth = 5 | birthday = 11 | acq = [[2013–14 AHL season|2013]] | birthplace = [[Perth, Ontario]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap = | year = 2014 | month = 4 |day = 19}}
+
+{{Ice hockey team player
+| first = Brennan | last = Evans | dab = | num = 44 | pos = D | nat = Canada | s/g = L | birthyear = 1982 | birthmonth = 01 | birthday = 06 | acq = [[2012–13 AHL season|2012]] | birthplace = [[North Battleford, Saskatchewan]] | contract = Griffins | inj = no | cap = A  | year = 2014 | month = 4 |day = 19}}
+
+{{Ice hockey team player
+| first =  Cory | last =  Emmerton | dab = | num = 18 | pos = C | nat = Canada | s/g = L | birthyear = 1988 | birthmonth = 6 | birthday = 1 | acq = [[2006 NHL Entry Draft|2006]] | birthplace = [[St. Thomas, Ontario]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap = | year = 2014 | month = 4 |day = 19}}
+
+{{Ice hockey team player
+| first = Landon | last = Ferraro | dab = | num = 29 | pos = C | nat = Canada | s/g = R | birthyear = 1991 | birthmonth = 8 | birthday = 8 | acq = [[2009–10 AHL season|2010]] | birthplace = [[Trail, British Columbia]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap =  | year = 2014 | month = 4 |day = 19}}
+
+{{Ice hockey team player
+| first = Martin | last = Frk | dab = | num = 27 | pos = RW | nat = Czech Republic | s/g = R | birthyear = 1993 | birthmonth = 10 | birthday = 5 | acq = [[2012 NHL Entry Draft|2012]] | birthplace = [[Pelhřimov|Pelhřimov, Czech Republic]]  | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap =  | year = 2014 | month = 4 |day = 19}}
+
+{{Ice hockey team player
+| first = Gleason | last = Fournier | dab = | num = 20 | pos = D | nat = Canada | s/g = L | birthyear = 1991 | birthmonth = 9 | birthday = 8 | acq = [[2011–12 AHL season|2011]] | birthplace = [[Saint-Fabien, Quebec]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap = | year = 2014 | month = 4 |day = 19}}
+
+<!--{{Ice hockey team player
+| first = Luke | last = Glendening | dab = | num = 33 | pos = RW | nat = United States | s/g = R  | birthyear = 1989 | birthmonth = 4 | birthday = 29 | acq = [[2012–13 AHL season|2012]] | birthplace = [[Grand Rapids, Michigan]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap = | year = 2014 | month = 4 |day = 19}}-->
+
+{{Ice hockey team player
+| first = Triston | last = Grant | dab = | num = 23 | pos = LW | nat = Canada | s/g = L | birthyear = 1984 | birthmonth = 02 | birthday = 02 | acq = [[2012–13 AHL season|2010]] | birthplace = [[Neepawa|Neepawa, Manitoba]] | contract = Griffins | inj = no | cap = | year = 2014 | month = 4 |day = 19}}
+
+{{Ice hockey team player
+| first = Jeff | last = Hoggan | dab = | num = 10 | pos = LW | nat = Canada | s/g = L | birthyear = 1978 | birthmonth = 02 | birthday = 01 | acq = [[2012–13 AHL season|2011]] | birthplace = [[Hope, British Columbia]] | contract = Griffins | inj = no | cap = C | year = 2014 | month = 4 |day = 19}}
+
+{{Ice hockey team player
+| first = Mattias | last = Janmark-Nylen | dab = Mattias Janmark-Nylén | num = 38 | pos = C | nat = Sweden | s/g = L | birthyear = 1992 | birthmonth = 12 | birthday = 08 | acq = [[2013 NHL Entry Draft|2013]] | birthplace = [[Stockholm|Stockholm, Sweden]] | contract = Griffins | inj = no | cap = | year = 2014 | month = 4 |day = 19}}
+
+{{Ice hockey team player
+| first =  Nick | last =  Jensen | dab = | num = 14 | pos = D | nat = United States | s/g = R | birthyear = 1990 | birthmonth = 9 | birthday = 21 | acq = [[2009 NHL Entry Draft|2009]] | birthplace = [[Rogers, Minnesota]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap = | year = 2014 | month = 4 |day = 19}}
+
+<!--{{Ice hockey team player
+| first = Tomas | last = Jurco | dab = Tomáš Jurčo| num = 28 | pos = RW | nat = Slovakia | s/g = R | birthyear = 1992 | birthmonth = 12 | birthday = 28 | acq = [[2012–13 AHL season|2012]] | birthplace = [[Košice|Košice, Slovakia]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap = | year = 2014 | month = 4 |day = 19}}-->
+
+<!--{{Ice hockey team player
+| first = Brian | last = Lashoff | dab = | num =  32 | pos = D | nat = United States | s/g = L | birthyear = 1990 | birthmonth = 7 | birthday = 16 | acq = [[2009–10 AHL season|2010]] | birthplace = [[Albany, New York]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap = A | year = 2014 | month = 4 |day = 19}}-->
+
+{{Ice hockey team player
+| first = Alexey | last = Marchenko | dab = | num =  3 | pos = D | nat = Russia | s/g = R | birthyear = 1992 | birthmonth = 1 | birthday = 2 | acq = [[2011 NHL Entry Draft|2011]] | birthplace = [[Moscow|Moscow, Russia]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap = | year = 2014 | month = 4 |day = 19}}
+
+{{Ice hockey team player
+| first = Tom | last = McCollum | dab = Thomas McCollum | num =  30 | pos = G | nat = United States | s/g = L | birthyear = 1989 | birthmonth = 12 | birthday = 7 | acq = [[2009–10 AHL season|2009]] | birthplace = [[Cambria, New York]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap = | year = 2014 | month = 4 |day = 19}}
+
+{{Ice hockey team player
+| first = David | last = McIntyre | dab = | num =  26 | pos = C | nat = Canada | s/g = L | birthyear = 1987 | birthmonth = 2 | birthday = 4 | acq = [[2013–14 AHL season|2013]] | birthplace = [[Pefferlaw, Ontario]] | contract = Griffins | inj = no | cap = | year = 2014 | month = 4 |day = 19}}
+
+{{Ice hockey team player
+| first = Petr | last = Mrazek | dab = Petr Mrázek| num =  34 | pos = G | nat = Czech Republic | s/g = L | birthyear = 1992 | birthmonth = 2 | birthday = 14 | acq = [[2012–13 AHL season|2012]] | birthplace = [[Ostrava|Ostrava, Czechoslovakia]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap = | year = 2014 | month = 4 |day = 19}}
+
+{{Ice hockey team player
+| first = Zach | last = Nastasiuk | dab = | num =  37 | pos = RW | nat = Canada | s/g = R | birthyear = 1995 | birthmonth = 3 | birthday = 30 | acq = [[2013 NHL Entry Draft|2013]] | birthplace = [[Barrie, Ontario]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap = | year = 2014 | month = 4 |day = 19}}
+
+{{Ice hockey team player
+| first = Richard | last = Nedomlel | dab = | num = 42 | pos = D | nat = Czech Republic | s/g = L | birthyear = 1993 | birthmonth = 7 | birthday = 1 | acq = [[2011 NHL Entry Draft|2011]] | birthplace = [[Prague|Prague, Czech Republic]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap = | year = 2014 | month = 4 |day = 19}}
+
+{{Ice hockey team player
+| first = Andrej | last = Nestrasil | dab = Andrej Nestrašil | num = 11 | pos = RW | nat = Czech Republic | s/g = L | birthyear = 1991 | birthmonth = 2 | birthday = 2 | acq = [[2011–12 AHL season|2011]] | birthplace = [[Prague|Prague, Czechoslovakia]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap = | year = 2014 | month = 4 |day = 19}}
+
+{{Ice hockey team player
+| first = Max | last = Nicastro | dab = | num = 17 | pos = D | nat = United States | s/g = R | birthyear = 1990 | birthmonth = 03 | birthday = 02 | acq = [[2012–13 AHL season|2012]] | birthplace = [[Thousand Oaks, California]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap = | year = 2014 | month = 4 |day = 19}}
+
+<!--{{Ice hockey team player
+| first = Gustav | last = Nyquist | dab = | num = 13 | pos = RW | nat = Sweden | s/g = L | birthyear = 1989 | birthmonth = 9 | birthday = 1 | acq = [[2010–11 AHL season|2011]] | birthplace = [[Halmstad|Halmstad, Sweden]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap = | year = 2014 | month = 4 |day = 19}}-->
+
+{{Ice hockey team player
+| first = Xavier | last = Ouellet | dab = | num = 16 | pos = D | nat = France | s/g = L | birthyear = 1993 | birthmonth = 7 | birthday = 29 | acq = [[2011 NHL Entry Draft|2011]] | birthplace = [[Bayonne|Bayonne, France]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no| cap = | year = 2014 | month = 4 |day = 19}}
+
+{{Ice hockey team player
+| first = Nathan | last = Paetsch | dab = | num = 4 | pos = D | nat = Canada | s/g = L | birthyear = 1983 | birthmonth = 03 | birthday = 30 | acq = [[2012–13 AHL season|2012]] | birthplace = [[LeRoy, Saskatchewan]] | contract = Griffins | inj = no | cap = A | year = 2014 | month = 4 |day = 19}}
+
+{{Ice hockey team player
+| first = Trevor | last = Parkes | dab = | num = 21 | pos = LW | nat = Canada | s/g = R | birthyear = 1991 | birthmonth = 5 | birthday = 13 | acq = [[2011–12 AHL season|2011]] | birthplace = [[Fort Erie, Ontario]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no| cap = | year = 2014 | month = 4 |day = 19}}
+
+{{Ice hockey team player
+| first = Jake | last = Paterson | dab = | num = 1 | pos = G | nat = Canada | s/g = L | birthyear = 1994 | birthmonth = 5 | birthday = 3 | acq = [[2013–14 AHL season|2013]] | birthplace = [[Mississauga|Mississauga, Ontario]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no| cap = | year = 2014 | month = 4 |day = 19}}
+
+{{Ice hockey team player
+| first = Teemu | last = Pulkkinen | dab = | num = 6 | pos = RW | nat = Finland | s/g = R | birthyear = 1992 | birthmonth = 1 | birthday = 12 | acq = [[2012–13 AHL season|2013]] | birthplace = [[Vantaa|Vantaa, Finland]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap = | year = 2014 | month = 4 |day = 19}}
+
+<!--{{Ice hockey team player
+| first = Riley | last = Sheahan | dab = | num = 19 | pos = C | nat = Canada | s/g = L | birthyear = 1991 | birthmonth = 12 | birthday = 7 | acq = [[2011–12 AHL season|2012]] | birthplace = [[St. Catharines|St. Catharines, Ontario]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap = | year = 2014 | month = 4 |day = 19}}-->
+
+<!--{{Ice hockey team player
+| first = Brendan | last = Smith | dab = Brendan Smith (ice hockey) | num =  7 | pos = D | nat = Canada | s/g = L | birthyear = 1989 | birthmonth = 2 | birthday = 8 | acq = [[2010–11 AHL season|2010]] | birthplace = [[Etobicoke|Etobicoke, Ontario]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap = | year = 2014 | month = 4 |day = 19}}-->
+
+{{Ice hockey team player
+| first = Ryan | last = Sproul | dab =  | num =  7 | pos = D | nat = Canada | s/g = R | birthyear = 1993 | birthmonth = 1 | birthday = 13 | acq = [[2011 NHL Entry Draft|2011]] | birthplace = [[Toronto|Toronto, Ontario]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap = | year = 2014 | month = 4 |day = 19}}
+
+<!--{{Ice hockey team player
+| first = Tomas | last = Tatar | dab =Tomáš Tatar| num = 27 | pos = LW | nat = Slovakia | s/g = L | birthyear = 1990 | birthmonth = 12 | birthday = 1 | acq = [[2009–10 AHL season|2009]] | birthplace = [[Ilava|Ilava, Czechoslovakia]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap = | year = 2014 | month = 4 |day = 19}}-->
+
+{{Ice hockey team player
+| first = Jordin | last = Tootoo | dab =  | num = 22 | pos = RW | nat = Canada | s/g = R | birthyear = 1983 | birthmonth = 2 | birthday = 2 | acq = [[2012–13 NHL season|2012]] | birthplace = [[Churchill, Manitoba]] | contract = [[Detroit Red Wings|Red Wings]] | inj = no | cap = | year = 2013 | month = 4 |day = 19}}
+|}<!-- end list of players -->
+
+==References==
+{{reflist|2}}
+
+==External links==
+*[http://www.griffinshockey.com/ Grand Rapids Griffins official site]
+
+{{AHL}}
+{{Grand Rapids Griffins}}
+
+{{DEFAULTSORT:2013-14 Grand Rapids Griffins season}}
+[[Category:2013–14 AHL season by team|Grand]]
+[[Category:2013–14 in American ice hockey by team|Grand]]
+[[Category:Grand Rapids Griffins]]

@@ -109,13 +109,6 @@ test('inline-with-data', (t) => {
     ],
     ['mlbplayer', '{{mlbplayer|93|Spencer Kelly}}', 'Spencer Kelly', { number: '93', name: 'Spencer Kelly' }],
     ['samp', '{{samp|1=[A]bort, [R]etry, [F]ail?}}', '[A]bort, [R]etry, [F]ail?', { 1: '[A]bort, [R]etry, [F]ail?' }],
-    [
-      'infront 10000 écu behind',
-      'infront {{Monnaie|10000|écu}} behind',
-      'infront 10000 écu behind',
-      { amount: '10000', code: 'écu' },
-      { lang: 'fr' },
-    ],
   ]
   arr.forEach(([name, input, text, fields, opts]) => {
     const doc = wtf(input, opts)

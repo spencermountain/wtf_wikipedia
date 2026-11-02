@@ -48,7 +48,7 @@ const parseGoalies = function (doc) {
       games: asNum(getCell(row, ['gp', 'games'])),
       wins: asNum(getCell(row, ['w', 'wins'])),
       losses: asNum(getCell(row, ['l', 'losses'])),
-      otLosses: asNum(getCell(row, ['ot', 'otl'])),
+      otLosses: asNum(getCell(row, ['ot', 'otl', 'sol'])),
       goalsAgainstAvg: asNum(getCell(row, ['gaa'])),
       savePct: asNum(getCell(row, ['sv%', 'sv', 'save %'])),
       shutouts: asNum(getCell(row, ['so'])),

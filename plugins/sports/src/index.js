@@ -8,5 +8,6 @@ import wnba from './wnba/index.js'
 import nwsl from './nwsl/index.js'
 import pwhl from './pwhl/index.js'
 import cfl from './cfl/index.js'
+import ahl from './ahl/index.js'
 
-export { mlb, nhl, nba, nfl, mls, wnba, nwsl, pwhl, cfl, version }
+export { mlb, nhl, nba, nfl, mls, wnba, nwsl, pwhl, cfl, ahl, version }

@@ -1,21 +1,20 @@
-// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
-import register from '../../register.js'
-import version from '../../_version.js'
 import aliases from './aliases.js'
-import parsers from './citations.js'
+import citations from './citations.js'
 
-const infoboxes = [
-  'তথ্যছক শ্রেণীবিন্যাস',
-  'প্রজাতিছক',
-  'শ্রেণিবিন্যাস ছক',
-  'শ্রেণীবিন্যাস ছক',
-]
+const infoboxes = ['তথ্যছক শ্রেণীবিন্যাস', 'প্রজাতিছক', 'শ্রেণিবিন্যাস ছক', 'শ্রেণীবিন্যাস ছক']
 
-const data = { aliases, infoboxes, parsers }
-
-const plugin = (_models, templates, boxes) => register(data, templates, boxes)
-plugin.lang = 'bn'
-plugin.version = version
-
-export { data }
-export default plugin
+export default {
+  lang: 'bn',
+  enLang: 'bengali',
+  category: ['বিষয়শ্রেণী'],
+  redirect: ['পুনঃনির্দেশ', 'পুনঃর্নির্দেশ', 'পুননির্দেশ', 'পুনর্নির্দেশ'],
+  stub: ['অসম্পূর্ণ'],
+  infobox: ['তথ্যছক'],
+  image: ['চিত্র'],
+  reference: [],
+  disambig: ['দ্ব্যর্থতা নিরসন'],
+  disambigTitle: [],
+  aliases,
+  infoboxes,
+  templates: citations,
+}

@@ -1,18 +1,20 @@
-// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
-import register from '../../register.js'
-import version from '../../_version.js'
 import aliases from './aliases.js'
-import parsers from './citations.js'
+import citations from './citations.js'
 
-const infoboxes = [
-  'מיון',
-]
+const infoboxes = ['מיון']
 
-const data = { aliases, infoboxes, parsers }
-
-const plugin = (_models, templates, boxes) => register(data, templates, boxes)
-plugin.lang = 'he'
-plugin.version = version
-
-export { data }
-export default plugin
+export default {
+  lang: 'he',
+  enLang: 'hebrew',
+  category: ['קט', 'קטגוריה'],
+  redirect: ['הפניה'],
+  stub: ['קצרמר'],
+  infobox: ['תבנית', 'תבנית מידע'],
+  image: ['קו', 'קובץ', 'תמונה'],
+  reference: [],
+  disambig: ['פירושונים'],
+  disambigTitle: [],
+  aliases,
+  infoboxes,
+  templates: citations,
+}

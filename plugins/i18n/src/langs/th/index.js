@@ -1,21 +1,20 @@
-// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
-import register from '../../register.js'
-import version from '../../_version.js'
 import aliases from './aliases.js'
-import parsers from './citations.js'
+import citations from './citations.js'
 
-const infoboxes = [
-  'ตารางจำแนกพันธุ์',
-  'พฤกษศาสตร์',
-  'สัตววิทยา',
-  'อนุกรมภิธาน',
-]
+const infoboxes = ['ตารางจำแนกพันธุ์', 'พฤกษศาสตร์', 'สัตววิทยา', 'อนุกรมภิธาน']
 
-const data = { aliases, infoboxes, parsers }
-
-const plugin = (_models, templates, boxes) => register(data, templates, boxes)
-plugin.lang = 'th'
-plugin.version = version
-
-export { data }
-export default plugin
+export default {
+  lang: 'th',
+  enLang: 'thai',
+  category: ['หมวดหมู่'],
+  redirect: ['เปลี่ยนทาง'],
+  stub: ['โครง'],
+  infobox: ['กล่องข้อมูล'],
+  image: ['ภาพ', 'ไฟล์'],
+  reference: [],
+  disambig: ['แก้ความกำกวม'],
+  disambigTitle: [],
+  aliases,
+  infoboxes,
+  templates: citations,
+}

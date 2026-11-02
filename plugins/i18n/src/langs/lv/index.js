@@ -1,8 +1,5 @@
-// assembles the pack — template names in ./aliases.js, citation param maps in ./citations.js
-import register from '../../register.js'
-import version from '../../_version.js'
 import aliases from './aliases.js'
-import parsers from './citations.js'
+import citations from './citations.js'
 
 const infoboxes = [
   'bioloģiskās taksonomijas infokaste',
@@ -15,11 +12,18 @@ const infoboxes = [
   'taksonomijas infokaste',
 ]
 
-const data = { aliases, infoboxes, parsers }
-
-const plugin = (_models, templates, boxes) => register(data, templates, boxes)
-plugin.lang = 'lv'
-plugin.version = version
-
-export { data }
-export default plugin
+export default {
+  lang: 'lv',
+  enLang: 'latvian',
+  category: ['kategorija'],
+  redirect: [],
+  stub: ['aizmetnis'],
+  infobox: [],
+  image: ['attēls'],
+  reference: [],
+  disambig: ['nozīmju atdalīšana'],
+  disambigTitle: [],
+  aliases,
+  infoboxes,
+  templates: citations,
+}
