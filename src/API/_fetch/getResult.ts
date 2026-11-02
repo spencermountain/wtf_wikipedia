@@ -7,6 +7,25 @@ const stripHtml = function (str: string) {
   return str
 }
 
+// walk the response's redirect + normalization maps backwards,
+// to find which requested title produced this page
+const requestedTitle = function (query, pageTitle) {
+  let title = pageTitle
+  const redirects = query.redirects || []
+  for (let i = 0; i < redirects.length; i += 1) {
+    const hop = redirects.find((r) => r.to === title)
+    if (!hop) {
+      break
+    }
+    title = hop.from
+  }
+  const norm = (query.normalized || []).find((n) => n.to === title)
+  if (norm) {
+    title = norm.from
+  }
+  return title
+}
+
 const getResult = function (data, options: any = {}) {
   // handle nothing found or no data passed
   if (!data?.query?.pages) {
@@ -66,7 +85,7 @@ const getResult = function (data, options: any = {}) {
       isDisambig: Object.hasOwn(props, 'disambiguation') ? true : undefined,
     }
 
-    return { wiki: text, meta: meta }
+    return { wiki: text, meta: meta, requested: requestedTitle(data.query, page.title) }
   })
 }
 

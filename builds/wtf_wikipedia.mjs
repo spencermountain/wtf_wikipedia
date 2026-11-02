@@ -46,13 +46,17 @@ const joinSentences = function(arr = []) {
 const isInterWiki = /(wikibooks|wikidata|wikimedia|wikinews|wikipedia|wikiquote|wikisource|wikispecies|wikiversity|wikivoyage|wiktionary|foundation|meta)\.org/;
 const defaults$2 = {
   action: "query",
-  prop: "revisions|pageprops",
   // we use the 'revisions' api here, instead of the Raw api, for its CORS-rules..
+  // 'description' is the central wikidata one - wikis without that extension warn, and skip it
+  prop: "revisions|pageprops|description",
   rvprop: "content|ids|timestamp",
   maxlag: 5,
+  //timeout in seconds
   rvslots: "main",
   origin: "*",
   format: "json",
+  formatversion: 2,
+  //cleaner response format - wikis older than 2015 ignore it, and return v1
   redirects: "true"
 };
 const toQueryString = function(obj) {
@@ -93,6 +97,27 @@ const makeUrl = function(options, parameters = defaults$2) {
   return `${apiPath}${toQueryString(params)}`;
 };
 
+const stripHtml = function(str) {
+  str = str.replace(/<[^<>]*>/g, "");
+  str = str.replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#0?39;/g, "'");
+  return str;
+};
+const requestedTitle = function(query, pageTitle) {
+  let title = pageTitle;
+  const redirects = query.redirects || [];
+  for (let i = 0; i < redirects.length; i += 1) {
+    const hop = redirects.find((r) => r.to === title);
+    if (!hop) {
+      break;
+    }
+    title = hop.from;
+  }
+  const norm = (query.normalized || []).find((n) => n.to === title);
+  if (norm) {
+    title = norm.from;
+  }
+  return title;
+};
 const getResult = function(data, options = {}) {
   if (!data?.query?.pages) {
     return null;
@@ -107,10 +132,7 @@ const getResult = function(data, options = {}) {
     if (!rev) {
       return null;
     }
-    let text = rev["*"];
-    if (!text && rev.slots) {
-      text = rev.slots.main["*"];
-    }
+    let text = rev.slots?.main?.content ?? rev.slots?.main?.["*"] ?? rev["*"];
     let revisionID = rev.revid;
     let timestamp = rev.timestamp;
     page.pageprops ||= {};
@@ -118,6 +140,7 @@ const getResult = function(data, options = {}) {
     if (!domain && options.wiki) {
       domain = `${options.wiki}.org`;
     }
+    let props = page.pageprops;
     let meta = {
       ...options,
       title: page.title,
@@ -126,11 +149,19 @@ const getResult = function(data, options = {}) {
       domain,
       revisionId: revisionID,
       timestamp,
-      pageImage: page.pageprops["page_image_free"],
-      wikidata: page.pageprops.wikibase_item,
-      description: page.pageprops["wikibase-shortdesc"]
+      // prefer the free-licensed page-image, fall back to the non-free one
+      pageImage: props["page_image_free"] || props["page_image"],
+      wikidata: props.wikibase_item,
+      // prop=description works in any language - the shortdesc pageprop is enwiki-only
+      description: page.description || props["wikibase-shortdesc"],
+      // set by {{DISPLAYTITLE:}}, present only when it differs from the title
+      displayTitle: props.displaytitle ? stripHtml(props.displaytitle) : void 0,
+      // the page's category sort-key, like 'Beauvoir, Simone de'
+      defaultSort: props.defaultsort,
+      // authoritative flag from the mediawiki disambiguator extension
+      isDisambig: Object.hasOwn(props, "disambiguation") ? true : void 0
     };
-    return { wiki: text, meta };
+    return { wiki: text, meta, requested: requestedTitle(data.query, page.title) };
   });
 };
 
@@ -3819,6 +3850,20 @@ class Document {
   set pageImage(str) {
     this.#info.pageImage = str;
   }
+  // the title as rendered on the page, set by {{DISPLAYTITLE:}}
+  get displayTitle() {
+    return this.#info.displayTitle || this.title;
+  }
+  set displayTitle(str) {
+    this.#info.displayTitle = str;
+  }
+  // the page's category sort-key, like 'Beauvoir, Simone de'
+  get defaultSort() {
+    return this.#info.defaultSort || null;
+  }
+  set defaultSort(str) {
+    this.#info.defaultSort = str;
+  }
   // don'y allow setting thesese
   wikitext() {
     return this.#data.wiki || "";
@@ -3849,6 +3894,9 @@ class Document {
     return link ?? null;
   }
   isDisambiguation() {
+    if (this.#info.isDisambig === true) {
+      return true;
+    }
     return isDisambig(this);
   }
   disambiguation() {
@@ -13187,8 +13235,28 @@ const parse = function(input, opts = {}) {
   return data;
 };
 
+const normTitle = (t) => String(t).replace(/ /g, "_").trim();
+const sortByInput = function(found, input) {
+  const order = {};
+  input.forEach((t, i) => {
+    const key = normTitle(t);
+    if (order[key] === void 0) {
+      order[key] = i;
+    }
+  });
+  const byId = typeof input[0] === "number";
+  const indexOf = function(o) {
+    const key = byId ? String(o.meta?.pageId) : normTitle(o.requested ?? o.meta?.title ?? "");
+    return order[key] ?? Infinity;
+  };
+  return found.sort((a, b) => indexOf(a) - indexOf(b));
+};
 const parseDoc = function(res, title) {
-  const results = (res ?? []).filter((o) => o != null).map((o) => {
+  let found = (res ?? []).filter((o) => o != null);
+  if (isArray(title)) {
+    found = sortByInput(found, title);
+  }
+  const results = found.map((o) => {
     const data = parse(o.wiki ?? "", o.meta);
     return new Document(data, o.meta);
   });
