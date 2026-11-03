@@ -58,6 +58,7 @@
     "build": "node ./scripts/version.js && rollup -c",
     "build:all": "pnpm run build && pnpm -r run build",
     "lint": "eslint .",
+    "check": "tsc --noEmit",
     "test": "pnpm run test:unit",
     "render": "node ./scripts/render/index.js",
     "test:unit": "tape --strict \"tests/unit/**/*.test.js\" | tap-dancer",
@@ -65,6 +66,7 @@
     "test:fetch": "tape --strict \"tests/fetch/**/*.test.js\" | tap-dancer",
     "test:plugins": "pnpm -r --workspace-concurrency=1 run test",
     "test:all": "pnpm run test:types && pnpm run test:fetch && pnpm run test:unit && pnpm run test:plugins && pnpm run lint",
+    "test:ci": "pnpm run test:types && pnpm run test:unit && pnpm run test:plugins && pnpm run lint",
     "test:hmm": "tape --strict \"tests/{_hmm/**/*.hmm.js,hmm/**/*.hmm.test.js}\" | tap-dancer",
     "testb": "TESTENV=prod pnpm run test:all"
   },

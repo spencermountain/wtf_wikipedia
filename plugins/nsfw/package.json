@@ -1,0 +1,51 @@
+{
+  "name": "wtf-plugin-nsfw",
+  "version": "1.0.1",
+  "description": "content filter for wikipedia articles",
+  "license": "MIT",
+  "repository": "github:spencermountain/wtf-plugin-nsfw",
+  "author": "Spencer Kelly <spencermountain@gmail.com> (https://spencermountain.dev)",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./types/index.d.ts",
+        "default": "./builds/wtf-plugin-nsfw.mjs"
+      },
+      "require": {
+        "types": "./types/index.d.cts",
+        "default": "./builds/wtf-plugin-nsfw.cjs"
+      },
+      "default": {
+        "types": "./types/index.d.ts",
+        "default": "./builds/wtf-plugin-nsfw.mjs"
+      }
+    }
+  },
+  "main": "./builds/wtf-plugin-nsfw.cjs",
+  "module": "./builds/wtf-plugin-nsfw.mjs",
+  "types": "./types/index.d.cts",
+  "sideEffects": false,
+  "scripts": {
+    "watch": "node --watch ./scratch.js",
+    "build": "node ./scripts/version.js && rollup -c",
+    "test": "tape --strict \"tests/**/*.test.js\" | tap-dancer",
+    "testb": "TESTENV=prod tape --strict \"tests/**/*.test.js\" | tap-dancer",
+    "version": "node ./scripts/version.js",
+    "lint": "eslint ."
+  },
+  "files": [
+    "builds",
+    "types"
+  ],
+  "dependencies": {
+    "spacetime": "7.12.1"
+  },
+  "devDependencies": {
+    "wtf_wikipedia": "workspace:*"
+  },
+  "peerDependencies": {
+    "wtf_wikipedia": ">=9.0.0"
+  },
+  "unpkg": "./builds/wtf-plugin-nsfw.min.js"
+}

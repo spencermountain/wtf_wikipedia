@@ -1,0 +1,126 @@
+{{Infobox award
+| name           = Outstanding Achievement in Short Film Screen Craft<br>[[AACTA Awards|AACTA Award]]
+| description    = 
+| presenter      = [[Australian Academy of Cinema and Television Arts]] (AACTA)
+| country        = [[Australia]]
+| year           = 2006
+| holder         = Nick Matthews, ''[[The Kiss (short film)|The Kiss]]'' (2010)
+| website        = http://www.aacta.org
+}}
+
+The AACTA Award for '''Outstanding Achievement in Short Film Screen Craft''' is a special award, presented by the [[Australian Academy of Cinema and Television Arts]] (AACTA). The award was presented by the [[Australian Film Institute]] (AFI), from 2006-2010, at the Australian Film Institute Awards (known commonly as the AFI Awards).<ref name="afipast">{{cite web|url=http://www.afi.org.au/Content/NavigationMenu/Archive/2010Awards/2010AwardsPDF/Non-Feature_Award_Winners_1958-2010.pdf |publisher=Australian Film Institute (AFI) |title=Non-Feature Award Winners, 1958-2010 |year=2010 |first= |last= |accessdate=24 December 2011 |deadurl=yes |archiveurl=http://www.webcitation.org/60ETb1bQB?url=http://www.afi.org.au/Content/NavigationMenu/Archive/2010Awards/2010AwardsPDF/Non-Feature_Award_Winners_1958-2010.pdf |archivedate=17 July 2011 }}</ref>
+
+==Winners==
+In the following table, in 2006 winners are listed first, in boldface and highlighted in gold; those listed below the winner that are not in boldface or highlighted are the nominees; from 2007, onwards, the award was presented as a special award and those winners will be marked in a different colour.<ref name="Winners">Winners and nominees by year:
+*2006: {{cite web
+ |url=http://www.aacta.org/past-winners/2000-2010/2006.aspx 
+ |title=AACTA - Past Winners - 2000-2010 - 2006 
+ |work=Australian Academy of Cinema and Television Arts (AACTA) 
+ |accessdate=15 November 2011 
+}}{{dead link|date=September 2016 |bot=InternetArchiveBot |fix-attempted=yes }}
+*2007: {{cite web
+ |url=http://www.aacta.org/past-winners/2000-2010/2007.aspx 
+ |title=AACTA - Past Winners - 2000-2010 - 2007 
+ |work=Australian Academy of Cinema and Television Arts (AACTA) 
+ |accessdate=15 November 2011 
+ |deadurl=yes 
+ |archiveurl=https://web.archive.org/web/20120425141352/http://www.aacta.org/past-winners/2000-2010/2007.aspx 
+ |archivedate=25 April 2012 
+ |df= 
+}}
+*2008: {{cite web
+ |url=http://www.aacta.org/past-winners/2000-2010/2008.aspx 
+ |title=AACTA - Past Winners - 2000-2010 - 2008 
+ |work=Australian Academy of Cinema and Television Arts (AACTA) 
+ |accessdate=15 November 2011 
+ |deadurl=yes 
+ |archiveurl=https://web.archive.org/web/20120425141357/http://www.aacta.org/past-winners/2000-2010/2008.aspx 
+ |archivedate=25 April 2012 
+ |df= 
+}}
+*2009: {{cite web
+ |url=http://www.aacta.org/past-winners/2000-2010/2009.aspx 
+ |title=AACTA - Past Winners - 2000-2010 - 2009 
+ |work=Australian Academy of Cinema and Television Arts (AACTA) 
+ |accessdate=15 November 2011 
+ |deadurl=yes 
+ |archiveurl=https://web.archive.org/web/20120425141401/http://www.aacta.org/past-winners/2000-2010/2009.aspx 
+ |archivedate=25 April 2012 
+ |df= 
+}}
+*2010: {{cite web
+ |url=http://www.aacta.org/past-winners/2000-2010/2010.aspx 
+ |title=AACTA - Past Winners - 2000-2010 - 2010 
+ |work=Australian Academy of Cinema and Television Arts (AACTA) 
+ |accessdate=15 November 2011 
+ |deadurl=yes 
+ |archiveurl=https://web.archive.org/web/20120425141404/http://www.aacta.org/past-winners/2000-2010/2010.aspx 
+ |archivedate=25 April 2012 
+ |df= 
+}}
+</ref> 
+{{legend|#FAEB86|Winner of competitive award|border=1px #555 solid}}
+{{legend|#91CFF6|Winner of special award|border=1px #555 solid}}
+
+{| class="sortable wikitable"
+|- bgcolor="#bebebe"
+! width="5%" | Year
+! width="19%" | Recipient(s)
+! width="19%" | Film
+! width="19%" | Craft
+|- style="background:#FAEB86"
+| align="center" | '''2006'''<br><small>[[2006 Australian Film Institute Awards|(48th)]]</small>
+| '''[[Emma Lung]]''' 
+| '''''[[Stranded (2005 film)|Stranded]]'''''
+| Acting
+|-
+| align="center" | 2006<br><small>[[2006 Australian Film Institute Awards|(48th)]]</small>
+| Skye Wansey
+| ''[[A Natural Talent]]''
+| Acting
+|-
+| align="center" | 2006<br><small>[[2006 Australian Film Institute Awards|(48th)]]</small>
+| Adam Arkapaw
+| ''[[End of Town]]''
+| Cinematography
+|-
+| align="center" | 2006<br><small>[[2006 Australian Film Institute Awards|(48th)]]</small>
+| JoAnne Bouzianis-Sellick and Greg Sweeney
+| ''[[Gargoyle (short film)|Gargoyle]]''
+| Production design
+|- style="background:#91CFF6"
+| align="center" | '''2007'''<br><small>[[2007 Australian Film Institute Awards|(49th)]]</small>
+| '''Mark Lapwood''' 
+| '''''[[Eclipse (short film)|Eclipse]]'''''
+| Cinematography
+|- style="background:#91CFF6"
+| align="center" | '''2008'''<br><small>[[2008 Australian Film Institute Awards|(50th)]]</small>
+| '''Xanthe Highfield''' 
+| '''''[[fOUR (short film)|fOUR]]'''''
+| Production design
+|- style="background:#91CFF6"
+| align="center" | '''2009'''<br><small>[[2009 Australian Film Institute Awards|(51st)]]</small>
+| '''Andrew MacLeod''' 
+| '''''[[Water (short film)|Water]]'''''
+| Cinematography
+|- style="background:#91CFF6"
+| align="center" | '''2010'''<br><small>[[2009 Australian Film Institute Awards|(52nd)]]</small>
+| '''Nick Matthews''' 
+| '''''[[The Kiss (short film)|The Kiss]]'''''
+| Cinematography
+|-
+|}
+
+==See also==
+*[[AACTA Awards]]
+
+==References==
+{{reflist}}
+
+==External links==
+*[http://www.aacta.org The Australian Academy of Cinema and Television Arts Official website]
+
+{{Australian Film Institute Awards}}
+
+[[Category:Awards established in 2006]]
+[[Category:AACTA Awards|Short Film]]

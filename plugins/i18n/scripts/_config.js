@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs'
+
 // the template families this plugin localizes.
 // key is the core registry key the aliases resolve to.
 // `page` anchors the family to its wikidata item (via `site`, enwiki unless noted).
@@ -38,12 +40,10 @@ const families = {
 
 // wikis we also fetch per-wiki redirects + TemplateData from.
 // sitelinks (canonical names) cover every wikipedia regardless of this list.
-const langs = [
-  'ar', 'az', 'be', 'bg', 'bn', 'ca', 'cs', 'cy', 'da', 'de', 'el', 'eo', 'es', 'et', 'eu',
-  'fa', 'fi', 'fr', 'gl', 'he', 'hi', 'hr', 'hu', 'hy', 'id', 'it', 'ja', 'ka', 'kk', 'ko',
-  'lt', 'lv', 'mk', 'ml', 'ms', 'nl', 'nn', 'no', 'pl', 'pt', 'ro', 'ru', 'sh', 'simple',
-  'sk', 'sl', 'sq', 'sr', 'sv', 'ta', 'te', 'th', 'tr', 'uk', 'ur', 'uz', 'vi', 'zh',
-]
+// the shipped languages — roughly the top ~35 wikipedias by readership (stats.wikimedia.org
+// pageviews, not article-count, which bot-wikis distort). list + metadata lives in src/languages.json
+const languages = JSON.parse(readFileSync(new URL('../src/languages.json', import.meta.url), 'utf8'))
+const langs = languages.map((l) => l.lang)
 
 // the english parameter names core parsers + Reference accessors read, in preference order
 const englishParams = [

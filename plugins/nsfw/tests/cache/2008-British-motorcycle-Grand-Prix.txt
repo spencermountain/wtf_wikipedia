@@ -1,0 +1,840 @@
+{{Use dmy dates|date=July 2011}}
+{{Use British English|date=July 2011}}
+{{Infobox Grand Prix motorcycle race report
+| Grand Prix = British
+| flag = UK
+| Official_Name = bwin.com British Grand Prix
+| Location = [[Donington Park]]
+| Course_mi = 2.500
+| Course_km = 4.023
+| Race_No = 8
+| Season_No = 18
+| Date = 22 June
+| Year = 2008
+| Image = Donington as of 2006.svg
+| Pole_Rider_MotoGP = [[Casey Stoner]]
+| Pole_Rider_MotoGP_Country = Australia
+| Pole_Time_MotoGP = 1:38.232
+| Fast_Rider_MotoGP = [[Casey Stoner]]
+| Fast_Rider_MotoGP_Country = Australia
+| Fast_Time_MotoGP = 1:28.773
+| First_Rider_MotoGP = [[Casey Stoner]]
+| First_Rider_MotoGP_Country = Australia
+| Second_Rider_MotoGP = [[Valentino Rossi]]
+| Second_Rider_MotoGP_Country = Italy
+| Third_Rider_MotoGP = [[Dani Pedrosa]]
+| Third_Rider_MotoGP_Country = Spain
+| Pole_Rider_250 = [[Álvaro Bautista]]
+| Pole_Rider_250_Country = Spain
+| Pole_Time_250 = 1:31.834
+| Fast_Rider_250 = [[Marco Simoncelli]]
+| Fast_Rider_250_Country = Italy
+| Fast_Time_250 = 1:32.474
+| First_Rider_250 = [[Mika Kallio]]
+| First_Rider_250_Country = Finland
+| Second_Rider_250 = [[Marco Simoncelli]]
+| Second_Rider_250_Country = Italy
+| Third_Rider_250 = [[Álvaro Bautista]]
+| Third_Rider_250_Country = Spain
+| Pole_Rider_125 = [[Simone Corsi]]
+| Pole_Rider_125_Country = Italy
+| Pole_Time_125 = 1:37.488
+| Fast_Rider_125 = [[Scott Redding]]
+| Fast_Rider_125_Country = UK
+| Fast_Time_125 = 1:38.704
+| First_Rider_125 = [[Scott Redding]]
+| First_Rider_125_Country = UK
+| Second_Rider_125 = [[Mike Di Meglio]]
+| Second_Rider_125_Country = France
+| Third_Rider_125 = [[Marc Márquez]]
+| Third_Rider_125_Country = Spain
+}}
+
+The '''2008 British motorcycle Grand Prix''' was the eighth round of the [[2008 Grand Prix motorcycle racing season|2008 MotoGP championship]]. It took place on the weekend of 20–22 June 2008 at the [[Donington Park]] circuit.
+
+==MotoGP classification==
+{| class="wikitable" style="font-size: 95%;"
+! Pos.
+! No.
+! Rider
+! Manufacturer
+! Laps
+! Time/Retired
+! Grid
+! Points
+|-
+! 1
+| 1
+| {{flagicon|AUS}} '''[[Casey Stoner]]'''
+| '''[[Ducati]]'''
+| 30
+| 44:44.982
+| 1
+| '''25'''
+|-
+! 2
+| 46
+| {{flagicon|ITA}} '''[[Valentino Rossi]]'''
+| '''[[Yamaha Motor Company|Yamaha]]'''
+| 30
+| +5.789
+| 2
+| '''20'''
+|-
+! 3
+| 2
+| {{flagicon|ESP}} '''[[Dani Pedrosa]]'''
+| '''[[Honda]]'''
+| 30
+| +8.347
+| 9
+| '''16'''
+|-
+! 4
+| 5
+| {{flagicon|USA}} '''[[Colin Edwards]]'''
+| '''[[Yamaha Motor Company|Yamaha]]'''
+| 30
+| +12.678
+| 5
+| '''13'''
+|-
+! 5
+| 4
+| {{flagicon|ITA}} '''[[Andrea Dovizioso]]'''
+| '''[[Honda]]'''
+| 30
+| +14.801
+| 6
+| '''11'''
+|-
+! 6
+| 48
+| {{flagicon|ESP}} '''[[Jorge Lorenzo]]'''
+| '''[[Yamaha Motor Company|Yamaha]]'''
+| 30
+| +15.690
+| 17
+| '''10'''
+|-
+! 7
+| 69
+| {{flagicon|USA}} '''[[Nicky Hayden]]'''
+| '''[[Honda]]'''
+| 30
+| +18.196
+| 4
+| '''9'''
+|-
+! 8
+| 7
+| {{flagicon|AUS}} '''[[Chris Vermeulen]]'''
+| '''[[Suzuki]]'''
+| 30
+| +21.666
+| 3
+| '''8'''
+|-
+! 9
+| 56
+| {{flagicon|JPN}} '''[[Shinya Nakano]]'''
+| '''[[Honda]]'''
+| 30
+| +29.354
+| 10
+| '''7'''
+|-
+! 10
+| 13
+| {{flagicon|AUS}} '''[[Anthony West (motorcycle racer)|Anthony West]]'''
+| '''[[Kawasaki Heavy Industries|Kawasaki]]'''
+| 30
+| +41.030
+| 7
+| '''6'''
+|-
+! 11
+| 24
+| {{flagicon|ESP}} '''[[Toni Elías]]'''
+| '''[[Ducati]]'''
+| 30
+| +44.426
+| 18
+| '''5'''
+|-
+! 12
+| 14
+| {{flagicon|FRA}} '''[[Randy de Puniet]]'''
+| '''[[Honda]]'''
+| 30
+| +46.199
+| 14
+| '''4'''
+|-
+! 13
+| 50
+| {{flagicon|FRA}} '''[[Sylvain Guintoli]]'''
+| '''[[Ducati]]'''
+| 30
+| +48.731
+| 12
+| '''3'''
+|-
+! 14
+| 11
+| {{flagicon|USA}} '''[[Ben Spies]]'''
+| '''[[Suzuki]]'''
+| 30
+| +49.591
+| 8
+| '''2'''
+|-
+! 15
+| 15
+| {{flagicon|SMR}} '''[[Alex de Angelis]]'''
+| '''[[Honda]]'''
+| 30
+| +1:22.186
+| 13
+| '''1'''
+|-
+! 16
+| 33
+| {{flagicon|ITA}} [[Marco Melandri]]
+| [[Ducati]]
+| 30
+| +1:30.021
+| 15
+|
+|-
+! 17
+| 52
+| {{flagicon|GBR}} [[James Toseland]]
+| [[Yamaha Motor Company|Yamaha]]
+| 29
+| +1 lap
+| 16
+|
+|-
+! Ret
+| 21
+| {{flagicon|USA}} [[John Hopkins (motorcycle racer)|John Hopkins]]
+| [[Kawasaki Heavy Industries|Kawasaki]]
+| 16
+| Retirement
+| 11
+|
+|-
+!colspan=8| [http://resources.motogp.com/files/results/2008/MotoGP/GBR/RAC/classification.pdf OFFICIAL MOTOGP REPORT]
+|}
+
+==250 cc classification==
+{| class="wikitable" style="font-size: 95%;"
+! Pos.
+! No.
+! Rider
+! Manufacturer
+! Laps
+! Time/Retired
+! Grid
+! Points
+|-
+! 1
+| 36
+| {{flagicon|FIN}} '''[[Mika Kallio]]'''
+| '''[[KTM]]'''
+| 27
+| 42:14.410
+| 14
+| '''25'''
+|-
+! 2
+| 58
+| {{flagicon|ITA}} '''[[Marco Simoncelli]]'''
+| '''[[Gilera]]'''
+| 27
+| +0.353
+| 2
+| '''20'''
+|-
+! 3
+| 19
+| {{flagicon|ESP}} '''[[Álvaro Bautista]]'''
+| '''[[Aprilia]]'''
+| 27
+| +1.237
+| 1
+| '''16'''
+|-
+! 4
+| 21
+| {{flagicon|ESP}} '''[[Héctor Barberá]]'''
+| '''[[Aprilia]]'''
+| 27
+| +8.875
+| 3
+| '''13'''
+|-
+! 5
+| 12
+| {{flagicon|CHE}} '''[[Thomas Lüthi]]'''
+| '''[[Aprilia]]'''
+| 27
+| +11.359
+| 4
+| '''11'''
+|-
+! 6
+| 4
+| {{flagicon|JPN}} '''[[Hiroshi Aoyama]]'''
+| '''[[KTM]]'''
+| 27
+| +16.124
+| 6
+| '''10'''
+|-
+! 7
+| 6
+| {{flagicon|ESP}} '''[[Alex Debón]]'''
+| '''[[Aprilia]]'''
+| 27
+| +16.136
+| 11
+| '''9'''
+|-
+! 8
+| 60
+| {{flagicon|ESP}} '''[[Julián Simón]]'''
+| '''[[KTM]]'''
+| 27
+| +18.007
+| 7
+| '''8'''
+|-
+! 9
+| 72
+| {{flagicon|JPN}} '''[[Yuki Takahashi]]'''
+| '''[[Honda]]'''
+| 27
+| +33.271
+| 5
+| '''7'''
+|-
+! 10
+| 41
+| {{flagicon|ESP}} '''[[Aleix Espargaró]]'''
+| '''[[Aprilia]]'''
+| 27
+| +49.681
+| 8
+| '''6'''
+|-
+! 11
+| 15
+| {{flagicon|ITA}} '''[[Roberto Locatelli]]'''
+| '''[[Gilera]]'''
+| 27
+| +52.534
+| 13
+| '''5'''
+|-
+! 12
+| 17
+| {{flagicon|CZE}} '''[[Karel Abraham]]'''
+| '''[[Aprilia]]'''
+| 27
+| +55.311
+| 16
+| '''4'''
+|-
+! 13
+| 52
+| {{flagicon|CZE}} '''[[Lukáš Pešek]]'''
+| '''[[Aprilia]]'''
+| 27
+| +57.399
+| 9
+| '''3'''
+|-
+! 14
+| 54
+| {{flagicon|SMR}} '''[[Manuel Poggiali]]'''
+| '''[[Gilera]]'''
+| 27
+| +57.641
+| 15
+| '''2'''
+|-
+! 15
+| 55
+| {{flagicon|ESP}} '''[[Héctor Faubel]]'''
+| '''[[Aprilia]]'''
+| 27
+| +1:04.329
+| 17
+| '''1'''
+|-
+! 16
+| 14
+| {{flagicon|THA}} [[Ratthapark Wilairot]]
+| [[Honda]]
+| 27
+| +1:06.156
+| 18
+|
+|-
+! 17
+| 32
+| {{flagicon|ITA}} [[Fabrizio Lai]]
+| [[Gilera]]
+| 27
+| +1:15.812
+| 10
+|
+|-
+! 18
+| 7
+| {{flagicon|ESP}} [[Russell Gómez]]
+| [[Aprilia]]
+| 26
+| +1 lap
+| 22
+|
+|-
+! 19
+| 45
+| {{flagicon|IDN}} [[Doni Tata Pradita]]
+| [[Yamaha Motor Company|Yamaha]]
+| 26
+| +1 lap
+| 23
+|
+|-
+! Ret
+| 50
+| {{flagicon|IRL}} [[Eugene Laverty]]
+| [[Aprilia]]
+| 19
+| Retirement
+| 20
+|
+|-
+! Ret
+| 25
+| {{flagicon|ITA}} [[Alex Baldolini]]
+| [[Aprilia]]
+| 13
+| Retirement
+| 19
+|
+|-
+! Ret
+| 75
+| {{flagicon|ITA}} [[Mattia Pasini]]
+| [[Aprilia]]
+| 12
+| Retirement
+| 12
+|
+|-
+! Ret
+| 10
+| {{flagicon|HUN}} [[Imre Tóth]]
+| [[Aprilia]]
+| 11
+| Retirement
+| 21
+|
+|-
+! DNS
+| 63
+| {{flagicon|GBR}} [[Toby Markham]]
+| [[Yamaha Motor Company|Yamaha]]
+|
+| Did not start
+|
+|
+|-
+!colspan=8| [http://resources.motogp.com/files/results/2008/250cc/GBR/RAC/classification.pdf OFFICIAL 250cc REPORT]
+|}
+
+==125 cc classification==
+{| class="wikitable" style="font-size: 95%;"
+! Pos.
+! No.
+! Rider
+! Manufacturer
+! Laps
+! Time/Retired
+! Grid
+! Points
+|-
+! 1
+| 45
+| {{flagicon|GBR}} '''[[Scott Redding]]'''
+| '''[[Aprilia]]'''
+| 25
+| 41:39.472
+| 4
+| '''25'''
+|-
+! 2
+| 63
+| {{flagicon|FRA}} '''[[Mike Di Meglio]]'''
+| '''[[Derbi]]'''
+| 25
+| +5.324
+| 20
+| '''20'''
+|-
+! 3
+| 93
+| {{flagicon|ESP}} '''[[Marc Márquez]]'''
+| '''[[KTM]]'''
+| 25
+| +5.806
+| 7
+| '''16'''
+|-
+! 4
+| 33
+| {{flagicon|ESP}} '''[[Sergio Gadea]]'''
+| '''[[Aprilia]]'''
+| 25
+| +13.990
+| 3
+| '''13'''
+|-
+! 5
+| 24
+| {{flagicon|ITA}} '''[[Simone Corsi]]'''
+| '''[[Aprilia]]'''
+| 25
+| +16.855
+| 1
+| '''11'''
+|-
+! 6
+| 71
+| {{flagicon|JPN}} '''[[Tomoyoshi Koyama]]'''
+| '''[[KTM]]'''
+| 25
+| +17.181
+| 9
+| '''10'''
+|-
+! 7
+| 6
+| {{flagicon|ESP}} '''[[Joan Olivé]]'''
+| '''[[Derbi]]'''
+| 25
+| +18.014
+| 14
+| '''9'''
+|-
+! 8
+| 73
+| {{flagicon|JPN}} '''[[Takaaki Nakagami]]'''
+| '''[[Aprilia]]'''
+| 25
+| +18.222
+| 21
+| '''8'''
+|-
+! 9
+| 11
+| {{flagicon|DEU}} '''[[Sandro Cortese]]'''
+| '''[[Aprilia]]'''
+| 25
+| +18.404
+| 16
+| '''7'''
+|-
+! 10
+| 38
+| {{flagicon|GBR}} '''[[Bradley Smith (motorcyclist)|Bradley Smith]]'''
+| '''[[Aprilia]]'''
+| 25
+| +18.891
+| 11
+| '''6'''
+|-
+! 11
+| 12
+| {{flagicon|ESP}} '''[[Esteve Rabat]]'''
+| '''[[KTM]]'''
+| 25
+| +18.976
+| 12
+| '''5'''
+|-
+! 12
+| 60
+| {{flagicon|AUT}} '''[[Michael Ranseder]]'''
+| '''[[Aprilia]]'''
+| 25
+| +28.269
+| 19
+| '''4'''
+|-
+! 13
+| 34
+| {{flagicon|CHE}} '''[[Randy Krummenacher]]'''
+| '''[[KTM]]'''
+| 25
+| +28.347
+| 18
+| '''3'''
+|-
+! 14
+| 35
+| {{flagicon|ITA}} '''[[Raffaele De Rosa]]'''
+| '''[[KTM]]'''
+| 25
+| +29.403
+| 10
+| '''2'''
+|-
+! 15
+| 8
+| {{flagicon|ITA}} '''[[Lorenzo Zanetti]]'''
+| '''[[KTM]]'''
+| 25
+| +35.763
+| 23
+| '''1'''
+|-
+! 16
+| 16
+| {{flagicon|FRA}} [[Jules Cluzel]]
+| [[Loncin]]
+| 25
+| +35.868
+| 25
+|
+|-
+! 17
+| 51
+| {{flagicon|USA}} [[Stevie Bonsey]]
+| [[Aprilia]]
+| 25
+| +38.158
+| 15
+|
+|-
+! 18
+| 18
+| {{flagicon|ESP}} [[Nicolás Terol]]
+| [[Aprilia]]
+| 25
+| +42.766
+| 6
+|
+|-
+! 19
+| 77
+| {{flagicon|CHE}} [[Dominique Aegerter]]
+| [[Derbi]]
+| 25
+| +42.924
+| 26
+|
+|-
+! 20
+| 27
+| {{flagicon|ITA}} [[Stefano Bianco]]
+| [[Aprilia]]
+| 25
+| +1:06.296
+| 22
+|
+|-
+! 21
+| 21
+| {{flagicon|DEU}} [[Robin Lässer]]
+| [[Aprilia]]
+| 25
+| +1:10.158
+| 29
+|
+|-
+! 22
+| 30
+| {{flagicon|ESP}} [[Pere Tutusaus]]
+| [[Aprilia]]
+| 25
+| +1:10.905
+| 24
+|
+|-
+! 23
+| 69
+| {{flagicon|FRA}} [[Louis Rossi]]
+| [[Honda]]
+| 25
+| +1:29.269
+| 31
+|
+|-
+! 24
+| 95
+| {{flagicon|ROU}} [[Robert Mureșan]]
+| [[Aprilia]]
+| 24
+| +1 lap
+| 30
+|
+|-
+! 25
+| 56
+| {{flagicon|NLD}} [[Hugo van den Berg]]
+| [[Aprilia]]
+| 24
+| +1 lap
+| 28
+|
+|-
+! 26
+| 67
+| {{flagicon|GBR}} [[Lee Costello]]
+| [[Honda]]
+| 24
+| +1 lap
+| 36
+|
+|-
+! 27
+| 19
+| {{flagicon|ITA}} [[Roberto Lacalendola]]
+| [[Aprilia]]
+| 24
+| +1 lap
+| 32
+|
+|-
+! Ret
+| 29
+| {{flagicon|ITA}} [[Andrea Iannone]]
+| [[Aprilia]]
+| 19
+| Accident
+| 5
+|
+|-
+! Ret
+| 17
+| {{flagicon|DEU}} [[Stefan Bradl]]
+| [[Aprilia]]
+| 18
+| Retirement
+| 17
+|
+|-
+! Ret
+| 64
+| {{flagicon|GBR}} [[Matthew Hoyle]]
+| [[Honda]]
+| 14
+| Accident
+| 33
+|
+|-
+! Ret
+| 66
+| {{flagicon|GBR}} [[Connor Behan]]
+| [[Honda]]
+| 14
+| Retirement
+| 34
+|
+|-
+! Ret
+| 68
+| {{flagicon|IRL}} [[Paul Jordan (motorcycle racer)|Paul Jordan]]
+| [[Honda]]
+| 14
+| Retirement
+| 37
+|
+|-
+! Ret
+| 5
+| {{flagicon|FRA}} [[Alexis Masbou]]
+| [[Loncin]]
+| 5
+| Accident
+| 27
+|
+|-
+! Ret
+| 65
+| {{flagicon|GBR}} [[Luke Hinton]]
+| [[Honda]]
+| 4
+| Accident
+| 35
+|
+|-
+! Ret
+| 1
+| {{flagicon|HUN}} [[Gábor Talmácsi]]
+| [[Aprilia]]
+| 1
+| Accident
+| 2
+|
+|-
+! Ret
+| 22
+| {{flagicon|ESP}} [[Pablo Nieto]]
+| [[KTM]]
+| 0
+| Accident
+| 8
+|
+|-
+! Ret
+| 99
+| {{flagicon|GBR}} [[Danny Webb (motorcycle racer)|Danny Webb]]
+| [[Aprilia]]
+| 0
+| Accident
+| 13
+|
+|-
+! DNS
+| 44
+| {{flagicon|ESP}} [[Pol Espargaró]]
+| [[Derbi]]
+|
+| Did not start
+|
+|
+|-
+! WD
+| 7
+| {{flagicon|ESP}} [[Efrén Vázquez]]
+| [[Aprilia]]
+|
+| Withdrew
+|
+|
+|-
+!colspan=8| [http://resources.motogp.com/files/results/2008/125cc/GBR/RAC/classification.pdf OFFICIAL 125cc REPORT]
+|}
+
+==References==
+*{{cite web | title = MotoGP official website | url = http://www.motogp.com/en/Results+Statistics/2008/GBR/ | accessdate = 2008-06-22}}
+
+{{MotoGP_race_report
+| Name_of_race = [[British motorcycle Grand Prix]]
+| Year_of_race = 2008
+| Previous_race_in_season = [[2008 Catalan motorcycle Grand Prix|2008 Catalan Grand Prix]]
+| Next_race_in_season = [[2008 Dutch TT]]
+| Previous_year's_race = [[2007 British motorcycle Grand Prix|2007 British Grand Prix]]
+| Next_year's_race = [[2009 British motorcycle Grand Prix|2009 British Grand Prix]]
+}}
+
+[[Category:British motorcycle Grand Prix]]
+[[Category:2008 MotoGP race reports|British]]
+[[Category:2008 in British motorsport|Motorcycle Grand Prix]]

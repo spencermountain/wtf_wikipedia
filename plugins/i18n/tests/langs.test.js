@@ -111,7 +111,7 @@ test('i18n every pack registers against the real core registry', async (t) => {
     // throws at extend-time if a pack points at a core key that moved
     wtf.extend(plugin(mod.default))
   }
-  t.ok(packs.length > 55, `${packs.length} packs extended cleanly`)
+  t.ok(packs.length > 35, `${packs.length} packs extended cleanly`)
   t.end()
 })
 

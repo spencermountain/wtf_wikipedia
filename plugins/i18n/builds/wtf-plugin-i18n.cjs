@@ -161,7 +161,7 @@ var version = '2.0.0';
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // arabic template names → the core template they resolve to
-const aliases$W = {
+const aliases$A = {
   'commons category': 'commons cat',
   'coords': 'coord',
   'country': 'flag',
@@ -225,7 +225,7 @@ const aliases$W = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeBook$G = {
+const citeBook$u = {
   template: 'cite book',
   map: {
     'ردمك': 'isbn',
@@ -390,7 +390,7 @@ const citeBook$G = {
     'رقم الطبعة': 'edition',
   },
 };
-const citeJournal$u = {
+const citeJournal$p = {
   template: 'cite journal',
   map: {
     'ردمك': 'isbn',
@@ -555,7 +555,7 @@ const citeJournal$u = {
     'رقم الطبعة': 'edition',
   },
 };
-const citeWeb$N = {
+const citeWeb$w = {
   template: 'cite web',
   map: {
     'تاريخ-الوصول': 'access-date',
@@ -715,7 +715,7 @@ const citeWeb$N = {
     'رقم الطبعة': 'edition',
   },
 };
-const internetquelle$o = {
+const internetquelle$i = {
   template: 'cite web',
   map: {
     'titel': 'title',
@@ -886,7 +886,7 @@ const internetquelle$o = {
     'رقم الطبعة': 'edition',
   },
 };
-const citation$e = {
+const citation$b = {
   template: 'citation',
   map: {
     'ردمك': 'isbn',
@@ -1052,44 +1052,44 @@ const citation$e = {
   },
 };
 
-const citations$Q = {
-  'cita libro': citeBook$G,
-  'cita publicación': citeJournal$u,
-  'cita web': citeWeb$N,
-  'cite manual': citeBook$G,
-  'citeweb': citeWeb$N,
-  'cw': citeWeb$N,
-  'internetquelle': internetquelle$o,
-  'web cite': citeWeb$N,
-  'web kaynağı': citeWeb$N,
-  'استشهاد': citation$e,
-  'استشهاد بدورية': citeJournal$u,
-  'استشهاد بدورية أكاديمية': citeJournal$u,
-  'استشهاد بدورية محكمة': citeJournal$u,
-  'استشهاد بكتاب': citeBook$G,
-  'استشهاد بموقع': citeWeb$N,
-  'استشهاد بويب': citeWeb$N,
-  'استشهاد بويب/إنجليزي': citeWeb$N,
-  'استشهاد بويب/الألمانية': citeWeb$N,
-  'استشهاد صحيفة': citeJournal$u,
-  'استشهاد ويب': citeWeb$N,
-  'استشهاد ويب/إنجليزي': citeWeb$N,
-  'اقتباس ويب': citeWeb$N,
-  'مرجع كتاب': citeBook$G,
-  'مرجع مجلة': citeJournal$u,
-  'مرجع موقع': citeWeb$N,
-  'مرجع هارفرد': citation$e,
-  'مرجع وب': citeWeb$N,
-  'مرجع وب/إنجليزي': citeWeb$N,
-  'مرجع ويب': citeWeb$N,
-  'مرجع ويب/إنجليزي': citeWeb$N,
-  'يستشهد كتاب': citeBook$G,
-  'يستشهد مجلة': citeJournal$u,
-  'يستشهد ويب': citeWeb$N,
-  'یادکرد وب': citeWeb$N,
+const citations$x = {
+  'cita libro': citeBook$u,
+  'cita publicación': citeJournal$p,
+  'cita web': citeWeb$w,
+  'cite manual': citeBook$u,
+  'citeweb': citeWeb$w,
+  'cw': citeWeb$w,
+  'internetquelle': internetquelle$i,
+  'web cite': citeWeb$w,
+  'web kaynağı': citeWeb$w,
+  'استشهاد': citation$b,
+  'استشهاد بدورية': citeJournal$p,
+  'استشهاد بدورية أكاديمية': citeJournal$p,
+  'استشهاد بدورية محكمة': citeJournal$p,
+  'استشهاد بكتاب': citeBook$u,
+  'استشهاد بموقع': citeWeb$w,
+  'استشهاد بويب': citeWeb$w,
+  'استشهاد بويب/إنجليزي': citeWeb$w,
+  'استشهاد بويب/الألمانية': citeWeb$w,
+  'استشهاد صحيفة': citeJournal$p,
+  'استشهاد ويب': citeWeb$w,
+  'استشهاد ويب/إنجليزي': citeWeb$w,
+  'اقتباس ويب': citeWeb$w,
+  'مرجع كتاب': citeBook$u,
+  'مرجع مجلة': citeJournal$p,
+  'مرجع موقع': citeWeb$w,
+  'مرجع هارفرد': citation$b,
+  'مرجع وب': citeWeb$w,
+  'مرجع وب/إنجليزي': citeWeb$w,
+  'مرجع ويب': citeWeb$w,
+  'مرجع ويب/إنجليزي': citeWeb$w,
+  'يستشهد كتاب': citeBook$u,
+  'يستشهد مجلة': citeJournal$p,
+  'يستشهد ويب': citeWeb$w,
+  'یادکرد وب': citeWeb$w,
 };
 
-const infoboxes$W = [
+const infoboxes$A = [
   'automatic taxobox',
   'speciesbox',
   'taxobox itis',
@@ -1116,10 +1116,19 @@ const birthDateAndAge = {
 
 var ar = {
   lang: 'ar',
-  aliases: aliases$W,
-  infoboxes: infoboxes$W,
+  enLang: 'arabic',
+  category: ['تصنيف'],
+  redirect: ['تحويل'],
+  stub: ['بذرة'],
+  infobox: ['بطاقة'],
+  image: ['صورة', 'ملف'],
+  reference: [],
+  disambig: ['توضيح'],
+  disambigTitle: ['توضيح'],
+  aliases: aliases$A,
+  infoboxes: infoboxes$A,
   templates: {
-    ...citations$Q,
+    ...citations$x,
     'الميلاد والسن': birthDateAndAge,
     'الولادة والسن': birthDateAndAge,
     'تاريخ الميلاد و العمر': birthDateAndAge,
@@ -1131,183 +1140,8 @@ var ar = {
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// azerbaijani template names → the core template they resolve to
-const aliases$V = {
-  'bayraq': 'flagicon',
-  'bayraq-ölkə': 'flagicon',
-  'başlama tarixi': 'start',
-  'başlanğıc tarixi': 'start',
-  'cite paper': 'cite journal',
-  'commons category': 'commons cat',
-  'commons kat': 'commons cat',
-  'commons kateqoriyası': 'commons cat',
-  'commonscat': 'commons cat',
-  'commonscategory': 'commons cat',
-  'commonskat': 'commons cat',
-  'commonskateqoriyası': 'commons cat',
-  'doğum tarixi və yaş': 'birth date and age',
-  'doğum tarixi və yaşı': 'birth date and age',
-  'dty': 'birth date and age',
-  'flaq': 'flagicon',
-  'ipa1': 'ipa',
-  'i̇sbn': 'isbn',
-  'i̇stinad siyahısı': 'reflist',
-  'i̇stinadlar': 'reflist',
-  'i̇stinadlar siyahısı': 'reflist',
-  'kiçik': 'small',
-  'nihonqo': 'nihongo',
-  'ref list': 'reflist',
-  'vikianbar kat': 'commons cat',
-  'vikianbar kateqoriyası': 'commons cat',
-  'əsas': 'main',
-  'əsas məqalə': 'main',
-  'əsas səhifə': 'main',
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// localized citation templates — the map renames params, then the core template parses
-
-const citeWeb$M = {
-  template: 'cite web',
-  map: {
-    'accessdate': 'access-date',
-    'author1-last': 'author',
-    'author-last': 'author',
-    'surname1': 'author',
-    'author-last1': 'author',
-    'subject1': 'author',
-    'surname': 'author',
-    'subject': 'author',
-    'given': 'first',
-    'author-first': 'first',
-    'given1': 'first',
-    'author-first1': 'first',
-    'author1-first': 'first',
-    'editor-last': 'editor',
-    'editor1-last': 'editor',
-    'lang': 'language',
-    'archiveurl': 'archive-url',
-    'archivedate': 'archive-date',
-    'people': 'authors',
-    'host': 'authors',
-  },
-};
-
-const citations$P = {
-  'antcat': citeWeb$M,
-  'cite ebd': citeWeb$M,
-  'cite odnb': citeWeb$M,
-  'citeweb': citeWeb$M,
-  'lien web': citeWeb$M,
-  'sayt mənbə': citeWeb$M,
-  'web kaynağı': citeWeb$M,
-};
-
-const infoboxes$V = ['taksoqutu'];
-
-var az = {
-  lang: 'az',
-  aliases: aliases$V,
-  infoboxes: infoboxes$V,
-  templates: citations$P,
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// belarusian template names → the core template they resolve to
-const aliases$U = {
-  'catmain': 'main',
-  'catmore': 'main',
-  'cite paper': 'cite journal',
-  'commons category': 'commons cat',
-  'commonscat': 'commons cat',
-  'coord/display': 'coord',
-  'initial release': 'start',
-  'ipa1': 'ipa',
-  'main2': 'main',
-  'maincat': 'main',
-  'odn': 'sfn',
-  'reflist+': 'reflist',
-  'refs': 'reflist',
-  'sfn-1': 'sfn',
-  'sfnp': 'sfn',
-  'асноўная': 'main',
-  'асноўны': 'main',
-  'асноўны артыкул': 'main',
-  'асноўны артыкул катэгорыі': 'main',
-  'асноўны артыкул па тэме катэгорыі': 'main',
-  'асноўныя артыкулы': 'main',
-  'болей': 'main',
-  'вікісховішча': 'commons cat',
-  'вікісховішча-кат': 'commons cat',
-  'галоўная': 'main',
-  'галоўны артыкул': 'main',
-  'галоўны артыкул у катэгорыі': 'main',
-  'глядзіце таксама': 'main',
-  'дата нараджэння і ўзрост': 'birth date and age',
-  'зноска': 'sfn',
-  'каардынаты': 'coord',
-  'крыніцы': 'reflist',
-  'ніханго': 'nihongo',
-  'партал': 'portal',
-  'скарочаная зноска': 'sfn',
-  'сцяг': 'flagicon',
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// localized citation templates — the map renames params, then the core template parses
-
-const citeWeb$L = {
-  template: 'cite web',
-  map: {
-    'datepublished': 'date',
-    'lang': 'language',
-    'archiveurl': 'archive-url',
-    'archivedate': 'archive-date',
-    'accessdate': 'access-date',
-  },
-};
-const internetquelle$n = {
-  template: 'cite web',
-  map: {
-    'titel': 'title',
-    'autor': 'author',
-    'werk': 'work',
-    'hrsg': 'publisher',
-    'datum': 'date',
-    'seiten': 'pages',
-    'sprache': 'language',
-    'abruf': 'access-date',
-    'zugriff': 'access-date',
-    'archiv-url': 'archive-url',
-    'archiv-datum': 'archive-date',
-    'datepublished': 'date',
-    'lang': 'language',
-    'archiveurl': 'archive-url',
-    'archivedate': 'archive-date',
-    'accessdate': 'access-date',
-  },
-};
-
-const citations$O = {
-  'cita web': citeWeb$L,
-  'cite web 2': citeWeb$L,
-  'citeweb': citeWeb$L,
-  'cw': citeWeb$L,
-  'internetquelle': internetquelle$n,
-};
-
-const infoboxes$U = ['таксанамія'];
-
-var be = {
-  lang: 'be',
-  aliases: aliases$U,
-  infoboxes: infoboxes$U,
-  templates: citations$O,
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // bulgarian template names → the core template they resolve to
-const aliases$T = {
+const aliases$z = {
   'commons category': 'commons cat',
   'commonscat': 'commons cat',
   'hrf': 'sfn',
@@ -1324,7 +1158,7 @@ const aliases$T = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeWeb$K = {
+const citeWeb$v = {
   template: 'cite web',
   map: {
     'уеб_адрес': 'url',
@@ -1338,13 +1172,13 @@ const citeWeb$K = {
     'цитат': 'quote',
   },
 };
-const citeBook$F = {
+const citeBook$t = {
   template: 'cite book',
   map: {
     'editor-last': 'editor',
   },
 };
-const citeJournal$t = {
+const citeJournal$o = {
   template: 'cite journal',
   map: {
     'accessdate': 'access-date',
@@ -1357,26 +1191,35 @@ const citeJournal$t = {
   },
 };
 
-const citations$N = {
-  'cita web': citeWeb$K,
-  'citeweb': citeWeb$K,
-  'цитат книга': citeBook$F,
-  'цитат периодика': citeJournal$t,
-  'цитат уеб': citeWeb$K,
+const citations$w = {
+  'cita web': citeWeb$v,
+  'citeweb': citeWeb$v,
+  'цитат книга': citeBook$t,
+  'цитат периодика': citeJournal$o,
+  'цитат уеб': citeWeb$v,
 };
 
-const infoboxes$T = ['таксокутия'];
+const infoboxes$z = ['таксокутия'];
 
 var bg = {
   lang: 'bg',
-  aliases: aliases$T,
-  infoboxes: infoboxes$T,
-  templates: citations$N,
+  enLang: 'bulgarian',
+  category: ['категория'],
+  redirect: ['виж', 'пренасочване'],
+  stub: ['мъниче'],
+  infobox: ['инфокутия'],
+  image: ['картинка', 'файл'],
+  reference: [],
+  disambig: ['пояснение'],
+  disambigTitle: [],
+  aliases: aliases$z,
+  infoboxes: infoboxes$z,
+  templates: citations$w,
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // bengali template names → the core template they resolve to
-const aliases$S = {
+const aliases$y = {
   'ap': 'main',
   'birthdate and age': 'birth date and age',
   'c cat': 'commons cat',
@@ -1435,7 +1278,7 @@ const aliases$S = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeJournal$s = {
+const citeJournal$n = {
   template: 'cite journal',
   map: {
     'ইউআরএল': 'url',
@@ -1475,7 +1318,7 @@ const citeJournal$s = {
     'সংখ্যা নং': 'issue',
   },
 };
-const citeBook$E = {
+const citeBook$s = {
   template: 'cite book',
   map: {
     'ইউআরএল': 'url',
@@ -1517,7 +1360,7 @@ const citeBook$E = {
     'বিশ্বকোষ': 'website',
   },
 };
-const citeWeb$J = {
+const citeWeb$u = {
   template: 'cite web',
   map: {
     'ইউআরএল': 'url',
@@ -1562,7 +1405,7 @@ const citeWeb$J = {
     'কর্ম': 'website',
   },
 };
-const citation$d = {
+const citation$a = {
   template: 'citation',
   map: {
     'encyclopedia': 'website',
@@ -1581,43 +1424,52 @@ const citation$d = {
   },
 };
 
-const citations$M = {
-  'akademik dergi kaynağı': citeJournal$s,
-  'book reference': citeBook$E,
-  'cita web': citeWeb$J,
-  'cite chapter': citeBook$E,
-  'cite manual': citeBook$E,
-  'cite study': citation$d,
-  'cite website': citeWeb$J,
-  'cite work': citeBook$E,
-  'citebook': citeBook$E,
-  'citeweb': citeWeb$J,
-  'kaynak': citation$d,
-  'kitap kaynağı': citeBook$E,
-  'web kaynağı': citeWeb$J,
-  'استشهاد ويب': citeWeb$J,
-  'উদ্ধৃতি': citation$d,
-  'ওয়েব উদ্ধৃতি': citeWeb$J,
-  'ওয়েব উদ্বৃতি': citeWeb$J,
-  'ওয়েব উৎস': citeWeb$J,
-  'গ্রন্থ উদ্ধৃতি': citeBook$E,
-  'বই উদ্ধৃতি': citeBook$E,
-  'সাইট জার্নাল': citeJournal$s,
-  'সাময়িকী উদ্ধৃতি': citeJournal$s,
+const citations$v = {
+  'akademik dergi kaynağı': citeJournal$n,
+  'book reference': citeBook$s,
+  'cita web': citeWeb$u,
+  'cite chapter': citeBook$s,
+  'cite manual': citeBook$s,
+  'cite study': citation$a,
+  'cite website': citeWeb$u,
+  'cite work': citeBook$s,
+  'citebook': citeBook$s,
+  'citeweb': citeWeb$u,
+  'kaynak': citation$a,
+  'kitap kaynağı': citeBook$s,
+  'web kaynağı': citeWeb$u,
+  'استشهاد ويب': citeWeb$u,
+  'উদ্ধৃতি': citation$a,
+  'ওয়েব উদ্ধৃতি': citeWeb$u,
+  'ওয়েব উদ্বৃতি': citeWeb$u,
+  'ওয়েব উৎস': citeWeb$u,
+  'গ্রন্থ উদ্ধৃতি': citeBook$s,
+  'বই উদ্ধৃতি': citeBook$s,
+  'সাইট জার্নাল': citeJournal$n,
+  'সাময়িকী উদ্ধৃতি': citeJournal$n,
 };
 
-const infoboxes$S = ['তথ্যছক শ্রেণীবিন্যাস', 'প্রজাতিছক', 'শ্রেণিবিন্যাস ছক', 'শ্রেণীবিন্যাস ছক'];
+const infoboxes$y = ['তথ্যছক শ্রেণীবিন্যাস', 'প্রজাতিছক', 'শ্রেণিবিন্যাস ছক', 'শ্রেণীবিন্যাস ছক'];
 
 var bn = {
   lang: 'bn',
-  aliases: aliases$S,
-  infoboxes: infoboxes$S,
-  templates: citations$M,
+  enLang: 'bengali',
+  category: ['বিষয়শ্রেণী'],
+  redirect: ['পুনঃনির্দেশ', 'পুনঃর্নির্দেশ', 'পুননির্দেশ', 'পুনর্নির্দেশ'],
+  stub: ['অসম্পূর্ণ'],
+  infobox: ['তথ্যছক'],
+  image: ['চিত্র'],
+  reference: [],
+  disambig: ['দ্ব্যর্থতা নিরসন'],
+  disambigTitle: [],
+  aliases: aliases$y,
+  infoboxes: infoboxes$y,
+  templates: citations$v,
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // catalan template names → the core template they resolve to
-const aliases$R = {
+const aliases$x = {
   'afi': 'ipa',
   'amaga': 'reflist',
   'amaga ref': 'reflist',
@@ -1653,7 +1505,7 @@ const aliases$R = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeJournal$r = {
+const citeJournal$m = {
   template: 'cite journal',
   map: {
     'cognom': 'last',
@@ -1699,7 +1551,7 @@ const citeJournal$r = {
     'extrait': 'quote',
   },
 };
-const citeBook$D = {
+const citeBook$r = {
   template: 'cite book',
   map: {
     'cognom': 'last',
@@ -1731,7 +1583,7 @@ const citeBook$D = {
     'páginas': 'pages',
   },
 };
-const citeWeb$I = {
+const citeWeb$t = {
   template: 'cite web',
   map: {
     'títol': 'title',
@@ -1748,29 +1600,29 @@ const citeWeb$I = {
   },
 };
 
-const citations$L = {
-  'article': citeJournal$r,
-  'cita diccionari': citeBook$D,
-  'cita llibre': citeBook$D,
-  'cita publicació': citeJournal$r,
-  'cita revista': citeJournal$r,
-  'citar llibre': citeBook$D,
-  'citar publicació': citeJournal$r,
-  'citar web': citeWeb$I,
-  'cite paper': citeJournal$r,
-  'cite website': citeWeb$I,
-  'cite work': citeBook$D,
-  'ref llibre': citeBook$D,
-  'ref publicació': citeJournal$r,
-  'ref web': citeWeb$I,
-  'ref-artículo': citeJournal$r,
-  'ref-capítol': citeBook$D,
-  'ref-llibre': citeBook$D,
-  'ref-publicació': citeJournal$r,
-  'ref-web': citeWeb$I,
+const citations$u = {
+  'article': citeJournal$m,
+  'cita diccionari': citeBook$r,
+  'cita llibre': citeBook$r,
+  'cita publicació': citeJournal$m,
+  'cita revista': citeJournal$m,
+  'citar llibre': citeBook$r,
+  'citar publicació': citeJournal$m,
+  'citar web': citeWeb$t,
+  'cite paper': citeJournal$m,
+  'cite website': citeWeb$t,
+  'cite work': citeBook$r,
+  'ref llibre': citeBook$r,
+  'ref publicació': citeJournal$m,
+  'ref web': citeWeb$t,
+  'ref-artículo': citeJournal$m,
+  'ref-capítol': citeBook$r,
+  'ref-llibre': citeBook$r,
+  'ref-publicació': citeJournal$m,
+  'ref-web': citeWeb$t,
 };
 
-const infoboxes$R = [
+const infoboxes$x = [
   'esser viu',
   'ficha de taxón',
   'fitxa de tàxon',
@@ -1809,14 +1661,23 @@ const infoboxes$R = [
 
 var ca = {
   lang: 'ca',
-  aliases: aliases$R,
-  infoboxes: infoboxes$R,
-  templates: citations$L,
+  enLang: 'catalan',
+  category: ['categoria'],
+  redirect: ['redireccio', 'redireccion', 'redirecció'],
+  stub: ['esborrany'],
+  infobox: [],
+  image: ['fitxer', 'imatge'],
+  reference: [],
+  disambig: ['desambiguació'],
+  disambigTitle: [],
+  aliases: aliases$x,
+  infoboxes: infoboxes$x,
+  templates: citations$u,
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // czech template names → the core template they resolve to
-const aliases$Q = {
+const aliases$w = {
   'cite magazine': 'cite journal',
   'cite techreport': 'cite journal',
   'commonscat': 'commons cat',
@@ -1832,7 +1693,7 @@ const aliases$Q = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeWeb$H = {
+const citeWeb$s = {
   template: 'cite web',
   map: {
     'příjmení': 'last',
@@ -1844,7 +1705,7 @@ const citeWeb$H = {
     'datum_vydání': 'date',
   },
 };
-const citeBook$C = {
+const citeBook$q = {
   template: 'cite book',
   map: {
     'příjmení': 'last1',
@@ -1861,53 +1722,36 @@ const citeBook$C = {
   },
 };
 
-const citations$K = {
-  'citace databáze': citeWeb$H,
-  'citace elektronické monografie': citeWeb$H,
-  'citace elektronického zdroje': citeWeb$H,
-  'citace knihy': citeBook$C,
-  'citace monografie': citeBook$C,
-  'citace webu': citeWeb$H,
+const citations$t = {
+  'citace databáze': citeWeb$s,
+  'citace elektronické monografie': citeWeb$s,
+  'citace elektronického zdroje': citeWeb$s,
+  'citace knihy': citeBook$q,
+  'citace monografie': citeBook$q,
+  'citace webu': citeWeb$s,
 };
 
-const infoboxes$Q = ['taxonbox'];
+const infoboxes$w = ['taxonbox'];
 
 var cs = {
   lang: 'cs',
-  aliases: aliases$Q,
-  infoboxes: infoboxes$Q,
-  templates: citations$K,
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// welsh template names → the core template they resolve to
-const aliases$P = {
-  'bach': 'small',
-  'comincat': 'commons cat',
-  'commons category': 'commons cat',
-  'commonscat': 'commons cat',
-  'coordinates': 'coord',
-  'cyfeiriadau': 'reflist',
-  'dyddiad geni ac oedran': 'birth date and age',
-  'eicon baner': 'flagicon',
-  'eiconbaner': 'flagicon',
-  'flag icon': 'flagicon',
-  'location': 'coord',
-  'prif': 'main',
-};
-
-const infoboxes$P = ['blwch tacson'];
-
-var cy = {
-  lang: 'cy',
-  aliases: aliases$P,
-  infoboxes: infoboxes$P,
-  templates: {},
+  enLang: 'czech',
+  category: ['kat', 'kategorie'],
+  redirect: ['presmeruj', 'přesměruj'],
+  stub: ['pahýl'],
+  infobox: [],
+  image: ['obrázok', 'soubor'],
+  reference: [],
+  disambig: ['rozcestník'],
+  disambigTitle: [],
+  aliases: aliases$w,
+  infoboxes: infoboxes$w,
+  templates: citations$t,
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // danish template names → the core template they resolve to
-const aliases$O = {
+const aliases$v = {
   'commonskat': 'commons cat',
   'coor d': 'coord',
   'coor title d': 'coord',
@@ -1938,7 +1782,7 @@ const aliases$O = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeJournal$q = {
+const citeJournal$l = {
   template: 'cite journal',
   map: {
     'titel': 'title',
@@ -1959,7 +1803,7 @@ const citeJournal$q = {
     'sprog': 'language',
   },
 };
-const citeWeb$G = {
+const citeWeb$r = {
   template: 'cite web',
   map: {
     'accessdate': 'access-date',
@@ -1971,7 +1815,7 @@ const citeWeb$G = {
     'editor1-surname': 'editor',
   },
 };
-const citation$c = {
+const citation$9 = {
   template: 'citation',
   map: {
     'efternavn': 'author',
@@ -2041,7 +1885,7 @@ const citation$c = {
     'på': 'language',
   },
 };
-const citeBook$B = {
+const citeBook$p = {
   template: 'cite book',
   map: {
     'efternavn': 'author',
@@ -2112,34 +1956,43 @@ const citeBook$B = {
   },
 };
 
-const citations$J = {
-  'cite magazine': citeJournal$q,
-  'cite paper': citeJournal$q,
-  'cite pmid': citeJournal$q,
-  'cite tidsskrift': citeJournal$q,
-  'cite website': citeWeb$G,
-  'cite www': citeWeb$G,
-  'citejournal': citeJournal$q,
-  'citepaper': citeJournal$q,
-  'citeweb': citeWeb$G,
-  'kilde': citation$c,
-  'kilde artikel': citeJournal$q,
-  'kilde bog': citeBook$B,
-  'kilde tidsskrift': citeJournal$q,
+const citations$s = {
+  'cite magazine': citeJournal$l,
+  'cite paper': citeJournal$l,
+  'cite pmid': citeJournal$l,
+  'cite tidsskrift': citeJournal$l,
+  'cite website': citeWeb$r,
+  'cite www': citeWeb$r,
+  'citejournal': citeJournal$l,
+  'citepaper': citeJournal$l,
+  'citeweb': citeWeb$r,
+  'kilde': citation$9,
+  'kilde artikel': citeJournal$l,
+  'kilde bog': citeBook$p,
+  'kilde tidsskrift': citeJournal$l,
 };
 
-const infoboxes$O = ['skabeloner/taksonomi', 'taksoboks', 'taxobox2', 'taxobox3'];
+const infoboxes$v = ['skabeloner/taksonomi', 'taksoboks', 'taxobox2', 'taxobox3'];
 
 var da = {
   lang: 'da',
-  aliases: aliases$O,
-  infoboxes: infoboxes$O,
-  templates: citations$J,
+  enLang: 'danish',
+  category: ['kategori'],
+  redirect: [],
+  stub: [],
+  infobox: ['infoboks'],
+  image: ['billede', 'fil'],
+  reference: [],
+  disambig: ['flertydig'],
+  disambigTitle: [],
+  aliases: aliases$v,
+  infoboxes: infoboxes$v,
+  templates: citations$s,
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // german template names → the core template they resolve to
-const aliases$N = {
+const aliases$u = {
   'commonscat': 'commons cat',
   'flagge': 'flag',
   'hauptartikel': 'main',
@@ -2154,7 +2007,7 @@ const aliases$N = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const internetquelle$m = {
+const internetquelle$h = {
   template: 'cite web',
   map: {
     'titel': 'title',
@@ -2174,7 +2027,7 @@ const internetquelle$m = {
     'accessdate': 'access-date',
   },
 };
-const citeWeb$F = {
+const citeWeb$q = {
   template: 'cite web',
   map: {
     'lang': 'language',
@@ -2203,24 +2056,33 @@ const literatur$4 = {
   },
 };
 
-const citations$I = {
-  'internetquelle': internetquelle$m,
-  'iq': citeWeb$F,
+const citations$r = {
+  'internetquelle': internetquelle$h,
+  'iq': citeWeb$q,
   'literatur': literatur$4,
 };
 
-const infoboxes$N = [];
+const infoboxes$u = [];
 
 var de = {
   lang: 'de',
-  aliases: aliases$N,
-  infoboxes: infoboxes$N,
-  templates: citations$I,
+  enLang: 'german',
+  category: ['kategorie'],
+  redirect: ['weiterleitung'],
+  stub: [],
+  infobox: [],
+  image: ['bild', 'datei'],
+  reference: ['einzelnachweise'],
+  disambig: ['begriffsklärung'],
+  disambigTitle: ['begriffsklärung'],
+  aliases: aliases$u,
+  infoboxes: infoboxes$u,
+  templates: citations$r,
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // greek template names → the core template they resolve to
-const aliases$M = {
+const aliases$t = {
   'ccat': 'commons cat',
   'cita boe': 'cite journal',
   'cite magazine': 'cite journal',
@@ -2251,7 +2113,7 @@ const aliases$M = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeBook$A = {
+const citeBook$o = {
   template: 'cite book',
   map: {
     'τίτλος': 'title',
@@ -2285,7 +2147,7 @@ const citeBook$A = {
     'in': 'language',
   },
 };
-const citeWeb$E = {
+const citeWeb$p = {
   template: 'cite web',
   map: {
     'ημερομηνία': 'date',
@@ -2296,7 +2158,7 @@ const citeWeb$E = {
     'editors': 'editor',
   },
 };
-const internetquelle$l = {
+const internetquelle$g = {
   template: 'cite web',
   map: {
     'titel': 'title',
@@ -2319,79 +2181,38 @@ const internetquelle$l = {
   },
 };
 
-const citations$H = {
-  'cita libro': citeBook$A,
-  'cite manual': citeBook$A,
-  'cite website': citeWeb$E,
-  'citebook': citeBook$A,
-  'citeweb': citeWeb$E,
-  'internetquelle': internetquelle$l,
-  'lien web': citeWeb$E,
-  'ouvrage': citeBook$A,
+const citations$q = {
+  'cita libro': citeBook$o,
+  'cite manual': citeBook$o,
+  'cite website': citeWeb$p,
+  'citebook': citeBook$o,
+  'citeweb': citeWeb$p,
+  'internetquelle': internetquelle$g,
+  'lien web': citeWeb$p,
+  'ouvrage': citeBook$o,
 };
 
-const infoboxes$M = ['ταξινομοπλαίσιο', 'ταξονομοπλαίσιο'];
+const infoboxes$t = ['ταξινομοπλαίσιο', 'ταξονομοπλαίσιο'];
 
 var el = {
   lang: 'el',
-  aliases: aliases$M,
-  infoboxes: infoboxes$M,
-  templates: citations$H,
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// esperanto template names → the core template they resolve to
-const aliases$L = {
-  'ceg': 'cite journal',
-  'cer': 'cite web',
-  'citado de libro': 'cite book',
-  'citado de ĵurnalo': 'cite journal',
-  'citajxo el gazeto': 'cite journal',
-  'citajxo el libro': 'cite book',
-  'citaĵo de libro': 'cite book',
-  'citaĵo el gazeto': 'cite journal',
-  'citaĵo el la reto': 'cite web',
-  'citaĵo el libro': 'cite book',
-  'citaĵo el retejo': 'cite web',
-  'citaĵo el reto': 'cite web',
-  'citgazeto': 'cite journal',
-  'citlibro': 'cite book',
-  'citreto': 'cite web',
-  'commons category': 'commons cat',
-  'commonscat': 'commons cat',
-  'ekdato': 'start',
-  'eta': 'small',
-  'flago': 'flag',
-  'ifa': 'ipa',
-  'komuneja kategorio': 'commons cat',
-  'koord': 'coord',
-  'lupeo': 'main',
-  'malgrande': 'small',
-  'mallonga piednoto': 'sfn',
-  'naskiĝdato kaj aĝo': 'birth date and age',
-  'naskiĝtago kaj aĝo': 'birth date and age',
-  'nombro': 'formatnum',
-  'odn': 'sfn',
-  'plu': 'main',
-  'portalo': 'portal',
-  'referencoj': 'reflist',
-  'ĉefa': 'main',
-  'ĉefa artikolo': 'main',
-  'ĉefartikolo': 'main',
-};
-
-const infoboxes$L = ['taksonomio'];
-
-var eo = {
-  lang: 'eo',
-  aliases: aliases$L,
-  infoboxes: infoboxes$L,
-  templates: {},
+  enLang: 'greek',
+  category: ['κατηγορία'],
+  redirect: ['ανακατευθυνση'],
+  stub: ['επέκταση'],
+  infobox: ['πλαίσιο', 'πλαίσιο πληροφοριών'],
+  image: ['αρχείο', 'εικόνα'],
+  reference: [],
+  disambig: ['αποσαφήνιση'],
+  disambigTitle: [],
+  aliases: aliases$t,
+  infoboxes: infoboxes$t,
+  templates: citations$q,
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // spanish template names → the core template they resolve to
-const aliases$K = {
+const aliases$s = {
   'afi': 'ipa',
   'ap': 'main',
   'article détaillé': 'main',
@@ -2436,7 +2257,7 @@ const aliases$K = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeWeb$D = {
+const citeWeb$o = {
   template: 'cite web',
   map: {
     'título': 'title',
@@ -2464,7 +2285,7 @@ const citeWeb$D = {
     'archivedate': 'archive-date',
   },
 };
-const citation$b = {
+const citation$8 = {
   template: 'citation',
   map: {
     'apellidos': 'author',
@@ -2514,7 +2335,7 @@ const citation$b = {
     'cita': 'quote',
   },
 };
-const citeBook$z = {
+const citeBook$n = {
   template: 'cite book',
   map: {
     'apellidos': 'author',
@@ -2544,7 +2365,7 @@ const citeBook$z = {
     'cita': 'quote',
   },
 };
-const citeJournal$p = {
+const citeJournal$k = {
   template: 'cite journal',
   map: {
     'título': 'title',
@@ -2587,7 +2408,7 @@ const citeJournal$p = {
     'cita': 'quote',
   },
 };
-const internetquelle$k = {
+const internetquelle$f = {
   template: 'cite web',
   map: {
     'titel': 'title',
@@ -2669,215 +2490,70 @@ const literatur$3 = {
   },
 };
 
-const citations$G = {
-  'c w': citeWeb$D,
-  'cita informe': citation$b,
-  'cita informe técnico': citation$b,
-  'cita libro': citeBook$z,
-  'cita publicación': citeJournal$p,
-  'cita revista': citeJournal$p,
-  'cita web': citeWeb$D,
-  'cita website': citeWeb$D,
-  'cita-web': citeWeb$D,
-  'citado en web': citeWeb$D,
-  'citalibro': citeBook$z,
-  'citar jornal': citeJournal$p,
-  'citar libro': citeBook$z,
-  'citar patente': citation$b,
-  'citar publicación': citeJournal$p,
-  'citar web': citeWeb$D,
-  'citaweb': citeWeb$D,
-  'cite iucn': citeBook$z,
-  'cite magazine': citeJournal$p,
-  'cite new': citeWeb$D,
-  'cite paper': citeJournal$p,
-  'cite report': citation$b,
-  'cite website': citeWeb$D,
-  'cite-web': citeWeb$D,
-  'citeweb': citeWeb$D,
-  'cw': citeWeb$D,
-  'internetquelle': internetquelle$k,
-  'lien web': citeWeb$D,
+const citations$p = {
+  'c w': citeWeb$o,
+  'cita informe': citation$8,
+  'cita informe técnico': citation$8,
+  'cita libro': citeBook$n,
+  'cita publicación': citeJournal$k,
+  'cita revista': citeJournal$k,
+  'cita web': citeWeb$o,
+  'cita website': citeWeb$o,
+  'cita-web': citeWeb$o,
+  'citado en web': citeWeb$o,
+  'citalibro': citeBook$n,
+  'citar jornal': citeJournal$k,
+  'citar libro': citeBook$n,
+  'citar patente': citation$8,
+  'citar publicación': citeJournal$k,
+  'citar web': citeWeb$o,
+  'citaweb': citeWeb$o,
+  'cite iucn': citeBook$n,
+  'cite magazine': citeJournal$k,
+  'cite new': citeWeb$o,
+  'cite paper': citeJournal$k,
+  'cite report': citation$8,
+  'cite website': citeWeb$o,
+  'cite-web': citeWeb$o,
+  'citeweb': citeWeb$o,
+  'cw': citeWeb$o,
+  'internetquelle': internetquelle$f,
+  'lien web': citeWeb$o,
   'literatur': literatur$3,
-  'obra citada': citation$b,
-  'ouvrage': citeBook$z,
-  'ref libro': citeBook$z,
-  'ref-libro': citeBook$z,
-  'ref-publicació': citeJournal$p,
-  'ref-web': citeWeb$D,
-  'web cite': citeWeb$D,
-  'книга': citeBook$z,
+  'obra citada': citation$8,
+  'ouvrage': citeBook$n,
+  'ref libro': citeBook$n,
+  'ref-libro': citeBook$n,
+  'ref-publicació': citeJournal$k,
+  'ref-web': citeWeb$o,
+  'web cite': citeWeb$o,
+  'книга': citeBook$n,
 };
 
-const infoboxes$K = ['automatic taxobox', 'ficha de taxon', 'ficha de taxón', 'ficha de virus', 'speciesbox'];
+const infoboxes$s = ['automatic taxobox', 'ficha de taxon', 'ficha de taxón', 'ficha de virus', 'speciesbox'];
 
 var es = {
   lang: 'es',
-  aliases: aliases$K,
-  infoboxes: infoboxes$K,
-  templates: citations$G,
+  enLang: 'spanish',
+  category: ['cat', 'categoría'],
+  redirect: ['redireccion', 'redirección'],
+  stub: ['esbozo'],
+  infobox: ['ficha'],
+  image: ['archivo', 'imagen'],
+  reference: ['referencias'],
+  disambig: ['desambiguación'],
+  disambigTitle: [],
+  aliases: aliases$s,
+  infoboxes: infoboxes$s,
+  templates: citations$p,
   gated: {
     'cita requerida': { template: 'citation needed' },
   },
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// estonian template names → the core template they resolve to
-const aliases$J = {
-  'algusaeg': 'start',
-  'asukoht': 'coord',
-  'commons category': 'commons cat',
-  'commonscat': 'commons cat',
-  'commonsi kategooria': 'commons cat',
-  'commonskat': 'commons cat',
-  'geokoordinaadid': 'coord',
-  'koord': 'coord',
-  'koordinaadid': 'coord',
-  'peamine artikkel': 'main',
-  'pikemalt': 'main',
-  'pikemalt artiklis': 'main',
-  'pisilipp': 'flag',
-  'portaal': 'portal',
-  'riigi ikoon': 'flagicon',
-  'riigi lipp': 'flagicon',
-  'riigiikoon': 'flagicon',
-  'sünniaeg ja vanus': 'birth date and age',
-  'süv': 'birth date and age',
-  'vaata': 'main',
-  'viited': 'reflist',
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// localized citation templates — the map renames params, then the core template parses
-
-const citeWeb$C = {
-  template: 'cite web',
-  map: {
-    'accessdate': 'access-date',
-    'author1-last': 'author',
-    'author-last': 'author',
-    'surname1': 'author',
-    'author-last1': 'author',
-    'subject1': 'author',
-    'surname': 'author',
-    'subject': 'author',
-    'given': 'first',
-    'author-first': 'first',
-    'given1': 'first',
-    'author-first1': 'first',
-    'author1-first': 'first',
-    'editor-last': 'editor',
-    'editor1-last': 'editor',
-    'editors': 'editor',
-    'trans_title': 'trans-title',
-    'archiveurl': 'archive-url',
-    'archivedate': 'archive-date',
-    'people': 'authors',
-    'host': 'authors',
-    'credits': 'authors',
-  },
-};
-
-const citations$F = {
-  'cite mailing list': citeWeb$C,
-  'cite press release': citeWeb$C,
-  'cite url': citeWeb$C,
-  'citeweb': citeWeb$C,
-};
-
-const infoboxes$J = ['taksonitabel'];
-
-var et = {
-  lang: 'et',
-  aliases: aliases$J,
-  infoboxes: infoboxes$J,
-  templates: citations$F,
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// basque template names → the core template they resolve to
-const aliases$I = {
-  'atari': 'portal',
-  'banderaikur': 'flagicon',
-  'cite aldizkari': 'cite journal',
-  'commonscat': 'commons cat',
-  'commonskat': 'commons cat',
-  'data': 'start',
-  'erref zer': 'reflist',
-  'erreferentzia zerrenda': 'reflist',
-  'harvnp': 'sfn',
-  'jaiotza data eta adina': 'birth date and age',
-  'jp': 'nihongo',
-  'koord': 'coord',
-  'nagusia': 'main',
-  'txikipedia-banderaikur': 'flagicon',
-  'txikipedia-commonskat': 'commons cat',
-  'txikipedia-data': 'start',
-  'txikipedia-erreferentzia zerrenda': 'reflist',
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// localized citation templates — the map renames params, then the core template parses
-
-const citation$a = {
-  template: 'citation',
-  map: {
-    'izenburua': 'title',
-    'urtea': 'year',
-    'abizena': 'last',
-    'author1-last': 'last',
-    'author-last': 'last',
-    'surname1': 'last',
-    'author-last1': 'last',
-    'subject1': 'last',
-    'surname': 'last',
-    'subject': 'last',
-    'abizena1': 'last1',
-    'egilea1': 'author1',
-    'egilea': 'author',
-    'izena1': 'first1',
-    'izena': 'first',
-    'data': 'date',
-    'kazeta': 'journal',
-    'aldizkakoa': 'journal',
-    'egunkaria': 'newspaper',
-    'aldizkaria': 'journal',
-    'lana': 'work',
-    'liburukia': 'volume',
-    'alea': 'issue',
-    'orrialdeak': 'pages',
-    'orrialdea': 'page',
-    'atala': 'chapter',
-    'edizioa': 'edition',
-    'argitaratze-lekua': 'location',
-    'argitaletxea': 'publisher',
-  },
-};
-
-const citations$E = {
-  'albiste erref': citation$a,
-  'cite news': citation$a,
-  'erreferentzia': citation$a,
-  'liburu erref': citation$a,
-  'txikipedia-erreferentzia': citation$a,
-  'web erref': citation$a,
-};
-
-const infoboxes$I = ['taxotaula', 'taxotaula automatikoa'];
-
-var eu = {
-  lang: 'eu',
-  aliases: aliases$I,
-  infoboxes: infoboxes$I,
-  templates: citations$E,
-  gated: {
-    'egiptekas': '{|-\n', // hieroglyph blocks render as an empty table
-  },
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // persian template names → the core template they resolve to
-const aliases$H = {
+const aliases$r = {
   'ap': 'main',
   'birthdate and age': 'birth date and age',
   'birthdateandage': 'birth date and age',
@@ -3017,7 +2693,7 @@ const aliases$H = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeJournal$o = {
+const citeJournal$j = {
   template: 'cite journal',
   map: {
     'trans_title': 'trans-title',
@@ -3026,7 +2702,7 @@ const citeJournal$o = {
     'archivedate': 'archive-date',
   },
 };
-const internetquelle$j = {
+const internetquelle$e = {
   template: 'cite web',
   map: {
     'titel': 'title',
@@ -3043,28 +2719,37 @@ const internetquelle$j = {
   },
 };
 
-const citations$D = {
-  'cita publicación': citeJournal$o,
-  'citation journal': citeJournal$o,
-  'cite magazine article': citeJournal$o,
-  'cite paper': citeJournal$o,
-  'citejournal': citeJournal$o,
-  'citepaper': citeJournal$o,
-  'internetquelle': internetquelle$j,
+const citations$o = {
+  'cita publicación': citeJournal$j,
+  'citation journal': citeJournal$j,
+  'cite magazine article': citeJournal$j,
+  'cite paper': citeJournal$j,
+  'citejournal': citeJournal$j,
+  'citepaper': citeJournal$j,
+  'internetquelle': internetquelle$e,
 };
 
-const infoboxes$H = ['جعبه آرایه زیستی', 'جعبه اطلاعات آرایه زیستی', 'جعبه زیست', 'زیسترده'];
+const infoboxes$r = ['جعبه آرایه زیستی', 'جعبه اطلاعات آرایه زیستی', 'جعبه زیست', 'زیسترده'];
 
 var fa = {
   lang: 'fa',
-  aliases: aliases$H,
-  infoboxes: infoboxes$H,
-  templates: citations$D,
+  enLang: 'persian',
+  category: ['رده'],
+  redirect: ['تغییر_مسیر', 'تغییرمسیر'],
+  stub: ['خرد'],
+  infobox: [],
+  image: ['تصویر', 'پرونده'],
+  reference: [],
+  disambig: ['ابهام‌زدایی'],
+  disambigTitle: ['ابهام‌زدایی'],
+  aliases: aliases$r,
+  infoboxes: infoboxes$r,
+  templates: citations$o,
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // finnish template names → the core template they resolve to
-const aliases$G = {
+const aliases$q = {
   'aloituspäivämäärä': 'start',
   'commons category': 'commons cat',
   'commonscat': 'commons cat',
@@ -3085,7 +2770,7 @@ const aliases$G = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeJournal$n = {
+const citeJournal$i = {
   template: 'cite journal',
   map: {
     'tekijä': 'author',
@@ -3113,7 +2798,7 @@ const citeJournal$n = {
     'kieli': 'language',
   },
 };
-const citeWeb$B = {
+const citeWeb$n = {
   template: 'cite web',
   map: {
     'osoite': 'url',
@@ -3138,7 +2823,7 @@ const citeWeb$B = {
     'archivedate': 'archive-date',
   },
 };
-const citeBook$y = {
+const citeBook$m = {
   template: 'cite book',
   map: {
     'tekijä': 'author',
@@ -3162,26 +2847,35 @@ const citeBook$y = {
   },
 };
 
-const citations$C = {
-  'cite magazine': citeJournal$n,
-  'citeweb': citeWeb$B,
-  'kirjaviite': citeBook$y,
-  'lehtiviite': citeJournal$n,
-  'verkkoviite': citeWeb$B,
+const citations$n = {
+  'cite magazine': citeJournal$i,
+  'citeweb': citeWeb$n,
+  'kirjaviite': citeBook$m,
+  'lehtiviite': citeJournal$i,
+  'verkkoviite': citeWeb$n,
 };
 
-const infoboxes$G = ['taksonomia'];
+const infoboxes$q = ['taksonomia'];
 
 var fi = {
   lang: 'fi',
-  aliases: aliases$G,
-  infoboxes: infoboxes$G,
-  templates: citations$C,
+  enLang: 'finnish',
+  category: ['luokka'],
+  redirect: ['ohjaus', 'uudelleenohjaus'],
+  stub: ['tynkä'],
+  infobox: ['tietolaatikko'],
+  image: ['kuva', 'tiedosto'],
+  reference: [],
+  disambig: ['täsmennyssivu'],
+  disambigTitle: [],
+  aliases: aliases$q,
+  infoboxes: infoboxes$q,
+  templates: citations$n,
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // french template names → the core template they resolve to
-const aliases$F = {
+const aliases$p = {
   'affiche nombre': 'formatnum',
   'api': 'ipa',
   'article détaillé': 'main',
@@ -3212,7 +2906,7 @@ const aliases$F = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeJournal$m = {
+const citeJournal$h = {
   template: 'cite journal',
   map: {
     'langue': 'language',
@@ -3251,7 +2945,7 @@ const citeJournal$m = {
     'archivedate': 'archive-date',
   },
 };
-const citeWeb$A = {
+const citeWeb$m = {
   template: 'cite web',
   map: {
     'langue': 'language',
@@ -3288,7 +2982,7 @@ const citeWeb$A = {
     'archivedate': 'archive-date',
   },
 };
-const citeBook$x = {
+const citeBook$l = {
   template: 'cite book',
   map: {
     'langue': 'language',
@@ -3385,34 +3079,43 @@ const literatur$2 = {
   },
 };
 
-const citations$B = {
-  'article': citeJournal$m,
-  'cita noticia': citeJournal$m,
-  'cita web': citeWeb$A,
-  'citar web': citeWeb$A,
-  'cite iucn': citeBook$x,
-  'cite magazine': citeJournal$m,
-  'cite pr': citeWeb$A,
-  'cite press release': citeWeb$A,
-  'citeweb': citeWeb$A,
-  'cytuj stronę': citeWeb$A,
-  'lien news': citeJournal$m,
-  'lien web': citeWeb$A,
-  'lienweb': citeWeb$A,
+const citations$m = {
+  'article': citeJournal$h,
+  'cita noticia': citeJournal$h,
+  'cita web': citeWeb$m,
+  'citar web': citeWeb$m,
+  'cite iucn': citeBook$l,
+  'cite magazine': citeJournal$h,
+  'cite pr': citeWeb$m,
+  'cite press release': citeWeb$m,
+  'citeweb': citeWeb$m,
+  'cytuj stronę': citeWeb$m,
+  'lien news': citeJournal$h,
+  'lien web': citeWeb$m,
+  'lienweb': citeWeb$m,
   'literatur': literatur$2,
-  'ouvrage': citeBook$x,
-  'périodique': citeJournal$m,
-  'référence web': citeWeb$A,
-  'site web': citeWeb$A,
+  'ouvrage': citeBook$l,
+  'périodique': citeJournal$h,
+  'référence web': citeWeb$m,
+  'site web': citeWeb$m,
 };
 
-const infoboxes$F = [];
+const infoboxes$p = [];
 
 var fr = {
   lang: 'fr',
-  aliases: aliases$F,
-  infoboxes: infoboxes$F,
-  templates: citations$B,
+  enLang: 'french',
+  category: ['catégorie'],
+  redirect: ['redirection'],
+  stub: ['ébauche'],
+  infobox: [],
+  image: ['fichier'],
+  reference: ['notes et références', 'références'],
+  disambig: ['homonymie'],
+  disambigTitle: ['homonymie'],
+  aliases: aliases$p,
+  infoboxes: infoboxes$p,
+  templates: citations$m,
   // too generic to claim globally — applied only when a document's lang is 'fr'
   gated: {
     'monnaie': { template: 'currency' },
@@ -3424,92 +3127,8 @@ var fr = {
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// galician template names → the core template they resolve to
-const aliases$E = {
-  'afi': 'ipa',
-  'ap': 'main',
-  'artigo principal': 'main',
-  'bandeira': 'flag',
-  'bandeira2': 'flag',
-  'cita publicación': 'cite journal',
-  'cita publicación periódica': 'cite journal',
-  'cita revista': 'cite journal',
-  'cite magazine': 'cite journal',
-  'commonscat': 'commons cat',
-  'commonscategoría': 'commons cat',
-  'coordenadas': 'coord',
-  'harvnp': 'sfn',
-  'listaref': 'reflist',
-  'nota curta': 'sfn',
-  'obra citada': 'citation',
-  'pequeno': 'small',
-  'principal': 'main',
-  'referencias': 'reflist',
-  'ver artigo principal': 'main',
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// localized citation templates — the map renames params, then the core template parses
-
-const citeBook$w = {
-  template: 'cite book',
-  map: {
-    'apelidos-editor': 'editor',
-    'apelidos-editor1': 'editor',
-    'volumen': 'volume',
-    'páxina': 'page',
-    'p': 'page',
-    'página': 'page',
-  },
-};
-const citeWeb$z = {
-  template: 'cite web',
-  map: {
-    'apelidos-editor': 'editor',
-    'apelidos-editor1': 'editor',
-  },
-};
-const internetquelle$i = {
-  template: 'cite web',
-  map: {
-    'titel': 'title',
-    'autor': 'author',
-    'werk': 'work',
-    'hrsg': 'publisher',
-    'datum': 'date',
-    'seiten': 'pages',
-    'sprache': 'language',
-    'abruf': 'access-date',
-    'zugriff': 'access-date',
-    'archiv-url': 'archive-url',
-    'archiv-datum': 'archive-date',
-    'apelidos-editor': 'editor',
-    'apelidos-editor1': 'editor',
-  },
-};
-
-const citations$A = {
-  'cita libro': citeBook$w,
-  'cita web': citeWeb$z,
-  'citar libro': citeBook$w,
-  'citar web': citeWeb$z,
-  'citaweb': citeWeb$z,
-  'internetquelle': internetquelle$i,
-  'lien web': citeWeb$z,
-};
-
-const infoboxes$E = [];
-
-var gl = {
-  lang: 'gl',
-  aliases: aliases$E,
-  infoboxes: infoboxes$E,
-  templates: citations$A,
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // hebrew template names → the core template they resolve to
-const aliases$D = {
+const aliases$o = {
   'cite magazine': 'cite journal',
   'cite paper': 'cite journal',
   'commonscat': 'commons cat',
@@ -3528,7 +3147,7 @@ const aliases$D = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeWeb$y = {
+const citeWeb$l = {
   template: 'cite web',
   map: {
     'author1-last': 'author',
@@ -3551,22 +3170,31 @@ const citeWeb$y = {
   },
 };
 
-const citations$z = {
-  'citeweb': citeWeb$y,
+const citations$l = {
+  'citeweb': citeWeb$l,
 };
 
-const infoboxes$D = ['מיון'];
+const infoboxes$o = ['מיון'];
 
 var he = {
   lang: 'he',
-  aliases: aliases$D,
-  infoboxes: infoboxes$D,
-  templates: citations$z,
+  enLang: 'hebrew',
+  category: ['קט', 'קטגוריה'],
+  redirect: ['הפניה'],
+  stub: ['קצרמר'],
+  infobox: ['תבנית', 'תבנית מידע'],
+  image: ['קו', 'קובץ', 'תמונה'],
+  reference: [],
+  disambig: ['פירושונים'],
+  disambigTitle: [],
+  aliases: aliases$o,
+  infoboxes: infoboxes$o,
+  templates: citations$l,
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // hindi template names → the core template they resolve to
-const aliases$C = {
+const aliases$n = {
   'birthdate and age': 'birth date and age',
   'commons2': 'commons cat',
   'commonscat': 'commons cat',
@@ -3614,7 +3242,7 @@ const aliases$C = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeWeb$x = {
+const citeWeb$k = {
   template: 'cite web',
   map: {
     'accessdate': 'access-date',
@@ -3641,7 +3269,7 @@ const citeWeb$x = {
     'credits': 'authors',
   },
 };
-const citeJournal$l = {
+const citeJournal$g = {
   template: 'cite journal',
   map: {
     'trans_title': 'trans-title',
@@ -3650,7 +3278,7 @@ const citeJournal$l = {
     'archivedate': 'archive-date',
   },
 };
-const citation$9 = {
+const citation$7 = {
   template: 'citation',
   map: {
     'trans_title': 'trans-title',
@@ -3673,7 +3301,7 @@ const citation$9 = {
     'editors': 'editor',
   },
 };
-const citeBook$v = {
+const citeBook$k = {
   template: 'cite book',
   map: {
     'author1-last': 'author',
@@ -3724,34 +3352,43 @@ const citeBook$v = {
   },
 };
 
-const citations$y = {
-  'cite blog': citeWeb$x,
-  'cite website': citeWeb$x,
-  'cite-web': citeWeb$x,
-  'citejournal': citeJournal$l,
-  'web cite': citeWeb$x,
-  'web kaynağı': citeWeb$x,
-  'उद्धरण': citation$9,
-  'उद्धृत अंतर्जाल': citeWeb$x,
-  'जर्नल सन्दर्भ': citeJournal$l,
-  'पुस्तक सन्दर्भ': citeBook$v,
-  'वेब संदर्भ': citeWeb$x,
-  'वेब सन्दर्भ': citeWeb$x,
-  'संदर्भ': citation$9,
+const citations$k = {
+  'cite blog': citeWeb$k,
+  'cite website': citeWeb$k,
+  'cite-web': citeWeb$k,
+  'citejournal': citeJournal$g,
+  'web cite': citeWeb$k,
+  'web kaynağı': citeWeb$k,
+  'उद्धरण': citation$7,
+  'उद्धृत अंतर्जाल': citeWeb$k,
+  'जर्नल सन्दर्भ': citeJournal$g,
+  'पुस्तक सन्दर्भ': citeBook$k,
+  'वेब संदर्भ': citeWeb$k,
+  'वेब सन्दर्भ': citeWeb$k,
+  'संदर्भ': citation$7,
 };
 
-const infoboxes$C = ['टैक्सोबॉक्स'];
+const infoboxes$n = ['टैक्सोबॉक्स'];
 
 var hi = {
   lang: 'hi',
-  aliases: aliases$C,
-  infoboxes: infoboxes$C,
-  templates: citations$y,
+  enLang: 'hindi',
+  category: ['श्र', 'श्रेणी'],
+  redirect: ['अनुप्रेषित', 'पुनर्निर्देशन', 'पुनर्प्रेषित'],
+  stub: ['आधार'],
+  infobox: ['ज्ञानसन्दूक'],
+  image: ['चित्र'],
+  reference: [],
+  disambig: ['बहुविकल्पी शब्द'],
+  disambigTitle: [],
+  aliases: aliases$n,
+  infoboxes: infoboxes$n,
+  templates: citations$k,
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // croatian template names → the core template they resolve to
-const aliases$B = {
+const aliases$m = {
   'citiranje': 'citation',
   'commons category': 'commons cat',
   'commonscat': 'commons cat',
@@ -3800,7 +3437,7 @@ const aliases$B = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeBook$u = {
+const citeBook$j = {
   template: 'cite book',
   map: {
     'author1-last': 'author',
@@ -3865,7 +3502,7 @@ const citeBook$u = {
     'host': 'authors',
   },
 };
-const citeWeb$w = {
+const citeWeb$j = {
   template: 'cite web',
   map: {
     'naslov': 'title',
@@ -3915,7 +3552,7 @@ const citeWeb$w = {
     'autori': 'authors',
   },
 };
-const citeJournal$k = {
+const citeJournal$f = {
   template: 'cite journal',
   map: {
     'naslov': 'title',
@@ -3943,34 +3580,43 @@ const citeJournal$k = {
   },
 };
 
-const citations$x = {
-  'bokref': citeBook$u,
-  'cite manual': citeBook$u,
-  'citebook': citeBook$u,
-  'citiraj knjigu': citeBook$u,
-  'citiranje knjige': citeBook$u,
-  'citiranje knjige/1': citeBook$u,
-  'citiranje weba': citeWeb$w,
-  'citiranje weba/1': citeWeb$w,
-  'citiranje www': citeWeb$w,
-  'citiranje časopisa': citeJournal$k,
-  'citiranje časopisa/1': citeJournal$k,
-  'tidskriftsref': citeJournal$k,
-  'webbref': citeWeb$w,
+const citations$j = {
+  'bokref': citeBook$j,
+  'cite manual': citeBook$j,
+  'citebook': citeBook$j,
+  'citiraj knjigu': citeBook$j,
+  'citiranje knjige': citeBook$j,
+  'citiranje knjige/1': citeBook$j,
+  'citiranje weba': citeWeb$j,
+  'citiranje weba/1': citeWeb$j,
+  'citiranje www': citeWeb$j,
+  'citiranje časopisa': citeJournal$f,
+  'citiranje časopisa/1': citeJournal$f,
+  'tidskriftsref': citeJournal$f,
+  'webbref': citeWeb$j,
 };
 
-const infoboxes$B = ['taksokvir'];
+const infoboxes$m = ['taksokvir'];
 
 var hr = {
   lang: 'hr',
-  aliases: aliases$B,
-  infoboxes: infoboxes$B,
-  templates: citations$x,
+  enLang: 'croatian',
+  category: ['ct', 'kategorija', 'kt'],
+  redirect: ['preusmjeri'],
+  stub: ['mrva'],
+  infobox: ['generalni', 'infookvir'],
+  image: ['datoteka', 'dt', 'slika'],
+  reference: [],
+  disambig: ['razdvojba'],
+  disambigTitle: [],
+  aliases: aliases$m,
+  infoboxes: infoboxes$m,
+  templates: citations$j,
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // hungarian template names → the core template they resolve to
-const aliases$A = {
+const aliases$l = {
   'bővebben': 'main',
   'commons category': 'commons cat',
   'commonscat': 'commons cat',
@@ -3996,19 +3642,19 @@ const aliases$A = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeBook$t = {
+const citeBook$i = {
   template: 'cite book',
   map: {
     'pp': 'pages',
   },
 };
-const citeJournal$j = {
+const citeJournal$e = {
   template: 'cite journal',
   map: {
     'pp': 'pages',
   },
 };
-const citeWeb$v = {
+const citeWeb$i = {
   template: 'cite web',
   map: {
     'accessdate': 'access-date',
@@ -4016,7 +3662,7 @@ const citeWeb$v = {
     'archivedate': 'archive-date',
   },
 };
-const internetquelle$h = {
+const internetquelle$d = {
   template: 'cite web',
   map: {
     'titel': 'title',
@@ -4036,172 +3682,37 @@ const internetquelle$h = {
   },
 };
 
-const citations$w = {
-  'cite chapter': citeBook$t,
-  'cite paper': citeJournal$j,
-  'cite-web': citeWeb$v,
-  'citeweb': citeWeb$v,
-  'internetquelle': internetquelle$h,
-  'web cite': citeWeb$v,
-  'weblap hivatkozás': citeWeb$v,
+const citations$i = {
+  'cite chapter': citeBook$i,
+  'cite paper': citeJournal$e,
+  'cite-web': citeWeb$i,
+  'citeweb': citeWeb$i,
+  'internetquelle': internetquelle$d,
+  'web cite': citeWeb$i,
+  'weblap hivatkozás': citeWeb$i,
 };
 
-const infoboxes$A = ['taxobox szerkesztése'];
+const infoboxes$l = ['taxobox szerkesztése'];
 
 var hu = {
   lang: 'hu',
-  aliases: aliases$A,
-  infoboxes: infoboxes$A,
-  templates: citations$w,
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// armenian template names → the core template they resolve to
-const aliases$z = {
-  'coord-nocat': 'coord',
-  'cytuj pismo': 'cite journal',
-  'ipa1': 'ipa',
-  'portal bar': 'portal',
-  'refs': 'reflist',
-  'примечания': 'reflist',
-  'աղբյուր': 'reflist',
-  'աղբյուրներ': 'reflist',
-  'գլխավորը': 'main',
-  'դրոշ': 'flag',
-  'ծանոթագրություններ': 'reflist',
-  'ծանցանկ': 'reflist',
-  'ծատ': 'birth date and age',
-  'ծննդյան ամսաթիվ և տարիք': 'birth date and age',
-  'կոորդ': 'coord',
-  'կոորդինատներ': 'coord',
-  'հիմնական': 'main',
-  'հիմնական հոդված': 'main',
-  'հիմնական հոդված2': 'main',
-  'նիհոնգո': 'nihongo',
-  'պորտալ': 'portal',
-  'փոքր': 'small',
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// localized citation templates — the map renames params, then the core template parses
-
-const citeWeb$u = {
-  template: 'cite web',
-  map: {
-    'accessdate': 'access-date',
-    'author1-last': 'author',
-    'author-last': 'author',
-    'surname1': 'author',
-    'author-last1': 'author',
-    'subject1': 'author',
-    'surname': 'author',
-    'subject': 'author',
-    'given': 'first',
-    'author-first': 'first',
-    'given1': 'first',
-    'author-first1': 'first',
-    'author1-first': 'first',
-    'editor-last': 'editor',
-    'editor1-last': 'editor',
-    'lang': 'language',
-    'archiveurl': 'archive-url',
-    'archivedate': 'archive-date',
-  },
-};
-const citeBook$s = {
-  template: 'cite book',
-  map: {
-    'author1-last': 'author',
-    'author-last': 'author',
-    'surname1': 'author',
-    'author-last1': 'author',
-    'subject1': 'author',
-    'surname': 'author',
-    'subject': 'author',
-    'given': 'first',
-    'author-first': 'first',
-    'given1': 'first',
-    'author-first1': 'first',
-    'author1-first': 'first',
-    'institution': 'publisher',
-    'editor-last': 'editor',
-    'editor-surname': 'editor',
-    'editor-last1': 'editor',
-    'editor-surname1': 'editor',
-    'editor1': 'editor',
-    'editor1-last': 'editor',
-    'editor1-surname': 'editor',
-    'place': 'location',
-    'p': 'page',
-    'pp': 'pages',
-    'contribution': 'chapter',
-    'entry': 'chapter',
-    'article': 'chapter',
-    'section': 'chapter',
-    'quotation': 'quote',
-    'number': 'issue',
-  },
-};
-const internetquelle$g = {
-  template: 'cite web',
-  map: {
-    'titel': 'title',
-    'autor': 'author',
-    'werk': 'work',
-    'hrsg': 'publisher',
-    'datum': 'date',
-    'seiten': 'pages',
-    'sprache': 'language',
-    'abruf': 'access-date',
-    'zugriff': 'access-date',
-    'archiv-url': 'archive-url',
-    'archiv-datum': 'archive-date',
-    'accessdate': 'access-date',
-    'author1-last': 'author',
-    'author-last': 'author',
-    'surname1': 'author',
-    'author-last1': 'author',
-    'subject1': 'author',
-    'surname': 'author',
-    'subject': 'author',
-    'given': 'first',
-    'author-first': 'first',
-    'given1': 'first',
-    'author-first1': 'first',
-    'author1-first': 'first',
-    'editor-last': 'editor',
-    'editor1-last': 'editor',
-    'lang': 'language',
-    'archiveurl': 'archive-url',
-    'archivedate': 'archive-date',
-  },
-};
-
-const citations$v = {
-  'cita web': citeWeb$u,
-  'citar web': citeWeb$u,
-  'citeweb': citeWeb$u,
-  'cw': citeWeb$u,
-  'cytuj książkę': citeBook$s,
-  'cytuj stronę': citeWeb$u,
-  'internetquelle': internetquelle$g,
-  'lien web': citeWeb$u,
-  'ouvrage': citeBook$s,
-  '웹 인용': citeWeb$u,
-};
-
-const infoboxes$z = ['տաքսոտուփ'];
-
-var hy = {
-  lang: 'hy',
-  aliases: aliases$z,
-  infoboxes: infoboxes$z,
-  templates: citations$v,
+  enLang: 'hungarian',
+  category: ['kategória'],
+  redirect: ['átirányítás'],
+  stub: ['csonk'],
+  infobox: [],
+  image: ['fájl', 'kép'],
+  reference: [],
+  disambig: ['egyért'],
+  disambigTitle: [],
+  aliases: aliases$l,
+  infoboxes: infoboxes$l,
+  templates: citations$i,
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // indonesian template names → the core template they resolve to
-const aliases$y = {
+const aliases$k = {
   'artikel': 'main',
   'bandera': 'flagicon',
   'bandiera': 'flagicon',
@@ -4262,7 +3773,7 @@ const aliases$y = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeBook$r = {
+const citeBook$h = {
   template: 'cite book',
   map: {
     'author1-last': 'author',
@@ -4312,7 +3823,7 @@ const citeBook$r = {
     'credits': 'authors',
   },
 };
-const citeWeb$t = {
+const citeWeb$h = {
   template: 'cite web',
   map: {
     'accessdate': 'access-date',
@@ -4323,7 +3834,7 @@ const citeWeb$t = {
     'archivedate': 'archive-date',
   },
 };
-const citeJournal$i = {
+const citeJournal$d = {
   template: 'cite journal',
   map: {
     'trans_title': 'trans-title',
@@ -4332,7 +3843,7 @@ const citeJournal$i = {
     'archivedate': 'archive-date',
   },
 };
-const internetquelle$f = {
+const internetquelle$c = {
   template: 'cite web',
   map: {
     'titel': 'title',
@@ -4355,42 +3866,42 @@ const internetquelle$f = {
   },
 };
 
-const citations$u = {
-  'book reference': citeBook$r,
-  'buku kutipan': citeBook$r,
-  'chú thích web': citeWeb$t,
-  'cita web': citeWeb$t,
-  'citar livro': citeBook$r,
-  'citar web': citeWeb$t,
-  'citation journal': citeJournal$i,
-  'cite blog': citeWeb$t,
-  'cite buku': citeBook$r,
-  'cite magazine article': citeJournal$i,
-  'cite url': citeWeb$t,
-  'cite web.': citeWeb$t,
-  'cite webpage': citeWeb$t,
-  'cite website': citeWeb$t,
-  'cite work': citeBook$r,
-  'cite-web': citeWeb$t,
-  'citebook': citeBook$r,
-  'citejournal': citeJournal$i,
-  'citeweb': citeWeb$t,
-  'internetquelle': internetquelle$f,
-  'kutip buku': citeBook$r,
-  'kutip web': citeWeb$t,
-  'kutipan buku': citeBook$r,
-  'kutipan web': citeWeb$t,
-  'memetik web': citeWeb$t,
-  'mengutip web': citeWeb$t,
-  'referensi buku': citeBook$r,
-  'referensi web': citeWeb$t,
-  'tidskriftsref': citeJournal$i,
-  'web': citeWeb$t,
-  'web cite': citeWeb$t,
-  'web reference': citeWeb$t,
+const citations$h = {
+  'book reference': citeBook$h,
+  'buku kutipan': citeBook$h,
+  'chú thích web': citeWeb$h,
+  'cita web': citeWeb$h,
+  'citar livro': citeBook$h,
+  'citar web': citeWeb$h,
+  'citation journal': citeJournal$d,
+  'cite blog': citeWeb$h,
+  'cite buku': citeBook$h,
+  'cite magazine article': citeJournal$d,
+  'cite url': citeWeb$h,
+  'cite web.': citeWeb$h,
+  'cite webpage': citeWeb$h,
+  'cite website': citeWeb$h,
+  'cite work': citeBook$h,
+  'cite-web': citeWeb$h,
+  'citebook': citeBook$h,
+  'citejournal': citeJournal$d,
+  'citeweb': citeWeb$h,
+  'internetquelle': internetquelle$c,
+  'kutip buku': citeBook$h,
+  'kutip web': citeWeb$h,
+  'kutipan buku': citeBook$h,
+  'kutipan web': citeWeb$h,
+  'memetik web': citeWeb$h,
+  'mengutip web': citeWeb$h,
+  'referensi buku': citeBook$h,
+  'referensi web': citeWeb$h,
+  'tidskriftsref': citeJournal$d,
+  'web': citeWeb$h,
+  'web cite': citeWeb$h,
+  'web reference': citeWeb$h,
 };
 
-const infoboxes$y = [
+const infoboxes$k = [
   'kotaktaksonomi',
   'kotaktaksonomi bagian binomial',
   'kotaktaksonomi phylum entry',
@@ -4402,14 +3913,23 @@ const infoboxes$y = [
 
 var id = {
   lang: 'id',
-  aliases: aliases$y,
-  infoboxes: infoboxes$y,
-  templates: citations$u,
+  enLang: 'indonesian',
+  category: ['kategori'],
+  redirect: ['alih'],
+  stub: [],
+  infobox: [],
+  image: ['berkas', 'gambar'],
+  reference: [],
+  disambig: ['disambiguasi'],
+  disambigTitle: [],
+  aliases: aliases$k,
+  infoboxes: infoboxes$k,
+  templates: citations$h,
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // italian template names → the core template they resolve to
-const aliases$x = {
+const aliases$j = {
   'bandiera': 'flagicon',
   'calcola età': 'birth date and age',
   'commons cat left': 'commons cat',
@@ -4426,7 +3946,7 @@ const aliases$x = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeBook$q = {
+const citeBook$g = {
   template: 'cite book',
   map: {
     'nome': 'first1',
@@ -4447,7 +3967,7 @@ const citeBook$q = {
     'pagine': 'pages',
   },
 };
-const citeJournal$h = {
+const citeJournal$c = {
   template: 'cite journal',
   map: {
     'autore': 'author',
@@ -4461,7 +3981,7 @@ const citeJournal$h = {
     'lingua': 'language',
   },
 };
-const citeWeb$s = {
+const citeWeb$g = {
   template: 'cite web',
   map: {
     'autore': 'author',
@@ -4470,32 +3990,41 @@ const citeWeb$s = {
     'data': 'date',
   },
 };
-const citation$8 = {
+const citation$6 = {
   template: 'citation',
   map: {
     'vol': 'volume',
   },
 };
 
-const citations$t = {
-  'cita libro': citeBook$q,
-  'cita periodico': citeJournal$h,
-  'cita pubblicazione': citeJournal$h,
-  'cita rivista': citeJournal$h,
-  'cita sito': citeWeb$s,
-  'cita testo': citation$8,
-  'cita web': citeWeb$s,
-  'cw': citeWeb$s,
-  'lien web': citeWeb$s,
+const citations$g = {
+  'cita libro': citeBook$g,
+  'cita periodico': citeJournal$c,
+  'cita pubblicazione': citeJournal$c,
+  'cita rivista': citeJournal$c,
+  'cita sito': citeWeb$g,
+  'cita testo': citation$6,
+  'cita web': citeWeb$g,
+  'cw': citeWeb$g,
+  'lien web': citeWeb$g,
 };
 
-const infoboxes$x = ['tassobox'];
+const infoboxes$j = ['tassobox'];
 
 var it = {
   lang: 'it',
-  aliases: aliases$x,
-  infoboxes: infoboxes$x,
-  templates: citations$t,
+  enLang: 'italian',
+  category: ['cat', 'categoria'],
+  redirect: ['rimando', 'rinvia', 'rinvio'],
+  stub: ['s'],
+  infobox: [],
+  image: ['immagine'],
+  reference: [],
+  disambig: ['disambigua'],
+  disambigTitle: ['disambigua'],
+  aliases: aliases$j,
+  infoboxes: infoboxes$j,
+  templates: citations$g,
   gated: {
     'citazione necessaria': { template: 'citation needed' },
   },
@@ -4503,7 +4032,7 @@ var it = {
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // japanese template names → the core template they resolve to
-const aliases$w = {
+const aliases$i = {
   'alter': 'birth date and age',
   'commons category': 'commons cat',
   'commonscat': 'commons cat',
@@ -4548,7 +4077,7 @@ const aliases$w = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeWeb$r = {
+const citeWeb$f = {
   template: 'cite web',
   map: {
     'accessdate': 'access-date',
@@ -4556,7 +4085,7 @@ const citeWeb$r = {
     'archivedate': 'archive-date',
   },
 };
-const citeBook$p = {
+const citeBook$f = {
   template: 'cite book',
   map: {
     'surname': 'last',
@@ -4575,7 +4104,7 @@ const citeBook$p = {
     'archivedate': 'archive-date',
   },
 };
-const citeJournal$g = {
+const citeJournal$b = {
   template: 'cite journal',
   map: {
     'surname': 'last',
@@ -4590,7 +4119,7 @@ const citeJournal$g = {
     'archivedate': 'archive-date',
   },
 };
-const citation$7 = {
+const citation$5 = {
   template: 'citation',
   map: {
     'surname': 'last',
@@ -4608,7 +4137,7 @@ const citation$7 = {
     'archivedate': 'archive-date',
   },
 };
-const internetquelle$e = {
+const internetquelle$b = {
   template: 'cite web',
   map: {
     'titel': 'title',
@@ -4628,196 +4157,49 @@ const internetquelle$e = {
   },
 };
 
-const citations$s = {
-  'cite blog': citeWeb$r,
-  'cite book/draft/cite book': citeBook$p,
-  'cite magazine': citeJournal$g,
-  'cite manual': citeBook$p,
-  'cite paper': citeJournal$g,
-  'cite study': citation$7,
-  'cite url': citeWeb$r,
-  'cite web/german': citeWeb$r,
-  'cite web/和書': citeWeb$r,
-  'cite website': citeWeb$r,
-  'cite work': citeBook$p,
-  'cite-web': citeWeb$r,
-  'citebook': citeBook$p,
-  'citejournal': citeJournal$g,
-  'citeweb': citeWeb$r,
-  'cw': citeWeb$r,
-  'internetquelle': internetquelle$e,
-  'ref web': citeWeb$r,
-  'web cite': citeWeb$r,
+const citations$f = {
+  'cite blog': citeWeb$f,
+  'cite book/draft/cite book': citeBook$f,
+  'cite magazine': citeJournal$b,
+  'cite manual': citeBook$f,
+  'cite paper': citeJournal$b,
+  'cite study': citation$5,
+  'cite url': citeWeb$f,
+  'cite web/german': citeWeb$f,
+  'cite web/和書': citeWeb$f,
+  'cite website': citeWeb$f,
+  'cite work': citeBook$f,
+  'cite-web': citeWeb$f,
+  'citebook': citeBook$f,
+  'citejournal': citeJournal$b,
+  'citeweb': citeWeb$f,
+  'cw': citeWeb$f,
+  'internetquelle': internetquelle$b,
+  'ref web': citeWeb$f,
+  'web cite': citeWeb$f,
 };
 
-const infoboxes$w = ['生物分類表'];
+const infoboxes$i = ['生物分類表'];
 
 var ja = {
   lang: 'ja',
-  aliases: aliases$w,
-  infoboxes: infoboxes$w,
-  templates: citations$s,
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// georgian template names → the core template they resolve to
-const aliases$v = {
-  'cite magazine': 'cite journal',
-  'commons category': 'commons cat',
-  'commonscat': 'commons cat',
-  'flag icon': 'flagicon',
-  'ipa-text': 'ipa',
-  'დაბადების თარიღი და ასაკი': 'birth date and age',
-  'დაიწყე თარიღი': 'start',
-  'დეტალები': 'main',
-  'დროშა': 'flag',
-  'დროშანიშანი': 'flagicon',
-  'კოორდ': 'coord',
-  'კოორდინატი': 'coord',
-  'მთავარი': 'main',
-  'მთავარი სტატია': 'main',
-  'ნიჰონგი': 'nihongo',
-  'ნიჰონგო': 'nihongo',
-  'პორტალი': 'portal',
-  'სქოლიო': 'reflist',
-  'სქოლიოს სია': 'reflist',
-  'სქოლიოს სია გრძელი': 'reflist',
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// localized citation templates — the map renames params, then the core template parses
-
-const citeWeb$q = {
-  template: 'cite web',
-  map: {
-    'accessdate': 'access-date',
-    'author1-last': 'author',
-    'author-last': 'author',
-    'surname1': 'author',
-    'author-last1': 'author',
-    'subject1': 'author',
-    'surname': 'author',
-    'subject': 'author',
-    'given': 'first',
-    'author-first': 'first',
-    'given1': 'first',
-    'author-first1': 'first',
-    'author1-first': 'first',
-    'editor-last': 'editor',
-    'editor1-last': 'editor',
-    'lang': 'language',
-    'archiveurl': 'archive-url',
-    'archivedate': 'archive-date',
-  },
-};
-const internetquelle$d = {
-  template: 'cite web',
-  map: {
-    'titel': 'title',
-    'autor': 'author',
-    'werk': 'work',
-    'hrsg': 'publisher',
-    'datum': 'date',
-    'seiten': 'pages',
-    'sprache': 'language',
-    'abruf': 'access-date',
-    'zugriff': 'access-date',
-    'archiv-url': 'archive-url',
-    'archiv-datum': 'archive-date',
-    'accessdate': 'access-date',
-    'author1-last': 'author',
-    'author-last': 'author',
-    'surname1': 'author',
-    'author-last1': 'author',
-    'subject1': 'author',
-    'surname': 'author',
-    'subject': 'author',
-    'given': 'first',
-    'author-first': 'first',
-    'given1': 'first',
-    'author-first1': 'first',
-    'author1-first': 'first',
-    'editor-last': 'editor',
-    'editor1-last': 'editor',
-    'lang': 'language',
-    'archiveurl': 'archive-url',
-    'archivedate': 'archive-date',
-  },
-};
-
-const citations$r = {
-  'citeweb': citeWeb$q,
-  'internetquelle': internetquelle$d,
-};
-
-const infoboxes$v = ['ტაქსოდაფა', 'ტაქსოდაფა *'];
-
-var ka = {
-  lang: 'ka',
-  aliases: aliases$v,
-  infoboxes: infoboxes$v,
-  templates: citations$r,
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// kazakh template names → the core template they resolve to
-const aliases$u = {
-  'commons category': 'commons cat',
-  'commons2': 'commons cat',
-  'commonscat': 'commons cat',
-  'coor d/new': 'coord',
-  'coor/new': 'coord',
-  'coord/conversion': 'coord',
-  'ipa1': 'ipa',
-  'mainarticle': 'main',
-  'references': 'reflist',
-  'дереккөздер': 'reflist',
-  'негізгі мақала': 'main',
-  'нихонго': 'nihongo',
-  'портал': 'portal',
-  'портал 2': 'portal',
-  'толық мақала': 'main',
-  'ту': 'flagicon',
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// localized citation templates — the map renames params, then the core template parses
-
-const citeJournal$f = {
-  template: 'cite journal',
-  map: {
-    'жыл': 'year',
-  },
-};
-const citeWeb$p = {
-  template: 'cite web',
-  map: {
-    'archiveurl': 'archive-url',
-    'archivedate': 'archive-date',
-    'accessdate': 'access-date',
-  },
-};
-
-const citations$q = {
-  'cite magazine': citeJournal$f,
-  'citeweb': citeWeb$p,
-  'cw': citeWeb$p,
-  'веб сайт': citeWeb$p,
-  'веб-сайт': citeWeb$p,
-};
-
-const infoboxes$u = [];
-
-var kk = {
-  lang: 'kk',
-  aliases: aliases$u,
-  infoboxes: infoboxes$u,
-  templates: citations$q,
+  enLang: 'japanese',
+  category: ['カテゴリ'],
+  redirect: ['リダイレクト', '転送', '＃リダイレクト', '＃転送'],
+  stub: [],
+  infobox: [],
+  image: ['ファイル', '画像'],
+  reference: ['脚注'],
+  disambig: ['aimai', '曖昧さ回避'],
+  disambigTitle: ['曖昧さ回避'],
+  aliases: aliases$i,
+  infoboxes: infoboxes$i,
+  templates: citations$f,
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // korean template names → the core template they resolve to
-const aliases$t = {
+const aliases$h = {
   'commons category': 'commons cat',
   'commonscat': 'commons cat',
   'coor d': 'coord',
@@ -4870,7 +4252,7 @@ const aliases$t = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeBook$o = {
+const citeBook$e = {
   template: 'cite book',
   map: {
     '제목': 'title',
@@ -4906,7 +4288,7 @@ const citeBook$o = {
     '장': 'chapter',
   },
 };
-const citeWeb$o = {
+const citeWeb$e = {
   template: 'cite web',
   map: {
     '제목': 'title',
@@ -4940,7 +4322,7 @@ const citeWeb$o = {
     '인용': 'quote',
   },
 };
-const citeJournal$e = {
+const citeJournal$a = {
   template: 'cite journal',
   map: {
     '제목': 'title',
@@ -4979,7 +4361,7 @@ const citeJournal$e = {
     '호': 'issue',
   },
 };
-const internetquelle$c = {
+const internetquelle$a = {
   template: 'cite web',
   map: {
     'titel': 'title',
@@ -5025,467 +4407,51 @@ const internetquelle$c = {
   },
 };
 
-const citations$p = {
-  'cita libro': citeBook$o,
-  'cita web': citeWeb$o,
-  'cite blog': citeWeb$o,
-  'cite manual': citeBook$o,
-  'cite paper': citeJournal$e,
-  'cite website': citeWeb$o,
-  'cite work': citeBook$o,
-  'cite-web': citeWeb$o,
-  'citebook': citeBook$o,
-  'citeweb': citeWeb$o,
-  'internetquelle': internetquelle$c,
-  '도서 인용': citeBook$o,
-  '문서 인용': citeJournal$e,
-  '서적 인용': citeBook$o,
-  '서적인용': citeBook$o,
-  '웹 인용': citeWeb$o,
-  '웹인용': citeWeb$o,
-  '저널 인용': citeJournal$e,
-  '저널인용': citeJournal$e,
-  '책 인용': citeBook$o,
-  '학술지 인용': citeJournal$e,
+const citations$e = {
+  'cita libro': citeBook$e,
+  'cita web': citeWeb$e,
+  'cite blog': citeWeb$e,
+  'cite manual': citeBook$e,
+  'cite paper': citeJournal$a,
+  'cite website': citeWeb$e,
+  'cite work': citeBook$e,
+  'cite-web': citeWeb$e,
+  'citebook': citeBook$e,
+  'citeweb': citeWeb$e,
+  'internetquelle': internetquelle$a,
+  '도서 인용': citeBook$e,
+  '문서 인용': citeJournal$a,
+  '서적 인용': citeBook$e,
+  '서적인용': citeBook$e,
+  '웹 인용': citeWeb$e,
+  '웹인용': citeWeb$e,
+  '저널 인용': citeJournal$a,
+  '저널인용': citeJournal$a,
+  '책 인용': citeBook$e,
+  '학술지 인용': citeJournal$a,
 };
 
-const infoboxes$t = ['새 정보', '생물 분류'];
+const infoboxes$h = ['새 정보', '생물 분류'];
 
 var ko = {
   lang: 'ko',
-  aliases: aliases$t,
-  infoboxes: infoboxes$t,
-  templates: citations$p,
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// lithuanian template names → the core template they resolve to
-const aliases$s = {
-  'bandera': 'flagicon',
-  'bandiera': 'flagicon',
-  'book': 'cite book',
-  'citavimas': 'citation',
-  'cite paper': 'cite journal',
-  'citeweb': 'cite web',
-  'commons category': 'commons cat',
-  'commonscat': 'commons cat',
-  'coor at dms': 'coord',
-  'coor title d': 'coord',
-  'coor title dm': 'coord',
-  'fbaicon': 'flagicon',
-  'flag icon': 'flagicon',
-  'išn': 'reflist',
-  'išnašos': 'reflist',
-  'mažas': 'small',
-  'pagr': 'main',
-  'pradžios data': 'start',
-  'ref': 'reflist',
-  'vikisritis': 'portal',
-  'vlv': 'flagicon',
-};
-
-const infoboxes$s = [];
-
-var lt = {
-  lang: 'lt',
-  aliases: aliases$s,
-  infoboxes: infoboxes$s,
-  templates: {},
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// latvian template names → the core template they resolve to
-const aliases$r = {
-  'atsauce': 'citation',
-  'atsauces': 'reflist',
-  'atsauces2': 'reflist',
-  'commons category': 'commons cat',
-  'commonscat': 'commons cat',
-  'coordinates': 'coord',
-  'datdv': 'birth date and age',
-  'ddv': 'birth date and age',
-  'dzim diena un vecums': 'birth date and age',
-  'dzimšanas datums un vecums': 'birth date and age',
-  'flaga': 'flagicon',
-  'galvenais': 'main',
-  'ipaslink': 'ipa',
-  'karoga ikona': 'flagicon',
-  'karogs': 'flag',
-  'pamatraksts': 'main',
-  'portal2': 'portal',
-  'portāls': 'portal',
-  'portāls2': 'portal',
-  'viited': 'reflist',
-  'vikikrātuves kategorija': 'commons cat',
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// localized citation templates — the map renames params, then the core template parses
-
-const citeJournal$d = {
-  template: 'cite journal',
-  map: {
-    'trans_title': 'trans-title',
-    'accessdate': 'access-date',
-    'archiveurl': 'archive-url',
-    'archivedate': 'archive-date',
-  },
-};
-const citeWeb$n = {
-  template: 'cite web',
-  map: {
-    'accessdate': 'access-date',
-    'author1-last': 'author',
-    'author-last': 'author',
-    'surname1': 'author',
-    'author-last1': 'author',
-    'subject1': 'author',
-    'surname': 'author',
-    'subject': 'author',
-    'given': 'first',
-    'author-first': 'first',
-    'given1': 'first',
-    'author-first1': 'first',
-    'author1-first': 'first',
-    'editor-last': 'editor',
-    'editor1-last': 'editor',
-    'editors': 'editor',
-  },
-};
-const citeBook$n = {
-  template: 'cite book',
-  map: {
-    'author1-last': 'author',
-    'author-last': 'author',
-    'surname1': 'author',
-    'author-last1': 'author',
-    'subject1': 'author',
-    'surname': 'author',
-    'subject': 'author',
-    'given': 'first',
-    'author-first': 'first',
-    'given1': 'first',
-    'author-first1': 'first',
-    'author1-first': 'first',
-    'distributor': 'publisher',
-    'institution': 'publisher',
-    'newsgroup': 'publisher',
-    'place': 'location',
-    'air-date': 'date',
-    'airdate': 'date',
-    'p': 'page',
-    'pp': 'pages',
-    'quotation': 'quote',
-  },
-};
-
-const citations$o = {
-  'cite magazine': citeJournal$d,
-  'cite paper': citeJournal$d,
-  'citeweb': citeWeb$n,
-  'dokumenta atsauce': citeJournal$d,
-  'grāmatas atsauce': citeBook$n,
-  'laikraksta atsauce': citeJournal$d,
-  'publikācijas atsauce': citeJournal$d,
-  'tīmekļa atsauce': citeWeb$n,
-  'tīmekļa vietne': citeWeb$n,
-  'web cite': citeWeb$n,
-  'žurnāla atsauce': citeJournal$d,
-};
-
-const infoboxes$r = [
-  'bioloģiskās taksonomijas infokaste',
-  'biotakso',
-  'biotakso infokaste',
-  'biotaksonomijas infokaste',
-  'dzīvnieki infobox',
-  'info biotakso',
-  'info taxo',
-  'taksonomijas infokaste',
-];
-
-var lv = {
-  lang: 'lv',
-  aliases: aliases$r,
-  infoboxes: infoboxes$r,
-  templates: citations$o,
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// macedonian template names → the core template they resolve to
-const aliases$q = {
-  'ap': 'main',
-  'commons category': 'commons cat',
-  'commons2': 'commons cat',
-  'commonscat': 'commons cat',
-  'coor at dms': 'coord',
-  'coordinates': 'coord',
-  'coords': 'coord',
-  'country': 'flag',
-  'foundation date': 'start',
-  'geolinks-us-hoodscale': 'coord',
-  'initial release': 'start',
-  'portalpar': 'portal',
-  'refs': 'reflist',
-  'snf': 'sfn',
-  'главна': 'main',
-  'главна статија': 'main',
-  'главно': 'main',
-  'дата на раѓање и возраст': 'birth date and age',
-  'дата на раѓање и години': 'birth date and age',
-  'датум на раѓање и возраст': 'birth date and age',
-  'знаме': 'flag',
-  'знамеикона': 'flagicon',
-  'ифа': 'ipa',
-  'мали': 'small',
-  'мфа': 'ipa',
-  'наведување': 'citation',
-  'наводи': 'reflist',
-  'нихонго': 'nihongo',
-  'портал': 'portal',
-  'почетен датум': 'start',
-  'почеток-датум': 'start',
-  'р-в': 'commons cat',
-  'рв': 'commons cat',
-  'референци': 'reflist',
-  'ризница-врска': 'commons cat',
-  'рнв': 'birth date and age',
-  'рнив': 'birth date and age',
-  'роден на и возраст': 'birth date and age',
-  'родена на и возраст': 'birth date and age',
-  'цитирање': 'citation',
-  'јапонски': 'nihongo',
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// localized citation templates — the map renames params, then the core template parses
-
-const citeWeb$m = {
-  template: 'cite web',
-  map: {
-    'author1-last': 'author',
-    'author-last': 'author',
-    'surname1': 'author',
-    'author-last1': 'author',
-    'subject1': 'author',
-    'surname': 'author',
-    'subject': 'author',
-    'given': 'first',
-    'author-first': 'first',
-    'given1': 'first',
-    'author-first1': 'first',
-    'author1-first': 'first',
-    'editor-last': 'editor',
-    'editor1-last': 'editor',
-    'editors': 'editor',
-    'trans_title': 'trans-title',
-    'archiveurl': 'archive-url',
-    'archivedate': 'archive-date',
-    'people': 'authors',
-    'host': 'authors',
-    'credits': 'authors',
-  },
-};
-const citeJournal$c = {
-  template: 'cite journal',
-  map: {
-    'trans_title': 'trans-title',
-    'accessdate': 'access-date',
-    'archiveurl': 'archive-url',
-    'archivedate': 'archive-date',
-  },
-};
-const citeBook$m = {
-  template: 'cite book',
-  map: {
-    'author1-last': 'author',
-    'author-last': 'author',
-    'surname1': 'author',
-    'author-last1': 'author',
-    'subject1': 'author',
-    'surname': 'author',
-    'subject': 'author',
-    'given': 'first',
-    'author-first': 'first',
-    'given1': 'first',
-    'author-first1': 'first',
-    'author1-first': 'first',
-    'air-date': 'date',
-    'airdate': 'date',
-    'encyclopedia': 'website',
-    'encyclopaedia': 'website',
-    'dictionary': 'website',
-    'mailinglist': 'website',
-    'distributor': 'publisher',
-    'institution': 'publisher',
-    'newsgroup': 'publisher',
-    'editor-last': 'editor',
-    'editor-surname': 'editor',
-    'editor-last1': 'editor',
-    'editor-surname1': 'editor',
-    'editor1': 'editor',
-    'editor1-last': 'editor',
-    'editor1-surname': 'editor',
-    'place': 'location',
-    'p': 'page',
-    'pp': 'pages',
-    'in': 'language',
-    'trans_title': 'trans-title',
-    'contribution': 'chapter',
-    'entry': 'chapter',
-    'article': 'chapter',
-    'section': 'chapter',
-    'quotation': 'quote',
-    'accessdate': 'access-date',
-    'archiveurl': 'archive-url',
-    'archivedate': 'archive-date',
-    'number': 'issue',
-    'people': 'authors',
-    'host': 'authors',
-    'credits': 'authors',
-  },
-};
-
-const citations$n = {
-  'cite website': citeWeb$m,
-  'cite дневник': citeJournal$c,
-  'citebook': citeBook$m,
-  'citeweb': citeWeb$m,
-  'cw': citeWeb$m,
-  'lien web': citeWeb$m,
-  'web cite': citeWeb$m,
-  'книга': citeBook$m,
-  'наведен документ': citeJournal$c,
-  'наведена книга': citeBook$m,
-  'наведена мрежна страница': citeWeb$m,
-  'наведено мрежно место': citeWeb$m,
-  'наведено списание': citeJournal$c,
-  'нмс': citeWeb$m,
-};
-
-const infoboxes$q = ['таксономија'];
-
-var mk = {
-  lang: 'mk',
-  aliases: aliases$q,
-  infoboxes: infoboxes$q,
-  templates: citations$n,
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// malayalam template names → the core template they resolve to
-const aliases$p = {
-  'ap': 'main',
-  'birthdate and age': 'birth date and age',
-  'birthdateandage': 'birth date and age',
-  'c cat': 'commons cat',
-  'cc': 'commons cat',
-  'ccat': 'commons cat',
-  'cite paper': 'cite journal',
-  'citejournal': 'cite journal',
-  'cms-catlist-up': 'commons cat',
-  'commons category': 'commons cat',
-  'commons2': 'commons cat',
-  'commonscat': 'commons cat',
-  'commonscategory': 'commons cat',
-  'coor d': 'coord',
-  'coordinates': 'coord',
-  'coords': 'coord',
-  'country': 'flag',
-  'date of birth and age': 'birth date and age',
-  'flag icon': 'flagicon',
-  'geolinks-us-cityscale': 'coord',
-  'location': 'coord',
-  'mainarticle': 'main',
-  'portalpar': 'portal',
-  'realist': 'reflist',
-  'ref list': 'reflist',
-  'reference': 'reflist',
-  'refs': 'reflist',
-  'snf': 'sfn',
-  'അവലംബങ്ങൾ': 'reflist',
-  'കവാടം': 'portal',
-  'ചെറിയ': 'small',
-  'ജന്മദിനം, വയസ്സ്': 'birth date and age',
-  'പ്രധാന ലേഖനം': 'main',
-  'പ്രധാനലേഖനം': 'main',
-  'പ്രലേ': 'main',
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// localized citation templates — the map renames params, then the core template parses
-
-const citeWeb$l = {
-  template: 'cite web',
-  map: {
-    'accessdate': 'access-date',
-    'editor-last': 'editor',
-    'editor1-last': 'editor',
-    'editors': 'editor',
-    'archiveurl': 'archive-url',
-    'archivedate': 'archive-date',
-  },
-};
-const citeBook$l = {
-  template: 'cite book',
-  map: {
-    'author1-last': 'author',
-    'author-last': 'author',
-    'surname1': 'author',
-    'author-last1': 'author',
-    'subject1': 'author',
-    'surname': 'author',
-    'subject': 'author',
-    'given': 'first',
-    'author-first': 'first',
-    'given1': 'first',
-    'author-first1': 'first',
-    'author1-first': 'first',
-    'institution': 'publisher',
-    'editor-last': 'editor',
-    'editor-surname': 'editor',
-    'editor-last1': 'editor',
-    'editor-surname1': 'editor',
-    'editor1': 'editor',
-    'editor1-last': 'editor',
-    'editor1-surname': 'editor',
-    'place': 'location',
-    'p': 'page',
-    'pp': 'pages',
-    'contribution': 'chapter',
-    'entry': 'chapter',
-    'article': 'chapter',
-    'section': 'chapter',
-    'quotation': 'quote',
-    'number': 'issue',
-  },
-};
-
-const citations$m = {
-  'cita web': citeWeb$l,
-  'cite blog': citeWeb$l,
-  'cite manual': citeBook$l,
-  'cite website': citeWeb$l,
-  'cite work': citeBook$l,
-  'cite-book': citeBook$l,
-  'cite-web': citeWeb$l,
-  'citebook': citeBook$l,
-  'citeweb': citeWeb$l,
-  'web cite': citeWeb$l,
-};
-
-const infoboxes$p = [];
-
-var ml = {
-  lang: 'ml',
-  aliases: aliases$p,
-  infoboxes: infoboxes$p,
-  templates: citations$m,
+  enLang: 'korean',
+  category: ['분류'],
+  redirect: ['넘겨주기'],
+  stub: ['토막글'],
+  infobox: ['정보상자'],
+  image: ['그림', '파일'],
+  reference: [],
+  disambig: ['동음이의'],
+  disambigTitle: ['동음이의'],
+  aliases: aliases$h,
+  infoboxes: infoboxes$h,
+  templates: citations$e,
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // malay template names → the core template they resolve to
-const aliases$o = {
+const aliases$g = {
   'afa': 'ipa',
   'bendera': 'flag',
   'bendera-ikon': 'flagicon',
@@ -5527,7 +4493,7 @@ const aliases$o = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeBook$k = {
+const citeBook$d = {
   template: 'cite book',
   map: {
     'author1-last': 'author',
@@ -5577,7 +4543,7 @@ const citeBook$k = {
     'credits': 'authors',
   },
 };
-const citeWeb$k = {
+const citeWeb$d = {
   template: 'cite web',
   map: {
     'accessdate': 'access-date',
@@ -5604,7 +4570,7 @@ const citeWeb$k = {
     'credits': 'authors',
   },
 };
-const citeJournal$b = {
+const citeJournal$9 = {
   template: 'cite journal',
   map: {
     'trans_title': 'trans-title',
@@ -5613,7 +4579,7 @@ const citeJournal$b = {
     'archivedate': 'archive-date',
   },
 };
-const internetquelle$b = {
+const internetquelle$9 = {
   template: 'cite web',
   map: {
     'titel': 'title',
@@ -5652,38 +4618,47 @@ const internetquelle$b = {
   },
 };
 
-const citations$l = {
-  'book reference': citeBook$k,
-  'cita web': citeWeb$k,
-  'cite paper': citeJournal$b,
-  'cite url': citeWeb$k,
-  'cite website': citeWeb$k,
-  'cite work': citeBook$k,
-  'cite-web': citeWeb$k,
-  'citebook': citeBook$k,
-  'citeweb': citeWeb$k,
-  'internetquelle': internetquelle$b,
-  'kutip buku': citeBook$k,
-  'kutip jurnal': citeJournal$b,
-  'kutip web': citeWeb$k,
-  'petik buku': citeBook$k,
-  'petik jurnal': citeJournal$b,
-  'petik web': citeWeb$k,
-  'web cite': citeWeb$k,
+const citations$d = {
+  'book reference': citeBook$d,
+  'cita web': citeWeb$d,
+  'cite paper': citeJournal$9,
+  'cite url': citeWeb$d,
+  'cite website': citeWeb$d,
+  'cite work': citeBook$d,
+  'cite-web': citeWeb$d,
+  'citebook': citeBook$d,
+  'citeweb': citeWeb$d,
+  'internetquelle': internetquelle$9,
+  'kutip buku': citeBook$d,
+  'kutip jurnal': citeJournal$9,
+  'kutip web': citeWeb$d,
+  'petik buku': citeBook$d,
+  'petik jurnal': citeJournal$9,
+  'petik web': citeWeb$d,
+  'web cite': citeWeb$d,
 };
 
-const infoboxes$o = ['kotak info taksonomi', 'kotak taksonomi'];
+const infoboxes$g = ['kotak info taksonomi', 'kotak taksonomi'];
 
 var ms = {
   lang: 'ms',
-  aliases: aliases$o,
-  infoboxes: infoboxes$o,
-  templates: citations$l,
+  enLang: 'malay',
+  category: ['kategori'],
+  redirect: ['lencong'],
+  stub: ['tunas'],
+  infobox: [],
+  image: ['fail', 'imej'],
+  reference: [],
+  disambig: ['nyahkekaburan'],
+  disambigTitle: [],
+  aliases: aliases$g,
+  infoboxes: infoboxes$g,
+  templates: citations$d,
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // dutch template names → the core template they resolve to
-const aliases$n = {
+const aliases$f = {
   'commonscat': 'commons cat',
   'coordinaten': 'coord',
   'coördinaten': 'coord',
@@ -5700,7 +4675,7 @@ const aliases$n = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeBook$j = {
+const citeBook$c = {
   template: 'cite book',
   map: {
     'taal': 'language',
@@ -5729,7 +4704,7 @@ const citeBook$j = {
     'jaar': 'year',
   },
 };
-const citeJournal$a = {
+const citeJournal$8 = {
   template: 'cite journal',
   map: {
     'tijdschrift': 'journal',
@@ -5755,7 +4730,7 @@ const citeJournal$a = {
     'paginas': 'pages',
   },
 };
-const citeWeb$j = {
+const citeWeb$c = {
   template: 'cite web',
   map: {
     'titel': 'title',
@@ -5784,159 +4759,36 @@ const citeWeb$j = {
   },
 };
 
-const citations$k = {
-  'citeer boek': citeBook$j,
-  'citeer journal': citeJournal$a,
-  'citeer web': citeWeb$j,
-  'citeweb': citeWeb$j,
-  'jayden54~nlwiki/voetnoot web': citeWeb$j,
-  'voetnoot web': citeWeb$j,
+const citations$c = {
+  'citeer boek': citeBook$c,
+  'citeer journal': citeJournal$8,
+  'citeer web': citeWeb$c,
+  'citeweb': citeWeb$c,
+  'jayden54~nlwiki/voetnoot web': citeWeb$c,
+  'voetnoot web': citeWeb$c,
 };
 
-const infoboxes$n = [];
+const infoboxes$f = [];
 
 var nl = {
   lang: 'nl',
-  aliases: aliases$n,
-  infoboxes: infoboxes$n,
-  templates: citations$k,
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// norwegian nynorsk template names → the core template they resolve to
-const aliases$m = {
-  'cite report': 'citation',
-  'citenews': 'citation',
-  'commons category': 'commons cat',
-  'commonscat': 'commons cat',
-  'commonskat': 'commons cat',
-  'coor title': 'coord',
-  'coor title dm': 'coord',
-  'flagg': 'flag',
-  'flaggbild': 'flagicon',
-  'flaggikon': 'flagicon',
-  'fotnoteliste': 'reflist',
-  'fødselsdato og alder': 'birth date and age',
-  'hovedartikkel': 'main',
-  'hovud': 'main',
-  'hovudartikkel': 'main',
-  'kjelde film': 'citation',
-  'kjeldeliste': 'reflist',
-  'koor': 'coord',
-  'koord': 'coord',
-  'koordinatar': 'coord',
-  'litaskrift': 'small',
-  'litenskrift': 'small',
-  'notelist': 'reflist',
-  'sf': 'sfn',
-  'utdjupande artikkel': 'main',
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// localized citation templates — the map renames params, then the core template parses
-
-const citeBook$i = {
-  template: 'cite book',
-  map: {
-    'tittel': 'title',
-    'author1-last': 'author',
-    'author-last': 'author',
-    'surname1': 'author',
-    'author-last1': 'author',
-    'subject1': 'author',
-    'surname': 'author',
-    'subject': 'author',
-    'given': 'first',
-    'author-first': 'first',
-    'given1': 'first',
-    'author-first1': 'first',
-    'author1-first': 'first',
-    'utgivelsesår': 'date',
-    'encyclopedia': 'website',
-    'encyclopaedia': 'website',
-    'dictionary': 'website',
-    'institution': 'publisher',
-    'forlag': 'publisher',
-    'editor-last': 'editor',
-    'editor-surname': 'editor',
-    'editor-last1': 'editor',
-    'editor-surname1': 'editor',
-    'editor1': 'editor',
-    'editor1-last': 'editor',
-    'editor1-surname': 'editor',
-    'redaktør': 'editor',
-    'place': 'location',
-    'p': 'page',
-    'pp': 'pages',
-    'contribution': 'chapter',
-    'entry': 'chapter',
-    'article': 'chapter',
-    'section': 'chapter',
-    'quotation': 'quote',
-    'number': 'issue',
-    'people': 'authors',
-    'host': 'authors',
-  },
-};
-const citeWeb$i = {
-  template: 'cite web',
-  map: {
-    'link': 'url',
-    'tittel': 'title',
-    'forfattar': 'author',
-    'etternamn': 'last',
-    'førenamn': 'first',
-    'år': 'year',
-    'redaktør': 'editor',
-    'språk': 'language',
-    'verk': 'work',
-    'sider': 'pages',
-    'utgjevar': 'publisher',
-    'vitja': 'access-date',
-    'accessdate': 'access-date',
-    'besøksdato': 'access-date',
-    'sitat': 'quote',
-    'nettstad': 'website',
-    'nettside': 'website',
-    'nettsted': 'website',
-  },
-};
-
-const citations$j = {
-  'cite book-en': citeBook$i,
-  'cite book/en': citeBook$i,
-  'cite website': citeWeb$i,
-  'cite work': citeBook$i,
-  'cite-web': citeWeb$i,
-  'citebook': citeBook$i,
-  'citeweb': citeWeb$i,
-  'kjelde av-medium': citeWeb$i,
-  'kjelde www': citeWeb$i,
-};
-
-const infoboxes$m = [
-  'prosjekt taksonomi/bruk av taksoboksen',
-  'prosjekt taksonomi/lag ein taksoboks',
-  'taksoboks',
-  'taksoboks2',
-  'taksobox',
-  'taksonomiboks',
-  'taksonomibox',
-  'taxoboks',
-  'taxonomiboks',
-  'taxonomibox',
-];
-
-var nn = {
-  lang: 'nn',
-  aliases: aliases$m,
-  infoboxes: infoboxes$m,
-  templates: citations$j,
+  enLang: 'dutch',
+  category: ['categorie'],
+  redirect: ['doorverwijzing'],
+  stub: ['beginnetje'],
+  infobox: ['infobox generiek'],
+  image: ['afbeelding', 'bestand'],
+  reference: ['bronnen'],
+  disambig: ['doorverwijspagina', 'dp'],
+  disambigTitle: [],
+  aliases: aliases$f,
+  infoboxes: infoboxes$f,
+  templates: citations$c,
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // norwegian template names → the core template they resolve to
-const aliases$l = {
+const aliases$e = {
   'catmore': 'main',
   'comcat': 'commons cat',
   'commons category': 'commons cat',
@@ -5967,7 +4819,7 @@ const aliases$l = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeBook$h = {
+const citeBook$b = {
   template: 'cite book',
   map: {
     'lenke': 'url',
@@ -6004,13 +4856,13 @@ const citeBook$h = {
     'sitat': 'quote',
   },
 };
-const citeJournal$9 = {
+const citeJournal$7 = {
   template: 'cite journal',
   map: {
     'sitat': 'quote',
   },
 };
-const citeWeb$h = {
+const citeWeb$b = {
   template: 'cite web',
   map: {
     'link': 'url',
@@ -6030,16 +4882,16 @@ const citeWeb$h = {
   },
 };
 
-const citations$i = {
-  'bok': citeBook$h,
-  'kilde artikkel': citeJournal$9,
-  'kilde bok': citeBook$h,
-  'kilde web': citeWeb$h,
-  'kilde www': citeWeb$h,
-  'tidsskriftsref': citeJournal$9,
+const citations$b = {
+  'bok': citeBook$b,
+  'kilde artikkel': citeJournal$7,
+  'kilde bok': citeBook$b,
+  'kilde web': citeWeb$b,
+  'kilde www': citeWeb$b,
+  'tidsskriftsref': citeJournal$7,
 };
 
-const infoboxes$l = [
+const infoboxes$e = [
   'infoboks taksoboks',
   'taksoboks',
   'taksoboks fugl',
@@ -6049,14 +4901,23 @@ const infoboxes$l = [
 
 var no = {
   lang: 'no',
-  aliases: aliases$l,
-  infoboxes: infoboxes$l,
-  templates: citations$i,
+  enLang: 'norwegian',
+  category: ['kategori'],
+  redirect: ['omdiriger', 'omdirigering'],
+  stub: ['spire'],
+  infobox: ['infoboks'],
+  image: ['bilde', 'fil'],
+  reference: [],
+  disambig: ['peker'],
+  disambigTitle: [],
+  aliases: aliases$e,
+  infoboxes: infoboxes$e,
+  templates: citations$b,
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // polish template names → the core template they resolve to
-const aliases$k = {
+const aliases$d = {
   'commonscat': 'commons cat',
   'flaga': 'flagicon',
   'koordynaty': 'coord',
@@ -6072,7 +4933,7 @@ const aliases$k = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citation$6 = {
+const citation$4 = {
   template: 'citation',
   map: {
     'autor': 'author',
@@ -6098,7 +4959,7 @@ const citation$6 = {
     'język': 'language',
   },
 };
-const citeJournal$8 = {
+const citeJournal$6 = {
   template: 'cite journal',
   map: {
     'nazwisko': 'last1',
@@ -6116,7 +4977,7 @@ const citeJournal$8 = {
     'język': 'language',
   },
 };
-const citeBook$g = {
+const citeBook$a = {
   template: 'cite book',
   map: {
     'nazwisko': 'last',
@@ -6132,7 +4993,7 @@ const citeBook$g = {
     'tytuł tomu': 'volume',
   },
 };
-const citeWeb$g = {
+const citeWeb$a = {
   template: 'cite web',
   map: {
     'tytuł': 'title',
@@ -6151,26 +5012,35 @@ const citeWeb$g = {
   },
 };
 
-const citations$h = {
-  'cytuj': citation$6,
-  'cytuj czasopismo': citeJournal$8,
-  'cytuj książkę': citeBook$g,
-  'cytuj pismo': citeJournal$8,
-  'cytuj stronę': citeWeb$g,
+const citations$a = {
+  'cytuj': citation$4,
+  'cytuj czasopismo': citeJournal$6,
+  'cytuj książkę': citeBook$a,
+  'cytuj pismo': citeJournal$6,
+  'cytuj stronę': citeWeb$a,
 };
 
-const infoboxes$k = ['takson infobox'];
+const infoboxes$d = ['takson infobox'];
 
 var pl = {
   lang: 'pl',
-  aliases: aliases$k,
-  infoboxes: infoboxes$k,
-  templates: citations$h,
+  enLang: 'polish',
+  category: ['kategoria'],
+  redirect: ['patrz', 'przekieruj', 'tam'],
+  stub: [],
+  infobox: [],
+  image: ['grafika', 'plik'],
+  reference: [],
+  disambig: ['ujednoznacznienie'],
+  disambigTitle: ['ujednoznacznienie'],
+  aliases: aliases$d,
+  infoboxes: infoboxes$d,
+  templates: citations$a,
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // portuguese template names → the core template they resolve to
-const aliases$j = {
+const aliases$c = {
   'afi': 'ipa',
   'ani': 'birth date and age',
   'ap': 'main',
@@ -6207,7 +5077,7 @@ const aliases$j = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeJournal$7 = {
+const citeJournal$5 = {
   template: 'cite journal',
   map: {
     'título': 'title',
@@ -6252,7 +5122,7 @@ const citeJournal$7 = {
     'arquivodata': 'archive-date',
   },
 };
-const citeBook$f = {
+const citeBook$9 = {
   template: 'cite book',
   map: {
     'ultimo': 'author',
@@ -6312,7 +5182,7 @@ const citeBook$f = {
     'titulo': 'title',
   },
 };
-const citeWeb$f = {
+const citeWeb$9 = {
   template: 'cite web',
   map: {
     'titulo': 'title',
@@ -6376,7 +5246,7 @@ const citeWeb$f = {
     'credits': 'authors',
   },
 };
-const internetquelle$a = {
+const internetquelle$8 = {
   template: 'cite web',
   map: {
     'titel': 'title',
@@ -6524,40 +5394,49 @@ const literatur$1 = {
   },
 };
 
-const citations$g = {
-  'article': citeJournal$7,
-  'cita libro': citeBook$f,
-  'cita publicación periódica': citeJournal$7,
-  'cita web': citeWeb$f,
-  'citar livro': citeBook$f,
-  'citar manual': citeBook$f,
-  'citar periodico': citeJournal$7,
-  'citar periódico': citeJournal$7,
-  'citar página': citeWeb$f,
-  'citar web': citeWeb$f,
-  'citarlivro': citeBook$f,
-  'cite chapter': citeBook$f,
-  'cite manual': citeBook$f,
-  'cite paper': citeJournal$7,
-  'citeer web': citeWeb$f,
-  'citeweb': citeWeb$f,
-  'internetquelle': internetquelle$a,
-  'lien web': citeWeb$f,
+const citations$9 = {
+  'article': citeJournal$5,
+  'cita libro': citeBook$9,
+  'cita publicación periódica': citeJournal$5,
+  'cita web': citeWeb$9,
+  'citar livro': citeBook$9,
+  'citar manual': citeBook$9,
+  'citar periodico': citeJournal$5,
+  'citar periódico': citeJournal$5,
+  'citar página': citeWeb$9,
+  'citar web': citeWeb$9,
+  'citarlivro': citeBook$9,
+  'cite chapter': citeBook$9,
+  'cite manual': citeBook$9,
+  'cite paper': citeJournal$5,
+  'citeer web': citeWeb$9,
+  'citeweb': citeWeb$9,
+  'internetquelle': internetquelle$8,
+  'lien web': citeWeb$9,
   'literatur': literatur$1,
-  'ouvrage': citeBook$f,
-  'ref-livro': citeBook$f,
-  'ref-web': citeWeb$f,
-  'referência a livro': citeBook$f,
-  'webbref': citeWeb$f,
+  'ouvrage': citeBook$9,
+  'ref-livro': citeBook$9,
+  'ref-web': citeWeb$9,
+  'referência a livro': citeBook$9,
+  'webbref': citeWeb$9,
 };
 
-const infoboxes$j = ['ficha de taxón', 'info/taxonomia', 'takson infobox', 'taxoboxe'];
+const infoboxes$c = ['ficha de taxón', 'info/taxonomia', 'takson infobox', 'taxoboxe'];
 
 var pt = {
   lang: 'pt',
-  aliases: aliases$j,
-  infoboxes: infoboxes$j,
-  templates: citations$g,
+  enLang: 'portuguese',
+  category: ['cat', 'categoria'],
+  redirect: ['redirecionamento'],
+  stub: ['esboço'],
+  infobox: ['info', 'infocaixa'],
+  image: ['arquivo', 'ficheiro', 'imagem'],
+  reference: [],
+  disambig: ['desambiguação'],
+  disambigTitle: ['desambiguação'],
+  aliases: aliases$c,
+  infoboxes: infoboxes$c,
+  templates: citations$9,
   gated: {
     'pbpe': 0, // português brasileiro/europeu — keeps the first form
   },
@@ -6565,7 +5444,7 @@ var pt = {
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // romanian template names → the core template they resolve to
-const aliases$i = {
+const aliases$b = {
   'afi': 'ipa',
   'ap': 'main',
   'arp': 'main',
@@ -6605,7 +5484,7 @@ const aliases$i = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeBook$e = {
+const citeBook$8 = {
   template: 'cite book',
   map: {
     'nume': 'last',
@@ -6657,7 +5536,7 @@ const citeBook$e = {
     'citat': 'quote',
   },
 };
-const citeWeb$e = {
+const citeWeb$8 = {
   template: 'cite web',
   map: {
     'nume': 'last',
@@ -6672,7 +5551,7 @@ const citeWeb$e = {
     'titlu': 'title',
   },
 };
-const citeJournal$6 = {
+const citeJournal$4 = {
   template: 'cite journal',
   map: {
     'nume': 'author',
@@ -6703,7 +5582,7 @@ const citeJournal$6 = {
     'archivedate': 'archive-date',
   },
 };
-const citation$5 = {
+const citation$3 = {
   template: 'citation',
   map: {
     'trans_title': 'trans-title',
@@ -6792,47 +5671,56 @@ const literatur = {
   },
 };
 
-const citations$f = {
-  'cita libro': citeBook$e,
-  'cita news': citeWeb$e,
-  'cita publicación': citeJournal$6,
-  'cita web': citeWeb$e,
-  'citace monografie': citeBook$e,
-  'citar web': citeWeb$e,
-  'citare': citation$5,
-  'citat carte': citeBook$e,
-  'citat carte-lua': citeBook$e,
-  'citat revistă': citeJournal$6,
-  'citat web': citeWeb$e,
-  'citat web-lua': citeWeb$e,
-  'citat website': citeWeb$e,
-  'citați jurnalul': citeJournal$6,
-  'citați web': citeWeb$e,
-  'cite paper': citeJournal$6,
-  'cite revistă': citeJournal$6,
-  'cite web2': citeWeb$e,
-  'cite website': citeWeb$e,
-  'citează cartea': citeBook$e,
-  'citează web': citeWeb$e,
-  'citeweb': citeWeb$e,
-  'cîte web': citeWeb$e,
-  'link web': citeWeb$e,
+const citations$8 = {
+  'cita libro': citeBook$8,
+  'cita news': citeWeb$8,
+  'cita publicación': citeJournal$4,
+  'cita web': citeWeb$8,
+  'citace monografie': citeBook$8,
+  'citar web': citeWeb$8,
+  'citare': citation$3,
+  'citat carte': citeBook$8,
+  'citat carte-lua': citeBook$8,
+  'citat revistă': citeJournal$4,
+  'citat web': citeWeb$8,
+  'citat web-lua': citeWeb$8,
+  'citat website': citeWeb$8,
+  'citați jurnalul': citeJournal$4,
+  'citați web': citeWeb$8,
+  'cite paper': citeJournal$4,
+  'cite revistă': citeJournal$4,
+  'cite web2': citeWeb$8,
+  'cite website': citeWeb$8,
+  'citează cartea': citeBook$8,
+  'citează web': citeWeb$8,
+  'citeweb': citeWeb$8,
+  'cîte web': citeWeb$8,
+  'link web': citeWeb$8,
   'literatur': literatur,
-  'web cite': citeWeb$e,
+  'web cite': citeWeb$8,
 };
 
-const infoboxes$i = ['casetă taxonomie', 'cutietaxonomie'];
+const infoboxes$b = ['casetă taxonomie', 'cutietaxonomie'];
 
 var ro = {
   lang: 'ro',
-  aliases: aliases$i,
-  infoboxes: infoboxes$i,
-  templates: citations$f,
+  enLang: 'romanian',
+  category: ['categorie'],
+  redirect: ['redirecteaza'],
+  stub: ['ciot'],
+  infobox: ['infocasetă'],
+  image: ['fişier', 'fișier', 'imagine'],
+  reference: [],
+  disambig: ['dezambiguizare'],
+  disambigTitle: [],
+  aliases: aliases$b,
+  infoboxes: infoboxes$b,
+  templates: citations$8,
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // russian template names → the core template they resolve to
-const aliases$h = {
+const aliases$a = {
   'bandiera': 'flagicon',
   'catmain': 'main',
   'cc': 'commons cat',
@@ -6890,7 +5778,7 @@ const aliases$h = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeBook$d = {
+const citeBook$7 = {
   template: 'cite book',
   map: {
     'год': 'year',
@@ -6907,14 +5795,14 @@ const citeBook$d = {
     'lang': 'language',
   },
 };
-const citeJournal$5 = {
+const citeJournal$3 = {
   template: 'cite journal',
   map: {
     'год': 'year',
     'lang': 'language',
   },
 };
-const citeWeb$d = {
+const citeWeb$7 = {
   template: 'cite web',
   map: {
     'datepublished': 'date',
@@ -6924,7 +5812,7 @@ const citeWeb$d = {
     'accessdate': 'access-date',
   },
 };
-const internetquelle$9 = {
+const internetquelle$7 = {
   template: 'cite web',
   map: {
     'titel': 'title',
@@ -6946,180 +5834,44 @@ const internetquelle$9 = {
   },
 };
 
-const citations$e = {
-  'cita libro': citeBook$d,
-  'cita publicación': citeJournal$5,
-  'cita web': citeWeb$d,
-  'cite mag': citeJournal$5,
-  'cite magazine': citeJournal$5,
-  'cite paper': citeJournal$5,
-  'cite periodical': citeJournal$5,
-  'cite work': citeBook$d,
-  'citejournal': citeJournal$5,
-  'citeweb': citeWeb$d,
-  'cw': citeWeb$d,
-  'cytuj książkę': citeBook$d,
-  'internetquelle': internetquelle$9,
-  'веб-сайт': citeWeb$d,
+const citations$7 = {
+  'cita libro': citeBook$7,
+  'cita publicación': citeJournal$3,
+  'cita web': citeWeb$7,
+  'cite mag': citeJournal$3,
+  'cite magazine': citeJournal$3,
+  'cite paper': citeJournal$3,
+  'cite periodical': citeJournal$3,
+  'cite work': citeBook$7,
+  'citejournal': citeJournal$3,
+  'citeweb': citeWeb$7,
+  'cw': citeWeb$7,
+  'cytuj książkę': citeBook$7,
+  'internetquelle': internetquelle$7,
+  'веб-сайт': citeWeb$7,
 };
 
-const infoboxes$h = [];
+const infoboxes$a = [];
 
 var ru = {
   lang: 'ru',
-  aliases: aliases$h,
-  infoboxes: infoboxes$h,
-  templates: citations$e,
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// serbo-croatian template names → the core template they resolve to
-const aliases$g = {
-  'category commons': 'commons cat',
-  'cite journal2': 'cite journal',
-  'citiranje časopisa': 'cite journal',
-  'commons category': 'commons cat',
-  'commons category-lat': 'commons cat',
-  'commonscat': 'commons cat',
-  'commonscat-lat': 'commons cat',
-  'commonscategory': 'commons cat',
-  'datum rođenja i godine': 'birth date and age',
-  'flag icon': 'flagicon',
-  'glavni': 'main',
-  'glavni članak': 'main',
-  'glavni-lat': 'main',
-  'ikonazastave': 'flagicon',
-  'izvori': 'reflist',
-  'kategorija na ostavi': 'commons cat',
-  'main article-lat': 'main',
-  'main-lat': 'main',
-  'mainarticle': 'main',
-  'malo': 'small',
-  'mfa': 'ipa',
-  'ostava': 'commons cat',
-  'portal-lat': 'portal',
-  'poseban članak': 'main',
-  'ref-list': 'reflist',
-  'reference': 'reflist',
-  'reflista': 'reflist',
-  'refs': 'reflist',
-  'refspisak': 'reflist',
-  'spisref': 'reflist',
-  'spremnik': 'commons cat',
-  'startdate': 'start',
-  'zas': 'flagicon',
-  'zastava': 'flag',
-  'zd': 'flagicon',
-  'zid': 'flag',
-  'зд': 'flagicon',
-  'извори': 'reflist',
-  'ипа': 'ipa',
-  'координате': 'coord',
-  'маин': 'main',
-  'мфа': 'ipa',
-  'рефлист': 'reflist',
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// localized citation templates — the map renames params, then the core template parses
-
-const citeBook$c = {
-  template: 'cite book',
-  map: {
-    'author-last': 'author',
-    'surname': 'author',
-    'subject': 'author',
-    'author1-last': 'author',
-    'author-last1': 'author',
-    'surname1': 'author',
-    'subject1': 'author',
-    'given': 'first',
-    'author-first': 'first',
-    'given1': 'first',
-    'author-first1': 'first',
-    'author1-first': 'first',
-    'institution': 'publisher',
-    'editor-last': 'editor',
-    'editor-surname': 'editor',
-    'editor-last1': 'editor',
-    'editor-surname1': 'editor',
-    'editor1': 'editor',
-    'editor1-last': 'editor',
-    'editor1-surname': 'editor',
-    'place': 'location',
-    'p': 'page',
-    'pp': 'pages',
-    'contribution': 'chapter',
-    'entry': 'chapter',
-    'article': 'chapter',
-    'section': 'chapter',
-    'quotation': 'quote',
-    'number': 'issue',
-  },
-};
-const citeWeb$c = {
-  template: 'cite web',
-  map: {
-    'accessdate': 'access-date',
-    'author1-last': 'author',
-    'author-last': 'author',
-    'surname1': 'author',
-    'author-last1': 'author',
-    'subject1': 'author',
-    'surname': 'author',
-    'subject': 'author',
-    'given': 'first',
-    'author-first': 'first',
-    'given1': 'first',
-    'author-first1': 'first',
-    'author1-first': 'first',
-    'editor-last': 'editor',
-    'editor1-last': 'editor',
-    'lang': 'language',
-    'archiveurl': 'archive-url',
-    'archivedate': 'archive-date',
-  },
-};
-
-const citations$d = {
-  'book reference': citeBook$c,
-  'cite web-lat': citeWeb$c,
-  'citebook': citeBook$c,
-  'citeweb': citeWeb$c,
-  'citiranje knjige': citeBook$c,
-  'citiranje weba': citeWeb$c,
-  'knjiga': citeBook$c,
-  'knjiga (sr)': citeBook$c,
-  'web cite': citeWeb$c,
-  'web reference': citeWeb$c,
-};
-
-const infoboxes$g = [
-  'infokutija takson',
-  'infokutija taksonomija',
-  'infokvir takson',
-  'infokvir taksonomija',
-  'infookvir takson',
-  'infookvir taksonomija',
-  'taksokvir',
-  'taksonomska infokutija',
-  'taksonomska kutija',
-  'taksonomski infokvir',
-  'taksonomski infookvir',
-  'taksonomski okvir',
-  'taxobox-lat',
-];
-
-var sh = {
-  lang: 'sh',
-  aliases: aliases$g,
-  infoboxes: infoboxes$g,
-  templates: citations$d,
+  enLang: 'russian',
+  category: ['к', 'категория'],
+  redirect: ['перенапр', 'перенаправление'],
+  stub: ['заготовка'],
+  infobox: ['карточка'],
+  image: ['изображение', 'файл'],
+  reference: ['примечания'],
+  disambig: ['неоднозначность'],
+  disambigTitle: ['значения'],
+  aliases: aliases$a,
+  infoboxes: infoboxes$a,
+  templates: citations$7,
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // simple-english template names → the core template they resolve to
-const aliases$f = {
+const aliases$9 = {
   'bibisbn': 'cite journal',
   'birthdate and age': 'birth date and age',
   'birthdateandage': 'birth date and age',
@@ -7162,7 +5914,7 @@ const aliases$f = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeBook$b = {
+const citeBook$6 = {
   template: 'cite book',
   map: {
     'author1-last': 'author',
@@ -7212,7 +5964,7 @@ const citeBook$b = {
     'credits': 'authors',
   },
 };
-const citeWeb$b = {
+const citeWeb$6 = {
   template: 'cite web',
   map: {
     'author1-last': 'author',
@@ -7234,7 +5986,7 @@ const citeWeb$b = {
     'host': 'authors',
   },
 };
-const citation$4 = {
+const citation$2 = {
   template: 'citation',
   map: {
     'encyclopedia': 'website',
@@ -7253,7 +6005,7 @@ const citation$4 = {
     'editors': 'editor',
   },
 };
-const internetquelle$8 = {
+const internetquelle$6 = {
   template: 'cite web',
   map: {
     'titel': 'title',
@@ -7287,34 +6039,43 @@ const internetquelle$8 = {
   },
 };
 
-const citations$c = {
-  'book source': citeBook$b,
-  'cita web': citeWeb$b,
-  'cite manual': citeBook$b,
-  'cite study': citation$4,
-  'cite web/german': citeWeb$b,
-  'cite website': citeWeb$b,
-  'cite work': citeBook$b,
-  'citebook': citeBook$b,
-  'citebooks': citeBook$b,
-  'citeweb': citeWeb$b,
-  'internetquelle': internetquelle$8,
-  'web link': citeWeb$b,
-  'web-cite': citeWeb$b,
+const citations$6 = {
+  'book source': citeBook$6,
+  'cita web': citeWeb$6,
+  'cite manual': citeBook$6,
+  'cite study': citation$2,
+  'cite web/german': citeWeb$6,
+  'cite website': citeWeb$6,
+  'cite work': citeBook$6,
+  'citebook': citeBook$6,
+  'citebooks': citeBook$6,
+  'citeweb': citeWeb$6,
+  'internetquelle': internetquelle$6,
+  'web link': citeWeb$6,
+  'web-cite': citeWeb$6,
 };
 
-const infoboxes$f = ['tx'];
+const infoboxes$9 = ['tx'];
 
 var simple = {
   lang: 'simple',
-  aliases: aliases$f,
-  infoboxes: infoboxes$f,
-  templates: citations$c,
+  enLang: 'simple-english',
+  category: [],
+  redirect: [],
+  stub: [],
+  infobox: [],
+  image: [],
+  reference: [],
+  disambig: [],
+  disambigTitle: [],
+  aliases: aliases$9,
+  infoboxes: infoboxes$9,
+  templates: citations$6,
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // slovak template names → the core template they resolve to
-const aliases$e = {
+const aliases$8 = {
   'citácia elektronického dokumentu': 'cite web',
   'citácia harvard': 'citation',
   'citácia knihy': 'cite book',
@@ -7330,327 +6091,27 @@ const aliases$e = {
   'súradnice': 'coord',
 };
 
-const infoboxes$e = [];
+const infoboxes$8 = [];
 
 var sk = {
   lang: 'sk',
-  aliases: aliases$e,
-  infoboxes: infoboxes$e,
+  enLang: 'slovak',
+  category: ['kategória'],
+  redirect: ['presmeruj', 'přesměruj'],
+  stub: ['výhonok'],
+  infobox: [],
+  image: ['obrázok', 'súbor'],
+  reference: [],
+  disambig: ['rozlišovacia stránka'],
+  disambigTitle: [],
+  aliases: aliases$8,
+  infoboxes: infoboxes$8,
   templates: {},
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// slovenian template names → the core template they resolve to
-const aliases$d = {
-  'cite newspaper': 'cite journal',
-  'commons category': 'commons cat',
-  'commonscat': 'commons cat',
-  'coords': 'coord',
-  'country': 'flag',
-  'datum rojstva in starost': 'birth date and age',
-  'flag icon': 'flagicon',
-  'geopolje koor/peskovnik': 'coord',
-  'glavni': 'main',
-  'glavno': 'main',
-  'ikona zastave': 'flagicon',
-  'ikonazastave': 'flagicon',
-  'kategorija v zbirki': 'commons cat',
-  'katzbirke': 'commons cat',
-  'koord': 'coord',
-  'koord novi': 'coord',
-  'main articles': 'main',
-  'navedi časopis': 'cite journal',
-  'portal box': 'portal',
-  'portalpar': 'portal',
-  'refsez': 'reflist',
-  'seznam referenc': 'reflist',
-  'shortened footnote template': 'sfn',
-  'sklici': 'reflist',
-  'zastava': 'flag',
-  'začetni datum': 'start',
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// localized citation templates — the map renames params, then the core template parses
-
-const citation$3 = {
-  template: 'citation',
-  map: {
-    'author1-last': 'author',
-    'author-last': 'author',
-    'surname1': 'author',
-    'author-last1': 'author',
-    'subject1': 'author',
-    'surname': 'author',
-    'host': 'author',
-    'subject': 'author',
-    'given': 'first',
-    'author-first': 'first',
-    'given1': 'first',
-    'author-first1': 'first',
-    'author1-first': 'first',
-    'periodical': 'website',
-    'number': 'issue',
-    'contribution': 'chapter',
-    'entry': 'chapter',
-    'article': 'chapter',
-    'section': 'chapter',
-    'place': 'location',
-    'institution': 'publisher',
-    'editor-last': 'editor',
-    'editor-surname': 'editor',
-    'editor-last1': 'editor',
-    'editor-surname1': 'editor',
-    'editor1': 'editor',
-    'editor1-last': 'editor',
-    'editor1-surname': 'editor',
-  },
-};
-const citeWeb$a = {
-  template: 'cite web',
-  map: {
-    'accessdate': 'access-date',
-    'author1-last': 'author',
-    'author-last': 'author',
-    'surname1': 'author',
-    'author-last1': 'author',
-    'subject1': 'author',
-    'surname': 'author',
-    'subject': 'author',
-    'given': 'first',
-    'author-first': 'first',
-    'given1': 'first',
-    'author-first1': 'first',
-    'author1-first': 'first',
-    'editor-last': 'editor',
-    'editor1-last': 'editor',
-    'lang': 'language',
-    'archiveurl': 'archive-url',
-    'archivedate': 'archive-date',
-  },
-};
-const internetquelle$7 = {
-  template: 'cite web',
-  map: {
-    'titel': 'title',
-    'autor': 'author',
-    'werk': 'work',
-    'hrsg': 'publisher',
-    'datum': 'date',
-    'seiten': 'pages',
-    'sprache': 'language',
-    'abruf': 'access-date',
-    'zugriff': 'access-date',
-    'archiv-url': 'archive-url',
-    'archiv-datum': 'archive-date',
-    'accessdate': 'access-date',
-    'author1-last': 'author',
-    'author-last': 'author',
-    'surname1': 'author',
-    'author-last1': 'author',
-    'subject1': 'author',
-    'surname': 'author',
-    'subject': 'author',
-    'given': 'first',
-    'author-first': 'first',
-    'given1': 'first',
-    'author-first1': 'first',
-    'author1-first': 'first',
-    'editor-last': 'editor',
-    'editor1-last': 'editor',
-    'lang': 'language',
-    'archiveurl': 'archive-url',
-    'archivedate': 'archive-date',
-  },
-};
-const citeBook$a = {
-  template: 'cite book',
-  map: {
-    'author1-last': 'author',
-    'author-last': 'author',
-    'surname1': 'author',
-    'author-last1': 'author',
-    'subject1': 'author',
-    'surname': 'author',
-    'subject': 'author',
-    'given': 'first',
-    'author-first': 'first',
-    'given1': 'first',
-    'author-first1': 'first',
-    'author1-first': 'first',
-    'institution': 'publisher',
-    'editor-last': 'editor',
-    'editor-surname': 'editor',
-    'editor-last1': 'editor',
-    'editor-surname1': 'editor',
-    'editor1': 'editor',
-    'editor1-last': 'editor',
-    'editor1-surname': 'editor',
-    'place': 'location',
-    'p': 'page',
-    'pp': 'pages',
-    'contribution': 'chapter',
-    'entry': 'chapter',
-    'article': 'chapter',
-    'section': 'chapter',
-    'quotation': 'quote',
-    'number': 'issue',
-  },
-};
-
-const citations$b = {
-  'citat': citation$3,
-  'citat/new': citation$3,
-  'citation/new': citation$3,
-  'cite sports-reference': citeWeb$a,
-  'cite website': citeWeb$a,
-  'citeweb': citeWeb$a,
-  'internetquelle': internetquelle$7,
-  'navedi citat': citation$3,
-  'navedi knjigo': citeBook$a,
-  'navedi knjigo/lua': citeBook$a,
-  'navedi splet': citeWeb$a,
-  'navedi splet/lua': citeWeb$a,
-  'navedi splet/old': citeWeb$a,
-  'test-cite web': citeWeb$a,
-};
-
-const infoboxes$d = ['taksonomka'];
-
-var sl = {
-  lang: 'sl',
-  aliases: aliases$d,
-  infoboxes: infoboxes$d,
-  templates: citations$b,
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// albanian template names → the core template they resolve to
-const aliases$c = {
-  'artikulli kryesor': 'main',
-  'birth date and age/femër': 'birth date and age',
-  'birth date and age/mashkull': 'birth date and age',
-  'cito revistë shk': 'cite journal',
-  'commonscat': 'commons cat',
-  'commonskat': 'commons cat',
-  'coordinates': 'coord',
-  'date of birth and age': 'birth date and age',
-  'ditëlindja dhe mosha': 'birth date and age',
-  'ditëlindja dhe mosha/femër': 'birth date and age',
-  'ditëlindja dhe mosha/mashkull': 'birth date and age',
-  'dlm': 'birth date and age',
-  'dm': 'birth date and age',
-  'kryesor': 'main',
-  'kryesore': 'main',
-  'referencat': 'reflist',
-  'referime': 'reflist',
-  'sapi': 'ipa',
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// localized citation templates — the map renames params, then the core template parses
-
-const citation$2 = {
-  template: 'citation',
-  map: {
-    'encyclopedia': 'website',
-    'encyclopaedia': 'website',
-    'dictionary': 'website',
-    'periodical': 'website',
-    'number': 'issue',
-    'place': 'location',
-    'editor-last': 'editor',
-    'editor-surname': 'editor',
-    'editor-last1': 'editor',
-    'editor-surname1': 'editor',
-    'editor1': 'editor',
-    'editor1-last': 'editor',
-    'editor1-surname': 'editor',
-  },
-};
-const citeWeb$9 = {
-  template: 'cite web',
-  map: {
-    'accessdate': 'access-date',
-    'author1-last': 'author',
-    'author-last': 'author',
-    'surname1': 'author',
-    'author-last1': 'author',
-    'subject1': 'author',
-    'surname': 'author',
-    'subject': 'author',
-    'given': 'first',
-    'author-first': 'first',
-    'given1': 'first',
-    'author-first1': 'first',
-    'author1-first': 'first',
-    'editor-last': 'editor',
-    'editor1-last': 'editor',
-    'lang': 'language',
-    'gjuha': 'language',
-    'archiveurl': 'archive-url',
-    'archivedate': 'archive-date',
-    'people': 'authors',
-    'host': 'authors',
-  },
-};
-const internetquelle$6 = {
-  template: 'cite web',
-  map: {
-    'titel': 'title',
-    'autor': 'author',
-    'werk': 'work',
-    'hrsg': 'publisher',
-    'datum': 'date',
-    'seiten': 'pages',
-    'sprache': 'language',
-    'abruf': 'access-date',
-    'zugriff': 'access-date',
-    'archiv-url': 'archive-url',
-    'archiv-datum': 'archive-date',
-    'accessdate': 'access-date',
-    'author1-last': 'author',
-    'author-last': 'author',
-    'surname1': 'author',
-    'author-last1': 'author',
-    'subject1': 'author',
-    'surname': 'author',
-    'subject': 'author',
-    'given': 'first',
-    'author-first': 'first',
-    'given1': 'first',
-    'author-first1': 'first',
-    'author1-first': 'first',
-    'editor-last': 'editor',
-    'editor1-last': 'editor',
-    'lang': 'language',
-    'gjuha': 'language',
-    'archiveurl': 'archive-url',
-    'archivedate': 'archive-date',
-    'people': 'authors',
-    'host': 'authors',
-  },
-};
-
-const citations$a = {
-  'citim': citation$2,
-  'cito uebin': citeWeb$9,
-  'cito web': citeWeb$9,
-  'internetquelle': internetquelle$6,
-};
-
-const infoboxes$c = [];
-
-var sq = {
-  lang: 'sq',
-  aliases: aliases$c,
-  infoboxes: infoboxes$c,
-  templates: citations$a,
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // serbian template names → the core template they resolve to
-const aliases$b = {
+const aliases$7 = {
   'ccat': 'commons cat',
   'ccat-lat': 'commons cat',
   'citation/lua': 'citation',
@@ -7717,7 +6178,7 @@ const aliases$b = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeWeb$8 = {
+const citeWeb$5 = {
   template: 'cite web',
   map: {
     'accessdate': 'access-date',
@@ -7744,7 +6205,7 @@ const citeWeb$8 = {
     'credits': 'authors',
   },
 };
-const citeBook$9 = {
+const citeBook$5 = {
   template: 'cite book',
   map: {
     'author1-last': 'author',
@@ -7833,35 +6294,44 @@ const internetquelle$5 = {
   },
 };
 
-const citations$9 = {
-  'cita web': citeWeb$8,
-  'cite chapter': citeBook$9,
-  'cite manual': citeBook$9,
-  'cite website': citeWeb$8,
-  'cite work': citeBook$9,
-  'citebook': citeBook$9,
-  'citeweb': citeWeb$8,
-  'citiranje weba': citeWeb$8,
+const citations$5 = {
+  'cita web': citeWeb$5,
+  'cite chapter': citeBook$5,
+  'cite manual': citeBook$5,
+  'cite website': citeWeb$5,
+  'cite work': citeBook$5,
+  'citebook': citeBook$5,
+  'citeweb': citeWeb$5,
+  'citiranje weba': citeWeb$5,
   'internetquelle': internetquelle$5,
-  'web cite': citeWeb$8,
-  'web kaynağı': citeWeb$8,
-  'цитат веба': citeWeb$8,
-  'ците веб': citeWeb$8,
-  'цитирање књиге': citeBook$9,
+  'web cite': citeWeb$5,
+  'web kaynağı': citeWeb$5,
+  'цитат веба': citeWeb$5,
+  'ците веб': citeWeb$5,
+  'цитирање књиге': citeBook$5,
 };
 
-const infoboxes$b = [];
+const infoboxes$7 = [];
 
 var sr = {
   lang: 'sr',
-  aliases: aliases$b,
-  infoboxes: infoboxes$b,
-  templates: citations$9,
+  enLang: 'serbian',
+  category: ['kategorija', 'категорија'],
+  redirect: ['preusmeri', 'preusmjeri', 'преусмери', 'преусмјери'],
+  stub: ['клица'],
+  infobox: ['инфокутија'],
+  image: ['datoteka', 'fotografija', 'slika', 'датотека', 'слика', 'фотографија'],
+  reference: [],
+  disambig: ['вишезначна одредница'],
+  disambigTitle: [],
+  aliases: aliases$7,
+  infoboxes: infoboxes$7,
+  templates: citations$5,
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // swedish template names → the core template they resolve to
-const aliases$a = {
+const aliases$6 = {
   '+portal': 'portal',
   'catmore': 'main',
   'cite letter': 'citation',
@@ -7905,242 +6375,27 @@ const aliases$a = {
   'ålder': 'birth date and age',
 };
 
-const infoboxes$a = [];
+const infoboxes$6 = [];
 
 var sv = {
   lang: 'sv',
-  aliases: aliases$a,
-  infoboxes: infoboxes$a,
+  enLang: 'swedish',
+  category: ['kategori'],
+  redirect: ['omdirigering'],
+  stub: [],
+  infobox: ['faktamall'],
+  image: ['bild', 'fil'],
+  reference: ['referenser'],
+  disambig: ['förgrening'],
+  disambigTitle: [],
+  aliases: aliases$6,
+  infoboxes: infoboxes$6,
   templates: {},
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// tamil template names → the core template they resolve to
-const aliases$9 = {
-  'birthdate and age': 'birth date and age',
-  'ccat': 'commons cat',
-  'cite gazette': 'citation',
-  'commoncat': 'commons cat',
-  'commons category': 'commons cat',
-  'commons+cat': 'commons cat',
-  'commons2': 'commons cat',
-  'commonscat': 'commons cat',
-  'coor at d': 'coord',
-  'coor at dm': 'coord',
-  'coor at dms': 'coord',
-  'coor d': 'coord',
-  'coor title d': 'coord',
-  'coor title dm': 'coord',
-  'coordinates': 'coord',
-  'coords': 'coord',
-  'flag icon': 'flagicon',
-  'main articles': 'main',
-  'mainarticle': 'main',
-  'portalpar': 'portal',
-  'ref list': 'reflist',
-  'refs': 'reflist',
-  'seemain': 'main',
-  'snf': 'sfn',
-  'startdate': 'start',
-  'கொடி': 'flag',
-  'சான்று': 'reflist',
-  'பிறப்பும் அகவையும்': 'birth date and age',
-  'புவியியல் அமைவு': 'coord',
-  'முதன்மை': 'main',
-  'முதன்மைக் கட்டுரை': 'main',
-  'மேற்கோள்பட்டியல்': 'reflist',
-  'வலைவாசல்': 'portal',
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// localized citation templates — the map renames params, then the core template parses
-
-const citeBook$8 = {
-  template: 'cite book',
-  map: {
-    'author1-last': 'author',
-    'author-last': 'author',
-    'surname1': 'author',
-    'author-last1': 'author',
-    'subject1': 'author',
-    'surname': 'author',
-    'subject': 'author',
-    'given': 'first',
-    'author-first': 'first',
-    'given1': 'first',
-    'author-first1': 'first',
-    'author1-first': 'first',
-    'institution': 'publisher',
-    'editor-last': 'editor',
-    'editor-surname': 'editor',
-    'editor-last1': 'editor',
-    'editor-surname1': 'editor',
-    'editor1': 'editor',
-    'editor1-last': 'editor',
-    'editor1-surname': 'editor',
-    'place': 'location',
-    'p': 'page',
-    'pp': 'pages',
-    'contribution': 'chapter',
-    'entry': 'chapter',
-    'article': 'chapter',
-    'section': 'chapter',
-    'quotation': 'quote',
-    'number': 'issue',
-  },
-};
-const citeJournal$4 = {
-  template: 'cite journal',
-  map: {
-    'trans_title': 'trans-title',
-    'accessdate': 'access-date',
-    'archiveurl': 'archive-url',
-    'archivedate': 'archive-date',
-  },
-};
-
-const citations$8 = {
-  'cite books': citeBook$8,
-  'cite paper': citeJournal$4,
-  'citebook': citeBook$8,
-  'citejournal': citeJournal$4,
-};
-
-const infoboxes$9 = [];
-
-var ta = {
-  lang: 'ta',
-  aliases: aliases$9,
-  infoboxes: infoboxes$9,
-  templates: citations$8,
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// telugu template names → the core template they resolve to
-const aliases$8 = {
-  'ccat': 'commons cat',
-  'cite paper': 'cite journal',
-  'commons category': 'commons cat',
-  'commonscat': 'commons cat',
-  'coor at d': 'coord',
-  'coor at dm': 'coord',
-  'coor at dms': 'coord',
-  'coor title d': 'coord',
-  'coordinates': 'coord',
-  'coords': 'coord',
-  'country': 'flag',
-  'flag icon': 'flagicon',
-  'launch date': 'start',
-  'main2': 'main',
-  'mainarticle': 'main',
-  'refs': 'reflist',
-  'release date': 'start',
-  'seemain': 'main',
-  'shortened footnote template': 'sfn',
-  'చిన్న': 'small',
-  'పతాకం': 'flag',
-  'మూలాల జాబితా': 'reflist',
-  'మూలాలజాబితా': 'reflist',
-  'మూలాలు': 'reflist',
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// localized citation templates — the map renames params, then the core template parses
-
-const citeBook$7 = {
-  template: 'cite book',
-  map: {
-    'author1-last': 'author',
-    'author-last': 'author',
-    'surname1': 'author',
-    'author-last1': 'author',
-    'subject1': 'author',
-    'surname': 'author',
-    'subject': 'author',
-    'given': 'first',
-    'author-first': 'first',
-    'given1': 'first',
-    'author-first1': 'first',
-    'author1-first': 'first',
-    'air-date': 'date',
-    'airdate': 'date',
-    'encyclopedia': 'website',
-    'encyclopaedia': 'website',
-    'dictionary': 'website',
-    'mailinglist': 'website',
-    'distributor': 'publisher',
-    'institution': 'publisher',
-    'newsgroup': 'publisher',
-    'editor-last': 'editor',
-    'editor-surname': 'editor',
-    'editor-last1': 'editor',
-    'editor-surname1': 'editor',
-    'editor1': 'editor',
-    'editor1-last': 'editor',
-    'editor1-surname': 'editor',
-    'place': 'location',
-    'p': 'page',
-    'pp': 'pages',
-    'in': 'language',
-    'trans_title': 'trans-title',
-    'contribution': 'chapter',
-    'entry': 'chapter',
-    'article': 'chapter',
-    'section': 'chapter',
-    'quotation': 'quote',
-    'accessdate': 'access-date',
-    'archiveurl': 'archive-url',
-    'archivedate': 'archive-date',
-    'number': 'issue',
-    'people': 'authors',
-    'host': 'authors',
-    'credits': 'authors',
-  },
-};
-const citeWeb$7 = {
-  template: 'cite web',
-  map: {
-    'author1-last': 'author',
-    'author-last': 'author',
-    'surname1': 'author',
-    'author-last1': 'author',
-    'subject1': 'author',
-    'surname': 'author',
-    'subject': 'author',
-    'given': 'first',
-    'author-first': 'first',
-    'given1': 'first',
-    'author-first1': 'first',
-    'author1-first': 'first',
-    'editor-last': 'editor',
-    'editor1-last': 'editor',
-    'lang': 'language',
-    'people': 'authors',
-    'host': 'authors',
-  },
-};
-
-const citations$7 = {
-  'book reference': citeBook$7,
-  'cite blog': citeWeb$7,
-  'citebook': citeBook$7,
-  'citeweb': citeWeb$7,
-  'web reference': citeWeb$7,
-  'వెబ్ మూలము': citeWeb$7,
-};
-
-const infoboxes$8 = [];
-
-var te = {
-  lang: 'te',
-  aliases: aliases$8,
-  infoboxes: infoboxes$8,
-  templates: citations$7,
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // thai template names → the core template they resolve to
-const aliases$7 = {
+const aliases$5 = {
   'cc': 'commons cat',
   'cite paper': 'cite journal',
   'commons category': 'commons cat',
@@ -8180,7 +6435,7 @@ const aliases$7 = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeWeb$6 = {
+const citeWeb$4 = {
   template: 'cite web',
   map: {
     'accessdate': 'access-date',
@@ -8203,7 +6458,7 @@ const citeWeb$6 = {
     'archivedate': 'archive-date',
   },
 };
-const citeBook$6 = {
+const citeBook$4 = {
   template: 'cite book',
   map: {
     'author1-last': 'author',
@@ -8272,35 +6527,44 @@ const internetquelle$4 = {
   },
 };
 
-const citations$6 = {
-  'cita web': citeWeb$6,
-  'citar web': citeWeb$6,
-  'cite blog': citeWeb$6,
-  'cite manual': citeBook$6,
-  'cite web/german': citeWeb$6,
-  'cite webpage': citeWeb$6,
-  'cite website': citeWeb$6,
-  'cite work': citeBook$6,
-  'cite หนังสือ': citeBook$6,
-  'cite-web': citeWeb$6,
-  'citebook': citeBook$6,
-  'citeweb': citeWeb$6,
-  'cw': citeWeb$6,
+const citations$4 = {
+  'cita web': citeWeb$4,
+  'citar web': citeWeb$4,
+  'cite blog': citeWeb$4,
+  'cite manual': citeBook$4,
+  'cite web/german': citeWeb$4,
+  'cite webpage': citeWeb$4,
+  'cite website': citeWeb$4,
+  'cite work': citeBook$4,
+  'cite หนังสือ': citeBook$4,
+  'cite-web': citeWeb$4,
+  'citebook': citeBook$4,
+  'citeweb': citeWeb$4,
+  'cw': citeWeb$4,
   'internetquelle': internetquelle$4,
 };
 
-const infoboxes$7 = ['ตารางจำแนกพันธุ์', 'พฤกษศาสตร์', 'สัตววิทยา', 'อนุกรมภิธาน'];
+const infoboxes$5 = ['ตารางจำแนกพันธุ์', 'พฤกษศาสตร์', 'สัตววิทยา', 'อนุกรมภิธาน'];
 
 var th = {
   lang: 'th',
-  aliases: aliases$7,
-  infoboxes: infoboxes$7,
-  templates: citations$6,
+  enLang: 'thai',
+  category: ['หมวดหมู่'],
+  redirect: ['เปลี่ยนทาง'],
+  stub: ['โครง'],
+  infobox: ['กล่องข้อมูล'],
+  image: ['ภาพ', 'ไฟล์'],
+  reference: [],
+  disambig: ['แก้ความกำกวม'],
+  disambigTitle: [],
+  aliases: aliases$5,
+  infoboxes: infoboxes$5,
+  templates: citations$4,
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // turkish template names → the core template they resolve to
-const aliases$6 = {
+const aliases$4 = {
   'ana': 'main',
   'ana madde': 'main',
   'anamadde': 'main',
@@ -8348,7 +6612,7 @@ const aliases$6 = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeJournal$3 = {
+const citeJournal$2 = {
   template: 'cite journal',
   map: {
     'katkı-url': 'url',
@@ -8453,7 +6717,7 @@ const citeJournal$3 = {
     'soyadı1': 'last1',
   },
 };
-const citeWeb$5 = {
+const citeWeb$3 = {
   template: 'cite web',
   map: {
     'katkı-url': 'url',
@@ -8782,7 +7046,7 @@ const citation$1 = {
     'soyadı1': 'last1',
   },
 };
-const citeBook$5 = {
+const citeBook$3 = {
   template: 'cite book',
   map: {
     'katkı-url': 'url',
@@ -8888,35 +7152,44 @@ const citeBook$5 = {
   },
 };
 
-const citations$5 = {
-  'akademik dergi kaynağı': citeJournal$3,
-  'cite science': citeJournal$3,
-  'citeweb': citeWeb$5,
+const citations$3 = {
+  'akademik dergi kaynağı': citeJournal$2,
+  'cite science': citeJournal$2,
+  'citeweb': citeWeb$3,
   'internetquelle': internetquelle$3,
-  'i̇nternet kaynağı': citeWeb$5,
+  'i̇nternet kaynağı': citeWeb$3,
   'kaynak': citation$1,
-  'kaynak kitap': citeBook$5,
+  'kaynak kitap': citeBook$3,
   'kaynaklar': citation$1,
-  'kitap kaynağı': citeBook$5,
-  'kitapkaynağı': citeBook$5,
-  'web cite': citeWeb$5,
-  'web kaynağı': citeWeb$5,
-  'webbref': citeWeb$5,
-  'webkaynağı': citeWeb$5,
+  'kitap kaynağı': citeBook$3,
+  'kitapkaynağı': citeBook$3,
+  'web cite': citeWeb$3,
+  'web kaynağı': citeWeb$3,
+  'webbref': citeWeb$3,
+  'webkaynağı': citeWeb$3,
 };
 
-const infoboxes$6 = ['takso kutu', 'takso kutusu', 'taksokutu'];
+const infoboxes$4 = ['takso kutu', 'takso kutusu', 'taksokutu'];
 
 var tr = {
   lang: 'tr',
-  aliases: aliases$6,
-  infoboxes: infoboxes$6,
-  templates: citations$5,
+  enLang: 'turkish',
+  category: ['kat', 'kategori'],
+  redirect: ['yönlendir', 'yönlendirme', 'yönlendi̇r', 'yönlendi̇rme'],
+  stub: ['taslak'],
+  infobox: ['bilgi', 'bilgi kutusu'],
+  image: ['dosya', 'resim'],
+  reference: [],
+  disambig: ['anlam ayrımı'],
+  disambigTitle: [],
+  aliases: aliases$4,
+  infoboxes: infoboxes$4,
+  templates: citations$3,
 };
 
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // ukrainian template names → the core template they resolve to
-const aliases$5 = {
+const aliases$3 = {
   'citazione': 'citation',
   'cite citation': 'citation',
   'commons category': 'commons cat',
@@ -8968,7 +7241,7 @@ const aliases$5 = {
 // hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
 // localized citation templates — the map renames params, then the core template parses
 
-const citeJournal$2 = {
+const citeJournal$1 = {
   template: 'cite journal',
   map: {
     'назва': 'title',
@@ -8984,7 +7257,7 @@ const citeJournal$2 = {
     'розділ': 'chapter',
   },
 };
-const citeWeb$4 = {
+const citeWeb$2 = {
   template: 'cite web',
   map: {
     'назва': 'title',
@@ -9023,7 +7296,7 @@ const citeWeb$4 = {
     'trans_title': 'trans-title',
   },
 };
-const citeBook$4 = {
+const citeBook$2 = {
   template: 'cite book',
   map: {
     'назва': 'title',
@@ -9133,301 +7406,52 @@ const internetquelle$2 = {
   },
 };
 
-const citations$4 = {
-  'article': citeJournal$2,
-  'citace elektronické monografie': citeWeb$4,
-  'citar web': citeWeb$4,
-  'citat web': citeWeb$4,
-  'cite blog': citeWeb$4,
-  'cite manual': citeBook$4,
-  'cite url': citeWeb$4,
-  'cite web/de': citeWeb$4,
-  'cite web/uk': citeWeb$4,
-  'cite work': citeBook$4,
-  'cite книга': citeBook$4,
-  'cite-web': citeWeb$4,
-  'cited journal': citeJournal$2,
-  'cited web': citeWeb$4,
-  'citeer web': citeWeb$4,
-  'citejournal': citeJournal$2,
-  'citeweb': citeWeb$4,
-  'cw': citeWeb$4,
+const citations$2 = {
+  'article': citeJournal$1,
+  'citace elektronické monografie': citeWeb$2,
+  'citar web': citeWeb$2,
+  'citat web': citeWeb$2,
+  'cite blog': citeWeb$2,
+  'cite manual': citeBook$2,
+  'cite url': citeWeb$2,
+  'cite web/de': citeWeb$2,
+  'cite web/uk': citeWeb$2,
+  'cite work': citeBook$2,
+  'cite книга': citeBook$2,
+  'cite-web': citeWeb$2,
+  'cited journal': citeJournal$1,
+  'cited web': citeWeb$2,
+  'citeer web': citeWeb$2,
+  'citejournal': citeJournal$1,
+  'citeweb': citeWeb$2,
+  'cw': citeWeb$2,
   'internetquelle': internetquelle$2,
-  'lien web': citeWeb$4,
-  'ref-publicació': citeJournal$2,
-  'ref-web': citeWeb$4,
-  'site web': citeWeb$4,
-  'tīmekļa atsauce': citeWeb$4,
-  'vcite2 journal': citeJournal$2,
-  'web citation': citeWeb$4,
-  'web cite': citeWeb$4,
-  'книгаапа': citeBook$4,
-  'привести сайту': citeWeb$4,
-  'цитувати журнал': citeJournal$2,
+  'lien web': citeWeb$2,
+  'ref-publicació': citeJournal$1,
+  'ref-web': citeWeb$2,
+  'site web': citeWeb$2,
+  'tīmekļa atsauce': citeWeb$2,
+  'vcite2 journal': citeJournal$1,
+  'web citation': citeWeb$2,
+  'web cite': citeWeb$2,
+  'книгаапа': citeBook$2,
+  'привести сайту': citeWeb$2,
+  'цитувати журнал': citeJournal$1,
 };
 
-const infoboxes$5 = ['організм', 'таксобокс'];
+const infoboxes$3 = ['організм', 'таксобокс'];
 
 var uk = {
   lang: 'uk',
-  aliases: aliases$5,
-  infoboxes: infoboxes$5,
-  templates: citations$4,
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// urdu template names → the core template they resolve to
-const aliases$4 = {
-  'ap': 'main',
-  'article détaillé': 'main',
-  'birth date ad age': 'birth date and age',
-  'commons category': 'commons cat',
-  'commonscat': 'commons cat',
-  'coord/conversion': 'coord',
-  'coordinates': 'coord',
-  'coords': 'coord',
-  'country': 'flag',
-  'date start': 'start',
-  'flag icon': 'flagicon',
-  'footnote': 'reflist',
-  'footnotes': 'reflist',
-  'footnotessmall': 'reflist',
-  'foundation date': 'start',
-  'initial release': 'start',
-  'launch date': 'start',
-  'listaref': 'reflist',
-  'portal box': 'portal',
-  'portal-2': 'portal',
-  'portalbox': 'portal',
-  'portalpar': 'portal',
-  'ports': 'portal',
-  're': 'reflist',
-  'ref list': 'reflist',
-  'ref-list': 'reflist',
-  'reference': 'reflist',
-  'reference list': 'reflist',
-  'referencias': 'reflist',
-  'refs': 'reflist',
-  'release date': 'start',
-  'références': 'reflist',
-  'sf': 'sfn',
-  'sfn-en': 'sfn',
-  'sfnnb': 'sfn',
-  'shortened footnote template': 'sfn',
-  'startdate': 'start',
-  'starting date': 'start',
-  'آئی ایس بی این': 'isbn',
-  'إحداثيات': 'coord',
-  'اس': 'main',
-  'اصل': 'main',
-  'اصل مضمون': 'main',
-  'اصل مقالہ': 'main',
-  'العلم': 'flag',
-  'ام': 'main',
-  'انبار-رده': 'commons cat',
-  'باب': 'portal',
-  'باب 2': 'portal',
-  'تاريخ الميلاد والعمر': 'birth date and age',
-  'تاریخ آغاز': 'start',
-  'تاریخ پیدائش اور عمر': 'birth date and age',
-  'تاریخ-پیدائش اور عمر': 'birth date and age',
-  'تفصیلی مضمون': 'main',
-  'حوالا جات': 'reflist',
-  'حوالہ جات': 'reflist',
-  'حوالے': 'reflist',
-  'زمرہ العام': 'commons cat',
-  'زمرہ ویکی ذخائر': 'commons cat',
-  'زمرہ کومنز': 'commons cat',
-  'صغير': 'small',
-  'صغیر': 'small',
-  'متناسقاتی مقام': 'coord',
-  'مراجع': 'reflist',
-  'مرکزی مضمون': 'main',
-  'مکمل مضمون': 'main',
-  'مین': 'main',
-  'ویکی ذخائر کا زمرہ': 'commons cat',
-  'ویکی کومنز-زمرہ': 'commons cat',
-  'پانویس': 'reflist',
-  'پرچم': 'flag',
-  'پرچم تصویر': 'flagicon',
-  'چھوٹا': 'small',
-  'کومنز زمرہ': 'commons cat',
-  'আইএসবিএন': 'isbn',
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// localized citation templates — the map renames params, then the core template parses
-
-const citeWeb$3 = {
-  template: 'cite web',
-  map: {
-    'accessdate': 'access-date',
-    'author1-last': 'author',
-    'author-last': 'author',
-    'surname1': 'author',
-    'author-last1': 'author',
-    'subject1': 'author',
-    'surname': 'author',
-    'subject': 'author',
-    'given': 'first',
-    'author-first': 'first',
-    'given1': 'first',
-    'author-first1': 'first',
-    'author1-first': 'first',
-    'editor-last': 'editor',
-    'editor1-last': 'editor',
-    'lang': 'language',
-    'archiveurl': 'archive-url',
-    'archivedate': 'archive-date',
-  },
-};
-const citeJournal$1 = {
-  template: 'cite journal',
-  map: {
-    'accessdate': 'access-date',
-    'archiveurl': 'archive-url',
-    'archivedate': 'archive-date',
-  },
-};
-const citeBook$3 = {
-  template: 'cite book',
-  map: {
-    'author1-last': 'author',
-    'author-last': 'author',
-    'surname1': 'author',
-    'author-last1': 'author',
-    'subject1': 'author',
-    'surname': 'author',
-    'subject': 'author',
-    'given': 'first',
-    'author-first': 'first',
-    'given1': 'first',
-    'author-first1': 'first',
-    'author1-first': 'first',
-    'institution': 'publisher',
-    'editor-last': 'editor',
-    'editor-surname': 'editor',
-    'editor-last1': 'editor',
-    'editor-surname1': 'editor',
-    'editor1': 'editor',
-    'editor1-last': 'editor',
-    'editor1-surname': 'editor',
-    'place': 'location',
-    'p': 'page',
-    'pp': 'pages',
-    'contribution': 'chapter',
-    'entry': 'chapter',
-    'article': 'chapter',
-    'section': 'chapter',
-    'quotation': 'quote',
-    'number': 'issue',
-  },
-};
-
-const citations$3 = {
-  'chú thích web': citeWeb$3,
-  'cite blog': citeWeb$3,
-  'cite paper': citeJournal$1,
-  'cite website': citeWeb$3,
-  'cite کتاب': citeBook$3,
-  'citebook': citeBook$3,
-  'citeweb': citeWeb$3,
-  'kitap kaynağı': citeBook$3,
-  'lien web': citeWeb$3,
-  'web kaynağı': citeWeb$3,
-  'استشهاد بدورية أكاديمية': citeJournal$1,
-  'استشهاد بدورية محكمة': citeJournal$1,
-  'استشهاد بكتاب': citeBook$3,
-  'استشهاد بويب': citeWeb$3,
-  'استشهاد ويب': citeWeb$3,
-  'حوالہ جالبین': citeWeb$3,
-  'حوالہ رسالہ': citeJournal$1,
-  'حوالہ ویب': citeWeb$3,
-  'حوالہ کتاب': citeBook$3,
-  'حوالہ-جال': citeWeb$3,
-  'حوالہ-کتاب': citeBook$3,
-  'مرجع كتاب': citeBook$3,
-  'یادکرد وب': citeWeb$3,
-  'یادکرد کتاب': citeBook$3,
-};
-
-const infoboxes$4 = ['تصنيف كائن', 'خاعت', 'خانہ معلومات پھل', 'صندوق معلومات كائن'];
-
-var ur = {
-  lang: 'ur',
-  aliases: aliases$4,
-  infoboxes: infoboxes$4,
-  templates: citations$3,
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// uzbek template names → the core template they resolve to
-const aliases$3 = {
-  'asosiy': 'main',
-  'asosiy maqola': 'main',
-  'bayroq': 'flag',
-  'commons category': 'commons cat',
-  'commons turkum': 'commons cat',
-  'commonscat': 'commons cat',
-  'country': 'flag',
-  'ipa1': 'ipa',
-  'isbn2': 'isbn',
-  'koord': 'coord',
-  'koordinata': 'coord',
-  'manbalar': 'reflist',
-  'nixonga': 'nihongo',
-  'nixongo': 'nihongo',
-  'tavallud sanasi va yoshi': 'birth date and age',
-  'tugilgan sanasi va yoshi': 'birth date and age',
-  'tugʻilgan sanasi va yoshi': 'birth date and age',
-};
-
-// hand-maintained i18n data — edit freely; 'pnpm run data' diffs it against live wikipedia
-// localized citation templates — the map renames params, then the core template parses
-
-const citeWeb$2 = {
-  template: 'cite web',
-  map: {
-    'sarlavha': 'title',
-    'arxivurl': 'archive-url',
-    'archiveurl': 'archive-url',
-    'arxivsana': 'archive-date',
-    'archivedate': 'archive-date',
-    'muallif': 'author',
-    'familiya': 'last',
-    'ism': 'first',
-    'sana': 'date',
-    'yil': 'year',
-    'muharrir': 'editor',
-    'til': 'language',
-    'ish': 'work',
-    'sahifalar': 'pages',
-    'nashriyot': 'publisher',
-    'qaralgan sana': 'access-date',
-    'accessdate': 'access-date',
-    'iqtibos': 'quote',
-  },
-};
-const citeBook$2 = {
-  template: 'cite book',
-  map: {
-    'accessdate': 'access-date',
-  },
-};
-
-const citations$2 = {
-  'citeweb': citeWeb$2,
-  'kitob manbasi': citeBook$2,
-  'veb manbasi': citeWeb$2,
-  'web cite': citeWeb$2,
-  'web manba': citeWeb$2,
-  'web manbasi': citeWeb$2,
-};
-
-const infoboxes$3 = [];
-
-var uz = {
-  lang: 'uz',
+  enLang: 'ukrainian',
+  category: ['категория', 'категорія'],
+  redirect: ['перенапр', 'перенаправление', 'перенаправлення'],
+  stub: ['заготовка'],
+  infobox: ['картка'],
+  image: ['зображення', 'изображение', 'файл'],
+  reference: [],
+  disambig: [],
+  disambigTitle: [],
   aliases: aliases$3,
   infoboxes: infoboxes$3,
   templates: citations$2,
@@ -9734,6 +7758,15 @@ const infoboxes$2 = ['bảng phân loại', 'phân loại khoa học'];
 
 var vi = {
   lang: 'vi',
+  enLang: 'vietnamese',
+  category: ['thể loại'],
+  redirect: ['đổi'],
+  stub: ['sơ khai'],
+  infobox: ['hộp thông tin'],
+  image: ['hình', 'tập tin'],
+  reference: [],
+  disambig: ['trang định hướng'],
+  disambigTitle: [],
   aliases: aliases$2,
   infoboxes: infoboxes$2,
   templates: citations$1,
@@ -9918,6 +7951,15 @@ const infoboxes$1 = ['分类框'];
 
 var zh = {
   lang: 'zh',
+  enLang: 'chinese',
+  category: ['cat', '分类', '分類'],
+  redirect: ['重定向', '重新導向'],
+  stub: [],
+  infobox: [],
+  image: ['图像', '图片', '圖像', '圖片', '文件', '档案', '檔案'],
+  reference: [],
+  disambig: ['消歧义'],
+  disambigTitle: ['消歧義'],
   aliases: aliases$1,
   infoboxes: infoboxes$1,
   templates: citations,
@@ -10443,73 +8485,415 @@ const infoboxes = [
 
 var other = {
   lang: 'other',
+  enLang: 'other',
+  category: [
+    'abdeeling', // pdc
+    'bólkur', // fo
+    'catagóir', // ga
+    'categorîa', // lij
+    'categorìa', // pms
+    'catègorie', // frp
+    'categuria', // lmo
+    'catigurìa', // scn
+    'class', // kw
+    'ẹ̀ka', // yo
+    'flocc',
+    'flokkur',
+    'grup', // tpi
+    'jamii', // sw
+    'kaarangay', // war
+    'kateggoría', // lad
+    'kategorî', // ku
+    'kategoriija', // se
+    'kategoriýa', // tk
+    'kategoriye', // diq
+    'kategory', // fy
+    'kategorya', // tl
+    'katiguriya', // qu
+    'klad', // vo
+    'ñemohenda', // gn
+    'roinn', // gd
+    'ronney', // gv
+    'rummad', // br
+    'setensele', // nso
+    'sokajy', // mg
+    'sumut', // kl
+    'төркем', // tt
+    'تۈر', // ug
+  ],
+  redirect: [
+    'aanstuur', // af
+    'aastiurey',
+    'adkas', // br
+    'alidirekto',
+    'aýdaw',
+    'baw-ing',
+    'beralîkirin', // ku
+    'đổi hướng đến đây',
+    'header',
+    'i̇stiqamətləndirmə',
+    'ohjaa tänne',
+    'pāradresācija',
+    'přesměrování',
+    'preusmjerava',
+    'preusmjerenje',
+    'przekierowanie',
+    'redir',
+    'redirect3',
+    'redirige aquí',
+    'redirige',
+    'redirixe equí',
+    'rindirizz',
+    'stivre deike',
+    'suunamine',
+    'tilvísun',
+    'trimite',
+    'weiterleitungshinweis',
+    'багыттама',
+    'буссинаби',
+    'дӏасахьажорг',
+    'от пренасочване',
+    'перанакіраванне',
+    'перанакіраваньне',
+    'перанакіроўваецца сюды',
+    'перенаправлено',
+    'преусмерава',
+    'равонакунӣ',
+    'ווייטערפירן', // yi
+    'යළියොමුව',
+    'ប្តូរទីតាំងទៅ', // km
+    '다른 뜻 넘어옴',
+    '跳轉',
+  ],
+  stub: [
+    'aboç',
+    'ahurhire',
+    'amud',
+    'avixo de spigaso',
+    'bibarilo',
+    'borrador',
+    'buáng-nàng-hâ',
+    'bun',
+    'buntato',
+    'c-supranu',
+    'cahrot',
+    'choutchette',
+    'danvez pennad',
+    'djermon',
+    'ébeuche',
+    'ebòch',
+    'édéntạ',
+    'ẹ̀kúnrẹ́rẹ́',
+    'entamu',
+    'esbòs',
+    'gumud',
+    'ʻōmuku',
+    'junj',
+    'klado',
+    'maramara',
+    'mayele',
+    'mbegu',
+    'na mulno',
+    'nadabeigts rakstīņs',
+    'nalta',
+    'narcce',
+    'pecietta',
+    'phí',
+    'pondok',
+    'por mejoral',
+    'potuʻi',
+    'pungol',
+    'rabisco',
+    'rancangan',
+    'rintisan',
+    'saadjie',
+    'saha',
+    'sbozz',
+    'sid',
+    'síol',
+    'şitil',
+    'sjtumpke',
+    'skizz',
+    'skizze',
+    'stipula',
+    'stob',
+    'stobbe',
+    'stompje',
+    'stubben',
+    'stubbi',
+    'stubbur',
+    'stump',
+    'stumpen',
+    'stycce',
+    'suli',
+    'taslaq',
+    'turók',
+    'vangovango',
+    'vernuşte',
+    'xinnoo',
+    'zarodk',
+    'әҙерләмә',
+    'керф',
+    'кечдар',
+    'къæртт',
+    'кьурхь',
+    'мәкалә төпчеге',
+    'накід',
+    'нєꙁаврьшєнъ члѣнъ',
+    'омоон',
+    'стыржень',
+    'хурд',
+    'хӏадурунжо',
+    'መዋቅር',
+    'መዋቕር',
+    'अपूर्णलेखः',
+    'ठुटो',
+    'धाक्टें पान',
+    'विस्तार',
+    'পোখালি',
+    'સ્ટબ',
+    'ଅଧାଗଢ଼ା',
+    'ಎಲ್ಯ',
+    'ಚುಟುಕು',
+    'අංකුරය',
+    'ཆ་མི་ཚང་བ',
+    'អត្ថបទខ្លីមិនពេញលេញ',
+    '楔',
+    '芻文',
+  ],
+  infobox: [
+    'amatl',
+    'anfo', // mwl
+    'anuāmapa', // haw
+    'boaty fampahalalana',
+    'boaty', // mg
+    'boestkelaouiñ', // br
+    'bosca', // ga
+    'capsa', // la
+    'diehtokássa', // se
+    'infoboesse 2',
+    'infobokis', // tpi
+    'infobox deleted',
+    'infobox generic',
+    'infochascha', // rm
+    'infokašćik', // dsb
+    'infoschede',
+    'infoskreine', // ltg
+    'inligtingskas',
+    'inligtingskas3', // af
+    'inligtingskas4', // af
+    'kishtey fys',
+    'kotak info',
+    'kotak', // su
+    'simple box',
+    'tertcita tanxe',
+    'tertcita', // jbo
+    'tiätuloová',
+    'wd bosca sonraí',
+    'yerleşim bilgi kutusu',
+    'ynfoboks generyk',
+    'ynfoboks', // fy
+    'акарточка', // ab
+    'аҥа', // mhr
+    'інфобокс', // rue
+    'канадский',
+    'карточка2', // mdf
+    'карточкарус', // ba
+    'картуш', // koi
+    'қуттӣ', // tg
+    'ڄاڻخانو', // sd
+    'لغة',
+    'معلوٗمات ڈَبہٕ',
+    'ਜਾਣਕਾਰੀਡੱਬਾ', // pa
+    'තොරතුරුකොටුව', // si
+    'ກ່ອງຂໍ້ມູນ',
+    'ប្រអប់ព័ត៌មាន', // km
+    '明細',
+  ],
+  image: [
+    'fasciculus', // la
+    'larawan', // tl
+    'lêer', // af
+    'picha', // sw
+    'restr', // br
+    'wêne', // ku
+    'wobraz', // dsb
+    'دوتنه', // ps
+    'وێنە', // ckb
+  ],
+  reference: [
+  ],
+  disambig: [
+    'dab', // en
+    'disamb', // en
+    'aðgreining',
+    'airport disambiguation',
+    'ałtsʼáʼáztiin', // nv
+    'begriepskloorenge', // stq
+    'begriffsklearung', // bar
+    'biology disambiguation',
+    'bisongidila', // kg
+    'bkl', // pfl
+    'bokokani', // ln
+    'caddayn', // so
+    'call sign disambiguation',
+    'caselaw disambiguation',
+    'chinese title disambiguation',
+    'clerheans', // kw
+    'cudakirin', // ku
+    'čvor', // bs
+    'db', // vls
+    'desambig', // nov
+    'desambigación', // an
+    'desambiguáncia', // ext
+    'desambiguasion', // lad
+    'desambiguassiù', // lmo
+    'desambigui', // lfn
+    'dezanbìgua',
+    'disamb-term',
+    'disamb-terms',
+    'disamb2',
+    'disamb3',
+    'disamb4',
+    'disambìgua', // sc
+    'disambiguation cleanup',
+    'disambiguation lead name',
+    'disambiguation lead',
+    'disambiguation name',
+    'disambiguazion',
+    'disambigue',
+    'discretiva',
+    'disheñvelout', // br
+    'disingkek', // min
+    'dixanbigua', // vec
+    'dixebra', // ast
+    'diżambigwazzjoni', // mt
+    'dmbox',
+    'dubbelsinnig',
+    'dudalipen', // rmy
+    'dv',
+    'faaleaogaina',
+    'fleiri týdningar', // fo
+    'genus disambiguation',
+    'gì-ngiê', // cdo
+    'giklaro', // ceb
+    'homonimo', // io
+    'hospital disambiguation',
+    'huaʻōlelo puana like',
+    'human name disambiguation cleanup',
+    'human name disambiguation',
+    'idirdhealú', // ga
+    'khu-pia̍t',
+    'kujekesa', // sn
+    'letter-number combination disambiguation',
+    'letter-numbercombdisambig',
+    'maana', // sw
+    'maneo bin', // diq
+    'mathematical disambiguation',
+    'mehrdüdig begreep', // nds
+    'menm non', // ht
+    'military unit disambiguation',
+    'muardüüdag artiikel', // frr
+    'music disambiguation',
+    'myesakãrã',
+    'neibetsjuttings', // fy
+    'number disambiguation',
+    'omonimeye', // wa
+    'omonimi',
+    'omonimia', // oc
+    'opus number disambiguation',
+    'page dé frouque', // nrm
+    'paglilinaw', // tl
+    'panangilawlawag', // ilo
+    'pansayod', // war
+    'pejy mitovy anarana', // mg
+    'phonetics disambiguation',
+    'place name disambiguation',
+    'portal disambiguation',
+    'reddaghey', // gv
+    'road disambiguation',
+    'school disambiguation',
+    'sclerir noziun', // rm
+    'selvendyssivu', // olo
+    'soilleireachadh', // gd
+    'species latin name abbreviation disambiguation',
+    'species latin name disambiguation',
+    'station disambiguation',
+    'suzmunski', // jbo
+    'synagogue disambiguation',
+    'taxonomic authority disambiguation',
+    'taxonomy disambiguation',
+    'telplänov', // vo
+    'template disambiguation',
+    'tlahtolmelahuacatlaliztli', // nah
+    'verdudeliking', // li
+    'wěcejwóznamowosć', // dsb
+    'wjacezmyslnosć', // hsb
+    'z',
+    'zambiguaçon', // mwl
+    'zeimeibu škiršona', // ltg
+    'аҵакырацәа', // ab
+    'бир аайы јок',
+    'ибҳомзудоӣ', // tg
+    'кёб магъаналы', // krc
+    'күп мәгънәләр', // tt
+    'күп мәғәнәлелек', // ba
+    'массехк маӏан хилар',
+    'мъногосъмꙑслиѥ', // cu
+    'неадназначнасьць',
+    'олон удхатай', // bxr
+    'са шумуд манавал', // lez
+    'салаа утгатай', // mn
+    'суолталар', // sah
+    'текмаанисиздик', // ky
+    'цо магіна гуреб', // av
+    'чеперушка', // rue
+    'чолхалла', // ce
+    'шуко ончыктымаш-влак', // mhr
+    'բազմիմաստութիւն', // hyw
+    'באדייטן', // yi
+    'دقیقلشدیرمه', // azb
+    'ڕوونکردنەوە', // ckb
+    'سلجهائپ', // sd
+    'گجگجی بیری', // mzn
+    'نامبهمېدنه', // ps
+    'መንታ', // am
+    'अस्पष्टता', // ne
+    'बहुअर्थी', // bh
+    'ਗੁੰਝਲ-ਖੋਲ੍ਹ', // pa
+    'સંદિગ્ધ શીર્ષક', // gu
+    'ದ್ವಂದ್ವ ನಿವಾರಣೆ', // kn
+    'වක්‍රෝත්ති', // si
+    'သံတူကြောင်းကွဲ', // my
+    'သဵင်မိူၼ် တူၼ်ႈထႅဝ်ပႅၵ်ႇ',
+    'ណែនាំ', // km
+    'អសង្ស័យកម្ម',
+    '扤清楚', // gan
+    '搞清楚',
+    '釋義',
+  ],
+  disambigTitle: [
+    '搞清楚', // zh-yue
+    'dubbelsinnig', // af
+  ],
   aliases,
   infoboxes,
   templates: {},
 };
 
-// registers every language pack, applied one by one — 'other' carries the wikis without a pack of their own
+// registers every language pack, applied one by one — 'other' carries the wikis without a pack of their own.
+// the shipped list + metadata lives in src/languages.json; imports stay static so rollup can bundle them
+
+// one pack per languages.json entry, 'other' last so packs win shared names
+const packs = [
+  ar, bg, bn, ca, cs, da, de, el, es, fa, fi, fr, he, hi, hr, hu, id, it, ja, ko, ms, nl,
+  no, pl, pt, ro, ru, simple, sk, sr, sv, th, tr, uk, vi, zh, other,
+];
 
 const plugin = (_models, templates, infoboxes, i18n) => {
-  register(ar, templates, infoboxes, i18n);
-  register(az, templates, infoboxes, i18n);
-  register(be, templates, infoboxes, i18n);
-  register(bg, templates, infoboxes, i18n);
-  register(bn, templates, infoboxes, i18n);
-  register(ca, templates, infoboxes, i18n);
-  register(cs, templates, infoboxes, i18n);
-  register(cy, templates, infoboxes, i18n);
-  register(da, templates, infoboxes, i18n);
-  register(de, templates, infoboxes, i18n);
-  register(el, templates, infoboxes, i18n);
-  register(eo, templates, infoboxes, i18n);
-  register(es, templates, infoboxes, i18n);
-  register(et, templates, infoboxes, i18n);
-  register(eu, templates, infoboxes, i18n);
-  register(fa, templates, infoboxes, i18n);
-  register(fi, templates, infoboxes, i18n);
-  register(fr, templates, infoboxes, i18n);
-  register(gl, templates, infoboxes, i18n);
-  register(he, templates, infoboxes, i18n);
-  register(hi, templates, infoboxes, i18n);
-  register(hr, templates, infoboxes, i18n);
-  register(hu, templates, infoboxes, i18n);
-  register(hy, templates, infoboxes, i18n);
-  register(id, templates, infoboxes, i18n);
-  register(it, templates, infoboxes, i18n);
-  register(ja, templates, infoboxes, i18n);
-  register(ka, templates, infoboxes, i18n);
-  register(kk, templates, infoboxes, i18n);
-  register(ko, templates, infoboxes, i18n);
-  register(lt, templates, infoboxes, i18n);
-  register(lv, templates, infoboxes, i18n);
-  register(mk, templates, infoboxes, i18n);
-  register(ml, templates, infoboxes, i18n);
-  register(ms, templates, infoboxes, i18n);
-  register(nl, templates, infoboxes, i18n);
-  register(nn, templates, infoboxes, i18n);
-  register(no, templates, infoboxes, i18n);
-  register(pl, templates, infoboxes, i18n);
-  register(pt, templates, infoboxes, i18n);
-  register(ro, templates, infoboxes, i18n);
-  register(ru, templates, infoboxes, i18n);
-  register(sh, templates, infoboxes, i18n);
-  register(simple, templates, infoboxes, i18n);
-  register(sk, templates, infoboxes, i18n);
-  register(sl, templates, infoboxes, i18n);
-  register(sq, templates, infoboxes, i18n);
-  register(sr, templates, infoboxes, i18n);
-  register(sv, templates, infoboxes, i18n);
-  register(ta, templates, infoboxes, i18n);
-  register(te, templates, infoboxes, i18n);
-  register(th, templates, infoboxes, i18n);
-  register(tr, templates, infoboxes, i18n);
-  register(uk, templates, infoboxes, i18n);
-  register(ur, templates, infoboxes, i18n);
-  register(uz, templates, infoboxes, i18n);
-  register(vi, templates, infoboxes, i18n);
-  register(zh, templates, infoboxes, i18n);
-  register(other, templates, infoboxes, i18n);
+  packs.forEach((pack) => {
+    register(pack, templates, infoboxes, i18n);
+  });
 };
 plugin.version = version;
 

@@ -18,7 +18,7 @@ jobs:
       - name: Install, build, lint, and test
         run: |
           pnpm install --frozen-lockfile
-          pnpm run test:all
+          pnpm run test:ci
         env:
           CI: true
 
