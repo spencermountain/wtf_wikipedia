@@ -20,7 +20,7 @@ test('main', (t) => {
 
 test('start date', (t) => {
   const strA = `{{start date|1993|02|24}}`
-  const strB = `{{početni datum|1993|02|24}}`
+  const strB = `{{почетни датум|1993|02|24}}`
   const docA = wtf(strA)
   const docB = wtf(strB)
   t.equal(docA.text(), `February 24, 1993`, 'start date text')
@@ -39,7 +39,7 @@ test('persondata', (t) => {
 })
 
 test('citation', (t) => {
-  const str = ` {{Cita libru |url=cool.com |title= |last= |first= |date= |website= |publisher= |access-date= |quote=}}
+  const str = ` {{Cita libro |url=cool.com |title= |last= |first= |date= |website= |publisher= |access-date= |quote=}}
     `
   const doc = wtf(str)
   t.equal(doc.references().length, 1, 'one reference')

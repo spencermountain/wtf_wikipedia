@@ -2,6 +2,7 @@
 // croatian template names → the core template they resolve to
 const aliases = {
   'citiranje': 'citation',
+  'citiranje knjiga': 'cite book',
   'commons category': 'commons cat',
   'commonscat': 'commons cat',
   'datum rođenja i godine': 'birth date and age',

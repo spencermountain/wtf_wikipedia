@@ -40,6 +40,7 @@ const aliases = {
   'मुख्य': 'main',
   'रेफलिस्ट': 'reflist',
   'रेफ़्लिस्ट': 'reflist',
+  'व्यक्तिगत आँकड़े': 'persondata',
   'संसूची': 'reflist',
   'सन्दर्भ': 'reflist',
   'सूत्र सूची': 'reflist',

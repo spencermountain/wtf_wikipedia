@@ -180,6 +180,31 @@ test('transactions: soccer transfer tables', (t) => {
   t.end()
 })
 
+test('soccer tables: venue words, bare scores, and score-over-colour', (t) => {
+  // 2006-07-style table: full Home/Away venue words, ours-first F–A scores,
+  // no result letters, and one won game wrongly coloured as a draw
+  const wiki = `==Results==
+{| class="wikitable"
+!Date!!Opponent!!Venue!!Result F–A!!Attendance
+|-
+| 19 August 2023 ||[[Arsenal F.C.|Arsenal]]||Away||1–3||34,937
+|-
+| 26 August 2023 ||[[Chelsea F.C.|Chelsea]]||Home||2–0||23,638
+|- style="background-color: #ffffdd;"
+| 2 September 2023 ||[[Everton F.C.|Everton]]||Away||2–1||13,631
+|}`
+  const res = wtf(wiki, { title: '2023–24 Luton Town F.C. season' }).eplSeason()
+  t.equal(res.games.length, 3, 'three rows')
+  const [g1, g2, g3] = res.games
+  t.equal(g1.home, false, "venue word 'Away'")
+  t.equal(g2.home, true, "venue word 'Home'")
+  t.deepEqual(g1.result, { us: 1, them: 3 }, 'F–A score stays ours-first')
+  t.equal(g1.outcome, 'loss', 'outcome inferred from a bare score')
+  t.equal(g2.outcome, 'win', 'home win inferred')
+  t.equal(g3.outcome, 'win', 'unequal score beats the draw colour')
+  t.end()
+})
+
 test('ahl: infobox fallbacks when the page has no game log', (t) => {
   const res = fixture(...leagues.ahl).ahlSeason()
   t.equal(res.start, null, 'no games, no start date')

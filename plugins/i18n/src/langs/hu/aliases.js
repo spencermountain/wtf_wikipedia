@@ -11,6 +11,7 @@ const aliases = {
   'fő': 'main',
   'főcikk': 'main',
   'főszócikk': 'main',
+  'hivatkozás/könyv': 'cite book',
   'kategóriaszócikk': 'main',
   'katsz': 'main',
   'koord': 'coord',
@@ -19,6 +20,7 @@ const aliases = {
   'refs': 'reflist',
   'szám': 'formatnum',
   'zászló': 'flag',
+  'zászló2': 'flag',
   'zászlóikon': 'flagicon',
   'életkor-élő-dátummal': 'birth date and age',
 }

@@ -15,7 +15,7 @@ test('image method smoketests', function (t) {
 test('mainImage', function (t) {
   const arr = [
     ['Toronto', 'https://wikipedia.org/wiki/Special:Redirect/file/Montage_of_Toronto_7.jpg'],
-    ['United-Kingdom', 'https://wikipedia.org/wiki/Special:Redirect/file/EU-United_Kingdom.svg'],
+    ['United-Kingdom', 'https://wikipedia.org/wiki/Special:Redirect/file/Flag_of_the_United_Kingdom.svg'],
     ['Allen-R-Morris', 'https://wikipedia.org/wiki/Special:Redirect/file/AllenMorrisHeadShot.jpg'],
     ['Arts-Club-Of-Chicago', 'https://wikipedia.org/wiki/Special:Redirect/file/20070701_Arts_Club_of_Chicago.JPG'],
     ['Britt-Morgan', 'https://wikipedia.org/wiki/Special:Redirect/file/Britt_Morgan.jpg'],

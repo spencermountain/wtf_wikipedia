@@ -45,6 +45,7 @@ const aliases = {
   'পোর্টাল': 'portal',
   'প্রধান': 'main',
   'প্রবেশদ্বার': 'portal',
+  'ব্যক্তিতথ্য': 'persondata',
   'মুখ্য': 'main',
   'মূল': 'main',
   'মূল নিবন্ধ': 'main',

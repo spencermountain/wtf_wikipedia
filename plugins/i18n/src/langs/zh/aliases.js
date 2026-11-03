@@ -41,6 +41,7 @@ const aliases = {
   '主題': 'portal',
   '主題目': 'main',
   '主題首頁': 'portal',
+  '個人資訊': 'persondata',
   '入口': 'portal',
   '共享資源分類': 'commons cat',
   '共享资源分类': 'commons cat',

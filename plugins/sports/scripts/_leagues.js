@@ -179,6 +179,8 @@ const checkSeason = async function (league, team, year) {
       out.flag = 'MISMATCH'
       out.note = `match boxes have ${wins}W, the page's results-summary says ${rsWins}W`
     }
+    // note: the results-by-matchday grids are NOT a reliable check - pages disagree
+    // on whether they run in round or played order, and the grids themselves hold typos
   }
   return out
 }

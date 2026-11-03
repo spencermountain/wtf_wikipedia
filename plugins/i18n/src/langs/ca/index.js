@@ -8,6 +8,7 @@ const infoboxes = [
   'iev',
   "infotaula d'ésser viu",
   'infotaula esser viu',
+  'taxotaula infotaula',
   'infotaula taxonòmica',
   'infotaula ésser viu',
   'speciesbox',

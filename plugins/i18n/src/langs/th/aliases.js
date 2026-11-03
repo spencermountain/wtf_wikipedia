@@ -19,6 +19,7 @@ const aliases = {
   'refist': 'reflist',
   'release date': 'start',
   'snf': 'sfn',
+  'ข้อมูลบุคคล': 'persondata',
   'คอมมอนส์-หมวดหมู่': 'commons cat',
   'คอมมอนส์หมวดหมู่': 'commons cat',
   'ญป': 'nihongo',

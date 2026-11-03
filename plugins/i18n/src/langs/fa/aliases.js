@@ -94,6 +94,7 @@ const aliases = {
   'آی‌پی‌ای': 'ipa',
   'ارجاع کتاب': 'cite book',
   'اصلی': 'main',
+  'اطلاعات شخص': 'persondata',
   'انبار رده': 'commons cat',
   'انبار-رده': 'commons cat',
   'تاریخ آغاز': 'start',
@@ -133,6 +134,7 @@ const aliases = {
   'پورتال': 'portal',
   'پی‌نوشت': 'reflist',
   'کاربر جدید/مختصات‌دهی': 'coord',
+  'یادکرد': 'cite book',
   '서적 인용': 'cite book',
   '웹 인용': 'cite web',
 }

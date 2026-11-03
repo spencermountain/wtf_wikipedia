@@ -466,16 +466,27 @@ const buildGame = function (row, ctx) {
   }
   // an 'H/A' or venue letter-column beats the opponent-prefix guess
   const ha = String(getCell(cells, ['h/a', 'home/away', 'venue', 'ground'])).trim();
-  if (/^h$/i.test(ha)) {
+  if (/^h(ome)?$/i.test(ha)) {
     game.home = true;
-  } else if (/^a$/i.test(ha)) {
+  } else if (/^a(way)?$/i.test(ha)) {
     game.home = false;
-  } else if (/^n$/i.test(ha)) {
+  } else if (/^n(eutral)?$/i.test(ha)) {
     game.home = null; //neutral ground
   }
   // a bare W/L/D letter-column beside a separate score column
   if (game.outcome === null) {
     game.outcome = outcomeOf('', getCell(cells, ['result', 'outcome']), ctx.draws === true);
+  }
+  // soccer F–A columns are ours-first, so a bare score decides the game outright -
+  // and an unequal one beats a draw-coloured row, like it beats result letters
+  if (ctx.draws === true && game.result !== null) {
+    if (game.result.us !== game.result.them) {
+      if (game.outcome === null || game.outcome === 'tie') {
+        game.outcome = game.result.us > game.result.them ? 'win' : 'loss';
+      }
+    } else if (game.outcome === null) {
+      game.outcome = 'tie';
+    }
   }
   // the ot/so flag is its own column, or tacked onto the score: '2–2 OT', '109–113 (OT)'
   const ot = getCell(cells, ['ot', 'overtime']) || String(scoreText);

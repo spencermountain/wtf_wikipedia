@@ -16,12 +16,13 @@ const imgProperties = [
   'image2',
   'logo',
   'image_skyline',
-  'image_map', //not tested
-  'image_map2', //not tested
   'image_flag',
   'image_coat',
   'image_file',
   '画像',
+  // maps are a last-resort - a flag beats a locator-map
+  'image_map',
+  'image_map2',
 ]
 
 //a formal key-value data table about a topic

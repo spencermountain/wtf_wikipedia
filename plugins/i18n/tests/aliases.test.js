@@ -83,7 +83,7 @@ test('i18n alias metadata', (t) => {
   t.equal(tmpl.template, 'personendaten', 'template keeps the localized name')
   t.equal(wtf('{{hauptartikel|Berlin}}').templates()[0].json().kind, 'main', 'main alias kind')
   t.equal(
-    wtf('{{Cita libru |url=cool.com |title= citation template }}').references().length,
+    wtf('{{Cita libro |url=cool.com |title= citation template }}').references().length,
     1,
     'cite book alias → reference'
   )

@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
-import makeUrl from '../../../../../src/_fetch/makeUrl.ts'
-import makeHeaders from '../../../../../src/_fetch/_headers.ts'
+import makeUrl from '../../../../../src/API/_fetch/makeUrl.ts'
+import makeHeaders from '../../../../../src/API/_fetch/_headers.ts'
 import parse from './parse.js'
 
 const methodsProps = {

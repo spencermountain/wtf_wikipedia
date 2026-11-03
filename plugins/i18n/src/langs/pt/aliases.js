@@ -25,6 +25,7 @@ const aliases = {
   'principais': 'main',
   'principal': 'main',
   'ref-list': 'reflist',
+  'referências': 'reflist',
   'refs': 'reflist',
   'ver artigo': 'main',
   'ver artigo principal': 'main',

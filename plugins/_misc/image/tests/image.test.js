@@ -1,4 +1,4 @@
-import { readPage } from '../../../tests/_examples/index.js'
+import { readPage } from '../../../../tests/_examples/index.js'
 import test from 'tape'
 import wtf from './_lib.js'
 

@@ -1,7 +1,7 @@
 import aliases from './aliases.js'
 import citations from './citations.js'
 
-const infoboxes = ['організм', 'таксобокс']
+const infoboxes = ['організм', 'таксобокс', 'таксономія']
 
 export default {
   lang: 'uk',

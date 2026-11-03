@@ -50,6 +50,7 @@ const aliases = {
   'коор наслов': 'coord',
   'координате': 'coord',
   'координате горе': 'coord',
+  'лични подаци': 'persondata',
   'мало': 'small',
   'мфа': 'ipa',
   'наводи': 'reflist',

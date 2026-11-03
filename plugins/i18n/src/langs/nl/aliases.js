@@ -7,6 +7,7 @@ const aliases = {
   'geboortedatum en leeftijd': 'birth date and age',
   'hoofdartikel': 'main',
   'link portaal': 'portal',
+  'persoonsgegevens': 'persondata',
   'references': 'reflist',
   'referenties': 'reflist',
   'refs': 'reflist',

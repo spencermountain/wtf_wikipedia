@@ -26,7 +26,7 @@ export default {
       plugins: [
         terser(),
         sizeCheck({
-          expect: 141,
+          expect: 216,
           warn: 10, // acceptable (+/-)
           throw: 25, // unacceptable (+/-)
         }),

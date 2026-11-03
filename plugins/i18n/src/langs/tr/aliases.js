@@ -18,6 +18,7 @@ const aliases = {
   'commonskat': 'commons cat',
   'coor title dm': 'coord',
   'coords': 'coord',
+  'dergi kaynağı': 'cite journal',
   'doğum tarihi ve yaşı': 'birth date and age',
   'doğum-tarihi ve yaşı': 'birth date and age',
   'flag icon': 'flagicon',

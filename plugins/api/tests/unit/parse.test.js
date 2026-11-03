@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import test from 'tape'
 import wtf from '../_lib.js'
 
@@ -45,6 +46,22 @@ test('getWikiscript returns the raw markup', async function (t) {
     t.equal(wiki, '==hello==', 'returns wikitext')
     t.ok(/prop=wikitext/.test(urls[0]), 'asks for wikitext')
   })
+  t.end()
+})
+
+test('silent option suppresses console warnings', async function (t) {
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = async () => ({ ok: false, status: 429 })
+  const warns = []
+  const originalWarn = console.warn
+  console.warn = (...args) => warns.push(args)
+  const res = await wtf.getHtml('Toronto', { silent: true })
+  const loud = await wtf.getHtml('Toronto')
+  console.warn = originalWarn
+  globalThis.fetch = originalFetch
+  t.equal(res, null, 'failure still resolves null')
+  t.equal(loud, null, 'failure still resolves null')
+  t.equal(warns.length, 1, 'only the non-silent call warned')
   t.end()
 })
 

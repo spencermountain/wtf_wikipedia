@@ -33,6 +33,7 @@ const aliases = {
   '시작 날짜': 'start',
   '원문': 'main',
   '위키공용분류': 'commons cat',
+  '인물데이터': 'persondata',
   '인용': 'citation',
   '좌표': 'coord',
   '좌표1': 'coord',

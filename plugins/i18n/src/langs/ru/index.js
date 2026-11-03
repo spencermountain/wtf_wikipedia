@@ -1,7 +1,7 @@
 import aliases from './aliases.js'
 import citations from './citations.js'
 
-const infoboxes = []
+const infoboxes = ['таксон']
 
 export default {
   lang: 'ru',

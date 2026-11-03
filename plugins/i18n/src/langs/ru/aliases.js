@@ -51,6 +51,7 @@ const aliases = {
   'родилась': 'birth date and age',
   'родился': 'birth date and age',
   'список примечаний': 'reflist',
+  'статья': 'cite journal',
   'флаг': 'flagicon',
   'ыат': 'sfn',
 }
