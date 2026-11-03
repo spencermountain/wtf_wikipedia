@@ -21,7 +21,7 @@ const fromTeamPage = function (page = '') {
 const parseScore = function (txt = '') {
   txt = String(txt)
     .replace(/^ *[WLTD]\b\.? */i, '')
-    .replace(/\(.*?\)/g, '')
+    .replace(/\([^()]*\)/g, '')
     .trim()
   const arr = txt.split(dashSplit).map((s) => parseInt(s.trim(), 10))
   if (arr.length < 2 || isNaN(arr[0]) || isNaN(arr[1])) {
@@ -33,7 +33,7 @@ const parseScore = function (txt = '') {
 // 'Rogers Centre (23,987)', 'Bell Centre 21,900' or '19,108' → 19108
 const parseAttendance = function (txt = '') {
   let str = String(txt)
-  const m = str.match(/\(([0-9, ]+)\)/) || str.match(/([0-9][0-9,]{2,}) *$/)
+  const m = str.match(/\(([0-9, ]+)\)/) || str.match(/(?<![0-9,])([0-9][0-9,]{2,}) *$/)
   if (m && m[1]) {
     str = m[1]
   }
@@ -91,7 +91,7 @@ const opponentCol = function (game, row, ctx, score) {
   }
   game.home = /^ *(@|at )/i.test(opp) === false
   opp = opp.replace(/^ *(@|at |vs\.? ) */i, '').trim()
-  opp = opp.replace(/ *\(\d{4}[^)]*\)$/, '') //a '(2002–03)' season-link suffix
+  opp = opp.replace(/ ?\(\d{4}[^)]*\)$/, '') //a '(2002–03)' season-link suffix
   opp = opp.replace(/ \d{1,2}:\d{2} ?[ap]\.?m.*$/i, '') //a '6:05pm (ESPN)' suffix
   const oppLink = row.links[key]
   game.opponent = fromSeasonPage(oppLink) || fromTeamPage(oppLink) || ctx.fullName(opp)

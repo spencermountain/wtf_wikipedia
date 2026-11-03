@@ -6,7 +6,7 @@ import { infoboxType } from '../../../parse/templates/parse/infobox.ts'
 import Image from '../../03-paragraph/image/Image.ts'
 import parseImage from '../../../parse/03-paragraph/02-images/parse.ts'
 import defaults from '../../../_lib/defaults.ts'
-import { latLngs } from '../../../world/data/i18n/index.ts'
+import { defaultWorld } from '../../../world/index.ts'
 import dmsCoordinates from './_lib.ts'
 import { normalizeKey } from '../../../_lib/helpers.ts'
 import type { InfoboxData, DocInfo } from '../../../types/index.ts'
@@ -111,6 +111,7 @@ class Infobox {
 
   coordinates() {
     // loop through i18n latitude and longitude properties
+    const latLngs = defaultWorld.i18n.latLngs
     for (let i = 0; i < latLngs.length; i += 1) {
       let a = latLngs[i]
       const latText = this.get(a[0])?.text().trim()

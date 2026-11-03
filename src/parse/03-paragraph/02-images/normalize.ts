@@ -1,8 +1,7 @@
-import { images } from '../../../world/data/i18n/index.ts'
-
-const namespace = new RegExp(`^(?:${images.join('|')}):`, 'i')
+import { defaultWorld } from '../../../world/index.ts'
 
 const normalizeFile = (file) => {
+  const namespace = defaultWorld._cached.fileNamespaceReg
   file = file.trim()
   // Infobox fields may contain full image markup, including layout and caption.
   if (file.startsWith('[[')) {

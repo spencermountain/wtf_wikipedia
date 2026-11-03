@@ -16,7 +16,7 @@ const gmOf = function (season = {}) {
 // the home ground, whether the sport calls it a stadium, arena or ballpark
 const venueOf = function (season = {}) {
   return String(getCell(season, ['stadium', 'arena', 'ballpark']) || '')
-    .replace(/ *\(capacity:.*?\)/i, '')
+    .replace(/ ?\(capacity:[^()]*\)/i, '')
     .trim()
 }
 
@@ -30,7 +30,7 @@ const placeOf = function (val) {
   if (overall) {
     return Number(overall[1])
   }
-  const m = str.match(/(\d+)(?:st|nd|rd|th)/i)
+  const m = str.match(/(?<!\d)(\d+)(?:st|nd|rd|th)/i)
   if (m) {
     return Number(m[1])
   }

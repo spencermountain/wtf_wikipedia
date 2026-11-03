@@ -175,7 +175,7 @@ const fmtName = function(name) {
 const wp = ".wikipedia.org/wiki/$1";
 const wm = ".wikimedia.org/wiki/$1";
 const w = "www.";
-var interwikis = {
+var interwiki = {
   acronym: w + "acronymfinder.com/$1.html",
   advisory: "advisory" + wm,
   advogato: w + "advogato.org/$1",
@@ -695,10 +695,10 @@ class Link {
     let url = `./${page}`;
     if (type === "interwiki") {
       const wiki = normalizeProject(prefix || project || "wikipedia");
-      if (!Object.hasOwn(interwikis, wiki)) {
+      if (!Object.hasOwn(interwiki, wiki)) {
         return "";
       }
-      url = "http://" + interwikis[wiki];
+      url = "http://" + interwiki[wiki];
       if (lang && !prefix) {
         url = url.replace("://en.", `://${lang}.`);
       }
@@ -936,7 +936,6 @@ var _categories = [
   "categori",
   //	cy
   "categoria",
-  "categoria",
   //	co
   "categor\xEDa",
   //	es
@@ -948,7 +947,6 @@ var _categories = [
   "categorie",
   "cat\xE8gorie",
   //	frp
-  "category",
   "categuria",
   //	lmo
   "catigur\xECa",
@@ -957,7 +955,6 @@ var _categories = [
   //	kw
   "\u1EB9\u0300ka",
   //	yo
-  "flocc",
   "flocc",
   //	ang
   "flokkur",
@@ -1036,7 +1033,6 @@ var _categories = [
   //	ug
   "\u0631\u062F\u0647",
   "\u0936\u094D\u0930\u0947\u0923\u0940",
-  "\u0936\u094D\u0930\u0947\u0923\u0940",
   //	hi
   "\u09AC\u09BF\u09B7\u09AF\u09BC\u09B6\u09CD\u09B0\u09C7\u09A3\u09C0",
   //	bn
@@ -1044,11 +1040,8 @@ var _categories = [
   //	th
   "\uBD84\uB958",
   //	ko
-  "\uBD84\uB958",
-  //ko
   "\u5206\u7C7B"
   //	za
-  //--
 ];
 
 var disambig_templates = [
@@ -1060,7 +1053,26 @@ var disambig_templates = [
   //en
   "disambiguation",
   //en
-  "a\xF0greining",
+  "geodis",
+  //en
+  "hndis",
+  //en
+  "lake index",
+  //en
+  "letter disambiguation",
+  //en
+  "mountainindex",
+  //en
+  "setindex",
+  //en
+  "ship index",
+  //en
+  "split dab",
+  //en
+  "sport index",
+  //en
+  "wp disambig",
+  //en
   "a\xF0greining",
   //is
   "aimai",
@@ -1069,9 +1081,7 @@ var disambig_templates = [
   "a\u0142ts\u02BC\xE1\u02BC\xE1ztiin",
   //nv
   "anlam ayr\u0131m\u0131",
-  //gag
-  "anlam ayr\u0131m\u0131",
-  //tr
+  //gag, tr
   "apartigilo",
   //eo
   "argipen",
@@ -1079,11 +1089,7 @@ var disambig_templates = [
   "begriepskloorenge",
   //stq
   "begriffskl\xE4rung",
-  //als
-  "begriffskl\xE4rung",
-  //de
-  "begriffskl\xE4rung",
-  //pdc
+  //als, de, pdc
   "begriffsklearung",
   //bar
   "biology disambiguation",
@@ -1128,7 +1134,6 @@ var disambig_templates = [
   //ro
   "dezanb\xECgua",
   "d\u0259qiql\u0259\u015Fdirm\u0259",
-  "d\u0259qiql\u0259\u015Fdirm\u0259",
   //az
   "disamb-term",
   "disamb-terms",
@@ -1147,7 +1152,6 @@ var disambig_templates = [
   "disambiguazion",
   "disambigue",
   "discretiva",
-  "discretiva",
   //la
   "dishe\xF1velout",
   //br
@@ -1164,7 +1168,6 @@ var disambig_templates = [
   //nl
   "dp",
   //nl
-  "dubbelsinnig",
   "dubbelsinnig",
   //af
   "dudalipen",
@@ -1196,7 +1199,6 @@ var disambig_templates = [
   "homonymie",
   //fr
   "hospital disambiguation",
-  "hua\u02BB\u014Dlelo puana like",
   "hua\u02BB\u014Dlelo puana like",
   //haw
   "human name disambiguation cleanup",
@@ -1368,9 +1370,7 @@ var disambig_templates = [
   "\u0627\u0628\u0647\u0627\u0645\u200C\u0632\u062F\u0627\u06CC\u06CC",
   //fa
   "\u062A\u0648\u0636\u064A\u062D",
-  //ar
-  "\u062A\u0648\u0636\u064A\u062D",
-  //arz
+  //ar, arz
   "\u062F\u0642\u06CC\u0642\u0644\u0634\u062F\u06CC\u0631\u0645\u0647",
   //azb
   "\u0695\u0648\u0648\u0646\u06A9\u0631\u062F\u0646\u06D5\u0648\u06D5",
@@ -1429,12 +1429,10 @@ var disambig_templates = [
   //zh_classical
   "gestion dj'om\xF2nim",
   //pms
-  "sut'ichana qillqa",
+  "sut'ichana qillqa"
   //qu
   // 'z', //vep
   // 'သဵင်မိူၼ် တူၼ်ႈထႅဝ်ပႅၵ်ႇ', //shn
-  `gestion dj'om\xF2nim`,
-  `sut'ichana qillqa`
 ];
 
 var disambig_titles = [
@@ -1477,8 +1475,6 @@ var images = [
   //en
   "image",
   //en
-  "\u091A\u093F\u0924\u094D\u0930",
-  //img
   "archivo",
   //es
   "att\u0113ls",
@@ -1970,6 +1966,20 @@ var redirects = [
   //zh
 ];
 
+var latLngs = [
+  ["latitude", "longitude"],
+  //english
+  ["lat", "lng"],
+  ["breitengrad", "l\xE4ngengrad"],
+  //german
+  ["latitud", "longitud"],
+  //spanish
+  ["zem\u011Bpisn\xE1 \u0161\xED\u0159ka", "zem\u011Bpisn\xE1 d\xE9lka"],
+  //czech
+  ["\u0448\u0438\u0440", "\u0434\u043E\u043B\u0433"]
+  //russian
+];
+
 const i18nReg = new RegExp("^(subst.)?(" + infoboxes.join("|") + ")(?=:| |\n|$)", "i");
 infoboxes.forEach((name) => {
   infoboxes$1[name] = true;
@@ -2074,517 +2084,298 @@ const external_links = function(wiki, _opts = defaults$1) {
   return links;
 };
 
-var languages$1 = {
-  aa: "Afar",
-  //Afar
-  ab: "\u0410\u04A7\u0441\u0443\u0430",
-  //Abkhazian
-  af: "Afrikaans",
-  //Afrikaans
-  ak: "Akana",
-  //Akan
-  als: "Alemannisch",
-  //Alemannic
-  am: "\u12A0\u121B\u122D\u129B",
-  //Amharic
-  an: "Aragon\xE9s",
-  //Aragonese
-  ang: "Englisc",
-  //Anglo-Saxon
-  ar: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629",
-  //Arabic
-  arc: "\u0723\u0718\u072A\u072C",
-  //Aramaic
-  as: "\u0985\u09B8\u09AE\u09C0\u09AF\u09BC\u09BE",
-  //Assamese
-  ast: "Asturianu",
-  //Asturian
-  av: "\u0410\u0432\u0430\u0440",
-  //Avar
-  ay: "Aymar",
-  //Aymara
-  az: "Az\u0259rbaycanca",
-  //Azerbaijani
-  ba: "\u0411\u0430\u0448\u04A1\u043E\u0440\u0442",
-  //Bashkir
-  bar: "Boarisch",
-  //Bavarian
-  "bat-smg": "\u017Demait\u0117\u0161ka",
-  //Samogitian
-  bcl: "Bikol",
-  //Bikol
-  be: "\u0411\u0435\u043B\u0430\u0440\u0443\u0441\u043A\u0430\u044F",
-  //Belarusian
-  "be-x-old": "\u0411\u0435\u043B\u0430\u0440\u0443\u0441\u043A\u0430\u044F (\u0442\u0430\u0440\u0430\u0448\u043A\u0435\u0432\u0456\u0446\u0430)",
-  //Belarusian (Taraškievica)
-  bg: "\u0411\u044A\u043B\u0433\u0430\u0440\u0441\u043A\u0438",
-  //Bulgarian
-  bh: "\u092D\u094B\u091C\u092A\u0941\u0930\u0940",
-  //Bihari
-  bi: "Bislama",
-  //Bislama
-  bm: "Bamanankan",
-  //Bambara
-  bn: "\u09AC\u09BE\u0982\u09B2\u09BE",
-  //Bengali
-  bo: "\u0F56\u0F7C\u0F51\u0F0B\u0F61\u0F72\u0F42",
-  //Tibetan
-  bpy: "\u09AC\u09BF\u09B7\u09CD\u09A3\u09C1\u09AA\u09CD\u09B0\u09BF\u09AF\u09BC\u09BE \u09AE\u09A3\u09BF\u09AA\u09C1\u09B0\u09C0",
-  //Bishnupriya Manipuri
-  br: "Brezhoneg",
-  //Breton
-  bs: "Bosanski",
-  //Bosnian
-  bug: "\u1A05\u1A14",
-  //Buginese
-  bxr: "\u0411\u0443\u0440\u044F\u0430\u0434",
-  //Buriat
-  ca: "Catal\xE0",
-  //Catalan
-  cdo: "M\xECng-d\u0115\u0324ng-ng\u1E73\u0304",
-  //Min Dong Chinese
-  ce: "\u041D\u043E\u0445\u0447\u0438\u0439\u043D",
-  //Chechen
-  ceb: "Sinugboanong",
-  //Cebuano
-  ch: "Chamoru",
-  //Chamorro
-  cho: "Choctaw",
-  //Choctaw
-  chr: "\u13E3\u13B3\u13A9",
-  //Cherokee
-  chy: "Tsets\xEAhest\xE2hese",
-  //Cheyenne
-  co: "Corsu",
-  //Corsican
-  cr: "Nehiyaw",
-  //Cree
-  cs: "\u010Cesky",
-  //Czech
-  csb: "Kasz\xEBbsczi",
-  //Kashubian
-  cu: "\u0421\u043B\u043E\u0432\u0463\u043D\u044C\u0441\u043A\u044A",
-  //Old Church Slavonic
-  cv: "\u0427\u0103\u0432\u0430\u0448",
-  //Chuvash
-  cy: "Cymraeg",
-  //Welsh
-  da: "Dansk",
-  //Danish
-  de: "Deutsch",
-  //German
-  diq: "Zazaki",
-  //Dimli
-  dsb: "Dolnoserbski",
-  //Lower Sorbian
-  dv: "\u078B\u07A8\u0788\u07AC\u0780\u07A8\u0784\u07A6\u0790\u07B0",
-  //Divehi
-  dz: "\u0F47\u0F7C\u0F44\u0F0B\u0F41",
-  //Dzongkha
-  ee: "\u0190\u028B\u025B",
-  //Ewe
-  far: "\u0641\u0627\u0631\u0633\u06CC",
-  //Farsi
-  el: "\u0395\u03BB\u03BB\u03B7\u03BD\u03B9\u03BA\u03AC",
-  //Greek
-  en: "English",
-  //English
-  eo: "Esperanto",
-  //Esperanto
-  es: "Espa\xF1ol",
-  //Spanish
-  et: "Eesti",
-  //Estonian
-  eu: "Euskara",
-  //Basque
-  ext: "Estreme\xF1u",
-  //Extremaduran
-  ff: "Fulfulde",
-  //Peul
-  fi: "Suomi",
-  //Finnish
-  "fiu-vro": "V\xF5ro",
-  //Võro
-  fj: "Na",
-  //Fijian
-  fo: "F\xF8royskt",
-  //Faroese
-  fr: "Fran\xE7ais",
-  //French
-  frp: "Arpitan",
-  //Arpitan
-  fur: "Furlan",
-  //Friulian
-  fy: "Frysk",
-  //West Frisian
-  ga: "Gaeilge",
-  //Irish
-  gan: "\u8D1B\u8A9E",
-  //Gan Chinese
-  gd: "G\xE0idhlig",
-  //Scottish Gaelic
-  gil: "Taetae",
-  //Gilbertese
-  gl: "Galego",
-  //Galician
-  gn: "Ava\xF1e'\u1EBD",
-  //Guarani
-  got: "gutisk",
-  //Gothic
-  gu: "\u0A97\u0AC1\u0A9C\u0AB0\u0ABE\u0AA4\u0AC0",
-  //Gujarati
-  gv: "Gaelg",
-  //Manx
-  ha: "\u0647\u064E\u0648\u064F\u0633\u064E",
-  //Hausa
-  hak: "Hak-k\xE2-fa",
-  //Hakka
-  haw: "Hawai`i",
-  //Hawaiian
-  he: "\u05E2\u05D1\u05E8\u05D9\u05EA",
-  //Hebrew
-  hi: "\u0939\u093F\u0928\u094D\u0926\u0940",
-  //Hindi
-  ho: "Hiri Motu",
-  //Hiri Motu
-  hr: "Hrvatski",
-  //Croatian
-  ht: "Kr\xE8yol",
-  //Haitian
-  hu: "Magyar",
-  //Hungarian
-  hy: "\u0540\u0561\u0575\u0565\u0580\u0565\u0576",
-  //Armenian
-  hz: "Otsiherero",
-  //Herero
-  ia: "Interlingua",
-  //Interlingua
-  id: "Bahasa",
-  //Indonesian
-  ie: "Interlingue",
-  //Interlingue
-  ig: "Igbo",
-  //Igbo
-  ii: "\uA187\uA259",
-  //Sichuan Yi
-  ik: "I\xF1upiak",
-  //Inupiak
-  ilo: "Ilokano",
-  //Ilokano
-  io: "Ido",
-  //Ido
-  is: "\xCDslenska",
-  //Icelandic
-  it: "Italiano",
-  //Italian
-  iu: "\u1403\u14C4\u1483\u144E\u1450\u1466",
-  //Inuktitut
-  ja: "\u65E5\u672C\u8A9E",
-  //Japanese
-  jbo: "Lojban",
-  //Lojban
-  jv: "Basa",
-  //Javanese
-  ka: "\u10E5\u10D0\u10E0\u10D7\u10E3\u10DA\u10D8",
-  //Georgian
-  kg: "KiKongo",
-  //Kongo
-  ki: "G\u0129k\u0169y\u0169",
-  //Kikuyu
-  kj: "Kuanyama",
-  //Kuanyama
-  kk: "\u049A\u0430\u0437\u0430\u049B\u0448\u0430",
-  //Kazakh
-  kl: "Kalaallisut",
-  //Greenlandic
-  km: "\u1797\u17B6\u179F\u17B6\u1781\u17D2\u1798\u17C2\u179A",
-  //Cambodian
-  kn: "\u0C95\u0CA8\u0CCD\u0CA8\u0CA1",
-  //Kannada
-  khw: "\u06A9\u06BE\u0648\u0627\u0631",
-  //Khowar
-  ko: "\uD55C\uAD6D\uC5B4",
-  //Korean
-  kr: "Kanuri",
-  //Kanuri
-  ks: "\u0915\u0936\u094D\u092E\u0940\u0930\u0940",
-  //Kashmiri
-  ksh: "Ripoarisch",
-  //Ripuarian
-  ku: "Kurd\xEE",
-  //Kurdish
-  kv: "\u041A\u043E\u043C\u0438",
-  //Komi
-  kw: "Kernewek",
-  //Cornish
-  ky: "K\u0131rg\u0131zca",
-  //Kirghiz
-  la: "Latina",
-  //Latin
-  lad: "Dzhudezmo",
-  //Ladino
-  lan: "Leb",
-  //Lango
-  lb: "L\xEBtzebuergesch",
-  //Luxembourgish
-  lg: "Luganda",
-  //Ganda
-  li: "Limburgs",
-  //Limburgian
-  lij: "L\xEDguru",
-  //Ligurian
-  lmo: "Lumbaart",
-  //Lombard
-  ln: "Ling\xE1la",
-  //Lingala
-  lo: "\u0EA5\u0EB2\u0EA7",
-  //Laotian
-  lt: "Lietuvi\u0173",
-  //Lithuanian
-  lv: "Latvie\u0161u",
-  //Latvian
-  "map-bms": "Basa",
-  //Banyumasan
-  mg: "Malagasy",
-  //Malagasy
-  man: "\u5B98\u8A71",
-  //Mandarin
-  mh: "Kajin",
-  //Marshallese
-  mi: "M\u0101ori",
-  //Maori
-  min: "Minangkabau",
-  //Minangkabau
-  mk: "\u041C\u0430\u043A\u0435\u0434\u043E\u043D\u0441\u043A\u0438",
-  //Macedonian
-  ml: "\u0D2E\u0D32\u0D2F\u0D3E\u0D33\u0D02",
-  //Malayalam
-  mn: "\u041C\u043E\u043D\u0433\u043E\u043B",
-  //Mongolian
-  mo: "Moldoveneasc\u0103",
-  //Moldovan
-  mr: "\u092E\u0930\u093E\u0920\u0940",
-  //Marathi
-  ms: "Bahasa",
-  //Malay
-  mt: "bil-Malti",
-  //Maltese
-  mus: "Muskogee",
-  //Creek
-  my: "Myanmasa",
-  //Burmese
-  na: "Dorerin",
-  //Nauruan
-  nah: "Nahuatl",
-  //Nahuatl
-  nap: "Nnapulitano",
-  //Neapolitan
-  nd: "isiNdebele",
-  //North Ndebele
-  nds: "Plattd\xFC\xFCtsch",
-  //Low German
-  "nds-nl": "Nedersaksisch",
-  //Dutch Low Saxon
-  ne: "\u0928\u0947\u092A\u093E\u0932\u0940",
-  //Nepali
-  new: "\u0928\u0947\u092A\u093E\u0932\u092D\u093E\u0937\u093E",
-  //Newar
-  ng: "Oshiwambo",
-  //Ndonga
-  nl: "Nederlands",
-  //Dutch
-  nn: "Nynorsk",
-  //Norwegian Nynorsk
-  no: "Norsk",
-  //Norwegian
-  nr: "isiNdebele",
-  //South Ndebele
-  nso: "Sesotho sa Leboa",
-  //Northern Sotho
-  nrm: "Nouormand",
-  //Norman
-  nv: "Din\xE9",
-  //Navajo
-  ny: "Chi-Chewa",
-  //Chichewa
-  oc: "Occitan",
-  //Occitan
-  oj: "\u140A\u14C2\u1511\u14C8\u142F\u14A7\u140E\u14D0",
-  //Ojibwa
-  om: "Oromoo",
-  //Oromo
-  or: "\u0B13\u0B21\u0B3C\u0B3F\u0B06",
-  //Oriya
-  os: "\u0418\u0440\u043E\u043D\u0430\u0443",
-  //Ossetian
-  pa: "\u0A2A\u0A70\u0A1C\u0A3E\u0A2C\u0A40",
-  //Panjabi
-  pag: "Pangasinan",
-  //Pangasinan
-  pam: "Kapampangan",
-  //Kapampangan
-  pap: "Papiamentu",
-  //Papiamentu
-  pdc: "Deitsch",
-  //Pennsylvania German
-  pi: "P\u0101li",
-  //Pali
-  pih: "Norfuk",
-  //Norfolk
-  pl: "Polski",
-  //Polish
-  pms: "Piemont\xE8is",
-  //Piedmontese
-  ps: "\u067E\u069A\u062A\u0648",
-  //Pashto
-  pt: "Portugu\xEAs",
-  //Portuguese
-  qu: "Runa",
-  //Quechua
-  rm: "Rumantsch",
-  //Raeto-Romance
-  rmy: "Romani",
-  //Romani
-  rn: "Kirundi",
-  //Kirundi
-  ro: "Rom\xE2n\u0103",
-  //Romanian
-  "roa-rup": "Arm\xE2neashti",
-  //Aromanian
-  ru: "\u0420\u0443\u0441\u0441\u043A\u0438\u0439",
-  //Russian
-  rw: "Kinyarwandi",
-  //Rwandi
-  sa: "\u0938\u0902\u0938\u094D\u0915\u0943\u0924\u092E\u094D",
-  //Sanskrit
-  sc: "Sardu",
-  //Sardinian
-  scn: "Sicilianu",
-  //Sicilian
-  sco: "Scots",
-  //Scots
-  sd: "\u0938\u093F\u0928\u0927\u093F",
-  //Sindhi
-  se: "Davvis\xE1megiella",
-  //Northern Sami
-  sg: "S\xE4ng\xF6",
-  //Sango
-  sh: "Srpskohrvatski",
-  //Serbo-Croatian
-  si: "\u0DC3\u0DD2\u0D82\u0DC4\u0DBD",
-  //Sinhalese
-  simple: "Simple English",
-  //Simple English
-  sk: "Sloven\u010Dina",
-  //Slovak
-  sl: "Sloven\u0161\u010Dina",
-  //Slovenian
-  sm: "Gagana",
-  //Samoan
-  sn: "chiShona",
-  //Shona
-  so: "Soomaaliga",
-  //Somalia
-  sq: "Shqip",
-  //Albanian
-  sr: "\u0421\u0440\u043F\u0441\u043A\u0438",
-  //Serbian
-  ss: "SiSwati",
-  //Swati
-  st: "Sesotho",
-  //Southern Sotho
-  su: "Basa",
-  //Sundanese
-  sv: "Svenska",
-  //Swedish
-  sw: "Kiswahili",
-  //Swahili
-  ta: "\u0BA4\u0BAE\u0BBF\u0BB4\u0BCD",
-  //Tamil
-  te: "\u0C24\u0C46\u0C32\u0C41\u0C17\u0C41",
-  //Telugu
-  tet: "Tetun",
-  //Tetum
-  tg: "\u0422\u043E\u04B7\u0438\u043A\u04E3",
-  //Tajik
-  th: "\u0E44\u0E17\u0E22",
-  //Thai
-  ti: "\u1275\u130D\u122D\u129B",
-  //Tigrinya
-  tk: "\u0422\u0443\u0440\u043A\u043C\u0435\u043D",
-  //Turkmen
-  tl: "Tagalog",
-  //Tagalog
-  tlh: "tlhIngan-Hol",
-  //Klingon
-  tn: "Setswana",
-  //Tswana
-  to: "Lea",
-  //Tonga
-  tpi: "Tok Pisin",
-  //Tok Pisin
-  tr: "T\xFCrk\xE7e",
-  //Turkish
-  ts: "Xitsonga",
-  //Tsonga
-  tt: "Tatar\xE7a",
-  //Tatar
-  tum: "chiTumbuka",
-  //Tumbuka
-  tw: "Twi",
-  //Twi
-  ty: "Reo",
-  //Tahitian
-  udm: "\u0423\u0434\u043C\u0443\u0440\u0442",
-  //Udmurt
-  ug: "Uy\u01A3urq\u0259",
-  //Uyghur
-  uk: "\u0423\u043A\u0440\u0430\u0457\u043D\u0441\u044C\u043A\u0430",
-  //Ukrainian
-  ur: "\u0627\u0631\u062F\u0648",
-  //Urdu
-  uz: "\u040E\u0437\u0431\u0435\u043A",
-  //Uzbek
-  ve: "Tshiven\u1E13a",
-  //Venda
-  vi: "Vi\u1EC7tnam",
-  //Vietnamese
-  vec: "V\xE8neto",
-  //Venetian
-  vls: "West-Vlams",
-  //West Flemish
-  vo: "Volap\xFCk",
-  //Volapük
-  wa: "Walon",
-  //Walloon
-  war: "Winaray",
-  //Waray-Waray
-  wo: "Wollof",
-  //Wolof
-  xal: "\u0425\u0430\u043B\u044C\u043C\u0433",
-  //Kalmyk
-  xh: "isiXhosa",
-  //Xhosa
-  yi: "\u05D9\u05D9\u05B4\u05D3\u05D9\u05E9",
-  //Yiddish
-  yo: "Yor\xF9b\xE1",
-  //Yoruba
-  za: "Cuengh",
-  //Zhuang
-  zh: "\u4E2D\u6587",
-  //Chinese
-  "zh-classical": "\u6587\u8A00",
-  //Classical Chinese
-  "zh-min-nan": "B\xE2n-l\xE2m-g\xFA",
-  //Minnan
-  "zh-yue": "\u7CB5\u8A9E",
-  //Cantonese
-  zu: "isiZulu"
-  //Zulu
+const languages$1 = {
+  aa: ["Qaf\xE1r af", "Afar"],
+  ab: ["\u0430\u0525\u0441\u0448\u04D9\u0430", "Abkhazian"],
+  af: ["Afrikaans", "Afrikaans"],
+  ak: ["Akan", "Akan"],
+  als: ["Alemannisch", "Alemannic"],
+  am: ["\u12A0\u121B\u122D\u129B", "Amharic"],
+  an: ["Aragon\xE9s", "Aragonese"],
+  ang: ["\xC6nglisc", "Old English"],
+  ar: ["\u0627\u0644\u0639\u0631\u0628\u064A\u0629", "Arabic"],
+  arc: ["\u0710\u072A\u0721\u071D\u0710", "Aramaic"],
+  as: ["\u0985\u09B8\u09AE\u09C0\u09AF\u09BC\u09BE", "Assamese"],
+  ast: ["Asturianu", "Asturian"],
+  av: ["\u0410\u0432\u0430\u0440", "Avaric"],
+  ay: ["Aymar aru", "Aymara"],
+  az: ["Az\u0259rbaycanca", "Azerbaijani"],
+  "az-arab": ["", "South Azerbaijani"],
+  ba: ["\u0431\u0430\u0448\u04A1\u043E\u0440\u0442\u0441\u0430", "Bashkir"],
+  bar: ["Boarisch", "Bavarian"],
+  "bat-smg": ["\u017Demait\u0117\u0161ka", "Samogitian"],
+  bcl: ["Bikol Central", "Bikol"],
+  be: ["\u0411\u0435\u043B\u0430\u0440\u0443\u0441\u043A\u0430\u044F", "Belarusian"],
+  "be-x-old": ["\u0411\u0435\u043B\u0430\u0440\u0443\u0441\u043A\u0430\u044F (\u0442\u0430\u0440\u0430\u0448\u043A\u0435\u0432\u0456\u0446\u0430)", "Belarusian (Tara\u0161kievica)"],
+  bg: ["\u0411\u044A\u043B\u0433\u0430\u0440\u0441\u043A\u0438", "Bulgarian"],
+  bh: ["\u092D\u094B\u091C\u092A\u0941\u0930\u0940", "Bihari"],
+  bi: ["Bislama", "Bislama"],
+  bm: ["Bamanankan", "Bambara"],
+  bn: ["\u09AC\u09BE\u0982\u09B2\u09BE", "Bengali"],
+  bo: ["\u0F56\u0F7C\u0F51\u0F0B\u0F61\u0F72\u0F42", "Tibetan"],
+  bpy: ["\u09AC\u09BF\u09B7\u09CD\u09A3\u09C1\u09AA\u09CD\u09B0\u09BF\u09AF\u09BC\u09BE \u09AE\u09A3\u09BF\u09AA\u09C1\u09B0\u09C0", "Bishnupriya Manipuri"],
+  br: ["Brezhoneg", "Breton"],
+  bs: ["Bosanski", "Bosnian"],
+  bug: ["Basa Ugi", "Buginese"],
+  bxr: ["\u0411\u0443\u0440\u044F\u0430\u0434", "Buriat"],
+  ca: ["Catal\xE0", "Catalan"],
+  "ca-valencia": ["", "Valencian"],
+  cdo: ["\u95A9\u6771\u8A9E / M\xECng-d\u0115\u0324ng-ng\u1E73\u0304", "Min Dong Chinese"],
+  ce: ["\u041D\u043E\u0445\u0447\u0438\u0439\u043D", "Chechen"],
+  ceb: ["Cebuano", "Cebuano"],
+  ch: ["Chamoru", "Chamorro"],
+  cho: ["Chahta anumpa", "Choctaw"],
+  chr: ["\u13E3\u13B3\u13A9", "Cherokee"],
+  chy: ["Tsets\xEAhest\xE2hese", "Cheyenne"],
+  co: ["Corsu", "Corsican"],
+  cr: ["N\u0113hiyaw\u0113win / \u14C0\u1426\u1403\u152D\u140D\u140F\u1423", "Cree"],
+  cs: ["\u010De\u0161tina", "Czech"],
+  csb: ["Kasz\xEBbsczi", "Kashubian"],
+  cu: ["\u0441\u043B\u043E\u0432\u0463\u043D\u044C\u0441\u043A\u044A / \u2C14\u2C0E\u2C11\u2C02\u2C21\u2C10\u2C20\u2C14\u2C0D\u2C1F", "Church Slavonic"],
+  cv: ["\u0447\u04D1\u0432\u0430\u0448\u043B\u0430", "Chuvash"],
+  cy: ["Cymraeg", "Welsh"],
+  da: ["Dansk", "Danish"],
+  de: ["Deutsch", "German"],
+  "de-at": ["\xD6sterreichisches Deutsch", "Austrian German"],
+  "de-ch": ["Schweizer Hochdeutsch", "Swiss Standard German"],
+  diq: ["Zazaki", "Dimli"],
+  dsb: ["Dolnoserbski", "Lower Sorbian"],
+  dv: ["\u078B\u07A8\u0788\u07AC\u0780\u07A8\u0784\u07A6\u0790\u07B0", "Divehi"],
+  dz: ["\u0F47\u0F7C\u0F44\u0F0B\u0F41", "Dzongkha"],
+  ee: ["e\u028Begbe", "Ewe"],
+  egy: ["", "Egyptian"],
+  el: ["\u0395\u03BB\u03BB\u03B7\u03BD\u03B9\u03BA\u03AC", "Greek"],
+  en: ["English", "English"],
+  "en-emodeng": ["", "Early Modern English"],
+  enm: ["", "Middle English"],
+  eo: ["Esperanto", "Esperanto"],
+  es: ["Espa\xF1ol", "Spanish"],
+  et: ["Eesti", "Estonian"],
+  eu: ["Euskara", "Basque"],
+  ext: ["Estreme\xF1u", "Extremaduran"],
+  fa: ["\u0641\u0627\u0631\u0633\u06CC", "Persian"],
+  ff: ["Fulfulde", "Fula"],
+  fi: ["Suomi", "Finnish"],
+  fil: ["", "Filipino"],
+  "fiu-vro": ["V\xF5ro", "V\xF5ro"],
+  fj: ["Na Vosa Vakaviti", "Fijian"],
+  fo: ["F\xF8royskt", "Faroese"],
+  fr: ["Fran\xE7ais", "French"],
+  "fra-que": ["", "Quebec French"],
+  fro: ["", "Old French"],
+  frp: ["arpetan", "Arpitan"],
+  fur: ["Furlan", "Friulian"],
+  fy: ["Frysk", "Western Frisian"],
+  ga: ["Gaeilge", "Irish"],
+  gan: ["\u8D1B\u8A9E", "Gan Chinese"],
+  gd: ["G\xE0idhlig", "Scottish Gaelic"],
+  gl: ["Galego", "Galician"],
+  gn: ["Ava\xF1e'\u1EBD", "Guarani"],
+  got: ["\u{10332}\u{1033F}\u{10344}\u{10339}\u{10343}\u{1033A}", "Gothic"],
+  grc: ["\u1F08\u03C1\u03C7\u03B1\u03AF\u03B1 \u1F11\u03BB\u03BB\u03B7\u03BD\u03B9\u03BA\u1F74", "Ancient Greek"],
+  "grc-gre": ["", "Ancient Greek"],
+  "grc-x-doric": ["", "Doric Greek"],
+  "grc-x-medieval": ["", "Medieval Greek"],
+  gsw: ["Alemannisch", "Swiss German"],
+  gu: ["\u0A97\u0AC1\u0A9C\u0AB0\u0ABE\u0AA4\u0AC0", "Gujarati"],
+  gv: ["Gaelg", "Manx"],
+  ha: ["Hausa", "Hausa"],
+  hak: ["\u5BA2\u5BB6\u8A9E / Hak-k\xE2-ng\xEE", "Hakka"],
+  haw: ["Hawai\u02BBi", "Hawaiian"],
+  he: ["\u05E2\u05D1\u05E8\u05D9\u05EA", "Hebrew"],
+  hi: ["\u0939\u093F\u0928\u094D\u0926\u0940", "Hindi"],
+  ho: ["Hiri Motu", "Hiri Motu"],
+  hr: ["Hrvatski", "Croatian"],
+  ht: ["Krey\xF2l ayisyen", "Haitian Creole"],
+  hu: ["Magyar", "Hungarian"],
+  hy: ["\u0540\u0561\u0575\u0565\u0580\u0565\u0576", "Armenian"],
+  hz: ["Otsiherero", "Herero"],
+  ia: ["Interlingua", "Interlingua"],
+  id: ["Bahasa Indonesia", "Indonesian"],
+  ie: ["Interlingue", "Interlingue"],
+  ig: ["Igbo", "Igbo"],
+  ii: ["\uA187\uA259", "Sichuan Yi"],
+  ik: ["I\xF1upiatun", "Inupiak"],
+  ilo: ["Ilokano", "Ilokano"],
+  io: ["Ido", "Ido"],
+  is: ["\xCDslenska", "Icelandic"],
+  it: ["Italiano", "Italian"],
+  iu: ["\u1403\u14C4\u1483\u144E\u1450\u1466 / inuktitut", "Inuktitut"],
+  ja: ["\u65E5\u672C\u8A9E", "Japanese"],
+  jbo: ["la .lojban.", "Lojban"],
+  jv: ["Jawa", "Javanese"],
+  ka: ["\u10E5\u10D0\u10E0\u10D7\u10E3\u10DA\u10D8", "Georgian"],
+  kg: ["Kongo", "Kongo"],
+  khw: ["\u06A9\u06BE\u0648\u0627\u0631", "Khowar"],
+  ki: ["G\u0129k\u0169y\u0169", "Kikuyu"],
+  kj: ["Kwanyama", "Kuanyama"],
+  kk: ["\u049A\u0430\u0437\u0430\u049B\u0448\u0430", "Kazakh"],
+  "kk-arab": ["\u0642\u0627\u0632\u0627\u0642\u0634\u0627 (\u062A\u0674\u0648\u062A\u06D5)", "Kazakh Arabic"],
+  kl: ["Kalaallisut", "Greenlandic"],
+  km: ["\u1797\u17B6\u179F\u17B6\u1781\u17D2\u1798\u17C2\u179A", "Khmer"],
+  kn: ["\u0C95\u0CA8\u0CCD\u0CA8\u0CA1", "Kannada"],
+  ko: ["\uD55C\uAD6D\uC5B4", "Korean"],
+  kr: ["Kanuri", "Kanuri"],
+  ks: ["\u06A9\u0672\u0634\u064F\u0631", "Kashmiri"],
+  ksh: ["Ripoarisch", "Ripuarian"],
+  ku: ["Kurd\xEE", "Kurdish"],
+  "ku-arab": ["\u06A9\u0648\u0631\u062F\u06CC (\u0639\u06D5\u0631\u06D5\u0628\u06CC)", "Kurdish"],
+  "ku-cyrl": ["", "Kurdish Cyrillic"],
+  kv: ["\u041A\u043E\u043C\u0438", "Komi"],
+  kw: ["kernowek", "Cornish"],
+  ky: ["\u043A\u044B\u0440\u0433\u044B\u0437\u0447\u0430", "Kyrgyz"],
+  la: ["Latina", "Latin"],
+  "la-x-medieval": ["", "Medieval Latin"],
+  lad: ["Ladino", "Ladino"],
+  lb: ["L\xEBtzebuergesch", "Luxembourgish"],
+  lg: ["Luganda", "Ganda"],
+  li: ["Limburgs", "Limburgian"],
+  lij: ["Ligure", "Ligurian"],
+  lmo: ["lombard", "Lombard"],
+  ln: ["Ling\xE1la", "Lingala"],
+  lo: ["\u0EA5\u0EB2\u0EA7", "Lao"],
+  lt: ["Lietuvi\u0173", "Lithuanian"],
+  lv: ["Latvie\u0161u", "Latvian"],
+  "map-bms": ["Basa Banyumasan", "Banyumasan"],
+  mg: ["Malagasy", "Malagasy"],
+  mh: ["Ebon", "Marshallese"],
+  mi: ["M\u0101ori", "M\u0101ori"],
+  min: ["Minangkabau", "Minangkabau"],
+  mk: ["\u041C\u0430\u043A\u0435\u0434\u043E\u043D\u0441\u043A\u0438", "Macedonian"],
+  ml: ["\u0D2E\u0D32\u0D2F\u0D3E\u0D33\u0D02", "Malayalam"],
+  mn: ["\u041C\u043E\u043D\u0433\u043E\u043B", "Mongolian"],
+  mo: ["\u043C\u043E\u043B\u0434\u043E\u0432\u0435\u043D\u044F\u0441\u043A\u044D", "Moldovan"],
+  mr: ["\u092E\u0930\u093E\u0920\u0940", "Marathi"],
+  ms: ["Bahasa Melayu", "Malay"],
+  "ms-arab": ["\u0628\u0647\u0627\u0633 \u0645\u0644\u0627\u064A\u0648", "Malay Jawi"],
+  mt: ["Malti", "Maltese"],
+  mus: ["Mvskoke", "Creek"],
+  my: ["\u1019\u103C\u1014\u103A\u1019\u102C\u1018\u102C\u101E\u102C", "Burmese"],
+  na: ["Dorerin Naoero", "Nauruan"],
+  nah: ["N\u0101huatl", "Nahuatl"],
+  nan: ["\u95A9\u5357\u8A9E / B\xE2n-l\xE2m-g\xED", "Min Nan"],
+  nap: ["Napulitano", "Neapolitan"],
+  nb: ["norsk bokm\xE5l", "Norwegian Bokm\xE5l"],
+  nds: ["Plattd\xFC\xFCtsch", "Low German"],
+  "nds-nl": ["Nedersaksies", "Dutch Low Saxon"],
+  ne: ["\u0928\u0947\u092A\u093E\u0932\u0940", "Nepali"],
+  new: ["\u0928\u0947\u092A\u093E\u0932 \u092D\u093E\u0937\u093E", "Newar"],
+  ng: ["Oshiwambo", "Ndonga"],
+  nl: ["Nederlands", "Dutch"],
+  "nl-be": ["", "Belgian Dutch"],
+  nn: ["norsk nynorsk", "Norwegian Nynorsk"],
+  no: ["Norsk", "Norwegian"],
+  non: ["", "Old Norse"],
+  nr: ["isiNdebele seSewula", "South Ndebele"],
+  nrm: ["Nouormand", "Norman"],
+  nso: ["Sesotho sa Leboa", "Northern Sotho"],
+  nv: ["Din\xE9 bizaad", "Navajo"],
+  ny: ["Chi-Chewa", "Chichewa"],
+  oc: ["Occitan", "Occitan"],
+  om: ["Oromoo", "Oromo"],
+  or: ["\u0B13\u0B21\u0B3C\u0B3F\u0B06", "Odia"],
+  os: ["\u0438\u0440\u043E\u043D", "Ossetian"],
+  pa: ["\u0A2A\u0A70\u0A1C\u0A3E\u0A2C\u0A40", "Punjabi"],
+  "pa-arab": ["", "Punjabi Shahmukhi"],
+  pag: ["Pangasinan", "Pangasinan"],
+  pam: ["Kapampangan", "Kapampangan"],
+  pap: ["Papiamentu", "Papiamentu"],
+  pdc: ["Deitsch", "Pennsylvania German"],
+  pi: ["\u092A\u093E\u0932\u093F", "Pali"],
+  pih: ["Norfuk / Pitkern", "Norfolk"],
+  pl: ["Polski", "Polish"],
+  pms: ["Piemont\xE8is", "Piedmontese"],
+  ps: ["\u067E\u069A\u062A\u0648", "Pashto"],
+  pt: ["Portugu\xEAs", "Portuguese"],
+  "pt-br": ["portugu\xEAs do Brasil", "Brazilian Portuguese"],
+  qu: ["Runa Simi", "Quechua"],
+  rm: ["Rumantsch", "Romansh"],
+  rmy: ["romani \u010Dhib", "Romani"],
+  rn: ["ikirundi", "Kirundi"],
+  ro: ["Rom\xE2n\u0103", "Romanian"],
+  "roa-rup": ["arm\xE3neashti", "Aromanian"],
+  ru: ["\u0420\u0443\u0441\u0441\u043A\u0438\u0439", "Russian"],
+  rw: ["Ikinyarwanda", "Kinyarwanda"],
+  sa: ["\u0938\u0902\u0938\u094D\u0915\u0943\u0924\u092E\u094D", "Sanskrit"],
+  sc: ["Sardu", "Sardinian"],
+  scn: ["Sicilianu", "Sicilian"],
+  sco: ["Scots", "Scots"],
+  sd: ["\u0633\u0646\u068C\u064A", "Sindhi"],
+  se: ["Davvis\xE1megiella", "Northern Sami"],
+  sg: ["S\xE4ng\xF6", "Sango"],
+  sh: ["srpskohrvatski / \u0441\u0440\u043F\u0441\u043A\u043E\u0445\u0440\u0432\u0430\u0442\u0441\u043A\u0438", "Serbo-Croatian"],
+  "sh-cyrl": ["\u0441\u0440\u043F\u0441\u043A\u043E\u0445\u0440\u0432\u0430\u0442\u0441\u043A\u0438 (\u045B\u0438\u0440\u0438\u043B\u0438\u0446\u0430)", "Serbo-Croatian Cyrillic"],
+  "sh-latn": ["srpskohrvatski (latinica)", "Serbo-Croatian Latin"],
+  si: ["\u0DC3\u0DD2\u0D82\u0DC4\u0DBD", "Sinhala"],
+  simple: ["Simple English", "Simple English"],
+  sk: ["Sloven\u010Dina", "Slovak"],
+  sl: ["Sloven\u0161\u010Dina", "Slovene"],
+  sm: ["Gagana Samoa", "Samoan"],
+  sn: ["chiShona", "Shona"],
+  so: ["Soomaaliga", "Somali"],
+  sq: ["Shqip", "Albanian"],
+  sr: ["\u0441\u0440\u043F\u0441\u043A\u0438 / srpski", "Serbian"],
+  "sr-cyr": ["", "Serbian Cyrillic"],
+  "sr-cyrl": ["", "Serbian Cyrillic"],
+  "sr-latn": ["", "Serbian Latin"],
+  ss: ["SiSwati", "Swati"],
+  st: ["Sesotho", "Sotho"],
+  su: ["Sunda", "Sundanese"],
+  sv: ["Svenska", "Swedish"],
+  sw: ["Kiswahili", "Swahili"],
+  syc: ["", "Classical Syriac"],
+  ta: ["\u0BA4\u0BAE\u0BBF\u0BB4\u0BCD", "Tamil"],
+  te: ["\u0C24\u0C46\u0C32\u0C41\u0C17\u0C41", "Telugu"],
+  tet: ["Tetun", "Tetum"],
+  tg: ["\u0422\u043E\u04B7\u0438\u043A\u04E3", "Tajik"],
+  th: ["\u0E44\u0E17\u0E22", "Thai"],
+  ti: ["\u1275\u130D\u122D\u129B", "Tigrinya"],
+  tk: ["T\xFCrkmen\xE7e", "Turkmen"],
+  tl: ["Tagalog", "Tagalog"],
+  tlh: ["tlhIngan-Hol", "Klingon"],
+  tn: ["Setswana", "Tswana"],
+  to: ["lea faka-Tonga", "Tongan"],
+  tpi: ["Tok Pisin", "Tok Pisin"],
+  tr: ["T\xFCrk\xE7e", "Turkish"],
+  ts: ["Xitsonga", "Tsonga"],
+  tt: ["\u0442\u0430\u0442\u0430\u0440\u0447\u0430 / tatar\xE7a", "Tatar"],
+  "tt-cyrl": ["\u0442\u0430\u0442\u0430\u0440\u0447\u0430", "Tatar Cyrillic"],
+  "tt-latn": ["tatar\xE7a", "Tatar Latin"],
+  tum: ["chiTumbuka", "Tumbuka"],
+  tw: ["Twi", "Twi"],
+  ty: ["reo tahiti", "Tahitian"],
+  udm: ["\u0423\u0434\u043C\u0443\u0440\u0442", "Udmurt"],
+  ug: ["\u0626\u06C7\u064A\u063A\u06C7\u0631\u0686\u06D5 / Uyghurche", "Uyghur"],
+  uk: ["\u0423\u043A\u0440\u0430\u0457\u043D\u0441\u044C\u043A\u0430", "Ukrainian"],
+  ur: ["\u0627\u0631\u062F\u0648", "Urdu"],
+  uz: ["o\u02BBzbekcha / \u045E\u0437\u0431\u0435\u043A\u0447\u0430", "Uzbek"],
+  "uz-cyrl": ["\u045E\u0437\u0431\u0435\u043A\u0447\u0430", "Uzbek Cyrillic"],
+  ve: ["Tshivenda", "Venda"],
+  vec: ["V\xE8neto", "Venetian"],
+  vi: ["Ti\u1EBFng Vi\u1EC7t", "Vietnamese"],
+  vls: ["West-Vlams", "West Flemish"],
+  vo: ["Volap\xFCk", "Volap\xFCk"],
+  wa: ["Walon", "Walloon"],
+  war: ["Winaray", "Waray-Waray"],
+  wo: ["Wolof", "Wolof"],
+  xal: ["\u0425\u0430\u043B\u044C\u043C\u0433", "Kalmyk"],
+  xh: ["isiXhosa", "Xhosa"],
+  yi: ["\u05D9\u05D9\u05B4\u05D3\u05D9\u05E9", "Yiddish"],
+  yo: ["Yor\xF9b\xE1", "Yoruba"],
+  yue: ["\u7CB5\u8A9E", "Cantonese"],
+  za: ["Vahcuengh", "Zhuang"],
+  zh: ["\u4E2D\u6587", "Chinese"],
+  "zh-classical": ["\u6587\u8A00", "Classical Chinese"],
+  "zh-hans": ["\u4E2D\u6587\uFF08\u7B80\u4F53\uFF09", "Simplified Chinese"],
+  "zh-hant": ["\u4E2D\u6587\uFF08\u7E41\u9AD4\uFF09", "Traditional Chinese"],
+  "zh-min-nan": ["B\xE2n-l\xE2m-g\xFA", "Minnan"],
+  "zh-tw": ["\u4E2D\u6587\uFF08\u81FA\u7063\uFF09", "Taiwanese Mandarin"],
+  "zh-yue": ["\u7CB5\u8A9E", "Cantonese"],
+  zu: ["isiZulu", "Zulu"]
 };
 
 Object.keys(languages$1).forEach((k) => {
-  interwikis[k] = k + ".wikipedia.org/wiki/$1";
+  interwiki[k] = k + ".wikipedia.org/wiki/$1";
 });
 const parseInterwiki = function(obj, _opts = defaults$1) {
   let str = obj.page || "";
@@ -2600,7 +2391,7 @@ const parseInterwiki = function(obj, _opts = defaults$1) {
     let site = m[1] || "";
     site = site.toLowerCase();
     const project = normalizeProject(site);
-    if (Object.hasOwn(interwikis, project) === false) {
+    if (Object.hasOwn(interwiki, project) === false) {
       return obj;
     }
     obj.page = m[2];
@@ -3076,20 +2867,6 @@ const parseImgString = function(wiki, opts = defaults$1) {
   }
   return null;
 };
-
-var latLngs = [
-  ["latitude", "longitude"],
-  //english
-  ["lat", "lng"],
-  ["breitengrad", "l\xE4ngengrad"],
-  //german
-  ["latitud", "longitud"],
-  //spanish
-  ["zem\u011Bpisn\xE1 \u0161\xED\u0159ka", "zem\u011Bpisn\xE1 d\xE9lka"],
-  //czech
-  ["\u0448\u0438\u0440", "\u0434\u043E\u043B\u0433"]
-  //russian
-];
 
 const readCoordinate = (box, prefix, directions, limit, separator) => {
   const field = (suffix) => box.get(prefix + separator + suffix)?.text().trim() || "";
@@ -3612,56 +3389,13 @@ class Section {
   }
 }
 
-let d = " disambiguation";
-const templates$e = /* @__PURE__ */ new Set([
-  "dab",
-  "dab",
-  "disamb",
-  "disambig",
-  "geodis",
-  "hndis",
-  "setindex",
-  "ship index",
-  "split dab",
-  "sport index",
-  "wp disambig",
-  "disambiguation cleanup",
-  "airport" + d,
-  "biology" + d,
-  "call sign" + d,
-  "caselaw" + d,
-  "chinese title" + d,
-  "genus" + d,
-  "hospital" + d,
-  "lake index",
-  "letter" + d,
-  "letter-number combination" + d,
-  "mathematical" + d,
-  "military unit" + d,
-  "mountainindex",
-  "number" + d,
-  "phonetics" + d,
-  "place name" + d,
-  "portal" + d,
-  "road" + d,
-  "school" + d,
-  "species latin name abbreviation" + d,
-  "species latin name" + d,
-  "station" + d,
-  "synagogue" + d,
-  "taxonomic authority" + d,
-  "taxonomy" + d
-]);
-
 const mayAlsoReg = /. may (also )?refer to\b/i;
 const notDisambig = /* @__PURE__ */ new Set(["about", "for", "for multi", "other people", "other uses of", "distinguish"]);
 const inTitle = new RegExp(". \\((" + disambig_titles.join("|") + ")\\)$", "i");
 const i18n_templates = new Set(disambig_templates);
 const isDisambig = function(doc) {
   const templates = doc.templates().map((tmpl) => tmpl.type);
-  let found = templates.find((name) => {
-    return templates$e.has(name) || i18n_templates.has(name);
-  });
+  let found = templates.find((name) => i18n_templates.has(name));
   if (found) {
     return true;
   }
@@ -3778,9 +3512,11 @@ const sectionMap = function(doc, fn, clue) {
 class Document {
   #data;
   #info;
-  constructor(data, info) {
+  #world;
+  constructor(data, info, world) {
     this.#data = data;
     this.#info = withDefaults(info);
+    this.#world = world;
   }
   get title() {
     if (this.#info.title) {
@@ -5258,7 +4994,7 @@ const symbols = {
   "C-change": "\xB0C",
   "F-change": "\xB0F"
 };
-const names$1 = {
+const names = {
   km: ["kilometre", "kilometres", "kilometer", "kilometers"],
   mi: ["mile", "miles"],
   m: ["metre", "metres", "meter", "meters"],
@@ -5317,17 +5053,17 @@ const superscript$1 = (str = "") => {
 };
 const unitSymbol = (unit = "") => symbols[unit] || unit;
 const unitName = (unit = "", value = "", opts = {}) => {
-  let names = names$1[unit] || names$1[unit.toLowerCase()];
-  if (!names) {
+  let names$1 = names[unit] || names[unit.toLowerCase()];
+  if (!names$1) {
     return unitSymbol(unit);
   }
-  const us = opts.sp === "us" && names.length === 4;
+  const us = opts.sp === "us" && names$1.length === 4;
   const plural = opts.adj !== "on" && Number(String(value).replace(/,/g, "")) !== 1;
   let i = plural ? 1 : 0;
   if (us) {
     i += 2;
   }
-  return names[i];
+  return names$1[i];
 };
 const spellInput = (opts = {}) => opts.abbr !== "on" && opts.abbr !== "in" && opts.abbr !== "values";
 const spellOutput = (opts = {}) => opts.abbr === "off" || opts.abbr === "in";
@@ -6562,213 +6298,11 @@ justNames.forEach((str) => {
   fns$1[str] = str;
 });
 
-const names = {
-  aa: "Afar",
-  ab: "Abkhazian",
-  af: "Afrikaans",
-  ak: "Akan",
-  am: "Amharic",
-  an: "Aragonese",
-  ang: "Old English",
-  ar: "Arabic",
-  arc: "Aramaic",
-  as: "Assamese",
-  ast: "Asturian",
-  av: "Avaric",
-  ay: "Aymara",
-  az: "Azerbaijani",
-  ba: "Bashkir",
-  be: "Belarusian",
-  bg: "Bulgarian",
-  bh: "Bihari",
-  bi: "Bislama",
-  bm: "Bambara",
-  bn: "Bengali",
-  bo: "Tibetan",
-  br: "Breton",
-  bs: "Bosnian",
-  ca: "Catalan",
-  ce: "Chechen",
-  ceb: "Cebuano",
-  ch: "Chamorro",
-  co: "Corsican",
-  cr: "Cree",
-  cs: "Czech",
-  cu: "Church Slavonic",
-  cv: "Chuvash",
-  cy: "Welsh",
-  da: "Danish",
-  de: "German",
-  dv: "Divehi",
-  dz: "Dzongkha",
-  ee: "Ewe",
-  egy: "Egyptian",
-  el: "Greek",
-  en: "English",
-  enm: "Middle English",
-  eo: "Esperanto",
-  es: "Spanish",
-  et: "Estonian",
-  eu: "Basque",
-  fa: "Persian",
-  ff: "Fula",
-  fi: "Finnish",
-  fil: "Filipino",
-  fj: "Fijian",
-  fo: "Faroese",
-  fr: "French",
-  fro: "Old French",
-  fy: "Western Frisian",
-  ga: "Irish",
-  gd: "Scottish Gaelic",
-  gl: "Galician",
-  gn: "Guarani",
-  grc: "Ancient Greek",
-  gsw: "Swiss German",
-  gu: "Gujarati",
-  gv: "Manx",
-  ha: "Hausa",
-  haw: "Hawaiian",
-  he: "Hebrew",
-  hi: "Hindi",
-  hr: "Croatian",
-  ht: "Haitian Creole",
-  hu: "Hungarian",
-  hy: "Armenian",
-  ia: "Interlingua",
-  id: "Indonesian",
-  ig: "Igbo",
-  is: "Icelandic",
-  it: "Italian",
-  iu: "Inuktitut",
-  ja: "Japanese",
-  jv: "Javanese",
-  ka: "Georgian",
-  kk: "Kazakh",
-  kl: "Greenlandic",
-  km: "Khmer",
-  kn: "Kannada",
-  ko: "Korean",
-  ks: "Kashmiri",
-  ku: "Kurdish",
-  ky: "Kyrgyz",
-  la: "Latin",
-  lb: "Luxembourgish",
-  lg: "Ganda",
-  ln: "Lingala",
-  lo: "Lao",
-  lt: "Lithuanian",
-  lv: "Latvian",
-  mg: "Malagasy",
-  mi: "M\u0101ori",
-  mk: "Macedonian",
-  ml: "Malayalam",
-  mn: "Mongolian",
-  mr: "Marathi",
-  ms: "Malay",
-  mt: "Maltese",
-  my: "Burmese",
-  nan: "Min Nan",
-  nb: "Norwegian Bokm\xE5l",
-  nds: "Low German",
-  ne: "Nepali",
-  nl: "Dutch",
-  nn: "Norwegian Nynorsk",
-  no: "Norwegian",
-  non: "Old Norse",
-  oc: "Occitan",
-  om: "Oromo",
-  or: "Odia",
-  os: "Ossetian",
-  pa: "Punjabi",
-  pl: "Polish",
-  ps: "Pashto",
-  pt: "Portuguese",
-  qu: "Quechua",
-  rm: "Romansh",
-  ro: "Romanian",
-  ru: "Russian",
-  rw: "Kinyarwanda",
-  sa: "Sanskrit",
-  sc: "Sardinian",
-  scn: "Sicilian",
-  sco: "Scots",
-  sd: "Sindhi",
-  se: "Northern Sami",
-  sh: "Serbo-Croatian",
-  si: "Sinhala",
-  sk: "Slovak",
-  sl: "Slovene",
-  sm: "Samoan",
-  sn: "Shona",
-  so: "Somali",
-  sq: "Albanian",
-  sr: "Serbian",
-  st: "Sotho",
-  su: "Sundanese",
-  sv: "Swedish",
-  sw: "Swahili",
-  syc: "Classical Syriac",
-  ta: "Tamil",
-  te: "Telugu",
-  tg: "Tajik",
-  th: "Thai",
-  ti: "Tigrinya",
-  tk: "Turkmen",
-  tl: "Tagalog",
-  tn: "Tswana",
-  to: "Tongan",
-  tr: "Turkish",
-  tt: "Tatar",
-  ug: "Uyghur",
-  uk: "Ukrainian",
-  ur: "Urdu",
-  uz: "Uzbek",
-  vi: "Vietnamese",
-  wa: "Walloon",
-  wo: "Wolof",
-  xh: "Xhosa",
-  yi: "Yiddish",
-  yo: "Yoruba",
-  yue: "Cantonese",
-  zh: "Chinese",
-  zu: "Zulu",
-  // script variants
-  "sr-cyr": "Serbian Cyrillic",
-  "sr-cyrl": "Serbian Cyrillic",
-  "sr-latn": "Serbian Latin",
-  "sh-cyrl": "Serbo-Croatian Cyrillic",
-  "sh-latn": "Serbo-Croatian Latin",
-  "zh-hans": "Simplified Chinese",
-  "zh-hant": "Traditional Chinese",
-  "zh-tw": "Taiwanese Mandarin",
-  "ku-arab": "Kurdish",
-  "ku-cyrl": "Kurdish Cyrillic",
-  "ms-arab": "Malay Jawi",
-  "pa-arab": "Punjabi Shahmukhi",
-  "tt-latn": "Tatar Latin",
-  "tt-cyrl": "Tatar Cyrillic",
-  "az-arab": "South Azerbaijani",
-  "uz-cyrl": "Uzbek Cyrillic",
-  "kk-arab": "Kazakh Arabic",
-  "pt-br": "Brazilian Portuguese",
-  "de-at": "Austrian German",
-  "de-ch": "Swiss Standard German",
-  "nl-be": "Belgian Dutch",
-  "en-emodeng": "Early Modern English",
-  "grc-x-doric": "Doric Greek",
-  "grc-x-medieval": "Medieval Greek",
-  "grc-gre": "Ancient Greek",
-  "la-x-medieval": "Medieval Latin",
-  "fra-que": "Quebec French",
-  "ca-valencia": "Valencian"
-};
-
 const langText = (code = "", obj = {}, opts = {}) => {
   code = code.toLowerCase();
   let label = obj.label;
   if (label === void 0 && (!opts.lang || opts.lang === "en")) {
-    label = names[code] || names[code.split("-")[0]] || "";
+    label = languages$1[code]?.[1] || languages$1[code.split("-")[0]]?.[1] || "";
   }
   let translit = obj.translit || obj.transliteration || "";
   let lit = obj.lit || obj.translation || "";
@@ -8273,11 +7807,11 @@ const tlx = (tmpl, parse = parseTextArguments) => {
 const inLang = (tmpl, parse = parseTextArguments) => {
   let obj = parse(tmpl);
   let codes = (obj.list || []).map((s) => s.trim().toLowerCase()).filter((s) => s);
-  let names$1 = codes.map((c) => names[c] || names[c.split("-")[0]] || c);
-  if (names$1.length === 0) {
+  let names = codes.map((c) => languages$1[c]?.[1] || languages$1[c.split("-")[0]]?.[1] || c);
+  if (names.length === 0) {
     return { data: null, replacement: "" };
   }
-  let str = names$1.length > 1 ? names$1.slice(0, -1).join(", ") + " and " + names$1.at(-1) : names$1[0];
+  let str = names.length > 1 ? names.slice(0, -1).join(", ") + " and " + names.at(-1) : names[0];
   return { data: { codes }, replacement: `(in ${str})` };
 };
 const clickableButton = (tmpl, parse = parseTextArguments) => {
@@ -8638,7 +8172,7 @@ const templates$8 = {
   "#language": (tmpl) => {
     let [code = ""] = rawArgs(tmpl);
     code = code.trim().toLowerCase();
-    return { data: null, replacement: languages$1[code] || code };
+    return { data: null, replacement: languages$1[code]?.[0] || code };
   },
   // {{#titleparts: Talk:Foo/Bar/Baz | 1 | 2 }} → Bar
   "#titleparts": (tmpl) => {
@@ -11549,8 +11083,7 @@ let sports = {
     let res = parse(tmpl, ["number", "country", "name", "dl"]);
     let str = `[[${res.name}]]`;
     if (res.country) {
-      let country = (res.country || "").toLowerCase();
-      let flag = flags.find((a) => country === a[1] || country === a[2]) || [];
+      let flag = findFlag(res.country) || [];
       if (flag && flag[0]) {
         str = flag[0] + "  " + str;
       }
@@ -12456,7 +11989,7 @@ const simplifyRows = function(rows) {
   });
 };
 const buildRows = function(rowText, headings, section, opts) {
-  headings = headings.map((h) => h.replace(/<[^>]*>/g, " ").trim());
+  headings = headings.map((h) => h.replace(/<[^<>]*>/g, " ").trim());
   rowText = rowText.replace(/<br ?\/?>/gi, " ");
   rowText = rowText.replace(/<\/?(?:span|small|big|sup|sub|center|[biu])[^>]*>/gi, "");
   const parsed = process$1(rowText, opts);
@@ -13263,8 +12796,11 @@ const parseDoc = function(res, title) {
   return isArray(title) ? results : results[0] ?? null;
 };
 
+var version = "10.5.0";
+
+const defaultAgent = `wtf_wikipedia/${version} (https://github.com/spencermountain/wtf_wikipedia)`;
 const makeHeaders = function(options) {
-  let agent = options.userAgent || options["User-Agent"] || options["Api-User-Agent"] || "User of the wtf_wikipedia library";
+  let agent = options.userAgent || options["User-Agent"] || options["Api-User-Agent"] || defaultAgent;
   let origin;
   if (options.noOrigin) {
     origin = "";
@@ -13459,21 +12995,108 @@ const defaults = {
   path: "api.php"
   //some 3rd party sites use a weird path
 };
-const getJson = function(url, headers, silent) {
-  return fetch(url, headers).catch((e) => {
+const sleep = function(ms) {
+  return new Promise((ok) => setTimeout(ok, ms));
+};
+const transient = /* @__PURE__ */ new Set([429, 503]);
+const retryWait = function(res) {
+  const after = Number(res.headers?.get?.("retry-after"));
+  if (after > 0 && after <= 10) {
+    return after * 1e3;
+  }
+  return 0;
+};
+const getJson = async function(url, headers, silent, isRetry) {
+  let res;
+  try {
+    res = await fetch(url, headers);
+  } catch (e) {
     if (!silent) {
       warnNetwork(url, e);
     }
     throw e;
-  }).then((res) => {
-    if (res.ok !== true) {
-      if (!silent) {
-        warnHttp(res.status, url, res.headers?.get?.("retry-after"));
-      }
-      throw new Error(`HTTP ${res.status} error fetching: ${url}`);
+  }
+  if (res.ok !== true) {
+    const wait = retryWait(res);
+    if (!isRetry && wait && transient.has(res.status)) {
+      await sleep(wait);
+      return getJson(url, headers, silent, true);
     }
-    return res.json();
+    if (!silent) {
+      warnHttp(res.status, url, res.headers?.get?.("retry-after"));
+    }
+    throw new Error(`HTTP ${res.status} error fetching: ${url}`);
+  }
+  const json = await res.json();
+  if (!isRetry && json?.error?.code === "maxlag") {
+    const wait = retryWait(res);
+    if (wait) {
+      await sleep(wait);
+      return getJson(url, headers, silent, true);
+    }
+  }
+  return json;
+};
+const asPageList = function(res) {
+  const pages = res?.query?.pages;
+  return isArray(pages) ? pages : Object.values(pages || {});
+};
+const isDone = function(res) {
+  return res.batchcomplete === true || res.batchcomplete === "" || !res.continue;
+};
+const noContent = function(revs) {
+  return !revs || revs.length === 0 || revs.every((r) => !r.slots && r["*"] === void 0);
+};
+const mergePages = function(pages, extras) {
+  const byId = {};
+  pages.forEach((p) => byId[p.pageid ?? p.title] = p);
+  extras.forEach((p) => {
+    const have = byId[p.pageid ?? p.title];
+    if (!have) {
+      pages.push(p);
+      return;
+    }
+    Object.keys(p).forEach((k) => {
+      if (have[k] === void 0) {
+        have[k] = p[k];
+      }
+    });
+    if (noContent(have.revisions) && !noContent(p.revisions)) {
+      have.revisions = p.revisions;
+    }
   });
+};
+const getJsonAll = async function(url, headers, silent) {
+  const res = await getJson(url, headers, silent);
+  if (!res?.query) {
+    return res;
+  }
+  const pages = asPageList(res);
+  let last = res;
+  for (let i = 0; i < 10 && !isDone(last); i += 1) {
+    last = await getJson(url + "&" + new URLSearchParams(last.continue).toString(), headers, silent);
+    mergePages(pages, asPageList(last));
+  }
+  res.query.pages = pages;
+  return res;
+};
+const fetchAll = async function(groups, opts, headers) {
+  const found = [];
+  for (const group of groups) {
+    const url = makeUrl({ ...opts, title: group });
+    if (!url) {
+      throw new Error(`Could not create a fetch-url from '${group}'`);
+    }
+    const res = await getJsonAll(url, headers, opts.silent);
+    if (!res) {
+      throw new Error(`No JSON Data Found For ${url}`);
+    }
+    if (res.error && !opts.silent) {
+      warnApi(res.error, url);
+    }
+    found.push(getResult(res, opts) || []);
+  }
+  return found.flat();
 };
 const fetchPage = function(title, options) {
   if (typeof options === "string") {
@@ -13496,35 +13119,50 @@ const fetchPage = function(title, options) {
       groups.push(opts.title.slice(i, i + chunkSize));
     }
   }
-  return Promise.resolve().then(
-    () => Promise.all(
-      groups.map((group) => {
-        const url = makeUrl({ ...opts, title: group });
-        if (!url) {
-          throw new Error(`Could not create a fetch-url from '${title}'`);
-        }
-        return getJson(url, headers, opts.silent).then((res) => {
-          if (!res) {
-            throw new Error(`No JSON Data Found For ${url}`);
-          }
-          if (res.error && !opts.silent) {
-            warnApi(res.error, url);
-          }
-          return getResult(res, opts) || [];
-        });
-      })
-    )
-  ).then((results) => {
-    const found = results.flat();
-    return parseDoc(found, title);
-  });
+  return fetchAll(groups, opts, headers).then((found) => parseDoc(found, title));
 };
 
-var version = "10.5.0";
+const makeWorld = function() {
+  const world = {
+    templates,
+    meta: {
+      languages: languages$1,
+      namespaces: namespaceNames,
+      projects: aliases$3,
+      interwiki
+      // ipac,
+    },
+    i18n: {
+      // used to build regex
+      categories: ["category"],
+      // templates that signal disambiguation pages
+      disambiguation: ["dab", "disamb", "disambig", "disambiguation"],
+      // page titles that signal disambiguation pages
+      disambig_titles: ["disambiguation"],
+      // filename prefixes that denote images
+      images: ["file", "image"],
+      // template names that denate infoboxes
+      infobox: ["infobox"],
+      //
+      latlngs: [
+        ["latitude", "longitude"],
+        ["lat", "lng"]
+      ],
+      //
+      redirects: ["redirect"],
+      //
+      references: ["references", "reference"],
+      //
+      stubs: ["stub"]
+    }
+  };
+  return world;
+};
 
-const wtf = function(wiki, info) {
+const wtf = function(wiki, info = {}) {
+  const world = makeWorld();
   const data = parse(wiki, info);
-  return new Document(data, info);
+  return new Document(data, info, world);
 };
 const models = {
   Doc: Document,

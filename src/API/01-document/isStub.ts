@@ -1,9 +1,9 @@
-import { stubs } from '../../world/data/i18n/index.ts'
-let allStubs = new Set(stubs)
+import { defaultWorld } from '../../world/index.ts'
 
 const isStub = function (doc) {
   // Check for stub templates.
   const templates = doc.templates()
+  const allStubs = defaultWorld._cached.stubs
   return templates.some((t) => {
     let name = t.type || ''
     // try i18n templates like 'stubo'

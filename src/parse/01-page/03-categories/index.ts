@@ -1,10 +1,8 @@
 import type { PageData } from '../../../types/index.ts'
-import { categories as _categories } from '../../../world/data/i18n/index.ts'
-
-const cat_reg = new RegExp('\\[\\[(' + _categories.join('|') + '):(.{2,178}?)]](w{0,10})', 'gi')
-const cat_remove_reg = new RegExp('^\\[\\[:?(' + _categories.join('|') + '):', 'gi')
+import { defaultWorld } from '../../../world/index.ts'
 
 const parse_categories = function (page: PageData) {
+  const { catReg: cat_reg, catRemoveReg: cat_remove_reg } = defaultWorld._cached
   let wiki = page.remaining
   const categories = []
   const categoryDetails = []

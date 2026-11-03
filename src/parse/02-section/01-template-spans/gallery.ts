@@ -2,9 +2,7 @@ import makeResult from '../../templates/result.ts'
 import defaults from '../../../_lib/defaults.ts'
 import type { DocInfo, SectionData } from '../../../types/index.ts'
 import parseImgString from '../../03-paragraph/02-images/parse.ts'
-import { images } from '../../../world/data/i18n/index.ts'
-
-const namespace = new RegExp(`^(?:${images.join('|')}):`, 'i')
+import { defaultWorld } from '../../../world/index.ts'
 
 //okay, <gallery> is a xml-tag, with newline-separated data, somehow pivoted by '|'...
 //all deities help us. truly -> https://en.wikipedia.org/wiki/Help:Gallery_tag
@@ -19,7 +17,7 @@ const parseGallery = function (section: SectionData, opts: DocInfo = defaults) {
       .map((str: string) => {
         str = str.trim()
         // Gallery filenames may omit the image namespace.
-        if (!namespace.test(str)) {
+        if (!defaultWorld._cached.fileNamespaceReg.test(str)) {
           str = `File:${str}`
         }
         return parseImgString(`[[${str}]]`, opts)

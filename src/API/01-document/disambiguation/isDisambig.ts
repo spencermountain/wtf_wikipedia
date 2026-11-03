@@ -1,11 +1,8 @@
-import { disambig_titles, disambig_templates } from '../../../world/data/i18n/index.ts'
+import { defaultWorld } from '../../../world/index.ts'
 const mayAlsoReg = /. may (also )?refer to\b/i
 
 // templates that signal page is not a disambiguation
 const notDisambig = new Set(['about', 'for', 'for multi', 'other people', 'other uses of', 'distinguish'])
-
-const inTitle = new RegExp('. \\((' + disambig_titles.join('|') + ')\\)$', 'i')
-const i18n_templates = new Set(disambig_templates)
 
 // look for '... may refer to'
 // const byText = function (s) {
@@ -24,13 +21,13 @@ const i18n_templates = new Set(disambig_templates)
 const isDisambig = function (doc) {
   // check for a {{disambig}} template
   const templates = doc.templates().map((tmpl) => tmpl.type)
-  let found = templates.find((name) => i18n_templates.has(name))
+  let found = templates.find((name) => defaultWorld._cached.disambigTemplates.has(name))
   if (found) {
     return true
   }
   // check for (disambiguation) in title
   let title = doc.title
-  if (title && inTitle.test(title) === true) {
+  if (title && defaultWorld._cached.disambigTitleReg.test(title) === true) {
     return true
   }
   // does it have a non-disambig hatnote? these are kind 'hatnote', so go by their name

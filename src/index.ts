@@ -6,7 +6,7 @@ import templates, { i18n } from './world/templates/index.ts'
 import infoboxes from './world/data/infoboxes.ts'
 import { refreshWrappers } from './_lib/plural-wrapper.ts'
 import type { DocInfo } from './types/index.ts'
-import makeWorld from './world/index.ts'
+import { defaultWorld } from './world/index.ts'
 import {
   Document,
   Section,
@@ -23,7 +23,7 @@ import {
 
 //the main 'factory' exported method
 const wtf = function (wiki: string, info: DocInfo = {}) {
-  const world = makeWorld()
+  const world = info.world || defaultWorld
   const data = parse(wiki, info)
   return new Document(data, info, world)
 }
@@ -55,7 +55,8 @@ wtf.fetch = function (title, options, cb) {
   return fetch(title, options)
 }
 wtf.extend = function (fn) {
-  fn(models, templates, infoboxes, i18n)
+  fn(models, templates, infoboxes, i18n, defaultWorld)
+  defaultWorld.rebuild()
   refreshWrappers()
   return this
 }

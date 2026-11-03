@@ -109,7 +109,7 @@ const simplifyRows = function (rows) {
 // rows → a table, with inline templates and html resolved first
 const buildRows = function (rowText, headings, section, opts): { rows: object[]; title?: string } {
   // a '<br/>' in a heading would corrupt the column key
-  headings = headings.map((h) => h.replace(/<[^>]*>/g, ' ').trim())
+  headings = headings.map((h) => h.replace(/<[^<>]*>/g, ' ').trim())
   // html-syntax runs after this stage, so drop inline formatting tags ourselves
   rowText = rowText.replace(/<br ?\/?>/gi, ' ')
   rowText = rowText.replace(/<\/?(?:span|small|big|sup|sub|center|[biu])[^>]*>/gi, '')

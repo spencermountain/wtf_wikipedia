@@ -70,7 +70,7 @@ const getCell = function (row = {}, names = []) {
 // 'Stolarz (0–1–0)' → 'Stolarz',  'Smith (1)‡' → 'Smith'
 const stripNotes = function (str = '') {
   return String(str)
-    .replace(/\(.*?\)/g, '')
+    .replace(/\([^()]*\)/g, '')
     .replace(/[‡†*]/g, '')
     .trim()
 };
@@ -228,7 +228,7 @@ const parseRecord = function (str = '', opts = {}) {
     str = overall[1];
   }
   // take the first record-shaped run, so '1st half: 16–42' isn't read as 1–16
-  const shaped = str.match(/\d+(?: *[–\-−] *\d+)+/);
+  const shaped = str.match(/(?<!\d)\d+(?: *[–\-−] *\d+)+/);
   if (!shaped) {
     return null
   }
@@ -304,7 +304,7 @@ const fromTeamPage = function (page = '') {
 const parseScore = function (txt = '') {
   txt = String(txt)
     .replace(/^ *[WLTD]\b\.? */i, '')
-    .replace(/\(.*?\)/g, '')
+    .replace(/\([^()]*\)/g, '')
     .trim();
   const arr = txt.split(dashSplit).map((s) => parseInt(s.trim(), 10));
   if (arr.length < 2 || isNaN(arr[0]) || isNaN(arr[1])) {
@@ -316,7 +316,7 @@ const parseScore = function (txt = '') {
 // 'Rogers Centre (23,987)', 'Bell Centre 21,900' or '19,108' → 19108
 const parseAttendance = function (txt = '') {
   let str = String(txt);
-  const m = str.match(/\(([0-9, ]+)\)/) || str.match(/([0-9][0-9,]{2,}) *$/);
+  const m = str.match(/\(([0-9, ]+)\)/) || str.match(/(?<![0-9,])([0-9][0-9,]{2,}) *$/);
   if (m && m[1]) {
     str = m[1];
   }
@@ -374,7 +374,7 @@ const opponentCol = function (game, row, ctx, score) {
   }
   game.home = /^ *(@|at )/i.test(opp) === false;
   opp = opp.replace(/^ *(@|at |vs\.? ) */i, '').trim();
-  opp = opp.replace(/ *\(\d{4}[^)]*\)$/, ''); //a '(2002–03)' season-link suffix
+  opp = opp.replace(/ ?\(\d{4}[^)]*\)$/, ''); //a '(2002–03)' season-link suffix
   opp = opp.replace(/ \d{1,2}:\d{2} ?[ap]\.?m.*$/i, ''); //a '6:05pm (ESPN)' suffix
   const oppLink = row.links[key];
   game.opponent = fromSeasonPage(oppLink) || fromTeamPage(oppLink) || ctx.fullName(opp);
@@ -831,7 +831,7 @@ const gmOf = function (season = {}) {
 // the home ground, whether the sport calls it a stadium, arena or ballpark
 const venueOf = function (season = {}) {
   return String(getCell(season, ['stadium', 'arena', 'ballpark']) || '')
-    .replace(/ *\(capacity:.*?\)/i, '')
+    .replace(/ ?\(capacity:[^()]*\)/i, '')
     .trim()
 };
 
@@ -845,7 +845,7 @@ const placeOf = function (val) {
   if (overall) {
     return Number(overall[1])
   }
-  const m = str.match(/(\d+)(?:st|nd|rd|th)/i);
+  const m = str.match(/(?<!\d)(\d+)(?:st|nd|rd|th)/i);
   if (m) {
     return Number(m[1])
   }
@@ -1513,7 +1513,7 @@ const extras$5 = function (game, row) {
   }
   const loc = getCell(row.cells, ['location attendance', 'location', 'arena']);
   if (loc) {
-    game.location = loc.replace(/[0-9][0-9,]* *$/, '').trim();
+    game.location = loc.replace(/(?<![0-9,])[0-9][0-9,]* *$/, '').trim();
   }
 };
 
@@ -2114,7 +2114,7 @@ const extras$3 = function (game, row) {
   }
   const loc = getCell(row.cells, ['location attendance', 'location', 'arena']);
   if (loc) {
-    game.location = loc.replace(/[0-9][0-9,]* *$/, '').trim();
+    game.location = loc.replace(/(?<![0-9,])[0-9][0-9,]* *$/, '').trim();
   }
 };
 

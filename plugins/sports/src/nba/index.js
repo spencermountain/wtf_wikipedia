@@ -29,7 +29,7 @@ const extras = function (game, row) {
   }
   const loc = getCell(row.cells, ['location attendance', 'location', 'arena'])
   if (loc) {
-    game.location = loc.replace(/[0-9][0-9,]* *$/, '').trim()
+    game.location = loc.replace(/(?<![0-9,])[0-9][0-9,]* *$/, '').trim()
   }
 }
 

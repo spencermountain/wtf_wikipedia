@@ -1,10 +1,5 @@
-import infoboxList from '../../../world/data/infoboxes.ts'
 import fmtName from './toJSON/_fmtName.ts'
-import { infoboxes } from '../../../world/data/i18n/index.ts'
-const i18nReg = new RegExp('^(subst.)?(' + infoboxes.join('|') + ')(?=:| |\n|$)', 'i')
-infoboxes.forEach((name) => {
-  infoboxList[name] = true
-})
+import { defaultWorld } from '../../../world/index.ts'
 
 //some looser ones
 const startReg = /^infobox /i
@@ -16,10 +11,10 @@ const yearIn = /^year in [A-Z]/i
 //and https://en.wikipedia.org/wiki/Category:Infobox_templates
 const isInfobox = function (name: string) {
   //known
-  if (Object.hasOwn(infoboxList, name) === true) {
+  if (defaultWorld._cached.infoboxTemplates.has(name)) {
     return true
   }
-  if (i18nReg.test(name)) {
+  if (defaultWorld._cached.infoboxReg.test(name)) {
     return true
   }
   if (startReg.test(name) || endReg.test(name)) {
@@ -35,7 +30,7 @@ const isInfobox = function (name: string) {
 // Preserve the legacy Infobox.type() accessor without adding root metadata.
 const infoboxType = (name: string) => {
   const normalized = fmtName(name)
-  return normalized.replace(i18nReg, '').trim()
+  return normalized.replace(defaultWorld._cached.infoboxReg, '').trim()
 }
 
 export { isInfobox, infoboxType }

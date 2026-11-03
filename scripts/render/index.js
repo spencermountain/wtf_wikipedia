@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import fetchHtml from './fetch-html.js'
 import fetchWiki from './fetch-wiki.js'
 import toText from './text.js'

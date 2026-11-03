@@ -10,7 +10,7 @@ const parseRecord = function (str = '', opts = {}) {
     str = overall[1]
   }
   // take the first record-shaped run, so '1st half: 16–42' isn't read as 1–16
-  const shaped = str.match(/\d+(?: *[–\-−] *\d+)+/)
+  const shaped = str.match(/(?<!\d)\d+(?: *[–\-−] *\d+)+/)
   if (!shaped) {
     return null
   }

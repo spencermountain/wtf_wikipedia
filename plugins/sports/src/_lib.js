@@ -65,7 +65,7 @@ const getCell = function (row = {}, names = []) {
 // 'Stolarz (0–1–0)' → 'Stolarz',  'Smith (1)‡' → 'Smith'
 const stripNotes = function (str = '') {
   return String(str)
-    .replace(/\(.*?\)/g, '')
+    .replace(/\([^()]*\)/g, '')
     .replace(/[‡†*]/g, '')
     .trim()
 }

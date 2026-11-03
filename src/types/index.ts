@@ -126,6 +126,7 @@ export interface DocInfo {
   displayTitle?: string
   defaultSort?: string
   isDisambig?: boolean
+  world?: WorldData
 }
 
 // options accepted by fetch() - document metadata, plus request options
@@ -144,8 +145,41 @@ export interface FetchOptions extends Omit<DocInfo, 'title'> {
   silent?: boolean
 }
 
+// regexes and sets derived from world data, rebuilt by world.rebuild()
+export interface WorldCache {
+  redirectReg: RegExp
+  catReg: RegExp
+  catRemoveReg: RegExp
+  disambigTitleReg: RegExp
+  disambigTemplates: Set<string>
+  fileReg: RegExp
+  fileNamespaceReg: RegExp
+  imageFileReg: RegExp
+  infoboxReg: RegExp
+  infoboxTemplates: Set<string>
+  stubs: Set<string>
+}
+
 export interface WorldData {
   templates: object
-  meta: object
-  i18n: object
+  meta: {
+    languages: Record<string, [string, string]>
+    namespaces: object
+    projects: object
+    interwiki: object
+    infoboxes: Record<string, boolean>
+  }
+  i18n: {
+    categories: string[]
+    disambig_templates: string[]
+    disambig_titles: string[]
+    images: string[]
+    infoboxes: string[]
+    latLngs: string[][]
+    redirects: string[]
+    references: string[]
+    stubs: string[]
+  }
+  _cached: WorldCache
+  rebuild: () => void
 }

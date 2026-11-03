@@ -1,12 +1,9 @@
 import defaults from '../../../_lib/defaults.ts'
-import { images } from '../../../world/data/i18n/index.ts'
+import { defaultWorld } from '../../../world/index.ts'
 import parseArguments from '../../templates/parse/toJSON/index.ts'
 import normalizeFile from './normalize.ts'
 import type { DocInfo, ImageData } from '../../../types/index.ts'
 
-//regexes:
-let fileNames = `(${images.join('|')})`
-const file_reg = new RegExp(fileNames + ':(.+?)[\\||\\]]', 'iu')
 const linkToFile = /^\[\[:/
 
 //style directives for Wikipedia:Extended_image_syntax
@@ -41,7 +38,7 @@ const parseImgString = function (wiki: string, opts: DocInfo = defaults) {
     }
     wiki = `[[${file}]]`
   }
-  let m = wiki.match(file_reg)
+  let m = wiki.match(defaultWorld._cached.imageFileReg)
   if (m === null || !m[2]) {
     return null
   }
