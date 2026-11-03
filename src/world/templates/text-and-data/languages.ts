@@ -1,6 +1,6 @@
 import defaultParse from '../../../parse/templates/parse/toJSON/text.ts'
 
-import languageNames from '../../data/language-names.ts'
+import languages from '../../data/languages.ts'
 
 // 'French: bonjour, romanized: x, lit. 'y'' - as wikipedia renders {{langx}} and {{lang-xx}}
 // (our label names are english, so other wikis get no label rather than a wrong one)
@@ -8,7 +8,7 @@ const langText = (code = '', obj: any = {}, opts: any = {}) => {
   code = code.toLowerCase()
   let label = obj.label
   if (label === undefined && (!opts.lang || opts.lang === 'en')) {
-    label = languageNames[code] || languageNames[code.split('-')[0]] || ''
+    label = languages[code]?.[1] || languages[code.split('-')[0]]?.[1] || ''
   }
   let translit = obj.translit || obj.transliteration || ''
   let lit = obj.lit || obj.translation || ''

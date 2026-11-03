@@ -1,255 +1,297 @@
-export default {
-  aa: 'Afar', //Afar
-  ab: 'Аҧсуа', //Abkhazian
-  af: 'Afrikaans', //Afrikaans
-  ak: 'Akana', //Akan
-  als: 'Alemannisch', //Alemannic
-  am: 'አማርኛ', //Amharic
-  an: 'Aragonés', //Aragonese
-  ang: 'Englisc', //Anglo-Saxon
-  ar: 'العربية', //Arabic
-  arc: 'ܣܘܪܬ', //Aramaic
-  as: 'অসমীয়া', //Assamese
-  ast: 'Asturianu', //Asturian
-  av: 'Авар', //Avar
-  ay: 'Aymar', //Aymara
-  az: 'Azərbaycanca', //Azerbaijani
-  ba: 'Башҡорт', //Bashkir
-  bar: 'Boarisch', //Bavarian
-  'bat-smg': 'Žemaitėška', //Samogitian
-  bcl: 'Bikol', //Bikol
-  be: 'Беларуская', //Belarusian
-  'be-x-old': 'Беларуская (тарашкевіца)', //Belarusian (Taraškievica)
-  bg: 'Български', //Bulgarian
-  bh: 'भोजपुरी', //Bihari
-  bi: 'Bislama', //Bislama
-  bm: 'Bamanankan', //Bambara
-  bn: 'বাংলা', //Bengali
-  bo: 'བོད་ཡིག', //Tibetan
-  bpy: 'বিষ্ণুপ্রিয়া মণিপুরী', //Bishnupriya Manipuri
-  br: 'Brezhoneg', //Breton
-  bs: 'Bosanski', //Bosnian
-  bug: 'ᨅᨔ', //Buginese
-  bxr: 'Буряад', //Buriat
-  ca: 'Català', //Catalan
-  cdo: 'Mìng-dĕ̤ng-ngṳ̄', //Min Dong Chinese
-  ce: 'Нохчийн', //Chechen
-  ceb: 'Sinugboanong', //Cebuano
-  ch: 'Chamoru', //Chamorro
-  cho: 'Choctaw', //Choctaw
-  chr: 'ᏣᎳᎩ', //Cherokee
-  chy: 'Tsetsêhestâhese', //Cheyenne
-  co: 'Corsu', //Corsican
-  cr: 'Nehiyaw', //Cree
-  cs: 'Česky', //Czech
-  csb: 'Kaszëbsczi', //Kashubian
-  cu: 'Словѣньскъ', //Old Church Slavonic
-  cv: 'Чăваш', //Chuvash
-  cy: 'Cymraeg', //Welsh
-  da: 'Dansk', //Danish
-  de: 'Deutsch', //German
-  diq: 'Zazaki', //Dimli
-  dsb: 'Dolnoserbski', //Lower Sorbian
-  dv: 'ދިވެހިބަސް', //Divehi
-  dz: 'ཇོང་ཁ', //Dzongkha
-  ee: 'Ɛʋɛ', //Ewe
-  far: 'فارسی', //Farsi
-  el: 'Ελληνικά', //Greek
-  en: 'English', //English
-  eo: 'Esperanto', //Esperanto
-  es: 'Español', //Spanish
-  et: 'Eesti', //Estonian
-  eu: 'Euskara', //Basque
-  ext: 'Estremeñu', //Extremaduran
-  ff: 'Fulfulde', //Peul
-  fi: 'Suomi', //Finnish
-  'fiu-vro': 'Võro', //Võro
-  fj: 'Na', //Fijian
-  fo: 'Føroyskt', //Faroese
-  fr: 'Français', //French
-  frp: 'Arpitan', //Arpitan
-  fur: 'Furlan', //Friulian
-  fy: 'Frysk', //West Frisian
-  ga: 'Gaeilge', //Irish
-  gan: '贛語', //Gan Chinese
-  gd: 'Gàidhlig', //Scottish Gaelic
-  gil: 'Taetae', //Gilbertese
-  gl: 'Galego', //Galician
-  gn: "Avañe'ẽ", //Guarani
-  got: 'gutisk', //Gothic
-  gu: 'ગુજરાતી', //Gujarati
-  gv: 'Gaelg', //Manx
-  ha: 'هَوُسَ', //Hausa
-  hak: 'Hak-kâ-fa', //Hakka
-  haw: 'Hawai`i', //Hawaiian
-  he: 'עברית', //Hebrew
-  hi: 'हिन्दी', //Hindi
-  ho: 'Hiri Motu', //Hiri Motu
-  hr: 'Hrvatski', //Croatian
-  ht: 'Krèyol', //Haitian
-  hu: 'Magyar', //Hungarian
-  hy: 'Հայերեն', //Armenian
-  hz: 'Otsiherero', //Herero
-  ia: 'Interlingua', //Interlingua
-  id: 'Bahasa', //Indonesian
-  ie: 'Interlingue', //Interlingue
-  ig: 'Igbo', //Igbo
-  ii: 'ꆇꉙ', //Sichuan Yi
-  ik: 'Iñupiak', //Inupiak
-  ilo: 'Ilokano', //Ilokano
-  io: 'Ido', //Ido
-  is: 'Íslenska', //Icelandic
-  it: 'Italiano', //Italian
-  iu: 'ᐃᓄᒃᑎᑐᑦ', //Inuktitut
-  ja: '日本語', //Japanese
-  jbo: 'Lojban', //Lojban
-  jv: 'Basa', //Javanese
-  ka: 'ქართული', //Georgian
-  kg: 'KiKongo', //Kongo
-  ki: 'Gĩkũyũ', //Kikuyu
-  kj: 'Kuanyama', //Kuanyama
-  kk: 'Қазақша', //Kazakh
-  kl: 'Kalaallisut', //Greenlandic
-  km: 'ភាសាខ្មែរ', //Cambodian
-  kn: 'ಕನ್ನಡ', //Kannada
-  khw: 'کھوار', //Khowar
-  ko: '한국어', //Korean
-  kr: 'Kanuri', //Kanuri
-  ks: 'कश्मीरी', //Kashmiri
-  ksh: 'Ripoarisch', //Ripuarian
-  ku: 'Kurdî', //Kurdish
-  kv: 'Коми', //Komi
-  kw: 'Kernewek', //Cornish
-  ky: 'Kırgızca', //Kirghiz
-  la: 'Latina', //Latin
-  lad: 'Dzhudezmo', //Ladino
-  lan: 'Leb', //Lango
-  lb: 'Lëtzebuergesch', //Luxembourgish
-  lg: 'Luganda', //Ganda
-  li: 'Limburgs', //Limburgian
-  lij: 'Líguru', //Ligurian
-  lmo: 'Lumbaart', //Lombard
-  ln: 'Lingála', //Lingala
-  lo: 'ລາວ', //Laotian
-  lt: 'Lietuvių', //Lithuanian
-  lv: 'Latviešu', //Latvian
-  'map-bms': 'Basa', //Banyumasan
-  mg: 'Malagasy', //Malagasy
-  man: '官話', //Mandarin
-  mh: 'Kajin', //Marshallese
-  mi: 'Māori', //Maori
-  min: 'Minangkabau', //Minangkabau
-  mk: 'Македонски', //Macedonian
-  ml: 'മലയാളം', //Malayalam
-  mn: 'Монгол', //Mongolian
-  mo: 'Moldovenească', //Moldovan
-  mr: 'मराठी', //Marathi
-  ms: 'Bahasa', //Malay
-  mt: 'bil-Malti', //Maltese
-  mus: 'Muskogee', //Creek
-  my: 'Myanmasa', //Burmese
-  na: 'Dorerin', //Nauruan
-  nah: 'Nahuatl', //Nahuatl
-  nap: 'Nnapulitano', //Neapolitan
-  nd: 'isiNdebele', //North Ndebele
-  nds: 'Plattdüütsch', //Low German
-  'nds-nl': 'Nedersaksisch', //Dutch Low Saxon
-  ne: 'नेपाली', //Nepali
-  new: 'नेपालभाषा', //Newar
-  ng: 'Oshiwambo', //Ndonga
-  nl: 'Nederlands', //Dutch
-  nn: 'Nynorsk', //Norwegian Nynorsk
-  no: 'Norsk', //Norwegian
-  nr: 'isiNdebele', //South Ndebele
-  nso: 'Sesotho sa Leboa', //Northern Sotho
-  nrm: 'Nouormand', //Norman
-  nv: 'Diné', //Navajo
-  ny: 'Chi-Chewa', //Chichewa
-  oc: 'Occitan', //Occitan
-  oj: 'ᐊᓂᔑᓈᐯᒧᐎᓐ', //Ojibwa
-  om: 'Oromoo', //Oromo
-  or: 'ଓଡ଼ିଆ', //Oriya
-  os: 'Иронау', //Ossetian
-  pa: 'ਪੰਜਾਬੀ', //Panjabi
-  pag: 'Pangasinan', //Pangasinan
-  pam: 'Kapampangan', //Kapampangan
-  pap: 'Papiamentu', //Papiamentu
-  pdc: 'Deitsch', //Pennsylvania German
-  pi: 'Pāli', //Pali
-  pih: 'Norfuk', //Norfolk
-  pl: 'Polski', //Polish
-  pms: 'Piemontèis', //Piedmontese
-  ps: 'پښتو', //Pashto
-  pt: 'Português', //Portuguese
-  qu: 'Runa', //Quechua
-  rm: 'Rumantsch', //Raeto-Romance
-  rmy: 'Romani', //Romani
-  rn: 'Kirundi', //Kirundi
-  ro: 'Română', //Romanian
-  'roa-rup': 'Armâneashti', //Aromanian
-  ru: 'Русский', //Russian
-  rw: 'Kinyarwandi', //Rwandi
-  sa: 'संस्कृतम्', //Sanskrit
-  sc: 'Sardu', //Sardinian
-  scn: 'Sicilianu', //Sicilian
-  sco: 'Scots', //Scots
-  sd: 'सिनधि', //Sindhi
-  se: 'Davvisámegiella', //Northern Sami
-  sg: 'Sängö', //Sango
-  sh: 'Srpskohrvatski', //Serbo-Croatian
-  si: 'සිංහල', //Sinhalese
-  simple: 'Simple English', //Simple English
-  sk: 'Slovenčina', //Slovak
-  sl: 'Slovenščina', //Slovenian
-  sm: 'Gagana', //Samoan
-  sn: 'chiShona', //Shona
-  so: 'Soomaaliga', //Somalia
-  sq: 'Shqip', //Albanian
-  sr: 'Српски', //Serbian
-  ss: 'SiSwati', //Swati
-  st: 'Sesotho', //Southern Sotho
-  su: 'Basa', //Sundanese
-  sv: 'Svenska', //Swedish
-  sw: 'Kiswahili', //Swahili
-  ta: 'தமிழ்', //Tamil
-  te: 'తెలుగు', //Telugu
-  tet: 'Tetun', //Tetum
-  tg: 'Тоҷикӣ', //Tajik
-  th: 'ไทย', //Thai
-  ti: 'ትግርኛ', //Tigrinya
-  tk: 'Туркмен', //Turkmen
-  tl: 'Tagalog', //Tagalog
-  tlh: 'tlhIngan-Hol', //Klingon
-  tn: 'Setswana', //Tswana
-  to: 'Lea', //Tonga
-  tpi: 'Tok Pisin', //Tok Pisin
-  tr: 'Türkçe', //Turkish
-  ts: 'Xitsonga', //Tsonga
-  tt: 'Tatarça', //Tatar
-  tum: 'chiTumbuka', //Tumbuka
-  tw: 'Twi', //Twi
-  ty: 'Reo', //Tahitian
-  udm: 'Удмурт', //Udmurt
-  ug: 'Uyƣurqə', //Uyghur
-  uk: 'Українська', //Ukrainian
-  ur: 'اردو', //Urdu
-  uz: 'Ўзбек', //Uzbek
-  ve: 'Tshivenḓa', //Venda
-  vi: 'Việtnam', //Vietnamese
-  vec: 'Vèneto', //Venetian
-  vls: 'West-Vlams', //West Flemish
-  vo: 'Volapük', //Volapük
-  wa: 'Walon', //Walloon
-  war: 'Winaray', //Waray-Waray
-  wo: 'Wollof', //Wolof
-  xal: 'Хальмг', //Kalmyk
-  xh: 'isiXhosa', //Xhosa
-  yi: 'ייִדיש', //Yiddish
-  yo: 'Yorùbá', //Yoruba
-  za: 'Cuengh', //Zhuang
-  zh: '中文', //Chinese
-  'zh-classical': '文言', //Classical Chinese
-  'zh-min-nan': 'Bân-lâm-gú', //Minnan
-  'zh-yue': '粵語', //Cantonese
-  zu: 'isiZulu', //Zulu
+// wikipedia language codes → [native name, english name]
+const languages: Record<string, [string, string]> = {
+  aa: ['Afar', 'Afar'],
+  ab: ['Аҧсуа', 'Abkhazian'],
+  af: ['Afrikaans', 'Afrikaans'],
+  ak: ['Akana', 'Akan'],
+  als: ['Alemannisch', 'Alemannic'],
+  am: ['አማርኛ', 'Amharic'],
+  an: ['Aragonés', 'Aragonese'],
+  ang: ['Englisc', 'Old English'],
+  ar: ['العربية', 'Arabic'],
+  arc: ['ܣܘܪܬ', 'Aramaic'],
+  as: ['অসমীয়া', 'Assamese'],
+  ast: ['Asturianu', 'Asturian'],
+  av: ['Авар', 'Avaric'],
+  ay: ['Aymar', 'Aymara'],
+  az: ['Azərbaycanca', 'Azerbaijani'],
+  'az-arab': ['', 'South Azerbaijani'],
+  ba: ['Башҡорт', 'Bashkir'],
+  bar: ['Boarisch', 'Bavarian'],
+  'bat-smg': ['Žemaitėška', 'Samogitian'],
+  bcl: ['Bikol', 'Bikol'],
+  be: ['Беларуская', 'Belarusian'],
+  'be-x-old': ['Беларуская (тарашкевіца)', 'Belarusian (Taraškievica)'],
+  bg: ['Български', 'Bulgarian'],
+  bh: ['भोजपुरी', 'Bihari'],
+  bi: ['Bislama', 'Bislama'],
+  bm: ['Bamanankan', 'Bambara'],
+  bn: ['বাংলা', 'Bengali'],
+  bo: ['བོད་ཡིག', 'Tibetan'],
+  bpy: ['বিষ্ণুপ্রিয়া মণিপুরী', 'Bishnupriya Manipuri'],
+  br: ['Brezhoneg', 'Breton'],
+  bs: ['Bosanski', 'Bosnian'],
+  bug: ['ᨅᨔ', 'Buginese'],
+  bxr: ['Буряад', 'Buriat'],
+  ca: ['Català', 'Catalan'],
+  'ca-valencia': ['', 'Valencian'],
+  cdo: ['Mìng-dĕ̤ng-ngṳ̄', 'Min Dong Chinese'],
+  ce: ['Нохчийн', 'Chechen'],
+  ceb: ['Sinugboanong', 'Cebuano'],
+  ch: ['Chamoru', 'Chamorro'],
+  cho: ['Choctaw', 'Choctaw'],
+  chr: ['ᏣᎳᎩ', 'Cherokee'],
+  chy: ['Tsetsêhestâhese', 'Cheyenne'],
+  co: ['Corsu', 'Corsican'],
+  cr: ['Nehiyaw', 'Cree'],
+  cs: ['Česky', 'Czech'],
+  csb: ['Kaszëbsczi', 'Kashubian'],
+  cu: ['Словѣньскъ', 'Church Slavonic'],
+  cv: ['Чăваш', 'Chuvash'],
+  cy: ['Cymraeg', 'Welsh'],
+  da: ['Dansk', 'Danish'],
+  de: ['Deutsch', 'German'],
+  'de-at': ['', 'Austrian German'],
+  'de-ch': ['', 'Swiss Standard German'],
+  diq: ['Zazaki', 'Dimli'],
+  dsb: ['Dolnoserbski', 'Lower Sorbian'],
+  dv: ['ދިވެހިބަސް', 'Divehi'],
+  dz: ['ཇོང་ཁ', 'Dzongkha'],
+  ee: ['Ɛʋɛ', 'Ewe'],
+  egy: ['', 'Egyptian'],
+  el: ['Ελληνικά', 'Greek'],
+  en: ['English', 'English'],
+  'en-emodeng': ['', 'Early Modern English'],
+  enm: ['', 'Middle English'],
+  eo: ['Esperanto', 'Esperanto'],
+  es: ['Español', 'Spanish'],
+  et: ['Eesti', 'Estonian'],
+  eu: ['Euskara', 'Basque'],
+  ext: ['Estremeñu', 'Extremaduran'],
+  fa: ['', 'Persian'],
+  far: ['فارسی', 'Farsi'],
+  ff: ['Fulfulde', 'Fula'],
+  fi: ['Suomi', 'Finnish'],
+  fil: ['', 'Filipino'],
+  'fiu-vro': ['Võro', 'Võro'],
+  fj: ['Na', 'Fijian'],
+  fo: ['Føroyskt', 'Faroese'],
+  fr: ['Français', 'French'],
+  'fra-que': ['', 'Quebec French'],
+  fro: ['', 'Old French'],
+  frp: ['Arpitan', 'Arpitan'],
+  fur: ['Furlan', 'Friulian'],
+  fy: ['Frysk', 'Western Frisian'],
+  ga: ['Gaeilge', 'Irish'],
+  gan: ['贛語', 'Gan Chinese'],
+  gd: ['Gàidhlig', 'Scottish Gaelic'],
+  gil: ['Taetae', 'Gilbertese'],
+  gl: ['Galego', 'Galician'],
+  gn: ["Avañe'ẽ", 'Guarani'],
+  got: ['gutisk', 'Gothic'],
+  grc: ['', 'Ancient Greek'],
+  'grc-gre': ['', 'Ancient Greek'],
+  'grc-x-doric': ['', 'Doric Greek'],
+  'grc-x-medieval': ['', 'Medieval Greek'],
+  gsw: ['', 'Swiss German'],
+  gu: ['ગુજરાતી', 'Gujarati'],
+  gv: ['Gaelg', 'Manx'],
+  ha: ['هَوُسَ', 'Hausa'],
+  hak: ['Hak-kâ-fa', 'Hakka'],
+  haw: ['Hawai`i', 'Hawaiian'],
+  he: ['עברית', 'Hebrew'],
+  hi: ['हिन्दी', 'Hindi'],
+  ho: ['Hiri Motu', 'Hiri Motu'],
+  hr: ['Hrvatski', 'Croatian'],
+  ht: ['Krèyol', 'Haitian Creole'],
+  hu: ['Magyar', 'Hungarian'],
+  hy: ['Հայերեն', 'Armenian'],
+  hz: ['Otsiherero', 'Herero'],
+  ia: ['Interlingua', 'Interlingua'],
+  id: ['Bahasa', 'Indonesian'],
+  ie: ['Interlingue', 'Interlingue'],
+  ig: ['Igbo', 'Igbo'],
+  ii: ['ꆇꉙ', 'Sichuan Yi'],
+  ik: ['Iñupiak', 'Inupiak'],
+  ilo: ['Ilokano', 'Ilokano'],
+  io: ['Ido', 'Ido'],
+  is: ['Íslenska', 'Icelandic'],
+  it: ['Italiano', 'Italian'],
+  iu: ['ᐃᓄᒃᑎᑐᑦ', 'Inuktitut'],
+  ja: ['日本語', 'Japanese'],
+  jbo: ['Lojban', 'Lojban'],
+  jv: ['Basa', 'Javanese'],
+  ka: ['ქართული', 'Georgian'],
+  kg: ['KiKongo', 'Kongo'],
+  khw: ['کھوار', 'Khowar'],
+  ki: ['Gĩkũyũ', 'Kikuyu'],
+  kj: ['Kuanyama', 'Kuanyama'],
+  kk: ['Қазақша', 'Kazakh'],
+  'kk-arab': ['', 'Kazakh Arabic'],
+  kl: ['Kalaallisut', 'Greenlandic'],
+  km: ['ភាសាខ្មែរ', 'Khmer'],
+  kn: ['ಕನ್ನಡ', 'Kannada'],
+  ko: ['한국어', 'Korean'],
+  kr: ['Kanuri', 'Kanuri'],
+  ks: ['कश्मीरी', 'Kashmiri'],
+  ksh: ['Ripoarisch', 'Ripuarian'],
+  ku: ['Kurdî', 'Kurdish'],
+  'ku-arab': ['', 'Kurdish'],
+  'ku-cyrl': ['', 'Kurdish Cyrillic'],
+  kv: ['Коми', 'Komi'],
+  kw: ['Kernewek', 'Cornish'],
+  ky: ['Kırgızca', 'Kyrgyz'],
+  la: ['Latina', 'Latin'],
+  'la-x-medieval': ['', 'Medieval Latin'],
+  lad: ['Dzhudezmo', 'Ladino'],
+  lan: ['Leb', 'Lango'],
+  lb: ['Lëtzebuergesch', 'Luxembourgish'],
+  lg: ['Luganda', 'Ganda'],
+  li: ['Limburgs', 'Limburgian'],
+  lij: ['Líguru', 'Ligurian'],
+  lmo: ['Lumbaart', 'Lombard'],
+  ln: ['Lingála', 'Lingala'],
+  lo: ['ລາວ', 'Lao'],
+  lt: ['Lietuvių', 'Lithuanian'],
+  lv: ['Latviešu', 'Latvian'],
+  man: ['官話', 'Mandarin'],
+  'map-bms': ['Basa', 'Banyumasan'],
+  mg: ['Malagasy', 'Malagasy'],
+  mh: ['Kajin', 'Marshallese'],
+  mi: ['Māori', 'Māori'],
+  min: ['Minangkabau', 'Minangkabau'],
+  mk: ['Македонски', 'Macedonian'],
+  ml: ['മലയാളം', 'Malayalam'],
+  mn: ['Монгол', 'Mongolian'],
+  mo: ['Moldovenească', 'Moldovan'],
+  mr: ['मराठी', 'Marathi'],
+  ms: ['Bahasa', 'Malay'],
+  'ms-arab': ['', 'Malay Jawi'],
+  mt: ['bil-Malti', 'Maltese'],
+  mus: ['Muskogee', 'Creek'],
+  my: ['Myanmasa', 'Burmese'],
+  na: ['Dorerin', 'Nauruan'],
+  nah: ['Nahuatl', 'Nahuatl'],
+  nan: ['', 'Min Nan'],
+  nap: ['Nnapulitano', 'Neapolitan'],
+  nb: ['', 'Norwegian Bokmål'],
+  nd: ['isiNdebele', 'North Ndebele'],
+  nds: ['Plattdüütsch', 'Low German'],
+  'nds-nl': ['Nedersaksisch', 'Dutch Low Saxon'],
+  ne: ['नेपाली', 'Nepali'],
+  new: ['नेपालभाषा', 'Newar'],
+  ng: ['Oshiwambo', 'Ndonga'],
+  nl: ['Nederlands', 'Dutch'],
+  'nl-be': ['', 'Belgian Dutch'],
+  nn: ['Nynorsk', 'Norwegian Nynorsk'],
+  no: ['Norsk', 'Norwegian'],
+  non: ['', 'Old Norse'],
+  nr: ['isiNdebele', 'South Ndebele'],
+  nrm: ['Nouormand', 'Norman'],
+  nso: ['Sesotho sa Leboa', 'Northern Sotho'],
+  nv: ['Diné', 'Navajo'],
+  ny: ['Chi-Chewa', 'Chichewa'],
+  oc: ['Occitan', 'Occitan'],
+  oj: ['ᐊᓂᔑᓈᐯᒧᐎᓐ', 'Ojibwa'],
+  om: ['Oromoo', 'Oromo'],
+  or: ['ଓଡ଼ିଆ', 'Odia'],
+  os: ['Иронау', 'Ossetian'],
+  pa: ['ਪੰਜਾਬੀ', 'Punjabi'],
+  'pa-arab': ['', 'Punjabi Shahmukhi'],
+  pag: ['Pangasinan', 'Pangasinan'],
+  pam: ['Kapampangan', 'Kapampangan'],
+  pap: ['Papiamentu', 'Papiamentu'],
+  pdc: ['Deitsch', 'Pennsylvania German'],
+  pi: ['Pāli', 'Pali'],
+  pih: ['Norfuk', 'Norfolk'],
+  pl: ['Polski', 'Polish'],
+  pms: ['Piemontèis', 'Piedmontese'],
+  ps: ['پښتو', 'Pashto'],
+  pt: ['Português', 'Portuguese'],
+  'pt-br': ['', 'Brazilian Portuguese'],
+  qu: ['Runa', 'Quechua'],
+  rm: ['Rumantsch', 'Romansh'],
+  rmy: ['Romani', 'Romani'],
+  rn: ['Kirundi', 'Kirundi'],
+  ro: ['Română', 'Romanian'],
+  'roa-rup': ['Armâneashti', 'Aromanian'],
+  ru: ['Русский', 'Russian'],
+  rw: ['Kinyarwandi', 'Kinyarwanda'],
+  sa: ['संस्कृतम्', 'Sanskrit'],
+  sc: ['Sardu', 'Sardinian'],
+  scn: ['Sicilianu', 'Sicilian'],
+  sco: ['Scots', 'Scots'],
+  sd: ['सिनधि', 'Sindhi'],
+  se: ['Davvisámegiella', 'Northern Sami'],
+  sg: ['Sängö', 'Sango'],
+  sh: ['Srpskohrvatski', 'Serbo-Croatian'],
+  'sh-cyrl': ['', 'Serbo-Croatian Cyrillic'],
+  'sh-latn': ['', 'Serbo-Croatian Latin'],
+  si: ['සිංහල', 'Sinhala'],
+  simple: ['Simple English', 'Simple English'],
+  sk: ['Slovenčina', 'Slovak'],
+  sl: ['Slovenščina', 'Slovene'],
+  sm: ['Gagana', 'Samoan'],
+  sn: ['chiShona', 'Shona'],
+  so: ['Soomaaliga', 'Somali'],
+  sq: ['Shqip', 'Albanian'],
+  sr: ['Српски', 'Serbian'],
+  'sr-cyr': ['', 'Serbian Cyrillic'],
+  'sr-cyrl': ['', 'Serbian Cyrillic'],
+  'sr-latn': ['', 'Serbian Latin'],
+  ss: ['SiSwati', 'Swati'],
+  st: ['Sesotho', 'Sotho'],
+  su: ['Basa', 'Sundanese'],
+  sv: ['Svenska', 'Swedish'],
+  sw: ['Kiswahili', 'Swahili'],
+  syc: ['', 'Classical Syriac'],
+  ta: ['தமிழ்', 'Tamil'],
+  te: ['తెలుగు', 'Telugu'],
+  tet: ['Tetun', 'Tetum'],
+  tg: ['Тоҷикӣ', 'Tajik'],
+  th: ['ไทย', 'Thai'],
+  ti: ['ትግርኛ', 'Tigrinya'],
+  tk: ['Туркмен', 'Turkmen'],
+  tl: ['Tagalog', 'Tagalog'],
+  tlh: ['tlhIngan-Hol', 'Klingon'],
+  tn: ['Setswana', 'Tswana'],
+  to: ['Lea', 'Tongan'],
+  tpi: ['Tok Pisin', 'Tok Pisin'],
+  tr: ['Türkçe', 'Turkish'],
+  ts: ['Xitsonga', 'Tsonga'],
+  tt: ['Tatarça', 'Tatar'],
+  'tt-cyrl': ['', 'Tatar Cyrillic'],
+  'tt-latn': ['', 'Tatar Latin'],
+  tum: ['chiTumbuka', 'Tumbuka'],
+  tw: ['Twi', 'Twi'],
+  ty: ['Reo', 'Tahitian'],
+  udm: ['Удмурт', 'Udmurt'],
+  ug: ['Uyƣurqə', 'Uyghur'],
+  uk: ['Українська', 'Ukrainian'],
+  ur: ['اردو', 'Urdu'],
+  uz: ['Ўзбек', 'Uzbek'],
+  'uz-cyrl': ['', 'Uzbek Cyrillic'],
+  ve: ['Tshivenḓa', 'Venda'],
+  vec: ['Vèneto', 'Venetian'],
+  vi: ['Việtnam', 'Vietnamese'],
+  vls: ['West-Vlams', 'West Flemish'],
+  vo: ['Volapük', 'Volapük'],
+  wa: ['Walon', 'Walloon'],
+  war: ['Winaray', 'Waray-Waray'],
+  wo: ['Wollof', 'Wolof'],
+  xal: ['Хальмг', 'Kalmyk'],
+  xh: ['isiXhosa', 'Xhosa'],
+  yi: ['ייִדיש', 'Yiddish'],
+  yo: ['Yorùbá', 'Yoruba'],
+  yue: ['', 'Cantonese'],
+  za: ['Cuengh', 'Zhuang'],
+  zh: ['中文', 'Chinese'],
+  'zh-classical': ['文言', 'Classical Chinese'],
+  'zh-hans': ['', 'Simplified Chinese'],
+  'zh-hant': ['', 'Traditional Chinese'],
+  'zh-min-nan': ['Bân-lâm-gú', 'Minnan'],
+  'zh-tw': ['', 'Taiwanese Mandarin'],
+  'zh-yue': ['粵語', 'Cantonese'],
+  zu: ['isiZulu', 'Zulu'],
 }
+export default languages

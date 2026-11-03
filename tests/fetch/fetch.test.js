@@ -20,7 +20,7 @@ test('fetch-as-promise', async (t) => {
 
 test('promise rejects on error if no callback', async (t) => {
   await assert.rejects(
-    wtf.fetch('https://example.com', 'en'),
+    wtf.fetch('https://example.com', { lang: 'en', silent: true }),
     { name: 'Error', message: /^HTTP \d+/ },
     'HTTP error rejects promise'
   )

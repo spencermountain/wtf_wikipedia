@@ -15,14 +15,17 @@ import parseDisambig from './disambiguation/index.ts'
 import isStub from './isStub.ts'
 import sectionMap from './_sectionMap.ts'
 import parseImage from '../../parse/03-paragraph/02-images/parse.ts'
-import type { PageData, DocInfo } from '../../types/index.ts'
+import type { PageData, DocInfo, WorldData } from '../../types/index.ts'
 
 class Document {
   #data: PageData
   #info: DocInfo
-  constructor(data: PageData, info?: DocInfo) {
+  #world: WorldData
+
+  constructor(data: PageData, info: DocInfo, world: WorldData) {
     this.#data = data
     this.#info = withDefaults(info)
+    this.#world = world
   }
 
   get title() {

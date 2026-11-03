@@ -1,5 +1,4 @@
 import { disambig_titles, disambig_templates } from '../../../world/data/i18n/index.ts'
-import alt_disambig from './templates.ts'
 const mayAlsoReg = /. may (also )?refer to\b/i
 
 // templates that signal page is not a disambiguation
@@ -25,9 +24,7 @@ const i18n_templates = new Set(disambig_templates)
 const isDisambig = function (doc) {
   // check for a {{disambig}} template
   const templates = doc.templates().map((tmpl) => tmpl.type)
-  let found = templates.find((name) => {
-    return alt_disambig.has(name) || i18n_templates.has(name)
-  })
+  let found = templates.find((name) => i18n_templates.has(name))
   if (found) {
     return true
   }

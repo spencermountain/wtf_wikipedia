@@ -1,7 +1,6 @@
 export default [
   'file', //en
   'image', //en
-  'चित्र', //img
 
   'archivo', //es
   'attēls', //lv

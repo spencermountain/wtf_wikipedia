@@ -3,7 +3,7 @@ import parseArguments from '../../../parse/templates/parse/toJSON/index.ts'
 import strip from '../../../parse/templates/parse/toJSON/_strip.ts'
 import roundNumber from './_lib.ts'
 import { titlecase, percentage, toOrdinal } from '../_lib.ts'
-import { units, symbols as unitSymbols, names as unitNames } from '../../data/units.ts'
+import { units, symbols as unitSymbols, names as unitNames } from './data/units.ts'
 
 // 2001, 2002 → '02'  (1999, 2000 → '2000')
 const shortYear = (year, after) => {

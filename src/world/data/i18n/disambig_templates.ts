@@ -3,20 +3,26 @@ export default [
   'disamb', //en
   'disambig', //en
   'disambiguation', //en
+  'geodis', //en
+  'hndis', //en
+  'lake index', //en
+  'letter disambiguation', //en
+  'mountainindex', //en
+  'setindex', //en
+  'ship index', //en
+  'split dab', //en
+  'sport index', //en
+  'wp disambig', //en
 
-  'aðgreining',
   'aðgreining', //is
   'aimai', //ja
   'airport disambiguation',
   'ałtsʼáʼáztiin', //nv
-  'anlam ayrımı', //gag
-  'anlam ayrımı', //tr
+  'anlam ayrımı', //gag, tr
   'apartigilo', //eo
   'argipen', //eu
   'begriepskloorenge', //stq
-  'begriffsklärung', //als
-  'begriffsklärung', //de
-  'begriffsklärung', //pdc
+  'begriffsklärung', //als, de, pdc
   'begriffsklearung', //bar
   'biology disambiguation',
   'bisongidila', //kg
@@ -41,7 +47,6 @@ export default [
   'desambigui', //lfn
   'dezambiguizare', //ro
   'dezanbìgua',
-  'dəqiqləşdirmə',
   'dəqiqləşdirmə', //az
   'disamb-term',
   'disamb-terms',
@@ -57,7 +62,6 @@ export default [
   'disambiguation name',
   'disambiguazion',
   'disambigue',
-  'discretiva',
   'discretiva', //la
   'disheñvelout', //br
   'disingkek', //min
@@ -67,7 +71,6 @@ export default [
   'dmbox',
   'doorverwijspagina', //nl
   'dp', //nl
-  'dubbelsinnig',
   'dubbelsinnig', //af
   'dudalipen', //rmy
   'dv', //nds_nl
@@ -85,7 +88,6 @@ export default [
   'homónimos', //gl
   'homonymie', //fr
   'hospital disambiguation',
-  'huaʻōlelo puana like',
   'huaʻōlelo puana like', //haw
   'human name disambiguation cleanup',
   'human name disambiguation',
@@ -184,8 +186,7 @@ export default [
   'באדייטן', //yi
   'פירושונים', //he
   'ابهام‌زدایی', //fa
-  'توضيح', //ar
-  'توضيح', //arz
+  'توضيح', //ar, arz
   'دقیقلشدیرمه', //azb
   'ڕوونکردنەوە', //ckb
   'سلجهائپ', //sd
@@ -219,6 +220,4 @@ export default [
   "sut'ichana qillqa", //qu
   // 'z', //vep
   // 'သဵင်မိူၼ် တူၼ်ႈထႅဝ်ပႅၵ်ႇ', //shn
-  `gestion dj'omònim`,
-  `sut'ichana qillqa`,
 ]

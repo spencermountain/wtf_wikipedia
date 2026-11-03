@@ -1,6 +1,6 @@
 import defaultParse from '../../../parse/templates/parse/toJSON/text.ts'
 import { toOrdinal } from '../_lib.ts'
-import languageNames from '../../data/language-names.ts'
+import languages from '../../data/languages.ts'
 
 // Harvard-style inline citations - unlike {{sfn}}, these are visible prose
 // https://en.wikipedia.org/wiki/Template:Harvard_citation
@@ -242,7 +242,7 @@ const tlx = (tmpl, parse = defaultParse) => {
 const inLang = (tmpl, parse = defaultParse) => {
   let obj = parse(tmpl)
   let codes = (obj.list || []).map((s) => s.trim().toLowerCase()).filter((s) => s)
-  let names = codes.map((c) => languageNames[c] || languageNames[c.split('-')[0]] || c)
+  let names = codes.map((c) => languages[c]?.[1] || languages[c.split('-')[0]]?.[1] || c)
   if (names.length === 0) {
     return { data: null, replacement: '' }
   }

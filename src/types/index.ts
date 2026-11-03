@@ -143,3 +143,9 @@ export interface FetchOptions extends Omit<DocInfo, 'title'> {
   // suppress the console warnings for failed requests
   silent?: boolean
 }
+
+export interface WorldData {
+  templates: object
+  meta: object
+  i18n: object
+}

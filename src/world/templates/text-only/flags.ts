@@ -1,6 +1,6 @@
 import defaultParse from '../../../parse/templates/parse/toJSON/text.ts'
-import flags from '../../data/flags.ts'
-import codeAliases from '../../data/flag-aliases.ts'
+import flags from './data/flags.ts'
+import codeAliases from './data/flag-aliases.ts'
 const order = ['flag', 'variant']
 // 'united states' → 'United States'
 const titleCase = (str = '') => str.replace(/(^|[\s\-(])(\p{L})/gu, (m, pre, ch) => pre + ch.toUpperCase())

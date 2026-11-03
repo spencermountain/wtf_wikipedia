@@ -1,5 +1,5 @@
 import defaultParse from '../../../../parse/templates/parse/toJSON/text.ts'
-import flags from '../../../data/flags.ts'
+import { findFlag } from '../../text-only/flags.ts'
 import playoffBracket from './_lib.ts'
 
 let sports = {
@@ -52,8 +52,7 @@ let sports = {
     let res = parse(tmpl, ['number', 'country', 'name', 'dl'])
     let str = `[[${res.name}]]`
     if (res.country) {
-      let country = (res.country || '').toLowerCase()
-      let flag = flags.find((a) => country === a[1] || country === a[2]) || []
+      let flag = findFlag(res.country) || []
       if (flag && flag[0]) {
         str = flag[0] + '  ' + str
       }

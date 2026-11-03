@@ -228,7 +228,7 @@ const templates = {
   '#language': (tmpl) => {
     let [code = ''] = rawArgs(tmpl)
     code = code.trim().toLowerCase()
-    return { data: null, replacement: languages[code] || code }
+    return { data: null, replacement: languages[code]?.[0] || code }
   },
   // {{#titleparts: Talk:Foo/Bar/Baz | 1 | 2 }} → Bar
   '#titleparts': (tmpl) => {

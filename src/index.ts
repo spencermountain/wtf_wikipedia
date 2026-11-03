@@ -6,7 +6,7 @@ import templates, { i18n } from './world/templates/index.ts'
 import infoboxes from './world/data/infoboxes.ts'
 import { refreshWrappers } from './_lib/plural-wrapper.ts'
 import type { DocInfo } from './types/index.ts'
-
+import makeWorld from './world/index.ts'
 import {
   Document,
   Section,
@@ -22,9 +22,10 @@ import {
 } from './API/index.ts'
 
 //the main 'factory' exported method
-const wtf = function (wiki: string, info?: DocInfo) {
+const wtf = function (wiki: string, info: DocInfo = {}) {
+  const world = makeWorld()
   const data = parse(wiki, info)
-  return new Document(data, info)
+  return new Document(data, info, world)
 }
 
 const models = {

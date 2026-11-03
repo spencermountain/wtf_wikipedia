@@ -3,7 +3,7 @@ import parseArguments from '../../../parse/templates/parse/toJSON/index.ts'
 import parseImgString from '../../../parse/03-paragraph/02-images/parse.ts'
 
 import { getLang, sisterProjects, toNumber } from '../_lib.ts'
-import { keys as ipacKeys, labels as ipacLabels } from '../../data/ipac-en.ts'
+import { keys as ipacKeys, labels as ipacLabels } from './_ipac-en.ts'
 
 export default {
   // just parse it and do nothing

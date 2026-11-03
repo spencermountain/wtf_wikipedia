@@ -8,5 +8,6 @@ import stubs from './stubs.ts'
 import infoboxes from './infoboxes.ts'
 import redirects from './redirects.ts'
 import references from './references.ts'
+import latLngs from './lat-lngs.ts'
 
-export { categories, disambig_templates, disambig_titles, images, stubs, infoboxes, redirects, references }
+export { categories, disambig_templates, disambig_titles, images, stubs, infoboxes, redirects, references, latLngs }

@@ -1,11 +1,10 @@
+// '[[Category:Foo]]' prefixes, per language
 export default [
   'category', //en
-
   'abdeeling', //	pdc
   'bólkur', //	fo
   'catagóir', //	ga
   'categori', //	cy
-  'categoria',
   'categoria', //	co
   'categoría', //	es
   'categorîa', //	lij
@@ -13,12 +12,10 @@ export default [
   'catégorie',
   'categorie',
   'catègorie', //	frp
-  'category',
   'categuria', //	lmo
   'catigurìa', //	scn
   'class', //	kw
   'ẹ̀ka', //	yo
-  'flocc',
   'flocc', //	ang
   'flokkur',
   'grup', //	tpi
@@ -61,12 +58,9 @@ export default [
   'تصنيف',
   'تۈر', //	ug
   'رده',
-  'श्रेणी',
   'श्रेणी', //	hi
   'বিষয়শ্রেণী', //	bn
   'หมวดหมู่', //	th
   '분류', //	ko
-  '분류', //ko
   '分类', //	za
-  //--
 ]
