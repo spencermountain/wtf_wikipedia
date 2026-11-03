@@ -5,8 +5,9 @@ import parseBlock from '../../block/index.ts'
 import parseLinks from '../../block/links/parse.ts'
 import makeResult from '../../templates/result.ts'
 import getTemplates from '../../templates/find/flat.ts'
-import templates from '../../../world/templates/index.ts'
+import { resolve } from '../../../world/templates/index.ts'
 import runParser from '../../templates/parse/run-parser.ts'
+import normalizeCite from '../../../world/templates/text-and-data/_cite-params.ts'
 
 // Keep the existing limits for plain, self-closing, and attributed references.
 const referencePattern =
@@ -21,29 +22,34 @@ const attribute = (tag, pattern) => {
 }
 
 const nameReg = /^ *\{\{ *([^|}\n]+)/
-// Plugins may register localized citation templates, which carry a 'citation' kind.
-const isCitationName = (str) => {
+// A name may be an alias ('citebook'), or a plugin-registered localized citation ('citation' kind).
+const isCitationName = (str, opts) => {
   const name = str.match(nameReg)?.[1].trim().toLowerCase() || ''
-  return /^(cite|citation)/.test(name) || templates[name]?.kind === 'citation'
+  if (/^(cite|citation)/.test(name)) {
+    return true
+  }
+  const found = resolve(name, opts)
+  return found !== null && (/^(cite|citation)/.test(found.name) || found.handler?.kind === 'citation')
 }
 
-const hasCitation = (str) => {
-  return isCitationName(str) && /\}\} *$/.test(str) && /citation needed/i.test(str) === false
+const hasCitation = (str, opts) => {
+  return isCitationName(str, opts) && /\}\} *$/.test(str) && /citation needed/i.test(str) === false
 }
 
 const parseBody = (text, wiki, opts: DocInfo = defaults) => {
   let prose = text
   // A single ref tag may contain several structured citation templates.
   const references = getTemplates(text)
-    .filter(hasCitation)
+    .filter((template) => hasCitation(template, opts))
     .map((template) => {
       prose = prose.replace(template, '')
       const name = template.match(nameReg)?.[1].trim().toLowerCase() || ''
-      // a dedicated handler (eg. 'cite gnis') knows its own fields
-      const payload = Object.hasOwn(templates, name)
-        ? runParser(templates[name], template, opts).data
-        : parseTextArguments(template, [], opts)
-      const { template: _template, ...data } = payload || {}
+      // a dedicated handler (eg. 'cite gnis') knows its own fields; aliases resolve to theirs
+      const found = resolve(name, opts)
+      const payload =
+        found && found.handler ? runParser(found.handler, template, opts).data : parseTextArguments(template, [], opts)
+      // unregistered 'cite xyz' names still get their param synonyms folded in
+      const { template: _template, ...data } = normalizeCite(payload) || {}
       const result = makeResult(template, 'citation', data, '', opts)
       result.wiki = wiki
       return result

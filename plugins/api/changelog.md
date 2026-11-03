@@ -6,6 +6,11 @@
 #### [unreleased]
 
 - **[new]** - image methods, moved-in from wtf-plugin-image: `doc.mainImage()`, `img.commonsURL()`, `img.exists()`, `img.license()`
+- **[new]** - `.getHtml()` and `.getWikiscript()` - server-rendered html and raw markup, from the parse api
+- **[new]** - `.getExtract({ sections: 'wiki' })` - official plaintext, from the TextExtracts api
+- **[new]** - `{silent: true}` option suppresses console warnings
+- **[change]** - uses its own native fetch, instead of the removed `models.http`
+- **[fix]** - doc methods like `doc.getRedirects()` build correct urls on fetched documents
 
 #### 2.0.1 [Jul 2024]
 

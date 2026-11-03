@@ -37,6 +37,6 @@ const imageLicense = function (file, options, http) {
   options = { ...defaults, ...options }
   const url = makeUrl(file, options)
   const headers = makeHeaders(options)
-  return http(url, headers).then(parseLicense)
+  return http(url, headers, options.silent).then(parseLicense)
 }
 export default imageLicense

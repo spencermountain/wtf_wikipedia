@@ -6,21 +6,25 @@ const hints = {
   429: 'wikimedia wants you to slow down - run requests serially, and set an Api-User-Agent option',
 }
 
-const http = function (url, headers) {
+const http = function (url, headers, silent) {
   return fetch(url, headers)
     .then((res) => {
       if (res.ok !== true) {
-        let msg = `wtf-plugin-api: http-${res.status} error from the wikimedia api`
-        if (hints[res.status]) {
-          msg += `\n  → ${hints[res.status]}`
+        if (!silent) {
+          let msg = `wtf-plugin-api: http-${res.status} error from the wikimedia api`
+          if (hints[res.status]) {
+            msg += `\n  → ${hints[res.status]}`
+          }
+          console.warn(msg)
         }
-        console.warn(msg)
         return {}
       }
       return res.json()
     })
     .catch((e) => {
-      console.warn(`wtf-plugin-api: request failed - ${e.message}`)
+      if (!silent) {
+        console.warn(`wtf-plugin-api: request failed - ${e.message}`)
+      }
       return {}
     })
 }

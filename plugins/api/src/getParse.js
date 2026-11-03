@@ -22,7 +22,7 @@ const getParse = function (title, options, http, prop) {
   options = { ...defaults, ...options }
   const url = makeUrl(title, options, prop)
   const headers = makeHeaders(options)
-  return http(url, headers).then((res) => {
+  return http(url, headers, options.silent).then((res) => {
     return res?.parse?.[prop] ?? null
   })
 }

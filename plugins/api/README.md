@@ -227,6 +227,9 @@ let license = await img.license()
 - **doc.getIncoming()** - fetch all pages that link to this document
 - **doc.getPageViews()** - daily traffic report for this document
 - **doc.mainImage()** - choose a good, representative image for this page
+- **doc.getHtml()** - fetch wikipedia's own rendered html for this page
+- **doc.getWikiscript()** - fetch the current raw wikitext for this page
+- **doc.getExtract({sections:'wiki'})** - fetch wikipedia's official plaintext for this page
 
 - **image.exists()** - double-check that the image is on the server
 - **image.commonsURL()** - instead of the wikimedia redirect server, generate a url for the commons server
@@ -235,5 +238,8 @@ let license = await img.license()
 - **wtf.getRandomCategory()** - get the name of a random wikipedia category
 - **wtf.getTemplatePages()** - fetches all pages that use a specific template or infobox
 - **wtf.getCategoryPages()** - fetch all pages in a specified category
+- **wtf.getHtml(title)** - wikipedia's own rendered html for a page
+- **wtf.getWikiscript(title)** - the current raw wikitext for a page
+- **wtf.getExtract(title, {sections:'plain'})** - wikipedia's official plaintext for a page
 
 MIT

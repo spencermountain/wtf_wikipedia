@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 
 // test if the image url exists or not
-const imgExists = function (callback) {
+const imgExists = function () {
   const userAgent = this.data['_userAgent']
   return fetch(this.url(), {
     method: 'HEAD',
@@ -11,19 +11,11 @@ const imgExists = function (callback) {
     }
   })
     .then(resp => {
-      //support callback non-promise form
       const status = String(resp.status) || ''
-      const bool = /^[23]/.test(status)
-      if (callback) {
-        callback(null, bool)
-      }
-      return bool
+      return /^[23]/.test(status)
     })
     .catch(e => {
-      console.error(e)
-      if (callback) {
-        callback(e, null)
-      }
+      console.warn(`wtf-plugin-image: request failed - ${e.message}`)
       return null
     })
 }

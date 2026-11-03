@@ -884,1127 +884,1429 @@ class Blocks extends WrapperArray {
 }
 wrapMethods(Blocks, Block);
 
-var infoboxes$1 = {
-  "gnf protein box": true,
-  "automatic taxobox": true,
-  "chembox ": true,
-  editnotice: true,
-  geobox: true,
-  hybridbox: true,
-  ichnobox: true,
-  infraspeciesbox: true,
-  mycomorphbox: true,
-  oobox: true,
-  "paraphyletic group": true,
-  speciesbox: true,
-  subspeciesbox: true,
-  "starbox short": true,
-  taxobox: true,
-  \u751F\u7269\u5206\u985E\u8868: true,
-  //ja taxobox
-  nhlteamseason: true,
-  "asian games bid": true,
-  "canadian federal election results": true,
-  "dc thomson comic strip": true,
-  "daytona 24 races": true,
-  edencharacter: true,
-  "moldova national football team results": true,
-  samurai: true,
-  protein: true,
-  "sheet authority": true,
-  "order-of-approx": true,
-  "bacterial labs": true,
-  "medical resources": true,
-  ordination: true,
-  "hockey team coach": true,
-  "hockey team gm": true,
-  "pro hockey team": true,
-  "hockey team player": true,
-  "hockey team start": true,
-  mlbbioret: true
+const languages$1 = {
+  en: ["English", "English"],
+  //7,258,481
+  ceb: ["Cebuano", "Cebuano"],
+  //6,116,168
+  de: ["Deutsch", "German"],
+  //3,163,134
+  fr: ["Fran\xE7ais", "French"],
+  //2,787,822
+  sv: ["Svenska", "Swedish"],
+  //2,629,703
+  nl: ["Nederlands", "Dutch"],
+  //2,230,991
+  es: ["Espa\xF1ol", "Spanish"],
+  //2,147,473
+  ru: ["\u0420\u0443\u0441\u0441\u043A\u0438\u0439", "Russian"],
+  //2,126,383
+  it: ["Italiano", "Italian"],
+  //1,993,801
+  pl: ["Polski", "Polish"],
+  //1,713,356
+  arz: ["\u0645\u0635\u0631\u0649", "Egyptian Arabic"],
+  //1,634,014
+  zh: ["\u4E2D\u6587", "Chinese"],
+  //1,564,117
+  ja: ["\u65E5\u672C\u8A9E", "Japanese"],
+  //1,525,752
+  uk: ["\u0423\u043A\u0440\u0430\u0457\u043D\u0441\u044C\u043A\u0430", "Ukrainian"],
+  //1,440,177
+  ar: ["\u0627\u0644\u0639\u0631\u0628\u064A\u0629", "Arabic"],
+  //1,338,897
+  vi: ["Ti\u1EBFng Vi\u1EC7t", "Vietnamese"],
+  //1,305,558
+  war: ["Winaray", "Waray-Waray"],
+  //1,267,055
+  pt: ["Portugu\xEAs", "Portuguese"],
+  //1,187,215
+  fa: ["\u0641\u0627\u0631\u0633\u06CC", "Persian"],
+  //1,100,803
+  ce: ["\u041D\u043E\u0445\u0447\u0438\u0439\u043D", "Chechen"],
+  //871,389
+  ca: ["Catal\xE0", "Catalan"],
+  //807,343
+  id: ["Bahasa Indonesia", "Indonesian"],
+  //803,239
+  ko: ["\uD55C\uAD6D\uC5B4", "Korean"],
+  //770,190
+  sr: ["\u0441\u0440\u043F\u0441\u043A\u0438 / srpski", "Serbian"],
+  //710,504
+  tr: ["T\xFCrk\xE7e", "Turkish"],
+  //709,828
+  tt: ["\u0442\u0430\u0442\u0430\u0440\u0447\u0430 / tatar\xE7a", "Tatar"],
+  //709,290
+  ur: ["\u0627\u0631\u062F\u0648", "Urdu"],
+  //707,266
+  no: ["Norsk", "Norwegian"],
+  //694,216
+  fi: ["Suomi", "Finnish"],
+  //627,755
+  cs: ["\u010De\u0161tina", "Czech"],
+  //600,997
+  hu: ["Magyar", "Hungarian"],
+  //575,880
+  ro: ["Rom\xE2n\u0103", "Romanian"],
+  //550,339
+  eu: ["Euskara", "Basque"],
+  //499,833
+  sh: ["srpskohrvatski / \u0441\u0440\u043F\u0441\u043A\u043E\u0445\u0440\u0432\u0430\u0442\u0441\u043A\u0438", "Serbo-Croatian"],
+  //461,986
+  ms: ["Bahasa Melayu", "Malay"],
+  //445,221
+  nan: ["\u95A9\u5357\u8A9E / B\xE2n-l\xE2m-g\xED", "Min Nan"],
+  //434,698
+  he: ["\u05E2\u05D1\u05E8\u05D9\u05EA", "Hebrew"],
+  //407,991
+  eo: ["Esperanto", "Esperanto"],
+  //390,357
+  uz: ["o\u02BBzbekcha / \u045E\u0437\u0431\u0435\u043A\u0447\u0430", "Uzbek"],
+  //371,458
+  hy: ["\u0540\u0561\u0575\u0565\u0580\u0565\u0576", "Armenian"],
+  //333,028
+  da: ["Dansk", "Danish"],
+  //316,556
+  bg: ["\u0411\u044A\u043B\u0433\u0430\u0440\u0441\u043A\u0438", "Bulgarian"],
+  //312,856
+  simple: ["Simple English", "Simple English"],
+  //286,149
+  cy: ["Cymraeg", "Welsh"],
+  //284,837
+  el: ["\u0395\u03BB\u03BB\u03B7\u03BD\u03B9\u03BA\u03AC", "Greek"],
+  //275,010
+  be: ["\u0411\u0435\u043B\u0430\u0440\u0443\u0441\u043A\u0430\u044F", "Belarusian"],
+  //270,004
+  et: ["Eesti", "Estonian"],
+  //262,728
+  sk: ["Sloven\u010Dina", "Slovak"],
+  //262,073
+  gl: ["Galego", "Galician"],
+  //247,517
+  kk: ["\u049A\u0430\u0437\u0430\u049B\u0448\u0430", "Kazakh"],
+  //245,895
+  azb: ["\u062A\u06C6\u0631\u06A9\u062C\u0647", "South Azerbaijani"],
+  //244,936
+  hr: ["Hrvatski", "Croatian"],
+  //236,268
+  min: ["Minangkabau", "Minangkabau"],
+  //230,000
+  lt: ["Lietuvi\u0173", "Lithuanian"],
+  //227,179
+  az: ["Az\u0259rbaycanca", "Azerbaijani"],
+  //218,890
+  ka: ["\u10E5\u10D0\u10E0\u10D7\u10E3\u10DA\u10D8", "Georgian"],
+  //201,021
+  sl: ["Sloven\u0161\u010Dina", "Slovene"],
+  //199,465
+  bn: ["\u09AC\u09BE\u0982\u09B2\u09BE", "Bengali"],
+  //192,377
+  ta: ["\u0BA4\u0BAE\u0BBF\u0BB4\u0BCD", "Tamil"],
+  //191,754
+  th: ["\u0E44\u0E17\u0E22", "Thai"],
+  //189,430
+  lld: ["Ladin", "Ladin"],
+  //183,228
+  nn: ["norsk nynorsk", "Norwegian Nynorsk"],
+  //181,275
+  hi: ["\u0939\u093F\u0928\u094D\u0926\u0940", "Hindi"],
+  //172,229
+  mk: ["\u041C\u0430\u043A\u0435\u0434\u043E\u043D\u0441\u043A\u0438", "Macedonian"],
+  //165,935
+  yue: ["\u7CB5\u8A9E", "Cantonese"],
+  //154,465
+  lv: ["Latvie\u0161u", "Latvian"],
+  //146,815
+  af: ["Afrikaans", "Afrikaans"],
+  //142,988
+  la: ["Latina", "Latin"],
+  //142,637
+  ast: ["Asturianu", "Asturian"],
+  //141,718
+  sw: ["Kiswahili", "Swahili"],
+  //132,434
+  te: ["\u0C24\u0C46\u0C32\u0C41\u0C17\u0C41", "Telugu"],
+  //130,263
+  ha: ["Hausa", "Hausa"],
+  //121,582
+  tg: ["\u0422\u043E\u04B7\u0438\u043A\u04E3", "Tajik"],
+  //119,500
+  my: ["\u1019\u103C\u1014\u103A\u1019\u102C\u1018\u102C\u101E\u102C", "Burmese"],
+  //113,332
+  sq: ["Shqip", "Albanian"],
+  //106,386
+  mg: ["Malagasy", "Malagasy"],
+  //104,258
+  mr: ["\u092E\u0930\u093E\u0920\u0940", "Marathi"],
+  //103,935
+  bs: ["Bosanski", "Bosnian"],
+  //98,990
+  ku: ["Kurd\xEE", "Kurdish"],
+  //92,204
+  br: ["Brezhoneg", "Breton"],
+  //91,927
+  "be-tarask": ["\u0431\u0435\u043B\u0430\u0440\u0443\u0441\u043A\u0430\u044F (\u0442\u0430\u0440\u0430\u0448\u043A\u0435\u0432\u0456\u0446\u0430)", "Belarusian (Tara\u0161kievica)"],
+  //91,520
+  oc: ["Occitan", "Occitan"],
+  //91,010
+  ml: ["\u0D2E\u0D32\u0D2F\u0D3E\u0D33\u0D02", "Malayalam"],
+  //89,311
+  an: ["Aragon\xE9s", "Aragonese"],
+  //88,179
+  nds: ["Plattd\xFC\xFCtsch", "Low German"],
+  //85,979
+  ckb: ["\u06A9\u0648\u0631\u062F\u06CC", "Sorani"],
+  //85,191
+  lmo: ["lombard", "Lombard"],
+  //80,357
+  ky: ["\u043A\u044B\u0440\u0433\u044B\u0437\u0447\u0430", "Kyrgyz"],
+  //76,658
+  mzn: ["\u0645\u0627\u0632\u0650\u0631\u0648\u0646\u06CC", "Mazandarani"],
+  //76,200
+  pnb: ["\u067E\u0646\u062C\u0627\u0628\u06CC", "Western Panjabi"],
+  //75,796
+  jv: ["Jawa", "Javanese"],
+  //75,600
+  new: ["\u0928\u0947\u092A\u093E\u0932 \u092D\u093E\u0937\u093E", "Newar"],
+  //75,049
+  ht: ["Krey\xF2l ayisyen", "Haitian Creole"],
+  //72,133
+  pms: ["Piemont\xE8is", "Piedmontese"],
+  //71,567
+  vec: ["V\xE8neto", "Venetian"],
+  //69,633
+  lb: ["L\xEBtzebuergesch", "Luxembourgish"],
+  //68,143
+  io: ["Ido", "Ido"],
+  //65,194
+  ga: ["Gaeilge", "Irish"],
+  //64,569
+  ba: ["\u0431\u0430\u0448\u04A1\u043E\u0440\u0442\u0441\u0430", "Bashkir"],
+  //64,314
+  su: ["Sunda", "Sundanese"],
+  //63,006
+  szl: ["\u015Bl\u016Fnski", "Silesian"],
+  //61,654
+  fy: ["Frysk", "Western Frisian"],
+  //61,155
+  is: ["\xCDslenska", "Icelandic"],
+  //60,600
+  pa: ["\u0A2A\u0A70\u0A1C\u0A3E\u0A2C\u0A40", "Punjabi"],
+  //59,766
+  cv: ["\u0447\u04D1\u0432\u0430\u0448\u043B\u0430", "Chuvash"],
+  //59,270
+  vo: ["Volap\xFCk", "Volap\xFCk"],
+  //57,463
+  tl: ["Tagalog", "Tagalog"],
+  //50,762
+  ig: ["Igbo", "Igbo"],
+  //49,274
+  wuu: ["\u5434\u8BED", "Wu"],
+  //48,494
+  glk: ["\u06AF\u06CC\u0644\u06A9\u06CC", "Gilaki"],
+  //48,310
+  shn: ["\u1010\u1086\u1038", "Shan"],
+  //46,151
+  diq: ["Zazaki", "Dimli"],
+  //44,456
+  yo: ["Yor\xF9b\xE1", "Yoruba"],
+  //41,394
+  ban: ["Basa Bali", "Balinese"],
+  //39,490
+  kn: ["\u0C95\u0CA8\u0CCD\u0CA8\u0CA1", "Kannada"],
+  //34,889
+  sco: ["Scots", "Scots"],
+  //34,220
+  kaa: ["Qaraqalpaqsha", "Karakalpak"],
+  //33,712
+  gsw: ["Alemannisch", "Swiss German"],
+  //31,849
+  gu: ["\u0A97\u0AC1\u0A9C\u0AB0\u0ABE\u0AA4\u0AC0", "Gujarati"],
+  //30,940
+  ia: ["Interlingua", "Interlingua"],
+  //30,441
+  ne: ["\u0928\u0947\u092A\u093E\u0932\u0940", "Nepali"],
+  //30,070
+  avk: ["Kotava", "Kotava"],
+  //29,905
+  crh: ["q\u0131r\u0131mtatarca", "Crimean Tatar"],
+  //29,772
+  mn: ["\u041C\u043E\u043D\u0433\u043E\u043B", "Mongolian"],
+  //28,639
+  bar: ["Boarisch", "Bavarian"],
+  //27,234
+  scn: ["Sicilianu", "Sicilian"],
+  //26,361
+  as: ["\u0985\u09B8\u09AE\u09C0\u09AF\u09BC\u09BE", "Assamese"],
+  //26,040
+  si: ["\u0DC3\u0DD2\u0D82\u0DC4\u0DBD", "Sinhala"],
+  //25,824
+  skr: ["\u0633\u0631\u0627\u0626\u06CC\u06A9\u06CC", "Saraiki"],
+  //25,165
+  bpy: ["\u09AC\u09BF\u09B7\u09CD\u09A3\u09C1\u09AA\u09CD\u09B0\u09BF\u09AF\u09BC\u09BE \u09AE\u09A3\u09BF\u09AA\u09C1\u09B0\u09C0", "Bishnupriya Manipuri"],
+  //25,097
+  qu: ["Runa Simi", "Quechua"],
+  //24,665
+  sd: ["\u0633\u0646\u068C\u064A", "Sindhi"],
+  //23,257
+  ff: ["Fulfulde", "Fula"],
+  //22,699
+  nv: ["Din\xE9 bizaad", "Navajo"],
+  //22,668
+  bcl: ["Bikol Central", "Bikol"],
+  //22,657
+  xmf: ["\u10DB\u10D0\u10E0\u10D2\u10D0\u10DA\u10E3\u10E0\u10D8", "Mingrelian"],
+  //22,505
+  os: ["\u0438\u0440\u043E\u043D", "Ossetian"],
+  //21,761
+  frr: ["Nordfriisk", "North Frisian"],
+  //21,628
+  ps: ["\u067E\u069A\u062A\u0648", "Pashto"],
+  //21,360
+  or: ["\u0B13\u0B21\u0B3C\u0B3F\u0B06", "Odia"],
+  //21,181
+  ary: ["\u0627\u0644\u062F\u0627\u0631\u062C\u0629", "Moroccan Arabic"],
+  //20,520
+  tum: ["chiTumbuka", "Tumbuka"],
+  //18,920
+  sah: ["\u0441\u0430\u0445\u0430 \u0442\u044B\u043B\u0430", "Sakha"],
+  //18,288
+  sgs: ["\u017Eemait\u0117\u0161ka", "Samogitian"],
+  //17,276
+  cdo: ["\u95A9\u6771\u8A9E / M\xECng-d\u0115\u0324ng-ng\u1E73\u0304", "Min Dong Chinese"],
+  //16,773
+  sat: ["\u1C65\u1C5F\u1C71\u1C5B\u1C5F\u1C72\u1C64", "Santali"],
+  //16,108
+  gd: ["G\xE0idhlig", "Scottish Gaelic"],
+  //16,044
+  bug: ["Basa Ugi", "Buginese"],
+  //15,976
+  yi: ["\u05D9\u05D9\u05B4\u05D3\u05D9\u05E9", "Yiddish"],
+  //15,822
+  am: ["\u12A0\u121B\u122D\u129B", "Amharic"],
+  //15,735
+  ilo: ["Ilokano", "Ilokano"],
+  //15,527
+  li: ["Limburgs", "Limburgian"],
+  //15,222
+  gor: ["Bahasa Hulontalo", "Gorontalo"],
+  //15,150
+  hyw: ["\u0531\u0580\u0565\u0582\u0574\u057F\u0561\u0570\u0561\u0575\u0565\u0580\u0567\u0576", "Western Armenian"],
+  //15,110
+  nap: ["Napulitano", "Neapolitan"],
+  //15,024
+  lzh: ["\u6587\u8A00", "Classical Chinese"],
+  //14,799
+  dag: ["dagbanli", "Dagbani"],
+  //14,547
+  mai: ["\u092E\u0948\u0925\u093F\u0932\u0940", "Maithili"],
+  //14,372
+  eml: ["emili\xE0n e rumagn\xF2l", "Emilian-Romagnol"],
+  //14,347
+  hsb: ["hornjoserbsce", "Upper Sorbian"],
+  //14,298
+  fo: ["F\xF8royskt", "Faroese"],
+  //14,219
+  so: ["Soomaaliga", "Somali"],
+  //14,175
+  "map-bms": ["Basa Banyumasan", "Banyumasan"],
+  //13,981
+  ie: ["Interlingue", "Interlingue"],
+  //13,831
+  ace: ["Ac\xE8h", "Acehnese"],
+  //13,083
+  wa: ["Walon", "Walloon"],
+  //13,042
+  zu: ["isiZulu", "Zulu"],
+  //13,006
+  km: ["\u1797\u17B6\u179F\u17B6\u1781\u17D2\u1798\u17C2\u179A", "Khmer"],
+  //12,935
+  sa: ["\u0938\u0902\u0938\u094D\u0915\u0943\u0924\u092E\u094D", "Sanskrit"],
+  //12,587
+  hif: ["Fiji Hindi", "Fiji Hindi"],
+  //12,507
+  bjn: ["Banjar", "Banjar"],
+  //12,482
+  zgh: ["\u2D5C\u2D30\u2D4E\u2D30\u2D63\u2D49\u2D56\u2D5C \u2D5C\u2D30\u2D4F\u2D30\u2D61\u2D30\u2D62\u2D5C", "Moroccan Amazigh"],
+  //12,301
+  ks: ["\u06A9\u0672\u0634\u064F\u0631", "Kashmiri"],
+  //11,915
+  sn: ["chiShona", "Shona"],
+  //11,857
+  lij: ["Ligure", "Ligurian"],
+  //11,642
+  mhr: ["\u043E\u043B\u044B\u043A \u043C\u0430\u0440\u0438\u0439", "Meadow Mari"],
+  //11,328
+  shi: ["Tacl\u1E25it", "Tachelhit"],
+  //10,894
+  rw: ["Ikinyarwanda", "Kinyarwanda"],
+  //10,679
+  mni: ["\uABC3\uABE4\uABC7\uABE9 \uABC2\uABE3\uABDF", "Meitei"],
+  //10,531
+  hak: ["\u5BA2\u5BB6\u8A9E / Hak-k\xE2-ng\xEE", "Hakka"],
+  //10,511
+  mrj: ["\u043A\u044B\u0440\u044B\u043A \u043C\u0430\u0440\u044B", "Hill Mari"],
+  //10,437
+  tly: ["tol\u0131\u015Fi", "Talysh"],
+  //10,251
+  pam: ["Kapampangan", "Kapampangan"],
+  //10,221
+  ug: ["\u0626\u06C7\u064A\u063A\u06C7\u0631\u0686\u06D5 / Uyghurche", "Uyghur"],
+  //9,765
+  co: ["Corsu", "Corsican"],
+  //9,591
+  "roa-tara": ["tarand\xEDne", "Tarantino"],
+  //9,508
+  bh: ["\u092D\u094B\u091C\u092A\u0941\u0930\u0940", "Bihari"],
+  //9,376
+  nso: ["Sesotho sa Leboa", "Northern Sotho"],
+  //9,137
+  vls: ["West-Vlams", "West Flemish"],
+  //8,381
+  bo: ["\u0F56\u0F7C\u0F51\u0F0B\u0F61\u0F72\u0F42", "Tibetan"],
+  //8,114
+  "nds-nl": ["Nedersaksies", "Dutch Low Saxon"],
+  //8,110
+  mt: ["Malti", "Maltese"],
+  //8,073
+  mi: ["M\u0101ori", "M\u0101ori"],
+  //8,068
+  se: ["Davvis\xE1megiella", "Northern Sami"],
+  //7,919
+  myv: ["\u044D\u0440\u0437\u044F\u043D\u044C", "Erzya"],
+  //7,876
+  sc: ["Sardu", "Sardinian"],
+  //7,858
+  mdf: ["\u043C\u043E\u043A\u0448\u0435\u043D\u044C", "Moksha"],
+  //7,630
+  rue: ["\u0440\u0443\u0441\u0438\u043D\u044C\u0441\u043A\u044B\u0439", "Rusyn"],
+  //7,536
+  zea: ["Ze\xEAuws", "Zeelandic"],
+  //7,456
+  tk: ["T\xFCrkmen\xE7e", "Turkmen"],
+  //7,352
+  kw: ["kernowek", "Cornish"],
+  //7,285
+  kab: ["Taqbaylit", "Kabyle"],
+  //7,204
+  gv: ["Gaelg", "Manx"],
+  //7,142
+  vep: ["veps\xE4n kel\u2019", "Vepsian"],
+  //7,111
+  vro: ["v\xF5ro", "V\xF5ro"],
+  //6,929
+  gan: ["\u8D1B\u8A9E", "Gan Chinese"],
+  //6,823
+  smn: ["anar\xE2\u0161kiel\xE2", "Inari Sami"],
+  //6,753
+  ab: ["\u0430\u0525\u0441\u0448\u04D9\u0430", "Abkhazian"],
+  //6,750
+  pcd: ["Picard", "Picard"],
+  //6,160
+  tn: ["Setswana", "Tswana"],
+  //6,118
+  fur: ["Furlan", "Friulian"],
+  //6,071
+  gn: ["Ava\xF1e'\u1EBD", "Guarani"],
+  //6,036
+  udm: ["\u0423\u0434\u043C\u0443\u0440\u0442", "Udmurt"],
+  //5,918
+  csb: ["Kasz\xEBbsczi", "Kashubian"],
+  //5,891
+  lg: ["Luganda", "Ganda"],
+  //5,883
+  frp: ["arpetan", "Arpitan"],
+  //5,840
+  kv: ["\u041A\u043E\u043C\u0438", "Komi"],
+  //5,831
+  pap: ["Papiamentu", "Papiamentu"],
+  //5,820
+  gpe: ["Ghanaian Pidgin", "Ghanaian Pidgin"],
+  //5,795
+  lo: ["\u0EA5\u0EB2\u0EA7", "Lao"],
+  //5,649
+  mad: ["Madhur\xE2", "Madurese"],
+  //5,612
+  fon: ["f\u0254\u0300ngb\xE8", "Fon"],
+  //5,608
+  ang: ["\xC6nglisc", "Old English"],
+  //5,319
+  ay: ["Aymar aru", "Aymara"],
+  //5,296
+  ln: ["Ling\xE1la", "Lingala"],
+  //5,263
+  olo: ["livvinkarjala", "Livvi-Karelian"],
+  //5,179
+  nrm: ["Nouormand", "Norman"],
+  //5,059
+  mnw: ["\u1018\u102C\u101E\u102C\u1019\u1014\u103A", "Mon"],
+  //4,944
+  tok: ["toki pona", "Toki Pona"],
+  //4,850
+  tw: ["Twi", "Twi"],
+  //4,744
+  lfn: ["Lingua Franca Nova", "Lingua Franca Nova 2"],
+  //4,689
+  lez: ["\u043B\u0435\u0437\u0433\u0438", "Lezgian"],
+  //4,498
+  mwl: ["Mirand\xE9s", "Mirandese"],
+  //4,354
+  ext: ["Estreme\xF1u", "Extremaduran"],
+  //4,298
+  stq: ["Seeltersk", "Saterland Frisian"],
+  //4,198
+  tyv: ["\u0442\u044B\u0432\u0430 \u0434\u044B\u043B", "Tuvan"],
+  //4,126
+  lad: ["Ladino", "Ladino"],
+  //4,098
+  av: ["\u0410\u0432\u0430\u0440", "Avaric"],
+  //4,017
+  tcy: ["\u0CA4\u0CC1\u0CB3\u0CC1", "Tulu"],
+  //4,011
+  rm: ["Rumantsch", "Romansh"],
+  //3,897
+  mag: ["\u092E\u0917\u0939\u0940", "Magahi"],
+  //3,825
+  dty: ["\u0921\u094B\u091F\u0947\u0932\u0940", "Doteli"],
+  //3,815
+  gom: ["\u0917\u094B\u0902\u092F\u091A\u0940 \u0915\u094B\u0902\u0915\u0923\u0940 / G\xF5ychi Konknni", "Goan Konkani"],
+  //3,644
+  dga: ["Dagaare", "Dagaare"],
+  //3,478
+  koi: ["\u043F\u0435\u0440\u0435\u043C \u043A\u043E\u043C\u0438", "Komi-Permyak"],
+  //3,471
+  dsb: ["Dolnoserbski", "Lower Sorbian"],
+  //3,458
+  bew: ["Betawi", "Betawi"],
+  //3,349
+  dv: ["\u078B\u07A8\u0788\u07AC\u0780\u07A8\u0784\u07A6\u0790\u07B0", "Divehi"],
+  //3,235
+  blk: ["\u1015\u1021\u102D\u102F\u101D\u103A\u108F\u1018\u102C\u108F\u101E\u102C\u108F", "Pa'O"],
+  //3,155
+  krc: ["\u043A\u044A\u0430\u0440\u0430\u0447\u0430\u0439-\u043C\u0430\u043B\u043A\u044A\u0430\u0440", "Karachay-Balkar"],
+  //3,120
+  ksh: ["Ripoarisch", "Ripuarian"],
+  //3,038
+  za: ["Vahcuengh", "Zhuang"],
+  //3,026
+  awa: ["\u0905\u0935\u0927\u0940", "Awadhi"],
+  //3,022
+  gag: ["Gagauz", "Gagauz"],
+  //3,009
+  bxr: ["\u0411\u0443\u0440\u044F\u0430\u0434", "Buriat"],
+  //2,919
+  ki: ["G\u0129k\u0169y\u0169", "Kikuyu"],
+  //2,918
+  kge: ["Kumoring", "Komering"],
+  //2,910
+  haw: ["Hawai\u02BBi", "Hawaiian"],
+  //2,900
+  "cbk-zam": ["Chavacano de Zamboanga", "Zamboanga Chavacano"],
+  //2,877
+  pfl: ["P\xE4lzisch", "Palatinate German"],
+  //2,866
+  szy: ["Sakizaya", "Sakizaya"],
+  //2,760
+  pag: ["Pangasinan", "Pangasinan"],
+  //2,654
+  iba: ["Jaku Iban", "Iban"],
+  //2,615
+  xh: ["isiXhosa", "Xhosa"],
+  //2,604
+  tay: ["Tayal", "Atayal"],
+  //2,587
+  inh: ["\u0433\u04C0\u0430\u043B\u0433\u04C0\u0430\u0439", "Ingush"],
+  //2,561
+  st: ["Sesotho", "Sotho"],
+  //2,250
+  kcg: ["Tyap", "Tyap"],
+  //2,177
+  knc: ["Yerwa Kanuri", "Central Kanuri"],
+  //2,149
+  pdc: ["Deitsch", "Pennsylvania German"],
+  //2,132
+  atj: ["Atikamekw", "Atikamekw"],
+  //2,083
+  nov: ["Novial", "Novial"],
+  //2,068
+  kai: ["Karai-karai", "Karai-Karai"],
+  //2,066
+  kg: ["Kongo", "Kongo"],
+  //2,052
+  dtp: ["Kadazandusun", "Central Dusun"],
+  //2,048
+  to: ["lea faka-Tonga", "Tongan"],
+  //2,047
+  rki: ["\u101B\u1001\u102D\u102F\u1004\u103A", "Rakhine"],
+  //2,008
+  tet: ["Tetun", "Tetum"],
+  //2,008
+  om: ["Oromoo", "Oromo"],
+  //1,971
+  arc: ["\u0710\u072A\u0721\u071D\u0710", "Aramaic"],
+  //1,920
+  igl: ["Igala", "Igala"],
+  //1,850
+  nia: ["Li Niha", "Nias"],
+  //1,826
+  fat: ["mfantse", "Fante"],
+  //1,802
+  isv: ["med\u017Euslovjansky", "Interslavic"],
+  //1,789
+  wo: ["Wolof", "Wolof"],
+  //1,742
+  fj: ["Na Vosa Vakaviti", "Fijian"],
+  //1,729
+  jam: ["Patois", "Jamaican"],
+  //1,721
+  pcm: ["Naij\xE1", "Nigerian Pidgin"],
+  //1,721
+  kbp: ["Kab\u0269y\u025B", "Kabiye"],
+  //1,716
+  guw: ["gungbe", "Gun"],
+  //1,702
+  anp: ["\u0905\u0902\u0917\u093F\u0915\u093E", "Angika"],
+  //1,697
+  kbd: ["\u0430\u0434\u044B\u0433\u044D\u0431\u0437\u044D", "Kabardian Circassian"],
+  //1,675
+  rsk: ["\u0440\u0443\u0441\u043A\u0438", "Pannonian Rusyn"],
+  //1,644
+  nqo: ["\u07D2\u07DE\u07CF", "N'Ko"],
+  //1,622
+  xal: ["\u0425\u0430\u043B\u044C\u043C\u0433", "Kalmyk"],
+  //1,578
+  bi: ["Bislama", "Bislama"],
+  //1,515
+  cu: ["\u0441\u043B\u043E\u0432\u0463\u043D\u044C\u0441\u043A\u044A / \u2C14\u2C0E\u2C11\u2C02\u2C21\u2C10\u2C20\u2C14\u2C0D\u2C1F", "Church Slavonic"],
+  //1,514
+  bbc: ["Batak Toba", "Toba Batak"],
+  //1,505
+  nah: ["N\u0101huatl", "Nahuatl"],
+  //1,427
+  ee: ["e\u028Begbe", "Ewe"],
+  //1,421
+  tpi: ["Tok Pisin", "Tok Pisin"],
+  //1,417
+  rup: ["arm\xE3neashti", "Aromanian"],
+  //1,390
+  gur: ["farefare", "Guren\u025B"],
+  //1,385
+  kus: ["K\u028Bsaal", "Kusaal"],
+  //1,381
+  jbo: ["la .lojban.", "Lojban"],
+  //1,367
+  ts: ["Xitsonga", "Tsonga"],
+  //1,329
+  mos: ["moore", "Moor\xE9"],
+  //1,326
+  ty: ["reo tahiti", "Tahitian"],
+  //1,251
+  syl: ["\uA80D\uA824\uA81F\uA810\uA824", "Sylheti"],
+  //1,238
+  btm: ["Batak Mandailing", "Mandailing"],
+  //1,237
+  nup: ["Nupe", "Nupe"],
+  //1,233
+  sm: ["Gagana Samoa", "Samoan"],
+  //1,208
+  trv: ["Seediq", "Seediq"],
+  //1,201
+  ss: ["SiSwati", "Swati"],
+  //1,195
+  ltg: ["latga\u013Cu", "Latgalian"],
+  //1,163
+  ny: ["Chi-Chewa", "Chichewa"],
+  //1,160
+  ami: ["Pangcah", "Amis"],
+  //1,143
+  srn: ["Sranantongo", "Sranan"],
+  //1,135
+  alt: ["\u0430\u043B\u0442\u0430\u0439 \u0442\u0438\u043B", "Altai"],
+  //1,116
+  gcr: ["kriy\xF2l gwiyannen", "Guianan Creole"],
+  //1,077
+  lbe: ["\u043B\u0430\u043A\u043A\u0443", "Lak"],
+  //1,054
+  got: ["\u{10332}\u{1033F}\u{10344}\u{10339}\u{10343}\u{1033A}", "Gothic"],
+  //1,038
+  chr: ["\u13E3\u13B3\u13A9", "Cherokee"],
+  //999
+  bm: ["Bamanankan", "Bambara"],
+  //930
+  ve: ["Tshivenda", "Venda"],
+  //929
+  rmy: ["romani \u010Dhib", "Romani"],
+  //758
+  rn: ["ikirundi", "Kirundi"],
+  //729
+  chy: ["Tsets\xEAhest\xE2hese", "Cheyenne"],
+  //719
+  guc: ["wayuunaiki", "Wayuu"],
+  //718
+  pnt: ["\u03A0\u03BF\u03BD\u03C4\u03B9\u03B1\u03BA\u03AC", "Pontic"],
+  //681
+  ady: ["\u0430\u0434\u044B\u0433\u0430\u0431\u0437\u044D", "Adyghe"],
+  //649
+  ik: ["I\xF1upiatun", "Inupiak"],
+  //599
+  ch: ["Chamoru", "Chamorro"],
+  //582
+  bol: ["b\xF2o p\xECkk\xE0", "Bole"],
+  //498
+  tdd: ["\u1956\u196D\u1970 \u1956\u196C\u1972 \u1951\u1968\u1952\u1970", "Tai N\xFCa"],
+  //462
+  ann: ["Obolo", "Obolo"],
+  //437
+  iu: ["\u1403\u14C4\u1483\u144E\u1450\u1466 / inuktitut", "Inuktitut"],
+  //424
+  dz: ["\u0F47\u0F7C\u0F44\u0F0B\u0F41", "Dzongkha"],
+  //386
+  pwn: ["pinayuanan", "Paiwan"],
+  //377
+  sg: ["S\xE4ng\xF6", "Sango"],
+  //376
+  ti: ["\u1275\u130D\u122D\u129B", "Tigrinya"],
+  //374
+  din: ["Thu\u0254\u014Bj\xE4\u014B", "Dinka"],
+  //339
+  nr: ["isiNdebele seSewula", "South Ndebele"],
+  //338
+  kaj: ["Jju", "Jju"],
+  //304
+  pi: ["\u092A\u093E\u0932\u093F", "Pali"],
+  //302
+  bdr: ["Bajau Sama", "West Coast Bajau"],
+  //298
+  ppl: ["Nawat", "Pipil"],
+  //265
+  tig: ["\u1275\u130D\u122C", "Tigre"],
+  //120
+  ng: ["Oshiwambo", "Ndonga"],
+  //8
+  cho: ["Chahta anumpa", "Choctaw"],
+  //6
+  mh: ["Ebon", "Marshallese"],
+  //4
+  kj: ["Kwanyama", "Kuanyama"],
+  //4
+  ii: ["\uA187\uA259", "Sichuan Yi"],
+  //3
+  ho: ["Hiri Motu", "Hiri Motu"],
+  //3
+  lrc: ["\u0644\u06CA\u0631\u06CC \u0634\u0648\u0645\u0627\u0644\u06CC", "Northern Luri"],
+  //1
+  mus: ["Mvskoke", "Creek"],
+  //1
+  na: ["Dorerin Naoero", "Nauruan"],
+  //0
+  ak: ["Akan", "Akan"],
+  //0
+  kl: ["Kalaallisut", "Greenlandic"],
+  //0
+  cr: ["N\u0113hiyaw\u0113win / \u14C0\u1426\u1403\u152D\u140D\u140F\u1423", "Cree"],
+  //0
+  pih: ["Norfuk / Pitkern", "Norfolk"],
+  //0
+  aa: ["Qaf\xE1r af", "Afar"],
+  //0
+  hz: ["Otsiherero", "Herero"],
+  //0
+  kr: ["Kanuri", "Kanuri"],
+  //0
+  // - closed wikis, legacy interwiki aliases, and names used by {{in lang}} -
+  als: ["Alemannisch", "Alemannic"],
+  "az-arab": ["", "South Azerbaijani"],
+  "bat-smg": ["\u017Demait\u0117\u0161ka", "Samogitian"],
+  "be-x-old": ["\u0411\u0435\u043B\u0430\u0440\u0443\u0441\u043A\u0430\u044F (\u0442\u0430\u0440\u0430\u0448\u043A\u0435\u0432\u0456\u0446\u0430)", "Belarusian (Tara\u0161kievica)"],
+  "ca-valencia": ["", "Valencian"],
+  "de-at": ["\xD6sterreichisches Deutsch", "Austrian German"],
+  "de-ch": ["Schweizer Hochdeutsch", "Swiss Standard German"],
+  egy: ["", "Egyptian"],
+  "en-emodeng": ["", "Early Modern English"],
+  enm: ["", "Middle English"],
+  fil: ["", "Filipino"],
+  "fiu-vro": ["V\xF5ro", "V\xF5ro"],
+  "fra-que": ["", "Quebec French"],
+  fro: ["", "Old French"],
+  gil: ["Taetae ni Kiribati", "Gilbertese"],
+  grc: ["\u1F08\u03C1\u03C7\u03B1\u03AF\u03B1 \u1F11\u03BB\u03BB\u03B7\u03BD\u03B9\u03BA\u1F74", "Ancient Greek"],
+  "grc-gre": ["", "Ancient Greek"],
+  "grc-x-doric": ["", "Doric Greek"],
+  "grc-x-medieval": ["", "Medieval Greek"],
+  khw: ["\u06A9\u06BE\u0648\u0627\u0631", "Khowar"],
+  "kk-arab": ["\u0642\u0627\u0632\u0627\u0642\u0634\u0627 (\u062A\u0674\u0648\u062A\u06D5)", "Kazakh Arabic"],
+  "ku-arab": ["\u06A9\u0648\u0631\u062F\u06CC (\u0639\u06D5\u0631\u06D5\u0628\u06CC)", "Kurdish"],
+  "ku-cyrl": ["", "Kurdish Cyrillic"],
+  "la-x-medieval": ["", "Medieval Latin"],
+  mo: ["\u043C\u043E\u043B\u0434\u043E\u0432\u0435\u043D\u044F\u0441\u043A\u044D", "Moldovan"],
+  "ms-arab": ["\u0628\u0647\u0627\u0633 \u0645\u0644\u0627\u064A\u0648", "Malay Jawi"],
+  nb: ["norsk bokm\xE5l", "Norwegian Bokm\xE5l"],
+  nd: ["isiNdebele", "North Ndebele"],
+  "nl-be": ["", "Belgian Dutch"],
+  non: ["", "Old Norse"],
+  "pa-arab": ["", "Punjabi Shahmukhi"],
+  "pt-br": ["portugu\xEAs do Brasil", "Brazilian Portuguese"],
+  "roa-rup": ["arm\xE3neashti", "Aromanian"],
+  "sh-cyrl": ["\u0441\u0440\u043F\u0441\u043A\u043E\u0445\u0440\u0432\u0430\u0442\u0441\u043A\u0438 (\u045B\u0438\u0440\u0438\u043B\u0438\u0446\u0430)", "Serbo-Croatian Cyrillic"],
+  "sh-latn": ["srpskohrvatski (latinica)", "Serbo-Croatian Latin"],
+  "sr-cyr": ["", "Serbian Cyrillic"],
+  "sr-cyrl": ["", "Serbian Cyrillic"],
+  "sr-latn": ["", "Serbian Latin"],
+  syc: ["", "Classical Syriac"],
+  tlh: ["tlhIngan-Hol", "Klingon"],
+  "tt-cyrl": ["\u0442\u0430\u0442\u0430\u0440\u0447\u0430", "Tatar Cyrillic"],
+  "tt-latn": ["tatar\xE7a", "Tatar Latin"],
+  "uz-cyrl": ["\u045E\u0437\u0431\u0435\u043A\u0447\u0430", "Uzbek Cyrillic"],
+  "zh-classical": ["\u6587\u8A00", "Classical Chinese"],
+  "zh-hans": ["\u4E2D\u6587\uFF08\u7B80\u4F53\uFF09", "Simplified Chinese"],
+  "zh-hant": ["\u4E2D\u6587\uFF08\u7E41\u9AD4\uFF09", "Traditional Chinese"],
+  "zh-min-nan": ["B\xE2n-l\xE2m-g\xFA", "Minnan"],
+  "zh-tw": ["\u4E2D\u6587\uFF08\u81FA\u7063\uFF09", "Taiwanese Mandarin"],
+  "zh-yue": ["\u7CB5\u8A9E", "Cantonese"]
 };
 
-var _categories = [
-  "category",
-  //en
-  "abdeeling",
-  //	pdc
-  "b\xF3lkur",
-  //	fo
-  "catag\xF3ir",
-  //	ga
-  "categori",
-  //	cy
-  "categoria",
-  //	co
-  "categor\xEDa",
-  //	es
-  "categor\xEEa",
-  //	lij
-  "categor\xECa",
-  //	pms
-  "cat\xE9gorie",
-  "categorie",
-  "cat\xE8gorie",
-  //	frp
-  "categuria",
-  //	lmo
-  "catigur\xECa",
-  //	scn
-  "class",
-  //	kw
-  "\u1EB9\u0300ka",
-  //	yo
-  "flocc",
-  //	ang
-  "flokkur",
-  "grup",
-  //	tpi
-  "jamii",
-  //	sw
-  "kaarangay",
-  //	war
-  "kateggor\xEDa",
-  //	lad
-  "kategooria",
-  //	et
-  "kategori",
-  //	da
-  "kategor\xEE",
-  //	ku
-  "kategoria",
-  //	eu
-  "kateg\xF3ria",
-  //	hu
-  "kategorie",
-  //de
-  "kategoriija",
-  //	se
-  "kategorija",
-  //	sl
-  "kategorio",
-  //	eo
-  "kategoriya",
-  "kategori\xFDa",
-  //	tk
-  "kategoriye",
-  //	diq
-  "kategory",
-  //	fy
-  "kategorya",
-  //	tl
-  "kateqoriya",
-  //	az
-  "katiguriya",
-  //	qu
-  "klad",
-  //	vo
-  "luokka",
-  "\xF1emohenda",
-  //	gn
-  "roinn",
-  //-seòrsa	gd
-  "ronney",
-  //	gv
-  "rummad",
-  //	br
-  "setensele",
-  //	nso
-  "sokajy",
-  //	mg
-  "sumut",
-  // atassuseq	kl
-  "turkum",
-  //	uz
-  "\u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u0458\u0430",
-  "\u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F",
-  //	ru
-  "\u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0456\u044F",
-  //	uk
-  "\u043A\u0430\u0442\u044D\u0433\u043E\u0440\u044B\u044F",
-  "\u0442\u04E9\u0440\u043A\u0435\u043C",
-  //	tt
-  "th\u1EC3 lo\u1EA1i",
-  //	vi
-  "\u05E7\u05D8\u05D2\u05D5\u05E8\u05D9\u05D4",
-  //	he
-  "\u062A\u0635\u0646\u064A\u0641",
-  "\u062A\u06C8\u0631",
-  //	ug
-  "\u0631\u062F\u0647",
-  "\u0936\u094D\u0930\u0947\u0923\u0940",
-  //	hi
-  "\u09AC\u09BF\u09B7\u09AF\u09BC\u09B6\u09CD\u09B0\u09C7\u09A3\u09C0",
-  //	bn
-  "\u0E2B\u0E21\u0E27\u0E14\u0E2B\u0E21\u0E39\u0E48",
-  //	th
-  "\uBD84\uB958",
-  //	ko
-  "\u5206\u7C7B"
-  //	za
-];
-
-var disambig_templates = [
-  "dab",
-  //en
-  "disamb",
-  //en
-  "disambig",
-  //en
-  "disambiguation",
-  //en
-  "geodis",
-  //en
-  "hndis",
-  //en
-  "lake index",
-  //en
-  "letter disambiguation",
-  //en
-  "mountainindex",
-  //en
-  "setindex",
-  //en
-  "ship index",
-  //en
-  "split dab",
-  //en
-  "sport index",
-  //en
-  "wp disambig",
-  //en
-  "a\xF0greining",
-  //is
-  "aimai",
-  //ja
-  "airport disambiguation",
-  "a\u0142ts\u02BC\xE1\u02BC\xE1ztiin",
-  //nv
-  "anlam ayr\u0131m\u0131",
-  //gag, tr
-  "apartigilo",
-  //eo
-  "argipen",
-  //eu
-  "begriepskloorenge",
-  //stq
-  "begriffskl\xE4rung",
-  //als, de, pdc
-  "begriffsklearung",
-  //bar
-  "biology disambiguation",
-  "bisongidila",
-  //kg
-  "bkl",
-  //pfl
-  "bokokani",
-  //ln
-  "caddayn",
-  //so
-  "call sign disambiguation",
-  "caselaw disambiguation",
-  "chinese title disambiguation",
-  "clerheans",
-  //kw
-  "cudakirin",
-  //ku
-  "\u010Dvor",
-  //bs
-  "db",
-  //vls
-  "desambig",
-  //nov
-  "desambigaci\xF3n",
-  //an
-  "desambigua\xE7\xE3o",
-  //pt
-  "desambiguaci\xF3",
-  //ca
-  "desambiguaci\xF3n",
-  //es
-  "desambigu\xE1ncia",
-  //ext
-  "desambiguasion",
-  //lad
-  "desambiguassi\xF9",
-  //lmo
-  "desambigui",
-  //lfn
-  "dezambiguizare",
-  //ro
-  "dezanb\xECgua",
-  "d\u0259qiql\u0259\u015Fdirm\u0259",
-  //az
-  "disamb-term",
-  "disamb-terms",
-  "disamb2",
-  "disamb3",
-  "disamb4",
-  "disambigua",
-  //it
-  "disamb\xECgua",
-  //sc
-  "disambiguasi",
-  "disambiguation cleanup",
-  "disambiguation lead name",
-  "disambiguation lead",
-  "disambiguation name",
-  "disambiguazion",
-  "disambigue",
-  "discretiva",
-  //la
-  "dishe\xF1velout",
-  //br
-  "disingkek",
-  //min
-  "dixanbigua",
-  //vec
-  "dixebra",
-  //ast
-  "di\u017Cambigwazzjoni",
-  //mt
-  "dmbox",
-  "doorverwijspagina",
-  //nl
-  "dp",
-  //nl
-  "dubbelsinnig",
-  //af
-  "dudalipen",
-  //rmy
-  "dv",
-  //nds_nl
-  "egy\xE9rt",
-  //hu
-  "faaleaogaina",
-  "fleiri t\xFDdningar",
-  //fo
-  "fleirtyding",
-  //nn
-  "flertydig",
-  //da
-  "f\xF6rgrening",
-  //sv
-  "genus disambiguation",
-  "g\xEC-ngi\xEA",
-  //cdo
-  "giklaro",
-  //ceb
-  "gwahaniaethu",
-  //cy
-  "homonimo",
-  //io
-  "hom\xF3nimos",
-  //gl
-  "homonymie",
-  //fr
-  "hospital disambiguation",
-  "hua\u02BB\u014Dlelo puana like",
-  //haw
-  "human name disambiguation cleanup",
-  "human name disambiguation",
-  "idirdheal\xFA",
-  //ga
-  "khu-pia\u030Dt",
-  //zh_min_nan
-  "kthjellim",
-  //sq
-  "kujekesa",
-  //sn
-  "letter-number combination disambiguation",
-  "letter-numbercombdisambig",
-  "maana",
-  //sw
-  "maneo bin",
-  //diq
-  "mathematical disambiguation",
-  "mehrd\xFCdig begreep",
-  //nds
-  "menm non",
-  //ht
-  "military unit disambiguation",
-  "muard\xFC\xFCdag artiikel",
-  //frr
-  "music disambiguation",
-  "myesak\xE3r\xE3",
-  "neibetsjuttings",
-  //fy
-  "noz\u012Bmju atdal\u012B\u0161ana",
-  //lv
-  "number disambiguation",
-  "nuorodinis",
-  //lt
-  "nyahkekaburan",
-  //ms
-  "omonimeye",
-  //wa
-  "omonimi",
-  "omonimia",
-  //oc
-  "opus number disambiguation",
-  "page d\xE9 frouque",
-  //nrm
-  "paglilinaw",
-  //tl
-  "panangilawlawag",
-  //ilo
-  "pansayod",
-  //war
-  "pejy mitovy anarana",
-  //mg
-  "peker",
-  //no
-  "phonetics disambiguation",
-  "place name disambiguation",
-  "portal disambiguation",
-  "razdvojba",
-  //hr
-  "razlo\u010Ditev",
-  //sl
-  "razvrstavanje",
-  //sh
-  "reddaghey",
-  //gv
-  "road disambiguation",
-  "rozcestn\xEDk",
-  //cs
-  "rozli\u0161ovacia str\xE1nka",
-  //sk
-  "school disambiguation",
-  "sclerir noziun",
-  //rm
-  "selvendyssivu",
-  //olo
-  "soilleireachadh",
-  //gd
-  "species latin name abbreviation disambiguation",
-  "species latin name disambiguation",
-  "station disambiguation",
-  "suzmunski",
-  //jbo
-  "synagogue disambiguation",
-  "t\xE4psustuslehek\xFClg",
-  //et
-  "t\xE4smennyssivu",
-  //fi
-  "taxonomic authority disambiguation",
-  "taxonomy disambiguation",
-  "telpl\xE4nov",
-  //vo
-  "template disambiguation",
-  "tlahtolmelahuacatlaliztli",
-  //nah
-  "trang \u0111\u1ECBnh h\u01B0\u1EDBng",
-  //vi
-  "ujednoznacznienie",
-  //pl
-  "verdudeliking",
-  //li
-  "w\u011Bcejw\xF3znamowos\u0107",
-  //dsb
-  "wjacezmyslnos\u0107",
-  //hsb
-  "z",
-  "zambigua\xE7on",
-  //mwl
-  "zeimeibu \u0161kir\u0161ona",
-  //ltg
-  "\u03B1\u03C0\u03BF\u03C3\u03B1\u03C6\u03AE\u03BD\u03B9\u03C3\u03B7",
-  //el
-  "\u0430\u0439\u0440\u044B\u049B",
-  //kk
-  "\u0430\u04B5\u0430\u043A\u044B\u0440\u0430\u0446\u04D9\u0430",
-  //ab
-  "\u0431\u0438\u0440 \u0430\u0430\u0439\u044B \u0458\u043E\u043A",
-  "\u0432\u0438\u0448\u0435\u0437\u043D\u0430\u0447\u043D\u0430 \u043E\u0434\u0440\u0435\u0434\u043D\u0438\u0446\u0430",
-  //sr
-  "\u0438\u0431\u04B3\u043E\u043C\u0437\u0443\u0434\u043E\u04E3",
-  //tg
-  "\u043A\u0451\u0431 \u043C\u0430\u0433\u044A\u0430\u043D\u0430\u043B\u044B",
-  //krc
-  "\u043A\u04AF\u043F \u043C\u04D9\u0433\u044A\u043D\u04D9\u043B\u04D9\u0440",
-  //tt
-  "\u043A\u04AF\u043F \u043C\u04D9\u0493\u04D9\u043D\u04D9\u043B\u0435\u043B\u0435\u043A",
-  //ba
-  "\u043C\u0430\u0441\u0441\u0435\u0445\u043A \u043C\u0430\u04CF\u0430\u043D \u0445\u0438\u043B\u0430\u0440",
-  "\u043C\u044A\u043D\u043E\u0433\u043E\u0441\u044A\u043C\uA651\u0441\u043B\u0438\u0465",
-  //cu
-  "\u043D\u0435\u0430\u0434\u043D\u0430\u0437\u043D\u0430\u0447\u043D\u0430\u0441\u0446\u044C",
-  //be
-  "\u043D\u0435\u0430\u0434\u043D\u0430\u0437\u043D\u0430\u0447\u043D\u0430\u0441\u044C\u0446\u044C",
-  //be_x_old
-  "\u043D\u0435\u043E\u0434\u043D\u043E\u0437\u043D\u0430\u0447\u043D\u043E\u0441\u0442\u044C",
-  //ru
-  "\u043E\u043B\u043E\u043D \u0443\u0434\u0445\u0430\u0442\u0430\u0439",
-  //bxr
-  "\u043F\u043E\u0458\u0430\u0441\u043D\u0443\u0432\u0430\u045A\u0435",
-  //mk
-  "\u043F\u043E\u044F\u0441\u043D\u0435\u043D\u0438\u0435",
-  //bg
-  "\u0441\u0430 \u0448\u0443\u043C\u0443\u0434 \u043C\u0430\u043D\u0430\u0432\u0430\u043B",
-  //lez
-  "\u0441\u0430\u043B\u0430\u0430 \u0443\u0442\u0433\u0430\u0442\u0430\u0439",
-  //mn
-  "\u0441\u0443\u043E\u043B\u0442\u0430\u043B\u0430\u0440",
-  //sah
-  "\u0442\u0435\u043A\u043C\u0430\u0430\u043D\u0438\u0441\u0438\u0437\u0434\u0438\u043A",
-  //ky
-  "\u0446\u043E \u043C\u0430\u0433\u0456\u043D\u0430 \u0433\u0443\u0440\u0435\u0431",
-  //av
-  "\u0447\u0435\u043F\u0435\u0440\u0443\u0448\u043A\u0430",
-  //rue
-  "\u0447\u043E\u043B\u0445\u0430\u043B\u043B\u0430",
-  //ce
-  "\u0448\u0443\u043A\u043E \u043E\u043D\u0447\u044B\u043A\u0442\u044B\u043C\u0430\u0448-\u0432\u043B\u0430\u043A",
-  //mhr
-  "\u10DB\u10E0\u10D0\u10D5\u10D0\u10DA\u10DB\u10DC\u10D8\u10E8\u10D5\u10DC\u10D4\u10DA\u10DD\u10D5\u10D0\u10DC\u10D8",
-  //ka
-  "\u0562\u0561\u0566\u0574\u056B\u0574\u0561\u057D\u057F\u0578\u0582\u0569\u056B\u0582\u0576",
-  //hyw
-  "\u0562\u0561\u0566\u0574\u056B\u0574\u0561\u057D\u057F\u0578\u0582\u0569\u0575\u0578\u0582\u0576",
-  //hy
-  "\u05D1\u05D0\u05D3\u05D9\u05D9\u05D8\u05DF",
-  //yi
-  "\u05E4\u05D9\u05E8\u05D5\u05E9\u05D5\u05E0\u05D9\u05DD",
-  //he
-  "\u0627\u0628\u0647\u0627\u0645\u200C\u0632\u062F\u0627\u06CC\u06CC",
-  //fa
-  "\u062A\u0648\u0636\u064A\u062D",
-  //ar, arz
-  "\u062F\u0642\u06CC\u0642\u0644\u0634\u062F\u06CC\u0631\u0645\u0647",
-  //azb
-  "\u0695\u0648\u0648\u0646\u06A9\u0631\u062F\u0646\u06D5\u0648\u06D5",
-  //ckb
-  "\u0633\u0644\u062C\u0647\u0627\u0626\u067E",
-  //sd
-  "\u0636\u062F \u0627\u0628\u06C1\u0627\u0645",
-  //ur
-  "\u06AF\u062C\u06AF\u062C\u06CC \u0628\u06CC\u0631\u06CC",
-  //mzn
-  "\u0646\u0627\u0645\u0628\u0647\u0645\u06D0\u062F\u0646\u0647",
-  //ps
-  "\u1218\u1295\u1273",
-  //am
-  "\u0905\u0938\u094D\u092A\u0937\u094D\u091F\u0924\u093E",
-  //ne
-  "\u092C\u0939\u0941\u0905\u0930\u094D\u0925\u0940",
-  //bh
-  "\u092C\u0939\u0941\u0935\u093F\u0915\u0932\u094D\u092A\u0940 \u0936\u092C\u094D\u0926",
-  //hi
-  "\u09A6\u09CD\u09AC\u09CD\u09AF\u09B0\u09CD\u09A5\u09A4\u09BE \u09A8\u09BF\u09B0\u09B8\u09A8",
-  //bn
-  "\u0A17\u0A41\u0A70\u0A1D\u0A32-\u0A16\u0A4B\u0A32\u0A4D\u0A39",
-  //pa
-  "\u0AB8\u0A82\u0AA6\u0ABF\u0A97\u0ACD\u0AA7 \u0AB6\u0AC0\u0AB0\u0ACD\u0AB7\u0A95",
-  //gu
-  "\u0BAA\u0B95\u0BCD\u0B95\u0BB5\u0BB4\u0BBF \u0BA8\u0BC6\u0BB1\u0BBF\u0BAA\u0BCD\u0BAA\u0B9F\u0BC1\u0BA4\u0BCD\u0BA4\u0BB2\u0BCD",
-  //ta
-  "\u0C05\u0C2F\u0C4B\u0C2E\u0C2F \u0C28\u0C3F\u0C35\u0C43\u0C24\u0C4D\u0C24\u0C3F",
-  //te
-  "\u0CA6\u0CCD\u0CB5\u0C82\u0CA6\u0CCD\u0CB5 \u0CA8\u0CBF\u0CB5\u0CBE\u0CB0\u0CA3\u0CC6",
-  //kn
-  "\u0D35\u0D3F\u0D35\u0D15\u0D4D\u0D37\u0D15\u0D7E",
-  //ml
-  "\u0DC0\u0D9A\u0DCA\u200D\u0DBB\u0DDD\u0DAD\u0DCA\u0DAD\u0DD2",
-  //si
-  "\u0E41\u0E01\u0E49\u0E04\u0E27\u0E32\u0E21\u0E01\u0E33\u0E01\u0E27\u0E21",
-  //th
-  "\u101E\u1036\u1010\u1030\u1000\u103C\u1031\u102C\u1004\u103A\u1038\u1000\u103D\u1032",
-  //my
-  "\u101E\u1035\u1004\u103A\u1019\u102D\u1030\u107C\u103A \u1010\u1030\u107C\u103A\u1088\u1011\u1085\u101D\u103A\u1015\u1085\u1075\u103A\u1087",
-  "\u178E\u17C2\u1793\u17B6\u17C6",
-  //km
-  "\u17A2\u179F\u1784\u17D2\u179F\u17D0\u1799\u1780\u1798\u17D2\u1798",
-  "\uB3D9\uC74C\uC774\uC758",
-  //ko
-  "\u6264\u6E05\u695A",
-  //gan
-  "\u641E\u6E05\u695A",
-  //zh_yue
-  "\u66D6\u6627\u3055\u56DE\u907F",
-  //ja
-  "\u6D88\u6B67\u4E49",
-  //zh
-  "\u91CB\u7FA9",
-  //zh_classical
-  "gestion dj'om\xF2nim",
-  //pms
-  "sut'ichana qillqa"
-  //qu
-  // 'z', //vep
-  // 'သဵင်မိူၼ် တူၼ်ႈထႅဝ်ပႅၵ်ႇ', //shn
-];
-
-var disambig_titles = [
-  "disambiguation",
-  //en
-  "homonymie",
-  //fr
-  "\u062A\u0648\u0636\u064A\u062D",
-  //ar
-  "desambigua\xE7\xE3o",
-  //pt
-  "Begriffskl\xE4rung",
-  //de
-  "disambigua",
-  //it
-  "\u66D6\u6627\u3055\u56DE\u907F",
-  //ja
-  "\u6D88\u6B67\u7FA9",
-  //zh
-  "\u641E\u6E05\u695A",
-  //zh-yue
-  "\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F",
-  //ru
-  "\u0627\u0628\u0647\u0627\u0645\u200C\u0632\u062F\u0627\u06CC\u06CC",
-  //fa
-  "\u062F \u0627\u0628\u06C1\u0627\u0645",
-  //ur
-  "\uB3D9\uC74C\uC774\uC758",
-  //ko
-  "dubbelsinnig",
-  //af
-  "\u0561\u0575\u056C \u056F\u056B\u0580\u0561\u057C\u0578\u0582\u0574\u0576\u0565\u0580",
-  //hy
-  "ujednoznacznienie"
-  //pl
-];
-
-var images = [
-  "file",
-  //en
-  "image",
-  //en
-  "archivo",
-  //es
-  "att\u0113ls",
-  //lv
-  "berkas",
-  //id
-  "bestand",
-  //nl
-  "datei",
-  //de
-  "dosiero",
-  //eo
-  "dosya",
-  //lad
-  "f\xE1jl",
-  //hu
-  "fasciculus",
-  //la
-  "fichier",
-  //fr
-  "fil",
-  //da
-  "fitxategi",
-  //eu
-  "fitxer",
-  //ca
-  "gambar",
-  //su
-  "imagem",
-  //pt
-  "imej",
-  //ms
-  "immagine",
-  //it
-  "larawan",
-  //tl
-  "l\xEAer",
-  //af
-  "picha",
-  //sw
-  "plik",
-  //pl
-  "restr",
-  //br
-  "slika",
-  //bs
-  "w\xEAne",
-  //ku
-  "wobraz",
-  //dsb
-  "\u0432\u044B\u044F\u0432\u0430",
-  //be
-  "\u043F\u043E\u0434\u0430\u0442\u043E\u0442\u0435\u043A\u0430",
-  //mk
-  "\u0441\u043B\u0438\u043A\u0430",
-  //sr
-  "\u0444\u0430\u0439\u043B",
-  //ru
-  "\u10E1\u10E3\u10E0\u10D0\u10D7\u10D8",
-  //ka
-  "\u057A\u0561\u057F\u056F\u0565\u0580",
-  //hy
-  "\u05E7\u05D5\u05D1\u05E5",
-  //he
-  "\u067E\u0631\u0648\u0646\u062F\u0647",
-  //fa
-  "\u062F\u0648\u062A\u0646\u0647",
-  //ps
-  "\u0645\u0644\u0641",
-  //ar
-  "\u0648\u06CE\u0646\u06D5",
-  //ckb
-  "\u091A\u093F\u0924\u094D\u0930",
-  //hi
-  "\u0E44\u0E1F\u0E25\u0E4C",
-  //th
-  "\uD30C\uC77C",
-  //ko
-  "\u30D5\u30A1\u30A4\u30EB"
-  //ja
-];
-
-var stubs = [
-  "abo\xE7",
-  "ahurhire",
-  "aizmetnis",
-  "amud",
-  "avixo de spigaso",
-  // 'begin',
-  "beginnetje",
-  "bibarilo",
-  "borrador",
-  "bu\xE1ng-n\xE0ng-h\xE2",
-  "bun",
-  "buntato",
-  "c-supranu",
-  "cahrot",
-  "chala",
-  "choutchette",
-  "ciot",
-  "csonk",
-  "cung",
-  "danvez pennad",
-  "djermon",
-  "\xE9bauche",
-  "\xE9beuche",
-  "eb\xF2ch",
-  "\xE9d\xE9nt\u1EA1",
-  "eginyn",
-  "\u1EB9\u0300k\xFAnr\u1EB9\u0301r\u1EB9\u0301",
-  "en progreso",
-  "entamu",
-  "esbo\xE7o",
-  "esborrany",
-  "esb\xF2s",
-  "esbozo",
-  "\u011Dermo",
-  "gumud",
-  "\u02BB\u014Dmuku",
-  "junj",
-  "klado",
-  "maramara",
-  "mayele",
-  "mbegu",
-  "mrva",
-  "na mulno",
-  "nadabeigts rakst\u012B\u0146s",
-  "nalta",
-  "narcce",
-  "pah\xFDl",
-  "pecietta",
-  "ph\xED",
-  "pondok",
-  "por mejoral",
-  "potu\u02BBi",
-  "pungol",
-  "qaralama",
-  "rabisco",
-  "rancangan",
-  "rintisan",
-  "saadjie",
-  "saha",
-  "sbozz",
-  "sid",
-  "s\xEDol",
-  "\u015Fitil",
-  "sjtumpke",
-  "skizz",
-  "skizze",
-  "\u0161krbina",
-  "s\u01A1 khai",
-  "spire",
-  "stipula",
-  "stob",
-  "stobbe",
-  // 'stock',
-  "stompje",
-  "stub",
-  "stubben",
-  "stubbi",
-  "stubbur",
-  "stump",
-  "stumpen",
-  "stycce",
-  "suli",
-  "taslak",
-  "taslaq",
-  "tunas",
-  "tur\xF3k",
-  "tynk\xE4",
-  // 'u začetku',
-  "vangovango",
-  "vernu\u015Fte",
-  "v\xFDhonok",
-  "xinnoo",
-  "zarodk",
-  "zirriborroa",
-  "\u03B5\u03C0\u03AD\u03BA\u03C4\u03B1\u03C3\u03B7",
-  "\u04D9\u0499\u0435\u0440\u043B\u04D9\u043C\u04D9",
-  "\u0437\u0430\u0433\u043E\u0442\u043E\u0432\u043A\u0430",
-  "\u043A\u0435\u0440\u0444",
-  "\u043A\u0435\u0447\u0434\u0430\u0440",
-  "\u043A\u043B\u0438\u0446\u0430",
-  "\u043A\u044A\xE6\u0440\u0442\u0442",
-  "\u043A\u044C\u0443\u0440\u0445\u044C",
-  "\u043C\u04D9\u043A\u0430\u043B\u04D9 \u0442\u04E9\u043F\u0447\u0435\u0433\u0435",
-  "\u043C\u044A\u043D\u0438\u0447\u0435",
-  "\u043D\u0430\u043A\u0456\u0434",
-  "\u043D\u0454\uA641\u0430\u0432\u0440\u044C\u0448\u0454\u043D\u044A \u0447\u043B\u0463\u043D\u044A",
-  "\u043D\u0438\u043A\u0443\u043B\u0435\u0446",
-  "\u043E\u043C\u043E\u043E\u043D",
-  "\u0441\u0442\u044B\u0440\u0436\u0435\u043D\u044C",
-  "\u0445\u0443\u0440\u0434",
-  "\u0445\u04CF\u0430\u0434\u0443\u0440\u0443\u043D\u0436\u043E",
-  "\u10D4\u10E1\u10D9\u10D8\u10D6\u10D8",
-  "\u1218\u12CB\u1245\u122D",
-  "\u1218\u12CB\u1255\u122D",
-  "\u0905\u092A\u0942\u0930\u094D\u0923\u0932\u0947\u0916\u0903",
-  "\u0906\u0927\u093E\u0930",
-  "\u0920\u0941\u091F\u094B",
-  "\u0927\u093E\u0915\u094D\u091F\u0947\u0902 \u092A\u093E\u0928",
-  "\u0935\u093F\u0938\u094D\u0924\u093E\u0930",
-  "\u0985\u09B8\u09AE\u09CD\u09AA\u09C2\u09B0\u09CD\u09A3",
-  "\u09AA\u09CB\u0996\u09BE\u09B2\u09BF",
-  "\u0AB8\u0ACD\u0A9F\u0AAC",
-  "\u0B05\u0B27\u0B3E\u0B17\u0B22\u0B3C\u0B3E",
-  "\u0B95\u0BC1\u0BB1\u0BC1\u0B99\u0BCD\u0B95\u0B9F\u0BCD\u0B9F\u0BC1\u0BB0\u0BC8",
-  "\u0C2E\u0C4A\u0C32\u0C15",
-  "\u0C8E\u0CB2\u0CCD\u0CAF",
-  "\u0C9A\u0CC1\u0C9F\u0CC1\u0C95\u0CC1",
-  "\u0D05\u0D2A\u0D42\u0D7C\u0D23\u0D4D\u0D23\u0D02",
-  "\u0D85\u0D82\u0D9A\u0DD4\u0DBB\u0DBA",
-  "\u0E42\u0E04\u0E23\u0E07",
-  "\u0F46\u0F0B\u0F58\u0F72\u0F0B\u0F5A\u0F44\u0F0B\u0F56",
-  "\u17A2\u178F\u17D2\u1790\u1794\u1791\u1781\u17D2\u179B\u17B8\u1798\u17B7\u1793\u1796\u17C1\u1789\u179B\u17C1\u1789",
-  "\uD1A0\uB9C9\uAE00",
-  "\u6954",
-  "\u82BB\u6587"
-];
-
-var infoboxes = [
-  "infobox",
-  //en
-  "amatl",
-  "anfo",
-  //mwl
-  "anu\u0101mapa",
-  //haw
-  "bilgi kutusu",
-  //tr
-  "bilgi",
-  //tr
-  "bilgiquti",
-  //uz
-  "boaty fampahalalana",
-  "boaty",
-  //mg
-  "boestkelaoui\xF1",
-  //br
-  "bosca",
-  //ga
-  "capsa",
-  //la
-  "diehtok\xE1ssa",
-  //se
-  "faktamall",
-  //sv
-  "ficha",
-  //es
-  "generalni",
-  //hr
-  "gwybodlen3",
-  //cy
-  "h\u1ED9p th\xF4ng tin",
-  "info",
-  //pt
-  "infoboesse 2",
-  "infobokis",
-  //tpi
-  "infoboks",
-  //da
-  "infobox deleted",
-  "infobox generic",
-  "infobox generiek",
-  "infochascha",
-  //rm
-  "infoka\u0161\u0107ik",
-  //dsb
-  "infokast",
-  //et
-  "infokutija",
-  //bs
-  "infolentel\u0117",
-  //lt
-  "infookvir",
-  "infopolje",
-  //sl
-  "informkesto",
-  //eo
-  "infoschede",
-  "infoskreine",
-  //ltg
-  "infotaula",
-  //eu
-  "inligtingskas",
-  "inligtingskas3",
-  //af
-  "inligtingskas4",
-  //af
-  "kishtey fys",
-  "kotak info",
-  "kotak",
-  //su
-  "m\u0259lumat qutusu",
-  "simple box",
-  "tertcita tanxe",
-  "tertcita",
-  //jbo
-  "ti\xE4tuloov\xE1",
-  "tietolaatikko",
-  //fi
-  "wd bosca sonra\xED",
-  "yerle\u015Fim bilgi kutusu",
-  "ynfoboks generyk",
-  "ynfoboks",
-  //fy
-  "\u03C0\u03BB\u03B1\u03AF\u03C3\u03B9\u03BF \u03C0\u03BB\u03B7\u03C1\u03BF\u03C6\u03BF\u03C1\u03B9\u03CE\u03BD",
-  "\u03C0\u03BB\u03B1\u03AF\u03C3\u03B9\u03BF",
-  //el
-  "\u0430\u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0430",
-  //ab
-  "\u0430\u04A5\u0430",
-  //mhr
-  "\u0438\u043D\u0444\u043E\u0431\u043E\u043A\u0441",
-  //kk
-  "\u0438\u043D\u0444\u043E\u043A\u0443\u0442\u0438\u0458\u0430",
-  //sr
-  "\u0438\u043D\u0444\u043E\u043A\u0443\u0442\u0438\u044F",
-  //bg
-  "\u0456\u043D\u0444\u043E\u0431\u043E\u043A\u0441",
-  //rue
-  "\u043A\u0430\u043D\u0430\u0434\u0441\u043A\u0438\u0439",
-  "\u043A\u0430\u0440\u0442\u043A\u0430",
-  //be
-  "\u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0430",
-  //ru
-  "\u043A\u0430\u0440\u0442\u043E\u0447\u043A\u04302",
-  //mdf
-  "\u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0430\u0440\u0443\u0441",
-  //ba
-  "\u043A\u0430\u0440\u0442\u0443\u0448",
-  //koi
-  "\u049B\u0443\u0442\u0442\u04E3",
-  //tg
-  "\u10D8\u10DC\u10E4\u10DD\u10D3\u10D0\u10E4\u10D0",
-  //ka
-  "\u057F\u0565\u0572\u0565\u056F\u0561\u0584\u0561\u0580\u057F",
-  //hy
-  "\u05EA\u05D1\u05E0\u05D9\u05EA",
-  //he
-  "\u0628\u0637\u0627\u0642\u0629",
-  //ar
-  "\u0684\u0627\u06BB\u062E\u0627\u0646\u0648",
-  //sd
-  "\u062E\u0627\u0646\u06C1",
-  //ur
-  "\u0644\u063A\u0629",
-  "\u0645\u0639\u0644\u0648\u0657\u0645\u0627\u062A \u0688\u064E\u0628\u06C1\u0655",
-  "\u091C\u094D\u091E\u093E\u0928\u0938\u0928\u094D\u0926\u0942\u0915",
-  //hi
-  "\u09A4\u09A5\u09CD\u09AF\u099B\u0995",
-  //bn
-  "\u0A1C\u0A3E\u0A23\u0A15\u0A3E\u0A30\u0A40\u0A21\u0A71\u0A2C\u0A3E",
-  //pa
-  "\u0C38\u0C2E\u0C3E\u0C1A\u0C3E\u0C30\u0C2A\u0C46\u0C1F\u0C4D\u0C1F\u0C46",
-  //te
-  "\u0DAD\u0DDC\u0DBB\u0DAD\u0DD4\u0DBB\u0DD4\u0D9A\u0DDC\u0DA7\u0DD4\u0DC0",
-  //si
-  "\u0E01\u0E25\u0E48\u0E2D\u0E07\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25",
-  //th
-  "\u0E81\u0EC8\u0EAD\u0E87\u0E82\u0ECD\u0EC9\u0EA1\u0EB9\u0E99",
-  "\u1794\u17D2\u179A\u17A2\u1794\u17CB\u1796\u17D0\u178F\u17CC\u1798\u17B6\u1793",
-  //km
-  "\uC815\uBCF4\uC0C1\uC790",
-  //ko
-  "\u660E\u7D30"
-  //zh_yue
-];
-
-var redirects = [
-  "aanstuur",
-  //af
-  "aastiurey",
-  "adkas",
-  //br
-  "ailgyfeirio",
-  "alidirekto",
-  "alih",
-  //id
-  "a\xFDdaw",
-  "baw-ing",
-  "beral\xEEkirin",
-  //ku
-  "birzuzendu",
-  "\u0111\u1ED5i h\u01B0\u1EDBng \u0111\u1EBFn \u0111\xE2y",
-  "doorverwijzing",
-  //nl
-  "header",
-  "i\u0307stiqam\u0259tl\u0259ndirm\u0259",
-  "lencong",
-  //ms
-  "ohjaa t\xE4nne",
-  "ohjaus",
-  "omdirigering",
-  //no
-  "p\u0101radres\u0101cija",
-  "patrz",
-  //pl
-  "p\u0159esm\u011Brov\xE1n\xED",
-  "p\u0159esm\u011Bruj",
-  "preusmeritev",
-  "preusmjerava",
-  "preusmjerenje",
-  "preusmjeri",
-  //hr
-  "przekierowanie",
-  "redir",
-  "redirecci\xF3",
-  "redireccion",
-  "redirecci\xF3n",
-  //es
-  "redirecionamento",
-  //pt
-  "redirect",
-  //en
-  "redirect3",
-  "redirection",
-  //fr
-  "redirige aqu\xED",
-  "redirige",
-  "redirixe equ\xED",
-  "rindirizz",
-  "rinvia",
-  //it
-  "stivre deike",
-  "suunamine",
-  "tilv\xEDsun",
-  "trimite",
-  "uudelleenohjaus",
-  "weiterleitung",
-  //de
-  "weiterleitungshinweis",
-  "yo\u02BBnaltirish",
-  "y\xF6nlendi\u0307r",
-  "y\xF6nlendi\u0307rme",
-  //tr
-  "\u03B1\u03BD\u03B1\u03BA\u03B1\u03C4\u03B5\u03C5\u03B8\u03C5\u03BD\u03C3\u03B7",
-  //el
-  "\u0430\u0439\u0434\u0430\u0443",
-  //kk
-  "\u0431\u0430\u0433\u044B\u0442\u0442\u0430\u043C\u0430",
-  "\u0431\u0443\u0441\u0441\u0438\u043D\u0430\u0431\u0438",
-  "\u0434\u04CF\u0430\u0441\u0430\u0445\u044C\u0430\u0436\u043E\u0440\u0433",
-  "\u043E\u0442 \u043F\u0440\u0435\u043D\u0430\u0441\u043E\u0447\u0432\u0430\u043D\u0435",
-  "\u043F\u0435\u0440\u0430\u043D\u0430\u043A\u0456\u0440\u0430\u0432\u0430\u043D\u043D\u0435",
-  "\u043F\u0435\u0440\u0430\u043D\u0430\u043A\u0456\u0440\u0430\u0432\u0430\u043D\u044C\u043D\u0435",
-  "\u043F\u0435\u0440\u0430\u043D\u0430\u043A\u0456\u0440\u043E\u045E\u0432\u0430\u0435\u0446\u0446\u0430 \u0441\u044E\u0434\u044B",
-  "\u043F\u0435\u0440\u0435\u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435",
-  //ru
-  "\u043F\u0435\u0440\u0435\u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u043D\u044F",
-  //uk
-  "\u043F\u0435\u0440\u0435\u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u043E",
-  "\u043F\u0440\u0435\u043D\u0430\u0441\u043E\u0447\u0443\u0432\u0430\u045A\u0435",
-  //mk
-  "\u043F\u0440\u0435\u0443\u0441\u043C\u0435\u0440\u0430\u0432\u0430 ",
-  "\u043F\u0440\u0435\u0443\u0441\u043C\u0435\u0440\u0438",
-  //sr
-  "\u043F\u0440\u0435\u0443\u0441\u043C\u0458\u0435\u0440\u0438",
-  "\u0440\u0430\u0432\u043E\u043D\u0430\u043A\u0443\u043D\u04E3",
-  "\u05D5\u05D5\u05D9\u05D9\u05D8\u05E2\u05E8\u05E4\u05D9\u05E8\u05DF",
-  //yi
-  "\u062A\u062D\u0648\u064A\u0644",
-  //ar
-  "\u062A\u063A\u06CC\u06CC\u0631_\u0645\u0633\u06CC\u0631",
-  "\u062A\u063A\u06CC\u06CC\u0631\u0645\u0633\u06CC\u0631",
-  //fa
-  "\u0631\u062C\u0648\u0639 \u0645\u06A9\u0631\u0631",
-  //ur
-  "\u0631\u062C\u0648\u0639_\u0645\u06A9\u0631\u0631",
-  //ur
-  "\u0905\u0928\u0941\u092A\u094D\u0930\u0947\u0937\u093F\u0924",
-  //hi
-  "\u092A\u0941\u0928\u0930\u094D\u0928\u093F\u0930\u094D\u0926\u0947\u0936\u0928",
-  //hi
-  "\u09AA\u09C1\u09A8\u09A8\u09BF\u09B0\u09CD\u09A6\u09C7\u09B6",
-  //bn
-  "\u09AA\u09C1\u09A8\u09B0\u09CD\u09A8\u09BF\u09B0\u09CD\u09A6\u09C7\u09B6",
-  "\u0DBA\u0DC5\u0DD2\u0DBA\u0DDC\u0DB8\u0DD4\u0DC0",
-  "\u0E40\u0E1B\u0E25\u0E35\u0E48\u0E22\u0E19\u0E17\u0E32\u0E07",
-  "\u1794\u17D2\u178F\u17BC\u179A\u1791\u17B8\u178F\u17B6\u17C6\u1784\u1791\u17C5",
-  //km
-  "\uB2E4\uB978 \uB73B \uB118\uC5B4\uC634",
-  "\u30EA\u30C0\u30A4\u30EC\u30AF\u30C8",
-  //ja
-  "\u8DF3\u8F49",
-  "\u8EE2\u9001",
-  //ja
-  "\u91CD\u5B9A\u5411"
-  //zh
-];
-
-var latLngs = [
-  ["latitude", "longitude"],
-  //english
-  ["lat", "lng"],
-  ["breitengrad", "l\xE4ngengrad"],
-  //german
-  ["latitud", "longitud"],
-  //spanish
-  ["zem\u011Bpisn\xE1 \u0161\xED\u0159ka", "zem\u011Bpisn\xE1 d\xE9lka"],
-  //czech
-  ["\u0448\u0438\u0440", "\u0434\u043E\u043B\u0433"]
-  //russian
-];
-
-const i18nReg = new RegExp("^(subst.)?(" + infoboxes.join("|") + ")(?=:| |\n|$)", "i");
-infoboxes.forEach((name) => {
-  infoboxes$1[name] = true;
+let aliases$2 = {
+  imdb: "imdb name",
+  "imdb episodes": "imdb episode",
+  localday: "currentday",
+  localdayname: "currentdayname",
+  localyear: "currentyear",
+  "in language": "in lang",
+  "link language": "in lang",
+  "clickable button 2": "clickable button",
+  "category link": "cl",
+  lcs: "cl",
+  "category see also link": "cl",
+  "birth date based on age at death": "birth based on age as of date",
+  "bare anchored list": "anchored list",
+  cvt: "convert",
+  cricon: "flagicon",
+  fbaicon: "flagicon",
+  sentoff: "sent off",
+  sqrt: "radic",
+  "unreferenced section": "unreferenced",
+  redir: "redirect",
+  sisterlinks: "sister project links",
+  by: "baseball year",
+  nbay: "nba year",
+  n\u00E9e: "nee",
+  n\u00E9: "nee",
+  "interlanguage link": "ill",
+  "interlanguage link multi": "ill",
+  postnominals: "post-nominals",
+  "post-nominal": "post-nominals",
+  "post-nominals/gbr": "post-nominals",
+  slink: "section link",
+  "section links": "section link",
+  crossref: "crossreference",
+  xref: "crossreference",
+  "cross reference": "crossreference",
+  "cross-reference": "crossreference",
+  nth: "ordinal",
+  "number to word": "spell",
+  numtext: "spell",
+  "spell number": "spell",
+  "comma separated list": "cslist",
+  caps: "allcaps",
+  "all caps": "allcaps",
+  keypress: "key press",
+  fontcolor: "font color",
+  "font colour": "font color",
+  "font-color": "font color",
+  cns: "citation needed span",
+  "cn span": "citation needed span",
+  "citation-needed span": "citation needed span",
+  "ko-hhrm": "korean",
+  "nihongo krt": "nihongo",
+  "script/arab": "script/arabic",
+  harvp: "harv",
+  harvcol: "harv",
+  "harvard citation": "harv",
+  harvcoltxt: "harvtxt",
+  "harvard citation text": "harvtxt",
+  harvcolnb: "harvard citation no brackets",
+  tlp: "tlx",
+  // sports
+  "nft-women": "fbw",
+  "fb women": "fbw",
+  "nfa-rt": "nfa",
+  bkwomen: "bkw",
+  "flagioc athlete": "flagiocathlete",
+  "flag ioc": "flagioc",
+  "world series year": "wsy",
+  // external-link templates
+  "ietf rfc": "rfc",
+  uspatent: "us patent",
+  "u.s. patent": "us patent",
+  oeis2c: "oeis link",
+  "official url": "official website",
+  official: "official website",
+  "plain link": "plainlink",
+  plainlinks: "plainlink",
+  "wayback machine": "wayback",
+  webcite: "webarchive",
+  bibleref: "bibleverse",
+  bibleref2: "bibleverse",
+  "bible verse": "bibleverse",
+  wt: "wikt",
+  "wiktionary-inline": "wikt",
+  "wiktionary inline": "wikt",
+  "commons-inline": "commons category-inline",
+  "commonscat-inline": "commons category-inline",
+  "commons cat-inline": "commons category-inline",
+  "wikisource author-inline": "wikisource-inline",
+  "imdb character": "imdb title",
+  "imdb company": "imdb title",
+  "rotten-tomatoes": "rotten tomatoes",
+  rottentomatoes: "rotten tomatoes",
+  "metacritic game": "metacritic film",
+  "metacritic television": "metacritic film",
+  bbref: "baseball-reference",
+  baseballstats: "baseball-reference",
+  pfr: "pro-football-reference",
+  "x (social network)": "twitter",
+  rom: "roman",
+  "roman numeral": "roman",
+  "subatomic particle": "subatomicparticle",
+  particle: "subatomicparticle",
+  "10": "10^",
+  "str rightc": "str right",
+  "str sub": "str mid",
+  "str lower": "lc",
+  "str upper": "uc",
+  tlc: "tlx",
+  tld: "tlx",
+  "sort name": "sortname",
+  floruit: "fl.",
+  fl: "fl.",
+  "ca.": "circa",
+  ca: "circa",
+  asof: "as of",
+  "nhl year": "mhl year",
+  nhly: "mhl year",
+  mlby: "mlb year",
+  nfly: "nfl year",
+  aldsy: "alds year",
+  nldsy: "nlds year",
+  //not perfect..
+  ushr2: "ushr",
+  stn: "station",
+  metrod: "metro",
+  fw: "ferry",
+  rws: "stnlnk",
+  sclass2: "sclass",
+  under: "underline",
+  brackets: "bracket",
+  raise: "lower",
+  "born-in": "born in",
+  "c.": "circa",
+  "r.": "reign",
+  frac: "fraction",
+  rdelim: "ldelim",
+  "pp.": "p.",
+  "iss.": "vol.",
+  h2d: "hex2dec",
+  wdl: "win draw lose"
+};
+let multi = {
+  citation: ["cite", "cite study"],
+  "no spam": ["email", "@", "no spam blue"],
+  "angle bracket": ["angbr", "infix", "angbr ipa"],
+  "lrt station": ["lrt", "lrts"],
+  "mrt station": ["mrts"],
+  flagcountry: ["cr", "cr-rt"],
+  trunc: ["str left", "str crop"],
+  percentage: ["pct"],
+  rnd: ["rndfrac", "rndnear"],
+  abbr: ["tooltip", "abbrv", "define"],
+  sfn: ["sfnref", "harvid", "harvnb", "snf"],
+  "birth date and age": ["death date and age", "bda", "b-da", "birthdate and age", "birthdateandage"],
+  currentmonth: ["localmonth", "currentmonthname", "currentmonthabbrev"],
+  coord: ["coor", "coor title dms", "coor title dec", "coor dms", "coor dm", "coor dec", "coordinate", "coordinates", "coords", "coor at dms", "location"],
+  "columns-list": ["cmn", "col-list", "columnslist", "collist"],
+  nihongo: ["nihongo2", "nihongo3", "nihongo-s", "nihongo foot", "nihongo4", "jp"],
+  plainlist: ["flatlist", "plain list"],
+  "winning percentage": ["winpct", "winperc"],
+  "nba game": ["nba game br"],
+  "win-loss record": ["win\u2013loss record", "win loss record", "wlr"],
+  "collapsible list": [
+    "blist",
+    "bulleted list",
+    "bulleted",
+    "bulletedlist",
+    "nblist",
+    "nonbulleted list",
+    "ubl",
+    "ulist",
+    "ublist",
+    "ubt",
+    "unbullet",
+    "unbulleted list",
+    "unbulleted",
+    "unbulletedlist",
+    "vunblist"
+  ],
+  "election box begin": [
+    "election box begin no change",
+    "election box begin no party",
+    "election box begin no party no change",
+    "election box inline begin",
+    "election box inline begin no change"
+  ],
+  "election box candidate": [
+    "election box candidate for alliance",
+    "election box candidate minor party",
+    "election box candidate no party link no change",
+    "election box candidate with party link",
+    "election box candidate with party link coalition 1918",
+    "election box candidate with party link no change",
+    "election box inline candidate",
+    "election box inline candidate no change",
+    "election box inline candidate with party link",
+    "election box inline candidate with party link no change",
+    "election box inline incumbent"
+  ],
+  "4teambracket": [
+    "2teambracket",
+    "4team2elimbracket",
+    "8teambracket",
+    "16teambracket",
+    "32teambracket",
+    "4roundbracket-byes",
+    "cwsbracket",
+    "nhlbracket",
+    "nhlbracket-reseed",
+    "4teambracket-nhl",
+    "4teambracket-ncaa",
+    "4teambracket-mma",
+    "4teambracket-mlb",
+    "16teambracket-two-reseeds",
+    "8teambracket-nhl",
+    "8teambracket-mlb",
+    "8teambracket-ncaa",
+    "8teambracket-afc",
+    "8teambracket-afl",
+    "8teambracket-tennis3",
+    "8teambracket-tennis5",
+    "16teambracket-nhl",
+    "16teambracket-nhl divisional",
+    "16teambracket-nhl-reseed",
+    "16teambracket-nba",
+    "16teambracket-swtc",
+    "16teambracket-afc",
+    "16teambracket-tennis3",
+    "16teambracket-tennis5"
+  ],
+  start: [
+    "end",
+    "birth",
+    "death",
+    "start date",
+    "end date",
+    "birth date",
+    "birthdate",
+    "death date",
+    "start date and age",
+    "end date and age",
+    "dob",
+    "startdate",
+    "start year",
+    "release date"
+  ],
+  // template redirects on simple-english wikipedia (moved in from wtf-plugin-i18n)
+  "commons cat": [
+    "c cat",
+    "category commons",
+    "ccat",
+    "commons category",
+    "commonscat",
+    "commonscat2",
+    "commonscategory",
+    "commonsimages cat",
+    "wikimedia commons cat"
+  ],
+  reflist: ["footnotes", "ref list", "reference", "reference list", "refs", "rflist"],
+  main: ["hurricane main", "main articles", "mainarticle"],
+  flag: ["country", "flag country"],
+  flagicon: ["flag icon", "flagiconb"],
+  portal: ["portal box"],
+  "cite journal": ["citejournal", "bibisbn"],
+  "cite book": ["book source", "cite manual", "cite work", "citebook", "citebooks"],
+  "cite web": ["cita web", "cite web/german", "cite website", "citeweb", "internetquelle", "web link", "web-cite"],
+  "start-date": [
+    "end-date",
+    "birth-date",
+    "death-date",
+    "birth-date and age",
+    "birth-date and given age",
+    "death-date and age",
+    "death-date and given age"
+  ],
+  tl: [
+    "lts",
+    "t",
+    "tfd links",
+    "tiw",
+    "tltt",
+    "tetl",
+    "tsetl",
+    "ti",
+    "tic",
+    "tiw",
+    "tlt",
+    "ttl",
+    "twlh",
+    "tl2",
+    "tlu",
+    "demo",
+    "xpd",
+    "para",
+    "elc",
+    "xtag",
+    "mlix"
+  ],
+  // https://en.wikipedia.org/wiki/Template:Done/See_also
+  done: [
+    "resolved mark large",
+    "implemented",
+    "pimplemented",
+    "resolved mark",
+    "accepted",
+    "agree",
+    "approved",
+    "checked2",
+    "verified",
+    "conditional yes",
+    "confirmed",
+    "confirmed-nc",
+    "tallyho",
+    "tick",
+    "helped",
+    "doneu|example",
+    "edited2",
+    "donetask",
+    "unprod",
+    "autp",
+    "responded",
+    "sure",
+    "merge done",
+    "marked",
+    "pass",
+    "aye",
+    "yes check",
+    "y&",
+    "yeac",
+    "yeag"
+  ],
+  xmark: [
+    "expired",
+    "deleted",
+    "not done",
+    "not done empty request",
+    "not done unclear",
+    "not done not likely",
+    "stale-small",
+    "smallrejected",
+    "x mark",
+    "nay",
+    "no mark",
+    "not done-t",
+    "fail",
+    "n&",
+    "x mark-n",
+    "xed box",
+    "deleted-image",
+    "already declined",
+    "opblocked",
+    "user-blocked",
+    "notabug",
+    "notfixed",
+    "won't fix",
+    "withdraw",
+    "nojoy",
+    "unrelated",
+    "off-topic talk",
+    "nayc",
+    "nayg"
+  ],
+  checked: ["already done", "resolved1", "check mark-n", "checked box"],
+  // https://en.wikipedia.org/wiki/Template:Ferry
+  "station link": ["amtk", "cta", "bts", "mnrr", "mtams", "munis", "njts", "scax", "wmata", "rwsa"],
+  "video game release": ["vgrelease", "video game release hlist", "vgrtbl", "vgrelease hlist", "vgrh"],
+  aka: ["a.k.a.", "also known as"],
+  "literal translation": ["lit", "literal", "literally"],
+  "citation needed": [
+    "are you sure?",
+    "cb",
+    "ciation needed",
+    "cit",
+    "citaiton needed",
+    "citation missing",
+    "citation need",
+    "citation requested",
+    "citation required",
+    "citation-needed",
+    "citationeeded",
+    "citationneeded",
+    "citationrequired",
+    "cite missing",
+    "cite needed",
+    "cite source",
+    "cite-needed",
+    "citeneeded",
+    "citesource",
+    "citn",
+    "cn needed",
+    "cn",
+    "ctn",
+    "fact?",
+    "fact",
+    "facts",
+    "fcitation needed",
+    "me-fact",
+    "need citation",
+    "need sources",
+    "need-ref",
+    "needcitation",
+    "needcite",
+    "needs citation",
+    "needs citations",
+    "needs reference",
+    "needs source",
+    "needs-cite",
+    "needsref",
+    "no source given",
+    "prov-statement",
+    "prove it",
+    "proveit",
+    "ref needed",
+    "ref-needed",
+    "ref?",
+    "reference necessary",
+    "reference needed",
+    "reference required",
+    "refnec",
+    "refneeded",
+    "refplease",
+    "request citation",
+    "source needed",
+    "source?",
+    "sourceme",
+    "uncited",
+    "unreferenced inline",
+    "unsourced-inline"
+  ],
+  "en dash": ["nsndns"],
+  "spaced en dash": ["spnd", "sndash", "spndash"],
+  "spaced en dash space": ["spndsp", "sndashs", "spndashsp"],
+  "zero width joiner em dash zero width non joiner": ["nsmdns", "nsmdashns", "nsemdashns"],
+  color: ["colour", "colored text", "fgcolor"]
+};
+Object.keys(languages$1).forEach((lang) => {
+  aliases$2["ipa-" + lang] = "ipa";
+  aliases$2["ipac-" + lang] = "ipac";
 });
-const startReg = /^infobox /i;
-const endReg = / infobox$/i;
-const yearIn = /^year in [A-Z]/i;
-const isInfobox = function(name) {
-  if (Object.hasOwn(infoboxes$1, name) === true) {
-    return true;
+Object.keys(multi).forEach((k) => {
+  multi[k].forEach((str) => {
+    aliases$2[str] = k;
+  });
+});
+
+const positions$1 = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const parseShortcut = (handler, wiki, parse) => {
+  if (typeof handler === "number") {
+    const data = parse(wiki, positions$1);
+    return { data: null, replacement: data[String(handler)] || "" };
   }
-  if (i18nReg.test(name)) {
-    return true;
+  if (typeof handler === "string") {
+    return { data: null, replacement: handler };
   }
-  if (startReg.test(name) || endReg.test(name)) {
-    return true;
+  if (Array.isArray(handler)) {
+    return { data: parse(wiki, handler), replacement: "" };
   }
-  if (yearIn.test(name)) {
-    return true;
+  if (handler && typeof handler === "object") {
+    const data = parse(wiki, handler.props);
+    return { data, replacement: data[handler.out] || "" };
   }
-  return false;
+  return { data: parse(wiki), replacement: "" };
 };
-const infoboxType = (name) => {
-  const normalized = fmtName(name);
-  return normalized.replace(i18nReg, "").trim();
+
+var hardcoded = {
+  // table-row result markers from sports game-logs - they become row-attributes, like mediawiki does
+  "game-won": 'class="game-won"',
+  "game-lost": 'class="game-lost"',
+  "game-tied": 'class="game-tied"',
+  "game-drawn": 'class="game-drawn"',
+  "game-otl": 'class="game-otl"',
+  "game-otw": 'class="game-otw"',
+  "\xB7": "\xB7",
+  dot: "\xB7",
+  middot: "\xB7",
+  "\u2022": " \u2022 ",
+  ",": ",",
+  "=": "=",
+  "1/2": "1\u20442",
+  "1/3": "1\u20443",
+  "2/3": "2\u20443",
+  "1/4": "1\u20444",
+  "3/4": "3\u20444",
+  "\u2013": "\u2013",
+  ndash: "\u2013",
+  "en dash": "\u2013",
+  "spaced ndash": " \u2013 ",
+  "\u2014": "\u2014",
+  mdash: "\u2014",
+  spd: " \u2013 ",
+  "em dash": "\u2014",
+  // numeric entities, so they aren't mistaken for list/table syntax (same trick as mediawiki)
+  "number sign": "&#35;",
+  "hash-tag": "&#35;",
+  ibeam: "I",
+  "&": "&",
+  ";": ";",
+  ampersand: "&",
+  dagger: "\u2020",
+  "double-dagger": "\u2021",
+  snds: " \u2013 ",
+  snd: " \u2013 ",
+  "^": " ",
+  "!": "|",
+  "'": `'`,
+  "\\": " / ",
+  "`": "`",
+  // bracket: '[',
+  "[": "[",
+  "*": "&#42;",
+  asterisk: "&#42;",
+  "long dash": "\u2014\u2014\u2014",
+  clear: "\n\n",
+  "h.": "\u1E25",
+  profit: "\u25B2",
+  // loss: '▼',
+  // gain: '▲',
+  ell: "\u2113",
+  "1~": "~",
+  "2~": "~~",
+  "3~": "~~~",
+  "4~": "~~~~",
+  "5~": "~~~~~",
+  // some emoji replacements
+  goldmedal: "\u{1F947}",
+  silvermedal: "\u{1F948}",
+  bronzemedal: "\u{1F949}",
+  done: "\u2705",
+  xmark: "\u274C",
+  checked: "\u2714\uFE0F",
+  "thumbs up": "\u{1F44D}",
+  "thumbs down": "\u{1F44E}",
+  minusplus: "\u2213",
+  plusminus: "\xB1",
+  // 'hbeff début': '{|-\n',
+  langle: "\u27E8",
+  rangle: "\u27E9",
+  epsilon: "\u03B5",
+  xi: "\u{1D709}",
+  \u03A6: "\u03A6",
+  phi: "\u{1D719}",
+  varphi: "\u{1D711}",
+  upsilon: "\u{1D710}",
+  tau: "\u{1D70F}",
+  varsigma: "\u{1D70D}",
+  sigma: "\u{1D70E}",
+  pi: "\u03C0",
+  mu: "\u{1D707}",
+  lambda: "\u{1D706}",
+  kappa: "\u{1D718}",
+  vartheta: "\u{1D717}",
+  theta: "\u{1D703}",
+  varepsilon: "\u{1D700}",
+  gamma: "\u{1D6FE}",
+  shy: "-",
+  mdashb: "\u2014\u200C",
+  "spaced en dash": " \u2013",
+  "spaced en dash space": " \u2013 ",
+  "zero width joiner em dash zero width non joiner": "\u2014\u200C",
+  colon: ":",
+  pipe: "&#124;",
+  "non-breaking space": " ",
+  "-?": "?",
+  zwsp: " ",
+  sp: " ",
+  px2: " ",
+  indent: "    ",
+  nb5: "    ",
+  ns: "    ",
+  quad: "    ",
+  spaces: "    ",
+  in5: "     ",
+  tombstone: "\u25FB",
+  // increase: '▲',
+  // decrease: '▼',
+  "no.": "#",
+  "thin space": " ",
+  thinspace: " ",
+  "very thin space": " ",
+  "word joiner": " ",
+  "figure space": " ",
+  "zero width joiner": " ",
+  "hair space": " ",
+  "narrow no-break space": " ",
+  "non breaking hyphen": "-",
+  "!((": "[[",
+  "))!": "]]",
+  "(": "{",
+  "((": "{{",
+  "(((": "{{{",
+  ")": "}",
+  "))": "}}",
+  ")))": "}}}",
+  "(!": "{|",
+  "!+": "|+",
+  "!-": "|-",
+  "!)": "|}",
+  flat: "\u266D",
+  sharp: "\u266F",
+  lbf: "lbF",
+  lbm: "lbm",
+  // --- symbols - https://en.wikipedia.org/wiki/Category:Character_templates
+  bull: "\u2022",
+  nbhyph: "\u2011",
+  "non-breaking hyphen": "\u2011",
+  hyphen: "-",
+  endash: "\u2013",
+  emdash: "\u2014",
+  times: "\xD7",
+  deg: "\xB0",
+  degree: "\xB0",
+  prime: "\u2032",
+  dprime: "\u2033",
+  minus: "\u2212",
+  "\u2212": "\u2212",
+  "\xB1": "\xB1",
+  pm: "\xB1",
+  "sup minus": "\u207B",
+  divide: "\xF7",
+  div: "\xF7",
+  approx: "\u2248",
+  "\u2248": "\u2248",
+  infinity: "\u221E",
+  infin: "\u221E",
+  rarr: "\u2192",
+  larr: "\u2190",
+  harr: "\u2194",
+  uarr: "\u2191",
+  darr: "\u2193",
+  rightarrow: "\u2192",
+  leftarrow: "\u2190",
+  "\u2192": "\u2192",
+  "\u2190": "\u2190",
+  "\u2194": "\u2194",
+  checkmark: "\u2713",
+  "'s": "'s",
+  "'\"": `'"`,
+  "\"'": `"'`,
+  '-"': '"',
+  "-'": "'"
 };
 
 const defaults$1 = Object.freeze({
@@ -2012,7 +2314,7 @@ const defaults$1 = Object.freeze({
   project: "wikipedia",
   domain: "wikipedia.org"
 });
-const aliases$2 = {
+const aliases$1 = {
   pageID: "pageId",
   id: "pageId",
   ns: "namespace",
@@ -2021,7 +2323,7 @@ const aliases$2 = {
 };
 const withDefaults = (input = {}) => {
   const opts = { ...input };
-  Object.entries(aliases$2).forEach(([alias, key]) => {
+  Object.entries(aliases$1).forEach(([alias, key]) => {
     if (opts[key] === void 0 && opts[alias] !== void 0) {
       opts[key] = opts[alias];
     }
@@ -2082,296 +2384,6 @@ const external_links = function(wiki, _opts = defaults$1) {
     return text;
   });
   return links;
-};
-
-const languages$1 = {
-  aa: ["Qaf\xE1r af", "Afar"],
-  ab: ["\u0430\u0525\u0441\u0448\u04D9\u0430", "Abkhazian"],
-  af: ["Afrikaans", "Afrikaans"],
-  ak: ["Akan", "Akan"],
-  als: ["Alemannisch", "Alemannic"],
-  am: ["\u12A0\u121B\u122D\u129B", "Amharic"],
-  an: ["Aragon\xE9s", "Aragonese"],
-  ang: ["\xC6nglisc", "Old English"],
-  ar: ["\u0627\u0644\u0639\u0631\u0628\u064A\u0629", "Arabic"],
-  arc: ["\u0710\u072A\u0721\u071D\u0710", "Aramaic"],
-  as: ["\u0985\u09B8\u09AE\u09C0\u09AF\u09BC\u09BE", "Assamese"],
-  ast: ["Asturianu", "Asturian"],
-  av: ["\u0410\u0432\u0430\u0440", "Avaric"],
-  ay: ["Aymar aru", "Aymara"],
-  az: ["Az\u0259rbaycanca", "Azerbaijani"],
-  "az-arab": ["", "South Azerbaijani"],
-  ba: ["\u0431\u0430\u0448\u04A1\u043E\u0440\u0442\u0441\u0430", "Bashkir"],
-  bar: ["Boarisch", "Bavarian"],
-  "bat-smg": ["\u017Demait\u0117\u0161ka", "Samogitian"],
-  bcl: ["Bikol Central", "Bikol"],
-  be: ["\u0411\u0435\u043B\u0430\u0440\u0443\u0441\u043A\u0430\u044F", "Belarusian"],
-  "be-x-old": ["\u0411\u0435\u043B\u0430\u0440\u0443\u0441\u043A\u0430\u044F (\u0442\u0430\u0440\u0430\u0448\u043A\u0435\u0432\u0456\u0446\u0430)", "Belarusian (Tara\u0161kievica)"],
-  bg: ["\u0411\u044A\u043B\u0433\u0430\u0440\u0441\u043A\u0438", "Bulgarian"],
-  bh: ["\u092D\u094B\u091C\u092A\u0941\u0930\u0940", "Bihari"],
-  bi: ["Bislama", "Bislama"],
-  bm: ["Bamanankan", "Bambara"],
-  bn: ["\u09AC\u09BE\u0982\u09B2\u09BE", "Bengali"],
-  bo: ["\u0F56\u0F7C\u0F51\u0F0B\u0F61\u0F72\u0F42", "Tibetan"],
-  bpy: ["\u09AC\u09BF\u09B7\u09CD\u09A3\u09C1\u09AA\u09CD\u09B0\u09BF\u09AF\u09BC\u09BE \u09AE\u09A3\u09BF\u09AA\u09C1\u09B0\u09C0", "Bishnupriya Manipuri"],
-  br: ["Brezhoneg", "Breton"],
-  bs: ["Bosanski", "Bosnian"],
-  bug: ["Basa Ugi", "Buginese"],
-  bxr: ["\u0411\u0443\u0440\u044F\u0430\u0434", "Buriat"],
-  ca: ["Catal\xE0", "Catalan"],
-  "ca-valencia": ["", "Valencian"],
-  cdo: ["\u95A9\u6771\u8A9E / M\xECng-d\u0115\u0324ng-ng\u1E73\u0304", "Min Dong Chinese"],
-  ce: ["\u041D\u043E\u0445\u0447\u0438\u0439\u043D", "Chechen"],
-  ceb: ["Cebuano", "Cebuano"],
-  ch: ["Chamoru", "Chamorro"],
-  cho: ["Chahta anumpa", "Choctaw"],
-  chr: ["\u13E3\u13B3\u13A9", "Cherokee"],
-  chy: ["Tsets\xEAhest\xE2hese", "Cheyenne"],
-  co: ["Corsu", "Corsican"],
-  cr: ["N\u0113hiyaw\u0113win / \u14C0\u1426\u1403\u152D\u140D\u140F\u1423", "Cree"],
-  cs: ["\u010De\u0161tina", "Czech"],
-  csb: ["Kasz\xEBbsczi", "Kashubian"],
-  cu: ["\u0441\u043B\u043E\u0432\u0463\u043D\u044C\u0441\u043A\u044A / \u2C14\u2C0E\u2C11\u2C02\u2C21\u2C10\u2C20\u2C14\u2C0D\u2C1F", "Church Slavonic"],
-  cv: ["\u0447\u04D1\u0432\u0430\u0448\u043B\u0430", "Chuvash"],
-  cy: ["Cymraeg", "Welsh"],
-  da: ["Dansk", "Danish"],
-  de: ["Deutsch", "German"],
-  "de-at": ["\xD6sterreichisches Deutsch", "Austrian German"],
-  "de-ch": ["Schweizer Hochdeutsch", "Swiss Standard German"],
-  diq: ["Zazaki", "Dimli"],
-  dsb: ["Dolnoserbski", "Lower Sorbian"],
-  dv: ["\u078B\u07A8\u0788\u07AC\u0780\u07A8\u0784\u07A6\u0790\u07B0", "Divehi"],
-  dz: ["\u0F47\u0F7C\u0F44\u0F0B\u0F41", "Dzongkha"],
-  ee: ["e\u028Begbe", "Ewe"],
-  egy: ["", "Egyptian"],
-  el: ["\u0395\u03BB\u03BB\u03B7\u03BD\u03B9\u03BA\u03AC", "Greek"],
-  en: ["English", "English"],
-  "en-emodeng": ["", "Early Modern English"],
-  enm: ["", "Middle English"],
-  eo: ["Esperanto", "Esperanto"],
-  es: ["Espa\xF1ol", "Spanish"],
-  et: ["Eesti", "Estonian"],
-  eu: ["Euskara", "Basque"],
-  ext: ["Estreme\xF1u", "Extremaduran"],
-  fa: ["\u0641\u0627\u0631\u0633\u06CC", "Persian"],
-  ff: ["Fulfulde", "Fula"],
-  fi: ["Suomi", "Finnish"],
-  fil: ["", "Filipino"],
-  "fiu-vro": ["V\xF5ro", "V\xF5ro"],
-  fj: ["Na Vosa Vakaviti", "Fijian"],
-  fo: ["F\xF8royskt", "Faroese"],
-  fr: ["Fran\xE7ais", "French"],
-  "fra-que": ["", "Quebec French"],
-  fro: ["", "Old French"],
-  frp: ["arpetan", "Arpitan"],
-  fur: ["Furlan", "Friulian"],
-  fy: ["Frysk", "Western Frisian"],
-  ga: ["Gaeilge", "Irish"],
-  gan: ["\u8D1B\u8A9E", "Gan Chinese"],
-  gd: ["G\xE0idhlig", "Scottish Gaelic"],
-  gl: ["Galego", "Galician"],
-  gn: ["Ava\xF1e'\u1EBD", "Guarani"],
-  got: ["\u{10332}\u{1033F}\u{10344}\u{10339}\u{10343}\u{1033A}", "Gothic"],
-  grc: ["\u1F08\u03C1\u03C7\u03B1\u03AF\u03B1 \u1F11\u03BB\u03BB\u03B7\u03BD\u03B9\u03BA\u1F74", "Ancient Greek"],
-  "grc-gre": ["", "Ancient Greek"],
-  "grc-x-doric": ["", "Doric Greek"],
-  "grc-x-medieval": ["", "Medieval Greek"],
-  gsw: ["Alemannisch", "Swiss German"],
-  gu: ["\u0A97\u0AC1\u0A9C\u0AB0\u0ABE\u0AA4\u0AC0", "Gujarati"],
-  gv: ["Gaelg", "Manx"],
-  ha: ["Hausa", "Hausa"],
-  hak: ["\u5BA2\u5BB6\u8A9E / Hak-k\xE2-ng\xEE", "Hakka"],
-  haw: ["Hawai\u02BBi", "Hawaiian"],
-  he: ["\u05E2\u05D1\u05E8\u05D9\u05EA", "Hebrew"],
-  hi: ["\u0939\u093F\u0928\u094D\u0926\u0940", "Hindi"],
-  ho: ["Hiri Motu", "Hiri Motu"],
-  hr: ["Hrvatski", "Croatian"],
-  ht: ["Krey\xF2l ayisyen", "Haitian Creole"],
-  hu: ["Magyar", "Hungarian"],
-  hy: ["\u0540\u0561\u0575\u0565\u0580\u0565\u0576", "Armenian"],
-  hz: ["Otsiherero", "Herero"],
-  ia: ["Interlingua", "Interlingua"],
-  id: ["Bahasa Indonesia", "Indonesian"],
-  ie: ["Interlingue", "Interlingue"],
-  ig: ["Igbo", "Igbo"],
-  ii: ["\uA187\uA259", "Sichuan Yi"],
-  ik: ["I\xF1upiatun", "Inupiak"],
-  ilo: ["Ilokano", "Ilokano"],
-  io: ["Ido", "Ido"],
-  is: ["\xCDslenska", "Icelandic"],
-  it: ["Italiano", "Italian"],
-  iu: ["\u1403\u14C4\u1483\u144E\u1450\u1466 / inuktitut", "Inuktitut"],
-  ja: ["\u65E5\u672C\u8A9E", "Japanese"],
-  jbo: ["la .lojban.", "Lojban"],
-  jv: ["Jawa", "Javanese"],
-  ka: ["\u10E5\u10D0\u10E0\u10D7\u10E3\u10DA\u10D8", "Georgian"],
-  kg: ["Kongo", "Kongo"],
-  khw: ["\u06A9\u06BE\u0648\u0627\u0631", "Khowar"],
-  ki: ["G\u0129k\u0169y\u0169", "Kikuyu"],
-  kj: ["Kwanyama", "Kuanyama"],
-  kk: ["\u049A\u0430\u0437\u0430\u049B\u0448\u0430", "Kazakh"],
-  "kk-arab": ["\u0642\u0627\u0632\u0627\u0642\u0634\u0627 (\u062A\u0674\u0648\u062A\u06D5)", "Kazakh Arabic"],
-  kl: ["Kalaallisut", "Greenlandic"],
-  km: ["\u1797\u17B6\u179F\u17B6\u1781\u17D2\u1798\u17C2\u179A", "Khmer"],
-  kn: ["\u0C95\u0CA8\u0CCD\u0CA8\u0CA1", "Kannada"],
-  ko: ["\uD55C\uAD6D\uC5B4", "Korean"],
-  kr: ["Kanuri", "Kanuri"],
-  ks: ["\u06A9\u0672\u0634\u064F\u0631", "Kashmiri"],
-  ksh: ["Ripoarisch", "Ripuarian"],
-  ku: ["Kurd\xEE", "Kurdish"],
-  "ku-arab": ["\u06A9\u0648\u0631\u062F\u06CC (\u0639\u06D5\u0631\u06D5\u0628\u06CC)", "Kurdish"],
-  "ku-cyrl": ["", "Kurdish Cyrillic"],
-  kv: ["\u041A\u043E\u043C\u0438", "Komi"],
-  kw: ["kernowek", "Cornish"],
-  ky: ["\u043A\u044B\u0440\u0433\u044B\u0437\u0447\u0430", "Kyrgyz"],
-  la: ["Latina", "Latin"],
-  "la-x-medieval": ["", "Medieval Latin"],
-  lad: ["Ladino", "Ladino"],
-  lb: ["L\xEBtzebuergesch", "Luxembourgish"],
-  lg: ["Luganda", "Ganda"],
-  li: ["Limburgs", "Limburgian"],
-  lij: ["Ligure", "Ligurian"],
-  lmo: ["lombard", "Lombard"],
-  ln: ["Ling\xE1la", "Lingala"],
-  lo: ["\u0EA5\u0EB2\u0EA7", "Lao"],
-  lt: ["Lietuvi\u0173", "Lithuanian"],
-  lv: ["Latvie\u0161u", "Latvian"],
-  "map-bms": ["Basa Banyumasan", "Banyumasan"],
-  mg: ["Malagasy", "Malagasy"],
-  mh: ["Ebon", "Marshallese"],
-  mi: ["M\u0101ori", "M\u0101ori"],
-  min: ["Minangkabau", "Minangkabau"],
-  mk: ["\u041C\u0430\u043A\u0435\u0434\u043E\u043D\u0441\u043A\u0438", "Macedonian"],
-  ml: ["\u0D2E\u0D32\u0D2F\u0D3E\u0D33\u0D02", "Malayalam"],
-  mn: ["\u041C\u043E\u043D\u0433\u043E\u043B", "Mongolian"],
-  mo: ["\u043C\u043E\u043B\u0434\u043E\u0432\u0435\u043D\u044F\u0441\u043A\u044D", "Moldovan"],
-  mr: ["\u092E\u0930\u093E\u0920\u0940", "Marathi"],
-  ms: ["Bahasa Melayu", "Malay"],
-  "ms-arab": ["\u0628\u0647\u0627\u0633 \u0645\u0644\u0627\u064A\u0648", "Malay Jawi"],
-  mt: ["Malti", "Maltese"],
-  mus: ["Mvskoke", "Creek"],
-  my: ["\u1019\u103C\u1014\u103A\u1019\u102C\u1018\u102C\u101E\u102C", "Burmese"],
-  na: ["Dorerin Naoero", "Nauruan"],
-  nah: ["N\u0101huatl", "Nahuatl"],
-  nan: ["\u95A9\u5357\u8A9E / B\xE2n-l\xE2m-g\xED", "Min Nan"],
-  nap: ["Napulitano", "Neapolitan"],
-  nb: ["norsk bokm\xE5l", "Norwegian Bokm\xE5l"],
-  nds: ["Plattd\xFC\xFCtsch", "Low German"],
-  "nds-nl": ["Nedersaksies", "Dutch Low Saxon"],
-  ne: ["\u0928\u0947\u092A\u093E\u0932\u0940", "Nepali"],
-  new: ["\u0928\u0947\u092A\u093E\u0932 \u092D\u093E\u0937\u093E", "Newar"],
-  ng: ["Oshiwambo", "Ndonga"],
-  nl: ["Nederlands", "Dutch"],
-  "nl-be": ["", "Belgian Dutch"],
-  nn: ["norsk nynorsk", "Norwegian Nynorsk"],
-  no: ["Norsk", "Norwegian"],
-  non: ["", "Old Norse"],
-  nr: ["isiNdebele seSewula", "South Ndebele"],
-  nrm: ["Nouormand", "Norman"],
-  nso: ["Sesotho sa Leboa", "Northern Sotho"],
-  nv: ["Din\xE9 bizaad", "Navajo"],
-  ny: ["Chi-Chewa", "Chichewa"],
-  oc: ["Occitan", "Occitan"],
-  om: ["Oromoo", "Oromo"],
-  or: ["\u0B13\u0B21\u0B3C\u0B3F\u0B06", "Odia"],
-  os: ["\u0438\u0440\u043E\u043D", "Ossetian"],
-  pa: ["\u0A2A\u0A70\u0A1C\u0A3E\u0A2C\u0A40", "Punjabi"],
-  "pa-arab": ["", "Punjabi Shahmukhi"],
-  pag: ["Pangasinan", "Pangasinan"],
-  pam: ["Kapampangan", "Kapampangan"],
-  pap: ["Papiamentu", "Papiamentu"],
-  pdc: ["Deitsch", "Pennsylvania German"],
-  pi: ["\u092A\u093E\u0932\u093F", "Pali"],
-  pih: ["Norfuk / Pitkern", "Norfolk"],
-  pl: ["Polski", "Polish"],
-  pms: ["Piemont\xE8is", "Piedmontese"],
-  ps: ["\u067E\u069A\u062A\u0648", "Pashto"],
-  pt: ["Portugu\xEAs", "Portuguese"],
-  "pt-br": ["portugu\xEAs do Brasil", "Brazilian Portuguese"],
-  qu: ["Runa Simi", "Quechua"],
-  rm: ["Rumantsch", "Romansh"],
-  rmy: ["romani \u010Dhib", "Romani"],
-  rn: ["ikirundi", "Kirundi"],
-  ro: ["Rom\xE2n\u0103", "Romanian"],
-  "roa-rup": ["arm\xE3neashti", "Aromanian"],
-  ru: ["\u0420\u0443\u0441\u0441\u043A\u0438\u0439", "Russian"],
-  rw: ["Ikinyarwanda", "Kinyarwanda"],
-  sa: ["\u0938\u0902\u0938\u094D\u0915\u0943\u0924\u092E\u094D", "Sanskrit"],
-  sc: ["Sardu", "Sardinian"],
-  scn: ["Sicilianu", "Sicilian"],
-  sco: ["Scots", "Scots"],
-  sd: ["\u0633\u0646\u068C\u064A", "Sindhi"],
-  se: ["Davvis\xE1megiella", "Northern Sami"],
-  sg: ["S\xE4ng\xF6", "Sango"],
-  sh: ["srpskohrvatski / \u0441\u0440\u043F\u0441\u043A\u043E\u0445\u0440\u0432\u0430\u0442\u0441\u043A\u0438", "Serbo-Croatian"],
-  "sh-cyrl": ["\u0441\u0440\u043F\u0441\u043A\u043E\u0445\u0440\u0432\u0430\u0442\u0441\u043A\u0438 (\u045B\u0438\u0440\u0438\u043B\u0438\u0446\u0430)", "Serbo-Croatian Cyrillic"],
-  "sh-latn": ["srpskohrvatski (latinica)", "Serbo-Croatian Latin"],
-  si: ["\u0DC3\u0DD2\u0D82\u0DC4\u0DBD", "Sinhala"],
-  simple: ["Simple English", "Simple English"],
-  sk: ["Sloven\u010Dina", "Slovak"],
-  sl: ["Sloven\u0161\u010Dina", "Slovene"],
-  sm: ["Gagana Samoa", "Samoan"],
-  sn: ["chiShona", "Shona"],
-  so: ["Soomaaliga", "Somali"],
-  sq: ["Shqip", "Albanian"],
-  sr: ["\u0441\u0440\u043F\u0441\u043A\u0438 / srpski", "Serbian"],
-  "sr-cyr": ["", "Serbian Cyrillic"],
-  "sr-cyrl": ["", "Serbian Cyrillic"],
-  "sr-latn": ["", "Serbian Latin"],
-  ss: ["SiSwati", "Swati"],
-  st: ["Sesotho", "Sotho"],
-  su: ["Sunda", "Sundanese"],
-  sv: ["Svenska", "Swedish"],
-  sw: ["Kiswahili", "Swahili"],
-  syc: ["", "Classical Syriac"],
-  ta: ["\u0BA4\u0BAE\u0BBF\u0BB4\u0BCD", "Tamil"],
-  te: ["\u0C24\u0C46\u0C32\u0C41\u0C17\u0C41", "Telugu"],
-  tet: ["Tetun", "Tetum"],
-  tg: ["\u0422\u043E\u04B7\u0438\u043A\u04E3", "Tajik"],
-  th: ["\u0E44\u0E17\u0E22", "Thai"],
-  ti: ["\u1275\u130D\u122D\u129B", "Tigrinya"],
-  tk: ["T\xFCrkmen\xE7e", "Turkmen"],
-  tl: ["Tagalog", "Tagalog"],
-  tlh: ["tlhIngan-Hol", "Klingon"],
-  tn: ["Setswana", "Tswana"],
-  to: ["lea faka-Tonga", "Tongan"],
-  tpi: ["Tok Pisin", "Tok Pisin"],
-  tr: ["T\xFCrk\xE7e", "Turkish"],
-  ts: ["Xitsonga", "Tsonga"],
-  tt: ["\u0442\u0430\u0442\u0430\u0440\u0447\u0430 / tatar\xE7a", "Tatar"],
-  "tt-cyrl": ["\u0442\u0430\u0442\u0430\u0440\u0447\u0430", "Tatar Cyrillic"],
-  "tt-latn": ["tatar\xE7a", "Tatar Latin"],
-  tum: ["chiTumbuka", "Tumbuka"],
-  tw: ["Twi", "Twi"],
-  ty: ["reo tahiti", "Tahitian"],
-  udm: ["\u0423\u0434\u043C\u0443\u0440\u0442", "Udmurt"],
-  ug: ["\u0626\u06C7\u064A\u063A\u06C7\u0631\u0686\u06D5 / Uyghurche", "Uyghur"],
-  uk: ["\u0423\u043A\u0440\u0430\u0457\u043D\u0441\u044C\u043A\u0430", "Ukrainian"],
-  ur: ["\u0627\u0631\u062F\u0648", "Urdu"],
-  uz: ["o\u02BBzbekcha / \u045E\u0437\u0431\u0435\u043A\u0447\u0430", "Uzbek"],
-  "uz-cyrl": ["\u045E\u0437\u0431\u0435\u043A\u0447\u0430", "Uzbek Cyrillic"],
-  ve: ["Tshivenda", "Venda"],
-  vec: ["V\xE8neto", "Venetian"],
-  vi: ["Ti\u1EBFng Vi\u1EC7t", "Vietnamese"],
-  vls: ["West-Vlams", "West Flemish"],
-  vo: ["Volap\xFCk", "Volap\xFCk"],
-  wa: ["Walon", "Walloon"],
-  war: ["Winaray", "Waray-Waray"],
-  wo: ["Wolof", "Wolof"],
-  xal: ["\u0425\u0430\u043B\u044C\u043C\u0433", "Kalmyk"],
-  xh: ["isiXhosa", "Xhosa"],
-  yi: ["\u05D9\u05D9\u05B4\u05D3\u05D9\u05E9", "Yiddish"],
-  yo: ["Yor\xF9b\xE1", "Yoruba"],
-  yue: ["\u7CB5\u8A9E", "Cantonese"],
-  za: ["Vahcuengh", "Zhuang"],
-  zh: ["\u4E2D\u6587", "Chinese"],
-  "zh-classical": ["\u6587\u8A00", "Classical Chinese"],
-  "zh-hans": ["\u4E2D\u6587\uFF08\u7B80\u4F53\uFF09", "Simplified Chinese"],
-  "zh-hant": ["\u4E2D\u6587\uFF08\u7E41\u9AD4\uFF09", "Traditional Chinese"],
-  "zh-min-nan": ["B\xE2n-l\xE2m-g\xFA", "Minnan"],
-  "zh-tw": ["\u4E2D\u6587\uFF08\u81FA\u7063\uFF09", "Taiwanese Mandarin"],
-  "zh-yue": ["\u7CB5\u8A9E", "Cantonese"],
-  zu: ["isiZulu", "Zulu"]
 };
 
 Object.keys(languages$1).forEach((k) => {
@@ -2778,1781 +2790,6 @@ const parseArguments$2 = (tmpl, order = [], opts = defaults$1) => {
     obj.template = fmtName(name);
   }
   return obj;
-};
-
-const namespace$1 = new RegExp(`^(?:${images.join("|")}):`, "i");
-const normalizeFile = (file) => {
-  file = file.trim();
-  if (file.startsWith("[[")) {
-    file = file.slice(2).replace(/^:/, "").split(/[|\]]/, 1)[0].trim();
-  }
-  file = file.replace(namespace$1, (prefix) => {
-    if (/^(file|image):$/i.test(prefix)) {
-      return prefix;
-    }
-    return "File:";
-  });
-  if (!file) {
-    return "";
-  }
-  if (!/^(image|file):/i.test(file)) {
-    file = `File:${file}`;
-  }
-  file = file.charAt(0).toUpperCase() + file.substring(1);
-  return file.replace(/ /g, "_");
-};
-
-let fileNames = `(${images.join("|")})`;
-const file_reg = new RegExp(fileNames + ":(.+?)[\\||\\]]", "iu");
-const linkToFile = /^\[\[:/;
-const imgLayouts = {
-  thumb: true,
-  thumbnail: true,
-  frame: true,
-  framed: true,
-  frameless: true,
-  border: true,
-  right: true,
-  left: true,
-  center: true,
-  top: true,
-  bottom: true,
-  none: true,
-  upright: true,
-  baseline: true,
-  middle: true,
-  sub: true,
-  super: true
-};
-const parseImgString = function(wiki, opts = defaults$1) {
-  const source = wiki;
-  wiki = wiki.trim();
-  if (!wiki.startsWith("[[")) {
-    const file2 = normalizeFile(wiki);
-    if (!file2) {
-      return null;
-    }
-    wiki = `[[${file2}]]`;
-  }
-  let m = wiki.match(file_reg);
-  if (m === null || !m[2]) {
-    return null;
-  }
-  if (linkToFile.test(wiki)) {
-    return null;
-  }
-  let file = `${m[1]}:${m[2] || ""}`;
-  if (file) {
-    file = normalizeFile(file);
-    let img = {
-      file,
-      wiki: source,
-      domain: opts.domain || defaults$1.domain
-    };
-    wiki = wiki.replace(/^\[\[/, "");
-    wiki = wiki.replace(/\]\]$/, "");
-    let parsed = parseArguments$2(wiki, [], opts);
-    let arr = parsed.list || [];
-    if (parsed.alt) {
-      img.alt = parsed.alt.text;
-    }
-    arr = arr.filter((item) => {
-      let text = item.text.trim();
-      return !Object.hasOwn(imgLayouts, text) && !/^(?:\d+(?:x\d+)?|x\d+)px$/.test(text);
-    });
-    if (arr.at(-1)) {
-      img.caption = arr.at(-1);
-    }
-    return img;
-  }
-  return null;
-};
-
-const readCoordinate = (box, prefix, directions, limit, separator) => {
-  const field = (suffix) => box.get(prefix + separator + suffix)?.text().trim() || "";
-  const degrees = field("d");
-  if (!degrees) {
-    return null;
-  }
-  const d = Number(degrees);
-  const m = Number(field("m"));
-  const s = Number(field("s"));
-  const hemisphere = field(directions).toLowerCase();
-  if (![d, m, s].every(Number.isFinite) || m < 0 || m >= 60 || s < 0 || s >= 60) {
-    return null;
-  }
-  if (hemisphere && (hemisphere.length !== 1 || !directions.includes(hemisphere))) {
-    return null;
-  }
-  const value = Math.abs(d) + m / 60 + s / 3600;
-  if (value > limit) {
-    return null;
-  }
-  const negative = hemisphere ? hemisphere === "s" || hemisphere === "w" : d < 0;
-  return negative ? -value : value;
-};
-const dmsCoordinates = (box) => {
-  const separators = ["", "_"];
-  for (let i = 0; i < separators.length; i += 1) {
-    const separator = separators[i];
-    const lat = readCoordinate(box, "lat", "ns", 90, separator);
-    const lon = readCoordinate(box, "long", "ew", 180, separator);
-    if (lat !== null && lon !== null) {
-      return { template: "infobox/lat-long", lat, lon };
-    }
-  }
-  return null;
-};
-
-const imgProperties = [
-  "image",
-  "image2",
-  "logo",
-  "image_skyline",
-  "image_map",
-  //not tested
-  "image_map2",
-  //not tested
-  "image_flag",
-  "image_coat",
-  "image_file",
-  "\u753B\u50CF"
-];
-class Infobox {
-  #data;
-  #info;
-  constructor(data, info = defaults$1) {
-    this.#data = data;
-    this.#info = info;
-  }
-  type() {
-    return infoboxType(this.#data.template);
-  }
-  get kind() {
-    return this.#data.kind;
-  }
-  links() {
-    return Links.from(this.getAll(Object.keys(this.#data.data)).flatMap((block) => block.links()));
-  }
-  get(input) {
-    return this.getAll([input])[0];
-  }
-  getFirst(choices) {
-    for (let i = 0; i < choices.length; i += 1) {
-      const block = this.get(choices[i]);
-      if (block) {
-        return block;
-      }
-    }
-    return void 0;
-  }
-  getAll(choices) {
-    const values = choices.flatMap((key) => {
-      if (typeof key !== "string") {
-        return [];
-      }
-      const value = this.#data.data[normalizeKey(key)];
-      return value ?? [];
-    });
-    return Blocks.from(values.map((value) => new Block(value)));
-  }
-  images() {
-    const properties = imgProperties.filter((key) => this.get(key));
-    const images = properties.map((key) => {
-      const item = this.get(key);
-      const caption = this.get(key === "image2" ? "caption2" : "caption");
-      const image = parseImgString(item?.wikitext() || "", this.#info);
-      if (!image) {
-        return null;
-      }
-      if (caption) {
-        image.caption = caption.json("xl");
-      }
-      return new Image(image);
-    }).filter(Boolean);
-    return Images.from(images);
-  }
-  image() {
-    return this.images()[0];
-  }
-  text() {
-    return "";
-  }
-  json(format = "lg") {
-    const json = structuredClone(this.#data);
-    if (format === "xl") {
-      return json;
-    }
-    delete json.wiki;
-    return json;
-  }
-  wikitext() {
-    return this.#data.wiki || "";
-  }
-  coordinates() {
-    for (let i = 0; i < latLngs.length; i += 1) {
-      let a = latLngs[i];
-      const latText = this.get(a[0])?.text().trim();
-      const lonText = this.get(a[1])?.text().trim();
-      if (!latText || !lonText) {
-        continue;
-      }
-      const lat = Number(latText);
-      const lon = Number(lonText);
-      if (typeof lat === "number" && typeof lon === "number" && Number.isFinite(lat) && Number.isFinite(lon)) {
-        return { template: "infobox/lat-long", lat, lon, wiki: this.wikitext() };
-      }
-    }
-    const coordinates = dmsCoordinates(this);
-    return coordinates ? { ...coordinates, wiki: this.wikitext() } : null;
-  }
-}
-
-class Infoboxes extends WrapperArray {
-  getFirst(choices) {
-    return this.find((infobox) => infobox.getFirst(choices));
-  }
-}
-wrapMethods(Infoboxes, Infobox);
-
-class List {
-  #data;
-  constructor(data) {
-    this.#data = data;
-  }
-  lines() {
-    return this.items();
-  }
-  items() {
-    return Blocks.from(this.#data.items.map((item) => new Block(item)));
-  }
-  links() {
-    return Links.from(this.items().flatMap((block) => block.links()));
-  }
-  json(format = "lg") {
-    const json = structuredClone(this.#data);
-    if (format === "xl") {
-      return json;
-    }
-    delete json.wiki;
-    return json;
-  }
-  text() {
-    const items = this.#data.items;
-    return items.map((s) => {
-      let str = s.text;
-      return " * " + str;
-    }).join("\n");
-  }
-  wikitext() {
-    return this.#data.wiki || "";
-  }
-}
-
-class Lists extends WrapperArray {
-}
-wrapMethods(Lists, List);
-
-class Reference {
-  #data;
-  constructor(data) {
-    this.#data = data;
-  }
-  get kind() {
-    return this.#data.kind;
-  }
-  links() {
-    const items = this.#data.links || this.#data.data.inline?.links || [];
-    return Links.from(items.map((item) => new Link(item)));
-  }
-  text() {
-    return "";
-  }
-  title() {
-    return this.#data.data.title || "";
-  }
-  wikitext() {
-    return this.#data.wiki || "";
-  }
-  json(format = "lg") {
-    const json = structuredClone(this.#data);
-    if (format === "xl") {
-      return json;
-    }
-    delete json.wiki;
-    return json;
-  }
-  static empty() {
-    return new Reference({ template: "", kind: "reference", wiki: "", text: "", data: {} });
-  }
-}
-
-class References extends WrapperArray {
-}
-wrapMethods(References, Reference);
-
-class Paragraph {
-  #data;
-  #info;
-  constructor(data, info = {}) {
-    this.#data = data;
-    this.#info = info;
-  }
-  sentences() {
-    const arr = this.#data.sentences || [];
-    return Blocks.from(arr.map((s) => new Block(s)));
-  }
-  lists() {
-    const arr = this.#data.lists || [];
-    return Lists.from(arr.map((l) => new List(l)));
-  }
-  images() {
-    const arr = this.#data.images || [];
-    return Images.from(arr.map((i) => new Image(i, this.#info)));
-  }
-  links() {
-    let links = [];
-    this.images().forEach((i) => {
-      links.push(...i.links());
-    });
-    this.lists().forEach((list) => {
-      links.push(...list.links());
-    });
-    this.sentences().forEach((s) => {
-      links.push(...s.links());
-    });
-    return Links.from(links);
-  }
-  text() {
-    let str = joinSentences(this.sentences().map((s) => s.text()));
-    this.lists().forEach((list) => {
-      str += "\n" + list.text();
-    });
-    return str;
-  }
-  json(format = "lg") {
-    const json = structuredClone({
-      wiki: this.wikitext(),
-      images: this.images().map((image) => image.json(format)),
-      lists: this.lists().map((list) => list.json(format)),
-      sentences: this.sentences().map((sentence) => sentence.json(format))
-    });
-    if (format === "xl") {
-      return json;
-    }
-    delete json.wiki;
-    return json;
-  }
-  wikitext() {
-    return this.#data.wiki;
-  }
-}
-
-class Table {
-  #data;
-  constructor(data) {
-    this.#data = data;
-  }
-  cells() {
-    let arr = [...this.#data.headers];
-    this.#data.rows.forEach((row) => {
-      Object.values(row).forEach((cell) => {
-        arr.push(cell);
-      });
-    });
-    return Blocks.from(arr.map((cell) => new Block(cell)));
-  }
-  links() {
-    return Links.from(this.cells().flatMap((block) => block.links()));
-  }
-  cols() {
-    const row = this.#data.rows[0];
-    return Object.keys(row || {});
-  }
-  headers() {
-    return Blocks.from(this.#data.headers.map((header) => new Block(header)));
-  }
-  rows() {
-    return this.#data.rows.map((row) => {
-      const result = {};
-      Object.keys(row).forEach((key) => {
-        result[key] = row[key].text || "";
-      });
-      const attrs = row._attrs;
-      if (attrs) {
-        Object.defineProperty(result, "_attrs", { value: attrs, enumerable: false });
-      }
-      return result;
-    });
-  }
-  // return only the requested cols
-  getRows(requested) {
-    const rows = this.rows();
-    if (!requested) {
-      return rows;
-    }
-    if (Array.isArray(requested)) {
-      const columns = requested.map((col) => normalizeKey(col));
-      return rows.map((row) => columns.map((col) => row[col]));
-    }
-    if (typeof requested === "string") {
-      return rows.map((row) => row[normalizeKey(requested)]);
-    }
-    if (typeof requested === "object") {
-      return rows.map((row) => {
-        let result = {};
-        Object.entries(requested).forEach(([key, val]) => {
-          if (val) {
-            let clean = normalizeKey(key);
-            result[clean] = row[clean];
-          }
-        });
-        return result;
-      });
-    }
-    return [];
-  }
-  json(format = "lg") {
-    const json = structuredClone(this.#data);
-    if (format === "xl") {
-      return json;
-    }
-    delete json.wiki;
-    return json;
-  }
-  text() {
-    return "";
-  }
-  wikitext() {
-    return this.#data.wiki || "";
-  }
-}
-
-class Tables extends WrapperArray {
-}
-wrapMethods(Tables, Table);
-
-class Template {
-  #data;
-  constructor(data) {
-    this.#data = data;
-  }
-  get type() {
-    return this.#data.kind || this.#data.template.toLowerCase().replace(/_/g, " ");
-  }
-  get kind() {
-    return this.#data.kind;
-  }
-  text() {
-    return this.#data.text;
-  }
-  links() {
-    return Links.from((this.#data.links || []).map((link) => new Link(link)));
-  }
-  json(format = "lg") {
-    const json = structuredClone(this.#data);
-    if (format === "xl") {
-      return json;
-    }
-    delete json.wiki;
-    json.links?.forEach((link) => {
-      delete link.wiki;
-    });
-    return json;
-  }
-  wikitext() {
-    return this.#data.wiki;
-  }
-  static empty() {
-    return new Template({ template: "", kind: null, wiki: "", text: "", data: {} });
-  }
-}
-
-class Templates extends WrapperArray {
-}
-wrapMethods(Templates, Template);
-
-class Section {
-  #data;
-  #info;
-  constructor(data, info = {}) {
-    this.#data = data;
-    this.#info = info;
-  }
-  title() {
-    return this.#data.title?.text || "";
-  }
-  index() {
-    return this.#data.index ?? null;
-  }
-  depth() {
-    return this.#data.depth || 0;
-  }
-  sentences() {
-    return Blocks.from(this.paragraphs().flatMap((p) => p.sentences()));
-  }
-  paragraphs() {
-    const arr = this.#data.paragraphs || [];
-    return arr.map((p) => new Paragraph(p, this.#info));
-  }
-  wikitext() {
-    return this.#data.wiki || "";
-  }
-  links() {
-    let arr = [];
-    if (this.#data.title?.links) {
-      this.#data.title.links.forEach((l) => {
-        arr.push(new Link(l));
-      });
-    }
-    this.infoboxes().forEach((templ) => {
-      arr.push(...templ.links());
-    });
-    this.references().forEach((s) => {
-      arr.push(...s.links());
-    });
-    this.templates().forEach((template) => {
-      arr.push(...template.links());
-    });
-    this.tables().forEach((t) => {
-      arr.push(...t.links());
-    });
-    this.paragraphs().forEach((s) => {
-      arr.push(...s.links());
-    });
-    arr = arr.flat().filter((val) => val !== void 0);
-    return Links.from(arr);
-  }
-  tables() {
-    const arr = this.#data.tables || [];
-    return Tables.from(arr.map((t) => new Table(t)));
-  }
-  templates(clue) {
-    let arr = this.#data.templates.map((t) => new Template(t));
-    if (clue) {
-      return Templates.from(arr.filter((t) => t.type === clue || fmtName(t.json().template) === fmtName(clue)));
-    }
-    return Templates.from(arr);
-  }
-  infoboxes() {
-    const arr = this.#data.infoboxes || [];
-    return Infoboxes.from(arr.map((t) => new Infobox(t, this.#info)));
-  }
-  coordinates() {
-    let arr = this.templates("coord");
-    let list = arr.map((tmpl) => ({ ...tmpl.json().data, wiki: tmpl.wikitext() }));
-    let inf = this.infoboxes()[0];
-    const coordinates = inf?.coordinates();
-    if (coordinates) {
-      list.push(coordinates);
-    }
-    return list;
-  }
-  lists() {
-    let arr = this.paragraphs().flatMap((p) => p.lists());
-    return Lists.from(arr);
-  }
-  images() {
-    return Images.from(this.paragraphs().flatMap((p) => p.images()));
-  }
-  references() {
-    const arr = this.#data.references || [];
-    return References.from(arr.map((r) => new Reference(r)));
-  }
-  //outputs
-  text() {
-    return this.paragraphs().map((p) => p.text()).join("\n\n");
-  }
-  json(format = "lg") {
-    if (format === "xl") {
-      return structuredClone(this.#data);
-    }
-    const { wiki: _wiki, ...data } = this.#data;
-    return structuredClone(data);
-  }
-  // aliases
-  citations() {
-    return this.references();
-  }
-  static empty() {
-    return new Section({
-      title: {},
-      depth: 0,
-      wiki: "",
-      index: 0,
-      templates: [],
-      infoboxes: [],
-      references: [],
-      tables: [],
-      paragraphs: []
-    });
-  }
-}
-
-const mayAlsoReg = /. may (also )?refer to\b/i;
-const notDisambig = /* @__PURE__ */ new Set(["about", "for", "for multi", "other people", "other uses of", "distinguish"]);
-const inTitle = new RegExp(". \\((" + disambig_titles.join("|") + ")\\)$", "i");
-const i18n_templates = new Set(disambig_templates);
-const isDisambig = function(doc) {
-  const templates = doc.templates().map((tmpl) => tmpl.type);
-  let found = templates.find((name) => i18n_templates.has(name));
-  if (found) {
-    return true;
-  }
-  let title = doc.title;
-  if (title && inTitle.test(title) === true) {
-    return true;
-  }
-  const names = doc.templates().map((tmpl) => (tmpl.json().template || "").toLowerCase());
-  let notDisamb = names.find((name) => notDisambig.has(name));
-  if (notDisamb) {
-    return false;
-  }
-  const str = doc.sentences()[0]?.text();
-  if (str && mayAlsoReg.test(str) === true) {
-    return true;
-  }
-  return false;
-};
-
-const shouldSkip = /^see also$/i;
-const escapeRegExp = (str) => {
-  str = str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  return new RegExp(str, "i");
-};
-const getMain = function(s) {
-  const txt = s.text().slice(0, 120);
-  if (!/ is /.test(txt)) {
-    return null;
-  }
-  const link = s.links()[0];
-  if (!link) {
-    return null;
-  }
-  const reg = escapeRegExp(link.text());
-  const m = txt.match(reg);
-  if (!m || m.index > 20) {
-    return null;
-  }
-  return link.page();
-};
-const getTitle = function(doc) {
-  let title = doc.title || "";
-  title = title.replace(/ \(disambig|disambiguation\)$/, "");
-  return title;
-};
-const parseDisambig = function(doc) {
-  const opening = doc.sections()[0].sentences().slice(0, 2);
-  const hasIntroduction = opening.some((sentence) => / may (also )?refer to\b/i.test(sentence.text()));
-  if (!doc.isDisambiguation() && !hasIntroduction) {
-    return null;
-  }
-  const intro = doc.sections()[0].sentences()[0];
-  const main = getMain(intro);
-  const pages = [];
-  doc.sections().forEach((s) => {
-    const title = s.title();
-    if (shouldSkip.test(title) === true) {
-      return;
-    }
-    s.lists().forEach((list) => {
-      list.lines().forEach((line) => {
-        const found = line.json("lg");
-        if (found) {
-          found.page = found.links[0]?.page;
-          found.section = title;
-          pages.push(found);
-        }
-      });
-    });
-  });
-  return {
-    text: getTitle(doc),
-    main,
-    pages
-  };
-};
-
-let allStubs = new Set(stubs);
-const isStub = function(doc) {
-  const templates = doc.templates();
-  return templates.some((t) => {
-    let name = t.type || "";
-    if (allStubs.has(name)) {
-      return true;
-    }
-    if (name === "stub" || name.endsWith("-stub")) {
-      return true;
-    }
-    let words = name.split(/[- ]/);
-    if (words.length > 1) {
-      let word = words.at(-1);
-      if (allStubs.has(word)) {
-        return true;
-      }
-    }
-    return false;
-  });
-};
-
-const sectionMap = function(doc, fn, clue) {
-  let arr = [];
-  doc.sections().forEach((sec) => {
-    let list = [];
-    {
-      list = sec[fn]();
-    }
-    list.forEach((t) => {
-      arr.push(t);
-    });
-  });
-  return arr;
-};
-
-class Document {
-  #data;
-  #info;
-  #world;
-  constructor(data, info, world) {
-    this.#data = data;
-    this.#info = withDefaults(info);
-    this.#world = world;
-  }
-  get title() {
-    if (this.#info.title) {
-      return this.#info.title;
-    }
-    let guess = null;
-    let sen = this.sentences()[0];
-    if (sen) {
-      guess = sen.bolds()[0]?.text || null;
-    }
-    return guess;
-  }
-  set title(str) {
-    this.#info.title = str;
-  }
-  get pageID() {
-    return this.#info.pageId || null;
-  }
-  set pageID(str) {
-    this.#info.pageId = str;
-  }
-  get wikidata() {
-    return this.#info.wikidata || null;
-  }
-  set wikidata(str) {
-    this.#info.wikidata = str;
-  }
-  get domain() {
-    return this.#info.domain || null;
-  }
-  set domain(str) {
-    this.#info.domain = str;
-  }
-  get language() {
-    return this.#info.lang || null;
-  }
-  set language(str) {
-    this.#info.lang = str;
-  }
-  get namespace() {
-    return this.#info.namespace ?? null;
-  }
-  set namespace(str) {
-    this.#info.namespace = str;
-  }
-  get revisionID() {
-    return this.#info.revisionId || null;
-  }
-  set revisionID(str) {
-    this.#info.revisionId = str;
-  }
-  get timestamp() {
-    return this.#info.timestamp || null;
-  }
-  set timestamp(str) {
-    this.#info.timestamp = str;
-  }
-  get description() {
-    return this.#info.description || null;
-  }
-  set description(str) {
-    this.#info.description = str;
-  }
-  get pageImage() {
-    return this.#info.pageImage || null;
-  }
-  set pageImage(str) {
-    this.#info.pageImage = str;
-  }
-  // the title as rendered on the page, set by {{DISPLAYTITLE:}}
-  get displayTitle() {
-    return this.#info.displayTitle || this.title;
-  }
-  set displayTitle(str) {
-    this.#info.displayTitle = str;
-  }
-  // the page's category sort-key, like 'Beauvoir, Simone de'
-  get defaultSort() {
-    return this.#info.defaultSort || null;
-  }
-  set defaultSort(str) {
-    this.#info.defaultSort = str;
-  }
-  // don'y allow setting thesese
-  wikitext() {
-    return this.#data.wiki || "";
-  }
-  options() {
-    return { ...this.#info };
-  }
-  // falls back to 'en' and 'wikipedia.org' when language or domain are missing
-  url() {
-    let title = this.#info.title;
-    if (!title) {
-      return null;
-    }
-    let lang = this.#info.lang;
-    let domain = this.#info.domain;
-    title = title.replace(/ /g, "_");
-    title = encodeURIComponent(title);
-    return `https://${lang}.${domain}/wiki/${title}`;
-  }
-  isRedirect() {
-    return Boolean(this.#data.isRedirect);
-  }
-  isStub() {
-    return isStub(this);
-  }
-  redirectTo() {
-    const link = this.#data.redirectTo;
-    return link ?? null;
-  }
-  isDisambiguation() {
-    if (this.#info.isDisambig === true) {
-      return true;
-    }
-    return isDisambig(this);
-  }
-  disambiguation() {
-    return parseDisambig(this);
-  }
-  categories() {
-    return this.#data.categories || [];
-  }
-  comments() {
-    return this.#data.comments || [];
-  }
-  sections() {
-    let arr = this.#data.sections || [];
-    return arr.map((section) => new Section(section, this.#info));
-  }
-  section(clue = 0) {
-    const sections = this.sections();
-    if (typeof clue === "number") {
-      return sections[clue] ?? Section.empty();
-    }
-    const title = clue.trim().toLowerCase();
-    const found = sections.find((section) => section.title().trim().toLowerCase() === title);
-    return found ?? Section.empty();
-  }
-  paragraphs() {
-    return this.sections().flatMap((section) => section.paragraphs());
-  }
-  sentences() {
-    return Blocks.from(this.sections().flatMap((section) => section.sentences()));
-  }
-  // searches the whole page, including infobox and gallery templates, for images
-  images() {
-    let arr = [];
-    if (this.#info.pageImage) {
-      const data = parseImgString(this.#info.pageImage, this.#info);
-      if (data) {
-        arr.push(new Image({ ...data, wiki: "" }));
-      }
-    }
-    this.infoboxes().forEach((info) => {
-      let img = info.image();
-      if (img) {
-        arr.push(img);
-      }
-    });
-    arr = arr.concat(sectionMap(this, "images"));
-    this.templates("gallery").forEach((template) => {
-      const data = template.json().data;
-      const images = data.images || [];
-      images.forEach((image) => {
-        if (image) {
-          arr.push(new Image(image, this.#info));
-        }
-      });
-    });
-    return Images.from(arr);
-  }
-  links(clue) {
-    let arr = this.sections().flatMap((sec) => sec.links());
-    if (clue) {
-      arr = arr.filter((l) => l.page() === clue);
-    }
-    return Links.from(arr);
-  }
-  link(clue) {
-    return this.links(clue)[0] ?? null;
-  }
-  lists() {
-    return Lists.from(sectionMap(this, "lists"));
-  }
-  tables() {
-    return Tables.from(sectionMap(this, "tables"));
-  }
-  templates(clue) {
-    const items = this.sections().flatMap((sec) => sec.templates());
-    if (clue) {
-      return Templates.from(items.filter((t) => t.type === clue || fmtName(t.json().template) === fmtName(clue)));
-    }
-    return Templates.from(items);
-  }
-  template(clue) {
-    return this.templates(clue)[0] ?? null;
-  }
-  references() {
-    const items = this.sections().flatMap((sec) => sec.references());
-    return References.from(items);
-  }
-  citations() {
-    return this.references();
-  }
-  // TODO: Coordinates contain plain data, not models. Keep the existing array API for now.
-  coordinates() {
-    return sectionMap(this, "coordinates");
-  }
-  infoboxes() {
-    let arr = this.sections().flatMap((sec) => sec.infoboxes());
-    arr = arr.sort((a, b) => {
-      if (Object.keys(a.json().data).length > Object.keys(b.json().data).length) {
-        return -1;
-      }
-      return 1;
-    });
-    return Infoboxes.from(arr);
-  }
-  text() {
-    if (this.isRedirect() === true) {
-      return "";
-    }
-    let arr = this.sections().map((sec) => sec.text());
-    return arr.join("\n\n");
-  }
-  json(format = "lg") {
-    let data = {};
-    data.title = this.title;
-    data.pageID = this.pageID;
-    data.categories = this.categories().slice();
-    data.wikidata = this.wikidata;
-    data.description = this.description;
-    data.isStub = this.isStub();
-    data.isDisambiguation = this.isDisambiguation();
-    data.isRedirect = this.isRedirect();
-    if (data.isRedirect === true) {
-      data.redirectTo = this.redirectTo();
-    }
-    data.sections = this.sections().map((i) => i.json(format));
-    const json = data;
-    if (format === "xl") {
-      json.wiki = this.wikitext();
-    }
-    return json;
-  }
-  debug() {
-    console.log("\n");
-    this.sections().forEach((sec) => {
-      let indent = " - ";
-      for (let i = 0; i < sec.depth(); i += 1) {
-        indent = " -" + indent;
-      }
-      console.log(indent + (sec.title() || "(Intro)"));
-    });
-    return this;
-  }
-  infobox() {
-    return this.infoboxes()[0] ?? null;
-  }
-  // aliases
-  isDisambig() {
-    return this.isDisambiguation();
-  }
-  redirectsTo() {
-    return this.redirectTo();
-  }
-  redirect() {
-    return this.redirectTo();
-  }
-}
-
-const REDIRECT_REGEX = new RegExp("^[ \n	]*?#(" + redirects.join("|") + ") *?(\\[\\[.{2,180}?\\]\\])", "i");
-const isRedirect = function(wiki) {
-  if (!wiki) {
-    return false;
-  }
-  return REDIRECT_REGEX.test(wiki);
-};
-const parseRedirect = function(wiki, opts = defaults$1) {
-  let m = wiki.match(REDIRECT_REGEX);
-  if (m && m[2]) {
-    let links = parse_links(m[2], opts) || [];
-    return links[0];
-  }
-  return null;
-};
-
-const cat_reg = new RegExp("\\[\\[(" + _categories.join("|") + "):(.{2,178}?)]](w{0,10})", "gi");
-const cat_remove_reg = new RegExp("^\\[\\[:?(" + _categories.join("|") + "):", "gi");
-const parse_categories = function(page) {
-  let wiki = page.remaining;
-  const categories = [];
-  const categoryDetails = [];
-  let tmp = wiki.match(cat_reg);
-  if (tmp) {
-    tmp.forEach(function(c) {
-      const source = c;
-      c = c.replace(cat_remove_reg, "");
-      c = c.replace(/\|?[ *]?\]\]$/, "");
-      c = c.replace(/\|.*/, "");
-      if (c && !c.match(/[[\]]/)) {
-        categories.push(c.trim());
-        categoryDetails.push({ text: c.trim(), wiki: source });
-      }
-    });
-  }
-  page.remaining = wiki.replace(cat_reg, "");
-  page.categories = categories;
-  return page;
-};
-
-const referenceKinds = /* @__PURE__ */ new Set(["citation", "refn", "sfn", "harvnb", "source"]);
-const sortOut = (templates) => {
-  const res = { infoboxes: [], references: [], others: [] };
-  templates.forEach((obj) => {
-    if (referenceKinds.has(obj.kind)) {
-      res.references.push(obj);
-    } else if (obj.kind === "infobox" && obj.data.subbox?.text !== "yes") {
-      res.infoboxes.push(obj);
-    } else {
-      res.others.push(obj);
-    }
-  });
-  return res;
-};
-
-const open = "{";
-const close = "}";
-const findFlat = (wiki) => {
-  let depth = 0;
-  const list = [];
-  let start = -1;
-  const len = wiki.length;
-  for (let i = 0; i < len; i += 1) {
-    if (depth === 0) {
-      i = wiki.indexOf(open, i);
-      if (i === -1) {
-        break;
-      }
-      start = i;
-    }
-    const c = wiki[i];
-    if (c === open) {
-      depth += 1;
-    }
-    if (depth > 0) {
-      if (c === close) {
-        depth -= 1;
-        if (depth === 0) {
-          const tmpl = wiki.slice(start, i + 1);
-          if (tmpl.includes("{{") && tmpl.includes("}}")) {
-            list.push(tmpl);
-          }
-          continue;
-        }
-      }
-      if (depth === 1 && c !== open && c !== close) {
-        depth = 0;
-        continue;
-      }
-    }
-  }
-  return list;
-};
-
-const getName = function(tmpl) {
-  let name = null;
-  if (/^\{\{[^\n]+\|/.test(tmpl)) {
-    name = (tmpl.match(/^\{\{(.+?)\|/) || [])[1];
-  } else if (tmpl.indexOf("\n") !== -1) {
-    name = (tmpl.match(/^\{\{(.+)\n/) || [])[1];
-  } else {
-    name = (tmpl.match(/^\{\{(.+?)\}\}$/) || [])[1];
-  }
-  if (name) {
-    name = name.replace(/:.*/, "");
-    name = fmtName(name);
-  }
-  return name || null;
-};
-
-const hasTemplate = /\{\{/;
-const maxDepth = 40;
-const createNode = (tmpl) => {
-  return {
-    wiki: tmpl,
-    body: tmpl,
-    parserName: getName(tmpl),
-    children: []
-  };
-};
-const findChildren = (obj, depth = 1) => {
-  let wiki = obj.body.slice(2);
-  wiki = wiki.replace(/\}\}$/, "");
-  const list = findFlat(wiki);
-  obj.children = list.map(createNode);
-  if (obj.children.length === 0 || depth >= maxDepth) {
-    return obj;
-  }
-  for (let i = 0; i < obj.children.length; i += 1) {
-    const child = obj.children[i];
-    const inside = child.body.slice(2);
-    if (hasTemplate.test(inside)) {
-      findChildren(child, depth + 1);
-    }
-  }
-  return obj;
-};
-const findTemplates = (wiki) => {
-  let list = findFlat(wiki);
-  list = list.map(createNode);
-  list = list.map(findChildren);
-  return list;
-};
-
-let aliases$1 = {
-  imdb: "imdb name",
-  "imdb episodes": "imdb episode",
-  localday: "currentday",
-  localdayname: "currentdayname",
-  localyear: "currentyear",
-  "in language": "in lang",
-  "link language": "in lang",
-  "clickable button 2": "clickable button",
-  "category link": "cl",
-  lcs: "cl",
-  "category see also link": "cl",
-  "birth date based on age at death": "birth based on age as of date",
-  "bare anchored list": "anchored list",
-  cvt: "convert",
-  cricon: "flagicon",
-  fbaicon: "flagicon",
-  sentoff: "sent off",
-  sqrt: "radic",
-  "unreferenced section": "unreferenced",
-  redir: "redirect",
-  sisterlinks: "sister project links",
-  by: "baseball year",
-  nbay: "nba year",
-  n\u00E9e: "nee",
-  n\u00E9: "nee",
-  "interlanguage link": "ill",
-  "interlanguage link multi": "ill",
-  postnominals: "post-nominals",
-  "post-nominal": "post-nominals",
-  "post-nominals/gbr": "post-nominals",
-  slink: "section link",
-  "section links": "section link",
-  crossref: "crossreference",
-  xref: "crossreference",
-  "cross reference": "crossreference",
-  "cross-reference": "crossreference",
-  nth: "ordinal",
-  "number to word": "spell",
-  numtext: "spell",
-  "spell number": "spell",
-  "comma separated list": "cslist",
-  caps: "allcaps",
-  "all caps": "allcaps",
-  keypress: "key press",
-  fontcolor: "font color",
-  "font colour": "font color",
-  "font-color": "font color",
-  cns: "citation needed span",
-  "cn span": "citation needed span",
-  "citation-needed span": "citation needed span",
-  "ko-hhrm": "korean",
-  "nihongo krt": "nihongo",
-  "script/arab": "script/arabic",
-  harvp: "harv",
-  harvcol: "harv",
-  "harvard citation": "harv",
-  harvcoltxt: "harvtxt",
-  "harvard citation text": "harvtxt",
-  harvcolnb: "harvard citation no brackets",
-  tlp: "tlx",
-  // sports
-  "nft-women": "fbw",
-  "fb women": "fbw",
-  "nfa-rt": "nfa",
-  bkwomen: "bkw",
-  "flagioc athlete": "flagiocathlete",
-  "flag ioc": "flagioc",
-  "world series year": "wsy",
-  // external-link templates
-  "ietf rfc": "rfc",
-  uspatent: "us patent",
-  "u.s. patent": "us patent",
-  oeis2c: "oeis link",
-  "official url": "official website",
-  official: "official website",
-  "plain link": "plainlink",
-  plainlinks: "plainlink",
-  "wayback machine": "wayback",
-  webcite: "webarchive",
-  bibleref: "bibleverse",
-  bibleref2: "bibleverse",
-  "bible verse": "bibleverse",
-  wt: "wikt",
-  "wiktionary-inline": "wikt",
-  "wiktionary inline": "wikt",
-  "commons-inline": "commons category-inline",
-  "commonscat-inline": "commons category-inline",
-  "commons cat-inline": "commons category-inline",
-  "wikisource author-inline": "wikisource-inline",
-  "imdb character": "imdb title",
-  "imdb company": "imdb title",
-  "rotten-tomatoes": "rotten tomatoes",
-  rottentomatoes: "rotten tomatoes",
-  "metacritic game": "metacritic film",
-  "metacritic television": "metacritic film",
-  bbref: "baseball-reference",
-  baseballstats: "baseball-reference",
-  pfr: "pro-football-reference",
-  "x (social network)": "twitter",
-  rom: "roman",
-  "roman numeral": "roman",
-  "subatomic particle": "subatomicparticle",
-  particle: "subatomicparticle",
-  "10": "10^",
-  "str rightc": "str right",
-  "str sub": "str mid",
-  "str lower": "lc",
-  "str upper": "uc",
-  tlc: "tlx",
-  tld: "tlx",
-  "sort name": "sortname",
-  floruit: "fl.",
-  fl: "fl.",
-  "ca.": "circa",
-  ca: "circa",
-  asof: "as of",
-  "nhl year": "mhl year",
-  nhly: "mhl year",
-  mlby: "mlb year",
-  nfly: "nfl year",
-  aldsy: "alds year",
-  nldsy: "nlds year",
-  //not perfect..
-  ushr2: "ushr",
-  stn: "station",
-  metrod: "metro",
-  fw: "ferry",
-  rws: "stnlnk",
-  sclass2: "sclass",
-  under: "underline",
-  brackets: "bracket",
-  raise: "lower",
-  "born-in": "born in",
-  "c.": "circa",
-  "r.": "reign",
-  frac: "fraction",
-  rdelim: "ldelim",
-  "pp.": "p.",
-  "iss.": "vol.",
-  h2d: "hex2dec",
-  wdl: "win draw lose"
-};
-let multi = {
-  citation: ["cite"],
-  "no spam": ["email", "@", "no spam blue"],
-  "angle bracket": ["angbr", "infix", "angbr ipa"],
-  "lrt station": ["lrt", "lrts"],
-  "mrt station": ["mrts"],
-  flagcountry: ["cr", "cr-rt"],
-  trunc: ["str left", "str crop"],
-  percentage: ["pct"],
-  rnd: ["rndfrac", "rndnear"],
-  abbr: ["tooltip", "abbrv", "define"],
-  sfn: ["sfnref", "harvid", "harvnb"],
-  "birth date and age": ["death date and age", "bda", "b-da"],
-  currentmonth: ["localmonth", "currentmonthname", "currentmonthabbrev"],
-  coord: ["coor", "coor title dms", "coor title dec", "coor dms", "coor dm", "coor dec", "coordinate"],
-  "columns-list": ["cmn", "col-list", "columnslist", "collist"],
-  nihongo: ["nihongo2", "nihongo3", "nihongo-s", "nihongo foot"],
-  plainlist: ["flatlist", "plain list"],
-  "winning percentage": ["winpct", "winperc"],
-  "nba game": ["nba game br"],
-  "win-loss record": ["win\u2013loss record", "win loss record", "wlr"],
-  "collapsible list": [
-    "blist",
-    "bulleted list",
-    "bulleted",
-    "bulletedlist",
-    "nblist",
-    "nonbulleted list",
-    "ubl",
-    "ulist",
-    "ublist",
-    "ubt",
-    "unbullet",
-    "unbulleted list",
-    "unbulleted",
-    "unbulletedlist",
-    "vunblist"
-  ],
-  "election box begin": [
-    "election box begin no change",
-    "election box begin no party",
-    "election box begin no party no change",
-    "election box inline begin",
-    "election box inline begin no change"
-  ],
-  "election box candidate": [
-    "election box candidate for alliance",
-    "election box candidate minor party",
-    "election box candidate no party link no change",
-    "election box candidate with party link",
-    "election box candidate with party link coalition 1918",
-    "election box candidate with party link no change",
-    "election box inline candidate",
-    "election box inline candidate no change",
-    "election box inline candidate with party link",
-    "election box inline candidate with party link no change",
-    "election box inline incumbent"
-  ],
-  "4teambracket": [
-    "2teambracket",
-    "4team2elimbracket",
-    "8teambracket",
-    "16teambracket",
-    "32teambracket",
-    "4roundbracket-byes",
-    "cwsbracket",
-    "nhlbracket",
-    "nhlbracket-reseed",
-    "4teambracket-nhl",
-    "4teambracket-ncaa",
-    "4teambracket-mma",
-    "4teambracket-mlb",
-    "16teambracket-two-reseeds",
-    "8teambracket-nhl",
-    "8teambracket-mlb",
-    "8teambracket-ncaa",
-    "8teambracket-afc",
-    "8teambracket-afl",
-    "8teambracket-tennis3",
-    "8teambracket-tennis5",
-    "16teambracket-nhl",
-    "16teambracket-nhl divisional",
-    "16teambracket-nhl-reseed",
-    "16teambracket-nba",
-    "16teambracket-swtc",
-    "16teambracket-afc",
-    "16teambracket-tennis3",
-    "16teambracket-tennis5"
-  ],
-  start: [
-    "end",
-    "birth",
-    "death",
-    "start date",
-    "end date",
-    "birth date",
-    "birthdate",
-    "death date",
-    "start date and age",
-    "end date and age",
-    "dob"
-  ],
-  "start-date": [
-    "end-date",
-    "birth-date",
-    "death-date",
-    "birth-date and age",
-    "birth-date and given age",
-    "death-date and age",
-    "death-date and given age"
-  ],
-  tl: [
-    "lts",
-    "t",
-    "tfd links",
-    "tiw",
-    "tltt",
-    "tetl",
-    "tsetl",
-    "ti",
-    "tic",
-    "tiw",
-    "tlt",
-    "ttl",
-    "twlh",
-    "tl2",
-    "tlu",
-    "demo",
-    "xpd",
-    "para",
-    "elc",
-    "xtag",
-    "mlix"
-  ],
-  // https://en.wikipedia.org/wiki/Template:Done/See_also
-  done: [
-    "resolved mark large",
-    "implemented",
-    "pimplemented",
-    "resolved mark",
-    "accepted",
-    "agree",
-    "approved",
-    "checked2",
-    "verified",
-    "conditional yes",
-    "confirmed",
-    "confirmed-nc",
-    "tallyho",
-    "tick",
-    "helped",
-    "doneu|example",
-    "edited2",
-    "donetask",
-    "unprod",
-    "autp",
-    "responded",
-    "sure",
-    "merge done",
-    "marked",
-    "pass",
-    "aye",
-    "yes check",
-    "y&",
-    "yeac",
-    "yeag"
-  ],
-  xmark: [
-    "expired",
-    "deleted",
-    "not done",
-    "not done empty request",
-    "not done unclear",
-    "not done not likely",
-    "stale-small",
-    "smallrejected",
-    "x mark",
-    "nay",
-    "no mark",
-    "not done-t",
-    "fail",
-    "n&",
-    "x mark-n",
-    "xed box",
-    "deleted-image",
-    "already declined",
-    "opblocked",
-    "user-blocked",
-    "notabug",
-    "notfixed",
-    "won't fix",
-    "withdraw",
-    "nojoy",
-    "unrelated",
-    "off-topic talk",
-    "nayc",
-    "nayg"
-  ],
-  checked: ["already done", "resolved1", "check mark-n", "checked box"],
-  // https://en.wikipedia.org/wiki/Template:Ferry
-  "station link": ["amtk", "cta", "bts", "mnrr", "mtams", "munis", "njts", "scax", "wmata", "rwsa"],
-  "video game release": ["vgrelease", "video game release hlist", "vgrtbl", "vgrelease hlist", "vgrh"],
-  aka: ["a.k.a.", "also known as"],
-  "literal translation": ["lit", "literal", "literally"],
-  "citation needed": [
-    "are you sure?",
-    "cb",
-    "ciation needed",
-    "cit",
-    "citaiton needed",
-    "citation missing",
-    "citation need",
-    "citation requested",
-    "citation required",
-    "citation-needed",
-    "citationeeded",
-    "citationneeded",
-    "citationrequired",
-    "cite missing",
-    "cite needed",
-    "cite source",
-    "cite-needed",
-    "citeneeded",
-    "citesource",
-    "citn",
-    "cn needed",
-    "cn",
-    "ctn",
-    "fact?",
-    "fact",
-    "facts",
-    "fcitation needed",
-    "me-fact",
-    "need citation",
-    "need sources",
-    "need-ref",
-    "needcitation",
-    "needcite",
-    "needs citation",
-    "needs citations",
-    "needs reference",
-    "needs source",
-    "needs-cite",
-    "needsref",
-    "no source given",
-    "prov-statement",
-    "prove it",
-    "proveit",
-    "ref needed",
-    "ref-needed",
-    "ref?",
-    "reference necessary",
-    "reference needed",
-    "reference required",
-    "refnec",
-    "refneeded",
-    "refplease",
-    "request citation",
-    "source needed",
-    "source?",
-    "sourceme",
-    "uncited",
-    "unreferenced inline",
-    "unsourced-inline"
-  ],
-  "en dash": ["nsndns"],
-  "spaced en dash": ["spnd", "sndash", "spndash"],
-  "spaced en dash space": ["spndsp", "sndashs", "spndashsp"],
-  "zero width joiner em dash zero width non joiner": ["nsmdns", "nsmdashns", "nsemdashns"],
-  color: ["colour", "colored text", "fgcolor"]
-};
-Object.keys(languages$1).forEach((lang) => {
-  aliases$1["ipa-" + lang] = "ipa";
-  aliases$1["ipac-" + lang] = "ipac";
-});
-Object.keys(multi).forEach((k) => {
-  multi[k].forEach((str) => {
-    aliases$1[str] = k;
-  });
-});
-
-const positions$1 = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-const parseShortcut = (handler, wiki, parse) => {
-  if (typeof handler === "number") {
-    const data = parse(wiki, positions$1);
-    return { data: null, replacement: data[String(handler)] || "" };
-  }
-  if (typeof handler === "string") {
-    return { data: null, replacement: handler };
-  }
-  if (Array.isArray(handler)) {
-    return { data: parse(wiki, handler), replacement: "" };
-  }
-  if (handler && typeof handler === "object") {
-    const data = parse(wiki, handler.props);
-    return { data, replacement: data[handler.out] || "" };
-  }
-  return { data: parse(wiki), replacement: "" };
-};
-
-var hardcoded = {
-  // table-row result markers from sports game-logs - they become row-attributes, like mediawiki does
-  "game-won": 'class="game-won"',
-  "game-lost": 'class="game-lost"',
-  "game-tied": 'class="game-tied"',
-  "game-drawn": 'class="game-drawn"',
-  "game-otl": 'class="game-otl"',
-  "game-otw": 'class="game-otw"',
-  "\xB7": "\xB7",
-  dot: "\xB7",
-  middot: "\xB7",
-  "\u2022": " \u2022 ",
-  ",": ",",
-  "=": "=",
-  "1/2": "1\u20442",
-  "1/3": "1\u20443",
-  "2/3": "2\u20443",
-  "1/4": "1\u20444",
-  "3/4": "3\u20444",
-  "\u2013": "\u2013",
-  ndash: "\u2013",
-  "en dash": "\u2013",
-  "spaced ndash": " \u2013 ",
-  "\u2014": "\u2014",
-  mdash: "\u2014",
-  spd: " \u2013 ",
-  "em dash": "\u2014",
-  // numeric entities, so they aren't mistaken for list/table syntax (same trick as mediawiki)
-  "number sign": "&#35;",
-  "hash-tag": "&#35;",
-  ibeam: "I",
-  "&": "&",
-  ";": ";",
-  ampersand: "&",
-  dagger: "\u2020",
-  "double-dagger": "\u2021",
-  snds: " \u2013 ",
-  snd: " \u2013 ",
-  "^": " ",
-  "!": "|",
-  "'": `'`,
-  "\\": " / ",
-  "`": "`",
-  // bracket: '[',
-  "[": "[",
-  "*": "&#42;",
-  asterisk: "&#42;",
-  "long dash": "\u2014\u2014\u2014",
-  clear: "\n\n",
-  "h.": "\u1E25",
-  profit: "\u25B2",
-  // loss: '▼',
-  // gain: '▲',
-  ell: "\u2113",
-  "1~": "~",
-  "2~": "~~",
-  "3~": "~~~",
-  "4~": "~~~~",
-  "5~": "~~~~~",
-  // some emoji replacements
-  goldmedal: "\u{1F947}",
-  silvermedal: "\u{1F948}",
-  bronzemedal: "\u{1F949}",
-  done: "\u2705",
-  xmark: "\u274C",
-  checked: "\u2714\uFE0F",
-  "thumbs up": "\u{1F44D}",
-  "thumbs down": "\u{1F44E}",
-  minusplus: "\u2213",
-  plusminus: "\xB1",
-  // 'hbeff début': '{|-\n',
-  langle: "\u27E8",
-  rangle: "\u27E9",
-  epsilon: "\u03B5",
-  xi: "\u{1D709}",
-  \u03A6: "\u03A6",
-  phi: "\u{1D719}",
-  varphi: "\u{1D711}",
-  upsilon: "\u{1D710}",
-  tau: "\u{1D70F}",
-  varsigma: "\u{1D70D}",
-  sigma: "\u{1D70E}",
-  pi: "\u03C0",
-  mu: "\u{1D707}",
-  lambda: "\u{1D706}",
-  kappa: "\u{1D718}",
-  vartheta: "\u{1D717}",
-  theta: "\u{1D703}",
-  varepsilon: "\u{1D700}",
-  gamma: "\u{1D6FE}",
-  shy: "-",
-  mdashb: "\u2014\u200C",
-  "spaced en dash": " \u2013",
-  "spaced en dash space": " \u2013 ",
-  "zero width joiner em dash zero width non joiner": "\u2014\u200C",
-  colon: ":",
-  pipe: "&#124;",
-  "non-breaking space": " ",
-  "-?": "?",
-  zwsp: " ",
-  sp: " ",
-  px2: " ",
-  indent: "    ",
-  nb5: "    ",
-  ns: "    ",
-  quad: "    ",
-  spaces: "    ",
-  in5: "     ",
-  tombstone: "\u25FB",
-  // increase: '▲',
-  // decrease: '▼',
-  "no.": "#",
-  "thin space": " ",
-  thinspace: " ",
-  "very thin space": " ",
-  "word joiner": " ",
-  "figure space": " ",
-  "zero width joiner": " ",
-  "hair space": " ",
-  "narrow no-break space": " ",
-  "non breaking hyphen": "-",
-  "!((": "[[",
-  "))!": "]]",
-  "(": "{",
-  "((": "{{",
-  "(((": "{{{",
-  ")": "}",
-  "))": "}}",
-  ")))": "}}}",
-  "(!": "{|",
-  "!+": "|+",
-  "!-": "|-",
-  "!)": "|}",
-  flat: "\u266D",
-  sharp: "\u266F",
-  lbf: "lbF",
-  lbm: "lbm",
-  // --- symbols - https://en.wikipedia.org/wiki/Category:Character_templates
-  bull: "\u2022",
-  nbhyph: "\u2011",
-  "non-breaking hyphen": "\u2011",
-  hyphen: "-",
-  endash: "\u2013",
-  emdash: "\u2014",
-  times: "\xD7",
-  deg: "\xB0",
-  degree: "\xB0",
-  prime: "\u2032",
-  dprime: "\u2033",
-  minus: "\u2212",
-  "\u2212": "\u2212",
-  "\xB1": "\xB1",
-  pm: "\xB1",
-  "sup minus": "\u207B",
-  divide: "\xF7",
-  div: "\xF7",
-  approx: "\u2248",
-  "\u2248": "\u2248",
-  infinity: "\u221E",
-  infin: "\u221E",
-  rarr: "\u2192",
-  larr: "\u2190",
-  harr: "\u2194",
-  uarr: "\u2191",
-  darr: "\u2193",
-  rightarrow: "\u2192",
-  leftarrow: "\u2190",
-  "\u2192": "\u2192",
-  "\u2190": "\u2190",
-  "\u2194": "\u2194",
-  checkmark: "\u2713",
-  "'s": "'s",
-  "'\"": `'"`,
-  "\"'": `"'`,
-  '-"': '"',
-  "-'": "'"
 };
 
 const positions = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
@@ -8699,6 +6936,92 @@ var textTmpl = {
   ...templates$7
 };
 
+const normalizeFile = (file) => {
+  const namespace = defaultWorld._cached.fileNamespaceReg;
+  file = file.trim();
+  if (file.startsWith("[[")) {
+    file = file.slice(2).replace(/^:/, "").split(/[|\]]/, 1)[0].trim();
+  }
+  file = file.replace(namespace, (prefix) => {
+    if (/^(file|image):$/i.test(prefix)) {
+      return prefix;
+    }
+    return "File:";
+  });
+  if (!file) {
+    return "";
+  }
+  if (!/^(image|file):/i.test(file)) {
+    file = `File:${file}`;
+  }
+  file = file.charAt(0).toUpperCase() + file.substring(1);
+  return file.replace(/ /g, "_");
+};
+
+const linkToFile = /^\[\[:/;
+const imgLayouts = {
+  thumb: true,
+  thumbnail: true,
+  frame: true,
+  framed: true,
+  frameless: true,
+  border: true,
+  right: true,
+  left: true,
+  center: true,
+  top: true,
+  bottom: true,
+  none: true,
+  upright: true,
+  baseline: true,
+  middle: true,
+  sub: true,
+  super: true
+};
+const parseImgString = function(wiki, opts = defaults$1) {
+  const source = wiki;
+  wiki = wiki.trim();
+  if (!wiki.startsWith("[[")) {
+    const file2 = normalizeFile(wiki);
+    if (!file2) {
+      return null;
+    }
+    wiki = `[[${file2}]]`;
+  }
+  let m = wiki.match(defaultWorld._cached.imageFileReg);
+  if (m === null || !m[2]) {
+    return null;
+  }
+  if (linkToFile.test(wiki)) {
+    return null;
+  }
+  let file = `${m[1]}:${m[2] || ""}`;
+  if (file) {
+    file = normalizeFile(file);
+    let img = {
+      file,
+      wiki: source,
+      domain: opts.domain || defaults$1.domain
+    };
+    wiki = wiki.replace(/^\[\[/, "");
+    wiki = wiki.replace(/\]\]$/, "");
+    let parsed = parseArguments$2(wiki, [], opts);
+    let arr = parsed.list || [];
+    if (parsed.alt) {
+      img.alt = parsed.alt.text;
+    }
+    arr = arr.filter((item) => {
+      let text = item.text.trim();
+      return !Object.hasOwn(imgLayouts, text) && !/^(?:\d+(?:x\d+)?|x\d+)px$/.test(text);
+    });
+    if (arr.at(-1)) {
+      img.caption = arr.at(-1);
+    }
+    return img;
+  }
+  return null;
+};
+
 const keys$1 = {
   // stress and separators
   "'": "\u02C8",
@@ -10461,19 +8784,86 @@ const templates$2 = {
   }
 };
 
+const params = {
+  "author1-last": "author",
+  "author-last": "author",
+  "author-last1": "author",
+  "surname": "author",
+  "surname1": "author",
+  "subject": "author",
+  "subject1": "author",
+  "given": "first",
+  "given1": "first",
+  "author-first": "first",
+  "author-first1": "first",
+  "author1-first": "first",
+  "air-date": "date",
+  "airdate": "date",
+  "encyclopedia": "website",
+  "encyclopaedia": "website",
+  "dictionary": "website",
+  "mailinglist": "website",
+  "periodical": "website",
+  "distributor": "publisher",
+  "institution": "publisher",
+  "newsgroup": "publisher",
+  "editor-last": "editor",
+  "editor-surname": "editor",
+  "editor-last1": "editor",
+  "editor-surname1": "editor",
+  "editor1": "editor",
+  "editor1-last": "editor",
+  "editor1-surname": "editor",
+  "editors": "editor",
+  "place": "location",
+  "p": "page",
+  "pp": "pages",
+  "in": "language",
+  "lang": "language",
+  "trans_title": "trans-title",
+  "contribution": "chapter",
+  "entry": "chapter",
+  "article": "chapter",
+  "section": "chapter",
+  "quotation": "quote",
+  "accessdate": "access-date",
+  "archiveurl": "archive-url",
+  "archivedate": "archive-date",
+  "number": "issue",
+  "people": "authors",
+  "host": "authors",
+  "credits": "authors"
+};
+const normalizeCite = (obj) => {
+  if (!obj) {
+    return obj;
+  }
+  Object.keys(params).forEach((from) => {
+    if (obj[from] !== void 0 && obj[params[from]] === void 0) {
+      obj[params[from]] = obj[from];
+      delete obj[from];
+    }
+  });
+  return obj;
+};
+
 const generic = function(tmpl, _parser = parseTextArguments) {
   let obj = _parser(tmpl);
+  return { data: obj, replacement: "" };
+};
+const cite = function(tmpl, _parser = parseTextArguments) {
+  let obj = normalizeCite(_parser(tmpl));
   return { data: obj, replacement: "" };
 };
 const misc = {
   persondata: generic,
   taxobox: generic,
-  citation: generic,
+  citation: cite,
   portal: generic,
   reflist: generic,
-  "cite book": generic,
-  "cite journal": generic,
-  "cite web": generic,
+  "cite book": cite,
+  "cite journal": cite,
+  "cite web": cite,
   "commons cat": generic,
   "election box candidate": generic,
   "election box begin": generic
@@ -11226,9 +9616,9 @@ const builtins = new Set(Object.values(templates));
     }
   });
 });
-Object.keys(aliases$1).forEach((k) => {
-  if (templates[aliases$1[k]] === void 0) {
-    console.error(`Missing template: '${aliases$1[k]}'`);
+Object.keys(aliases$2).forEach((k) => {
+  if (templates[aliases$2[k]] === void 0) {
+    console.error(`Missing template: '${aliases$2[k]}'`);
   }
 });
 const resolve = (name, opts = {}) => {
@@ -11241,11 +9631,2264 @@ const resolve = (name, opts = {}) => {
   if (Object.hasOwn(templates, name)) {
     return { handler: templates[name], name };
   }
-  const target = aliases$1[name];
+  const target = aliases$2[name];
   if (target !== void 0 && Object.hasOwn(templates, target)) {
     return { handler: templates[target], name: target };
   }
   return null;
+};
+
+var infoboxes$1 = {
+  "gnf protein box": true,
+  "automatic taxobox": true,
+  "chembox ": true,
+  editnotice: true,
+  geobox: true,
+  hybridbox: true,
+  ichnobox: true,
+  infraspeciesbox: true,
+  mycomorphbox: true,
+  tx: true,
+  oobox: true,
+  "paraphyletic group": true,
+  speciesbox: true,
+  subspeciesbox: true,
+  "starbox short": true,
+  taxobox: true,
+  \u751F\u7269\u5206\u985E\u8868: true,
+  //ja taxobox
+  nhlteamseason: true,
+  "asian games bid": true,
+  "canadian federal election results": true,
+  "dc thomson comic strip": true,
+  "daytona 24 races": true,
+  edencharacter: true,
+  "moldova national football team results": true,
+  samurai: true,
+  protein: true,
+  "sheet authority": true,
+  "order-of-approx": true,
+  "bacterial labs": true,
+  "medical resources": true,
+  ordination: true,
+  "hockey team coach": true,
+  "hockey team gm": true,
+  "pro hockey team": true,
+  "hockey team player": true,
+  "hockey team start": true,
+  mlbbioret: true
+};
+
+var categories = [
+  "category",
+  //en
+  "abdeeling",
+  //	pdc
+  "b\xF3lkur",
+  //	fo
+  "catag\xF3ir",
+  //	ga
+  "categori",
+  //	cy
+  "categoria",
+  //	co
+  "categor\xEDa",
+  //	es
+  "categor\xEEa",
+  //	lij
+  "categor\xECa",
+  //	pms
+  "cat\xE9gorie",
+  "categorie",
+  "cat\xE8gorie",
+  //	frp
+  "categuria",
+  //	lmo
+  "catigur\xECa",
+  //	scn
+  "class",
+  //	kw
+  "\u1EB9\u0300ka",
+  //	yo
+  "flocc",
+  //	ang
+  "flokkur",
+  "grup",
+  //	tpi
+  "jamii",
+  //	sw
+  "kaarangay",
+  //	war
+  "kateggor\xEDa",
+  //	lad
+  "kategooria",
+  //	et
+  "kategori",
+  //	da
+  "kategor\xEE",
+  //	ku
+  "kategoria",
+  //	eu
+  "kateg\xF3ria",
+  //	hu
+  "kategorie",
+  //de
+  "kategoriija",
+  //	se
+  "kategorija",
+  //	sl
+  "kategorio",
+  //	eo
+  "kategoriya",
+  "kategori\xFDa",
+  //	tk
+  "kategoriye",
+  //	diq
+  "kategory",
+  //	fy
+  "kategorya",
+  //	tl
+  "kateqoriya",
+  //	az
+  "katiguriya",
+  //	qu
+  "klad",
+  //	vo
+  "luokka",
+  "\xF1emohenda",
+  //	gn
+  "roinn",
+  //-seòrsa	gd
+  "ronney",
+  //	gv
+  "rummad",
+  //	br
+  "setensele",
+  //	nso
+  "sokajy",
+  //	mg
+  "sumut",
+  // atassuseq	kl
+  "turkum",
+  //	uz
+  "\u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u0458\u0430",
+  "\u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F",
+  //	ru
+  "\u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0456\u044F",
+  //	uk
+  "\u043A\u0430\u0442\u044D\u0433\u043E\u0440\u044B\u044F",
+  "\u0442\u04E9\u0440\u043A\u0435\u043C",
+  //	tt
+  "th\u1EC3 lo\u1EA1i",
+  //	vi
+  "\u05E7\u05D8\u05D2\u05D5\u05E8\u05D9\u05D4",
+  //	he
+  "\u062A\u0635\u0646\u064A\u0641",
+  "\u062A\u06C8\u0631",
+  //	ug
+  "\u0631\u062F\u0647",
+  "\u0936\u094D\u0930\u0947\u0923\u0940",
+  //	hi
+  "\u09AC\u09BF\u09B7\u09AF\u09BC\u09B6\u09CD\u09B0\u09C7\u09A3\u09C0",
+  //	bn
+  "\u0E2B\u0E21\u0E27\u0E14\u0E2B\u0E21\u0E39\u0E48",
+  //	th
+  "\uBD84\uB958",
+  //	ko
+  "\u5206\u7C7B"
+  //	za
+];
+
+var disambig_templates = [
+  "dab",
+  //en
+  "disamb",
+  //en
+  "disambig",
+  //en
+  "disambiguation",
+  //en
+  "geodis",
+  //en
+  "hndis",
+  //en
+  "lake index",
+  //en
+  "letter disambiguation",
+  //en
+  "mountainindex",
+  //en
+  "setindex",
+  //en
+  "ship index",
+  //en
+  "split dab",
+  //en
+  "sport index",
+  //en
+  "wp disambig",
+  //en
+  "a\xF0greining",
+  //is
+  "aimai",
+  //ja
+  "airport disambiguation",
+  "a\u0142ts\u02BC\xE1\u02BC\xE1ztiin",
+  //nv
+  "anlam ayr\u0131m\u0131",
+  //gag, tr
+  "apartigilo",
+  //eo
+  "argipen",
+  //eu
+  "begriepskloorenge",
+  //stq
+  "begriffskl\xE4rung",
+  //als, de, pdc
+  "begriffsklearung",
+  //bar
+  "biology disambiguation",
+  "bisongidila",
+  //kg
+  "bkl",
+  //pfl
+  "bokokani",
+  //ln
+  "caddayn",
+  //so
+  "call sign disambiguation",
+  "caselaw disambiguation",
+  "chinese title disambiguation",
+  "clerheans",
+  //kw
+  "cudakirin",
+  //ku
+  "\u010Dvor",
+  //bs
+  "db",
+  //vls
+  "desambig",
+  //nov
+  "desambigaci\xF3n",
+  //an
+  "desambigua\xE7\xE3o",
+  //pt
+  "desambiguaci\xF3",
+  //ca
+  "desambiguaci\xF3n",
+  //es
+  "desambigu\xE1ncia",
+  //ext
+  "desambiguasion",
+  //lad
+  "desambiguassi\xF9",
+  //lmo
+  "desambigui",
+  //lfn
+  "dezambiguizare",
+  //ro
+  "dezanb\xECgua",
+  "d\u0259qiql\u0259\u015Fdirm\u0259",
+  //az
+  "disamb-term",
+  "disamb-terms",
+  "disamb2",
+  "disamb3",
+  "disamb4",
+  "disambigua",
+  //it
+  "disamb\xECgua",
+  //sc
+  "disambiguasi",
+  "disambiguation cleanup",
+  "disambiguation lead name",
+  "disambiguation lead",
+  "disambiguation name",
+  "disambiguazion",
+  "disambigue",
+  "discretiva",
+  //la
+  "dishe\xF1velout",
+  //br
+  "disingkek",
+  //min
+  "dixanbigua",
+  //vec
+  "dixebra",
+  //ast
+  "di\u017Cambigwazzjoni",
+  //mt
+  "dmbox",
+  "doorverwijspagina",
+  //nl
+  "dp",
+  //nl
+  "dubbelsinnig",
+  //af
+  "dudalipen",
+  //rmy
+  "dv",
+  //nds_nl
+  "egy\xE9rt",
+  //hu
+  "faaleaogaina",
+  "fleiri t\xFDdningar",
+  //fo
+  "fleirtyding",
+  //nn
+  "flertydig",
+  //da
+  "f\xF6rgrening",
+  //sv
+  "genus disambiguation",
+  "g\xEC-ngi\xEA",
+  //cdo
+  "giklaro",
+  //ceb
+  "gwahaniaethu",
+  //cy
+  "homonimo",
+  //io
+  "hom\xF3nimos",
+  //gl
+  "homonymie",
+  //fr
+  "hospital disambiguation",
+  "hua\u02BB\u014Dlelo puana like",
+  //haw
+  "human name disambiguation cleanup",
+  "human name disambiguation",
+  "idirdheal\xFA",
+  //ga
+  "khu-pia\u030Dt",
+  //zh_min_nan
+  "kthjellim",
+  //sq
+  "kujekesa",
+  //sn
+  "letter-number combination disambiguation",
+  "letter-numbercombdisambig",
+  "maana",
+  //sw
+  "maneo bin",
+  //diq
+  "mathematical disambiguation",
+  "mehrd\xFCdig begreep",
+  //nds
+  "menm non",
+  //ht
+  "military unit disambiguation",
+  "muard\xFC\xFCdag artiikel",
+  //frr
+  "music disambiguation",
+  "myesak\xE3r\xE3",
+  "neibetsjuttings",
+  //fy
+  "noz\u012Bmju atdal\u012B\u0161ana",
+  //lv
+  "number disambiguation",
+  "nuorodinis",
+  //lt
+  "nyahkekaburan",
+  //ms
+  "omonimeye",
+  //wa
+  "omonimi",
+  "omonimia",
+  //oc
+  "opus number disambiguation",
+  "page d\xE9 frouque",
+  //nrm
+  "paglilinaw",
+  //tl
+  "panangilawlawag",
+  //ilo
+  "pansayod",
+  //war
+  "pejy mitovy anarana",
+  //mg
+  "peker",
+  //no
+  "phonetics disambiguation",
+  "place name disambiguation",
+  "portal disambiguation",
+  "razdvojba",
+  //hr
+  "razlo\u010Ditev",
+  //sl
+  "razvrstavanje",
+  //sh
+  "reddaghey",
+  //gv
+  "road disambiguation",
+  "rozcestn\xEDk",
+  //cs
+  "rozli\u0161ovacia str\xE1nka",
+  //sk
+  "school disambiguation",
+  "sclerir noziun",
+  //rm
+  "selvendyssivu",
+  //olo
+  "soilleireachadh",
+  //gd
+  "species latin name abbreviation disambiguation",
+  "species latin name disambiguation",
+  "station disambiguation",
+  "suzmunski",
+  //jbo
+  "synagogue disambiguation",
+  "t\xE4psustuslehek\xFClg",
+  //et
+  "t\xE4smennyssivu",
+  //fi
+  "taxonomic authority disambiguation",
+  "taxonomy disambiguation",
+  "telpl\xE4nov",
+  //vo
+  "template disambiguation",
+  "tlahtolmelahuacatlaliztli",
+  //nah
+  "trang \u0111\u1ECBnh h\u01B0\u1EDBng",
+  //vi
+  "ujednoznacznienie",
+  //pl
+  "verdudeliking",
+  //li
+  "w\u011Bcejw\xF3znamowos\u0107",
+  //dsb
+  "wjacezmyslnos\u0107",
+  //hsb
+  "z",
+  "zambigua\xE7on",
+  //mwl
+  "zeimeibu \u0161kir\u0161ona",
+  //ltg
+  "\u03B1\u03C0\u03BF\u03C3\u03B1\u03C6\u03AE\u03BD\u03B9\u03C3\u03B7",
+  //el
+  "\u0430\u0439\u0440\u044B\u049B",
+  //kk
+  "\u0430\u04B5\u0430\u043A\u044B\u0440\u0430\u0446\u04D9\u0430",
+  //ab
+  "\u0431\u0438\u0440 \u0430\u0430\u0439\u044B \u0458\u043E\u043A",
+  "\u0432\u0438\u0448\u0435\u0437\u043D\u0430\u0447\u043D\u0430 \u043E\u0434\u0440\u0435\u0434\u043D\u0438\u0446\u0430",
+  //sr
+  "\u0438\u0431\u04B3\u043E\u043C\u0437\u0443\u0434\u043E\u04E3",
+  //tg
+  "\u043A\u0451\u0431 \u043C\u0430\u0433\u044A\u0430\u043D\u0430\u043B\u044B",
+  //krc
+  "\u043A\u04AF\u043F \u043C\u04D9\u0433\u044A\u043D\u04D9\u043B\u04D9\u0440",
+  //tt
+  "\u043A\u04AF\u043F \u043C\u04D9\u0493\u04D9\u043D\u04D9\u043B\u0435\u043B\u0435\u043A",
+  //ba
+  "\u043C\u0430\u0441\u0441\u0435\u0445\u043A \u043C\u0430\u04CF\u0430\u043D \u0445\u0438\u043B\u0430\u0440",
+  "\u043C\u044A\u043D\u043E\u0433\u043E\u0441\u044A\u043C\uA651\u0441\u043B\u0438\u0465",
+  //cu
+  "\u043D\u0435\u0430\u0434\u043D\u0430\u0437\u043D\u0430\u0447\u043D\u0430\u0441\u0446\u044C",
+  //be
+  "\u043D\u0435\u0430\u0434\u043D\u0430\u0437\u043D\u0430\u0447\u043D\u0430\u0441\u044C\u0446\u044C",
+  //be_x_old
+  "\u043D\u0435\u043E\u0434\u043D\u043E\u0437\u043D\u0430\u0447\u043D\u043E\u0441\u0442\u044C",
+  //ru
+  "\u043E\u043B\u043E\u043D \u0443\u0434\u0445\u0430\u0442\u0430\u0439",
+  //bxr
+  "\u043F\u043E\u0458\u0430\u0441\u043D\u0443\u0432\u0430\u045A\u0435",
+  //mk
+  "\u043F\u043E\u044F\u0441\u043D\u0435\u043D\u0438\u0435",
+  //bg
+  "\u0441\u0430 \u0448\u0443\u043C\u0443\u0434 \u043C\u0430\u043D\u0430\u0432\u0430\u043B",
+  //lez
+  "\u0441\u0430\u043B\u0430\u0430 \u0443\u0442\u0433\u0430\u0442\u0430\u0439",
+  //mn
+  "\u0441\u0443\u043E\u043B\u0442\u0430\u043B\u0430\u0440",
+  //sah
+  "\u0442\u0435\u043A\u043C\u0430\u0430\u043D\u0438\u0441\u0438\u0437\u0434\u0438\u043A",
+  //ky
+  "\u0446\u043E \u043C\u0430\u0433\u0456\u043D\u0430 \u0433\u0443\u0440\u0435\u0431",
+  //av
+  "\u0447\u0435\u043F\u0435\u0440\u0443\u0448\u043A\u0430",
+  //rue
+  "\u0447\u043E\u043B\u0445\u0430\u043B\u043B\u0430",
+  //ce
+  "\u0448\u0443\u043A\u043E \u043E\u043D\u0447\u044B\u043A\u0442\u044B\u043C\u0430\u0448-\u0432\u043B\u0430\u043A",
+  //mhr
+  "\u10DB\u10E0\u10D0\u10D5\u10D0\u10DA\u10DB\u10DC\u10D8\u10E8\u10D5\u10DC\u10D4\u10DA\u10DD\u10D5\u10D0\u10DC\u10D8",
+  //ka
+  "\u0562\u0561\u0566\u0574\u056B\u0574\u0561\u057D\u057F\u0578\u0582\u0569\u056B\u0582\u0576",
+  //hyw
+  "\u0562\u0561\u0566\u0574\u056B\u0574\u0561\u057D\u057F\u0578\u0582\u0569\u0575\u0578\u0582\u0576",
+  //hy
+  "\u05D1\u05D0\u05D3\u05D9\u05D9\u05D8\u05DF",
+  //yi
+  "\u05E4\u05D9\u05E8\u05D5\u05E9\u05D5\u05E0\u05D9\u05DD",
+  //he
+  "\u0627\u0628\u0647\u0627\u0645\u200C\u0632\u062F\u0627\u06CC\u06CC",
+  //fa
+  "\u062A\u0648\u0636\u064A\u062D",
+  //ar, arz
+  "\u062F\u0642\u06CC\u0642\u0644\u0634\u062F\u06CC\u0631\u0645\u0647",
+  //azb
+  "\u0695\u0648\u0648\u0646\u06A9\u0631\u062F\u0646\u06D5\u0648\u06D5",
+  //ckb
+  "\u0633\u0644\u062C\u0647\u0627\u0626\u067E",
+  //sd
+  "\u0636\u062F \u0627\u0628\u06C1\u0627\u0645",
+  //ur
+  "\u06AF\u062C\u06AF\u062C\u06CC \u0628\u06CC\u0631\u06CC",
+  //mzn
+  "\u0646\u0627\u0645\u0628\u0647\u0645\u06D0\u062F\u0646\u0647",
+  //ps
+  "\u1218\u1295\u1273",
+  //am
+  "\u0905\u0938\u094D\u092A\u0937\u094D\u091F\u0924\u093E",
+  //ne
+  "\u092C\u0939\u0941\u0905\u0930\u094D\u0925\u0940",
+  //bh
+  "\u092C\u0939\u0941\u0935\u093F\u0915\u0932\u094D\u092A\u0940 \u0936\u092C\u094D\u0926",
+  //hi
+  "\u09A6\u09CD\u09AC\u09CD\u09AF\u09B0\u09CD\u09A5\u09A4\u09BE \u09A8\u09BF\u09B0\u09B8\u09A8",
+  //bn
+  "\u0A17\u0A41\u0A70\u0A1D\u0A32-\u0A16\u0A4B\u0A32\u0A4D\u0A39",
+  //pa
+  "\u0AB8\u0A82\u0AA6\u0ABF\u0A97\u0ACD\u0AA7 \u0AB6\u0AC0\u0AB0\u0ACD\u0AB7\u0A95",
+  //gu
+  "\u0BAA\u0B95\u0BCD\u0B95\u0BB5\u0BB4\u0BBF \u0BA8\u0BC6\u0BB1\u0BBF\u0BAA\u0BCD\u0BAA\u0B9F\u0BC1\u0BA4\u0BCD\u0BA4\u0BB2\u0BCD",
+  //ta
+  "\u0C05\u0C2F\u0C4B\u0C2E\u0C2F \u0C28\u0C3F\u0C35\u0C43\u0C24\u0C4D\u0C24\u0C3F",
+  //te
+  "\u0CA6\u0CCD\u0CB5\u0C82\u0CA6\u0CCD\u0CB5 \u0CA8\u0CBF\u0CB5\u0CBE\u0CB0\u0CA3\u0CC6",
+  //kn
+  "\u0D35\u0D3F\u0D35\u0D15\u0D4D\u0D37\u0D15\u0D7E",
+  //ml
+  "\u0DC0\u0D9A\u0DCA\u200D\u0DBB\u0DDD\u0DAD\u0DCA\u0DAD\u0DD2",
+  //si
+  "\u0E41\u0E01\u0E49\u0E04\u0E27\u0E32\u0E21\u0E01\u0E33\u0E01\u0E27\u0E21",
+  //th
+  "\u101E\u1036\u1010\u1030\u1000\u103C\u1031\u102C\u1004\u103A\u1038\u1000\u103D\u1032",
+  //my
+  "\u101E\u1035\u1004\u103A\u1019\u102D\u1030\u107C\u103A \u1010\u1030\u107C\u103A\u1088\u1011\u1085\u101D\u103A\u1015\u1085\u1075\u103A\u1087",
+  "\u178E\u17C2\u1793\u17B6\u17C6",
+  //km
+  "\u17A2\u179F\u1784\u17D2\u179F\u17D0\u1799\u1780\u1798\u17D2\u1798",
+  "\uB3D9\uC74C\uC774\uC758",
+  //ko
+  "\u6264\u6E05\u695A",
+  //gan
+  "\u641E\u6E05\u695A",
+  //zh_yue
+  "\u66D6\u6627\u3055\u56DE\u907F",
+  //ja
+  "\u6D88\u6B67\u4E49",
+  //zh
+  "\u91CB\u7FA9",
+  //zh_classical
+  "gestion dj'om\xF2nim",
+  //pms
+  "sut'ichana qillqa"
+  //qu
+  // 'z', //vep
+  // 'သဵင်မိူၼ် တူၼ်ႈထႅဝ်ပႅၵ်ႇ', //shn
+];
+
+var disambig_titles = [
+  "disambiguation",
+  //en
+  "homonymie",
+  //fr
+  "\u062A\u0648\u0636\u064A\u062D",
+  //ar
+  "desambigua\xE7\xE3o",
+  //pt
+  "Begriffskl\xE4rung",
+  //de
+  "disambigua",
+  //it
+  "\u66D6\u6627\u3055\u56DE\u907F",
+  //ja
+  "\u6D88\u6B67\u7FA9",
+  //zh
+  "\u641E\u6E05\u695A",
+  //zh-yue
+  "\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F",
+  //ru
+  "\u0627\u0628\u0647\u0627\u0645\u200C\u0632\u062F\u0627\u06CC\u06CC",
+  //fa
+  "\u062F \u0627\u0628\u06C1\u0627\u0645",
+  //ur
+  "\uB3D9\uC74C\uC774\uC758",
+  //ko
+  "dubbelsinnig",
+  //af
+  "\u0561\u0575\u056C \u056F\u056B\u0580\u0561\u057C\u0578\u0582\u0574\u0576\u0565\u0580",
+  //hy
+  "ujednoznacznienie"
+  //pl
+];
+
+var images = [
+  "file",
+  //en
+  "image",
+  //en
+  "archivo",
+  //es
+  "att\u0113ls",
+  //lv
+  "berkas",
+  //id
+  "bestand",
+  //nl
+  "datei",
+  //de
+  "dosiero",
+  //eo
+  "dosya",
+  //lad
+  "f\xE1jl",
+  //hu
+  "fasciculus",
+  //la
+  "fichier",
+  //fr
+  "fil",
+  //da
+  "fitxategi",
+  //eu
+  "fitxer",
+  //ca
+  "gambar",
+  //su
+  "imagem",
+  //pt
+  "imej",
+  //ms
+  "immagine",
+  //it
+  "larawan",
+  //tl
+  "l\xEAer",
+  //af
+  "picha",
+  //sw
+  "plik",
+  //pl
+  "restr",
+  //br
+  "slika",
+  //bs
+  "w\xEAne",
+  //ku
+  "wobraz",
+  //dsb
+  "\u0432\u044B\u044F\u0432\u0430",
+  //be
+  "\u043F\u043E\u0434\u0430\u0442\u043E\u0442\u0435\u043A\u0430",
+  //mk
+  "\u0441\u043B\u0438\u043A\u0430",
+  //sr
+  "\u0444\u0430\u0439\u043B",
+  //ru
+  "\u10E1\u10E3\u10E0\u10D0\u10D7\u10D8",
+  //ka
+  "\u057A\u0561\u057F\u056F\u0565\u0580",
+  //hy
+  "\u05E7\u05D5\u05D1\u05E5",
+  //he
+  "\u067E\u0631\u0648\u0646\u062F\u0647",
+  //fa
+  "\u062F\u0648\u062A\u0646\u0647",
+  //ps
+  "\u0645\u0644\u0641",
+  //ar
+  "\u0648\u06CE\u0646\u06D5",
+  //ckb
+  "\u091A\u093F\u0924\u094D\u0930",
+  //hi
+  "\u0E44\u0E1F\u0E25\u0E4C",
+  //th
+  "\uD30C\uC77C",
+  //ko
+  "\u30D5\u30A1\u30A4\u30EB"
+  //ja
+];
+
+var stubs = [
+  "abo\xE7",
+  "ahurhire",
+  "aizmetnis",
+  "amud",
+  "avixo de spigaso",
+  // 'begin',
+  "beginnetje",
+  "bibarilo",
+  "borrador",
+  "bu\xE1ng-n\xE0ng-h\xE2",
+  "bun",
+  "buntato",
+  "c-supranu",
+  "cahrot",
+  "chala",
+  "choutchette",
+  "ciot",
+  "csonk",
+  "cung",
+  "danvez pennad",
+  "djermon",
+  "\xE9bauche",
+  "\xE9beuche",
+  "eb\xF2ch",
+  "\xE9d\xE9nt\u1EA1",
+  "eginyn",
+  "\u1EB9\u0300k\xFAnr\u1EB9\u0301r\u1EB9\u0301",
+  "en progreso",
+  "entamu",
+  "esbo\xE7o",
+  "esborrany",
+  "esb\xF2s",
+  "esbozo",
+  "\u011Dermo",
+  "gumud",
+  "\u02BB\u014Dmuku",
+  "junj",
+  "klado",
+  "maramara",
+  "mayele",
+  "mbegu",
+  "mrva",
+  "na mulno",
+  "nadabeigts rakst\u012B\u0146s",
+  "nalta",
+  "narcce",
+  "pah\xFDl",
+  "pecietta",
+  "ph\xED",
+  "pondok",
+  "por mejoral",
+  "potu\u02BBi",
+  "pungol",
+  "qaralama",
+  "rabisco",
+  "rancangan",
+  "rintisan",
+  "saadjie",
+  "saha",
+  "sbozz",
+  "sid",
+  "s\xEDol",
+  "\u015Fitil",
+  "sjtumpke",
+  "skizz",
+  "skizze",
+  "\u0161krbina",
+  "s\u01A1 khai",
+  "spire",
+  "stipula",
+  "stob",
+  "stobbe",
+  // 'stock',
+  "stompje",
+  "stub",
+  "stubben",
+  "stubbi",
+  "stubbur",
+  "stump",
+  "stumpen",
+  "stycce",
+  "suli",
+  "taslak",
+  "taslaq",
+  "tunas",
+  "tur\xF3k",
+  "tynk\xE4",
+  // 'u začetku',
+  "vangovango",
+  "vernu\u015Fte",
+  "v\xFDhonok",
+  "xinnoo",
+  "zarodk",
+  "zirriborroa",
+  "\u03B5\u03C0\u03AD\u03BA\u03C4\u03B1\u03C3\u03B7",
+  "\u04D9\u0499\u0435\u0440\u043B\u04D9\u043C\u04D9",
+  "\u0437\u0430\u0433\u043E\u0442\u043E\u0432\u043A\u0430",
+  "\u043A\u0435\u0440\u0444",
+  "\u043A\u0435\u0447\u0434\u0430\u0440",
+  "\u043A\u043B\u0438\u0446\u0430",
+  "\u043A\u044A\xE6\u0440\u0442\u0442",
+  "\u043A\u044C\u0443\u0440\u0445\u044C",
+  "\u043C\u04D9\u043A\u0430\u043B\u04D9 \u0442\u04E9\u043F\u0447\u0435\u0433\u0435",
+  "\u043C\u044A\u043D\u0438\u0447\u0435",
+  "\u043D\u0430\u043A\u0456\u0434",
+  "\u043D\u0454\uA641\u0430\u0432\u0440\u044C\u0448\u0454\u043D\u044A \u0447\u043B\u0463\u043D\u044A",
+  "\u043D\u0438\u043A\u0443\u043B\u0435\u0446",
+  "\u043E\u043C\u043E\u043E\u043D",
+  "\u0441\u0442\u044B\u0440\u0436\u0435\u043D\u044C",
+  "\u0445\u0443\u0440\u0434",
+  "\u0445\u04CF\u0430\u0434\u0443\u0440\u0443\u043D\u0436\u043E",
+  "\u10D4\u10E1\u10D9\u10D8\u10D6\u10D8",
+  "\u1218\u12CB\u1245\u122D",
+  "\u1218\u12CB\u1255\u122D",
+  "\u0905\u092A\u0942\u0930\u094D\u0923\u0932\u0947\u0916\u0903",
+  "\u0906\u0927\u093E\u0930",
+  "\u0920\u0941\u091F\u094B",
+  "\u0927\u093E\u0915\u094D\u091F\u0947\u0902 \u092A\u093E\u0928",
+  "\u0935\u093F\u0938\u094D\u0924\u093E\u0930",
+  "\u0985\u09B8\u09AE\u09CD\u09AA\u09C2\u09B0\u09CD\u09A3",
+  "\u09AA\u09CB\u0996\u09BE\u09B2\u09BF",
+  "\u0AB8\u0ACD\u0A9F\u0AAC",
+  "\u0B05\u0B27\u0B3E\u0B17\u0B22\u0B3C\u0B3E",
+  "\u0B95\u0BC1\u0BB1\u0BC1\u0B99\u0BCD\u0B95\u0B9F\u0BCD\u0B9F\u0BC1\u0BB0\u0BC8",
+  "\u0C2E\u0C4A\u0C32\u0C15",
+  "\u0C8E\u0CB2\u0CCD\u0CAF",
+  "\u0C9A\u0CC1\u0C9F\u0CC1\u0C95\u0CC1",
+  "\u0D05\u0D2A\u0D42\u0D7C\u0D23\u0D4D\u0D23\u0D02",
+  "\u0D85\u0D82\u0D9A\u0DD4\u0DBB\u0DBA",
+  "\u0E42\u0E04\u0E23\u0E07",
+  "\u0F46\u0F0B\u0F58\u0F72\u0F0B\u0F5A\u0F44\u0F0B\u0F56",
+  "\u17A2\u178F\u17D2\u1790\u1794\u1791\u1781\u17D2\u179B\u17B8\u1798\u17B7\u1793\u1796\u17C1\u1789\u179B\u17C1\u1789",
+  "\uD1A0\uB9C9\uAE00",
+  "\u6954",
+  "\u82BB\u6587"
+];
+
+var infoboxes = [
+  "infobox",
+  //en
+  "amatl",
+  "anfo",
+  //mwl
+  "anu\u0101mapa",
+  //haw
+  "bilgi kutusu",
+  //tr
+  "bilgi",
+  //tr
+  "bilgiquti",
+  //uz
+  "boaty fampahalalana",
+  "boaty",
+  //mg
+  "boestkelaoui\xF1",
+  //br
+  "bosca",
+  //ga
+  "capsa",
+  //la
+  "diehtok\xE1ssa",
+  //se
+  "faktamall",
+  //sv
+  "ficha",
+  //es
+  "generalni",
+  //hr
+  "gwybodlen3",
+  //cy
+  "h\u1ED9p th\xF4ng tin",
+  "info",
+  //pt
+  "infoboesse 2",
+  "infobokis",
+  //tpi
+  "infoboks",
+  //da
+  "infobox deleted",
+  "infobox generic",
+  "infobox generiek",
+  "infochascha",
+  //rm
+  "infoka\u0161\u0107ik",
+  //dsb
+  "infokast",
+  //et
+  "infokutija",
+  //bs
+  "infolentel\u0117",
+  //lt
+  "infookvir",
+  "infopolje",
+  //sl
+  "informkesto",
+  //eo
+  "infoschede",
+  "infoskreine",
+  //ltg
+  "infotaula",
+  //eu
+  "inligtingskas",
+  "inligtingskas3",
+  //af
+  "inligtingskas4",
+  //af
+  "kishtey fys",
+  "kotak info",
+  "kotak",
+  //su
+  "m\u0259lumat qutusu",
+  "simple box",
+  "tertcita tanxe",
+  "tertcita",
+  //jbo
+  "ti\xE4tuloov\xE1",
+  "tietolaatikko",
+  //fi
+  "wd bosca sonra\xED",
+  "yerle\u015Fim bilgi kutusu",
+  "ynfoboks generyk",
+  "ynfoboks",
+  //fy
+  "\u03C0\u03BB\u03B1\u03AF\u03C3\u03B9\u03BF \u03C0\u03BB\u03B7\u03C1\u03BF\u03C6\u03BF\u03C1\u03B9\u03CE\u03BD",
+  "\u03C0\u03BB\u03B1\u03AF\u03C3\u03B9\u03BF",
+  //el
+  "\u0430\u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0430",
+  //ab
+  "\u0430\u04A5\u0430",
+  //mhr
+  "\u0438\u043D\u0444\u043E\u0431\u043E\u043A\u0441",
+  //kk
+  "\u0438\u043D\u0444\u043E\u043A\u0443\u0442\u0438\u0458\u0430",
+  //sr
+  "\u0438\u043D\u0444\u043E\u043A\u0443\u0442\u0438\u044F",
+  //bg
+  "\u0456\u043D\u0444\u043E\u0431\u043E\u043A\u0441",
+  //rue
+  "\u043A\u0430\u043D\u0430\u0434\u0441\u043A\u0438\u0439",
+  "\u043A\u0430\u0440\u0442\u043A\u0430",
+  //be
+  "\u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0430",
+  //ru
+  "\u043A\u0430\u0440\u0442\u043E\u0447\u043A\u04302",
+  //mdf
+  "\u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0430\u0440\u0443\u0441",
+  //ba
+  "\u043A\u0430\u0440\u0442\u0443\u0448",
+  //koi
+  "\u049B\u0443\u0442\u0442\u04E3",
+  //tg
+  "\u10D8\u10DC\u10E4\u10DD\u10D3\u10D0\u10E4\u10D0",
+  //ka
+  "\u057F\u0565\u0572\u0565\u056F\u0561\u0584\u0561\u0580\u057F",
+  //hy
+  "\u05EA\u05D1\u05E0\u05D9\u05EA",
+  //he
+  "\u0628\u0637\u0627\u0642\u0629",
+  //ar
+  "\u0684\u0627\u06BB\u062E\u0627\u0646\u0648",
+  //sd
+  "\u062E\u0627\u0646\u06C1",
+  //ur
+  "\u0644\u063A\u0629",
+  "\u0645\u0639\u0644\u0648\u0657\u0645\u0627\u062A \u0688\u064E\u0628\u06C1\u0655",
+  "\u091C\u094D\u091E\u093E\u0928\u0938\u0928\u094D\u0926\u0942\u0915",
+  //hi
+  "\u09A4\u09A5\u09CD\u09AF\u099B\u0995",
+  //bn
+  "\u0A1C\u0A3E\u0A23\u0A15\u0A3E\u0A30\u0A40\u0A21\u0A71\u0A2C\u0A3E",
+  //pa
+  "\u0C38\u0C2E\u0C3E\u0C1A\u0C3E\u0C30\u0C2A\u0C46\u0C1F\u0C4D\u0C1F\u0C46",
+  //te
+  "\u0DAD\u0DDC\u0DBB\u0DAD\u0DD4\u0DBB\u0DD4\u0D9A\u0DDC\u0DA7\u0DD4\u0DC0",
+  //si
+  "\u0E01\u0E25\u0E48\u0E2D\u0E07\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25",
+  //th
+  "\u0E81\u0EC8\u0EAD\u0E87\u0E82\u0ECD\u0EC9\u0EA1\u0EB9\u0E99",
+  "\u1794\u17D2\u179A\u17A2\u1794\u17CB\u1796\u17D0\u178F\u17CC\u1798\u17B6\u1793",
+  //km
+  "\uC815\uBCF4\uC0C1\uC790",
+  //ko
+  "\u660E\u7D30"
+  //zh_yue
+];
+
+var redirects = [
+  "aanstuur",
+  //af
+  "aastiurey",
+  "adkas",
+  //br
+  "ailgyfeirio",
+  "alidirekto",
+  "alih",
+  //id
+  "a\xFDdaw",
+  "baw-ing",
+  "beral\xEEkirin",
+  //ku
+  "birzuzendu",
+  "\u0111\u1ED5i h\u01B0\u1EDBng \u0111\u1EBFn \u0111\xE2y",
+  "doorverwijzing",
+  //nl
+  "header",
+  "i\u0307stiqam\u0259tl\u0259ndirm\u0259",
+  "lencong",
+  //ms
+  "ohjaa t\xE4nne",
+  "ohjaus",
+  "omdirigering",
+  //no
+  "p\u0101radres\u0101cija",
+  "patrz",
+  //pl
+  "p\u0159esm\u011Brov\xE1n\xED",
+  "p\u0159esm\u011Bruj",
+  "preusmeritev",
+  "preusmjerava",
+  "preusmjerenje",
+  "preusmjeri",
+  //hr
+  "przekierowanie",
+  "redir",
+  "redirecci\xF3",
+  "redireccion",
+  "redirecci\xF3n",
+  //es
+  "redirecionamento",
+  //pt
+  "redirect",
+  //en
+  "redirect3",
+  "redirection",
+  //fr
+  "redirige aqu\xED",
+  "redirige",
+  "redirixe equ\xED",
+  "rindirizz",
+  "rinvia",
+  //it
+  "stivre deike",
+  "suunamine",
+  "tilv\xEDsun",
+  "trimite",
+  "uudelleenohjaus",
+  "weiterleitung",
+  //de
+  "weiterleitungshinweis",
+  "yo\u02BBnaltirish",
+  "y\xF6nlendi\u0307r",
+  "y\xF6nlendi\u0307rme",
+  //tr
+  "\u03B1\u03BD\u03B1\u03BA\u03B1\u03C4\u03B5\u03C5\u03B8\u03C5\u03BD\u03C3\u03B7",
+  //el
+  "\u0430\u0439\u0434\u0430\u0443",
+  //kk
+  "\u0431\u0430\u0433\u044B\u0442\u0442\u0430\u043C\u0430",
+  "\u0431\u0443\u0441\u0441\u0438\u043D\u0430\u0431\u0438",
+  "\u0434\u04CF\u0430\u0441\u0430\u0445\u044C\u0430\u0436\u043E\u0440\u0433",
+  "\u043E\u0442 \u043F\u0440\u0435\u043D\u0430\u0441\u043E\u0447\u0432\u0430\u043D\u0435",
+  "\u043F\u0435\u0440\u0430\u043D\u0430\u043A\u0456\u0440\u0430\u0432\u0430\u043D\u043D\u0435",
+  "\u043F\u0435\u0440\u0430\u043D\u0430\u043A\u0456\u0440\u0430\u0432\u0430\u043D\u044C\u043D\u0435",
+  "\u043F\u0435\u0440\u0430\u043D\u0430\u043A\u0456\u0440\u043E\u045E\u0432\u0430\u0435\u0446\u0446\u0430 \u0441\u044E\u0434\u044B",
+  "\u043F\u0435\u0440\u0435\u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435",
+  //ru
+  "\u043F\u0435\u0440\u0435\u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u043D\u044F",
+  //uk
+  "\u043F\u0435\u0440\u0435\u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u043E",
+  "\u043F\u0440\u0435\u043D\u0430\u0441\u043E\u0447\u0443\u0432\u0430\u045A\u0435",
+  //mk
+  "\u043F\u0440\u0435\u0443\u0441\u043C\u0435\u0440\u0430\u0432\u0430 ",
+  "\u043F\u0440\u0435\u0443\u0441\u043C\u0435\u0440\u0438",
+  //sr
+  "\u043F\u0440\u0435\u0443\u0441\u043C\u0458\u0435\u0440\u0438",
+  "\u0440\u0430\u0432\u043E\u043D\u0430\u043A\u0443\u043D\u04E3",
+  "\u05D5\u05D5\u05D9\u05D9\u05D8\u05E2\u05E8\u05E4\u05D9\u05E8\u05DF",
+  //yi
+  "\u062A\u062D\u0648\u064A\u0644",
+  //ar
+  "\u062A\u063A\u06CC\u06CC\u0631_\u0645\u0633\u06CC\u0631",
+  "\u062A\u063A\u06CC\u06CC\u0631\u0645\u0633\u06CC\u0631",
+  //fa
+  "\u0631\u062C\u0648\u0639 \u0645\u06A9\u0631\u0631",
+  //ur
+  "\u0631\u062C\u0648\u0639_\u0645\u06A9\u0631\u0631",
+  //ur
+  "\u0905\u0928\u0941\u092A\u094D\u0930\u0947\u0937\u093F\u0924",
+  //hi
+  "\u092A\u0941\u0928\u0930\u094D\u0928\u093F\u0930\u094D\u0926\u0947\u0936\u0928",
+  //hi
+  "\u09AA\u09C1\u09A8\u09A8\u09BF\u09B0\u09CD\u09A6\u09C7\u09B6",
+  //bn
+  "\u09AA\u09C1\u09A8\u09B0\u09CD\u09A8\u09BF\u09B0\u09CD\u09A6\u09C7\u09B6",
+  "\u0DBA\u0DC5\u0DD2\u0DBA\u0DDC\u0DB8\u0DD4\u0DC0",
+  "\u0E40\u0E1B\u0E25\u0E35\u0E48\u0E22\u0E19\u0E17\u0E32\u0E07",
+  "\u1794\u17D2\u178F\u17BC\u179A\u1791\u17B8\u178F\u17B6\u17C6\u1784\u1791\u17C5",
+  //km
+  "\uB2E4\uB978 \uB73B \uB118\uC5B4\uC634",
+  "\u30EA\u30C0\u30A4\u30EC\u30AF\u30C8",
+  //ja
+  "\u8DF3\u8F49",
+  "\u8EE2\u9001",
+  //ja
+  "\u91CD\u5B9A\u5411"
+  //zh
+];
+
+var references = [
+  "references",
+  "reference",
+  "einzelnachweise",
+  "referencias",
+  "r\xE9f\xE9rences",
+  "notes et r\xE9f\xE9rences",
+  "\u811A\u6CE8",
+  "referenser",
+  "bronnen",
+  "\u043F\u0440\u0438\u043C\u0435\u0447\u0430\u043D\u0438\u044F"
+];
+
+var latLngs = [
+  ["latitude", "longitude"],
+  //english
+  ["lat", "lng"],
+  ["breitengrad", "l\xE4ngengrad"],
+  //german
+  ["latitud", "longitud"],
+  //spanish
+  ["zem\u011Bpisn\xE1 \u0161\xED\u0159ka", "zem\u011Bpisn\xE1 d\xE9lka"],
+  //czech
+  ["\u0448\u0438\u0440", "\u0434\u043E\u043B\u0433"]
+  //russian
+];
+
+const escapeStr = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const alternation = (list) => list.map(escapeStr).join("|");
+const compile = function(world) {
+  const i18n = world.i18n;
+  return {
+    // '#REDIRECT [[Foo]]'
+    redirectReg: new RegExp("^[ \n	]*?#(" + alternation(i18n.redirects) + ") *?(\\[\\[.{2,180}?\\]\\])", "i"),
+    // '[[Category:Foo]]'
+    catReg: new RegExp("\\[\\[(" + alternation(i18n.categories) + "):(.{2,178}?)]](w{0,10})", "gi"),
+    catRemoveReg: new RegExp("^\\[\\[:?(" + alternation(i18n.categories) + "):", "gi"),
+    // 'Foo (disambiguation)' page titles
+    disambigTitleReg: new RegExp(". \\((" + alternation(i18n.disambig_titles) + ")\\)$", "i"),
+    disambigTemplates: new Set(i18n.disambig_templates),
+    // '[[File:Foo.jpg]]'
+    fileReg: new RegExp("(" + alternation(i18n.images) + "):", "i"),
+    fileNamespaceReg: new RegExp("^(?:" + alternation(i18n.images) + "):", "i"),
+    imageFileReg: new RegExp("(" + alternation(i18n.images) + "):(.+?)[\\||\\]]", "iu"),
+    // known infobox template names, with i18n prefix forms like 'infobox_person'
+    infoboxReg: new RegExp("^(subst.)?(" + alternation(i18n.infoboxes) + ")(?=:| |\n|$)", "i"),
+    infoboxTemplates: /* @__PURE__ */ new Set([...Object.keys(world.meta.infoboxes), ...i18n.infoboxes]),
+    stubs: new Set(i18n.stubs)
+  };
+};
+
+const makeWorld = function() {
+  const world = {
+    templates,
+    meta: {
+      languages: languages$1,
+      namespaces: namespaceNames,
+      projects: aliases$3,
+      interwiki,
+      infoboxes: infoboxes$1
+      // ipac,
+    },
+    i18n: {
+      categories: categories,
+      disambig_templates: disambig_templates,
+      disambig_titles: disambig_titles,
+      images: images,
+      infoboxes: infoboxes,
+      latLngs: latLngs,
+      redirects: redirects,
+      references: references,
+      stubs: stubs
+    },
+    _cached: {},
+    // re-derive every compiled regex/set - call after changing world data
+    rebuild() {
+      this._cached = compile(this);
+    }
+  };
+  world.rebuild();
+  return world;
+};
+const defaultWorld = makeWorld();
+
+const startReg = /^infobox /i;
+const endReg = / infobox$/i;
+const yearIn = /^year in [A-Z]/i;
+const isInfobox = function(name) {
+  if (defaultWorld._cached.infoboxTemplates.has(name)) {
+    return true;
+  }
+  if (defaultWorld._cached.infoboxReg.test(name)) {
+    return true;
+  }
+  if (startReg.test(name) || endReg.test(name)) {
+    return true;
+  }
+  if (yearIn.test(name)) {
+    return true;
+  }
+  return false;
+};
+const infoboxType = (name) => {
+  const normalized = fmtName(name);
+  return normalized.replace(defaultWorld._cached.infoboxReg, "").trim();
+};
+
+const readCoordinate = (box, prefix, directions, limit, separator) => {
+  const field = (suffix) => box.get(prefix + separator + suffix)?.text().trim() || "";
+  const degrees = field("d");
+  if (!degrees) {
+    return null;
+  }
+  const d = Number(degrees);
+  const m = Number(field("m"));
+  const s = Number(field("s"));
+  const hemisphere = field(directions).toLowerCase();
+  if (![d, m, s].every(Number.isFinite) || m < 0 || m >= 60 || s < 0 || s >= 60) {
+    return null;
+  }
+  if (hemisphere && (hemisphere.length !== 1 || !directions.includes(hemisphere))) {
+    return null;
+  }
+  const value = Math.abs(d) + m / 60 + s / 3600;
+  if (value > limit) {
+    return null;
+  }
+  const negative = hemisphere ? hemisphere === "s" || hemisphere === "w" : d < 0;
+  return negative ? -value : value;
+};
+const dmsCoordinates = (box) => {
+  const separators = ["", "_"];
+  for (let i = 0; i < separators.length; i += 1) {
+    const separator = separators[i];
+    const lat = readCoordinate(box, "lat", "ns", 90, separator);
+    const lon = readCoordinate(box, "long", "ew", 180, separator);
+    if (lat !== null && lon !== null) {
+      return { template: "infobox/lat-long", lat, lon };
+    }
+  }
+  return null;
+};
+
+const imgProperties = [
+  "image",
+  "image2",
+  "logo",
+  "image_skyline",
+  "image_map",
+  //not tested
+  "image_map2",
+  //not tested
+  "image_flag",
+  "image_coat",
+  "image_file",
+  "\u753B\u50CF"
+];
+class Infobox {
+  #data;
+  #info;
+  constructor(data, info = defaults$1) {
+    this.#data = data;
+    this.#info = info;
+  }
+  type() {
+    return infoboxType(this.#data.template);
+  }
+  get kind() {
+    return this.#data.kind;
+  }
+  links() {
+    return Links.from(this.getAll(Object.keys(this.#data.data)).flatMap((block) => block.links()));
+  }
+  get(input) {
+    return this.getAll([input])[0];
+  }
+  getFirst(choices) {
+    for (let i = 0; i < choices.length; i += 1) {
+      const block = this.get(choices[i]);
+      if (block) {
+        return block;
+      }
+    }
+    return void 0;
+  }
+  getAll(choices) {
+    const values = choices.flatMap((key) => {
+      if (typeof key !== "string") {
+        return [];
+      }
+      const value = this.#data.data[normalizeKey(key)];
+      return value ?? [];
+    });
+    return Blocks.from(values.map((value) => new Block(value)));
+  }
+  images() {
+    const properties = imgProperties.filter((key) => this.get(key));
+    const images = properties.map((key) => {
+      const item = this.get(key);
+      const caption = this.get(key === "image2" ? "caption2" : "caption");
+      const image = parseImgString(item?.wikitext() || "", this.#info);
+      if (!image) {
+        return null;
+      }
+      if (caption) {
+        image.caption = caption.json("xl");
+      }
+      return new Image(image);
+    }).filter(Boolean);
+    return Images.from(images);
+  }
+  image() {
+    return this.images()[0];
+  }
+  text() {
+    return "";
+  }
+  json(format = "lg") {
+    const json = structuredClone(this.#data);
+    if (format === "xl") {
+      return json;
+    }
+    delete json.wiki;
+    return json;
+  }
+  wikitext() {
+    return this.#data.wiki || "";
+  }
+  coordinates() {
+    const latLngs = defaultWorld.i18n.latLngs;
+    for (let i = 0; i < latLngs.length; i += 1) {
+      let a = latLngs[i];
+      const latText = this.get(a[0])?.text().trim();
+      const lonText = this.get(a[1])?.text().trim();
+      if (!latText || !lonText) {
+        continue;
+      }
+      const lat = Number(latText);
+      const lon = Number(lonText);
+      if (typeof lat === "number" && typeof lon === "number" && Number.isFinite(lat) && Number.isFinite(lon)) {
+        return { template: "infobox/lat-long", lat, lon, wiki: this.wikitext() };
+      }
+    }
+    const coordinates = dmsCoordinates(this);
+    return coordinates ? { ...coordinates, wiki: this.wikitext() } : null;
+  }
+}
+
+class Infoboxes extends WrapperArray {
+  getFirst(choices) {
+    return this.find((infobox) => infobox.getFirst(choices));
+  }
+}
+wrapMethods(Infoboxes, Infobox);
+
+class List {
+  #data;
+  constructor(data) {
+    this.#data = data;
+  }
+  lines() {
+    return this.items();
+  }
+  items() {
+    return Blocks.from(this.#data.items.map((item) => new Block(item)));
+  }
+  links() {
+    return Links.from(this.items().flatMap((block) => block.links()));
+  }
+  json(format = "lg") {
+    const json = structuredClone(this.#data);
+    if (format === "xl") {
+      return json;
+    }
+    delete json.wiki;
+    return json;
+  }
+  text() {
+    const items = this.#data.items;
+    return items.map((s) => {
+      let str = s.text;
+      return " * " + str;
+    }).join("\n");
+  }
+  wikitext() {
+    return this.#data.wiki || "";
+  }
+}
+
+class Lists extends WrapperArray {
+}
+wrapMethods(Lists, List);
+
+class Reference {
+  #data;
+  constructor(data) {
+    this.#data = data;
+  }
+  get kind() {
+    return this.#data.kind;
+  }
+  links() {
+    const items = this.#data.links || this.#data.data.inline?.links || [];
+    return Links.from(items.map((item) => new Link(item)));
+  }
+  text() {
+    return "";
+  }
+  title() {
+    return this.#data.data.title || "";
+  }
+  wikitext() {
+    return this.#data.wiki || "";
+  }
+  json(format = "lg") {
+    const json = structuredClone(this.#data);
+    if (format === "xl") {
+      return json;
+    }
+    delete json.wiki;
+    return json;
+  }
+  static empty() {
+    return new Reference({ template: "", kind: "reference", wiki: "", text: "", data: {} });
+  }
+}
+
+class References extends WrapperArray {
+}
+wrapMethods(References, Reference);
+
+class Paragraph {
+  #data;
+  #info;
+  constructor(data, info = {}) {
+    this.#data = data;
+    this.#info = info;
+  }
+  sentences() {
+    const arr = this.#data.sentences || [];
+    return Blocks.from(arr.map((s) => new Block(s)));
+  }
+  lists() {
+    const arr = this.#data.lists || [];
+    return Lists.from(arr.map((l) => new List(l)));
+  }
+  images() {
+    const arr = this.#data.images || [];
+    return Images.from(arr.map((i) => new Image(i, this.#info)));
+  }
+  links() {
+    let links = [];
+    this.images().forEach((i) => {
+      links.push(...i.links());
+    });
+    this.lists().forEach((list) => {
+      links.push(...list.links());
+    });
+    this.sentences().forEach((s) => {
+      links.push(...s.links());
+    });
+    return Links.from(links);
+  }
+  text() {
+    let str = joinSentences(this.sentences().map((s) => s.text()));
+    this.lists().forEach((list) => {
+      str += "\n" + list.text();
+    });
+    return str;
+  }
+  json(format = "lg") {
+    const json = structuredClone({
+      wiki: this.wikitext(),
+      images: this.images().map((image) => image.json(format)),
+      lists: this.lists().map((list) => list.json(format)),
+      sentences: this.sentences().map((sentence) => sentence.json(format))
+    });
+    if (format === "xl") {
+      return json;
+    }
+    delete json.wiki;
+    return json;
+  }
+  wikitext() {
+    return this.#data.wiki;
+  }
+}
+
+class Table {
+  #data;
+  constructor(data) {
+    this.#data = data;
+  }
+  cells() {
+    let arr = [...this.#data.headers];
+    this.#data.rows.forEach((row) => {
+      Object.values(row).forEach((cell) => {
+        arr.push(cell);
+      });
+    });
+    return Blocks.from(arr.map((cell) => new Block(cell)));
+  }
+  links() {
+    return Links.from(this.cells().flatMap((block) => block.links()));
+  }
+  cols() {
+    const row = this.#data.rows[0];
+    return Object.keys(row || {});
+  }
+  headers() {
+    return Blocks.from(this.#data.headers.map((header) => new Block(header)));
+  }
+  rows() {
+    return this.#data.rows.map((row) => {
+      const result = {};
+      Object.keys(row).forEach((key) => {
+        result[key] = row[key].text || "";
+      });
+      const attrs = row._attrs;
+      if (attrs) {
+        Object.defineProperty(result, "_attrs", { value: attrs, enumerable: false });
+      }
+      return result;
+    });
+  }
+  // return only the requested cols
+  getRows(requested) {
+    const rows = this.rows();
+    if (!requested) {
+      return rows;
+    }
+    if (Array.isArray(requested)) {
+      const columns = requested.map((col) => normalizeKey(col));
+      return rows.map((row) => columns.map((col) => row[col]));
+    }
+    if (typeof requested === "string") {
+      return rows.map((row) => row[normalizeKey(requested)]);
+    }
+    if (typeof requested === "object") {
+      return rows.map((row) => {
+        let result = {};
+        Object.entries(requested).forEach(([key, val]) => {
+          if (val) {
+            let clean = normalizeKey(key);
+            result[clean] = row[clean];
+          }
+        });
+        return result;
+      });
+    }
+    return [];
+  }
+  json(format = "lg") {
+    const json = structuredClone(this.#data);
+    if (format === "xl") {
+      return json;
+    }
+    delete json.wiki;
+    return json;
+  }
+  text() {
+    return "";
+  }
+  wikitext() {
+    return this.#data.wiki || "";
+  }
+}
+
+class Tables extends WrapperArray {
+}
+wrapMethods(Tables, Table);
+
+class Template {
+  #data;
+  constructor(data) {
+    this.#data = data;
+  }
+  get type() {
+    return this.#data.kind || this.#data.template.toLowerCase().replace(/_/g, " ");
+  }
+  get kind() {
+    return this.#data.kind;
+  }
+  text() {
+    return this.#data.text;
+  }
+  links() {
+    return Links.from((this.#data.links || []).map((link) => new Link(link)));
+  }
+  json(format = "lg") {
+    const json = structuredClone(this.#data);
+    if (format === "xl") {
+      return json;
+    }
+    delete json.wiki;
+    json.links?.forEach((link) => {
+      delete link.wiki;
+    });
+    return json;
+  }
+  wikitext() {
+    return this.#data.wiki;
+  }
+  static empty() {
+    return new Template({ template: "", kind: null, wiki: "", text: "", data: {} });
+  }
+}
+
+class Templates extends WrapperArray {
+}
+wrapMethods(Templates, Template);
+
+class Section {
+  #data;
+  #info;
+  constructor(data, info = {}) {
+    this.#data = data;
+    this.#info = info;
+  }
+  title() {
+    return this.#data.title?.text || "";
+  }
+  index() {
+    return this.#data.index ?? null;
+  }
+  depth() {
+    return this.#data.depth || 0;
+  }
+  sentences() {
+    return Blocks.from(this.paragraphs().flatMap((p) => p.sentences()));
+  }
+  paragraphs() {
+    const arr = this.#data.paragraphs || [];
+    return arr.map((p) => new Paragraph(p, this.#info));
+  }
+  wikitext() {
+    return this.#data.wiki || "";
+  }
+  links() {
+    let arr = [];
+    if (this.#data.title?.links) {
+      this.#data.title.links.forEach((l) => {
+        arr.push(new Link(l));
+      });
+    }
+    this.infoboxes().forEach((templ) => {
+      arr.push(...templ.links());
+    });
+    this.references().forEach((s) => {
+      arr.push(...s.links());
+    });
+    this.templates().forEach((template) => {
+      arr.push(...template.links());
+    });
+    this.tables().forEach((t) => {
+      arr.push(...t.links());
+    });
+    this.paragraphs().forEach((s) => {
+      arr.push(...s.links());
+    });
+    arr = arr.flat().filter((val) => val !== void 0);
+    return Links.from(arr);
+  }
+  tables() {
+    const arr = this.#data.tables || [];
+    return Tables.from(arr.map((t) => new Table(t)));
+  }
+  templates(clue) {
+    let arr = this.#data.templates.map((t) => new Template(t));
+    if (clue) {
+      return Templates.from(arr.filter((t) => t.type === clue || fmtName(t.json().template) === fmtName(clue)));
+    }
+    return Templates.from(arr);
+  }
+  infoboxes() {
+    const arr = this.#data.infoboxes || [];
+    return Infoboxes.from(arr.map((t) => new Infobox(t, this.#info)));
+  }
+  coordinates() {
+    let arr = this.templates("coord");
+    let list = arr.map((tmpl) => ({ ...tmpl.json().data, wiki: tmpl.wikitext() }));
+    let inf = this.infoboxes()[0];
+    const coordinates = inf?.coordinates();
+    if (coordinates) {
+      list.push(coordinates);
+    }
+    return list;
+  }
+  lists() {
+    let arr = this.paragraphs().flatMap((p) => p.lists());
+    return Lists.from(arr);
+  }
+  images() {
+    return Images.from(this.paragraphs().flatMap((p) => p.images()));
+  }
+  references() {
+    const arr = this.#data.references || [];
+    return References.from(arr.map((r) => new Reference(r)));
+  }
+  //outputs
+  text() {
+    return this.paragraphs().map((p) => p.text()).join("\n\n");
+  }
+  json(format = "lg") {
+    if (format === "xl") {
+      return structuredClone(this.#data);
+    }
+    const { wiki: _wiki, ...data } = this.#data;
+    return structuredClone(data);
+  }
+  // aliases
+  citations() {
+    return this.references();
+  }
+  static empty() {
+    return new Section({
+      title: {},
+      depth: 0,
+      wiki: "",
+      index: 0,
+      templates: [],
+      infoboxes: [],
+      references: [],
+      tables: [],
+      paragraphs: []
+    });
+  }
+}
+
+const mayAlsoReg = /. may (also )?refer to\b/i;
+const notDisambig = /* @__PURE__ */ new Set(["about", "for", "for multi", "other people", "other uses of", "distinguish"]);
+const isDisambig = function(doc) {
+  const templates = doc.templates().map((tmpl) => tmpl.type);
+  let found = templates.find((name) => defaultWorld._cached.disambigTemplates.has(name));
+  if (found) {
+    return true;
+  }
+  let title = doc.title;
+  if (title && defaultWorld._cached.disambigTitleReg.test(title) === true) {
+    return true;
+  }
+  const names = doc.templates().map((tmpl) => (tmpl.json().template || "").toLowerCase());
+  let notDisamb = names.find((name) => notDisambig.has(name));
+  if (notDisamb) {
+    return false;
+  }
+  const str = doc.sentences()[0]?.text();
+  if (str && mayAlsoReg.test(str) === true) {
+    return true;
+  }
+  return false;
+};
+
+const shouldSkip = /^see also$/i;
+const escapeRegExp = (str) => {
+  str = str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return new RegExp(str, "i");
+};
+const getMain = function(s) {
+  const txt = s.text().slice(0, 120);
+  if (!/ is /.test(txt)) {
+    return null;
+  }
+  const link = s.links()[0];
+  if (!link) {
+    return null;
+  }
+  const reg = escapeRegExp(link.text());
+  const m = txt.match(reg);
+  if (!m || m.index > 20) {
+    return null;
+  }
+  return link.page();
+};
+const getTitle = function(doc) {
+  let title = doc.title || "";
+  title = title.replace(/ \(disambig|disambiguation\)$/, "");
+  return title;
+};
+const parseDisambig = function(doc) {
+  const opening = doc.sections()[0].sentences().slice(0, 2);
+  const hasIntroduction = opening.some((sentence) => / may (also )?refer to\b/i.test(sentence.text()));
+  if (!doc.isDisambiguation() && !hasIntroduction) {
+    return null;
+  }
+  const intro = doc.sections()[0].sentences()[0];
+  const main = getMain(intro);
+  const pages = [];
+  doc.sections().forEach((s) => {
+    const title = s.title();
+    if (shouldSkip.test(title) === true) {
+      return;
+    }
+    s.lists().forEach((list) => {
+      list.lines().forEach((line) => {
+        const found = line.json("lg");
+        if (found) {
+          found.page = found.links[0]?.page;
+          found.section = title;
+          pages.push(found);
+        }
+      });
+    });
+  });
+  return {
+    text: getTitle(doc),
+    main,
+    pages
+  };
+};
+
+const isStub = function(doc) {
+  const templates = doc.templates();
+  const allStubs = defaultWorld._cached.stubs;
+  return templates.some((t) => {
+    let name = t.type || "";
+    if (allStubs.has(name)) {
+      return true;
+    }
+    if (name === "stub" || name.endsWith("-stub")) {
+      return true;
+    }
+    let words = name.split(/[- ]/);
+    if (words.length > 1) {
+      let word = words.at(-1);
+      if (allStubs.has(word)) {
+        return true;
+      }
+    }
+    return false;
+  });
+};
+
+const sectionMap = function(doc, fn, clue) {
+  let arr = [];
+  doc.sections().forEach((sec) => {
+    let list = [];
+    {
+      list = sec[fn]();
+    }
+    list.forEach((t) => {
+      arr.push(t);
+    });
+  });
+  return arr;
+};
+
+class Document {
+  #data;
+  #info;
+  #world;
+  constructor(data, info, world) {
+    this.#data = data;
+    this.#info = withDefaults(info);
+    this.#world = world;
+  }
+  get title() {
+    if (this.#info.title) {
+      return this.#info.title;
+    }
+    let guess = null;
+    let sen = this.sentences()[0];
+    if (sen) {
+      guess = sen.bolds()[0]?.text || null;
+    }
+    return guess;
+  }
+  set title(str) {
+    this.#info.title = str;
+  }
+  get pageID() {
+    return this.#info.pageId || null;
+  }
+  set pageID(str) {
+    this.#info.pageId = str;
+  }
+  get wikidata() {
+    return this.#info.wikidata || null;
+  }
+  set wikidata(str) {
+    this.#info.wikidata = str;
+  }
+  get domain() {
+    return this.#info.domain || null;
+  }
+  set domain(str) {
+    this.#info.domain = str;
+  }
+  get language() {
+    return this.#info.lang || null;
+  }
+  set language(str) {
+    this.#info.lang = str;
+  }
+  get namespace() {
+    return this.#info.namespace ?? null;
+  }
+  set namespace(str) {
+    this.#info.namespace = str;
+  }
+  get revisionID() {
+    return this.#info.revisionId || null;
+  }
+  set revisionID(str) {
+    this.#info.revisionId = str;
+  }
+  get timestamp() {
+    return this.#info.timestamp || null;
+  }
+  set timestamp(str) {
+    this.#info.timestamp = str;
+  }
+  get description() {
+    return this.#info.description || null;
+  }
+  set description(str) {
+    this.#info.description = str;
+  }
+  get pageImage() {
+    return this.#info.pageImage || null;
+  }
+  set pageImage(str) {
+    this.#info.pageImage = str;
+  }
+  // the title as rendered on the page, set by {{DISPLAYTITLE:}}
+  get displayTitle() {
+    return this.#info.displayTitle || this.title;
+  }
+  set displayTitle(str) {
+    this.#info.displayTitle = str;
+  }
+  // the page's category sort-key, like 'Beauvoir, Simone de'
+  get defaultSort() {
+    return this.#info.defaultSort || null;
+  }
+  set defaultSort(str) {
+    this.#info.defaultSort = str;
+  }
+  // don'y allow setting thesese
+  wikitext() {
+    return this.#data.wiki || "";
+  }
+  options() {
+    return { ...this.#info };
+  }
+  // falls back to 'en' and 'wikipedia.org' when language or domain are missing
+  url() {
+    let title = this.#info.title;
+    if (!title) {
+      return null;
+    }
+    let lang = this.#info.lang;
+    let domain = this.#info.domain;
+    title = title.replace(/ /g, "_");
+    title = encodeURIComponent(title);
+    return `https://${lang}.${domain}/wiki/${title}`;
+  }
+  isRedirect() {
+    return Boolean(this.#data.isRedirect);
+  }
+  isStub() {
+    return isStub(this);
+  }
+  redirectTo() {
+    const link = this.#data.redirectTo;
+    return link ?? null;
+  }
+  isDisambiguation() {
+    if (this.#info.isDisambig === true) {
+      return true;
+    }
+    return isDisambig(this);
+  }
+  disambiguation() {
+    return parseDisambig(this);
+  }
+  categories() {
+    return this.#data.categories || [];
+  }
+  comments() {
+    return this.#data.comments || [];
+  }
+  sections() {
+    let arr = this.#data.sections || [];
+    return arr.map((section) => new Section(section, this.#info));
+  }
+  section(clue = 0) {
+    const sections = this.sections();
+    if (typeof clue === "number") {
+      return sections[clue] ?? Section.empty();
+    }
+    const title = clue.trim().toLowerCase();
+    const found = sections.find((section) => section.title().trim().toLowerCase() === title);
+    return found ?? Section.empty();
+  }
+  paragraphs() {
+    return this.sections().flatMap((section) => section.paragraphs());
+  }
+  sentences() {
+    return Blocks.from(this.sections().flatMap((section) => section.sentences()));
+  }
+  // searches the whole page, including infobox and gallery templates, for images
+  images() {
+    let arr = [];
+    if (this.#info.pageImage) {
+      const data = parseImgString(this.#info.pageImage, this.#info);
+      if (data) {
+        arr.push(new Image({ ...data, wiki: "" }));
+      }
+    }
+    this.infoboxes().forEach((info) => {
+      let img = info.image();
+      if (img) {
+        arr.push(img);
+      }
+    });
+    arr = arr.concat(sectionMap(this, "images"));
+    this.templates("gallery").forEach((template) => {
+      const data = template.json().data;
+      const images = data.images || [];
+      images.forEach((image) => {
+        if (image) {
+          arr.push(new Image(image, this.#info));
+        }
+      });
+    });
+    return Images.from(arr);
+  }
+  links(clue) {
+    let arr = this.sections().flatMap((sec) => sec.links());
+    if (clue) {
+      arr = arr.filter((l) => l.page() === clue);
+    }
+    return Links.from(arr);
+  }
+  link(clue) {
+    return this.links(clue)[0] ?? null;
+  }
+  lists() {
+    return Lists.from(sectionMap(this, "lists"));
+  }
+  tables() {
+    return Tables.from(sectionMap(this, "tables"));
+  }
+  templates(clue) {
+    const items = this.sections().flatMap((sec) => sec.templates());
+    if (clue) {
+      return Templates.from(items.filter((t) => t.type === clue || fmtName(t.json().template) === fmtName(clue)));
+    }
+    return Templates.from(items);
+  }
+  template(clue) {
+    return this.templates(clue)[0] ?? null;
+  }
+  references() {
+    const items = this.sections().flatMap((sec) => sec.references());
+    return References.from(items);
+  }
+  citations() {
+    return this.references();
+  }
+  // TODO: Coordinates contain plain data, not models. Keep the existing array API for now.
+  coordinates() {
+    return sectionMap(this, "coordinates");
+  }
+  infoboxes() {
+    let arr = this.sections().flatMap((sec) => sec.infoboxes());
+    arr = arr.sort((a, b) => {
+      if (Object.keys(a.json().data).length > Object.keys(b.json().data).length) {
+        return -1;
+      }
+      return 1;
+    });
+    return Infoboxes.from(arr);
+  }
+  text() {
+    if (this.isRedirect() === true) {
+      return "";
+    }
+    let arr = this.sections().map((sec) => sec.text());
+    return arr.join("\n\n");
+  }
+  json(format = "lg") {
+    let data = {};
+    data.title = this.title;
+    data.pageID = this.pageID;
+    data.categories = this.categories().slice();
+    data.wikidata = this.wikidata;
+    data.description = this.description;
+    data.isStub = this.isStub();
+    data.isDisambiguation = this.isDisambiguation();
+    data.isRedirect = this.isRedirect();
+    if (data.isRedirect === true) {
+      data.redirectTo = this.redirectTo();
+    }
+    data.sections = this.sections().map((i) => i.json(format));
+    const json = data;
+    if (format === "xl") {
+      json.wiki = this.wikitext();
+    }
+    return json;
+  }
+  debug() {
+    console.log("\n");
+    this.sections().forEach((sec) => {
+      let indent = " - ";
+      for (let i = 0; i < sec.depth(); i += 1) {
+        indent = " -" + indent;
+      }
+      console.log(indent + (sec.title() || "(Intro)"));
+    });
+    return this;
+  }
+  infobox() {
+    return this.infoboxes()[0] ?? null;
+  }
+  // aliases
+  isDisambig() {
+    return this.isDisambiguation();
+  }
+  redirectsTo() {
+    return this.redirectTo();
+  }
+  redirect() {
+    return this.redirectTo();
+  }
+}
+
+const isRedirect = function(wiki) {
+  if (!wiki) {
+    return false;
+  }
+  return defaultWorld._cached.redirectReg.test(wiki);
+};
+const parseRedirect = function(wiki, opts = defaults$1) {
+  let m = wiki.match(defaultWorld._cached.redirectReg);
+  if (m && m[2]) {
+    let links = parse_links(m[2], opts) || [];
+    return links[0];
+  }
+  return null;
+};
+
+const parse_categories = function(page) {
+  const { catReg: cat_reg, catRemoveReg: cat_remove_reg } = defaultWorld._cached;
+  let wiki = page.remaining;
+  const categories = [];
+  const categoryDetails = [];
+  let tmp = wiki.match(cat_reg);
+  if (tmp) {
+    tmp.forEach(function(c) {
+      const source = c;
+      c = c.replace(cat_remove_reg, "");
+      c = c.replace(/\|?[ *]?\]\]$/, "");
+      c = c.replace(/\|.*/, "");
+      if (c && !c.match(/[[\]]/)) {
+        categories.push(c.trim());
+        categoryDetails.push({ text: c.trim(), wiki: source });
+      }
+    });
+  }
+  page.remaining = wiki.replace(cat_reg, "");
+  page.categories = categories;
+  return page;
+};
+
+const referenceKinds = /* @__PURE__ */ new Set(["citation", "refn", "sfn", "harvnb", "source"]);
+const sortOut = (templates) => {
+  const res = { infoboxes: [], references: [], others: [] };
+  templates.forEach((obj) => {
+    if (referenceKinds.has(obj.kind)) {
+      res.references.push(obj);
+    } else if (obj.kind === "infobox" && obj.data.subbox?.text !== "yes") {
+      res.infoboxes.push(obj);
+    } else {
+      res.others.push(obj);
+    }
+  });
+  return res;
+};
+
+const open = "{";
+const close = "}";
+const findFlat = (wiki) => {
+  let depth = 0;
+  const list = [];
+  let start = -1;
+  const len = wiki.length;
+  for (let i = 0; i < len; i += 1) {
+    if (depth === 0) {
+      i = wiki.indexOf(open, i);
+      if (i === -1) {
+        break;
+      }
+      start = i;
+    }
+    const c = wiki[i];
+    if (c === open) {
+      depth += 1;
+    }
+    if (depth > 0) {
+      if (c === close) {
+        depth -= 1;
+        if (depth === 0) {
+          const tmpl = wiki.slice(start, i + 1);
+          if (tmpl.includes("{{") && tmpl.includes("}}")) {
+            list.push(tmpl);
+          }
+          continue;
+        }
+      }
+      if (depth === 1 && c !== open && c !== close) {
+        depth = 0;
+        continue;
+      }
+    }
+  }
+  return list;
+};
+
+const getName = function(tmpl) {
+  let name = null;
+  if (/^\{\{[^\n]+\|/.test(tmpl)) {
+    name = (tmpl.match(/^\{\{(.+?)\|/) || [])[1];
+  } else if (tmpl.indexOf("\n") !== -1) {
+    name = (tmpl.match(/^\{\{(.+)\n/) || [])[1];
+  } else {
+    name = (tmpl.match(/^\{\{(.+?)\}\}$/) || [])[1];
+  }
+  if (name) {
+    name = name.replace(/:.*/, "");
+    name = fmtName(name);
+  }
+  return name || null;
+};
+
+const hasTemplate = /\{\{/;
+const maxDepth = 40;
+const createNode = (tmpl) => {
+  return {
+    wiki: tmpl,
+    body: tmpl,
+    parserName: getName(tmpl),
+    children: []
+  };
+};
+const findChildren = (obj, depth = 1) => {
+  let wiki = obj.body.slice(2);
+  wiki = wiki.replace(/\}\}$/, "");
+  const list = findFlat(wiki);
+  obj.children = list.map(createNode);
+  if (obj.children.length === 0 || depth >= maxDepth) {
+    return obj;
+  }
+  for (let i = 0; i < obj.children.length; i += 1) {
+    const child = obj.children[i];
+    const inside = child.body.slice(2);
+    if (hasTemplate.test(inside)) {
+      findChildren(child, depth + 1);
+    }
+  }
+  return obj;
+};
+const findTemplates = (wiki) => {
+  let list = findFlat(wiki);
+  list = list.map(createNode);
+  list = list.map(findChildren);
+  return list;
 };
 
 const list = [
@@ -11419,20 +12062,25 @@ const attribute = (tag, pattern) => {
   return match?.[1] ?? match?.[2] ?? match?.[3] ?? "";
 };
 const nameReg = /^ *\{\{ *([^|}\n]+)/;
-const isCitationName = (str) => {
+const isCitationName = (str, opts) => {
   const name = str.match(nameReg)?.[1].trim().toLowerCase() || "";
-  return /^(cite|citation)/.test(name) || templates[name]?.kind === "citation";
+  if (/^(cite|citation)/.test(name)) {
+    return true;
+  }
+  const found = resolve(name, opts);
+  return found !== null && (/^(cite|citation)/.test(found.name) || found.handler?.kind === "citation");
 };
-const hasCitation = (str) => {
-  return isCitationName(str) && /\}\} *$/.test(str) && /citation needed/i.test(str) === false;
+const hasCitation = (str, opts) => {
+  return isCitationName(str, opts) && /\}\} *$/.test(str) && /citation needed/i.test(str) === false;
 };
 const parseBody = (text, wiki, opts = defaults$1) => {
   let prose = text;
-  const references = findFlat(text).filter(hasCitation).map((template) => {
+  const references = findFlat(text).filter((template) => hasCitation(template, opts)).map((template) => {
     prose = prose.replace(template, "");
     const name = template.match(nameReg)?.[1].trim().toLowerCase() || "";
-    const payload = Object.hasOwn(templates, name) ? runParser(templates[name], template, opts).data : parseTextArguments(template, [], opts);
-    const { template: _template, ...data } = payload || {};
+    const found = resolve(name, opts);
+    const payload = found && found.handler ? runParser(found.handler, template, opts).data : parseTextArguments(template, [], opts);
+    const { template: _template, ...data } = normalizeCite(payload) || {};
     const result = makeResult(template, "citation", data, "", opts);
     result.wiki = wiki;
     return result;
@@ -11567,14 +12215,13 @@ const parseElection = function(section, opts = defaults$1) {
   return section;
 };
 
-const namespace = new RegExp(`^(?:${images.join("|")}):`, "i");
 const parseGallery = function(section, opts = defaults$1) {
   section.remaining = section.remaining.replace(/<gallery([^>]*)>(.*?)<\/gallery>/gs, (wiki, _attrs, inside) => {
     let lines = inside.split(/\n/g);
     lines = lines.filter((str) => str && str.trim() !== "");
     lines = lines.map((str) => {
       str = str.trim();
-      if (!namespace.test(str)) {
+      if (!defaultWorld._cached.fileNamespaceReg.test(str)) {
         str = `File:${str}`;
       }
       return parseImgString(`[[${str}]]`, opts);
@@ -12355,8 +13002,8 @@ function nested_find(text) {
   return out;
 }
 
-const isFile = new RegExp("(" + images.join("|") + "):", "i");
 const findImages = function(paragraph, opts = defaults$1) {
+  const isFile = defaultWorld._cached.fileReg;
   let wiki = paragraph.remaining;
   let matches = nested_find(wiki);
   matches.forEach(function(s) {
@@ -12791,7 +13438,7 @@ const parseDoc = function(res, title) {
   }
   const results = found.map((o) => {
     const data = parse(o.wiki ?? "", o.meta);
-    return new Document(data, o.meta);
+    return new Document(data, o.meta, o.meta?.world || defaultWorld);
   });
   return isArray(title) ? results : results[0] ?? null;
 };
@@ -13122,45 +13769,8 @@ const fetchPage = function(title, options) {
   return fetchAll(groups, opts, headers).then((found) => parseDoc(found, title));
 };
 
-const makeWorld = function() {
-  const world = {
-    templates,
-    meta: {
-      languages: languages$1,
-      namespaces: namespaceNames,
-      projects: aliases$3,
-      interwiki
-      // ipac,
-    },
-    i18n: {
-      // used to build regex
-      categories: ["category"],
-      // templates that signal disambiguation pages
-      disambiguation: ["dab", "disamb", "disambig", "disambiguation"],
-      // page titles that signal disambiguation pages
-      disambig_titles: ["disambiguation"],
-      // filename prefixes that denote images
-      images: ["file", "image"],
-      // template names that denate infoboxes
-      infobox: ["infobox"],
-      //
-      latlngs: [
-        ["latitude", "longitude"],
-        ["lat", "lng"]
-      ],
-      //
-      redirects: ["redirect"],
-      //
-      references: ["references", "reference"],
-      //
-      stubs: ["stub"]
-    }
-  };
-  return world;
-};
-
 const wtf = function(wiki, info = {}) {
-  const world = makeWorld();
+  const world = info.world || defaultWorld;
   const data = parse(wiki, info);
   return new Document(data, info, world);
 };
@@ -13189,7 +13799,8 @@ wtf.fetch = function(title, options, cb) {
   return fetchPage(title, options);
 };
 wtf.extend = function(fn) {
-  fn(models, templates, infoboxes$1, i18n);
+  fn(models, templates, infoboxes$1, i18n, defaultWorld);
+  defaultWorld.rebuild();
   refreshWrappers();
   return this;
 };

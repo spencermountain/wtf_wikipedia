@@ -1,4 +1,4 @@
-// registers every language pack, applied one by one — 'other' carries the wikis without a pack of their own.
+// registers every language pack, applied one by one.
 // the shipped list + metadata lives in src/languages.json; imports stay static so rollup can bundle them
 import register from '../../register.js'
 import version from '../../_version.js'
@@ -29,7 +29,6 @@ import pl from '../pl/index.js'
 import pt from '../pt/index.js'
 import ro from '../ro/index.js'
 import ru from '../ru/index.js'
-import simple from '../simple/index.js'
 import sk from '../sk/index.js'
 import sr from '../sr/index.js'
 import sv from '../sv/index.js'
@@ -38,12 +37,11 @@ import tr from '../tr/index.js'
 import uk from '../uk/index.js'
 import vi from '../vi/index.js'
 import zh from '../zh/index.js'
-import other from '../other/index.js'
 
-// one pack per languages.json entry, 'other' last so packs win shared names
+// one pack per languages.json entry
 const packs = [
   ar, bg, bn, ca, cs, da, de, el, es, fa, fi, fr, he, hi, hr, hu, id, it, ja, ko, ms, nl,
-  no, pl, pt, ro, ru, simple, sk, sr, sv, th, tr, uk, vi, zh, other,
+  no, pl, pt, ro, ru, sk, sr, sv, th, tr, uk, vi, zh,
 ]
 
 const plugin = (_models, templates, infoboxes, i18n) => {

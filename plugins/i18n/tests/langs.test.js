@@ -5,7 +5,6 @@ import register from '../src/register.js'
 import plugin from '../src/plugin.js'
 import fr from '../src/langs/fr/index.js'
 import de from '../src/langs/de/index.js'
-import other from '../src/langs/other/index.js'
 
 test('i18n packs are pure data', (t) => {
   t.equal(fr.lang, 'fr', 'pack carries its language')
@@ -25,12 +24,6 @@ test('i18n de pack keeps its hand-written param maps', (t) => {
   t.equal(de.templates.internetquelle.template, 'cite web', 'internetquelle → cite web')
   t.equal(de.templates.internetquelle.map.titel, 'title', 'titel → title')
   t.equal(de.templates.internetquelle.map.abruf, 'access-date', 'abruf → access-date')
-  t.end()
-})
-
-test('i18n the other pack holds the long tail', (t) => {
-  t.ok(Object.keys(other.aliases).length > 400, 'hundreds of tail aliases')
-  t.deepEqual(other.templates, {}, 'tail names are pure aliases')
   t.end()
 })
 
@@ -111,7 +104,7 @@ test('i18n every pack registers against the real core registry', async (t) => {
     // throws at extend-time if a pack points at a core key that moved
     wtf.extend(plugin(mod.default))
   }
-  t.ok(packs.length > 35, `${packs.length} packs extended cleanly`)
+  t.ok(packs.length > 30, `${packs.length} packs extended cleanly`)
   t.end()
 })
 

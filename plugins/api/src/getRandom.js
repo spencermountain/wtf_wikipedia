@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import makeHeaders from './_headers.js'
-import { defaults, toUrlParams } from './_fns.js'
+import { defaults, toUrlParams, apiBase } from './_fns.js'
 
 const params = {
   action: 'query',
@@ -17,7 +17,7 @@ const params = {
 
 const fetchIt = function (url, options, http) {
   const headers = makeHeaders(options)
-  return http(url, headers).then((res) => {
+  return http(url, headers, options.silent).then((res) => {
     const pages = Object.keys(res.query.pages || {})
     if (pages.length === 0) {
       return { pages: [], cursor: null }
@@ -27,10 +27,7 @@ const fetchIt = function (url, options, http) {
 }
 
 const makeUrl = function (options) {
-  let url = `https://${options.lang}.wikipedia.org/${options.path}?`
-  if (options.domain) {
-    url = `https://${options.domain}/${options.path}?`
-  }
+  let url = apiBase(options)
   url += toUrlParams(params)
   return url
 }

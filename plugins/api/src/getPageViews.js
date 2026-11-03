@@ -1,5 +1,5 @@
 import makeHeaders from './_headers.js'
-import { normalize, defaults, toUrlParams } from './_fns.js'
+import { normalize, defaults, toUrlParams, apiBase } from './_fns.js'
 
 const params = {
   action: 'query',
@@ -10,10 +10,7 @@ const params = {
 }
 
 const makeUrl = function (title, options, append) {
-  let url = `https://${options.lang}.wikipedia.org/${options.path}?`
-  if (options.domain) {
-    url = `https://${options.domain}/${options.path}?`
-  }
+  let url = apiBase(options)
   url += toUrlParams(params)
   url += `&titles=${normalize(title)}`
   if (append) {
@@ -26,7 +23,7 @@ const getPageViews = function (doc, options, http) {
   options = { ...defaults, ...options }
   const url = makeUrl(doc.title, options)
   const headers = makeHeaders(options)
-  return http(url, headers).then((res) => {
+  return http(url, headers, options.silent).then((res) => {
     const pages = Object.keys(res.query.pages || {})
     if (pages.length === 0) {
       return []

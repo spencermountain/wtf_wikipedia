@@ -40,7 +40,7 @@ export function toUrlParams(obj) {
 
 export function fetchOne(url, options, http, prop) {
   const headers = makeHeaders(options)
-  return http(url, headers).then((res) => {
+  return http(url, headers, options.silent).then((res) => {
     const pages = Object.keys(res.query.pages || {})
     if (pages.length === 0) {
       return { pages: [], cursor: null }

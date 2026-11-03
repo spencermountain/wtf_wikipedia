@@ -41,7 +41,8 @@ When nothing matches, `root` and `type` are `null` and `score` is 0.
 ## api
 
 Document methods (all return promises):
-`doc.getRedirects()`, `doc.getIncoming()`, `doc.getPageViews()`.
+`doc.getRedirects()`, `doc.getIncoming()`, `doc.getPageViews()`,
+`doc.getHtml()`, `doc.getWikiscript()`, `doc.getExtract(opts?)`.
 
 Statics on `wtf`:
 
@@ -53,6 +54,9 @@ wtf.getTemplatePages(template, opts?)  // pages transcluding a template
 wtf.fetchList(titles, opts?)           // polite serial fetch of many pages → Promise<Document[]>
 wtf.getIncoming(title, opts?)          // pages linking to a title
 wtf.getRedirects(title, opts?)         // redirects pointing at a title
+wtf.getHtml(title, opts?)              // the server-rendered html, via the parse api
+wtf.getWikiscript(title, opts?)        // the current raw wikitext
+wtf.getExtract(title, opts?)           // official plaintext - { sections: 'wiki'|'plain'|'raw' }
 ```
 
 Image methods (formerly the `image` plugin):

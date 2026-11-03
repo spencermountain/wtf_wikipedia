@@ -10,6 +10,7 @@ export default {
   ichnobox: true,
   infraspeciesbox: true,
   mycomorphbox: true,
+  tx: true,
   oobox: true,
   'paraphyletic group': true,
   speciesbox: true,

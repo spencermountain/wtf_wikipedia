@@ -21210,9 +21210,9 @@ nlp.plugin(topics); //
 nlp.plugin(verbs); //
 
 const fromTemplate = function (doc) {
-  const tmpl = doc.template('short description');
+  const tmpl = doc.templates('short description')[0];
   if (tmpl) {
-    const json = tmpl.json() || {};
+    const json = tmpl.json().data || {};
     return json.description || ''
   }
   return null
@@ -21425,7 +21425,7 @@ const post = function (s) {
 
 // let count = 0
 const doSentence = function (doc, options) {
-  const sentence = doc.sentence(0);
+  const sentence = doc.sentences()[0];
   if (!sentence) {
     return ''
   }
@@ -21466,12 +21466,6 @@ const doSentence = function (doc, options) {
   if (isGood(after, options)) {
     return post(after)
   }
-  // console.log(after.text())
-  // count += 1
-  // console.log(count)
-  // console.log(after.match('#PastTense').text())
-  // console.log(after.text())
-  // console.log('\n')
   return ''
 };
 
@@ -21558,8 +21552,6 @@ const fromCategory = function (doc) {
     }
     return 0
   });
-  // console.log(cats)
-
   return cats[0]
 };
 
@@ -21567,7 +21559,7 @@ const useAn = function (str) {
   const a_regexs = [
     /^onc?e/i, //'wu' sound of 'o'
     /^u[bcfhjknq-t][aeiou]/i, // 'yu' sound for hard 'u'
-    /^eul/i
+    /^eul/i,
   ];
   for (let i = 0; i < a_regexs.length; i++) {
     if (a_regexs[i].test(str)) {
@@ -21584,7 +21576,10 @@ const useAn = function (str) {
 // 'American songwriters' to 'an American songwriter'
 const changeCat = function (cat, options) {
   const c = nlp(cat);
-  const hadCapital = c.terms().out('array').map((w) => /^[A-Z]/.test(w));
+  const hadCapital = c
+    .terms()
+    .out('array')
+    .map((w) => /^[A-Z]/.test(w));
   c.nouns().toSingular();
   // compromise-14 lowercases words when it singularizes them - restore our capitals
   const terms = c.terms();
@@ -21598,7 +21593,6 @@ const changeCat = function (cat, options) {
     let article = 'A';
     // let noun = c.nouns(0)
     if (useAn(cat) === true) {
-      // console.log(c.nouns(0))
       // article = c.nouns(0).json({ terms: false })[0].article || article
       article = 'An';
     }
@@ -21627,7 +21621,7 @@ const defaults = {
   sentence: true,
   category: true,
   max: 80,
-  min: 3
+  min: 3,
 };
 
 const seemsGood = function (txt, options) {
@@ -21664,13 +21658,8 @@ const plugin = function (models) {
 
   // should we use 'it', 'he', 'they'...
   models.Doc.prototype.article = function () {
-    let txt = '';
-    // prefer the 2nd sentence
-    if (this.sentence(1)) {
-      txt = this.sentence(1).text();
-    } else if (this.sentence(0)) {
-      txt = this.sentence(0).text();
-    }
+    const sentences = this.sentences();
+    const txt = (sentences[1] || sentences[0])?.text() || '';
     const doc = nlp(txt);
     const found = doc.match('(#Pronoun|#Article)').eq(0).text().toLowerCase();
     return found || 'it'
@@ -21678,8 +21667,12 @@ const plugin = function (models) {
 
   // was event in past? is person dead?
   models.Doc.prototype.tense = function () {
-    const txt = this.sentence() ? this.sentence().text() : '';
+    const txt = this.sentences()[0]?.text() || '';
     const doc = nlp(txt);
+    // 'will be held' - check the future forms before the past-participle
+    if (doc.has('will #Adverb? be') || doc.has('(a|an) (upcoming|planned)')) {
+      return 'Future'
+    }
     const copula = doc.match('#Copula+').first();
     if (copula.has('was')) {
       return 'Past'
@@ -21687,9 +21680,6 @@ const plugin = function (models) {
     const vb = doc.verbs(0);
     if (vb.has('#PastTense')) {
       return 'Past'
-    }
-    if (doc.has('will #Adverb? be') || doc.has('(a|an) (upcoming|planned)')) {
-      return 'Future'
     }
     return 'Present'
   };

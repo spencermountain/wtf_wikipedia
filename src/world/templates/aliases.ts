@@ -147,7 +147,7 @@ let aliases = {
 
 //multiple aliases
 let multi = {
-  citation: ['cite'],
+  citation: ['cite', 'cite study'],
 
   'no spam': ['email', '@', 'no spam blue'],
   'angle bracket': ['angbr', 'infix', 'angbr ipa'],
@@ -165,17 +165,17 @@ let multi = {
 
   abbr: ['tooltip', 'abbrv', 'define'],
 
-  sfn: ['sfnref', 'harvid', 'harvnb'],
+  sfn: ['sfnref', 'harvid', 'harvnb', 'snf'],
 
-  'birth date and age': ['death date and age', 'bda', 'b-da'],
+  'birth date and age': ['death date and age', 'bda', 'b-da', 'birthdate and age', 'birthdateandage'],
 
   currentmonth: ['localmonth', 'currentmonthname', 'currentmonthabbrev'],
 
-  coord: ['coor', 'coor title dms', 'coor title dec', 'coor dms', 'coor dm', 'coor dec', 'coordinate'],
+  coord: ['coor', 'coor title dms', 'coor title dec', 'coor dms', 'coor dm', 'coor dec', 'coordinate', 'coordinates', 'coords', 'coor at dms', 'location'],
 
   'columns-list': ['cmn', 'col-list', 'columnslist', 'collist'],
 
-  nihongo: ['nihongo2', 'nihongo3', 'nihongo-s', 'nihongo foot'],
+  nihongo: ['nihongo2', 'nihongo3', 'nihongo-s', 'nihongo foot', 'nihongo4', 'jp'],
 
   plainlist: ['flatlist', 'plain list'],
 
@@ -267,7 +267,31 @@ let multi = {
     'start date and age',
     'end date and age',
     'dob',
+    'startdate',
+    'start year',
+    'release date',
   ],
+
+  // template redirects on simple-english wikipedia (moved in from wtf-plugin-i18n)
+  'commons cat': [
+    'c cat',
+    'category commons',
+    'ccat',
+    'commons category',
+    'commonscat',
+    'commonscat2',
+    'commonscategory',
+    'commonsimages cat',
+    'wikimedia commons cat',
+  ],
+  reflist: ['footnotes', 'ref list', 'reference', 'reference list', 'refs', 'rflist'],
+  main: ['hurricane main', 'main articles', 'mainarticle'],
+  flag: ['country', 'flag country'],
+  flagicon: ['flag icon', 'flagiconb'],
+  portal: ['portal box'],
+  'cite journal': ['citejournal', 'bibisbn'],
+  'cite book': ['book source', 'cite manual', 'cite work', 'citebook', 'citebooks'],
+  'cite web': ['cita web', 'cite web/german', 'cite website', 'citeweb', 'internetquelle', 'web link', 'web-cite'],
 
   'start-date': [
     'end-date',

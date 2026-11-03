@@ -7,7 +7,7 @@ const defaults$4 = {
   redirects: true,
   infoboxes: true,
   templates: true,
-  sections: true
+  sections: true,
 };
 //we should try to make this look like the wikipedia does, i guess.
 const softRedirect = function (doc) {
@@ -31,9 +31,11 @@ const toMarkdown$6 = function (options) {
   }
   //render infoboxes (up at the top)
   if (options.infoboxes === true && options.templates === true) {
-    md += this.infoboxes()
-      .map((infobox) => infobox.markdown(options))
-      .join('\n\n');
+    const boxes = this.infoboxes().map((infobox) => infobox.markdown(options));
+    if (boxes.length > 0) {
+      // a blank line, so the text after is not read as another table row
+      md += boxes.join('\n\n') + '\n';
+    }
   }
   //render each section
   if (options.sections === true || options.paragraphs === true || options.sentences === true) {
@@ -44,7 +46,7 @@ const toMarkdown$6 = function (options) {
   }
   //default false
   if (options.references === true) {
-    md += '## References';
+    md += '\n\n## References\n';
     md += this.citations()
       .map((c) => c.markdown(options))
       .join('\n');
@@ -52,12 +54,30 @@ const toMarkdown$6 = function (options) {
   return md
 };
 
+// CJK scripts do not put spaces between sentences
+const cjk = '\\p{Script=Han}\\p{Script=Hiragana}\\p{Script=Katakana}\\p{Script=Bopomofo}。、，！？：；「」『』（）';
+const cjkEnd = new RegExp(`[${cjk}]$`, 'u');
+const cjkStart = new RegExp(`^[${cjk}]`, 'u');
+
+// join rendered sentences, deciding the separator from their plain text
+const joinSentences = (sentences, render) =>
+  sentences.reduce((str, s, i) => {
+    const out = render(s);
+    if (i === 0) {
+      return out
+    }
+    if (cjkEnd.test(sentences[i - 1].text()) && cjkStart.test(s.text())) {
+      return str + out
+    }
+    return str + ' ' + out
+  }, '');
+
 const defaults$3 = {
   headers: true,
   images: true,
   tables: true,
   lists: true,
-  paragraphs: true
+  paragraphs: true,
 };
 
 const doSection = function (options) {
@@ -92,25 +112,24 @@ const doSection = function (options) {
     }
   }
 
-  //make a markdown bullet-list
-  if (options.lists === true) {
-    const lists = this.lists();
-    if (lists.length > 0) {
-      md += lists.map((list) => list.markdown(options)).join('\n');
-      md += '\n';
+  const doLists = (lists) => {
+    if (options.lists !== true || lists.length === 0) {
+      return ''
     }
-  }
+    return lists.map((list) => list.markdown(options)).join('\n')
+  };
 
-  //finally, write the sentence text.
+  //write the sentence text, with each paragraph's lists after its text
   if (options.paragraphs === true || options.sentences === true) {
     md += this.paragraphs()
       .map((p) => {
-        return p
-          .sentences()
-          .map((s) => s.markdown(options))
-          .join(' ')
+        const parts = [joinSentences(p.sentences(), (s) => s.markdown(options)), doLists(p.lists())];
+        return parts.filter((str) => str).join('\n')
       })
+      .filter((str) => str)
       .join('\n\n');
+  } else {
+    md += doLists(this.lists());
   }
 
   return md
@@ -137,55 +156,138 @@ function escapeRegExp(str) {
   return str.replace(/[\-[\]/{}()*+?.\\^$|]/g, '\\$&')
 }
 
+// rough plaintext of some wikitext, enough to count words
+const stripWiki = (str) =>
+  str
+    .replace(/<ref[^>]*\/>/g, '')
+    .replace(/<ref[\s\S]*?<\/ref>/g, '')
+    .replace(/\{\{[^{}]*\}\}/g, '')
+    .replace(/\{\{[^{}]*\}\}/g, '') // once more, for one level of nesting
+    .replace(/\[\[(?:[^\][|]*\|)?([^\][]*)\]\]/g, '$1')
+    .replace(/\[https?:\/\/\S+ ([^\]]*)\]/g, '$1')
+    .replace(/'{2,}/g, '');
+
+// count how many times `text` appears in `str`
+const countIn = (str, text) => {
+  let n = 0;
+  let at = str.indexOf(text);
+  while (at !== -1) {
+    n += 1;
+    at = str.indexOf(text, at + text.length);
+  }
+  return n
+};
+
+// which occurrence of its text does this link stand on?
+// found by locating the link in the sentence's wikitext and counting the same words before it
+const linkOccurrence = function (sentence, link, cursor = { at: 0 }) {
+  const wiki = sentence.wikitext() || '';
+  const linkWiki = link.wikitext() || '';
+  const text = link.text() || link.page() || '';
+  if (!wiki || !linkWiki || !text) {
+    return 0
+  }
+  const idx = wiki.indexOf(linkWiki, cursor.at);
+  if (idx === -1) {
+    return 0
+  }
+  cursor.at = idx + linkWiki.length;
+  return countIn(stripWiki(wiki.slice(0, idx)), text)
+};
+
 //sometimes text-replacements can be ambiguous - words used multiple times..
-const smartReplace = function (all, text, result) {
+// `nth` picks which occurrence (0-based) to replace; falls back to the first
+const smartReplace = function (all, text, result, nth = 0) {
   if (!text || !all) {
     return all
   }
-
   if (typeof all === 'number') {
     all = String(all);
   }
-  text = escapeRegExp(text);
+  const fn = typeof result === 'function' ? result : () => result;
   //try a word-boundary replace
-  const reg = new RegExp('\\b' + text + '\\b');
-  if (reg.test(all) === true) {
-    all = all.replace(reg, result);
-  } else {
-    //otherwise, fall-back to a much messier, dangerous replacement
-    // console.warn('missing \'' + text + '\'');
-    all = all.replace(text, result);
+  const reg = new RegExp('\\b' + escapeRegExp(text) + '\\b', 'g');
+  const matches = [...all.matchAll(reg)];
+  if (matches.length > 0) {
+    const m = matches[nth] || matches[0];
+    return all.slice(0, m.index) + fn(m[0]) + all.slice(m.index + m[0].length)
   }
-  return all
+  //otherwise, fall-back to a much messier, dangerous replacement
+  let at = all.indexOf(text);
+  for (let i = 0; i < nth && at !== -1; i += 1) {
+    const next = all.indexOf(text, at + text.length);
+    if (next === -1) {
+      break
+    }
+    at = next;
+  }
+  if (at === -1) {
+    return all
+  }
+  return all.slice(0, at) + fn(text) + all.slice(at + text.length)
 };
 
 const defaults$1 = {
   links: true,
-  formatting: true
+  formatting: true,
 };
+
+// escape the characters markdown would otherwise read as markup
+const escape = (str) => String(str).replace(/[\\*_`[\]]/g, '\\$&');
+
+const BOLD_OPEN = '';
+const BOLD_CLOSE = '';
+const ITALIC_OPEN = '';
+const ITALIC_CLOSE = '';
+// one private-use char per link, so later replacements never touch generated markup
+const linkToken = (n) => String.fromCharCode(0xe010 + n);
 
 //create links, bold, italic in markdown
 const toMarkdown$4 = function (options) {
   options = { ...defaults$1, ...options };
-  let md = this.text();
+  let md = escape(this.text());
+  const links = [];
   //turn links back into links
   if (options.links === true) {
+    const cursor = { at: 0 };
     this.links().forEach((link) => {
-      const mdLink = link.markdown();
-      const str = link.text() || link.page();
-      md = smartReplace(md, str, mdLink);
+      const str = escape(link.text() || link.page());
+      const nth = linkOccurrence(this, link, cursor);
+      const href = (link.href() || '').replace(/ /g, '_');
+      const token = linkToken(links.length);
+      links.push({ text: str, href });
+      md = smartReplace(md, str, () => token, nth);
     });
   }
-  //turn bolds into **bold**
+  // wrap a span - in the text, or inside a link's label
+  const wrap = (str, open, close) => {
+    const reg = new RegExp('\\b' + str.replace(/[\-[\]/{}()*+?.\\^$|]/g, '\\$&') + '\\b');
+    if (reg.test(md) || md.includes(str)) {
+      md = smartReplace(md, str, () => open + str + close);
+      return
+    }
+    const link = links.find((l) => l.text === str);
+    if (link) {
+      link.text = open + link.text + close;
+    }
+  };
   if (options.formatting === true) {
-    this.bolds().forEach((b) => {
-      md = smartReplace(md, b, '**' + b + '**');
-    });
-    //support *italics*
-    this.italics().forEach((i) => {
-      md = smartReplace(md, i, '*' + i + '*');
-    });
+    this.bolds().forEach(({ text: b }) => wrap(escape(b), BOLD_OPEN, BOLD_CLOSE));
+    this.italics().forEach(({ text: i }) => wrap(escape(i), ITALIC_OPEN, ITALIC_CLOSE));
   }
+  md = [...md]
+    .map((c) => {
+      const n = c.charCodeAt(0) - 0xe010;
+      if (n < 0 || n >= links.length) {
+        return c
+      }
+      return '[' + links[n].text + '](' + links[n].href + ')'
+    })
+    .join('')
+    .replace(//g, '**')
+    .replace(//g, '**')
+    .replace(//g, '*')
+    .replace(//g, '*');
   return md
 };
 
@@ -195,13 +297,13 @@ const toMarkdown$3 = function () {
   href = href.replace(/ /g, '_');
   // href = encodeURIComponent(href)
   //use the url as the text, for bare external links like [https://foo.com]
-  const str = this.text() || this.page() || this.site() || '';
+  const str = this.text() || this.page() || href;
   return '[' + str + '](' + href + ')'
 };
 
 //markdown images are like this: ![alt text](href)
 const toMarkdown$2 = function () {
-  let alt = this.data.file.replace(/^(file|image):/i, '');
+  let alt = this.file().replace(/^(file|image):/i, '');
   alt = alt
     .replace(/\.(jpg|jpeg|png|gif|svg)/i, '')
     .split('_')
@@ -230,7 +332,7 @@ const dontDo = {
   caption: true,
   alt: true,
   signature: true,
-  'signature alt': true
+  signature_alt: true
 };
 
 const defaults = {
@@ -238,18 +340,19 @@ const defaults = {
 };
 
 // render an infobox as a table with two columns, key + value
-const doInfobox = function (options) {
+const doInfobox = function (Sentence, options) {
   options = { ...defaults, ...options };
+  const data = this.json().data;
   let md = '|' + pad('', 35) + '|' + pad('', 30) + '|\n';
   md += '|' + pad('---', 35) + '|' + pad('---', 30) + '|\n';
   //todo: render top image here (somehow)
-  Object.keys(this.data).forEach((k) => {
+  Object.keys(data).forEach((k) => {
     if (dontDo[k] === true) {
       return
     }
     const key = '**' + k + '**';
-    const s = this.data[k];
-    let val = s.markdown(options);
+    const blocks = [].concat(data[k]);
+    let val = blocks.map((block) => new Sentence(block).markdown(options)).join(' ');
     //markdown is more newline-sensitive than wiki
     val = val.replaceAll('\n', ', ');
     md += '|' + pad(key, 35) + '|' + pad(val, 30) + ' |\n';
@@ -258,10 +361,10 @@ const doInfobox = function (options) {
 };
 
 //
-const toMarkdown$1 = function (options) {
+const toMarkdown$1 = function (Sentence, options) {
   return this.lines()
     .map((s) => {
-      const str = s.markdown(options);
+      const str = new Sentence(s.json('xl')).markdown(options);
       return ' * ' + str
     })
     .join('\n')
@@ -269,22 +372,23 @@ const toMarkdown$1 = function (options) {
 
 //
 const toMarkdown = function () {
-  if (this.data && this.data.url && this.data.title) {
-    return `⌃ [${this.data.title}](${this.data.url})`
-  } else if (this.data.encyclopedia) {
-    return `⌃ ${this.data.encyclopedia}`
-  } else if (this.data.title) {
+  const data = this.json().data;
+  if (data && data.url && data.title) {
+    return `⌃ [${data.title}](${data.url})`
+  } else if (data.encyclopedia) {
+    return `⌃ ${data.encyclopedia}`
+  } else if (data.title) {
     //cite book, etc
-    let str = this.data.title;
-    if (this.data.author) {
-      str += this.data.author;
+    let str = data.title;
+    if (data.author) {
+      str += ' ' + data.author;
     }
-    if (this.data.first && this.data.last) {
-      str += this.data.first + ' ' + this.data.last;
+    if (data.first && data.last) {
+      str += ' ' + data.first + ' ' + data.last;
     }
     return `⌃ ${str}`
-  } else if (this.inline) {
-    return `⌃ ${this.inline.markdown()}`
+  } else if (data.inline) {
+    return `⌃ ${data.inline.text}`
   }
   return ''
 };
@@ -303,20 +407,19 @@ const makeRow = (arr) => {
 };
 
 //markdown tables are weird
-const doTable = function (options) {
+const doTable = function (Sentence, options) {
   let md = '';
   if (!this || this.length === 0) {
     return md
   }
-  const rows = this.data;
+  const rows = this.json().rows;
+  if (rows.length === 0) {
+    return ''
+  }
   const keys = Object.keys(rows[0]);
-  //first, grab the headers
-  //remove auto-generated number keys
-  const headers = keys.map((k) => {
-    if (/^col[0-9]/.test(k) === true) {
-      return ''
-    }
-    return k
+  const blocks = this.headers();
+  const headers = keys.map((_key, i) => {
+    return blocks[i] ? new Sentence(blocks[i].json('xl')).markdown(options) : ''
   });
   //draw the header (necessary!)
   md += makeRow(headers) + '\n';
@@ -329,7 +432,7 @@ const doTable = function (options) {
         if (!row[k]) {
           return ''
         }
-        return row[k].markdown(options) || ''
+        return new Sentence(row[k]).markdown(options) || ''
       });
       //make it a nice padded row
       return makeRow(arr)
@@ -342,12 +445,18 @@ const plugin = function (models) {
   models.Doc.prototype.markdown = toMarkdown$6;
   models.Section.prototype.markdown = doSection;
   models.Paragraph.prototype.markdown = toMarkdown$5;
-  models.Sentence.prototype.markdown = toMarkdown$4;
+  models.Block.prototype.markdown = toMarkdown$4;
   models.Link.prototype.markdown = toMarkdown$3;
   models.Image.prototype.markdown = toMarkdown$2;
-  models.Infobox.prototype.markdown = doInfobox;
-  models.Table.prototype.markdown = doTable;
-  models.List.prototype.markdown = toMarkdown$1;
+  models.Infobox.prototype.markdown = function (options) {
+    return doInfobox.call(this, models.Block, options)
+  };
+  models.Table.prototype.markdown = function (options) {
+    return doTable.call(this, models.Block, options)
+  };
+  models.List.prototype.markdown = function (options) {
+    return toMarkdown$1.call(this, models.Block, options)
+  };
   models.Reference.prototype.markdown = toMarkdown;
 };
 plugin.version = version;

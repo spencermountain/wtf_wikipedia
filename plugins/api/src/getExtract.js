@@ -29,7 +29,7 @@ const getExtract = function (title, options, http) {
   }
   const url = makeUrl(title, options, sections)
   const headers = makeHeaders(options)
-  return http(url, headers).then((res) => {
+  return http(url, headers, options.silent).then((res) => {
     return res?.query?.pages?.[0]?.extract ?? null
   })
 }

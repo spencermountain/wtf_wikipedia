@@ -8,6 +8,8 @@
 - drop old methods:
   - **[remove]** - Section `.children()` `.nextSibling()` `.prevSibling()` navigation
   - **[remove]** - deprecated method aliases `.plaintext()` etc
+  - **[remove]** - `wtf.fetch()` callback/errback form - the promise is the only contract now
+  - **[remove]** - `models.http` plugin helper - plugins use native fetch directly
   - **[change]** - metadata access fns now getter/setters `.wikidata(id)` -> `.wikidata = id`
 
 - target Node 18, ES2022:
@@ -16,6 +18,7 @@
   - **[fix]** - use cleaner own-property checks
 
 - fetch improvements:
+  - **[new]** - colored console warnings explain api errors - 429 rate-limits, 403 user-agent blocks, maxlag
   - **[new]** - `{silent: true}` fetch option suppresses console warnings
   - **[new]** - `.displayTitle` and `.defaultSort` document properties
   - **[change]** - `.description` is now set in any language, via the api's description module

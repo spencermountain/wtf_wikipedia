@@ -756,7 +756,7 @@
     Sexuality: [/ \(.*?\bsex.*?\)$/i]
   };
 
-  const paren = /\((.*)\)$/;
+  const paren = /\(([^()]*)\)$/;
 
   const byTitle = function (doc) {
     const title = doc.title;

@@ -172,7 +172,7 @@ const smartReplace = function (all, text, result) {
 
 const defaults$1 = {
   links: true,
-  formatting: true
+  formatting: true,
 };
 // create links, bold, italic in latex
 const toLatex$4 = function (options) {
@@ -187,19 +187,17 @@ const toLatex$4 = function (options) {
     });
   }
   if (options.formatting === true) {
-    if (this.data.fmt) {
-      if (this.data.fmt.bold) {
-        this.data.fmt.bold.forEach((str) => {
-          const tag = '\\textbf{' + str + '}';
-          text = smartReplace(text, str, tag);
-        });
-      }
-      if (this.data.fmt.italic) {
-        this.data.fmt.italic.forEach((str) => {
-          const tag = '\\textit{' + str + '}';
-          text = smartReplace(text, str, tag);
-        });
-      }
+    if (this.bolds()) {
+      this.bolds().forEach(({ text: str }) => {
+        const tag = '\\textbf{' + str + '}';
+        text = smartReplace(text, str, tag);
+      });
+    }
+    if (this.italics()) {
+      this.italics().forEach(({ text: str }) => {
+        const tag = '\\textit{' + str + '}';
+        text = smartReplace(text, str, tag);
+      });
     }
   }
   return text
@@ -216,7 +214,7 @@ const toLatex$3 = function () {
 const toLatex$2 = function () {
   const alt = this.alt();
   let out = '\\begin{figure}';
-  out += '\n\\includegraphics[width=\\linewidth]{' + this.thumb() + '}';
+  out += '\n\\includegraphics[width=\\linewidth]{' + this.thumbnail() + '}';
   out += '\n\\caption{' + alt + '}';
   // out += '\n%\\label{fig:myimage1}';
   out += '\n\\end{figure}';
@@ -228,7 +226,7 @@ const dontDo = {
   caption: true,
   alt: true,
   signature: true,
-  'signature alt': true
+  signature_alt: true
 };
 
 const defaults = {
@@ -236,18 +234,19 @@ const defaults = {
 };
 
 //
-const infobox = function (options) {
+const infobox = function (Sentence, options) {
   options = { ...defaults, ...options };
+  const data = this.json().data;
   let out = '\n \\vspace*{0.3cm} % Info Box\n\n';
   out += '\\begin{tabular}{|@{\\qquad}l|p{9.5cm}@{\\qquad}|} \n';
   out += '  \\hline  %horizontal line\n';
   //todo: render top image here
-  Object.keys(this.data).forEach((k) => {
+  Object.keys(data).forEach((k) => {
     if (dontDo[k] === true) {
       return
     }
-    const s = this.data[k];
-    const val = s.latex(options);
+    const blocks = [].concat(data[k]);
+    const val = blocks.map((block) => new Sentence(block).latex(options)).join(' ');
     out += '  % ---------- \n';
     out += '      ' + k + ' & \n';
     out += '      ' + val + '\\\\ \n';
@@ -259,10 +258,10 @@ const infobox = function (options) {
 };
 
 //
-const toLatex$1 = function (options) {
+const toLatex$1 = function (Sentence, options) {
   let out = '\\begin{itemize}\n';
   this.lines().forEach((s) => {
-    out += '  \\item ' + s.text(options) + '\n';
+    out += '  \\item ' + new Sentence(s.json('xl')).latex(options) + '\n';
   });
   out += '\\end{itemize}\n';
   return out
@@ -270,13 +269,16 @@ const toLatex$1 = function (options) {
 
 //not so impressive right now
 const toLatex = function () {
-  const str = this.title();
+  const str = this.json().data.title || '';
   return '⌃ ' + str + '\n'
 };
 
 //create a formal LATEX table
-const doTable = function (options) {
-  const rows = this.data;
+const doTable = function (Sentence, options) {
+  const rows = this.json().rows;
+  if (rows.length === 0) {
+    return ''
+  }
   let out = '\n%\\vspace*{0.3cm}\n';
   out +=
     '\n% BEGIN TABLE: only left align columns in LaTeX table with horizontal line separation between columns';
@@ -291,11 +293,12 @@ const doTable = function (options) {
   //make header
   out += '\n  % BEGIN: Table Header';
   let vSep = '   ';
-  Object.keys(rows[0]).forEach((k) => {
+  const headers = this.headers();
+  Object.keys(rows[0]).forEach((_key, i) => {
     out += '\n    ' + vSep;
 
-    if (k.indexOf('col-') === 0) {
-      out += '\\textbf{' + k + '}';
+    if (headers[i]) {
+      out += '\\textbf{' + new Sentence(headers[i].json('xl')).latex(options) + '}';
     } else {
       out += '  ';
     }
@@ -310,7 +313,7 @@ const doTable = function (options) {
     vSep = ' ';
     out += '\n  % ----- table row -----';
     Object.keys(o).forEach((k) => {
-      const s = o[k];
+      const s = new Sentence(o[k]);
       const val = s.latex(options);
       out += '\n    ' + vSep + val + '';
       vSep = ' & ';
@@ -328,14 +331,20 @@ const plugin = function (models) {
   models.Doc.prototype.latex = toLatex$6;
   models.Section.prototype.latex = doSection;
   models.Paragraph.prototype.latex = toLatex$5;
-  models.Sentence.prototype.latex = toLatex$4;
+  models.Block.prototype.latex = toLatex$4;
   models.Image.prototype.latex = toLatex$2;
   models.Link.prototype.latex = toLatex$3;
   models.Image.prototype.latex = toLatex$2;
-  models.Infobox.prototype.latex = infobox;
-  models.List.prototype.latex = toLatex$1;
+  models.Infobox.prototype.latex = function (options) {
+    return infobox.call(this, models.Block, options)
+  };
+  models.List.prototype.latex = function (options) {
+    return toLatex$1.call(this, models.Block, options)
+  };
   models.Reference.prototype.latex = toLatex;
-  models.Table.prototype.latex = doTable;
+  models.Table.prototype.latex = function (options) {
+    return doTable.call(this, models.Block, options)
+  };
 };
 plugin.version = version;
 

@@ -3434,7 +3434,7 @@ const byTemplate = function (doc) {
   const templates = doc.templates().map((tmpl) => tmpl.json());
   const found = [];
   for (let i = 0; i < templates.length; i++) {
-    const title = templates[i].template;
+    const title = templates[i].kind || templates[i].template.toLowerCase().replace(/_/g, ' ');
     if (Object.hasOwn(mappings.templates, title)) {
       found.push({ type: mappings.templates[title], reason: title });
     } else {
@@ -3468,7 +3468,7 @@ const fromSection = function (doc) {
 const paren$1 = /^[^(\r\n\u2028\u2029]*\((.*)\)(?![\s\S])/m;
 
 const byTitle = function (doc) {
-  const title = doc.title();
+  const title = doc.title;
   if (!title) {
     return []
   }
@@ -3496,7 +3496,7 @@ const byTitle = function (doc) {
 };
 
 const byDescription = function (doc) {
-  const tmpl = doc.template('short description');
+  const tmpl = doc.templates('short description')[0]?.json().data;
   if (tmpl && tmpl.description) {
     let desc = tmpl.description || '';
     desc = desc.toLowerCase();
@@ -3521,7 +3521,7 @@ const listOf = /^list of ./;
 const disambig = /\(disambiguation\)/;
 
 const skipPage = function (doc) {
-  const title = doc.title() || '';
+  const title = doc.title || '';
 
   //look at parentheses like 'Tornado (film)'
   const m = title.match(paren);

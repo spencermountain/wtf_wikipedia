@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import makeHeaders from './_headers.js'
-import { defaults, toUrlParams } from './_fns.js'
+import { defaults, toUrlParams, apiBase } from './_fns.js'
 
 const params = {
   format: 'json',
@@ -14,13 +14,10 @@ const params = {
 
 const randomCategory = function (options = {}, http) {
   options = { ...defaults, ...options }
-  let url = `https://${options.lang}.wikipedia.org/${options.path}?`
-  if (options.domain) {
-    url = `https://${options.domain}/${options.path}?`
-  }
+  let url = apiBase(options)
   url += toUrlParams(params)
   const headers = makeHeaders(options)
-  return http(url, headers)
+  return http(url, headers, options.silent)
     .then((res) => {
       try {
         const o = res.query.pages

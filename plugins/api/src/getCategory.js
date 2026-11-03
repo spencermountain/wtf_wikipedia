@@ -1,5 +1,5 @@
 import makeHeaders from './_headers.js'
-import { normalize, defaults, toUrlParams } from './_fns.js'
+import { normalize, defaults, toUrlParams, apiBase } from './_fns.js'
 const isCategory = /^(category|catégorie|kategorie|categoría|categoria|categorie|kategoria)/i
 
 const params = {
@@ -15,7 +15,7 @@ const params = {
 
 const fetchIt = function (url, options, http, prop) {
   const headers = makeHeaders(options)
-  return http(url, headers).then((res) => {
+  return http(url, headers, options.silent).then((res) => {
     const pages = Object.keys(res.query[prop] || {})
     if (pages.length === 0) {
       return { pages: [], cursor: null }
@@ -29,10 +29,7 @@ const fetchIt = function (url, options, http, prop) {
 }
 
 const makeUrl = function (title, options, append) {
-  let url = `https://${options.lang}.wikipedia.org/${options.path}?`
-  if (options.domain) {
-    url = `https://${options.domain}/${options.path}?`
-  }
+  let url = apiBase(options)
   url += toUrlParams(params)
   if (isCategory.test(title) === false) {
     title = 'Category:' + title

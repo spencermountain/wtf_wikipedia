@@ -16,7 +16,7 @@ const okDef = (def) => {
 }
 
 test('i18n language packs are well-formed', async (t) => {
-  t.ok(langs.length > 35, `${langs.length} language packs exist`)
+  t.ok(langs.length > 30, `${langs.length} language packs exist`)
   const owner = {}
   const conflicts = []
   for (const lang of langs) {

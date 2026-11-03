@@ -1,4 +1,4 @@
-import { normalize, defaults, toUrlParams, fetchOne } from './_fns.js'
+import { normalize, defaults, toUrlParams, fetchOne, apiBase } from './_fns.js'
 
 const params = {
   action: 'query',
@@ -11,10 +11,7 @@ const params = {
 }
 
 const makeUrl = function (title, options, append) {
-  let url = `https://${options.lang}.wikipedia.org/${options.path}?`
-  if (options.domain) {
-    url = `https://${options.domain}/${options.path}?`
-  }
+  let url = apiBase(options)
   url += toUrlParams(params)
   url += `&titles=${normalize(title)}`
   if (append) {
