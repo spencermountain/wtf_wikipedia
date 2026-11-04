@@ -25,7 +25,8 @@ const parseRefs = (section: SectionData, opts: DocInfo = defaults) => {
   section.references = [...section.references, ...definitions.flatMap((citation) => citation.references)]
 
   // Reference-list wrappers contain definitions, which have now been extracted.
-  wiki = wiki.replace(/<\/?references\b[^>]*>/gi, '')
+  // (attributes stop at the next '<', so that repeated unclosed tags don't each scan to the end of the page)
+  wiki = wiki.replace(/<\/?references\b[^<>]*>/gi, '')
 
   // we're done with xml now - remove remaining wrappers
   wiki = wiki.replace(/ ?<[ /]?[a-z0-9]{1,8}[a-z0-9=" ]{2,20}[ /]?> ?/g, (found: string) => {

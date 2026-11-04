@@ -3,10 +3,12 @@ import defaults from '../../../_lib/defaults.ts'
 import parseLinks from './parse.ts'
 import type { LinkData, BlockData } from '../../../types/index'
 
+// [[File:with|Size]] - stop at the next opener, so that repeated unclosed ones don't each scan to the end of the line
+const fileLink = /\[\[File:((?:(?!\[\[File:).){2,80}?)\|((?:(?!\[\[File:)[^\]])+)\]\](\w{0,5})/g
+
 //return only rendered text of wiki links
 const removeLinks = function (line: string) {
-  // [[File:with|Size]]
-  line = line.replace(/\[\[File:(.{2,80}?)\|([^\]]+)\]\](\w{0,5})/g, '$1')
+  line = line.replace(fileLink, '$1')
   return line
 }
 

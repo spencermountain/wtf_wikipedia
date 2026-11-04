@@ -106,5 +106,8 @@
     "semi": false,
     "singleQuote": true,
     "printWidth": 120
+  },
+  "dependencies": {
+    "eslint-plugin-redos": "^4.6.2"
   }
 }

@@ -56,6 +56,28 @@ test('spans keep their full content', (t) => {
   t.end()
 })
 
+test('reference wrappers, file links, and game log tags', (t) => {
+  // [wikitext, text()]
+  const arr = [
+    ['a <references group="n" /> b', 'a b'],
+    ['a <REFERENCES/> b', 'a b'],
+    ['a <references>b</references> c', 'a b c'],
+    ['a <references group="n"><ref name="x">y</ref></references> b', 'a b'],
+    ['[[a]] [[File:ab|c]] d', 'a d'],
+    ['x [[a]] [[File:ab|c\nd]] e', 'x a e'],
+    ['[[a]] [[File:ab|c|d]] e', 'a e'],
+    ['[[a]] [[File:ab|c [[d]] e]] f', 'a f'],
+  ]
+  arr.forEach(([str, text]) => {
+    t.equal(wtf(str).text(), text, str)
+  })
+
+  const row = '| 1 || <span style="color:red">May 2</span> || <small><b>3–1</b></small>'
+  const doc = wtf(`{{game log section|#|date|score}}\n|-\n${row}\n{{game log section end}}`)
+  t.deepEqual(doc.templates()[0].json().data.rows, [{ '#': '1', date: 'May 2', score: '3–1' }], 'game log tags')
+  t.end()
+})
+
 // tags that can't close must not rescan the rest of the page, for each tag
 test('unclosed tags take linear time', (t) => {
   const repeat = (str) => str.repeat(COUNT)
@@ -89,6 +111,14 @@ test('unclosed tags take linear time', (t) => {
     repeat('<i>') + '\n</i>',
     '{{election box end}}' + repeat('{{election box begin'),
     ']' + repeat('[http://a.com '),
+    repeat('<references'),
+    repeat('</references '),
+    // these only run inside a game log
+    `{{game log section|#|date}}\n${repeat('<I')}\n{{game log section end}}`,
+    `{{game log section|#|date}}\n${repeat('</span ')}\n{{game log section end}}`,
+    // these only run once a line has a link. (a much shorter string is enough here)
+    '[[a]] ' + '[[File:||:'.repeat(COUNT / 8),
+    '[[a]] ' + '[[File:ab|'.repeat(COUNT / 8),
   ]
   arr.forEach((str) => {
     const begin = Date.now()

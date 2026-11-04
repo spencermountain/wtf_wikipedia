@@ -111,8 +111,9 @@ const buildRows = function (rowText, headings, section, opts): { rows: object[];
   // a '<br/>' in a heading would corrupt the column key
   headings = headings.map((h) => h.replace(/<[^<>]*>/g, ' ').trim())
   // html-syntax runs after this stage, so drop inline formatting tags ourselves
+  // (attributes stop at the next '<', so that repeated unclosed tags don't each scan to the end of the rows)
   rowText = rowText.replace(/<br ?\/?>/gi, ' ')
-  rowText = rowText.replace(/<\/?(?:span|small|big|sup|sub|center|[biu])[^>]*>/gi, '')
+  rowText = rowText.replace(/<\/?(?:span|small|big|sup|sub|center|[biu])[^<>]*>/gi, '')
   // rows still hold inline templates, which single-pipe cell parsing would garble
   const parsed = parseTemplates(rowText, opts)
   section.templates.push(...parsed.templates)

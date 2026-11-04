@@ -1,9 +1,18 @@
 import * as regexpPlugin from 'eslint-plugin-regexp'
 import tseslint from 'typescript-eslint'
+import redosPlugin from 'eslint-plugin-redos'
 
 export default [
   { ignores: ['**/builds/*', '**/scratch.js', '**/rollup.config.js'] },
   regexpPlugin.configs['flat/recommended'],
+  {
+    plugins: {
+      redos: redosPlugin,
+    },
+    rules: {
+      'redos/no-vulnerable': 'error',
+    },
+  },
   {
     languageOptions: {
       ecmaVersion: 2022,
