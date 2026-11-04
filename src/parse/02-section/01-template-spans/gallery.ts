@@ -4,11 +4,14 @@ import type { DocInfo, SectionData } from '../../../types/index.ts'
 import parseImgString from '../../03-paragraph/02-images/parse.ts'
 import { defaultWorld } from '../../../world/index.ts'
 
+//stop at the next opening tag, so that repeated unclosed tags don't each scan to the end of the page
+const galleryReg = /<gallery((?:(?!<gallery)[^>])*)>((?:(?!<gallery).)*?)<\/gallery>/gs
+
 //okay, <gallery> is a xml-tag, with newline-separated data, somehow pivoted by '|'...
 //all deities help us. truly -> https://en.wikipedia.org/wiki/Help:Gallery_tag
 //- not to be confused with https://en.wikipedia.org/wiki/Template:Gallery...
 const parseGallery = function (section: SectionData, opts: DocInfo = defaults) {
-  section.remaining = section.remaining.replace(/<gallery([^>]*)>(.*?)<\/gallery>/gs, (wiki, _attrs, inside) => {
+  section.remaining = section.remaining.replace(galleryReg, (wiki, _attrs, inside) => {
     let lines = inside.split(/\n/g)
     lines = lines.filter((str: string) => str && str.trim() !== '')
 

@@ -111,9 +111,44 @@ str = `'''Barry''' may refer to:
 // console.log(pages)
 // console.log(pages.length)
 
-wtf.fetch('Bremner').then((doc) => {
-  console.log(doc.pageID)
-  console.log(doc.wikidata)
-  // console.log(doc.isDisambiguation())
-  // console.log(doc.disambiguations())
-})
+// wtf.fetch('Bremner').then((doc) => {
+//   console.log(doc.pageID)
+//   console.log(doc.wikidata)
+//   // console.log(doc.isDisambiguation())
+//   // console.log(doc.disambiguations())
+// })
+
+// End-to-end PoC: wtf_wikipedia public API wtf(text) -> parse -> parseSection -> xmlTemplates -> parseGallery
+// import wtf from './repos/wtf_wikipedia/builds/wtf_wikipedia.mjs'
+
+function run(payload, label) {
+  const t0 = process.hrtime.bigint()
+  wtf(payload)
+  const t1 = process.hrtime.bigint()
+  const ms = Number(t1 - t0) / 1e6
+  console.log(`${label} len=${payload.length} ${ms.toFixed(1)}ms`)
+  return ms
+}
+
+console.log('=== gallery: <gallery> repeated, no </gallery> ===')
+for (const N of [2000, 4000, 8000, 16000, 32000]) {
+  const p = 'Intro text\n\n' + '<gallery>'.repeat(N)
+  const ms = run(p, `N=${N}`)
+  if (ms > 30000) {
+    console.log('ABORT')
+    break
+  }
+}
+
+console.log('=== math: <math> repeated, no </math> ===')
+for (const N of [2000, 4000, 8000, 16000, 32000]) {
+  const p = 'Intro text\n\n' + '<math>'.repeat(N)
+  const ms = run(p, `N=${N}`)
+  if (ms > 30000) {
+    console.log('ABORT')
+    break
+  }
+}
+
+console.log('=== control: benign gallery ===')
+run('Intro\n\n<gallery>\nFile:a.png\n</gallery>\n', 'benign')

@@ -3,10 +3,12 @@ import defaults from '../../../_lib/defaults.ts'
 import tableParser from '../05-tables/parse.ts'
 import type { DocInfo, SectionData } from '../../../types/index.ts'
 let headings = ['res', 'record', 'opponent', 'method', 'event', 'date', 'round', 'time', 'location', 'notes']
+//stop at the next opening template, so that repeated unclosed ones don't each scan to the end of the page
+const mmaReg = /\{\{mma record start(?:(?!\{\{mma record start).)+?\{\{end\}\}/gis
 
 //https://en.wikipedia.org/wiki/Template:MMA_record_start
 const parseMMA = function (section: SectionData, opts: DocInfo = defaults) {
-  section.remaining = section.remaining.replace(/\{\{mma record start.+?\{\{end\}\}/gis, (tmpl) => {
+  section.remaining = section.remaining.replace(mmaReg, (tmpl) => {
     const wiki = tmpl
     tmpl = tmpl.replace(/^\{\{.*?\}\}/, '')
     tmpl = tmpl.replace(/\{\{end\}\}/i, '')

@@ -7,11 +7,14 @@ const keys = {
   player: ['year', 'team', 'gp', 'gs', 'mpg', 'fg%', '3p%', 'ft%', 'rpg', 'apg', 'spg', 'bpg', 'ppg'],
   roster: ['player', 'gp', 'gs', 'mpg', 'fg%', '3fg%', 'ft%', 'rpg', 'apg', 'spg', 'bpg', 'ppg'],
 }
+//stop at the next opening template, so that repeated unclosed ones don't each scan to the end of the page
+const nbaReg =
+  /\{\{nba (coach|player|roster) statistics start((?:(?!\{\{nba (?:coach|player|roster) statistics start).)+?)\{\{s-end\}\}/gis
 
 //https://en.wikipedia.org/wiki/Template:NBA_player_statistics_start
 const parseNBA = function (section: SectionData, opts: DocInfo = defaults) {
   section.remaining = section.remaining.replace(
-    /\{\{nba (coach|player|roster) statistics start(.+?)\{\{s-end\}\}/gis,
+    nbaReg,
     (tmpl, name) => {
       const wiki = tmpl
       tmpl = tmpl.replace(/^\{\{.*?\}\}/, '')

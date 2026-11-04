@@ -23,7 +23,8 @@ const openTag = `< ?(${ignore.join('|')}) ?[^>]{0,200}>`
 const closeTag = `< ?/ ?(${ignore.join('|')}) ?>`
 const anyChar = '\\s\\S' //including newline
 //bound the content-length, so unclosed tags don't scan to the end of large pages
-const noThanks = new RegExp(`${openTag}[${anyChar}]{1,40000}?${closeTag}`, 'gi')
+//and stop at the next opening tag of the same name, so that repeated unclosed tags don't each scan that far
+const noThanks = new RegExp(`${openTag}(?:(?!< ?\\1)[${anyChar}]){0,40000}?${closeTag}`, 'gi')
 
 const parseHtml = function (section: SectionData, _opts?: DocInfo) {
   let wiki = section.remaining
@@ -35,8 +36,9 @@ const parseHtml = function (section: SectionData, _opts?: DocInfo) {
     return replace
   }
 
+  // Tags below stop at their next opening tag, so that repeated unclosed tags don't each scan to the end of the page.
   // Hide literal punctuation from later parsers; text cleanup decodes it.
-  wiki = wiki.replace(/<nowiki\s*\/>|<nowiki\s*>([\s\S]*?)<\/nowiki\s*>/gi, (match, inner = '') => {
+  wiki = wiki.replace(/<nowiki\s*\/>|<nowiki\s*>((?:(?!<nowiki\s*>)[\s\S])*?)<\/nowiki\s*>/gi, (match, inner = '') => {
     const replacement = inner.replace(/[\x21-\x2f\x3a-\x40\x5b-\x60\x7b-\x7e]/g, (m) => `&#${m.charCodeAt(0)};`)
     return toTemplate(match, replacement)
   })
@@ -48,13 +50,13 @@ const parseHtml = function (section: SectionData, _opts?: DocInfo) {
   wiki = wiki.replace(/ ?< ?(span|div|table|data) [a-zA-Z0-9=%.\-#:;'" ]{2,100}\/? ?> ?/g, (m) => toTemplate(m, ' ')) //<ref name="asd">
 
   // convert these html tags to known formatting
-  wiki = wiki.replace(/<i>(.*?)<\/i>/g, (m, inner) => toTemplate(m, `''${inner}''`))
-  wiki = wiki.replace(/<b>(.*?)<\/b>/g, (m, inner) => toTemplate(m, `'''${inner}'''`))
+  wiki = wiki.replace(/<i>((?:(?!<i>).)*?)<\/i>/g, (m, inner) => toTemplate(m, `''${inner}''`))
+  wiki = wiki.replace(/<b>((?:(?!<b>).)*?)<\/b>/g, (m, inner) => toTemplate(m, `'''${inner}'''`))
 
   // These are interpreted by the template parser downstream.
-  wiki = wiki.replace(/<sub>(.*?)<\/sub>/g, `{{sub|$1}}`)
-  wiki = wiki.replace(/<sup>(.*?)<\/sup>/g, `{{sup|$1}}`)
-  wiki = wiki.replace(/<blockquote>(.*?)<\/blockquote>/g, `{{blockquote|text=$1}}`)
+  wiki = wiki.replace(/<sub>((?:(?!<sub>).)*?)<\/sub>/g, `{{sub|$1}}`)
+  wiki = wiki.replace(/<sup>((?:(?!<sup>).)*?)<\/sup>/g, `{{sup|$1}}`)
+  wiki = wiki.replace(/<blockquote>((?:(?!<blockquote>).)*?)<\/blockquote>/g, `{{blockquote|text=$1}}`)
 
   //some formatting xml, we'll keep their insides though
   wiki = wiki.replace(/ ?<[ /]?(p|sub|sup|span|div|table|br|tr|td|th|pre|pre2|hr|u)[ /]?> ?/g, (m) =>

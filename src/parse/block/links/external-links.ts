@@ -2,7 +2,9 @@ import type { DocInfo } from '../../../types/index.ts'
 import defaults from '../../../_lib/defaults.ts'
 import type { ExternalLinkData } from '../../../types/index'
 
-const external_link = /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]| ]{4,1500})([| ].*?)?\]/g
+//stop at the next opening link, so that repeated unclosed ones don't each scan to the end of the line
+const external_link =
+  /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]| ]{4,1500})([| ](?:(?!\[(?:https?|news|ftp|mailto|gopher|irc):\/\/).)*?)?\]/g
 
 const external_links = function (wiki: string, _opts: DocInfo = defaults) {
   let links: ExternalLinkData[] = []
