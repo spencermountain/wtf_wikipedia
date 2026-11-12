@@ -2,6 +2,7 @@ import strip from '../../../parse/templates/parse/toJSON/_strip.ts'
 import pipeSplitter from '../../../parse/templates/parse/toJSON/01-pipe-splitter.ts'
 import { toText, toTextBritish, ymd } from '../text-and-data/dates/_format.ts'
 import languages from '../../data/languages.ts'
+import roundNumber from './_lib.ts'
 
 // MediaWiki parser functions - https://www.mediawiki.org/wiki/Help:Extension:ParserFunctions
 // {{#if: test | then | else }} - the first ':' separates the function name from its first argument
@@ -31,6 +32,14 @@ const fns1 = {
   not: (n) => (n ? 0 : 1),
 }
 const consts = { pi: Math.PI, e: Math.E }
+// 'round' follows PHP's round(): halves go away from zero, and a negative
+// precision rounds to the left of the decimal point (1234 round -2 = 1200)
+const exprRound = (a, b) => {
+  if (!Number.isFinite(a)) {
+    return a
+  }
+  return Number(roundNumber(a, Math.trunc(b), (n) => Math.sign(n) * Math.round(Math.abs(n))))
+}
 // lower number binds looser
 const binary = {
   or: [1, (a, b) => (a || b ? 1 : 0)],
@@ -42,7 +51,7 @@ const binary = {
   '>': [3, (a, b) => (a > b ? 1 : 0)],
   '<=': [3, (a, b) => (a <= b ? 1 : 0)],
   '>=': [3, (a, b) => (a >= b ? 1 : 0)],
-  round: [4, (a, b) => Number(a.toFixed(Math.max(0, Math.min(b, 20))))],
+  round: [4, (a, b) => exprRound(a, b)],
   '+': [5, (a, b) => a + b],
   '-': [5, (a, b) => a - b],
   '*': [6, (a, b) => a * b],
