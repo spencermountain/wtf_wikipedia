@@ -57,7 +57,8 @@ const binary = {
   '*': [6, (a, b) => a * b],
   '/': [6, (a, b) => a / b],
   div: [6, (a, b) => a / b],
-  mod: [6, (a, b) => a % b],
+  // like php's (int) cast, 'mod' truncates both sides first (7.5 mod 2 = 1)
+  mod: [6, (a, b) => Math.trunc(a) % Math.trunc(b)],
   fmod: [6, (a, b) => a % b],
   '^': [7, (a, b) => Math.pow(a, b)],
   e: [8, (a, b) => a * Math.pow(10, b)],
@@ -81,8 +82,12 @@ const tokenize = (str: string) => {
   }
   return tokens
 }
+// mediawiki accepts these escapes and the unicode minus sign
+const escapes = { '&lt;': '<', '&gt;': '>', '&minus;': '-', '\u2212': '-' }
+const unescape = (str: string) => str.replace(/&lt;|&gt;|&minus;|\u2212/g, (s) => escapes[s])
+
 const evaluate = (str: string) => {
-  const tokens = tokenize(str)
+  const tokens = tokenize(unescape(str))
   let i = 0
   const peek = () => tokens[i]
   const next = () => tokens[i++]
@@ -107,8 +112,9 @@ const evaluate = (str: string) => {
       return primary()
     }
     if (Object.hasOwn(fns1, tok)) {
-      // unary functions bind tighter than every binary operator except 'e'
-      return fns1[tok](expression(7))
+      // unary functions bind tighter than every binary operator except 'e',
+      // so 'floor 2.5 ^ 2' is (floor 2.5) ^ 2
+      return fns1[tok](expression(8))
     }
     if (Object.hasOwn(consts, tok) && peek() !== undefined && !Object.hasOwn(binary, peek()) && tok === 'e') {
       throw new Error('bad e')
