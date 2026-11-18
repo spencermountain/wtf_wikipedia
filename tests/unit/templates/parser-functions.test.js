@@ -31,10 +31,24 @@ test('#expr arithmetic', (t) => {
     ['{{#expr: 3 = 3}}', '1'],
     ['{{#expr: 3 != 3}}', '0'],
     ['{{#expr: 2 * (3 + 4)}}', '14'],
+    // 'mod' truncates both sides to integers, 'fmod' does not
+    ['{{#expr: 7.5 mod 2}}', '1'],
+    ['{{#expr: -7.9 mod 3}}', '-1'],
+    ['{{#expr: 7.5 fmod 2}}', '1.5'],
+    // unary functions bind tighter than '^'
+    ['{{#expr: floor 2.5 ^ 2}}', '4'],
+    ['{{#expr: ln e ^ 2}}', '1'],
+    ['{{#expr: ceil 1.2 e 1}}', '12'],
+    // unicode minus and escaped operators
+    ['{{#expr: 10 − 4}}', '6'],
+    ['{{#expr: &minus;5 + 2}}', '-3'],
+    ['{{#expr: 3 &lt; 5}}', '1'],
+    ['{{#expr: 3 &gt;= 5}}', '0'],
     // errors render nothing
     ['{{#expr: 1/0}}', ''],
     ['{{#expr: foo}}', ''],
     ['{{#expr: (1 + 2}}', ''],
+    ['{{#expr: 5 mod 0.5}}', ''],
   ])
   t.end()
 })
