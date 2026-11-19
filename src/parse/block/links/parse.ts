@@ -5,13 +5,20 @@ import type { LinkData } from '../../../types/index'
 import external_links from './external-links.ts'
 import internal_links from './internal-links.ts'
 
+// Real text has far fewer, and each link rescans the text.
+const maxLinks = 1000
+const maxLength = 100000
+
 //grab an array of internal links in the text
 const parse_links = function (wiki: string, opts: DocInfo = defaults) {
+  if (wiki.length > maxLength) {
+    return undefined
+  }
   let links: LinkData[] = []
   //first, parse external links
   links = external_links(wiki, opts)
   //internal links
-  links = links.concat(internal_links(wiki, opts))
+  links = links.concat(internal_links(wiki, opts)).slice(0, maxLinks)
   if (links.length === 0) {
     return undefined
   }

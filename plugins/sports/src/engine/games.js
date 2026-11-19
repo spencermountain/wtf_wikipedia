@@ -1,4 +1,5 @@
 import rowGroups from './rows.js'
+import { maxCandidates } from '../_lib.js'
 import buildGame from './game.js'
 
 // titles of the sections this one is nested under
@@ -22,6 +23,9 @@ const findSections = function (doc, titles, exclude) {
   const seen = new Set()
   const addMatches = function (want, loose) {
     all.forEach((s, i) => {
+      if (found.length >= maxCandidates) {
+        return
+      }
       const title = s.title().trim().toLowerCase()
       const hit = loose ? title.includes(want) : title === want
       if (hit && seen.has(s.index()) === false) {

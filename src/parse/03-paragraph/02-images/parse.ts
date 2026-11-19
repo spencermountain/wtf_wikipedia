@@ -38,7 +38,8 @@ const parseImgString = function (wiki: string, opts: DocInfo = defaults) {
     }
     wiki = `[[${file}]]`
   }
-  let m = wiki.match(defaultWorld._cached.imageFileReg)
+  // the file name is near the start, so don't retry from every 'file:' in a long caption
+  let m = wiki.slice(0, 500).match(defaultWorld._cached.imageFileReg)
   if (m === null || !m[2]) {
     return null
   }

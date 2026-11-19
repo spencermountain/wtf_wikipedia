@@ -118,7 +118,7 @@ const leagues = {
 
 // does the page even contain game-log or match markup?
 const hasLog = (wiki) =>
-  /\{\{ *(?:mlb |nba |wnba )?game log|\{\{ *football ?box|\{\{ *nfl .*schedule start|^ *=+ *(?:game log|schedule and results|schedule)/im.test(
+  /\{\{ *(?:mlb |nba |wnba )?game log|\{\{ *football ?box|\{\{ *nfl [^{}\n]*schedule start|^ *=+ *(?:game log|schedule and results|schedule)/im.test(
     wiki
   )
 

@@ -15,6 +15,10 @@ const parseDate = function (str) {
   if (!str) {
     return null
   }
+  // no real date is this long, and these regexes retry from every number
+  if (str.length > 200) {
+    return null
+  }
   // remove parentheses
   str = str.replace(/(^[^(\r\n\u2028\u2029]*)\(.*\)/m, '$1')
   str = str.trim()

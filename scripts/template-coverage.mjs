@@ -1,4 +1,4 @@
-/* eslint-disable no-console, regexp/no-super-linear-move */
+/* eslint-disable no-console */
 /* global URLSearchParams, fetch */
 // Measure template coverage against English Wikipedia, by rendered text rather than by name.
 //
@@ -23,7 +23,7 @@ const args = Object.fromEntries(
   process.argv
     .slice(2)
     .join(' ')
-    .split(/\s+--/)
+    .split(/(?<!\s)\s+--/)
     .filter(Boolean)
     .map((s) => {
       let [k, v = 'true'] = s.replace(/^--/, '').split(/[= ]/)
@@ -84,7 +84,7 @@ const topTemplates = async () => {
     const json = await api({ action: 'query', prop: 'revisions', titles: titles.slice(i, i + 25).join('|'), rvprop: 'content', rvslots: 'main' })
     for (const page of json.query?.pages || []) {
       const lua = page.revisions?.[0]?.slots?.main?.content || ''
-      const re = /\[\s*(["'])(.+?)\1\s*\]\s*=\s*(\d+)/g
+      const re = /\[\s*(["'])((?:(?!\[\s*["']).)+?)\1\s*\]\s*=\s*(\d+)/g
       let m
       while ((m = re.exec(lua))) {
         rows.push({ name: m[2].replace(/_/g, ' '), count: Number(m[3]) })
@@ -156,18 +156,18 @@ const decode = (str) =>
 const htmlToText = (html) => {
   return decode(
     html
-      .replace(/<style[\s\S]*?<\/style>/g, '')
+      .replace(/<style(?:(?!<style)[\s\S])*?<\/style>/g, '')
       // reference markers, [citation needed]-style markers, edit links
-      .replace(/<sup[^>]*class="[^"]*(reference|noprint|Inline-Template)[^"]*"[\s\S]*?<\/sup>/g, '')
-      .replace(/<span class="(mw-editsection|sortkey|mw-ref|mw-reflink-text)[^"]*"[\s\S]*?<\/span>/g, '')
+      .replace(/<sup(?:(?!class=")[^<>])*class="(?=[^"<>]*(?:reference|noprint|Inline-Template))[^"<>]+"(?:(?!<sup)[\s\S])*?<\/sup>/g, '')
+      .replace(/<span class="(?:mw-editsection|sortkey|mw-ref|mw-reflink-text)[^"<>]*"(?:(?!<span class="(?:mw-editsection|sortkey|mw-ref))[\s\S])*?<\/span>/g, '')
       // hidden microformat data: (1809-02-12) in birth dates, the extra coordinate formats.
       // innermost spans first, since these nest: <span style="display:none">(<span class="bday">..</span>)</span>
       .replace(/<span class="(bday|dtstart|dtend|geo-nondefault|geo-multi-punct|geo-geo-dec|geo-geo-dms)[^"]*"[^<]*<\/span>/g, '')
-      .replace(/<span[^>]*style="[^"]*display:\s*none[^"]*"[^<]*<\/span>/g, '')
-      .replace(/<span[^>]*style="[^"]*display:\s*none[^"]*"[\s\S]*?<\/span>/g, '')
+      .replace(/<span(?:(?!style=")[^<>])*style="(?=[^"<>]*display:\s*none)[^"<>]+"[^<]*<\/span>/g, '')
+      .replace(/<span(?:(?!style=")[^<>])*style="(?=[^"<>]*display:\s*none)[^"<>]+"(?:(?!<span[^<>]*style=")[\s\S])*?<\/span>/g, '')
       .replace(/<br\s*\/?>/g, ' ')
       .replace(/<\/(p|div|li|tr|td|th|h\d)>/g, ' ')
-      .replace(/<[^>]+>/g, '')
+      .replace(/<[^<>]+>/g, '')
   )
     .replace(/[\u200b\ufeff\u200e\u200f]/g, '')
     .replace(/\s+/g, ' ')
@@ -187,9 +187,9 @@ const norm = (str) =>
     .replace(/[\u201c\u201d]/g, '"')
     .replace(/[\u00a0\u2009\u202f\u200a]/g, ' ')
     .replace(/ ?– ?/g, '–')
-    .replace(/\s*\(\s*/g, ' (')
     .replace(/\s+/g, ' ')
-    .replace(/\s*\[edit\]\s*/g, '')
+    .replace(/ ?\( ?/g, ' (')
+    .replace(/ ?\[edit\] ?/g, '')
     .trim()
     .toLowerCase()
 

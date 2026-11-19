@@ -203,6 +203,6 @@ export default {
       'babylon 5',
       'madonna song',
     ],
-    patterns: [/ \((.*? )song\)$/],
+    patterns: [/ \(((?:(?! \().)*? )song\)$/],
   },
 }

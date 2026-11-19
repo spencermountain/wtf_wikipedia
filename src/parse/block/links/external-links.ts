@@ -4,7 +4,7 @@ import type { ExternalLinkData } from '../../../types/index'
 
 //stop at the next opening link, so that repeated unclosed ones don't each scan to the end of the line
 const external_link =
-  /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/[^\]| ]{4,1500})([| ](?:(?!\[(?:https?|news|ftp|mailto|gopher|irc):\/\/).)*?)?\]/g
+  /\[(https?|news|ftp|mailto|gopher|irc)(:\/\/(?:(?!\[(?:https?|news|ftp|mailto|gopher|irc):\/\/)[^\]| ]){4,1500})([| ](?:(?!\[(?:https?|news|ftp|mailto|gopher|irc):\/\/).){0,2000}?)?\]/g
 
 const external_links = function (wiki: string, _opts: DocInfo = defaults) {
   let links: ExternalLinkData[] = []

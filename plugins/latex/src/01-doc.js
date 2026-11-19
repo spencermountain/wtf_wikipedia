@@ -6,6 +6,9 @@ const defaults = {
 // we should try to make this look like the wikipedia does, i guess.
 const softRedirect = function (doc) {
   const link = doc.redirectTo()
+  if (!link) {
+    return ''
+  }
   let href = link.page
   href = './' + href.replace(/ /g, '_')
   //add anchor

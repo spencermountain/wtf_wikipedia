@@ -1,6 +1,8 @@
+// more than any real page has, and each one means walking the sections
+const maxCandidates = 50
+
 // a section plus every subsection nested under it
-const withChildren = function (doc, section) {
-  const all = doc.sections()
+const withChildren = function (doc, section, all = doc.sections()) {
   const start = section.index()
   const depth = section.depth()
   const res = [section]
@@ -73,4 +75,4 @@ const stripNotes = function (str = '') {
 // split '4–2' on any dash variant
 const dashSplit = /[–\-−—]|&[nm]dash;/
 
-export { withChildren, findSection, getCell, findKey, stripNotes, dashSplit }
+export { withChildren, findSection, getCell, findKey, stripNotes, dashSplit, maxCandidates }

@@ -70,7 +70,7 @@ const binary = (tmpl, parse = defaultParse) => {
   }
   let str = n.toString(2)
   if (obj.digits) {
-    str = str.padStart(Number(obj.digits) || 0, '0')
+    str = str.padStart(Math.min(Number(obj.digits) || 0, 1000), '0')
   }
   return { data: null, replacement: str }
 }

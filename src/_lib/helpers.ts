@@ -42,7 +42,7 @@ const joinSentences = function (arr: string[] = []) {
     if (i === 0) {
       return next
     }
-    if (cjkEnd.test(str) && cjkStart.test(next)) {
+    if (cjkEnd.test(arr[i - 1]) && cjkStart.test(next)) {
       return str + next
     }
     return str + ' ' + next

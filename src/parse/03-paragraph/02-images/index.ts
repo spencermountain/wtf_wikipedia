@@ -4,11 +4,14 @@ import parseImgString from './parse.ts'
 import { defaultWorld } from '../../../world/index.ts'
 import type { DocInfo, ParagraphData } from '../../../types/index.ts'
 
+// Real paragraphs have far fewer, and each one rescans the paragraph.
+const maxImages = 2000
+
 const findImages = function (paragraph: ParagraphData, opts: DocInfo = defaults) {
   const isFile = defaultWorld._cached.fileReg
   let wiki = paragraph.remaining
   //parse+remove scary '[[ [[]] ]]' stuff
-  let matches = nested_find(wiki)
+  let matches = nested_find(wiki).slice(0, maxImages)
   matches.forEach(function (s) {
     if (isFile.test(s) === true) {
       paragraph.images ||= []

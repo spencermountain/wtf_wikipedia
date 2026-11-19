@@ -1,5 +1,8 @@
 import smartReplace, { linkOccurrence } from './_lib/smartReplace.js'
 
+// past this many links in a sentence, take the first repeat of a word
+const maxExact = 500
+
 const defaults = {
   links: true,
   formatting: true,
@@ -23,9 +26,10 @@ const toMarkdown = function (options) {
   //turn links back into links
   if (options.links === true) {
     const cursor = { at: 0 }
-    this.links().forEach((link) => {
+    const found = this.links()
+    found.forEach((link) => {
       const str = escape(link.text() || link.page())
-      const nth = linkOccurrence(this, link, cursor)
+      const nth = found.length > maxExact ? 0 : linkOccurrence(this, link, cursor)
       const href = (link.href() || '').replace(/ /g, '_')
       const token = linkToken(links.length)
       links.push({ text: str, href })

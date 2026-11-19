@@ -1,6 +1,7 @@
 import type { DocInfo } from '../../../types/index.ts'
 import defaults from '../../../_lib/defaults.ts'
 import parseLinks from './parse.ts'
+import replaceLinks from './_lib.ts'
 import type { LinkData, BlockData } from '../../../types/index'
 
 // [[File:with|Size]] - stop at the next opener, so that repeated unclosed ones don't each scan to the end of the line
@@ -16,11 +17,8 @@ const fromBlock = function (block: BlockData, opts: DocInfo = defaults) {
   let wiki = block.text
   let links: LinkData[] = parseLinks(wiki, opts) || []
   if (links.length > 0) {
-    block.links = links.map((link) => {
-      wiki = wiki.replace(link.wiki, () => link.text)
-      return link
-    })
-    wiki = removeLinks(wiki)
+    block.links = links
+    wiki = removeLinks(replaceLinks(wiki, links, (link) => String(link.text)))
     block.text = wiki
   }
 }

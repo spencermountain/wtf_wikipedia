@@ -124,7 +124,7 @@ export default {
     patterns: [
       /[0-9]{4} births/,
       /[0-9]{4} deaths/,
-      /people of .* descent/,
+      /people of .{0,178}? descent/,
       /^deaths from /,
       /^(people|philanthropists|writers) from ./,
       / (players|alumni)$/,

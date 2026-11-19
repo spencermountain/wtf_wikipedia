@@ -58,19 +58,19 @@ class Section {
       })
     }
     this.infoboxes().forEach((templ) => {
-      arr.push(...templ.links())
+      arr.push(templ.links())
     })
     this.references().forEach((s) => {
-      arr.push(...s.links())
+      arr.push(s.links())
     })
     this.templates().forEach((template) => {
-      arr.push(...template.links())
+      arr.push(template.links())
     })
     this.tables().forEach((t) => {
-      arr.push(...t.links())
+      arr.push(t.links())
     })
     this.paragraphs().forEach((s) => {
-      arr.push(...s.links())
+      arr.push(s.links())
     })
 
     arr = arr.flat().filter((val) => val !== undefined) //filter out all the undefined from the flattened empty arrays

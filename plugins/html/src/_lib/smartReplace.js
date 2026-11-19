@@ -6,12 +6,12 @@ function escapeRegExp(str) {
 // rough plaintext of some wikitext, enough to count words
 const stripWiki = (str) =>
   str
-    .replace(/<ref[^>]*\/>/g, '')
-    .replace(/<ref[\s\S]*?<\/ref>/g, '')
+    .replace(/<ref[^<>]*\/>/g, '')
+    .replace(/<ref(?:(?!<ref)[\s\S])*?<\/ref>/g, '')
     .replace(/\{\{[^{}]*\}\}/g, '')
     .replace(/\{\{[^{}]*\}\}/g, '') // once more, for one level of nesting
     .replace(/\[\[(?:[^\][|]*\|)?([^\][]*)\]\]/g, '$1')
-    .replace(/\[https?:\/\/\S+ ([^\]]*)\]/g, '$1')
+    .replace(/\[https?:\/\/(?:(?!\[https?:)\S)+ ((?:(?!\[https?:)[^\]])*)\]/g, '$1')
     .replace(/'{2,}/g, '')
 
 // count how many times `text` appears in `str`
@@ -54,9 +54,14 @@ const smartReplace = function (all, text, result, nth = 0) {
   const fn = typeof result === 'function' ? result : () => result
   //try a word-boundary replace
   const reg = new RegExp('\\b' + escapeRegExp(text) + '\\b', 'g')
-  const matches = [...all.matchAll(reg)]
-  if (matches.length > 0) {
-    const m = matches[nth] || matches[0]
+  // stop at the nth match, instead of finding every one
+  const first = reg.exec(all)
+  let m = first
+  for (let i = 0; i < nth && m; i += 1) {
+    m = reg.exec(all)
+  }
+  m = m || first
+  if (m) {
     return all.slice(0, m.index) + fn(m[0]) + all.slice(m.index + m[0].length)
   }
   //otherwise, fall-back to a much messier, dangerous replacement

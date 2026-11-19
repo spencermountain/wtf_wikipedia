@@ -1,10 +1,18 @@
 import { trim_whitespace } from '../../_lib/helpers.ts'
 
+// a code point that can't be a character stays as written
+const fromEntity = (entity: string, code: number) => {
+  if (code > 0x10ffff || (code >= 0xd800 && code <= 0xdfff)) {
+    return entity
+  }
+  return String.fromCodePoint(code)
+}
+
 function postprocess(line) {
   //remove empty parentheses (sometimes caused by removing templates)
   line = line.replace(/\([,;: ]*\)/g, '')
   //these semi-colons in parentheses are particularly troublesome
-  line = line.replace(/\( *(; ?)+/g, '(')
+  line = line.replace(/\( *;[; ]*/g, '(')
   //dangling punctuation
   line = trim_whitespace(line)
   line = line.replace(/ \.$/, '.')
@@ -27,8 +35,8 @@ function postprocess(line) {
   line = line.replace(/&gt;/g, '>')
 
   // numeric (decimal/hex) entities
-  line = line.replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(parseInt(n, 10)))
-  line = line.replace(/&#x([0-9a-fA-F]+);/g, (_, n) => String.fromCodePoint(parseInt(n, 16)))
+  line = line.replace(/&#(\d+);/g, (m, n) => fromEntity(m, parseInt(n, 10)))
+  line = line.replace(/&#x([0-9a-fA-F]+);/g, (m, n) => fromEntity(m, parseInt(n, 16)))
 
   return line
 }

@@ -1,17 +1,15 @@
 import * as regexpPlugin from 'eslint-plugin-regexp'
 import tseslint from 'typescript-eslint'
-import redosPlugin from 'eslint-plugin-redos'
+import redos from 'eslint-plugin-redos'
 
 export default [
   { ignores: ['**/builds/*', '**/scratch.js', '**/rollup.config.js'] },
+  // generic regex scan
   regexpPlugin.configs['flat/recommended'],
+  // look for regex dos-voluns
   {
-    plugins: {
-      redos: redosPlugin,
-    },
-    rules: {
-      'redos/no-vulnerable': 'error',
-    },
+    plugins: { redos },
+    rules: { 'redos/no-vulnerable': ['error', { ignoreErrors: false }] },
   },
   {
     languageOptions: {

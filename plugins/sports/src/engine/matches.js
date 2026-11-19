@@ -1,4 +1,4 @@
-import { withChildren } from '../_lib.js'
+import { withChildren, maxCandidates } from '../_lib.js'
 import buildGame, { parseScore, sameTeam, parseAttendance } from './game.js'
 import rowGroups from './rows.js'
 import { finish } from './games.js'
@@ -123,7 +123,7 @@ const findMatches = function (doc, ctx, titles, skip) {
         }
         return loose ? t.includes(want) : t === want
       })
-      for (const section of sections) {
+      for (const section of sections.slice(0, maxCandidates)) {
         const games = build(collectBoxes(doc, section, skip), ctx)
         if (games.length > 0) {
           return games
@@ -141,6 +141,7 @@ const findMatches = function (doc, ctx, titles, skip) {
 const findCompetitions = function (doc, ctx, include, skip) {
   const res = {}
   let below = null
+  let tried = 0
   doc.sections().forEach((s) => {
     // a 'Final' inside an already-collected cup is not its own competition
     if (below !== null && s.depth() > below) {
@@ -148,9 +149,10 @@ const findCompetitions = function (doc, ctx, include, skip) {
     }
     below = null
     const title = s.title().trim()
-    if (include.test(title) === false || (skip && skip.test(title))) {
+    if (tried >= maxCandidates || include.test(title) === false || (skip && skip.test(title))) {
       return
     }
+    tried += 1
     below = s.depth()
     let games = build(collectBoxes(doc, s, skip), ctx)
     if (games.length === 0) {

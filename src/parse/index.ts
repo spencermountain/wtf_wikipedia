@@ -6,6 +6,8 @@ import type { DocInfo, PageData } from '../types/index.ts'
 
 const parse = function (input: string, opts: DocInfo = {}) {
   opts = withDefaults(opts)
+  // a lone surrogate isn't text, and makes encodeURI throw later on
+  input = input.replace(/[\uD800-\uDFFF]/gu, '\uFFFD')
   // pull-apart page into safe, main parts
   let data: PageData = parsePage(input, opts)
   // interpret

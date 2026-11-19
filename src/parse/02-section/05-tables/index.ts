@@ -5,6 +5,9 @@ import type { SectionData, DocInfo, TableData } from '../../../types/index.ts'
 const openReg = /^\s*\{\|/
 const closeReg = /^\s*\|\}/
 
+// Real sections have far fewer, and each one rescans the section.
+const maxTables = 500
+
 //tables can be recursive, so looky-here.
 const findTables = function (section: SectionData, opts?: DocInfo) {
   let list = []
@@ -31,7 +34,7 @@ const findTables = function (section: SectionData, opts?: DocInfo) {
   }
   //work-em together for a Table class
   let tables: TableData[] = []
-  list.forEach((str) => {
+  list.slice(0, maxTables).forEach((str) => {
     if (str) {
       //also re-remove a newline at the end of the table (awkward)
       wiki = wiki.replace(str + '\n', '')

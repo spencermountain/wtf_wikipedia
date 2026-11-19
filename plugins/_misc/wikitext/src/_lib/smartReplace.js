@@ -16,11 +16,11 @@ const smartReplace = function (all, text, result) {
   //try a word-boundary replace
   const reg = new RegExp('\\b' + text + '\\b')
   if (reg.test(all) === true) {
-    all = all.replace(reg, result)
+    all = all.replace(reg, () => result)
   } else {
     //otherwise, fall-back to a much messier, dangerous replacement
     // console.warn('missing \'' + text + '\'');
-    all = all.replace(text, result)
+    all = all.replace(text, () => result)
   }
   return all
 }

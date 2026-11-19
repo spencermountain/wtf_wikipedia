@@ -38,7 +38,9 @@ const findRows = function (lines) {
       // Template expansion can leave cell content on following unmarked lines.
       // Keep that content in the current cell instead of creating new columns.
       if (startChar !== '|' && startChar !== '!' && row.length > 0) {
-        row[row.length - 1] = `${row[row.length - 1]} ${line.trim()}`.trim()
+        const cell = row[row.length - 1]
+        const more = line.trim()
+        row[row.length - 1] = cell && more ? cell + ' ' + more : cell + more
         continue
       }
       if (startChar === '|' || startChar === '!') {

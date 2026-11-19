@@ -48,7 +48,7 @@ const plugin = function (models) {
   // should we use 'it', 'he', 'they'...
   models.Doc.prototype.article = function () {
     const sentences = this.sentences()
-    const txt = (sentences[1] || sentences[0])?.text() || ''
+    const txt = (sentences[1] || sentences[0])?.text().slice(0, 5000) || ''
     const doc = nlp(txt)
     const found = doc.match('(#Pronoun|#Article)').eq(0).text().toLowerCase()
     return found || 'it'
@@ -56,7 +56,7 @@ const plugin = function (models) {
 
   // was event in past? is person dead?
   models.Doc.prototype.tense = function () {
-    const txt = this.sentences()[0]?.text() || ''
+    const txt = this.sentences()[0]?.text().slice(0, 5000) || ''
     const doc = nlp(txt)
     // 'will be held' - check the future forms before the past-participle
     if (doc.has('will #Adverb? be') || doc.has('(a|an) (upcoming|planned)')) {

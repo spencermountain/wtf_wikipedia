@@ -12,11 +12,11 @@ const parsePredicate = function (doc) {
   // cut trailing clauses
   const phrase = m[1].split(/ (?:who|that|known|best|famous|from|based) /)[0]
   const words = phrase.trim().split(/ +/)
-  const demonym = []
   // leading capitalized adjectives are usually a nationality
-  while (words.length > 1 && /^[A-Z]/.test(words[0])) {
-    demonym.push(words.shift())
+  let i = 0
+  while (i < words.length - 1 && /^[A-Z]/.test(words[i])) {
+    i += 1
   }
-  return { demonym: demonym.join(' '), words: words }
+  return { demonym: words.slice(0, i).join(' '), words: words.slice(i) }
 }
 export default parsePredicate

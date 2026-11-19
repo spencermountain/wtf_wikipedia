@@ -21,7 +21,7 @@ const infobox = function (Block, options) {
   html += '  </thead>\n'
   html += '  <tbody>\n'
   //put image and caption on the top
-  if (options.images === true && data.image) {
+  if (options.images === true && data.image && this.image()) {
     html += '    <tr>\n'
     html += '       <td colspan="2" style="text-align:center">\n'
     html += '       ' + this.image().html() + '\n'

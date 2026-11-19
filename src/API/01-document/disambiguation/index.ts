@@ -7,6 +7,9 @@ const escapeRegExp = (str) => {
 
 // A '''[[berry]]''' is a small, pulpy and often edible fruit in non-technical language.
 const getMain = function (s) {
+  if (!s) {
+    return null
+  }
   const txt = s.text().slice(0, 120)
   if (!/ is /.test(txt)) {
     return null
@@ -32,7 +35,7 @@ const getTitle = function (doc) {
 
 // interpret lists of possible pages into a structured disambiguation result
 const parseDisambig = function (doc) {
-  const opening = doc.sections()[0].sentences().slice(0, 2)
+  const opening = doc.sections()[0]?.sentences().slice(0, 2) || []
   const hasIntroduction = opening.some((sentence) => / may (also )?refer to\b/i.test(sentence.text()))
   if (!doc.isDisambiguation() && !hasIntroduction) {
     return null

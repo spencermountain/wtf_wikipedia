@@ -14,7 +14,7 @@ const fromTeamPage = function (page = '') {
   if (!page || / season$/.test(page)) {
     return null
   }
-  return page.replace(/ \(.*?\)$/, '')
+  return page.replace(/^(?=.*\)$)(.*?) \(.*/, '$1')
 }
 
 // '4–2', 'W 31–7', '2–1 (11)' → [4, 2]
@@ -91,8 +91,8 @@ const opponentCol = function (game, row, ctx, score) {
   }
   game.home = /^ *(@|at )/i.test(opp) === false
   opp = opp.replace(/^ *(@|at |vs\.? ) */i, '').trim()
-  opp = opp.replace(/ ?\(\d{4}[^)]*\)$/, '') //a '(2002–03)' season-link suffix
-  opp = opp.replace(/ \d{1,2}:\d{2} ?[ap]\.?m.*$/i, '') //a '6:05pm (ESPN)' suffix
+  opp = opp.replace(/ ?\(\d{4}[^()]*\)$/, '') //a '(2002–03)' season-link suffix
+  opp = opp.replace(/ \d{1,2}:\d{2} ?[ap]\.?m[\s\S]*$/i, '') //a '6:05pm (ESPN)' suffix
   const oppLink = row.links[key]
   game.opponent = fromSeasonPage(oppLink) || fromTeamPage(oppLink) || ctx.fullName(opp)
   // scores here may be ours-first or winner-first - the outcome settles both

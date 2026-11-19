@@ -116,8 +116,9 @@ const buildRows = function (rowText, headings, section, opts): { rows: object[];
   rowText = rowText.replace(/<\/?(?:span|small|big|sup|sub|center|[biu])[^<>]*>/gi, '')
   // rows still hold inline templates, which single-pipe cell parsing would garble
   const parsed = parseTemplates(rowText, opts)
-  section.templates.push(...parsed.templates)
-  section.references.push(...parsed.references)
+  // one at a time, since push(...list) overflows on a very long list
+  parsed.templates.forEach((tmpl) => section.templates.push(tmpl))
+  parsed.references.forEach((ref) => section.references.push(ref))
   const table = '{|\n! ' + headings.join(' !! ') + '\n' + parsed.remaining + '\n|}'
   const rows = simplifyRows(tableParser(table, opts).rows || [])
   return { rows }
@@ -201,6 +202,7 @@ const nflHeader = '{|\n! Week !! Date !! Opponent !! Result !! Record !! Venue !
 
 const nflLogs = function (section: SectionData) {
   let text = section.remaining
+  let out = ''
   let open = text.match(nflOpen)
   while (open) {
     const end = templateEnd(text, open.index)
@@ -208,10 +210,11 @@ const nflLogs = function (section: SectionData) {
       break
     }
     // swap the template for the table-start it would render, and parse as a normal table
-    text = text.slice(0, open.index) + nflHeader + text.slice(end)
+    out += text.slice(0, open.index) + nflHeader
+    text = text.slice(end)
     open = text.match(nflOpen)
   }
-  section.remaining = text
+  section.remaining = out + text
   return section
 }
 

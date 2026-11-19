@@ -111,12 +111,13 @@ const addYear = function (res, ctx) {
 const findTransactions = function (doc, ctx) {
   const out = []
   const seen = new Set()
-  doc.sections().forEach((sec) => {
+  const all = doc.sections()
+  all.forEach((sec) => {
     if (seen.has(sec.index()) || anchor.test(sec.title().trim()) === false) {
       return
     }
     const stack = [] //nearest ancestor kind, by depth
-    withChildren(doc, sec).forEach((s) => {
+    withChildren(doc, sec, all).forEach((s) => {
       seen.add(s.index())
       while (stack.length > 0 && stack[stack.length - 1].depth >= s.depth()) {
         stack.pop()

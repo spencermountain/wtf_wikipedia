@@ -87,6 +87,7 @@
     "@rollup/plugin-terser": "1.0.0",
     "cheerio": "^1.2.0",
     "esbuild": "0.28.2",
+    "eslint-plugin-redos": "^4.6.2",
     "eslint": "10.12.0",
     "eslint-plugin-compat": "7.0.2",
     "eslint-plugin-regexp": "3.3.1",
@@ -107,7 +108,5 @@
     "singleQuote": true,
     "printWidth": 120
   },
-  "dependencies": {
-    "eslint-plugin-redos": "^4.6.2"
-  }
+  "dependencies": {}
 }

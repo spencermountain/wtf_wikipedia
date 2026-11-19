@@ -35,7 +35,7 @@ const parseSentence = function (doc) {
   if (split[0]) {
     let str = split[0]
     // 'born' may follow a pronunciation or alias, like '/ˈɡrɛtski/; born January 26, 1961'
-    const born = str.match(/\bborn\s+(?:c\.\s*)?(\S.*)$/i)
+    const born = str.match(/\bborn\s+(?:c\.\s*)?(\S[\s\S]*)/i)
     if (born) {
       str = born[1]
     } else {

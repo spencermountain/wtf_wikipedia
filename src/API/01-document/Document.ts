@@ -264,8 +264,9 @@ class Document {
   infoboxes() {
     let arr = this.sections().flatMap((sec) => sec.infoboxes())
     //sort them by biggest-first
+    const sizes = new Map(arr.map((box) => [box, Object.keys(box.json().data).length]))
     arr = arr.sort((a, b) => {
-      if (Object.keys(a.json().data).length > Object.keys(b.json().data).length) {
+      if (sizes.get(a) > sizes.get(b)) {
         return -1
       }
       return 1

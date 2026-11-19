@@ -20,7 +20,7 @@ const doSentence = function (doc, options) {
   if (!sentence) {
     return ''
   }
-  const txt = sentence.text()
+  const txt = sentence.text().slice(0, 5000)
   const s = nlp(txt)
   preProcess(s)
 

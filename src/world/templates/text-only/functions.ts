@@ -6,6 +6,9 @@ import { titlecase, percentage, toOrdinal } from '../_lib.ts'
 import { units, symbols as unitSymbols, names as unitNames } from './data/units.ts'
 
 // 2001, 2002 → '02'  (1999, 2000 → '2000')
+// far more than any real page asks for
+const maxPadding = 1000
+
 const shortYear = (year, after) => {
   if (Math.floor(year / 100) === Math.floor(after / 100)) {
     return String(after).slice(-2)
@@ -490,14 +493,14 @@ export default {
     tmpl = tmpl.replace(/:/, '|')
     let obj = parse(tmpl, ['text', 'num', 'str'])
     let text = obj.text || ''
-    return { data: null, replacement: text.padStart(Number(obj.num) || 0, obj.str || '0') }
+    return { data: null, replacement: text.padStart(Math.min(Number(obj.num) || 0, maxPadding), obj.str || '0') }
   },
 
   padright: (tmpl, parse = defaultParse) => {
     tmpl = tmpl.replace(/:/, '|')
     let obj = parse(tmpl, ['text', 'num', 'str'])
     let text = obj.text || ''
-    return { data: null, replacement: text.padEnd(Number(obj.num) || 0, obj.str || '0') }
+    return { data: null, replacement: text.padEnd(Math.min(Number(obj.num) || 0, maxPadding), obj.str || '0') }
   },
 
   //https://en.wikipedia.org/wiki/Template:Abbrlink
@@ -721,7 +724,7 @@ export default {
 
   loop: (tmpl, parse = defaultParse) => {
     let data = parse(tmpl, ['times', 'text'])
-    let n = Number(data.times) || 0
+    let n = Math.min(Number(data.times) || 0, maxPadding)
     let out = ''
     for (let i = 0; i < n; i += 1) {
       out += data.text || ''
@@ -761,7 +764,7 @@ export default {
     if (!data.from) {
       return { data: null, replacement: data.text || '' }
     }
-    return { data: null, replacement: (data.text || '').replace(data.from, data.to || '') }
+    return { data: null, replacement: (data.text || '').replace(data.from, () => data.to || '') }
   },
   // https://en.wikipedia.org/wiki/Template:Delink - [[a|b]] → b
   delink: (tmpl, parse = defaultParse) => {

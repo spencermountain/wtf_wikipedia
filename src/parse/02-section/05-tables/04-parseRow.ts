@@ -7,7 +7,7 @@ const parseRow = function (arr, headers, opts) {
   let row = {}
   arr.forEach((str, i) => {
     let h = headers[i]?.text || 'col' + (i + 1)
-    h = normalizeKey(h)
+    h = normalizeKey(h.slice(0, 2000))
 
     let s = parseBlock(str, opts)
     s.text = cleanText(s.text)

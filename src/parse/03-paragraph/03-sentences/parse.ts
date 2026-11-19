@@ -55,11 +55,14 @@ const naiive_split = function (text) {
   return splits.flatMap(splitPunctuation)
 }
 
+// stop joining chunks at this length, so that a long run of abbreviations stays cheap
+const maxSentence = 5000
+
 // if this looks like a period within a wikipedia link, return false
 const isBalanced = function (str) {
   str ||= ''
-  const open = str.split(/\[\[/) || []
-  const closed = str.split(/\]\]/) || []
+  const open = str.split('[[') || []
+  const closed = str.split(']]') || []
   if (open.length > closed.length) {
     return false
   }
@@ -109,38 +112,42 @@ const sentence_parser = function (text: string, _opts: DocInfo = defaults) {
     chunks.push(s)
   }
 
+  // the start of the current chunk is known to have no letters
+  let noLetters = 0
   //detection of non-sentence chunks
   const isSentence = function (hmm: string) {
-    if (hmm.match(abbrev_reg) || hmm.match(acronym_reg) || hmm.match(elipses_reg) || hmm.match(circa_reg)) {
-      return false
-    }
-    //too short? - no consecutive letters
-    if (hasWord.test(hmm) === false) {
-      return false
-    }
-    if (!isBalanced(hmm)) {
+    // these only look at the end of the text, and any whitespace after it
+    const tail = hmm.slice(Math.max(0, hmm.trimEnd().length - 100))
+    if (tail.match(abbrev_reg) || tail.match(acronym_reg) || tail.match(elipses_reg) || tail.match(circa_reg)) {
       return false
     }
     // a line-break without punctuation is not a sentence boundary
-    if (hasEnding.test(hmm) === false && colonEnding.test(hmm) === false) {
+    if (hasEnding.test(tail) === false && colonEnding.test(tail) === false) {
       return false
     }
-    return true
+    //too short? - no consecutive letters
+    if (hasWord.test(hmm.slice(noLetters)) === false) {
+      noLetters = hmm.length
+      return false
+    }
+    return isBalanced(hmm)
   }
   //loop through these chunks, and join the non-sentence chunks back together..
   for (let i = 0; i < chunks.length; i++) {
     //should this chunk be combined with the next one?
-    if (chunks[i + 1] && !isSentence(chunks[i])) {
+    if (chunks[i + 1] && chunks[i].length < maxSentence && !isSentence(chunks[i])) {
       // need a space to connect these?
       if (!/^\s/.test(chunks[i + 1]) && !/\s$/.test(chunks[i])) {
         chunks[i + 1] = chunks[i] + ' ' + chunks[i + 1]
       } else {
         chunks[i + 1] = chunks[i] + chunks[i + 1]
       }
+      chunks[i] = ''
     } else if (chunks[i] && chunks[i].length > 0) {
       //this chunk is a proper sentence..
       sentences.push(chunks[i])
       chunks[i] = ''
+      noLetters = 0
     }
   }
   //if we never got a sentence, return the given text

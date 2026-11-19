@@ -1,3 +1,4 @@
+import replaceLinks from './links/_lib.ts'
 import type { BlockData } from '../../types/index.ts'
 
 const shift = (offset: number, start: number, length: number) => {
@@ -45,17 +46,20 @@ const parse = (block: BlockData, source, pattern: RegExp, trim: number, groups: 
   })
 }
 
+// Real sentences have far fewer, and each marker adjusts every span.
+const maxMarkers = 2000
+
 // Offsets use JavaScript string indices into the final plain text.
 const parseFormatting = (block: BlockData) => {
   block.text = block.text || ''
-  if (!block.text.includes("''")) {
+  if (!block.text.includes("''") || block.text.split("''").length > maxMarkers) {
     return block
   }
   const source = { text: block.wiki || '' }
   // Link labels are already flattened; their internal quotes are not formatting.
-  block.links?.forEach((link) => {
-    source.text = source.text.replace(link.wiki, ' '.repeat(link.wiki.length))
-  })
+  if (block.links) {
+    source.text = replaceLinks(source.text, block.links, (link) => ' '.repeat(link.wiki.length))
+  }
   // block.bolds = []
   // block.italics = []
   parse(block, source, /'''''(.{0,2500}?)'''''/g, 5, ['bolds', 'italics'])
