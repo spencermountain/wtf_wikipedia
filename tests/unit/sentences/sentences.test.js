@@ -7,11 +7,38 @@ test('abbreviation-check', function (t) {
     `known as J. J. Abrams.`,
     `known as '''J. J. Abrams'''`,
     `known as '''J. J. Abrams.'''`,
+    `'''Dr.-Ing. h.c. F. Porsche AG''', usually shortened to '''Porsche AG''', is a German automobile manufacturer.`,
+    `Dr.-Ing. h.c. F. Porsche AG, usually shortened to Porsche AG, is a German automobile manufacturer.`,
+    `Prof. Dr.-Ing. Hans Müller lives in Berlin.`,
+    `He earned a Dipl.-Ing. degree in 1995.`,
+    `'''Dr.-Ing.''' is a German academic degree.`,
+    `'''Foo. Bar''' is a thing.`,
   ]
   arr.forEach((str) => {
     const doc = wtf(str)
     t.equal(doc.sentences().length, 1, str)
   })
+  const porsche = wtf(
+    `'''Dr.-Ing. h.c. F. Porsche AG''', usually shortened to '''Porsche AG''', is a German automobile manufacturer. It is headquartered in Stuttgart.`
+  )
+  t.equal(porsche.sentences().length, 2, 'porsche two sentences')
+  t.equal(
+    porsche.sentences()[0].text(),
+    'Dr.-Ing. h.c. F. Porsche AG, usually shortened to Porsche AG, is a German automobile manufacturer.',
+    'porsche first sentence text preserves bold cleanup'
+  )
+  t.deepEqual(
+    porsche
+      .sentences()[0]
+      .bolds()
+      .map((b) => b.text),
+    ['Dr.-Ing. h.c. F. Porsche AG', 'Porsche AG'],
+    'porsche first sentence bolds'
+  )
+  const twoAfterBold = wtf(`'''Bold sentence.''' Next sentence.`)
+  t.equal(twoAfterBold.sentences().length, 2, 'balanced bold still splits sentences')
+  const longOpenBold = wtf(`'''${'x '.repeat(500)}end. Next sentence.`)
+  t.equal(longOpenBold.sentences().length, 2, 'long unclosed bold still splits sentences')
   t.end()
 })
 
