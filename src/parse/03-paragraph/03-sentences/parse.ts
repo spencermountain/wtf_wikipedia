@@ -12,6 +12,7 @@ const abbrev_reg = new RegExp("(^| |')(" + abbreviations.join('|') + `)[.!?] ?$`
 const acronym_reg = /[ .'][A-Z].? *$/i
 const elipses_reg = /(?:^|[^.])\.{3,} +$/
 const circa_reg = / c\.\s$/
+const dash_reg = /\p{Letter}\.-\p{Letter}+\.'* ?$/u
 const hasWord = /\p{Letter}/iu
 const hasEnding = /[.!?。？！]["'’)」』]*\s*$/
 // 'some text:' followed by a line-break usually introduces a list or table
@@ -76,6 +77,11 @@ const isBalanced = function (str) {
   if (parens && parens.length % 2 !== 0 && str.length < 900) {
     return false
   }
+  //make sure bold wikimarkup is closed too
+  const bold = str.match(/'''/g)
+  if (bold && bold.length % 2 !== 0 && str.length < 900) {
+    return false
+  }
   return true
 }
 
@@ -118,7 +124,13 @@ const sentence_parser = function (text: string, _opts: DocInfo = defaults) {
   const isSentence = function (hmm: string) {
     // these only look at the end of the text, and any whitespace after it
     const tail = hmm.slice(Math.max(0, hmm.trimEnd().length - 100))
-    if (tail.match(abbrev_reg) || tail.match(acronym_reg) || tail.match(elipses_reg) || tail.match(circa_reg)) {
+    if (
+      tail.match(abbrev_reg) ||
+      tail.match(acronym_reg) ||
+      tail.match(elipses_reg) ||
+      tail.match(circa_reg) ||
+      tail.match(dash_reg)
+    ) {
       return false
     }
     // a line-break without punctuation is not a sentence boundary
