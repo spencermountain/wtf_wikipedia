@@ -15,10 +15,11 @@ const internal_links = function (wiki: string, opts: DocInfo = defaults) {
     let text = null
     //make a copy of original
     let link = s
-    if (s.match(/\|/)) {
-      //replacement link [[link|text]]
-      link = s.replace(/^(.{2,1000})\|.{0,2000}/, '$1') //replaced links
-      text = s.replace(/^.{2,1000}?\|/, '')
+    const pipe = s.indexOf('|')
+    if (pipe > 0) {
+      //replacement link [[link|text]] - the page ends at the first pipe
+      link = s.slice(0, pipe)
+      text = s.slice(pipe + 1)
       //handle funky case of [[toronto|]]
       if (text === null && link.match(/\|$/)) {
         link = link.replace(/\|$/, '')

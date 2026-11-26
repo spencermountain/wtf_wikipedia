@@ -106,3 +106,18 @@ test('link-to-category', (t) => {
   t.equal(doc.categories().length, 0, 'found no categories')
   t.end()
 })
+
+test('link-target-ends-at-first-pipe', (t) => {
+  let doc = wtf(`[[C|C language]] is old`)
+  t.equal(doc.text(), 'C language is old', 'one-letter target text')
+  t.equal(doc.links()[0].page(), 'C', 'one-letter target page')
+
+  doc = wtf(`[[猫|ネコ]]は動物`)
+  t.equal(doc.text(), 'ネコは動物', 'one-char cjk target text')
+  t.equal(doc.links()[0].page(), '猫', 'one-char cjk target page')
+
+  doc = wtf(`see [[Toronto|the|city]] now`)
+  t.equal(doc.links()[0].page(), 'Toronto', 'page stops at first pipe')
+  t.equal(doc.links()[0].text(), 'the|city', 'text keeps later pipes')
+  t.end()
+})
