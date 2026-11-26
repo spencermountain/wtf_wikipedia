@@ -45,7 +45,7 @@ test('bold and italic offsets', (t) => {
     ["'''''a''''' b ''c'' d '''e'''", 'a b c d e', [['a', 0, 1], ['e', 8, 9]], [['a', 0, 1], ['c', 4, 5]]],
     ["''''a'''' b", "'a' b", [["'a'", 0, 3]], []],
     ["x ''a'' y ''b'' z '''c''' w", 'x a y b z c w', [['c', 10, 11]], [['a', 2, 3], ['b', 6, 7]]],
-    ["[[a|''b'']] ''c'' d", 'a|b c d', [], [['c', 4, 5]]],
+    ["[[a|''b'']] ''c'' d", 'b c d', [], [['c', 2, 3]]],
     ["''[[a]]'' [[b]] '''c'''", 'a b c', [['c', 4, 5]], [['a', 0, 1]]],
   ]
   arr.forEach(([str, text, bolds, italics]) => {
@@ -60,7 +60,7 @@ test('bold and italic offsets', (t) => {
 test('links are replaced in place', (t) => {
   // [wikitext, text, links]
   const arr = [
-    ['[[a]] and [[a]] and [[b|c]] d', 'a and a and b|c d', ['A', 'A', 'B|c']],
+    ['[[a]] and [[a]] and [[b|c]] d', 'a and a and c d', ['A', 'A', 'B']],
     ['[[a]]s and [[a]] b', 'as and a b', ['A', 'A']],
     // a link inside another, with the same text again later
     ['[[x [http://a.com b]|y]] [http://a.com b] z', 'y b z', ['X [http://a.com b]', 'http://a.com', 'http://a.com']],

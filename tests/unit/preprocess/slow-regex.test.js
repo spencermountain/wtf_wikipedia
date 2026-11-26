@@ -44,8 +44,8 @@ test('internal links with a pipe', (t) => {
   const arr = [
     ['[[a b|c]] d', 'c d', 'A b'],
     ['[[ab|c]] d', 'c d', 'Ab'],
-    ['[[ab|c|d]] e', 'c|d e', 'Ab|c'],
-    ['[[a|b]] c', 'a|b c', 'A|b'],
+    ['[[ab|c|d]] e', 'c|d e', 'Ab'],
+    ['[[a|b]] c', 'b c', 'A'],
     ['[[ab|]] c', 'c', 'Ab'],
     ['[[|ab]] c', '|ab c', '|ab'],
     ['[[a b#c|d]] e', 'd e', 'A b'],
